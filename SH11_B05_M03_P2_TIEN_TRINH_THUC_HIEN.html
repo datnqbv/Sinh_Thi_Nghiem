@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Lab: Quang hợp ở thực vật — Phần 2: Tiến trình thực hiện (SH11_B05_M03_P2)</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #FAF7F0; --cream-2: #F0EADD; --cream-3: #E4DCCF;
+      --ink: #1A1A1A; --ink-light: #4A4A4A; --ink-muted: #767676;
+      --jade: #3CA57A; --jade-dark: #2D8B6F; --jade-pale: #DCEAE1;
+      --correct: #2D8B6F; --correct-bg: #DCEAE1;
+      --wrong: #C15F3C; --wrong-bg: #F3E2D6;
+      /* Khoá giao diện mục 12: Font duy nhất Playfair Display */
+      --font-heading: 'Playfair Display', serif; --font-body: 'Playfair Display', serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-body); font-size: 17px; line-height: 1.6; color: var(--ink); background-color: var(--cream); min-height: 100vh; display: flex; flex-direction: column; }
+    .header { background-color: var(--cream); border-bottom: 2px solid var(--cream-2); padding: 12px 24px; position: sticky; top: 0; z-index: 100; }
+    .header-container { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand-title { font-family: var(--font-heading); font-weight: 700; font-size: 1.25rem; color: var(--ink); display: flex; align-items: center; gap: 10px; }
+    .brand-badge { background-color: var(--jade-pale); color: var(--jade-dark); font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; }
+    .stage-tracker { flex: 1; max-width: 500px; display: flex; flex-direction: column; gap: 6px; }
+    .stage-info { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; color: var(--ink-light); }
+    .progress-bar-track { height: 8px; background-color: var(--cream-2); border-radius: 10px; overflow: hidden; }
+    .progress-bar-fill { height: 100%; background-color: var(--jade); width: 25%; transition: width 0.4s ease; }
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 18px; font-size: 0.95rem; font-weight: 600; border-radius: 8px; border: 2px solid transparent; cursor: pointer; transition: all 0.2s ease; min-height: 44px; font-family: var(--font-body); }
+    .btn-primary { background-color: var(--jade); color: #ffffff; }
+    .btn-primary:hover:not(:disabled) { background-color: var(--jade-dark); }
+    .btn-primary:disabled { background-color: var(--cream-3); color: var(--ink-muted); cursor: not-allowed; }
+    .btn-secondary { background-color: var(--cream-2); color: var(--ink); border-color: var(--cream-3); }
+
+    .recap-card { background: var(--jade-pale); border-radius: 12px; padding: 12px 16px; font-size: 0.82rem; color: var(--jade-dark); }
+    .recap-card b { font-family: var(--font-heading); }
+
+    .app-main { flex: 1; max-width: 1300px; width: 100%; margin: 0 auto; padding: 24px; display: grid; grid-template-columns: 52% 45%; gap: 24px; transition: grid-template-columns 0.2s ease; align-items: start; }
+    @media (max-width: 1024px) { .app-main { grid-template-columns: 1fr !important; } }
+    .canvas-panel { background-color: #ffffff; border-radius: 20px; border: 2px solid var(--cream-2); overflow: hidden; display: flex; flex-direction: column; position: relative; }
+    .canvas-viewport { position: relative; width: 100%; max-width: 500px; aspect-ratio: 1 / 1; margin: 0 auto; background-color: var(--cream); overflow: hidden; }
+    .canvas-bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; background-color: var(--cream); transition: opacity 0.3s ease; }
+    .canvas-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; }
+    .hotspot { position: absolute; pointer-events: auto; cursor: pointer; border: 3px solid rgba(60,165,122,0.55); background-color: rgba(60, 165, 122, 0.12); border-radius: 10px; transition: all 0.2s ease; }
+    .hotspot:hover, .hotspot:focus-visible { border-color: var(--jade); background-color: rgba(60, 165, 122, 0.24); outline: none; }
+    .hotspot.wrong-flash { border-color: var(--wrong); background-color: rgba(193,95,60,0.22); }
+    .hotspot.step-active { border-color: var(--accent, var(--jade-dark)); background-color: rgba(45,139,111,0.30); box-shadow: 0 0 0 4px rgba(45,139,111,0.15); }
+    .hotspot-tag { position: absolute; top: 6px; left: 6px; background-color: var(--ink); color: #ffffff; font-size: 0.7rem; font-weight: 700; padding: 3px 9px; border-radius: 10px; pointer-events: none; }
+    .canvas-caption { padding: 16px 20px; background-color: var(--cream); border-top: 2px solid var(--cream-2); font-size: 0.95rem; color: var(--ink-light); min-height: 1.6em; transition: opacity 0.25s ease; }
+    .control-panel { display: flex; flex-direction: column; gap: 16px; }
+    .card { background-color: #ffffff; border-radius: 14px; border: 2px solid var(--cream-2); padding: 20px; }
+    .task-card { border-left: 6px solid var(--jade); }
+    .task-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--jade-dark); }
+    .task-heading { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; color: var(--ink); margin: 6px 0; }
+    .task-desc { font-size: 0.95rem; color: var(--ink-light); }
+    .group-label { font-weight: 700; margin-bottom: 8px; display: block; }
+    .option-cards-group { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+    .option-card { background-color: var(--cream); border: 2px solid var(--cream-2); border-radius: 8px; padding: 14px 18px; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: flex-start; gap: 12px; min-height: 44px; }
+    .option-card:hover { border-color: var(--jade); background-color: #ffffff; }
+    .option-card.selected { border-color: var(--jade); background-color: var(--jade-pale); }
+    .option-card.correct-card { border-color: var(--correct); background-color: var(--correct-bg); }
+    .option-card.wrong-card { border-color: var(--wrong); background-color: var(--wrong-bg); }
+    .option-card:focus-visible { outline: 2px solid var(--jade); outline-offset: 2px; }
+    .option-card.correct-card { position: relative; }
+    .option-card.correct-card::after { content: "✓"; position: absolute; top: 8px; right: 10px; color: var(--correct); font-weight: 700; }
+    .card-icon { width: 24px; height: 24px; flex-shrink: 0; color: var(--jade-dark); }
+    .option-card.correct-card .card-icon { color: var(--correct); }
+    .option-card.wrong-card .card-icon { color: var(--wrong); }
+    .option-content { flex: 1; font-size: 0.92rem; }
+    .badge-mark { display:inline-flex; align-items:center; gap:4px; font-size:0.72rem; font-weight:700; color:var(--jade-dark); background:var(--jade-pale); padding:2px 8px; border-radius:10px; margin-left:6px; }
+    .feedback-box { margin-top: 16px; padding: 14px 18px; border-radius: 8px; font-size: 0.9rem; display: none; }
+    .feedback-box.correct { display: block; background-color: var(--correct-bg); border: 1.5px solid var(--correct); color: var(--jade-dark); }
+    .feedback-box.wrong { display: block; background-color: var(--wrong-bg); border: 1.5px solid var(--wrong); color: var(--wrong); }
+    .step-list { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; font-size: 0.85rem; color: var(--ink-muted); }
+    .step-list .st { display: flex; align-items: center; gap: 10px; padding: 4px 8px; border-radius: 6px; transition: all 0.2s ease; }
+    .step-list .st.active { background: var(--jade-pale); color: var(--jade-dark); font-weight: 700; }
+    .step-list .st img { width: 26px; height: 26px; object-fit: contain; opacity: 0.3; transition: opacity 0.25s ease; flex-shrink: 0; }
+    .step-list .st.active img { opacity: 1; }
+    .asset-inset { position: absolute; width: 22%; max-width: 90px; object-fit: contain; opacity: 0; transition: opacity 0.4s ease; pointer-events: none; z-index: 6; filter: drop-shadow(0 3px 8px rgba(26,26,26,0.18)); }
+    .asset-inset.show { opacity: 1; }
+
+    .modal-backdrop { position: fixed; top:0; left:0; width:100vw; height:100vh; background-color: rgba(26,26,26,0.7); z-index:999; display:flex; align-items:center; justify-content:center; padding:20px; opacity:0; pointer-events:none; transition: opacity 0.3s ease; }
+    .modal-backdrop.active { opacity:1; pointer-events:auto; }
+    .modal-card { background:#fff; border-radius:20px; max-width:520px; width:100%; padding:28px; border-top:6px solid var(--wrong); }
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-container">
+      <div class="brand-title"><span>Aiducation</span> <span class="brand-badge">P2: TIẾN TRÌNH THỰC HIỆN</span></div>
+      <div class="stage-tracker">
+        <div class="stage-info"><span id="stageTitle">Màn 1/4: Xử lí tối — Che lá — Chiếu sáng</span><span id="stageProgressText">25%</span></div>
+        <div class="progress-bar-track"><div class="progress-bar-fill" id="progressBarFill"></div></div>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-secondary" id="btnTTS"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9V15H8L13 19V5L8 9H4Z"/><path d="M17 8C18.5 9.5 18.5 14.5 17 16"/></svg> Đọc</button>
+        <button class="btn btn-secondary" id="btnReset">↻ Đặt lại</button>
+        <button class="btn btn-primary" id="btnNext" disabled>Tiếp theo ➔</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-main" id="appMain">
+    <section class="canvas-panel">
+      <div class="canvas-viewport">
+        <img id="stageImg" class="canvas-bg-img" src="Pic_SH11_B05/IMG_SH11B05M03_DARK_COVER_LIGHT_01.png" alt="Tiến trình thực hiện">
+        <div id="hotspotOverlay" class="canvas-overlay"></div>
+      </div>
+      <div class="canvas-caption"><span id="canvasCaptionText">Xử lí tối cây khoai tây và tạo vùng che sáng đối chứng trên lá chét.</span></div>
+    </section>
+
+    <section class="control-panel">
+      <div class="recap-card"><b>Tóm tắt tiến trình:</b> (1) Xử lí tối → (2) Che một phần lá &amp; chiếu sáng → (3) Thu mẫu &amp; nước nóng → (4) Tẩy diệp lục an toàn → (5) Rửa lá, dùng iodine &amp; quan sát.</div>
+      <div class="card task-card">
+        <span class="task-label">Phần 2: Tiến trình thực hiện</span>
+        <h2 class="task-heading" id="taskHeading">Xử lí tối — Che lá — Chiếu sáng</h2>
+        <p class="task-desc" id="taskDesc">Bấm vào vùng giữa lá chét để gắn băng giấy đen che hai mặt.</p>
+      </div>
+      <div class="card">
+        <div id="workspaceControls"></div>
+        <div id="feedbackBox" class="feedback-box"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="safetyModal">
+    <div class="modal-card">
+      <h3 style="font-family:var(--font-heading); color:var(--wrong); margin-bottom:10px; display:flex; align-items:center; gap:8px; justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3L22 20H2L12 3Z"/><line x1="12" y1="9" x2="12" y2="14"/><circle cx="12" cy="17" r="0.8" fill="currentColor"/></svg> CẢNH BÁO AN TOÀN NGUY HẠI</h3>
+      <p style="margin-bottom:20px; font-size:0.95rem; color:var(--ink-light);">Cồn 90° rất dễ cháy! Không bao giờ đun trực tiếp cốc cồn trên ngọn lửa hoặc mở cồn gần nguồn lửa đang cháy.</p>
+      <button class="btn btn-primary" id="btnCloseModal">Tôi đã hiểu — Chọn lại</button>
+    </div>
+  </div>
+
+  <script>
+    const ICONS = {
+      droplet:   '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3C15 8 18 11 18 15A6 6 0 0 1 6 15C6 11 9 8 12 3Z"/></svg>',
+      leaf:      '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20C4 10 12 4 20 4C20 12 14 20 4 20Z"/><line x1="4" y1="20" x2="14" y2="10"/></svg>',
+      pin:       '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="10" r="3"/><path d="M12 21C12 21 19 14.5 19 10A7 7 0 0 0 5 10C5 14.5 12 21 12 21Z"/></svg>',
+      thermo:    '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="10" y="3" width="4" height="12" rx="2"/><circle cx="12" cy="18" r="3"/></svg>',
+      sun:       '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>',
+      speaker:   '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9V15H8L13 19V5L8 9H4Z"/><path d="M17 8C18.5 9.5 18.5 14.5 17 16"/></svg>',
+      warnTri:   '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3L22 20H2L12 3Z"/><line x1="12" y1="9" x2="12" y2="14"/><circle cx="12" cy="17" r="0.8" fill="currentColor"/></svg>'
+    };
+
+    /* Gắn thao tác chuột + bàn phím (Enter/Space) cho một thẻ lựa chọn */
+    function bindCard(el, fn) {
+      el.setAttribute("tabindex", "0");
+      el.setAttribute("role", "button");
+      el.addEventListener("click", fn);
+      el.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } });
+    }
+
+    /* Lưu dữ liệu tiến trình P2 trong biến JS (không dùng localStorage/sessionStorage) */
+    const P2Data = {
+      s1: { regionChoice: null, regionAttempts: 0, condChoice: null, condAttempts: 0 },
+      s2: { leafChoice: null, leafAttempts: 0 },
+      s3: { safetyChoice: null, safetyAttempts: 0 },
+      s4: { reagentChoice: null, reagentAttempts: 0, observedConfirmed: false }
+    };
+
+    let curIdx = 0;
+    const stagesP2 = [
+      { name: "Xử lí tối — Che lá — Chiếu sáng", img: "Pic_SH11_B05/IMG_SH11B05M03_DARK_COVER_LIGHT_01.png",
+        caption: "Xử lí tối và tạo vùng che sáng đối chứng.",
+        desc: "Bấm vào đúng vùng giữa lá chét để gắn băng giấy đen che hai mặt, rồi xem trình tự và trả lời câu hỏi.",
+        voice: "Chọn vùng giữa lá chét để tạo vùng bị che sáng, sau đó quan sát trình tự xử lí tối, che và chiếu sáng.",
+        layout: "52% 45%", init: renderS1 },
+      { name: "Thu mẫu & Xử lí bằng nước nóng", img: "Pic_SH11_B05/IMG_SH11B05M03_HOT_WATER_01.png",
+        caption: "Thu mẫu lá chét và nhúng vào nước nóng.",
+        desc: "Chọn đúng lá chét đã được che sáng trước đó, sau đó xem bước xử lí bằng nước nóng.",
+        voice: "Hãy chọn đúng lá chét đã được che sáng trước khi thu mẫu.",
+        layout: "52% 45%", init: renderS2 },
+      { name: "Tẩy diệp lục bằng cách thủy an toàn", img: "Pic_SH11_B05/IMG_SH11B05M03_SAFE_DECOLOR_01.png",
+        caption: "So sánh sơ đồ đun cách thủy cồn an toàn (bấm vào đúng nửa ảnh).",
+        desc: "Bấm vào sơ đồ bố trí an toàn trên hình (nửa trái hoặc nửa phải) để làm nóng cồn gián tiếp.",
+        voice: "Chọn sơ đồ bố trí an toàn để làm nóng cồn gián tiếp bằng cách thủy.",
+        layout: "52% 45%", init: renderS3 },
+      { name: "Rửa lá — Dùng Iodine — Quan sát", img: "Pic_SH11_B05/IMG_SH11B05M03_IODINE_OBSERVE_01.png",
+        caption: "Rửa lá, dùng Iodine và xem phản ứng màu.",
+        desc: "Chọn đúng thuốc thử nhận biết tinh bột, sau đó quan sát kết quả trước khi xác nhận.",
+        voice: "Chọn thuốc thử dùng để nhận biết tinh bột, sau đó quan sát kỹ kết quả.",
+        layout: "52% 45%", init: renderS4 }
+    ];
+
+    window.addEventListener("DOMContentLoaded", () => { loadS(0); setupEvents(); });
+
+    function setupEvents() {
+      document.getElementById("btnNext").onclick = () => {
+        if (curIdx < stagesP2.length - 1) loadS(curIdx + 1);
+        else window.location.href = "SH11_B05_M03_P3_BAO_CAO_GIAI_THICH.html";
+      };
+      document.getElementById("btnReset").onclick = () => loadS(curIdx);
+      document.getElementById("btnCloseModal").onclick = () => document.getElementById("safetyModal").classList.remove("active");
+      document.getElementById("btnTTS").addEventListener("click", () => {
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+          const u = new SpeechSynthesisUtterance(stagesP2[curIdx].voice);
+          u.lang = 'vi-VN';
+          window.speechSynthesis.speak(u);
+        }
+      });
+    }
+
+    function loadS(idx) {
+      curIdx = idx;
+      const s = stagesP2[idx];
+      document.getElementById("stageTitle").textContent = `Màn ${idx + 1}/4: ${s.name}`;
+      document.getElementById("stageProgressText").textContent = `${Math.round(((idx + 1)/4)*100)}%`;
+      document.getElementById("progressBarFill").style.width = `${((idx + 1)/4)*100}%`;
+      document.getElementById("stageImg").src = s.img;
+      document.getElementById("canvasCaptionText").textContent = s.caption;
+      document.getElementById("taskHeading").textContent = s.name;
+      document.getElementById("taskDesc").textContent = s.desc;
+      document.getElementById("appMain").style.gridTemplateColumns = s.layout;
+      document.getElementById("hotspotOverlay").innerHTML = "";
+      document.getElementById("workspaceControls").innerHTML = "";
+      document.getElementById("btnNext").disabled = true;
+      hideFB();
+      s.init();
+    }
+
+    function showFB(t, c) { const b = document.getElementById("feedbackBox"); b.textContent = t; b.className = "feedback-box " + (c ? "correct" : "wrong"); }
+    function hideFB() { const b = document.getElementById("feedbackBox"); b.className = "feedback-box"; b.textContent = ""; }
+    function setCaption(t) { document.getElementById("canvasCaptionText").textContent = t; }
+
+    /* ============ S1 — Xử lí tối, che lá, chiếu sáng ============ */
+    function renderS1() {
+      const ws = document.getElementById("workspaceControls");
+      ws.innerHTML = `<p style="font-size:0.88rem; color:var(--ink-muted); margin-bottom:6px;">Bấm đúng vùng trên hình (giữa lá chét ở khung giữa).</p>
+        <div id="condArea" class="hidden" style="margin-top:14px;">
+          <span class="group-label">Hai vùng khác nhau ở điều kiện nào?</span>
+          <div class="option-cards-group">
+            <div class="option-card" data-c="light">${ICONS.sun}<div class="option-content">Ánh sáng</div></div>
+            <div class="option-card" data-c="heat">${ICONS.thermo}<div class="option-content">Nhiệt độ</div></div>
+            <div class="option-card" data-c="water">${ICONS.droplet}<div class="option-content">Lượng nước tưới</div></div>
+          </div>
+        </div>`;
+
+      /* Toạ độ hotspot dưới đây là ƯỚC LƯỢNG TẠM THỜI trên ảnh CHƯA DUYỆT
+         (IMG_SH11B05M03_DARK_COVER_LIGHT_01 — trạng thái "CHƯA DUYỆT — ưu tiên cao").
+         Theo khoá ASSET_FIRST, cần đo lại chính xác trên bản "_APPROVED". */
+      const overlay = document.getElementById("hotspotOverlay");
+      const regions = [
+        { key: "tip",    left: 43, top: 30, w: 15, h: 15, ok: false },
+        { key: "middle", left: 43, top: 45, w: 15, h: 14, ok: true  },
+        { key: "base",   left: 43, top: 58, w: 15, h: 15, ok: false }
+      ];
+      /* Chèn 2 asset rời theo field 23 (băng giấy đen, kẹp) — xuất hiện đúng lúc "che" trong hoạt cảnh */
+      const viewport = document.querySelector(".canvas-viewport");
+      const paperEl = document.createElement("img");
+      paperEl.className = "asset-inset"; paperEl.style.left = "44%"; paperEl.style.top = "44%";
+      paperEl.src = "Pic_SH11_B05/AST_SH11B05M03_BLACK_PAPER_PAIR_01.svg"; paperEl.alt = "Băng giấy đen";
+      const clipsEl = document.createElement("img");
+      clipsEl.className = "asset-inset"; clipsEl.style.right = "6%"; clipsEl.style.bottom = "8%";
+      clipsEl.src = "Pic_SH11_B05/AST_SH11B05M03_CLIPS_01.svg"; clipsEl.alt = "Kẹp giữ giấy đen";
+      viewport.appendChild(paperEl); viewport.appendChild(clipsEl);
+
+      let regionDone = false;
+      regions.forEach(r => {
+        const el = document.createElement("div");
+        el.className = "hotspot";
+        el.style.left = r.left + "%"; el.style.top = r.top + "%"; el.style.width = r.w + "%"; el.style.height = r.h + "%";
+        el.setAttribute("role", "button"); el.setAttribute("tabindex", "0");
+        el.addEventListener("click", () => pick(r, el));
+        el.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(r, el); } });
+        overlay.appendChild(el);
+      });
+
+      function pick(r, el) {
+        if (regionDone) return;
+        if (r.ok) {
+          regionDone = true;
+          P2Data.s1.regionChoice = r.key;
+          overlay.querySelectorAll(".hotspot").forEach(h => h.style.pointerEvents = "none");
+          el.style.borderColor = "var(--correct)";
+          showFB("Đúng vùng. Hệ thống sẽ che cùng vị trí ở cả hai mặt lá.", true);
+          runTimelapse();
+        } else {
+          P2Data.s1.regionAttempts++;
+          el.classList.add("wrong-flash");
+          setTimeout(() => el.classList.remove("wrong-flash"), 400);
+          const why = r.key === "tip" ? "Quá gần đầu lá — hai vùng sẽ khó so sánh đối xứng." : "Quá gần cuống lá — cần giữ vùng che ở giữa lá chét.";
+          showFB("Chưa đúng. " + why, false);
+        }
+      }
+
+      function runTimelapse() {
+        const seq = [
+          "Cây đã được xử lí tối trước thí nghiệm để giảm ảnh hưởng của tinh bột tích lũy trước đó.",
+          "Giấy đen được gắn che kín vùng giữa ở cả hai mặt lá chét.",
+          "Cây được đưa ra ánh sáng; chỉ vùng không bị che mới nhận ánh sáng trực tiếp."
+        ];
+        seq.forEach((t, i) => setTimeout(() => {
+          setCaption(t);
+          if (i === 1) { paperEl.classList.add("show"); clipsEl.classList.add("show"); }
+          if (i === 2) { paperEl.classList.remove("show"); clipsEl.classList.remove("show"); }
+        }, i * 1100));
+        setTimeout(() => { document.getElementById("condArea").classList.remove("hidden"); }, seq.length * 1100 + 300);
+      }
+
+      let condOk = false;
+      ws.querySelectorAll("#condArea .option-card").forEach(c => {
+        bindCard(c, () => {
+          if (condOk) return;
+          ws.querySelectorAll("#condArea .option-card").forEach(x => x.classList.remove("selected", "correct-card", "wrong-card"));
+          if (c.getAttribute("data-c") === "light") {
+            c.classList.add("selected", "correct-card");
+            P2Data.s1.condChoice = "light";
+            condOk = true;
+            showFB("Vùng che và vùng được chiếu sáng đã được tạo trên cùng một lá chét.", true);
+            document.getElementById("btnNext").disabled = false;
+          } else {
+            c.classList.add("selected", "wrong-card");
+            P2Data.s1.condAttempts++;
+            showFB("Chưa đúng. Nhiệt độ và lượng nước tưới được giữ giống nhau ở cả hai vùng — chỉ ánh sáng khác nhau.", false);
+          }
+        });
+      });
+    }
+
+    /* ============ S2 — Thu mẫu và xử lí nước nóng ============ */
+    function renderS2() {
+      const ws = document.getElementById("workspaceControls");
+      ws.innerHTML = `
+        <span class="group-label">Chọn đúng lá chét đã được che sáng trước đó:</span>
+        <div class="option-cards-group" id="leafG">
+          <div class="option-card" data-l="1">${ICONS.leaf}<div class="option-content">Lá chét thứ nhất — nằm gần ngọn cây, phiến lá to, không có dấu vết gì khác thường.</div></div>
+          <div class="option-card" data-l="2">${ICONS.leaf}<div class="option-content">Lá chét thứ hai — nằm giữa tán, mép lá còn vết kẹp giấy đen ở vùng giữa.</div></div>
+          <div class="option-card" data-l="3">${ICONS.leaf}<div class="option-content">Lá chét thứ ba — nằm gần gốc, phiến lá nhỏ hơn, không có dấu vết gì khác thường.</div></div>
+        </div>`;
+      /* Chèn 2 asset rời theo field 23 (panh, trạng thái lá sau nước nóng) — xuất hiện dần trong hoạt cảnh */
+      const viewport = document.querySelector(".canvas-viewport");
+      const tongsEl = document.createElement("img");
+      tongsEl.className = "asset-inset"; tongsEl.style.right = "8%"; tongsEl.style.top = "10%";
+      tongsEl.src = "Pic_SH11_B05/AST_SH11B05M03_TONGS_01.svg"; tongsEl.alt = "Panh gắp";
+      const stateEl = document.createElement("img");
+      stateEl.className = "asset-inset"; stateEl.style.left = "8%"; stateEl.style.bottom = "10%";
+      stateEl.src = "Pic_SH11_B05/STATE_SH11B05M03_LEAF_HOT_WATER_01.svg"; stateEl.alt = "Lá sau xử lí nước nóng";
+      viewport.appendChild(tongsEl); viewport.appendChild(stateEl);
+
+      let leafOk = false;
+      ws.querySelectorAll("#leafG .option-card").forEach(c => {
+        bindCard(c, () => {
+          if (leafOk) return;
+          ws.querySelectorAll("#leafG .option-card").forEach(x => x.classList.remove("selected", "correct-card", "wrong-card"));
+          if (c.getAttribute("data-l") === "2") {
+            c.classList.add("selected", "correct-card");
+            P2Data.s2.leafChoice = "2";
+            leafOk = true;
+            showFB("Đúng mẫu. Dùng lá khác sẽ làm mất phép so sánh với vùng đã che.", true); /* field 18 */
+            setCaption("Dùng panh tháo băng giấy đen và nhúng lá vào cốc nước nóng để làm mềm mô lá.");
+            tongsEl.classList.add("show");
+            setTimeout(() => {
+              tongsEl.classList.remove("show");
+              stateEl.classList.add("show");
+              const closingLine = "Mẫu đã được xử lí bằng nước nóng và sẵn sàng cho bước tẩy diệp lục."; /* field 12 câu chốt */
+              setCaption(closingLine);
+              stagesP2[curIdx].voice = closingLine; /* TTS đọc câu chốt sau khi hiệu ứng kết thúc */
+            }, 1800);
+            document.getElementById("btnNext").disabled = false;
+          } else {
+            c.classList.add("selected", "wrong-card");
+            P2Data.s2.leafAttempts++;
+            showFB("Chưa đúng — hãy tìm lá chét có dấu kẹp giấy đen, đó là mẫu đã tạo vùng đối chứng.", false);
+          }
+        });
+      });
+    }
+
+    /* ============ S3 — Tẩy diệp lục bằng cách thủy an toàn (SAFETY) ============ */
+    function renderS3() {
+      const ws = document.getElementById("workspaceControls");
+      ws.innerHTML = `
+        <p style="font-size:0.88rem; color:var(--ink-muted); margin-bottom:6px;">Bấm vào nửa ảnh mô tả sơ đồ AN TOÀN.</p>
+        <div class="step-list" id="phaseList">
+          <div class="st" data-i="0"><img src="Pic_SH11_B05/AST_SH11B05M03_OUTER_BEAKER_01.svg" alt="">1. Đun nóng cốc nước ngoài</div>
+          <div class="st" data-i="1"><img src="Pic_SH11_B05/AST_SH11B05M03_ALCOHOL_LAMP_01.svg" alt="">2. Tắt và chuyển đèn cồn ra xa</div>
+          <div class="st" data-i="2"><img src="Pic_SH11_B05/AST_SH11B05M03_INNER_ETHANOL_BEAKER_01.svg" alt="">3. Mở cồn, đặt cốc nhỏ vào nước nóng</div>
+          <div class="st" data-i="3"><img src="Pic_SH11_B05/STATE_SH11B05M03_LEAF_DECOLORIZED_01.svg" alt="">4. Lá dần nhạt màu</div>
+        </div>`;
+
+      /* Toạ độ hotspot dưới đây khớp bố cục ảnh so sánh A/B của IMG_SH11B05M03_SAFE_DECOLOR_01
+         (trạng thái "CHƯA DUYỆT — ƯU TIÊN CAO NHẤT VỀ AN TOÀN"). Ảnh có vạch chia dọc ở giữa:
+         nửa trái = sơ đồ AN TOÀN, nửa phải = sơ đồ NGUY HIỂM. Đo lại chính xác sau khi duyệt. */
+      const overlay = document.getElementById("hotspotOverlay");
+      const safeEl = document.createElement("div");
+      safeEl.className = "hotspot"; safeEl.style.left = "2%"; safeEl.style.top = "4%"; safeEl.style.width = "45%"; safeEl.style.height = "92%";
+      safeEl.innerHTML = '<span class="hotspot-tag">Sơ đồ A</span>';
+      safeEl.setAttribute("role", "button"); safeEl.setAttribute("tabindex", "0");
+      const unsafeEl = document.createElement("div");
+      unsafeEl.className = "hotspot"; unsafeEl.style.left = "53%"; unsafeEl.style.top = "4%"; unsafeEl.style.width = "45%"; unsafeEl.style.height = "92%";
+      unsafeEl.innerHTML = '<span class="hotspot-tag">Sơ đồ B</span>';
+      unsafeEl.setAttribute("role", "button"); unsafeEl.setAttribute("tabindex", "0");
+      overlay.appendChild(safeEl); overlay.appendChild(unsafeEl);
+
+      let done = false;
+      function chooseSafe() {
+        if (done) return; done = true;
+        P2Data.s3.safetyChoice = "safe";
+        safeEl.style.borderColor = "var(--correct)"; safeEl.style.pointerEvents = "none"; unsafeEl.style.pointerEvents = "none";
+        showFB("Chính xác! Đèn cồn đã được tắt và dời xa trước khi làm nóng cồn gián tiếp.", true);
+        document.getElementById("btnNext").disabled = false;
+        runPhases();
+      }
+      function chooseUnsafe() {
+        P2Data.s3.safetyAttempts++;
+        document.getElementById("safetyModal").classList.add("active");
+      }
+      safeEl.addEventListener("click", chooseSafe);
+      safeEl.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); chooseSafe(); } });
+      unsafeEl.addEventListener("click", chooseUnsafe);
+      unsafeEl.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); chooseUnsafe(); } });
+
+      function runPhases() {
+        const items = document.querySelectorAll("#phaseList .st");
+        items.forEach((el, i) => setTimeout(() => {
+          items.forEach(x => x.classList.remove("active"));
+          el.classList.add("active");
+          if (i === 3) {
+            const closingLine = "Cồn được làm nóng gián tiếp; diệp lục hòa tan làm lá nhạt màu."; /* field 12 câu chốt */
+            setCaption(closingLine);
+            stagesP2[curIdx].voice = closingLine; /* TTS đọc câu chốt sau khi hiệu ứng kết thúc */
+          }
+        }, i * 900));
+      }
+    }
+
+    /* ============ S4 — Rửa lá, dùng iodine, quan sát ============ */
+    function renderS4() {
+      const ws = document.getElementById("workspaceControls");
+      ws.innerHTML = `
+        <span class="group-label">Chọn thuốc thử nhận biết tinh bột:</span>
+        <div class="option-cards-group" id="reagentG">
+          <div class="option-card" data-r="iodine">${ICONS.droplet}<div class="option-content">Dung dịch Iodine (nâu vàng)</div></div>
+          <div class="option-card" data-r="ethanol">${ICONS.droplet}<div class="option-content">Cồn 90°</div></div>
+          <div class="option-card" data-r="water">${ICONS.droplet}<div class="option-content">Nước rửa</div></div>
+        </div>
+        <button class="btn btn-primary hidden" id="btnObserved" style="width:100%; margin-top:14px;">Tôi đã quan sát</button>
+      `;
+
+      /* Chèn asset rời theo field 23 (đĩa Petri, chai iodine) + cốc nước rửa (field 14 "cốc nước rửa", dossier chỉ định P2_S04) — xuất hiện dần đúng lúc trong hoạt cảnh */
+      const viewport = document.querySelector(".canvas-viewport");
+      const washEl = document.createElement("img");
+      washEl.className = "asset-inset"; washEl.style.left = "6%"; washEl.style.bottom = "8%";
+      washEl.src = "Pic_SH11_B05/AST_SH11B05M03_WASH_WATER_BEAKER_01.svg"; washEl.alt = "Cốc nước rửa lá";
+      const petriEl = document.createElement("img");
+      petriEl.className = "asset-inset"; petriEl.style.left = "6%"; petriEl.style.bottom = "8%";
+      petriEl.src = "Pic_SH11_B05/AST_SH11B05M03_PETRI_DISH_01.svg"; petriEl.alt = "Đĩa Petri";
+      const bottleEl = document.createElement("img");
+      bottleEl.className = "asset-inset"; bottleEl.style.right = "6%"; bottleEl.style.top = "8%";
+      bottleEl.src = "Pic_SH11_B05/AST_SH11B05M03_IODINE_BOTTLE_01.svg"; bottleEl.alt = "Chai iodine";
+      const resultStateEl = document.createElement("img");
+      resultStateEl.className = "asset-inset"; resultStateEl.style.left = "50%"; resultStateEl.style.top = "50%";
+      resultStateEl.style.transform = "translate(-50%,-50%)"; resultStateEl.style.width = "34%"; resultStateEl.style.maxWidth = "140px";
+      resultStateEl.src = "Pic_SH11_B05/STATE_SH11B05M03_LEAF_RESULT_01.svg"; resultStateEl.alt = "Lá sau khi dùng iodine";
+      viewport.appendChild(washEl); viewport.appendChild(petriEl); viewport.appendChild(bottleEl); viewport.appendChild(resultStateEl);
+
+      ws.querySelectorAll("#reagentG .option-card").forEach(c => {
+        bindCard(c, () => {
+          if (P2Data.s4.reagentChoice === "iodine") return;
+          ws.querySelectorAll("#reagentG .option-card").forEach(x => x.classList.remove("selected", "correct-card", "wrong-card"));
+          const v = c.getAttribute("data-r");
+          if (v === "iodine") {
+            c.classList.add("selected", "correct-card");
+            P2Data.s4.reagentChoice = "iodine";
+            showFB("Đúng. Iodine là thuốc thử nhận biết tinh bột có sẵn.", true); /* field 18 — phản hồi đúng ngay khi chọn */
+
+            const img = document.getElementById("stageImg");
+            /* Trình tự hoạt cảnh field 27/28: rửa 1,5s → đặt mẫu 1s → iodine 1s → đổi màu 3s → giữ ≥6s */
+            setCaption("Đang rửa lá bằng nước sạch để loại bỏ cồn…");
+            washEl.classList.add("show");
+            setTimeout(() => { washEl.classList.remove("show"); petriEl.classList.add("show"); setCaption("Đặt lá lên đĩa Petri…"); }, 1500);
+            setTimeout(() => { bottleEl.classList.add("show"); setCaption("Nhỏ iodine cho tiếp xúc toàn bộ lá…"); }, 2500);
+            setTimeout(() => {
+              petriEl.classList.remove("show"); bottleEl.classList.remove("show");
+              resultStateEl.classList.add("show");
+              setCaption("Tinh bột hiện màu dần trong 3 giây…");
+            }, 3500);
+            setTimeout(() => {
+              img.style.opacity = "0.15";
+              setTimeout(() => { img.src = "Pic_SH11_B05/IMG_SH11B05M03_RESULT_CORRECT_01.png"; img.style.opacity = "1"; resultStateEl.classList.remove("show"); }, 250);
+              const closingLine = "Vùng được chiếu sáng chuyển xanh tím đậm; vùng bị che giữ màu vàng nâu nhạt."; /* field 12 câu chốt */
+              setCaption(closingLine);
+              stagesP2[curIdx].voice = closingLine; /* TTS đọc câu chốt sau khi hiệu ứng kết thúc — field 33 */
+            }, 6500);
+
+            const btn = document.getElementById("btnObserved");
+            btn.classList.remove("hidden");
+            btn.disabled = true;
+            btn.textContent = "Đang xem hoạt cảnh…";
+            setTimeout(() => {
+              let remain = 6;
+              btn.textContent = `Đang giữ hình kết quả… (${remain} giây)`;
+              const tick = setInterval(() => {
+                remain--;
+                if (remain <= 0) { clearInterval(tick); btn.disabled = false; btn.textContent = "Tôi đã quan sát"; }
+                else btn.textContent = `Đang giữ hình kết quả… (${remain} giây)`;
+              }, 1000);
+            }, 6500);
+            btn.onclick = () => { P2Data.s4.observedConfirmed = true; document.getElementById("btnNext").disabled = false; };
+          } else {
+            c.classList.add("selected", "wrong-card");
+            P2Data.s4.reagentAttempts++;
+            const why = v === "ethanol" ? "Cồn dùng để tẩy diệp lục, không phải để nhận biết tinh bột." : "Nước chỉ dùng để rửa mẫu, không tạo phản ứng màu với tinh bột.";
+            showFB("Chưa đúng. " + why, false);
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>

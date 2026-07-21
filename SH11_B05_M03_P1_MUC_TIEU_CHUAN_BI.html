@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Lab: Quang hợp ở thực vật — Phần 1: Mục tiêu & Chuẩn bị (SH11_B05_M03_P1)</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #FAF7F0;
+      --cream-2: #F0EADD;
+      --cream-3: #E4DCCF;
+      --ink: #1A1A1A;
+      --ink-light: #4A4A4A;
+      --ink-muted: #767676;
+      --jade: #3CA57A;
+      --jade-dark: #2D8B6F;
+      --jade-pale: #DCEAE1;
+      --correct: #2D8B6F;
+      --correct-bg: #DCEAE1;
+      --wrong: #C15F3C;
+      --wrong-bg: #F3E2D6;
+      /* Khoá giao diện mục 12: Font duy nhất Playfair Display — dùng chung cho heading và body */
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Playfair Display', serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-body); font-size: 17px; line-height: 1.6; color: var(--ink); background-color: var(--cream); min-height: 100vh; display: flex; flex-direction: column; }
+    .header { background-color: var(--cream); border-bottom: 2px solid var(--cream-2); padding: 12px 24px; position: sticky; top: 0; z-index: 100; }
+    .header-container { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand-title { font-family: var(--font-heading); font-weight: 700; font-size: 1.25rem; color: var(--ink); display: flex; align-items: center; gap: 10px; }
+    .brand-badge { background-color: var(--jade-pale); color: var(--jade-dark); font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; }
+    .stage-tracker { flex: 1; max-width: 500px; display: flex; flex-direction: column; gap: 6px; }
+    .stage-info { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; color: var(--ink-light); }
+    .progress-bar-track { height: 8px; background-color: var(--cream-2); border-radius: 10px; overflow: hidden; }
+    .progress-bar-fill { height: 100%; background-color: var(--jade); width: 33%; transition: width 0.4s ease; }
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 18px; font-size: 0.95rem; font-weight: 600; border-radius: 8px; border: 2px solid transparent; cursor: pointer; transition: all 0.2s ease; min-height: 44px; font-family: var(--font-body); }
+    .btn-primary { background-color: var(--jade); color: #ffffff; }
+    .btn-primary:hover:not(:disabled) { background-color: var(--jade-dark); }
+    .btn-primary:disabled { background-color: var(--cream-3); color: var(--ink-muted); cursor: not-allowed; }
+    .btn-secondary { background-color: var(--cream-2); color: var(--ink); border-color: var(--cream-3); }
+    .btn-secondary.on { background-color: var(--jade); color: #fff; border-color: var(--jade-dark); }
+
+    .app-main { flex: 1; max-width: 1300px; width: 100%; margin: 0 auto; padding: 24px; display: grid; grid-template-columns: 52% 45%; gap: 24px; transition: grid-template-columns 0.2s ease; align-items: start; }
+    @media (max-width: 1024px) { .app-main { grid-template-columns: 1fr !important; } }
+    .canvas-panel { background-color: #ffffff; border-radius: 20px; border: 2px solid var(--cream-2); overflow: hidden; display: flex; flex-direction: column; position: relative; }
+    .canvas-viewport { position: relative; width: 100%; max-width: 500px; aspect-ratio: 1 / 1; margin: 0 auto; background-color: var(--cream); overflow: hidden; }
+    .canvas-bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; background-color: var(--cream); }
+    .canvas-inset { position: absolute; right: 3%; bottom: 3%; width: 20%; max-width: 140px; border-radius: 10px; border: 3px solid #ffffff; box-shadow: 0 4px 14px rgba(26,26,26,0.18); background: var(--cream-2); z-index: 5; }
+    .canvas-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; }
+    .hotspot { position: absolute; pointer-events: auto; cursor: pointer; border: 3px solid rgba(60,165,122,0.55); background-color: rgba(60, 165, 122, 0.12); border-radius: 10px; transition: all 0.2s ease; }
+    .hotspot:hover, .hotspot:focus-visible { border-color: var(--jade); background-color: rgba(60, 165, 122, 0.24); outline: none; }
+    .hotspot.opened { border-color: var(--jade-dark); background-color: rgba(45, 139, 111, 0.28); cursor: default; }
+    .hotspot-tag { position: absolute; top: 6px; left: 6px; background-color: var(--ink); color: #ffffff; font-size: 0.7rem; font-weight: 700; padding: 3px 9px; border-radius: 10px; pointer-events: none; }
+    .hotspot.opened .hotspot-tag { background-color: var(--jade-dark); }
+    .canvas-caption { padding: 16px 20px; background-color: var(--cream); border-top: 2px solid var(--cream-2); font-size: 0.95rem; color: var(--ink-light); }
+    .control-panel { display: flex; flex-direction: column; gap: 16px; }
+    .card { background-color: #ffffff; border-radius: 14px; border: 2px solid var(--cream-2); padding: 20px; }
+    .task-card { border-left: 6px solid var(--jade); }
+    .task-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--jade-dark); }
+    .task-heading { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; color: var(--ink); margin: 6px 0; }
+    .task-desc { font-size: 0.95rem; color: var(--ink-light); }
+    .lead-quote { font-family: var(--font-heading); font-style: italic; font-size: 1.05rem; color: var(--jade-dark); background: var(--jade-pale); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+    .group-label { font-weight: 700; margin-bottom: 8px; display: block; }
+    .option-cards-group { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+    .option-cards-group.grid-3-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .option-cards-group.grid-3-2 .option-card:nth-child(5) { grid-column: 1 / span 2; }
+    .option-card { background-color: var(--cream); border: 2px solid var(--cream-2); border-radius: 8px; padding: 12px 16px; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 12px; position: relative; min-height: 44px; }
+    .option-card:hover { border-color: var(--jade); background-color: #ffffff; }
+    .option-card.selected { border-color: var(--jade); background-color: var(--jade-pale); }
+    .option-card.correct-card { border-color: var(--correct); background-color: var(--correct-bg); }
+    .option-card.wrong-card { border-color: var(--wrong); background-color: var(--wrong-bg); }
+    .option-card:focus-visible { outline: 2px solid var(--jade); outline-offset: 2px; }
+    .option-card.correct-card::after { content: "✓"; position: absolute; top: 8px; right: 10px; color: var(--correct); font-weight: 700; }
+    .option-card.shake { animation: shakeCard 0.35s ease; }
+    @keyframes shakeCard { 0%,100%{ transform: translateX(0); } 25%{ transform: translateX(-6px); } 75%{ transform: translateX(6px); } }
+    .card-icon { width: 26px; height: 26px; flex-shrink: 0; color: var(--jade-dark); }
+    .option-card.correct-card .card-icon { color: var(--correct); }
+    .option-card.wrong-card .card-icon { color: var(--wrong); }
+    .order-badge { position: absolute; top: -8px; left: -8px; width: 22px; height: 22px; border-radius: 50%; background: var(--jade-dark); color: #fff; font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+    .option-content { flex: 1; font-size: 0.92rem; }
+    .feedback-box { margin-top: 16px; padding: 14px 18px; border-radius: 8px; font-size: 0.9rem; display: none; }
+    .feedback-box.correct { display: block; background-color: var(--correct-bg); border: 1.5px solid var(--correct); color: var(--jade-dark); }
+    .feedback-box.wrong { display: block; background-color: var(--wrong-bg); border: 1.5px solid var(--wrong); color: var(--wrong); }
+    .asset-tray { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 12px; }
+    .asset-tray-item { width: 54px; text-align: center; }
+    .asset-tray-item img { width: 40px; height: 40px; object-fit: contain; }
+    .asset-tray-item figcaption { font-size: 0.62rem; color: var(--ink-muted); line-height: 1.15; margin-top: 2px; }
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-container">
+      <div class="brand-title"><span>Aiducation</span> <span class="brand-badge">P1: MỤC TIÊU & CHUẨN BỊ</span></div>
+      <div class="stage-tracker">
+        <div class="stage-info"><span id="stageTitle">Màn 1/3: Câu hỏi & Dự đoán</span><span id="stageProgressText">33%</span></div>
+        <div class="progress-bar-track"><div class="progress-bar-fill" id="progressBarFill"></div></div>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-secondary" id="btnTTS"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9V15H8L13 19V5L8 9H4Z"/><path d="M17 8C18.5 9.5 18.5 14.5 17 16"/></svg> Đọc</button>
+        <button class="btn btn-secondary" id="btnReset">↻ Đặt lại</button>
+        <button class="btn btn-primary" id="btnNext" disabled>Tiếp theo ➔</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-main" id="appMain">
+    <section class="canvas-panel">
+      <div class="canvas-viewport">
+        <img id="stageImg" class="canvas-bg-img" src="Pic_SH11_B05/IMG_SH11B05M03_LAB_OVERVIEW_01.png" alt="Bàn thí nghiệm">
+        <img id="insetImg" class="canvas-inset hidden" src="Pic_SH11_B05/AST_SH11B05M03_POTATO_LEAFLET_01.svg" alt="Cận cảnh lá chét khoai tây mục tiêu">
+        <div id="hotspotOverlay" class="canvas-overlay"></div>
+      </div>
+      <div class="canvas-caption"><span id="canvasCaptionText">Bàn thực hành tổng quát: Chậu cây khoai tây, trạm nhiệt, khay hóa chất và trạm quan sát.</span></div>
+    </section>
+
+    <section class="control-panel">
+      <div class="card task-card">
+        <span class="task-label">Phần 1: Mục tiêu & Chuẩn bị</span>
+        <h2 class="task-heading" id="taskHeading">Câu hỏi nghiên cứu & Dự đoán</h2>
+        <p class="task-desc" id="taskDesc">Hãy chọn câu hỏi nghiên cứu phù hợp nhất để so sánh hai điều kiện chiếu sáng trên lá.</p>
+      </div>
+      <div class="card">
+        <div id="workspaceControls"></div>
+        <div id="feedbackBox" class="feedback-box"></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    /* ============ Icon library (inline SVG, no emoji-as-icon, editorial flat) ============ */
+    const ICONS = {
+      compareLeaf: '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3C17 6 19 12 15 18C13 20 11 20 9 18C5 12 7 6 12 3Z"/><line x1="12" y1="4" x2="12" y2="19" stroke-dasharray="2 2"/></svg>',
+      sprout:      '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21V12"/><path d="M12 12C12 8 9 6 6 6C6 9 8 12 12 12Z"/><path d="M12 12C12 8 15 6 18 6C18 9 16 12 12 12Z"/></svg>',
+      droplet:     '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3C15 8 18 11 18 15A6 6 0 0 1 6 15C6 11 9 8 12 3Z"/></svg>',
+      sun:         '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.5" y1="4.5" x2="6.5" y2="6.5"/><line x1="17.5" y1="17.5" x2="19.5" y2="19.5"/><line x1="4.5" y1="19.5" x2="6.5" y2="17.5"/><line x1="17.5" y1="6.5" x2="19.5" y2="4.5"/></svg>',
+      equalLines:  '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/></svg>',
+      moon:        '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 14A8 8 0 1 1 10 4A6 6 0 0 0 20 14Z"/></svg>',
+      paperClip:   '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="4" width="8" height="14" rx="1"/><line x1="16" y1="6" x2="20" y2="6"/><line x1="16" y1="10" x2="20" y2="10"/></svg>',
+      flask:       '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3H15V8L19 18A2 2 0 0 1 17 21H7A2 2 0 0 1 5 18L9 8Z"/><line x1="8" y1="3" x2="16" y2="3"/></svg>',
+      waterBath:   '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="13" width="16" height="7" rx="2"/><path d="M9 13V8L11 4H13L15 8V13"/></svg>',
+      magnifier:   '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="10" r="6"/><line x1="15" y1="15" x2="20" y2="20"/></svg>',
+      leaf:        '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20C4 10 12 4 20 4C20 12 14 20 4 20Z"/><line x1="4" y1="20" x2="14" y2="10"/></svg>',
+      flaskAlt:    '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3H15V8L19 18A2 2 0 0 1 17 21H7A2 2 0 0 1 5 18L9 8Z"/><line x1="7" y1="14" x2="17" y2="14"/></svg>'
+    };
+
+    /* ============ Lưu dữ liệu tiến trình P1 (biến JS, không dùng localStorage/sessionStorage) ============ */
+    const P1Data = {
+      s1: { qChoice: null, qAttempts: 0, hChoice: null, hAttempts: 0 },
+      s2: { opened: { specimen: false, tools: false, chemicals: false }, safetyChoice: null, safetyAttempts: 0 },
+      s3: { order: [], controlChoice: null, controlAttempts: 0 }
+    };
+
+    let curIdx = 0;
+    const stagesP1 = [
+      {
+        name: "Câu hỏi nghiên cứu & Dự đoán",
+        img: "Pic_SH11_B05/IMG_SH11B05M03_LAB_OVERVIEW_01.png",
+        caption: "Bàn thực hành tổng quát và cận cảnh lá chét khoai tây mục tiêu.",
+        desc: "Hãy chọn câu hỏi nghiên cứu phù hợp nhất, sau đó chọn dự đoán có thể kiểm tra bằng thí nghiệm.",
+        voice: "Ta sẽ so sánh hai vùng trên cùng một lá chét: một vùng nhận ánh sáng và một vùng bị che sáng.",
+        layout: "52% 45%",
+        showInset: true,
+        init: renderS1
+      },
+      {
+        name: "Nhận biết vật liệu & Bố trí an toàn",
+        img: "Pic_SH11_B05/IMG_SH11B05M03_LAB_OVERVIEW_01.png",
+        caption: "Bố trí 3 nhóm vật liệu trên bàn thí nghiệm: Mẫu vật, Dụng cụ, Hóa chất.",
+        desc: "Quan sát bàn thực hành. Hãy mở lần lượt ba nhóm vật liệu trên hình, sau đó trả lời câu hỏi an toàn.",
+        voice: "Hãy bấm mở lần lượt ba nhóm vật liệu trên bàn thí nghiệm.",
+        layout: "52% 45%",
+        showInset: false,
+        init: renderS2
+      },
+      {
+        name: "Quy trình tổng quát & Đối chứng",
+        img: "Pic_SH11_B05/IMG_SH11B05M03_PROCESS_STRIP_01.png",
+        caption: "Dải 5 chặng quy trình thí nghiệm tổng quát.",
+        desc: "Chọn năm thẻ hình theo đúng trình tự, sau đó trả lời vì sao chỉ che một phần lá chét.",
+        voice: "Hãy chọn 5 thẻ hình theo đúng thứ tự tiến trình thí nghiệm.",
+        layout: "52% 45%",
+        showInset: false,
+        init: renderS3
+      }
+    ];
+
+    window.addEventListener("DOMContentLoaded", () => { loadS(0); setupEvents(); });
+
+    /* Gắn thao tác chuột + bàn phím (Enter/Space) cho một thẻ lựa chọn */
+    function bindCard(el, fn) {
+      el.setAttribute("tabindex", "0");
+      el.setAttribute("role", "button");
+      el.addEventListener("click", fn);
+      el.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } });
+    }
+    function shuffleArr(arr) {
+      const a = arr.slice();
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    function setupEvents() {
+      document.getElementById("btnNext").addEventListener("click", () => {
+        if (curIdx < stagesP1.length - 1) loadS(curIdx + 1);
+        else window.location.href = "SH11_B05_M03_P2_TIEN_TRINH_THUC_HIEN.html";
+      });
+      document.getElementById("btnReset").addEventListener("click", () => loadS(curIdx));
+      document.getElementById("btnTTS").addEventListener("click", () => {
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+          const u = new SpeechSynthesisUtterance(stagesP1[curIdx].voice);
+          u.lang = 'vi-VN';
+          window.speechSynthesis.speak(u);
+        }
+      });
+    }
+
+    function loadS(idx) {
+      curIdx = idx;
+      const s = stagesP1[idx];
+      document.getElementById("stageTitle").textContent = `Màn ${idx + 1}/3: ${s.name}`;
+      document.getElementById("stageProgressText").textContent = `${Math.round(((idx + 1)/3)*100)}%`;
+      document.getElementById("progressBarFill").style.width = `${((idx + 1)/3)*100}%`;
+      document.getElementById("stageImg").src = s.img;
+      document.getElementById("canvasCaptionText").textContent = s.caption;
+      document.getElementById("taskHeading").textContent = s.name;
+      document.getElementById("taskDesc").textContent = s.desc;
+      document.getElementById("insetImg").classList.toggle("hidden", !s.showInset);
+      document.getElementById("appMain").style.gridTemplateColumns = s.layout;
+      document.getElementById("hotspotOverlay").innerHTML = "";
+      document.getElementById("workspaceControls").innerHTML = "";
+      document.getElementById("btnNext").disabled = true;
+      hideFB();
+      s.init();
+    }
+
+    function showFB(t, c) { const b = document.getElementById("feedbackBox"); b.textContent = t; b.className = "feedback-box " + (c ? "correct" : "wrong"); }
+    function hideFB() { const b = document.getElementById("feedbackBox"); b.className = "feedback-box"; b.textContent = ""; }
+
+    /* ============ S1 — Câu hỏi nghiên cứu và dự đoán ============ */
+    function renderS1() {
+      const ws = document.getElementById("workspaceControls");
+      ws.innerHTML = `
+        <p class="lead-quote">Ta sẽ so sánh hai vùng trên cùng một lá chét: một vùng nhận ánh sáng và một vùng bị che sáng.</p>
+        <div id="qArea">
+          <span class="group-label">1. Câu hỏi nghiên cứu:</span>
+          <div class="option-cards-group">
+            <div class="option-card" data-q="1">${ICONS.compareLeaf}<div class="option-content">Hai vùng khác nhau về ánh sáng trên cùng một lá chét có cho phản ứng nhận biết tinh bột giống nhau không?</div></div>
+            <div class="option-card" data-q="2">${ICONS.sprout}<div class="option-content">Lượng ánh sáng chiếu vào cây khoai tây có làm cây sinh trưởng nhanh hơn không?</div></div>
+            <div class="option-card" data-q="3">${ICONS.droplet}<div class="option-content">Dung dịch iodine có đổi màu lá ở bất kỳ điều kiện ánh sáng nào hay không?</div></div>
+          </div>
+        </div>
+        <div id="hArea" class="hidden" style="margin-top:16px;">
+          <span class="group-label">2. Dự đoán phù hợp:</span>
+          <div class="option-cards-group">
+            <div class="option-card" data-h="1">${ICONS.sun}<div class="option-content">Nếu ánh sáng cần cho sự hình thành tinh bột, phần lá được chiếu sáng sẽ dương tính với iodine, còn phần bị che sáng sẽ không dương tính tương ứng.</div></div>
+            <div class="option-card" data-h="2">${ICONS.droplet}<div class="option-content">Iodine sẽ làm toàn bộ lá chét chuyển sang màu xanh tím.</div></div>
+            <div class="option-card" data-h="3">${ICONS.equalLines}<div class="option-content">Cả hai vùng của lá sẽ cho phản ứng giống nhau vì vẫn là cùng một lá.</div></div>
+          </div>
+        </div>
+      `;
+      let qOk = false, hOk = false;
+      ws.querySelectorAll("#qArea .option-card").forEach(c => {
+        bindCard(c, () => {
+          if (qOk) return;
+          ws.querySelectorAll("#qArea .option-card").forEach(x => x.classList.remove("selected", "correct-card", "wrong-card"));
+          if (c.getAttribute("data-q") === "1") {
+            c.classList.add("selected", "correct-card");
+            P1Data.s1.qChoice = "1";
+            showFB("Đúng! Câu hỏi đã tạo được phép so sánh 2 điều kiện ánh sáng trên cùng 1 lá.", true);
+            document.getElementById("hArea").classList.remove("hidden");
+            qOk = true;
+          } else {
+            c.classList.add("selected", "wrong-card");
+            P1Data.s1.qAttempts++;
+            const why = c.getAttribute("data-q") === "2"
+              ? "Câu hỏi này nói về sinh trưởng, không so sánh 2 vùng ánh sáng trên cùng 1 lá."
+              : "Câu hỏi này không nêu điều kiện ánh sáng cần so sánh — iodine chỉ là thuốc thử, không phải biến cần kiểm tra.";
+            showFB("Chưa đúng. " + why, false);
+          }
+        });
+      });
+      ws.querySelectorAll("#hArea .option-card").forEach(c => {
+        bindCard(c, () => {
+          if (!qOk || hOk) return;
+          ws.querySelectorAll("#hArea .option-card").forEach(x => x.classList.remove("selected", "correct-card", "wrong-card"));
+          if (c.getAttribute("data-h") === "1") {
+            c.classList.add("selected", "correct-card");
+            P1Data.s1.hChoice = "1";
+            hOk = true;
+            showFB("Chính xác! Dự đoán nêu đúng dấu hiệu và vùng đối chứng. Dự đoán đã sẵn sàng để kiểm tra bằng bằng chứng.", true);
+            document.getElementById("btnNext").disabled = false;
+          } else {
+            c.classList.add("selected", "wrong-card");
+            P1Data.s1.hAttempts++;
+            const why = c.getAttribute("data-h") === "2"
+              ? "Iodine chỉ nhận biết tinh bột có sẵn ở nơi có phản ứng; nó không làm toàn bộ lá đổi màu."
+              : "Nếu ánh sáng không cần thiết, hai vùng sẽ không thể khác nhau — dự đoán này không thể kiểm tra được giả thuyết.";
+            showFB("Chưa đúng. " + why, false);
+          }
+        });
+      });
+    }
+
+    /* ============ S2 — Nhận biết mẫu vật, dụng cụ, hóa chất ============ */
+    function renderS2() {
+      const ws = document.getElementById("workspaceControls");
+      ws.innerHTML = `
+        <span class="group-label">Bấm vào 3 vùng trên hình để nhận biết vật liệu:</span>
+        <div id="groupLabels" style="display:flex; flex-direction:column; gap:6px; font-size:0.85rem; color:var(--ink-light); margin-bottom:10px;"></div>
+        <div id="sQ" class="hidden">
+          <span class="group-label" style="color:var(--wrong);">Câu hỏi an toàn: Vật nào phải luôn đặt xa nguồn nhiệt?</span>
+          <div class="option-cards-group">
+            <div class="option-card" data-a="c">${ICONS.droplet}<div class="option-content">Cồn 90° (Ethanol)</div></div>
+            <div class="option-card" data-a="i">${ICONS.droplet}<div class="option-content">Dung dịch Iodine</div></div>
+            <div class="option-card" data-a="w">${ICONS.droplet}<div class="option-content">Nước rửa</div></div>
+          </div>
+        </div>
+      `;
+
+      /* Toạ độ hotspot dưới đây là ƯỚC LƯỢNG TẠM THỜI trên ảnh CHƯA DUYỆT
+         (IMG_SH11B05M03_LAB_OVERVIEW_01 hiện ở trạng thái "CHƯA DUYỆT — ưu tiên 1").
+         Theo khoá ASSET_FIRST của dự án, toạ độ hotspot chính thức chỉ được đo
+         trên bản ảnh đã gắn hậu tố "_APPROVED". Cần đo lại và thay các số % dưới
+         đây sau khi ảnh được duyệt chính thức. */
+      const hotspots = [
+        { key: "specimen", label: "Mẫu vật", left: 2,  top: 5,  w: 27, h: 74, name: "specimen" },
+        { key: "tools",    label: "Dụng cụ", left: 30, top: 56, w: 36, h: 40, name: "tools" },
+        { key: "chemicals",label: "Hóa chất",left: 73, top: 42, w: 24, h: 38, name: "chemicals" }
+      ];
+      const overlay = document.getElementById("hotspotOverlay");
+      const groupLabels = document.getElementById("groupLabels");
+      const roleText = {
+        specimen: "Mẫu vật — chậu cây khoai tây, thao tác trên một lá chét đủ lớn.",
+        tools: "Dụng cụ — băng giấy đen, kẹp, giá đỡ, panh, đĩa Petri.",
+        chemicals: "Hóa chất — cồn 90°, dung dịch iodine, nước nóng/nước rửa."
+      };
+      /* Toàn bộ asset rời trong hồ sơ hình ảnh, phân theo 3 nhóm (KHỐI D field 23) */
+      const roleAssets = {
+        specimen: [
+          { file: "AST_SH11B05M03_POTATO_PLANT_01.svg", label: "Chậu cây khoai tây" },
+          { file: "AST_SH11B05M03_POTATO_LEAFLET_01.svg", label: "Lá chét mục tiêu" }
+        ],
+        tools: [
+          { file: "AST_SH11B05M03_BLACK_PAPER_PAIR_01.svg", label: "Băng giấy đen" },
+          { file: "AST_SH11B05M03_CLIPS_01.svg", label: "Kẹp giữ" },
+          { file: "AST_SH11B05M03_TONGS_01.svg", label: "Panh gắp" },
+          { file: "AST_SH11B05M03_PETRI_DISH_01.svg", label: "Đĩa Petri" },
+          { file: "AST_SH11B05M03_OUTER_BEAKER_01.svg", label: "Cốc nước ngoài" },
+          { file: "AST_SH11B05M03_ALCOHOL_LAMP_01.svg", label: "Đèn cồn" }
+        ],
+        chemicals: [
+          { file: "AST_SH11B05M03_INNER_ETHANOL_BEAKER_01.svg", label: "Cốc cồn nhỏ" },
+          { file: "AST_SH11B05M03_IODINE_BOTTLE_01.svg", label: "Chai iodine" },
+          { file: "AST_SH11B05M03_WASH_WATER_BEAKER_01.svg", label: "Cốc nước rửa" }
+        ]
+      };
+      hotspots.forEach(h => {
+        const el = document.createElement("div");
+        el.className = "hotspot";
+        el.style.left = h.left + "%"; el.style.top = h.top + "%";
+        el.style.width = h.w + "%"; el.style.height = h.h + "%";
+        el.setAttribute("role", "button");
+        el.setAttribute("tabindex", "0");
+        el.setAttribute("aria-label", h.label);
+        el.innerHTML = `<span class="hotspot-tag">${h.label}</span>`;
+        const openIt = () => {
+          if (P1Data.s2.opened[h.key]) return;
+          P1Data.s2.opened[h.key] = true;
+          el.classList.add("opened");
+          const p = document.createElement("p");
+          p.textContent = "✓ " + roleText[h.key];
+          groupLabels.appendChild(p);
+          const tray = document.createElement("div");
+          tray.className = "asset-tray";
+          roleAssets[h.key].forEach(a => {
+            const fig = document.createElement("figure");
+            fig.className = "asset-tray-item";
+            fig.innerHTML = `<img src="Pic_SH11_B05/${a.file}" alt="${a.label}"><figcaption>${a.label}</figcaption>`;
+            tray.appendChild(fig);
+          });
+          groupLabels.appendChild(tray);
+          checkAllOpened();
+        };
+        el.addEventListener("click", openIt);
+        el.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openIt(); } });
+        overlay.appendChild(el);
+      });
+
+      function checkAllOpened() {
+        const o = P1Data.s2.opened;
+        if (o.specimen && o.tools && o.chemicals) {
+          document.getElementById("sQ").classList.remove("hidden");
+          showFB("Đã nhận biết đủ 3 nhóm vật liệu. Hãy trả lời câu hỏi an toàn.", true);
+        }
+      }
+
+      let safetyOk = false;
+      ws.querySelectorAll("#sQ .option-card").forEach(c => {
+        bindCard(c, () => {
+          if (safetyOk) return;
+          ws.querySelectorAll("#sQ .option-card").forEach(x => x.classList.remove("selected", "correct-card", "wrong-card"));
+          if (c.getAttribute("data-a") === "c") {
+            c.classList.add("selected", "correct-card");
+            P1Data.s2.safetyChoice = "c";
+            safetyOk = true;
+            showFB("Đúng! Cồn 90° rất dễ cháy nên phải luôn đặt xa nguồn nhiệt. Bộ vật liệu đã được nhận biết và bố trí an toàn.", true);
+            document.getElementById("btnNext").disabled = false;
+          } else {
+            c.classList.add("selected", "wrong-card");
+            P1Data.s2.safetyAttempts++;
+            const why = c.getAttribute("data-a") === "i"
+              ? "Iodine không dễ cháy — chỉ cồn mới cần tách xa nguồn nhiệt."
+              : "Nước không dễ cháy — chỉ cồn mới cần tách xa nguồn nhiệt.";
+            showFB("Chưa chính xác. " + why, false);
+          }
+        });
+      });
+    }
+
+    /* ============ S3 — Quy trình tổng quát và vai trò đối chứng ============ */
+    function renderS3() {
+      const ws = document.getElementById("workspaceControls");
+      const stepDefs = [
+        { st: 1, icon: ICONS.moon,       text: "Xử lí tối chậu cây" },
+        { st: 2, icon: ICONS.paperClip,  text: "Che một phần lá & chiếu sáng" },
+        { st: 3, icon: ICONS.flask,      text: "Thu mẫu lá & nước nóng" },
+        { st: 4, icon: ICONS.waterBath,  text: "Tẩy diệp lục bằng cách thủy an toàn" },
+        { st: 5, icon: ICONS.magnifier,  text: "Rửa lá, dùng iodine & quan sát" }
+      ];
+      const shuffledSteps = shuffleArr(stepDefs); /* Trạng thái đầu: 5 thẻ xáo trộn, chưa đánh số (đúng field 24) */
+      ws.innerHTML = `
+        <span class="group-label">Bấm chọn 5 chặng theo đúng thứ tự (1 ➔ 5):</span>
+        <div class="option-cards-group grid-3-2" id="stgG">
+          ${shuffledSteps.map(d => `<div class="option-card" data-st="${d.st}">${d.icon}<div class="option-content">${d.text}</div></div>`).join("")}
+        </div>
+        <div id="ctrlArea" class="hidden" style="margin-top:18px;">
+          <span class="group-label">Vì sao chỉ che một phần lá chét?</span>
+          <div class="option-cards-group">
+            <div class="option-card" data-c="1">${ICONS.compareLeaf}<div class="option-content">Để tạo vùng đối chứng trên cùng một lá, hai vùng chỉ khác nhau về ánh sáng nên có thể so sánh.</div></div>
+            <div class="option-card" data-c="2">${ICONS.sun}<div class="option-content">Để tránh vùng đó bị cháy nắng trong lúc chiếu sáng.</div></div>
+            <div class="option-card" data-c="3">${ICONS.leaf}<div class="option-content">Để chia lá thành nhiều mẫu riêng biệt, giúp thí nghiệm nhanh hơn.</div></div>
+          </div>
+        </div>
+      `;
+      let nextExpected = 1;
+      ws.querySelectorAll("#stgG .option-card").forEach(c => {
+        bindCard(c, () => {
+          if (c.classList.contains("correct-card")) return;
+          const st = parseInt(c.getAttribute("data-st"));
+          if (st === nextExpected) {
+            c.classList.add("correct-card");
+            const badge = document.createElement("span");
+            badge.className = "order-badge";
+            badge.textContent = nextExpected;
+            c.appendChild(badge);
+            P1Data.s3.order.push(st);
+            nextExpected++;
+            if (nextExpected > 5) {
+              document.getElementById("ctrlArea").classList.remove("hidden");
+              showFB("Đúng trình tự! Bây giờ hãy trả lời vì sao chỉ che một phần lá chét.", true);
+            }
+          } else {
+            c.classList.add("shake");
+            P1Data.s3.orderAttempts = (P1Data.s3.orderAttempts || 0) + 1;
+            setTimeout(() => c.classList.remove("shake"), 350);
+            showFB("Chưa đúng vị trí trong trình tự — các thẻ đã đúng vẫn được giữ nguyên, hãy thử chặng tiếp theo.", false);
+          }
+        });
+      });
+      let ctrlOk = false;
+      ws.querySelectorAll("#ctrlArea .option-card").forEach(c => {
+        bindCard(c, () => {
+          if (ctrlOk) return;
+          ws.querySelectorAll("#ctrlArea .option-card").forEach(x => x.classList.remove("selected", "correct-card", "wrong-card"));
+          if (c.getAttribute("data-c") === "1") {
+            c.classList.add("selected", "correct-card");
+            P1Data.s3.controlChoice = "1";
+            ctrlOk = true;
+            showFB("Đúng. Hai vùng chỉ khác nhau về ánh sáng nên có thể so sánh. Bạn đã có lộ trình thí nghiệm và biết vùng che là đối chứng.", true);
+            document.getElementById("btnNext").disabled = false;
+          } else {
+            c.classList.add("selected", "wrong-card");
+            P1Data.s3.controlAttempts++;
+            showFB("Chưa đúng. Vùng che tạo ra đối chứng để so sánh, không phải để bảo vệ lá hay tách mẫu.", false);
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>

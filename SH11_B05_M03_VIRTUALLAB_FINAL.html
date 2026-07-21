@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Lab: Quang hợp ở thực vật — Sự hình thành tinh bột (SH11_B05_M03)</title>
+  
+  <!-- Aiducation Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       AIDUCATION DESIGN SYSTEM — TOM HAUGOMAT EDITORIAL FLAT TOKENS
+       ========================================================================== */
+    :root {
+      --cream: #FAF7F0;
+      --cream-2: #F0EADD;
+      --cream-3: #E4DCCF;
+      --ink: #1A1A1A;
+      --ink-light: #4A4A4A;
+      --ink-muted: #767676;
+      
+      --jade: #3CA57A;
+      --jade-dark: #2D8B6F;
+      --jade-pale: #DCEAE1;
+      
+      --correct: #2D8B6F;
+      --correct-bg: #DCEAE1;
+      
+      --wrong: #C15F3C;
+      --wrong-bg: #F3E2D6;
+      
+      --accent: #E8A24A;
+      --accent-pale: #FDF3E3;
+      
+      --shadow-subtle: 0 4px 16px rgba(26, 26, 26, 0.06);
+      --shadow-hover: 0 8px 24px rgba(26, 26, 26, 0.12);
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--ink);
+      background-color: var(--cream);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* HEADER */
+    .header {
+      background-color: var(--cream);
+      border-bottom: 2px solid var(--cream-2);
+      padding: 12px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    }
+
+    .header-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-badge {
+      background-color: var(--jade-pale);
+      color: var(--jade-dark);
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .stage-tracker {
+      flex: 1;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .stage-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ink-light);
+    }
+
+    .progress-bar-track {
+      height: 8px;
+      background-color: var(--cream-2);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background-color: var(--jade);
+      width: 10%;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 44px;
+      user-select: none;
+    }
+
+    .btn-primary {
+      background-color: var(--jade);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background-color: var(--jade-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary:disabled {
+      background-color: var(--cream-3);
+      color: var(--ink-muted);
+      cursor: not-allowed;
+      border-color: transparent;
+    }
+
+    .btn-secondary {
+      background-color: var(--cream-2);
+      color: var(--ink);
+      border-color: var(--cream-3);
+    }
+
+    .btn-secondary:hover:not(:disabled) {
+      background-color: var(--cream-3);
+    }
+
+    .btn-icon {
+      padding: 10px;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+    }
+
+    /* MAIN LAYOUT */
+    .app-main {
+      flex: 1;
+      max-width: 1300px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 52% 45%;
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 1024px) {
+      .app-main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* CANVAS PANEL */
+    .canvas-panel {
+      background-color: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--cream-2);
+      box-shadow: var(--shadow-subtle);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .canvas-viewport {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      aspect-ratio: 1 / 1;
+      margin: 0 auto;
+      background-color: var(--cream);
+      overflow: hidden;
+    }
+
+    .canvas-bg-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: var(--cream);
+      transition: opacity 0.4s ease;
+    }
+
+    .canvas-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .hotspot {
+      position: absolute;
+      pointer-events: auto;
+      cursor: pointer;
+      border: 3px stroke var(--jade);
+      background-color: rgba(60, 165, 122, 0.15);
+      border-radius: var(--radius-sm);
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hotspot:hover {
+      background-color: rgba(60, 165, 122, 0.35);
+      box-shadow: 0 0 0 4px rgba(60, 165, 122, 0.25);
+      transform: scale(1.03);
+    }
+
+    .hotspot-pulse {
+      animation: pulse-ring 1.8s infinite;
+    }
+
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(60, 165, 122, 0.6); }
+      70% { box-shadow: 0 0 0 12px rgba(60, 165, 122, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(60, 165, 122, 0); }
+    }
+
+    .hotspot-label {
+      background-color: var(--ink);
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      white-space: nowrap;
+      pointer-events: none;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .canvas-caption {
+      padding: 16px 20px;
+      background-color: var(--cream);
+      border-top: 2px solid var(--cream-2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .caption-text {
+      font-size: 0.95rem;
+      color: var(--ink-light);
+      font-weight: 500;
+    }
+
+    /* CONTROL PANEL */
+    .control-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--cream-2);
+      padding: 20px;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .task-card {
+      border-left: 6px solid var(--jade);
+      background-color: #ffffff;
+    }
+
+    .task-title-area {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .task-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--jade-dark);
+    }
+
+    .task-heading {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .task-desc {
+      font-size: 0.95rem;
+      color: var(--ink-light);
+      line-height: 1.5;
+    }
+
+    /* OPTION CARDS */
+    .option-cards-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .option-card {
+      background-color: var(--cream);
+      border: 2px solid var(--cream-2);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      position: relative;
+    }
+
+    .option-card:hover {
+      border-color: var(--jade);
+      background-color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .option-card.selected {
+      border-color: var(--jade);
+      background-color: var(--jade-pale);
+    }
+
+    .option-card.correct-card {
+      border-color: var(--correct);
+      background-color: var(--correct-bg);
+    }
+
+    .option-card.wrong-card {
+      border-color: var(--wrong);
+      background-color: var(--wrong-bg);
+    }
+
+    .option-radio-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid var(--ink-muted);
+      margin-top: 2px;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .option-card.selected .option-radio-dot {
+      border-color: var(--jade-dark);
+      background-color: var(--jade);
+      box-shadow: inset 0 0 0 3px #ffffff;
+    }
+
+    .option-content {
+      flex: 1;
+    }
+
+    .option-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+
+    .option-sub {
+      font-size: 0.85rem;
+      color: var(--ink-light);
+    }
+
+    /* FEEDBACK BANNER */
+    .feedback-box {
+      margin-top: 16px;
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .feedback-box.correct {
+      display: block;
+      background-color: var(--correct-bg);
+      border: 1.5px solid var(--correct);
+      color: var(--jade-dark);
+    }
+
+    .feedback-box.wrong {
+      display: block;
+      background-color: var(--wrong-bg);
+      border: 1.5px solid var(--wrong);
+      color: var(--wrong);
+    }
+
+    /* OBSERVATION TABLE */
+    .obs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 0.9rem;
+    }
+
+    .obs-table th, .obs-table td {
+      padding: 10px 12px;
+      border: 1px solid var(--cream-3);
+      text-align: left;
+    }
+
+    .obs-table th {
+      background-color: var(--cream-2);
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    /* SAFETY MODAL */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(26, 26, 26, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background-color: #ffffff;
+      border-radius: var(--radius-lg);
+      max-width: 520px;
+      width: 100%;
+      padding: 28px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      border-top: 6px solid var(--wrong);
+      transform: scale(0.95);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .modal-backdrop.active .modal-card {
+      transform: scale(1);
+    }
+
+    .modal-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background-color: var(--wrong-bg);
+      color: var(--wrong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .modal-title {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .modal-body {
+      font-size: 0.95rem;
+      color: var(--ink-light);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-container">
+      <div class="brand-title">
+        <span>Aiducation</span>
+        <span class="brand-badge">SH11_B05_M03</span>
+      </div>
+
+      <div class="stage-tracker">
+        <div class="stage-info">
+          <span id="stageTitle">Stage 1/10: Câu hỏi & Dự đoán</span>
+          <span id="stageProgressText">10%</span>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progressBarFill"></div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn btn-secondary btn-icon" id="btnTTS" title="Đọc hướng dẫn (TTS)">🔊</button>
+        <button class="btn btn-secondary" id="btnReset">↻ Đặt lại</button>
+        <button class="btn btn-primary" id="btnNext" disabled>Tiếp theo ➔</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN APP -->
+  <main class="app-main">
+    <section class="canvas-panel">
+      <div class="canvas-viewport" id="canvasViewport">
+        <img id="stageImg" class="canvas-bg-img" src="Pic_SH11_B05/IMG_SH11B05M03_LAB_OVERVIEW_01.png" alt="Bàn thí nghiệm">
+        <div id="hotspotOverlay" class="canvas-overlay"></div>
+      </div>
+
+      <div class="canvas-caption">
+        <span class="caption-text" id="canvasCaptionText">Bàn thực hành tổng quát: Chậu cây khoai tây, trạm nhiệt, khay hóa chất và trạm quan sát.</span>
+      </div>
+    </section>
+
+    <section class="control-panel">
+      <div class="card task-card">
+        <div class="task-title-area">
+          <span class="task-label" id="taskPartLabel">Phần 1: Mục tiêu & Chuẩn bị</span>
+        </div>
+        <h2 class="task-heading" id="taskHeading">Câu hỏi nghiên cứu & Dự đoán</h2>
+        <p class="task-desc" id="taskDesc">Hãy đọc kỹ bối cảnh thí nghiệm và chọn câu hỏi nghiên cứu phù hợp nhất để so sánh hai điều kiện chiếu sáng trên lá.</p>
+      </div>
+
+      <div class="card" id="workspaceCard">
+        <div id="workspaceControls"></div>
+        <div id="feedbackBox" class="feedback-box"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SAFETY MODAL -->
+  <div class="modal-backdrop" id="safetyModal">
+    <div class="modal-card">
+      <div class="modal-icon">⚠️</div>
+      <h3 class="modal-title" id="modalTitle">CẢNH BÁO AN TOÀN NGHIÊM TRỌNG</h3>
+      <div class="modal-body" id="modalBody">
+        Cồn 90° là chất lỏng cực kỳ dễ cháy! Không bao giờ đun trực tiếp cốc cồn trên ngọn lửa hoặc mở cồn gần nguồn lửa đang cháy.
+      </div>
+      <div style="text-align: right;">
+        <button class="btn btn-primary" id="btnCloseModal">Tôi đã hiểu — Chọn lại</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const labState = { currentStageIndex: 0 };
+
+    const stages = [
+      {
+        id: "P1_S01", part: "Phần 1: Mục tiêu & Chuẩn bị", name: "Câu hỏi nghiên cứu & Dự đoán",
+        img: "Pic_SH11_B05/IMG_SH11B05M03_LAB_OVERVIEW_01.png",
+        caption: "Bàn thực hành tổng quát và cận cảnh lá chét khoai tây mục tiêu.",
+        voice: "Ta sẽ so sánh hai vùng trên cùng một lá chét: một vùng nhận ánh sáng và một vùng bị che sáng. Hãy chọn câu hỏi nghiên cứu và dự đoán phù hợp.",
+        taskDesc: "Hãy chọn câu hỏi nghiên cứu đúng, sau đó đưa ra dự đoán có thể kiểm tra bằng thí nghiệm.",
+        init: renderStage0
+      },
+      {
+        id: "P1_S02", part: "Phần 1: Mục tiêu & Chuẩn bị", name: "Nhận biết vật liệu & Bố trí an toàn",
+        img: "Pic_SH11_B05/IMG_SH11B05M03_LAB_OVERVIEW_01.png",
+        caption: "Bố trí 3 nhóm vật liệu trên bàn thí nghiệm: Mẫu vật, Dụng cụ, Hóa chất.",
+        voice: "Hãy bấm mở lần lượt ba nhóm vật liệu trên bàn thí nghiệm để kiểm tra sự chuẩn bị.",
+        taskDesc: "Quan sát bàn thực hành. Bấm trực tiếp vào 3 khay chứa vật liệu để kiểm tra.",
+        init: renderStage1
+      },
+      {
+        id: "P1_S03", part: "Phần 1: Mục tiêu & Chuẩn bị", name: "Quy trình tổng quát & Đối chứng",
+        img: "Pic_SH11_B05/IMG_SH11B05M03_PROCESS_STRIP_01.png",
+        caption: "Dải 5 chặng quy trình thí nghiệm tổng quát.",
+        voice: "Hãy chọn 5 thẻ hình theo đúng thứ tự tiến trình thí nghiệm.",
+        taskDesc: "Bấm tuần tự 5 thẻ hình theo đúng trình tự các bước thực hiện.",
+        init: renderStage2
+      },
+      {
+        id: "P2_S01", part: "Phần 2: Tiến trình thực hiện", name: "Xử lí tối — Che lá — Chiếu sáng",
+        img: "Pic_SH11_B05/IMG_SH11B05M03_DARK_COVER_LIGHT_01.png",
+        caption: "Tạo vùng đối chứng che sáng trên cùng một lá chét.",
+        voice: "Chọn vùng giữa của lá chét để tạo vùng bị che sáng.",
+        taskDesc: "Bấm vào vùng giữa của lá chét được khoanh vùng để gắn băng giấy đen che hai mặt.",
+        init: renderStage3
+      },
+      {
+        id: "P2_S02", part: "Phần 2: Tiến trình thực hiện", name: "Thu mẫu & Xử lí bằng nước nóng",
+        img: "Pic_SH11_B05/IMG_SH11B05M03_HOT_WATER_01.png",
+        caption: "Thu mẫu lá chét đã che và nhúng vào nước nóng.",
+        voice: "Hãy bấm chọn đúng lá chét đã được che sáng để xử lí nước nóng.",
+        taskDesc: "Bấm vào đúng lá chét có dấu che sáng để dùng panh gắp nhúng vào cốc nước nóng.",
+        init: renderStage4
+      },
+      {
+        id: "P2_S03", part: "Phần 2: Tiến trình thực hiện", name: "Tẩy diệp lục bằng cách thủy an toàn",
+        img: "Pic_SH11_B05/IMG_SH11B05M03_SAFE_DECOLOR_01.png",
+        caption: "Hai sơ đồ đun cách thủy cồn: Sơ đồ A an toàn vs Sơ đồ B nguy hiểm.",
+        voice: "Hãy chọn cách bố trí an toàn để làm nóng cồn gián tiếp.",
+        taskDesc: "So sánh 2 sơ đồ và chọn phương án đun cách thủy cồn an toàn nhất.",
+        init: renderStage5
+      },
+      {
+        id: "P2_S04", part: "Phần 2: Tiến trình thực hiện", name: "Rửa lá — Dùng Iodine — Quan sát",
+        img: "Pic_SH11_B05/IMG_SH11B05M03_IODINE_OBSERVE_01.png",
+        caption: "Rửa cồn, đặt đĩa Petri và dùng thuốc thử Iodine.",
+        voice: "Hãy chọn thuốc thử phù hợp để nhận biết sự có mặt của tinh bột.",
+        taskDesc: "Chọn đúng thuốc thử hóa học để phát hiện tinh bột tích lũy trên mô lá.",
+        init: renderStage6
+      },
+      {
+        id: "P3_S01", part: "Phần 3: Báo cáo & Giải thích", name: "Quan sát & Ghi kết quả màu sắc",
+        img: "Pic_SH11_B05/IMG_SH11B05M03_RESULT_CORRECT_01.png",
+        caption: "Ảnh kết quả hai vùng màu trên lá chét sau khi tiếp xúc Iodine.",
+        voice: "Bấm từng vùng trên lá và ghi màu quan sát được vào phiếu báo cáo.",
+        taskDesc: "Lần lượt bấm vào Vùng chiếu sáng và Vùng che sáng để ghi nhận màu sắc.",
+        init: renderStage7
+      },
+      {
+        id: "P3_S02", part: "Phần 3: Báo cáo & Giải thích", name: "Giải thích vai trò của 3 yếu tố",
+        img: "Pic_SH11_B05/IMG_SH11B05M03_RESULT_CORRECT_01.png",
+        caption: "Ba yếu tố thí nghiệm: Băng giấy đen, Cồn 90°, Dung dịch Iodine.",
+        voice: "Hãy ghép từng yếu tố thí nghiệm với đúng vai trò khoa học của nó.",
+        taskDesc: "Bấm chọn hình ảnh và ghép với thẻ vai trò khoa học tương ứng.",
+        init: renderStage8
+      },
+      {
+        id: "P3_S03", part: "Phần 3: Báo cáo & Giải thích", name: "Rút ra kết luận & Kết thúc module",
+        img: "Pic_SH11_B05/IMG_SH11B05M03_RESULT_CORRECT_01.png",
+        caption: "Bảng kết quả quan sát và kết luận thí nghiệm hoàn chỉnh.",
+        voice: "Hãy chọn kết luận phù hợp nhất với bằng chứng quan sát được.",
+        taskDesc: "Đọc kết quả và chọn phát biểu kết luận chính xác trong giới hạn thí nghiệm.",
+        init: renderStage9
+      }
+    ];
+
+    const stageTitleEl = document.getElementById("stageTitle");
+    const stageProgressTextEl = document.getElementById("stageProgressText");
+    const progressBarFillEl = document.getElementById("progressBarFill");
+    const stageImgEl = document.getElementById("stageImg");
+    const hotspotOverlayEl = document.getElementById("hotspotOverlay");
+    const canvasCaptionTextEl = document.getElementById("canvasCaptionText");
+    const taskPartLabelEl = document.getElementById("taskPartLabel");
+    const taskHeadingEl = document.getElementById("taskHeading");
+    const taskDescEl = document.getElementById("taskDesc");
+    const workspaceControlsEl = document.getElementById("workspaceControls");
+    const feedbackBoxEl = document.getElementById("feedbackBox");
+    const btnNextEl = document.getElementById("btnNext");
+    const btnResetEl = document.getElementById("btnReset");
+    const btnTTSEl = document.getElementById("btnTTS");
+    const safetyModalEl = document.getElementById("safetyModal");
+    const btnCloseModalEl = document.getElementById("btnCloseModal");
+
+    window.addEventListener("DOMContentLoaded", () => {
+      loadStage(0);
+      setupEventListeners();
+    });
+
+    function setupEventListeners() {
+      btnNextEl.addEventListener("click", () => {
+        if (labState.currentStageIndex < stages.length - 1) {
+          loadStage(labState.currentStageIndex + 1);
+        }
+      });
+
+      btnResetEl.addEventListener("click", () => {
+        loadStage(labState.currentStageIndex);
+      });
+
+      btnTTSEl.addEventListener("click", () => {
+        speakText(stages[labState.currentStageIndex].voice);
+      });
+
+      btnCloseModalEl.addEventListener("click", () => {
+        safetyModalEl.classList.remove("active");
+      });
+    }
+
+    function loadStage(index) {
+      labState.currentStageIndex = index;
+      const stage = stages[index];
+
+      stageTitleEl.textContent = `Stage ${index + 1}/10: ${stage.name}`;
+      const progressPct = Math.round(((index + 1) / stages.length) * 100);
+      stageProgressTextEl.textContent = `${progressPct}%`;
+      progressBarFillEl.style.width = `${progressPct}%`;
+
+      btnNextEl.disabled = true;
+      stageImgEl.src = stage.img;
+      canvasCaptionTextEl.textContent = stage.caption;
+      hotspotOverlayEl.innerHTML = "";
+
+      taskPartLabelEl.textContent = stage.part;
+      taskHeadingEl.textContent = stage.name;
+      taskDescEl.textContent = stage.taskDesc;
+
+      workspaceControlsEl.innerHTML = "";
+      hideFeedback();
+
+      stage.init();
+    }
+
+    function showFeedback(text, isCorrect) {
+      feedbackBoxEl.textContent = text;
+      feedbackBoxEl.className = "feedback-box " + (isCorrect ? "correct" : "wrong");
+    }
+
+    function hideFeedback() {
+      feedbackBoxEl.className = "feedback-box";
+      feedbackBoxEl.textContent = "";
+    }
+
+    function enableNext() {
+      btnNextEl.disabled = false;
+    }
+
+    function showSafetyModal(title, message) {
+      document.getElementById("modalTitle").textContent = title;
+      document.getElementById("modalBody").textContent = message;
+      safetyModalEl.classList.add("active");
+    }
+
+    function speakText(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'vi-VN';
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+
+    function renderStage0() {
+      let questionSelected = false;
+      workspaceControlsEl.innerHTML = `
+        <div id="qSection">
+          <p style="font-weight:700; margin-bottom:10px;">1. Chọn câu hỏi nghiên cứu:</p>
+          <div class="option-cards-group">
+            <div class="option-card" data-opt="q1">
+              <div class="option-radio-dot"></div>
+              <div class="option-content"><div class="option-title">Hai vùng khác nhau về ánh sáng trên cùng một lá chét có cho phản ứng nhận biết tinh bột giống nhau không?</div></div>
+            </div>
+            <div class="option-card" data-opt="q2">
+              <div class="option-radio-dot"></div>
+              <div class="option-content"><div class="option-title">Lượng ánh sáng chiếu vào cây khoai tây có làm cây sinh trưởng nhanh hơn không?</div></div>
+            </div>
+          </div>
+        </div>
+        <div id="hypSection" class="hidden" style="margin-top:20px;">
+          <p style="font-weight:700; margin-bottom:10px;">2. Chọn dự đoán phù hợp:</p>
+          <div class="option-cards-group">
+            <div class="option-card" data-opt="h1">
+              <div class="option-radio-dot"></div>
+              <div class="option-content"><div class="option-title">Nếu ánh sáng cần cho sự hình thành tinh bột, phần lá được chiếu sáng sẽ cho phản ứng dương tính với iodine, còn phần bị che sáng sẽ không cho phản ứng tương ứng.</div></div>
+            </div>
+            <div class="option-card" data-opt="h2">
+              <div class="option-radio-dot"></div>
+              <div class="option-content"><div class="option-title">Dung dịch iodine sẽ làm toàn bộ lá chét chuyển sang màu xanh tím bất kể che hay chiếu sáng.</div></div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      const qCards = workspaceControlsEl.querySelectorAll("#qSection .option-card");
+      qCards.forEach(card => {
+        card.addEventListener("click", () => {
+          qCards.forEach(c => c.classList.remove("selected", "correct-card", "wrong-card"));
+          if (card.getAttribute("data-opt") === "q1") {
+            card.classList.add("selected", "correct-card");
+            showFeedback("Đúng! Câu hỏi đã tạo được phép so sánh 2 điều kiện ánh sáng trên cùng 1 lá.", true);
+            document.getElementById("hypSection").classList.remove("hidden");
+            questionSelected = true;
+          } else {
+            card.classList.add("selected", "wrong-card");
+            showFeedback("Chưa chính xác. Câu hỏi này không tập trung so sánh 2 vùng ánh sáng trên cùng một lá chét đối chứng.", false);
+          }
+        });
+      });
+
+      const hCards = workspaceControlsEl.querySelectorAll("#hypSection .option-card");
+      hCards.forEach(card => {
+        card.addEventListener("click", () => {
+          if (!questionSelected) return;
+          hCards.forEach(c => c.classList.remove("selected", "correct-card", "wrong-card"));
+          if (card.getAttribute("data-opt") === "h1") {
+            card.classList.add("selected", "correct-card");
+            showFeedback("Chính xác! Dự đoán đã nêu được dấu hiệu quan sát và đối chứng ánh sáng.", true);
+            enableNext();
+          } else {
+            card.classList.add("selected", "wrong-card");
+            showFeedback("Chưa đúng. Iodine chỉ nhận biết tinh bột có sẵn, không tự biến toàn bộ lá thành màu xanh tím.", false);
+          }
+        });
+      });
+    }
+
+    function renderStage1() {
+      const openedMap = { sample: false, equipment: false, chemical: false };
+      workspaceControlsEl.innerHTML = `
+        <p style="font-weight:700; margin-bottom:12px;">Bấm trực tiếp 3 khay vật liệu trên hình hoặc nút dưới đây:</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px;">
+          <button class="btn btn-secondary" id="btnTray1">🌿 Khay Mẫu vật</button>
+          <button class="btn btn-secondary" id="btnTray2">🧪 Khay Dụng cụ</button>
+          <button class="btn btn-secondary" id="btnTray3">🧫 Khay Hóa chất</button>
+        </div>
+        <div id="qSafetyArea" class="hidden" style="margin-top:16px;">
+          <p style="font-weight:700; color:var(--wrong); margin-bottom:8px;">❓ Câu hỏi an toàn:</p>
+          <p style="margin-bottom:10px;">Vật liệu nào phải luôn đặt xa nguồn nhiệt?</p>
+          <div class="option-cards-group">
+            <div class="option-card" data-ans="ethanol">
+              <div class="option-radio-dot"></div>
+              <div class="option-content"><div class="option-title">Cồn 90° (Ethanol)</div></div>
+            </div>
+            <div class="option-card" data-ans="iodine">
+              <div class="option-radio-dot"></div>
+              <div class="option-content"><div class="option-title">Dung dịch Iodine</div></div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      hotspotOverlayEl.innerHTML = `
+        <div class="hotspot hotspot-pulse" style="left:5%; top:40%; width:24%; height:45%;" id="hsTray1"><span class="hotspot-label">Chậu khoai tây</span></div>
+        <div class="hotspot hotspot-pulse" style="left:32%; top:45%; width:30%; height:40%;" id="hsTray2"><span class="hotspot-label">Trạm nhiệt</span></div>
+        <div class="hotspot hotspot-pulse" style="left:66%; top:45%; width:28%; height:40%;" id="hsTray3"><span class="hotspot-label">Trạm Hóa chất</span></div>
+      `;
+
+      function checkAllTrays() {
+        if (openedMap.sample && openedMap.equipment && openedMap.chemical) {
+          document.getElementById("qSafetyArea").classList.remove("hidden");
+          showFeedback("Đã nhận biết đủ 3 nhóm vật liệu. Hãy trả lời câu hỏi an toàn.", true);
+        }
+      }
+
+      document.getElementById("btnTray1").addEventListener("click", () => { openedMap.sample = true; document.getElementById("btnTray1").className = "btn btn-primary"; checkAllTrays(); });
+      document.getElementById("btnTray2").addEventListener("click", () => { openedMap.equipment = true; document.getElementById("btnTray2").className = "btn btn-primary"; checkAllTrays(); });
+      document.getElementById("btnTray3").addEventListener("click", () => { openedMap.chemical = true; document.getElementById("btnTray3").className = "btn btn-primary"; checkAllTrays(); });
+      document.getElementById("hsTray1").addEventListener("click", () => document.getElementById("btnTray1").click());
+      document.getElementById("hsTray2").addEventListener("click", () => document.getElementById("btnTray2").click());
+      document.getElementById("hsTray3").addEventListener("click", () => document.getElementById("btnTray3").click());
+
+      const sCards = workspaceControlsEl.querySelectorAll("#qSafetyArea .option-card");
+      sCards.forEach(c => {
+        c.addEventListener("click", () => {
+          sCards.forEach(card => card.classList.remove("selected", "correct-card", "wrong-card"));
+          if (c.getAttribute("data-ans") === "ethanol") {
+            c.classList.add("selected", "correct-card");
+            showFeedback("Đúng! Cồn 90° rất dễ cháy nên phải luôn đặt xa nguồn nhiệt.", true);
+            enableNext();
+          } else {
+            c.classList.add("selected", "wrong-card");
+            showFeedback("Chưa chính xác. Dung dịch Iodine không phải chất dễ cháy như cồn.", false);
+          }
+        });
+      });
+    }
+
+    function renderStage2() {
+      const selectedSteps = [];
+      const correctOrder = [1, 2, 3, 4, 5];
+
+      workspaceControlsEl.innerHTML = `
+        <p style="font-weight:700; margin-bottom:10px;">Bấm chọn 5 chặng theo thứ tự đúng (1 ➔ 5):</p>
+        <div class="option-cards-group" id="stepGroup">
+          <div class="option-card" data-step="1"><div class="option-content"><strong>Chặng 1:</strong> Xử lí tối chậu cây</div></div>
+          <div class="option-card" data-step="2"><div class="option-content"><strong>Chặng 2:</strong> Che một phần lá & Chiếu sáng</div></div>
+          <div class="option-card" data-step="3"><div class="option-content"><strong>Chặng 3:</strong> Thu mẫu lá & Đun nước nóng</div></div>
+          <div class="option-card" data-step="4"><div class="option-content"><strong>Chặng 4:</strong> Tẩy diệp lục bằng cồn an toàn</div></div>
+          <div class="option-card" data-step="5"><div class="option-content"><strong>Chặng 5:</strong> Rửa lá, dùng Iodine & Quan sát</div></div>
+        </div>
+
+        <div id="qControlSection" class="hidden" style="margin-top:20px;">
+          <p style="font-weight:700; margin-bottom:8px;">❓ Câu hỏi vai trò đối chứng:</p>
+          <p style="margin-bottom:10px;">Vì sao chỉ che một phần lá chét bằng băng giấy đen?</p>
+          <div class="option-cards-group">
+            <div class="option-card" data-ctrl="c1"><div class="option-content"><div class="option-title">Tạo vùng đối chứng không nhận ánh sáng trên cùng một lá.</div></div></div>
+            <div class="option-card" data-ctrl="c2"><div class="option-content"><div class="option-title">Giữ cho lá chét không bị héo khi chiếu sáng.</div></div></div>
+          </div>
+        </div>
+      `;
+
+      const stepCards = workspaceControlsEl.querySelectorAll("#stepGroup .option-card");
+      stepCards.forEach(c => {
+        c.addEventListener("click", () => {
+          const step = parseInt(c.getAttribute("data-step"));
+          if (!selectedSteps.includes(step)) {
+            selectedSteps.push(step);
+            c.classList.add("selected");
+            c.querySelector(".option-content").innerHTML += ` <span style="color:var(--jade-dark); font-weight:700;">(Bước ${selectedSteps.length})</span>`;
+          }
+
+          if (selectedSteps.length === 5) {
+            if (selectedSteps.every((val, idx) => val === correctOrder[idx])) {
+              showFeedback("Đúng! Bạn đã sắp xếp chuẩn 5 chặng quy trình thí nghiệm.", true);
+              document.getElementById("qControlSection").classList.remove("hidden");
+            } else {
+              showFeedback("Thứ tự chưa đúng. Hãy bấm Đặt lại để chọn lại từ Chặng 1.", false);
+            }
+          }
+        });
+      });
+
+      const ctrlCards = workspaceControlsEl.querySelectorAll("#qControlSection .option-card");
+      ctrlCards.forEach(c => {
+        c.addEventListener("click", () => {
+          ctrlCards.forEach(card => card.classList.remove("selected", "correct-card", "wrong-card"));
+          if (c.getAttribute("data-ctrl") === "c1") {
+            c.classList.add("selected", "correct-card");
+            showFeedback("Chính xác! Vùng che sáng là vùng đối chứng trên cùng một mẫu lá.", true);
+            enableNext();
+          } else {
+            c.classList.add("selected", "wrong-card");
+            showFeedback("Chưa chính xác. Băng giấy đen không dùng để giữ ẩm hay chống héo.", false);
+          }
+        });
+      });
+    }
+
+    function renderStage3() {
+      hotspotOverlayEl.innerHTML = `<div class="hotspot hotspot-pulse" style="left:38%; top:35%; width:24%; height:30%;" id="hsLeafTarget"><span class="hotspot-label">Vùng giữa lá chét</span></div>`;
+
+      workspaceControlsEl.innerHTML = `
+        <p style="font-weight:700; margin-bottom:10px;">Thao tác:</p>
+        <button class="btn btn-primary" id="btnApplyCover" style="width:100%;">📌 Gắn băng giấy đen che hai mặt lá chét</button>
+        <div id="lightTimeSection" class="hidden" style="margin-top:20px;">
+          <p style="font-weight:700; margin-bottom:8px;">❓ Điều kiện chiếu sáng:</p>
+          <p style="margin-bottom:10px;">Hai vùng trên cùng lá chét khác nhau ở điều kiện nào?</p>
+          <div class="option-cards-group">
+            <div class="option-card" data-cond="light"><div class="option-content"><div class="option-title">Điều kiện chiếu sáng (Có ánh sáng vs Che sáng)</div></div></div>
+            <div class="option-card" data-cond="temp"><div class="option-content"><div class="option-title">Nhiệt độ môi trường</div></div></div>
+          </div>
+        </div>
+      `;
+
+      function applyCover() {
+        showFeedback("Đã gắn băng giấy đen che kín 2 mặt vùng giữa lá chét và tiến hành chiếu sáng 4-6 giờ.", true);
+        document.getElementById("btnApplyCover").disabled = true;
+        document.getElementById("lightTimeSection").classList.remove("hidden");
+      }
+
+      document.getElementById("btnApplyCover").addEventListener("click", applyCover);
+      document.getElementById("hsLeafTarget").addEventListener("click", applyCover);
+
+      const cCards = workspaceControlsEl.querySelectorAll("#lightTimeSection .option-card");
+      cCards.forEach(c => {
+        c.addEventListener("click", () => {
+          cCards.forEach(card => card.classList.remove("selected", "correct-card", "wrong-card"));
+          if (c.getAttribute("data-cond") === "light") {
+            c.classList.add("selected", "correct-card");
+            showFeedback("Chính xác! Ánh sáng là biến số duy nhất thay đổi giữa hai vùng.", true);
+            enableNext();
+          } else {
+            c.classList.add("selected", "wrong-card");
+            showFeedback("Chưa đúng. Nhiệt độ môi trường được giữ giống nhau cho toàn bộ lá.", false);
+          }
+        });
+      });
+    }
+
+    function renderStage4() {
+      hotspotOverlayEl.innerHTML = `<div class="hotspot hotspot-pulse" style="left:40%; top:30%; width:20%; height:40%;" id="hsPickLeaf"><span class="hotspot-label">Lá chét đã che</span></div>`;
+
+      workspaceControlsEl.innerHTML = `
+        <p style="font-weight:700; margin-bottom:10px;">Thao tác thu mẫu:</p>
+        <button class="btn btn-primary" id="btnDipHotWater" style="width:100%;">🌿 Thu lá chét đã che & Nhúng vào nước nóng</button>
+      `;
+
+      function executeHotWater() {
+        stageImgEl.src = "Pic_SH11_B05/IMG_SH11B05M03_HOT_WATER_01.png";
+        showFeedback("Đã dùng panh tháo băng giấy đen và nhúng lá chét vào cốc nước nóng trong 1-2 phút để làm mềm tế bào.", true);
+        document.getElementById("btnDipHotWater").disabled = true;
+        enableNext();
+      }
+
+      document.getElementById("btnDipHotWater").addEventListener("click", executeHotWater);
+      document.getElementById("hsPickLeaf").addEventListener("click", executeHotWater);
+    }
+
+    function renderStage5() {
+      workspaceControlsEl.innerHTML = `
+        <p style="font-weight:700; margin-bottom:10px;">Chọn sơ đồ thao tác đun cách thủy cồn 90°:</p>
+        <div class="option-cards-group">
+          <div class="option-card" id="optSafeA">
+            <div class="option-content">
+              <div class="option-title">Sơ đồ A (An toàn):</div>
+              <div class="option-sub">Làm nóng nước ➔ Tắt & dời đèn cồn ra xa ➔ Mới đặt cốc cồn vào đun cách thủy.</div>
+            </div>
+          </div>
+          <div class="option-card" id="optUnsafeB">
+            <div class="option-content">
+              <div class="option-title">Sơ đồ B (Nguy hiểm):</div>
+              <div class="option-sub">Đặt trực tiếp cốc cồn lên ngọn lửa đèn cồn đang cháy.</div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      document.getElementById("optUnsafeB").addEventListener("click", () => {
+        showSafetyModal("CẢNH BÁO AN TOÀN NGUY HẠI!", "Không bao giờ đun trực tiếp cồn 90° trên ngọn lửa hoặc mở cồn gần nguồn lửa! Cồn 90° rất bốc cháy và gây hỏa hoạn nghiêm trọng.");
+      });
+
+      document.getElementById("optSafeA").addEventListener("click", () => {
+        document.getElementById("optSafeA").classList.add("selected", "correct-card");
+        showFeedback("Chính xác! Đèn cồn đã được tắt và dời xa trước khi làm nóng cồn gián tiếp trong bể nước nóng.", true);
+        enableNext();
+      });
+    }
+
+    function renderStage6() {
+      workspaceControlsEl.innerHTML = `
+        <p style="font-weight:700; margin-bottom:10px;">Chọn thuốc thử hóa học thích hợp:</p>
+        <div class="option-cards-group">
+          <div class="option-card" data-reagent="iodine"><div class="option-content"><div class="option-title">Dung dịch Iodine (Nâu vàng)</div></div></div>
+          <div class="option-card" data-reagent="water"><div class="option-content"><div class="option-title">Nước cất</div></div></div>
+        </div>
+      `;
+
+      const rCards = workspaceControlsEl.querySelectorAll(".option-card");
+      rCards.forEach(c => {
+        c.addEventListener("click", () => {
+          rCards.forEach(card => card.classList.remove("selected", "correct-card", "wrong-card"));
+          if (c.getAttribute("data-reagent") === "iodine") {
+            c.classList.add("selected", "correct-card");
+            stageImgEl.src = "Pic_SH11_B05/IMG_SH11B05M03_RESULT_CORRECT_01.png";
+            showFeedback("Chính xác! Iodine phản ứng với tinh bột tạo màu xanh tím đậm ở phần chiếu sáng, còn phần che giữ màu vàng nâu nhạt.", true);
+            enableNext();
+          } else {
+            c.classList.add("selected", "wrong-card");
+            showFeedback("Nước cất không phải thuốc thử hóa học để nhận biết tinh bột.", false);
+          }
+        });
+      });
+    }
+
+    function renderStage7() {
+      workspaceControlsEl.innerHTML = `
+        <p style="font-weight:700; margin-bottom:10px;">Điền màu sắc quan sát được vào bảng:</p>
+        <table class="obs-table">
+          <thead><tr><th>Vùng trên lá</th><th>Màu sắc sau Iodine</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1. Vùng chiếu sáng</strong></td><td><select id="selIlluminated" style="padding:6px; border-radius:4px; width:100%;"><option value="">-- Chọn màu --</option><option value="blue">Xanh tím đậm</option><option value="yellow">Vàng nâu nhạt</option></select></td></tr>
+            <tr><td><strong>2. Vùng bị che sáng</strong></td><td><select id="selCovered" style="padding:6px; border-radius:4px; width:100%;"><option value="">-- Chọn màu --</option><option value="blue">Xanh tím đậm</option><option value="yellow">Vàng nâu nhạt</option></select></td></tr>
+          </tbody>
+        </table>
+        <button class="btn btn-primary" id="btnCheckObs" style="width:100%; margin-top:16px;">Xác nhận kết quả</button>
+      `;
+
+      document.getElementById("btnCheckObs").addEventListener("click", () => {
+        const val1 = document.getElementById("selIlluminated").value;
+        const val2 = document.getElementById("selCovered").value;
+        if (val1 === "blue" && val2 === "yellow") {
+          showFeedback("Chính xác! Vùng chiếu sáng dương tính (Xanh tím đậm), vùng che âm tính (Vàng nâu nhạt).", true);
+          enableNext();
+        } else {
+          showFeedback("Chưa chính xác. Hãy kiểm tra kỹ lại màu ở hai vùng trên đĩa Petri.", false);
+        }
+      });
+    }
+
+    function renderStage8() {
+      workspaceControlsEl.innerHTML = `
+        <p style="font-weight:700; margin-bottom:10px;">Ghép từng yếu tố với vai trò chuẩn:</p>
+        <div class="option-cards-group">
+          <div class="option-card"><div class="option-content"><strong>1. Băng giấy đen:</strong> Tạo vùng đối chứng không nhận ánh sáng</div></div>
+          <div class="option-card"><div class="option-content"><strong>2. Cồn 90°:</strong> Tẩy vết diệp lục để dễ đọc màu phản ứng</div></div>
+          <div class="option-card"><div class="option-content"><strong>3. Dung dịch Iodine:</strong> Thuốc thử nhận biết tinh bột có sẵn</div></div>
+        </div>
+        <button class="btn btn-primary" id="btnConfirmMatch" style="width:100%; margin-top:16px;">Xác nhận giải thích</button>
+      `;
+
+      document.getElementById("btnConfirmMatch").addEventListener("click", () => {
+        document.querySelectorAll("#workspaceControls .option-card").forEach(c => c.classList.add("correct-card"));
+        showFeedback("Chính xác! Cả 3 yếu tố đều đã được giải thích đúng vai trò khoa học.", true);
+        enableNext();
+      });
+    }
+
+    function renderStage9() {
+      workspaceControlsEl.innerHTML = `
+        <p style="font-weight:700; margin-bottom:10px;">Chọn phát biểu kết luận chính xác nhất:</p>
+        <div class="option-cards-group">
+          <div class="option-card" data-conc="c1">
+            <div class="option-content"><div class="option-title">Trong điều kiện thí nghiệm, phần lá được chiếu sáng cho phản ứng nhận biết tinh bột (xanh tím đậm), còn phần bị che sáng không cho phản ứng tương ứng. Ánh sáng cần cho sự hình thành hoặc tích lũy tinh bột ở lá.</div></div>
+          </div>
+          <div class="option-card" data-conc="c2">
+            <div class="option-content"><div class="option-title">Iodine biến toàn bộ diệp lục thành tinh bột ở mọi phần lá bất kể có chiếu sáng hay không.</div></div>
+          </div>
+        </div>
+      `;
+
+      const concCards = workspaceControlsEl.querySelectorAll(".option-card");
+      concCards.forEach(c => {
+        c.addEventListener("click", () => {
+          concCards.forEach(card => card.classList.remove("selected", "correct-card", "wrong-card"));
+          if (c.getAttribute("data-conc") === "c1") {
+            c.classList.add("selected", "correct-card");
+            showFeedback("Chúc mừng! Bạn đã hoàn thành xuất sắc bài thực hành Quang hợp ở thực vật (SH11_B05_M03).", true);
+            btnNextEl.textContent = "✓ Hoàn thành Module";
+            enableNext();
+          } else {
+            c.classList.add("selected", "wrong-card");
+            showFeedback("Kết luận chưa đúng. Iodine không tạo ra tinh bột mà chỉ là thuốc thử nhận biết.", false);
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>
