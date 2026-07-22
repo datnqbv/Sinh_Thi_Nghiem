@@ -5,129 +5,311 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Virtual Lab: Quang hợp ở thực vật — Phần 1: Mục tiêu & Chuẩn bị (SH11_B05_M03_P1)</title>
 
+  <!-- Typography: Be Vietnam Pro -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+  <!-- Icons: Tabler Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css">
 
   <style>
     :root {
       --cream: #FAF7F0;
       --cream-2: #F0EADD;
-      --cream-3: #E4DCCF;
+      --cream-3: #E7DECC;
+      --paper-line: #E5DECF;
+      --paper-line-2: #D6CCB6;
       --ink: #1A1A1A;
-      --ink-light: #4A4A4A;
-      --ink-muted: #767676;
+      --ink-2: #514C44;
+      --ink-3: #7C756A;
+      --ink-faint: #ABA396;
+
       --jade: #3CA57A;
-      --jade-dark: #2D8B6F;
+      --jade-deep: #2D8B6F;
+      --jade-dark: #14432F;
+      --jade-text: #1B5E48;
+      --jade-soft: #A9D0BE;
       --jade-pale: #DCEAE1;
+
+      --sage: #A8C9B8;
+      --sage-deep: #7CA792;
+      --sage-text: #46685A;
+      --sage-pale: #E1ECE4;
+
+      --accent: #E8A24A;
+      --accent-deep: #CE8A33;
+      --accent-text: #8A551A;
+      --accent-pale: #F7E7CD;
+
       --correct: #2D8B6F;
       --correct-bg: #DCEAE1;
       --wrong: #C15F3C;
       --wrong-bg: #F3E2D6;
-      /* Khoá giao diện mục 12: Font duy nhất Playfair Display — dùng chung cho heading và body */
-      --font-heading: 'Playfair Display', serif;
-      --font-body: 'Playfair Display', serif;
+      --warning: #C58A2E;
+      --warning-bg: #F5E7CB;
+      --info: #4E7F92;
+      --info-bg: #DCE7EB;
+
+      --radius: 10px;
+      --radius-lg: 14px;
+      --radius-sm: 6px;
+      --shadow: 0 4px 12px rgba(45,139,111,.10);
+      --shadow-sm: 0 2px 6px rgba(26,26,26,.05);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: var(--font-body); font-size: 17px; line-height: 1.6; color: var(--ink); background-color: var(--cream); min-height: 100vh; display: flex; flex-direction: column; }
-    .header { background-color: var(--cream); border-bottom: 2px solid var(--cream-2); padding: 12px 24px; position: sticky; top: 0; z-index: 100; }
-    .header-container { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .brand-title { font-family: var(--font-heading); font-weight: 700; font-size: 1.25rem; color: var(--ink); display: flex; align-items: center; gap: 10px; }
-    .brand-badge { background-color: var(--jade-pale); color: var(--jade-dark); font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; }
-    .stage-tracker { flex: 1; max-width: 500px; display: flex; flex-direction: column; gap: 6px; }
-    .stage-info { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; color: var(--ink-light); }
-    .progress-bar-track { height: 8px; background-color: var(--cream-2); border-radius: 10px; overflow: hidden; }
-    .progress-bar-fill { height: 100%; background-color: var(--jade); width: 33%; transition: width 0.4s ease; }
-    .header-actions { display: flex; align-items: center; gap: 10px; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 18px; font-size: 0.95rem; font-weight: 600; border-radius: 8px; border: 2px solid transparent; cursor: pointer; transition: all 0.2s ease; min-height: 44px; font-family: var(--font-body); }
-    .btn-primary { background-color: var(--jade); color: #ffffff; }
-    .btn-primary:hover:not(:disabled) { background-color: var(--jade-dark); }
-    .btn-primary:disabled { background-color: var(--cream-3); color: var(--ink-muted); cursor: not-allowed; }
-    .btn-secondary { background-color: var(--cream-2); color: var(--ink); border-color: var(--cream-3); }
-    .btn-secondary.on { background-color: var(--jade); color: #fff; border-color: var(--jade-dark); }
+    body {
+      font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--ink);
+      background-color: var(--cream);
+      padding: 20px clamp(16px, 2.5vw, 36px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
 
-    .app-main { flex: 1; max-width: 1300px; width: 100%; margin: 0 auto; padding: 24px; display: grid; grid-template-columns: 52% 45%; gap: 24px; transition: grid-template-columns 0.2s ease; align-items: start; }
-    @media (max-width: 1024px) { .app-main { grid-template-columns: 1fr !important; } }
-    .canvas-panel { background-color: #ffffff; border-radius: 20px; border: 2px solid var(--cream-2); overflow: hidden; display: flex; flex-direction: column; position: relative; }
-    .canvas-viewport { position: relative; width: 100%; max-width: 500px; aspect-ratio: 1 / 1; margin: 0 auto; background-color: var(--cream); overflow: hidden; }
-    .canvas-bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; background-color: var(--cream); }
-    .canvas-inset { position: absolute; right: 3%; bottom: 3%; width: 20%; max-width: 140px; border-radius: 10px; border: 3px solid #ffffff; box-shadow: 0 4px 14px rgba(26,26,26,0.18); background: var(--cream-2); z-index: 5; }
-    .canvas-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; }
-    .hotspot { position: absolute; pointer-events: auto; cursor: pointer; border: 3px solid rgba(60,165,122,0.55); background-color: rgba(60, 165, 122, 0.12); border-radius: 10px; transition: all 0.2s ease; }
-    .hotspot:hover, .hotspot:focus-visible { border-color: var(--jade); background-color: rgba(60, 165, 122, 0.24); outline: none; }
-    .hotspot.opened { border-color: var(--jade-dark); background-color: rgba(45, 139, 111, 0.28); cursor: default; }
-    .hotspot-tag { position: absolute; top: 6px; left: 6px; background-color: var(--ink); color: #ffffff; font-size: 0.7rem; font-weight: 700; padding: 3px 9px; border-radius: 10px; pointer-events: none; }
+    /* Header Banner */
+    header.lab-header {
+      width: 100%;
+      max-width: 1720px;
+      border-radius: 16px;
+      padding: 1.25rem 1.75rem;
+      background: linear-gradient(rgba(18,26,20,.65), rgba(18,26,20,.65)), url('Pic_SH11_B05/IMG_SH11B05M03_LAB_OVERVIEW_01.png');
+      background-position: center 32%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      box-shadow: var(--shadow);
+      color: #FFFFFF;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      position: relative;
+    }
+    .header-brand { display: flex; flex-direction: column; gap: 4px; }
+    .header-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.6px; color: var(--sage-pale);
+      background: rgba(255,255,255,0.15); padding: 4px 10px; border-radius: 20px;
+      width: fit-content;
+    }
+    .header-title { font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 800; line-height: 1.2; }
+
+    .header-tracker { display: flex; flex-direction: column; gap: 6px; min-width: 260px; max-width: 420px; flex: 1; }
+    .tracker-info { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; color: rgba(255,255,255,0.9); }
+    .tracker-bar-bg { height: 8px; background: rgba(255,255,255,0.25); border-radius: 10px; overflow: hidden; }
+    .tracker-bar-fill { height: 100%; background: var(--jade-soft); width: 33%; transition: width 0.35s ease; }
+
+    .header-actions { display: flex; align-items: center; gap: 8px; }
+
+    /* Goal Bar */
+    .goal-bar {
+      display: flex; align-items: center; gap: 10px; width: 100%; max-width: 1720px;
+      background: var(--jade-pale); border-left: 4px solid var(--jade);
+      border-radius: var(--radius); padding: 10px 16px;
+    }
+    .goal-label {
+      display: flex; align-items: center; gap: 6px; flex-shrink: 0;
+      text-transform: uppercase; font-size: 12px; font-weight: 700; color: var(--jade-text); white-space: nowrap;
+    }
+    .goal-divider { flex-shrink: 0; align-self: stretch; width: 1px; margin: 2px 0; background: var(--sage); }
+    .goal-text { font-size: 0.98rem; font-weight: 500; color: var(--ink); }
+
+    /* Main Dashboard Layout */
+    .app-main {
+      width: 100%; max-width: 1720px;
+      display: grid; grid-template-columns: minmax(320px, 1fr) minmax(320px, 0.9fr);
+      gap: 16px; align-items: start;
+    }
+    @media (max-width: 1024px) { .app-main { grid-template-columns: 1fr; } }
+
+    /* Cards */
+    .card {
+      background-color: var(--cream-2);
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-lg);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .canvas-panel {
+      background-color: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-lg);
+      padding: 12px;
+      display: flex; flex-direction: column; gap: 10px;
+      position: relative;
+    }
+    .canvas-viewport {
+      position: relative; width: 100%; aspect-ratio: 16 / 11;
+      background-color: var(--cream); border-radius: var(--radius);
+      overflow: hidden; border: 1px solid var(--paper-line);
+    }
+    .canvas-bg-img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .canvas-inset {
+      position: absolute; right: 12px; bottom: 12px; width: 22%; max-width: 130px;
+      border-radius: 8px; border: 2px solid #FFFFFF; box-shadow: 0 4px 12px rgba(26,26,26,0.18);
+      background: var(--cream-2); z-index: 5;
+    }
+    .canvas-overlay { position: absolute; inset: 0; z-index: 10; pointer-events: none; }
+    .hotspot {
+      position: absolute; pointer-events: auto; cursor: pointer;
+      border: 2px dashed var(--jade); background-color: rgba(60, 165, 122, 0.15);
+      border-radius: 8px; transition: all 0.2s ease;
+    }
+    .hotspot:hover, .hotspot:focus-visible {
+      border-style: solid; border-color: var(--jade-deep); background-color: rgba(60, 165, 122, 0.28); outline: none;
+    }
+    .hotspot.opened { border-color: var(--jade-dark); background-color: rgba(45, 139, 111, 0.32); cursor: default; }
+    .hotspot-tag {
+      position: absolute; top: 4px; left: 4px; background-color: var(--ink); color: #FFFFFF;
+      font-size: 0.72rem; font-weight: 700; padding: 2px 8px; border-radius: 6px; pointer-events: none;
+      display: flex; align-items: center; gap: 4px;
+    }
     .hotspot.opened .hotspot-tag { background-color: var(--jade-dark); }
-    .canvas-caption { padding: 16px 20px; background-color: var(--cream); border-top: 2px solid var(--cream-2); font-size: 0.95rem; color: var(--ink-light); }
-    .control-panel { display: flex; flex-direction: column; gap: 16px; }
-    .card { background-color: #ffffff; border-radius: 14px; border: 2px solid var(--cream-2); padding: 20px; }
-    .task-card { border-left: 6px solid var(--jade); }
-    .task-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--jade-dark); }
-    .task-heading { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; color: var(--ink); margin: 6px 0; }
-    .task-desc { font-size: 0.95rem; color: var(--ink-light); }
-    .lead-quote { font-family: var(--font-heading); font-style: italic; font-size: 1.05rem; color: var(--jade-dark); background: var(--jade-pale); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
-    .group-label { font-weight: 700; margin-bottom: 8px; display: block; }
-    .option-cards-group { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+    .canvas-caption {
+      font-size: 0.92rem; color: var(--ink-2); background: var(--cream);
+      border-radius: var(--radius-sm); padding: 8px 12px; border: 1px solid var(--paper-line);
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 8px 16px; font-size: 0.92rem; font-weight: 600;
+      border-radius: 8px; border: 1.5px solid transparent; cursor: pointer;
+      transition: all 0.18s ease; min-height: 40px; font-family: inherit;
+    }
+    .btn-primary { background-color: var(--jade); color: var(--cream); border-color: var(--jade-deep); }
+    .btn-primary:hover:not(:disabled) { background-color: var(--jade-deep); }
+    .btn-primary:disabled { background-color: var(--cream-3); color: var(--ink-3); border-color: var(--paper-line); cursor: not-allowed; }
+    .btn-secondary { background-color: var(--cream-2); color: var(--ink); border-color: var(--paper-line-2); }
+    .btn-secondary:hover:not(:disabled) { background-color: var(--jade-pale); border-color: var(--jade); color: var(--jade-text); }
+
+    /* Control Panel Cards */
+    .control-panel { display: flex; flex-direction: column; gap: 14px; }
+    .task-card { border-left: 4px solid var(--jade); background-color: #FFFFFF; }
+    .task-badge { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--jade-text); letter-spacing: 0.5px; }
+    .task-heading { font-size: 1.2rem; font-weight: 700; color: var(--ink); margin: 4px 0; }
+    .task-desc { font-size: 0.95rem; color: var(--ink-2); }
+
+    .lead-quote {
+      font-size: 0.95rem; font-weight: 500; color: var(--jade-text);
+      background: var(--jade-pale); border-left: 3px solid var(--jade);
+      border-radius: var(--radius-sm); padding: 10px 14px; margin: 10px 0;
+      display: flex; align-items: flex-start; gap: 8px;
+    }
+
+    .group-label { font-size: 0.9rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; display: block; }
+    .option-cards-group { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
     .option-cards-group.grid-3-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .option-cards-group.grid-3-2 .option-card:nth-child(5) { grid-column: 1 / span 2; }
-    .option-card { background-color: var(--cream); border: 2px solid var(--cream-2); border-radius: 8px; padding: 12px 16px; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 12px; position: relative; min-height: 44px; }
-    .option-card:hover { border-color: var(--jade); background-color: #ffffff; }
+    @media (max-width: 600px) { .option-cards-group.grid-3-2 { grid-template-columns: 1fr; } }
+
+    .option-card {
+      background-color: var(--cream); border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius-sm); padding: 12px 14px; cursor: pointer;
+      transition: all 0.18s ease; display: flex; align-items: flex-start; gap: 10px;
+      position: relative; min-height: 44px; font-size: 0.92rem;
+    }
+    .option-card:hover { border-color: var(--jade); background-color: #FFFFFF; }
     .option-card.selected { border-color: var(--jade); background-color: var(--jade-pale); }
     .option-card.correct-card { border-color: var(--correct); background-color: var(--correct-bg); }
     .option-card.wrong-card { border-color: var(--wrong); background-color: var(--wrong-bg); }
     .option-card:focus-visible { outline: 2px solid var(--jade); outline-offset: 2px; }
-    .option-card.correct-card::after { content: "✓"; position: absolute; top: 8px; right: 10px; color: var(--correct); font-weight: 700; }
-    .option-card.shake { animation: shakeCard 0.35s ease; }
-    @keyframes shakeCard { 0%,100%{ transform: translateX(0); } 25%{ transform: translateX(-6px); } 75%{ transform: translateX(6px); } }
-    .card-icon { width: 26px; height: 26px; flex-shrink: 0; color: var(--jade-dark); }
+    .card-icon { font-size: 1.25rem; flex-shrink: 0; color: var(--jade-text); margin-top: 2px; }
     .option-card.correct-card .card-icon { color: var(--correct); }
     .option-card.wrong-card .card-icon { color: var(--wrong); }
-    .order-badge { position: absolute; top: -8px; left: -8px; width: 22px; height: 22px; border-radius: 50%; background: var(--jade-dark); color: #fff; font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
-    .option-content { flex: 1; font-size: 0.92rem; }
-    .feedback-box { margin-top: 16px; padding: 14px 18px; border-radius: 8px; font-size: 0.9rem; display: none; }
-    .feedback-box.correct { display: block; background-color: var(--correct-bg); border: 1.5px solid var(--correct); color: var(--jade-dark); }
-    .feedback-box.wrong { display: block; background-color: var(--wrong-bg); border: 1.5px solid var(--wrong); color: var(--wrong); }
-    .asset-tray { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 12px; }
-    .asset-tray-item { width: 54px; text-align: center; }
-    .asset-tray-item img { width: 40px; height: 40px; object-fit: contain; }
-    .asset-tray-item figcaption { font-size: 0.62rem; color: var(--ink-muted); line-height: 1.15; margin-top: 2px; }
+
+    .order-badge {
+      position: absolute; top: -6px; left: -6px; width: 22px; height: 22px;
+      border-radius: 50%; background: var(--jade-dark); color: #FFFFFF;
+      font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; justify-content: center;
+    }
+    .option-content { flex: 1; line-height: 1.45; }
+
+    .feedback-box { margin-top: 14px; padding: 12px 16px; border-radius: var(--radius-sm); font-size: 0.9rem; display: none; line-height: 1.5; }
+    .feedback-box.correct { display: block; background-color: var(--correct-bg); border: 1px solid var(--correct); color: var(--jade-dark); }
+    .feedback-box.wrong { display: block; background-color: var(--wrong-bg); border: 1px solid var(--wrong); color: var(--wrong); }
+
+    .asset-tray { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 12px; }
+    .asset-tray-item { width: 60px; text-align: center; background: #FFF; padding: 4px; border-radius: 6px; border: 1px solid var(--paper-line); }
+    .asset-tray-item img { width: 42px; height: 42px; object-fit: contain; }
+    .asset-tray-item figcaption { font-size: 0.62rem; color: var(--ink-2); line-height: 1.15; margin-top: 2px; font-weight: 600; }
+
+    .link-section {
+      width: 100%; max-width: 1720px; background: var(--cream-2); border: 1px solid var(--paper-line);
+      border-radius: var(--radius-lg); padding: 16px 20px; display: flex; align-items: center; gap: 16px;
+    }
+    .link-info { display: flex; flex-direction: column; gap: 4px; }
+    .link-info h3 { font-size: 1rem; font-weight: 700; color: var(--ink); }
+    .link-info p { font-size: 0.88rem; color: var(--ink-2); }
+    .link-url { font-size: 0.88rem; font-weight: 600; color: var(--jade-text); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
+    .link-url:hover { color: var(--jade-deep); text-decoration: underline; }
+
     .hidden { display: none !important; }
   </style>
 </head>
 <body>
 
-  <header class="header">
-    <div class="header-container">
-      <div class="brand-title"><span>Aiducation</span> <span class="brand-badge">P1: MỤC TIÊU & CHUẨN BỊ</span></div>
-      <div class="stage-tracker">
-        <div class="stage-info"><span id="stageTitle">Màn 1/3: Câu hỏi & Dự đoán</span><span id="stageProgressText">33%</span></div>
-        <div class="progress-bar-track"><div class="progress-bar-fill" id="progressBarFill"></div></div>
+  <!-- Header Banner -->
+  <header class="lab-header">
+    <div class="header-brand">
+      <span class="header-badge"><i class="ti ti-leaf"></i> SH11_B05_M03 · P1</span>
+      <h1 class="header-title">Mục tiêu & Chuẩn bị thí nghiệm Quang hợp</h1>
+    </div>
+    <div class="header-tracker">
+      <div class="tracker-info">
+        <span id="stageTitle">Màn 1/3: Câu hỏi & Dự đoán</span>
+        <span id="stageProgressText">33%</span>
       </div>
-      <div class="header-actions">
-        <button class="btn btn-secondary" id="btnTTS"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9V15H8L13 19V5L8 9H4Z"/><path d="M17 8C18.5 9.5 18.5 14.5 17 16"/></svg> Đọc</button>
-        <button class="btn btn-secondary" id="btnReset">↻ Đặt lại</button>
-        <button class="btn btn-primary" id="btnNext" disabled>Tiếp theo ➔</button>
+      <div class="tracker-bar-bg">
+        <div class="tracker-bar-fill" id="progressBarFill"></div>
       </div>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-secondary" id="btnTTS" type="button"><i class="ti ti-volume"></i> Đọc</button>
+      <button class="btn btn-secondary" id="btnReset" type="button"><i class="ti ti-refresh"></i> Đặt lại</button>
+      <button class="btn btn-primary" id="btnNext" type="button" disabled>Tiếp theo <i class="ti ti-arrow-right"></i></button>
     </div>
   </header>
 
-  <main class="app-main" id="appMain">
+  <!-- Goal Bar -->
+  <div class="goal-bar">
+    <span class="goal-label"><i class="ti ti-target"></i> MỤC TIÊU</span>
+    <span class="goal-divider"></span>
+    <span class="goal-text">Xác định câu hỏi nghiên cứu, dự đoán và nhận biết đầy đủ bộ vật liệu, quy trình thí nghiệm sự hình thành tinh bột trong quang hợp.</span>
+  </div>
+
+  <!-- Main Grid -->
+  <main class="app-main">
+    <!-- Left: Canvas / Visual Panel -->
     <section class="canvas-panel">
       <div class="canvas-viewport">
-        <img id="stageImg" class="canvas-bg-img" src="Pic_SH11_B05/IMG_SH11B05M03_LAB_OVERVIEW_01.png" alt="Bàn thí nghiệm">
-        <img id="insetImg" class="canvas-inset hidden" src="Pic_SH11_B05/AST_SH11B05M03_POTATO_LEAFLET_01.svg" alt="Cận cảnh lá chét khoai tây mục tiêu">
+        <img id="stageImg" class="canvas-bg-img" src="Pic_SH11_B05/IMG_SH11B05M03_LAB_OVERVIEW_01.png" alt="Bàn thí nghiệm tổng quát">
+        <img id="insetImg" class="canvas-inset hidden" src="Pic_SH11_B05/AST_SH11B05M03_POTATO_LEAFLET_01.svg" alt="Cận cảnh lá chét khoai tây">
         <div id="hotspotOverlay" class="canvas-overlay"></div>
       </div>
-      <div class="canvas-caption"><span id="canvasCaptionText">Bàn thực hành tổng quát: Chậu cây khoai tây, trạm nhiệt, khay hóa chất và trạm quan sát.</span></div>
+      <div class="canvas-caption">
+        <i class="ti ti-info-circle"></i>
+        <span id="canvasCaptionText">Bàn thực hành tổng quát: Chậu cây khoai tây, trạm nhiệt, khay hóa chất và dụng cụ.</span>
+      </div>
     </section>
 
+    <!-- Right: Control / Interactive Tasks -->
     <section class="control-panel">
       <div class="card task-card">
-        <span class="task-label">Phần 1: Mục tiêu & Chuẩn bị</span>
+        <span class="task-badge">PHẦN 1: MỤC TIÊU & CHUẨN BỊ</span>
         <h2 class="task-heading" id="taskHeading">Câu hỏi nghiên cứu & Dự đoán</h2>
         <p class="task-desc" id="taskDesc">Hãy chọn câu hỏi nghiên cứu phù hợp nhất để so sánh hai điều kiện chiếu sáng trên lá.</p>
       </div>
+
       <div class="card">
         <div id="workspaceControls"></div>
         <div id="feedbackBox" class="feedback-box"></div>
@@ -135,24 +317,18 @@
     </section>
   </main>
 
-  <script>
-    /* ============ Icon library (inline SVG, no emoji-as-icon, editorial flat) ============ */
-    const ICONS = {
-      compareLeaf: '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3C17 6 19 12 15 18C13 20 11 20 9 18C5 12 7 6 12 3Z"/><line x1="12" y1="4" x2="12" y2="19" stroke-dasharray="2 2"/></svg>',
-      sprout:      '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21V12"/><path d="M12 12C12 8 9 6 6 6C6 9 8 12 12 12Z"/><path d="M12 12C12 8 15 6 18 6C18 9 16 12 12 12Z"/></svg>',
-      droplet:     '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3C15 8 18 11 18 15A6 6 0 0 1 6 15C6 11 9 8 12 3Z"/></svg>',
-      sun:         '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.5" y1="4.5" x2="6.5" y2="6.5"/><line x1="17.5" y1="17.5" x2="19.5" y2="19.5"/><line x1="4.5" y1="19.5" x2="6.5" y2="17.5"/><line x1="17.5" y1="6.5" x2="19.5" y2="4.5"/></svg>',
-      equalLines:  '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/></svg>',
-      moon:        '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 14A8 8 0 1 1 10 4A6 6 0 0 0 20 14Z"/></svg>',
-      paperClip:   '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="4" width="8" height="14" rx="1"/><line x1="16" y1="6" x2="20" y2="6"/><line x1="16" y1="10" x2="20" y2="10"/></svg>',
-      flask:       '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3H15V8L19 18A2 2 0 0 1 17 21H7A2 2 0 0 1 5 18L9 8Z"/><line x1="8" y1="3" x2="16" y2="3"/></svg>',
-      waterBath:   '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="13" width="16" height="7" rx="2"/><path d="M9 13V8L11 4H13L15 8V13"/></svg>',
-      magnifier:   '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="10" r="6"/><line x1="15" y1="15" x2="20" y2="20"/></svg>',
-      leaf:        '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20C4 10 12 4 20 4C20 12 14 20 4 20Z"/><line x1="4" y1="20" x2="14" y2="10"/></svg>',
-      flaskAlt:    '<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3H15V8L19 18A2 2 0 0 1 17 21H7A2 2 0 0 1 5 18L9 8Z"/><line x1="7" y1="14" x2="17" y2="14"/></svg>'
-    };
+  <!-- Link Footer Section -->
+  <footer class="link-section">
+    <i class="ti ti-microscope" style="font-size: 2.2rem; color: var(--jade);"></i>
+    <div class="link-info">
+      <h3>Sinh Học Aiducation – Học liệu thí nghiệm tương tác</h3>
+      <p>Module tiếp theo: Tiến trình thực hiện thí nghiệm hình thành tinh bột (SH11_B05_M03_P2).</p>
+      <a class="link-url" href="https://www.aiducation.edu.vn" target="_blank" rel="noopener"><i class="ti ti-external-link"></i> Truy cập aiducation.edu.vn</a>
+    </div>
+  </footer>
 
-    /* ============ Lưu dữ liệu tiến trình P1 (biến JS, không dùng localStorage/sessionStorage) ============ */
+  <script>
+    /* P1 State Storage */
     const P1Data = {
       s1: { qChoice: null, qAttempts: 0, hChoice: null, hAttempts: 0 },
       s2: { opened: { specimen: false, tools: false, chemicals: false }, safetyChoice: null, safetyAttempts: 0 },
@@ -167,7 +343,6 @@
         caption: "Bàn thực hành tổng quát và cận cảnh lá chét khoai tây mục tiêu.",
         desc: "Hãy chọn câu hỏi nghiên cứu phù hợp nhất, sau đó chọn dự đoán có thể kiểm tra bằng thí nghiệm.",
         voice: "Ta sẽ so sánh hai vùng trên cùng một lá chét: một vùng nhận ánh sáng và một vùng bị che sáng.",
-        layout: "52% 45%",
         showInset: true,
         init: renderS1
       },
@@ -177,7 +352,6 @@
         caption: "Bố trí 3 nhóm vật liệu trên bàn thí nghiệm: Mẫu vật, Dụng cụ, Hóa chất.",
         desc: "Quan sát bàn thực hành. Hãy mở lần lượt ba nhóm vật liệu trên hình, sau đó trả lời câu hỏi an toàn.",
         voice: "Hãy bấm mở lần lượt ba nhóm vật liệu trên bàn thí nghiệm.",
-        layout: "52% 45%",
         showInset: false,
         init: renderS2
       },
@@ -187,21 +361,23 @@
         caption: "Dải 5 chặng quy trình thí nghiệm tổng quát.",
         desc: "Chọn năm thẻ hình theo đúng trình tự, sau đó trả lời vì sao chỉ che một phần lá chét.",
         voice: "Hãy chọn 5 thẻ hình theo đúng thứ tự tiến trình thí nghiệm.",
-        layout: "52% 45%",
         showInset: false,
         init: renderS3
       }
     ];
 
-    window.addEventListener("DOMContentLoaded", () => { loadS(0); setupEvents(); });
+    window.addEventListener("DOMContentLoaded", () => {
+      loadS(0);
+      setupEvents();
+    });
 
-    /* Gắn thao tác chuột + bàn phím (Enter/Space) cho một thẻ lựa chọn */
     function bindCard(el, fn) {
       el.setAttribute("tabindex", "0");
       el.setAttribute("role", "button");
       el.addEventListener("click", fn);
       el.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } });
     }
+
     function shuffleArr(arr) {
       const a = arr.slice();
       for (let i = a.length - 1; i > 0; i--) {
@@ -238,7 +414,6 @@
       document.getElementById("taskHeading").textContent = s.name;
       document.getElementById("taskDesc").textContent = s.desc;
       document.getElementById("insetImg").classList.toggle("hidden", !s.showInset);
-      document.getElementById("appMain").style.gridTemplateColumns = s.layout;
       document.getElementById("hotspotOverlay").innerHTML = "";
       document.getElementById("workspaceControls").innerHTML = "";
       document.getElementById("btnNext").disabled = true;
@@ -246,28 +421,39 @@
       s.init();
     }
 
-    function showFB(t, c) { const b = document.getElementById("feedbackBox"); b.textContent = t; b.className = "feedback-box " + (c ? "correct" : "wrong"); }
-    function hideFB() { const b = document.getElementById("feedbackBox"); b.className = "feedback-box"; b.textContent = ""; }
+    function showFB(t, c) {
+      const b = document.getElementById("feedbackBox");
+      b.textContent = t;
+      b.className = "feedback-box " + (c ? "correct" : "wrong");
+    }
+    function hideFB() {
+      const b = document.getElementById("feedbackBox");
+      b.className = "feedback-box";
+      b.textContent = "";
+    }
 
-    /* ============ S1 — Câu hỏi nghiên cứu và dự đoán ============ */
+    /* Screen 1 */
     function renderS1() {
       const ws = document.getElementById("workspaceControls");
       ws.innerHTML = `
-        <p class="lead-quote">Ta sẽ so sánh hai vùng trên cùng một lá chét: một vùng nhận ánh sáng và một vùng bị che sáng.</p>
+        <div class="lead-quote">
+          <i class="ti ti-bulb" style="font-size: 1.2rem; flex-shrink: 0;"></i>
+          <span>Ta sẽ so sánh hai vùng trên cùng một lá chét: một vùng nhận ánh sáng và một vùng bị che sáng.</span>
+        </div>
         <div id="qArea">
           <span class="group-label">1. Câu hỏi nghiên cứu:</span>
           <div class="option-cards-group">
-            <div class="option-card" data-q="1">${ICONS.compareLeaf}<div class="option-content">Hai vùng khác nhau về ánh sáng trên cùng một lá chét có cho phản ứng nhận biết tinh bột giống nhau không?</div></div>
-            <div class="option-card" data-q="2">${ICONS.sprout}<div class="option-content">Lượng ánh sáng chiếu vào cây khoai tây có làm cây sinh trưởng nhanh hơn không?</div></div>
-            <div class="option-card" data-q="3">${ICONS.droplet}<div class="option-content">Dung dịch iodine có đổi màu lá ở bất kỳ điều kiện ánh sáng nào hay không?</div></div>
+            <div class="option-card" data-q="1"><i class="ti ti-leaf card-icon"></i><div class="option-content">Hai vùng khác nhau về ánh sáng trên cùng một lá chét có cho phản ứng nhận biết tinh bột giống nhau không?</div></div>
+            <div class="option-card" data-q="2"><i class="ti ti-plant-2 card-icon"></i><div class="option-content">Lượng ánh sáng chiếu vào cây khoai tây có làm cây sinh trưởng nhanh hơn không?</div></div>
+            <div class="option-card" data-q="3"><i class="ti ti-droplet card-icon"></i><div class="option-content">Dung dịch iodine có đổi màu lá ở bất kỳ điều kiện ánh sáng nào hay không?</div></div>
           </div>
         </div>
-        <div id="hArea" class="hidden" style="margin-top:16px;">
+        <div id="hArea" class="hidden" style="margin-top:14px;">
           <span class="group-label">2. Dự đoán phù hợp:</span>
           <div class="option-cards-group">
-            <div class="option-card" data-h="1">${ICONS.sun}<div class="option-content">Nếu ánh sáng cần cho sự hình thành tinh bột, phần lá được chiếu sáng sẽ dương tính với iodine, còn phần bị che sáng sẽ không dương tính tương ứng.</div></div>
-            <div class="option-card" data-h="2">${ICONS.droplet}<div class="option-content">Iodine sẽ làm toàn bộ lá chét chuyển sang màu xanh tím.</div></div>
-            <div class="option-card" data-h="3">${ICONS.equalLines}<div class="option-content">Cả hai vùng của lá sẽ cho phản ứng giống nhau vì vẫn là cùng một lá.</div></div>
+            <div class="option-card" data-h="1"><i class="ti ti-sun card-icon"></i><div class="option-content">Nếu ánh sáng cần cho sự hình thành tinh bột, phần lá được chiếu sáng sẽ dương tính với iodine, còn phần bị che sáng sẽ không dương tính tương ứng.</div></div>
+            <div class="option-card" data-h="2"><i class="ti ti-color-filter card-icon"></i><div class="option-content">Iodine sẽ làm toàn bộ lá chét chuyển sang màu xanh tím.</div></div>
+            <div class="option-card" data-h="3"><i class="ti ti-equal card-icon"></i><div class="option-content">Cả hai vùng của lá sẽ cho phản ứng giống nhau vì vẫn là cùng một lá.</div></div>
           </div>
         </div>
       `;
@@ -314,40 +500,37 @@
       });
     }
 
-    /* ============ S2 — Nhận biết mẫu vật, dụng cụ, hóa chất ============ */
+    /* Screen 2 */
     function renderS2() {
       const ws = document.getElementById("workspaceControls");
       ws.innerHTML = `
         <span class="group-label">Bấm vào 3 vùng trên hình để nhận biết vật liệu:</span>
-        <div id="groupLabels" style="display:flex; flex-direction:column; gap:6px; font-size:0.85rem; color:var(--ink-light); margin-bottom:10px;"></div>
+        <div id="groupLabels" style="display:flex; flex-direction:column; gap:6px; font-size:0.88rem; color:var(--ink-2); margin-bottom:10px;"></div>
         <div id="sQ" class="hidden">
-          <span class="group-label" style="color:var(--wrong);">Câu hỏi an toàn: Vật nào phải luôn đặt xa nguồn nhiệt?</span>
+          <span class="group-label" style="color:var(--wrong); display:flex; align-items:center; gap:6px;">
+            <i class="ti ti-alert-triangle"></i> Câu hỏi an toàn: Vật nào phải luôn đặt xa nguồn nhiệt?
+          </span>
           <div class="option-cards-group">
-            <div class="option-card" data-a="c">${ICONS.droplet}<div class="option-content">Cồn 90° (Ethanol)</div></div>
-            <div class="option-card" data-a="i">${ICONS.droplet}<div class="option-content">Dung dịch Iodine</div></div>
-            <div class="option-card" data-a="w">${ICONS.droplet}<div class="option-content">Nước rửa</div></div>
+            <div class="option-card" data-a="c"><i class="ti ti-flame card-icon"></i><div class="option-content">Cồn 90° (Ethanol)</div></div>
+            <div class="option-card" data-a="i"><i class="ti ti-droplet card-icon"></i><div class="option-content">Dung dịch Iodine</div></div>
+            <div class="option-card" data-a="w"><i class="ti ti-droplet card-icon"></i><div class="option-content">Nước rửa</div></div>
           </div>
         </div>
       `;
 
-      /* Toạ độ hotspot dưới đây là ƯỚC LƯỢNG TẠM THỜI trên ảnh CHƯA DUYỆT
-         (IMG_SH11B05M03_LAB_OVERVIEW_01 hiện ở trạng thái "CHƯA DUYỆT — ưu tiên 1").
-         Theo khoá ASSET_FIRST của dự án, toạ độ hotspot chính thức chỉ được đo
-         trên bản ảnh đã gắn hậu tố "_APPROVED". Cần đo lại và thay các số % dưới
-         đây sau khi ảnh được duyệt chính thức. */
       const hotspots = [
-        { key: "specimen", label: "Mẫu vật", left: 2,  top: 5,  w: 27, h: 74, name: "specimen" },
-        { key: "tools",    label: "Dụng cụ", left: 30, top: 56, w: 36, h: 40, name: "tools" },
-        { key: "chemicals",label: "Hóa chất",left: 73, top: 42, w: 24, h: 38, name: "chemicals" }
+        { key: "specimen", label: "Mẫu vật", left: 2,  top: 5,  w: 27, h: 74, icon: "ti-plant-2" },
+        { key: "tools",    label: "Dụng cụ", left: 30, top: 56, w: 36, h: 40, icon: "ti-flask-2" },
+        { key: "chemicals",label: "Hóa chất",left: 73, top: 42, w: 24, h: 38, icon: "ti-test-pipe" }
       ];
       const overlay = document.getElementById("hotspotOverlay");
       const groupLabels = document.getElementById("groupLabels");
+
       const roleText = {
         specimen: "Mẫu vật — chậu cây khoai tây, thao tác trên một lá chét đủ lớn.",
         tools: "Dụng cụ — băng giấy đen, kẹp, giá đỡ, panh, đĩa Petri.",
         chemicals: "Hóa chất — cồn 90°, dung dịch iodine, nước nóng/nước rửa."
       };
-      /* Toàn bộ asset rời trong hồ sơ hình ảnh, phân theo 3 nhóm (KHỐI D field 23) */
       const roleAssets = {
         specimen: [
           { file: "AST_SH11B05M03_POTATO_PLANT_01.svg", label: "Chậu cây khoai tây" },
@@ -367,6 +550,7 @@
           { file: "AST_SH11B05M03_WASH_WATER_BEAKER_01.svg", label: "Cốc nước rửa" }
         ]
       };
+
       hotspots.forEach(h => {
         const el = document.createElement("div");
         el.className = "hotspot";
@@ -375,14 +559,15 @@
         el.setAttribute("role", "button");
         el.setAttribute("tabindex", "0");
         el.setAttribute("aria-label", h.label);
-        el.innerHTML = `<span class="hotspot-tag">${h.label}</span>`;
+        el.innerHTML = `<span class="hotspot-tag"><i class="ti ${h.icon}"></i> ${h.label}</span>`;
         const openIt = () => {
           if (P1Data.s2.opened[h.key]) return;
           P1Data.s2.opened[h.key] = true;
           el.classList.add("opened");
           const p = document.createElement("p");
-          p.textContent = "✓ " + roleText[h.key];
+          p.innerHTML = `<i class="ti ti-check" style="color:var(--jade)"></i> ${roleText[h.key]}`;
           groupLabels.appendChild(p);
+
           const tray = document.createElement("div");
           tray.className = "asset-tray";
           roleAssets[h.key].forEach(a => {
@@ -430,28 +615,28 @@
       });
     }
 
-    /* ============ S3 — Quy trình tổng quát và vai trò đối chứng ============ */
+    /* Screen 3 */
     function renderS3() {
       const ws = document.getElementById("workspaceControls");
       const stepDefs = [
-        { st: 1, icon: ICONS.moon,       text: "Xử lí tối chậu cây" },
-        { st: 2, icon: ICONS.paperClip,  text: "Che một phần lá & chiếu sáng" },
-        { st: 3, icon: ICONS.flask,      text: "Thu mẫu lá & nước nóng" },
-        { st: 4, icon: ICONS.waterBath,  text: "Tẩy diệp lục bằng cách thủy an toàn" },
-        { st: 5, icon: ICONS.magnifier,  text: "Rửa lá, dùng iodine & quan sát" }
+        { st: 1, icon: "ti-moon", text: "Xử lí tối chậu cây" },
+        { st: 2, icon: "ti-paperclip", text: "Che một phần lá & chiếu sáng" },
+        { st: 3, icon: "ti-flask-2", text: "Thu mẫu lá & nước nóng" },
+        { st: 4, icon: "ti-flame", text: "Tẩy diệp lục bằng cách thủy an toàn" },
+        { st: 5, icon: "ti-droplet", text: "Rửa lá, dùng iodine & quan sát" }
       ];
-      const shuffledSteps = shuffleArr(stepDefs); /* Trạng thái đầu: 5 thẻ xáo trộn, chưa đánh số (đúng field 24) */
+      const shuffledSteps = shuffleArr(stepDefs);
       ws.innerHTML = `
         <span class="group-label">Bấm chọn 5 chặng theo đúng thứ tự (1 ➔ 5):</span>
         <div class="option-cards-group grid-3-2" id="stgG">
-          ${shuffledSteps.map(d => `<div class="option-card" data-st="${d.st}">${d.icon}<div class="option-content">${d.text}</div></div>`).join("")}
+          ${shuffledSteps.map(d => `<div class="option-card" data-st="${d.st}"><i class="ti ${d.icon} card-icon"></i><div class="option-content">${d.text}</div></div>`).join("")}
         </div>
-        <div id="ctrlArea" class="hidden" style="margin-top:18px;">
+        <div id="ctrlArea" class="hidden" style="margin-top:16px;">
           <span class="group-label">Vì sao chỉ che một phần lá chét?</span>
           <div class="option-cards-group">
-            <div class="option-card" data-c="1">${ICONS.compareLeaf}<div class="option-content">Để tạo vùng đối chứng trên cùng một lá, hai vùng chỉ khác nhau về ánh sáng nên có thể so sánh.</div></div>
-            <div class="option-card" data-c="2">${ICONS.sun}<div class="option-content">Để tránh vùng đó bị cháy nắng trong lúc chiếu sáng.</div></div>
-            <div class="option-card" data-c="3">${ICONS.leaf}<div class="option-content">Để chia lá thành nhiều mẫu riêng biệt, giúp thí nghiệm nhanh hơn.</div></div>
+            <div class="option-card" data-c="1"><i class="ti ti-arrows-diff card-icon"></i><div class="option-content">Để tạo vùng đối chứng trên cùng một lá, hai vùng chỉ khác nhau về ánh sáng nên có thể so sánh.</div></div>
+            <div class="option-card" data-c="2"><i class="ti ti-sun card-icon"></i><div class="option-content">Để tránh vùng đó bị cháy nắng trong lúc chiếu sáng.</div></div>
+            <div class="option-card" data-c="3"><i class="ti ti-scissors card-icon"></i><div class="option-content">Để chia lá thành nhiều mẫu riêng biệt, giúp thí nghiệm nhanh hơn.</div></div>
           </div>
         </div>
       `;
@@ -473,10 +658,7 @@
               showFB("Đúng trình tự! Bây giờ hãy trả lời vì sao chỉ che một phần lá chét.", true);
             }
           } else {
-            c.classList.add("shake");
-            P1Data.s3.orderAttempts = (P1Data.s3.orderAttempts || 0) + 1;
-            setTimeout(() => c.classList.remove("shake"), 350);
-            showFB("Chưa đúng vị trí trong trình tự — các thẻ đã đúng vẫn được giữ nguyên, hãy thử chặng tiếp theo.", false);
+            showFB("Chưa đúng vị trí trong trình tự — các thẻ đã chọn đúng vẫn được giữ nguyên, hãy chọn chặng tiếp theo.", false);
           }
         });
       });

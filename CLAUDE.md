@@ -2,60 +2,79 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+# Critical Rules
+
+BEFORE modifying, writing, or refactoring any code files, you MUST ALWAYS:
+1. Read the design specification file `Rule_Design_Sinh.md` located at the root directory.
+2. Ensure the proposed code changes strictly follow the logic and rules defined in `Rule_Design_Sinh.md`.
+
 ## What this repo is
 
-Pre-production content/asset specification for a Vietnamese high-school Biology 11 practical "virtual lab" module (Bài 5 – Thực hành: Quang hợp ở thực vật / starch formation in photosynthesis, module code `SH11_B05_M03`). **No HTML implementation exists yet.** The repo currently holds only the two source-of-truth spec files and the in-progress image/asset deliverables; the three production HTML files described below have not been coded.
+Content/asset production for a Vietnamese high-school Biology 11 practical "virtual lab" module (Bài 5 – Thực hành: Quang hợp ở thực vật / starch formation in photosynthesis, module code `SH11_B05_M03`). Unlike earlier stages of this project, **the three production HTML files now exist and are implemented** (not just specified):
 
-- `FILE_1_SH11_B05_M03_KICH_BAN_NOI_DUNG_v3_FINAL.txt` — the authoritative content/pedagogy script (Vietnamese). Defines the module dossier (research question, hypothesis, variables/controls, science key, safety key, design tokens) and the full screen-by-screen spec for all 10 screens across the 3 planned HTML files. Follows template rules from an external doc, `BMH_AI_QUY_TAC_DU_AN_KICH_BAN_SINH_HOC_v3.2.md` (not present in this repo).
-- `SH11_B05_M03_HO_SO_HINH_ANH_ASSET_v2_FINAL.txt` — the image/asset dossier: global style key, the full asset code catalog, a detailed spec for every image/asset (composition, required elements, forbidden content, approval status), the pre-code submission checklist, delivery/versioning rules, and the image review checklist.
-- `Pic_SH11_B05/` — the actual produced image/asset files (SVG for loose assets and leaf-state overlays, PNG for composite scene images), named to match the asset codes cataloged in the asset dossier (e.g. `IMG_SH11B05M03_LAB_OVERVIEW_01.png`, `AST_SH11B05M03_TONGS_01.svg`, `STATE_SH11B05M03_LEAF_RESULT_01.svg`).
+- `FILE_1_SH11_B05_M03_KICH_BAN_NOI_DUNG_v3_FINAL.txt` — the authoritative content/pedagogy script (Vietnamese). Defines the module dossier (research question, hypothesis, variables/controls, science key, safety key, design tokens) and the full screen-by-screen spec for all 10 screens across the 3 HTML files.
+- `SH11_B05_M03_HO_SO_HINH_ANH_ASSET_v2_FINAL.txt` — the image/asset dossier: global style key, asset code catalog, per-asset spec (composition, required elements, forbidden content, approval status), and the image review checklist.
+- `Pic_SH11_B05/` — the produced image/asset files (SVG for loose assets and leaf-state overlays, PNG for composite scene images), named to match the asset codes cataloged in the asset dossier.
+- `SH11_B05_M03_P1_MUC_TIEU_CHUAN_BI.html`, `SH11_B05_M03_P2_TIEN_TRINH_THUC_HIEN.html`, `SH11_B05_M03_P3_BAO_CAO_GIAI_THICH.html` — the three built, self-contained HTML files (~500 lines each: inline `<style>` + inline `<script>`, Playfair Display via Google Fonts CDN, embedded references to `Pic_SH11_B05/` images).
+- `Rule_Design_Sinh.md` — a separate, mandated authoring prompt for building *new* Biology virtual-lab HTML from scratch. See the dedicated section below — it uses a different design system than the shipped HTML above and must not be conflated with it.
 
-**These files must stay in sync.** Any asset code referenced in FILE_1's screen tables must exist in the asset dossier's catalog (Section II) and have a matching spec entry (Section III); any file added to `Pic_SH11_B05/` should correspond to a cataloged code. When asked to change lab content or visuals, update the relevant txt file(s) first — treat them as the spec, not the HTML (which doesn't exist yet to drift against).
+**These must stay in sync.** Any asset code referenced in FILE_1's screen tables or in the HTML must exist in the asset dossier's catalog (Section II) and have a matching spec entry (Section III). When asked to change lab content or visuals, update the relevant `.txt` spec file(s) first, then propagate the change into the corresponding HTML screen — the spec is still the source of truth even though HTML now exists to drift against it.
 
-## Production pipeline / current state
+## Production pipeline / current state — reality has outrun the documented order
 
-This project has a strict linear pipeline, and where the repo currently sits in it matters for what kind of request is even valid right now:
+FILE_1 section VII describes a strict linear pipeline (content → asset dossier → image approval with `_APPROVED` filename suffix → hotspot measurement on approved images only → HTML coding). **In practice, none of the images in `Pic_SH11_B05/` currently carry an `_APPROVED` suffix (asset dossier status is still `CHƯA DUYỆT ẢNH TĨNH`), yet all three HTML files are already built and reference these unapproved images.** Do not assume the pipeline gate is still being honored — check actual file state (`_APPROVED` suffix presence, or lack thereof) before treating any image as final, and don't be surprised that HTML editing is already live work here.
 
-1. Content finalized in FILE_1 (**done** — status `BẢN NỘI DUNG CUỐI SAU RÀ SOÁT`).
-2. Image/asset dossier written and assets produced against it (**in progress** — dossier status `CHƯA DUYỆT ẢNH TĨNH`, i.e. static images not yet approved).
-3. Each approved image is renamed with an `_APPROVED` suffix (`ASSET_FIRST` rule: approve the asset, only then measure hotspots — never fabricate placeholder coordinates against an unapproved image).
-4. Hotspot coordinates measured **only** on `_APPROVED` images.
-5. HTML coded for all three parts, embedding the approved assets so each file is self-contained.
+The module-level status must **never** be marked `APPROVED – KHÔNG TỰ SỬA` until all pending-approval items (images, and the built HTML) are resolved — don't silently harden that flag.
 
-Do not treat any image in `Pic_SH11_B05/` as final/hotspot-ready unless its filename carries `_APPROVED`. Do not write HTML coding as if it were already in progress — per FILE_1 section VII, HTML coding starts only after image approval + hotspot measurement.
+## Architecture of the three HTML files
 
-The module-level status must **never** be marked `APPROVED – KHÔNG TỰ SỬA` until all pending-approval items (images, and later the built HTML) are resolved — don't silently harden that flag.
+Each file is a flat, single-screen-at-a-time SPA with no router and no build step:
 
-## Target architecture (once built)
+- A `stagesP{1,2,3}` array (or equivalent) drives a `loadS(idx)` function that shows/hides screen sections and updates a top progress bar.
+- Per-screen state lives in a plain JS object (`P1Data`, `P3Data`, ...) scoped to that file only — **no `localStorage`/`sessionStorage`, ever** (explicitly commented in the code as a deliberate constraint, mục 11). Each file must work standalone; P2 and P3 open with a short recap so they don't depend on data from a previous file.
+- Interactive images use an absolutely-positioned `.hotspot` overlay grid on top of a `.canvas-bg-img`, not `<canvas>` drawing — this is a static-image-plus-hotspots pattern, not a simulation engine.
+- Each `render S*()` function builds one screen's DOM/state; `showFB`/`hideFB` drive the correct/wrong feedback box (colors from `--correct`/`--wrong` tokens).
+- TTS is wired to an explicit "Đọc" button using the browser `speechSynthesis` API — never autoplay, never triggered by any other event.
+- On the final screen of P3, completion is signaled to a hosting LMS via `window.parent.postMessage({ type: "SH11_B05_M03_COMPLETE", module: "SH11_B05_M03" }, "*")` — this is the only cross-frame communication in the module; there is no other integration surface.
+- No Robot/avatar character — each screen has exactly one "current task" panel.
 
-FILE_1 specifies **three independent, self-contained HTML files** — not one:
+Every screen's spec entry in FILE_1 has 5 blocks (KHỐI A–E, 39 numbered fields): A = pedagogy/identification, B = what the student sees, C = interaction/feedback, D = imagery/animation, E = production/acceptance. Read a screen's full block before implementing or editing it — don't infer behavior from the field number alone.
 
-| File | Screens | Focus |
-|---|---|---|
-| `SH11_B05_M03_P1_MUC_TIEU_CHUAN_BI.html` | P1_S01–S03 (3) | Research question/hypothesis; materials/tools/chemicals recognition; procedure sequencing + control-region concept |
-| `SH11_B05_M03_P2_TIEN_TRINH_THUC_HIEN.html` | P2_S01–S04 (4) | Dark treatment → cover → light exposure; sampling + hot-water treatment; safe indirect ethanol decolorization; wash → iodine → result observation |
-| `SH11_B05_M03_P3_BAO_CAO_GIAI_THICH.html` | P3_S01–S03 (3) | Recording results; explaining role of black paper/ethanol/iodine; bounded conclusion + module completion |
+## Design system actually implemented (Playfair Display / Haugomat editorial flat)
 
-Key architectural constraints for whoever builds these:
-- Each HTML file must work standalone — **no `localStorage`/`sessionStorage`**, no required shared state between files. P2 and P3 must each open with a short recap summary so they don't depend on data from the previous file.
-- No Robot/avatar character (this is a deliberate change from earlier module designs) — each screen has exactly one "current task" panel.
-- TTS plays only on explicit user request (a "listen" button); never autoplay, never repeat automatically, never read the answer.
-- Every screen's spec entry in FILE_1 has 5 blocks (KHỐI A–E, 39 numbered fields): A = pedagogy/identification, B = what the student sees, C = interaction/feedback, D = imagery/animation, E = production/acceptance (layout, TTS, data to persist, dependencies, static images needing approval, acceptance criteria). Read a screen's full block before implementing or editing it — don't infer behavior from the field number alone.
-
-## Design system (current — do not reuse an older dark/glassmorphism system)
-
-Locked in FILE_1 section 12 and the asset dossier section I:
+This is what's live in the shipped HTML today — confirmed by reading the `:root` CSS variables in all three files:
 
 - Style: "Tom Haugomat editorial flat" — flat, clean, restrained, no decorative gradients, no heavy shadows.
-- Single font: Playfair Display.
-- UI tokens: `--cream #FAF7F0`, `--ink #1A1A1A`, `--jade #3CA57A` (action), `--correct #2D8B6F` / `--correct-bg #DCEAE1`, `--wrong #C15F3C` / `--wrong-bg #F3E2D6`.
+- Single font: Playfair Display (serif), for both headings and body — loaded from Google Fonts, no other font family.
+- UI tokens: `--cream #FAF7F0`, `--ink #1A1A1A`, `--jade #3CA57A` (action/primary), `--correct #2D8B6F` / `--correct-bg #DCEAE1`, `--wrong #C15F3C` / `--wrong-bg #F3E2D6`.
 - Explicitly forbidden: dark theme, gradients, glassmorphism, heavy shadows, Robot character, emoji as primary icons.
 - Body text minimum 17–18px; mobile is single-column; tap targets minimum 44×44px.
-- UI colors and "science colors" (see below) must never be mixed — science colors are never used for buttons/feedback states.
+- UI colors and "science colors" (leaf/reagent colors) must never be mixed — science colors are never used for buttons or feedback states.
+- Layout is a 2-column `canvas-panel` / info-panel grid (`52% 45%`), not a 3-column dashboard.
+
+This is locked by FILE_1 section 12 and the asset dossier section I. **Do not change it without an explicit content-spec update — see the conflict note below.**
+
+## `Rule_Design_Sinh.md` — the mandated design reference, and how it relates to the shipped HTML
+
+The repo root also carries several authoring-template files, all untracked: `Rule_Design_Sinh.md`, `prompt-Hoa.md`, `02_design_toan_final_v2.md`, `AIDUCATION_UI_REDESIGN_PLAYBOOK.md`, plus `.agents/rules/read-design.md` (an `always_on` agent rule). Both the Critical Rules above and `.agents/rules/read-design.md` mandate reading **`Rule_Design_Sinh.md`** before any design/code work — read it first, every session, no exceptions.
+
+**Where `Rule_Design_Sinh.md` came from:** it's a from-scratch Biology authoring prompt synthesized from the other three template files — `prompt-Hoa.md` (Chemistry canvas-simulation engine: draw/animation primitives, particle/tween/ripple systems, safety-locked animation state machines), `02_design_toan_final_v2.md` (Math design tokens, LMS/Athena manifest integration, DPR-aware canvas sizing, mobile/responsive discipline), and `AIDUCATION_UI_REDESIGN_PLAYBOOK.md` (retrofit playbook for standardizing color/font tokens when embedding into the LMS). None of those three source files mention SH11, quang hợp, or starch — they're generic/other-subject templates. `Rule_Design_Sinh.md` is the Biology-specific synthesis: Be Vietnam Pro font, Tabler Icons, a 3-column dashboard grid (`sideLeft`/`guide`+`controls`+`canvas`/`sideRight`), a Biology "science color" table (chlorophyll, iodine–starch result colors, cell/microscope colors, respiration indicators), safety-locked drawing primitives (e.g. `flameOn` gating alcohol-lamp flames away from ethanol), and Athena/LMS instrumentation.
+
+**Critical distinction — `Rule_Design_Sinh.md` is a template for *future* single-file Bio simulations, not a redesign spec for the shipped HTML.** The three built files (`SH11_B05_M03_P1/P2/P3`) use a *different* architecture than what `Rule_Design_Sinh.md` describes:
+
+| | Shipped `SH11_B05_M03_P*.html` | `Rule_Design_Sinh.md` template |
+|---|---|---|
+| Font | Playfair Display | Be Vietnam Pro |
+| Layout | 2-column (`canvas-panel` 52% / info-panel 45%) | 3-column dashboard (1720px max-width) |
+| Interaction | Static image + absolutely-positioned `.hotspot` overlays | `<canvas>` drawing + animation engine (particles, tweens, ripples) |
+| Icons | None specified | Tabler Icons webfont |
+| LMS integration | One `postMessage` completion signal | Full Athena manifest + `LMS().progress/event/state/complete/resize()` |
+
+**Do not apply `Rule_Design_Sinh.md`'s design system to `SH11_B05_M03_P*.html`** — that would break the design system locked by FILE_1 section 12. Use `Rule_Design_Sinh.md` only when asked to build a *new* Biology virtual-lab HTML from a fresh kịch bản (per its own usage note: paste the prompt + a separate scenario file, then generate one self-contained HTML). If a request is ambiguous about which system applies, ask rather than guessing.
 
 ## Domain-specific rules to preserve when editing
 
-From FILE_1 sections 8–9 and the asset dossier's science/safety checklists — these gate correctness and must not regress in either spec file or in future HTML:
+From FILE_1 sections 8–9 and the asset dossier's science/safety checklists — these gate correctness and must not regress in either spec file or the HTML:
 
 - Iodine is a reagent that detects pre-existing starch — never state or imply it creates starch.
 - Ethanol (cồn) and an open/lit flame must never appear simultaneously in any frame or state. Required safe sequence: heat the outer water bath with the alcohol lamp → extinguish the lamp and confirm the flame is out → move the lamp away → only then open the ethanol → place the small ethanol+leaf beaker into the hot water bath for indirect heating. Students select a safety *layout diagram* (A/B choice); the system runs the correct animation — never let the student drag the ethanol beaker through the flame zone.
@@ -74,3 +93,4 @@ From FILE_1 sections 8–9 and the asset dossier's science/safety checklists —
 - Don't read either txt file end-to-end for a small change — jump to the relevant screen header (`## SH11_B05_M03_P#_S##`) or asset header (`` ## `CODE_NAME` ``); each is a self-contained block.
 - When adding or changing a screen's asset reference in FILE_1, verify the code exists in the asset dossier's Section II catalog and has a Section III spec entry — add both if it's new, and add a matching placeholder file expectation to `Pic_SH11_B05/` if production is underway.
 - Both files carry a version/date/status header at the top (`v3_FINAL_2FILE`, `v2_FINAL`) — bump these and the "Ngày cập nhật" date together when making substantive edits, don't silently drift them out of sync.
+- After changing a screen's spec in FILE_1, propagate the change into the matching section of the corresponding built HTML file (and vice versa) — the two are no longer decoupled now that the HTML exists.
