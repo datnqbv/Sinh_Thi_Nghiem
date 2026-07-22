@@ -37,6 +37,8 @@ cỡ chữ + khoảng trắng (không bằng nhiều box màu). Cảm giác mụ
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<!-- Chỉ thêm khi bài CÓ số liệu động trên canvas (nhiệt độ, pH, đếm ngược...) — gộp JetBrains Mono vào cùng 1 request:
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"> -->
 ```
 ```css
 font-family: 'Be Vietnam Pro', system-ui, sans-serif;
@@ -48,7 +50,12 @@ font-family: 'Be Vietnam Pro', system-ui, sans-serif;
 - Type scale responsive: display `clamp(2rem,5vw,3rem)` · h1 `clamp(1.7rem,4vw,2.4rem)` ·
   h2 `clamp(1.4rem,3vw,1.9rem)` · h3 `1.25rem` · body `1.075rem` · small `0.9rem`.
 - **Chữ trên canvas** (`ctx.font`): cũng dùng `"Be Vietnam Pro"` (ví dụ `ctx.font = 'bold 13px "Be Vietnam Pro", sans-serif'`).
-  Ngoại lệ: công thức/số liệu dạng bảng cần đơn cách → `Courier New` (hiếm dùng trong Sinh).
+  Ngoại lệ: số liệu động đổi liên tục trên canvas (nhiệt độ/pH trong bài enzyme, đếm ngược thời gian...) → dùng
+  **`JetBrains Mono`** thay vì `Courier New` — `ctx.font = "bold 13px 'JetBrains Mono', monospace"`, kèm
+  `font-variant-numeric: tabular-nums` ở phần HTML tương ứng nếu có. Lý do: `Courier New` là font hệ điều hành,
+  có thể thiếu trên một số máy/trình duyệt và bị âm thầm thay thế; `JetBrains Mono` tải qua Google Fonts nên
+  hiển thị đồng nhất mọi thiết bị và không giật số khi giá trị đổi mỗi frame (hiếm dùng trong Sinh — chỉ thêm
+  font này vào `<head>` khi bài thực sự có số liệu động dạng này, xem MỤC 1 phía trên).
 
 ---
 
