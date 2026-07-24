@@ -154,6 +154,7 @@ chỉ thị, kết tủa, máu, tế bào... vẽ đúng màu sinh học. `ctx.f
 - Diệp lục **tan trong cồn nóng** (cồn chuyển xanh, lá nhạt màu) — đây là **tẩy màu**, không phải "phá huỷ lá".
 - Đun **cách thủy (gián tiếp)**: cồn + lá đặt trong cốc nhỏ, cốc nhỏ đặt trong **nồi/cốc nước nóng** — KHÔNG hơ cồn trực tiếp trên lửa (xem MỤC 14 an toàn).
 - Bọt khí quang hợp là **O₂** (thoát ra khi có ánh sáng); vẩn đục nước vôi là **CO₂** (hô hấp). Không nhầm hai khí.
+- **Kết quả đọc-bằng-màu PHẢI kèm dấu hiệu thứ hai (khả năng đọc cho người mù màu — đặc thù Sinh).** Gần như mọi kết quả Sinh đọc bằng màu (iốt xanh tím/vàng nâu, BTB vàng/xanh, Benedict xanh/đỏ gạch, co nguyên sinh...), mà xanh–đỏ và xanh–vàng đúng là các cặp người mù màu khó phân biệt nhất. Do đó **màu không bao giờ là kênh thông tin DUY NHẤT**: mỗi vùng/mẫu cho kết quả phải kèm ít nhất một trong — **nhãn chữ rõ** ("Dương tính (+)" / "Âm tính (−)"), **ký hiệu/hoa văn** (nét gạch chéo vs chấm), hoặc **vị trí cố định có nhãn** (vùng chiếu sáng vs vùng che luôn có viền + chú thích). Bảng quan sát (MỤC 9) điền cả tên màu bằng CHỮ, không chỉ tô ô màu. Điều này KHÔNG thay màu khoa học ở 4A — chỉ bổ sung kênh đọc thứ hai.
 
 ---
 
@@ -223,7 +224,7 @@ header{
   background-image:linear-gradient(rgba(18,26,20,.42), rgba(18,26,20,.42)), url('[URL_ẢNH_SINH_HOC]');
   background-position:center 32%; background-size:cover; background-repeat:no-repeat; box-shadow:var(--shadow);
 }
-```
+``` 
 - 2 pseudo `::before/::after` hình tròn `rgba(255,255,255,0.07)` tạo chiều sâu. Badge: nền trong suốt, chữ trắng 90%, icon Tabler (vd `ti-leaf`). Tiêu đề trắng weight 700–800; mô tả `rgba(255,255,255,0.72)`.
 - **BẮT BUỘC ẩn được:** nếu header chứa id JS cập nhật động → tách id đó ra ngoài + dùng `header{display:none}` khi nhúng, không xoá node.
 
@@ -338,7 +339,7 @@ function easeInOut(t){ return t<.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2; }
 function lerpColor(c1,c2,t){ t=clamp(t,0,1); return `rgb(${Math.round(c1.r+(c2.r-c1.r)*t)},${Math.round(c1.g+(c2.g-c1.g)*t)},${Math.round(c1.b+(c2.b-c1.b)*t)})`; }
 ```
 
-> **Nét trên màn Retina/2x (tuỳ chọn nâng cao — tinh hoa từ bản Toán):** `resizeCanvas()` ở trên đặt buffer = kích thước CSS nên trên màn hình `devicePixelRatio>1` hình có thể hơi mờ (nhất là chữ/nhãn). Muốn sắc nét: `const dpr = window.devicePixelRatio||1; canvas.width = Math.round(r.width*dpr); canvas.height = Math.round(r.height*dpr);` (giữ CSS `width/height:100%`). Vì `fitScale = canvasW/W` tự bù nên nội dung vẫn đúng tỉ lệ, lưới vẽ theo buffer thật → không đổi gì khác trong `loop()`. (Sim Sinh đa số điều khiển bằng nút nên không cần quy đổi toạ độ chuột; nếu có bắt sự kiện *trên* canvas thì chia toạ độ cho `dpr`.)
+> **Nét trên màn Retina/2x (tuỳ chọn nâng cao — tinh hoa từ bản Toán):** `resizeCanvas()` ở trên đặt buffer = kích thước CSS nên trên màn hình `devicePixelRatio>1` hình có thể hơi mờ (nhất là chữ/nhãn). Muốn sắc nét: `const dpr = window.devicePixelRatio||1; canvas.width = Math.round(r.width*dpr); canvas.height = Math.round(r.height*dpr);` (giữ CSS `width/height:100%`). Vì `fitScale = canvasW/W` tự bù nên nội dung vẫn đúng tỉ lệ, lưới vẽ theo buffer thật → không đổi gì khác trong `loop()`. Nếu sim có **bắt click/tap trên canvas** (bấm hotspot, chọn vùng trên lá/ảnh — ngày càng phổ biến ở sim Sinh), **BẮT BUỘC** quy đổi toạ độ theo MỤC 11E, không tự chế công thức — công thức ở 11E chạy đúng cho cả bản thường lẫn bản DPR ở trên.
 
 **Biến trạng thái toàn cục cần khai báo** (đầu script, trước `loop()` — `loop()` ở MỤC 11C có tham chiếu tới chúng):
 ```js
@@ -442,6 +443,37 @@ Kiểu particle đặc thù Sinh:
 - **Bọt nước sôi (đun cách thủy)**: spawn đáy cốc nước ngoài, `vy` âm, size tăng dần theo độ cao.
 - **Hơi nước/hơi cồn**: spawn trên mặt chất lỏng, `vy` âm, fade + spread ngang.
 - **Hạt tinh bột lắng / kết tủa Benedict**: spawn trên, `vy` dương, dừng ở `targetY`, `wobble` ngang nhẹ (mỗi hạt `targetY` lệch ±5–10px → lớp cặn tự nhiên).
+
+### 11E. Bắt click/tap TRÊN canvas — quy đổi toạ độ (BẮT BUỘC nếu sim có hotspot trên canvas)
+
+Nhiều sim Sinh cho học sinh **bấm thẳng lên hình trong canvas** (chọn vùng giữa lá chét, bấm khay dụng cụ, chọn thẻ hình, bấm vùng lá trên ảnh kết quả). Toạ độ chuột/chạm nằm ở hệ **pixel màn hình**, còn mọi hình lại vẽ ở hệ **logic `W×H`** rồi bị `loop()` (MỤC 11C) dịch–co bằng `translate(offsetX,offsetY)` + `scale(fitScale,fitScale)`. Muốn biết học sinh bấm trúng vật nào, phải **nghịch đảo đúng phép biến đổi đó** — tính lại `fitScale/offsetX/offsetY` bằng CÙNG công thức trong `loop()`, không hardcode:
+
+```js
+// Gắn 1 lần; trả về toạ độ theo hệ LOGIC W×H để so trực tiếp với toạ độ vẽ trong drawStageX()
+function canvasEventToLogic(e){
+  const r = canvas.getBoundingClientRect();
+  const p = e.touches ? e.touches[0] : e;                 // hỗ trợ cả chuột lẫn cảm ứng
+  // (clientX-r.left) là px theo CSS; nhân canvas.width/r.width để ra px BUFFER thật
+  // → chạy đúng cho cả bản thường (buffer=CSS px) lẫn bản DPR (buffer=CSS px×dpr), không cần biết có dpr hay không
+  const bx = (p.clientX - r.left) * (canvas.width  / r.width);
+  const by = (p.clientY - r.top)  * (canvas.height / r.height);
+  // Nghịch đảo ĐÚNG phép biến đổi của loop() — 3 dòng này PHẢI khớp từng chữ với loop()
+  const fitScale = Math.min(canvasW / W, canvasH / H);
+  const offsetX  = (canvasW - W * fitScale) / 2;
+  const offsetY  = (canvasH - H * fitScale) / 2;
+  return { x: (bx - offsetX) / fitScale, y: (by - offsetY) / fitScale };
+}
+canvas.addEventListener('click', e => {
+  if (state.isAnimating) return;                          // MỤC 13: đang animate thì khoá tương tác
+  const { x, y } = canvasEventToLogic(e);
+  // so (x,y) với vùng vẽ ở hệ logic, vd hotspot tròn tâm (hx,hy) bán kính hr:
+  // if ((x-hx)**2 + (y-hy)**2 <= hr*hr) { ... }
+});
+```
+
+- **Vùng bấm (hotspot) tối thiểu ~44px** ở hệ hiển thị thật để chạm được trên mobile → ở hệ logic đặt bán kính/cạnh ≥ `44/fitScale` (canvas nhỏ thì `fitScale`<1 nên hotspot logic phải to hơn 44).
+- Nếu dùng bản DPR sắc nét ở 11A, công thức trên **vẫn đúng nguyên** vì `canvas.width/r.width` đã gộp luôn hệ số dpr — KHÔNG chia thêm `dpr` lần nữa (chia 2 lần = lệch một nửa).
+- Vẽ **viền/nhấp nháy hotspot** (nét đứt, glow nhẹ) khi vùng đang chờ bấm để học sinh biết bấm ở đâu; ẩn đi sau khi đã bấm đúng.
 
 ---
 
@@ -619,7 +651,44 @@ function drawStream(sx, sy, targetCx, targetHalfW, ty, color){ // dòng rót nư
   // Khi dòng chạm mặt chất lỏng: spawnRing(ex, ty) + spawnSplash(ex, ty)
 }
 ```
-Ống nghiệm + giá đỡ + nhãn hoá chất: dùng lại `drawTestTube()` chuẩn Aiducation (thân bo đáy, chất lỏng nội suy màu theo `reactProgress`, vệt sáng trái, miệng gờ, giá đỡ, nhãn `ctx.font='bold 13px "Be Vietnam Pro"'`).
+### 12D-bis. Ống nghiệm (`drawTestTube`) — dùng cho bài hô hấp (BTB/nước vôi), thử đường Benedict...
+Nhiều bài Sinh ở MỤC 16 cần ống nghiệm (chỉ thị BTB đổi màu, kết tủa Benedict). Dùng nguyên hàm dưới đây — **màu chất lỏng lấy từ bảng khoa học MỤC 4A**, nhãn dùng Be Vietnam Pro:
+```js
+// cx: tâm ngang; topY: đỉnh miệng ống; h: chiều cao thân; liquidColor/fillRatio: dung dịch (0..1); label: nhãn dưới ống
+function drawTestTube(cx, topY, h, liquidColor, fillRatio, label){
+  const halfW = 16, botY = topY + h, r = halfW; // đáy bán nguyệt bán kính = nửa bề rộng
+  ctx.save();
+  // giá đỡ (kẹp) ngang qua miệng ống
+  ctx.strokeStyle='#CBD5E1'; ctx.lineWidth=4; ctx.lineCap='round';
+  ctx.beginPath(); ctx.moveTo(cx-halfW-12, topY+14); ctx.lineTo(cx+halfW+12, topY+14); ctx.stroke();
+  // thân + đáy bo tròn (đường bao dùng chung cho fill thân, clip chất lỏng, stroke viền)
+  function tubePath(){
+    ctx.beginPath();
+    ctx.moveTo(cx-halfW, topY); ctx.lineTo(cx-halfW, botY-r);
+    ctx.arc(cx, botY-r, r, Math.PI, 0, true);           // đáy bán nguyệt
+    ctx.lineTo(cx+halfW, topY);
+  }
+  tubePath(); ctx.fillStyle='rgba(220,235,240,0.4)'; ctx.fill();  // thuỷ tinh
+  // chất lỏng: clip trong thân rồi đổ từ đáy lên theo fillRatio, mặt cong lõm (meniscus)
+  if (liquidColor && fillRatio>0){
+    ctx.save(); tubePath(); ctx.clip();
+    const liqTop = botY - r - (h - r - 6) * clamp(fillRatio,0,1);
+    ctx.fillStyle = liquidColor; ctx.fillRect(cx-halfW, liqTop, halfW*2, botY-liqTop);
+    ctx.beginPath(); ctx.moveTo(cx-halfW, liqTop); ctx.quadraticCurveTo(cx, liqTop+3, cx+halfW, liqTop);
+    ctx.strokeStyle='rgba(255,255,255,0.35)'; ctx.lineWidth=2; ctx.stroke();
+    ctx.restore();
+  }
+  tubePath(); ctx.strokeStyle='#94A3B8'; ctx.lineWidth=2; ctx.stroke();  // viền
+  // vệt sáng trái + gờ miệng
+  ctx.beginPath(); ctx.moveTo(cx-halfW+5, topY+8); ctx.lineTo(cx-halfW+5, botY-r);
+  ctx.strokeStyle='rgba(255,255,255,0.6)'; ctx.lineWidth=3; ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx-halfW-3, topY); ctx.lineTo(cx+halfW+3, topY);
+  ctx.strokeStyle='#7C8A99'; ctx.lineWidth=2.5; ctx.lineCap='round'; ctx.stroke();
+  if (label){ ctx.fillStyle='#1A1A1A'; ctx.font='bold 13px "Be Vietnam Pro", sans-serif'; ctx.textAlign='center'; ctx.fillText(label, cx, botY+22); }
+  ctx.restore();
+}
+```
+Đổi màu chỉ thị: nội suy `liquidColor` bằng `lerpColor` theo bảng 4A — BTB xanh `#2E7CC4`→vàng `#E0B020` (có CO₂); nước vôi trong `rgba(210,230,238,0.5)`→trắng sữa `rgba(245,245,240,0.85)` (vẩn đục); Benedict xanh `#1C6FB0`→đỏ gạch `#B5471F` (kèm particle kết tủa lắng, MỤC 11D).
 
 ### 12E. Trường quan sát kính hiển vi + tế bào (bài tế bào/thẩm thấu)
 ```js
@@ -684,6 +753,12 @@ Di chuyển vật: `easeOut`. Đổi màu chất lỏng/mô: `lerp` tuyến tín
 @media (prefers-reduced-motion: reduce){ /* tắt transition trang trí */ }
 ```
 Canvas: tắt hiệu ứng lặp thuần trang trí (shimmer, wave), **GIỮ** animation thao tác thí nghiệm (nhỏ giọt, đổi màu, tẩy diệp lục) vì đó là nội dung sư phạm — có thể rút ngắn thời gian.
+
+### #8 — Nhãn thời gian cho quá trình sinh học bị nén (time-lapse) — đặc thù Sinh
+Nhiều quá trình Sinh kéo dài **giờ/ngày thật** nhưng nén còn vài giây trên màn: xử lí tối, chiếu sáng tích luỹ tinh bột, nảy mầm, hướng sáng, phân bào, lên men. Học sinh dễ hiểu nhầm đó là thời gian thực nếu không nói rõ.
+- Mọi hoạt cảnh nén thời gian **PHẢI hiện nhãn mốc thời gian THẬT** ngay trên/cạnh vùng đang chạy — vd `"Xử lí tối · ~48 giờ"`, `"Chiếu sáng · vài giờ"`, `"Nảy mầm · 5 ngày"` (dùng `~`/"vài" khi kịch bản không cho số chính xác). Kiểu C timeline (MỤC 8B) đặt nhãn ở 2 đầu thanh trượt + badge phase; kiểu B đặt trong thanh guide hoặc caption dưới canvas.
+- Có thể kèm 1 tín hiệu "đang tua nhanh" (biểu tượng `ti-player-track-next`/đồng hồ) để phân biệt rõ với thao tác diễn ra thời gian thực (nhỏ iốt, rót nước).
+- **Không** để tốc độ nén ám chỉ sai sinh học (vd không làm cây "nảy mầm tức thì" như phép màu); nén là quy ước hiển thị, nhãn thời gian giữ đúng nhận thức về nhịp sinh học thật.
 
 ---
 
@@ -816,10 +891,13 @@ ro.observe(document.body);
 - [ ] `resizeCanvas()` gọi đầu mỗi frame; `drawGrid()` theo kích thước thật (lấp đầy, không méo).
 - [ ] Không đổi state tức thì — mọi thao tác chạy chuỗi animation (MỤC 13); nút disabled khi đang animate.
 - [ ] Meniscus cong lõm; reaction flash trước lerpColor; impact splash khi giọt chạm; particle wobble.
+- [ ] Nếu có click/tap trên canvas: quy đổi toạ độ theo MỤC 11E (khớp `fitScale`/offset của `loop()`, không chia `dpr` hai lần); hotspot ≥ `44/fitScale`.
 
 **Sinh học & an toàn:**
 - [ ] Cồn & lửa **không** đồng thời 1 frame; kẹp gắp vật nóng; `coveredRegion` giữ nguyên qua mọi state.
 - [ ] Kết quả iốt chỉ 2 màu khoá, tô đúng vùng, **không tô cả lá**; iốt phát hiện (không tạo) tinh bột.
+- [ ] Mọi kết quả đọc-bằng-màu có **dấu hiệu thứ hai** (nhãn +/−, hoa văn, hoặc vị trí có chú thích) — mù màu vẫn đọc được (MỤC 4B); bảng quan sát ghi tên màu bằng chữ.
+- [ ] Quá trình sinh học nén thời gian có **nhãn mốc thời gian thật** ("~48 giờ", "vài ngày") + tín hiệu tua nhanh (MỤC 13 #8).
 - [ ] Kết luận có giới hạn; phản hồi sai nêu lỗi cụ thể + cho làm lại, không reset tiến trình đúng; không xưng "em".
 
 **Mobile & LMS:**
