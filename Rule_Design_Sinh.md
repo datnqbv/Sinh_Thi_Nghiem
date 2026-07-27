@@ -858,6 +858,71 @@ ro.observe(document.body);
 ```
 Đồng thời: **bỏ hẳn** `min-height:100vh`/`height:100vh` trên `body`; xoá margin/padding thừa cuối trang.
 
+### 15D. Quản lý đường dẫn ảnh — sẵn sàng thay bằng URL/CDN/Google Drive
+
+Các ảnh bài học dùng trong canvas hoặc thẻ HTML **PHẢI được khai báo tập trung** trong một bảng `assetFiles`. Mỗi giá trị
+trong bảng là **đường dẫn hoàn chỉnh mà `Image.src` có thể dùng trực tiếp**: có thể là đường dẫn tương đối trong dự án,
+URL HTTPS của CDN/máy chủ ảnh, hoặc URL xem trực tiếp của Google Drive.
+
+```js
+const assetFiles = {
+  A01: 'images/SH11-B05-M03/SH11-B05-M03-A01.png',
+  A02: 'images/SH11-B05-M03/SH11-B05-M03-A02.png'
+};
+
+const assets = {};
+Object.entries(assetFiles).forEach(([code, url]) => {
+  const img = new Image();
+  img.addEventListener('load', () => {
+    assets[code] = img;
+  });
+  img.src = url;
+});
+```
+
+Khi chuyển sang ảnh online, **chỉ thay giá trị trong `assetFiles`**, không sửa bộ nạp ảnh:
+
+```js
+const assetFiles = {
+  A01: 'https://cdn.example.edu/SH11-B05-M03-A01.png',
+  A02: 'https://drive.google.com/uc?export=view&id=FILE_ID_A02'
+};
+```
+
+**Không dùng kiểu nối bắt buộc `ASSET_BASE + file`** cho các bài cần khả năng thay từng ảnh bằng URL riêng, vì mỗi file
+Google Drive có một `FILE_ID` khác nhau. Bộ nạp chuẩn luôn dùng:
+
+```js
+img.src = url;
+```
+
+Nếu cùng một ảnh vừa được vẽ lên canvas vừa xuất hiện trong HTML (ví dụ ảnh ở `.link-fish`), không lặp đường dẫn tại
+hai nơi. Gán một `id` cho thẻ ảnh và lấy URL từ cùng bảng:
+
+```html
+<img id="linkFishImage" alt="Mẫu vật minh họa">
+```
+
+```js
+document.getElementById('linkFishImage').src = assetFiles.A02;
+```
+
+**Quy tắc khi dùng Google Drive:**
+- File phải được chia sẻ ở chế độ **“Bất kỳ ai có đường liên kết — Người xem”**.
+- Lấy `FILE_ID` từ link chia sẻ và dùng URL dạng
+  `https://drive.google.com/uc?export=view&id=FILE_ID`.
+- Không dùng nguyên link `/file/d/.../view` làm `src`, vì đó là trang xem chứ không phải URL ảnh trực tiếp.
+- Google Drive không phải CDN; có thể chuyển hướng, giới hạn lượt tải hoặc thay đổi hành vi nhúng. Bài dùng cho sản xuất
+  nên ưu tiên máy chủ Aiducation/CDN có URL HTTPS ổn định.
+- Nếu chỉ gọi `ctx.drawImage()` và không đọc pixel, không tự thêm `crossOrigin='anonymous'`. Chỉ thêm `crossOrigin`
+  khi máy chủ ảnh đã cấu hình CORS phù hợp; cấu hình sai có thể khiến ảnh không tải.
+
+**Nghiệm thu đường dẫn ảnh:**
+- Mọi mã ảnh trong kịch bản phải tồn tại đúng một khóa trong `assetFiles`.
+- Không còn đường dẫn ảnh bài học bị viết rải rác trong nhiều hàm.
+- Thay thử một khóa bằng URL HTTPS vẫn tải được ảnh mà không cần sửa `drawAsset()` hoặc bộ nạp.
+- Có xử lý ảnh chưa tải/lỗi tải để canvas không phát sinh exception hoặc làm hỏng luồng tương tác.
+
 ---
 
 ## 16. VÍ DỤ MÔN SINH — Bài "Sự hình thành tinh bột trong quang hợp"
@@ -885,6 +950,7 @@ ro.observe(document.body);
 
 **Cấu trúc & self-contained:**
 - [ ] 1 file HTML, CSS/JS inline; chỉ import Be Vietnam Pro + Tabler qua CDN; ảnh header/mascot từ aiducation.edu.vn (ngoại lệ). Không phụ thuộc file ngoài khác.
+- [ ] Ảnh bài học khai báo tập trung trong `assetFiles`; mỗi giá trị là đường dẫn hoàn chỉnh; bộ nạp dùng `img.src = url`; ảnh dùng lại trong HTML không lặp URL.
 - [ ] `<meta charset="UTF-8">` + `<meta name="viewport" ...>`; toàn bộ UI tiếng Việt, đúng dấu, không tràn chữ.
 - [ ] **Không** `localStorage`/`sessionStorage`/cookie — state bằng biến JS trong session (+ `LMS().state()`).
 
