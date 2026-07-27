@@ -250,7 +250,7 @@ table.obs-table td{ padding:8px 10px; border-bottom:1px solid var(--paper-line);
 </div>
 
 <div class="link-section">
-  <div class="link-fish"><img src="images/SH11-B05-M03/SH11-B05-M03-A02.png" alt="Lá chét khoai tây dùng trong thí nghiệm"></div>
+  <div class="link-fish"><img id="linkFishImage" src="images/SH11-B05-M03/SH11-B05-M03-A02.png" alt="Lá chét khoai tây dùng trong thí nghiệm"></div>
   <div class="link-info">
     <h3>Sinh Học Aiducation – Học liệu tương tác</h3>
     <p>Module tiếp theo: Sự thải oxygen trong quang hợp (SH11_B05_M04).</p>
@@ -287,18 +287,25 @@ let time = 0, flashTimer = 0;
 let tweens = [];
 const state = { stage: 1, isAnimating: false };
 const canvasClickHandlers = {};
-const ASSET_BASE = 'images/SH11-B05-M03/';
+/* Mỗi giá trị là một URL hoàn chỉnh.
+   Khi dùng Google Drive, chỉ thay giá trị tương ứng, ví dụ:
+   A02:'https://drive.google.com/uc?export=view&id=FILE_ID_A02' */
 const assetFiles = {
-  A02:'SH11-B05-M03-A02.png', A03:'SH11-B05-M03-A03.png',
-  A07:'SH11-B05-M03-A07.png', A13:'SH11-B05-M03-A13.png', A20:'SH11-B05-M03-A20.png',
-  A18:'SH11-B05-M03-A18.png', A19:'SH11-B05-M03-A19.png'
+  A02:'images/SH11-B05-M03/SH11-B05-M03-A02.png',
+  A03:'images/SH11-B05-M03/SH11-B05-M03-A03.png',
+  A07:'images/SH11-B05-M03/SH11-B05-M03-A07.png',
+  A13:'images/SH11-B05-M03/SH11-B05-M03-A13.png',
+  A20:'images/SH11-B05-M03/SH11-B05-M03-A20.png',
+  A18:'images/SH11-B05-M03/SH11-B05-M03-A18.png',
+  A19:'images/SH11-B05-M03/SH11-B05-M03-A19.png'
 };
 const assets = {};
-Object.entries(assetFiles).forEach(([code,file])=>{
+Object.entries(assetFiles).forEach(([code,url])=>{
   const img=new Image();
   img.addEventListener('load',()=>{assets[code]=img;});
-  img.src=ASSET_BASE+file;
+  img.src=url;
 });
+document.getElementById('linkFishImage').src = assetFiles.A02;
 function drawAsset(code,x,y,w,h,mode='contain',alpha=1){
   const img=assets[code];
   if(!img){
