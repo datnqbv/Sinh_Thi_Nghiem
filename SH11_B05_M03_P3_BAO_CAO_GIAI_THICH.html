@@ -14,7 +14,7 @@
     "Rút ra kết luận đúng phạm vi bằng chứng của thí nghiệm"
   ],
   "structure": [ { "id": "p3", "title": "Phần 3 — Báo cáo và giải thích" } ],
-  "athenaGuidance": "(a) Bài cho học sinh đọc kết quả thí nghiệm từ ảnh lá đã nhỏ iodine, giải thích vai trò của giấy đen/ethanol/iodine, và chọn kết luận đúng phạm vi bằng chứng. (b) 1) Màu vùng được chiếu sáng — Lựa chọn: A) Xanh tím đậm B) Vàng nâu nhạt C) Trắng; Màu vùng bị che — Lựa chọn: A) Xanh tím đậm B) Vàng nâu nhạt C) Trắng 2) Ghép hình với vai trò — Giấy đen: tạo vùng đối chứng không nhận ánh sáng; Ethanol (đun cách thủy an toàn): tẩy diệp lục để quan sát màu; Iodine: nhận biết tinh bột có sẵn 3) Kết luận nào phù hợp nhất với bằng chứng — Lựa chọn: A) Trong điều kiện thí nghiệm, phần lá được chiếu sáng cho phản ứng nhận biết tinh bột, còn phần bị che sáng không cho phản ứng tương ứng; ánh sáng cần cho sự hình thành hoặc tích lũy tinh bột ở lá B) Mọi loài cây luôn tạo tinh bột bất kể ánh sáng C) Tinh bột là sản phẩm duy nhất của quang hợp. (c) Athena chỉ gợi ý (ví dụ hỏi lại hai vùng khác nhau ở điều kiện gì trước khi kết luận), không bao giờ nói thẳng đáp án đúng, và không mở rộng cơ chế ngoài phạm vi bài."
+  "athenaGuidance": "(a) Bài cho học sinh đọc kết quả thí nghiệm từ ảnh lá đã nhỏ iodine, giải thích vai trò của giấy đen/ethanol/iodine, và chọn kết luận đúng phạm vi bằng chứng. (b) 1) Màu vùng được chiếu sáng — Lựa chọn: A) Xanh tím đậm B) Vàng nâu nhạt C) Trắng; Màu vùng bị che — Lựa chọn: A) Xanh tím đậm B) Vàng nâu nhạt C) Trắng 2) Ghép ba hình Giấy đen + kẹp, Ethanol (đun cách thủy an toàn), Dung dịch iodine với ba lựa chọn vai trò: A) Nhận biết tinh bột có sẵn B) Tạo vùng đối chứng không nhận ánh sáng C) Tẩy diệp lục để quan sát màu 3) Kết luận nào phù hợp nhất với bằng chứng — Lựa chọn: A) Trong điều kiện thí nghiệm, phần lá được chiếu sáng cho phản ứng nhận biết tinh bột, còn phần bị che sáng không cho phản ứng tương ứng; ánh sáng cần cho sự hình thành hoặc tích lũy tinh bột ở lá B) Mọi loài cây luôn tạo tinh bột bất kể ánh sáng C) Tinh bột là sản phẩm duy nhất của quang hợp. (c) Athena chỉ gợi ý (ví dụ hỏi lại hai vùng khác nhau ở điều kiện gì trước khi kết luận), không bao giờ nói thẳng đáp án đúng, và không mở rộng cơ chế ngoài phạm vi bài."
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,15 +38,17 @@
   --shadow:0 4px 12px rgba(45,139,111,.10); --shadow-sm:0 2px 6px rgba(26,26,26,.05);
 }
 *{box-sizing:border-box;}
+html,body{max-width:100%;overflow-x:hidden;}
 body{
   margin:0; display:flex; flex-direction:column; align-items:center; gap:16px;
   padding:24px clamp(20px,2.5vw,48px); background:var(--cream); color:var(--ink);
   font-family:'Be Vietnam Pro', system-ui, sans-serif; font-size:1.075rem; line-height:1.7;
 }
 h1,h2,h3{margin:0;} button{font-family:inherit;}
+button:focus-visible,.chip:focus-visible{outline:3px solid var(--accent);outline-offset:3px;}
 header{
   width:100%; max-width:1720px; border-radius:16px; padding:1.5rem 2rem; overflow:hidden; position:relative;
-  background-image:linear-gradient(rgba(18,26,20,.42), rgba(18,26,20,.42)), url('Pic_SH11_B05/IMG_SH11B05M03_RESULT_CORRECT_01.png');
+  background-image:linear-gradient(rgba(18,26,20,.42), rgba(18,26,20,.42)), url('https://www.aiducation.edu.vn/images/fifingfig_Modern_editorial_illustration_of_a_stylized_Vietnames_f0b08847-9f6d-48cf-90ac-b8ed2eb77baf.png');
   background-position:center 32%; background-size:cover; background-repeat:no-repeat; box-shadow:var(--shadow);
 }
 header::before, header::after{ content:''; position:absolute; border-radius:50%; background:rgba(255,255,255,0.07); pointer-events:none; }
@@ -66,6 +68,7 @@ header p{ color:rgba(255,255,255,.72); margin-top:6px; max-width:640px; }
   grid-template-areas:"sideLeft guide sideRight" "sideLeft controls sideRight" "sideLeft canvas sideRight";
   grid-template-rows:auto auto 1fr; gap:16px; width:100%; max-width:1720px; align-items:stretch;
 }
+.lab-wrapper>*{min-width:0;}
 .lab-side-left, .lab-side-right{ grid-area:sideLeft; align-self:stretch; display:flex; flex-direction:column; gap:16px; min-height:0; }
 .lab-side-right{ grid-area:sideRight; }
 .card{ background:var(--cream-2); border:1px solid var(--paper-line); border-radius:12px; padding:16px 18px; }
@@ -90,7 +93,7 @@ header p{ color:rgba(255,255,255,.72); margin-top:6px; max-width:640px; }
 .step-cell.current .step-desc{ color:var(--ink); }
 .guide-bar{ grid-area:guide; display:flex; align-items:center; gap:12px; background:var(--jade-pale); border:1px solid var(--sage); border-radius:12px; padding:12px 16px; }
 .guide-icon{ flex-shrink:0; width:42px; height:42px; border-radius:50%; background:var(--jade); color:var(--cream); display:flex; align-items:center; justify-content:center; font-size:1.2rem; }
-.guide-text{ flex:1; font-weight:600; color:var(--ink); }
+.guide-text{ flex:1; min-width:0; font-weight:600; color:var(--ink); overflow-wrap:anywhere; }
 .guide-badge{ flex-shrink:0; background:var(--cream); border:1px solid var(--sage); color:var(--jade-text); font-weight:700; font-size:.85rem; padding:5px 12px; border-radius:20px; }
 .controls-row{ grid-area:controls; display:flex; flex-wrap:nowrap; align-items:center; gap:10px; background:var(--cream-2); border:1px solid var(--paper-line); border-radius:12px; padding:8px 14px; min-height:52px; overflow-x:auto; }
 .dots{ display:flex; gap:6px; flex-shrink:0; }
@@ -116,11 +119,11 @@ table.obs-table td{ padding:8px 10px; border-bottom:1px solid var(--paper-line);
 .obs-filled{ animation:obsFlash 1s ease; }
 .swatch{ display:inline-block; width:14px; height:14px; border-radius:3px; margin-right:6px; vertical-align:middle; border:1px solid rgba(0,0,0,.15); }
 @keyframes obsFlash{ 0%{ background:var(--jade-pale); } 100%{ background:transparent; } }
-.eb-block{ background:var(--sage-pale); border:1px solid var(--sage); border-left:4px solid var(--accent); border-radius:10px; padding:12px 14px; margin-bottom:12px; }
+.eb-block{ position:relative; width:100%; max-width:100%; overflow:hidden; overflow-wrap:anywhere; background:var(--sage-pale); border:1px solid var(--sage); border-left:4px solid var(--accent); border-radius:10px; padding:12px 14px; margin:0 0 12px; }
 .eb-block.done{ background:var(--correct-bg); border-left-color:var(--correct); }
 .eb-q{ font-weight:600; margin-bottom:8px; }
 .eb-options{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:6px; }
-.eb-opt{ width:100%; display:flex; align-items:flex-start; text-align:left; gap:10px; padding:10px 12px; border-radius:8px; border:1.5px solid var(--paper-line); background:#fff; cursor:pointer; font-size:.88rem; }
+.eb-opt{ width:100%; min-width:0; display:flex; align-items:flex-start; text-align:left; gap:10px; padding:10px 12px; border-radius:8px; border:1.5px solid var(--paper-line); background:#fff; cursor:pointer; font-size:.88rem; }
 .eb-opt:hover:not(:disabled){ border-color:var(--jade); }
 .eb-opt .letter{ flex:0 0 22px; font-weight:700; color:var(--jade-text); }
 .eb-opt .txt{ flex:1; }
@@ -128,10 +131,15 @@ table.obs-table td{ padding:8px 10px; border-bottom:1px solid var(--paper-line);
 .eb-opt.wrong{ border-color:var(--wrong); background:var(--wrong-bg); }
 .eb-opt:disabled{ cursor:default; }
 .eb-fb{ margin-top:8px; font-size:.85rem; color:var(--ink-2); }
-.match-row{ display:flex; align-items:center; gap:8px; margin-bottom:8px; }
-.match-btn{ flex:1; text-align:left; padding:9px 12px; border-radius:8px; border:1.5px solid var(--paper-line); background:#fff; cursor:pointer; font-size:.85rem; }
+.match-board{ position:relative; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:14px; align-items:start; isolation:isolate; }
+.match-column{ display:flex; flex-direction:column; gap:8px; min-width:0; }
+.match-column-title{ position:relative; z-index:2; color:var(--ink-3); font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
+.match-row{ position:relative; z-index:2; display:flex; align-items:stretch; min-width:0; min-height:54px; }
+.match-btn{ flex:1; min-width:0; text-align:left; padding:9px 10px; border-radius:8px; border:1.5px solid var(--paper-line); background:#fff; cursor:pointer; font-size:.82rem; overflow-wrap:anywhere; }
 .match-btn.selected{ border-color:var(--jade); background:var(--jade-pale); }
 .match-btn.paired{ border-color:var(--correct); background:var(--correct-bg); cursor:default; }
+.match-svg{ position:absolute; inset:0; width:100%; height:100%; z-index:1; pointer-events:none; overflow:visible; }
+.match-svg line{ stroke:var(--jade-deep); stroke-width:2.5; stroke-linecap:round; }
 .link-section{ width:100%; max-width:1720px; display:flex; align-items:center; gap:18px; background:var(--cream-2); border:1px solid var(--paper-line); border-radius:12px; padding:18px 22px; }
 .link-fish img{ width:72px; height:72px; border-radius:50%; object-fit:cover; border:2px solid var(--sage); }
 .link-info h3{ font-size:1.05rem; }
@@ -139,12 +147,16 @@ table.obs-table td{ padding:8px 10px; border-bottom:1px solid var(--paper-line);
 .link-url{ color:var(--jade-text); font-weight:600; text-decoration:none; }
 .link-url:hover{ color:var(--jade-deep); text-decoration:underline; }
 @media (max-width:1100px){
-  .lab-wrapper{ grid-template-columns:1fr; grid-template-areas:"guide" "controls" "canvas" "sideRight" "sideLeft"; }
+  .lab-wrapper{ grid-template-columns:minmax(0,1fr); grid-template-areas:"guide" "controls" "canvas" "sideRight" "sideLeft"; }
   .lab-side-left, .lab-side-right{ height:auto; }
   .lab-side-left > *:last-child, .lab-side-right > *:last-child{ flex:none; }
   #labCanvas{ min-height:320px; }
 }
 @media (max-width:640px){
+  body{width:100vw; padding:12px;}
+  header,.goal-bar,.recap-bar,.lab-wrapper,.link-section{width:calc(100vw - 24px); max-width:calc(100vw - 24px);}
+  header{padding:1.25rem 1rem;}
+  header h1{font-size:clamp(1.55rem,7vw,2rem); overflow-wrap:anywhere;}
   .goal-text{ font-size:15px; }
   .btn{ min-height:44px; height:auto; padding:10px 16px; }
   .chip{ min-height:44px; padding:10px 12px; }
@@ -211,7 +223,7 @@ table.obs-table td{ padding:8px 10px; border-bottom:1px solid var(--paper-line);
 
   <div class="canvas-card">
     <div class="canvas-glow-wrap">
-      <canvas id="labCanvas" width="760" height="560" role="img" aria-label="Ảnh kết quả thí nghiệm tinh bột trong quang hợp"></canvas>
+      <canvas id="labCanvas" width="760" height="560" role="img" tabindex="0" aria-label="Ảnh kết quả thí nghiệm tinh bột trong quang hợp. Dùng Enter hoặc phím cách để chọn lần lượt vùng nhận sáng và vùng bị che."></canvas>
     </div>
   </div>
 
@@ -238,8 +250,7 @@ table.obs-table td{ padding:8px 10px; border-bottom:1px solid var(--paper-line);
 </div>
 
 <div class="link-section">
-  <!-- Mascot Aiducation: placeholder pending real brand asset URL from production team -->
-  <div class="link-fish"><img src="[URL_MASCOT_AIDUCATION]" alt="Mascot Aiducation"></div>
+  <div class="link-fish"><img src="images/SH11-B05-M03/SH11-B05-M03-A02.png" alt="Lá chét khoai tây dùng trong thí nghiệm"></div>
   <div class="link-info">
     <h3>Sinh Học Aiducation – Học liệu tương tác</h3>
     <p>Module tiếp theo: Sự thải oxygen trong quang hợp (SH11_B05_M04).</p>
@@ -257,9 +268,14 @@ const W = 760, H = 560;
 let canvasW = W, canvasH = H;
 function resizeCanvas(){
   const r = canvas.getBoundingClientRect();
-  if (canvas.width !== Math.round(r.width) || canvas.height !== Math.round(r.height)){
-    canvas.width = Math.round(r.width); canvas.height = Math.round(r.height);
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const nextW = Math.max(1, Math.round(r.width * dpr));
+  const nextH = Math.max(1, Math.round(r.height * dpr));
+  if (canvas.width !== nextW || canvas.height !== nextH){
+    canvas.width = nextW; canvas.height = nextH;
     canvasW = canvas.width; canvasH = canvas.height;
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
   }
 }
 function lerp(a,b,t){ return a+(b-a)*t; }
@@ -271,6 +287,53 @@ let time = 0, flashTimer = 0;
 let tweens = [];
 const state = { stage: 1, isAnimating: false };
 const canvasClickHandlers = {};
+const ASSET_BASE = 'images/SH11-B05-M03/';
+const assetFiles = {
+  A02:'SH11-B05-M03-A02.png', A03:'SH11-B05-M03-A03.png',
+  A07:'SH11-B05-M03-A07.png', A13:'SH11-B05-M03-A13.png', A20:'SH11-B05-M03-A20.png',
+  A18:'SH11-B05-M03-A18.png', A19:'SH11-B05-M03-A19.png'
+};
+const assets = {};
+Object.entries(assetFiles).forEach(([code,file])=>{
+  const img=new Image();
+  img.addEventListener('load',()=>{assets[code]=img;});
+  img.src=ASSET_BASE+file;
+});
+function drawAsset(code,x,y,w,h,mode='contain',alpha=1){
+  const img=assets[code];
+  if(!img){
+    ctx.save();ctx.fillStyle='#F0EADD';ctx.fillRect(x,y,w,h);
+    ctx.fillStyle='#7C756A';ctx.font='600 13px "Be Vietnam Pro", sans-serif';ctx.textAlign='center';
+    ctx.fillText(`Đang tải ${code}…`,x+w/2,y+h/2);ctx.restore();return;
+  }
+  const scale=mode==='cover'?Math.max(w/img.width,h/img.height):Math.min(w/img.width,h/img.height);
+  const dw=img.width*scale,dh=img.height*scale,dx=x+(w-dw)/2,dy=y+(h-dh)/2;
+  ctx.save();ctx.globalAlpha=alpha;
+  if(mode==='cover'){ctx.beginPath();ctx.rect(x,y,w,h);ctx.clip();}
+  ctx.drawImage(img,dx,dy,dw,dh);ctx.restore();
+}
+function drawAssetCard(code,x,y,w,h,label,paired){
+  ctx.save();ctx.fillStyle='#FFFFFF';ctx.strokeStyle=paired?'#2D8B6F':'#E5DECF';ctx.lineWidth=paired?3:1.5;
+  ctx.beginPath();ctx.roundRect(x,y,w,h,10);ctx.fill();ctx.stroke();
+  ctx.beginPath();ctx.roundRect(x+6,y+6,w-12,h-42,7);ctx.clip();
+  drawAsset(code,x+6,y+6,w-12,h-42,'cover');
+  ctx.restore();ctx.save();ctx.fillStyle='#1B5E48';ctx.font='700 12px "Be Vietnam Pro", sans-serif';ctx.textAlign='center';
+  ctx.fillText(label,x+w/2,y+h-15);ctx.restore();
+}
+function drawEthanolComparisonCard(x,y,w,h,paired){
+  ctx.save();ctx.fillStyle='#FFFFFF';ctx.strokeStyle=paired?'#2D8B6F':'#E5DECF';ctx.lineWidth=paired?3:1.5;
+  ctx.beginPath();ctx.roundRect(x,y,w,h,10);ctx.fill();ctx.stroke();
+  ctx.beginPath();ctx.roundRect(x+6,y+6,w-12,h-42,7);ctx.clip();
+  drawAsset('A13',x+6,y+6,w-12,h-42,'cover');
+  const insetW=82,insetH=74,insetX=x+w-insetW-12,insetY=y+14;
+  ctx.fillStyle='rgba(250,247,240,.96)';ctx.strokeStyle='#C15F3C';ctx.lineWidth=2;
+  ctx.fillRect(insetX-3,insetY-3,insetW+6,insetH+24);ctx.strokeRect(insetX-3,insetY-3,insetW+6,insetH+24);
+  drawAsset('A20',insetX,insetY,insetW,insetH,'cover');
+  ctx.fillStyle='#C15F3C';ctx.font='700 9px "Be Vietnam Pro", sans-serif';ctx.textAlign='center';
+  ctx.fillText('KHÔNG AN TOÀN',insetX+insetW/2,insetY+insetH+15);
+  ctx.restore();ctx.save();ctx.fillStyle='#1B5E48';ctx.font='700 12px "Be Vietnam Pro", sans-serif';ctx.textAlign='center';
+  ctx.fillText('TẨY DIỆP LỤC AN TOÀN',x+w/2,y+h-15);ctx.restore();
+}
 
 function tween(from, to, dur, onUpdate, onDone, ease = easeInOut){ tweens.push({ from, to, dur, t:0, onUpdate, onDone, ease }); }
 function updateTweens(dt){
@@ -349,35 +412,46 @@ function drawIodineBottle(cx,cy){
 /* ================= STAGE 1 — quan sát & ghi kết quả ================= */
 let s1_zoneClicked = null, s1_pendingZone = null;
 let s1_filled = { light:false, cover:false };
+let p3CanvasKeyboardIndex = 0;
 const s1_hotspots = {
-  light: { cx:0, cy:-30, r:36 },
-  cover: { cx:0, cy:0, r:24 }
+  light: { cx:270, cy:275, r:58 },
+  cover: { x:342, y:174, w:100, h:205 }
 };
+function drawAnchoredLabel(text,x,y,w,targetX,targetY,tone){
+  const color=tone==='negative'?'#8A551A':'#1B5E48';
+  ctx.save();
+  ctx.strokeStyle=color;ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.moveTo(x+w/2,y+36);ctx.lineTo(targetX,targetY);ctx.stroke();
+  ctx.fillStyle='rgba(250,247,240,.96)';ctx.strokeStyle='#A8C9B8';ctx.lineWidth=1;
+  ctx.beginPath();ctx.roundRect(x,y,w,36,7);ctx.fill();ctx.stroke();
+  ctx.fillStyle=color;ctx.font='700 11px "Be Vietnam Pro", sans-serif';ctx.textAlign='center';
+  ctx.fillText(text,x+w/2,y+23);ctx.restore();
+}
 function drawStage1(){
-  const cx=W/2, cy=H/2-10, scale=2.6;
-  drawPetriDish(cx, cy+80, 190);
-  ctx.save(); ctx.translate(cx,cy); ctx.scale(scale,scale);
-  if (!s1_filled.light){ ctx.beginPath(); ctx.arc(s1_hotspots.light.cx, s1_hotspots.light.cy, s1_hotspots.light.r/scale, 0, Math.PI*2); ctx.strokeStyle='rgba(60,165,122,0.7)'; ctx.lineWidth=1.2; ctx.setLineDash([3,2]); ctx.stroke(); ctx.setLineDash([]); }
-  if (!s1_filled.cover){ ctx.beginPath(); ctx.rect(coveredRegion.x-3, coveredRegion.y-3, coveredRegion.w+6, coveredRegion.h+6); ctx.strokeStyle='rgba(193,95,60,0.7)'; ctx.lineWidth=1.2/scale; ctx.setLineDash([3,2]); ctx.stroke(); ctx.setLineDash([]); }
+  drawAsset('A19',35,18,690,510,'contain');
+  ctx.save();
+  if(!s1_filled.light){ctx.beginPath();ctx.arc(s1_hotspots.light.cx,s1_hotspots.light.cy,s1_hotspots.light.r,0,Math.PI*2);ctx.strokeStyle=p3CanvasKeyboardIndex===0&&document.activeElement===canvas?'#E8A24A':'#3CA57A';ctx.lineWidth=3;ctx.setLineDash([7,5]);ctx.stroke();}
+  if(!s1_filled.cover){const h=s1_hotspots.cover;ctx.beginPath();ctx.roundRect(h.x,h.y,h.w,h.h,12);ctx.strokeStyle=p3CanvasKeyboardIndex===1&&document.activeElement===canvas?'#E8A24A':'#C58A2E';ctx.lineWidth=3;ctx.setLineDash([7,5]);ctx.stroke();}
+  ctx.setLineDash([]);
   ctx.restore();
-  drawResultLeaf(cx, cy, scale, 1);
+  drawAnchoredLabel('VÙNG NHẬN SÁNG (+)',142,74,190,s1_hotspots.light.cx,s1_hotspots.light.cy-s1_hotspots.light.r,'positive');
+  drawAnchoredLabel('VÙNG CHE (−)',354,74,142,s1_hotspots.cover.x+s1_hotspots.cover.w/2,s1_hotspots.cover.y,'negative');
   ctx.save(); ctx.fillStyle='#7C756A'; ctx.font="500 13px 'Be Vietnam Pro', sans-serif"; ctx.textAlign='center';
   ctx.fillText(s1_pendingZone ? 'Chọn màu tương ứng ở cột trái' : 'Bấm vùng được chiếu sáng, rồi vùng bị che', W/2, H-30);
   ctx.restore();
 }
 canvasClickHandlers.stage1 = function(mx,my){
   if (state.isAnimating || s1_pendingZone) return;
-  const cx=W/2, cy=H/2-10, scale=2.6;
-  const lx = cx + s1_hotspots.light.cx*scale, ly = cy + s1_hotspots.light.cy*scale;
-  const dxl = mx-lx, dyl = my-ly;
+  const dxl = mx-s1_hotspots.light.cx, dyl = my-s1_hotspots.light.cy;
   if (!s1_filled.light && Math.sqrt(dxl*dxl+dyl*dyl) <= s1_hotspots.light.r){ s1_pendingZone='light'; flashTimer=15; updateGuide('Chọn màu bạn quan sát được ở vùng này.'); return; }
-  const rx = coveredRegion.x*scale+cx, ry = coveredRegion.y*scale+cy, rw = coveredRegion.w*scale, rh = coveredRegion.h*scale;
-  if (!s1_filled.cover && mx>=rx&&mx<=rx+rw&&my>=ry&&my<=ry+rh){ s1_pendingZone='cover'; flashTimer=15; updateGuide('Chọn màu bạn quan sát được ở vùng này.'); return; }
+  const h=s1_hotspots.cover;
+  if (!s1_filled.cover && mx>=h.x&&mx<=h.x+h.w&&my>=h.y&&my<=h.y+h.h){ s1_pendingZone='cover'; flashTimer=15; updateGuide('Chọn màu bạn quan sát được ở vùng này.'); return; }
 };
 document.getElementById('colorChips').addEventListener('click',(e)=>{
   const chip = e.target.closest('.chip'); if (!chip || state.stage!==1 || !s1_pendingZone) return;
   const color = chip.dataset.color;
   const correctColor = s1_pendingZone==='light' ? 'pos' : 'neg';
+  LMS().event('answered',{id:s1_pendingZone==='light'?'p3_obs_light':'p3_obs_cover',chosen:color,correct:color===correctColor});
   if (color===correctColor){
     s1_filled[s1_pendingZone] = true;
     const cell = document.getElementById(s1_pendingZone==='light'?'obsLight':'obsCover');
@@ -387,7 +461,9 @@ document.getElementById('colorChips').addEventListener('click',(e)=>{
     s1_pendingZone = null;
     if (s1_filled.light && s1_filled.cover) enableNext();
   } else {
-    updateGuide('Chưa đúng — vùng này vẫn còn màu vàng nâu của thuốc thử iodine (không phải trắng), hãy nhìn kỹ lại.');
+    updateGuide(s1_pendingZone==='light'
+      ? 'Chưa đúng — vùng nhận ánh sáng cho phản ứng dương tính, hãy đối chiếu vùng xanh tím đậm trên ảnh.'
+      : 'Chưa đúng — vùng bị che vẫn mang màu vàng nâu nhạt của iodine, không phải màu trắng.');
   }
 });
 
@@ -404,25 +480,34 @@ const roleItems = [
 ];
 let s2_selectedItem = null; let s2_pairs = {};
 function drawStage2(){
-  const y = 140;
-  drawBlackPaper(150, y, 60, 80);
-  drawAlcoholLampOff(370, y+60); drawBeakerMini(370, y-20, 60, 70, 'rgba(111,168,75,0.6)');
-  drawIodineBottle(590, y+10);
-  ctx.save(); ctx.fillStyle='#514C44'; ctx.font="600 12px 'Be Vietnam Pro', sans-serif"; ctx.textAlign='center';
-  ctx.fillText('Giấy đen', 150, y+70);
-  ctx.fillText('Tẩy diệp lục an toàn', 370, y+90);
-  ctx.fillText('Iodine', 590, y+50);
-  ctx.restore();
-  Object.keys(s2_pairs).forEach(k=>{
-    const x = k==='paper'?150:(k==='ethanol'?370:590);
-    ctx.save(); ctx.strokeStyle='#2D8B6F'; ctx.lineWidth=3; ctx.beginPath(); ctx.arc(x,y+10,50,0,Math.PI*2); ctx.stroke(); ctx.restore();
-  });
+  drawAssetCard('A03',34,92,214,300,'GIẤY ĐEN + KẸP',!!s2_pairs.paper);
+  drawEthanolComparisonCard(273,92,214,300,!!s2_pairs.ethanol);
+  drawAssetCard('A07',512,92,214,300,'DUNG DỊCH IODINE',!!s2_pairs.iodine);
 }
 function renderMatchUI(){
   const body = document.getElementById('ebBody');
   const block = document.createElement('div'); block.className='eb-block';
   block.innerHTML = '<div class="eb-q">Ghép mỗi hình với vai trò khoa học của nó:</div>';
-  const wrap = document.createElement('div'); wrap.id='matchWrap';
+  const wrap = document.createElement('div'); wrap.id='matchWrap'; wrap.className='match-board';
+  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.classList.add('match-svg');svg.setAttribute('aria-hidden','true');
+  const left=document.createElement('div');left.className='match-column';
+  left.innerHTML='<div class="match-column-title">Hình ảnh</div>';
+  const right=document.createElement('div');right.className='match-column';
+  right.innerHTML='<div class="match-column-title">Vai trò</div>';
+  function drawMatchLines(){
+    svg.innerHTML='';
+    const base=wrap.getBoundingClientRect();
+    Object.keys(s2_pairs).forEach(key=>{
+      const a=wrap.querySelector(`.match-btn[data-key="${key}"]`);
+      const b=wrap.querySelector(`.match-btn[data-role="${key}"]`);
+      if(!a||!b)return;
+      const ar=a.getBoundingClientRect(),br=b.getBoundingClientRect();
+      const line=document.createElementNS('http://www.w3.org/2000/svg','line');
+      line.setAttribute('x1',ar.right-base.left);line.setAttribute('y1',ar.top+ar.height/2-base.top);
+      line.setAttribute('x2',br.left-base.left);line.setAttribute('y2',br.top+br.height/2-base.top);
+      svg.appendChild(line);
+    });
+  }
   matchItems.forEach(it=>{
     const row = document.createElement('div'); row.className='match-row';
     const b = document.createElement('button'); b.className='match-btn'; b.dataset.key=it.key;
@@ -433,9 +518,8 @@ function renderMatchUI(){
       document.querySelectorAll('.match-btn:not([data-role])').forEach(x=>x.classList.remove('selected'));
       s2_selectedItem = it.key; b.classList.add('selected');
     });
-    row.appendChild(b); wrap.appendChild(row);
+    row.appendChild(b); left.appendChild(row);
   });
-  const divider = document.createElement('div'); divider.style.cssText='height:1px;background:var(--paper-line);margin:10px 0;'; wrap.appendChild(divider);
   roleItems.slice().sort(()=>Math.random()-0.5).forEach(role=>{
     const row = document.createElement('div'); row.className='match-row';
     const b = document.createElement('button'); b.className='match-btn'; b.dataset.role=role.key;
@@ -443,10 +527,13 @@ function renderMatchUI(){
     b.addEventListener('click', ()=>{
       if (!s2_selectedItem) return;
       if (s2_selectedItem===role.key){
+        LMS().event('matched',{id:'p3_s2',item:s2_selectedItem,role:role.key,correct:true});
         document.querySelector(`.match-btn[data-key="${s2_selectedItem}"]`).classList.add('paired');
         document.querySelector(`.match-btn[data-key="${s2_selectedItem}"]`).classList.remove('selected');
+        document.querySelector(`.match-btn[data-key="${s2_selectedItem}"]`).disabled=true;
         b.classList.add('paired'); b.disabled=true;
         s2_pairs[s2_selectedItem] = role.key; s2_selectedItem=null; flashTimer=20;
+        requestAnimationFrame(drawMatchLines);
         if (Object.keys(s2_pairs).length===3){
           block.classList.add('done');
           const fb=document.createElement('div'); fb.className='eb-fb'; fb.textContent='Đúng. Iodine nhận biết tinh bột, không tạo ra tinh bột.'; block.appendChild(fb);
@@ -454,16 +541,26 @@ function renderMatchUI(){
           enableNext();
         }
       } else {
+        LMS().event('matched',{id:'p3_s2',item:s2_selectedItem,role:role.key,correct:false});
+        const wrongItem=s2_selectedItem;
         document.querySelector(`.match-btn[data-key="${s2_selectedItem}"]`).classList.remove('selected');
         let fb = block.querySelector('.eb-fb');
         if (!fb){ fb=document.createElement('div'); fb.className='eb-fb'; block.appendChild(fb); }
-        fb.textContent = 'Chưa đúng — thử ghép lại, mỗi vật chỉ có một vai trò khoa học đúng.';
+        fb.textContent = wrongItem==='iodine'
+          ? 'Chưa đúng — iodine chỉ nhận biết tinh bột có sẵn, không tạo ra tinh bột.'
+          : (wrongItem==='ethanol'
+            ? 'Chưa đúng — ethanol dùng để tẩy diệp lục, giúp quan sát màu phản ứng rõ hơn.'
+            : 'Chưa đúng — giấy đen tạo vùng đối chứng không nhận ánh sáng trên cùng một lá chét.');
         s2_selectedItem = null;
       }
     });
-    row.appendChild(b); wrap.appendChild(row);
+    row.appendChild(b); right.appendChild(row);
   });
-  block.appendChild(wrap); body.appendChild(block);
+  wrap.append(svg,left,right);block.appendChild(wrap);body.appendChild(block);
+  if(window._matchResizeHandler)removeEventListener('resize',window._matchResizeHandler);
+  window._matchResizeHandler=()=>requestAnimationFrame(drawMatchLines);
+  addEventListener('resize',window._matchResizeHandler);
+  requestAnimationFrame(()=>body.scrollTo({top:0,behavior:'smooth'}));
 }
 
 /* ================= STAGE 3 — kết luận ================= */
@@ -477,9 +574,11 @@ const quizConclusion = {
   wrongMsg:'Đây là khái quát vượt quá phạm vi thí nghiệm này — kết luận chỉ nên gắn với điều kiện đã kiểm chứng.'
 };
 function drawStage3(){
-  const cx=W/2, cy=H/2-30, scale=2.4;
-  drawPetriDish(cx, cy+70, 170);
-  drawResultLeaf(cx, cy, scale, 1);
+  drawAsset('A18',42,24,676,512,'contain');
+  ctx.save();ctx.fillStyle='rgba(250,247,240,.94)';ctx.strokeStyle='#A8C9B8';
+  ctx.beginPath();ctx.roundRect(120,470,520,52,9);ctx.fill();ctx.stroke();
+  ctx.fillStyle='#1A1A1A';ctx.font='600 12px "Be Vietnam Pro", sans-serif';ctx.textAlign='center';
+  ctx.fillText('Dương tính (+): xanh tím đậm · Âm tính (−): vàng nâu nhạt',380,501);ctx.restore();
 }
 function renderConclusionQuiz(){
   const body = document.getElementById('ebBody');
@@ -491,6 +590,7 @@ function renderConclusionQuiz(){
     btn.innerHTML = `<span class="letter">${String.fromCharCode(65+i)}</span><span class="txt">${opt}</span><span class="icon-fb"></span>`;
     btn.addEventListener('click', ()=>{
       const buttons = ul.querySelectorAll('.eb-opt');
+      LMS().event('answered',{id:'p3_conclusion',chosen:String.fromCharCode(65+i),correct:i===quizConclusion.correct});
       if (i===quizConclusion.correct){
         buttons.forEach(b=>b.disabled=true); btn.classList.add('correct');
         btn.querySelector('.icon-fb').innerHTML='<i class="ti ti-circle-check" style="color:var(--correct)"></i>';
@@ -537,11 +637,30 @@ canvas.addEventListener('click',(e)=>{
   const h = canvasClickHandlers['stage'+state.stage];
   if (h) h(mx,my);
 });
+canvas.addEventListener('keydown',e=>{
+  if(state.stage!==1||state.isAnimating||s1_pendingZone)return;
+  if(['ArrowRight','ArrowDown','ArrowLeft','ArrowUp'].includes(e.key)){
+    e.preventDefault();
+    const delta=['ArrowRight','ArrowDown'].includes(e.key)?1:-1;
+    p3CanvasKeyboardIndex=(p3CanvasKeyboardIndex+delta+2)%2;
+    updateGuide(`Đang chọn ${p3CanvasKeyboardIndex===0?'vùng được chiếu sáng':'vùng bị che sáng'}. Nhấn Enter để ghi màu.`);
+  }else if(['Enter',' '].includes(e.key)){
+    e.preventDefault();
+    const wanted=p3CanvasKeyboardIndex===0?'light':'cover';
+    if(!s1_filled[wanted]){
+      s1_pendingZone=wanted;flashTimer=15;updateGuide('Chọn màu bạn quan sát được ở vùng này.');
+    }else{
+      updateGuide('Vùng này đã được ghi. Dùng phím mũi tên để chọn vùng còn lại.');
+    }
+  }
+});
 
 function updateGuide(text){
   const el = document.getElementById('guideText');
-  el.style.transition='opacity .2s, transform .2s'; el.style.opacity=0; el.style.transform='translateY(4px)';
-  setTimeout(()=>{ el.textContent=text; el.style.opacity=1; el.style.transform='translateY(0)'; }, 120);
+  el.textContent=text; el.style.opacity=1; el.style.transform='translateY(0)';
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    el.animate([{opacity:.25,transform:'translateY(4px)'},{opacity:1,transform:'translateY(0)'}],{duration:200,easing:'ease-out'});
+  }
   window._guideText = text;
 }
 function setNextEnabled(v){ document.getElementById('btnNext').disabled = !v; }
@@ -566,7 +685,11 @@ function syncUI(){
 function gotoStage(n){
   state.stage=n; state.isAnimating=false; syncUI(); clearEbBody();
   document.getElementById('colorChips').style.display = n===1 ? 'flex' : 'none';
-  if (n===1){ s1_filled={light:false,cover:false}; s1_pendingZone=null; updateGuide('Bấm từng vùng trên lá và ghi màu quan sát được.'); }
+  if (n===1){
+    s1_filled={light:false,cover:false}; s1_pendingZone=null; p3CanvasKeyboardIndex=0;
+    ['obsLight','obsCover'].forEach(id=>{const cell=document.getElementById(id);cell.textContent='?';cell.classList.add('obs-pending');cell.classList.remove('obs-filled');});
+    updateGuide('Bấm từng vùng trên lá và ghi màu quan sát được.');
+  }
   else if (n===2){ s2_pairs={}; s2_selectedItem=null; updateGuide('Ghép mỗi hình với vai trò khoa học của nó.'); renderMatchUI(); }
   else { updateGuide('Kết luận nào phù hợp nhất với bằng chứng?'); renderConclusionQuiz(); }
   LMS().progress({ done:n-1, total:3 });
@@ -578,12 +701,13 @@ document.getElementById('btnNext').addEventListener('click', ()=>{
     LMS().progress({ done:3, total:3 });
     if (!window._p3complete){
       window._p3complete = true;
-      LMS().complete({ summary:'Hoàn thành Phần 3 — Báo cáo và giải thích. Module SH11_B05_M03 hoàn tất.', score:5, max:5,
+      LMS().complete({ summary:'Hoàn thành Phần 3 — Báo cáo và giải thích. Module SH11_B05_M03 hoàn tất.', score:6, max:6,
         items:[
           { id:'obs_light', prompt:'Màu vùng được chiếu sáng', options:['Xanh tím đậm','Vàng nâu nhạt','Trắng'], chosen:'Xanh tím đậm', correct:'Xanh tím đậm', isCorrect:true },
           { id:'obs_cover', prompt:'Màu vùng bị che sáng', options:['Xanh tím đậm','Vàng nâu nhạt','Trắng'], chosen:'Vàng nâu nhạt', correct:'Vàng nâu nhạt', isCorrect:true },
           { id:'role_paper', prompt:'Vai trò của giấy đen', options:roleItems.map(r=>r.label), chosen:'Tạo vùng đối chứng không nhận ánh sáng', correct:'Tạo vùng đối chứng không nhận ánh sáng', isCorrect:true },
           { id:'role_ethanol', prompt:'Vai trò của ethanol', options:roleItems.map(r=>r.label), chosen:'Tẩy diệp lục để quan sát màu', correct:'Tẩy diệp lục để quan sát màu', isCorrect:true },
+          { id:'role_iodine', prompt:'Vai trò của iodine', options:roleItems.map(r=>r.label), chosen:'Nhận biết tinh bột có sẵn', correct:'Nhận biết tinh bột có sẵn', isCorrect:true },
           { id:'conclusion', prompt:quizConclusion.q, options:quizConclusion.opts, chosen:quizConclusion.opts[0], correct:quizConclusion.opts[0], isCorrect:true }
         ]});
     }
@@ -594,7 +718,12 @@ document.getElementById('btnRedo').addEventListener('click', ()=>{ gotoStage(sta
 document.getElementById('btnTTS').addEventListener('click', ()=>{
   if (!('speechSynthesis' in window)) return;
   speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(window._guideText || document.getElementById('guideText').textContent);
+  const stageGuides={
+    1:'Bấm từng vùng trên lá và chọn tên màu quan sát được. Không kết luận trước khi ghi đủ hai vùng.',
+    2:'Các vai trò để ghép gồm tạo vùng đối chứng, tẩy diệp lục để quan sát màu và nhận biết tinh bột có sẵn.',
+    3:'Đọc bảng kết quả và chọn kết luận phù hợp nhất với phạm vi bằng chứng.'
+  };
+  const u = new SpeechSynthesisUtterance(stageGuides[state.stage]);
   u.lang='vi-VN'; u.rate=1; speechSynthesis.speak(u);
 });
 
