@@ -124,8 +124,23 @@ header p{margin:5px 0 0;color:rgba(255,255,255,.88);max-width:800px}.header-badg
 </section>
 <script>
 function LMS(){return window.AiducationLMS||{ready(){},progress(){},event(){},state(){},complete(){},resize(){}}}
-const ASSET='images/SH10-B01-M02/';
-const imageFiles=Object.fromEntries(Array.from({length:12},(_,i)=>{const n=String(i+1).padStart(2,'0');return [`A${n}`,`${ASSET}SH10-B01-M02-A${n}.png`]}));
+/* Mỗi giá trị là một đường dẫn hoàn chỉnh.
+   Khi dùng Google Drive, chỉ thay giá trị tương ứng, ví dụ:
+   A01:'https://drive.google.com/uc?export=view&id=FILE_ID_A01' */
+const assetFiles={
+  A01:'images/SH10-B01-M02/SH10-B01-M02-A01.png',
+  A02:'images/SH10-B01-M02/SH10-B01-M02-A02.png',
+  A03:'images/SH10-B01-M02/SH10-B01-M02-A03.png',
+  A04:'images/SH10-B01-M02/SH10-B01-M02-A04.png',
+  A05:'images/SH10-B01-M02/SH10-B01-M02-A05.png',
+  A06:'images/SH10-B01-M02/SH10-B01-M02-A06.png',
+  A07:'images/SH10-B01-M02/SH10-B01-M02-A07.png',
+  A08:'images/SH10-B01-M02/SH10-B01-M02-A08.png',
+  A09:'images/SH10-B01-M02/SH10-B01-M02-A09.png',
+  A10:'images/SH10-B01-M02/SH10-B01-M02-A10.png',
+  A11:'images/SH10-B01-M02/SH10-B01-M02-A11.png',
+  A12:'images/SH10-B01-M02/SH10-B01-M02-A12.png'
+};
 const state={stage:1,unlocked:1,complete:false,errors:0,s1:{selected:null,pairs:{}},s2:{viewed:new Set(),selected:null,pairs:{}},s3:{topic:'food',orders:{},done:new Set(),general:false},s4:{answer:null,careers:new Set(),done:false}};
 const goals=[
   'Ghép hiểu biết Sinh học với tình huống phù hợp trong đời sống.',
@@ -163,7 +178,7 @@ const chains={
 };
 const careers=['Bác sĩ','Dược sĩ','Nhà nghiên cứu y sinh','Chuyên gia giám định sinh học','Kĩ thuật viên xét nghiệm','Kĩ sư nông nghiệp','Chuyên gia chọn giống','Kĩ sư công nghệ thực phẩm','Chuyên viên kiểm soát chất lượng thực phẩm','Nhà sinh thái học','Chuyên gia công nghệ môi trường'];
 const canvas=document.getElementById('labCanvas'),ctx=canvas.getContext('2d'),workspace=document.getElementById('workspace');let activeAsset='A01';const cache={};
-function loadAsset(key){if(!cache[key]){const img=new Image();img.src=imageFiles[key];img.onload=drawCanvas;cache[key]=img}return cache[key]}
+function loadAsset(key){if(!cache[key]){const img=new Image();img.src=assetFiles[key];img.onload=drawCanvas;cache[key]=img}return cache[key]}
 function resizeCanvas(){const r=canvas.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,2),w=Math.max(1,Math.round(r.width*dpr)),h=Math.max(1,Math.round(r.height*dpr));if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high'}}
 function drawCanvas(){resizeCanvas();ctx.clearRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#FAF7F0';ctx.fillRect(0,0,canvas.width,canvas.height);const img=loadAsset(activeAsset);if(!img.complete||!img.naturalWidth)return;const s=Math.min(canvas.width/img.naturalWidth,canvas.height/img.naturalHeight),w=img.naturalWidth*s,h=img.naturalHeight*s;ctx.drawImage(img,(canvas.width-w)/2,(canvas.height-h)/2,w,h)}
 function setAsset(key){activeAsset=key;drawCanvas()}
