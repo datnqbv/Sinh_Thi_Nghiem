@@ -221,7 +221,8 @@ gradient tối đồng nhất** để chữ trắng luôn đủ tương phản:
 ```css
 header{
   width:100%; max-width:1720px; border-radius:16px; padding:1.5rem 2rem; overflow:hidden; position:relative;
-  background-image:linear-gradient(rgba(18,26,20,.42), rgba(18,26,20,.42)), url('[URL_ẢNH_SINH_HOC]');
+  /* URL header mặc định bắt buộc; chỉ thay khi người dùng cung cấp rõ một ảnh header khác. */
+  background-image:linear-gradient(rgba(18,26,20,.42), rgba(18,26,20,.42)), url('https://www.aiducation.edu.vn/images/fifingfig_Modern_editorial_illustration_of_a_stylized_Vietnames_f0b08847-9f6d-48cf-90ac-b8ed2eb77baf.png');
   background-position:center 32%; background-size:cover; background-repeat:no-repeat; box-shadow:var(--shadow);
 }
 ``` 
@@ -323,13 +324,18 @@ Gradient/glow/shadow **bị cấm trong UI (CSS)** nhưng **được phép trong
 const canvas = document.getElementById('labCanvas');
 const ctx = canvas.getContext('2d');
 const W = 760, H = [CHIỀU_CAO]; // LOGIC cố định, H 480–680 tuỳ nội dung. MỌI toạ độ vẽ theo hệ W×H này.
-let canvasW = W, canvasH = H;   // PIXEL THẬT — resizeCanvas() cập nhật liên tục
+let canvasW = W, canvasH = H;   // PIXEL BUFFER THẬT — resizeCanvas() cập nhật theo CSS size × DPR
 
 function resizeCanvas(){
   const r = canvas.getBoundingClientRect();
-  if (canvas.width !== Math.round(r.width) || canvas.height !== Math.round(r.height)){
-    canvas.width = Math.round(r.width); canvas.height = Math.round(r.height);
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const nextW = Math.max(1, Math.round(r.width * dpr));
+  const nextH = Math.max(1, Math.round(r.height * dpr));
+  if (canvas.width !== nextW || canvas.height !== nextH){
+    canvas.width = nextW; canvas.height = nextH;
     canvasW = canvas.width; canvasH = canvas.height;
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
   }
 }
 function lerp(a,b,t){ return a+(b-a)*t; }
@@ -339,7 +345,7 @@ function easeInOut(t){ return t<.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2; }
 function lerpColor(c1,c2,t){ t=clamp(t,0,1); return `rgb(${Math.round(c1.r+(c2.r-c1.r)*t)},${Math.round(c1.g+(c2.g-c1.g)*t)},${Math.round(c1.b+(c2.b-c1.b)*t)})`; }
 ```
 
-> **Nét trên màn Retina/2x (tuỳ chọn nâng cao — tinh hoa từ bản Toán):** `resizeCanvas()` ở trên đặt buffer = kích thước CSS nên trên màn hình `devicePixelRatio>1` hình có thể hơi mờ (nhất là chữ/nhãn). Muốn sắc nét: `const dpr = window.devicePixelRatio||1; canvas.width = Math.round(r.width*dpr); canvas.height = Math.round(r.height*dpr);` (giữ CSS `width/height:100%`). Vì `fitScale = canvasW/W` tự bù nên nội dung vẫn đúng tỉ lệ, lưới vẽ theo buffer thật → không đổi gì khác trong `loop()`. Nếu sim có **bắt click/tap trên canvas** (bấm hotspot, chọn vùng trên lá/ảnh — ngày càng phổ biến ở sim Sinh), **BẮT BUỘC** quy đổi toạ độ theo MỤC 11E, không tự chế công thức — công thức ở 11E chạy đúng cho cả bản thường lẫn bản DPR ở trên.
+> **Nét trên màn Retina/2x (bắt buộc):** buffer canvas phải bằng kích thước CSS nhân với `devicePixelRatio`, nhưng giới hạn tối đa `2` để cân bằng độ nét với RAM/GPU. Bật `imageSmoothingEnabled` và `imageSmoothingQuality='high'` sau khi đổi kích thước buffer. Giữ CSS `width/height:100%`; `fitScale = canvasW/W` tự bù nên nội dung vẫn đúng tỉ lệ. **Không gọi thêm `ctx.scale(dpr,dpr)`**, vì engine đã scale qua `fitScale`; gọi thêm sẽ làm nội dung phóng to hai lần. Nếu sim có **bắt click/tap trên canvas**, bắt buộc dùng đúng công thức MỤC 11E, không chia hoặc nhân DPR thêm lần nữa.
 
 **Biến trạng thái toàn cục cần khai báo** (đầu script, trước `loop()` — `loop()` ở MỤC 11C có tham chiếu tới chúng):
 ```js
@@ -889,6 +895,7 @@ ro.observe(document.body);
 
 **Canvas & animation:**
 - [ ] `resizeCanvas()` gọi đầu mỗi frame; `drawGrid()` theo kích thước thật (lấp đầy, không méo).
+- [ ] Buffer canvas = kích thước CSS × `Math.min(devicePixelRatio, 2)`; bật `imageSmoothingEnabled` + `imageSmoothingQuality='high'`; không gọi thêm `ctx.scale(dpr,dpr)`.
 - [ ] Không đổi state tức thì — mọi thao tác chạy chuỗi animation (MỤC 13); nút disabled khi đang animate.
 - [ ] Meniscus cong lõm; reaction flash trước lerpColor; impact splash khi giọt chạm; particle wobble.
 - [ ] Nếu có click/tap trên canvas: quy đổi toạ độ theo MỤC 11E (khớp `fitScale`/offset của `loop()`, không chia `dpr` hai lần); hotspot ≥ `44/fitScale`.
