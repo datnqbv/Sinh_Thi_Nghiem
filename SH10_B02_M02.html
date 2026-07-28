@@ -460,6 +460,44 @@ function runVisualSequence(items){
   }
   show();
 }
+let effectFocusTimer=0,pendingEffectButton=null,pendingEffectStart=null;
+function showEffectOnCanvas(button,runEffect){
+  clearTimeout(effectFocusTimer);
+  if(pendingEffectStart)removeEventListener('scrollend',pendingEffectStart);
+  if(pendingEffectButton&&pendingEffectButton.isConnected){
+    pendingEffectButton.disabled=false;
+    pendingEffectButton.removeAttribute('aria-busy');
+  }
+  pendingEffectButton=button;
+  button.disabled=true;
+  button.setAttribute('aria-busy','true');
+  const canvasWrap=document.querySelector('.canvas-glow-wrap');
+  const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const rect=canvasWrap.getBoundingClientRect();
+  const alreadyVisible=rect.top>=0&&rect.bottom<=innerHeight;
+  const maxScroll=Math.max(0,document.documentElement.scrollHeight-innerHeight);
+  const targetY=Math.max(0,Math.min(maxScroll,scrollY+rect.top-(innerHeight-rect.height)/2));
+  let started=false;
+  const startEffect=()=>{
+    if(started)return;
+    started=true;
+    clearTimeout(effectFocusTimer);
+    removeEventListener('scrollend',startEffect);
+    pendingEffectStart=null;
+    if(button.isConnected){
+      button.disabled=false;
+      button.removeAttribute('aria-busy');
+    }
+    pendingEffectButton=null;
+    setGuide('Quan sát hiệu ứng trên vùng mô phỏng.');
+    runEffect();
+  };
+  pendingEffectStart=startEffect;
+  setGuide('Đang chuyển đến vùng mô phỏng. Hiệu ứng sẽ bắt đầu ngay sau khi cuộn xong.');
+  if(!reduceMotion&&!alreadyVisible)addEventListener('scrollend',startEffect,{once:true});
+  scrollTo({top:targetY,behavior:reduceMotion?'auto':'smooth'});
+  effectFocusTimer=setTimeout(startEffect,reduceMotion||alreadyVisible?0:900);
+}
 
 function snapshot(lastAction){
   return{
@@ -780,22 +818,27 @@ function renderStage3(){
   });
   document.querySelectorAll('[data-story]').forEach(btn=>btn.onclick=e=>{
     e.preventDefault();e.stopPropagation();const story=btn.dataset.story;
-    if(story==='centrifuge')runVisualSequence([
-      {code:'A06',caption:'Trạng thái 1 · Mẫu trước li tâm',kicker:'Không mô phỏng tốc độ quay',hold:850},
-      {code:'A03',caption:'Trạng thái 2 · Các ống đặt cân bằng, nắp đóng',kicker:'Vận hành an toàn',hold:950},
-      {code:'A09',caption:'Trạng thái 3 · Phần lắng và dịch phía trên',kicker:'Mẫu sau li tâm'}
-    ]);
-    if(story==='pipette')runVisualSequence([
-      {code:'A10',caption:'Pipet điều chỉnh thể tích có đầu tip',kicker:'Dụng cụ chuyển mẫu',hold:850},
-      {code:'A14',caption:'Đầu tip tiếp cận chất lỏng trong ống',kicker:'Thao tác mẫu'}
-    ]);
-    if(story==='magnifier')setVisual('A11','Chỉ vùng dưới kính lúp được phóng đại','Quan sát bề mặt mẫu');
+    showEffectOnCanvas(btn,()=>{
+      if(story==='centrifuge')runVisualSequence([
+        {code:'A06',caption:'Trạng thái 1 · Mẫu trước li tâm',kicker:'Không mô phỏng tốc độ quay',hold:850},
+        {code:'A03',caption:'Trạng thái 2 · Các ống đặt cân bằng, nắp đóng',kicker:'Vận hành an toàn',hold:950},
+        {code:'A09',caption:'Trạng thái 3 · Phần lắng và dịch phía trên',kicker:'Mẫu sau li tâm'}
+      ]);
+      if(story==='pipette')runVisualSequence([
+        {code:'A10',caption:'Pipet điều chỉnh thể tích có đầu tip',kicker:'Dụng cụ chuyển mẫu',hold:850},
+        {code:'A14',caption:'Đầu tip tiếp cận chất lỏng trong ống',kicker:'Thao tác mẫu'}
+      ]);
+      if(story==='magnifier')setVisual('A11','Chỉ vùng dưới kính lúp được phóng đại','Quan sát bề mặt mẫu');
+    });
   });
   document.querySelectorAll('[data-ext]').forEach(btn=>btn.onclick=()=>{
     const id=btn.dataset.ext;
-    if(id==='pcr'){s.pcrViewed=true;setVisual('A12','Máy PCR thực hiện các chu kì nhiệt','Nội dung mở rộng')}
-    else{s.electroViewed=true;setVisual('A13','Hệ thống điện di tạo điện trường','Nội dung mở rộng')}
+    if(id==='pcr')s.pcrViewed=true;else s.electroViewed=true;
     persist(`Xem mở rộng ${id} S03`);stageEvidenceS3();
+    showEffectOnCanvas(btn,()=>{
+      if(id==='pcr')setVisual('A12','Máy PCR thực hiện các chu kì nhiệt','Nội dung mở rộng');
+      else setVisual('A13','Hệ thống điện di tạo điện trường','Nội dung mở rộng');
+    });
   });
   stageEvidenceS3();
 }
