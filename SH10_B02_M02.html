@@ -311,21 +311,21 @@ header p{margin:4px 0 0;color:rgba(255,255,255,.82);max-width:900px}
 function LMS(){return window.AiducationLMS||{ready(){},progress(){},event(){},state(){},complete(){},resize(){}};}
 
 const assetFiles={
-  A01:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A01.png',
-  A02:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A02.png',
-  A03:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A03.png',
-  A04:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A04.png',
-  A05:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A05.png',
-  A06:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A06.png',
-  A07:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A07.png',
-  A08:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A08.png',
-  A09:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A09.png',
-  A10:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A10.png',
-  A11:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A11.png',
-  A12:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A12.png',
-  A13:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A13.png',
-  A14:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A14.png',
-  A15:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A15.png'
+  A01:'https://lh3.googleusercontent.com/d/1mY8OQwAcXTvZ7bE_NVIghD3eqqMgyEyp',
+  A02:'https://lh3.googleusercontent.com/d/19kMPZlAv_tUS5YIfi7Z3QGvmg0dVsxtw',
+  A03:'https://lh3.googleusercontent.com/d/1Mtjbyl1UOBmxuUDpOCZ2nHqkMWPXiSQI',
+  A04:'https://lh3.googleusercontent.com/d/1oBebgH5AX1ng4cv6fjSJ8KxgPKlhQ0Sa',
+  A05:'https://lh3.googleusercontent.com/d/1gFet_6995G9jjsP8KUkvaTJyV6FZzn6a',
+  A06:'https://lh3.googleusercontent.com/d/1AkD5xB1sv34AlezgrA7OsDPNqfyLtByR',
+  A07:'https://lh3.googleusercontent.com/d/1BPRRqAt6FbxyJ5YAF1m9LfBTl6lMCywx',
+  A08:'https://lh3.googleusercontent.com/d/1oCC83QqC6sxv3xLugTPF4sZnRmQJ1V9g',
+  A09:'https://lh3.googleusercontent.com/d/1ibfxlHYE6S3zs7WaruMkM48kRhPmSRLf',
+  A10:'https://lh3.googleusercontent.com/d/1UnpaPSrmTeBXO2RU5n1qSvxFi9gzpqbl',
+  A11:'https://lh3.googleusercontent.com/d/1JhZHKdU5Pq2Ry4R00yY6ME7a5U7XDUP9',
+  A12:'https://lh3.googleusercontent.com/d/1cZ9lGtVVMl0Ee-aDLMuhOwFglxhrT9OX',
+  A13:'https://lh3.googleusercontent.com/d/1qV3hZkfGOH4IF8EohtT-1esBPZosxEbl',
+  A14:'https://lh3.googleusercontent.com/d/1gW7wuxOfOT9s3Cjw3MLHSATkcdYZ_tCL',
+  A15:'https://lh3.googleusercontent.com/d/1ssVSYYI8apmeGFmM6-39VmQJyUWuVADS'
 };
 const assets={},assetErrors={};
 Object.entries(assetFiles).forEach(([code,url])=>{
@@ -767,11 +767,17 @@ function renderStage3(){
     else{s.matchComplete=true;feedback('Đã ghép đúng bốn nhiệm vụ. Hãy mở ba thẻ kiến thức chính.','ok');setGuide('Mở lần lượt thẻ máy li tâm, pipet và kính lúp.')}
     persist('Kiểm tra ghép S03');renderStage3();
   };
-  document.querySelectorAll('[data-knowledge]').forEach(detail=>detail.addEventListener('toggle',()=>{
-    if(!detail.open||s.cardsViewed.has(detail.dataset.knowledge))return;s.cardsViewed.add(detail.dataset.knowledge);persist(`Mở thẻ ${detail.dataset.knowledge} S03`);
-    if(s.cardsViewed.size===3&&!state.completedStages.has(3)){markStageComplete('Thiết bị nghiên cứu có thể giúp quan sát, phân tách hoặc chuyển mẫu. Chức năng của thiết bị quyết định nhiệm vụ mà nó có thể thực hiện.');renderStage3();return}
-    stageEvidenceS3();
-  }));
+  document.querySelectorAll('[data-knowledge]').forEach(detail=>{
+    detail.addEventListener('click',event=>{
+      if(detail.open||event.target.closest('summary,[data-story]'))return;
+      detail.open=true;
+    });
+    detail.addEventListener('toggle',()=>{
+      if(!detail.open||s.cardsViewed.has(detail.dataset.knowledge))return;s.cardsViewed.add(detail.dataset.knowledge);persist(`Mở thẻ ${detail.dataset.knowledge} S03`);
+      if(s.cardsViewed.size===3&&!state.completedStages.has(3)){markStageComplete('Thiết bị nghiên cứu có thể giúp quan sát, phân tách hoặc chuyển mẫu. Chức năng của thiết bị quyết định nhiệm vụ mà nó có thể thực hiện.');renderStage3();return}
+      stageEvidenceS3();
+    });
+  });
   document.querySelectorAll('[data-story]').forEach(btn=>btn.onclick=e=>{
     e.preventDefault();e.stopPropagation();const story=btn.dataset.story;
     if(story==='centrifuge')runVisualSequence([

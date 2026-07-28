@@ -117,12 +117,18 @@ header h1{margin:2px 0;color:var(--cream);font-size:clamp(1.7rem,4vw,2.4rem);fon
 <script>
 function LMS(){return window.AiducationLMS||{ready(){},progress(){},event(){},state(){},complete(){},resize(){}}}
 const assetFiles={
-  A01:'images/Lop_10/SH10-B02-M03/SH10-B02-M03-A01.png',A02:'images/Lop_10/SH10-B02-M03/SH10-B02-M03-A02.png',
-  A03:'images/Lop_10/SH10-B02-M03/SH10-B02-M03-A03.png',A04:'images/Lop_10/SH10-B02-M03/SH10-B02-M03-A04.png',
-  A05:'images/Lop_10/SH10-B02-M03/SH10-B02-M03-A05.png',A06:'images/Lop_10/SH10-B02-M03/SH10-B02-M03-A06.png',
-  A07:'images/Lop_10/SH10-B02-M03/SH10-B02-M03-A07.png',A08:'images/Lop_10/SH10-B02-M03/SH10-B02-M03-A08.png',
-  A09:'images/Lop_10/SH10-B02-M03/SH10-B02-M03-A09.png',A10:'images/Lop_10/SH10-B02-M03/SH10-B02-M03-A10.png',
-  A11:'images/Lop_10/SH10-B02-M03/SH10-B02-M03-A11.png',A12:'images/Lop_10/SH10-B02-M03/SH10-B02-M03-A12.png'
+  A01:'https://lh3.googleusercontent.com/d/1AwAuhbUQk6Xjf_nxcUbnt2gwSbFzzRAw',
+  A02:'https://lh3.googleusercontent.com/d/1OkaEtIpFMmMHmEgHjpfzz631DJozJChr',
+  A03:'https://lh3.googleusercontent.com/d/1kWl9fyAVpfR1lQF1qVpcVHaLBLC1NrhO',
+  A04:'https://lh3.googleusercontent.com/d/1p9JZNAFWhF1vgT9QqsIkHq5UT2A7SfOT',
+  A05:'https://lh3.googleusercontent.com/d/14DvWnNOIjDt9icEOX0SfssW7YpBsnwN-',
+  A06:'https://lh3.googleusercontent.com/d/1qQNg8C2IG8puJ6cHqMcXZdEhpPX4wxHM',
+  A07:'https://lh3.googleusercontent.com/d/1vsTc5VUP6yJKPTN93DEjz4VbKS2PBcIR',
+  A08:'https://lh3.googleusercontent.com/d/1IjLTJi4_px4Funzcm3WaGgomO6HhZzWD',
+  A09:'https://lh3.googleusercontent.com/d/1bAGfkeG1lQWhC-J8YDL-jtJwjcuyzciI',
+  A10:'https://lh3.googleusercontent.com/d/1pI7M8ONudHHEHV0ftkhPWz4_nL8kIN5q',
+  A11:'https://lh3.googleusercontent.com/d/1V7Pn7EOw7JIxO_Dq7tmtbbRS7P_ZRj37',
+  A12:'https://lh3.googleusercontent.com/d/1S2e12Is-0epFSJDm8iY1zM80D5nGdfyu'
 };
 const assets={},assetErrors={};
 Object.entries(assetFiles).forEach(([code,url])=>{const img=new Image();img.addEventListener('load',()=>{assets[code]=img;drawCanvas()});img.addEventListener('error',()=>{assetErrors[code]=true;drawCanvas()});img.src=url});

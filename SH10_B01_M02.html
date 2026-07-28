@@ -129,18 +129,18 @@ function LMS(){return window.AiducationLMS||{ready(){},progress(){},event(){},st
    Khi dùng Google Drive, chỉ thay giá trị tương ứng, ví dụ:
    A01:'https://drive.google.com/uc?export=view&id=FILE_ID_A01' */
 const assetFiles={
-  A01:'images/Lop_10/SH10-B01-M02/SH10-B01-M02-A01.png',
-  A02:'images/Lop_10/SH10-B01-M02/SH10-B01-M02-A02.png',
-  A03:'images/Lop_10/SH10-B01-M02/SH10-B01-M02-A03.png',
-  A04:'images/Lop_10/SH10-B01-M02/SH10-B01-M02-A04.png',
-  A05:'images/Lop_10/SH10-B01-M02/SH10-B01-M02-A05.png',
-  A06:'images/Lop_10/SH10-B01-M02/SH10-B01-M02-A06.png',
-  A07:'images/Lop_10/SH10-B01-M02/SH10-B01-M02-A07.png',
-  A08:'images/Lop_10/SH10-B01-M02/SH10-B01-M02-A08.png',
-  A09:'images/Lop_10/SH10-B01-M02/SH10-B01-M02-A09.png',
-  A10:'images/Lop_10/SH10-B01-M02/SH10-B01-M02-A10.png',
-  A11:'images/Lop_10/SH10-B01-M02/SH10-B01-M02-A11.png',
-  A12:'images/Lop_10/SH10-B01-M02/SH10-B01-M02-A12.png'
+  A01:'https://lh3.googleusercontent.com/d/1ocpyBHercoKPSAIvkkxYY-RYOR_0J7QD',
+  A02:'https://lh3.googleusercontent.com/d/1FMylNzAwB-dsMzDw_jI7X7KAIu7U42_X',
+  A03:'https://lh3.googleusercontent.com/d/1gAubA4G0Cd4T7nNLJ2CVXWyZjVp7Q8H7',
+  A04:'https://lh3.googleusercontent.com/d/1H8hEWHKkSS275xSrl_BYLxftlfzNocPs',
+  A05:'https://lh3.googleusercontent.com/d/1wLnkmxq6sUicGdJun8OI9-YoG-cEej-f',
+  A06:'https://lh3.googleusercontent.com/d/1gr3eZ66Bh_CtU9PL3YsbuaBPu_IpW8zx',
+  A07:'https://lh3.googleusercontent.com/d/1H7en-GNoRYtS16X1gNQPfG7NKMLRXFfd',
+  A08:'https://lh3.googleusercontent.com/d/1ugQLRZon3L9F6RxsZjubFzEWNnnh04Em',
+  A09:'https://lh3.googleusercontent.com/d/1zpiM-Wtn7bvDe7wH--XoKOUlFPcWdZIz',
+  A10:'https://lh3.googleusercontent.com/d/17QwKZbPWER_xP4eQKPtKJWvuBPgkW69o',
+  A11:'https://lh3.googleusercontent.com/d/1U1vyuADcDB2eUN7VasIDRMsNFKVLCO8Y',
+  A12:'https://lh3.googleusercontent.com/d/1CnEVXWIVsxjoezfeJWwj-moq-GG7TZRC'
 };
 const state={stage:1,unlocked:1,complete:false,completedStages:new Set(),errors:{s1:0,s2:0,s3:0,s4:0},s1:{selected:null,pairs:{}},s2:{viewed:new Set(),activeProfile:null,selected:null,pairs:{}},s3:{topic:'food',orders:{},done:new Set(),generalChoice:null,general:false},s4:{answer:null,careers:new Set(),done:false}};
 const goals=[
@@ -267,7 +267,7 @@ function renderGeneral(){
   document.getElementById('checkGeneral').onclick=()=>{const choice=state.s3.generalChoice;if(choice===null){feedback('Hãy chọn một nhận định.','bad');return}const ok=choice===1;LMS().event('answered',{id:'s03_general',chosen:choice,correct:ok});if(ok){state.s3.general=true;completeStage('Đúng. Tác động kinh tế – xã hội không xuất hiện trực tiếp từ một kiến thức riêng lẻ. Kiến thức cần được chuyển thành giải pháp và được triển khai trong thực tiễn.');renderStage3()}else feedback(choice===2?'Một giải pháp cần được đánh giá trong điều kiện sử dụng cụ thể. Hiệu quả và rủi ro không giống nhau trong mọi hoàn cảnh.':'Sinh học cung cấp cơ sở và giải pháp. Việc giải quyết một vấn đề còn phụ thuộc vào nhiều điều kiện khác.','bad')}
 }
 function renderStage4(){
-  setAsset(state.s4.answer===false?'A03':'A12');setGuide('Trả lời nhận định, sau đó chọn ít nhất ba nghề ngoài bác sĩ có sử dụng kiến thức Sinh học.');
+  setAsset(state.s4.answer===false?'A12':'A03');setGuide('Trả lời nhận định, sau đó chọn ít nhất ba nghề ngoài bác sĩ có sử dụng kiến thức Sinh học.');
   const selected=[...state.s4.careers].map(id=>careers.find(c=>c.id===id)).filter(Boolean);
   workspace.innerHTML=`<h2>Từ lĩnh vực ứng dụng đến nghề nghiệp</h2><p class="workspace-note"><strong>Nhận định:</strong> Bác sĩ là nghề duy nhất cần kiến thức Sinh học. Đúng hay sai?</p><p class="workspace-note"><strong>Câu hỏi:</strong> Kiến thức Sinh học được sử dụng trong những nghề nào?</p><div class="option-grid"><button class="choice ${state.s4.answer===true?'selected':''}" data-tf="true">Đúng</button><button class="choice ${state.s4.answer===false?'correct':''}" data-tf="false">Sai</button></div><div id="careerBox" class="${state.s4.answer===false?'':'hidden'}"><div class="section-label">Một số nghề tiêu biểu — danh sách ví dụ, không phải danh mục đầy đủ</div><div class="career-groups">${careerGroups.map(([field,ids])=>`<section class="career-group"><h3>${field}</h3><div class="career-grid">${ids.map(id=>{const c=careers.find(x=>x.id===id);return`<button class="choice ${state.s4.careers.has(c.id)?'selected':''}" data-career="${c.id}">${c.name}</button>`}).join('')}</div></section>`).join('')}</div>${selected.length?`<div class="career-links">${selected.map(c=>`<div class="career-link"><span>${c.name}</span><span class="pair-arrow"><i class="ti ti-arrow-right"></i></span><span>${c.field}</span></div>`).join('')}</div><div class="relation-note">Một nghề có thể sử dụng kiến thức từ nhiều lĩnh vực. Các đường nối trên màn chỉ thể hiện những mối liên hệ tiêu biểu.</div>`:''}<button class="btn btn-primary" id="checkCareers" style="margin-top:10px">Kiểm tra lựa chọn</button></div>${state.s4.done?'<div id="moduleSummary" class="summary"><strong>Câu chốt module</strong><br>Sinh học góp phần bảo vệ sức khỏe, phát triển sản xuất, nâng cao chất lượng cuộc sống và giải quyết một số vấn đề chung của nhân loại.<br><br><strong>Câu chuyển M03</strong><br>Việc ứng dụng thành tựu Sinh học cần được xem xét như thế nào để bảo đảm lợi ích lâu dài cho con người, xã hội và môi trường?</div>':''}${state.complete?'<div class="summary module-final"><strong>Kết thúc module</strong><br>Sinh học cung cấp cơ sở khoa học cho việc chăm sóc sức khỏe, phát triển sản xuất, chế biến thực phẩm và bảo vệ môi trường. Khi được chuyển thành những giải pháp phù hợp, tri thức Sinh học có thể góp phần nâng cao chất lượng cuộc sống và thúc đẩy sự phát triển kinh tế – xã hội.<br><br><strong>Câu chuyển</strong><br>Các ứng dụng Sinh học có thể mang lại nhiều lợi ích, nhưng cũng cần được đánh giá về tác động lâu dài đối với con người, xã hội và môi trường. Nội dung này sẽ được tiếp tục ở SH10_B01_M03.</div>':''}`;
   document.querySelectorAll('[data-tf]').forEach(b=>b.onclick=()=>{const ans=b.dataset.tf==='true';state.s4.answer=ans;LMS().event('answered',{id:'s04_doctor_only',chosen:ans?'Đúng':'Sai',correct:!ans});if(ans){feedback('Hãy nhìn lại các lĩnh vực vừa học. Mỗi lĩnh vực đều cần nhiều người làm những công việc khác nhau.','bad');renderStage4()}else{feedback('Đúng. Bác sĩ chỉ là một trong nhiều nghề sử dụng kiến thức Sinh học. Kiến thức này còn cần thiết trong nghiên cứu, xét nghiệm, nông nghiệp, thực phẩm và môi trường.','ok');persist('Chọn đúng Sai');renderStage4()}});
