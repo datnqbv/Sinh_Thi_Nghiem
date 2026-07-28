@@ -766,6 +766,49 @@ Nhiều quá trình Sinh kéo dài **giờ/ngày thật** nhưng nén còn vài 
 - Có thể kèm 1 tín hiệu "đang tua nhanh" (biểu tượng `ti-player-track-next`/đồng hồ) để phân biệt rõ với thao tác diễn ra thời gian thực (nhỏ iốt, rót nước).
 - **Không** để tốc độ nén ám chỉ sai sinh học (vd không làm cây "nảy mầm tức thì" như phép màu); nén là quy ước hiển thị, nhãn thời gian giữ đúng nhận thức về nhịp sinh học thật.
 
+### #9 — Đưa canvas vào vùng nhìn trước khi chạy hiệu ứng từ nút ở xa
+Khi nút **“Xem…” / “Chạy mô phỏng” / “Quan sát hiệu ứng”** nằm bên dưới hoặc cách canvas quá một màn hình, không được khởi chạy hoạt cảnh ngay lúc canvas còn ngoài vùng nhìn. Trình tự bắt buộc:
+1. Khóa tạm nút vừa bấm và đặt `aria-busy="true"` để chống bấm lặp.
+2. Nếu canvas chưa nhìn thấy đầy đủ, cuộn canvas vào giữa vùng nhìn.
+3. Chỉ bắt đầu hiệu ứng sau sự kiện `scrollend`; luôn có fallback khoảng **700–900 ms** cho trình duyệt chưa hỗ trợ sự kiện này.
+4. Mở lại nút khi hiệu ứng đã bắt đầu; không tự cuộn ngược về nội dung vì dễ gây mất phương hướng.
+5. Với `prefers-reduced-motion: reduce`, dùng cuộn tức thời và bắt đầu hiệu ứng ngay.
+
+Chỉ áp dụng quy tắc này cho nút **trực tiếp khởi chạy một hiệu ứng có thời gian hoặc chuỗi hình cần quan sát**. Không tự kéo trang sau mọi câu trả lời/quiz thông thường, vì sẽ tạo trải nghiệm cuộn lên–xuống liên tục.
+
+Nếu `.canvas-card` hoặc tổ tiên có `overflow:hidden`, ưu tiên tính tọa độ tài liệu và dùng `window.scrollTo()`; `element.scrollIntoView()` có thể chọn nhầm tổ tiên bị ẩn làm vùng cuộn:
+```js
+let effectFocusTimer = 0;
+function showEffectOnCanvas(triggerButton, runEffect){
+  clearTimeout(effectFocusTimer);
+  const wrap = document.querySelector('.canvas-glow-wrap');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const rect = wrap.getBoundingClientRect();
+  const visible = rect.top >= 0 && rect.bottom <= innerHeight;
+  const maxY = Math.max(0, document.documentElement.scrollHeight - innerHeight);
+  const targetY = Math.max(0, Math.min(maxY, scrollY + rect.top - (innerHeight - rect.height) / 2));
+  let started = false;
+
+  triggerButton.disabled = true;
+  triggerButton.setAttribute('aria-busy', 'true');
+
+  const start = ()=>{
+    if (started) return;
+    started = true;
+    clearTimeout(effectFocusTimer);
+    removeEventListener('scrollend', start);
+    triggerButton.disabled = false;
+    triggerButton.removeAttribute('aria-busy');
+    runEffect();
+  };
+
+  if (!reduce && !visible) addEventListener('scrollend', start, { once:true });
+  scrollTo({ top:targetY, behavior:reduce ? 'auto' : 'smooth' });
+  effectFocusTimer = setTimeout(start, reduce || visible ? 0 : 900);
+}
+```
+Khi nghiệm thu trong LMS, phải thử cả trường hợp trang tự cuộn bên trong iframe và trường hợp LMS đã resize iframe theo nội dung.
+
 ---
 
 ## 14. TƯ DUY LOGIC & AN TOÀN — SINH HỌC (gate correctness, không được vi phạm)
@@ -963,6 +1006,7 @@ document.getElementById('linkFishImage').src = assetFiles.A02;
 - [ ] `resizeCanvas()` gọi đầu mỗi frame; `drawGrid()` theo kích thước thật (lấp đầy, không méo).
 - [ ] Buffer canvas = kích thước CSS × `Math.min(devicePixelRatio, 2)`; bật `imageSmoothingEnabled` + `imageSmoothingQuality='high'`; không gọi thêm `ctx.scale(dpr,dpr)`.
 - [ ] Không đổi state tức thì — mọi thao tác chạy chuỗi animation (MỤC 13); nút disabled khi đang animate.
+- [ ] Nút xem hiệu ứng nằm xa canvas phải tự đưa canvas vào vùng nhìn, chờ cuộn xong mới chạy và có fallback 700–900 ms (MỤC 13 #9); không áp dụng máy móc cho mọi quiz.
 - [ ] Meniscus cong lõm; reaction flash trước lerpColor; impact splash khi giọt chạm; particle wobble.
 - [ ] Nếu có click/tap trên canvas: quy đổi toạ độ theo MỤC 11E (khớp `fitScale`/offset của `loop()`, không chia `dpr` hai lần); hotspot ≥ `44/fitScale`.
 
