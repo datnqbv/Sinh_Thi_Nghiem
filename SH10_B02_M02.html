@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SH10_B02_M02 · Thiết bị nghiên cứu và học tập môn Sinh học</title>
+<script type="application/json" id="athena-context">
+{
+  "title":"Thiết bị nghiên cứu và học tập môn Sinh học",
+  "subject":"Sinh học",
+  "grade":"10",
+  "track":"SH10_B02_M02",
+  "objectives":[
+    "Nêu được một số thiết bị nghiên cứu và học tập môn Sinh học",
+    "Phân biệt kính hiển vi quang học với kính hiển vi điện tử theo nguồn tạo ảnh và nhiệm vụ sử dụng",
+    "Phân biệt độ phóng đại, độ phân giải và độ tương phản",
+    "Lựa chọn máy li tâm, pipet, kính lúp hoặc kính hiển vi theo nhiệm vụ nghiên cứu"
+  ],
+  "structure":[
+    {"id":"s01","title":"Từ phương pháp nghiên cứu đến thiết bị phù hợp"},
+    {"id":"s02","title":"Kính hiển vi quang học và kính hiển vi điện tử"},
+    {"id":"s03","title":"Thiết bị xử lí và thao tác với mẫu"},
+    {"id":"s04","title":"Chọn thiết bị theo nhiệm vụ nghiên cứu"}
+  ],
+  "athenaGuidance":"(a) Học sinh dự đoán thiết bị cho ba nhiệm vụ, phân loại dữ kiện về hai loại kính hiển vi, mở ba khái niệm, ghép thiết bị xử lí mẫu, rồi đối chiếu dự đoán ban đầu với lựa chọn sau khi học. (b) 1) Ba nhiệm vụ dự đoán: Quan sát tế bào biểu bì hành; Nghiên cứu cấu trúc rất nhỏ bên trong tế bào; Phân tách các thành phần trong mẫu tế bào. Lựa chọn: Kính hiển vi quang học; Kính hiển vi điện tử; Máy li tâm. 2) Bốn dữ kiện: A. Sử dụng ánh sáng và hệ thấu kính; B. Sử dụng chùm electron và hệ thống chuyên dụng; C. Có thể quan sát một số mẫu sống; D. Có độ phân giải cao, giúp nghiên cứu cấu trúc siêu hiển vi. Lựa chọn: Kính hiển vi quang học; Kính hiển vi điện tử. 3) Hai nhiệm vụ vận dụng: Quan sát tế bào biểu bì hành; Nghiên cứu cấu trúc siêu hiển vi bên trong tế bào. Lựa chọn: Kính hiển vi quang học; Kính hiển vi điện tử. 4) Bốn nhiệm vụ: Tách phần lắng khỏi dịch trong một mẫu; Lấy chính xác một thể tích nhỏ dung dịch; Quan sát chi tiết bề mặt của một mẫu tương đối lớn; Quan sát tế bào. Lựa chọn: Máy li tâm; Pipet; Kính lúp; Kính hiển vi quang học. 5) Ba tình huống cuối: Quan sát tế bào biểu bì hành; Phân tách phần lắng và phần dịch trong mẫu đã xử lí; Lấy chính xác một thể tích nhỏ dung dịch. Lựa chọn: Kính hiển vi quang học; Kính hiển vi điện tử; Máy li tâm; Pipet; Kính lúp. Mở rộng: Tạo nhiều bản sao của một đoạn DNA xác định. Lựa chọn: Máy PCR; Kính hiển vi điện tử; Hệ thống điện di. (c) Athena chỉ gợi ý dựa trên chức năng và mục đích nghiên cứu, không nói thẳng đáp án."
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css">
+<style>
+:root{
+  --cream:#FAF7F0;--cream-2:#F0EADD;--cream-3:#E7DECC;
+  --paper-line:#E5DECF;--paper-line-2:#D6CCB6;
+  --ink:#1A1A1A;--ink-2:#514C44;--ink-3:#7C756A;--ink-faint:#ABA396;
+  --jade:#3CA57A;--jade-deep:#2D8B6F;--jade-dark:#14432F;
+  --jade-text:#1B5E48;--jade-soft:#A9D0BE;--jade-pale:#DCEAE1;
+  --sage:#A8C9B8;--sage-deep:#7CA792;--sage-text:#46685A;--sage-pale:#E1ECE4;
+  --accent:#E8A24A;--accent-deep:#CE8A33;--accent-text:#8A551A;--accent-pale:#F7E7CD;
+  --correct:#2D8B6F;--correct-bg:#DCEAE1;
+  --wrong:#C15F3C;--wrong-bg:#F3E2D6;
+  --warning:#C58A2E;--warning-bg:#F5E7CB;
+  --info:#4E7F92;--info-bg:#DCE7EB;
+  --radius:10px;--radius-lg:14px;--radius-sm:6px;
+  --shadow:0 4px 12px rgba(45,139,111,.10);--shadow-sm:0 2px 6px rgba(26,26,26,.05)
+}
+*{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+body{
+  margin:0;display:flex;flex-direction:column;align-items:center;gap:16px;
+  padding:24px clamp(20px,2.5vw,48px);background:var(--cream);color:var(--ink);
+  font-family:'Be Vietnam Pro',system-ui,sans-serif;font-size:1.075rem;line-height:1.7
+}
+button{font:inherit}
+button:focus-visible,[tabindex]:focus-visible,summary:focus-visible{
+  outline:3px solid var(--accent);outline-offset:3px
+}
+.hidden{display:none!important}
+header{
+  width:100%;max-width:1720px;border-radius:16px;padding:1.5rem 2rem;overflow:hidden;position:relative;
+  background-image:linear-gradient(rgba(18,26,20,.48),rgba(18,26,20,.48)),url('https://www.aiducation.edu.vn/images/fifingfig_Modern_editorial_illustration_of_a_stylized_Vietnames_f0b08847-9f6d-48cf-90ac-b8ed2eb77baf.png');
+  background-position:center 32%;background-size:cover;background-repeat:no-repeat;box-shadow:var(--shadow)
+}
+header::before,header::after{content:'';position:absolute;border-radius:50%;background:rgba(255,255,255,.07)}
+header::before{width:180px;height:180px;right:5%;top:-95px}
+header::after{width:100px;height:100px;right:19%;bottom:-62px}
+header>*{position:relative;z-index:1}
+.header-badge{display:flex;align-items:center;gap:7px;color:rgba(255,255,255,.9);font-size:.9rem;font-weight:600}
+header h1{margin:2px 0;color:var(--cream);font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800;line-height:1.25}
+header p{margin:4px 0 0;color:rgba(255,255,255,.82);max-width:900px}
+.goal-bar{
+  display:flex;align-items:center;gap:10px;width:100%;max-width:1720px;background:var(--jade-pale);
+  border-left:4px solid var(--jade);border-radius:10px;padding:10px 16px
+}
+.goal-label{display:flex;align-items:center;gap:6px;flex-shrink:0;text-transform:uppercase;font-size:12px;font-weight:600;color:var(--jade-text);white-space:nowrap;letter-spacing:.6px}
+.goal-divider{flex-shrink:0;align-self:stretch;width:1px;margin:3px 0;background:var(--sage)}
+.goal-text{min-width:0;font-size:17px;color:var(--ink);overflow-wrap:anywhere}
+.progress-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:100%;max-width:1720px}
+.stage-tab{
+  min-height:52px;border:1px solid var(--paper-line-2);background:var(--cream-2);color:var(--ink-2);
+  border-radius:9px;padding:9px 12px;text-align:left;font-weight:600;cursor:pointer;transition:background .18s,border-color .18s
+}
+.stage-tab span{display:block;font-size:.76rem;color:inherit;opacity:.78;font-weight:500}
+.stage-tab.current{background:var(--jade);border-color:var(--jade);color:var(--cream)}
+.stage-tab.done{background:var(--jade-pale);color:var(--jade-text);border-color:var(--sage)}
+.stage-tab:disabled{cursor:not-allowed;opacity:.58}
+.lab-wrapper{
+  display:grid;grid-template-columns:minmax(230px,.9fr) minmax(0,2.2fr) minmax(280px,1.1fr);
+  grid-template-areas:"sideLeft guide sideRight" "sideLeft controls sideRight" "sideLeft canvas sideRight";
+  grid-template-rows:auto auto 1fr;gap:16px;width:100%;max-width:1720px;align-items:stretch
+}
+.lab-wrapper>*{min-width:0}
+.lab-side-left,.lab-side-right{align-self:stretch;display:flex;flex-direction:column;gap:16px;min-height:0}
+.lab-side-left{grid-area:sideLeft}.lab-side-right{grid-area:sideRight}
+.card{background:var(--cream-2);border:1px solid var(--paper-line);border-radius:12px;padding:16px 18px}
+.card-title{display:flex;align-items:center;gap:8px;margin:0 0 12px;font-size:1.05rem;font-weight:700;line-height:1.4}
+.card-title i{color:var(--jade)}
+.chip-list{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:7px 9px;background:var(--cream);border:1px solid var(--paper-line);border-radius:8px;font-size:.84rem;font-weight:600;line-height:1.35}
+.chip i{color:var(--jade)}
+.method-card,.evidence-card{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+.scroll-body{flex:1;min-height:0;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--sage) transparent}
+.scroll-body::-webkit-scrollbar{width:6px}.scroll-body::-webkit-scrollbar-thumb{background:var(--sage);border-radius:6px}
+.method-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px}
+.method-step{display:flex;gap:7px;align-items:flex-start;padding:8px 9px;background:var(--cream);border:1px solid var(--paper-line);border-radius:8px;font-size:.78rem;line-height:1.4}
+.method-step .num{display:grid;place-items:center;flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--jade-pale);color:var(--jade-text);font-size:.72rem;font-weight:700}
+.method-step.current{background:var(--jade-pale);border-color:var(--jade)}
+.method-step.current .num{background:var(--jade);color:var(--cream)}
+.method-step.done .num{background:var(--correct-bg);color:var(--correct)}
+.guide-bar{grid-area:guide;display:flex;align-items:center;gap:12px;background:var(--jade-pale);border:1px solid var(--sage);border-radius:12px;padding:12px 16px}
+.guide-icon{display:grid;place-items:center;flex:0 0 42px;width:42px;height:42px;border-radius:50%;background:var(--jade);color:var(--cream)}
+.guide-copy{flex:1;min-width:0}.guide-text{font-weight:600;line-height:1.5;animation:guideIn .2s ease}.guide-question{font-size:.82rem;color:var(--ink-2);line-height:1.45}
+.guide-badge{flex-shrink:0;padding:4px 8px;background:var(--cream);border:1px solid var(--sage);border-radius:8px;color:var(--jade-text);font-size:.8rem;font-weight:700;white-space:nowrap}
+@keyframes guideIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.controls-row{
+  grid-area:controls;display:flex;flex-wrap:nowrap;align-items:center;gap:8px;min-height:56px;
+  padding:8px 12px;background:var(--cream-2);border:1px solid var(--paper-line);border-radius:12px;
+  overflow-x:auto;overflow-y:hidden;scrollbar-width:none
+}
+.controls-row::-webkit-scrollbar{display:none}.controls-spacer{flex:1}
+.dots{display:flex;gap:6px;align-items:center}.dot{width:10px;height:10px;border-radius:50%;background:var(--cream-3);border:1px solid var(--paper-line-2)}.dot.current{background:var(--jade)}.dot.done{background:var(--jade-soft)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:40px;padding:8px 14px;
+  border-radius:9px;border:1.5px solid var(--jade);background:transparent;color:var(--jade-text);
+  font-weight:600;cursor:pointer;white-space:nowrap;transition:background .18s,border-color .18s,transform .18s
+}
+.btn:hover:not(:disabled){background:var(--jade-pale)}.btn:active:not(:disabled){transform:translateY(1px)}
+.btn-primary{background:var(--jade);color:var(--cream)}.btn-primary:hover:not(:disabled){background:var(--jade-deep)}
+.btn-reset{border-style:dashed}.btn:disabled{opacity:.48;cursor:not-allowed}
+.canvas-card{grid-area:canvas;min-width:0;max-width:100%;padding:4px;width:100%;height:100%;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;gap:10px}
+.canvas-glow-wrap{position:relative;min-width:0;max-width:100%;width:100%;padding:2px;border-radius:10px;overflow:hidden;flex:0 0 auto;display:flex;aspect-ratio:16/7}
+.canvas-glow-wrap::before{content:'';position:absolute;inset:-80%;background:conic-gradient(from 0deg,transparent 0deg,transparent 170deg,var(--jade) 220deg,var(--jade) 340deg,transparent 360deg);animation:canvasBorderSpin 4.5s linear infinite;z-index:0}
+@keyframes canvasBorderSpin{to{transform:rotate(360deg)}}
+#labCanvas{position:relative;z-index:1;min-width:0;max-width:100%;background:var(--cream);border-radius:8px;width:100%;height:100%;display:block;touch-action:none;flex:1}
+.workspace{min-width:0;max-width:100%;padding:13px 15px 16px;min-height:300px;background:var(--cream);border:1px solid var(--paper-line);border-radius:10px}
+.workspace h2{margin:0 0 5px;font-size:clamp(1.25rem,2.2vw,1.65rem);line-height:1.35}
+.workspace-note{margin:0 0 12px;color:var(--ink-2);font-size:.9rem;line-height:1.55}
+.section-label{display:flex;align-items:center;gap:7px;margin:14px 0 8px;color:var(--jade-text);font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.task-grid,.device-grid,.facts-grid,.concept-grid,.knowledge-grid{display:grid;gap:9px}
+.task-grid{grid-template-columns:repeat(3,1fr)}.device-grid{grid-template-columns:repeat(3,1fr)}.facts-grid,.knowledge-grid{grid-template-columns:repeat(2,1fr)}.concept-grid{grid-template-columns:repeat(3,1fr)}
+.task-card,.device-card,.fact-card,.concept-card,.knowledge-card{
+  width:100%;min-height:56px;padding:10px 12px;border:1px solid var(--paper-line-2);border-radius:9px;
+  background:var(--cream-2);color:var(--ink);text-align:left;cursor:pointer;line-height:1.45;transition:background .18s,border-color .18s,transform .18s
+}
+.task-card:hover:not(:disabled),.device-card:hover:not(:disabled),.fact-card:hover:not(:disabled),.concept-card:hover:not(:disabled),.knowledge-card:hover:not(:disabled){border-color:var(--sage-deep);transform:translateY(-1px)}
+.task-card.selected,.device-card.selected,.fact-card.selected{background:var(--jade-pale);border-color:var(--jade)}
+.task-card.correct,.device-card.correct,.fact-card.correct{background:var(--correct-bg);border-color:var(--correct)}
+.task-card.needs-fix,.fact-card.needs-fix{background:var(--wrong-bg);border-color:var(--wrong)}
+.task-card:disabled,.device-card:disabled,.fact-card:disabled{cursor:default}
+.task-top{display:flex;gap:8px;align-items:flex-start}.task-index{display:grid;place-items:center;flex:0 0 24px;width:24px;height:24px;border-radius:50%;background:var(--jade-pale);color:var(--jade-text);font-size:.75rem;font-weight:700}
+.task-title{font-weight:600;font-size:.9rem}.task-choice{display:block;margin-top:7px;color:var(--jade-text);font-size:.8rem;font-weight:600}
+.task-feedback{display:block;margin-top:7px;font-size:.78rem;line-height:1.45;color:var(--ink-2)}
+.device-card{display:flex;align-items:center;gap:10px;font-weight:600;font-size:.88rem}.device-card img{width:54px;height:50px;object-fit:cover;border-radius:7px;border:1px solid var(--paper-line);background:var(--cream)}
+.paired-summary{margin-top:12px;padding:11px 13px;background:var(--sage-pale);border-left:4px solid var(--jade);border-radius:8px;color:var(--ink-2);font-size:.88rem}
+.feedback-box{margin-top:12px;padding:11px 13px;border-left:4px solid var(--info);border-radius:8px;background:var(--info-bg);font-size:.88rem;line-height:1.55}
+.feedback-box.ok{border-left-color:var(--correct);background:var(--correct-bg)}.feedback-box.bad{border-left-color:var(--wrong);background:var(--wrong-bg)}
+.actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:12px}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.micro-panel{padding:12px;border:1px solid var(--paper-line);border-radius:10px;background:var(--cream-2)}
+.micro-head{display:flex;align-items:center;gap:10px;margin-bottom:9px}.micro-head img{width:82px;height:68px;object-fit:cover;border-radius:8px;border:1px solid var(--paper-line)}
+.micro-head h3{margin:0;font-size:1rem}.micro-head p{margin:2px 0 0;font-size:.78rem;color:var(--ink-2);line-height:1.4}
+.fact-card{font-size:.84rem}.fact-card small{display:block;margin-top:5px;color:var(--jade-text);font-weight:600}
+.concept-card{padding:0;overflow:hidden}.concept-card summary{list-style:none;padding:11px 12px;font-weight:700;cursor:pointer}.concept-card summary::-webkit-details-marker{display:none}.concept-card summary::after{content:'+';float:right;color:var(--jade-text)}.concept-card[open] summary::after{content:'−'}.concept-card p{margin:0;padding:0 12px 12px;font-size:.84rem;color:var(--ink-2);line-height:1.5}
+.more-box{margin-top:12px;border:1px solid var(--paper-line);border-radius:9px;background:var(--cream-2)}.more-box summary{cursor:pointer;padding:10px 12px;font-weight:700;color:var(--jade-text)}.more-box p{margin:0;padding:0 12px 12px;font-size:.84rem;color:var(--ink-2)}
+.knowledge-card{padding:0;overflow:hidden}.knowledge-card summary{padding:11px 12px;cursor:pointer;font-weight:700;list-style:none}.knowledge-card summary::-webkit-details-marker{display:none}.knowledge-card .knowledge-body{padding:0 12px 12px;font-size:.84rem;color:var(--ink-2)}.knowledge-card .knowledge-body p{margin:0 0 7px}.knowledge-card .knowledge-body .btn{width:100%;font-size:.78rem}
+.ext-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.ext-card{padding:11px;border:1px solid var(--paper-line);border-radius:9px;background:var(--cream)}.ext-card img{width:100%;height:100px;object-fit:cover;border-radius:7px}.ext-card h4{margin:7px 0 3px;font-size:.92rem}.ext-card p{margin:0;font-size:.78rem;line-height:1.5;color:var(--ink-2)}
+.final-list{display:grid;gap:9px}.final-row{display:grid;grid-template-columns:minmax(180px,1.4fr) minmax(145px,.8fr) minmax(210px,1fr);gap:9px;align-items:stretch;padding:10px;border:1px solid var(--paper-line);border-radius:9px;background:var(--cream-2)}
+.final-task{font-size:.88rem;font-weight:600}.pre-choice{padding:8px;border-radius:7px;background:var(--cream);font-size:.78rem;color:var(--ink-2)}.pre-choice strong{display:block;color:var(--ink);font-size:.72rem;text-transform:uppercase;letter-spacing:.5px}
+.select-device{width:100%;min-height:44px;padding:8px 10px;border:1px solid var(--paper-line-2);border-radius:8px;background:var(--cream);color:var(--ink);font:inherit;font-size:.82rem}
+.compare-label{display:inline-flex;align-items:center;gap:5px;margin-top:7px;padding:3px 7px;border-radius:6px;background:var(--jade-pale);color:var(--jade-text);font-size:.72rem;font-weight:700}
+.final-message{margin-top:12px;padding:13px 15px;border-left:4px solid var(--jade);border-radius:8px;background:var(--jade-pale)}.final-message h3{margin:0 0 4px;font-size:1rem}.final-message p{margin:4px 0;color:var(--ink-2);font-size:.88rem}
+.stage-entry{animation:stageEntry .3s ease both;animation-delay:var(--delay,0ms)}
+.fact-card.placed{animation:factPlace .2s ease both}
+@keyframes stageEntry{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+@keyframes factPlace{from{opacity:.35;transform:translateX(8px)}to{opacity:1;transform:none}}
+.task-block{display:grid;gap:7px;min-width:0}.task-block.compact .task-card{min-height:48px}
+.mobile-choice-tray{display:none}
+.s1-match-layout{display:grid;grid-template-columns:minmax(0,1fr) 64px minmax(0,1fr);gap:12px;align-items:start}
+.s1-task-list .task-grid,.s1-device-list .device-grid{grid-template-columns:1fr}
+.match-link-panel{display:grid;place-items:center;align-self:stretch;color:var(--jade-text);border-inline:1px dashed var(--sage);font-size:1.35rem}
+.match-link-panel span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:.7rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.s3-match-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(180px,.8fr) minmax(200px,.9fr);gap:12px;align-items:start}
+.s3-task-list .task-grid,.s3-device-list .device-grid{grid-template-columns:1fr}
+.device-info-panel{min-height:100%;padding:12px;border:1px solid var(--paper-line);border-radius:9px;background:var(--cream-2)}
+.device-info-panel img{display:block;width:100%;height:120px;object-fit:contain;margin-bottom:9px;border-radius:7px;background:var(--cream)}
+.device-info-panel h3{margin:0 0 5px;font-size:.95rem}.device-info-panel p{margin:0;color:var(--ink-2);font-size:.78rem;line-height:1.5}
+.inline-feedback{display:block;margin-top:7px;padding:7px 8px;border-left:3px solid var(--wrong);border-radius:6px;background:var(--wrong-bg);color:var(--ink-2);font-size:.76rem;line-height:1.45}
+.inline-feedback.ok{border-left-color:var(--correct);background:var(--correct-bg)}
+.final-row{grid-template-columns:minmax(180px,1.35fr) minmax(145px,.8fr) minmax(190px,.9fr) minmax(210px,1fr)}
+.final-feedback{font-size:.77rem;line-height:1.45;color:var(--ink-2)}
+.final-feedback:empty::before{content:'Phản hồi xuất hiện sau khi kiểm tra.';color:var(--ink-3)}
+.field-label{display:block;margin:8px 0 4px;color:var(--ink-2);font-size:.74rem;font-weight:700}
+.evidence-list{display:grid;gap:7px}.evidence-item{display:flex;gap:8px;align-items:flex-start;padding:8px 9px;background:var(--cream);border:1px solid var(--paper-line);border-radius:8px;font-size:.79rem;line-height:1.4}.evidence-item i{margin-top:2px;color:var(--ink-faint)}.evidence-item.done i{color:var(--correct)}.evidence-item.done{border-color:var(--sage);background:var(--sage-pale)}
+.conclusion-note{padding:11px 12px;border-left:4px solid var(--jade);border-radius:8px;background:var(--jade-pale);color:var(--ink-2);font-size:.84rem;line-height:1.55}.conclusion-note strong{color:var(--ink)}
+.safety-note{margin-top:12px;padding:9px 10px;border-left:4px solid var(--accent);border-radius:8px;background:var(--warning-bg);font-size:.78rem;color:var(--ink-2);line-height:1.5}
+.link-section{display:flex;align-items:center;gap:18px;width:100%;max-width:1720px;background:var(--cream-2);border:1px solid var(--paper-line);border-radius:12px;padding:18px 22px}
+.link-fish img{width:72px;height:72px;object-fit:cover;border-radius:50%;border:2px solid var(--sage)}.link-info h3{margin:0;font-size:1rem}.link-info p{margin:2px 0;font-size:.86rem;color:var(--ink-2)}.link-url{display:inline-flex;align-items:center;gap:5px;color:var(--jade-text);font-size:.86rem;font-weight:600}.link-url:hover{color:var(--jade-deep);text-decoration:underline}
+@media(max-width:1100px){
+  .lab-wrapper{grid-template-columns:1fr;grid-template-areas:"guide" "controls" "canvas" "sideRight" "sideLeft"}
+  .lab-side-left,.lab-side-right{height:auto}.lab-side-left>*:last-child,.lab-side-right>*:last-child{flex:none}
+  .scroll-body{overflow:visible}.canvas-card{height:auto}.final-row{grid-template-columns:1fr 1fr}.final-task{grid-column:1/-1}.final-feedback{grid-column:1/-1}
+  .s3-match-layout{grid-template-columns:1fr 1fr}.device-info-panel{grid-column:1/-1}
+}
+@media(max-width:768px){
+  body{padding:14px;gap:12px;font-size:1rem}header{padding:1.2rem}.progress-nav{display:flex;overflow-x:auto;scrollbar-width:none}.progress-nav::-webkit-scrollbar{display:none}.stage-tab{flex:0 0 190px}
+  .goal-bar{align-items:flex-start}.guide-bar{align-items:flex-start}.guide-badge{display:none}.canvas-glow-wrap{aspect-ratio:4/3}
+  .task-grid,.facts-grid,.knowledge-grid,.compare-grid,.concept-grid,.ext-grid{grid-template-columns:1fr}
+  .device-grid{grid-template-columns:1fr 1fr}.final-row{grid-template-columns:1fr}.final-task{grid-column:auto}
+  .workspace{padding:12px}.method-grid{grid-template-columns:1fr 1fr}
+  .btn,.task-card,.device-card,.fact-card,.select-device,summary{min-height:44px}
+  .s1-match-layout,.s3-match-layout{grid-template-columns:1fr}.match-link-panel,.s1-desktop-devices,.s3-desktop-devices{display:none}
+  .mobile-choice-tray{grid-template-columns:1fr 1fr;gap:7px;margin:0 0 7px;padding:8px;border-left:3px solid var(--jade);background:var(--jade-pale);border-radius:7px}
+  .task-block.active .mobile-choice-tray{display:grid}.task-block.compact:not(.active) .task-card{min-height:44px;padding-block:7px}
+  .s2-task-block.mobile-pending:not(.mobile-current),.s3-task-block.mobile-pending:not(.mobile-current){display:none}
+  .final-feedback{grid-column:auto}.final-feedback:empty{display:none}
+}
+@media(max-width:480px){
+  body{padding:10px}.goal-divider{display:none}.goal-bar{display:block}.goal-label{margin-bottom:4px}
+  .device-grid{grid-template-columns:1fr}.method-grid{grid-template-columns:1fr}.link-section{flex-direction:column;text-align:center}.link-fish img{width:56px;height:56px}
+}
+@media(prefers-reduced-motion:reduce){
+  .canvas-glow-wrap::before{animation:none}.guide-text,.task-card,.device-card,.fact-card,.stage-tab,.btn,.stage-entry{animation:none;transition:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-badge"><i class="ti ti-microscope"></i> SINH HỌC 10 · BÀI 2 · MODULE 2</div>
+  <h1>Thiết bị nghiên cứu và học tập môn Sinh học</h1>
+  <p>Mỗi thiết bị nghiên cứu Sinh học giúp thực hiện nhiệm vụ nào?</p>
+</header>
+
+<div class="goal-bar">
+  <span class="goal-label"><i class="ti ti-target"></i> MỤC TIÊU</span>
+  <span class="goal-divider"></span>
+  <span class="goal-text" id="goalText">Nêu được một số thiết bị nghiên cứu và học tập môn Sinh học.</span>
+</div>
+
+<nav class="progress-nav" aria-label="Tiến trình module">
+  <button class="stage-tab current" data-stage="1">01 · Dự đoán<span>Chọn theo nhiệm vụ</span></button>
+  <button class="stage-tab" data-stage="2" disabled>02 · Thiết bị quan sát<span>Hai loại kính hiển vi</span></button>
+  <button class="stage-tab" data-stage="3" disabled>03 · Xử lí mẫu<span>Li tâm, pipet, kính lúp</span></button>
+  <button class="stage-tab" data-stage="4" disabled>04 · Vận dụng<span>Đối chiếu lựa chọn</span></button>
+</nav>
+
+<main class="lab-wrapper">
+  <aside class="lab-side-left">
+    <section class="card">
+      <h2 class="card-title"><i class="ti ti-flask-2"></i> Thiết bị & mẫu vật</h2>
+      <div class="chip-list" id="deviceChips"></div>
+    </section>
+    <section class="card method-card">
+      <h2 class="card-title"><i class="ti ti-list-numbers"></i> Cách học</h2>
+      <div class="scroll-body"><div class="method-grid" id="methodGrid"></div></div>
+      <div class="safety-note" id="stageNote"><i class="ti ti-info-circle"></i> Chọn thiết bị theo nhiệm vụ và loại thông tin cần thu thập.</div>
+    </section>
+  </aside>
+
+  <section class="guide-bar">
+    <div class="guide-icon"><i class="ti ti-microscope"></i></div>
+    <div class="guide-copy" aria-live="polite">
+      <div class="guide-text" id="guideText">Chọn một nhiệm vụ, sau đó chọn thiết bị bạn dự đoán là phù hợp.</div>
+      <div class="guide-question" id="guideQuestion">Ba nhiệm vụ nghiên cứu dưới đây cần những thiết bị nào?</div>
+    </div>
+    <span class="guide-badge" id="guideBadge">Màn 1/4</span>
+  </section>
+
+  <div class="controls-row">
+    <div class="dots" aria-hidden="true">
+      <span class="dot current"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    </div>
+    <button class="btn" id="btnTTS"><i class="ti ti-volume"></i> Nghe</button>
+    <div class="controls-spacer"></div>
+    <button class="btn btn-reset" id="btnReset"><i class="ti ti-refresh"></i> Làm lại màn</button>
+    <button class="btn btn-primary" id="btnNext" disabled><span>Tiếp tục</span><i class="ti ti-arrow-right"></i></button>
+  </div>
+
+  <section class="card canvas-card">
+    <div class="canvas-glow-wrap">
+      <canvas id="labCanvas" width="760" height="440" role="img" aria-label="Hình thiết bị và mẫu vật minh họa cho nhiệm vụ nghiên cứu"></canvas>
+    </div>
+    <div class="workspace" id="workspace"></div>
+  </section>
+
+  <aside class="lab-side-right">
+    <section class="card">
+      <h2 class="card-title"><i class="ti ti-table"></i> Bằng chứng học tập</h2>
+      <div class="evidence-list" id="evidenceList"></div>
+    </section>
+    <section class="card evidence-card">
+      <h2 class="card-title"><i class="ti ti-checklist"></i> Kết luận & phản hồi</h2>
+      <div class="scroll-body">
+        <div class="conclusion-note" id="conclusionNote"><strong>Câu hỏi trung tâm</strong><br>Mỗi thiết bị nghiên cứu Sinh học giúp thực hiện nhiệm vụ nào?</div>
+        <div class="feedback-box" id="globalFeedback" aria-live="polite">Hệ thống sẽ phản hồi sau mỗi thao tác có ý nghĩa.</div>
+      </div>
+    </section>
+  </aside>
+</main>
+
+<section class="link-section">
+  <div class="link-fish"><img src="https://www.aiducation.edu.vn/images/fifingfig_Modern_editorial_illustration_of_a_stylized_Vietnames_f0b08847-9f6d-48cf-90ac-b8ed2eb77baf.png" alt="Aiducation"></div>
+  <div class="link-info">
+    <h3>Sinh Học Aiducation – Học liệu tương tác</h3>
+    <p>Module tiếp theo: Quy trình nghiên cứu khoa học.</p>
+    <a class="link-url" href="https://www.aiducation.edu.vn" target="_blank" rel="noopener"><i class="ti ti-external-link"></i> Truy cập aiducation.edu.vn</a>
+  </div>
+</section>
+
+<script>
+function LMS(){return window.AiducationLMS||{ready(){},progress(){},event(){},state(){},complete(){},resize(){}};}
+
+const assetFiles={
+  A01:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A01.png',
+  A02:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A02.png',
+  A03:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A03.png',
+  A04:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A04.png',
+  A05:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A05.png',
+  A06:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A06.png',
+  A07:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A07.png',
+  A08:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A08.png',
+  A09:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A09.png',
+  A10:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A10.png',
+  A11:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A11.png',
+  A12:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A12.png',
+  A13:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A13.png',
+  A14:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A14.png',
+  A15:'images/Lop_10/SH10-B02-M02/SH10-B02-M02-A15.png'
+};
+const assets={},assetErrors={};
+Object.entries(assetFiles).forEach(([code,url])=>{
+  const img=new Image();
+  img.addEventListener('load',()=>{assets[code]=img;drawCanvas()});
+  img.addEventListener('error',()=>{assetErrors[code]=true;drawCanvas()});
+  img.src=url;
+});
+
+const deviceNames={
+  light:'Kính hiển vi quang học',electron:'Kính hiển vi điện tử',centrifuge:'Máy li tâm',
+  pipette:'Pipet',magnifier:'Kính lúp',pcr:'Máy PCR',electrophoresis:'Hệ thống điện di'
+};
+const deviceAssets={light:'A01',electron:'A02',centrifuge:'A03',pipette:'A10',magnifier:'A11',pcr:'A12',electrophoresis:'A13'};
+const stages={
+  1:{
+    goal:'Hiểu rằng thiết bị được lựa chọn dựa trên nhiệm vụ nghiên cứu và loại thông tin cần thu thập.',
+    question:'Ba nhiệm vụ nghiên cứu dưới đây cần những thiết bị nào?',
+    guide:'Chọn một nhiệm vụ, sau đó chọn thiết bị bạn dự đoán là phù hợp.',
+    tts:'Ở module trước, bạn đã biết cần lựa chọn phương pháp phù hợp. Muốn thực hiện phương pháp đó, người nghiên cứu còn phải chọn đúng thiết bị. Hãy dự đoán thiết bị phù hợp với từng nhiệm vụ.',
+    chips:[['ti-microscope','Hai loại kính hiển vi'],['ti-rotate-clockwise','Máy li tâm'],['ti-test-pipe','Mẫu tế bào']],
+    methods:['Chọn một nhiệm vụ','Chọn thiết bị dự đoán','Ghép đủ ba nhiệm vụ','Xác nhận dự đoán'],
+    note:'Màn này chỉ lưu dự đoán ban đầu, không chấm đúng–sai.'
+  },
+  2:{
+    goal:'So sánh hai loại kính hiển vi và phân biệt độ phóng đại, độ phân giải, độ tương phản.',
+    question:'Hai loại kính hiển vi khác nhau như thế nào và nên dùng trong những nhiệm vụ nào?',
+    guide:'Ghép bốn thẻ dữ kiện vào đúng loại kính hiển vi, rồi bấm Kiểm tra.',
+    tts:'Kính hiển vi quang học và kính hiển vi điện tử đều tạo ra hình ảnh mà mắt thường không quan sát rõ. Tuy nhiên, chúng sử dụng nguồn tạo ảnh khác nhau và phù hợp với những nhiệm vụ nghiên cứu khác nhau.',
+    chips:[['ti-sun','Ánh sáng'],['ti-atom','Chùm electron'],['ti-arrows-maximize','Độ phóng đại'],['ti-focus-2','Độ phân giải'],['ti-adjustments','Độ tương phản']],
+    methods:['Ghép bốn dữ kiện','Mở ba khái niệm','Chọn kính cho hai nhiệm vụ','Đọc câu chốt'],
+    note:'Độ phân giải cao hơn không có nghĩa thiết bị luôn phù hợp hơn.'
+  },
+  3:{
+    goal:'Nêu chức năng của máy li tâm, pipet và kính lúp; phân biệt quan sát với xử lí mẫu.',
+    question:'Không phải thiết bị nào cũng dùng để quan sát. Từng thiết bị thực hiện nhiệm vụ gì?',
+    guide:'Chọn một nhiệm vụ, chọn thiết bị phù hợp, rồi kiểm tra cả bốn cặp.',
+    tts:'Có thiết bị giúp tạo ảnh, nhưng cũng có thiết bị dùng để phân tách hoặc chuyển mẫu. Hãy căn cứ vào chức năng để lựa chọn thiết bị phù hợp.',
+    chips:[['ti-rotate-clockwise','Máy li tâm'],['ti-droplet','Pipet'],['ti-zoom-in','Kính lúp'],['ti-microscope','Kính hiển vi quang học']],
+    methods:['Ghép bốn nhiệm vụ','Sửa cặp chưa phù hợp','Mở ba thẻ kiến thức','Xem mở rộng nếu muốn'],
+    note:'Ống trong máy li tâm phải bố trí cân bằng; không mở nắp khi máy hoạt động.'
+  },
+  4:{
+    goal:'Lựa chọn thiết bị theo nhiệm vụ và đối chiếu với dự đoán ban đầu.',
+    question:'Thiết bị nào phù hợp nhất với từng nhiệm vụ?',
+    guide:'Chọn thiết bị cho ba nhiệm vụ bắt buộc, sau đó bấm Kiểm tra.',
+    tts:'Bây giờ, bạn đã có đủ dữ kiện để kiểm tra lại dự đoán ban đầu. Hãy lựa chọn thiết bị phù hợp nhất cho từng nhiệm vụ.',
+    chips:[['ti-microscope','Kính hiển vi quang học'],['ti-rotate-clockwise','Máy li tâm'],['ti-droplet','Pipet'],['ti-dna-2','Máy PCR']],
+    methods:['Xem lựa chọn ban đầu','Chọn lại ba nhiệm vụ','Kiểm tra và điều chỉnh','Đọc câu chốt'],
+    note:'Lựa chọn ban đầu dùng để đối chiếu, không dùng để phán xét.'
+  }
+};
+
+const state={
+  stage:1,unlocked:1,completedStages:new Set(),moduleComplete:false,lastAction:'Khởi động module',
+  s1:{selectedTask:null,pairs:{},confirmed:false},
+  s2:{selectedFact:null,facts:{},lockedFacts:new Set(),factsComplete:false,conceptsViewed:new Set(),selectedTask:null,tasks:{},lockedTasks:new Set(),tasksComplete:false,feedbacks:{}},
+  s3:{selectedTask:null,pairs:{},locked:new Set(),matchComplete:false,cardsViewed:new Set(),pcrViewed:false,electroViewed:false,feedbacks:{},lastDevice:null},
+  s4:{answers:{},locked:new Set(),requiredComplete:false,compareViewed:false,finalMessageViewed:false,pcrChoice:'',pcrReason:'',pcrChecked:false,pcrFeedback:'',feedbacks:{}}
+};
+let currentVisual={code:'A01',caption:'Kính hiển vi quang học',kicker:'Thiết bị quan sát',alpha:1};
+let visualToken=0,completedSent=false,currentGuideText=stages[1].guide,currentTtsText=stages[1].tts;
+
+const canvas=document.getElementById('labCanvas'),ctx=canvas.getContext('2d');
+const W=760,H=440;
+let canvasW=W,canvasH=H,time=0;
+function resizeCanvas(){
+  const r=canvas.getBoundingClientRect(),dpr=Math.min(window.devicePixelRatio||1,2);
+  const nextW=Math.max(1,Math.round(r.width*dpr)),nextH=Math.max(1,Math.round(r.height*dpr));
+  if(canvas.width!==nextW||canvas.height!==nextH){
+    canvas.width=nextW;canvas.height=nextH;canvasW=canvas.width;canvasH=canvas.height;
+    ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+  }
+}
+function roundedRectPath(x,y,w,h,r){
+  const rr=Math.min(r,w/2,h/2);ctx.beginPath();ctx.moveTo(x+rr,y);ctx.arcTo(x+w,y,x+w,y+h,rr);ctx.arcTo(x+w,y+h,x,y+h,rr);ctx.arcTo(x,y+h,x,y,rr);ctx.arcTo(x,y,x+w,y,rr);ctx.closePath();
+}
+function drawGrid(){
+  ctx.save();ctx.strokeStyle='rgba(26,26,26,0.05)';ctx.lineWidth=1;
+  for(let x=0;x<=canvasW;x+=30){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,canvasH);ctx.stroke()}
+  for(let y=0;y<=canvasH;y+=30){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(canvasW,y);ctx.stroke()}
+  ctx.restore();
+}
+function drawCanvas(){
+  resizeCanvas();ctx.clearRect(0,0,canvasW,canvasH);drawGrid();
+  const fitScale=Math.min(canvasW/W,canvasH/H),offsetX=(canvasW-W*fitScale)/2,offsetY=(canvasH-H*fitScale)/2;
+  ctx.save();ctx.translate(offsetX,offsetY);ctx.scale(fitScale,fitScale);
+  ctx.fillStyle='#FAF7F0';roundedRectPath(20,18,720,404,14);ctx.fill();
+  ctx.fillStyle='#1B5E48';ctx.font='700 13px "Be Vietnam Pro", sans-serif';ctx.textAlign='left';ctx.fillText(currentVisual.kicker.toUpperCase(),42,49);
+  ctx.fillStyle='#1A1A1A';ctx.font='800 24px "Be Vietnam Pro", sans-serif';ctx.fillText(currentVisual.caption,42,81);
+  const x=42,y=102,w=676,h=286;
+  ctx.save();roundedRectPath(x,y,w,h,12);ctx.clip();ctx.fillStyle='#F0EADD';ctx.fillRect(x,y,w,h);
+  const img=assets[currentVisual.code];
+  if(img){
+    const scale=Math.min(w/img.width,h/img.height),dw=img.width*scale,dh=img.height*scale;
+    ctx.globalAlpha=currentVisual.alpha;ctx.drawImage(img,x+(w-dw)/2,y+(h-dh)/2,dw,dh);ctx.globalAlpha=1;
+  }else{
+    ctx.fillStyle='#514C44';ctx.font='600 15px "Be Vietnam Pro", sans-serif';ctx.textAlign='center';
+    ctx.fillText(assetErrors[currentVisual.code]?'Không thể tải ảnh minh họa':'Đang tải ảnh minh họa…',x+w/2,y+h/2);
+  }
+  ctx.restore();ctx.strokeStyle='#D6CCB6';ctx.lineWidth=1.5;roundedRectPath(x,y,w,h,12);ctx.stroke();
+  ctx.restore();
+}
+function canvasLoop(){time+=.045;drawCanvas();requestAnimationFrame(canvasLoop)}
+function setVisual(code,caption,kicker='Minh họa khoa học'){
+  const token=++visualToken,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){currentVisual={code,caption,kicker,alpha:1};return}
+  const start=performance.now(),fade=110;
+  function out(now){
+    if(token!==visualToken)return;
+    const p=Math.min(1,(now-start)/fade);currentVisual.alpha=1-p;
+    if(p<1){requestAnimationFrame(out);return}
+    currentVisual={code,caption,kicker,alpha:0};const begin=performance.now();
+    function enter(t){if(token!==visualToken)return;currentVisual.alpha=Math.min(1,(t-begin)/fade);if(currentVisual.alpha<1)requestAnimationFrame(enter)}
+    requestAnimationFrame(enter);
+  }
+  requestAnimationFrame(out);
+}
+function runVisualSequence(items){
+  const token=++visualToken;let index=0;
+  function show(){
+    if(token!==visualToken||index>=items.length)return;
+    const item=items[index++];currentVisual={code:item.code,caption:item.caption,kicker:item.kicker,alpha:0};
+    const start=performance.now();
+    function enter(now){
+      if(token!==visualToken)return;
+      currentVisual.alpha=Math.min(1,(now-start)/220);
+      if(currentVisual.alpha<1)requestAnimationFrame(enter);
+      else if(index<items.length)setTimeout(show,item.hold||900);
+    }
+    requestAnimationFrame(enter);
+  }
+  show();
+}
+
+function snapshot(lastAction){
+  return{
+    currentStep:state.stage,totalSteps:4,unlocked:state.unlocked,
+    completedStages:[...state.completedStages],lastAction:lastAction||state.lastAction,
+    PRE_S01_TASK_01:state.s1.pairs.t1||null,PRE_S01_TASK_02:state.s1.pairs.t2||null,PRE_S01_TASK_03:state.s1.pairs.t3||null,
+    S01_CONFIRMED:state.s1.confirmed,
+    S02_FACTS_COMPLETE:state.s2.factsComplete,S02_CONCEPTS_VIEWED:state.s2.conceptsViewed.size,S02_TASKS_COMPLETE:state.s2.tasksComplete,
+    S03_MATCH_COMPLETE:state.s3.matchComplete,S03_MAIN_CARDS_VIEWED:state.s3.cardsViewed.size,S03_PCR_VIEWED:state.s3.pcrViewed,S03_ELECTRO_VIEWED:state.s3.electroViewed,
+    S04_REQUIRED_COMPLETE:state.s4.requiredComplete,S04_PRE_POST_COMPARE_VIEWED:state.s4.compareViewed,S04_FINAL_MESSAGE_VIEWED:state.s4.finalMessageViewed,
+    S02_STATE:{facts:{...state.s2.facts},lockedFacts:[...state.s2.lockedFacts],factsComplete:state.s2.factsComplete,conceptsViewed:[...state.s2.conceptsViewed],tasks:{...state.s2.tasks},lockedTasks:[...state.s2.lockedTasks],tasksComplete:state.s2.tasksComplete,feedbacks:{...state.s2.feedbacks}},
+    S03_STATE:{pairs:{...state.s3.pairs},locked:[...state.s3.locked],matchComplete:state.s3.matchComplete,cardsViewed:[...state.s3.cardsViewed],pcrViewed:state.s3.pcrViewed,electroViewed:state.s3.electroViewed,feedbacks:{...state.s3.feedbacks},lastDevice:state.s3.lastDevice},
+    S04_STATE:{answers:{...state.s4.answers},locked:[...state.s4.locked],requiredComplete:state.s4.requiredComplete,compareViewed:state.s4.compareViewed,finalMessageViewed:state.s4.finalMessageViewed,pcrChoice:state.s4.pcrChoice,pcrReason:state.s4.pcrReason,pcrChecked:state.s4.pcrChecked,pcrFeedback:state.s4.pcrFeedback,feedbacks:{...state.s4.feedbacks}},
+    MODULE_SH10_B02_M02_COMPLETE:state.moduleComplete
+  };
+}
+function persist(action){
+  state.lastAction=action;LMS().state(snapshot(action));reportHeight();
+}
+function feedback(message,type='info',tts=true){
+  const box=document.getElementById('globalFeedback');box.className='feedback-box'+(type==='ok'?' ok':type==='bad'?' bad':'');box.textContent=message;
+  if(tts)currentTtsText=message;
+}
+function setGuide(text,question){
+  currentGuideText=text;currentTtsText=text;document.getElementById('guideText').textContent=text;
+  if(question!==undefined)document.getElementById('guideQuestion').textContent=question;
+}
+function stageEvidence(items){
+  document.getElementById('evidenceList').innerHTML=items.map(([label,done])=>`<div class="evidence-item ${done?'done':''}"><i class="ti ${done?'ti-circle-check':'ti-circle'}"></i><span>${label}</span></div>`).join('');
+}
+function markStageComplete(message){
+  state.completedStages.add(state.stage);state.unlocked=Math.max(state.unlocked,Math.min(4,state.stage+1));
+  document.getElementById('btnNext').disabled=false;
+  feedback(message,'ok');LMS().progress({done:state.completedStages.size,total:4});
+  LMS().event('section_completed',{id:`s0${state.stage}`});persist(`Hoàn thành Stage S0${state.stage}`);syncTabs();
+}
+function syncTabs(){
+  document.querySelectorAll('.stage-tab').forEach(btn=>{
+    const n=+btn.dataset.stage;btn.disabled=n>state.unlocked;btn.classList.toggle('current',n===state.stage);btn.classList.toggle('done',state.completedStages.has(n));
+  });
+  document.querySelectorAll('.dot').forEach((dot,i)=>{const n=i+1;dot.classList.toggle('current',n===state.stage);dot.classList.toggle('done',state.completedStages.has(n))});
+}
+function renderShell(){
+  const meta=stages[state.stage];
+  document.getElementById('goalText').textContent=meta.goal;document.getElementById('guideBadge').textContent=`Màn ${state.stage}/4`;
+  setGuide(meta.guide,meta.question);currentTtsText=meta.tts;
+  document.getElementById('deviceChips').innerHTML=meta.chips.map(([icon,label])=>`<span class="chip"><i class="ti ${icon}"></i>${label}</span>`).join('');
+  document.getElementById('methodGrid').innerHTML=meta.methods.map((label,i)=>`<div class="method-step ${i===0?'current':''}"><span class="num">${i+1}</span><span>${label}</span></div>`).join('');
+  document.getElementById('stageNote').innerHTML=`<i class="ti ti-info-circle"></i> ${meta.note}`;
+  const next=document.getElementById('btnNext');next.disabled=!state.completedStages.has(state.stage);next.querySelector('span').textContent=state.stage===4?(state.moduleComplete?'Đã hoàn thành':'Hoàn thành module'):'Tiếp tục';
+  syncTabs();
+}
+function selectTaskAndDevice(taskId,deviceId,pairs){
+  pairs[taskId]=deviceId;setVisual(deviceAssets[deviceId],deviceNames[deviceId],'Thiết bị đã chọn');
+}
+function taskCard(task,pair,options={}) {
+  const classes=['task-card'];if(options.selected)classes.push('selected');if(options.correct)classes.push('correct');if(options.bad)classes.push('needs-fix');
+  return `<button class="${classes.join(' ')}" data-task="${task.id}" ${options.disabled?'disabled':''}>
+    <span class="task-top"><span class="task-index">${task.index}</span><span class="task-title">${task.text}</span></span>
+    ${pair?`<span class="task-choice"><i class="ti ti-link"></i> ${deviceNames[pair]}</span>`:''}
+    ${options.feedback?`<span class="task-feedback">${options.feedback}</span>`:''}
+  </button>`;
+}
+function deviceButton(id,selected=false,attrs=''){
+  return `<button class="device-card stage-entry ${selected?'selected':''}" data-device="${id}" ${attrs}><img src="${assetFiles[deviceAssets[id]]}" alt=""><span>${deviceNames[id]}</span></button>`;
+}
+
+const s1Tasks=[
+  {id:'t1',index:1,text:'Quan sát tế bào biểu bì hành.',asset:'A04'},
+  {id:'t2',index:2,text:'Nghiên cứu cấu trúc rất nhỏ bên trong tế bào.',asset:'A05'},
+  {id:'t3',index:3,text:'Phân tách các thành phần trong mẫu tế bào.',asset:'A06'}
+];
+function renderStage1(){
+  const s=state.s1,all=Object.keys(s.pairs).length===3;
+  document.getElementById('workspace').innerHTML=`
+    <h2>Mỗi thiết bị giúp thực hiện nhiệm vụ nào?</h2>
+    <p class="workspace-note">Chọn một nhiệm vụ rồi bấm thiết bị dự đoán. Có thể thay đổi trước khi xác nhận.</p>
+    <div class="s1-match-layout">
+      <section class="s1-task-list">
+        <div class="section-label"><i class="ti ti-clipboard-list"></i> Ba nhiệm vụ</div>
+        <div class="task-grid" id="s1Tasks">${s1Tasks.map((t,i)=>`<div class="task-block stage-entry ${s.selectedTask===t.id?'active':''} ${s.pairs[t.id]?'compact':''}" style="--delay:${i*100}ms">
+          ${taskCard(t,s.pairs[t.id],{selected:s.selectedTask===t.id,disabled:s.confirmed})}
+          <div class="mobile-choice-tray" aria-label="Chọn thiết bị cho nhiệm vụ ${t.index}">${['light','electron','centrifuge'].map(id=>deviceButton(id,s.pairs[t.id]===id,`data-for="${t.id}"`)).join('')}</div>
+        </div>`).join('')}</div>
+      </section>
+      <div class="match-link-panel" aria-hidden="true"><i class="ti ti-link"></i><span>Liên kết lựa chọn</span></div>
+      <section class="s1-device-list s1-desktop-devices">
+        <div class="section-label"><i class="ti ti-microscope"></i> Ba thiết bị ngang hàng</div>
+        <div class="device-grid" id="s1Devices">${['light','electron','centrifuge'].map((id,i)=>deviceButton(id,false,`style="--delay:${300+i*100}ms"`)).join('')}</div>
+      </section>
+    </div>
+    ${s.confirmed?'<div class="paired-summary"><strong>Lựa chọn ban đầu của bạn</strong><br>Lựa chọn của bạn đã được lưu. Các Stage tiếp theo sẽ cung cấp dữ kiện để bạn kiểm tra lại.</div>':''}
+    <div class="actions"><button class="btn btn-primary" id="s1Confirm" ${!all||s.confirmed?'disabled':''}><i class="ti ti-device-floppy"></i> Xác nhận dự đoán</button></div>`;
+  document.querySelectorAll('#s1Tasks [data-task]').forEach(btn=>btn.onclick=()=>{
+    s.selectedTask=btn.dataset.task;const task=s1Tasks.find(t=>t.id===s.selectedTask);
+    setVisual(task.asset,task.text,'Nhiệm vụ nghiên cứu');setGuide(`Đã chọn nhiệm vụ ${task.index}. Hãy chọn một trong ba thiết bị.`);persist(`Chọn nhiệm vụ S01 ${task.id}`);renderStage1();
+  });
+  document.querySelectorAll('.s1-match-layout [data-device]').forEach(btn=>btn.onclick=()=>{
+    if(s.confirmed)return;
+    const taskId=btn.dataset.for||s.selectedTask;
+    if(!taskId){feedback('Hãy chọn một nhiệm vụ trước khi chọn thiết bị.','bad');return}
+    selectTaskAndDevice(taskId,btn.dataset.device,s.pairs);s.selectedTask=null;
+    setGuide(Object.keys(s.pairs).length===3?'Đã có đủ ba dự đoán. Hãy xác nhận để lưu lựa chọn.':'Cặp lựa chọn đã được ghi nhận. Tiếp tục với nhiệm vụ còn lại.');
+    persist('Ghi nhận dự đoán S01');renderStage1();
+  });
+  document.getElementById('s1Confirm').onclick=()=>{
+    if(Object.keys(s.pairs).length<3){feedback('Hãy lựa chọn thiết bị cho đủ cả ba nhiệm vụ.','bad');return}
+    s.confirmed=true;LMS().event('prediction_saved',{id:'s01',choices:{...s.pairs}});
+    markStageComplete('Lựa chọn của bạn đã được lưu. Các Stage tiếp theo sẽ cung cấp dữ kiện để bạn kiểm tra lại.');renderStage1();
+  };
+  stageEvidence([
+    ['Đã dự đoán cho nhiệm vụ 1',!!s.pairs.t1],['Đã dự đoán cho nhiệm vụ 2',!!s.pairs.t2],
+    ['Đã dự đoán cho nhiệm vụ 3',!!s.pairs.t3],['Đã xác nhận lựa chọn ban đầu',s.confirmed]
+  ]);
+}
+
+const s2Facts=[
+  {id:'f1',label:'A',text:'Sử dụng ánh sáng và hệ thấu kính.',correct:'light'},
+  {id:'f2',label:'B',text:'Sử dụng chùm electron và hệ thống chuyên dụng.',correct:'electron'},
+  {id:'f3',label:'C',text:'Có thể quan sát một số mẫu sống.',correct:'light'},
+  {id:'f4',label:'D',text:'Có độ phân giải cao, giúp nghiên cứu cấu trúc siêu hiển vi.',correct:'electron'}
+];
+const s2Tasks=[
+  {id:'onion',index:1,text:'Quan sát tế bào biểu bì hành.',correct:'light',asset:'A04'},
+  {id:'ultra',index:2,text:'Nghiên cứu cấu trúc siêu hiển vi bên trong tế bào.',correct:'electron',asset:'A05'}
+];
+const s2FactFeedback={
+  f1:'Kính hiển vi quang học sử dụng ánh sáng và hệ thấu kính để tạo ảnh.',
+  f2:'Kính hiển vi điện tử sử dụng chùm electron và hệ thống chuyên dụng.',
+  f3:'Một số mẫu sống có thể được quan sát bằng kính hiển vi quang học.',
+  f4:'Kính hiển vi điện tử có độ phân giải cao, phù hợp nghiên cứu cấu trúc siêu hiển vi.'
+};
+function renderStage2(){
+  const s=state.s2;
+  const factsAssigned=Object.keys(s.facts).length===4,conceptsReady=s.factsComplete,conceptsDone=s.conceptsViewed.size===3,tasksReady=conceptsDone;
+  const mobileTaskId=s.selectedTask||(s2Tasks.find(t=>!s.tasks[t.id])||s2Tasks.find(t=>!s.lockedTasks.has(t.id))||s2Tasks[0]).id;
+  document.getElementById('workspace').innerHTML=`
+    <h2>Kính hiển vi quang học và kính hiển vi điện tử</h2>
+    <p class="workspace-note">Chọn một dữ kiện rồi bấm loại kính tương ứng. Hệ thống chỉ phản hồi sau khi bấm Kiểm tra.</p>
+    <div class="compare-grid">
+      <section class="micro-panel"><div class="micro-head"><img src="${assetFiles.A01}" alt="Kính hiển vi quang học"><div><h3>Kính hiển vi quang học</h3><p>Sử dụng ánh sáng và hệ thấu kính để tạo ảnh phóng đại. Thiết bị thường được dùng để quan sát tế bào, mô hoặc vi sinh vật có kích thước phù hợp.</p></div></div><div id="lightFacts" class="facts-grid"></div></section>
+      <section class="micro-panel"><div class="micro-head"><img src="${assetFiles.A02}" alt="Kính hiển vi điện tử"><div><h3>Kính hiển vi điện tử</h3><p>Sử dụng chùm electron và hệ thống chuyên dụng để tạo ảnh có độ phân giải cao, giúp nghiên cứu cấu trúc siêu hiển vi của tế bào và cấu trúc phân tử.</p></div></div><div id="electronFacts" class="facts-grid"></div></section>
+    </div>
+    <div class="section-label"><i class="ti ti-cards"></i> Thẻ dữ kiện</div>
+    <div class="facts-grid" id="s2FactPool">${s2Facts.filter(f=>!s.facts[f.id]).map(f=>`<button class="fact-card ${s.selectedFact===f.id?'selected':''}" data-fact="${f.id}"><strong>${f.label}.</strong> ${f.text}</button>`).join('')||'<div class="workspace-note">Tất cả dữ kiện đã được ghép. Có thể kiểm tra hoặc chọn lại thẻ chưa khóa.</div>'}</div>
+    <div class="actions"><button class="btn btn-primary" id="s2CheckFacts" ${!factsAssigned||s.factsComplete?'disabled':''}><i class="ti ti-check"></i> Kiểm tra dữ kiện</button></div>
+    <section id="s2ConceptSection" class="${conceptsReady?'':'hidden'}">
+      <div class="section-label"><i class="ti ti-book-2"></i> Ba thông số có ý nghĩa khác nhau</div>
+      <div class="concept-grid">
+        <details class="concept-card" data-concept="mag" ${s.conceptsViewed.has('mag')?'open':''}><summary>Độ phóng đại</summary><p>Ảnh lớn hơn vật bao nhiêu lần.</p></details>
+        <details class="concept-card" data-concept="res" ${s.conceptsViewed.has('res')?'open':''}><summary>Độ phân giải</summary><p>Khả năng phân biệt hai điểm rất gần nhau.</p></details>
+        <details class="concept-card" data-concept="contrast" ${s.conceptsViewed.has('contrast')?'open':''}><summary>Độ tương phản</summary><p>Mức độ phân biệt giữa đối tượng và nền.</p></details>
+      </div>
+      <details class="more-box"><summary>Tìm hiểu thêm</summary><p>Theo số liệu trong SGK, kính hiển vi quang học có thể đạt độ phóng đại khoảng 1.500 lần và độ phân giải khoảng 200 nanomet. Một số kính hiển vi điện tử có độ phóng đại và độ phân giải cao hơn rất nhiều. Các số liệu phụ thuộc loại thiết bị và điều kiện sử dụng.</p></details>
+    </section>
+    <section id="s2TasksSection" class="${tasksReady?'':'hidden'}">
+      <div class="section-label"><i class="ti ti-target"></i> Vận dụng</div>
+      <div class="task-grid" id="s2Tasks">${s2Tasks.map((t,i)=>`<div class="task-block s2-task-block stage-entry ${s.selectedTask===t.id?'active':''} ${s.tasks[t.id]?'compact':''} ${s.lockedTasks.has(t.id)?'mobile-done':'mobile-pending'} ${mobileTaskId===t.id?'mobile-current':''}" style="--delay:${i*100}ms">
+        ${taskCard(t,s.tasks[t.id],{selected:s.selectedTask===t.id,correct:s.lockedTasks.has(t.id),disabled:s.lockedTasks.has(t.id),bad:!!s.feedbacks[t.id],feedback:s.feedbacks[t.id]})}
+        <div class="mobile-choice-tray">${['light','electron'].map(id=>deviceButton(id,s.tasks[t.id]===id,`data-for="${t.id}"`)).join('')}</div>
+      </div>`).join('')}</div>
+      <div class="device-grid s1-desktop-devices" id="s2TaskDevices">${['light','electron'].map(id=>deviceButton(id)).join('')}</div>
+      <div class="actions"><button class="btn btn-primary" id="s2CheckTasks" ${Object.keys(s.tasks).length<2||s.tasksComplete?'disabled':''}><i class="ti ti-check"></i> Kiểm tra nhiệm vụ</button></div>
+    </section>
+    ${s.tasksComplete?'<div class="paired-summary"><strong>Câu chốt</strong><br>Thiết bị phải được lựa chọn theo mẫu vật và mục đích nghiên cứu. Độ phân giải cao hơn không có nghĩa luôn phù hợp hơn.</div>':''}`;
+  ['light','electron'].forEach(device=>{
+    const host=document.getElementById(`${device}Facts`);
+    host.innerHTML=s2Facts.filter(f=>s.facts[f.id]===device).map(f=>`<button class="fact-card placed ${s.lockedFacts.has(f.id)?'correct':''}" data-placed="${f.id}" ${s.lockedFacts.has(f.id)?'disabled':''}><strong>${f.label}.</strong> ${f.text}<small>${s.lockedFacts.has(f.id)?'Đã xác nhận':'Bấm để chọn lại'}</small></button>`).join('')||'<span class="workspace-note">Chưa có dữ kiện.</span>';
+    host.parentElement.onclick=e=>{
+      if(!s.selectedFact||e.target.closest('[data-placed]'))return;
+      s.facts[s.selectedFact]=device;setVisual(deviceAssets[device],deviceNames[device],'Phân loại dữ kiện');s.selectedFact=null;persist('Ghép dữ kiện S02');renderStage2();
+    };
+  });
+  document.querySelectorAll('[data-fact]').forEach(btn=>btn.onclick=()=>{s.selectedFact=btn.dataset.fact;setGuide('Đã chọn một dữ kiện. Hãy bấm loại kính hiển vi tương ứng.');persist('Chọn dữ kiện S02');renderStage2()});
+  document.querySelectorAll('[data-placed]').forEach(btn=>btn.onclick=e=>{
+    e.stopPropagation();const id=btn.dataset.placed;if(s.lockedFacts.has(id))return;delete s.facts[id];s.selectedFact=id;persist('Chọn lại dữ kiện S02');renderStage2();
+  });
+  document.getElementById('s2CheckFacts').onclick=()=>{
+    const wrong=s2Facts.filter(f=>s.facts[f.id]!==f.correct);
+    s2Facts.filter(f=>s.facts[f.id]===f.correct).forEach(f=>s.lockedFacts.add(f.id));
+    wrong.forEach(f=>delete s.facts[f.id]);
+    LMS().event('answered',{id:'s02_facts',chosen:{...s.facts},correct:wrong.length===0});
+    if(wrong.length){
+      feedback(wrong.map(f=>s2FactFeedback[f.id]).join(' '),'bad');setGuide('Các dữ kiện đúng được giữ lại. Hãy ghép lại thẻ chưa phù hợp.');
+    }else{
+      s.factsComplete=true;feedback('Đã ghép đúng bốn dữ kiện. Hãy mở đủ ba thẻ khái niệm.','ok');setGuide('Mở lần lượt ba thẻ: độ phóng đại, độ phân giải và độ tương phản.');
+    }
+    persist('Kiểm tra dữ kiện S02');renderStage2();
+  };
+  document.querySelectorAll('[data-concept]').forEach(detail=>detail.addEventListener('toggle',()=>{
+    if(!detail.open)return;const id=detail.dataset.concept;if(s.conceptsViewed.has(id))return;s.conceptsViewed.add(id);
+    const visual={mag:['A01','Độ phóng đại: ảnh lớn hơn vật bao nhiêu lần'],res:['A07','Độ phân giải: phân biệt hai điểm rất gần nhau'],contrast:['A08','Độ tương phản: phân biệt đối tượng và nền']}[id];
+    setVisual(visual[0],visual[1],'Khái niệm quan sát');persist(`Mở khái niệm ${id}`);
+    if(s.conceptsViewed.size===3){setGuide('Đã xem đủ ba khái niệm. Hãy chọn kính phù hợp cho hai nhiệm vụ.');renderStage2()}
+    else stageEvidenceS2();
+  }));
+  document.querySelectorAll('#s2Tasks [data-task]').forEach(btn=>btn.onclick=()=>{
+    s.selectedTask=btn.dataset.task;const task=s2Tasks.find(t=>t.id===s.selectedTask);setVisual(task.asset,task.text,'Nhiệm vụ vận dụng');persist('Chọn nhiệm vụ vận dụng S02');renderStage2();
+  });
+  document.querySelectorAll('#s2Tasks [data-device],#s2TaskDevices [data-device]').forEach(btn=>btn.onclick=()=>{
+    const taskId=btn.dataset.for||s.selectedTask;
+    if(!taskId){feedback('Hãy chọn một nhiệm vụ vận dụng trước.','bad');return}
+    s.tasks[taskId]=btn.dataset.device;delete s.feedbacks[taskId];s.selectedTask=null;setVisual(deviceAssets[btn.dataset.device],deviceNames[btn.dataset.device],'Thiết bị đã chọn');persist('Chọn kính cho nhiệm vụ S02');renderStage2();
+  });
+  const checkTasks=document.getElementById('s2CheckTasks');
+  if(checkTasks)checkTasks.onclick=()=>{
+    const submitted={...s.tasks};
+    const wrong=s2Tasks.filter(t=>s.tasks[t.id]!==t.correct);
+    s2Tasks.filter(t=>s.tasks[t.id]===t.correct).forEach(t=>{s.lockedTasks.add(t.id);delete s.feedbacks[t.id]});
+    wrong.forEach(t=>{s.feedbacks[t.id]=t.id==='onion'?'Kính hiển vi quang học phù hợp với nhiệm vụ quan sát tế bào biểu bì hành. Kính hiển vi điện tử không phải lựa chọn cần thiết cho mọi mẫu.':'Kính hiển vi quang học không đủ độ phân giải để nghiên cứu nhiều cấu trúc siêu hiển vi. Nhiệm vụ này phù hợp với kính hiển vi điện tử.'});
+    wrong.forEach(t=>delete s.tasks[t.id]);
+    LMS().event('answered',{id:'s02_tasks',chosen:submitted,correct:wrong.length===0});
+    if(wrong.length){
+      const allElectron=s2Tasks.every(t=>submitted[t.id]==='electron');
+      feedback(allElectron?'Thiết bị có độ phân giải cao hơn không có nghĩa luôn phù hợp hơn. Hãy xem lại loại mẫu và mục đích nghiên cứu.':wrong.map(t=>s.feedbacks[t.id]).join(' '),'bad');
+    }else{
+      s.tasksComplete=true;markStageComplete('Thiết bị phải được lựa chọn theo mẫu vật và mục đích nghiên cứu. Độ phân giải cao hơn không có nghĩa luôn phù hợp hơn.');
+    }
+    persist('Kiểm tra nhiệm vụ S02');renderStage2();
+  };
+  stageEvidenceS2();
+}
+function stageEvidenceS2(){
+  const s=state.s2;stageEvidence([
+    ['Ghép đúng bốn dữ kiện',s.factsComplete],['Đã xem đủ ba khái niệm',s.conceptsViewed.size===3],
+    ['Chọn đúng kính cho hai nhiệm vụ',s.tasksComplete],['Đã đọc câu chốt',s.tasksComplete]
+  ]);
+}
+
+const s3Tasks=[
+  {id:'a',index:'A',text:'Tách phần lắng khỏi dịch trong một mẫu.',correct:'centrifuge',asset:'A09'},
+  {id:'b',index:'B',text:'Lấy chính xác một thể tích nhỏ dung dịch.',correct:'pipette',asset:'A14'},
+  {id:'c',index:'C',text:'Quan sát chi tiết bề mặt của một mẫu tương đối lớn.',correct:'magnifier',asset:'A11'},
+  {id:'d',index:'D',text:'Quan sát tế bào.',correct:'light',asset:'A04'}
+];
+function s3Error(task,choice){
+  if(choice==='centrifuge'&&(task.id==='c'||task.id==='d'))return'Máy li tâm dùng để phân tách các thành phần trong mẫu. Thiết bị này không tạo ảnh phóng đại để quan sát trực tiếp.';
+  if(choice==='pipette'&&task.id==='a')return'Pipet dùng để lấy và chuyển chất lỏng. Pipet không tạo lực để phân tách các thành phần trong mẫu.';
+  if(choice==='magnifier'&&task.id==='d')return'Kính lúp hỗ trợ quan sát chi tiết của những mẫu có kích thước phù hợp, nhưng không đủ để quan sát tế bào.';
+  if(choice==='light'&&task.id==='b')return'Kính hiển vi dùng để tạo ảnh phóng đại. Pipet mới là dụng cụ phù hợp để lấy và chuyển một thể tích nhỏ chất lỏng.';
+  if(choice==='light'&&task.id==='a')return'Kính hiển vi tạo ảnh nhưng không phân tách các thành phần trong mẫu. Nhiệm vụ này phù hợp với máy li tâm.';
+  return`Hãy xem lại chức năng của ${deviceNames[choice]} và loại thao tác mà nhiệm vụ yêu cầu.`;
+}
+const deviceInfo={
+  centrifuge:'Tạo lực li tâm để phân tách các thành phần trong mẫu; các ống phải được bố trí cân bằng.',
+  pipette:'Dùng để lấy, chuyển hoặc phân phối chất lỏng; một số loại cho phép điều chỉnh thể tích.',
+  magnifier:'Hỗ trợ quan sát chi tiết bề mặt của mẫu có kích thước phù hợp.',
+  light:'Tạo ảnh phóng đại bằng ánh sáng và hệ thấu kính, phù hợp quan sát tế bào và cấu trúc có kích thước phù hợp.'
+};
+function renderStage3(){
+  const s=state.s3,all=Object.keys(s.pairs).length===4;
+  const mobileTaskId=s.selectedTask||(s3Tasks.find(t=>!s.pairs[t.id])||s3Tasks.find(t=>!s.locked.has(t.id))||s3Tasks[0]).id;
+  const preview=s.lastDevice||'centrifuge';
+  document.getElementById('workspace').innerHTML=`
+    <h2>Không phải thiết bị nào cũng dùng để quan sát</h2>
+    <p class="workspace-note">Chọn nhiệm vụ rồi chọn thiết bị. Sau khi kiểm tra, cặp đúng được giữ lại; cặp chưa phù hợp được làm lại.</p>
+    <div class="s3-match-layout">
+      <section class="s3-task-list">
+        <div class="section-label"><i class="ti ti-clipboard-list"></i> Bốn nhiệm vụ</div>
+        <div class="task-grid" id="s3Tasks">${s3Tasks.map((t,i)=>`<div class="task-block s3-task-block stage-entry ${s.selectedTask===t.id?'active':''} ${s.pairs[t.id]?'compact':''} ${s.locked.has(t.id)?'mobile-done':'mobile-pending'} ${mobileTaskId===t.id?'mobile-current':''}" style="--delay:${i*75}ms">
+          ${taskCard(t,s.pairs[t.id],{selected:s.selectedTask===t.id,correct:s.locked.has(t.id),disabled:s.locked.has(t.id),bad:!!s.feedbacks[t.id],feedback:s.feedbacks[t.id]})}
+          <div class="mobile-choice-tray">${['centrifuge','pipette','magnifier','light'].map(id=>deviceButton(id,s.pairs[t.id]===id,`data-for="${t.id}"`)).join('')}</div>
+        </div>`).join('')}</div>
+      </section>
+      <section class="s3-device-list s3-desktop-devices">
+        <div class="section-label"><i class="ti ti-tool"></i> Bốn thiết bị</div>
+        <div class="device-grid" id="s3Devices">${['centrifuge','pipette','magnifier','light'].map(id=>deviceButton(id,s.lastDevice===id)).join('')}</div>
+      </section>
+      <aside class="device-info-panel">
+        <img src="${assetFiles[deviceAssets[preview]]}" alt="${deviceNames[preview]}">
+        <h3>${deviceNames[preview]}</h3><p>${deviceInfo[preview]}</p>
+      </aside>
+    </div>
+    <div class="actions"><button class="btn btn-primary" id="s3Check" ${!all||s.matchComplete?'disabled':''}><i class="ti ti-check"></i> Kiểm tra</button></div>
+    <section class="${s.matchComplete?'':'hidden'}">
+      <div class="section-label"><i class="ti ti-book-2"></i> Ba thẻ kiến thức chính</div>
+      <div class="knowledge-grid">
+        <details class="knowledge-card" data-knowledge="centrifuge" ${s.cardsViewed.has('centrifuge')?'open':''}><summary>Máy li tâm</summary><div class="knowledge-body"><p>Sau khi mẫu được xử lí phù hợp, các ống phải được đặt cân bằng trong máy. Khi máy quay, các thành phần trong mẫu có đặc điểm khác nhau có thể phân bố thành các phần khác nhau.</p><button class="btn" data-story="centrifuge"><i class="ti ti-player-play"></i> Xem ba trạng thái</button></div></details>
+        <details class="knowledge-card" data-knowledge="pipette" ${s.cardsViewed.has('pipette')?'open':''}><summary>Pipet</summary><div class="knowledge-body"><p>Pipet được dùng để lấy, chuyển hoặc phân phối chất lỏng. Một số loại pipet cho phép điều chỉnh thể tích cần lấy.</p><button class="btn" data-story="pipette"><i class="ti ti-player-play"></i> Xem thao tác mẫu</button></div></details>
+        <details class="knowledge-card" data-knowledge="magnifier" ${s.cardsViewed.has('magnifier')?'open':''}><summary>Kính lúp</summary><div class="knowledge-body"><p>Kính lúp giúp quan sát rõ hơn những chi tiết của mẫu có kích thước phù hợp, nhưng không thay thế kính hiển vi khi nghiên cứu tế bào.</p><button class="btn" data-story="magnifier"><i class="ti ti-eye"></i> Xem vùng phóng đại</button></div></details>
+      </div>
+      <details class="more-box"><summary>Tìm hiểu thêm: PCR và điện di</summary>
+        <div class="ext-grid">
+          <button class="ext-card" data-ext="pcr"><img src="${assetFiles.A12}" alt="Máy PCR"><h4>Máy PCR</h4><p>Thực hiện các chu kì nhiệt để tạo nhiều bản sao của một đoạn DNA xác định. Không giúp nhìn trực tiếp gene và không thực hiện giải trình tự DNA.</p></button>
+          <button class="ext-card" data-ext="electro"><img src="${assetFiles.A13}" alt="Hệ thống điện di"><h4>Hệ thống điện di</h4><p>Tạo điện trường để các phân tử đã chuẩn bị di chuyển trong môi trường phân tách; kết quả có thể tạo thành các băng để so sánh.</p></button>
+        </div>
+      </details>
+    </section>
+    ${s.cardsViewed.size===3?'<div class="paired-summary"><strong>Câu chốt</strong><br>Thiết bị nghiên cứu có thể giúp quan sát, phân tách hoặc chuyển mẫu. Chức năng của thiết bị quyết định nhiệm vụ mà nó có thể thực hiện.</div>':''}`;
+  document.querySelectorAll('#s3Tasks [data-task]').forEach(btn=>btn.onclick=()=>{
+    s.selectedTask=btn.dataset.task;const task=s3Tasks.find(t=>t.id===s.selectedTask);setVisual(task.asset,task.text,'Nhiệm vụ nghiên cứu');persist('Chọn nhiệm vụ S03');renderStage3();
+  });
+  document.querySelectorAll('.s3-match-layout [data-device]').forEach(btn=>btn.onclick=()=>{
+    const taskId=btn.dataset.for||s.selectedTask;
+    if(!taskId){feedback('Hãy chọn một nhiệm vụ trước khi chọn thiết bị.','bad');return}
+    s.pairs[taskId]=btn.dataset.device;s.lastDevice=btn.dataset.device;delete s.feedbacks[taskId];s.selectedTask=null;setVisual(deviceAssets[btn.dataset.device],deviceNames[btn.dataset.device],'Thiết bị đã chọn');persist('Ghép thiết bị S03');renderStage3();
+  });
+  document.getElementById('s3Check').onclick=()=>{
+    const submitted={...s.pairs};
+    const wrong=s3Tasks.filter(t=>s.pairs[t.id]!==t.correct);
+    s3Tasks.filter(t=>s.pairs[t.id]===t.correct).forEach(t=>{s.locked.add(t.id);delete s.feedbacks[t.id]});
+    const messages=wrong.map(t=>s3Error(t,submitted[t.id]));wrong.forEach((t,i)=>{s.feedbacks[t.id]=messages[i];delete s.pairs[t.id]});
+    LMS().event('answered',{id:'s03_matches',chosen:submitted,correct:wrong.length===0});
+    if(wrong.length){feedback(messages.join(' '),'bad');setGuide('Các cặp đúng được giữ lại. Hãy sửa những nhiệm vụ chưa phù hợp.')}
+    else{s.matchComplete=true;feedback('Đã ghép đúng bốn nhiệm vụ. Hãy mở ba thẻ kiến thức chính.','ok');setGuide('Mở lần lượt thẻ máy li tâm, pipet và kính lúp.')}
+    persist('Kiểm tra ghép S03');renderStage3();
+  };
+  document.querySelectorAll('[data-knowledge]').forEach(detail=>detail.addEventListener('toggle',()=>{
+    if(!detail.open||s.cardsViewed.has(detail.dataset.knowledge))return;s.cardsViewed.add(detail.dataset.knowledge);persist(`Mở thẻ ${detail.dataset.knowledge} S03`);
+    if(s.cardsViewed.size===3&&!state.completedStages.has(3)){markStageComplete('Thiết bị nghiên cứu có thể giúp quan sát, phân tách hoặc chuyển mẫu. Chức năng của thiết bị quyết định nhiệm vụ mà nó có thể thực hiện.');renderStage3();return}
+    stageEvidenceS3();
+  }));
+  document.querySelectorAll('[data-story]').forEach(btn=>btn.onclick=e=>{
+    e.preventDefault();e.stopPropagation();const story=btn.dataset.story;
+    if(story==='centrifuge')runVisualSequence([
+      {code:'A06',caption:'Trạng thái 1 · Mẫu trước li tâm',kicker:'Không mô phỏng tốc độ quay',hold:850},
+      {code:'A03',caption:'Trạng thái 2 · Các ống đặt cân bằng, nắp đóng',kicker:'Vận hành an toàn',hold:950},
+      {code:'A09',caption:'Trạng thái 3 · Phần lắng và dịch phía trên',kicker:'Mẫu sau li tâm'}
+    ]);
+    if(story==='pipette')runVisualSequence([
+      {code:'A10',caption:'Pipet điều chỉnh thể tích có đầu tip',kicker:'Dụng cụ chuyển mẫu',hold:850},
+      {code:'A14',caption:'Đầu tip tiếp cận chất lỏng trong ống',kicker:'Thao tác mẫu'}
+    ]);
+    if(story==='magnifier')setVisual('A11','Chỉ vùng dưới kính lúp được phóng đại','Quan sát bề mặt mẫu');
+  });
+  document.querySelectorAll('[data-ext]').forEach(btn=>btn.onclick=()=>{
+    const id=btn.dataset.ext;
+    if(id==='pcr'){s.pcrViewed=true;setVisual('A12','Máy PCR thực hiện các chu kì nhiệt','Nội dung mở rộng')}
+    else{s.electroViewed=true;setVisual('A13','Hệ thống điện di tạo điện trường','Nội dung mở rộng')}
+    persist(`Xem mở rộng ${id} S03`);stageEvidenceS3();
+  });
+  stageEvidenceS3();
+}
+function stageEvidenceS3(){
+  const s=state.s3;stageEvidence([
+    ['Ghép đúng bốn nhiệm vụ',s.matchComplete],['Đã mở thẻ máy li tâm',s.cardsViewed.has('centrifuge')],
+    ['Đã mở thẻ pipet',s.cardsViewed.has('pipette')],['Đã mở thẻ kính lúp',s.cardsViewed.has('magnifier')]
+  ]);
+}
+
+const s4Tasks=[
+  {id:'t1',text:'Quan sát tế bào biểu bì hành.',correct:'light',asset:'A04'},
+  {id:'t2',text:'Phân tách phần lắng và phần dịch trong mẫu đã xử lí.',correct:'centrifuge',asset:'A09'},
+  {id:'t3',text:'Lấy chính xác một thể tích nhỏ dung dịch.',correct:'pipette',asset:'A14'}
+];
+function s4PreChoice(taskId){
+  const sourceTask={t1:'t1',t2:'t3'}[taskId];
+  return sourceTask?state.s1.pairs[sourceTask]||null:null;
+}
+function s4Feedback(task){
+  if(task.id==='t1')return'Kính hiển vi quang học phù hợp để quan sát tế bào biểu bì hành. Không cần sử dụng kính hiển vi điện tử cho nhiệm vụ này.';
+  if(task.id==='t2')return'Máy li tâm tạo lực li tâm để phân tách các thành phần trong mẫu. Kính hiển vi chỉ tạo ảnh, còn pipet chỉ lấy và chuyển chất lỏng.';
+  return'Pipet là dụng cụ phù hợp để lấy và chuyển một thể tích nhỏ chất lỏng. Máy li tâm không có chức năng này.';
+}
+function renderStage4(){
+  const s=state.s4,all=s4Tasks.every(t=>s.answers[t.id]);
+  const optionIds=['','light','electron','centrifuge','pipette','magnifier'];
+  document.getElementById('workspace').innerHTML=`
+    <h2>Chọn thiết bị theo nhiệm vụ nghiên cứu</h2>
+    <p class="workspace-note">Đối chiếu lựa chọn ban đầu với lựa chọn sau khi học. Lựa chọn ban đầu không bị gắn nhãn tiêu cực.</p>
+    <div class="final-list">
+      ${s4Tasks.map((t,i)=>{const pre=s4PreChoice(t.id);return`<div class="final-row">
+        <div class="final-task"><span class="task-index">${i+1}</span> ${t.text}</div>
+        <div class="pre-choice"><strong>Lựa chọn ban đầu</strong>${pre?deviceNames[pre]:'Không có nhiệm vụ tương ứng ở S01'}</div>
+        <div><select class="select-device" data-final="${t.id}" ${s.locked.has(t.id)?'disabled':''}>${optionIds.map(id=>`<option value="${id}" ${s.answers[t.id]===id?'selected':''}>${id?deviceNames[id]:'Chọn thiết bị'}</option>`).join('')}</select>
+        ${s.requiredComplete?`<span class="compare-label"><i class="ti ${!pre?'ti-plus':pre===t.correct?'ti-equal':'ti-arrows-exchange'}"></i> ${!pre?'Lựa chọn mới':pre===t.correct?'Giữ nguyên':'Đã điều chỉnh'}</span>`:''}</div>
+        <div class="final-feedback">${s.feedbacks[t.id]?`<span class="inline-feedback">${s.feedbacks[t.id]}</span>`:s.locked.has(t.id)?'<span class="inline-feedback ok">Lựa chọn phù hợp với nhiệm vụ.</span>':''}</div>
+      </div>`}).join('')}
+    </div>
+    <div class="actions"><button class="btn btn-primary" id="s4Check" ${!all||s.requiredComplete?'disabled':''}><i class="ti ti-check"></i> Kiểm tra</button></div>
+    <details class="more-box"><summary>Mở rộng · Máy PCR</summary>
+      <div class="ext-grid"><div class="ext-card"><img src="${assetFiles.A12}" alt="Máy PCR"><h4>Tạo nhiều bản sao của một đoạn DNA xác định</h4><p>Chọn thiết bị phù hợp. Phần này không bắt buộc để hoàn thành module.</p></div>
+      <div class="ext-card">
+        <label class="field-label" for="pcrSelect">Thiết bị</label>
+        <select class="select-device" id="pcrSelect"><option value="">Chọn thiết bị</option><option value="pcr" ${s.pcrChoice==='pcr'?'selected':''}>Máy PCR</option><option value="electron" ${s.pcrChoice==='electron'?'selected':''}>Kính hiển vi điện tử</option><option value="electrophoresis" ${s.pcrChoice==='electrophoresis'?'selected':''}>Hệ thống điện di</option></select>
+        <label class="field-label" for="pcrReason">Chức năng được dùng trong nhiệm vụ này</label>
+        <select class="select-device" id="pcrReason"><option value="">Chọn chức năng</option><option value="amplify" ${s.pcrReason==='amplify'?'selected':''}>Tạo nhiều bản sao của đoạn DNA xác định</option><option value="see-gene" ${s.pcrReason==='see-gene'?'selected':''}>Nhìn trực tiếp gene</option><option value="sequence" ${s.pcrReason==='sequence'?'selected':''}>Giải trình tự DNA</option></select>
+        <button class="btn" id="pcrCheck" style="margin-top:8px"><i class="ti ti-check"></i> Kiểm tra mở rộng</button>
+        ${s.pcrFeedback?`<span class="inline-feedback ${s.pcrChoice==='pcr'&&s.pcrReason==='amplify'?'ok':''}">${s.pcrFeedback}</span>`:''}
+      </div></div>
+    </details>
+    <section class="${s.requiredComplete?'final-message':'hidden'}">
+      <h3>Thiết bị nghiên cứu được lựa chọn theo nhiệm vụ cần thực hiện.</h3>
+      <p>Có thiết bị giúp quan sát, có thiết bị giúp phân tách hoặc chuyển mẫu. Vì vậy, thiết bị phải được lựa chọn dựa trên nhiệm vụ và loại thông tin cần thu thập.</p>
+      <p><strong>Chuyển sang M03:</strong> Khi đã lựa chọn được phương pháp và thiết bị phù hợp, nhà nghiên cứu cần sắp xếp các hoạt động ấy theo quy trình nào để kiểm tra một giả thuyết?</p>
+      <button class="btn btn-primary" id="finalRead" ${s.finalMessageViewed?'disabled':''}><i class="ti ti-book-2"></i> ${s.finalMessageViewed?'Đã đọc câu chốt':'Tôi đã đọc câu chốt'}</button>
+    </section>`;
+  document.querySelectorAll('[data-final]').forEach(select=>select.onchange=()=>{
+    s.answers[select.dataset.final]=select.value;delete s.feedbacks[select.dataset.final];const task=s4Tasks.find(t=>t.id===select.dataset.final);setVisual(select.value?deviceAssets[select.value]:task.asset,select.value?deviceNames[select.value]:task.text,'Lựa chọn sau khi học');persist('Chọn thiết bị S04');renderStage4();
+  });
+  document.getElementById('s4Check').onclick=()=>{
+    const submitted={...s.answers};
+    const wrong=s4Tasks.filter(t=>s.answers[t.id]!==t.correct);
+    s4Tasks.filter(t=>s.answers[t.id]===t.correct).forEach(t=>{s.locked.add(t.id);delete s.feedbacks[t.id]});
+    const messages=wrong.map(s4Feedback);
+    wrong.forEach((t,i)=>{s.feedbacks[t.id]=messages[i];s.answers[t.id]=''});
+    LMS().event('answered',{id:'s04_required',chosen:submitted,correct:wrong.length===0});
+    if(wrong.length){feedback(messages.join(' '),'bad');setGuide('Các lựa chọn đúng được giữ lại. Hãy điều chỉnh nhiệm vụ chưa phù hợp.')}
+    else{
+      s.requiredComplete=true;s.compareViewed=true;feedback('Ba nhiệm vụ bắt buộc đã đúng. Hãy đối chiếu lựa chọn và đọc câu chốt.','ok');setGuide('Quan sát nhãn Giữ nguyên hoặc Đã điều chỉnh, rồi đọc câu chốt.');
+    }
+    persist('Kiểm tra lựa chọn S04');renderStage4();
+  };
+  const pcrSelect=document.getElementById('pcrSelect'),pcrReason=document.getElementById('pcrReason'),pcrCheck=document.getElementById('pcrCheck');
+  pcrSelect.onchange=()=>{s.pcrChoice=pcrSelect.value;s.pcrFeedback='';persist('Chọn thiết bị mở rộng PCR')};
+  pcrReason.onchange=()=>{s.pcrReason=pcrReason.value;s.pcrFeedback='';persist('Chọn chức năng mở rộng PCR')};
+  pcrCheck.onclick=()=>{
+    if(!s.pcrChoice||!s.pcrReason){feedback('Hãy chọn cả thiết bị và chức năng cho nhiệm vụ mở rộng.','bad');return}
+    s.pcrChecked=true;const ok=s.pcrChoice==='pcr'&&s.pcrReason==='amplify';
+    if(s.pcrReason==='see-gene')s.pcrFeedback='Máy PCR tạo nhiều bản sao của một đoạn DNA xác định. Thiết bị này không giúp nhìn trực tiếp gene.';
+    else if(s.pcrReason==='sequence')s.pcrFeedback='PCR là kĩ thuật nhân bản đoạn DNA, không phải kĩ thuật xác định thứ tự nucleotide của đoạn DNA.';
+    else if(s.pcrChoice!=='pcr')s.pcrFeedback='Nhiệm vụ tạo nhiều bản sao của một đoạn DNA xác định cần máy PCR; kính hiển vi điện tử và hệ thống điện di không thực hiện chức năng này.';
+    else s.pcrFeedback='Máy PCR thực hiện các chu kì nhiệt để tạo nhiều bản sao của một đoạn DNA xác định.';
+    LMS().event('answered',{id:'s04_pcr_extension',chosen:{device:s.pcrChoice,reason:s.pcrReason},correct:ok});
+    feedback(s.pcrFeedback,ok?'ok':'bad');persist('Kiểm tra mở rộng PCR');renderStage4();
+  };
+  const finalRead=document.getElementById('finalRead');
+  if(finalRead)finalRead.onclick=()=>{
+    s.finalMessageViewed=true;markStageComplete('Thiết bị nghiên cứu được lựa chọn theo nhiệm vụ cần thực hiện. Có thiết bị giúp quan sát, có thiết bị giúp phân tách hoặc chuyển mẫu.');
+    document.getElementById('btnNext').disabled=false;persist('Đã đọc câu chốt S04');renderStage4();
+  };
+  stageEvidence([
+    ['Ba nhiệm vụ bắt buộc đúng',s.requiredComplete],['Đã đối chiếu lựa chọn ban đầu',s.compareViewed],
+    ['Đã đọc câu chốt',s.finalMessageViewed],['Đã hiển thị câu chuyển sang M03',s.requiredComplete]
+  ]);
+}
+
+function gotoStage(n){
+  if(n<1||n>4||n>state.unlocked)return;
+  state.stage=n;renderShell();feedback('Hệ thống sẽ phản hồi sau mỗi thao tác có ý nghĩa.','info',false);
+  if(n===1)setVisual('A04','Tế bào biểu bì hành','Nhiệm vụ nghiên cứu');
+  if(n===2)setVisual(state.s2.factsComplete?'A07':'A01',state.s2.factsComplete?'Độ phân giải: phân biệt hai điểm gần nhau':'Kính hiển vi quang học','Thiết bị quan sát');
+  if(n===3){const id=state.s3.lastDevice||'centrifuge';setVisual(deviceAssets[id],deviceNames[id],'Thiết bị xử lí và thao tác mẫu')}
+  if(n===4)setVisual('A15','Đoạn DNA xác định dạng sơ đồ','Vận dụng lựa chọn thiết bị');
+  ({1:renderStage1,2:renderStage2,3:renderStage3,4:renderStage4})[n]();
+  LMS().progress({done:state.completedStages.size,total:4});persist(`Mở Stage S0${n}`);
+}
+function resetStage(){
+  const n=state.stage;
+  if(n===1)state.s1={selectedTask:null,pairs:{},confirmed:false};
+  if(n===2)state.s2={selectedFact:null,facts:{},lockedFacts:new Set(),factsComplete:false,conceptsViewed:new Set(),selectedTask:null,tasks:{},lockedTasks:new Set(),tasksComplete:false,feedbacks:{}};
+  if(n===3)state.s3={selectedTask:null,pairs:{},locked:new Set(),matchComplete:false,cardsViewed:new Set(),pcrViewed:false,electroViewed:false,feedbacks:{},lastDevice:null};
+  if(n===4)state.s4={answers:{},locked:new Set(),requiredComplete:false,compareViewed:false,finalMessageViewed:false,pcrChoice:'',pcrReason:'',pcrChecked:false,pcrFeedback:'',feedbacks:{}};
+  state.completedStages.delete(n);state.unlocked=Math.max(n,Math.max(1,...state.completedStages)+1);gotoStage(n);feedback('Màn hiện tại đã được đưa về trạng thái đầu.','info');
+}
+document.querySelectorAll('.stage-tab').forEach(btn=>btn.onclick=()=>gotoStage(+btn.dataset.stage));
+document.getElementById('btnReset').onclick=resetStage;
+document.getElementById('btnNext').onclick=()=>{
+  if(state.stage<4){gotoStage(state.stage+1);return}
+  if(!state.s4.finalMessageViewed||state.moduleComplete)return;
+  state.moduleComplete=true;state.moduleComplete=true;completedSent=true;
+  document.getElementById('btnNext').disabled=true;document.getElementById('btnNext').querySelector('span').textContent='Đã hoàn thành';
+  LMS().progress({done:4,total:4});
+  LMS().complete({
+    summary:'Hoàn thành module Thiết bị nghiên cứu và học tập môn Sinh học.',
+    score:4,max:4,
+    items:[
+      {id:'s01',isCorrect:true,evidence:'Đã lưu đủ ba dự đoán ban đầu'},
+      {id:'s02',isCorrect:true,evidence:'Ghép đúng dữ kiện, xem đủ khái niệm và chọn đúng kính'},
+      {id:'s03',isCorrect:true,evidence:'Ghép đúng bốn thiết bị và xem đủ ba thẻ chính'},
+      {id:'s04',isCorrect:true,evidence:'Ba nhiệm vụ bắt buộc đúng, đã đối chiếu và đọc câu chốt'}
+    ]
+  });
+  feedback('Đã hoàn thành module. Thiết bị nghiên cứu được lựa chọn theo nhiệm vụ cần thực hiện.','ok');persist('Hoàn thành module');
+};
+document.getElementById('btnTTS').onclick=()=>{
+  if(!('speechSynthesis' in window)){feedback('Trình duyệt này chưa hỗ trợ đọc văn bản.','bad',false);return}
+  speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(currentTtsText||currentGuideText);u.lang='vi-VN';u.rate=1;speechSynthesis.speak(u);
+};
+function restoreState(saved){
+  if(!saved||typeof saved!=='object')return;
+  if(saved.PRE_S01_TASK_01)state.s1.pairs.t1=saved.PRE_S01_TASK_01;
+  if(saved.PRE_S01_TASK_02)state.s1.pairs.t2=saved.PRE_S01_TASK_02;
+  if(saved.PRE_S01_TASK_03)state.s1.pairs.t3=saved.PRE_S01_TASK_03;
+  state.s1.confirmed=!!saved.S01_CONFIRMED;
+  if(saved.S02_STATE&&typeof saved.S02_STATE==='object'){
+    const x=saved.S02_STATE;
+    state.s2.facts={...(x.facts||{})};state.s2.lockedFacts=new Set(Array.isArray(x.lockedFacts)?x.lockedFacts:[]);
+    state.s2.factsComplete=!!x.factsComplete;state.s2.conceptsViewed=new Set(Array.isArray(x.conceptsViewed)?x.conceptsViewed:[]);
+    state.s2.tasks={...(x.tasks||{})};state.s2.lockedTasks=new Set(Array.isArray(x.lockedTasks)?x.lockedTasks:[]);
+    state.s2.tasksComplete=!!x.tasksComplete;state.s2.feedbacks={...(x.feedbacks||{})};
+  }
+  if(saved.S03_STATE&&typeof saved.S03_STATE==='object'){
+    const x=saved.S03_STATE;
+    state.s3.pairs={...(x.pairs||{})};state.s3.locked=new Set(Array.isArray(x.locked)?x.locked:[]);
+    state.s3.matchComplete=!!x.matchComplete;state.s3.cardsViewed=new Set(Array.isArray(x.cardsViewed)?x.cardsViewed:[]);
+    state.s3.pcrViewed=!!x.pcrViewed;state.s3.electroViewed=!!x.electroViewed;state.s3.feedbacks={...(x.feedbacks||{})};state.s3.lastDevice=x.lastDevice||null;
+  }
+  if(saved.S04_STATE&&typeof saved.S04_STATE==='object'){
+    const x=saved.S04_STATE;
+    state.s4.answers={...(x.answers||{})};state.s4.locked=new Set(Array.isArray(x.locked)?x.locked:[]);
+    state.s4.requiredComplete=!!x.requiredComplete;state.s4.compareViewed=!!x.compareViewed;state.s4.finalMessageViewed=!!x.finalMessageViewed;
+    state.s4.pcrChoice=x.pcrChoice||'';state.s4.pcrReason=x.pcrReason||'';state.s4.pcrChecked=!!x.pcrChecked;state.s4.pcrFeedback=x.pcrFeedback||'';state.s4.feedbacks={...(x.feedbacks||{})};
+  }
+  if(Array.isArray(saved.completedStages))state.completedStages=new Set(saved.completedStages.filter(n=>n>=1&&n<=4));
+  state.unlocked=Math.min(4,Math.max(1,saved.unlocked||1));state.stage=Math.min(state.unlocked,Math.max(1,saved.currentStep||1));
+  state.moduleComplete=!!saved.MODULE_SH10_B02_M02_COMPLETE;completedSent=state.moduleComplete;
+}
+if(window.AiducationLMS)window.AiducationLMS.onResume=s=>{restoreState(s);gotoStage(state.stage)};
+function reportHeight(){LMS().resize({height:document.documentElement.scrollHeight})}
+addEventListener('load',reportHeight);
+const ro=new ResizeObserver(()=>{clearTimeout(window._rz);window._rz=setTimeout(reportHeight,100)});ro.observe(document.body);
+LMS().ready({id:'SH10_B02_M02',version:'2.0',stages:4});
+canvasLoop();gotoStage(1);
+</script>
+</body>
+</html>
