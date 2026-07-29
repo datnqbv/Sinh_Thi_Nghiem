@@ -282,30 +282,30 @@ Trên giao diện di động, thanh điều hướng Module / Stage (`.moduleNav
 @media (max-width:900px){
   .main { padding: 16px 12px 36px; }
   .moduleNav, .progress-nav {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
+    display: flex!important;
+    flex-wrap: nowrap!important;
+    overflow-x: auto!important;
+    overflow-y: hidden!important;
     -webkit-overflow-scrolling: touch;
-    gap: 8px;
-    padding: 6px 4px;
+    gap: 8px!important;
+    padding: 6px 4px!important;
     scrollbar-width: none;
   }
   .moduleNav::-webkit-scrollbar, .progress-nav::-webkit-scrollbar {
     display: none;
   }
   .moduleMini, .stage-tab {
-    flex: 0 0 auto;
-    white-space: nowrap;
-    padding: 10px 14px;
-    font-size: 0.88rem;
+    flex: 0 0 auto!important;
+    white-space: nowrap!important;
+    padding: 10px 14px!important;
+    font-size: 0.88rem!important;
   }
 }
 ```
 
 ---
 
-## 6. HEADER (GỘP MỤC TIÊU) + THANH ĐIỀU HƯỚNG MODULE
+## 6. HEADER (GỘP MỤC TIÊU) + THANH ĐIỀU HƯỚNG MODULE & CHỐNG ĐÈ CANVAS
 
 **Header (Banner phong cách Flat/Editorial — Gộp Mục tiêu):**
 - Không dùng ảnh nền URL ngoài; sử dụng nền gradient CSS màu thương hiệu (`var(--jade-dark)` đến `var(--jade-deep)`).
@@ -349,7 +349,55 @@ header {
 .header-goal .goal-text { font-size: 0.92rem; font-weight: 500; color: rgba(255,255,255,0.95); }
 ```
 
-**Thanh điều hướng Module / Màn (`.moduleNav` / `.progress-nav`) — BẮT BUỘC KHÓA CỐ ĐỊNH KHI CUỘN ĐỈNH MÀN HÌNH (`top: 0` - Không để hở khoảng trống):** Đặt ngay trên vùng học chính để chuyển đổi nhanh giữa các module/màn. Bắt buộc cài đặt `position: sticky; top: 0; z-index: 100; background: var(--cream); padding: 12px 0; box-shadow: 0 4px 12px rgba(26,26,26,0.06);` để khi người học cuộn xuống bên dưới, thanh điều hướng dính sát mép trên `top: 0` như một thanh Header cố định, che kín nội dung lướt bên dưới và tuyệt đối **không để hở khoảng trống/khe hở ở phía trên**.
+**Thanh điều hướng Module / Màn (`.moduleNav` / `.progress-nav`) & Quy tắc Khóa Canvas không bị đè che (`position: sticky; top: 64px;`):**
+- **Thanh Nav cố định đỉnh (`top: 0`, `z-index: 100`, tổng chiều cao vừa tròn `64px`):**
+  Đặt ngay trên vùng học chính. Bắt buộc cài đặt `padding: 10px 0;` và các nút tab màn học (`.stage-tab`) trên 1 dòng nằm ngang (`min-height: 44px`) để tổng chiều cao thanh Nav chiếm vừa đúng **64px** trên đỉnh viewport.
+  ```css
+  .progress-nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--cream);
+    padding: 10px 0;
+    box-shadow: 0 4px 12px rgba(26,26,26,0.06);
+  }
+  .stage-tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 14px;
+    border-radius: var(--radius);
+    border: 1.5px solid var(--paper-line-2);
+    background: var(--cream-2);
+    color: var(--ink-2);
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .18s;
+  }
+  ```
+- **Cột Trái Canvas (`.canvas-card`) Dính Đúng `top: 64px` (`z-index: 10`):**
+  Thẻ chứa Canvas (`.canvas-card`) trực tiếp làm cột bên trái của Lưới 2 cột (`.split-workspace`). Bắt buộc cài đặt:
+  ```css
+  .canvas-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: sticky;
+    top: 64px; /* Khóa dính ngay dưới mép thanh Nav 64px, không bao giờ bị đè che */
+    z-index: 10;
+  }
+  ```
+- **Đặt Ô Phản Hồi (`#globalFeedback`) Ở Cột Phải (`.workspace-card`):**
+  Không đặt ô phản hồi hoặc nội dung dài dưới cột Canvas bên trái. Đưa `#globalFeedback` sang cuối cột bên phải trong `.workspace-card`, giữ cho cột Canvas bên trái luôn gọn gàng và lọt hoàn toàn trong màn hình.
+- **Khai Báo Lớp CSS `.hidden` Bắt Buộc:**
+  Luôn có quy tắc `.hidden { display: none !important; }` ở phần Reset CSS để tránh lỗi tự động hiển thị Modal chúc mừng (`#congratsModal`) hoặc các phần ẩn khi vừa tải trang.
 ```html
 <nav class="moduleNav">
   <button class="moduleMini active" onclick="openModule('m1',event)"><i class="ti ti-virus"></i> Module 1. Virus là gì?</button>
