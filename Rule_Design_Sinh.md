@@ -266,6 +266,13 @@ function setAsset(key) {
     canvasDirty = true;
   }
 }
+- **Hiệu ứng Chúc mừng Hoàn thành Bài học (`Confetti Burst & Congrats Modal` — BẮT BUỘC):**
+  - Khi học sinh hoàn thành bài học/module (nhấn nút "Hoàn thành" ở Màn cuối), hệ thống **bắt buộc kích hoạt hiệu ứng pháo hoa giấy Confetti rơi rực rỡ (`launchConfetti()`)** bằng Canvas.
+  - Đồng thời hiển thị **Cửa sổ Modal Chúc mừng sang trọng (`.congrats-overlay`)** với biểu tượng cúp chiến thắng (`ti-trophy`), thống kê kết quả 100% đạt và lời khen ngợi kích thích động lực học tập.
+
+```js
+// Hàm kích hoạt hiệu ứng pháo hoa giấy chúc mừng
+function launchConfetti() { ... }
 ```
 
 **Responsive Mobile (≤900px) — Thanh Stage Nav / Module Nav Chỉ 1 Hàng Nút Cuộn Ngang (BẮT BUỘC):**

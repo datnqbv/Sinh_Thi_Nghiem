@@ -654,6 +654,82 @@ header h1{
 .link-section a{color:var(--jade-text);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
 .link-section a:hover{text-decoration:underline;color:var(--jade-deep)}
 
+/* CONGRATULATORY OVERLAY MODAL */
+.congrats-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20,67,47,0.65);
+  backdrop-filter: blur(5px);
+  display: grid;
+  place-items: center;
+  z-index: 99999;
+  padding: 16px;
+  animation: modalFadeIn 0.3s ease both;
+}
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+.congrats-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(20,67,47,0.25);
+  border: 2px solid var(--sage);
+  position: relative;
+  overflow: hidden;
+}
+.congrats-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--accent-pale);
+  color: var(--accent-text);
+  font-size: 2.4rem;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 16px;
+  box-shadow: 0 4px 16px rgba(232,162,74,0.3);
+  animation: trophyBounce 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+@keyframes trophyBounce {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+.congrats-card h2 {
+  font-size: 1.45rem;
+  color: var(--jade-dark);
+  margin: 0 0 10px;
+  font-weight: 800;
+}
+.congrats-card p {
+  font-size: 0.94rem;
+  color: var(--ink-2);
+  margin: 0 0 18px;
+  line-height: 1.55;
+}
+.congrats-stats {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 22px;
+  padding: 12px 16px;
+  background: var(--cream);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--paper-line);
+}
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--jade-text);
+}
+
 @media(max-width:900px){
   body{padding:14px 12px 32px}
   .progress-nav{
@@ -1424,6 +1500,76 @@ document.getElementById('btnReset').onclick=()=>{
   gotoStage(n);
 };
 
+function launchConfetti(){
+  const canvas=document.createElement('canvas');
+  canvas.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:99999;';
+  document.body.appendChild(canvas);
+  const ctx=canvas.getContext('2d');
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  canvas.width=window.innerWidth*dpr;
+  canvas.height=window.innerHeight*dpr;
+
+  const colors=['#3CA57A','#2D8B6F','#E8A24A','#F7E7CD','#7CA792','#59B48F','#F4B860'];
+  const particles=Array.from({length:85},()=>({
+    x:Math.random()*canvas.width,
+    y:Math.random()*(canvas.height*0.3)-20,
+    w:(Math.random()*10+6)*dpr,
+    h:(Math.random()*12+8)*dpr,
+    vx:(Math.random()-0.5)*4*dpr,
+    vy:(Math.random()*3+2.5)*dpr,
+    rot:Math.random()*360,
+    vRot:(Math.random()-0.5)*7,
+    color:colors[Math.floor(Math.random()*colors.length)],
+    opacity:1
+  }));
+
+  let start=null;
+  function animate(now){
+    if(!start)start=now;
+    const elapsed=now-start;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p=>{
+      p.x+=p.vx+Math.sin(elapsed/180)*(1.2*dpr);
+      p.y+=p.vy;
+      p.rot+=p.vRot;
+      if(elapsed>2400)p.opacity-=0.02;
+      ctx.save();
+      ctx.translate(p.x,p.y);
+      ctx.rotate((p.rot*Math.PI)/180);
+      ctx.globalAlpha=Math.max(0,p.opacity);
+      ctx.fillStyle=p.color;
+      ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
+      ctx.restore();
+    });
+    if(elapsed<3600){
+      requestAnimationFrame(animate);
+    } else {
+      canvas.remove();
+    }
+  }
+  requestAnimationFrame(animate);
+}
+
+function showCongratsModal(){
+  if(document.getElementById('congratsModal'))return;
+  const overlay=document.createElement('div');
+  overlay.id='congratsModal';
+  overlay.className='congrats-overlay';
+  overlay.innerHTML=`
+    <div class="congrats-card">
+      <div class="congrats-icon"><i class="ti ti-trophy"></i></div>
+      <h2>Chúc mừng! Hoàn thành xuất sắc!</h2>
+      <p>Em đã hoàn thành toàn bộ 4 Màn của Module: <strong>Vai trò và ứng dụng của Sinh học</strong>.</p>
+      <div class="congrats-stats">
+        <div class="stat-item"><i class="ti ti-circle-check"></i> Tiến trình: 4/4 Màn</div>
+        <div class="stat-item"><i class="ti ti-award"></i> Kết quả: 100% Đạt</div>
+      </div>
+      <button class="btn btn-primary" onclick="document.getElementById('congratsModal').remove()"><i class="ti ti-check"></i> Đóng thông báo</button>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+}
+
 document.getElementById('btnNext').onclick=()=>{
   if(state.stage<4){gotoStage(state.stage+1);return;}
   if(state.complete||!state.s4.done)return;
@@ -1447,6 +1593,8 @@ document.getElementById('btnNext').onclick=()=>{
   }
   feedback('Chúc mừng em đã hoàn thành xuất sắc toàn bộ Module 02!','ok');
   persist('Hoàn thành module');
+  launchConfetti();
+  showCongratsModal();
 };
 
 document.getElementById('btnPrev').onclick=()=>{
