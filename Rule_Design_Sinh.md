@@ -369,19 +369,13 @@ Card chung: nền `var(--cream-2)`, viền 1px `var(--paper-line)`, radius 12px,
 
 ## 8. KHỐI TƯƠNG TÁC CHÍNH — Thanh hướng dẫn + Hàng nút tương tác
 
-### 8A. Thanh hướng dẫn động & kĩ càng theo bước (Live Contextual Guidance — BẮT BUỘC)
-**BẮT BUỘC "Làm đến đâu - Hướng dẫn chi tiết đến đấy":** Người học không bao giờ phải tự đoán thao tác tiếp theo. Mọi màn hình tương tác phải có thanh hướng dẫn trực tiếp cập nhật theo thời gian thực (real-time state).
-
-```css
-.guide-bar{ display:flex; align-items:center; gap:12px; background:var(--jade-pale); border:1px solid var(--sage); border-radius:12px; padding:12px 16px; }
-```
-- **Bên trái:** biểu tượng tròn 40–44px, nền `var(--jade)`, icon `var(--cream)` — **dùng icon chủ đề (vd `ti-microscope` / `ti-leaf` / `ti-flask`), KHÔNG dùng nhân vật hoạt hình/robot** (quy ước học liệu Sinh: không nhân vật avatar, mỗi màn 1 "nhiệm vụ hiện tại"). `flex-shrink:0`.
-- **Giữa** (`flex:1`, `aria-live="polite"`): text hướng dẫn ~1rem, weight 500–600, `var(--ink)`, line-height 1.5. Cập nhật bởi `updateGuide()` theo từng thao tác/bước/hành động.
-  - **Mỗi bước đều có chỉ dẫn cụ thể:** Nêu rõ *Đang ở đâu*, *Cần bấm/kéo/chọn gì tiếp theo* và *Quan sát hiện tượng gì*.
-  - **Giọng văn:** Trung tính, trực tiếp, 1–2 câu kĩ càng. **KHÔNG xưng "em"**, không đọc lộ đáp án trắc nghiệm nhưng phải chỉ rõ hành động thao tác (Ví dụ: *"Bước 1: Nhấn nút 'Nhỏ cồn 90°' vào đĩa Petri để tẩy màu lá"* $\rightarrow$ *"Bước 2: Kéo kính hiển vi soi vị trí tế bào lá bị tẩy màu"*).
-  - **Khi làm sai / chưa hoàn thành:** Thanh hướng dẫn đổi sang màu cảnh báo nhẹ `var(--warning-bg)` kèm chỉ dẫn khắc phục cụ thể (Ví dụ: *"Chưa đúng. Hãy nhỏ dung dịch Iốt trước khi soi dưới kính hiển vi"*).
-- **Bên phải:** badge "Bước X/N" (chỉ kiểu B): chip nền `var(--cream)`, viền `var(--sage)`, chữ `var(--jade-text)` weight 700, `flex-shrink:0`.
-- Khi text đổi: fade (opacity 0→1 + translateY 4px, ~200ms).
+### 8A. Phong cách Thiết Kế Tối Giản (Minimal & Tinh Gọn — BẮT BUỘC)
+- **Loại bỏ rườm rà (`.guide-bar` & `#feedbackPanel`):** Không sử dụng các thanh banner chỉ dẫn rườm rà hay ô phản hồi cố định gây chiếm diện tích thị giác của học sinh.
+- **Loại bỏ tiền tố "Bước 1, Bước 2":** Tránh làm rối mắt học sinh. Tập trung trực tiếp vào:
+  - Tiêu đề câu hỏi / bài tập `<h2>`
+  - Ghi chú nhiệm vụ gọn gàng `<p class="workspace-note">`
+  - Khung nội dung tương tác chính `#workspace`
+- **Thông báo phản hồi (Feedback) gọn gàng:** Khi học sinh thao tác, sử dụng các hộp thông báo kết luận gọn gàng (`.summary` hoặc `.summary.module-final`) đặt ngay bên dưới bài tập.
 
 ### 8B. Hàng nút tương tác (`.controls-row`) — ĐẶT NẰM TRÊN FOOTER (BẮT BUỘC)
 `display:flex; align-items:center; gap:10px`. **Bắt buộc đặt nằm ở cuối vùng làm việc chính, ngay TRÊN khối Footer (`.link-section`)**. Khi học sinh hoàn thành thao tác/stage, nút "Tiếp tục" sẽ sáng lên để bấm chuyển màn.
