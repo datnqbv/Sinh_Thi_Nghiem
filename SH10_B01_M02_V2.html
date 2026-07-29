@@ -36,36 +36,152 @@
   --accent:#E8A24A;--accent-deep:#CE8A33;--accent-text:#8A551A;--accent-pale:#F7E7CD;
   --correct:#2D8B6F;--correct-bg:#DCEAE1;--wrong:#C15F3C;--wrong-bg:#F3E2D6;
   --warning:#C58A2E;--warning-bg:#F5E7CB;--info:#4E7F92;--info-bg:#DCE7EB;
-  --radius:10px;--radius-lg:14px;--radius-sm:6px;--shadow:0 4px 12px rgba(45,139,111,.10);--shadow-sm:0 2px 6px rgba(26,26,26,.05)
+  --radius:10px;--radius-lg:14px;--radius-sm:6px;--shadow:0 4px 12px rgba(45,139,111,.10);--shadow-sm:0 2px 6px rgba(26,26,26,.05);
+  --lesson-width:1200px
 }
-*{box-sizing:border-box}html,body{max-width:100%;overflow-x:hidden}
-body{margin:0;display:flex;flex-direction:column;align-items:center;gap:16px;padding:24px clamp(20px,2.5vw,48px);background:var(--cream);color:var(--ink);font-family:'Be Vietnam Pro',system-ui,sans-serif;font-size:1.075rem;line-height:1.7}
-button{font:inherit}button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-header{width:100%;max-width:1720px;border-radius:16px;padding:1.5rem 2rem;overflow:hidden;position:relative;background-image:linear-gradient(rgba(18,26,20,.48),rgba(18,26,20,.48)),url('https://www.aiducation.edu.vn/images/fifingfig_Modern_editorial_illustration_of_a_stylized_Vietnames_f0b08847-9f6d-48cf-90ac-b8ed2eb77baf.png');background-position:center 32%;background-size:cover;box-shadow:var(--shadow)}
-header h1{margin:0;color:#fff;font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800;text-shadow:0 2px 4px rgba(0,0,0,.2)}
-header p{margin:5px 0 0;color:rgba(255,255,255,.88);max-width:800px}.header-badge{color:#fff;font-weight:600;font-size:.92rem}
-.goal-bar{width:100%;max-width:1720px;display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--jade-pale);border-left:4px solid var(--jade);border-radius:10px}.goal-bar strong{color:var(--jade-text)}
-.progress-nav{width:100%;max-width:1720px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.stage-tab{border:1px solid var(--paper-line-2);background:var(--cream-2);color:var(--ink-2);border-radius:9px;padding:10px 12px;text-align:left;font-weight:600;cursor:pointer;transition:.18s}.stage-tab.current{background:var(--jade);border-color:var(--jade);color:#fff}.stage-tab.done{background:var(--jade-pale);color:var(--jade-text)}.stage-tab:disabled{cursor:not-allowed;opacity:.62}
-.lab-wrapper{display:grid;grid-template-columns:minmax(230px,.9fr) minmax(0,2.2fr) minmax(280px,1.1fr);grid-template-areas:"sideLeft guide sideRight" "sideLeft controls sideRight" "sideLeft canvas sideRight";grid-template-rows:auto auto 1fr;gap:16px;width:100%;max-width:1720px;align-items:stretch}
-.lab-side-left,.lab-side-right{grid-area:sideLeft;display:flex;flex-direction:column;gap:16px;min-height:0}.lab-side-right{grid-area:sideRight}
-.card{background:var(--cream-2);border:1px solid var(--paper-line);border-radius:12px;padding:16px 18px}.card-title{display:flex;align-items:center;gap:8px;margin:0 0 12px;font-weight:700}.card-title i{color:var(--jade)}
-.side-fill{flex:1;min-height:0}.guide-bar{grid-area:guide;display:flex;align-items:center;gap:12px;background:var(--jade-pale);border:1px solid var(--sage);border-radius:12px;padding:12px 16px}.guide-icon{width:42px;height:42px;flex:0 0 42px;border-radius:50%;display:grid;place-items:center;background:var(--jade);color:#fff}.guide-text{font-weight:600;line-height:1.45}.guide-badge{margin-left:auto;white-space:nowrap;font-size:.83rem;font-weight:700;color:var(--jade-text)}
-.controls-row{grid-area:controls;display:flex;align-items:center;gap:9px;min-height:54px;padding:8px 12px;background:var(--cream-2);border:1px solid var(--paper-line);border-radius:12px;overflow:auto}.spacer{flex:1}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:40px;padding:8px 15px;border-radius:9px;border:1.5px solid var(--jade);background:transparent;color:var(--jade-text);font-weight:600;cursor:pointer;white-space:nowrap}.btn:hover:not(:disabled){background:var(--jade-pale)}.btn-primary{background:var(--jade);color:#fff}.btn-primary:hover:not(:disabled){background:var(--jade-deep)}.btn:disabled{opacity:.48;cursor:not-allowed}
-.canvas-card{grid-area:canvas;padding:4px;min-width:0;display:flex;flex-direction:column;gap:10px}.canvas-glow-wrap{position:relative;width:100%;padding:2px;border-radius:10px;overflow:hidden;background:var(--jade);aspect-ratio:16/7}.canvas-glow-wrap::before{content:'';position:absolute;inset:-100%;background:conic-gradient(from 0deg,transparent 0 170deg,var(--jade) 220deg,var(--jade) 340deg,transparent 360deg);animation:spin 4.5s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}#labCanvas{position:relative;z-index:1;width:100%;height:100%;display:block;border-radius:8px;background:var(--cream);touch-action:none}
-.workspace{background:#fff;border:1px solid var(--paper-line);border-radius:10px;padding:16px;min-height:315px}.workspace h2{font-size:clamp(1.25rem,2.5vw,1.65rem);line-height:1.35;margin:0 0 8px}.workspace-note{margin:0 0 14px;color:var(--ink-2);font-size:.94rem}
-.option-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.option-grid.five{grid-template-columns:repeat(5,1fr)}.choice{border:1.5px solid var(--paper-line-2);border-radius:9px;background:var(--cream);padding:11px;min-height:58px;text-align:left;color:var(--ink);font-weight:600;cursor:pointer;transition:.18s}.choice:hover:not(:disabled),.choice.selected{border-color:var(--jade);background:var(--jade-pale)}.choice.correct{border-color:var(--correct);background:var(--correct-bg)}.choice.wrong{border-color:var(--wrong);background:var(--wrong-bg)}.choice:disabled{cursor:default}
-.section-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.6px;color:var(--ink-3);font-weight:700;margin:12px 0 7px}.feedback{margin-top:13px;padding:10px 12px;border-left:4px solid var(--info);background:var(--info-bg);border-radius:6px;color:var(--ink-2);font-size:.92rem}.feedback.ok{border-color:var(--correct);background:var(--correct-bg)}.feedback.bad{border-color:var(--wrong);background:var(--wrong-bg)}
-.evidence-list{display:grid;gap:8px}.evidence{display:flex;gap:8px;align-items:flex-start;padding:8px 10px;background:var(--cream);border:1px solid var(--paper-line);border-radius:8px;font-size:.86rem;line-height:1.45}.evidence i{color:var(--ink-faint);margin-top:3px}.evidence.done{background:var(--correct-bg);border-color:var(--sage)}.evidence.done i{color:var(--correct)}
+*{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:clip}
+body{
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+  padding:20px clamp(14px,2.5vw,32px);
+  background:var(--cream);
+  color:var(--ink);
+  font-family:'Be Vietnam Pro',system-ui,sans-serif;
+  font-size:1.075rem;
+  line-height:1.7
+}
+button{font:inherit}
+button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+header,.goal-bar,.stage-sticky,.lesson-shell,.link-section{
+  width:100%;
+  max-width:var(--lesson-width)
+}
+header{
+  border-radius:14px;
+  padding:1.35rem 1.6rem;
+  overflow:hidden;
+  position:relative;
+  background-image:linear-gradient(rgba(18,26,20,.5),rgba(18,26,20,.5)),url('https://www.aiducation.edu.vn/images/fifingfig_Modern_editorial_illustration_of_a_stylized_Vietnames_f0b08847-9f6d-48cf-90ac-b8ed2eb77baf.png');
+  background-position:center 32%;
+  background-size:cover
+}
+header h1{margin:0;color:#fff;font-size:clamp(1.65rem,4vw,2.3rem);font-weight:800;line-height:1.25;text-shadow:0 2px 4px rgba(0,0,0,.2)}
+header p{margin:5px 0 0;color:rgba(255,255,255,.9);max-width:800px}
+.header-badge{color:#fff;font-weight:600;font-size:.86rem}
+.goal-bar{display:flex;align-items:center;gap:12px;padding:9px 14px;background:var(--jade-pale);border-left:4px solid var(--jade);border-radius:9px}
+.goal-bar strong{color:var(--jade-text);white-space:nowrap}
+.stage-sticky{
+  position:sticky;
+  top:0;
+  z-index:100;
+  align-self:center;
+  flex:0 0 auto;
+  padding:8px 0;
+  background:var(--cream);
+  box-shadow:0 1px 0 var(--paper-line)
+}
+.progress-nav{
+  width:100%;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:7px
+}
+.stage-tab{
+  min-height:52px;
+  border:1px solid var(--paper-line-2);
+  background:transparent;
+  color:var(--ink-2);
+  border-radius:8px;
+  padding:9px 12px;
+  text-align:left;
+  font-weight:600;
+  cursor:pointer;
+  transition:.18s
+}
+.stage-tab.current{background:var(--jade);border-color:var(--jade);color:#fff}
+.stage-tab.done{background:var(--jade-pale);border-color:var(--sage);color:var(--jade-text)}
+.stage-tab:disabled{cursor:not-allowed;opacity:.55}
+.lesson-shell{display:flex;flex-direction:column;gap:12px;min-width:0}
+.guide-bar{display:flex;align-items:center;gap:12px;background:var(--jade-pale);border:1px solid var(--sage);border-radius:10px;padding:11px 14px}
+.guide-icon{width:40px;height:40px;flex:0 0 40px;border-radius:50%;display:grid;place-items:center;background:var(--jade);color:#fff}
+.guide-text{font-weight:600;line-height:1.45}
+.guide-badge{margin-left:auto;white-space:nowrap;font-size:.83rem;font-weight:700;color:var(--jade-text)}
+.controls-row{display:flex;align-items:center;gap:9px;min-height:54px;padding:7px 10px;border-block:1px solid var(--paper-line);overflow-x:auto;scrollbar-width:thin}
+.spacer{flex:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:42px;padding:8px 15px;border-radius:8px;border:1.5px solid var(--jade);background:transparent;color:var(--jade-text);font-weight:600;cursor:pointer;white-space:nowrap}
+.btn:hover:not(:disabled){background:var(--jade-pale)}
+.btn-primary{background:var(--jade);color:#fff}
+.btn-primary:hover:not(:disabled){background:var(--jade-deep)}
+.btn:disabled{opacity:.48;cursor:not-allowed}
+.canvas-card{min-width:0;display:flex;flex-direction:column;gap:10px}
+.canvas-glow-wrap{position:relative;width:100%;padding:2px;border-radius:10px;overflow:hidden;background:var(--jade);aspect-ratio:16/7}
+.canvas-glow-wrap::before{content:'';position:absolute;inset:-100%;background:conic-gradient(from 0deg,transparent 0 170deg,var(--jade) 220deg,var(--jade) 340deg,transparent 360deg);animation:spin 5.5s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#labCanvas{position:relative;z-index:1;width:100%;height:100%;display:block;border-radius:8px;background:var(--cream);touch-action:none}
+.workspace{background:#fff;border:1px solid var(--paper-line);border-radius:10px;padding:clamp(15px,2vw,22px);min-height:315px}
+.workspace h2{font-size:clamp(1.25rem,2.5vw,1.65rem);line-height:1.35;margin:0 0 8px}
+.workspace-note{margin:0 0 14px;color:var(--ink-2);font-size:.94rem}
+.support-panel{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--paper-line);border-radius:10px;background:var(--cream-2);overflow:hidden}
+.support-group{min-width:0;padding:16px 18px}
+.support-group+ .support-group{border-left:1px solid var(--paper-line-2)}
+.support-section+ .support-section{margin-top:16px;padding-top:16px;border-top:1px solid var(--paper-line-2)}
+.card-title{display:flex;align-items:center;gap:8px;margin:0 0 10px;font-size:1rem;font-weight:700}
+.card-title i{color:var(--jade)}
+.option-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.option-grid.five{grid-template-columns:repeat(5,1fr)}
+.choice{border:1.5px solid var(--paper-line-2);border-radius:9px;background:var(--cream);padding:11px;min-height:58px;text-align:left;color:var(--ink);font-weight:600;cursor:pointer;transition:.18s}
+.choice:hover:not(:disabled),.choice.selected{border-color:var(--jade);background:var(--jade-pale)}
+.choice.correct{border-color:var(--correct);background:var(--correct-bg)}
+.choice.wrong{border-color:var(--wrong);background:var(--wrong-bg)}
+.choice:disabled{cursor:default}
+.section-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.6px;color:var(--ink-3);font-weight:700;margin:12px 0 7px}
+.feedback{padding:10px 12px;border-left:4px solid var(--info);background:var(--info-bg);border-radius:6px;color:var(--ink-2);font-size:.92rem}
+.feedback.ok{border-color:var(--correct);background:var(--correct-bg)}
+.feedback.bad{border-color:var(--wrong);background:var(--wrong-bg)}
+.evidence-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.evidence{display:flex;gap:8px;align-items:flex-start;padding:8px 10px;background:var(--cream);border:1px solid var(--paper-line);border-radius:8px;font-size:.86rem;line-height:1.45}
+.evidence i{color:var(--ink-faint);margin-top:3px}
+.evidence.done{background:var(--correct-bg);border-color:var(--sage)}
+.evidence.done i{color:var(--correct)}
 .profile-layout{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.profile-btn{padding:9px 7px;border:1px solid var(--paper-line-2);border-radius:8px;background:var(--cream);font-size:.78rem;font-weight:700;cursor:pointer}.profile-btn.viewed{background:var(--jade-pale);border-color:var(--jade)}.profile-text{margin-top:12px;padding:12px;background:var(--sage-pale);border-left:4px solid var(--jade);border-radius:6px}.profile-text h3{margin:0;font-size:1rem}.profile-text p{margin:5px 0 0;font-size:.9rem;line-height:1.55}
 .hidden{display:none!important}.match-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px}.match-wrap .choice{width:100%;margin-bottom:7px}.chain-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.chain-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.chain-card{position:relative}.order-badge{display:inline-grid;place-items:center;width:25px;height:25px;border-radius:50%;background:var(--accent-pale);color:var(--accent-text);margin-right:5px}.arrows-on .chain-card:not(:last-child)::after{content:'→';position:absolute;right:-11px;top:50%;z-index:2;color:var(--jade);font-size:1.3rem;font-weight:800}
 .radio-list{display:grid;gap:8px}.radio-choice{display:flex;gap:9px;align-items:flex-start;padding:10px;border:1px solid var(--paper-line-2);border-radius:8px;background:var(--cream);cursor:pointer}.radio-choice input{margin-top:6px;accent-color:var(--jade)}
 .career-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.career-grid .choice{font-size:.78rem;padding:8px;min-height:50px}.summary{margin-top:12px;padding:13px;border-left:4px solid var(--jade);background:var(--jade-pale);border-radius:7px;font-weight:600}.summary.module-final{border-left-color:var(--accent);background:var(--accent-pale)}
 .pair-lines{display:grid;gap:7px;margin-top:12px}.paired-row,.career-link{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr);align-items:center;gap:6px;padding:8px;border:1px solid var(--sage);border-radius:8px;background:var(--sage-pale);font-size:.78rem;font-weight:600;animation:linkIn .25s ease both}@keyframes linkIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}.pair-arrow{position:relative;text-align:center;color:var(--jade);font-size:1rem}.pair-arrow::before{content:'';position:absolute;left:0;right:0;top:50%;height:2px;background:var(--jade);z-index:0}.pair-arrow i{position:relative;z-index:1;padding:2px;background:var(--sage-pale)}.career-groups{display:grid;gap:9px}.career-group{padding:8px;border:1px solid var(--paper-line);border-radius:8px;background:var(--cream)}.career-group h3{margin:0 0 7px;color:var(--jade-text);font-size:.82rem}.career-links{display:grid;gap:7px;margin-top:10px}.relation-note{margin-top:10px;padding:9px 10px;border-left:4px solid var(--info);border-radius:7px;background:var(--info-bg);color:var(--ink-2);font-size:.8rem;line-height:1.5}.drag-hint{display:inline-flex;align-items:center;gap:5px;color:var(--ink-3);font-size:.76rem}.choice[draggable=true]{cursor:grab}.choice[draggable=true]:active{cursor:grabbing}.drop-ready{outline:2px dashed var(--jade);outline-offset:2px}.profile-text{animation:linkIn .25s ease both}
-.micro-list{margin:0;padding-left:20px;color:var(--ink-2);font-size:.9rem}.stage-title{font-size:1rem;margin:0 0 8px}.counter{font-size:.85rem;color:var(--jade-text);font-weight:700}.link-section{width:100%;max-width:1720px;display:flex;align-items:center;gap:18px;padding:18px 22px;background:var(--cream-2);border:1px solid var(--paper-line);border-radius:12px}.link-section img{width:72px;height:72px;object-fit:cover;border-radius:50%;border:2px solid var(--sage)}.link-section a{color:var(--jade-text);font-weight:600}
-@media(max-width:1100px){.lab-wrapper{grid-template-columns:1fr;grid-template-areas:"guide" "controls" "canvas" "sideRight" "sideLeft"}.lab-side-left,.lab-side-right{height:auto}.side-fill{flex:none}.option-grid.five{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:720px){body{padding:12px;gap:12px;font-size:1rem}header{padding:1.2rem}.goal-bar{align-items:flex-start}.progress-nav{display:flex;overflow-x:auto;scrollbar-width:none}.progress-nav::-webkit-scrollbar{display:none}.stage-tab{flex:0 0 180px;font-size:.78rem}.btn,.profile-btn{min-height:44px}.guide-badge{display:none}.option-grid,.chain-cards,.career-grid{grid-template-columns:1fr}.profile-layout{grid-template-columns:1fr 1fr}.match-wrap{grid-template-columns:1fr}.canvas-glow-wrap{aspect-ratio:4/3}.arrows-on .chain-card:not(:last-child)::after{content:'↓';right:50%;top:auto;bottom:-18px}.paired-row,.career-link{grid-template-columns:1fr 32px 1fr;font-size:.72rem}.link-section{flex-direction:column;text-align:center}}
+.micro-list{margin:0;padding-left:20px;color:var(--ink-2);font-size:.9rem}
+#knowledgeNote p{margin:0;color:var(--ink-2);font-size:.9rem}
+.stage-title{font-size:1rem;margin:0 0 8px}.counter{font-size:.85rem;color:var(--jade-text);font-weight:700}
+.link-section{display:flex;align-items:center;gap:16px;padding:14px 18px;border-top:1px solid var(--paper-line)}
+.link-section img{width:56px;height:56px;object-fit:cover;border-radius:50%;border:2px solid var(--sage)}
+.link-section a{color:var(--jade-text);font-weight:600}
+@media(max-width:900px){
+  .option-grid.five{grid-template-columns:repeat(2,1fr)}
+  .support-panel{grid-template-columns:1fr}
+  .support-group+ .support-group{border-left:0;border-top:1px solid var(--paper-line-2)}
+}
+@media(max-width:720px){
+  body{padding:12px;gap:11px;font-size:1rem}
+  header{padding:1.1rem}
+  header p{font-size:.92rem;line-height:1.5}
+  .goal-bar{align-items:flex-start;font-size:.9rem}
+  .progress-nav{display:flex;overflow-x:auto;scrollbar-width:none}
+  .progress-nav::-webkit-scrollbar{display:none}
+  .stage-tab{flex:0 0 160px;min-height:48px;font-size:.78rem}
+  .btn,.profile-btn{min-height:44px}
+  .guide-badge{display:none}
+  .controls-row{padding-inline:2px}
+  .option-grid,.chain-cards,.career-grid,.evidence-list{grid-template-columns:1fr}
+  .profile-layout{grid-template-columns:1fr 1fr}
+  .match-wrap{grid-template-columns:1fr}
+  .canvas-glow-wrap{aspect-ratio:4/3}
+  .arrows-on .chain-card:not(:last-child)::after{content:'↓';right:50%;top:auto;bottom:-18px}
+  .paired-row,.career-link{grid-template-columns:1fr 32px 1fr;font-size:.72rem}
+  .link-section{flex-direction:column;text-align:center}
+}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.canvas-glow-wrap::before,.paired-row,.career-link,.profile-text{animation:none}}
 </style>
 </head>
@@ -76,48 +192,53 @@ header p{margin:5px 0 0;color:rgba(255,255,255,.88);max-width:800px}.header-badg
   <p>Những hiểu biết về sự sống được ứng dụng như thế nào trong đời sống và sản xuất?</p>
 </header>
 <div class="goal-bar"><strong><i class="ti ti-target"></i> Mục tiêu</strong><span id="goalText">Ghép hiểu biết Sinh học với tình huống phù hợp trong đời sống.</span></div>
-<nav class="progress-nav" aria-label="Tiến trình bài học">
-  <button class="stage-tab current" data-stage="1">01 · Đời sống</button>
-  <button class="stage-tab" data-stage="2" disabled>02 · Lĩnh vực</button>
-  <button class="stage-tab" data-stage="3" disabled>03 · Tác động</button>
-  <button class="stage-tab" data-stage="4" disabled>04 · Nghề nghiệp</button>
-</nav>
-<main class="lab-wrapper">
-  <aside class="lab-side-left">
-    <section class="card">
-      <h2 class="card-title"><i class="ti ti-route"></i> Cách làm</h2>
-      <ol id="stepsList" class="micro-list"></ol>
-    </section>
-    <section class="card side-fill">
-      <h2 class="card-title"><i class="ti ti-book-2"></i> Kiến thức cần nhớ</h2>
-      <div id="knowledgeNote"></div>
-    </section>
-  </aside>
+<div class="stage-sticky">
+  <nav class="progress-nav" aria-label="Tiến trình bài học">
+    <button class="stage-tab current" data-stage="1">01 · Đời sống</button>
+    <button class="stage-tab" data-stage="2" disabled>02 · Lĩnh vực</button>
+    <button class="stage-tab" data-stage="3" disabled>03 · Tác động</button>
+    <button class="stage-tab" data-stage="4" disabled>04 · Nghề nghiệp</button>
+  </nav>
+</div>
+<main class="lesson-shell">
   <div class="guide-bar">
     <div class="guide-icon"><i class="ti ti-compass"></i></div>
     <div class="guide-text" id="guideText">Chọn một thẻ kiến thức, sau đó chọn tình huống phù hợp.</div>
     <div class="guide-badge" id="guideBadge">Màn 1/4</div>
   </div>
   <div class="controls-row">
+    <button class="btn" id="btnBack" disabled><i class="ti ti-arrow-left"></i> Quay lại</button>
     <button class="btn" id="btnTTS"><i class="ti ti-volume"></i> Nghe</button>
     <button class="btn" id="btnReset"><i class="ti ti-refresh"></i> Làm lại màn</button>
     <span class="spacer"></span>
     <button class="btn btn-primary" id="btnNext" disabled><span>Tiếp tục</span><i class="ti ti-arrow-right"></i></button>
   </div>
-  <section class="card canvas-card">
+  <section class="canvas-card">
     <div class="canvas-glow-wrap"><canvas id="labCanvas" width="1200" height="525" role="img" aria-label="Hình minh họa nội dung Sinh học của màn hiện tại"></canvas></div>
     <div class="workspace" id="workspace"></div>
   </section>
-  <aside class="lab-side-right">
-    <section class="card">
-      <h2 class="card-title"><i class="ti ti-checklist"></i> Bằng chứng học tập</h2>
-      <div class="evidence-list" id="evidenceList"></div>
-    </section>
-    <section class="card side-fill">
-      <h2 class="card-title"><i class="ti ti-message-circle"></i> Phản hồi</h2>
-      <div id="feedbackPanel" class="feedback">Hệ thống sẽ phản hồi sau mỗi thao tác có ý nghĩa.</div>
-    </section>
-  </aside>
+  <section class="support-panel" aria-label="Thông tin hỗ trợ học tập">
+    <div class="support-group">
+      <section class="support-section">
+        <h2 class="card-title"><i class="ti ti-route"></i> Cách làm</h2>
+        <ol id="stepsList" class="micro-list"></ol>
+      </section>
+      <section class="support-section">
+        <h2 class="card-title"><i class="ti ti-book-2"></i> Kiến thức cần nhớ</h2>
+        <div id="knowledgeNote"></div>
+      </section>
+    </div>
+    <div class="support-group">
+      <section class="support-section">
+        <h2 class="card-title"><i class="ti ti-checklist"></i> Bằng chứng học tập</h2>
+        <div class="evidence-list" id="evidenceList"></div>
+      </section>
+      <section class="support-section">
+        <h2 class="card-title"><i class="ti ti-message-circle"></i> Phản hồi</h2>
+        <div id="feedbackPanel" class="feedback">Hệ thống sẽ phản hồi sau mỗi thao tác có ý nghĩa.</div>
+      </section>
+    </div>
+  </section>
 </main>
 <section class="link-section">
   <img src="https://www.aiducation.edu.vn/images/fifingfig_Modern_editorial_illustration_of_a_stylized_Vietnames_f0b08847-9f6d-48cf-90ac-b8ed2eb77baf.png" alt="Aiducation">
@@ -213,6 +334,7 @@ function renderShell(){
   document.getElementById('stepsList').innerHTML=stageInfo[state.stage].steps.map(x=>`<li>${x}</li>`).join('');
   document.getElementById('knowledgeNote').innerHTML=`<p>${stageInfo[state.stage].note}</p>`;
   document.querySelectorAll('.stage-tab').forEach(b=>{const n=+b.dataset.stage;b.disabled=n>state.unlocked;b.classList.toggle('current',n===state.stage);b.classList.toggle('done',state.completedStages.has(n))});
+  document.getElementById('btnBack').disabled=state.stage<=1;
   document.getElementById('btnNext').disabled=!state.completedStages.has(state.stage)||state.complete;
   document.getElementById('btnNext').querySelector('span').textContent=state.stage===4?(state.complete?'Đã hoàn thành':'Hoàn thành'):'Tiếp tục';
 }
@@ -278,6 +400,7 @@ function renderStage4(){
 const stageTts={1:'Chọn một thẻ kiến thức, sau đó chọn tình huống mà hiểu biết đó có thể giải thích hoặc hỗ trợ.',2:'Chọn từng lĩnh vực để mở hồ sơ. Sau khi xem đủ năm hồ sơ, hãy ghép mỗi ứng dụng với lĩnh vực phù hợp.',3:'Chọn một chủ đề, sau đó sắp xếp ba thẻ theo quan hệ nguyên nhân – kết quả.',4:'Trả lời nhận định, sau đó chọn ít nhất ba nghề ngoài bác sĩ có sử dụng kiến thức Sinh học.'};
 function gotoStage(n){if(n>state.unlocked||n<1||n>4)return;state.stage=n;currentTtsText=stageTts[n];renderShell();const panel=document.getElementById('feedbackPanel');panel.textContent='Hệ thống sẽ phản hồi sau mỗi thao tác có ý nghĩa.';panel.className='feedback';({1:renderStage1,2:renderStage2,3:renderStage3,4:renderStage4})[n]();LMS().progress({done:state.completedStages.size,total:4});persist('Vào màn '+n)}
 document.querySelectorAll('.stage-tab').forEach(b=>b.onclick=()=>gotoStage(+b.dataset.stage));
+document.getElementById('btnBack').onclick=()=>{if(state.stage>1)gotoStage(state.stage-1)};
 document.getElementById('btnReset').onclick=()=>{const n=state.stage;if(n===1)state.s1={selected:null,pairs:{}};if(n===2)state.s2={viewed:new Set(),activeProfile:null,selected:null,pairs:{}};if(n===3)state.s3={topic:'food',orders:{},done:new Set(),generalChoice:null,general:false};if(n===4)state.s4={answer:null,careers:new Set(),done:false};state.completedStages.delete(n);state.complete=false;gotoStage(n)};
 document.getElementById('btnNext').onclick=()=>{if(state.stage<4){gotoStage(state.stage+1);return}if(state.complete||!state.s4.done)return;state.complete=true;renderShell();renderStage4();document.getElementById('btnNext').disabled=true;LMS().progress({done:4,total:4});if(!completionSent){completionSent=true;LMS().complete({summary:'Hoàn thành module Vai trò của Sinh học trong đời sống và các lĩnh vực nghề nghiệp.',score:4,max:4,items:[{id:'s01',isCorrect:true,evidence:'Ghép đúng ba hiểu biết với ba tình huống đời sống'},{id:'s02',isCorrect:true,evidence:'Mở đủ hồ sơ và ghép đúng năm ứng dụng – lĩnh vực'},{id:'s03',isCorrect:true,evidence:'Sắp xếp đúng ba chuỗi và chọn nhận định khái quát'},{id:'s04',isCorrect:true,evidence:'Bác bỏ nhận định sai và chọn đủ nghề nghiệp'}]})}feedback('Sinh học cung cấp cơ sở khoa học cho việc chăm sóc sức khỏe, phát triển sản xuất, chế biến thực phẩm và bảo vệ môi trường. Khi được chuyển thành những giải pháp phù hợp, tri thức Sinh học có thể góp phần nâng cao chất lượng cuộc sống và thúc đẩy sự phát triển kinh tế – xã hội. Các ứng dụng Sinh học có thể mang lại nhiều lợi ích, nhưng cũng cần được đánh giá về tác động lâu dài đối với con người, xã hội và môi trường. Nội dung này sẽ được tiếp tục ở SH10_B01_M03.','ok');persist('Hoàn thành module')};
 document.getElementById('btnTTS').onclick=()=>{if(!('speechSynthesis'in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(currentTtsText||document.getElementById('feedbackPanel').textContent);u.lang='vi-VN';u.rate=1;speechSynthesis.speak(u)};
