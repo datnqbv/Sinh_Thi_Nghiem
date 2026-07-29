@@ -158,78 +158,123 @@ chỉ thị, kết tủa, máu, tế bào... vẽ đúng màu sinh học. `ctx.f
 
 ---
 
-## 5. LAYOUT TỔNG THỂ — Dashboard 3 cột (quan trọng)
+## 5. LAYOUT TỔNG THỂ — Single-Column / Bố cục 1 cột trung tâm (quan trọng)
 
-- `body`: `display:flex; flex-direction:column; align-items:center; gap:16px; padding:24px clamp(20px,2.5vw,48px)`.
+- `body`: `display:flex; flex-direction:column; align-items:center; gap:16px; padding:20px clamp(14px,2.5vw,32px)`.
   **KHÔNG** đặt `min-height:100vh`/`height:100vh` trên body (gây khoảng trắng khi nhúng LMS — xem MỤC 15).
-- Độ rộng tối đa các khối lớn (header, thanh mục tiêu, `.lab-wrapper`, link-section): **1720px** — lấp gần hết desktop 1440–1920px, không co cụm giữa.
-- Thứ tự từ trên xuống: ① Header ảnh → ② Thanh mục tiêu → ③ `.lab-wrapper` (3 cột) → ④ Link section.
+- Độ rộng tối đa khối chính (`header`, `.goal-bar`, `.main`, `.moduleNav`, `.link-section`): **1200px** — căn giữa màn hình, lấp đầy không gian PC/Laptop hiện đại, không dùng 2 sidebar cố định hai bên.
+- Thứ tự từ trên xuống: ① Header / Top bar → ② Thanh mục tiêu (`.goal-bar`) → ③ Thanh điều hướng Module (`.moduleNav`) → ④ Thanh hướng dẫn (`.guide-bar`) & Nút điều khiển (`.controls-row`) → ⑤ Khối Canvas / Workspace chính (`.canvas-card` / `.workspace`) → ⑥ Khối thông tin hỗ trợ & Bằng chứng học tập (`.support-panel`) → ⑦ Link section.
 
 ```css
-.lab-wrapper {
-  display: grid;
-  grid-template-columns: minmax(230px, 0.9fr) minmax(0, 2.2fr) minmax(280px, 1.1fr);
-  grid-template-areas:
-    "sideLeft guide    sideRight"
-    "sideLeft controls sideRight"
-    "sideLeft canvas   sideRight";
-  grid-template-rows: auto auto 1fr;
-  gap: 16px; width: 100%; max-width: 1720px; align-items: stretch;
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--bg);
 }
-.lab-side-left, .lab-side-right { align-self: stretch; display:flex; flex-direction:column; gap:16px; min-height:0; }
-.canvas-card { grid-area: canvas; padding:4px; width:100%; height:100%; overflow:hidden; display:flex; justify-content:center; align-items:stretch; }
-.canvas-glow-wrap { position:relative; width:100%; padding:2px; border-radius:10px; overflow:hidden; flex:1; display:flex; }
+.main {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+}
+.moduleNav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 22px;
+}
+.moduleMini {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .2s;
+  box-shadow: var(--shadow-sm);
+}
+.moduleMini:hover {
+  border-color: var(--green);
+  background: var(--mint);
+  transform: translateY(-1px);
+}
+.moduleMini.active {
+  background: var(--deep);
+  border-color: var(--deep);
+  color: #fff;
+  box-shadow: var(--shadow-md);
+}
+.canvas-card { width:100%; display:flex; flex-direction:column; gap:14px; }
+.canvas-glow-wrap {
+  position:relative; width:100%; padding:2px; border-radius:10px; overflow:hidden;
+  background:var(--jade); aspect-ratio:2/1;
+}
 .canvas-glow-wrap::before {
-  content:''; position:absolute; inset:-80%;
+  content:''; position:absolute; inset:-100%;
   background: conic-gradient(from 0deg, transparent 0deg, transparent 170deg, var(--jade) 220deg, var(--jade) 340deg, transparent 360deg);
-  animation: canvasBorderSpin 4.5s linear infinite; z-index:0;
+  animation: canvasBorderSpin 5.5s linear infinite; z-index:0;
 }
 @keyframes canvasBorderSpin { to { transform: rotate(360deg); } }
-#labCanvas { position:relative; z-index:1; background:var(--cream); border-radius:8px; width:100%; height:100%; display:block; touch-action:none; flex:1; }
+#labCanvas { position:relative; z-index:1; width:100%; height:100%; display:block; border-radius:8px; background:var(--cream); touch-action:none; }
 ```
 HTML — canvas PHẢI bọc trong `.canvas-glow-wrap`:
 ```html
 <div class="card canvas-card">
   <div class="canvas-glow-wrap">
-    <canvas id="labCanvas" width="760" height="[H]" role="img" aria-label="Mô phỏng thí nghiệm ..."></canvas>
+    <canvas id="labCanvas" width="1200" height="600" role="img" aria-label="Mô phỏng thí nghiệm ..."></canvas>
   </div>
 </div>
 ```
 
-**Cấu trúc 3 cột:**
-- **Cột TRÁI** (`.lab-side-left`, area `sideLeft`, chiếm cả 3 hàng): card "Dụng cụ & vật liệu" + card "Cách làm" (xếp dọc). Card CUỐI (`Cách làm`) đặt `flex:1 1 auto; min-height:0` để giãn khớp đáy canvas.
-- **Cột GIỮA**: thanh hướng dẫn (area `guide`) → hàng nút tương tác (area `controls`, **chỉ 1 dòng**) → canvas card (area `canvas`).
-- **Cột PHẢI** (`.lab-side-right`, area `sideRight`): card "Bảng quan sát" + card "Kết luận & câu hỏi". Card CUỐI đặt `flex:1 1 auto; min-height:0`.
-- **Mục tiêu:** 3 khối sideLeft / canvas / sideRight cao **đồng đều**. Vì thanh guide + controls đã nén tối đa (controls ~52–60px), tổng chiều cao vùng giữa ≈ chiều cao canvas → 2 sidebar cao bằng canvas. Card cuối mỗi cột dùng cấu trúc: tiêu đề `flex-shrink:0` + thân `flex:1; min-height:0; overflow-y:auto` (scrollbar mảnh 6px, thumb `var(--sage)`). Không để hở khoảng trắng dưới card cuối; nội dung dài thì thân tự cuộn — cột không bao giờ cao hơn canvas.
+**Cấu trúc Đơn Cột (Single Column Flow):**
+- **Vùng Điều Hướng Đầu Màn:** Thanh mục tiêu (`.goal-bar`) $\rightarrow$ Thanh điều hướng 4 Module (`.moduleNav`) xếp hàng ngang 4 thẻ bài học.
+- **Vùng Thao Tác Chính:** Thanh hướng dẫn ngữ cảnh (`.guide-bar`) $\rightarrow$ Hàng nút tương tác (`.controls-row`, **chỉ 1 dòng**) $\rightarrow$ Canvas minh họa / Workspace tương tác.
+- **Vùng Hỗ Trợ Học Tập:** Khối accordion / card thông tin xếp chồng bên dưới (`Dụng cụ & vật liệu`, `Cách làm`, `Bảng quan sát`, `Kết luận & Luyện tập`).
 
-**Responsive (≤1100px → 1 cột):**
+**Responsive (≤900px):**
 ```css
-@media (max-width:1100px){
-  .lab-wrapper{ grid-template-columns:1fr; grid-template-areas:"guide" "controls" "canvas" "sideRight" "sideLeft"; }
-  .lab-side-left, .lab-side-right{ height:auto; }
-  .lab-side-left > *:last-child, .lab-side-right > *:last-child{ flex:none; }
+@media (max-width:900px){
+  .main { padding: 18px 14px 36px; }
+  .moduleNav { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width:540px){
+  .moduleNav { grid-template-columns: 1fr; }
 }
 ```
-Phần tương tác (guide/controls/canvas) luôn lên đầu; chạy tốt 360px → desktop.
+Phần tương tác (guide/controls/canvas) luôn lên đầu; chạy tốt 360px $\rightarrow$ desktop.
 
 ---
 
-## 6. HEADER + THANH MỤC TIÊU
+## 6. HEADER + THANH MỤC TIÊU + THANH ĐIỀU HƯỚNG MODULE
 
-**Header (banner ảnh):** background dùng ảnh URL (ngoại lệ self-contained duy nhất ngoài font/icon), **phủ 1 lớp
-gradient tối đồng nhất** để chữ trắng luôn đủ tương phản:
+**Header (Banner phong cách Flat/Editorial):** Không dùng ảnh nền URL ngoài; sử dụng nền gradient CSS màu thương hiệu (`var(--jade-dark)` đến `var(--jade-deep)`) để tạo cảm giác sang trọng, tương phản cao, 100% self-contained và tải tức thì:
 ```css
-header{
-  width:100%; max-width:1720px; border-radius:16px; padding:1.5rem 2rem; overflow:hidden; position:relative;
-  /* URL header mặc định bắt buộc; chỉ thay khi người dùng cung cấp rõ một ảnh header khác. */
-  background-image:linear-gradient(rgba(18,26,20,.42), rgba(18,26,20,.42)), url('https://www.aiducation.edu.vn/images/fifingfig_Modern_editorial_illustration_of_a_stylized_Vietnames_f0b08847-9f6d-48cf-90ac-b8ed2eb77baf.png');
-  background-position:center 32%; background-size:cover; background-repeat:no-repeat; box-shadow:var(--shadow);
+header {
+  width: 100%;
+  max-width: 1200px;
+  border-radius: 16px;
+  padding: 1.6rem 2rem;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, var(--jade-dark), var(--jade-deep));
+  box-shadow: var(--shadow);
+  color: #fff;
 }
 ``` 
-- 2 pseudo `::before/::after` hình tròn `rgba(255,255,255,0.07)` tạo chiều sâu. Badge: nền trong suốt, chữ trắng 90%, icon Tabler (vd `ti-leaf`). Tiêu đề trắng weight 700–800; mô tả `rgba(255,255,255,0.72)`.
+- Pseudo `::before/::after` tạo điểm nhấn ánh sáng tinh tế. Badge: nền trong suốt, chữ trắng 90%, icon Tabler (vd `ti-leaf`). Tiêu đề trắng weight 700–800; mô tả `rgba(255,255,255,0.85)`.
 - **BẮT BUỘC ẩn được:** nếu header chứa id JS cập nhật động → tách id đó ra ngoài + dùng `header{display:none}` khi nhúng, không xoá node.
 
-**Thanh mục tiêu học tập** (ngay dưới header): 1 thanh ngang mỏng, cùng max-width 1720px, kiểu call-out.
+**Thanh mục tiêu học tập** (ngay dưới header): 1 thanh ngang mỏng, cùng max-width 1200px, kiểu call-out.
 ```html
 <div class="goal-bar">
   <span class="goal-label"><i class="ti ti-target"></i> MỤC TIÊU</span>
@@ -238,30 +283,39 @@ header{
 </div>
 ```
 ```css
-.goal-bar{ display:flex; align-items:center; gap:10px; width:100%; max-width:1720px; background:var(--jade-pale); border-left:4px solid var(--jade); border-radius:10px; padding:10px 16px; }
+.goal-bar{ display:flex; align-items:center; gap:10px; width:100%; max-width:1200px; background:var(--jade-pale); border-left:4px solid var(--jade); border-radius:10px; padding:10px 16px; }
 .goal-label{ display:flex; align-items:center; gap:6px; flex-shrink:0; text-transform:uppercase; font-size:12px; font-weight:600; color:var(--jade-text); white-space:nowrap; }
 .goal-divider{ flex-shrink:0; align-self:stretch; width:1px; margin:3px 0; background:var(--sage); }
 .goal-text{ font-size:17px; color:var(--ink); }
 @media (max-width:640px){ .goal-text{ font-size:15px; } }
 ```
 
+**Thanh điều hướng Module (`.moduleNav`):** Đặt ngay trên vùng học chính để chuyển đổi nhanh giữa các module:
+```html
+<nav class="moduleNav">
+  <button class="moduleMini active" onclick="openModule('m1',event)"><i class="ti ti-virus"></i> Module 1. Virus là gì?</button>
+  <button class="moduleMini" onclick="openModule('m2',event)"><i class="ti ti-dna"></i> Module 2. Cấu tạo virus</button>
+  <button class="moduleMini" onclick="openModule('m3',event)"><i class="ti ti-refresh"></i> Module 3. Quá trình nhân lên</button>
+  <button class="moduleMini" onclick="openModule('m4',event)"><i class="ti ti-shield-check"></i> Module 4. Phòng bệnh & Ứng dụng</button>
+</nav>
+```
+
 ---
 
-## 7. CỘT TRÁI — Dụng cụ & vật liệu · Cách làm
+## 7. KHỐI CÁCH LÀM & DỤNG CỤ VẬT LIỆU
 
 Card chung: nền `var(--cream-2)`, viền 1px `var(--paper-line)`, radius 12px, padding 16px 18px. Tiêu đề: icon Tabler + chữ weight 700 ~1.05rem, màu `var(--ink)`.
 
 **Card 1 — "Dụng cụ & vật liệu"** (icon `ti-flask-2`): danh sách dạng CHIP (icon + tên), nền `var(--cream)`, viền 1px `var(--paper-line)`, radius 8px, weight 600, cỡ 0.9rem, icon `var(--jade)`. Xếp flex-wrap gap 8px. Chip của dụng cụ đang dùng ở bước hiện tại: viền `var(--jade)` + nền `var(--jade-pale)`. Chiều cao tự nhiên (không flex-grow). Ví dụ vật liệu Sinh: *chậu cây khoai (đã che sáng)*, *lá thí nghiệm*, *giấy đen + kẹp*, *cốc thủy tinh*, *đèn cồn*, *cồn 90°*, *dung dịch iốt*, *đĩa Petri*, *kẹp gắp*, *nước sạch*.
 
-**Card 2 — "Cách làm"** (icon `ti-list-numbers`, đây là card CUỐI cột trái):
+**Card 2 — "Cách làm"** (icon `ti-list-numbers`):
 - **Danh sách bước dạng GRID 2 CỘT** (`display:grid; grid-template-columns:1fr 1fr; gap:8px 10px`) — tiết kiệm chiều cao. Mỗi ô: card nhỏ padding 8px 10px, radius 8px, nền `var(--cream)`, viền `var(--paper-line)`; bên trong số thứ tự trong vòng tròn (20–22px, nền `var(--jade-pale)`, chữ `var(--jade-text)` weight 700) + mô tả ngắn (0.8rem, line-height 1.4).
 - Đồng bộ với `currentStep` (thí nghiệm kiểu B — stepper): bước ĐANG làm → nền ô `var(--jade-pale)`, viền `var(--jade)`, số tròn nền `var(--jade)` chữ `var(--cream)`; bước ĐÃ xong → số tròn thay bằng icon `ti-check` màu `var(--jade)`; bước CHƯA đến → chữ `var(--ink-2)`.
 - Nếu có lưu ý an toàn → khung cảnh báo dưới cùng: icon `ti-alert-triangle`, nền `var(--wrong-bg)`, `border-left:4px solid var(--accent)`, chữ `var(--ink-2)` 0.85rem, `flex-shrink:0`.
-- **BẮT BUỘC** `flex:1 1 auto; min-height:0` + cấu trúc cột flex: tiêu đề (`flex-shrink:0`) → thân grid (`flex:1; min-height:0; overflow-y:auto`) → khung an toàn (`flex-shrink:0`, ngoài vùng cuộn).
 
 ---
 
-## 8. CỘT GIỮA — Thanh hướng dẫn + Hàng nút tương tác
+## 8. KHỐI TƯƠNG TÁC CHÍNH — Thanh hướng dẫn + Hàng nút tương tác
 
 ### 8A. Thanh hướng dẫn (area `guide`, trên cùng)
 "Người dẫn đường" theo ngữ cảnh, thay hoàn toàn khối hướng dẫn tĩnh dài dòng.
@@ -285,18 +339,17 @@ Chọn **1 trong 3 kiểu** theo kịch bản:
 
 ---
 
-## 9. CỘT PHẢI — Bảng quan sát · Kết luận & câu hỏi
+## 9. KHỐI BẢNG QUAN SÁT & KẾT LUẬN CÂU HỎI
 
-Hai card sát nhau (gap 16px cố định), không hở khoảng trắng dù card trên ngắn.
+Card chung được đặt xếp tầng ở vùng hỗ trợ bên dưới hoặc trong các tab tương tác.
 
 **Card 1 — "Bảng quan sát"** (icon `ti-table`): `<table>` gọn — header nền `var(--jade-pale)`, chữ `var(--jade-text)` uppercase 12px weight 600; ô border-bottom 1px `var(--paper-line)`, nội dung 0.9rem `var(--ink)`. Cột/hàng do kịch bản quy định (điều kiện thí nghiệm ↔ hiện tượng quan sát). Giá trị chưa quan sát: "?" màu `var(--ink-2)`; khi bước hoàn thành → JS điền giá trị thật kèm fade + nền ô nháy `var(--jade-pale)` ~1s. Nhiều cột → bọc `overflow-x:auto`. Chiều cao tự nhiên (không flex-grow).
 
-**Card 2 — "Kết luận & câu hỏi"** (icon `ti-checklist`, card CUỐI cột phải): `flex:1 1 auto; min-height:0`; cột flex: tiêu đề (`flex-shrink:0`) + thân (`flex:1; min-height:0; overflow-y:auto`, scrollbar mảnh 6px thumb `var(--sage)`).
+**Card 2 — "Kết luận & câu hỏi"** (icon `ti-checklist`):
 - Mỗi bước hoàn thành → **thêm 1 khối kết luận nhỏ + câu trắc nghiệm** (nếu có) vào cuối; khối mới tự `scrollIntoView({behavior:'smooth', block:'nearest'})`.
 - Khối con — chờ trả lời: nền `var(--sage-pale)`, viền `var(--sage)`, `border-left:4px solid var(--accent)`. Sau khi đúng: nền `var(--correct-bg)`, `border-left:4px solid var(--correct)`.
 - **Quiz — căn hàng chống lệch (BẮT BUỘC):** mỗi option là `<button>` full-width `display:flex; align-items:flex-start; text-align:left; gap:10px; padding:10px 14px`; ký hiệu A/B/C/D trong `<span>` riêng `flex:0 0 24px`; nội dung `<span>` `flex:1`; icon feedback đặt ở CUỐI (không chèn đầu text); `<ul>` reset `list-style:none; margin:0; padding:0`.
 - Chọn đúng → viền/nền `var(--correct)`/`var(--correct-bg)` + icon check. Chọn sai → `var(--wrong)`/`var(--wrong-bg)` **nhẹ nhàng** + chỉ dẫn tới chỗ cần xem lại, **không "phạt", không đỏ gắt, không reset tiến trình đúng trước đó** (xem MỤC 13). Feedback tức thì + transition.
-- Mobile (≤1100px): card reset `flex:none`, thân đổi `max-height:60vh; overflow-y:auto`.
 
 ---
 
@@ -311,7 +364,7 @@ Hai card sát nhau (gap 16px cố định), không hở khoảng trắng dù car
   </div>
 </div>
 ```
-`.link-section`: flex ngang, gap 18px, max-width 1720px, nền `var(--cream-2)`, viền `var(--paper-line)`, radius 12px, padding 18px 22px. `.link-fish img`: tròn ~72px, `object-fit:cover`, viền 2px `var(--sage)`. `.link-url`: `var(--jade-text)` weight 600, hover `var(--jade-deep)` + gạch chân. Dưới 480px: `flex-direction:column`, căn giữa, ảnh ~56px.
+`.link-section`: flex ngang, gap 18px, max-width 1200px, nền `var(--cream-2)`, viền `var(--paper-line)`, radius 12px, padding 18px 22px. `.link-fish img`: tròn ~72px, `object-fit:cover`, viền 2px `var(--sage)`. `.link-url`: `var(--jade-text)` weight 600, hover `var(--jade-deep)` + gạch chân. Dưới 480px: `flex-direction:column`, căn giữa, ảnh ~56px.
 
 ---
 
