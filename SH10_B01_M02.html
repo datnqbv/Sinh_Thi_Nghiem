@@ -812,11 +812,11 @@ const stageInfo={
 };
 
 const profiles=[
-  {id:'medicine',name:'Y – dược học',asset:'A04',app:'target',appText:'Phát triển thuốc tác động vào phân tử đích liên quan đến bệnh.',text:'Hiểu biết về gene, protein và cơ chế gây bệnh giúp phát triển thuốc tác động vào phân tử đích, nâng cao hiệu quả điều trị.',correct:'Đúng. Ứng dụng này thuộc lĩnh vực Y – dược học.',wrong:'Chưa chính xác. Tìm lĩnh vực phát triển phương pháp chẩn đoán và điều trị bệnh.'},
-  {id:'forensic',name:'Pháp y',asset:'A05',app:'dna',appText:'Phân tích và so sánh DNA từ dấu vết sinh học.',text:'DNA từ dấu vết sinh học (máu, tóc) giúp phân tích và so sánh nhằm hỗ trợ nhận dạng hoặc xác định huyết thống.',correct:'Đúng. Phân tích DNA là công cụ cốt lõi trong giám định pháp y.',wrong:'Chưa chính xác. Đây là ứng dụng phân tích dấu vết sinh học trong pháp y.'},
-  {id:'agriculture',name:'Nông – lâm – ngư nghiệp',asset:'A06',app:'tissue',appText:'Nhân nhanh cây trồng bằng nuôi cấy mô.',text:'Công nghệ nuôi cấy mô tế bào giúp nhân nhanh số lượng lớn cây giống đồng đều, sạch bệnh.',correct:'Đúng. Nuôi cấy mô được ứng dụng rộng rãi trong nông nghiệp.',wrong:'Chưa chính xác. Tìm lĩnh vực chọn tạo và nhân giống cây trồng.'},
-  {id:'food',name:'Công nghệ thực phẩm',asset:'A07',app:'ferment',appText:'Sử dụng vi sinh vật trong chế biến thực phẩm.',text:'Quá trình lên tiện vi sinh vật (như vi khuẩn lactic làm sữa chua) giúp tạo ra các sản phẩm thực phẩm giàu dinh dưỡng.',correct:'Đúng. Lên men thực phẩm thuộc lĩnh vực Công nghệ thực phẩm.',wrong:'Chưa chính xác. Ứng dụng này biến đổi nguyên liệu thành thực phẩm.'},
-  {id:'environment',name:'Bảo vệ môi trường',asset:'A08',app:'pollution',appText:'Sử dụng khả năng chuyển hóa của vi sinh vật để hỗ trợ xử lí ô nhiễm.',text:'Vi sinh vật được ứng dụng để phân hủy các chất hữu cơ, xử lý nước thải và phục hồi môi trường ô nhiễm.',correct:'Đúng. Đây là giải pháp thuộc lĩnh vực Bảo vệ môi trường.',wrong:'Chưa chính xác. Tìm lĩnh vực xử lý ô nhiễm và bảo vệ hệ sinh thái.'}
+  {id:'medicine',name:'Y – dược học',asset:'A04',app:'target',appText:'Phát triển thuốc tác động vào phân tử đích liên quan đến bệnh.',text:'Hiểu biết về gene, protein và cơ chế gây bệnh giúp các nhà khoa học xác định những phân tử có liên quan đến bệnh. Từ đó, họ có thể phát triển thuốc tác động chủ yếu vào phân tử đích, nhằm nâng cao hiệu quả điều trị và hạn chế một số tác động không mong muốn.',correct:'Đúng. Ứng dụng này sử dụng hiểu biết về cơ chế gây bệnh để phát triển phương pháp điều trị.',wrong:'Hãy tìm lĩnh vực phát triển phương pháp chẩn đoán và điều trị bệnh.'},
+  {id:'forensic',name:'Pháp y',asset:'A05',app:'dna',appText:'Phân tích và so sánh DNA từ dấu vết sinh học.',text:'DNA có thể được thu từ một số dấu vết sinh học như tóc có chân tóc, máu hoặc tế bào biểu mô. Việc phân tích và so sánh đặc điểm DNA với mẫu đối chứng có thể cung cấp bằng chứng hỗ trợ nhận dạng hoặc xác định quan hệ huyết thống.',correct:'Đúng. Phân tích DNA từ dấu vết sinh học là một công cụ được sử dụng trong giám định pháp y.',wrong:'Ứng dụng này liên quan đến việc thu thập, phân tích và so sánh dấu vết sinh học trong giám định.'},
+  {id:'agriculture',name:'Nông – lâm – ngư nghiệp',asset:'A06',app:'tissue',appText:'Nhân nhanh cây trồng bằng nuôi cấy mô.',text:'Công nghệ di truyền và nuôi cấy mô được sử dụng trong chọn, tạo và nhân giống. Nuôi cấy mô có thể giúp nhân nhanh nhiều cây con từ một phần mô thực vật trong điều kiện phù hợp.',correct:'Đúng. Nuôi cấy mô có thể được sử dụng để nhân nhanh cây trồng có đặc điểm mong muốn.',wrong:'Chưa chính xác. Tìm lĩnh vực chọn tạo và nhân giống cây trồng.'},
+  {id:'food',name:'Công nghệ thực phẩm',asset:'A07',app:'ferment',appText:'Sử dụng vi sinh vật trong chế biến thực phẩm.',text:'Con người sử dụng hoạt động của vi sinh vật để chế biến nhiều loại thực phẩm. Trong quá trình làm sữa chua, vi khuẩn lactic chuyển hóa một phần đường trong sữa và góp phần tạo nên vị chua cùng trạng thái đặc trưng của sản phẩm.',correct:'Đúng. Lên men thực phẩm dựa trên hoạt động chuyển hóa của vi sinh vật.',wrong:'Ứng dụng này sử dụng hoạt động của vi sinh vật để tạo ra hoặc làm biến đổi thực phẩm.'},
+  {id:'environment',name:'Bảo vệ môi trường',asset:'A08',app:'pollution',appText:'Sử dụng khả năng chuyển hóa của vi sinh vật để hỗ trợ xử lí ô nhiễm.',text:'Một số vi sinh vật có khả năng chuyển hóa, cố định hoặc tích lũy các chất trong môi trường. Những khả năng này được nghiên cứu và ứng dụng trong một số quy trình hỗ trợ xử lí ô nhiễm.',correct:'Đúng. Một số vi sinh vật được nghiên cứu và sử dụng để hỗ trợ xử lí các chất ô nhiễm.',wrong:'Không phải mọi vi sinh vật đều có khả năng này. Ứng dụng thuộc lĩnh vực bảo vệ môi trường.'}
 ];
 
 const chains={
@@ -1064,9 +1064,9 @@ function renderStage1(){
       if(ok){
         state.s1.pairs[k]=b.dataset.id;
         const msgs={
-          microbe:'Chính xác! Hiểu biết vi sinh vật giúp đưa ra các biện pháp vệ sinh và phòng tránh bệnh truyền nhiễm.',
-          nutrition:'Chính xác! Kiến thức dinh dưỡng giúp lựa chọn thực phẩm lành mạnh và phù hợp với cơ thể.',
-          memory:'Chính xác! Hiểu biết về trí nhớ hỗ trợ lựa chọn phương pháp học tập khoa học.'
+          microbe:'Đúng. Hiểu biết về vi sinh vật giúp con người xây dựng các biện pháp vệ sinh, phòng bệnh và điều trị bệnh truyền nhiễm.',
+          nutrition:'Đúng. Hiểu biết về thành phần và giá trị dinh dưỡng giúp con người lựa chọn và sử dụng thực phẩm phù hợp.',
+          memory:'Đúng. Hiểu biết về cách hình thành và củng cố trí nhớ có thể giúp lựa chọn phương pháp học tập hiệu quả hơn.'
         };
         const done=Object.keys(state.s1.pairs).length===3;
         state.s1.selected=null;
@@ -1078,9 +1078,15 @@ function renderStage1(){
           feedback(msgs[k],'ok');
         }
       } else {
+        const wrongMsgs={
+          microbe:'Vi sinh vật có liên quan trực tiếp đến nhiều bệnh truyền nhiễm. Hãy tìm tình huống nói về phòng bệnh.',
+          nutrition:'Kiến thức về dinh dưỡng giúp đánh giá thành phần và giá trị của thực phẩm.',
+          memory:'Hãy tìm tình huống liên quan đến việc tiếp nhận, lưu giữ và nhắc lại kiến thức.'
+        };
+        const errText=wrongMsgs[k]||'Ghép chưa chính xác. Đọc kỹ lại ý nghĩa sinh học để chọn tình huống phù hợp.';
         state.s1.selected=null;
         setGuide('Chưa chính xác. Đọc lại gợi ý phản hồi và thử chọn lại thẻ kiến thức.');
-        feedback('Ghép chưa chính xác. Đọc kỹ lại ý nghĩa sinh học của từng thẻ để nối đúng tình huống.','bad');
+        feedback(errText,'bad');
       }
       renderStage1();
     };
@@ -1300,7 +1306,7 @@ function renderGeneral(){
     LMS().event('answered',{id:'s03_general',chosen:choice,correct:ok});
     if(ok){
       state.s3.general=true;
-      completeStage('Chính xác! Kiến thức tạo cơ sở khoa học, cần chuyển thành giải pháp và triển khai đúng điều kiện.');
+      completeStage('Đúng. Tri thức Sinh học tạo cơ sở khoa học, nhưng để tạo ra tác động thực tế thì cần chuyển thành giải pháp cụ thể và triển khai trong những điều kiện phù hợp.');
       renderStage3();
     } else {
       feedback('Chưa đúng. Tri thức Sinh học không thể tự phát huy tác dụng nếu không được thiết kế thành giải pháp cụ thể.','bad');
@@ -1360,10 +1366,10 @@ function renderStage4(){
     state.s4.answer=ans;
     LMS().event('answered',{id:'s04_doctor_only',chosen:ans?'Đúng':'Sai',correct:!ans});
     if(ans){
-      feedback('Chưa đúng. Ngoài bác sĩ, còn rất nhiều nghề như dược sĩ, kỹ sư nông nghiệp, công nghệ thực phẩm... đều cần kiến thức Sinh học.','bad');
+      feedback('Chưa đúng. Ngoài bác sĩ, còn có nhiều nghề nghiệp khác như dược sĩ, kĩ sư nông nghiệp, kĩ sư công nghệ thực phẩm, chuyên gia môi trường... cũng sử dụng kiến thức Sinh học.','bad');
       renderStage4();
     } else {
-      feedback('Chính xác! Bác sĩ chỉ là một trong số rất nhiều nghề nghiệp áp dụng Sinh học.','ok');
+      feedback('Đúng. Bác sĩ chỉ là một trong nhiều nghề nghiệp sử dụng kiến thức Sinh học.','ok');
       persist('Chọn đúng Sai');
       renderStage4();
     }
@@ -1388,7 +1394,7 @@ function renderStage4(){
     }
     state.s4.done=true;
     LMS().event('answered',{id:'s04_careers',chosen:[...state.s4.careers],correct:true});
-    completeStage('Hoàn thành bài tập phân biệt nghề nghiệp! Sinh học cung cấp tri thức cho đa dạng các ngành nghề.');
+    completeStage('Đúng. Tri thức Sinh học đóng vai trò nền tảng cho nhiều ngành nghề khác nhau trong xã hội.');
     renderStage4();
   };
 
