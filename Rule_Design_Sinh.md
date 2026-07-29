@@ -109,6 +109,13 @@ Khai báo đúng khối `:root` này, **CHỈ dùng các màu này cho UI** (n�
 - Nút chính (primary): nền `var(--jade)`, chữ `var(--cream)`, radius **8–10px (KHÔNG pill)**, hover `var(--jade-deep)`, transition 150–200ms.
 - Nút phụ: viền `var(--jade)` 1.5px, chữ `var(--jade-text)`, nền trong suốt; hover nền `var(--jade-pale)`.
 - Call-out: `border-left:4px solid var(--jade)` trên nền `var(--jade-pale)`.
+- **Quy tắc Khung Thông Báo Phản Hồi & Thao Tác Sai / Thiếu Bước (BẮT BUỘC):**
+  - **Khi chọn sai thao tác hoặc thiếu bước qua màn**: Hệ thống **bắt buộc hiển thị thông báo phản hồi rõ ràng** tại khung `#globalFeedback` hoặc khối `.inline-feedback` trực tiếp dưới nhiệm vụ.
+  - **Màu sắc thông báo chuẩn theo 3 trạng thái**:
+    - `info` (Nhắc nhở hướng dẫn): `border-left:4px solid var(--info); background:var(--info-bg); color:var(--ink-2);`
+    - `bad` (Thao tác sai / Thiếu bước): `border-left:4px solid var(--wrong); background:var(--wrong-bg); color:var(--ink-2);` — Icon `<i class="ti ti-alert-triangle"></i>` kèm thông báo chỉ rõ nguyên nhân (ví dụ: *"Bạn chưa chọn đủ 3 nhiệm vụ bắt buộc"*, *"Lựa chọn chưa chính xác, hãy thử lại"*).
+    - `ok` (Thao tác đúng / Hoàn thành màn): `border-left:4px solid var(--correct); background:var(--correct-bg); color:var(--jade-text);`
+  - **Khóa nút Qua màn (`#btnNext`) khi chưa hoàn thành**: Nút "Tiếp tục" (`#btnNext`) bắt buộc bị vô hiệu hóa (`disabled`) cho đến khi hoàn thành xong màn hiện tại. Nếu học sinh cố tình chuyển màn khi chưa đủ bước, hệ thống sẽ kích hoạt thông báo `bad` để cảnh báo.
 - **KHÔNG gradient trong UI (CSS), KHÔNG shadow nặng, KHÔNG glassmorphism, KHÔNG dark theme, KHÔNG emoji.**
 - **UI colors và "science colors" (MỤC 4) TUYỆT ĐỐI không trộn lẫn** — màu khoa học không bao giờ dùng cho nút/trạng thái phản hồi, và ngược lại.
 
@@ -242,18 +249,23 @@ HTML — canvas PHẢI bọc trong `.canvas-glow-wrap`:
 </div>
 ```
 
-**Cấu trúc Đơn Cột (Single Column Flow) & Bố cục từng phần (Flow Boxes / Section Cards):**
-- **Quy tắc thiết kế từng phần (giống `GIAODIEN_SH10 V10.html`):** Mọi nội dung bài học phải được phân chia thành các phần/thẻ bài học rõ ràng (`.flowBox` hoặc `.card`) với icon Tabler, tiêu đề và đường viền nhận diện màu sắc riêng:
-  - `.flowBox.video`: Khối Video kiến thức (icon `ti-video`, viền `var(--info)`)
-  - `.flowBox.theory`: Khối Lý thuyết cốt lõi (icon `ti-book-2`, viền `var(--jade)`)
-  - `.flowBox.note`: Khối Lưu ý quan trọng (icon `ti-bulb`, viền `var(--accent)`)
-  - `.flowBox.interactive`: Khối Mô hình / Thí nghiệm (icon `ti-flask-2`, viền `var(--jade-deep)`)
-  - `.flowBox.quiz`: Khối Luyện tập & Củng cố (icon `ti-edit-3`, viền `var(--info)`)
-- **Bố cục Chia 2 Cột Dưới Stage Nav (Split Workspace Grid — BẮT BUỘC KHI CÓ CANVAS & CÂU HỎI SONG SONG):**
-  - **Header, Mục tiêu, Stage Tabs & Footer:** Luôn giữ full-width 100% trong khung 1200px.
-  - **Vùng Làm Việc Chính (Dưới Stage Tabs):** Chia đôi 2 cột song song (`display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;`):
-    - **Cột Bên Trái — CANVAS KHÓA ĐI THEO KHI CUỘN (`position: sticky; top: 64px;` — BẮT BUỘC):** Cột chứa Canvas (`.canvas-card`) phải dùng `position: sticky; top: 64px;` để luôn trượt đi theo người học khi họ cuộn xuống làm bài tập ở cột bên phải. Nhờ đó, người học vừa thao tác trả lời vừa quan sát trực tiếp mô hình/hình ảnh minh họa không bị che hay phải cuộn ngược lên.
-    - **Cột Bên Phải (`.workspace-card` Minimal & Tối Giản):** Loại bỏ hoàn toàn thanh hướng dẫn rườm rà (`.guide-bar`), thanh phản hồi (`#feedbackPanel`) và các tiền tố "Bước 1, Bước 2" rườm rà. Cột bên phải chỉ tập trung chứa tiêu đề bài tập `<h2>`, ghi chú nhiệm vụ gọn gàng `.workspace-note` và khung tương tác `#workspace`.
+**Cấu trúc Giao Diện File HTML Con Nhúng (Child Sub-module HTML Standard):**
+Mọi file HTML con (Virtual Lab / Thí nghiệm tương tác) khi được tạo ra để nhúng vào file mẹ **BẮT BUỘC tuân thủ các quy tắc cấu trúc sau để đảm bảo phẳng, tối giản và không bị trùng lặp giao diện**:
+
+1. **Tuyệt đối KHÔNG CÓ Header riêng**: Các file con **BẮT BUỘC KHÔNG DÙNG** khối `<header>` banner (không có tiêu đề H1, không badge, không mục tiêu bài học) vì thông tin bài học và mục tiêu đã hiển thị sẵn ở Header của trang mẹ.
+2. **Tuyệt đối KHÔNG CÓ Thanh Tab Màn riêng (`.progress-nav`)**: Các file con **BẮT BUỘC KHÔNG DÙNG** thanh tab chuyển màn (`01 · Đời sống`, `02 · Lĩnh vực`,... vì thanh Module cuộn ngang ở trang mẹ đã đảm nhiệm điều hướng cấp bài học, còn tiến trình bên trong bài do 2 nút Quay lại / Tiếp tục điều khiển).
+3. **Tuyệt đối KHÔNG CÓ Banner Footer Link riêng (`.link-section`)**: Các file con **BẮT BUỘC KHÔNG DÙNG** khối banner liên kết chân trang (`aiducation.edu.vn`).
+4. **Bắt đầu trực tiếp từ Lưới 2 Cột (`.split-workspace`)**:
+   - Khung giao diện con bắt đầu ngay lập tức từ Lưới 2 cột song song (`display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;`):
+     - **Cột Bên Trái — CANVAS KHÓA ĐI THEO KHI CUỘN (`position: sticky; top: 0;` — BẮT BUỘC):** Cột chứa Canvas (`.canvas-card`) dùng `position: sticky; top: 0;` dính sát đỉnh iframe để luôn trượt theo người học khi họ cuộn xuống làm bài tập ở cột bên phải.
+     - **Cột Bên Phải (`.workspace-card` Minimal & Tối Giản):** Tập trung chứa tiêu đề bài tập `<h2>`, ghi chú nhiệm vụ gọn gàng `.workspace-note` và khung tương tác `#workspace`.
+5. **Thanh Điều Khiển Dưới (`.controls-row`)**:
+   - Chứa nút Quay lại (`#btnPrev`), Nút Reset (`#btnReset`), Nút Nghe đọc (`#btnTTS`), và Nút Tiếp tục (`#btnNext`).
+   - Nút "Tiếp tục" (`#btnNext`) duy trì `disabled` khi chưa đủ điều kiện hoàn thành màn.
+6. **Cảnh Báo Thông Báo khi Thao Tác Sai / Thiếu Bước Qua Màn**:
+   - Khi người học chọn sai hoặc thiếu bước, hệ thống ngay lập tức đổi màu ô phản hồi `#globalFeedback` hoặc `.inline-feedback` sang màu Cảnh báo `bad` (`border-left: 4px solid var(--wrong); background: var(--wrong-bg);`) kèm icon `<i class="ti ti-alert-triangle"></i>` và thông báo nguyên nhân chi tiết.
+7. **Khai Báo CSS `.hidden` Bắt Buộc**:
+   - Khai báo `.hidden { display: none !important; }` để ngăn Modal Chúc mừng tự động hiển thị khi vừa tải trang.
 - **Quy tắc Ghép đôi Dạng Nối 2 Cột Dọc kèm Đường Tia SVG (`2-Column Vertical Match with SVG Lines` — BẮT BUỘC):**
   - **Bố cục 2 Cột Dọc:** Xếp 2 danh sách ghép đôi song song theo chiều dọc (`.matching-container` với 2 cột `left` và `right`). Cột bên trái là danh sách thẻ nguồn, cột bên phải là danh sách thẻ đích.
   - **Điểm nối & Đường nối SVG (`<svg class="matching-svg">`):** Mỗi thẻ có chấm tròn nối (`.dot`). Khi người học chọn 1 thẻ vế trái và 1 thẻ vế phải ghép đúng, JS sẽ vẽ 1 đường tia nối màu xanh ngọc (`stroke="var(--jade)" stroke-width="3"`) nối trực tiếp giữa 2 chấm tròn.
@@ -266,6 +278,7 @@ function setAsset(key) {
     canvasDirty = true;
   }
 }
+```
 - **Hiệu ứng Chúc mừng Hoàn thành Bài học (`Confetti Burst & Congrats Modal` — BẮT BUỘC):**
   - Khi học sinh hoàn thành bài học/module (nhấn nút "Hoàn thành" ở Màn cuối), hệ thống **bắt buộc kích hoạt hiệu ứng pháo hoa giấy Confetti rơi rực rỡ (`launchConfetti()`)** bằng Canvas.
   - Đồng thời hiển thị **Cửa sổ Modal Chúc mừng sang trọng (`.congrats-overlay`)** với biểu tượng cúp chiến thắng (`ti-trophy`), thống kê kết quả 100% đạt và lời khen ngợi kích thích động lực học tập.

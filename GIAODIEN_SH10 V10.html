@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SINH HỌC 10 — Khóa học Tương tác Sinh học 10</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --deep:#064E3B;
+  --deep2:#083B32;
+  --green:#10B981;
+  --green2:#059669;
+  --mint:#ECFDF5;
+  --mint-strong:#D1FAE5;
+  --teal:#0D9488;
+  --teal-light:#CCFBF1;
+  --blue:#2563EB;
+  --blue-light:#EFF6FF;
+  --gold:#F59E0B;
+  --gold-light:#FEF3C7;
+  --purple:#8B5CF6;
+  --purple-light:#F5F3FF;
+  --orange:#F97316;
+  --orange-light:#FFF7ED;
+  --bg:#F6FAF8;
+  --surface:#FFFFFF;
+  --line:#DDE8E2;
+  --text:#10231C;
+  --muted:#64776F;
+  --shadow-sm:0 4px 12px rgba(15,23,42,.05);
+  --shadow-md:0 12px 28px rgba(15,23,42,.08);
+  --radius:20px;
+  --lesson-width:1200px;
+}
+body{
+  font-family:'Be Vietnam Pro',system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.65;
+  padding:20px clamp(14px,2.5vw,32px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+button,select,input,textarea{font:inherit}
+button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.hidden{display:none!important}
+
+.app{
+  width:100%;
+  max-width:var(--lesson-width);
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+/* TOP USER BAR */
+.top-bar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  width:100%;
+}
+.search-banner{
+  flex:1;
+  background:linear-gradient(135deg,#F7FCF9,#EEF8F3);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:12px 18px;
+  font-weight:600;
+  font-size:0.92rem;
+  color:var(--deep);
+  box-shadow:var(--shadow-sm);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.user-badge{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:10px 18px;
+  font-weight:700;
+  font-size:0.9rem;
+  color:var(--deep);
+  box-shadow:var(--shadow-sm);
+  white-space:nowrap;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+/* MODULE HEADER */
+.moduleHead{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:24px 28px;
+  box-shadow:var(--shadow-md);
+  position:relative;
+  overflow:hidden;
+}
+.moduleHead:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:6px;
+  height:100%;
+  background:var(--deep);
+}
+.moduleLabel{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--mint);
+  color:var(--teal);
+  padding:6px 14px;
+  border-radius:99px;
+  font-size:0.82rem;
+  font-weight:800;
+  margin-bottom:10px;
+  border:1px solid #A7F3D0;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+}
+.moduleHead h2{
+  font-size:clamp(1.5rem,3.2vw,2.1rem);
+  color:var(--deep);
+  margin-bottom:8px;
+  font-weight:800;
+  line-height:1.3;
+}
+.outcome{
+  color:var(--muted);
+  line-height:1.55;
+  font-size:0.94rem;
+  font-weight:500;
+}
+
+/* HORIZONTAL SCROLLABLE MODULE SELECTION BAR */
+.progress-nav-scroll{
+  display:flex;
+  flex-wrap:nowrap;
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  gap:10px;
+  width:100%;
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:var(--bg);
+  padding:8px 0;
+  scrollbar-width:none;
+}
+.progress-nav-scroll::-webkit-scrollbar{display:none}
+.module-tab-btn{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:12px 18px;
+  border-radius:14px;
+  border:1.5px solid var(--line);
+  background:#fff;
+  color:var(--text);
+  font-size:0.9rem;
+  font-weight:700;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:.2s;
+  box-shadow:var(--shadow-sm);
+}
+.module-tab-btn:hover{
+  border-color:var(--green);
+  background:var(--mint);
+}
+.module-tab-btn.active{
+  background:var(--deep);
+  border-color:var(--deep);
+  color:#fff;
+  box-shadow:var(--shadow-md);
+}
+
+/* FLOW BOX SECTIONS */
+.flowBox{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:24px;
+  box-shadow:var(--shadow-sm);
+  border-left-width:6px;
+  transition:.25s;
+}
+.flowBox:hover{box-shadow:var(--shadow-md);transform:translateY(-1px)}
+.flowTitle{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.iconBox{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;font-size:25px;flex:none}
+.flowTitle h3{font-size:1.15rem;font-weight:800;color:var(--text)}
+.flowTitle p{font-size:0.88rem;color:var(--muted);margin-top:3px;font-weight:500}
+
+.flowBox.interactive{border-left-color:var(--teal)}
+.flowBox.interactive .iconBox{background:var(--teal-light);color:var(--teal)}
+
+.module-content-card{
+  width:100%;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+}
+.module-iframe{
+  width:100%;
+  height:620px;
+  border:none;
+  display:block;
+}
+
+.flowBox.theory{border-left-color:var(--green)}
+.flowBox.theory .iconBox{background:var(--mint);color:var(--green)}
+
+.flowBox.note{border-left-color:var(--gold)}
+.flowBox.note .iconBox{background:var(--gold-light);color:var(--gold)}
+
+.flowBox.quiz{border-left-color:var(--purple)}
+.flowBox.quiz .iconBox{background:var(--purple-light);color:var(--purple)}
+
+.theoryList{display:grid;gap:12px}
+.theoryItem{background:#F8FBFA;border:1px solid var(--line);padding:16px 18px;border-radius:14px}
+.theoryItem b{display:block;color:var(--deep);font-size:0.96rem;margin-bottom:5px}
+.theoryItem span{color:var(--text);font-size:0.9rem;line-height:1.5}
+
+.noteBox{background:var(--gold-light);border:1px solid #FDE68A;border-radius:14px;padding:18px 20px;color:#92400E}
+.noteBox ul{padding-left:20px}
+.noteBox li{margin:6px 0;font-size:0.9rem;line-height:1.5;font-weight:550}
+
+.quiz{border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:14px;background:#fff}
+.quiz:nth-child(1){border-left:5px solid #84CC16;background:#FCFFF5}
+.quiz:nth-child(2){border-left:5px solid var(--gold);background:#FFFCF4}
+.quiz:nth-child(3){border-left:5px solid var(--purple);background:#FBF8FF}
+.quizMeta{font-size:0.78rem;color:var(--muted);font-weight:800;text-transform:uppercase;margin-bottom:10px}
+.quizQ{font-weight:700;margin-bottom:14px;color:var(--text);font-size:0.95rem;line-height:1.5}
+.option{padding:12px 16px;background:#fff;border:1px solid var(--line);border-radius:12px;margin:8px 0;font-size:0.9rem;font-weight:550;cursor:pointer;transition:.2s}
+.option:hover{border-color:var(--teal);box-shadow:var(--shadow-sm)}
+textarea{width:100%;min-height:96px;border:1px solid var(--line);border-radius:12px;padding:14px;font-family:inherit;resize:vertical;font-size:0.9rem;background:#F8FBFA;outline:none}
+textarea:focus{border-color:var(--teal);background:#fff}
+.btn-submit{border:0;background:var(--deep);color:#fff;border-radius:12px;padding:10px 18px;font-weight:700;margin-top:10px;cursor:pointer;transition:.18s}
+.btn-submit:hover{background:var(--deep2)}
+
+/* FOOTER LINK */
+.footer-link{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  width:100%;
+  padding:16px 22px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);
+  margin-top:10px;
+}
+.footer-link img{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid var(--green);
+}
+.footer-link h3{font-size:0.95rem;font-weight:700;color:var(--deep);margin:0}
+.footer-link p{font-size:0.85rem;color:var(--muted);margin:2px 0 0}
+
+@media(max-width:900px){
+  body{padding:14px 12px}
+  .moduleHead{padding:20px}
+  .top-bar{flex-direction:column;align-items:stretch}
+  .module-iframe{height:600px}
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- TOP BANNER -->
+  <div class="top-bar">
+    <div class="search-banner">
+      <i class="ti ti-sparkles" style="color:var(--green);font-size:1.2rem"></i>
+      <span>Tiến bộ không đến trong một ngày, mà từ sự cố gắng tương tác mỗi ngày.</span>
+    </div>
+    <div class="user-badge">
+      <i class="ti ti-user-circle" style="font-size:1.3rem;color:var(--teal)"></i>
+      <span>Nguyễn Thị Thao</span>
+    </div>
+  </div>
+
+  <!-- MODULE HEADER -->
+  <div class="moduleHead">
+    <div class="moduleLabel" id="moduleLabel"><i class="ti ti-dna"></i> Sinh học 10 · Bài 1 · Module 02</div>
+    <h2 id="moduleTitle">Mục tiêu và vai trò của môn Sinh học</h2>
+    <div class="outcome" id="moduleOutcome">Yêu cầu cần đạt: Phân biệt các mục tiêu học tập môn Sinh học; Nêu được các vai trò cốt lõi của Sinh học đối với đời sống, khoa học và phát triển bền vững.</div>
+  </div>
+
+  <!-- HORIZONTAL SCROLLABLE MODULE TABS -->
+  <nav class="progress-nav-scroll" aria-label="Danh sách Module bài học">
+    <button class="module-tab-btn active" onclick="loadModule('SH10_B01_M02.html', this, 'm1', 'Sinh học 10 · Bài 1 · Module 01', 'Mục tiêu và vai trò của môn Sinh học', 'Yêu cầu cần đạt: Phân biệt các mục tiêu học tập môn Sinh học; Nêu được các vai trò cốt lõi của Sinh học đối với đời sống, khoa học và phát triển bền vững.')">
+      Module 1
+    </button>
+    <button class="module-tab-btn" onclick="loadModule('SH10_B02_M02.html', this, 'm2', 'Sinh học 10 · Bài 2 · Module 02', 'Thiết bị nghiên cứu và học tập môn Sinh học', 'Yêu cầu cần đạt: Phân biệt kính hiển vi quang học và kính hiển vi điện tử; Lựa chọn đúng thiết bị theo nhiệm vụ nghiên cứu.')">
+      Module 2
+    </button>
+    <button class="module-tab-btn" onclick="loadModule('SH10_B02_M03.html', this, 'm3', 'Sinh học 10 · Bài 2 · Module 03', 'Quy trình nghiên cứu khoa học và xử lí dữ liệu', 'Yêu cầu cần đạt: Xây dựng giả thuyết, thiết kế kiểm chứng, xử lí dữ liệu và giải thích vai trò lô đối chứng.')">
+      Module 3
+    </button>
+  </nav>
+
+  <!-- 1. KHỐI KIẾN THỨC / MÔ PHỎNG TƯƠNG TÁC -->
+  <div class="flowBox interactive">
+    <div class="flowTitle">
+      <div class="iconBox">🧪</div>
+      <div>
+        <h3>Kiến thức / Mô phỏng tương tác</h3>
+        <p>Thực hiện các thao tác mô phỏng khoa học và trả lời câu hỏi ở từng Màn.</p>
+      </div>
+    </div>
+    <div class="module-content-card">
+      <iframe id="moduleIframe" class="module-iframe" src="SH10_B01_M02.html" title="Module học liệu tương tác Sinh học 10"></iframe>
+    </div>
+  </div>
+
+  <!-- 2. KHỐI LÝ THUYẾT CỐT LÕI -->
+  <div class="flowBox theory">
+    <div class="flowTitle"><div class="iconBox">📖</div><div><h3>Lý thuyết cốt lõi</h3><p>Đọc nội dung ngắn gọn của module.</p></div></div>
+    <div class="theoryList" id="theoryList">
+      <div class="theoryItem"><b>Mục tiêu môn Sinh học</b><span>Giúp học sinh nắm vững kiến thức về sự sống, hình thành năng lực sinh học và phát triển phẩm chất khoa học.</span></div>
+      <div class="theoryItem"><b>Vai trò đối với đời sống</b><span>Cung cấp giải pháp cho y học, nông nghiệp, bảo vệ môi trường và phát triển kinh tế bền vững.</span></div>
+    </div>
+  </div>
+
+  <!-- 3. KHỐI LƯU Ý QUAN TRỌNG -->
+  <div class="flowBox note">
+    <div class="flowTitle"><div class="iconBox">💡</div><div><h3>Lưu ý quan trọng</h3><p>Những điểm dễ nhầm khi học module.</p></div></div>
+    <div class="noteBox" id="noteBox">
+      <ul>
+        <li>Phân biệt mục tiêu nhận thức kiến thức với mục tiêu vận dụng thực tiễn.</li>
+        <li>Sinh học không chỉ học lý thuyết mà luôn gắn với phương pháp và nghiên cứu thí nghiệm.</li>
+    </div>
+  </div>
+
+  <!-- FOOTER BANNER -->
+  <div class="footer-link">
+    <img src="https://www.aiducation.edu.vn/images/fifingfig_Modern_editorial_illustration_of_a_stylized_Vietnames_f0b08847-9f6d-48cf-90ac-b8ed2eb77baf.png" alt="Aiducation">
+    <div>
+      <h3>Sinh Học Aiducation – Khóa học Tương tác Tối ưu</h3>
+      <p>Hệ thống bài học biên soạn chuẩn theo chương trình GDPT Sinh học 10.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const moduleData = {
+  m1: {
+    label: "Sinh học 10 · Bài 1 · Module 02",
+    title: "Mục tiêu và vai trò của môn Sinh học",
+    outcome: "Yêu cầu cần đạt: Phân biệt các mục tiêu học tập môn Sinh học; Nêu được các vai trò cốt lõi của Sinh học đối với đời sống, khoa học và phát triển bền vững.",
+    theory: [
+      ["Mục tiêu môn Sinh học", "Giúp học sinh nắm vững kiến thức về sự sống, hình thành năng lực sinh học và phát triển phẩm chất khoa học."],
+      ["Vai trò đối với đời sống", "Cung cấp giải pháp cho y học, nông nghiệp, bảo vệ môi trường và phát triển kinh tế bền vững."]
+    ],
+    note: ["Phân biệt mục tiêu nhận thức kiến thức với mục tiêu vận dụng thực tiễn.", "Sinh học không chỉ học lý thuyết mà luôn gắn với phương pháp và nghiên cứu thí nghiệm."]
+  },
+  m2: {
+    label: "Sinh học 10 · Bài 2 · Module 02",
+    title: "Thiết bị nghiên cứu và học tập môn Sinh học",
+    outcome: "Yêu cầu cần đạt: Phân biệt kính hiển vi quang học và kính hiển vi điện tử; Lựa chọn đúng thiết bị theo nhiệm vụ nghiên cứu.",
+    theory: [
+      ["Kính hiển vi quang học", "Sử dụng ánh sáng và hệ thấu kính để phóng đại vật thể, dùng cho tế bào và vi sinh vật."],
+      ["Thiết bị xử lí mẫu", "Máy li tâm giúp phân tách thành phần, pipet dùng chuyển thể tích chất lỏng chính xác."]
+    ],
+    note: ["Độ phân giải cao hơn không có nghĩa luôn phù hợp hơn.", "Cần giữ thiết bị an toàn và bảo dưỡng đúng quy trình."]
+  },
+  m3: {
+    label: "Sinh học 10 · Bài 2 · Module 03",
+    title: "Quy trình nghiên cứu khoa học và xử lí dữ liệu",
+    outcome: "Yêu cầu cần đạt: Xây dựng giả thuyết, thiết kế kiểm chứng, xử lí dữ liệu và giải thích vai trò lô đối chứng.",
+    theory: [
+      ["Giả thuyết khoa học", "Cách giải thích hoặc dự đoán có thể được kiểm tra bằng thực nghiệm (nếu… thì…)."],
+      ["Lô đối chứng", "Giúp phân biệt tác động của thao tác thí nghiệm với tác động của yếu tố cần kiểm tra."]
+    ],
+    note: ["Quan sát trực tiếp chưa phải là kết luận.", "Dữ liệu chỉ có giá trị khi được thu thập trong đúng phạm vi nghiên cứu."]
+  }
+};
+
+function loadModule(fileUrl, btnElement, modId, labelText, titleText, outcomeText) {
+  // Active tab state
+  document.querySelectorAll('.module-tab-btn').forEach(btn => btn.classList.remove('active'));
+  if (btnElement) btnElement.classList.add('active');
+
+  // Update header text
+  if (labelText) document.getElementById('moduleLabel').innerHTML = '<i class="ti ti-dna"></i> ' + labelText;
+  if (titleText) document.getElementById('moduleTitle').textContent = titleText;
+  if (outcomeText) document.getElementById('moduleOutcome').textContent = outcomeText;
+
+  // Update dynamic content for flowBoxes below
+  const data = moduleData[modId];
+  if (data) {
+    document.getElementById('theoryList').innerHTML = data.theory.map(t => `<div class="theoryItem"><b>${t[0]}</b><span>${t[1]}</span></div>`).join('');
+    document.getElementById('noteBox').innerHTML = '<ul>' + data.note.map(n => `<li>${n}</li>`).join('') + '</ul>';
+  }
+
+  // Load module iframe
+  const iframe = document.getElementById('moduleIframe');
+  if (iframe) {
+    iframe.src = fileUrl;
+  }
+}
+
+// Adjust iframe height dynamically if child reports height
+window.addEventListener('message', function(e) {
+  if (e.data && e.data.height) {
+    const iframe = document.getElementById('moduleIframe');
+    if (iframe) {
+      iframe.style.height = Math.max(580, e.data.height + 10) + 'px';
+    }
+  }
+});
+</script>
+</body>
+</html>
