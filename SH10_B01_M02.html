@@ -184,46 +184,6 @@ header h1{
   cursor:not-allowed;
 }
 
-/* GUIDE BAR - REAL-TIME STEP GUIDANCE */
-.guide-bar{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  background:var(--jade-pale);
-  border:1px solid var(--sage);
-  border-radius:var(--radius);
-  padding:12px 18px;
-  transition:.2s;
-}
-.guide-icon{
-  width:40px;
-  height:40px;
-  flex:0 0 40px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  background:var(--jade);
-  color:#fff;
-  font-size:1.2rem;
-}
-.guide-text{
-  font-weight:600;
-  line-height:1.5;
-  font-size:0.96rem;
-  color:var(--ink);
-  flex:1;
-}
-.guide-badge{
-  white-space:nowrap;
-  font-size:0.84rem;
-  font-weight:700;
-  color:var(--jade-text);
-  background:#fff;
-  border:1px solid var(--sage);
-  padding:4px 10px;
-  border-radius:var(--radius-sm);
-}
-
 /* CONTROLS ROW */
 .controls-row{
   display:flex;
@@ -1012,34 +972,29 @@ function completeStage(message){
   persist('Hoàn thành màn');
 }
 
-function drawStage1Lines(){
-  const container = document.getElementById('s1MatchingContainer');
-  const svg = document.getElementById('s1SvgLines');
+function drawSvgLines(containerId, svgId, pairsMap, leftPrefix, rightPrefix){
+  const container = document.getElementById(containerId);
+  const svg = document.getElementById(svgId);
   if(!container || !svg) return;
   const cRect = container.getBoundingClientRect();
-  let linesHtml = '';
   
-  Object.entries(state.s1.pairs).forEach(([k, sId]) => {
-    const dotLeft = document.getElementById(`dot-k-${k}`);
-    const dotRight = document.getElementById(`dot-s-${sId}`);
-    if(dotLeft && dotRight){
-      const lRect = dotLeft.getBoundingClientRect();
-      const rRect = dotRight.getBoundingClientRect();
-      const x1 = lRect.left + lRect.width/2 - cRect.left;
-      const y1 = lRect.top + lRect.height/2 - cRect.top;
-      const x2 = rRect.left + rRect.width/2 - cRect.left;
-      const y2 = rRect.top + rRect.height/2 - cRect.top;
-      
-      linesHtml += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#2D8B6F" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="6,3" />`;
-    }
-  });
-  
-  svg.innerHTML = linesHtml;
+  svg.innerHTML = Object.entries(pairsMap).map(([k, v]) => {
+    const dL = document.getElementById(`${leftPrefix}${k}`);
+    const dR = document.getElementById(`${rightPrefix}${v}`);
+    if(!dL || !dR) return '';
+    const rL = dL.getBoundingClientRect();
+    const rR = dR.getBoundingClientRect();
+    const x1 = rL.left + rL.width/2 - cRect.left;
+    const y1 = rL.top + rL.height/2 - cRect.top;
+    const x2 = rR.left + rR.width/2 - cRect.left;
+    const y2 = rR.top + rR.height/2 - cRect.top;
+    return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#2D8B6F" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="6,3" />`;
+  }).join('');
 }
 
 window.addEventListener('resize', () => {
-  if (state.stage === 1) drawStage1Lines();
-  if (state.stage === 2 && state.s2.viewed.size === 5) drawStage2Lines();
+  if (state.stage === 1) drawSvgLines('s1MatchingContainer', 's1SvgLines', state.s1.pairs, 'dot-k-', 'dot-s-');
+  if (state.stage === 2 && state.s2.viewed.size === 5) drawSvgLines('s2MatchingContainer', 's2SvgLines', state.s2.pairs, 'dot-s2-app-', 'dot-s2-f-');
 });
 
 function renderStage1(){
@@ -1084,7 +1039,7 @@ function renderStage1(){
     ${all?'<div class="summary" style="margin-top:16px;"><strong>Câu chốt màn 1:</strong> Hiểu biết Sinh học được vận dụng trực tiếp để bảo vệ sức khỏe, cải thiện chế độ dinh dưỡng và nâng cao hiệu quả học tập.</div>':''}
   `;
 
-  requestAnimationFrame(drawStage1Lines);
+  requestAnimationFrame(() => drawSvgLines('s1MatchingContainer', 's1SvgLines', state.s1.pairs, 'dot-k-', 'dot-s-'));
 
   const chooseKnowledge=id=>{
     state.s1.selected=id;
@@ -1172,31 +1127,6 @@ function renderStage2(){
   if(viewedDone)renderS2Match();
 }
 
-function drawStage2Lines(){
-  const container = document.getElementById('s2MatchingContainer');
-  const svg = document.getElementById('s2SvgLines');
-  if(!container || !svg) return;
-  const cRect = container.getBoundingClientRect();
-  let linesHtml = '';
-  
-  Object.entries(state.s2.pairs).forEach(([app, fId]) => {
-    const dotLeft = document.getElementById(`dot-s2-app-${app}`);
-    const dotRight = document.getElementById(`dot-s2-f-${fId}`);
-    if(dotLeft && dotRight){
-      const lRect = dotLeft.getBoundingClientRect();
-      const rRect = dotRight.getBoundingClientRect();
-      const x1 = lRect.left + lRect.width/2 - cRect.left;
-      const y1 = lRect.top + lRect.height/2 - cRect.top;
-      const x2 = rRect.left + rRect.width/2 - cRect.left;
-      const y2 = rRect.top + rRect.height/2 - cRect.top;
-      
-      linesHtml += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#2D8B6F" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="6,3" />`;
-    }
-  });
-  
-  svg.innerHTML = linesHtml;
-}
-
 function renderS2Match(){
   const host=document.getElementById('s2Match');
   if(!host)return;
@@ -1231,7 +1161,7 @@ function renderS2Match(){
     ${all?'<div class="summary" style="margin-top:16px;"><strong>Câu chốt màn 2:</strong> Tri thức Sinh học là nền tảng cốt lõi được ứng dụng trong Y – dược, Pháp y, Nông nghiệp, Thực phẩm và Bảo vệ môi trường.</div>':''}
   `;
 
-  requestAnimationFrame(drawStage2Lines);
+  requestAnimationFrame(() => drawSvgLines('s2MatchingContainer', 's2SvgLines', state.s2.pairs, 'dot-s2-app-', 'dot-s2-f-'));
 
   host.querySelectorAll('[data-app]').forEach(b=>{
     b.onclick=()=>{
