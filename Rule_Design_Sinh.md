@@ -180,11 +180,17 @@ chỉ thị, kết tủa, máu, tế bào... vẽ đúng màu sinh học. `ctx.f
   margin: 0 auto;
   padding: 24px 20px 48px;
 }
-.moduleNav {
+.moduleNav, .progress-nav {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
   margin-bottom: 22px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--cream);
+  padding: 12px 0;
+  box-shadow: 0 4px 12px rgba(26,26,26,0.06);
 }
 .moduleMini {
   display: flex;
@@ -236,10 +242,28 @@ HTML — canvas PHẢI bọc trong `.canvas-glow-wrap`:
 </div>
 ```
 
-**Cấu trúc Đơn Cột (Single Column Flow):**
-- **Vùng Điều Hướng Đầu Màn:** Thanh mục tiêu (`.goal-bar`) $\rightarrow$ Thanh điều hướng 4 Module (`.moduleNav`) xếp hàng ngang 4 thẻ bài học.
-- **Vùng Thao Tác Chính:** Thanh hướng dẫn ngữ cảnh (`.guide-bar`) $\rightarrow$ Hàng nút tương tác (`.controls-row`, **chỉ 1 dòng**) $\rightarrow$ Canvas minh họa / Workspace tương tác.
-- **Vùng Hỗ Trợ Học Tập:** Khối accordion / card thông tin xếp chồng bên dưới (`Dụng cụ & vật liệu`, `Cách làm`, `Bảng quan sát`, `Kết luận & Luyện tập`).
+**Cấu trúc Đơn Cột (Single Column Flow) & Bố cục từng phần (Flow Boxes / Section Cards):**
+- **Quy tắc thiết kế từng phần (giống `GIAODIEN_SH10 V10.html`):** Mọi nội dung bài học phải được phân chia thành các phần/thẻ bài học rõ ràng (`.flowBox` hoặc `.card`) với icon Tabler, tiêu đề và đường viền nhận diện màu sắc riêng:
+  - `.flowBox.video`: Khối Video kiến thức (icon `ti-video`, viền `var(--info)`)
+  - `.flowBox.theory`: Khối Lý thuyết cốt lõi (icon `ti-book-2`, viền `var(--jade)`)
+  - `.flowBox.note`: Khối Lưu ý quan trọng (icon `ti-bulb`, viền `var(--accent)`)
+  - `.flowBox.interactive`: Khối Mô hình / Thí nghiệm (icon `ti-flask-2`, viền `var(--jade-deep)`)
+  - `.flowBox.quiz`: Khối Luyện tập & Củng cố (icon `ti-edit-3`, viền `var(--info)`)
+- **Bố cục Chia 2 Cột Dưới Stage Nav (Split Workspace Grid — BẮT BUỘC KHI CÓ CANVAS & CÂU HỎI SONG SONG):**
+  - **Header, Mục tiêu, Stage Tabs & Footer:** Luôn giữ full-width 100% trong khung 1200px.
+  - **Vùng Làm Việc Chính (Dưới Stage Tabs):** Chia đôi 2 cột song song (`display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;`):
+    - **Cột Bên Trái — CANVAS KHÓA ĐI THEO KHI CUỘN (`position: sticky; top: 64px;` — BẮT BUỘC):** Cột chứa Canvas (`.canvas-card`) phải dùng `position: sticky; top: 64px;` để luôn trượt đi theo người học khi họ cuộn xuống làm bài tập ở cột bên phải. Nhờ đó, người học vừa thao tác trả lời vừa quan sát trực tiếp mô hình/hình ảnh minh họa không bị che hay phải cuộn ngược lên.
+    - **Cột Bên Phải:** Vùng tương tác & câu hỏi (`.workspace-card` chứa thanh chỉ dẫn `.guide-bar`, phản hồi `.feedbackPanel` và danh sách thẻ chọn / câu hỏi bài tập).
+  - **Responsive (≤900px):** Tự động chuyển thành 1 cột (`grid-template-columns: 1fr; .canvas-card{ position: static; }`) xếp chồng mượt mà trên di động.
+```js
+// Hàm đổi hình minh họa/mô hình Canvas đơn giản (Canvas đã sticky ở cột trái)
+function setAsset(key) {
+  if (activeAsset !== key) {
+    activeAsset = key;
+    canvasDirty = true;
+  }
+}
+```
 
 **Responsive (≤900px):**
 ```css
@@ -255,9 +279,23 @@ Phần tương tác (guide/controls/canvas) luôn lên đầu; chạy tốt 360p
 
 ---
 
-## 6. HEADER + THANH MỤC TIÊU + THANH ĐIỀU HƯỚNG MODULE
+## 6. HEADER (GỘP MỤC TIÊU) + THANH ĐIỀU HƯỚNG MODULE
 
-**Header (Banner phong cách Flat/Editorial):** Không dùng ảnh nền URL ngoài; sử dụng nền gradient CSS màu thương hiệu (`var(--jade-dark)` đến `var(--jade-deep)`) để tạo cảm giác sang trọng, tương phản cao, 100% self-contained và tải tức thì:
+**Header (Banner phong cách Flat/Editorial — Gộp Mục tiêu):**
+- Không dùng ảnh nền URL ngoài; sử dụng nền gradient CSS màu thương hiệu (`var(--jade-dark)` đến `var(--jade-deep)`).
+- **Loại bỏ dòng mô tả phụ `<p>`** phía dưới tên bài học.
+- **Gộp trực tiếp khối Mục tiêu (`.header-goal`) vào bên trong Header**:
+```html
+<header>
+  <div class="header-badge"><i class="ti ti-dna"></i> SINH HỌC 10 · BÀI 1 · MODULE 02</div>
+  <h1>Vai trò và ứng dụng của Sinh học</h1>
+  <div class="header-goal">
+    <span class="goal-label"><i class="ti ti-target"></i> MỤC TIÊU</span>
+    <span class="goal-divider"></span>
+    <span class="goal-text" id="goalText">Ghép hiểu biết Sinh học với tình huống phù hợp trong đời sống.</span>
+  </div>
+</header>
+```
 ```css
 header {
   width: 100%;
@@ -270,27 +308,22 @@ header {
   box-shadow: var(--shadow);
   color: #fff;
 }
-``` 
-- Pseudo `::before/::after` tạo điểm nhấn ánh sáng tinh tế. Badge: nền trong suốt, chữ trắng 90%, icon Tabler (vd `ti-leaf`). Tiêu đề trắng weight 700–800; mô tả `rgba(255,255,255,0.85)`.
-- **BẮT BUỘC ẩn được:** nếu header chứa id JS cập nhật động → tách id đó ra ngoài + dùng `header{display:none}` khi nhúng, không xoá node.
-
-**Thanh mục tiêu học tập** (ngay dưới header): 1 thanh ngang mỏng, cùng max-width 1200px, kiểu call-out.
-```html
-<div class="goal-bar">
-  <span class="goal-label"><i class="ti ti-target"></i> MỤC TIÊU</span>
-  <span class="goal-divider"></span>
-  <span class="goal-text">...</span>
-</div>
-```
-```css
-.goal-bar{ display:flex; align-items:center; gap:10px; width:100%; max-width:1200px; background:var(--jade-pale); border-left:4px solid var(--jade); border-radius:10px; padding:10px 16px; }
-.goal-label{ display:flex; align-items:center; gap:6px; flex-shrink:0; text-transform:uppercase; font-size:12px; font-weight:600; color:var(--jade-text); white-space:nowrap; }
-.goal-divider{ flex-shrink:0; align-self:stretch; width:1px; margin:3px 0; background:var(--sage); }
-.goal-text{ font-size:17px; color:var(--ink); }
-@media (max-width:640px){ .goal-text{ font-size:15px; } }
+.header-goal {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 8px;
+  padding: 8px 14px;
+}
+.header-goal .goal-label { color: #fff; font-weight: 700; font-size: 0.82rem; }
+.header-goal .goal-divider { width: 1px; height: 14px; background: rgba(255,255,255,0.4); }
+.header-goal .goal-text { font-size: 0.92rem; font-weight: 500; color: rgba(255,255,255,0.95); }
 ```
 
-**Thanh điều hướng Module (`.moduleNav`):** Đặt ngay trên vùng học chính để chuyển đổi nhanh giữa các module:
+**Thanh điều hướng Module / Màn (`.moduleNav` / `.progress-nav`) — BẮT BUỘC KHÓA CỐ ĐỊNH KHI CUỘN ĐỈNH MÀN HÌNH (`top: 0` - Không để hở khoảng trống):** Đặt ngay trên vùng học chính để chuyển đổi nhanh giữa các module/màn. Bắt buộc cài đặt `position: sticky; top: 0; z-index: 100; background: var(--cream); padding: 12px 0; box-shadow: 0 4px 12px rgba(26,26,26,0.06);` để khi người học cuộn xuống bên dưới, thanh điều hướng dính sát mép trên `top: 0` như một thanh Header cố định, che kín nội dung lướt bên dưới và tuyệt đối **không để hở khoảng trống/khe hở ở phía trên**.
 ```html
 <nav class="moduleNav">
   <button class="moduleMini active" onclick="openModule('m1',event)"><i class="ti ti-virus"></i> Module 1. Virus là gì?</button>
@@ -317,25 +350,37 @@ Card chung: nền `var(--cream-2)`, viền 1px `var(--paper-line)`, radius 12px,
 
 ## 8. KHỐI TƯƠNG TÁC CHÍNH — Thanh hướng dẫn + Hàng nút tương tác
 
-### 8A. Thanh hướng dẫn (area `guide`, trên cùng)
-"Người dẫn đường" theo ngữ cảnh, thay hoàn toàn khối hướng dẫn tĩnh dài dòng.
+### 8A. Thanh hướng dẫn động & kĩ càng theo bước (Live Contextual Guidance — BẮT BUỘC)
+**BẮT BUỘC "Làm đến đâu - Hướng dẫn chi tiết đến đấy":** Người học không bao giờ phải tự đoán thao tác tiếp theo. Mọi màn hình tương tác phải có thanh hướng dẫn trực tiếp cập nhật theo thời gian thực (real-time state).
+
 ```css
 .guide-bar{ display:flex; align-items:center; gap:12px; background:var(--jade-pale); border:1px solid var(--sage); border-radius:12px; padding:12px 16px; }
 ```
 - **Bên trái:** biểu tượng tròn 40–44px, nền `var(--jade)`, icon `var(--cream)` — **dùng icon chủ đề (vd `ti-microscope` / `ti-leaf` / `ti-flask`), KHÔNG dùng nhân vật hoạt hình/robot** (quy ước học liệu Sinh: không nhân vật avatar, mỗi màn 1 "nhiệm vụ hiện tại"). `flex-shrink:0`.
-- **Giữa** (`flex:1`, `aria-live="polite"`): text hướng dẫn ~1rem, weight 500–600, `var(--ink)`, line-height 1.5. Cập nhật bởi `updateGuide()` theo bước/hành động/kết quả. Giọng văn: trung tính, trực tiếp, 1–2 câu (nêu việc vừa xảy ra + việc cần làm tiếp). **KHÔNG xưng "em"**, không đọc lộ đáp án.
+- **Giữa** (`flex:1`, `aria-live="polite"`): text hướng dẫn ~1rem, weight 500–600, `var(--ink)`, line-height 1.5. Cập nhật bởi `updateGuide()` theo từng thao tác/bước/hành động.
+  - **Mỗi bước đều có chỉ dẫn cụ thể:** Nêu rõ *Đang ở đâu*, *Cần bấm/kéo/chọn gì tiếp theo* và *Quan sát hiện tượng gì*.
+  - **Giọng văn:** Trung tính, trực tiếp, 1–2 câu kĩ càng. **KHÔNG xưng "em"**, không đọc lộ đáp án trắc nghiệm nhưng phải chỉ rõ hành động thao tác (Ví dụ: *"Bước 1: Nhấn nút 'Nhỏ cồn 90°' vào đĩa Petri để tẩy màu lá"* $\rightarrow$ *"Bước 2: Kéo kính hiển vi soi vị trí tế bào lá bị tẩy màu"*).
+  - **Khi làm sai / chưa hoàn thành:** Thanh hướng dẫn đổi sang màu cảnh báo nhẹ `var(--warning-bg)` kèm chỉ dẫn khắc phục cụ thể (Ví dụ: *"Chưa đúng. Hãy nhỏ dung dịch Iốt trước khi soi dưới kính hiển vi"*).
 - **Bên phải:** badge "Bước X/N" (chỉ kiểu B): chip nền `var(--cream)`, viền `var(--sage)`, chữ `var(--jade-text)` weight 700, `flex-shrink:0`.
 - Khi text đổi: fade (opacity 0→1 + translateY 4px, ~200ms).
 
-### 8B. Hàng nút tương tác (area `controls`) — **CHỈ 1 DÒNG**
-`display:flex; flex-wrap:nowrap; align-items:center`. **Tuyệt đối không xuống dòng 2** (nếu tràn ở màn hẹp → `overflow-x:auto; overflow-y:hidden` cuộn ngang trong chính hàng đó). Chiều cao cố định thấp ~52–60px. Card: nền `var(--cream-2)`, viền `var(--paper-line)`, radius 12px, padding 8px 14px. Nút radius 8–10px (không pill), weight 600, cao ~36–40px, icon Tabler (giữ `aria-label`). Chiều cao tiết kiệm được chuyển thẳng sang canvas.
+### 8B. Hàng nút tương tác (`.controls-row`) — ĐẶT NẰM TRÊN FOOTER (BẮT BUỘC)
+`display:flex; align-items:center; gap:10px`. **Bắt buộc đặt nằm ở cuối vùng làm việc chính, ngay TRÊN khối Footer (`.link-section`)**. Khi học sinh hoàn thành thao tác/stage, nút "Tiếp tục" sẽ sáng lên để bấm chuyển màn.
 
-Chọn **1 trong 3 kiểu** theo kịch bản:
-- **Kiểu A — Chọn biến + Nút hành động:** so sánh nhiều tổ hợp (chọn mẫu vật / chọn thuốc thử → bấm "Nhỏ iốt"). Các nhóm biến nối tiếp ngang, ngăn bằng `border-right:1px solid var(--paper-line)`; cuối hàng là nút hành động chính + nút Reset (dashed). Nút active nền `var(--jade)` chữ `var(--cream)`; disabled `opacity:.55`.
-- **Kiểu B — Stepper tuần tự:** thí nghiệm nhiều bước theo thứ tự (đa số bài Sinh). 1 hàng: progress dots (trái) → "Quay lại"/"Làm lại" (giữa) → nút hành động chính đổi label theo bước ("Tiếp tục"/"Quan sát"/"Hoàn thành") (phải). Tên/mô tả bước do thanh guide đảm nhiệm.
-- **Kiểu C — Timeline slider:** quan sát biến đổi theo thời gian (nảy mầm, hướng sáng, phân bào, lên men). Badge phase (trái) → `input[type=range]` (`flex:1`, track `var(--paper-line)`, thumb `var(--jade)`) → "Tự động chạy" + Reset (phải). "Tự động chạy": animate slider min→max trong N giây (mặc định 7s).
+**Cấu trúc nút trong `.controls-row`:**
+- **Nút "Quay lại"** (`#btnPrev` — icon `ti-arrow-left`): Thay thế hoàn toàn nút nghe đọc. Cho phép quay lại stage/màn trước đó.
+- **Nút "Làm lại màn"** (`#btnReset` — icon `ti-refresh`): Đặt lại bài tập của màn hiện tại.
+- `<span class="spacer"></span>` (Đẩy nút tiếp theo sang góc phải).
+- **Nút "Tiếp tục"** (`#btnNext` — icon `ti-arrow-right`): Mặc định `disabled`, chỉ sáng lên khi học sinh đã hoàn thành stage/màn hiện tại.
 
-**Trong lúc animation chạy** (`isAnimating=true` hoặc `subStep=1|3`): **TẤT CẢ** nút disabled (cả 3 kiểu). Nút vừa trigger: đổi icon sang `ti-loader` (`animation:spin .9s linear infinite`) đến khi `subStep=4`/animation xong.
+```html
+<div class="controls-row">
+  <button class="btn" id="btnPrev" type="button"><i class="ti ti-arrow-left"></i> Quay lại</button>
+  <button class="btn" id="btnReset" type="button"><i class="ti ti-refresh"></i> Làm lại màn</button>
+  <span class="spacer"></span>
+  <button class="btn btn-primary" id="btnNext" disabled type="button"><span>Tiếp tục</span><i class="ti ti-arrow-right"></i></button>
+</div>
+```
 
 ---
 

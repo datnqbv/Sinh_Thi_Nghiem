@@ -25,109 +25,636 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css">
 <style>
 :root{
-  --cream:#FAF7F0;--cream-2:#F0EADD;--cream-3:#E7DECC;--paper-line:#E5DECF;--paper-line-2:#D6CCB6;
-  --ink:#1A1A1A;--ink-2:#514C44;--ink-3:#7C756A;--ink-faint:#ABA396;
-  --jade:#3CA57A;--jade-deep:#2D8B6F;--jade-dark:#14432F;--jade-text:#1B5E48;--jade-soft:#A9D0BE;--jade-pale:#DCEAE1;
-  --sage:#A8C9B8;--sage-deep:#7CA792;--sage-text:#46685A;--sage-pale:#E1ECE4;
-  --accent:#E8A24A;--accent-deep:#CE8A33;--accent-text:#8A551A;--accent-pale:#F7E7CD;
-  --correct:#2D8B6F;--correct-bg:#DCEAE1;--wrong:#C15F3C;--wrong-bg:#F3E2D6;
-  --warning:#C58A2E;--warning-bg:#F5E7CB;--info:#4E7F92;--info-bg:#DCE7EB;
-  --radius:10px;--radius-lg:14px;--radius-sm:6px;--shadow:0 4px 12px rgba(45,139,111,.10);--shadow-sm:0 2px 6px rgba(26,26,26,.05)
+  --cream:#FAF7F0; --cream-2:#F0EADD; --cream-3:#E7DECC;
+  --paper-line:#E5DECF; --paper-line-2:#D6CCB6;
+  --ink:#1A1A1A; --ink-2:#514C44; --ink-3:#7C756A; --ink-faint:#ABA396;
+  --jade:#3CA57A; --jade-deep:#2D8B6F; --jade-dark:#14432F; --jade-text:#1B5E48; --jade-soft:#A9D0BE; --jade-pale:#DCEAE1;
+  --sage:#A8C9B8; --sage-deep:#7CA792; --sage-text:#46685A; --sage-pale:#E1ECE4;
+  --accent:#E8A24A; --accent-deep:#CE8A33; --accent-text:#8A551A; --accent-pale:#F7E7CD;
+  --correct:#2D8B6F; --correct-bg:#DCEAE1;
+  --wrong:#C15F3C;   --wrong-bg:#F3E2D6;
+  --warning:#C58A2E; --warning-bg:#F5E7CB;
+  --info:#4E7F92;    --info-bg:#DCE7EB;
+  --radius:12px; --radius-lg:16px; --radius-sm:8px;
+  --shadow:0 4px 12px rgba(45,139,111,.10); --shadow-sm:0 2px 6px rgba(26,26,26,.05);
+  --lesson-width:1200px;
 }
-*{box-sizing:border-box}html,body{max-width:100%;overflow-x:hidden}
-body{margin:0;display:flex;flex-direction:column;align-items:center;gap:16px;padding:24px clamp(20px,2.5vw,48px);background:var(--cream);color:var(--ink);font-family:'Be Vietnam Pro',system-ui,sans-serif;font-size:1.075rem;line-height:1.7}
-button{font:inherit}button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-header{width:100%;max-width:1720px;border-radius:16px;padding:1.5rem 2rem;overflow:hidden;position:relative;background-image:linear-gradient(rgba(18,26,20,.48),rgba(18,26,20,.48)),url('https://www.aiducation.edu.vn/images/fifingfig_Modern_editorial_illustration_of_a_stylized_Vietnames_f0b08847-9f6d-48cf-90ac-b8ed2eb77baf.png');background-position:center 32%;background-size:cover;box-shadow:var(--shadow)}
-header h1{margin:0;color:#fff;font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800;text-shadow:0 2px 4px rgba(0,0,0,.2)}
-header p{margin:5px 0 0;color:rgba(255,255,255,.88);max-width:800px}.header-badge{color:#fff;font-weight:600;font-size:.92rem}
-.goal-bar{width:100%;max-width:1720px;display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--jade-pale);border-left:4px solid var(--jade);border-radius:10px}.goal-bar strong{color:var(--jade-text)}
-.progress-nav{width:100%;max-width:1720px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.stage-tab{border:1px solid var(--paper-line-2);background:var(--cream-2);color:var(--ink-2);border-radius:9px;padding:10px 12px;text-align:left;font-weight:600;cursor:pointer;transition:.18s}.stage-tab.current{background:var(--jade);border-color:var(--jade);color:#fff}.stage-tab.done{background:var(--jade-pale);color:var(--jade-text)}.stage-tab:disabled{cursor:not-allowed;opacity:.62}
-.lab-wrapper{display:grid;grid-template-columns:minmax(230px,.9fr) minmax(0,2.2fr) minmax(280px,1.1fr);grid-template-areas:"sideLeft guide sideRight" "sideLeft controls sideRight" "sideLeft canvas sideRight";grid-template-rows:auto auto 1fr;gap:16px;width:100%;max-width:1720px;align-items:stretch}
-.lab-side-left,.lab-side-right{grid-area:sideLeft;display:flex;flex-direction:column;gap:16px;min-height:0}.lab-side-right{grid-area:sideRight}
-.card{background:var(--cream-2);border:1px solid var(--paper-line);border-radius:12px;padding:16px 18px}.card-title{display:flex;align-items:center;gap:8px;margin:0 0 12px;font-weight:700}.card-title i{color:var(--jade)}
-.side-fill{flex:1;min-height:0}.guide-bar{grid-area:guide;display:flex;align-items:center;gap:12px;background:var(--jade-pale);border:1px solid var(--sage);border-radius:12px;padding:12px 16px}.guide-icon{width:42px;height:42px;flex:0 0 42px;border-radius:50%;display:grid;place-items:center;background:var(--jade);color:#fff}.guide-text{font-weight:600;line-height:1.45}.guide-badge{margin-left:auto;white-space:nowrap;font-size:.83rem;font-weight:700;color:var(--jade-text)}
-.controls-row{grid-area:controls;display:flex;align-items:center;gap:9px;min-height:54px;padding:8px 12px;background:var(--cream-2);border:1px solid var(--paper-line);border-radius:12px;overflow:auto}.spacer{flex:1}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:40px;padding:8px 15px;border-radius:9px;border:1.5px solid var(--jade);background:transparent;color:var(--jade-text);font-weight:600;cursor:pointer;white-space:nowrap}.btn:hover:not(:disabled){background:var(--jade-pale)}.btn-primary{background:var(--jade);color:#fff}.btn-primary:hover:not(:disabled){background:var(--jade-deep)}.btn:disabled{opacity:.48;cursor:not-allowed}
-.canvas-card{grid-area:canvas;padding:4px;min-width:0;display:flex;flex-direction:column;gap:10px}.canvas-glow-wrap{position:relative;width:100%;padding:2px;border-radius:10px;overflow:hidden;background:var(--jade);aspect-ratio:16/7}.canvas-glow-wrap::before{content:'';position:absolute;inset:-100%;background:conic-gradient(from 0deg,transparent 0 170deg,var(--jade) 220deg,var(--jade) 340deg,transparent 360deg);animation:spin 4.5s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}#labCanvas{position:relative;z-index:1;width:100%;height:100%;display:block;border-radius:8px;background:var(--cream);touch-action:none}
-.workspace{background:#fff;border:1px solid var(--paper-line);border-radius:10px;padding:16px;min-height:315px}.workspace h2{font-size:clamp(1.25rem,2.5vw,1.65rem);line-height:1.35;margin:0 0 8px}.workspace-note{margin:0 0 14px;color:var(--ink-2);font-size:.94rem}
-.option-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.option-grid.five{grid-template-columns:repeat(5,1fr)}.choice{border:1.5px solid var(--paper-line-2);border-radius:9px;background:var(--cream);padding:11px;min-height:58px;text-align:left;color:var(--ink);font-weight:600;cursor:pointer;transition:.18s}.choice:hover:not(:disabled),.choice.selected{border-color:var(--jade);background:var(--jade-pale)}.choice.correct{border-color:var(--correct);background:var(--correct-bg)}.choice.wrong{border-color:var(--wrong);background:var(--wrong-bg)}.choice:disabled{cursor:default}
-.section-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.6px;color:var(--ink-3);font-weight:700;margin:12px 0 7px}.feedback{margin-top:13px;padding:10px 12px;border-left:4px solid var(--info);background:var(--info-bg);border-radius:6px;color:var(--ink-2);font-size:.92rem}.feedback.ok{border-color:var(--correct);background:var(--correct-bg)}.feedback.bad{border-color:var(--wrong);background:var(--wrong-bg)}
-.evidence-list{display:grid;gap:8px}.evidence{display:flex;gap:8px;align-items:flex-start;padding:8px 10px;background:var(--cream);border:1px solid var(--paper-line);border-radius:8px;font-size:.86rem;line-height:1.45}.evidence i{color:var(--ink-faint);margin-top:3px}.evidence.done{background:var(--correct-bg);border-color:var(--sage)}.evidence.done i{color:var(--correct)}
-.profile-layout{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.profile-btn{padding:9px 7px;border:1px solid var(--paper-line-2);border-radius:8px;background:var(--cream);font-size:.78rem;font-weight:700;cursor:pointer}.profile-btn.viewed{background:var(--jade-pale);border-color:var(--jade)}.profile-text{margin-top:12px;padding:12px;background:var(--sage-pale);border-left:4px solid var(--jade);border-radius:6px}.profile-text h3{margin:0;font-size:1rem}.profile-text p{margin:5px 0 0;font-size:.9rem;line-height:1.55}
-.hidden{display:none!important}.match-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px}.match-wrap .choice{width:100%;margin-bottom:7px}.chain-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.chain-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.chain-card{position:relative}.order-badge{display:inline-grid;place-items:center;width:25px;height:25px;border-radius:50%;background:var(--accent-pale);color:var(--accent-text);margin-right:5px}.arrows-on .chain-card:not(:last-child)::after{content:'→';position:absolute;right:-11px;top:50%;z-index:2;color:var(--jade);font-size:1.3rem;font-weight:800}
-.radio-list{display:grid;gap:8px}.radio-choice{display:flex;gap:9px;align-items:flex-start;padding:10px;border:1px solid var(--paper-line-2);border-radius:8px;background:var(--cream);cursor:pointer}.radio-choice input{margin-top:6px;accent-color:var(--jade)}
-.career-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.career-grid .choice{font-size:.78rem;padding:8px;min-height:50px}.summary{margin-top:12px;padding:13px;border-left:4px solid var(--jade);background:var(--jade-pale);border-radius:7px;font-weight:600}.summary.module-final{border-left-color:var(--accent);background:var(--accent-pale)}
-.pair-lines{display:grid;gap:7px;margin-top:12px}.paired-row,.career-link{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr);align-items:center;gap:6px;padding:8px;border:1px solid var(--sage);border-radius:8px;background:var(--sage-pale);font-size:.78rem;font-weight:600;animation:linkIn .25s ease both}@keyframes linkIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}.pair-arrow{position:relative;text-align:center;color:var(--jade);font-size:1rem}.pair-arrow::before{content:'';position:absolute;left:0;right:0;top:50%;height:2px;background:var(--jade);z-index:0}.pair-arrow i{position:relative;z-index:1;padding:2px;background:var(--sage-pale)}.career-groups{display:grid;gap:9px}.career-group{padding:8px;border:1px solid var(--paper-line);border-radius:8px;background:var(--cream)}.career-group h3{margin:0 0 7px;color:var(--jade-text);font-size:.82rem}.career-links{display:grid;gap:7px;margin-top:10px}.relation-note{margin-top:10px;padding:9px 10px;border-left:4px solid var(--info);border-radius:7px;background:var(--info-bg);color:var(--ink-2);font-size:.8rem;line-height:1.5}.drag-hint{display:inline-flex;align-items:center;gap:5px;color:var(--ink-3);font-size:.76rem}.choice[draggable=true]{cursor:grab}.choice[draggable=true]:active{cursor:grabbing}.drop-ready{outline:2px dashed var(--jade);outline-offset:2px}.profile-text{animation:linkIn .25s ease both}
-.micro-list{margin:0;padding-left:20px;color:var(--ink-2);font-size:.9rem}.stage-title{font-size:1rem;margin:0 0 8px}.counter{font-size:.85rem;color:var(--jade-text);font-weight:700}.link-section{width:100%;max-width:1720px;display:flex;align-items:center;gap:18px;padding:18px 22px;background:var(--cream-2);border:1px solid var(--paper-line);border-radius:12px}.link-section img{width:72px;height:72px;object-fit:cover;border-radius:50%;border:2px solid var(--sage)}.link-section a{color:var(--jade-text);font-weight:600}
-@media(max-width:1100px){.lab-wrapper{grid-template-columns:1fr;grid-template-areas:"guide" "controls" "canvas" "sideRight" "sideLeft"}.lab-side-left,.lab-side-right{height:auto}.side-fill{flex:none}.option-grid.five{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:720px){body{padding:12px;gap:12px;font-size:1rem}header{padding:1.2rem}.goal-bar{align-items:flex-start}.progress-nav{display:flex;overflow-x:auto;scrollbar-width:none}.progress-nav::-webkit-scrollbar{display:none}.stage-tab{flex:0 0 180px;font-size:.78rem}.btn,.profile-btn{min-height:44px}.guide-badge{display:none}.option-grid,.chain-cards,.career-grid{grid-template-columns:1fr}.profile-layout{grid-template-columns:1fr 1fr}.match-wrap{grid-template-columns:1fr}.canvas-glow-wrap{aspect-ratio:4/3}.arrows-on .chain-card:not(:last-child)::after{content:'↓';right:50%;top:auto;bottom:-18px}.paired-row,.career-link{grid-template-columns:1fr 32px 1fr;font-size:.72rem}.link-section{flex-direction:column;text-align:center}}
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.canvas-glow-wrap::before,.paired-row,.career-link,.profile-text{animation:none}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Be Vietnam Pro',system-ui,-apple-system,sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.65;
+  padding:20px clamp(14px,2.5vw,32px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
+}
+button{font:inherit}
+button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+.app{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  width:100%;
+  max-width:var(--lesson-width);
+}
+
+.main{
+  width:100%;
+  max-width:var(--lesson-width);
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+/* HEADER BANNER - FLAT GRADIENT */
+header{
+  width:100%;
+  border-radius:var(--radius-lg);
+  padding:1.6rem 2rem;
+  overflow:hidden;
+  position:relative;
+  background:linear-gradient(135deg, var(--jade-dark), var(--jade-deep));
+  box-shadow:var(--shadow-sm);
+  color:#fff;
+}
+.header-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  color:var(--sage-pale);
+  font-weight:600;
+  font-size:0.88rem;
+  letter-spacing:0.5px;
+  margin-bottom:6px;
+  text-transform:uppercase;
+}
+header h1{
+  margin:0;
+  color:#fff;
+  font-size:clamp(1.65rem,4vw,2.3rem);
+  font-weight:800;
+  line-height:1.25;
+}
+.header-goal{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-top:10px;
+  background:rgba(255,255,255,0.14);
+  border:1px solid rgba(255,255,255,0.22);
+  border-radius:var(--radius-sm);
+  padding:8px 14px;
+}
+.header-goal .goal-label{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  flex-shrink:0;
+  text-transform:uppercase;
+  font-size:0.82rem;
+  font-weight:700;
+  color:#fff;
+  white-space:nowrap;
+}
+.header-goal .goal-divider{
+  flex-shrink:0;
+  width:1px;
+  height:14px;
+  background:rgba(255,255,255,0.4);
+}
+.header-goal .goal-text{
+  font-size:0.92rem;
+  font-weight:500;
+  color:rgba(255,255,255,0.95);
+}
+
+/* PROGRESS NAV (STAGE TABS) */
+.progress-nav{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  width:100%;
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:var(--cream);
+  padding:10px 0;
+  box-shadow:0 4px 12px rgba(26,26,26,0.06);
+}
+.stage-tab{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:12px 14px;
+  border-radius:var(--radius);
+  border:1.5px solid var(--paper-line-2);
+  background:var(--cream-2);
+  color:var(--ink-2);
+  font-size:0.92rem;
+  font-weight:700;
+  cursor:pointer;
+  transition:.18s;
+}
+.stage-tab:hover:not(:disabled){
+  border-color:var(--sage);
+  background:var(--cream-3);
+}
+.stage-tab.current{
+  background:var(--jade);
+  border-color:var(--jade);
+  color:#fff;
+  box-shadow:0 3px 10px rgba(60,165,122,.25);
+}
+.stage-tab.done{
+  background:var(--jade-pale);
+  border-color:var(--sage);
+  color:var(--jade-text);
+}
+.stage-tab:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
+/* GUIDE BAR - REAL-TIME STEP GUIDANCE */
+.guide-bar{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:var(--jade-pale);
+  border:1px solid var(--sage);
+  border-radius:var(--radius);
+  padding:12px 18px;
+  transition:.2s;
+}
+.guide-icon{
+  width:40px;
+  height:40px;
+  flex:0 0 40px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:var(--jade);
+  color:#fff;
+  font-size:1.2rem;
+}
+.guide-text{
+  font-weight:600;
+  line-height:1.5;
+  font-size:0.96rem;
+  color:var(--ink);
+  flex:1;
+}
+.guide-badge{
+  white-space:nowrap;
+  font-size:0.84rem;
+  font-weight:700;
+  color:var(--jade-text);
+  background:#fff;
+  border:1px solid var(--sage);
+  padding:4px 10px;
+  border-radius:var(--radius-sm);
+}
+
+/* CONTROLS ROW */
+.controls-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-height:54px;
+  padding:8px 14px;
+  background:var(--cream-2);
+  border:1px solid var(--paper-line);
+  border-radius:var(--radius);
+  overflow-x:auto;
+}
+.spacer{flex:1}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  min-height:40px;
+  padding:8px 16px;
+  border-radius:var(--radius-sm);
+  border:1.5px solid var(--jade);
+  background:transparent;
+  color:var(--jade-text);
+  font-weight:700;
+  font-size:0.9rem;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:.18s;
+}
+.btn:hover:not(:disabled){background:var(--jade-pale)}
+.btn-primary{background:var(--jade);color:#fff}
+.btn-primary:hover:not(:disabled){background:var(--jade-deep)}
+.btn:disabled{opacity:.48;cursor:not-allowed}
+
+/* SPLIT WORKSPACE GRID (2-COLUMN LAYOUT) */
+.split-workspace{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  align-items:start;
+  width:100%;
+}
+@media (max-width:900px){
+  .split-workspace{
+    grid-template-columns:1fr;
+  }
+}
+
+.canvas-card{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  position:sticky;
+  top:64px;
+  z-index:10;
+}
+@media (max-width:900px){
+  .canvas-card{
+    position:static;
+  }
+}
+.workspace-card{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.canvas-glow-wrap{
+  position:relative;
+  width:100%;
+  padding:2px;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  background:var(--jade);
+  aspect-ratio:4/3;
+}
+@media (max-width:900px){
+  .canvas-glow-wrap{
+    aspect-ratio:16/9;
+  }
+}
+.canvas-glow-wrap::before{
+  content:'';
+  position:absolute;
+  inset:-100%;
+  background:conic-gradient(from 0deg,transparent 0 170deg,var(--jade) 220deg,var(--jade) 340deg,transparent 360deg);
+  animation:spin 5s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+#labCanvas{
+  position:relative;
+  z-index:1;
+  width:100%;
+  height:100%;
+  display:block;
+  border-radius:var(--radius);
+  background:var(--cream);
+  touch-action:none;
+}
+.workspace{
+  background:#fff;
+  border:1px solid var(--paper-line);
+  border-radius:var(--radius-lg);
+  padding:22px 26px;
+  box-shadow:var(--shadow-sm);
+}
+.workspace h2{
+  font-size:clamp(1.2rem,2.2vw,1.45rem);
+  line-height:1.35;
+  margin:0 0 8px;
+  font-weight:800;
+  color:var(--ink);
+}
+.workspace-note{
+  margin:0 0 14px;
+  color:var(--ink-2);
+  font-size:0.94rem;
+}
+
+/* OPTION GRIDS & CHOICES */
+.option-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));
+  gap:10px;
+}
+.option-grid.five{grid-template-columns:repeat(auto-fit, minmax(100px, 1fr))}
+.choice{
+  border:1.5px solid var(--paper-line-2);
+  border-radius:var(--radius-sm);
+  background:var(--cream);
+  padding:12px 14px;
+  min-height:56px;
+  text-align:left;
+  color:var(--ink);
+  font-weight:600;
+  font-size:0.92rem;
+  cursor:pointer;
+  transition:.18s;
+}
+.choice:hover:not(:disabled),.choice.selected{
+  border-color:var(--jade);
+  background:var(--jade-pale);
+}
+.choice.correct{
+  border-color:var(--correct);
+  background:var(--correct-bg);
+  color:var(--jade-dark);
+}
+.choice.wrong{
+  border-color:var(--wrong);
+  background:var(--wrong-bg);
+}
+.choice:disabled{cursor:default}
+
+.section-label{
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:.6px;
+  color:var(--jade-text);
+  font-weight:700;
+  margin:14px 0 8px;
+}
+.feedback{
+  margin-top:14px;
+  padding:12px 16px;
+  border-left:4px solid var(--info);
+  background:var(--info-bg);
+  border-radius:var(--radius-sm);
+  color:var(--ink-2);
+  font-size:0.92rem;
+  font-weight:500;
+}
+.feedback.ok{border-color:var(--correct);background:var(--correct-bg)}
+.feedback.bad{border-color:var(--wrong);background:var(--wrong-bg)}
+
+/* SUPPORT SECTION GRID */
+.support-panel{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  width:100%;
+}
+.card{
+  background:#fff;
+  border:1px solid var(--paper-line);
+  border-radius:var(--radius-lg);
+  padding:20px 22px;
+  box-shadow:var(--shadow-sm);
+}
+.card-title{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin:0 0 12px;
+  font-weight:700;
+  font-size:1.05rem;
+  color:var(--ink);
+}
+.card-title i{color:var(--jade)}
+.micro-list{margin:0;padding-left:20px;color:var(--ink-2);font-size:0.92rem}
+.micro-list li{margin:4px 0}
+
+.evidence-list{display:grid;gap:8px}
+.evidence{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  padding:10px 12px;
+  background:var(--cream);
+  border:1px solid var(--paper-line);
+  border-radius:var(--radius-sm);
+  font-size:0.88rem;
+  line-height:1.45;
+}
+.evidence i{color:var(--ink-faint);margin-top:2px;font-size:1.1rem}
+.evidence.done{background:var(--correct-bg);border-color:var(--sage)}
+.evidence.done i{color:var(--correct)}
+
+/* STAGE SPECIFIC STYLES */
+.profile-layout{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.profile-btn{
+  padding:10px 8px;
+  border:1.5px solid var(--paper-line-2);
+  border-radius:var(--radius-sm);
+  background:var(--cream);
+  font-size:0.82rem;
+  font-weight:700;
+  cursor:pointer;
+  transition:.18s;
+}
+.profile-btn.viewed{background:var(--jade-pale);border-color:var(--jade);color:var(--jade-text)}
+.profile-text{
+  margin-top:14px;
+  padding:14px 18px;
+  background:var(--sage-pale);
+  border-left:4px solid var(--jade);
+  border-radius:var(--radius-sm);
+}
+.profile-text h3{margin:0;font-size:1.05rem;color:var(--jade-dark)}
+.profile-text p{margin:6px 0 0;font-size:0.92rem;line-height:1.6}
+
+.hidden{display:none!important}
+.match-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.match-wrap .choice{width:100%;margin-bottom:8px}
+.chain-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.chain-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.chain-card{position:relative}
+.order-badge{
+  display:inline-grid;
+  place-items:center;
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  background:var(--accent-pale);
+  color:var(--accent-text);
+  margin-right:6px;
+  font-size:0.82rem;
+}
+.arrows-on .chain-card:not(:last-child)::after{
+  content:'→';
+  position:absolute;
+  right:-12px;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:2;
+  color:var(--jade);
+  font-size:1.3rem;
+  font-weight:800;
+}
+.radio-list{display:grid;gap:8px}
+.radio-choice{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  padding:12px;
+  border:1.5px solid var(--paper-line-2);
+  border-radius:var(--radius-sm);
+  background:var(--cream);
+  cursor:pointer;
+}
+.radio-choice input{margin-top:4px;accent-color:var(--jade)}
+.career-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.career-grid .choice{font-size:0.82rem;padding:8px 10px;min-height:48px}
+.summary{
+  margin-top:14px;
+  padding:14px 18px;
+  border-left:4px solid var(--jade);
+  background:var(--jade-pale);
+  border-radius:var(--radius-sm);
+  font-weight:600;
+  font-size:0.94rem;
+}
+.summary.module-final{border-left-color:var(--accent);background:var(--accent-pale)}
+.pair-lines{display:grid;gap:8px;margin-top:14px}
+.paired-row,.career-link{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr);
+  align-items:center;
+  gap:8px;
+  padding:10px 12px;
+  border:1px solid var(--sage);
+  border-radius:var(--radius-sm);
+  background:var(--sage-pale);
+  font-size:0.84rem;
+  font-weight:600;
+  animation:linkIn .25s ease both;
+}
+@keyframes linkIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.pair-arrow{position:relative;text-align:center;color:var(--jade);font-size:1rem}
+.pair-arrow::before{content:'';position:absolute;left:0;right:0;top:50%;height:2px;background:var(--jade);z-index:0}
+.pair-arrow i{position:relative;z-index:1;padding:2px 4px;background:var(--sage-pale)}
+.career-groups{display:grid;gap:10px}
+.career-group{padding:12px;border:1px solid var(--paper-line);border-radius:var(--radius-sm);background:var(--cream)}
+.career-group h3{margin:0 0 8px;color:var(--jade-text);font-size:0.88rem;font-weight:700}
+.career-links{display:grid;gap:8px;margin-top:12px}
+.relation-note{margin-top:12px;padding:10px 12px;border-left:4px solid var(--info);border-radius:var(--radius-sm);background:var(--info-bg);color:var(--ink-2);font-size:0.86rem;line-height:1.5}
+.drag-hint{display:inline-flex;align-items:center;gap:6px;color:var(--ink-3);font-size:0.84rem}
+
+/* LINK SECTION */
+.link-section{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  width:100%;
+  max-width:var(--lesson-width);
+  padding:16px 20px;
+  background:var(--cream-2);
+  border:1px solid var(--paper-line);
+  border-radius:var(--radius-lg);
+  margin-top:8px;
+}
+.link-section img{
+  width:56px;
+  height:56px;
+  object-fit:cover;
+  border-radius:50%;
+  border:2px solid var(--sage);
+}
+.link-section h3{margin:0;font-size:1rem;font-weight:700;color:var(--ink)}
+.link-section p{margin:2px 0 0;font-size:0.88rem;color:var(--ink-2)}
+.link-section a{color:var(--jade-text);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.link-section a:hover{text-decoration:underline;color:var(--jade-deep)}
+
+@media(max-width:900px){
+  body{padding:14px 12px 32px}
+  .progress-nav{grid-template-columns:repeat(2,1fr)}
+  .support-panel{grid-template-columns:1fr}
+  .option-grid.five{grid-template-columns:repeat(2,1fr)}
+  .profile-layout{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:600px){
+  .progress-nav{grid-template-columns:1fr}
+  .option-grid,.chain-cards,.career-grid{grid-template-columns:1fr}
+  .match-wrap{grid-template-columns:1fr}
+  .profile-layout{grid-template-columns:1fr 1fr}
+  .link-section{flex-direction:column;text-align:center}
+}
 </style>
 </head>
 <body>
-<header>
-  <div class="header-badge"><i class="ti ti-dna-2"></i> SINH HỌC 10 · BÀI 1 · MODULE 02</div>
-  <h1>Vai trò và ứng dụng của Sinh học</h1>
-  <p>Những hiểu biết về sự sống được ứng dụng như thế nào trong đời sống và sản xuất?</p>
-</header>
-<div class="goal-bar"><strong><i class="ti ti-target"></i> Mục tiêu</strong><span id="goalText">Ghép hiểu biết Sinh học với tình huống phù hợp trong đời sống.</span></div>
-<nav class="progress-nav" aria-label="Tiến trình bài học">
-  <button class="stage-tab current" data-stage="1">01 · Đời sống</button>
-  <button class="stage-tab" data-stage="2" disabled>02 · Lĩnh vực</button>
-  <button class="stage-tab" data-stage="3" disabled>03 · Tác động</button>
-  <button class="stage-tab" data-stage="4" disabled>04 · Nghề nghiệp</button>
-</nav>
-<main class="lab-wrapper">
-  <aside class="lab-side-left">
-    <section class="card">
-      <h2 class="card-title"><i class="ti ti-route"></i> Cách làm</h2>
-      <ol id="stepsList" class="micro-list"></ol>
-    </section>
-    <section class="card side-fill">
-      <h2 class="card-title"><i class="ti ti-book-2"></i> Kiến thức cần nhớ</h2>
-      <div id="knowledgeNote"></div>
-    </section>
-  </aside>
-  <div class="guide-bar">
-    <div class="guide-icon"><i class="ti ti-compass"></i></div>
-    <div class="guide-text" id="guideText">Chọn một thẻ kiến thức, sau đó chọn tình huống phù hợp.</div>
-    <div class="guide-badge" id="guideBadge">Màn 1/4</div>
-  </div>
-  <div class="controls-row">
-    <button class="btn" id="btnTTS"><i class="ti ti-volume"></i> Nghe</button>
-    <button class="btn" id="btnReset"><i class="ti ti-refresh"></i> Làm lại màn</button>
-    <span class="spacer"></span>
-    <button class="btn btn-primary" id="btnNext" disabled><span>Tiếp tục</span><i class="ti ti-arrow-right"></i></button>
-  </div>
-  <section class="card canvas-card">
-    <div class="canvas-glow-wrap"><canvas id="labCanvas" width="1200" height="525" role="img" aria-label="Hình minh họa nội dung Sinh học của màn hiện tại"></canvas></div>
-    <div class="workspace" id="workspace"></div>
-  </section>
-  <aside class="lab-side-right">
-    <section class="card">
-      <h2 class="card-title"><i class="ti ti-checklist"></i> Bằng chứng học tập</h2>
-      <div class="evidence-list" id="evidenceList"></div>
-    </section>
-    <section class="card side-fill">
-      <h2 class="card-title"><i class="ti ti-message-circle"></i> Phản hồi</h2>
-      <div id="feedbackPanel" class="feedback">Hệ thống sẽ phản hồi sau mỗi thao tác có ý nghĩa.</div>
-    </section>
-  </aside>
-</main>
-<section class="link-section">
-  <img src="https://www.aiducation.edu.vn/images/fifingfig_Modern_editorial_illustration_of_a_stylized_Vietnames_f0b08847-9f6d-48cf-90ac-b8ed2eb77baf.png" alt="Aiducation">
-  <div><strong>Học liệu Sinh học tương tác</strong><br><a href="https://www.aiducation.edu.vn/" target="_blank" rel="noopener">Khám phá thêm tại Aiducation</a></div>
-</section>
+
+<div class="app">
+  <main class="main">
+    <!-- HEADER BANNER WITH INTEGRATED GOAL -->
+    <header>
+      <div class="header-badge"><i class="ti ti-dna"></i> SINH HỌC 10 · BÀI 1 · MODULE 02</div>
+      <h1>Vai trò và ứng dụng của Sinh học</h1>
+      <div class="header-goal">
+        <span class="goal-label"><i class="ti ti-target"></i> MỤC TIÊU</span>
+        <span class="goal-divider"></span>
+        <span class="goal-text" id="goalText">Ghép hiểu biết Sinh học với tình huống phù hợp trong đời sống.</span>
+      </div>
+    </header>
+
+    <!-- PROGRESS STAGE TABS (STICKY TOP 0) -->
+    <nav class="progress-nav" aria-label="Tiến trình bài học">
+      <button class="stage-tab current" data-stage="1"><i class="ti ti-heart-rate-monitor"></i> 01 · Đời sống</button>
+      <button class="stage-tab" data-stage="2" disabled><i class="ti ti-grid-dots"></i> 02 · Lĩnh vực</button>
+      <button class="stage-tab" data-stage="3" disabled><i class="ti ti-chart-arrows"></i> 03 · Tác động</button>
+      <button class="stage-tab" data-stage="4" disabled><i class="ti ti-briefcase"></i> 04 · Nghề nghiệp</button>
+    </nav>
+
+    <!-- SPLIT WORKSPACE GRID (LEFT: CANVAS | RIGHT: QUESTIONS) -->
+    <div class="split-workspace">
+      <!-- LEFT COLUMN: CANVAS ILLUSTRATION -->
+      <section class="card canvas-card">
+        <div class="canvas-glow-wrap">
+          <canvas id="labCanvas" width="800" height="600" role="img" aria-label="Hình minh họa nội dung Sinh học của màn hiện tại"></canvas>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN: QUESTIONS & INTERACTIVE WORKSPACE -->
+      <section class="card workspace-card">
+        <!-- LIVE CONTEXTUAL GUIDE BAR -->
+        <div class="guide-bar" id="guideBar">
+          <div class="guide-icon"><i class="ti ti-compass"></i></div>
+          <div class="guide-text" id="guideText">Bước 1: Chọn một thẻ kiến thức bên trên, sau đó chọn tình huống tương ứng bên dưới.</div>
+          <div class="guide-badge" id="guideBadge">Màn 1/4</div>
+        </div>
+        <!-- LIVE FEEDBACK PANEL -->
+        <div id="feedbackPanel" class="feedback">Hệ thống sẽ phản hồi chỉ dẫn chi tiết sau mỗi thao tác.</div>
+        <!-- INTERACTIVE WORKSPACE -->
+        <div class="workspace" id="workspace"></div>
+      </section>
+    </div>
+
+    <!-- CONTROLS ROW (ABOVE FOOTER) -->
+    <div class="controls-row">
+      <button class="btn" id="btnPrev" type="button"><i class="ti ti-arrow-left"></i> Quay lại</button>
+      <button class="btn" id="btnReset" type="button"><i class="ti ti-refresh"></i> Làm lại màn</button>
+      <span class="spacer"></span>
+      <button class="btn btn-primary" id="btnNext" disabled type="button"><span>Tiếp tục</span><i class="ti ti-arrow-right"></i></button>
+    </div>
+
+    <!-- LINK SECTION (FOOTER) -->
+    <div class="link-section">
+      <img src="https://www.aiducation.edu.vn/images/fifingfig_Modern_editorial_illustration_of_a_stylized_Vietnames_f0b08847-9f6d-48cf-90ac-b8ed2eb77baf.png" alt="Aiducation">
+      <div>
+        <h3>Sinh Học Aiducation – Học liệu tương tác</h3>
+        <p>Khám phá thêm các bài thực hành và học liệu tương tác môn Sinh học.</p>
+        <a href="https://www.aiducation.edu.vn/" target="_blank" rel="noopener"><i class="ti ti-external-link"></i> Truy cập aiducation.edu.vn</a>
+      </div>
+    </div>
+  </main>
+</div>
+
 <script>
 function LMS(){return window.AiducationLMS||{ready(){},progress(){},event(){},state(){},complete(){},resize(){}}}
-/* Mỗi giá trị là một đường dẫn hoàn chỉnh.
-   Khi dùng Google Drive, chỉ thay giá trị tương ứng, ví dụ:
-   A01:'https://drive.google.com/uc?export=view&id=FILE_ID_A01' */
+
 const assetFiles={
   A01:'https://lh3.googleusercontent.com/d/1kgprxQzg5RfX_7bvfPfal3fySPxWI-GN',
   A02:'https://lh3.googleusercontent.com/d/1FMylNzAwB-dsMzDw_jI7X7KAIu7U42_X',
@@ -142,6 +669,7 @@ const assetFiles={
   A11:'https://lh3.googleusercontent.com/d/10CkgbMgXUCoUl0thVwC4Iv-j7LuGFD2M',
   A12:'https://lh3.googleusercontent.com/d/1CnEVXWIVsxjoezfeJWwj-moq-GG7TZRC'
 };
+
 const state={stage:1,unlocked:1,complete:false,completedStages:new Set(),errors:{s1:0,s2:0,s3:0,s4:0},s1:{selected:null,pairs:{}},s2:{viewed:new Set(),activeProfile:null,selected:null,pairs:{}},s3:{topic:'food',orders:{},done:new Set(),generalChoice:null,general:false},s4:{answer:null,careers:new Set(),done:false}};
 const goals=[
   'Ghép hiểu biết Sinh học với tình huống phù hợp trong đời sống.',
@@ -149,20 +677,21 @@ const goals=[
   'Sắp xếp ba chuỗi theo trình tự hiểu biết → giải pháp → tác động.',
   'Phân biệt lĩnh vực ứng dụng với nghề nghiệp sử dụng kiến thức Sinh học.'
 ];
-const stageImages={1:'A01',2:'A03',3:'A09',4:'A12'};
 const stageInfo={
-  1:{steps:['Chọn một thẻ kiến thức','Chọn tình huống phù hợp','Hoàn thành đủ ba cặp'],note:'Hiểu biết về vi sinh vật, dinh dưỡng và trí nhớ có thể hỗ trợ những quyết định cụ thể. Không có biện pháp hay thực phẩm nào tốt tuyệt đối trong mọi hoàn cảnh.'},
-  2:{steps:['Mở đủ năm hồ sơ','Chọn một thẻ ứng dụng','Chọn lĩnh vực tương ứng'],note:'Năm mục ở màn này là các lĩnh vực ứng dụng, không phải năm nghề. Mỗi lĩnh vực giải quyết một nhóm vấn đề khác nhau.'},
-  3:{steps:['Chọn một chủ đề','Xếp ba thẻ theo thứ tự','Kiểm tra đủ ba chuỗi','Chọn nhận định khái quát'],note:'Sinh học cung cấp cơ sở và giải pháp. Tác động thực tế còn phụ thuộc công nghệ, kinh tế, chính sách và cách triển khai.'},
-  4:{steps:['Trả lời nhận định Đúng/Sai','Chọn ít nhất ba nghề ngoài bác sĩ','Đọc câu chốt và câu chuyển'],note:'Lĩnh vực là phạm vi ứng dụng; nghề nghiệp là công việc cụ thể. Một nghề có thể dùng tri thức từ nhiều lĩnh vực.'}
+  1:{steps:['Bước 1: Chọn một thẻ kiến thức','Bước 2: Chọn tình huống ứng dụng phù hợp','Bước 3: Hoàn thành đủ ba cặp hiểu biết - tình huống'],note:'Hiểu biết về vi sinh vật, dinh dưỡng và trí nhớ hỗ trợ đưa ra các quyết định khoa học trong cuộc sống hằng ngày.'},
+  2:{steps:['Bước 1: Nhấn mở đủ năm hồ sơ lĩnh vực','Bước 2: Chọn thẻ ứng dụng cụ thể','Bước 3: Ghép ứng dụng vào đúng lĩnh vực tương ứng'],note:'Mỗi lĩnh vực sinh học giải quyết một nhóm vấn đề riêng trong đời sống và y học.'},
+  3:{steps:['Bước 1: Chọn một chủ đề tác động','Bước 2: Xếp 3 thẻ theo đúng thứ tự (Hiểu biết → Giải pháp → Tác động)','Bước 3: Kiểm tra đủ 3 chuỗi & chọn nhận định khái quát'],note:'Sinh học tạo cơ sở khoa học; hiệu quả tác động còn phụ thuộc vào giải pháp và điều kiện triển khai.'},
+  4:{steps:['Bước 1: Trả lời nhận định Đúng/Sai','Bước 2: Chọn ít nhất ba nghề nghiệp ngoài bác sĩ','Bước 3: Đọc tổng kết và bài học chuyển tiếp'],note:'Lĩnh vực là phạm vi ứng dụng rộng; nghề nghiệp là công việc chuyên môn cụ thể.'}
 };
+
 const profiles=[
-  {id:'medicine',name:'Y – dược học',asset:'A04',app:'target',appText:'Phát triển thuốc tác động vào phân tử đích liên quan đến bệnh.',text:'Hiểu biết về gene, protein và cơ chế gây bệnh giúp các nhà khoa học xác định những phân tử có liên quan đến bệnh. Từ đó, họ có thể phát triển thuốc tác động chủ yếu vào phân tử đích, nhằm nâng cao hiệu quả điều trị và hạn chế một số tác động không mong muốn.',correct:'Đúng. Ứng dụng này sử dụng hiểu biết về cơ chế gây bệnh để phát triển phương pháp điều trị.',wrong:'Hãy tìm lĩnh vực phát triển phương pháp chẩn đoán và điều trị bệnh.'},
-  {id:'forensic',name:'Pháp y',asset:'A05',app:'dna',appText:'Phân tích và so sánh DNA từ dấu vết sinh học.',text:'DNA có thể được thu từ một số dấu vết sinh học như tóc có chân tóc, máu hoặc tế bào biểu mô. Việc phân tích và so sánh đặc điểm DNA với mẫu đối chứng có thể cung cấp bằng chứng hỗ trợ nhận dạng hoặc xác định quan hệ huyết thống.',correct:'Đúng. Phân tích DNA từ dấu vết sinh học là một công cụ được sử dụng trong giám định pháp y.',wrong:'Ứng dụng này liên quan đến việc thu thập, phân tích và so sánh dấu vết sinh học trong giám định.'},
-  {id:'agriculture',name:'Nông – lâm – ngư nghiệp',asset:'A06',app:'tissue',appText:'Nhân nhanh cây trồng bằng nuôi cấy mô.',text:'Công nghệ di truyền và nuôi cấy mô được sử dụng trong chọn, tạo và nhân giống. Nuôi cấy mô có thể giúp nhân nhanh nhiều cây con từ một phần mô thực vật trong điều kiện phù hợp.',correct:'Đúng. Nuôi cấy mô có thể được sử dụng để nhân nhanh cây trồng có đặc điểm mong muốn.',wrong:'Nuôi cấy mô được dùng để nhân nhanh cây trồng trong điều kiện phù hợp; đây không phải quá trình gieo hạt.'},
-  {id:'food',name:'Công nghệ thực phẩm',asset:'A07',app:'ferment',appText:'Sử dụng vi sinh vật trong chế biến thực phẩm.',text:'Con người sử dụng hoạt động của vi sinh vật để chế biến nhiều loại thực phẩm. Trong quá trình làm sữa chua, vi khuẩn lactic chuyển hóa một phần đường trong sữa và góp phần tạo nên vị chua cùng trạng thái đặc trưng của sản phẩm.',correct:'Đúng. Lên men thực phẩm dựa trên hoạt động chuyển hóa của vi sinh vật.',wrong:'Ứng dụng này sử dụng hoạt động của vi sinh vật để tạo ra hoặc làm biến đổi thực phẩm.'},
-  {id:'environment',name:'Bảo vệ môi trường',asset:'A08',app:'pollution',appText:'Sử dụng khả năng chuyển hóa của vi sinh vật để hỗ trợ xử lí ô nhiễm.',text:'Một số vi sinh vật có khả năng chuyển hóa, cố định hoặc tích lũy các chất trong môi trường. Những khả năng này được nghiên cứu và ứng dụng trong một số quy trình hỗ trợ xử lí ô nhiễm.',correct:'Đúng. Một số vi sinh vật được nghiên cứu và sử dụng để hỗ trợ xử lí các chất ô nhiễm.',wrong:'Không phải mọi vi sinh vật đều có khả năng này. Ứng dụng thuộc lĩnh vực bảo vệ môi trường.'}
+  {id:'medicine',name:'Y – dược học',asset:'A04',app:'target',appText:'Phát triển thuốc tác động vào phân tử đích liên quan đến bệnh.',text:'Hiểu biết về gene, protein và cơ chế gây bệnh giúp phát triển thuốc tác động vào phân tử đích, nâng cao hiệu quả điều trị.',correct:'Đúng. Ứng dụng này thuộc lĩnh vực Y – dược học.',wrong:'Chưa chính xác. Tìm lĩnh vực phát triển phương pháp chẩn đoán và điều trị bệnh.'},
+  {id:'forensic',name:'Pháp y',asset:'A05',app:'dna',appText:'Phân tích và so sánh DNA từ dấu vết sinh học.',text:'DNA từ dấu vết sinh học (máu, tóc) giúp phân tích và so sánh nhằm hỗ trợ nhận dạng hoặc xác định huyết thống.',correct:'Đúng. Phân tích DNA là công cụ cốt lõi trong giám định pháp y.',wrong:'Chưa chính xác. Đây là ứng dụng phân tích dấu vết sinh học trong pháp y.'},
+  {id:'agriculture',name:'Nông – lâm – ngư nghiệp',asset:'A06',app:'tissue',appText:'Nhân nhanh cây trồng bằng nuôi cấy mô.',text:'Công nghệ nuôi cấy mô tế bào giúp nhân nhanh số lượng lớn cây giống đồng đều, sạch bệnh.',correct:'Đúng. Nuôi cấy mô được ứng dụng rộng rãi trong nông nghiệp.',wrong:'Chưa chính xác. Tìm lĩnh vực chọn tạo và nhân giống cây trồng.'},
+  {id:'food',name:'Công nghệ thực phẩm',asset:'A07',app:'ferment',appText:'Sử dụng vi sinh vật trong chế biến thực phẩm.',text:'Quá trình lên tiện vi sinh vật (như vi khuẩn lactic làm sữa chua) giúp tạo ra các sản phẩm thực phẩm giàu dinh dưỡng.',correct:'Đúng. Lên men thực phẩm thuộc lĩnh vực Công nghệ thực phẩm.',wrong:'Chưa chính xác. Ứng dụng này biến đổi nguyên liệu thành thực phẩm.'},
+  {id:'environment',name:'Bảo vệ môi trường',asset:'A08',app:'pollution',appText:'Sử dụng khả năng chuyển hóa của vi sinh vật để hỗ trợ xử lí ô nhiễm.',text:'Vi sinh vật được ứng dụng để phân hủy các chất hữu cơ, xử lý nước thải và phục hồi môi trường ô nhiễm.',correct:'Đúng. Đây là giải pháp thuộc lĩnh vực Bảo vệ môi trường.',wrong:'Chưa chính xác. Tìm lĩnh vực xử lý ô nhiễm và bảo vệ hệ sinh thái.'}
 ];
+
 const chains={
   food:{name:'Chuỗi lương thực',asset:'A09',cards:[
     ['knowledge','Hiểu đặc điểm di truyền và sinh trưởng của cây trồng.'],
@@ -177,6 +706,7 @@ const chains={
     ['solution','Xây dựng quy trình hỗ trợ xử lí một số chất ô nhiễm.'],
     ['impact','Góp phần giảm tác động của ô nhiễm.']]}
 };
+
 const careers=[
   {id:'doctor',name:'Bác sĩ',field:'Y – dược học'},
   {id:'pharmacist',name:'Dược sĩ',field:'Y – dược học'},
@@ -190,6 +720,7 @@ const careers=[
   {id:'ecology',name:'Nhà sinh thái học',field:'Bảo vệ môi trường'},
   {id:'environment',name:'Chuyên gia công nghệ môi trường',field:'Bảo vệ môi trường'}
 ];
+
 const careerGroups=[
   ['Y – dược học',['doctor','pharmacist','biomedical','lab']],
   ['Pháp y',['forensic']],
@@ -197,95 +728,566 @@ const careerGroups=[
   ['Công nghệ thực phẩm',['foodtech','quality']],
   ['Bảo vệ môi trường',['ecology','environment']]
 ];
-const canvas=document.getElementById('labCanvas'),ctx=canvas.getContext('2d'),workspace=document.getElementById('workspace');let activeAsset='A01',canvasDirty=true,currentTtsText='',completionSent=false;const cache={},assetErrors={};
-Object.entries(assetFiles).forEach(([key,url])=>{const img=new Image();img.addEventListener('load',()=>{cache[key]=img;canvasDirty=true});img.addEventListener('error',()=>{assetErrors[key]=true;canvasDirty=true});img.src=url});
-function resizeCanvas(){const r=canvas.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,2),w=Math.max(1,Math.round(r.width*dpr)),h=Math.max(1,Math.round(r.height*dpr)),changed=canvas.width!==w||canvas.height!==h;if(changed){canvas.width=w;canvas.height=h;ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high'}return changed}
-function drawCanvas(){ctx.clearRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#FAF7F0';ctx.fillRect(0,0,canvas.width,canvas.height);const img=cache[activeAsset];if(!img||!img.naturalWidth){ctx.fillStyle='#514C44';ctx.font='600 15px "Be Vietnam Pro", sans-serif';ctx.textAlign='center';ctx.fillText(assetErrors[activeAsset]?'Không tải được hình minh họa':'Đang tải hình minh họa…',canvas.width/2,canvas.height/2);return}const s=Math.min(canvas.width/img.naturalWidth,canvas.height/img.naturalHeight),w=img.naturalWidth*s,h=img.naturalHeight*s;ctx.drawImage(img,(canvas.width-w)/2,(canvas.height-h)/2,w,h)}
-function canvasLoop(){if(resizeCanvas())canvasDirty=true;if(canvasDirty){drawCanvas();canvasDirty=false}requestAnimationFrame(canvasLoop)}
-function setAsset(key){if(activeAsset!==key){activeAsset=key;canvasDirty=true}}
-function feedback(text,type='',speak=true){const p=document.getElementById('feedbackPanel');p.textContent=text;p.className='feedback '+type;if(speak)currentTtsText=text;if(type==='bad')state.errors[`s${state.stage}`]++;persist('Phản hồi')}
-function snapshot(lastAction){return{currentStep:state.stage,totalSteps:4,unlocked:state.unlocked,complete:state.complete,lastAction,completedStages:[...state.completedStages],errors:{...state.errors},S01_STATE:{selected:state.s1.selected,pairs:{...state.s1.pairs}},S02_STATE:{viewed:[...state.s2.viewed],activeProfile:state.s2.activeProfile,selected:state.s2.selected,pairs:{...state.s2.pairs}},S03_STATE:{topic:state.s3.topic,orders:Object.fromEntries(Object.entries(state.s3.orders).map(([k,v])=>[k,[...v]])),done:[...state.s3.done],generalChoice:state.s3.generalChoice,general:state.s3.general},S04_STATE:{answer:state.s4.answer,careers:[...state.s4.careers],done:state.s4.done},MODULE_SH10_B01_M02_COMPLETE:state.complete}}
-function persist(lastAction){LMS().state(snapshot(lastAction));reportHeight()}
-function setGuide(text,tts=null){document.getElementById('guideText').textContent=text;if(tts!==null)currentTtsText=tts}
+
+const canvas=document.getElementById('labCanvas'),ctx=canvas.getContext('2d'),workspace=document.getElementById('workspace');
+let activeAsset='A01',canvasDirty=true,currentTtsText='',completionSent=false;
+const cache={},assetErrors={};
+
+Object.entries(assetFiles).forEach(([key,url])=>{
+  const img=new Image();
+  img.addEventListener('load',()=>{cache[key]=img;canvasDirty=true});
+  img.addEventListener('error',()=>{assetErrors[key]=true;canvasDirty=true});
+  img.src=url;
+});
+
+function resizeCanvas(){
+  const r=canvas.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,2);
+  const w=Math.max(1,Math.round(r.width*dpr)),h=Math.max(1,Math.round(r.height*dpr));
+  const changed=canvas.width!==w||canvas.height!==h;
+  if(changed){canvas.width=w;canvas.height=h;ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';}
+  return changed;
+}
+
+function drawCanvas(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#FAF7F0';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  const img=cache[activeAsset];
+  if(!img||!img.naturalWidth){
+    ctx.fillStyle='#514C44';
+    ctx.font='600 15px "Be Vietnam Pro", sans-serif';
+    ctx.textAlign='center';
+    ctx.fillText(assetErrors[activeAsset]?'Không tải được hình minh họa':'Đang tải hình minh họa…',canvas.width/2,canvas.height/2);
+    return;
+  }
+  const s=Math.min(canvas.width/img.naturalWidth,canvas.height/img.naturalHeight);
+  const w=img.naturalWidth*s,h=img.naturalHeight*s;
+  ctx.drawImage(img,(canvas.width-w)/2,(canvas.height-h)/2,w,h);
+}
+
+function canvasLoop(){
+  if(resizeCanvas())canvasDirty=true;
+  if(canvasDirty){drawCanvas();canvasDirty=false;}
+  requestAnimationFrame(canvasLoop);
+}
+
+function setAsset(key){
+  if(activeAsset!==key){
+    activeAsset=key;
+    canvasDirty=true;
+  }
+}
+
+function feedback(text,type='',speak=true){
+  const p=document.getElementById('feedbackPanel');
+  if(p){
+    p.textContent=text;
+    p.className='feedback '+type;
+  }
+  if(speak)currentTtsText=text;
+  if(type==='bad')state.errors[`s${state.stage}`]++;
+  persist('Phản hồi');
+}
+
+function snapshot(lastAction){
+  return{currentStep:state.stage,totalSteps:4,unlocked:state.unlocked,complete:state.complete,lastAction,completedStages:[...state.completedStages],errors:{...state.errors},S01_STATE:{selected:state.s1.selected,pairs:{...state.s1.pairs}},S02_STATE:{viewed:[...state.s2.viewed],activeProfile:state.s2.activeProfile,selected:state.s2.selected,pairs:{...state.s2.pairs}},S03_STATE:{topic:state.s3.topic,orders:Object.fromEntries(Object.entries(state.s3.orders).map(([k,v])=>[k,[...v]])),done:[...state.s3.done],generalChoice:state.s3.generalChoice,general:state.s3.general},S04_STATE:{answer:state.s4.answer,careers:[...state.s4.careers],done:state.s4.done},MODULE_SH10_B01_M02_COMPLETE:state.complete};
+}
+
+function persist(lastAction){LMS().state(snapshot(lastAction));reportHeight();}
+
+function setGuide(text,tts=null){
+  const el = document.getElementById('guideText');
+  if(el) el.textContent=text;
+  if(tts!==null)currentTtsText=tts;
+}
+
 function renderShell(){
-  document.getElementById('goalText').textContent=goals[state.stage-1];
-  document.getElementById('guideBadge').textContent=`Màn ${state.stage}/4`;
-  document.getElementById('stepsList').innerHTML=stageInfo[state.stage].steps.map(x=>`<li>${x}</li>`).join('');
-  document.getElementById('knowledgeNote').innerHTML=`<p>${stageInfo[state.stage].note}</p>`;
-  document.querySelectorAll('.stage-tab').forEach(b=>{const n=+b.dataset.stage;b.disabled=n>state.unlocked;b.classList.toggle('current',n===state.stage);b.classList.toggle('done',state.completedStages.has(n))});
-  document.getElementById('btnNext').disabled=!state.completedStages.has(state.stage)||state.complete;
-  document.getElementById('btnNext').querySelector('span').textContent=state.stage===4?(state.complete?'Đã hoàn thành':'Hoàn thành'):'Tiếp tục';
+  const goalEl = document.getElementById('goalText');
+  if(goalEl) goalEl.textContent=goals[state.stage-1];
+  const badgeEl = document.getElementById('guideBadge');
+  if(badgeEl) badgeEl.textContent=`Màn ${state.stage}/4`;
+  const stepsEl = document.getElementById('stepsList');
+  if(stepsEl) stepsEl.innerHTML=stageInfo[state.stage].steps.map(x=>`<li>${x}</li>`).join('');
+  const noteEl = document.getElementById('knowledgeNote');
+  if(noteEl) noteEl.innerHTML=`<p>${stageInfo[state.stage].note}</p>`;
+  
+  document.querySelectorAll('.stage-tab').forEach(b=>{
+    const n=+b.dataset.stage;
+    b.disabled=n>state.unlocked;
+    b.classList.toggle('current',n===state.stage);
+    b.classList.toggle('done',state.completedStages.has(n));
+  });
+
+  const prevBtn = document.getElementById('btnPrev');
+  if(prevBtn) prevBtn.disabled = (state.stage === 1);
+
+  const nextBtn = document.getElementById('btnNext');
+  if(nextBtn){
+    nextBtn.disabled = !state.completedStages.has(state.stage) || state.complete;
+    nextBtn.querySelector('span').textContent = state.stage === 4 ? (state.complete ? 'Đã hoàn thành' : 'Hoàn thành') : 'Tiếp tục';
+  }
 }
-function evidence(items){document.getElementById('evidenceList').innerHTML=items.map(x=>`<div class="evidence ${x[1]?'done':''}"><i class="ti ti-${x[1]?'circle-check':'circle'}"></i><span>${x[0]}</span></div>`).join('')}
+
+function evidence(items){
+  const el = document.getElementById('evidenceList');
+  if(el) el.innerHTML=items.map(x=>`<div class="evidence ${x[1]?'done':''}"><i class="ti ti-${x[1]?'circle-check':'circle'}"></i><span>${x[0]}</span></div>`).join('');
+}
+
 function completeStage(message){
-  if(!state.completedStages.has(state.stage)){state.completedStages.add(state.stage);state.unlocked=Math.max(state.unlocked,Math.min(4,state.stage+1));LMS().event('section_completed',{id:`s0${state.stage}`})}feedback(message,'ok');renderShell();LMS().progress({done:state.completedStages.size,total:4});persist('Hoàn thành màn');
+  if(!state.completedStages.has(state.stage)){
+    state.completedStages.add(state.stage);
+    state.unlocked=Math.max(state.unlocked,Math.min(4,state.stage+1));
+    LMS().event('section_completed',{id:`s0${state.stage}`});
+  }
+  feedback(message,'ok');
+  renderShell();
+  LMS().progress({done:state.completedStages.size,total:4});
+  persist('Hoàn thành màn');
 }
+
 function renderStage1(){
-  setAsset(state.s1.selected?'A02':'A01');setGuide('Chọn một thẻ kiến thức, sau đó chọn tình huống mà hiểu biết đó có thể giải thích hoặc hỗ trợ.');
+  setAsset(state.s1.selected?'A02':'A01');
   const knowledge=[['microbe','Hiểu biết về vi sinh vật'],['nutrition','Hiểu biết về thành phần dinh dưỡng'],['memory','Hiểu biết về hoạt động của trí nhớ']];
   const situations=[['health','Phòng tránh bệnh truyền nhiễm'],['food','Lựa chọn thực phẩm phù hợp'],['learning','Ghi nhớ kiến thức hiệu quả hơn']];
   const correct={microbe:'health',nutrition:'food',memory:'learning'};
   const all=Object.keys(state.s1.pairs).length===3,pairs=Object.entries(state.s1.pairs);
-  workspace.innerHTML=`<h2>Sinh học giúp ích gì trong đời sống hằng ngày?</h2><p class="workspace-note"><strong>Câu hỏi:</strong> Mỗi hiểu biết Sinh học có thể giúp giải quyết vấn đề nào trong đời sống?</p><p class="drag-hint"><i class="ti ti-hand-click"></i> Chạm chọn theo thứ tự; trên máy tính có thể kéo thẻ vào tình huống.</p><div class="section-label">Ba thẻ kiến thức</div><div class="option-grid" id="s1Knowledge">${knowledge.map(([id,t])=>`<button class="choice ${state.s1.selected===id?'selected':''} ${state.s1.pairs[id]?'correct':''}" data-id="${id}" draggable="${!state.s1.pairs[id]}" ${state.s1.pairs[id]?'disabled':''}>${t}</button>`).join('')}</div><div class="section-label">Ba tình huống</div><div class="option-grid" id="s1Situations">${situations.map(([id,t])=>`<button class="choice ${Object.values(state.s1.pairs).includes(id)?'correct':''}" data-id="${id}" ${Object.values(state.s1.pairs).includes(id)?'disabled':''}>${t}</button>`).join('')}</div>${pairs.length?`<div class="pair-lines">${pairs.map(([k,v])=>`<div class="paired-row"><span>${knowledge.find(x=>x[0]===k)[1]}</span><span class="pair-arrow"><i class="ti ti-arrow-right"></i></span><span>${situations.find(x=>x[0]===v)[1]}</span></div>`).join('')}</div>`:''}${all?'<div class="summary"><strong>Câu chốt</strong><br>Hiểu biết Sinh học được vận dụng để bảo vệ sức khỏe, cải thiện dinh dưỡng và hỗ trợ học tập.</div>':''}`;
-  const chooseKnowledge=id=>{state.s1.selected=id;setGuide(`Đã chọn “${knowledge.find(x=>x[0]===id)[1]}”. Hãy chọn tình huống phù hợp.`);persist('Chọn thẻ kiến thức');renderStage1();if(matchMedia('(max-width:720px)').matches)setTimeout(()=>document.getElementById('s1Situations')?.scrollIntoView({behavior:'smooth',block:'center'}),0)};
-  document.querySelectorAll('#s1Knowledge .choice').forEach(b=>{b.onclick=()=>chooseKnowledge(b.dataset.id);b.ondragstart=e=>{e.dataTransfer.setData('text/plain',b.dataset.id);state.s1.selected=b.dataset.id}});
-  document.querySelectorAll('#s1Situations .choice').forEach(b=>{b.ondragover=e=>{e.preventDefault();b.classList.add('drop-ready')};b.ondragleave=()=>b.classList.remove('drop-ready');b.ondrop=e=>{e.preventDefault();b.classList.remove('drop-ready');state.s1.selected=e.dataTransfer.getData('text/plain');b.click()};b.onclick=()=>{if(!state.s1.selected){feedback('Hãy chọn một thẻ kiến thức trước.','bad');return}const k=state.s1.selected,ok=correct[k]===b.dataset.id;LMS().event('answered',{id:`s01_${k}`,chosen:b.dataset.id,correct:ok});if(ok){state.s1.pairs[k]=b.dataset.id;const msgs={microbe:'Đúng. Hiểu biết về vi sinh vật giúp con người xây dựng các biện pháp vệ sinh, phòng bệnh và điều trị bệnh truyền nhiễm.',nutrition:'Đúng. Hiểu biết về thành phần và giá trị dinh dưỡng giúp con người lựa chọn và sử dụng thực phẩm phù hợp.',memory:'Đúng. Hiểu biết về cách hình thành và củng cố trí nhớ có thể giúp lựa chọn phương pháp học tập hiệu quả hơn.'},done=Object.keys(state.s1.pairs).length===3;state.s1.selected=null;if(done)completeStage(`${msgs[k]} Câu chốt: Hiểu biết Sinh học được vận dụng để bảo vệ sức khỏe, cải thiện dinh dưỡng và hỗ trợ học tập.`);else feedback(msgs[k],'ok')}else{const msgs={microbe:'Vi sinh vật có liên quan trực tiếp đến nhiều bệnh truyền nhiễm. Hãy tìm tình huống nói về phòng bệnh.',nutrition:'Kiến thức về dinh dưỡng giúp đánh giá thành phần và giá trị của thực phẩm.',memory:'Hãy tìm tình huống liên quan đến việc tiếp nhận, lưu giữ và nhắc lại kiến thức.'};state.s1.selected=null;feedback(msgs[k],'bad')}renderStage1()}});
-  evidence([['Ghép vi sinh vật với sức khỏe',!!state.s1.pairs.microbe],['Ghép dinh dưỡng với thực phẩm',!!state.s1.pairs.nutrition],['Ghép trí nhớ với học tập',!!state.s1.pairs.memory]])
+
+  if (!state.s1.selected && !all) {
+    setGuide('Bước 1: Chọn một thẻ kiến thức Sinh học bên dưới (khung xanh).');
+  }
+
+  workspace.innerHTML=`
+    <h2>Sinh học giúp ích gì trong đời sống hằng ngày?</h2>
+    <p class="workspace-note"><strong>Nhiệm vụ:</strong> Ghép từng hiểu biết Sinh học với ứng dụng thực tế phù hợp.</p>
+    <p class="drag-hint"><i class="ti ti-hand-click"></i> Chạm chọn thẻ kiến thức trước, sau đó chọn tình huống để ghép đôi.</p>
+    
+    <div class="section-label">Thẻ kiến thức Sinh học</div>
+    <div class="option-grid" id="s1Knowledge">
+      ${knowledge.map(([id,t])=>`<button class="choice ${state.s1.selected===id?'selected':''} ${state.s1.pairs[id]?'correct':''}" data-id="${id}" ${state.s1.pairs[id]?'disabled':''}>${t}</button>`).join('')}
+    </div>
+
+    <div class="section-label">Tình huống đời sống tương ứng</div>
+    <div class="option-grid" id="s1Situations">
+      ${situations.map(([id,t])=>`<button class="choice ${Object.values(state.s1.pairs).includes(id)?'correct':''}" data-id="${id}" ${Object.values(state.s1.pairs).includes(id)?'disabled':''}>${t}</button>`).join('')}
+    </div>
+
+    ${pairs.length?`<div class="pair-lines">${pairs.map(([k,v])=>`<div class="paired-row"><span>${knowledge.find(x=>x[0]===k)[1]}</span><span class="pair-arrow"><i class="ti ti-arrow-right"></i></span><span>${situations.find(x=>x[0]===v)[1]}</span></div>`).join('')}</div>`:''}
+    ${all?'<div class="summary"><strong>Câu chốt màn 1:</strong> Hiểu biết Sinh học được vận dụng trực tiếp để bảo vệ sức khỏe, cải thiện chế độ dinh dưỡng và nâng cao hiệu quả học tập.</div>':''}
+  `;
+
+  const chooseKnowledge=id=>{
+    state.s1.selected=id;
+    setGuide(`Bước 2: Đã chọn “${knowledge.find(x=>x[0]===id)[1]}”. Hãy chọn 1 tình huống bên dưới để hoàn thành cặp.`);
+    persist('Chọn thẻ kiến thức');
+    renderStage1();
+  };
+
+  document.querySelectorAll('#s1Knowledge .choice').forEach(b=>{
+    b.onclick=()=>chooseKnowledge(b.dataset.id);
+  });
+
+  document.querySelectorAll('#s1Situations .choice').forEach(b=>{
+    b.onclick=()=>{
+      if(!state.s1.selected){
+        feedback('Chưa chọn thẻ kiến thức! Hãy bấm chọn 1 thẻ kiến thức trước khi chọn tình huống.','bad');
+        setGuide('Cảnh báo: Bấm chọn 1 thẻ kiến thức màu xanh trước, sau đó mới chọn tình huống.');
+        return;
+      }
+      const k=state.s1.selected,ok=correct[k]===b.dataset.id;
+      LMS().event('answered',{id:`s01_${k}`,chosen:b.dataset.id,correct:ok});
+      if(ok){
+        state.s1.pairs[k]=b.dataset.id;
+        const msgs={
+          microbe:'Chính xác! Hiểu biết vi sinh vật giúp đưa ra các biện pháp vệ sinh và phòng tránh bệnh truyền nhiễm.',
+          nutrition:'Chính xác! Kiến thức dinh dưỡng giúp lựa chọn thực phẩm lành mạnh và phù hợp với cơ thể.',
+          memory:'Chính xác! Hiểu biết về trí nhớ hỗ trợ lựa chọn phương pháp học tập khoa học.'
+        };
+        const done=Object.keys(state.s1.pairs).length===3;
+        state.s1.selected=null;
+        if(done){
+          setGuide('Xuất sắc! Em đã ghép đúng cả 3 cặp. Nhấn "Tiếp tục" để chuyển sang Màn 2.');
+          completeStage(`${msgs[k]} Hoàn thành màn 1!`);
+        } else {
+          setGuide(`Tốt lắm! Tiếp tục chọn thẻ kiến thức tiếp theo.`);
+          feedback(msgs[k],'ok');
+        }
+      } else {
+        state.s1.selected=null;
+        setGuide('Chưa chính xác. Đọc lại gợi ý phản hồi bên dưới và chọn lại thẻ kiến thức.');
+        feedback('Ghép chưa chính xác. Đọc kỹ lại ý nghĩa sinh học của từng thẻ để ghép đúng tình huống.','bad');
+      }
+      renderStage1();
+    };
+  });
+
+  evidence([['Ghép vi sinh vật với phòng bệnh',!!state.s1.pairs.microbe],['Ghép dinh dưỡng với thực phẩm',!!state.s1.pairs.nutrition],['Ghép trí nhớ với học tập',!!state.s1.pairs.memory]]);
 }
+
 function renderStage2(){
-  const active=profiles.find(p=>p.id===state.s2.activeProfile);setAsset(active?active.asset:'A03');setGuide(state.s2.viewed.size<5?'Mở lần lượt năm lĩnh vực để xem hồ sơ.':'Đã xem đủ năm hồ sơ. Hãy ghép mỗi ứng dụng với lĩnh vực phù hợp.');
-  workspace.innerHTML=`<h2>Sinh học được ứng dụng trong những lĩnh vực nào?</h2><p class="workspace-note"><strong>Câu hỏi:</strong> Mỗi ứng dụng Sinh học thuộc lĩnh vực nào?</p><div class="profile-layout">${profiles.map(p=>`<button class="profile-btn ${state.s2.viewed.has(p.id)?'viewed':''}" data-profile="${p.id}">${p.name}</button>`).join('')}</div><div id="profileText" class="profile-text">${active?`<h3>${active.name}</h3><p>${active.text}</p>`:'<h3>Hồ sơ lĩnh vực</h3><p>Chọn một lĩnh vực ở phía trên.</p>'}</div><div id="s2Match" class="${state.s2.viewed.size===5?'':'hidden'}"></div>`;
-  document.querySelectorAll('[data-profile]').forEach(b=>b.onclick=()=>{const p=profiles.find(x=>x.id===b.dataset.profile);state.s2.viewed.add(p.id);state.s2.activeProfile=p.id;currentTtsText=`${p.name}. ${p.text}`;persist('Mở hồ sơ '+p.id);renderStage2()});
-  const viewedDone=state.s2.viewed.size===5;evidence(viewedDone?profiles.map(p=>[`Ghép đúng ${p.name}`,state.s2.pairs[p.app]===p.id]):profiles.map(p=>[`Đã xem hồ sơ ${p.name}`,state.s2.viewed.has(p.id)]));if(viewedDone)renderS2Match()
+  const active=profiles.find(p=>p.id===state.s2.activeProfile);
+  setAsset(active?active.asset:'A03');
+  
+  if (state.s2.viewed.size < 5) {
+    setGuide(`Bước 1: Nhấn mở đủ 5 hồ sơ lĩnh vực bên dưới (Đã mở ${state.s2.viewed.size}/5).`);
+  } else {
+    setGuide('Bước 2: Đã mở đủ 5 hồ sơ! Hãy chọn 1 ứng dụng bên dưới để ghép vào đúng lĩnh vực.');
+  }
+
+  workspace.innerHTML=`
+    <h2>Sinh học được ứng dụng trong những lĩnh vực nào?</h2>
+    <p class="workspace-note">Khám phá 5 hồ sơ lĩnh vực tiêu biểu của Sinh học hiện đại.</p>
+    
+    <div class="profile-layout">
+      ${profiles.map(p=>`<button class="profile-btn ${state.s2.viewed.has(p.id)?'viewed':''}" data-profile="${p.id}"><i class="ti ti-${state.s2.viewed.has(p.id)?'check':'folder'}"></i> ${p.name}</button>`).join('')}
+    </div>
+
+    <div id="profileText" class="profile-text">
+      ${active?`<h3><i class="ti ti-info-circle"></i> Hồ sơ: ${active.name}</h3><p>${active.text}</p>`:'<h3>Hồ sơ lĩnh vực</h3><p>Nhấn chọn một nút lĩnh vực ở trên để đọc thông tin chi tiết.</p>'}
+    </div>
+
+    <div id="s2Match" class="${state.s2.viewed.size===5?'':'hidden'}"></div>
+  `;
+
+  document.querySelectorAll('[data-profile]').forEach(b=>b.onclick=()=>{
+    const p=profiles.find(x=>x.id===b.dataset.profile);
+    state.s2.viewed.add(p.id);
+    state.s2.activeProfile=p.id;
+    persist('Mở hồ sơ '+p.id);
+    renderStage2();
+  });
+
+  const viewedDone=state.s2.viewed.size===5;
+  evidence(viewedDone?profiles.map(p=>[`Ghép đúng ${p.name}`,state.s2.pairs[p.app]===p.id]):profiles.map(p=>[`Đã đọc hồ sơ ${p.name}`,state.s2.viewed.has(p.id)]));
+  if(viewedDone)renderS2Match();
 }
+
 function renderS2Match(){
-  const host=document.getElementById('s2Match');if(!host)return;
+  const host=document.getElementById('s2Match');
+  if(!host)return;
   const pairs=Object.entries(state.s2.pairs),all=pairs.length===5;
-  host.innerHTML=`<div class="section-label">Ghép năm ứng dụng – năm lĩnh vực</div><p class="drag-hint"><i class="ti ti-hand-click"></i> Chạm chọn theo thứ tự; trên máy tính có thể kéo ứng dụng vào lĩnh vực.</p><div class="match-wrap"><div>${profiles.map(p=>`<button class="choice ${state.s2.selected===p.app?'selected':''} ${state.s2.pairs[p.app]?'correct':''}" data-app="${p.app}" draggable="${!state.s2.pairs[p.app]}" ${state.s2.pairs[p.app]?'disabled':''}>${p.appText}</button>`).join('')}</div><div>${profiles.map(p=>`<button class="choice ${Object.values(state.s2.pairs).includes(p.id)?'correct':''}" data-field="${p.id}" ${Object.values(state.s2.pairs).includes(p.id)?'disabled':''}>${p.name}</button>`).join('')}</div></div>${pairs.length?`<div class="pair-lines">${pairs.map(([app,id])=>{const p=profiles.find(x=>x.app===app);return`<div class="paired-row"><span>${p.appText}</span><span class="pair-arrow"><i class="ti ti-arrow-right"></i></span><span>${p.name}</span></div>`}).join('')}</div>`:''}${all?'<div class="summary"><strong>Câu chốt</strong><br>Tri thức Sinh học được vận dụng trong nhiều lĩnh vực để giải quyết những vấn đề cụ thể của đời sống và sản xuất.</div>':''}`;
-  host.querySelectorAll('[data-app]').forEach(b=>{b.onclick=()=>{state.s2.selected=b.dataset.app;setGuide('Đã chọn ứng dụng. Hãy chọn lĩnh vực tương ứng.');persist('Chọn ứng dụng');renderS2Match()};b.ondragstart=e=>{e.dataTransfer.setData('text/plain',b.dataset.app);state.s2.selected=b.dataset.app}});
-  host.querySelectorAll('[data-field]').forEach(b=>{b.ondragover=e=>{e.preventDefault();b.classList.add('drop-ready')};b.ondragleave=()=>b.classList.remove('drop-ready');b.ondrop=e=>{e.preventDefault();b.classList.remove('drop-ready');state.s2.selected=e.dataTransfer.getData('text/plain');b.click()};b.onclick=()=>{if(!state.s2.selected){feedback('Hãy chọn một ứng dụng trước.','bad');return}const p=profiles.find(x=>x.app===state.s2.selected),ok=p.id===b.dataset.field;LMS().event('answered',{id:`s02_${p.app}`,chosen:b.dataset.field,correct:ok});if(ok){state.s2.pairs[p.app]=p.id;state.s2.selected=null;const done=Object.keys(state.s2.pairs).length===5;if(done)completeStage(`${p.correct} Câu chốt: Tri thức Sinh học được vận dụng trong nhiều lĩnh vực để giải quyết những vấn đề cụ thể của đời sống và sản xuất.`);else feedback(p.correct,'ok')}else{state.s2.selected=null;feedback(p.wrong,'bad')}renderS2Match();evidence(profiles.map(x=>[`Ghép đúng ${x.name}`,state.s2.pairs[x.app]===x.id]))}});
+
+  host.innerHTML=`
+    <div class="section-label">Nhiệm vụ: Ghép 5 ứng dụng với 5 lĩnh vực tương ứng</div>
+    <div class="match-wrap">
+      <div>
+        ${profiles.map(p=>`<button class="choice ${state.s2.selected===p.app?'selected':''} ${state.s2.pairs[p.app]?'correct':''}" data-app="${p.app}" ${state.s2.pairs[p.app]?'disabled':''}>${p.appText}</button>`).join('')}
+      </div>
+      <div>
+        ${profiles.map(p=>`<button class="choice ${Object.values(state.s2.pairs).includes(p.id)?'correct':''}" data-field="${p.id}" ${Object.values(state.s2.pairs).includes(p.id)?'disabled':''}>${p.name}</button>`).join('')}
+      </div>
+    </div>
+    ${pairs.length?`<div class="pair-lines">${pairs.map(([app,id])=>{const p=profiles.find(x=>x.app===app);return`<div class="paired-row"><span>${p.appText}</span><span class="pair-arrow"><i class="ti ti-arrow-right"></i></span><span>${p.name}</span></div>`}).join('')}</div>`:''}
+    ${all?'<div class="summary"><strong>Câu chốt màn 2:</strong> Tri thức Sinh học là nền tảng cốt lõi được ứng dụng trong Y – dược, Pháp y, Nông nghiệp, Thực phẩm và Bảo vệ môi trường.</div>':''}
+  `;
+
+  host.querySelectorAll('[data-app]').forEach(b=>{
+    b.onclick=()=>{
+      state.s2.selected=b.dataset.app;
+      setGuide('Đã chọn ứng dụng. Hãy chọn nút Lĩnh vực tương ứng ở cột bên phải.');
+      persist('Chọn ứng dụng');
+      renderS2Match();
+    };
+  });
+
+  host.querySelectorAll('[data-field]').forEach(b=>{
+    b.onclick=()=>{
+      if(!state.s2.selected){
+        feedback('Chưa chọn ứng dụng! Hãy bấm chọn 1 ứng dụng bên cột trái trước.','bad');
+        return;
+      }
+      const p=profiles.find(x=>x.app===state.s2.selected),ok=p.id===b.dataset.field;
+      LMS().event('answered',{id:`s02_${p.app}`,chosen:b.dataset.field,correct:ok});
+      if(ok){
+        state.s2.pairs[p.app]=p.id;
+        state.s2.selected=null;
+        const done=Object.keys(state.s2.pairs).length===5;
+        if(done){
+          setGuide('Hoàn thành xuất sắc Màn 2! Bấm "Tiếp tục" để sang Màn 3.');
+          completeStage(`${p.correct} Đã hoàn thành ghép cả 5 lĩnh vực!`);
+        } else {
+          setGuide('Đúng rồi! Tiếp tục chọn ứng dụng khác để ghép.');
+          feedback(p.correct,'ok');
+        }
+      } else {
+        state.s2.selected=null;
+        setGuide('Chưa đúng. Xem lại thông tin hồ sơ và chọn lại lĩnh vực phù hợp.');
+        feedback(p.wrong,'bad');
+      }
+      renderS2Match();
+      evidence(profiles.map(x=>[`Ghép đúng ${x.name}`,state.s2.pairs[x.app]===x.id]));
+    };
+  });
 }
+
 function renderStage3(){
-  const c=chains[state.s3.topic];setAsset(c.asset);setGuide('Chọn lần lượt ba thẻ theo trình tự hiểu biết → giải pháp → tác động.');
+  const c=chains[state.s3.topic];
+  setAsset(c.asset);
+  if(!state.s3.done.has(state.s3.topic)){
+    setGuide(`Sắp xếp chuỗi "${c.name}": Bấm chọn 3 thẻ theo đúng trình tự [Hiểu biết] → [Giải pháp] → [Tác động].`);
+  } else if(state.s3.done.size<3){
+    setGuide(`Đã xong chuỗi "${c.name}". Hãy chọn tab chuỗi tiếp theo ở trên để hoàn thành.`);
+  } else {
+    setGuide('Bước cuối: Trả lời câu hỏi nhận định khái quát bên dưới.');
+  }
+
   if(!state.s3.orders[state.s3.topic])state.s3.orders[state.s3.topic]=[];
-  workspace.innerHTML=`<h2>Một ứng dụng Sinh học tạo ra tác động xã hội như thế nào?</h2><p class="workspace-note">Sắp xếp mỗi chuỗi theo trình tự: hiểu biết Sinh học → giải pháp → tác động.</p><div class="chain-tabs">${Object.entries(chains).map(([k,v])=>`<button class="btn ${k===state.s3.topic?'btn-primary':''}" data-topic="${k}">${v.name}</button>`).join('')}</div><div class="chain-cards ${state.s3.done.has(state.s3.topic)?'arrows-on':''}" id="chainCards"></div><button class="btn btn-primary" id="checkChain" style="margin-top:10px" ${state.s3.done.has(state.s3.topic)?'disabled':''}><i class="ti ti-check"></i> Kiểm tra chuỗi</button><div id="generalBox" class="${state.s3.done.size===3?'':'hidden'}"></div>${state.s3.general?'<div class="summary"><strong>Câu chốt</strong><br>Kiến thức Sinh học tạo cơ sở cho các giải pháp; những giải pháp phù hợp có thể tạo ra tác động đối với kinh tế và xã hội.</div>':''}`;
-  const order=state.s3.orders[state.s3.topic],poolKeys={food:['impact','knowledge','solution'],disease:['solution','impact','knowledge'],environment:['impact','solution','knowledge']}[state.s3.topic],pool=poolKeys.filter(k=>!order.includes(k)).map(k=>c.cards.find(x=>x[0]===k));
-  document.getElementById('chainCards').innerHTML=[...order.map(k=>c.cards.find(x=>x[0]===k)),...pool].map((x,i)=>`<button class="choice chain-card ${i<order.length?'selected':''}" data-key="${x[0]}"><span class="order-badge">${i<order.length?i+1:'?'}</span>${x[1]}</button>`).join('');
-  document.querySelectorAll('[data-topic]').forEach(b=>b.onclick=()=>{state.s3.topic=b.dataset.topic;persist('Chọn chủ đề '+state.s3.topic);renderStage3()});
-  document.querySelectorAll('.chain-card').forEach(b=>b.onclick=()=>{if(state.s3.done.has(state.s3.topic))return;const key=b.dataset.key,arr=state.s3.orders[state.s3.topic],ix=arr.indexOf(key);if(ix>=0)arr.splice(ix,1);else if(arr.length<3)arr.push(key);persist('Sắp xếp '+state.s3.topic);renderStage3()});
-  document.getElementById('checkChain').onclick=()=>{const submitted=[...state.s3.orders[state.s3.topic]],ok=submitted.join(',')==='knowledge,solution,impact';LMS().event('answered',{id:`s03_${state.s3.topic}`,chosen:submitted,correct:ok});if(ok){state.s3.done.add(state.s3.topic);feedback('Đúng. Mũi tên thể hiện kiến thức tạo cơ sở cho giải pháp, rồi giải pháp phù hợp mới góp phần tạo tác động.','ok');renderStage3()}else feedback('Hãy xác định bước cung cấp cơ sở khoa học, bước tạo ra giải pháp và kết quả xuất hiện sau khi giải pháp được triển khai.','bad')};
-  evidence([...Object.entries(chains).map(([k,v])=>[`Hoàn thành ${v.name}`,state.s3.done.has(k)]),['Chọn đúng nhận định khái quát',state.s3.general]]);if(state.s3.done.size===3&&!state.s3.general)renderGeneral()
+  const order=state.s3.orders[state.s3.topic];
+  const poolKeys={food:['impact','knowledge','solution'],disease:['solution','impact','knowledge'],environment:['impact','solution','knowledge']}[state.s3.topic];
+  const pool=poolKeys.filter(k=>!order.includes(k)).map(k=>c.cards.find(x=>x[0]===k));
+
+  workspace.innerHTML=`
+    <h2>Một ứng dụng Sinh học tạo ra tác động xã hội như thế nào?</h2>
+    <p class="workspace-note">Chọn từng tab chuỗi để thực hiện sắp xếp đúng tiến trình logic.</p>
+    
+    <div class="chain-tabs">
+      ${Object.entries(chains).map(([k,v])=>`<button class="btn ${k===state.s3.topic?'btn-primary':''} ${state.s3.done.has(k)?'done':''}" data-topic="${k}"><i class="ti ti-${state.s3.done.has(k)?'circle-check':'circle'}"></i> ${v.name}</button>`).join('')}
+    </div>
+
+    <div class="chain-cards ${state.s3.done.has(state.s3.topic)?'arrows-on':''}" id="chainCards">
+      ${[...order.map(k=>c.cards.find(x=>x[0]===k)),...pool].map((x,i)=>`<button class="choice chain-card ${i<order.length?'selected':''}" data-key="${x[0]}"><span class="order-badge">${i<order.length?i+1:'?'}</span>${x[1]}</button>`).join('')}
+    </div>
+
+    <button class="btn btn-primary" id="checkChain" style="margin-top:14px" ${state.s3.done.has(state.s3.topic)?'disabled':''}><i class="ti ti-check"></i> Kiểm tra chuỗi</button>
+    <div id="generalBox" class="${state.s3.done.size===3?'':'hidden'}"></div>
+    ${state.s3.general?'<div class="summary"><strong>Câu chốt màn 3:</strong> Kiến thức Sinh học tạo cơ sở khoa học; giải pháp phù hợp sẽ đem lại tác động tích cực tới kinh tế – xã hội.</div>':''}
+  `;
+
+  document.querySelectorAll('[data-topic]').forEach(b=>b.onclick=()=>{
+    state.s3.topic=b.dataset.topic;
+    persist('Chọn chủ đề '+state.s3.topic);
+    renderStage3();
+  });
+
+  document.querySelectorAll('.chain-card').forEach(b=>b.onclick=()=>{
+    if(state.s3.done.has(state.s3.topic))return;
+    const key=b.dataset.key,arr=state.s3.orders[state.s3.topic],ix=arr.indexOf(key);
+    if(ix>=0)arr.splice(ix,1);
+    else if(arr.length<3)arr.push(key);
+    persist('Sắp xếp '+state.s3.topic);
+    renderStage3();
+  });
+
+  document.getElementById('checkChain').onclick=()=>{
+    const submitted=[...state.s3.orders[state.s3.topic]],ok=submitted.join(',')==='knowledge,solution,impact';
+    LMS().event('answered',{id:`s03_${state.s3.topic}`,chosen:submitted,correct:ok});
+    if(ok){
+      state.s3.done.add(state.s3.topic);
+      feedback('Chính xác! Chuỗi thể hiện rõ: Kiến thức $\\rightarrow$ Giải pháp $\\rightarrow$ Tác động xã hội.','ok');
+      renderStage3();
+    } else {
+      setGuide('Chưa đúng thứ tự logic. Thẻ 1 phải là Hiểu biết, thẻ 2 là Giải pháp, thẻ 3 mới là Tác động.');
+      feedback('Sắp xếp chưa đúng. Hãy xác định đâu là cơ sở khoa học ban đầu, đâu là giải pháp và đâu là kết quả tác động.','bad');
+    }
+  };
+
+  evidence([...Object.entries(chains).map(([k,v])=>[`Hoàn thành ${v.name}`,state.s3.done.has(k)]),['Chọn nhận định khái quát',state.s3.general]]);
+  if(state.s3.done.size===3&&!state.s3.general)renderGeneral();
 }
+
 function renderGeneral(){
-  const box=document.getElementById('generalBox');if(!box)return;box.classList.remove('hidden');const opts=[
+  const box=document.getElementById('generalBox');
+  if(!box)return;
+  box.classList.remove('hidden');
+  const opts=[
     'Kiến thức tự động giải quyết hoàn toàn vấn đề.',
-    'Kiến thức tạo cơ sở, cần được chuyển thành giải pháp và triển khai trong điều kiện phù hợp.',
-    'Mọi ứng dụng chỉ tạo ra lợi ích và không có giới hạn.',
+    'Kiến thức tạo cơ sở khoa học, cần được chuyển thành giải pháp và triển khai thực tiễn.',
+    'Mọi ứng dụng chỉ tạo ra lợi ích và không có hạn chế.',
     'Sinh học không liên quan đến các vấn đề xã hội.'
-  ];box.innerHTML=`<div class="section-label">Điểm chung của ba chuỗi tác động là gì?</div><div class="radio-list">${opts.map((x,i)=>`<label class="radio-choice"><input type="radio" name="general" value="${i}" ${state.s3.generalChoice===i?'checked':''}><span>${x}</span></label>`).join('')}</div><button class="btn btn-primary" id="checkGeneral" style="margin-top:10px">Xác nhận</button>`;
-  document.querySelectorAll('input[name=general]').forEach(input=>input.onchange=()=>{state.s3.generalChoice=+input.value;persist('Chọn nhận định khái quát')});
-  document.getElementById('checkGeneral').onclick=()=>{const choice=state.s3.generalChoice;if(choice===null){feedback('Hãy chọn một nhận định.','bad');return}const ok=choice===1;LMS().event('answered',{id:'s03_general',chosen:choice,correct:ok});if(ok){state.s3.general=true;completeStage('Đúng. Tác động kinh tế – xã hội không xuất hiện trực tiếp từ một kiến thức riêng lẻ. Kiến thức cần được chuyển thành giải pháp và được triển khai trong thực tiễn.');renderStage3()}else feedback(choice===2?'Một giải pháp cần được đánh giá trong điều kiện sử dụng cụ thể. Hiệu quả và rủi ro không giống nhau trong mọi hoàn cảnh.':'Sinh học cung cấp cơ sở và giải pháp. Việc giải quyết một vấn đề còn phụ thuộc vào nhiều điều kiện khác.','bad')}
+  ];
+  box.innerHTML=`
+    <div class="section-label">Khái quát: Điểm chung của ba chuỗi tác động trên là gì?</div>
+    <div class="radio-list">
+      ${opts.map((x,i)=>`<label class="radio-choice"><input type="radio" name="general" value="${i}" ${state.s3.generalChoice===i?'checked':''}><span>${x}</span></label>`).join('')}
+    </div>
+    <button class="btn btn-primary" id="checkGeneral" style="margin-top:12px"><i class="ti ti-send"></i> Xác nhận đáp án</button>
+  `;
+
+  document.querySelectorAll('input[name=general]').forEach(input=>input.onchange=()=>{
+    state.s3.generalChoice=+input.value;
+    persist('Chọn nhận định khái quát');
+  });
+
+  document.getElementById('checkGeneral').onclick=()=>{
+    const choice=state.s3.generalChoice;
+    if(choice===null){
+      feedback('Chưa chọn câu trả lời! Bấm chọn 1 lựa chọn trước khi xác nhận.','bad');
+      return;
+    }
+    const ok=choice===1;
+    LMS().event('answered',{id:'s03_general',chosen:choice,correct:ok});
+    if(ok){
+      state.s3.general=true;
+      completeStage('Chính xác! Kiến thức tạo cơ sở khoa học, cần chuyển thành giải pháp và triển khai đúng điều kiện.');
+      renderStage3();
+    } else {
+      feedback('Chưa đúng. Tri thức Sinh học không thể tự phát huy tác dụng nếu không được thiết kế thành giải pháp cụ thể.','bad');
+    }
+  };
 }
+
 function renderStage4(){
-  setAsset(state.s4.answer===false?'A12':'A03');setGuide('Trả lời nhận định, sau đó chọn ít nhất ba nghề ngoài bác sĩ có sử dụng kiến thức Sinh học.');
+  setAsset(state.s4.answer===false?'A12':'A03');
+  if (state.s4.answer===null) {
+    setGuide('Bước 1: Trả lời nhận định Đúng/Sai dưới đây.');
+  } else if (!state.s4.done) {
+    setGuide('Bước 2: Chọn ít nhất 3 nghề nghiệp có áp dụng kiến thức Sinh học (trừ Bác sĩ).');
+  } else {
+    setGuide('Hoàn thành toàn bộ Module! Nhấn nút "Hoàn thành" để kết thúc.');
+  }
+
   const selected=[...state.s4.careers].map(id=>careers.find(c=>c.id===id)).filter(Boolean);
-  workspace.innerHTML=`<h2>Từ lĩnh vực ứng dụng đến nghề nghiệp</h2><p class="workspace-note"><strong>Nhận định:</strong> Bác sĩ là nghề duy nhất cần kiến thức Sinh học. Đúng hay sai?</p><p class="workspace-note"><strong>Câu hỏi:</strong> Kiến thức Sinh học được sử dụng trong những nghề nào?</p><div class="option-grid"><button class="choice ${state.s4.answer===true?'selected':''}" data-tf="true">Đúng</button><button class="choice ${state.s4.answer===false?'correct':''}" data-tf="false">Sai</button></div><div id="careerBox" class="${state.s4.answer===false?'':'hidden'}"><div class="section-label">Một số nghề tiêu biểu — danh sách ví dụ, không phải danh mục đầy đủ</div><div class="career-groups">${careerGroups.map(([field,ids])=>`<section class="career-group"><h3>${field}</h3><div class="career-grid">${ids.map(id=>{const c=careers.find(x=>x.id===id);return`<button class="choice ${state.s4.careers.has(c.id)?'selected':''}" data-career="${c.id}">${c.name}</button>`}).join('')}</div></section>`).join('')}</div>${selected.length?`<div class="career-links">${selected.map(c=>`<div class="career-link"><span>${c.name}</span><span class="pair-arrow"><i class="ti ti-arrow-right"></i></span><span>${c.field}</span></div>`).join('')}</div><div class="relation-note">Một nghề có thể sử dụng kiến thức từ nhiều lĩnh vực. Các đường nối trên màn chỉ thể hiện những mối liên hệ tiêu biểu.</div>`:''}<button class="btn btn-primary" id="checkCareers" style="margin-top:10px">Kiểm tra lựa chọn</button></div>${state.s4.done?'<div id="moduleSummary" class="summary"><strong>Câu chốt module</strong><br>Sinh học góp phần bảo vệ sức khỏe, phát triển sản xuất, nâng cao chất lượng cuộc sống và giải quyết một số vấn đề chung của nhân loại.<br><br><strong>Câu chuyển M03</strong><br>Việc ứng dụng thành tựu Sinh học cần được xem xét như thế nào để bảo đảm lợi ích lâu dài cho con người, xã hội và môi trường?</div>':''}${state.complete?'<div class="summary module-final"><strong>Kết thúc module</strong><br>Sinh học cung cấp cơ sở khoa học cho việc chăm sóc sức khỏe, phát triển sản xuất, chế biến thực phẩm và bảo vệ môi trường. Khi được chuyển thành những giải pháp phù hợp, tri thức Sinh học có thể góp phần nâng cao chất lượng cuộc sống và thúc đẩy sự phát triển kinh tế – xã hội.<br><br><strong>Câu chuyển</strong><br>Các ứng dụng Sinh học có thể mang lại nhiều lợi ích, nhưng cũng cần được đánh giá về tác động lâu dài đối với con người, xã hội và môi trường. Nội dung này sẽ được tiếp tục ở SH10_B01_M03.</div>':''}`;
-  document.querySelectorAll('[data-tf]').forEach(b=>b.onclick=()=>{const ans=b.dataset.tf==='true';state.s4.answer=ans;LMS().event('answered',{id:'s04_doctor_only',chosen:ans?'Đúng':'Sai',correct:!ans});if(ans){feedback('Hãy nhìn lại các lĩnh vực vừa học. Mỗi lĩnh vực đều cần nhiều người làm những công việc khác nhau.','bad');renderStage4()}else{feedback('Đúng. Bác sĩ chỉ là một trong nhiều nghề sử dụng kiến thức Sinh học. Kiến thức này còn cần thiết trong nghiên cứu, xét nghiệm, nông nghiệp, thực phẩm và môi trường.','ok');persist('Chọn đúng Sai');renderStage4()}});
-  document.querySelectorAll('[data-career]').forEach(b=>b.onclick=()=>{const id=b.dataset.career;if(id==='doctor'){feedback('Y – dược học hoặc bảo vệ môi trường là lĩnh vực. Bác sĩ, dược sĩ hoặc chuyên gia môi trường mới là tên nghề.','bad');return}state.s4.careers.has(id)?state.s4.careers.delete(id):state.s4.careers.add(id);persist('Chọn nghề '+id);renderStage4()});
-  const check=document.getElementById('checkCareers');if(check)check.onclick=()=>{if(state.s4.careers.size<3){feedback(`Bạn đã chọn ${state.s4.careers.size}/3 nghề. Hãy chọn thêm nghề có sử dụng kiến thức Sinh học.`,'bad');return}state.s4.done=true;LMS().event('answered',{id:'s04_careers',chosen:[...state.s4.careers],correct:true});completeStage('Sinh học góp phần bảo vệ sức khỏe, phát triển sản xuất, nâng cao chất lượng cuộc sống và giải quyết một số vấn đề chung của nhân loại. Câu chuyển M03: Việc ứng dụng thành tựu Sinh học cần được xem xét như thế nào để bảo đảm lợi ích lâu dài cho con người, xã hội và môi trường?');renderStage4()};
-  evidence([['Chọn đúng “Sai”',state.s4.answer===false],['Chọn ít nhất ba nghề ngoài bác sĩ',state.s4.careers.size>=3],['Đọc câu chốt và câu chuyển',state.s4.done]])
+
+  workspace.innerHTML=`
+    <h2>Từ lĩnh vực ứng dụng đến nghề nghiệp chuyên môn</h2>
+    <p class="workspace-note"><strong>Nhận định:</strong> "Bác sĩ là nghề duy nhất cần kiến thức Sinh học." Đúng hay Sai?</p>
+    
+    <div class="option-grid">
+      <button class="choice ${state.s4.answer===true?'selected':''}" data-tf="true"><i class="ti ti-circle-check"></i> Đúng</button>
+      <button class="choice ${state.s4.answer===false?'correct':''}" data-tf="false"><i class="ti ti-circle-x"></i> Sai</button>
+    </div>
+
+    <div id="careerBox" class="${state.s4.answer===false?'':'hidden'}">
+      <div class="section-label">Chọn ít nhất 3 nghề nghiệp tiêu biểu sử dụng kiến thức Sinh học:</div>
+      <div class="career-groups">
+        ${careerGroups.map(([field,ids])=>`
+          <section class="career-group">
+            <h3><i class="ti ti-briefcase"></i> Lĩnh vực: ${field}</h3>
+            <div class="career-grid">
+              ${ids.map(id=>{const c=careers.find(x=>x.id===id);return`<button class="choice ${state.s4.careers.has(c.id)?'selected':''}" data-career="${c.id}">${c.name}</button>`;}).join('')}
+            </div>
+          </section>
+        `).join('')}
+      </div>
+
+      ${selected.length?`<div class="career-links">${selected.map(c=>`<div class="career-link"><span>${c.name}</span><span class="pair-arrow"><i class="ti ti-arrow-right"></i></span><span>${c.field}</span></div>`).join('')}</div>`:''}
+
+      <button class="btn btn-primary" id="checkCareers" style="margin-top:14px"><i class="ti ti-check"></i> Kiểm tra nghề nghiệp đã chọn (${state.s4.careers.size}/3)</button>
+    </div>
+
+    ${state.s4.done?'<div id="moduleSummary" class="summary"><strong>Tổng kết Module 02:</strong> Sinh học đóng vai trò quan trọng trong chăm sóc sức khỏe, sản xuất nông nghiệp, công nghệ thực phẩm và bảo vệ môi trường.</div>':''}
+  `;
+
+  document.querySelectorAll('[data-tf]').forEach(b=>b.onclick=()=>{
+    const ans=b.dataset.tf==='true';
+    state.s4.answer=ans;
+    LMS().event('answered',{id:'s04_doctor_only',chosen:ans?'Đúng':'Sai',correct:!ans});
+    if(ans){
+      feedback('Chưa đúng. Ngoài bác sĩ, còn rất nhiều nghề như dược sĩ, kỹ sư nông nghiệp, công nghệ thực phẩm... đều cần kiến thức Sinh học.','bad');
+      renderStage4();
+    } else {
+      feedback('Chính xác! Bác sĩ chỉ là một trong số rất nhiều nghề nghiệp áp dụng Sinh học.','ok');
+      persist('Chọn đúng Sai');
+      renderStage4();
+    }
+  });
+
+  document.querySelectorAll('[data-career]').forEach(b=>b.onclick=()=>{
+    const id=b.dataset.career;
+    if(id==='doctor'){
+      feedback('Lưu ý: Đã bác bỏ nhận định bác sĩ là nghề duy nhất, hãy chọn các nghề nghiệp khác trong danh sách!','bad');
+      return;
+    }
+    state.s4.careers.has(id)?state.s4.careers.delete(id):state.s4.careers.add(id);
+    persist('Chọn nghề '+id);
+    renderStage4();
+  });
+
+  const check=document.getElementById('checkCareers');
+  if(check)check.onclick=()=>{
+    if(state.s4.careers.size<3){
+      feedback(`Mới chọn ${state.s4.careers.size}/3 nghề. Hãy chọn thêm ít nhất 3 nghề nghiệp!`,`bad`);
+      return;
+    }
+    state.s4.done=true;
+    LMS().event('answered',{id:'s04_careers',chosen:[...state.s4.careers],correct:true});
+    completeStage('Hoàn thành bài tập phân biệt nghề nghiệp! Sinh học cung cấp tri thức cho đa dạng các ngành nghề.');
+    renderStage4();
+  };
+
+  evidence([['Chọn đúng nhận định "Sai"',state.s4.answer===false],['Chọn ít nhất 3 nghề ngoài bác sĩ',state.s4.careers.size>=3],['Hoàn thành bài học',state.s4.done]]);
 }
-const stageTts={1:'Chọn một thẻ kiến thức, sau đó chọn tình huống mà hiểu biết đó có thể giải thích hoặc hỗ trợ.',2:'Chọn từng lĩnh vực để mở hồ sơ. Sau khi xem đủ năm hồ sơ, hãy ghép mỗi ứng dụng với lĩnh vực phù hợp.',3:'Chọn một chủ đề, sau đó sắp xếp ba thẻ theo quan hệ nguyên nhân – kết quả.',4:'Trả lời nhận định, sau đó chọn ít nhất ba nghề ngoài bác sĩ có sử dụng kiến thức Sinh học.'};
-function gotoStage(n){if(n>state.unlocked||n<1||n>4)return;state.stage=n;currentTtsText=stageTts[n];renderShell();const panel=document.getElementById('feedbackPanel');panel.textContent='Hệ thống sẽ phản hồi sau mỗi thao tác có ý nghĩa.';panel.className='feedback';({1:renderStage1,2:renderStage2,3:renderStage3,4:renderStage4})[n]();LMS().progress({done:state.completedStages.size,total:4});persist('Vào màn '+n)}
+
+const stageTts={
+  1:'Chọn một thẻ kiến thức, sau đó chọn tình huống đời sống tương ứng.',
+  2:'Khám phá năm hồ sơ lĩnh vực, sau đó ghép ứng dụng vào đúng lĩnh vực.',
+  3:'Sắp xếp các thẻ theo đúng chuỗi Hiểu biết, Giải pháp và Tác động.',
+  4:'Trả lời câu hỏi nhận định và chọn các nghề nghiệp áp dụng Sinh học.'
+};
+
+function gotoStage(n){
+  if(n>state.unlocked||n<1||n>4)return;
+  state.stage=n;
+  currentTtsText=stageTts[n];
+  renderShell();
+  document.getElementById('feedbackPanel').textContent='Hệ thống sẽ phản hồi chỉ dẫn chi tiết sau mỗi thao tác.';
+  document.getElementById('feedbackPanel').className='feedback';
+  ({1:renderStage1,2:renderStage2,3:renderStage3,4:renderStage4})[n]();
+  LMS().progress({done:state.completedStages.size,total:4});
+  persist('Vào màn '+n);
+}
+
 document.querySelectorAll('.stage-tab').forEach(b=>b.onclick=()=>gotoStage(+b.dataset.stage));
-document.getElementById('btnReset').onclick=()=>{const n=state.stage;if(n===1)state.s1={selected:null,pairs:{}};if(n===2)state.s2={viewed:new Set(),activeProfile:null,selected:null,pairs:{}};if(n===3)state.s3={topic:'food',orders:{},done:new Set(),generalChoice:null,general:false};if(n===4)state.s4={answer:null,careers:new Set(),done:false};state.completedStages.delete(n);state.complete=false;gotoStage(n)};
-document.getElementById('btnNext').onclick=()=>{if(state.stage<4){gotoStage(state.stage+1);return}if(state.complete||!state.s4.done)return;state.complete=true;renderShell();renderStage4();document.getElementById('btnNext').disabled=true;LMS().progress({done:4,total:4});if(!completionSent){completionSent=true;LMS().complete({summary:'Hoàn thành module Vai trò của Sinh học trong đời sống và các lĩnh vực nghề nghiệp.',score:4,max:4,items:[{id:'s01',isCorrect:true,evidence:'Ghép đúng ba hiểu biết với ba tình huống đời sống'},{id:'s02',isCorrect:true,evidence:'Mở đủ hồ sơ và ghép đúng năm ứng dụng – lĩnh vực'},{id:'s03',isCorrect:true,evidence:'Sắp xếp đúng ba chuỗi và chọn nhận định khái quát'},{id:'s04',isCorrect:true,evidence:'Bác bỏ nhận định sai và chọn đủ nghề nghiệp'}]})}feedback('Sinh học cung cấp cơ sở khoa học cho việc chăm sóc sức khỏe, phát triển sản xuất, chế biến thực phẩm và bảo vệ môi trường. Khi được chuyển thành những giải pháp phù hợp, tri thức Sinh học có thể góp phần nâng cao chất lượng cuộc sống và thúc đẩy sự phát triển kinh tế – xã hội. Các ứng dụng Sinh học có thể mang lại nhiều lợi ích, nhưng cũng cần được đánh giá về tác động lâu dài đối với con người, xã hội và môi trường. Nội dung này sẽ được tiếp tục ở SH10_B01_M03.','ok');persist('Hoàn thành module')};
-document.getElementById('btnTTS').onclick=()=>{if(!('speechSynthesis'in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(currentTtsText||document.getElementById('feedbackPanel').textContent);u.lang='vi-VN';u.rate=1;speechSynthesis.speak(u)};
-function restoreState(saved){if(!saved||typeof saved!=='object')return;state.unlocked=Math.min(4,Math.max(1,saved.unlocked||1));state.complete=!!(saved.complete||saved.MODULE_SH10_B01_M02_COMPLETE);completionSent=state.complete;state.completedStages=new Set(Array.isArray(saved.completedStages)?saved.completedStages.filter(n=>n>=1&&n<=4):[]);if(saved.errors)state.errors={s1:+saved.errors.s1||0,s2:+saved.errors.s2||0,s3:+saved.errors.s3||0,s4:+saved.errors.s4||0};if(saved.S01_STATE)state.s1={selected:saved.S01_STATE.selected||null,pairs:{...(saved.S01_STATE.pairs||{})}};if(saved.S02_STATE)state.s2={viewed:new Set(saved.S02_STATE.viewed||[]),activeProfile:saved.S02_STATE.activeProfile||null,selected:saved.S02_STATE.selected||null,pairs:{...(saved.S02_STATE.pairs||{})}};if(saved.S03_STATE)state.s3={topic:saved.S03_STATE.topic||'food',orders:{...(saved.S03_STATE.orders||{})},done:new Set(saved.S03_STATE.done||[]),generalChoice:Number.isInteger(saved.S03_STATE.generalChoice)?saved.S03_STATE.generalChoice:null,general:!!saved.S03_STATE.general};if(saved.S04_STATE)state.s4={answer:typeof saved.S04_STATE.answer==='boolean'?saved.S04_STATE.answer:null,careers:new Set(saved.S04_STATE.careers||[]),done:!!saved.S04_STATE.done};state.stage=Math.min(state.unlocked,Math.max(1,saved.currentStep||1))}
-if(window.AiducationLMS)window.AiducationLMS.onResume=s=>{restoreState(s);gotoStage(state.stage)};
-function reportHeight(){LMS().resize({height:document.documentElement.scrollHeight})}
-addEventListener('load',()=>{LMS().ready({id:'SH10_B01_M02',version:'2.0',stages:4});reportHeight()});
-new ResizeObserver(()=>{clearTimeout(window._rz);window._rz=setTimeout(reportHeight,100)}).observe(document.body);
+
+document.getElementById('btnReset').onclick=()=>{
+  const n=state.stage;
+  if(n===1)state.s1={selected:null,pairs:{}};
+  if(n===2)state.s2={viewed:new Set(),activeProfile:null,selected:null,pairs:{}};
+  if(n===3)state.s3={topic:'food',orders:{},done:new Set(),generalChoice:null,general:false};
+  if(n===4)state.s4={answer:null,careers:new Set(),done:false};
+  state.completedStages.delete(n);
+  state.complete=false;
+  gotoStage(n);
+};
+
+document.getElementById('btnNext').onclick=()=>{
+  if(state.stage<4){gotoStage(state.stage+1);return;}
+  if(state.complete||!state.s4.done)return;
+  state.complete=true;
+  renderShell();
+  renderStage4();
+  document.getElementById('btnNext').disabled=true;
+  LMS().progress({done:4,total:4});
+  if(!completionSent){
+    completionSent=true;
+    LMS().complete({
+      summary:'Hoàn thành module Vai trò của Sinh học trong đời sống và các lĩnh vực nghề nghiệp.',
+      score:4,max:4,
+      items:[
+        {id:'s01',isCorrect:true,evidence:'Ghép đúng ba hiểu biết với ba tình huống đời sống'},
+        {id:'s02',isCorrect:true,evidence:'Mở đủ hồ sơ và ghép đúng năm ứng dụng – lĩnh vực'},
+        {id:'s03',isCorrect:true,evidence:'Sắp xếp đúng ba chuỗi và chọn nhận định khái quát'},
+        {id:'s04',isCorrect:true,evidence:'Bác bỏ nhận định sai và chọn đủ nghề nghiệp'}
+      ]
+    });
+  }
+  feedback('Chúc mừng em đã hoàn thành xuất sắc toàn bộ Module 02!','ok');
+  persist('Hoàn thành module');
+};
+
+document.getElementById('btnPrev').onclick=()=>{
+  if(state.stage>1){
+    gotoStage(state.stage-1);
+  }
+};
+
+function restoreState(saved){
+  if(!saved||typeof saved!=='object')return;
+  state.unlocked=Math.min(4,Math.max(1,saved.unlocked||1));
+  state.complete=!!(saved.complete||saved.MODULE_SH10_B01_M02_COMPLETE);
+  completionSent=state.complete;
+  state.completedStages=new Set(Array.isArray(saved.completedStages)?saved.completedStages.filter(n=>n>=1&&n<=4):[]);
+  if(saved.errors)state.errors={s1:+saved.errors.s1||0,s2:+saved.errors.s2||0,s3:+saved.errors.s3||0,s4:+saved.errors.s4||0};
+  if(saved.S01_STATE)state.s1={selected:saved.S01_STATE.selected||null,pairs:{...(saved.S01_STATE.pairs||{})}};
+  if(saved.S02_STATE)state.s2={viewed:new Set(saved.S02_STATE.viewed||[]),activeProfile:saved.S02_STATE.activeProfile||null,selected:saved.S02_STATE.selected||null,pairs:{...(saved.S02_STATE.pairs||{})}};
+  if(saved.S03_STATE)state.s3={topic:saved.S03_STATE.topic||'food',orders:{...(saved.S03_STATE.orders||{})},done:new Set(saved.S03_STATE.done||[]),generalChoice:Number.isInteger(saved.S03_STATE.generalChoice)?saved.S03_STATE.generalChoice:null,general:!!saved.S03_STATE.general};
+  if(saved.S04_STATE)state.s4={answer:typeof saved.S04_STATE.answer==='boolean'?saved.S04_STATE.answer:null,careers:new Set(saved.S04_STATE.careers||[]),done:!!saved.S04_STATE.done};
+  state.stage=Math.min(state.unlocked,Math.max(1,saved.currentStep||1));
+}
+
+if(window.AiducationLMS)window.AiducationLMS.onResume=s=>{restoreState(s);gotoStage(state.stage);};
+function reportHeight(){LMS().resize({height:document.documentElement.scrollHeight});}
+addEventListener('load',()=>{LMS().ready({id:'SH10_B01_M02',version:'2.0',stages:4});reportHeight();});
+new ResizeObserver(()=>{clearTimeout(window._rz);window._rz=setTimeout(reportHeight,100);}).observe(document.body);
 canvasLoop();gotoStage(1);
 </script>
 </body>
