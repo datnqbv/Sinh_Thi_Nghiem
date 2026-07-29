@@ -62,59 +62,91 @@ Dùng hiển thị thông điệp động lực và thông tin học sinh:
 </div>
 ```
 
-### 2.2. Header Thông Tin Bài Học (`.moduleHead`)
-Chứa thông tin tổng quan của Bài học hiện tại:
+### 2.2. Header Thông Tin Bài Học & Thanh Module Tích Hợp (`.moduleHead` & `.module-tabs-inline`)
+Chứa thông tin tổng quan của Bài học hiện tại. **BẮT BUỘC đặt các nút chuyển Module (`Module 1`, `Module 2`, `Module 3`...) nằm NGHÈN NGHANG bên cạnh nhãn xanh lá (`.moduleLabel`)**:
+- Cỡ chữ các nút `Module 1`, `Module 2`... **bắt buộc nhỏ hơn (`font-size: 0.75rem`)** cỡ chữ nhãn xanh lá (`0.85rem`).
+- Khi ở bài/module nào, nút đó sẽ **phát sáng nổi bật (glowing effect: `box-shadow: 0 0 12px rgba(16,185,129,0.5);`)**.
+
 ```html
 <div class="moduleHead">
-  <div class="moduleLabel" id="moduleLabel"><i class="ti ti-dna"></i> Sinh học 10 · Bài 1 · Module 02</div>
+  <div class="moduleHead-top">
+    <div class="moduleLabel" id="moduleLabel"><i class="ti ti-dna"></i> Sinh học 10 · Bài 1 · Module 01</div>
+    <nav class="module-tabs-inline" aria-label="Danh sách Module bài học">
+      <button class="module-tab-btn active" onclick="loadModule('SH10_B01_M02.html', this, 'm1', 'Sinh học 10 · Bài 1 · Module 01', 'Mục tiêu và vai trò của môn Sinh học', 'Yêu cầu...')">
+        Module 1
+      </button>
+      <button class="module-tab-btn" onclick="loadModule('SH10_B02_M02.html', this, 'm2', 'Sinh học 10 · Bài 2 · Module 02', 'Thiết bị nghiên cứu và học tập môn Sinh học', 'Yêu cầu...')">
+        Module 2
+      </button>
+      <button class="module-tab-btn" onclick="loadModule('SH10_B02_M03.html', this, 'm3', 'Sinh học 10 · Bài 2 · Module 03', 'Quy trình nghiên cứu khoa học và xử lí dữ liệu', 'Yêu cầu...')">
+        Module 3
+      </button>
+    </nav>
+  </div>
   <h2 id="moduleTitle">Mục tiêu và vai trò của môn Sinh học</h2>
   <div class="outcome" id="moduleOutcome">Yêu cầu cần đạt: Phân biệt các mục tiêu học tập môn Sinh học...</div>
 </div>
 ```
 
-### 2.3. Thanh Chuyển Module Cuộn Ngang (`.progress-nav-scroll` — BẮT BUỘC)
-Nằm ngay dưới Header và trên vùng học liệu. **BẮT BUỘC giữ trên 1 DÒNG DUY NHẤT cuộn ngang (`flex-wrap: nowrap; overflow-x: auto;`)** và khóa dính khi cuộn (`position: sticky; top: 0; z-index: 100;`). Tên nút chỉ ghi ngắn gọn **`Module 1`**, **`Module 2`**, **`Module 3`**,... không ghi tên bài dài dòng:
-```html
-<nav class="progress-nav-scroll" aria-label="Danh sách Module bài học">
-  <button class="module-tab-btn active" onclick="loadModule('SH10_B01_M02.html', this, 'm1', 'Sinh học 10 · Bài 1 · Module 01', 'Mục tiêu và vai trò của môn Sinh học', 'Yêu cầu...')">
-    Module 1
-  </button>
-  <button class="module-tab-btn" onclick="loadModule('SH10_B02_M02.html', this, 'm2', 'Sinh học 10 · Bài 2 · Module 02', 'Thiết bị nghiên cứu và học tập môn Sinh học', 'Yêu cầu...')">
-    Module 2
-  </button>
-  <button class="module-tab-btn" onclick="loadModule('SH10_B02_M03.html', this, 'm3', 'Sinh học 10 · Bài 2 · Module 03', 'Quy trình nghiên cứu khoa học và xử lí dữ liệu', 'Yêu cầu...')">
-    Module 3
-  </button>
-</nav>
-```
-
 ```css
-.progress-nav-scroll {
+.moduleHead-top {
   display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  gap: 10px;
-  width: 100%;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: var(--bg);
-  padding: 8px 0;
-  scrollbar-width: none;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
 }
-.progress-nav-scroll::-webkit-scrollbar { display: none; }
+.moduleLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--mint);
+  color: var(--teal);
+  padding: 6px 14px;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  border: 1px solid #A7F3D0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.module-tabs-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.module-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 14px;
+  border-radius: 99px;
+  border: 1.5px solid var(--line);
+  background: #fff;
+  color: var(--text);
+  font-size: 0.75rem; /* Nhỏ hơn nhãn xanh lá 0.85rem */
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: .25s ease;
+  box-shadow: var(--shadow-sm);
+}
+.module-tab-btn.active {
+  background: var(--deep);
+  border-color: var(--green);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(16,185,129,0.5), 0 2px 6px rgba(6,78,59,0.3); /* Hiệu ứng phát sáng rực rỡ */
+}
 ```
 
-### 2.4. Khung Nhúng Học Liệu Tương Tác Con (`.flowBox.interactive` + `<iframe>`)
-Bắt buộc bọc container `iframe` học liệu tương tác trong thẻ `.flowBox.interactive` có tiêu đề nhãn **"Kiến thức / Mô phỏng tương tác"** (icon `🧪` hoặc `ti-flask-2`), và vừa vặn chiều cao (`height: 620px`) để không bị thừa khoảng trắng phía dưới:
+### 2.3. Khung Nhúng Học Liệu Tương Tác Con (`.flowBox.interactive` + `<iframe>`)
+Bắt buộc bọc container `iframe` học liệu tương tác trong thẻ `.flowBox.interactive` có tiêu đề nhãn **"Kiến thức"** (icon `🧪` hoặc `ti-flask-2`), và vừa vặn chiều cao (`height: 620px`) để không bị thừa khoảng trắng phía dưới:
 ```html
 <div class="flowBox interactive">
   <div class="flowTitle">
     <div class="iconBox">🧪</div>
     <div>
-      <h3>Kiến thức / Mô phỏng tương tác</h3>
+      <h3>Kiến thức</h3>
       <p>Thực hiện các thao tác mô phỏng khoa học và trả lời câu hỏi ở từng Màn.</p>
     </div>
   </div>
@@ -140,10 +172,11 @@ Bắt buộc bọc container `iframe` học liệu tương tác trong thẻ `.fl
 }
 ```
 
-### 2.5. Các Khối Bổ Trợ Phía Dưới (`.flowBox`)
-Nằm bên dưới ô học liệu tương tác. Bao gồm các khối tiêu chuẩn có viền màu nhận diện riêng:
-- `.flowBox.theory` (Viền xanh lá): Lý thuyết cốt lõi.
-- `.flowBox.note` (Viền vàng/hổ phách): Lưu ý quan trọng.
+### 2.4. Các Khối Bổ Trợ Phía Dưới (`.flowBox`)
+Nằm bên dưới ô học liệu tương tác. Bao gồm 3 khối tiêu chuẩn thứ tự từ trên xuống:
+1. `.flowBox.theory` (Viền xanh lá): **Kiến thức cốt lõi cần nhớ**.
+2. `.flowBox.note` (Viền vàng/hổ phách): **Lưu ý quan trọng**.
+3. `.flowBox.interactive` (Viền xanh teal): **Mô hình / Thí nghiệm / Tương tác** (chứa khung đồ họa mô phỏng `.interactiveBox`, nhãn mô hình `.modelTitle`, ghi chú `.modelText` và hướng dẫn thao tác `.guide`).
 *(Đã loại bỏ khối Luyện tập & Củng cố `.flowBox.quiz` khỏi giao diện file mẹ).*
 
 ---

@@ -115,6 +115,13 @@ button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--gold);outl
   height:100%;
   background:var(--deep);
 }
+.moduleHead-top{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:12px;
+}
 .moduleLabel{
   display:inline-flex;
   align-items:center;
@@ -123,12 +130,42 @@ button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--gold);outl
   color:var(--teal);
   padding:6px 14px;
   border-radius:99px;
-  font-size:0.82rem;
+  font-size:0.85rem;
   font-weight:800;
-  margin-bottom:10px;
   border:1px solid #A7F3D0;
   text-transform:uppercase;
   letter-spacing:0.5px;
+}
+.module-tabs-inline{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.module-tab-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:5px 14px;
+  border-radius:99px;
+  border:1.5px solid var(--line);
+  background:#fff;
+  color:var(--text);
+  font-size:0.75rem; /* Nhỏ hơn dòng chữ xanh lá 0.85rem */
+  font-weight:700;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:.25s ease;
+  box-shadow:var(--shadow-sm);
+}
+.module-tab-btn:hover{
+  border-color:var(--green);
+  background:var(--mint);
+}
+.module-tab-btn.active{
+  background:var(--deep);
+  border-color:var(--green);
+  color:#fff;
+  box-shadow:0 0 12px rgba(16,185,129,0.5), 0 2px 6px rgba(6,78,59,0.3); /* Phát sáng rực rỡ khi đến bài active */
 }
 .moduleHead h2{
   font-size:clamp(1.5rem,3.2vw,2.1rem);
@@ -142,51 +179,6 @@ button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--gold);outl
   line-height:1.55;
   font-size:0.94rem;
   font-weight:500;
-}
-
-/* HORIZONTAL SCROLLABLE MODULE SELECTION BAR */
-.progress-nav-scroll{
-  display:flex;
-  flex-wrap:nowrap;
-  overflow-x:auto;
-  overflow-y:hidden;
-  -webkit-overflow-scrolling:touch;
-  gap:10px;
-  width:100%;
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:var(--bg);
-  padding:8px 0;
-  scrollbar-width:none;
-}
-.progress-nav-scroll::-webkit-scrollbar{display:none}
-.module-tab-btn{
-  flex:0 0 auto;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:12px 18px;
-  border-radius:14px;
-  border:1.5px solid var(--line);
-  background:#fff;
-  color:var(--text);
-  font-size:0.9rem;
-  font-weight:700;
-  cursor:pointer;
-  white-space:nowrap;
-  transition:.2s;
-  box-shadow:var(--shadow-sm);
-}
-.module-tab-btn:hover{
-  border-color:var(--green);
-  background:var(--mint);
-}
-.module-tab-btn.active{
-  background:var(--deep);
-  border-color:var(--deep);
-  color:#fff;
-  box-shadow:var(--shadow-md);
 }
 
 /* FLOW BOX SECTIONS */
@@ -300,32 +292,32 @@ textarea:focus{border-color:var(--teal);background:#fff}
     </div>
   </div>
 
-  <!-- MODULE HEADER -->
+  <!-- MODULE HEADER WITH INTEGRATED INLINE MODULE TABS -->
   <div class="moduleHead">
-    <div class="moduleLabel" id="moduleLabel"><i class="ti ti-dna"></i> Sinh học 10 · Bài 1 · Module 02</div>
+    <div class="moduleHead-top">
+      <div class="moduleLabel" id="moduleLabel"><i class="ti ti-dna"></i> Sinh học 10 · Bài 1 · Module 01</div>
+      <nav class="module-tabs-inline" aria-label="Danh sách Module bài học">
+        <button class="module-tab-btn active" onclick="loadModule('SH10_B01_M02.html', this, 'm1', 'Sinh học 10 · Bài 1 · Module 01', 'Mục tiêu và vai trò của môn Sinh học', 'Yêu cầu cần đạt: Phân biệt các mục tiêu học tập môn Sinh học; Nêu được các vai trò cốt lõi của Sinh học đối với đời sống, khoa học và phát triển bền vững.')">
+          Module 1
+        </button>
+        <button class="module-tab-btn" onclick="loadModule('SH10_B02_M02.html', this, 'm2', 'Sinh học 10 · Bài 2 · Module 02', 'Thiết bị nghiên cứu và học tập môn Sinh học', 'Yêu cầu cần đạt: Phân biệt kính hiển vi quang học và kính hiển vi điện tử; Lựa chọn đúng thiết bị theo nhiệm vụ nghiên cứu.')">
+          Module 2
+        </button>
+        <button class="module-tab-btn" onclick="loadModule('SH10_B02_M03.html', this, 'm3', 'Sinh học 10 · Bài 2 · Module 03', 'Quy trình nghiên cứu khoa học và xử lí dữ liệu', 'Yêu cầu cần đạt: Xây dựng giả thuyết, thiết kế kiểm chứng, xử lí dữ liệu và giải thích vai trò lô đối chứng.')">
+          Module 3
+        </button>
+      </nav>
+    </div>
     <h2 id="moduleTitle">Mục tiêu và vai trò của môn Sinh học</h2>
     <div class="outcome" id="moduleOutcome">Yêu cầu cần đạt: Phân biệt các mục tiêu học tập môn Sinh học; Nêu được các vai trò cốt lõi của Sinh học đối với đời sống, khoa học và phát triển bền vững.</div>
   </div>
-
-  <!-- HORIZONTAL SCROLLABLE MODULE TABS -->
-  <nav class="progress-nav-scroll" aria-label="Danh sách Module bài học">
-    <button class="module-tab-btn active" onclick="loadModule('SH10_B01_M02.html', this, 'm1', 'Sinh học 10 · Bài 1 · Module 01', 'Mục tiêu và vai trò của môn Sinh học', 'Yêu cầu cần đạt: Phân biệt các mục tiêu học tập môn Sinh học; Nêu được các vai trò cốt lõi của Sinh học đối với đời sống, khoa học và phát triển bền vững.')">
-      Module 1
-    </button>
-    <button class="module-tab-btn" onclick="loadModule('SH10_B02_M02.html', this, 'm2', 'Sinh học 10 · Bài 2 · Module 02', 'Thiết bị nghiên cứu và học tập môn Sinh học', 'Yêu cầu cần đạt: Phân biệt kính hiển vi quang học và kính hiển vi điện tử; Lựa chọn đúng thiết bị theo nhiệm vụ nghiên cứu.')">
-      Module 2
-    </button>
-    <button class="module-tab-btn" onclick="loadModule('SH10_B02_M03.html', this, 'm3', 'Sinh học 10 · Bài 2 · Module 03', 'Quy trình nghiên cứu khoa học và xử lí dữ liệu', 'Yêu cầu cần đạt: Xây dựng giả thuyết, thiết kế kiểm chứng, xử lí dữ liệu và giải thích vai trò lô đối chứng.')">
-      Module 3
-    </button>
-  </nav>
 
   <!-- 1. KHỐI KIẾN THỨC / MÔ PHỎNG TƯƠNG TÁC -->
   <div class="flowBox interactive">
     <div class="flowTitle">
       <div class="iconBox">🧪</div>
       <div>
-        <h3>Kiến thức / Mô phỏng tương tác</h3>
+        <h3>Kiến thức</h3>
         <p>Thực hiện các thao tác mô phỏng khoa học và trả lời câu hỏi ở từng Màn.</p>
       </div>
     </div>
@@ -336,7 +328,7 @@ textarea:focus{border-color:var(--teal);background:#fff}
 
   <!-- 2. KHỐI LÝ THUYẾT CỐT LÕI -->
   <div class="flowBox theory">
-    <div class="flowTitle"><div class="iconBox">📖</div><div><h3>Lý thuyết cốt lõi</h3><p>Đọc nội dung ngắn gọn của module.</p></div></div>
+    <div class="flowTitle"><div class="iconBox">📖</div><div><h3>Kiến thức cốt lõi cần nhớ</h3><p>Đọc nội dung ngắn gọn của module.</p></div></div>
     <div class="theoryList" id="theoryList">
       <div class="theoryItem"><b>Mục tiêu môn Sinh học</b><span>Giúp học sinh nắm vững kiến thức về sự sống, hình thành năng lực sinh học và phát triển phẩm chất khoa học.</span></div>
       <div class="theoryItem"><b>Vai trò đối với đời sống</b><span>Cung cấp giải pháp cho y học, nông nghiệp, bảo vệ môi trường và phát triển kinh tế bền vững.</span></div>
@@ -350,6 +342,26 @@ textarea:focus{border-color:var(--teal);background:#fff}
       <ul>
         <li>Phân biệt mục tiêu nhận thức kiến thức với mục tiêu vận dụng thực tiễn.</li>
         <li>Sinh học không chỉ học lý thuyết mà luôn gắn với phương pháp và nghiên cứu thí nghiệm.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 4. KHỐI MÔ HÌNH / THÍ NGHIỆM / TƯƠNG TÁC BỔ TRỢ -->
+  <div class="flowBox interactive">
+    <div class="flowTitle">
+      <div class="iconBox">🧪</div>
+      <div>
+        <h3>Mô hình / Thí nghiệm / Tương tác</h3>
+        <p>Khám phá nội dung bằng mô hình hoặc thao tác tương tác.</p>
+      </div>
+    </div>
+    <div class="interactiveBox">
+      <div>
+        <h3 id="modelTitle">Mô hình so sánh kích thước</h3>
+        <p id="modelText">Quan sát sự chênh lệch kích thước giữa virus, vi khuẩn và tế bào người.</p>
+        <div class="guide" id="modelGuide"><b>Hướng dẫn thao tác:</b> Kéo thanh phóng đại để so sánh kích thước; nhấn vào từng đối tượng để xem nhãn và số liệu minh họa.</div>
+      </div>
+      <div class="model"></div>
     </div>
   </div>
 
@@ -366,14 +378,17 @@ textarea:focus{border-color:var(--teal);background:#fff}
 <script>
 const moduleData = {
   m1: {
-    label: "Sinh học 10 · Bài 1 · Module 02",
+    label: "Sinh học 10 · Bài 1 · Module 01",
     title: "Mục tiêu và vai trò của môn Sinh học",
     outcome: "Yêu cầu cần đạt: Phân biệt các mục tiêu học tập môn Sinh học; Nêu được các vai trò cốt lõi của Sinh học đối với đời sống, khoa học và phát triển bền vững.",
     theory: [
       ["Mục tiêu môn Sinh học", "Giúp học sinh nắm vững kiến thức về sự sống, hình thành năng lực sinh học và phát triển phẩm chất khoa học."],
       ["Vai trò đối với đời sống", "Cung cấp giải pháp cho y học, nông nghiệp, bảo vệ môi trường và phát triển kinh tế bền vững."]
     ],
-    note: ["Phân biệt mục tiêu nhận thức kiến thức với mục tiêu vận dụng thực tiễn.", "Sinh học không chỉ học lý thuyết mà luôn gắn với phương pháp và nghiên cứu thí nghiệm."]
+    note: ["Phân biệt mục tiêu nhận thức kiến thức với mục tiêu vận dụng thực tiễn.", "Sinh học không chỉ học lý thuyết mà luôn gắn với phương pháp và nghiên cứu thí nghiệm."],
+    modelTitle: "Mô hình so sánh kích thước",
+    modelText: "Quan sát sự chênh lệch kích thước giữa virus, vi khuẩn và tế bào người.",
+    guide: "Kéo thanh phóng đại để so sánh kích thước; nhấn vào từng đối tượng để xem nhãn và số liệu minh họa."
   },
   m2: {
     label: "Sinh học 10 · Bài 2 · Module 02",
@@ -383,7 +398,10 @@ const moduleData = {
       ["Kính hiển vi quang học", "Sử dụng ánh sáng và hệ thấu kính để phóng đại vật thể, dùng cho tế bào và vi sinh vật."],
       ["Thiết bị xử lí mẫu", "Máy li tâm giúp phân tách thành phần, pipet dùng chuyển thể tích chất lỏng chính xác."]
     ],
-    note: ["Độ phân giải cao hơn không có nghĩa luôn phù hợp hơn.", "Cần giữ thiết bị an toàn và bảo dưỡng đúng quy trình."]
+    note: ["Độ phân giải cao hơn không có nghĩa luôn phù hợp hơn.", "Cần giữ thiết bị an toàn và bảo dưỡng đúng quy trình."],
+    modelTitle: "Mô hình thiết bị phòng thí nghiệm",
+    modelText: "Quan sát kính hiển vi, máy li tâm, pipet và kính lúp.",
+    guide: "Chọn một thiết bị để xem thông số kỹ thuật và hướng dẫn sử dụng."
   },
   m3: {
     label: "Sinh học 10 · Bài 2 · Module 03",
@@ -393,7 +411,10 @@ const moduleData = {
       ["Giả thuyết khoa học", "Cách giải thích hoặc dự đoán có thể được kiểm tra bằng thực nghiệm (nếu… thì…)."],
       ["Lô đối chứng", "Giúp phân biệt tác động của thao tác thí nghiệm với tác động của yếu tố cần kiểm tra."]
     ],
-    note: ["Quan sát trực tiếp chưa phải là kết luận.", "Dữ liệu chỉ có giá trị khi được thu thập trong đúng phạm vi nghiên cứu."]
+    note: ["Quan sát trực tiếp chưa phải là kết luận.", "Dữ liệu chỉ có giá trị khi được thu thập trong đúng phạm vi nghiên cứu."],
+    modelTitle: "Sơ đồ 6 bước nghiên cứu khoa học",
+    modelText: "Từ quan sát → câu hỏi → giả thuyết → thiết kế → dữ liệu → kết luận.",
+    guide: "Kéo thả các bước vào đúng thứ tự logic của tiến trình nghiên cứu."
   }
 };
 
@@ -412,6 +433,9 @@ function loadModule(fileUrl, btnElement, modId, labelText, titleText, outcomeTex
   if (data) {
     document.getElementById('theoryList').innerHTML = data.theory.map(t => `<div class="theoryItem"><b>${t[0]}</b><span>${t[1]}</span></div>`).join('');
     document.getElementById('noteBox').innerHTML = '<ul>' + data.note.map(n => `<li>${n}</li>`).join('') + '</ul>';
+    if (document.getElementById('modelTitle')) document.getElementById('modelTitle').textContent = data.modelTitle;
+    if (document.getElementById('modelText')) document.getElementById('modelText').textContent = data.modelText;
+    if (document.getElementById('modelGuide')) document.getElementById('modelGuide').innerHTML = '<b>Hướng dẫn thao tác:</b> ' + data.guide;
   }
 
   // Load module iframe
