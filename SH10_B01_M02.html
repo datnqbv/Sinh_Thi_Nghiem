@@ -345,6 +345,91 @@ header h1{
   font-size:0.94rem;
 }
 
+/* 2-COLUMN VERTICAL MATCHING WITH SVG LINES */
+.matching-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 14px;
+}
+.matching-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+.matching-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+.matching-col-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--jade-text);
+  margin-bottom: 2px;
+  letter-spacing: 0.5px;
+}
+.choice-node {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 14px;
+  min-height: 58px;
+  border: 1.5px solid var(--paper-line-2);
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .18s;
+  text-align: left;
+}
+.choice-node:hover:not(:disabled) {
+  border-color: var(--jade);
+  background: var(--jade-pale);
+}
+.choice-node.selected {
+  border-color: var(--accent);
+  background: var(--accent-pale);
+  box-shadow: 0 0 0 3px rgba(232,162,74,0.2);
+}
+.choice-node.correct {
+  border-color: var(--jade);
+  background: var(--jade-pale);
+  color: var(--jade-text);
+}
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--paper-line-2);
+  border: 2.5px solid #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+  transition: .2s;
+}
+.choice-node:hover .dot {
+  background: var(--sage);
+}
+.choice-node.selected .dot {
+  background: var(--accent);
+}
+.choice-node.correct .dot {
+  background: var(--jade);
+}
+
 /* OPTION GRIDS & CHOICES */
 .option-grid{
   display:grid;
@@ -571,13 +656,28 @@ header h1{
 
 @media(max-width:900px){
   body{padding:14px 12px 32px}
-  .progress-nav{grid-template-columns:repeat(2,1fr)}
+  .progress-nav{
+    display:flex!important;
+    flex-wrap:nowrap!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    -webkit-overflow-scrolling:touch;
+    gap:8px!important;
+    padding:6px 4px!important;
+    scrollbar-width:none;
+  }
+  .progress-nav::-webkit-scrollbar{display:none}
+  .stage-tab{
+    flex:0 0 auto!important;
+    white-space:nowrap!important;
+    padding:10px 14px!important;
+    font-size:0.88rem!important;
+  }
   .support-panel{grid-template-columns:1fr}
   .option-grid.five{grid-template-columns:repeat(2,1fr)}
   .profile-layout{grid-template-columns:repeat(3,1fr)}
 }
 @media(max-width:600px){
-  .progress-nav{grid-template-columns:1fr}
   .option-grid,.chain-cards,.career-grid{grid-template-columns:1fr}
   .match-wrap{grid-template-columns:1fr}
   .profile-layout{grid-template-columns:1fr 1fr}
@@ -619,15 +719,6 @@ header h1{
 
       <!-- RIGHT COLUMN: QUESTIONS & INTERACTIVE WORKSPACE -->
       <section class="card workspace-card">
-        <!-- LIVE CONTEXTUAL GUIDE BAR -->
-        <div class="guide-bar" id="guideBar">
-          <div class="guide-icon"><i class="ti ti-compass"></i></div>
-          <div class="guide-text" id="guideText">Bước 1: Chọn một thẻ kiến thức bên trên, sau đó chọn tình huống tương ứng bên dưới.</div>
-          <div class="guide-badge" id="guideBadge">Màn 1/4</div>
-        </div>
-        <!-- LIVE FEEDBACK PANEL -->
-        <div id="feedbackPanel" class="feedback">Hệ thống sẽ phản hồi chỉ dẫn chi tiết sau mỗi thao tác.</div>
-        <!-- INTERACTIVE WORKSPACE -->
         <div class="workspace" id="workspace"></div>
       </section>
     </div>
@@ -845,52 +936,96 @@ function completeStage(message){
   persist('Hoàn thành màn');
 }
 
+function drawStage1Lines(){
+  const container = document.getElementById('s1MatchingContainer');
+  const svg = document.getElementById('s1SvgLines');
+  if(!container || !svg) return;
+  const cRect = container.getBoundingClientRect();
+  let linesHtml = '';
+  
+  Object.entries(state.s1.pairs).forEach(([k, sId]) => {
+    const dotLeft = document.getElementById(`dot-k-${k}`);
+    const dotRight = document.getElementById(`dot-s-${sId}`);
+    if(dotLeft && dotRight){
+      const lRect = dotLeft.getBoundingClientRect();
+      const rRect = dotRight.getBoundingClientRect();
+      const x1 = lRect.left + lRect.width/2 - cRect.left;
+      const y1 = lRect.top + lRect.height/2 - cRect.top;
+      const x2 = rRect.left + rRect.width/2 - cRect.left;
+      const y2 = rRect.top + rRect.height/2 - cRect.top;
+      
+      linesHtml += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#2D8B6F" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="6,3" />`;
+    }
+  });
+  
+  svg.innerHTML = linesHtml;
+}
+
+window.addEventListener('resize', () => {
+  if (state.stage === 1) drawStage1Lines();
+  if (state.stage === 2 && state.s2.viewed.size === 5) drawStage2Lines();
+});
+
 function renderStage1(){
   setAsset(state.s1.selected?'A02':'A01');
   const knowledge=[['microbe','Hiểu biết về vi sinh vật'],['nutrition','Hiểu biết về thành phần dinh dưỡng'],['memory','Hiểu biết về hoạt động của trí nhớ']];
   const situations=[['health','Phòng tránh bệnh truyền nhiễm'],['food','Lựa chọn thực phẩm phù hợp'],['learning','Ghi nhớ kiến thức hiệu quả hơn']];
   const correct={microbe:'health',nutrition:'food',memory:'learning'};
-  const all=Object.keys(state.s1.pairs).length===3,pairs=Object.entries(state.s1.pairs);
+  const all=Object.keys(state.s1.pairs).length===3;
 
   if (!state.s1.selected && !all) {
-    setGuide('Bước 1: Chọn một thẻ kiến thức Sinh học bên dưới (khung xanh).');
+    setGuide('Bước 1: Chọn một thẻ kiến thức Sinh học bên cột trái (khung xanh).');
   }
 
   workspace.innerHTML=`
     <h2>Sinh học giúp ích gì trong đời sống hằng ngày?</h2>
-    <p class="workspace-note"><strong>Nhiệm vụ:</strong> Ghép từng hiểu biết Sinh học với ứng dụng thực tế phù hợp.</p>
-    <p class="drag-hint"><i class="ti ti-hand-click"></i> Chạm chọn thẻ kiến thức trước, sau đó chọn tình huống để ghép đôi.</p>
+    <p class="workspace-note"><strong>Nhiệm vụ:</strong> Chọn thẻ bên cột trái và nối với tình huống đời sống tương ứng bên cột phải.</p>
     
-    <div class="section-label">Thẻ kiến thức Sinh học</div>
-    <div class="option-grid" id="s1Knowledge">
-      ${knowledge.map(([id,t])=>`<button class="choice ${state.s1.selected===id?'selected':''} ${state.s1.pairs[id]?'correct':''}" data-id="${id}" ${state.s1.pairs[id]?'disabled':''}>${t}</button>`).join('')}
+    <div class="matching-container" id="s1MatchingContainer">
+      <svg class="matching-svg" id="s1SvgLines"></svg>
+      
+      <div class="matching-col left">
+        <div class="matching-col-title"><i class="ti ti-bookmarks"></i> Thẻ kiến thức Sinh học</div>
+        ${knowledge.map(([id, t]) => `
+          <button class="choice-node ${state.s1.selected === id ? 'selected' : ''} ${state.s1.pairs[id] ? 'correct' : ''}" data-id="${id}" id="node-k-${id}" ${state.s1.pairs[id] ? 'disabled' : ''}>
+            <span>${t}</span>
+            <span class="dot" id="dot-k-${id}"></span>
+          </button>
+        `).join('')}
+      </div>
+
+      <div class="matching-col right">
+        <div class="matching-col-title"><i class="ti ti-bulb"></i> Tình huống đời sống</div>
+        ${situations.map(([id, t]) => `
+          <button class="choice-node ${Object.values(state.s1.pairs).includes(id) ? 'correct' : ''}" data-id="${id}" id="node-s-${id}" ${Object.values(state.s1.pairs).includes(id) ? 'disabled' : ''}>
+            <span class="dot" id="dot-s-${id}"></span>
+            <span>${t}</span>
+          </button>
+        `).join('')}
+      </div>
     </div>
 
-    <div class="section-label">Tình huống đời sống tương ứng</div>
-    <div class="option-grid" id="s1Situations">
-      ${situations.map(([id,t])=>`<button class="choice ${Object.values(state.s1.pairs).includes(id)?'correct':''}" data-id="${id}" ${Object.values(state.s1.pairs).includes(id)?'disabled':''}>${t}</button>`).join('')}
-    </div>
-
-    ${pairs.length?`<div class="pair-lines">${pairs.map(([k,v])=>`<div class="paired-row"><span>${knowledge.find(x=>x[0]===k)[1]}</span><span class="pair-arrow"><i class="ti ti-arrow-right"></i></span><span>${situations.find(x=>x[0]===v)[1]}</span></div>`).join('')}</div>`:''}
-    ${all?'<div class="summary"><strong>Câu chốt màn 1:</strong> Hiểu biết Sinh học được vận dụng trực tiếp để bảo vệ sức khỏe, cải thiện chế độ dinh dưỡng và nâng cao hiệu quả học tập.</div>':''}
+    ${all?'<div class="summary" style="margin-top:16px;"><strong>Câu chốt màn 1:</strong> Hiểu biết Sinh học được vận dụng trực tiếp để bảo vệ sức khỏe, cải thiện chế độ dinh dưỡng và nâng cao hiệu quả học tập.</div>':''}
   `;
+
+  requestAnimationFrame(drawStage1Lines);
 
   const chooseKnowledge=id=>{
     state.s1.selected=id;
-    setGuide(`Bước 2: Đã chọn “${knowledge.find(x=>x[0]===id)[1]}”. Hãy chọn 1 tình huống bên dưới để hoàn thành cặp.`);
+    setGuide(`Bước 2: Đã chọn “${knowledge.find(x=>x[0]===id)[1]}”. Hãy chọn 1 tình huống tương ứng ở cột bên phải.`);
     persist('Chọn thẻ kiến thức');
     renderStage1();
   };
 
-  document.querySelectorAll('#s1Knowledge .choice').forEach(b=>{
+  document.querySelectorAll('#s1MatchingContainer .matching-col.left .choice-node').forEach(b=>{
     b.onclick=()=>chooseKnowledge(b.dataset.id);
   });
 
-  document.querySelectorAll('#s1Situations .choice').forEach(b=>{
+  document.querySelectorAll('#s1MatchingContainer .matching-col.right .choice-node').forEach(b=>{
     b.onclick=()=>{
       if(!state.s1.selected){
-        feedback('Chưa chọn thẻ kiến thức! Hãy bấm chọn 1 thẻ kiến thức trước khi chọn tình huống.','bad');
-        setGuide('Cảnh báo: Bấm chọn 1 thẻ kiến thức màu xanh trước, sau đó mới chọn tình huống.');
+        feedback('Chưa chọn thẻ kiến thức! Hãy bấm chọn 1 thẻ bên cột trái trước.','bad');
+        setGuide('Cảnh báo: Bấm chọn 1 thẻ kiến thức bên cột trái trước, sau đó mới chọn tình huống bên cột phải.');
         return;
       }
       const k=state.s1.selected,ok=correct[k]===b.dataset.id;
@@ -905,16 +1040,16 @@ function renderStage1(){
         const done=Object.keys(state.s1.pairs).length===3;
         state.s1.selected=null;
         if(done){
-          setGuide('Xuất sắc! Em đã ghép đúng cả 3 cặp. Nhấn "Tiếp tục" để chuyển sang Màn 2.');
+          setGuide('Xuất sắc! Em đã ghép nối đúng cả 3 cặp. Nhấn "Tiếp tục" để chuyển sang Màn 2.');
           completeStage(`${msgs[k]} Hoàn thành màn 1!`);
         } else {
-          setGuide(`Tốt lắm! Tiếp tục chọn thẻ kiến thức tiếp theo.`);
+          setGuide(`Tốt lắm! Tiếp tục chọn thẻ kiến thức tiếp theo ở cột trái.`);
           feedback(msgs[k],'ok');
         }
       } else {
         state.s1.selected=null;
-        setGuide('Chưa chính xác. Đọc lại gợi ý phản hồi bên dưới và chọn lại thẻ kiến thức.');
-        feedback('Ghép chưa chính xác. Đọc kỹ lại ý nghĩa sinh học của từng thẻ để ghép đúng tình huống.','bad');
+        setGuide('Chưa chính xác. Đọc lại gợi ý phản hồi và thử chọn lại thẻ kiến thức.');
+        feedback('Ghép chưa chính xác. Đọc kỹ lại ý nghĩa sinh học của từng thẻ để nối đúng tình huống.','bad');
       }
       renderStage1();
     };
@@ -961,24 +1096,66 @@ function renderStage2(){
   if(viewedDone)renderS2Match();
 }
 
+function drawStage2Lines(){
+  const container = document.getElementById('s2MatchingContainer');
+  const svg = document.getElementById('s2SvgLines');
+  if(!container || !svg) return;
+  const cRect = container.getBoundingClientRect();
+  let linesHtml = '';
+  
+  Object.entries(state.s2.pairs).forEach(([app, fId]) => {
+    const dotLeft = document.getElementById(`dot-s2-app-${app}`);
+    const dotRight = document.getElementById(`dot-s2-f-${fId}`);
+    if(dotLeft && dotRight){
+      const lRect = dotLeft.getBoundingClientRect();
+      const rRect = dotRight.getBoundingClientRect();
+      const x1 = lRect.left + lRect.width/2 - cRect.left;
+      const y1 = lRect.top + lRect.height/2 - cRect.top;
+      const x2 = rRect.left + rRect.width/2 - cRect.left;
+      const y2 = rRect.top + rRect.height/2 - cRect.top;
+      
+      linesHtml += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#2D8B6F" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="6,3" />`;
+    }
+  });
+  
+  svg.innerHTML = linesHtml;
+}
+
 function renderS2Match(){
   const host=document.getElementById('s2Match');
   if(!host)return;
   const pairs=Object.entries(state.s2.pairs),all=pairs.length===5;
 
   host.innerHTML=`
-    <div class="section-label">Nhiệm vụ: Ghép 5 ứng dụng với 5 lĩnh vực tương ứng</div>
-    <div class="match-wrap">
-      <div>
-        ${profiles.map(p=>`<button class="choice ${state.s2.selected===p.app?'selected':''} ${state.s2.pairs[p.app]?'correct':''}" data-app="${p.app}" ${state.s2.pairs[p.app]?'disabled':''}>${p.appText}</button>`).join('')}
+    <div class="section-label" style="margin-top:16px;">Nhiệm vụ: Nối 5 ứng dụng ở cột trái với 5 lĩnh vực tương ứng ở cột phải</div>
+    <div class="matching-container" id="s2MatchingContainer">
+      <svg class="matching-svg" id="s2SvgLines"></svg>
+
+      <div class="matching-col left">
+        <div class="matching-col-title"><i class="ti ti-flask"></i> Ứng dụng Sinh học</div>
+        ${profiles.map(p => `
+          <button class="choice-node ${state.s2.selected === p.app ? 'selected' : ''} ${state.s2.pairs[p.app] ? 'correct' : ''}" data-app="${p.app}" id="node-s2-app-${p.app}" ${state.s2.pairs[p.app] ? 'disabled' : ''}>
+            <span>${p.appText}</span>
+            <span class="dot" id="dot-s2-app-${p.app}"></span>
+          </button>
+        `).join('')}
       </div>
-      <div>
-        ${profiles.map(p=>`<button class="choice ${Object.values(state.s2.pairs).includes(p.id)?'correct':''}" data-field="${p.id}" ${Object.values(state.s2.pairs).includes(p.id)?'disabled':''}>${p.name}</button>`).join('')}
+
+      <div class="matching-col right">
+        <div class="matching-col-title"><i class="ti ti-category"></i> Lĩnh vực ứng dụng</div>
+        ${profiles.map(p => `
+          <button class="choice-node ${Object.values(state.s2.pairs).includes(p.id) ? 'correct' : ''}" data-field="${p.id}" id="node-s2-f-${p.id}" ${Object.values(state.s2.pairs).includes(p.id) ? 'disabled' : ''}>
+            <span class="dot" id="dot-s2-f-${p.id}"></span>
+            <span>${p.name}</span>
+          </button>
+        `).join('')}
       </div>
     </div>
-    ${pairs.length?`<div class="pair-lines">${pairs.map(([app,id])=>{const p=profiles.find(x=>x.app===app);return`<div class="paired-row"><span>${p.appText}</span><span class="pair-arrow"><i class="ti ti-arrow-right"></i></span><span>${p.name}</span></div>`}).join('')}</div>`:''}
-    ${all?'<div class="summary"><strong>Câu chốt màn 2:</strong> Tri thức Sinh học là nền tảng cốt lõi được ứng dụng trong Y – dược, Pháp y, Nông nghiệp, Thực phẩm và Bảo vệ môi trường.</div>':''}
+
+    ${all?'<div class="summary" style="margin-top:16px;"><strong>Câu chốt màn 2:</strong> Tri thức Sinh học là nền tảng cốt lõi được ứng dụng trong Y – dược, Pháp y, Nông nghiệp, Thực phẩm và Bảo vệ môi trường.</div>':''}
   `;
+
+  requestAnimationFrame(drawStage2Lines);
 
   host.querySelectorAll('[data-app]').forEach(b=>{
     b.onclick=()=>{
@@ -1005,7 +1182,7 @@ function renderS2Match(){
           setGuide('Hoàn thành xuất sắc Màn 2! Bấm "Tiếp tục" để sang Màn 3.');
           completeStage(`${p.correct} Đã hoàn thành ghép cả 5 lĩnh vực!`);
         } else {
-          setGuide('Đúng rồi! Tiếp tục chọn ứng dụng khác để ghép.');
+          setGuide('Đúng rồi! Tiếp tục chọn ứng dụng khác ở cột trái để ghép.');
           feedback(p.correct,'ok');
         }
       } else {
@@ -1164,7 +1341,12 @@ function renderStage4(){
       <button class="btn btn-primary" id="checkCareers" style="margin-top:14px"><i class="ti ti-check"></i> Kiểm tra nghề nghiệp đã chọn (${state.s4.careers.size}/3)</button>
     </div>
 
-    ${state.s4.done?'<div id="moduleSummary" class="summary"><strong>Tổng kết Module 02:</strong> Sinh học đóng vai trò quan trọng trong chăm sóc sức khỏe, sản xuất nông nghiệp, công nghệ thực phẩm và bảo vệ môi trường.</div>':''}
+    ${state.s4.done?`
+      <div id="moduleSummary" class="summary module-final">
+        <p><strong><i class="ti ti-check"></i> CÂU CHỐT MODULE:</strong> Sinh học cung cấp cơ sở khoa học cho việc chăm sóc sức khỏe, phát triển sản xuất, chế biến thực phẩm và bảo vệ môi trường. Khi được chuyển thành những giải pháp phù hợp, tri thức Sinh học có thể góp phần nâng cao chất lượng cuộc sống và thúc đẩy sự phát triển kinh tế – xã hội.</p>
+        <p style="margin-top:10px; font-weight:500; color:var(--ink-2);"><i class="ti ti-arrow-right"></i> <strong>CÂU CHUYỂN MODULE 03:</strong> Các ứng dụng Sinh học có thể mang lại nhiều lợi ích, nhưng cũng cần được đánh giá về tác động lâu dài đối với con người, xã hội và môi trường. Nội dung này sẽ được tiếp tục ở SH10_B01_M03.</p>
+      </div>
+    `:''}
   `;
 
   document.querySelectorAll('[data-tf]').forEach(b=>b.onclick=()=>{
@@ -1219,8 +1401,11 @@ function gotoStage(n){
   state.stage=n;
   currentTtsText=stageTts[n];
   renderShell();
-  document.getElementById('feedbackPanel').textContent='Hệ thống sẽ phản hồi chỉ dẫn chi tiết sau mỗi thao tác.';
-  document.getElementById('feedbackPanel').className='feedback';
+  const fb = document.getElementById('feedbackPanel');
+  if(fb){
+    fb.textContent='Hệ thống sẽ phản hồi chỉ dẫn chi tiết sau mỗi thao tác.';
+    fb.className='feedback';
+  }
   ({1:renderStage1,2:renderStage2,3:renderStage3,4:renderStage4})[n]();
   LMS().progress({done:state.completedStages.size,total:4});
   persist('Vào màn '+n);

@@ -253,8 +253,11 @@ HTML — canvas PHẢI bọc trong `.canvas-glow-wrap`:
   - **Header, Mục tiêu, Stage Tabs & Footer:** Luôn giữ full-width 100% trong khung 1200px.
   - **Vùng Làm Việc Chính (Dưới Stage Tabs):** Chia đôi 2 cột song song (`display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;`):
     - **Cột Bên Trái — CANVAS KHÓA ĐI THEO KHI CUỘN (`position: sticky; top: 64px;` — BẮT BUỘC):** Cột chứa Canvas (`.canvas-card`) phải dùng `position: sticky; top: 64px;` để luôn trượt đi theo người học khi họ cuộn xuống làm bài tập ở cột bên phải. Nhờ đó, người học vừa thao tác trả lời vừa quan sát trực tiếp mô hình/hình ảnh minh họa không bị che hay phải cuộn ngược lên.
-    - **Cột Bên Phải:** Vùng tương tác & câu hỏi (`.workspace-card` chứa thanh chỉ dẫn `.guide-bar`, phản hồi `.feedbackPanel` và danh sách thẻ chọn / câu hỏi bài tập).
-  - **Responsive (≤900px):** Tự động chuyển thành 1 cột (`grid-template-columns: 1fr; .canvas-card{ position: static; }`) xếp chồng mượt mà trên di động.
+    - **Cột Bên Phải (`.workspace-card` Minimal & Tối Giản):** Loại bỏ hoàn toàn thanh hướng dẫn rườm rà (`.guide-bar`), thanh phản hồi (`#feedbackPanel`) và các tiền tố "Bước 1, Bước 2" rườm rà. Cột bên phải chỉ tập trung chứa tiêu đề bài tập `<h2>`, ghi chú nhiệm vụ gọn gàng `.workspace-note` và khung tương tác `#workspace`.
+- **Quy tắc Ghép đôi Dạng Nối 2 Cột Dọc kèm Đường Tia SVG (`2-Column Vertical Match with SVG Lines` — BẮT BUỘC):**
+  - **Bố cục 2 Cột Dọc:** Xếp 2 danh sách ghép đôi song song theo chiều dọc (`.matching-container` với 2 cột `left` và `right`). Cột bên trái là danh sách thẻ nguồn, cột bên phải là danh sách thẻ đích.
+  - **Điểm nối & Đường nối SVG (`<svg class="matching-svg">`):** Mỗi thẻ có chấm tròn nối (`.dot`). Khi người học chọn 1 thẻ vế trái và 1 thẻ vế phải ghép đúng, JS sẽ vẽ 1 đường tia nối màu xanh ngọc (`stroke="var(--jade)" stroke-width="3"`) nối trực tiếp giữa 2 chấm tròn.
+  - **Trải nghiệm trực quan:** Người học nhìn rõ nét đường nối vật lý giữa 2 thẻ, tăng cảm giác tương tác học tập sinh động.
 ```js
 // Hàm đổi hình minh họa/mô hình Canvas đơn giản (Canvas đã sticky ở cột trái)
 function setAsset(key) {
@@ -265,17 +268,33 @@ function setAsset(key) {
 }
 ```
 
-**Responsive (≤900px):**
+**Responsive Mobile (≤900px) — Thanh Stage Nav / Module Nav Chỉ 1 Hàng Nút Cuộn Ngang (BẮT BUỘC):**
+Trên giao diện di động, thanh điều hướng Module / Stage (`.moduleNav` / `.progress-nav`) **BẮT BUỘC giữ trên 1 DÒNG DUY NHẤT (`flex-wrap: nowrap; overflow-x: auto;`)**, tuyệt đối không tự xếp chồng thành 2-4 dòng dọc chiếm diện tích. Học sinh cuộn/vuốt ngang mượt mà để chuyển giữa các Màn:
+
 ```css
 @media (max-width:900px){
-  .main { padding: 18px 14px 36px; }
-  .moduleNav { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width:540px){
-  .moduleNav { grid-template-columns: 1fr; }
+  .main { padding: 16px 12px 36px; }
+  .moduleNav, .progress-nav {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    gap: 8px;
+    padding: 6px 4px;
+    scrollbar-width: none;
+  }
+  .moduleNav::-webkit-scrollbar, .progress-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .moduleMini, .stage-tab {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 10px 14px;
+    font-size: 0.88rem;
+  }
 }
 ```
-Phần tương tác (guide/controls/canvas) luôn lên đầu; chạy tốt 360px $\rightarrow$ desktop.
 
 ---
 
