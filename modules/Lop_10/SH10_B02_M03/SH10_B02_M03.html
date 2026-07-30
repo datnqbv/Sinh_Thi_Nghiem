@@ -725,7 +725,8 @@ function syncTabs(){
 }
 function renderShell(){
   const m=stages[state.stage];
-  document.getElementById('goalText').textContent=m.goal;
+  const goalText=document.getElementById('goalText');
+  if(goalText)goalText.textContent=m.goal;
   setGuide(m.guide,m.question);currentTtsText=m.tts;
   const next=document.getElementById('btnNext');next.disabled=!state.completedStages.has(state.stage);
   next.querySelector('span').textContent=state.stage===4?(state.moduleComplete?'Đã hoàn thành':'Hoàn thành module'):'Tiếp tục';

@@ -1,12 +1,13 @@
 # 📐 NGUYÊN TẮC THIẾT KẾ FILE HTML MẸ (Parent HTML Shell Standard)
 
-> **Mục đích:** Quy chuẩn cách xây dựng trang Khung mẹ (Parent Portal/Shell) quản lý và nhúng các Module học liệu tương tác con (Virtual Labs) theo đúng phong cách **Tom Haugomat Editorial Flat** của Aiducation LMS.  
-> **Trục chuẩn:** Dựa trên file tham chiếu [GIAODIEN_SH10 V10.html](file:///d:/download2004/BMH_AI/AIEDU/SInh_Thi_Nghiem/GIAODIEN_SH10%20V10.html).
+> **Mục đích:** Quy chuẩn cách xây dựng trang Khung mẹ (Parent Portal/Shell) quản lý và nhúng các bài học tương tác từ `modules/` cùng thí nghiệm Sinh học từ `experiments/`, theo đúng phong cách **Tom Haugomat Editorial Flat** của Aiducation LMS.  
+> **Trục chuẩn:** Dựa trên file tham chiếu [`shells/GIAODIEN_SH10_V10.html`](shells/GIAODIEN_SH10_V10.html).
 
 ---
 
 ## 1. TỔNG QUAN KIẾN TRÚC GIAO DIỆN (Single-Column Centered Layout)
 
+- **Phân loại nguồn học liệu:** `modules/` chỉ chứa bài học; `experiments/` chỉ chứa thí nghiệm Sinh học; `shells/` chứa file mẹ và được phép nhúng nội dung từ cả hai thư mục bằng đường dẫn tương đối.
 - **Bố cục 1 cột trung tâm (Single-Column Centered)**: Độ rộng tối đa toàn trang là **`1200px`** (`max-width: var(--lesson-width)`), căn giữa màn hình (`margin: 0 auto`).
 - **Loại bỏ Sidebar 2 bên**: Tuyệt đối không dùng 2 thanh cố định 2 bên. Toàn bộ không gian được ưu tiên lấp đầy cho trải nghiệm học tập mô phỏng tương tác.
 - **Bảng màu Design Tokens (`:root`)**:
@@ -72,14 +73,14 @@ Chứa thông tin tổng quan của Bài học hiện tại. **BẮT BUỘC đ�
   <div class="moduleHead-top">
     <div class="moduleLabel" id="moduleLabel"><i class="ti ti-dna"></i> Sinh học 10 · Bài 1 · Module 01</div>
     <nav class="module-tabs-inline" aria-label="Danh sách Module bài học">
-      <button class="module-tab-btn active" onclick="loadModule('SH10_B01_M02.html', this, 'm1', 'Sinh học 10 · Bài 1 · Module 01', 'Mục tiêu và vai trò của môn Sinh học', 'Yêu cầu...')">
-        Module 1
+      <button class="module-tab-btn active" onclick="loadModule('../modules/Lop_10/SH10_B01_M02/SH10_B01_M02.html', this, 'm1', 'Sinh học 10 · Bài 1 · Module 02', 'Vai trò và ứng dụng của Sinh học', 'Yêu cầu...')">
+        Module B01-M02
       </button>
-      <button class="module-tab-btn" onclick="loadModule('SH10_B02_M02.html', this, 'm2', 'Sinh học 10 · Bài 2 · Module 02', 'Thiết bị nghiên cứu và học tập môn Sinh học', 'Yêu cầu...')">
-        Module 2
+      <button class="module-tab-btn" onclick="loadModule('../modules/Lop_10/SH10_B02_M02/SH10_B02_M02.html', this, 'm2', 'Sinh học 10 · Bài 2 · Module 02', 'Thiết bị nghiên cứu và học tập môn Sinh học', 'Yêu cầu...')">
+        Module B02-M02
       </button>
-      <button class="module-tab-btn" onclick="loadModule('SH10_B02_M03.html', this, 'm3', 'Sinh học 10 · Bài 2 · Module 03', 'Quy trình nghiên cứu khoa học và xử lí dữ liệu', 'Yêu cầu...')">
-        Module 3
+      <button class="module-tab-btn" onclick="loadModule('../modules/Lop_10/SH10_B02_M03/SH10_B02_M03.html', this, 'm3', 'Sinh học 10 · Bài 2 · Module 03', 'Quy trình nghiên cứu khoa học và xử lí dữ liệu', 'Yêu cầu...')">
+        Module B02-M03
       </button>
     </nav>
   </div>
@@ -151,7 +152,7 @@ Bắt buộc bọc container `iframe` học liệu tương tác trong thẻ `.fl
     </div>
   </div>
   <div class="module-content-card">
-    <iframe id="moduleIframe" class="module-iframe" src="SH10_B01_M02.html" title="Module học liệu tương tác Sinh học 10"></iframe>
+    <iframe id="moduleIframe" class="module-iframe" src="../modules/Lop_10/SH10_B01_M02/SH10_B01_M02.html" title="Module học liệu tương tác Sinh học 10"></iframe>
   </div>
 </div>
 ```
@@ -255,5 +256,3 @@ window.addEventListener('message', function(e) {
 6. **Cảnh báo Thông Báo khi Thao Tác Sai / Thiếu Bước Qua Màn**:
    - Khi người học **thao tác sai**, **chọn chưa đúng**, hoặc **chưa hoàn thành đủ bước bắt buộc của Màn**, hệ thống phải hiển thị thông báo phản hồi màu Cảnh báo/Lỗi `bad` (`border-left: 4px solid var(--wrong); background: var(--wrong-bg);`) tại ô `#globalFeedback` hoặc `.inline-feedback`.
    - Nút "Tiếp tục" (`#btnNext`) giữ trạng thái vô hiệu hóa (`disabled`) cho đến khi người học hoàn thành chính xác 100% nhiệm vụ của Màn.
-
-

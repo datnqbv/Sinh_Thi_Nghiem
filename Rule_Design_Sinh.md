@@ -1088,8 +1088,8 @@ URL HTTPS của CDN/máy chủ ảnh, hoặc URL xem trực tiếp của Google 
 
 ```js
 const assetFiles = {
-  A01: 'images/SH11-B05-M03/SH11-B05-M03-A01.png',
-  A02: 'images/SH11-B05-M03/SH11-B05-M03-A02.png'
+  A01: 'images/SH11-B05-M03-A01.png',
+  A02: 'images/SH11-B05-M03-A02.png'
 };
 
 const assets = {};
