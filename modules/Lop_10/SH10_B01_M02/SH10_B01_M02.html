@@ -585,6 +585,7 @@
       {id:'food', label:'Công nghệ thực phẩm', icon:'ti-bowl-spoon'},
       {id:'environment', label:'Bảo vệ môi trường', icon:'ti-leaf'}
     ];
+    const fieldDisplayOrder = ['medical','agriculture','forensic','environment','food'];
 
     const s02Items = [
       {id:'A', text:'Phân tích thông tin gene để hỗ trợ định hướng điều trị.', asset:'A02', answer:'medical'},
@@ -776,7 +777,7 @@
             : '<span class="profession-thumb" data-index="'+itemIndex+'" aria-hidden="true"></span><span class="match-code">'+item.id+'</span>';
           return '<button type="button" class="match-card left-card" data-match-prefix="'+prefix+'" data-side="left" data-id="'+item.id+'">'+src+'<span class="match-text">'+item.text+'</span><span class="dot" aria-hidden="true"></span></button>';
         }).join('')+'</div>'+
-        '<div class="match-column match-right">'+fields.map(field =>
+        '<div class="match-column match-right">'+fieldDisplayOrder.map(fieldId=>fields.find(field=>field.id===fieldId)).map(field =>
           '<button type="button" class="match-card field-card right-card" data-match-prefix="'+prefix+'" data-side="right" data-id="'+field.id+'"><span class="dot" aria-hidden="true"></span><i class="ti '+field.icon+'"></i><span class="match-text">'+field.label+'</span></button>'
         ).join('')+'</div>';
       root.dataset.selected='';
