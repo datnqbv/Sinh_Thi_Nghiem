@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Đo toạ độ Hotspot & Vùng trên ảnh</title>
+<style>
+  :root{
+    --cream:#FAF7F0; --cream-2:#F0EADD; --ink:#1A1A1A; --ink-2:#514C44; --ink-3:#7C756A;
+    --jade:#3CA57A; --jade-deep:#2D8B6F; --jade-text:#1B5E48; --jade-pale:#DCEAE1;
+    --accent:#E8A24A; --accent-2:#C15F3C; --paper-line:#E5DECF; --radius:10px; --radius-lg:14px;
+  }
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,'Segoe UI',sans-serif;background:var(--cream);color:var(--ink);
+    margin:0;padding:1.5rem;line-height:1.5}
+  h1{font-size:20px;margin:0 0 4px}
+  .sub{font-size:13.5px;color:var(--ink-3);margin-bottom:1.25rem}
+  .layout{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:flex-start}
+  .left{flex:1;min-width:320px}
+  .right{width:340px;flex-shrink:0}
+  .upload-box{border:2px dashed var(--paper-line);border-radius:var(--radius-lg);
+    padding:2rem;text-align:center;background:#fff;cursor:pointer;margin-bottom:1rem}
+  .upload-box:hover{border-color:var(--jade)}
+  .upload-box input{display:none}
+  .left-toolbar{display:none;gap:8px;margin-bottom:.75rem}
+  .left-toolbar.show{display:flex}
+  .mode-toolbar{display:none;gap:8px;margin-bottom:.75rem;flex-wrap:wrap}
+  .mode-toolbar.show{display:flex}
+  .mode-btn{background:var(--cream-2);color:var(--ink-2);border:1px solid var(--paper-line);
+    padding:7px 12px;border-radius:8px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:inherit}
+  .mode-btn.active{background:var(--jade);color:#fff;border-color:var(--jade)}
+  .mode-btn:hover:not(.active){background:var(--paper-line)}
+  #stage{position:relative;width:100%;border-radius:var(--radius-lg);overflow:hidden;
+    background:#fff;border:1px solid var(--paper-line);display:none}
+  #stage img{width:100%;display:block;user-select:none;-webkit-user-drag:none}
+  #stage img.mode-point{cursor:crosshair}
+  #stage img.mode-shape{cursor:crosshair}
+  .pin{position:absolute;transform:translate(-50%,-50%);width:26px;height:26px;
+    border-radius:50%;background:var(--accent);color:#fff;border:2px solid #fff;
+    font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 2px 6px rgba(0,0,0,.25);cursor:grab;touch-action:none;z-index:3}
+  .pin.dragging{cursor:grabbing;box-shadow:0 3px 10px rgba(0,0,0,.4);z-index:5}
+  .pin.highlight{outline:3px solid var(--jade-text);outline-offset:2px}
+  .shape{position:absolute;border:2px solid var(--jade);background:rgba(60,165,122,.14);
+    box-sizing:border-box;cursor:move;touch-action:none;z-index:2}
+  .shape.rect{border-radius:4px}
+  .shape.ellipse{border-radius:50%;border-color:var(--jade-deep);background:rgba(45,139,111,.14)}
+  .shape.dragging{box-shadow:0 3px 10px rgba(0,0,0,.3);z-index:5}
+  .shape.highlight{outline:3px solid var(--accent-2);outline-offset:2px}
+  .shape-badge{position:absolute;top:-12px;left:-12px;width:22px;height:22px;border-radius:50%;
+    background:var(--jade);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;
+    justify-content:center;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+  .shape.ellipse .shape-badge{background:var(--jade-deep)}
+  .resize-handle{position:absolute;right:-7px;bottom:-7px;width:14px;height:14px;
+    background:var(--accent-2);border:2px solid #fff;border-radius:50%;cursor:nwse-resize;touch-action:none}
+  .shape-draw-preview{position:absolute;border:2px dashed var(--jade-text);
+    background:rgba(60,165,122,.10);box-sizing:border-box;pointer-events:none;z-index:4}
+  .shape-draw-preview.ellipse{border-radius:50%}
+  .shape-draw-preview.rect{border-radius:4px}
+  .panel{background:#fff;border:1px solid var(--paper-line);border-radius:var(--radius-lg);
+    padding:1rem 1.1rem;margin-bottom:1rem}
+  .panel h2{font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--jade-text);
+    margin:0 0 10px}
+  .point-row{display:flex;gap:6px;align-items:center;margin-bottom:8px;font-size:13px;
+    border-radius:8px;padding:4px;transition:background .2s}
+  .point-row.highlight{background:var(--jade-pale)}
+  .point-row .badge{width:22px;height:22px;border-radius:50%;background:var(--accent);
+    color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;
+    font-weight:700;flex-shrink:0}
+  .point-row .badge.type-rect{background:var(--jade)}
+  .point-row .badge.type-ellipse{background:var(--jade-deep)}
+  .point-row input[type=text]{flex:1;border:1px solid var(--paper-line);border-radius:6px;
+    padding:5px 8px;font-size:13px;font-family:inherit;background:#fff;min-width:0}
+  .point-row input[type=text]:focus{outline:2px solid var(--jade);border-color:var(--jade)}
+  .point-row .coords{font-size:10.5px;color:var(--ink-3);white-space:nowrap;font-family:monospace}
+  .point-row button{border:none;background:none;color:#C15F3C;cursor:pointer;font-size:15px;
+    padding:2px 4px}
+  button.btn{background:var(--jade);color:#fff;border:none;padding:9px 14px;border-radius:8px;
+    font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+  button.btn.secondary{background:var(--cream-2);color:var(--jade-text);border:1px solid var(--paper-line)}
+  button.btn:hover{background:var(--jade-deep)}
+  button.btn.secondary:hover{background:var(--paper-line)}
+  textarea{width:100%;min-height:180px;font-family:monospace;font-size:12px;
+    border:1px solid var(--paper-line);border-radius:8px;padding:10px;background:var(--cream-2);
+    color:var(--ink-2);resize:vertical}
+  .empty{font-size:13px;color:var(--ink-3);text-align:center;padding:1.5rem 0}
+  .row-gap{display:flex;gap:8px;flex-wrap:wrap;margin-top:.5rem}
+  .hint-drag{font-size:11.5px;color:var(--ink-3);margin-top:.6rem}
+
+  /* ---- Print / PDF ---- */
+  .print-legend{display:none;}
+  .print-title{display:none;}
+  @media print{
+    body{padding:0;background:#fff;}
+    h1, .sub, .upload-box, .left-toolbar, .mode-toolbar, .right, .hint-drag{display:none !important;}
+    .layout{display:block;}
+    .left{min-width:0;}
+    #stage{border:none;border-radius:0;display:block !important;}
+    .print-title{display:block !important;font-size:16px;font-weight:700;margin-bottom:10px;}
+    .print-legend{display:block !important;margin-top:16px;font-size:12.5px;}
+    .print-legend table{width:100%;border-collapse:collapse;}
+    .print-legend td, .print-legend th{border:1px solid #ccc;padding:5px 8px;text-align:left;}
+    .print-legend th{background:#f0f0f0;}
+    .pin, .shape{box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .resize-handle, .shape-badge{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+
+<h1>📍 Đo toạ độ Hotspot & Vùng trên ảnh</h1>
+<div class="sub">Upload ảnh → chọn chế độ Điểm / Chữ nhật / Hình tròn-Elip → click hoặc kéo trên ảnh để đặt → kéo để chỉnh, đổi tên, hoặc xuất PDF kèm toạ độ.</div>
+
+<div class="layout">
+  <div class="left">
+    <div class="print-title" id="printTitle"></div>
+    <label class="upload-box" id="uploadBox">
+      <input type="file" id="fileInput" accept="image/*">
+      <div id="uploadText">📁 Click để chọn ảnh (hoặc kéo-thả ảnh vào đây)</div>
+    </label>
+    <div class="left-toolbar no-print" id="leftToolbar">
+      <button class="btn secondary" onclick="triggerChangeImage()">🔄 Đổi ảnh khác</button>
+    </div>
+    <div class="mode-toolbar no-print" id="modeToolbar">
+      <button class="mode-btn active" data-mode="point" onclick="setMode('point')">📍 Đặt điểm</button>
+      <button class="mode-btn" data-mode="rect" onclick="setMode('rect')">▭ Vẽ chữ nhật</button>
+      <button class="mode-btn" data-mode="ellipse" onclick="setMode('ellipse')">⬭ Vẽ tròn / Elip</button>
+    </div>
+    <div id="stage">
+      <img id="theImg" src="" alt="">
+    </div>
+    <div class="hint-drag" id="dragHint" style="display:none">
+      💡 <b>Điểm:</b> click vào ảnh để đặt. <b>Chữ nhật / Elip:</b> kéo (drag) trên ảnh để vẽ vùng.
+      Sau khi đặt, kéo để dịch chuyển, kéo chấm ở góc để đổi kích thước, click để mở đúng dòng ở panel bên phải để đổi tên.
+    </div>
+    <div class="print-legend" id="printLegend"></div>
+  </div>
+
+  <div class="right">
+    <div class="panel">
+      <h2>Danh sách đã đặt</h2>
+      <div id="pointList"><div class="empty">Chưa có điểm/vùng nào — chọn chế độ rồi thao tác trên ảnh</div></div>
+      <div class="row-gap">
+        <button class="btn secondary" onclick="clearAll()">🗑 Xoá hết</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Xuất code (copy đoạn này gửi cho Claude)</h2>
+      <textarea id="output" readonly placeholder="Đặt ít nhất 1 điểm/vùng để thấy code xuất ra ở đây..."></textarea>
+      <div class="row-gap">
+        <button class="btn" onclick="copyOutput()">📋 Copy code</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Xuất PDF</h2>
+      <div style="font-size:12.5px;color:var(--ink-2);margin-bottom:8px;">In ra file gồm ảnh, các điểm/vùng đã đánh dấu và bảng toạ độ đi kèm.</div>
+      <div class="row-gap">
+        <button class="btn" onclick="printReport()" id="printBtn">🖨 In / Xuất PDF</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let items = [];        // {id, type:'point'|'rect'|'ellipse', label, x, y, w?, h?}  (all in % of image)
+let itemCounter = 0;
+let highlightedId = null;
+let currentMode = 'point';
+let currentFileName = '';
+
+const fileInput = document.getElementById('fileInput');
+const uploadBox = document.getElementById('uploadBox');
+const stage = document.getElementById('stage');
+const theImg = document.getElementById('theImg');
+const leftToolbar = document.getElementById('leftToolbar');
+const modeToolbar = document.getElementById('modeToolbar');
+const dragHint = document.getElementById('dragHint');
+
+function clamp(v, min = 0, max = 100) { return Math.max(min, Math.min(max, v)); }
+
+/* ---------------- Upload ---------------- */
+
+fileInput.addEventListener('change', e => {
+  if (e.target.files && e.target.files[0]) loadImage(e.target.files[0]);
+});
+uploadBox.addEventListener('dragover', e => { e.preventDefault(); });
+uploadBox.addEventListener('drop', e => {
+  e.preventDefault();
+  if (e.dataTransfer.files && e.dataTransfer.files[0]) loadImage(e.dataTransfer.files[0]);
+});
+
+function loadImage(file) {
+  const reader = new FileReader();
+  reader.onload = ev => {
+    theImg.src = ev.target.result;
+    stage.style.display = 'block';
+    uploadBox.style.display = 'none';
+    leftToolbar.classList.add('show');
+    modeToolbar.classList.add('show');
+    dragHint.style.display = 'block';
+    currentFileName = file.name;
+    document.getElementById('printTitle').textContent = 'Toạ độ hotspot / vùng — ' + file.name;
+    items = [];
+    itemCounter = 0;
+    setMode('point');
+    renderItems();
+    renderList();
+    updateOutput();
+  };
+  reader.readAsDataURL(file);
+}
+
+function triggerChangeImage() {
+  fileInput.value = '';
+  fileInput.click();
+}
+
+/* ---------------- Mode switching ---------------- */
+
+function setMode(mode) {
+  currentMode = mode;
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
+  theImg.classList.toggle('mode-point', mode === 'point');
+  theImg.classList.toggle('mode-shape', mode !== 'point');
+}
+
+/* ---------------- Adding a point (click) ---------------- */
+
+theImg.addEventListener('click', e => {
+  if (currentMode !== 'point') return;
+  const rect = theImg.getBoundingClientRect();
+  const xPct = clamp(((e.clientX - rect.left) / rect.width) * 100);
+  const yPct = clamp(((e.clientY - rect.top) / rect.height) * 100);
+  itemCounter++;
+  items.push({ id: itemCounter, type: 'point', label: 'Điểm ' + itemCounter, x: xPct, y: yPct });
+  renderItems();
+  renderList();
+  updateOutput();
+});
+
+/* ---------------- Drawing a shape (drag on image) ---------------- */
+
+theImg.addEventListener('mousedown', e => { if (currentMode !== 'point') startShapeDraw(e, false); });
+theImg.addEventListener('touchstart', e => { if (currentMode !== 'point') startShapeDraw(e, true); }, { passive: false });
+
+function getEventPoint(ev, isTouch) {
+  if (isTouch) {
+    const t = ev.touches[0] || ev.changedTouches[0];
+    return { x: t.clientX, y: t.clientY };
+  }
+  return { x: ev.clientX, y: ev.clientY };
+}
+
+function startShapeDraw(e, isTouch) {
+  e.preventDefault();
+  const rect = theImg.getBoundingClientRect();
+  const start = getEventPoint(e, isTouch);
+  const startXPct = clamp(((start.x - rect.left) / rect.width) * 100);
+  const startYPct = clamp(((start.y - rect.top) / rect.height) * 100);
+  const shapeType = currentMode;
+
+  const preview = document.createElement('div');
+  preview.className = 'shape-draw-preview ' + shapeType;
+  stage.appendChild(preview);
+  let geo = { x: startXPct, y: startYPct, w: 0, h: 0 };
+  applyGeo(preview, geo);
+
+  function onMove(ev) {
+    ev.preventDefault();
+    const pt = getEventPoint(ev, isTouch);
+    const curXPct = clamp(((pt.x - rect.left) / rect.width) * 100);
+    const curYPct = clamp(((pt.y - rect.top) / rect.height) * 100);
+    geo = {
+      x: Math.min(startXPct, curXPct),
+      y: Math.min(startYPct, curYPct),
+      w: Math.abs(curXPct - startXPct),
+      h: Math.abs(curYPct - startYPct)
+    };
+    applyGeo(preview, geo);
+  }
+
+  function onUp() {
+    if (isTouch) {
+      document.removeEventListener('touchmove', onMove);
+      document.removeEventListener('touchend', onUp);
+    } else {
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseup', onUp);
+    }
+    preview.remove();
+    if (geo.w > 1.2 && geo.h > 1.2) {
+      itemCounter++;
+      items.push({
+        id: itemCounter,
+        type: shapeType,
+        label: (shapeType === 'rect' ? 'Vùng chữ nhật ' : 'Vùng tròn ') + itemCounter,
+        x: geo.x, y: geo.y, w: geo.w, h: geo.h
+      });
+      renderItems();
+      renderList();
+      updateOutput();
+    }
+  }
+
+  if (isTouch) {
+    document.addEventListener('touchmove', onMove, { passive: false });
+    document.addEventListener('touchend', onUp);
+  } else {
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onUp);
+  }
+}
+
+function applyGeo(el, geo) {
+  el.style.left = geo.x + '%';
+  el.style.top = geo.y + '%';
+  el.style.width = geo.w + '%';
+  el.style.height = geo.h + '%';
+}
+
+/* ---------------- Rendering pins & shapes on the image ---------------- */
+
+function renderItems() {
+  document.querySelectorAll('.pin, .shape').forEach(el => el.remove());
+  items.forEach(it => {
+    if (it.type === 'point') {
+      const pin = document.createElement('div');
+      pin.className = 'pin' + (it.id === highlightedId ? ' highlight' : '');
+      pin.id = 'pin-' + it.id;
+      pin.style.left = it.x + '%';
+      pin.style.top = it.y + '%';
+      pin.textContent = it.id;
+      pin.title = 'Kéo để di chuyển · click để đổi tên';
+      attachMoveDrag(pin, it);
+      stage.appendChild(pin);
+    } else {
+      const el = document.createElement('div');
+      el.className = 'shape ' + it.type + (it.id === highlightedId ? ' highlight' : '');
+      el.id = 'shape-' + it.id;
+      el.style.left = it.x + '%';
+      el.style.top = it.y + '%';
+      el.style.width = it.w + '%';
+      el.style.height = it.h + '%';
+      el.title = 'Kéo để di chuyển · kéo chấm góc để đổi kích thước · click để đổi tên';
+
+      const badge = document.createElement('div');
+      badge.className = 'shape-badge';
+      badge.textContent = it.id;
+      el.appendChild(badge);
+
+      const handle = document.createElement('div');
+      handle.className = 'resize-handle';
+      el.appendChild(handle);
+
+      attachMoveDrag(el, it);
+      attachResizeDrag(handle, it);
+      stage.appendChild(el);
+    }
+  });
+}
+
+/* ---------------- Move dragging (points & shapes) ---------------- */
+
+function attachMoveDrag(el, it) {
+  el.addEventListener('mousedown', e => startMoveDrag(e, el, it, false));
+  el.addEventListener('touchstart', e => startMoveDrag(e, el, it, true), { passive: false });
+}
+
+function startMoveDrag(e, el, it, isTouch) {
+  e.preventDefault();
+  e.stopPropagation();
+  let moved = false;
+  el.classList.add('dragging');
+
+  const rect = theImg.getBoundingClientRect();
+  const start = getEventPoint(e, isTouch);
+  const startXPct = ((start.x - rect.left) / rect.width) * 100;
+  const startYPct = ((start.y - rect.top) / rect.height) * 100;
+  const initX = it.x, initY = it.y;
+
+  function onMove(ev) {
+    moved = true;
+    ev.preventDefault();
+    const pt = getEventPoint(ev, isTouch);
+    const curXPct = ((pt.x - rect.left) / rect.width) * 100;
+    const curYPct = ((pt.y - rect.top) / rect.height) * 100;
+    const dx = curXPct - startXPct;
+    const dy = curYPct - startYPct;
+
+    if (it.type === 'point') {
+      it.x = clamp(initX + dx);
+      it.y = clamp(initY + dy);
+      el.style.left = it.x + '%';
+      el.style.top = it.y + '%';
+    } else {
+      it.x = clamp(initX + dx, 0, 100 - it.w);
+      it.y = clamp(initY + dy, 0, 100 - it.h);
+      el.style.left = it.x + '%';
+      el.style.top = it.y + '%';
+    }
+    updateRowCoords(it.id);
+    updateOutput();
+  }
+
+  function onUp() {
+    el.classList.remove('dragging');
+    if (isTouch) {
+      document.removeEventListener('touchmove', onMove);
+      document.removeEventListener('touchend', onUp);
+    } else {
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseup', onUp);
+    }
+    if (!moved) focusItem(it.id);
+  }
+
+  if (isTouch) {
+    document.addEventListener('touchmove', onMove, { passive: false });
+    document.addEventListener('touchend', onUp);
+  } else {
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onUp);
+  }
+}
+
+/* ---------------- Resize dragging (shapes only) ---------------- */
+
+function attachResizeDrag(handle, it) {
+  handle.addEventListener('mousedown', e => startResizeDrag(e, it), );
+  handle.addEventListener('touchstart', e => startResizeDrag(e, it, true), { passive: false });
+}
+
+function startResizeDrag(e, it, isTouch) {
+  e.preventDefault();
+  e.stopPropagation();
+  const rect = theImg.getBoundingClientRect();
+  const start = getEventPoint(e, isTouch);
+  const startXPct = ((start.x - rect.left) / rect.width) * 100;
+  const startYPct = ((start.y - rect.top) / rect.height) * 100;
+  const initW = it.w, initH = it.h;
+  const el = document.getElementById('shape-' + it.id);
+
+  function onMove(ev) {
+    ev.preventDefault();
+    const pt = getEventPoint(ev, isTouch);
+    const curXPct = ((pt.x - rect.left) / rect.width) * 100;
+    const curYPct = ((pt.y - rect.top) / rect.height) * 100;
+    const dx = curXPct - startXPct;
+    const dy = curYPct - startYPct;
+    it.w = clamp(initW + dx, 1.5, 100 - it.x);
+    it.h = clamp(initH + dy, 1.5, 100 - it.y);
+    if (el) { el.style.width = it.w + '%'; el.style.height = it.h + '%'; }
+    updateRowCoords(it.id);
+    updateOutput();
+  }
+
+  function onUp() {
+    if (isTouch) {
+      document.removeEventListener('touchmove', onMove);
+      document.removeEventListener('touchend', onUp);
+    } else {
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseup', onUp);
+    }
+  }
+
+  if (isTouch) {
+    document.addEventListener('touchmove', onMove, { passive: false });
+    document.addEventListener('touchend', onUp);
+  } else {
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onUp);
+  }
+}
+
+/* ---------------- Focus / highlight ---------------- */
+
+function focusItem(id) {
+  highlightedId = id;
+  renderList();
+  const row = document.getElementById('row-' + id);
+  if (row) {
+    row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const input = row.querySelector('input[type=text]');
+    if (input) { input.focus(); input.select(); }
+  }
+  const el = document.getElementById('pin-' + id) || document.getElementById('shape-' + id);
+  if (el) {
+    el.classList.add('highlight');
+    setTimeout(() => el.classList.remove('highlight'), 1200);
+  }
+}
+
+function setHighlight(id) {
+  highlightedId = id;
+  document.querySelectorAll('.point-row').forEach(r => r.classList.remove('highlight'));
+  const row = document.getElementById('row-' + id);
+  if (row) row.classList.add('highlight');
+}
+
+/* ---------------- Right-panel list ---------------- */
+
+function updateRowCoords(id) {
+  const span = document.getElementById('coords-' + id);
+  const it = items.find(i => i.id === id);
+  if (!span || !it) return;
+  span.textContent = coordsText(it);
+}
+
+function coordsText(it) {
+  if (it.type === 'point') return `📍 ${it.x.toFixed(1)}%, ${it.y.toFixed(1)}%`;
+  const icon = it.type === 'rect' ? '▭' : '⬭';
+  return `${icon} ${it.x.toFixed(1)}%,${it.y.toFixed(1)}% · ${it.w.toFixed(1)}×${it.h.toFixed(1)}%`;
+}
+
+function renderList() {
+  const list = document.getElementById('pointList');
+  if (items.length === 0) {
+    list.innerHTML = '<div class="empty">Chưa có điểm/vùng nào — chọn chế độ rồi thao tác trên ảnh</div>';
+    return;
+  }
+  list.innerHTML = '';
+  items.forEach(it => {
+    const row = document.createElement('div');
+    row.className = 'point-row' + (it.id === highlightedId ? ' highlight' : '');
+    row.id = 'row-' + it.id;
+    row.innerHTML = `
+      <div class="badge type-${it.type}">${it.id}</div>
+      <input type="text" value="${escapeHtml(it.label)}" onchange="renameLabel(${it.id}, this.value)" onfocus="setHighlight(${it.id})">
+      <span class="coords" id="coords-${it.id}">${coordsText(it)}</span>
+      <button onclick="removeItem(${it.id})" title="Xoá">✕</button>
+    `;
+    list.appendChild(row);
+  });
+}
+
+function renameLabel(id, value) {
+  const it = items.find(i => i.id === id);
+  if (it) it.label = value;
+  updateOutput();
+}
+
+function removeItem(id) {
+  items = items.filter(i => i.id !== id);
+  renderItems();
+  renderList();
+  updateOutput();
+}
+
+function clearAll() {
+  items = [];
+  itemCounter = 0;
+  highlightedId = null;
+  renderItems();
+  renderList();
+  updateOutput();
+}
+
+/* ---------------- Output / PDF ---------------- */
+
+function typeLabel(type) {
+  return type === 'point' ? 'Điểm' : (type === 'rect' ? 'Chữ nhật' : 'Hình tròn/Elip');
+}
+
+function updateOutput() {
+  buildPrintLegend();
+  if (items.length === 0) {
+    document.getElementById('output').value = '';
+    return;
+  }
+  let out = 'Danh sách hotspot / vùng đã đo:\n\n';
+  items.forEach(it => {
+    if (it.type === 'point') {
+      out += `${it.id}. "${it.label}" [Điểm] — left: ${it.x.toFixed(1)}%, top: ${it.y.toFixed(1)}%\n`;
+    } else if (it.type === 'rect') {
+      out += `${it.id}. "${it.label}" [Chữ nhật] — left: ${it.x.toFixed(1)}%, top: ${it.y.toFixed(1)}%, width: ${it.w.toFixed(1)}%, height: ${it.h.toFixed(1)}%\n`;
+    } else {
+      out += `${it.id}. "${it.label}" [Hình tròn/Elip] — left: ${it.x.toFixed(1)}%, top: ${it.y.toFixed(1)}%, width: ${it.w.toFixed(1)}%, height: ${it.h.toFixed(1)}% (border-radius: 50%)\n`;
+    }
+  });
+  document.getElementById('output').value = out;
+}
+
+function buildPrintLegend() {
+  const legend = document.getElementById('printLegend');
+  if (items.length === 0) { legend.innerHTML = ''; return; }
+  let rows = items.map(it => {
+    const w = it.type === 'point' ? '–' : it.w.toFixed(1) + '%';
+    const h = it.type === 'point' ? '–' : it.h.toFixed(1) + '%';
+    return `<tr><td>${it.id}</td><td>${typeLabel(it.type)}</td><td>${escapeHtml(it.label)}</td><td>${it.x.toFixed(1)}%</td><td>${it.y.toFixed(1)}%</td><td>${w}</td><td>${h}</td></tr>`;
+  }).join('');
+  legend.innerHTML = `<table><thead><tr><th>#</th><th>Loại</th><th>Tên</th><th>Left (x%)</th><th>Top (y%)</th><th>Width (%)</th><th>Height (%)</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function copyOutput() {
+  const ta = document.getElementById('output');
+  ta.select();
+  navigator.clipboard.writeText(ta.value).then(() => {
+    const btn = document.querySelector('.panel:nth-child(2) .btn');
+    if (btn) {
+      const old = btn.textContent;
+      btn.textContent = '✅ Đã copy!';
+      setTimeout(() => { btn.textContent = old; }, 1500);
+    }
+  }).catch(() => { document.execCommand('copy'); });
+}
+
+function printReport() {
+  buildPrintLegend();
+  window.print();
+}
+</script>
+</body>
+</html>
