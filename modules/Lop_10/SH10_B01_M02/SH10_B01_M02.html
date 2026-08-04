@@ -343,6 +343,76 @@
     .module-summary p { margin:0; color:var(--jade-dark); font-size:.93rem; }
     .module-summary p + p { margin-top:10px; }
 
+    .congrats-overlay {
+      position:fixed;
+      inset:0;
+      z-index:1000;
+      display:grid;
+      place-items:center;
+      padding:20px;
+      background:rgba(20,67,47,.48);
+    }
+    .congrats-canvas {
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      pointer-events:none;
+    }
+    .congrats-card {
+      position:relative;
+      z-index:2;
+      width:min(520px,100%);
+      padding:30px clamp(20px,5vw,38px);
+      border:1px solid var(--jade-soft);
+      border-radius:var(--radius-lg);
+      background:var(--cream);
+      box-shadow:0 12px 32px rgba(20,67,47,.18);
+      text-align:center;
+      animation:congratsIn .35s ease-out;
+    }
+    .congrats-icon {
+      width:64px;
+      height:64px;
+      display:grid;
+      place-items:center;
+      margin:0 auto 15px;
+      border:2px solid var(--jade);
+      border-radius:50%;
+      background:var(--jade-pale);
+      color:var(--jade-dark);
+      font-size:2rem;
+    }
+    .congrats-card h2 { margin:0; color:var(--jade-dark); font-size:clamp(1.45rem,4vw,2rem); }
+    .congrats-card p { margin:12px auto 0; max-width:42ch; color:var(--ink-2); }
+    .congrats-points {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:8px;
+      margin:20px 0;
+    }
+    .congrats-point {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:5px;
+      min-height:80px;
+      padding:9px;
+      border:1px solid var(--paper-line);
+      border-radius:8px;
+      background:#fff;
+      color:var(--jade-text);
+      font-size:.75rem;
+      font-weight:700;
+      line-height:1.35;
+    }
+    .congrats-point i { font-size:1.35rem; color:var(--jade); }
+    @keyframes congratsIn {
+      from { opacity:0; transform:translateY(12px) scale(.97); }
+      to { opacity:1; transform:none; }
+    }
+
     .sr-only {
       position:absolute; width:1px; height:1px; padding:0; margin:-1px;
       overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
@@ -386,6 +456,8 @@
       .match-code { flex-basis:25px; width:25px; height:25px; }
       .match-text { font-size:.65rem; }
       .field-card { padding:7px; }
+      .congrats-points { grid-template-columns:1fr; }
+      .congrats-point { min-height:58px; flex-direction:row; }
     }
     @media (prefers-reduced-motion:reduce) {
       html { scroll-behavior:auto; }
@@ -546,6 +618,21 @@
     </section>
   </main>
 
+  <div class="congrats-overlay hidden" id="congratsModal" role="dialog" aria-modal="true" aria-labelledby="congratsTitle">
+    <canvas class="congrats-canvas" id="congratsCanvas" aria-hidden="true"></canvas>
+    <section class="congrats-card">
+      <div class="congrats-icon"><i class="ti ti-confetti"></i></div>
+      <h2 id="congratsTitle">Hoàn thành module</h2>
+      <p>Bạn đã hoàn thành bốn hoạt động về vai trò, lĩnh vực ứng dụng và nghề nghiệp liên quan đến Sinh học.</p>
+      <div class="congrats-points" aria-label="Nội dung đã hoàn thành">
+        <div class="congrats-point"><i class="ti ti-heart-handshake"></i><span>Vai trò trong đời sống</span></div>
+        <div class="congrats-point"><i class="ti ti-route"></i><span>Chuỗi giải pháp – tác động</span></div>
+        <div class="congrats-point"><i class="ti ti-users-group"></i><span>Lĩnh vực và nghề nghiệp</span></div>
+      </div>
+      <button class="btn btn-primary" type="button" id="closeCongrats"><i class="ti ti-check"></i> Đóng thông báo</button>
+    </section>
+  </div>
+
   <script>
     'use strict';
 
@@ -577,6 +664,7 @@
       s04_ready:false, module_completed:false
     };
     let completionSent = false;
+    let celebrationFrame = 0;
 
     const fields = [
       {id:'medical', label:'Y – dược học', icon:'ti-stethoscope'},
@@ -1034,6 +1122,74 @@
       const finalReset=document.querySelector('#stage-s04 [data-reset]');
       if(finalReset) finalReset.disabled=true;
       saveState('module_completed');
+      showCongrats();
+    }
+
+    function showCongrats(){
+      const modal=document.getElementById('congratsModal');
+      modal.classList.remove('hidden');
+      document.body.style.overflow='hidden';
+      document.getElementById('closeCongrats').focus();
+      launchConfetti();
+    }
+
+    function closeCongrats(){
+      cancelAnimationFrame(celebrationFrame);
+      const canvas=document.getElementById('congratsCanvas');
+      const ctx=canvas.getContext('2d');
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      document.getElementById('congratsModal').classList.add('hidden');
+      document.body.style.overflow='';
+      const finalButton=document.querySelector('#stage-s04 [data-next]');
+      if(finalButton) finalButton.focus();
+    }
+
+    function launchConfetti(){
+      if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+      const canvas=document.getElementById('congratsCanvas');
+      const ctx=canvas.getContext('2d');
+      const dpr=Math.min(devicePixelRatio||1,2);
+      const resize=()=>{
+        canvas.width=Math.round(innerWidth*dpr);
+        canvas.height=Math.round(innerHeight*dpr);
+        canvas.style.width=innerWidth+'px';
+        canvas.style.height=innerHeight+'px';
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+      };
+      resize();
+      const colors=['#3CA57A','#E8A24A','#4E7F92','#A8C9B8','#F0EADD'];
+      const pieces=Array.from({length:110},(_,index)=>({
+        x:innerWidth*(.12+Math.random()*.76),
+        y:-20-Math.random()*innerHeight*.55,
+        w:5+Math.random()*6,
+        h:9+Math.random()*8,
+        vx:(Math.random()-.5)*2.4,
+        vy:2.2+Math.random()*3.1,
+        rotation:Math.random()*Math.PI,
+        spin:(Math.random()-.5)*.18,
+        wave:Math.random()*Math.PI*2,
+        color:colors[index%colors.length]
+      }));
+      const started=performance.now();
+      cancelAnimationFrame(celebrationFrame);
+      function frame(now){
+        ctx.clearRect(0,0,innerWidth,innerHeight);
+        pieces.forEach(piece=>{
+          piece.wave+=.06;
+          piece.x+=piece.vx+Math.sin(piece.wave)*.6;
+          piece.y+=piece.vy;
+          piece.rotation+=piece.spin;
+          ctx.save();
+          ctx.translate(piece.x,piece.y);
+          ctx.rotate(piece.rotation);
+          ctx.fillStyle=piece.color;
+          ctx.fillRect(-piece.w/2,-piece.h/2,piece.w,piece.h);
+          ctx.restore();
+        });
+        if(now-started<3200) celebrationFrame=requestAnimationFrame(frame);
+        else ctx.clearRect(0,0,innerWidth,innerHeight);
+      }
+      celebrationFrame=requestAnimationFrame(frame);
     }
 
     function restoreResume(s){
@@ -1119,6 +1275,13 @@
     document.getElementById('retryS02').addEventListener('click',()=>retryMatching('s02'));
     document.getElementById('checkS04').addEventListener('click',()=>checkMatching('s04'));
     document.getElementById('retryS04').addEventListener('click',()=>retryMatching('s04'));
+    document.getElementById('closeCongrats').addEventListener('click',closeCongrats);
+    document.getElementById('congratsModal').addEventListener('click',event=>{
+      if(event.target.id==='congratsModal') closeCongrats();
+    });
+    addEventListener('keydown',event=>{
+      if(event.key==='Escape' && !document.getElementById('congratsModal').classList.contains('hidden')) closeCongrats();
+    });
     addEventListener('resize',()=>{
       clearTimeout(window.__lineResize);
       window.__lineResize=setTimeout(()=>{
