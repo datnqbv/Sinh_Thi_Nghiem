@@ -1,0 +1,1708 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chức năng của DNA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+
+  <script type="application/json" id="athena-context">
+  {
+    "title": "Chức năng của DNA",
+    "subject": "Sinh học",
+    "grade": "12",
+    "track": "Bài 1 · DNA và cơ chế tái bản DNA",
+    "moduleCode": "SH12-B01-M01",
+    "objectives": [
+      "Nhận biết được vai trò của mẫu sinh học và ứng dụng phân tích DNA trong xác định danh tính.",
+      "Phân tích được mối liên hệ giữa các đặc điểm cấu trúc của DNA (đa phân, xoắn kép, nguyên tắc bổ sung) với 3 chức năng: mang, bảo quản và truyền đạt thông tin di truyền.",
+      "Giải thích được nguyên tắc bổ sung: A liên kết với T bằng 2 liên kết hydrogen, G liên kết với C bằng 3 liên kết hydrogen.",
+      "Hệ thống hóa kiến thức cốt lõi và kết nối gợi mở sang cơ chế tái bản DNA ở Module 02."
+    ],
+    "structure": [
+      {"id": "st00", "title": "ST00 — Đặt vấn đề: DNA có thể cho chúng ta biết điều gì?"},
+      {"id": "st01", "title": "ST01 — Khám phá: Cấu trúc DNA phù hợp với chức năng như thế nào?"},
+      {"id": "st02", "title": "ST02 — Khám phá: Vì sao A chỉ kết cặp với T, còn G kết cặp với C?"},
+      {"id": "st03", "title": "ST03 — Ghi nhớ và kết nối sang Module 02"}
+    ],
+    "athenaGuidance": "Module lí thuyết tương tác Sinh học 12 gồm 4 giai đoạn logic. ST00: Quan sát mẫu sinh học và sơ đồ so sánh vạch DNA để nhận biết tính đặc trưng cá thể. ST01: Khám phá mô hình xoắn kép Watson-Crick qua 3 hotspot (Cấu trúc đa phân, Cấu trúc xoắn kép, Nguyên tắc bổ sung) và trả lời câu hỏi củng cố chức năng. ST02: Quan sát 2 mô hình cặp base A-T (2 liên kết H) và G-C (3 liên kết H) tuân thủ Science-lock nét đứt, giải quyết câu hỏi củng cố. ST03: Tổng hợp 5 nội dung ghi nhớ cốt lõi, lời dẫn chuyển giao sang cơ chế nhân đôi DNA và nút hoàn thành module."
+  }
+  </script>
+
+  <style>
+    :root {
+      /* Neutrals · giấy & mực (Tom Haugomat Editorial Flat) */
+      --cream: #FAF7F0;
+      --cream-2: #F0EADD;
+      --cream-3: #E7DECC;
+      --paper-line: #E5DECF;
+      --paper-line-2: #D6CCB6;
+      --ink: #1A1A1A;
+      --ink-2: #514C44;
+      --ink-3: #7C756A;
+      --ink-faint: #ABA396;
+
+      /* Jade · hành động chính */
+      --jade: #3CA57A;
+      --jade-deep: #2D8B6F;
+      --jade-dark: #14432F;
+      --jade-text: #1B5E48;
+      --jade-soft: #A9D0BE;
+      --jade-pale: #DCEAE1;
+
+      /* Sage · phụ trợ */
+      --sage: #A8C9B8;
+      --sage-deep: #7CA792;
+      --sage-text: #46685A;
+      --sage-pale: #E1ECE4;
+
+      /* Accent · điểm nhấn ấm */
+      --accent: #E8A24A;
+      --accent-deep: #CE8A33;
+      --accent-text: #8A551A;
+      --accent-pale: #F7E7CD;
+
+      /* Semantic · phản hồi */
+      --correct: #2D8B6F;
+      --correct-bg: #DCEAE1;
+      --wrong: #C15F3C;
+      --wrong-bg: #F3E2D6;
+      --warning: #C58A2E;
+      --warning-bg: #F5E7CB;
+      --info: #4E7F92;
+      --info-bg: #DCE7EB;
+
+      /* Science-lock Colors (chỉ dùng cho đồ họa khoa học) */
+      --dna-a: #2E9D57; /* Adenine - Xanh lá */
+      --dna-t: #D64242; /* Thymine - Đỏ */
+      --dna-g: #E6B422; /* Guanine - Vàng */
+      --dna-c: #7D4EB2; /* Cytosine - Tím */
+      --dna-backbone: #2467B2;
+      --dna-sugar: #5BA3E6;
+
+      /* Bán kính & bóng */
+      --radius: 10px;
+      --radius-lg: 14px;
+      --radius-sm: 6px;
+      --shadow: 0 4px 12px rgba(45, 139, 111, .10);
+      --shadow-sm: 0 2px 6px rgba(26, 26, 26, .05);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    button { font: inherit; }
+    button, [tabindex] { -webkit-tap-highlight-color: transparent; }
+    button:focus-visible, [tabindex]:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+    }
+    img { display: block; max-width: 100%; }
+    .hidden { display: none !important; }
+
+    /* Layout chính */
+    .app {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px clamp(12px, 2.4vw, 24px) 24px;
+    }
+
+    /* Header bài học */
+    .module-header {
+      background: var(--cream-2);
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-lg);
+      padding: 16px 20px;
+      margin-bottom: 20px;
+    }
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--jade-pale);
+      color: var(--jade-text);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 99px;
+      border: 1px solid var(--jade-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .module-code {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ink-3);
+    }
+    .module-title {
+      margin: 0 0 6px 0;
+      font-size: clamp(1.3rem, 2.8vw, 1.8rem);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .module-desc {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--ink-2);
+    }
+
+    /* Stepper tiến trình */
+    .stepper-nav {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      background: var(--cream-2);
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius);
+      color: var(--ink-3);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .step-item:hover:not(.active) {
+      border-color: var(--jade-soft);
+      background: #FAF7F0;
+    }
+    .step-item.active {
+      background: #FFFFFF;
+      border-color: var(--jade);
+      color: var(--jade-text);
+      box-shadow: 0 2px 8px rgba(60, 165, 122, 0.15);
+    }
+    .step-item.completed {
+      border-color: var(--jade-soft);
+      color: var(--ink-2);
+    }
+    .step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--paper-line);
+      color: var(--ink-2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+    .step-item.active .step-num {
+      background: var(--jade);
+      color: #FFFFFF;
+    }
+    .step-item.completed .step-num {
+      background: var(--jade-pale);
+      color: var(--jade-text);
+    }
+    .step-title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Khung Stage Content */
+    .stage-section {
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-lg);
+      padding: clamp(16px, 3vw, 28px);
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .lead-box {
+      margin-bottom: 20px;
+    }
+    .lead-text {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin: 0 0 10px 0;
+      line-height: 1.7;
+    }
+    .guide-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--jade-pale);
+      border-left: 4px solid var(--jade);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 0.92rem;
+      color: var(--jade-text);
+      font-weight: 500;
+      line-height: 1.55;
+    }
+    .guide-box i {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ST00: Grid 2 Card */
+    .st00-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+    .media-card {
+      background: var(--cream);
+      border: 2px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 14px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .media-card:hover {
+      border-color: var(--jade-soft);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    .media-card.viewed {
+      border-color: var(--jade);
+      background: #FFFFFF;
+    }
+    .media-card__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 99px;
+      align-self: flex-start;
+      margin-bottom: 10px;
+      background: var(--cream-2);
+      color: var(--ink-3);
+      border: 1px solid var(--paper-line-2);
+      transition: all 0.2s ease;
+    }
+    .media-card.viewed .media-card__badge {
+      background: var(--jade-pale);
+      color: var(--jade-text);
+      border-color: var(--jade-soft);
+    }
+    .media-card__img-wrap {
+      width: 100%;
+      height: 230px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .media-card__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .media-card__caption {
+      margin: 12px 0 0 0;
+      font-size: 0.95rem;
+      color: var(--ink-2);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    .media-card__detail {
+      margin-top: 10px;
+      padding: 8px 12px;
+      background: var(--jade-pale);
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      color: var(--jade-text);
+      font-weight: 600;
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .media-card.viewed .media-card__detail {
+      display: block;
+    }
+    .hotspot-pulse {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
+      background: rgba(60, 165, 122, 0.85);
+      border-radius: 50%;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 0 0 0 rgba(60, 165, 122, 0.7);
+      animation: pulse 1.8s infinite;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .media-card.viewed .hotspot-pulse {
+      opacity: 0;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(60, 165, 122, 0.7); }
+      70% { box-shadow: 0 0 0 14px rgba(60, 165, 122, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(60, 165, 122, 0); }
+    }
+
+    /* Khối Chốt Kiến thức & Câu chuyển */
+    .conclude-card {
+      background: var(--cream);
+      border: 1.5px solid var(--paper-line-2);
+      border-left: 5px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin: 20px 0;
+      animation: slideUp 0.35s ease;
+    }
+    .conclude-card__title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--accent-text);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .conclude-card__text {
+      margin: 0;
+      font-size: 1rem;
+      color: var(--ink);
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    /* ST01: Bố cục Mô hình DNA + Hotspots */
+    .st01-layout {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .dna-model-container {
+      background: #F6FBFF;
+      border: 1px solid #D6E6F2;
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 2px 8px rgba(36, 103, 178, 0.04);
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .dna-model-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+    }
+    .dna-hotspot-btn {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 2px solid var(--jade);
+      color: var(--jade-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 5;
+      padding: 0;
+    }
+    .dna-hotspot-btn:hover {
+      transform: scale(1.15);
+      background: var(--jade);
+      color: #FFFFFF;
+    }
+    .dna-hotspot-btn.active {
+      background: var(--jade);
+      color: #FFFFFF;
+      border-color: #FFFFFF;
+      box-shadow: 0 0 0 4px rgba(60, 165, 122, 0.35);
+    }
+    .dna-hotspot-btn.viewed {
+      background: var(--jade-pale);
+      border-color: var(--jade-deep);
+      color: var(--jade-text);
+    }
+    .dna-hotspot-btn.viewed::after {
+      content: '✓';
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 16px;
+      height: 16px;
+      background: var(--jade);
+      color: #FFF;
+      font-size: 10px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+    }
+
+    /* Bảng nội dung Hotspot & Quiz bên phải */
+    .st01-side-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .hotspot-card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .hotspot-info-box {
+      background: var(--cream);
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .hotspot-info-box:hover {
+      border-color: var(--jade-soft);
+    }
+    .hotspot-info-box.active {
+      background: #FFFFFF;
+      border-color: var(--jade);
+      box-shadow: var(--shadow-sm);
+    }
+    .hotspot-info-box.viewed .hotspot-info-box__header {
+      color: var(--jade-text);
+    }
+    .hotspot-info-box__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .hotspot-info-box__body {
+      font-size: 0.92rem;
+      color: var(--ink-2);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* Khối câu hỏi củng cố (Quiz Component) */
+    .quiz-box {
+      background: #FFFFFF;
+      border: 2px solid var(--paper-line-2);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-top: 16px;
+      animation: fadeIn 0.4s ease;
+    }
+    .quiz-box__q {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 14px 0;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .quiz-opt {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--cream);
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-size: 0.95rem;
+      color: var(--ink);
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+      width: 100%;
+    }
+    .quiz-opt:hover:not(:disabled) {
+      border-color: var(--jade-soft);
+      background: #FAF7F0;
+    }
+    .quiz-opt.selected {
+      border-color: var(--jade);
+      background: #FFFFFF;
+    }
+    .quiz-opt.correct {
+      border-color: var(--correct);
+      background: var(--correct-bg);
+      color: var(--jade-text);
+      font-weight: 600;
+    }
+    .quiz-opt.wrong {
+      border-color: var(--wrong);
+      background: var(--wrong-bg);
+      color: var(--wrong);
+    }
+    .opt-letter {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--paper-line-2);
+      color: var(--ink-2);
+      font-size: 0.8rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .quiz-opt.correct .opt-letter {
+      background: var(--correct);
+      color: #FFFFFF;
+    }
+    .quiz-opt.wrong .opt-letter {
+      background: var(--wrong);
+      color: #FFFFFF;
+    }
+
+    /* Thông báo phản hồi đúng / sai */
+    .feedback-panel {
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      margin-top: 10px;
+      animation: fadeIn 0.3s ease;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .feedback-panel i {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .feedback-panel.correct {
+      background: var(--correct-bg);
+      border-left: 4px solid var(--correct);
+      color: var(--jade-text);
+    }
+    .feedback-panel.wrong {
+      background: var(--wrong-bg);
+      border-left: 4px solid var(--wrong);
+      color: var(--wrong);
+    }
+
+    /* ST02: Thẻ cặp Base A-T và G-C */
+    .st02-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .base-pair-card {
+      background: #FFFFFF;
+      border: 2px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .base-pair-card:hover {
+      border-color: var(--jade-soft);
+      box-shadow: var(--shadow);
+    }
+    .base-pair-card.viewed {
+      border-color: var(--jade);
+    }
+    .base-pair-card__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .base-pair-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .base-pair-badge {
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 99px;
+      background: var(--cream-2);
+      color: var(--ink-3);
+    }
+    .base-pair-card.viewed .base-pair-badge {
+      background: var(--jade-pale);
+      color: var(--jade-text);
+    }
+    .base-pair-svg-wrap {
+      width: 100%;
+      height: 220px;
+      background: var(--cream);
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .base-pair-desc {
+      margin: 12px 0 0 0;
+      font-size: 0.95rem;
+      color: var(--ink-2);
+      line-height: 1.5;
+    }
+
+    /* ST03: Ghi nhớ & Kết nối */
+    .st03-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .summary-card {
+      background: var(--cream);
+      border: 1px solid var(--paper-line-2);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+    }
+    .summary-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--jade-text);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0 0 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .summary-list {
+      margin: 0;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .summary-list li {
+      font-size: 0.98rem;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    .summary-list strong {
+      color: var(--jade-dark);
+    }
+    .bridge-card {
+      background: #FFFFFF;
+      border: 2px dashed var(--jade-soft);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      background: var(--jade-pale);
+    }
+    .bridge-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--jade-deep);
+      margin: 0 0 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .bridge-text {
+      margin: 0;
+      font-size: 0.96rem;
+      color: var(--jade-text);
+      line-height: 1.65;
+    }
+
+    /* Khung thông báo hoàn thành inline */
+    .complete-banner {
+      background: var(--jade-pale);
+      border: 2px solid var(--jade);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      animation: fadeIn 0.35s ease;
+    }
+    .complete-banner__icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--jade);
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .complete-banner__title {
+      margin: 0 0 4px 0;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--jade-dark);
+    }
+    .complete-banner__text {
+      margin: 0;
+      font-size: 0.92rem;
+      color: var(--jade-text);
+      line-height: 1.5;
+    }
+
+    /* Thanh điều khiển dưới cùng (Action Bar) */
+    .stage-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--paper-line);
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: var(--radius);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      min-height: 44px;
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 1.5px solid var(--paper-line-2);
+      color: var(--ink-2);
+    }
+    .btn-secondary:hover {
+      border-color: var(--ink-faint);
+      background: var(--cream);
+    }
+    .btn-primary {
+      background: var(--jade);
+      color: #FFFFFF;
+    }
+    .btn-primary:hover:not(:disabled) {
+      background: var(--jade-deep);
+      box-shadow: 0 4px 12px rgba(45, 139, 111, 0.25);
+    }
+    .btn-primary:disabled {
+      background: var(--paper-line-2);
+      color: var(--ink-faint);
+      cursor: not-allowed;
+    }
+    .btn-complete {
+      background: var(--jade-dark);
+      color: #FFFFFF;
+      font-size: 1.05rem;
+      padding: 12px 28px;
+    }
+    .btn-complete:hover {
+      background: var(--jade-deep);
+      box-shadow: 0 6px 16px rgba(20, 67, 47, 0.3);
+    }
+
+    /* Modal hoàn thành module */
+    .modal-backdrop {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(26, 26, 26, 0.6);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 16px;
+      animation: fadeIn 0.25s ease;
+    }
+    .modal-box {
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2);
+      animation: zoomIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .modal-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--jade-pale);
+      color: var(--jade);
+      font-size: 2.2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .modal-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 0 0 10px 0;
+    }
+    .modal-desc {
+      font-size: 0.98rem;
+      color: var(--ink-2);
+      margin: 0 0 20px 0;
+      line-height: 1.6;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .stepper-nav {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .st00-grid, .st02-grid {
+        grid-template-columns: 1fr;
+      }
+      .st01-layout {
+        grid-template-columns: 1fr;
+      }
+      .media-card__img-wrap {
+        height: 190px;
+      }
+    }
+    @media (max-width: 480px) {
+      .stepper-nav {
+        grid-template-columns: 1fr;
+      }
+      .stage-actions {
+        flex-direction: column-reverse;
+      }
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app">
+    <!-- Header thông tin bài học -->
+    <header class="module-header">
+      <div class="header-top">
+        <span class="badge-pill"><i class="ti ti-dna-2"></i> Sinh học 12 · Bài 1</span>
+      </div>
+      <h1 class="module-title">Chức năng của DNA</h1>
+      <p class="module-desc">Tìm hiểu cấu trúc xoắn kép, nguyên tắc bổ sung và vai trò mang, bảo quản, truyền đạt thông tin di truyền của phân tử DNA.</p>
+    </header>
+
+    <!-- Stepper 4 bước -->
+    <nav class="stepper-nav" aria-label="Tiến trình học tập">
+      <div class="step-item active" id="stepTab-0" onclick="goToStage(0)">
+        <span class="step-num">01</span>
+        <span class="step-title">Đặt vấn đề (DNA)</span>
+      </div>
+      <div class="step-item" id="stepTab-1" onclick="goToStage(1)">
+        <span class="step-num">02</span>
+        <span class="step-title">Mô hình DNA</span>
+      </div>
+      <div class="step-item" id="stepTab-2" onclick="goToStage(2)">
+        <span class="step-num">03</span>
+        <span class="step-title">Cặp base & Liên kết H</span>
+      </div>
+      <div class="step-item" id="stepTab-3" onclick="goToStage(3)">
+        <span class="step-num">04</span>
+        <span class="step-title">Ghi nhớ & Kết nối</span>
+      </div>
+    </nav>
+
+    <!-- ST00: DNA có thể cho chúng ta biết điều gì? -->
+    <section class="stage-section" id="stage-0">
+      <div class="lead-box">
+        <p class="lead-text">Một mẫu sinh học như vệt máu, sợi tóc hoặc tế bào da có thể chứa DNA. Trong một số trường hợp, việc phân tích DNA có thể cung cấp thông tin phục vụ xác định danh tính.</p>
+        <div class="guide-box">
+          <i class="ti ti-hand-finger"></i>
+          <span><strong>HƯỚNG DẪN:</strong> Nhấn vào từng hình để xem DNA trong mẫu sinh học được sử dụng như thế nào. Hình đã xem sẽ đổi trạng thái. Khi xem đủ hai hình, nút TIẾP TỤC sẽ xuất hiện.</span>
+        </div>
+      </div>
+
+      <div class="st00-grid">
+        <!-- Thẻ 1: Mẫu sinh học raster -->
+        <div class="media-card" id="cardST00-1" onclick="viewST00Card(1)" tabindex="0" role="button" aria-label="Mẫu sinh học">
+          <div class="media-card__badge" id="badgeST00-1"><i class="ti ti-circle"></i> Chưa xem</div>
+          <div class="media-card__img-wrap">
+            <img src="images/SH12-B01-M01-A01.png" alt="Mẫu sinh học pháp y chứa DNA" class="media-card__img">
+            <div class="hotspot-pulse"><i class="ti ti-click"></i></div>
+          </div>
+          <p class="media-card__caption"><strong>Mẫu sinh học:</strong> Một mẫu sinh học (tóc, tế bào da, vết máu) có thể chứa DNA để tách chiết và phân tích.</p>
+          <div class="media-card__detail">
+            <i class="ti ti-info-circle"></i> Một mẫu sinh học có thể chứa DNA để phân tích.
+          </div>
+        </div>
+
+        <!-- Thẻ 2: So sánh DNA dựng bằng SVG Vector Native -->
+        <div class="media-card" id="cardST00-2" onclick="viewST00Card(2)" tabindex="0" role="button" aria-label="So sánh DNA">
+          <div class="media-card__badge" id="badgeST00-2"><i class="ti ti-circle"></i> Chưa xem</div>
+          <div class="media-card__img-wrap">
+            <svg viewBox="0 0 500 280" style="width:100%; height:100%; background:#101c26; border-radius:6px;">
+              <!-- Nền gel điện di DNA -->
+              <rect width="500" height="280" fill="#132332"/>
+              <!-- Header các giếng mẫu -->
+              <rect x="20" y="15" width="460" height="34" rx="4" fill="#1C3347"/>
+              <text x="75" y="37" fill="#8FB2D1" font-size="12" font-weight="700" text-anchor="middle">Chuẩn (M)</text>
+              <text x="180" y="37" fill="#E6B422" font-size="12" font-weight="700" text-anchor="middle">Hiện trường (E)</text>
+              <text x="300" y="37" fill="#3CA57A" font-size="12" font-weight="700" text-anchor="middle">Mẫu A</text>
+              <text x="415" y="37" fill="#8FB2D1" font-size="12" font-weight="700" text-anchor="middle">Mẫu B</text>
+
+              <!-- Các vạch điện di (DNA bands phát sáng) -->
+              <!-- Cột Chuẩn M -->
+              <rect x="50" y="65" width="50" height="6" rx="2" fill="#58A6FF" opacity="0.8"/>
+              <rect x="50" y="95" width="50" height="5" rx="2" fill="#58A6FF" opacity="0.8"/>
+              <rect x="50" y="130" width="50" height="7" rx="2" fill="#58A6FF" opacity="0.8"/>
+              <rect x="50" y="170" width="50" height="5" rx="2" fill="#58A6FF" opacity="0.8"/>
+              <rect x="50" y="210" width="50" height="6" rx="2" fill="#58A6FF" opacity="0.8"/>
+              <rect x="50" y="245" width="50" height="5" rx="2" fill="#58A6FF" opacity="0.8"/>
+
+              <!-- Cột Hiện trường E -->
+              <rect x="155" y="78" width="50" height="6" rx="2" fill="#E6B422" filter="drop-shadow(0 0 4px #E6B422)"/>
+              <rect x="155" y="120" width="50" height="7" rx="2" fill="#E6B422" filter="drop-shadow(0 0 4px #E6B422)"/>
+              <rect x="155" y="185" width="50" height="6" rx="2" fill="#E6B422" filter="drop-shadow(0 0 4px #E6B422)"/>
+              <rect x="155" y="230" width="50" height="5" rx="2" fill="#E6B422" filter="drop-shadow(0 0 4px #E6B422)"/>
+
+              <!-- Cột Mẫu A (Trùng khớp hoàn toàn với E) -->
+              <rect x="275" y="78" width="50" height="6" rx="2" fill="#3CA57A" filter="drop-shadow(0 0 4px #3CA57A)"/>
+              <rect x="275" y="120" width="50" height="7" rx="2" fill="#3CA57A" filter="drop-shadow(0 0 4px #3CA57A)"/>
+              <rect x="275" y="185" width="50" height="6" rx="2" fill="#3CA57A" filter="drop-shadow(0 0 4px #3CA57A)"/>
+              <rect x="275" y="230" width="50" height="5" rx="2" fill="#3CA57A" filter="drop-shadow(0 0 4px #3CA57A)"/>
+
+              <!-- Cột Mẫu B (Khác biệt) -->
+              <rect x="390" y="90" width="50" height="6" rx="2" fill="#8FB2D1" opacity="0.7"/>
+              <rect x="390" y="140" width="50" height="6" rx="2" fill="#8FB2D1" opacity="0.7"/>
+              <rect x="390" y="175" width="50" height="7" rx="2" fill="#8FB2D1" opacity="0.7"/>
+              <rect x="390" y="220" width="50" height="5" rx="2" fill="#8FB2D1" opacity="0.7"/>
+
+              <!-- Đường gióng so sánh trùng khớp giữa E và A -->
+              <line x1="205" y1="81" x2="275" y2="81" stroke="#3CA57A" stroke-dasharray="3 3" stroke-width="1.5"/>
+              <line x1="205" y1="123.5" x2="275" y2="123.5" stroke="#3CA57A" stroke-dasharray="3 3" stroke-width="1.5"/>
+              <line x1="205" y1="188" x2="275" y2="188" stroke="#3CA57A" stroke-dasharray="3 3" stroke-width="1.5"/>
+              <line x1="205" y1="232.5" x2="275" y2="232.5" stroke="#3CA57A" stroke-dasharray="3 3" stroke-width="1.5"/>
+            </svg>
+            <div class="hotspot-pulse"><i class="ti ti-click"></i></div>
+          </div>
+          <p class="media-card__caption"><strong>So sánh DNA:</strong> Kết quả điện di so sánh các vạch DNA đặc trưng giữa mẫu hiện trường và cá thể nghi vấn.</p>
+          <div class="media-card__detail">
+            <i class="ti ti-info-circle"></i> Kết quả phân tích DNA có thể được so sánh giữa các mẫu để hỗ trợ xác định danh tính.
+          </div>
+        </div>
+      </div>
+
+      <!-- Câu chốt ST00 -->
+      <div class="conclude-card hidden" id="concludeST00">
+        <div class="conclude-card__title"><i class="ti ti-bulb"></i> Câu chốt kiến thức</div>
+        <p class="conclude-card__text">DNA chứa thông tin có thể giúp phân biệt các cá thể. Vậy đặc điểm cấu trúc nào giúp DNA mang và bảo quản thông tin di truyền?</p>
+      </div>
+
+      <!-- Điều khiển ST00 -->
+      <div class="stage-actions">
+        <div></div>
+        <button type="button" class="btn btn-primary" id="btnNextST00" onclick="goToStage(1)" disabled>
+          <span>TIẾP TỤC</span> <i class="ti ti-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ST01: Cấu trúc DNA phù hợp với chức năng như thế nào? -->
+    <section class="stage-section hidden" id="stage-1">
+      <div class="lead-box">
+        <p class="lead-text">DNA có chức năng mang, bảo quản và truyền đạt thông tin di truyền. Hãy quan sát mô hình DNA để tìm hiểu cấu trúc của phân tử này phù hợp với các chức năng đó như thế nào.</p>
+        <div class="guide-box">
+          <i class="ti ti-hand-finger"></i>
+          <span><strong>HƯỚNG DẪN:</strong> Nhấn lần lượt vào ba vị trí trên mô hình DNA. Vị trí đã xem sẽ đổi trạng thái. Sau khi xem đủ ba vị trí, câu hỏi củng cố sẽ xuất hiện.</span>
+        </div>
+      </div>
+
+      <div class="st01-layout">
+        <!-- Khung mô hình DNA Watson-Crick từ file SVG -->
+        <div class="dna-model-container" id="dnaModelArea">
+          <img src="images/SH12-B01-M01-A03.svg" alt="Mô hình cấu trúc xoắn kép DNA Watson-Crick" class="dna-model-img">
+
+          <!-- Vị trí 1: Cấu trúc đa phân (neo vào chuỗi nucleotide trên 1 dải xoắn) -->
+          <button type="button" class="dna-hotspot-btn" id="hotspotBtn-1" style="top: 28%; left: 34%;" onclick="selectHotspot(1)" title="Vị trí 1: Cấu trúc đa phân" aria-label="Vị trí 1: Cấu trúc đa phân">
+            <span>1</span>
+          </button>
+
+          <!-- Vị trí 2: Cấu trúc xoắn kép (neo vào tổng thể 2 mạch) -->
+          <button type="button" class="dna-hotspot-btn" id="hotspotBtn-2" style="top: 54%; left: 49%;" onclick="selectHotspot(2)" title="Vị trí 2: Cấu trúc xoắn kép" aria-label="Vị trí 2: Cấu trúc xoắn kép">
+            <span>2</span>
+          </button>
+
+          <!-- Vị trí 3: Nguyên tắc bổ sung (neo vào vùng cặp base giữa 2 backbone) -->
+          <button type="button" class="dna-hotspot-btn" id="hotspotBtn-3" style="top: 40%; left: 63%;" onclick="selectHotspot(3)" title="Vị trí 3: Nguyên tắc bổ sung" aria-label="Vị trí 3: Nguyên tắc bổ sung">
+            <span>3</span>
+          </button>
+        </div>
+
+        <!-- Bảng thuyết minh 3 Hotspot bên cạnh -->
+        <div class="st01-side-panel">
+          <div class="hotspot-card-list">
+            <div class="hotspot-info-box" id="infoBox-1" onclick="selectHotspot(1)">
+              <div class="hotspot-info-box__header">
+                <span>Vị trí 1: Cấu trúc đa phân</span>
+                <span class="badge-status" id="badgeHotspot-1">Chưa xem</span>
+              </div>
+              <p class="hotspot-info-box__body">DNA là một polymer gồm nhiều nucleotide. Trình tự sắp xếp của các nucleotide là nơi chứa thông tin di truyền.</p>
+            </div>
+
+            <div class="hotspot-info-box" id="infoBox-2" onclick="selectHotspot(2)">
+              <div class="hotspot-info-box__header">
+                <span>Vị trí 2: Cấu trúc xoắn kép</span>
+                <span class="badge-status" id="badgeHotspot-2">Chưa xem</span>
+              </div>
+              <p class="hotspot-info-box__body">DNA gồm hai mạch polynucleotide xoắn quanh nhau. Khung đường–phosphate nằm ở phía ngoài, còn các base nitrogen hướng vào phía trong.</p>
+            </div>
+
+            <div class="hotspot-info-box" id="infoBox-3" onclick="selectHotspot(3)">
+              <div class="hotspot-info-box__header">
+                <span>Vị trí 3: Nguyên tắc bổ sung</span>
+                <span class="badge-status" id="badgeHotspot-3">Chưa xem</span>
+              </div>
+              <p class="hotspot-info-box__body">Các base trên hai mạch kết cặp đặc hiệu với nhau: A kết cặp với T, G kết cặp với C. Nhờ đó, trình tự nucleotide trên một mạch xác định trình tự bổ sung của mạch còn lại.</p>
+            </div>
+          </div>
+
+          <!-- Câu chuyển ST01 -->
+          <div class="conclude-card hidden" id="concludeST01">
+            <div class="conclude-card__title"><i class="ti ti-transfer-in"></i> Nhận xét cấu trúc & chức năng</div>
+            <p class="conclude-card__text">Như vậy, cấu trúc đa phân giúp DNA chứa lượng thông tin lớn; cấu trúc hai mạch xoắn kép giúp bảo quản thông tin; còn nguyên tắc bổ sung tạo cơ sở để thông tin di truyền được truyền đạt.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Câu hỏi củng cố ST01 (Hiện khi xem đủ 3 hotspot) -->
+      <div class="quiz-box hidden" id="quizBoxST01">
+        <div class="quiz-box__q">
+          <i class="ti ti-help-circle" style="color:var(--jade)"></i> <strong>Câu hỏi củng cố:</strong> Chức năng của DNA là gì?
+        </div>
+        <div class="quiz-options">
+          <button type="button" class="quiz-opt" id="optST01-A" onclick="answerST01('A')">
+            <span class="opt-letter">A</span>
+            <span>Mang, bảo quản và truyền đạt thông tin di truyền.</span>
+          </button>
+          <button type="button" class="quiz-opt" id="optST01-B" onclick="answerST01('B')">
+            <span class="opt-letter">B</span>
+            <span>Trực tiếp tổng hợp protein cho tế bào.</span>
+          </button>
+        </div>
+
+        <div class="feedback-panel hidden" id="feedbackST01"></div>
+      </div>
+
+      <!-- Điều khiển ST01 -->
+      <div class="stage-actions">
+        <button type="button" class="btn btn-secondary" onclick="goToStage(0)">
+          <i class="ti ti-arrow-left"></i> <span>QUAY LẠI</span>
+        </button>
+        <button type="button" class="btn btn-primary" id="btnNextST01" onclick="goToStage(2)" disabled>
+          <span>TIẾP TỤC</span> <i class="ti ti-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ST02: Vì sao A chỉ kết cặp với T, còn G kết cặp với C? -->
+    <section class="stage-section hidden" id="stage-2">
+      <div class="lead-box">
+        <p class="lead-text">Hai mạch DNA được giữ với nhau nhờ sự kết cặp đặc hiệu giữa các base. Hãy quan sát hai cặp base để nhận biết chính xác đặc điểm của chúng.</p>
+        <div class="guide-box">
+          <i class="ti ti-hand-finger"></i>
+          <span><strong>HƯỚNG DẪN:</strong> Nhấn vào từng cặp base để xem số liên kết hydrogen. Khi xem đủ hai cặp, câu hỏi củng cố sẽ xuất hiện.</span>
+        </div>
+      </div>
+
+      <div class="st02-grid">
+        <!-- Thẻ Cặp A-T: 2 liên kết Hydrogen nét đứt -->
+        <div class="base-pair-card" id="cardAT" onclick="viewBasePair('AT')" tabindex="0" role="button" aria-label="Cặp Adenine kết cặp với Thymine">
+          <div class="base-pair-card__header">
+            <div class="base-pair-title">
+              <span style="color:var(--dna-a)">A (Adenine)</span> – <span style="color:var(--dna-t)">T (Thymine)</span>
+            </div>
+            <span class="base-pair-badge" id="badgeAT">Chưa xem</span>
+          </div>
+
+          <div class="base-pair-svg-wrap">
+            <svg viewBox="0 0 540 220" style="width:100%; height:100%;">
+              <!-- Khung Adenine (A - Purine vòng đôi) -->
+              <g>
+                <polygon points="45,60 85,60 105,95 85,130 45,130 25,95" fill="rgba(46,157,87,0.12)" stroke="#2E9D57" stroke-width="2.5"/>
+                <polygon points="85,60 125,75 125,115 85,130" fill="rgba(46,157,87,0.18)" stroke="#2E9D57" stroke-width="2.5"/>
+                <circle cx="75" cy="95" r="22" fill="#2E9D57"/>
+                <text x="75" y="101" fill="#FFF" font-size="16" font-weight="800" text-anchor="middle">A</text>
+                <!-- Nhóm chức phía A -->
+                <text x="140" y="74" fill="#2E9D57" font-size="13" font-weight="700">—NH₂</text>
+                <text x="140" y="128" fill="#2E9D57" font-size="13" font-weight="700">—N=</text>
+              </g>
+
+              <!-- 2 Liên kết hydrogen nét đứt (Không vòng tròn đè chữ, khoảng cách thoáng đãng) -->
+              <g id="hBondsAT">
+                <!-- LK 1: Giữa NH2 của A và =O của T -->
+                <line x1="195" y1="70" x2="335" y2="70" stroke="#D64242" stroke-width="3" stroke-dasharray="6 5" stroke-linecap="round"/>
+                <!-- LK 2: Giữa -N= của A và -NH- của T -->
+                <line x1="195" y1="124" x2="335" y2="124" stroke="#D64242" stroke-width="3" stroke-dasharray="6 5" stroke-linecap="round"/>
+
+                <!-- Huy hiệu số lượng liên kết H -->
+                <rect x="185" y="166" width="160" height="26" rx="13" fill="rgba(214,66,66,0.1)" stroke="#D64242" stroke-width="1.2"/>
+                <text x="265" y="183" fill="#D64242" font-size="12" font-weight="800" text-anchor="middle">2 LIÊN KẾT HYDROGEN</text>
+              </g>
+
+              <!-- Khung Thymine (T - Pyrimidine vòng đơn) -->
+              <g>
+                <!-- Nhóm chức phía T -->
+                <text x="350" y="74" fill="#D64242" font-size="13" font-weight="700">O=</text>
+                <text x="350" y="128" fill="#D64242" font-size="13" font-weight="700">HN—</text>
+                <polygon points="420,60 460,60 480,95 460,130 420,130 400,95" fill="rgba(214,66,66,0.12)" stroke="#D64242" stroke-width="2.5"/>
+                <circle cx="440" cy="95" r="22" fill="#D64242"/>
+                <text x="440" y="101" fill="#FFF" font-size="16" font-weight="800" text-anchor="middle">T</text>
+              </g>
+            </svg>
+          </div>
+          <p class="base-pair-desc"><strong>Cặp A–T:</strong> A kết cặp với T bằng <strong>2 liên kết hydrogen</strong>.</p>
+        </div>
+
+        <!-- Thẻ Cặp G-C: 3 liên kết Hydrogen nét đứt -->
+        <div class="base-pair-card" id="cardGC" onclick="viewBasePair('GC')" tabindex="0" role="button" aria-label="Cặp Guanine kết cặp với Cytosine">
+          <div class="base-pair-card__header">
+            <div class="base-pair-title">
+              <span style="color:var(--dna-g)">G (Guanine)</span> – <span style="color:var(--dna-c)">C (Cytosine)</span>
+            </div>
+            <span class="base-pair-badge" id="badgeGC">Chưa xem</span>
+          </div>
+
+          <div class="base-pair-svg-wrap">
+            <svg viewBox="0 0 540 220" style="width:100%; height:100%;">
+              <!-- Khung Guanine (G - Purine vòng đôi) -->
+              <g>
+                <polygon points="45,60 85,60 105,95 85,130 45,130 25,95" fill="rgba(230,180,34,0.12)" stroke="#E6B422" stroke-width="2.5"/>
+                <polygon points="85,60 125,75 125,115 85,130" fill="rgba(230,180,34,0.18)" stroke="#E6B422" stroke-width="2.5"/>
+                <circle cx="75" cy="95" r="22" fill="#E6B422"/>
+                <text x="75" y="101" fill="#FFF" font-size="16" font-weight="800" text-anchor="middle">G</text>
+                <!-- Nhóm chức phía G -->
+                <text x="140" y="58" fill="#E6B422" font-size="13" font-weight="700">O=</text>
+                <text x="140" y="99" fill="#E6B422" font-size="13" font-weight="700">—NH—</text>
+                <text x="140" y="140" fill="#E6B422" font-size="13" font-weight="700">—NH₂</text>
+              </g>
+
+              <!-- 3 Liên kết hydrogen nét đứt (Không vòng tròn đè chữ, khoảng cách rộng) -->
+              <g id="hBondsGC">
+                <!-- LK 1 -->
+                <line x1="205" y1="54" x2="330" y2="54" stroke="#7D4EB2" stroke-width="3" stroke-dasharray="6 5" stroke-linecap="round"/>
+                <!-- LK 2 -->
+                <line x1="205" y1="95" x2="330" y2="95" stroke="#7D4EB2" stroke-width="3" stroke-dasharray="6 5" stroke-linecap="round"/>
+                <!-- LK 3 -->
+                <line x1="205" y1="136" x2="330" y2="136" stroke="#7D4EB2" stroke-width="3" stroke-dasharray="6 5" stroke-linecap="round"/>
+
+                <!-- Huy hiệu số lượng liên kết H -->
+                <rect x="185" y="168" width="160" height="26" rx="13" fill="rgba(125,78,178,0.1)" stroke="#7D4EB2" stroke-width="1.2"/>
+                <text x="265" y="185" fill="#7D4EB2" font-size="12" font-weight="800" text-anchor="middle">3 LIÊN KẾT HYDROGEN</text>
+              </g>
+
+              <!-- Khung Cytosine (C - Pyrimidine vòng đơn) -->
+              <g>
+                <!-- Nhóm chức phía C -->
+                <text x="345" y="58" fill="#7D4EB2" font-size="13" font-weight="700">H₂N—</text>
+                <text x="345" y="99" fill="#7D4EB2" font-size="13" font-weight="700">=N—</text>
+                <text x="345" y="140" fill="#7D4EB2" font-size="13" font-weight="700">=O</text>
+                <polygon points="420,60 460,60 480,95 460,130 420,130 400,95" fill="rgba(125,78,178,0.12)" stroke="#7D4EB2" stroke-width="2.5"/>
+                <circle cx="440" cy="95" r="22" fill="#7D4EB2"/>
+                <text x="440" y="101" fill="#FFF" font-size="16" font-weight="800" text-anchor="middle">C</text>
+              </g>
+            </svg>
+          </div>
+          <p class="base-pair-desc"><strong>Cặp G–C:</strong> G kết cặp với C bằng <strong>3 liên kết hydrogen</strong>.</p>
+        </div>
+      </div>
+
+      <!-- Câu chốt ST02 -->
+      <div class="conclude-card hidden" id="concludeST02">
+        <div class="conclude-card__title"><i class="ti ti-bulb"></i> Câu chốt sau quan sát</div>
+        <p class="conclude-card__text">Sự kết cặp đặc hiệu A–T và G–C làm cho hai mạch DNA có trình tự bổ sung nhau. Vì vậy, khi biết trình tự nucleotide của một mạch, có thể xác định được trình tự bổ sung của mạch còn lại.</p>
+      </div>
+
+      <!-- Câu hỏi củng cố ST02 -->
+      <div class="quiz-box hidden" id="quizBoxST02">
+        <div class="quiz-box__q">
+          <i class="ti ti-help-circle" style="color:var(--jade)"></i> <strong>Câu hỏi củng cố:</strong> Phát biểu nào dưới đây đúng?
+        </div>
+        <div class="quiz-options">
+          <button type="button" class="quiz-opt" id="optST02-A" onclick="answerST02('A')">
+            <span class="opt-letter">A</span>
+            <span>A kết cặp với T bằng 2 liên kết hydrogen; G kết cặp với C bằng 3 liên kết hydrogen.</span>
+          </button>
+          <button type="button" class="quiz-opt" id="optST02-B" onclick="answerST02('B')">
+            <span class="opt-letter">B</span>
+            <span>A kết cặp với T bằng 3 liên kết hydrogen; G kết cặp với C bằng 2 liên kết hydrogen.</span>
+          </button>
+        </div>
+
+        <div class="feedback-panel hidden" id="feedbackST02"></div>
+      </div>
+
+      <!-- Điều khiển ST02 -->
+      <div class="stage-actions">
+        <button type="button" class="btn btn-secondary" onclick="goToStage(1)">
+          <i class="ti ti-arrow-left"></i> <span>QUAY LẠI</span>
+        </button>
+        <button type="button" class="btn btn-primary" id="btnNextST02" onclick="goToStage(3)" disabled>
+          <span>TIẾP TỤC</span> <i class="ti ti-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ST03: Ghi nhớ và kết nối -->
+    <section class="stage-section hidden" id="stage-3">
+      <div class="st03-container">
+        <!-- Khối GHI NHỚ cốt lõi -->
+        <div class="summary-card">
+          <h2 class="summary-title"><i class="ti ti-bookmark-filled"></i> Ghi nhớ cốt lõi</h2>
+          <ul class="summary-list">
+            <li>DNA mang, bảo quản và truyền đạt thông tin di truyền.</li>
+            <li>Trình tự nucleotide là nơi chứa thông tin di truyền.</li>
+            <li>DNA gồm hai mạch polynucleotide xoắn kép, với khung đường–phosphate ở ngoài và các base hướng vào trong.</li>
+            <li><strong>A kết cặp với T bằng 2 liên kết hydrogen; G kết cặp với C bằng 3 liên kết hydrogen.</strong></li>
+            <li>Nguyên tắc bổ sung giúp trình tự của một mạch xác định được trình tự bổ sung của mạch còn lại.</li>
+          </ul>
+        </div>
+
+        <!-- Lời chốt -->
+        <div class="conclude-card" style="margin: 0;">
+          <div class="conclude-card__title"><i class="ti ti-star"></i> Lời chốt</div>
+          <p class="conclude-card__text">Cấu trúc đa phân, xoắn kép và nguyên tắc bổ sung giúp DNA thực hiện chức năng mang, bảo quản và truyền đạt thông tin di truyền.</p>
+        </div>
+
+        <!-- Cầu nối sang bài tiếp theo -->
+        <div class="bridge-card">
+          <h3 class="bridge-title"><i class="ti ti-link"></i> Kết nối sang bài tiếp theo</h3>
+          <p class="bridge-text">Khi hai mạch DNA có trình tự bổ sung nhau, mỗi mạch có thể cung cấp thông tin để hình thành một mạch mới. DNA được tái bản như thế nào để thông tin di truyền được truyền sang DNA mới? Chúng ta sẽ tìm hiểu ở bài học tiếp theo.</p>
+        </div>
+
+        <!-- Thông báo inline khi hoàn thành -->
+        <div class="complete-banner hidden" id="st03CompletedAlert">
+          <div class="complete-banner__icon"><i class="ti ti-check"></i></div>
+          <div>
+            <h4 class="complete-banner__title">Đã hoàn thành bài học!</h4>
+            <p class="complete-banner__text">Dữ liệu tiến trình học tập đã được ghi nhận và đồng bộ lên hệ thống.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Điều khiển ST03 -->
+      <div class="stage-actions">
+        <button type="button" class="btn btn-secondary" onclick="goToStage(2)">
+          <i class="ti ti-arrow-left"></i> <span>QUAY LẠI</span>
+        </button>
+        <button type="button" class="btn btn-complete" id="btnCompleteModule" onclick="handleCompleteModule()">
+          <i class="ti ti-check"></i> <span>HOÀN THÀNH BÀI HỌC</span>
+        </button>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal Chúc mừng Hoàn thành -->
+  <div class="modal-backdrop hidden" id="completionModal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <div class="modal-icon"><i class="ti ti-trophy"></i></div>
+      <h3 class="modal-title">Hoàn thành bài học!</h3>
+      <p class="modal-desc">Bạn đã xuất sắc hoàn thành bài học <strong>Chức năng của DNA</strong>, nắm vững cấu trúc xoắn kép và nguyên tắc bổ sung A–T, G–C.</p>
+      <div style="display:flex; gap:10px; justify-content:center;">
+        <button type="button" class="btn btn-secondary" onclick="closeCompletionModal()">Xem lại bài</button>
+        <button type="button" class="btn btn-primary" onclick="closeCompletionModal()">Đóng thông báo</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* LMS State & Navigation Management */
+    const lmsState = {
+      currentStage: 0,
+      M01_ST00_viewed_sample: false,
+      M01_ST00_viewed_compare: false,
+      M01_ST01_hotspot_1: false,
+      M01_ST01_hotspot_2: false,
+      M01_ST01_hotspot_3: false,
+      M01_ST01_correct: false,
+      M01_ST02_view_AT: false,
+      M01_ST02_view_GC: false,
+      M01_ST02_correct: false,
+      M01_complete: false
+    };
+
+    /* Báo cáo kích thước tự động cho LMS/Athena Shell */
+    function reportHeight() {
+      try {
+        const height = Math.max(
+          document.body.scrollHeight,
+          document.documentElement.scrollHeight,
+          document.body.offsetHeight,
+          document.documentElement.offsetHeight
+        );
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({
+            type: 'antigravity:resize',
+            moduleCode: 'SH12-B01-M01',
+            height: height + 24
+          }, '*');
+        }
+      } catch (e) {
+        /* Bỏ qua lỗi cors sandbox */
+      }
+    }
+
+    function sendLmsProgress(progressPercent, completed = false) {
+      try {
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({
+            type: completed ? 'antigravity:complete' : 'antigravity:progress',
+            moduleCode: 'SH12-B01-M01',
+            progress: progressPercent,
+            state: lmsState
+          }, '*');
+        }
+      } catch (e) {}
+    }
+
+    /* Chuyển Stage */
+    function goToStage(stageIdx) {
+      if (stageIdx < 0 || stageIdx > 3) return;
+
+      // Cập nhật tab stepper
+      for (let i = 0; i < 4; i++) {
+        const tab = document.getElementById('stepTab-' + i);
+        const section = document.getElementById('stage-' + i);
+        if (tab && section) {
+          tab.classList.remove('active');
+          if (i < stageIdx) {
+            tab.classList.add('completed');
+          }
+          section.classList.add('hidden');
+        }
+      }
+
+      const activeTab = document.getElementById('stepTab-' + stageIdx);
+      const activeSection = document.getElementById('stage-' + stageIdx);
+      if (activeTab) activeTab.classList.add('active');
+      if (activeSection) activeSection.classList.remove('hidden');
+
+      lmsState.currentStage = stageIdx;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      reportHeight();
+    }
+
+    /* ==============================================
+       LOGIC ST00: Đặt vấn đề mẫu sinh học & so sánh DNA
+       ============================================== */
+    function viewST00Card(cardIdx) {
+      if (cardIdx === 1) {
+        lmsState.M01_ST00_viewed_sample = true;
+        const card = document.getElementById('cardST00-1');
+        const badge = document.getElementById('badgeST00-1');
+        if (card) card.classList.add('viewed');
+        if (badge) badge.innerHTML = '<i class="ti ti-check"></i> Đã xem';
+      } else if (cardIdx === 2) {
+        lmsState.M01_ST00_viewed_compare = true;
+        const card = document.getElementById('cardST00-2');
+        const badge = document.getElementById('badgeST00-2');
+        if (card) card.classList.add('viewed');
+        if (badge) badge.innerHTML = '<i class="ti ti-check"></i> Đã xem';
+      }
+
+      if (lmsState.M01_ST00_viewed_sample && lmsState.M01_ST00_viewed_compare) {
+        const conclude = document.getElementById('concludeST00');
+        const btnNext = document.getElementById('btnNextST00');
+        if (conclude) conclude.classList.remove('hidden');
+        if (btnNext) btnNext.disabled = false;
+        sendLmsProgress(25);
+      }
+      reportHeight();
+    }
+
+    /* ==============================================
+       LOGIC ST01: Khám phá mô hình DNA & Chức năng
+       ============================================== */
+    function selectHotspot(hsIdx) {
+      // Đánh dấu trạng thái đã xem
+      if (hsIdx === 1) lmsState.M01_ST01_hotspot_1 = true;
+      if (hsIdx === 2) lmsState.M01_ST01_hotspot_2 = true;
+      if (hsIdx === 3) lmsState.M01_ST01_hotspot_3 = true;
+
+      // Cập nhật UI nút Hotspot và Card thuyết minh
+      for (let i = 1; i <= 3; i++) {
+        const btn = document.getElementById('hotspotBtn-' + i);
+        const box = document.getElementById('infoBox-' + i);
+        const badge = document.getElementById('badgeHotspot-' + i);
+
+        if (btn && box && badge) {
+          btn.classList.remove('active');
+          box.classList.remove('active');
+
+          const isViewed = lmsState['M01_ST01_hotspot_' + i];
+          if (isViewed) {
+            btn.classList.add('viewed');
+            box.classList.add('viewed');
+            badge.innerHTML = '<i class="ti ti-check"></i> Đã xem';
+            badge.style.color = 'var(--jade-text)';
+          }
+        }
+      }
+
+      const curBtn = document.getElementById('hotspotBtn-' + hsIdx);
+      const curBox = document.getElementById('infoBox-' + hsIdx);
+      if (curBtn) curBtn.classList.add('active');
+      if (curBox) curBox.classList.add('active');
+
+      // Kiểm tra xem đã xem đủ cả 3 hotspot chưa
+      if (lmsState.M01_ST01_hotspot_1 && lmsState.M01_ST01_hotspot_2 && lmsState.M01_ST01_hotspot_3) {
+        const conclude = document.getElementById('concludeST01');
+        const quizBox = document.getElementById('quizBoxST01');
+        if (conclude) conclude.classList.remove('hidden');
+        if (quizBox) quizBox.classList.remove('hidden');
+      }
+      reportHeight();
+    }
+
+    function answerST01(choice) {
+      const optA = document.getElementById('optST01-A');
+      const optB = document.getElementById('optST01-B');
+      const feedback = document.getElementById('feedbackST01');
+      const btnNext = document.getElementById('btnNextST01');
+
+      if (!feedback) return;
+      feedback.classList.remove('hidden', 'correct', 'wrong');
+
+      if (choice === 'A') {
+        lmsState.M01_ST01_correct = true;
+        if (optA) {
+          optA.className = 'quiz-opt correct';
+        }
+        if (optB) {
+          optB.className = 'quiz-opt';
+          optB.disabled = true;
+        }
+
+        feedback.className = 'feedback-panel correct';
+        feedback.innerHTML = `
+          <i class="ti ti-circle-check"></i>
+          <div>
+            <strong>Chính xác!</strong> DNA mang, bảo quản và truyền đạt thông tin di truyền. DNA không trực tiếp tổng hợp protein; thông tin trong DNA còn phải được biểu hiện qua các quá trình truyền đạt thông tin di truyền.
+          </div>
+        `;
+        if (btnNext) btnNext.disabled = false;
+        sendLmsProgress(50);
+      } else {
+        lmsState.M01_ST01_correct = false;
+        if (optB) {
+          optB.className = 'quiz-opt wrong';
+        }
+        feedback.className = 'feedback-panel wrong';
+        feedback.innerHTML = `
+          <i class="ti ti-alert-triangle"></i>
+          <div>
+            <strong>Chưa đúng.</strong> DNA chứa thông tin quy định sản phẩm của gene nhưng không trực tiếp tổng hợp protein. Hãy xem lại mối liên hệ giữa cấu trúc DNA và chức năng mang, bảo quản, truyền đạt thông tin di truyền.
+          </div>
+        `;
+        if (btnNext) btnNext.disabled = true;
+      }
+      reportHeight();
+    }
+
+    /* ==============================================
+       LOGIC ST02: Cặp Base A-T & G-C
+       ============================================== */
+    function viewBasePair(pair) {
+      if (pair === 'AT') {
+        lmsState.M01_ST02_view_AT = true;
+        const card = document.getElementById('cardAT');
+        const badge = document.getElementById('badgeAT');
+        if (card) card.classList.add('viewed');
+        if (badge) badge.innerHTML = '<i class="ti ti-check"></i> 2 liên kết H';
+      } else if (pair === 'GC') {
+        lmsState.M01_ST02_view_GC = true;
+        const card = document.getElementById('cardGC');
+        const badge = document.getElementById('badgeGC');
+        if (card) card.classList.add('viewed');
+        if (badge) badge.innerHTML = '<i class="ti ti-check"></i> 3 liên kết H';
+      }
+
+      if (lmsState.M01_ST02_view_AT && lmsState.M01_ST02_view_GC) {
+        const conclude = document.getElementById('concludeST02');
+        const quizBox = document.getElementById('quizBoxST02');
+        if (conclude) conclude.classList.remove('hidden');
+        if (quizBox) quizBox.classList.remove('hidden');
+      }
+      reportHeight();
+    }
+
+    function answerST02(choice) {
+      const optA = document.getElementById('optST02-A');
+      const optB = document.getElementById('optST02-B');
+      const feedback = document.getElementById('feedbackST02');
+      const btnNext = document.getElementById('btnNextST02');
+
+      if (!feedback) return;
+      feedback.classList.remove('hidden', 'correct', 'wrong');
+
+      if (choice === 'A') {
+        lmsState.M01_ST02_correct = true;
+        if (optA) {
+          optA.className = 'quiz-opt correct';
+        }
+        if (optB) {
+          optB.className = 'quiz-opt';
+          optB.disabled = true;
+        }
+
+        feedback.className = 'feedback-panel correct';
+        feedback.innerHTML = `
+          <i class="ti ti-circle-check"></i>
+          <div>
+            <strong>Chính xác!</strong> Cần nhớ đúng: A–T có 2 liên kết hydrogen, G–C có 3 liên kết hydrogen. Sự kết cặp đặc hiệu này giúp hai mạch DNA bổ sung nhau.
+          </div>
+        `;
+        if (btnNext) btnNext.disabled = false;
+        sendLmsProgress(75);
+      } else {
+        lmsState.M01_ST02_correct = false;
+        if (optB) {
+          optB.className = 'quiz-opt wrong';
+        }
+        feedback.className = 'feedback-panel wrong';
+        feedback.innerHTML = `
+          <i class="ti ti-alert-triangle"></i>
+          <div>
+            <strong>Chưa đúng.</strong> Hãy quan sát lại số liên kết giữa từng cặp base: A–T là 2, G–C là 3.
+          </div>
+        `;
+        if (btnNext) btnNext.disabled = true;
+      }
+      reportHeight();
+    }
+
+    /* ==============================================
+       LOGIC ST03: Hoàn thành Module & LMS Completion
+       ============================================== */
+    function handleCompleteModule() {
+      lmsState.M01_complete = true;
+
+      // Bật modal chúc mừng
+      const modal = document.getElementById('completionModal');
+      if (modal) modal.classList.remove('hidden');
+
+      // Bật dải thông báo hoàn thành
+      const alertBox = document.getElementById('st03CompletedAlert');
+      if (alertBox) alertBox.classList.remove('hidden');
+
+      // Đánh dấu stepper hoàn thành
+      const lastTab = document.getElementById('stepTab-3');
+      if (lastTab) {
+        lastTab.classList.add('completed');
+        const num = lastTab.querySelector('.step-num');
+        if (num) num.innerHTML = '✓';
+      }
+
+      sendLmsProgress(100, true);
+      reportHeight();
+    }
+
+    function closeCompletionModal() {
+      const modal = document.getElementById('completionModal');
+      if (modal) modal.classList.add('hidden');
+      reportHeight();
+    }
+
+    // Khởi tạo
+    window.addEventListener('load', function() {
+      goToStage(0);
+      reportHeight();
+      try {
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({ type: 'antigravity:ready', moduleCode: 'SH12-B01-M01' }, '*');
+        }
+      } catch (e) {}
+
+      // Tự động lắng nghe thay đổi kích thước
+      if (window.ResizeObserver) {
+        new ResizeObserver(function() {
+          reportHeight();
+        }).observe(document.body);
+      }
+    });
+  </script>
+</body>
+</html>
