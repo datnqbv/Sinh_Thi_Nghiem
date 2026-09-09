@@ -859,7 +859,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 10px;
+      gap: 12px;
+      margin-bottom: 12px;
     }
     .state-panel__title {
       font-size: 1rem;
@@ -867,21 +868,43 @@
       color: var(--ink);
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+      flex: 1 1 auto;
+      min-width: 0;
+      line-height: 1.35;
+    }
+    .state-panel__title i {
+      flex-shrink: 0;
+      font-size: 1.15rem;
     }
     .state-panel__badge {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 700;
-      padding: 3px 10px;
+      padding: 4px 10px;
       border-radius: 99px;
       background: var(--cream-2);
       color: var(--ink-3);
       border: 1px solid var(--paper-line-2);
+      white-space: nowrap;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      line-height: 1;
+    }
+    .state-panel__badge span {
+      white-space: nowrap;
     }
     .state-panel.viewed .state-panel__badge {
       background: var(--jade-pale);
       color: var(--jade-text);
       border-color: var(--jade-soft);
+      box-shadow: 0 1px 3px rgba(45, 139, 111, 0.15);
+    }
+    .state-panel__badge i {
+      font-size: 0.95rem;
+      flex-shrink: 0;
     }
     .state-panel__img-wrap {
       width: 100%;
@@ -1225,6 +1248,8 @@
       .stepper-nav { grid-template-columns: 1fr; }
       .stage-actions { flex-direction: column-reverse; }
       .btn { width: 100%; }
+      .state-panel__title { font-size: 0.93rem; }
+      .state-panel__badge { font-size: 0.76rem; padding: 4px 8px; }
     }
   </style>
 </head>
@@ -2073,13 +2098,13 @@
         const p = document.getElementById('panelRest');
         const b = document.getElementById('badgeRest');
         if (p) p.classList.add('viewed');
-        if (b) b.innerHTML = '<i class="ti ti-check"></i> Đã xem';
+        if (b) b.innerHTML = '<i class="ti ti-check"></i><span>Đã xem</span>';
       } else if (panelType === 'run') {
         lmsState.M02_st02_view_run = true;
         const p = document.getElementById('panelRun');
         const b = document.getElementById('badgeRun');
         if (p) p.classList.add('viewed');
-        if (b) b.innerHTML = '<i class="ti ti-check"></i> Đã xem';
+        if (b) b.innerHTML = '<i class="ti ti-check"></i><span>Đã xem</span>';
       }
 
       if (lmsState.M02_st02_view_rest && lmsState.M02_st02_view_run) {
