@@ -1317,6 +1317,15 @@
         <p style="font-weight: 600; color: var(--jade-dark);">Ở module tiếp theo, bạn sẽ tìm hiểu các <b>dấu hiệu đặc trưng</b> của trao đổi chất và chuyển hoá năng lượng.</p>
       </div>
 
+      <!-- Thông báo hoàn thành tại chỗ (Inline Completion Feedback) -->
+      <div class="inline-feedback ok hidden" id="st02Feedback" style="margin-top: 18px;">
+        <div class="feedback-head"><i class="ti ti-circle-check"></i> Chúc mừng bạn đã hoàn thành Module 01!</div>
+        <span>Bạn đã nắm vững <b>3 vai trò của trao đổi chất và chuyển hoá năng lượng</b>. Bài học đã sẵn sàng để chuyển sang Module 02.</span>
+      </div>
+
+      <!-- Nút Hoàn thành Module -->
+      <div class="btn-row" style="margin-top: 20px;">
+        <button class="btn btn-outline" id="btnBackToST01"><i class="ti ti-arrow-left"></i> Xem lại Sơ đồ</button>
         <div class="spacer"></div>
         <button class="btn btn-primary" id="btnCompleteModule"><i class="ti ti-circle-check"></i> HOÀN THÀNH MODULE</button>
       </div>
@@ -2101,32 +2110,55 @@
   const completionModal = document.getElementById('completionModal');
   const btnCloseModal = document.getElementById('btnCloseModal');
   const btnReviewLesson = document.getElementById('btnReviewLesson');
+  const st02Feedback = document.getElementById('st02Feedback');
 
-  btnBackToST01.addEventListener('click', () => {
-    showStage(1);
-  });
+  if (btnBackToST01) {
+    btnBackToST01.addEventListener('click', () => {
+      showStage(1);
+    });
+  }
 
-  btnCompleteModule.addEventListener('click', () => {
-    state.module_completed = true;
-    state.stagesCompleted[2] = true;
-    stepBtns[2].classList.add('done');
+  if (btnCompleteModule) {
+    btnCompleteModule.addEventListener('click', () => {
+      state.module_completed = true;
+      state.stagesCompleted[2] = true;
+      if (stepBtns[2]) stepBtns[2].classList.add('done');
 
-    LMS().complete({ done: 3, total: 3 });
-    completionModal.classList.remove('hidden');
-  });
+      LMS().complete({ done: 3, total: 3 });
 
-  btnCloseModal.addEventListener('click', () => {
-    completionModal.classList.add('hidden');
-  });
+      if (st02Feedback) {
+        st02Feedback.classList.remove('hidden');
+      }
 
-  btnReviewLesson.addEventListener('click', () => {
-    completionModal.classList.add('hidden');
-    showStage(0);
-  });
+      if (completionModal) {
+        completionModal.classList.remove('hidden');
+      }
+      reportHeight();
+    });
+  }
 
-  completionModal.addEventListener('click', (e) => {
-    if (e.target === completionModal) completionModal.classList.add('hidden');
-  });
+  if (btnCloseModal && completionModal) {
+    btnCloseModal.addEventListener('click', () => {
+      completionModal.classList.add('hidden');
+      reportHeight();
+    });
+  }
+
+  if (btnReviewLesson && completionModal) {
+    btnReviewLesson.addEventListener('click', () => {
+      completionModal.classList.add('hidden');
+      showStage(0);
+    });
+  }
+
+  if (completionModal) {
+    completionModal.addEventListener('click', (e) => {
+      if (e.target === completionModal) {
+        completionModal.classList.add('hidden');
+        reportHeight();
+      }
+    });
+  }
 
   /* =======================================================
      KHỞI TẠO & SỰ KIỆN CO GIÃN CỬA SỔ
