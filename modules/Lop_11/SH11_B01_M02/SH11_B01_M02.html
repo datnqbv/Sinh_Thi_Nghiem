@@ -1,0 +1,2311 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dấu hiệu đặc trưng của trao đổi chất và chuyển hoá năng lượng</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+
+  <script type="application/json" id="athena-context">
+  {
+    "title": "Dấu hiệu đặc trưng của trao đổi chất và chuyển hoá năng lượng",
+    "subject": "Sinh học",
+    "grade": "11",
+    "track": "Bài 1 · Khái quát về trao đổi chất và chuyển hoá năng lượng ở sinh vật",
+    "moduleCode": "SH11-B01-M02",
+    "objectives": [
+      "Nhận biết được các biểu hiện bên ngoài phản ánh quá trình trao đổi chất bên trong cơ thể sinh vật.",
+      "Nêu được dấu hiệu 1: Sinh vật tiếp nhận và vận chuyển các chất từ môi trường đến nơi sử dụng.",
+      "Nêu được dấu hiệu 2: Các chất được biến đổi trong tế bào đồng thời với quá trình chuyển hoá năng lượng.",
+      "Nêu được dấu hiệu 3: Sinh vật loại bỏ những chất cần thải ra môi trường.",
+      "Nêu được dấu hiệu 4: Cơ thể điều hoà quá trình trao đổi chất và chuyển hoá năng lượng phù hợp với nhu cầu sống.",
+      "Hệ thống hóa 4 dấu hiệu đặc trưng và liên hệ gợi mở sang các giai đoạn chuyển hóa năng lượng ở Module 03."
+    ],
+    "structure": [
+      {"id": "st00", "title": "ST00 — Nhận biết biểu hiện trao đổi chất (Hook)"},
+      {"id": "st01", "title": "ST01 — Tiếp nhận, vận chuyển và biến đổi chất (Dấu hiệu 1 & 2)"},
+      {"id": "st02", "title": "ST02 — Thải chất và điều hoà (Dấu hiệu 3 & 4)"},
+      {"id": "st03", "title": "ST03 — Ghi nhớ và kết nối sang bài tiếp theo"}
+    ],
+    "athenaGuidance": "Module học lí thuyết tương tác Sinh học 11 gồm 4 Stage logic. ST00: Khám phá 4 điểm biểu hiện trao đổi chất trên hình người và cây (miệng, mũi, rễ, lá). ST01: Khám phá sơ đồ 2 nhánh Thực vật - Động vật qua 4 vị trí, sau đó phân loại 4 hiện tượng vào 2 nhóm (tiếp nhận-vận chuyển vs biến đổi chất-chuyển hoá năng lượng). ST02: So sánh 2 trạng thái nghỉ ngơi và chạy bộ của cùng một người, sau đó nối 4 hiện tượng vào 2 dấu hiệu (thải chất ra môi trường vs điều hoà). ST03: Tổng hợp 4 dấu hiệu đặc trưng cốt lõi và câu nối sang cơ chế 3 giai đoạn chuyển hóa năng lượng."
+  }
+  </script>
+
+  <style>
+    :root {
+      /* Neutrals · giấy & mực (Tom Haugomat Editorial Flat) */
+      --cream: #FAF7F0;
+      --cream-2: #F0EADD;
+      --cream-3: #E7DECC;
+      --paper-line: #E5DECF;
+      --paper-line-2: #D6CCB6;
+      --ink: #1A1A1A;
+      --ink-2: #514C44;
+      --ink-3: #7C756A;
+      --ink-faint: #ABA396;
+
+      /* Jade · hành động chính */
+      --jade: #3CA57A;
+      --jade-deep: #2D8B6F;
+      --jade-dark: #14432F;
+      --jade-text: #1B5E48;
+      --jade-soft: #A9D0BE;
+      --jade-pale: #DCEAE1;
+
+      /* Sage · phụ trợ */
+      --sage: #A8C9B8;
+      --sage-deep: #7CA792;
+      --sage-text: #46685A;
+      --sage-pale: #E1ECE4;
+
+      /* Accent · điểm nhấn ấm */
+      --accent: #E8A24A;
+      --accent-deep: #CE8A33;
+      --accent-text: #8A551A;
+      --accent-pale: #F7E7CD;
+
+      /* Semantic · phản hồi */
+      --correct: #2D8B6F;
+      --correct-bg: #DCEAE1;
+      --wrong: #C15F3C;
+      --wrong-bg: #F3E2D6;
+      --warning: #C58A2E;
+      --warning-bg: #F5E7CB;
+      --info: #4E7F92;
+      --info-bg: #DCE7EB;
+
+      /* Bán kính & bóng */
+      --radius: 10px;
+      --radius-lg: 14px;
+      --radius-sm: 6px;
+      --shadow: 0 4px 12px rgba(45, 139, 111, .10);
+      --shadow-sm: 0 2px 6px rgba(26, 26, 26, .05);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    button { font: inherit; }
+    button, [tabindex] { -webkit-tap-highlight-color: transparent; }
+    button:focus-visible, [tabindex]:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+    }
+    img { display: block; max-width: 100%; }
+    .hidden { display: none !important; }
+
+    /* Layout chính */
+    .app {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px clamp(12px, 2.4vw, 24px) 24px;
+    }
+
+    /* Header bài học */
+    .module-header {
+      background: var(--cream-2);
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-lg);
+      padding: 16px 20px;
+      margin-bottom: 20px;
+    }
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--jade-pale);
+      color: var(--jade-text);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 99px;
+      border: 1px solid var(--jade-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .module-title {
+      margin: 0 0 6px 0;
+      font-size: clamp(1.3rem, 2.8vw, 1.8rem);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .module-desc {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--ink-2);
+    }
+
+    /* Stepper tiến trình */
+    .stepper-nav {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      background: var(--cream-2);
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius);
+      color: var(--ink-3);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .step-item:hover:not(.active) {
+      border-color: var(--jade-soft);
+      background: #FAF7F0;
+    }
+    .step-item.active {
+      background: #FFFFFF;
+      border-color: var(--jade);
+      color: var(--jade-text);
+      box-shadow: 0 2px 8px rgba(60, 165, 122, 0.15);
+    }
+    .step-item.completed {
+      border-color: var(--jade-soft);
+      color: var(--ink-2);
+    }
+    .step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--paper-line);
+      color: var(--ink-2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+    .step-item.active .step-num {
+      background: var(--jade);
+      color: #FFFFFF;
+    }
+    .step-item.completed .step-num {
+      background: var(--jade-pale);
+      color: var(--jade-text);
+    }
+    .step-title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Khung Stage */
+    .stage-section {
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-lg);
+      padding: clamp(16px, 3vw, 28px);
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .lead-box {
+      margin-bottom: 20px;
+    }
+    .lead-question {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--jade-dark);
+      margin: 0 0 8px 0;
+      line-height: 1.6;
+    }
+    .lead-text {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin: 0 0 10px 0;
+      line-height: 1.65;
+    }
+    .guide-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--jade-pale);
+      border-left: 4px solid var(--jade);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 0.92rem;
+      color: var(--jade-text);
+      font-weight: 500;
+      line-height: 1.55;
+    }
+    .guide-box i {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ST00: Grid 2 Card ảnh */
+    .st00-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .hook-card {
+      background: var(--cream);
+      border: 2px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 14px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .hook-card__title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hook-card__img-wrap {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      max-height: 380px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: #FAF7F0;
+      border: 1px solid var(--paper-line);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hook-card__img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .hook-hotspot {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 2px solid var(--jade);
+      color: var(--jade-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 5;
+      padding: 0;
+    }
+    .hook-hotspot:hover {
+      transform: scale(1.15);
+      background: var(--jade);
+      color: #FFFFFF;
+    }
+    .hook-hotspot.active {
+      background: var(--jade);
+      color: #FFFFFF;
+      border-color: #FFFFFF;
+      box-shadow: 0 0 0 4px rgba(60, 165, 122, 0.35);
+    }
+    .hook-hotspot.viewed {
+      background: var(--jade-pale);
+      border-color: var(--jade-deep);
+      color: var(--jade-text);
+    }
+    .hook-hotspot.viewed::after {
+      content: '✓';
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      width: 16px;
+      height: 16px;
+      background: var(--jade);
+      color: #FFF;
+      font-size: 10px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+    }
+
+    .pulse-ring {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(60, 165, 122, 0.7);
+      animation: pulseAnim 1.8s infinite;
+      pointer-events: none;
+    }
+    .hook-hotspot.viewed .pulse-ring {
+      display: none;
+    }
+    @keyframes pulseAnim {
+      0% { box-shadow: 0 0 0 0 rgba(60, 165, 122, 0.7); }
+      70% { box-shadow: 0 0 0 14px rgba(60, 165, 122, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(60, 165, 122, 0); }
+    }
+
+    .hotspot-caption-box {
+      margin-top: 12px;
+      min-height: 60px;
+      padding: 10px 14px;
+      background: var(--cream-2);
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--paper-line-2);
+      font-size: 0.92rem;
+      color: var(--ink-2);
+      line-height: 1.5;
+      display: flex;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+    .hotspot-caption-box.active {
+      background: var(--jade-pale);
+      border-left-color: var(--jade);
+      color: var(--jade-text);
+      font-weight: 600;
+    }
+
+    /* Khối kết luận */
+    .conclude-card {
+      background: var(--cream);
+      border: 1.5px solid var(--paper-line-2);
+      border-left: 5px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin: 20px 0;
+      animation: slideUp 0.35s ease;
+    }
+    .conclude-card__title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--accent-text);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .conclude-card__text {
+      margin: 0;
+      font-size: 1rem;
+      color: var(--ink);
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    /* ST01: Sơ đồ dòng vật chất Responsive Cards */
+    .flowchart-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+    .flow-branch {
+      background: #FFFFFF;
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+    }
+    .flow-branch--plant {
+      border-top: 4px solid var(--jade);
+      background: linear-gradient(180deg, rgba(45, 139, 111, 0.04) 0%, #FFFFFF 80px);
+    }
+    .flow-branch--animal {
+      border-top: 4px solid #2B6CB0;
+      background: linear-gradient(180deg, rgba(43, 108, 176, 0.04) 0%, #FFFFFF 80px);
+    }
+    .flow-branch__header {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--paper-line);
+    }
+    .flow-branch--plant .flow-branch__header {
+      color: var(--jade-dark);
+    }
+    .flow-branch--animal .flow-branch__header {
+      color: #1E4E79;
+    }
+
+    .flow-card {
+      background: var(--cream);
+      border: 1.5px solid var(--paper-line-2);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .flow-card:hover {
+      border-color: var(--jade-soft);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      background: #FFFFFF;
+    }
+    .flow-card.active {
+      border-color: var(--jade);
+      background: var(--jade-pale);
+      box-shadow: 0 0 0 3px rgba(60, 165, 122, 0.25);
+    }
+    .flow-branch--animal .flow-card:hover {
+      border-color: #4299E1;
+    }
+    .flow-branch--animal .flow-card.active {
+      border-color: #2B6CB0;
+      background: #EBF4FA;
+      box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.2);
+    }
+    .flow-card.viewed {
+      border-color: var(--paper-line-2);
+      background: #FAF8F5;
+    }
+    .flow-card--passive {
+      cursor: default;
+      background: var(--cream-2);
+      border-style: dashed;
+    }
+    .flow-card--passive:hover {
+      transform: none;
+      box-shadow: none;
+      border-color: var(--paper-line-2);
+      background: var(--cream-2);
+    }
+
+    .flow-card__top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .flow-card__title {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      flex-grow: 1;
+    }
+    .flow-card__name {
+      font-size: 0.96rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .flow-branch--plant .flow-card__name {
+      color: var(--jade-dark);
+    }
+    .flow-branch--animal .flow-card__name {
+      color: #1E4E79;
+    }
+    .flow-tag {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 99px;
+    }
+    .flow-tag--plant {
+      background: var(--jade-pale);
+      color: var(--jade-text);
+    }
+    .flow-tag--animal {
+      background: #EBF4FA;
+      color: #1E4E79;
+    }
+
+    .diag-hotspot-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid var(--jade);
+      background: #FFFFFF;
+      color: var(--jade-dark);
+      font-size: 0.92rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      padding: 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    }
+    .flow-branch--animal .diag-hotspot-btn {
+      border-color: #2B6CB0;
+      color: #1E4E79;
+    }
+    .flow-card:hover .diag-hotspot-btn {
+      transform: scale(1.1);
+      background: var(--jade);
+      color: #FFFFFF;
+    }
+    .flow-branch--animal .flow-card:hover .diag-hotspot-btn {
+      background: #2B6CB0;
+      color: #FFFFFF;
+    }
+    .diag-hotspot-btn.active, .flow-card.active .diag-hotspot-btn {
+      background: var(--jade);
+      color: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(60, 165, 122, 0.35);
+    }
+    .flow-branch--animal .diag-hotspot-btn.active, .flow-branch--animal .flow-card.active .diag-hotspot-btn {
+      background: #2B6CB0;
+      color: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.35);
+    }
+    .diag-hotspot-btn.viewed, .flow-card.viewed .diag-hotspot-btn {
+      background: var(--jade-pale);
+      border-color: var(--jade-soft);
+      color: var(--jade-text);
+    }
+    .flow-branch--animal .diag-hotspot-btn.viewed, .flow-branch--animal .flow-card.viewed .diag-hotspot-btn {
+      background: #EBF4FA;
+      border-color: #BDD2E2;
+      color: #1E4E79;
+    }
+
+    .flow-card__desc {
+      margin: 8px 0 0 0;
+      font-size: 0.9rem;
+      color: var(--ink-2);
+      line-height: 1.55;
+      word-break: normal;
+      white-space: normal;
+    }
+
+    .flow-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 0;
+      color: var(--ink-3);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .flow-connector .connector-line {
+      flex-grow: 1;
+      height: 1px;
+      background: var(--paper-line-2);
+      border-top: 1px dashed var(--paper-line-2);
+    }
+    .flow-connector .connector-badge {
+      padding: 2px 10px;
+      border-radius: 99px;
+      background: var(--cream-2);
+      border: 1px solid var(--paper-line);
+      font-size: 0.78rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .flow-connector--plant .connector-badge {
+      color: var(--jade-text);
+      background: var(--jade-pale);
+      border-color: rgba(45, 139, 111, 0.2);
+    }
+    .flow-connector--animal .connector-badge {
+      color: #1E4E79;
+      background: #EBF4FA;
+      border-color: rgba(43, 108, 176, 0.2);
+    }
+
+    .st01-info-panel {
+      background: var(--cream);
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      margin-bottom: 24px;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .st01-info-panel.active {
+      background: var(--jade-pale);
+      border-color: var(--jade-soft);
+    }
+    .st01-info-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #FFF;
+      color: var(--jade);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      border: 1px solid var(--paper-line);
+    }
+    .st01-info-text {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    /* ST01: Hoạt động phân loại (Drag-Drop / Tap) */
+    .sorting-section {
+      background: var(--cream-2);
+      border: 1.5px solid var(--paper-line-2);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-top: 20px;
+      animation: fadeIn 0.4s ease;
+    }
+    .sorting-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 0 0 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sorting-guide {
+      font-size: 0.92rem;
+      color: var(--ink-2);
+      margin: 0 0 16px 0;
+    }
+
+    .source-tray {
+      background: #FFFFFF;
+      border: 1.5px dashed var(--paper-line-2);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+      min-height: 90px;
+    }
+    .source-tray-empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      font-size: 0.88rem;
+      color: var(--ink-faint);
+      padding: 12px;
+      font-style: italic;
+    }
+
+    .drag-card {
+      background: var(--cream);
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 0.92rem;
+      color: var(--ink);
+      font-weight: 600;
+      cursor: grab;
+      user-select: none;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      box-shadow: var(--shadow-sm);
+    }
+    .drag-card:hover {
+      border-color: var(--jade-soft);
+      transform: translateY(-2px);
+      background: #FFFFFF;
+    }
+    .drag-card.selected {
+      border-color: var(--accent);
+      background: var(--accent-pale);
+      box-shadow: 0 0 0 3px rgba(232, 162, 74, 0.3);
+    }
+    .drag-card.dragging {
+      opacity: 0.4;
+    }
+    .btn-return-card {
+      background: transparent;
+      border: none;
+      color: var(--ink-3);
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      display: none;
+    }
+    .btn-return-card:hover {
+      color: var(--wrong);
+      background: var(--wrong-bg);
+    }
+    .target-box .drag-card .btn-return-card {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .target-zones-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .target-zone {
+      background: #FFFFFF;
+      border: 2px dashed var(--paper-line);
+      border-radius: var(--radius);
+      padding: 14px;
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .target-zone:hover {
+      border-color: var(--jade-soft);
+    }
+    .target-zone.drag-over {
+      border-color: var(--jade);
+      background: var(--jade-pale);
+    }
+    .target-zone__header {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--jade-text);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--paper-line);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .target-zone__items {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex-grow: 1;
+    }
+
+    /* ST02: So sánh 2 trạng thái A04 */
+    .st02-panels {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+    .state-panel {
+      background: var(--cream);
+      border: 2px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 14px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .state-panel:hover {
+      border-color: var(--jade-soft);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    .state-panel.viewed {
+      border-color: var(--jade);
+      background: #FFFFFF;
+    }
+    .state-panel__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .state-panel__title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .state-panel__badge {
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 99px;
+      background: var(--cream-2);
+      color: var(--ink-3);
+      border: 1px solid var(--paper-line-2);
+    }
+    .state-panel.viewed .state-panel__badge {
+      background: var(--jade-pale);
+      color: var(--jade-text);
+      border-color: var(--jade-soft);
+    }
+    .state-panel__img-wrap {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      max-height: 440px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: #FAF7F0;
+      border: 1px solid var(--paper-line);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .state-panel__img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #EDE8DE;
+    }
+    .state-panel__desc {
+      margin: 12px 0 0 0;
+      font-size: 0.94rem;
+      color: var(--ink-2);
+      line-height: 1.5;
+    }
+
+    /* ST02: Hoạt động nối cặp (Matching) */
+    .matching-section {
+      background: var(--cream);
+      border: 1.5px solid var(--paper-line-2);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-top: 20px;
+      position: relative;
+    }
+    .matching-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      position: relative;
+      margin-bottom: 16px;
+    }
+    .matching-col {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      z-index: 2;
+    }
+    .match-item {
+      background: #FFFFFF;
+      border: 2px solid var(--paper-line);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      min-height: 52px;
+    }
+    .match-item:hover {
+      border-color: var(--jade-soft);
+    }
+    .match-item.selected {
+      border-color: var(--accent);
+      background: var(--accent-pale);
+      box-shadow: 0 0 0 3px rgba(232, 162, 74, 0.3);
+    }
+    .match-item.matched {
+      border-color: var(--jade);
+      background: var(--jade-pale);
+      color: var(--jade-text);
+    }
+    .match-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--paper-line-2);
+      border: 2px solid #FFF;
+      flex-shrink: 0;
+    }
+    .match-item.matched .match-dot {
+      background: var(--jade);
+    }
+
+    .svg-lines-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ST03: Ghi nhớ & Kết nối */
+    .summary-card {
+      background: var(--cream);
+      border: 1px solid var(--paper-line-2);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+    .summary-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--jade-text);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0 0 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .summary-list {
+      margin: 0;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .summary-list li {
+      font-size: 0.98rem;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    .summary-list strong {
+      color: var(--jade-dark);
+    }
+    .bridge-card {
+      background: var(--jade-pale);
+      border: 2px dashed var(--jade-soft);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      margin-bottom: 20px;
+    }
+    .bridge-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--jade-deep);
+      margin: 0 0 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .bridge-text {
+      margin: 0;
+      font-size: 0.96rem;
+      color: var(--jade-text);
+      line-height: 1.65;
+    }
+
+    /* Banners & Feedback */
+    .feedback-panel {
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      margin-top: 12px;
+      animation: fadeIn 0.3s ease;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .feedback-panel i {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .feedback-panel.correct {
+      background: var(--correct-bg);
+      border-left: 4px solid var(--correct);
+      color: var(--jade-text);
+    }
+    .feedback-panel.wrong {
+      background: var(--wrong-bg);
+      border-left: 4px solid var(--wrong);
+      color: var(--wrong);
+    }
+
+    .complete-banner {
+      background: var(--jade-pale);
+      border: 2px solid var(--jade);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      animation: fadeIn 0.35s ease;
+      margin-top: 16px;
+    }
+    .complete-banner__icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--jade);
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .complete-banner__title {
+      margin: 0 0 4px 0;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--jade-dark);
+    }
+    .complete-banner__text {
+      margin: 0;
+      font-size: 0.92rem;
+      color: var(--jade-text);
+      line-height: 1.5;
+    }
+
+    /* Thanh điều khiển dưới cùng */
+    .stage-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--paper-line);
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: var(--radius);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      min-height: 44px;
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 1.5px solid var(--paper-line-2);
+      color: var(--ink-2);
+    }
+    .btn-secondary:hover {
+      border-color: var(--ink-faint);
+      background: var(--cream);
+    }
+    .btn-primary {
+      background: var(--jade);
+      color: #FFFFFF;
+    }
+    .btn-primary:hover:not(:disabled) {
+      background: var(--jade-deep);
+      box-shadow: 0 4px 12px rgba(45, 139, 111, 0.25);
+    }
+    .btn-primary:disabled {
+      background: var(--paper-line-2);
+      color: var(--ink-faint);
+      cursor: not-allowed;
+    }
+    .btn-complete {
+      background: var(--jade-dark);
+      color: #FFFFFF;
+      font-size: 1.05rem;
+      padding: 12px 28px;
+    }
+    .btn-complete:hover {
+      background: var(--jade-deep);
+      box-shadow: 0 6px 16px rgba(20, 67, 47, 0.3);
+    }
+
+    /* Modal hoàn thành */
+    .modal-backdrop {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(26, 26, 26, 0.6);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 16px;
+      animation: fadeIn 0.25s ease;
+    }
+    .modal-box {
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2);
+      animation: zoomIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .modal-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--jade-pale);
+      color: var(--jade);
+      font-size: 2.2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .modal-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 0 0 10px 0;
+    }
+    .modal-desc {
+      font-size: 0.98rem;
+      color: var(--ink-2);
+      margin: 0 0 20px 0;
+      line-height: 1.6;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes zoomIn { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
+
+    @media (max-width: 860px) {
+      .stepper-nav { grid-template-columns: repeat(2, 1fr); }
+      .st00-grid, .flowchart-container, .target-zones-grid, .source-tray, .st02-panels, .matching-grid { grid-template-columns: 1fr; }
+      .matching-grid { gap: 24px; }
+    }
+    @media (max-width: 480px) {
+      .stepper-nav { grid-template-columns: 1fr; }
+      .stage-actions { flex-direction: column-reverse; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app">
+    <!-- Header thông tin bài học -->
+    <header class="module-header">
+      <div class="header-top">
+        <span class="badge-pill"><i class="ti ti-leaf"></i> Sinh học 11 · Bài 1</span>
+      </div>
+      <h1 class="module-title">Dấu hiệu đặc trưng của trao đổi chất và chuyển hoá năng lượng</h1>
+      <p class="module-desc">Khám phá bốn dấu hiệu đặc trưng diễn ra từ khi sinh vật tiếp nhận, vận chuyển, biến đổi chất cho đến khi thải chất và điều hoà hoạt động sống.</p>
+    </header>
+
+    <!-- Stepper 4 bước -->
+    <nav class="stepper-nav" aria-label="Tiến trình học tập">
+      <div class="step-item active" id="stepTab-0" onclick="goToStage(0)">
+        <span class="step-num">01</span>
+        <span class="step-title">Nhận biết biểu hiện</span>
+      </div>
+      <div class="step-item" id="stepTab-1" onclick="goToStage(1)">
+        <span class="step-num">02</span>
+        <span class="step-title">Tiếp nhận & Biến đổi</span>
+      </div>
+      <div class="step-item" id="stepTab-2" onclick="goToStage(2)">
+        <span class="step-num">03</span>
+        <span class="step-title">Thải chất & Điều hoà</span>
+      </div>
+      <div class="step-item" id="stepTab-3" onclick="goToStage(3)">
+        <span class="step-num">04</span>
+        <span class="step-title">Ghi nhớ & Kết nối</span>
+      </div>
+    </nav>
+
+    <!-- ST00: Nhận biết biểu hiện trao đổi chất (Hook) -->
+    <section class="stage-section" id="stage-0">
+      <div class="lead-box">
+        <p class="lead-question">“Chúng ta không nhìn thấy trực tiếp mọi quá trình diễn ra bên trong cơ thể. Vậy dựa vào những biểu hiện nào, chúng ta có thể nhận biết sinh vật đang trao đổi chất và chuyển hoá năng lượng?”</p>
+        <p class="lead-text">Quan sát người và cây trong hai hình dưới đây. Hãy khám phá từng vị trí để xem những hoạt động nào đang diễn ra.</p>
+        <div class="guide-box">
+          <i class="ti ti-hand-finger"></i>
+          <span><strong>HƯỚNG DẪN:</strong> Nhấn vào từng điểm đánh dấu trên hai hình. Điểm đã xem sẽ đổi trạng thái. Khi xem đủ bốn điểm, nút TIẾP TỤC sẽ xuất hiện.</span>
+        </div>
+      </div>
+
+      <div class="st00-grid">
+        <!-- Hình 1: Người ăn & thở -->
+        <div class="hook-card" id="cardST00-1">
+          <div class="hook-card__title"><i class="ti ti-user"></i> Biểu hiện ở người</div>
+          <div class="hook-card__img-wrap">
+            <img src="images/SH11-B01-M02-A01.png" alt="Người đang ăn và thở" class="hook-card__img">
+            
+            <!-- Điểm 1: Miệng -->
+            <button type="button" class="hook-hotspot" id="hotspot-0-1" style="top: 38%; left: 47%;" onclick="viewST00Hotspot(1)" title="Vị trí 1: Miệng" aria-label="Vị trí 1: Miệng">
+              <span>1</span>
+              <div class="pulse-ring"></div>
+            </button>
+
+            <!-- Điểm 2: Mũi / Ngực -->
+            <button type="button" class="hook-hotspot" id="hotspot-0-2" style="top: 56%; left: 51%;" onclick="viewST00Hotspot(2)" title="Vị trí 2: Mũi và ngực" aria-label="Vị trí 2: Mũi và ngực">
+              <span>2</span>
+              <div class="pulse-ring"></div>
+            </button>
+          </div>
+          <div class="hotspot-caption-box" id="captionST00-1">
+            <span><i class="ti ti-hand-click"></i> Nhấn vào điểm số 1 hoặc 2 trên hình để xem hoạt động.</span>
+          </div>
+        </div>
+
+        <!-- Hình 2: Cây hút nước & thoát hơi nước -->
+        <div class="hook-card" id="cardST00-2">
+          <div class="hook-card__title"><i class="ti ti-plant-2"></i> Biểu hiện ở thực vật</div>
+          <div class="hook-card__img-wrap">
+            <img src="images/SH11-B01-M02-A02.png" alt="Cây hút nước và thoát hơi nước" class="hook-card__img">
+            
+            <!-- Điểm 3: Rễ -->
+            <button type="button" class="hook-hotspot" id="hotspot-0-3" style="top: 74%; left: 49%;" onclick="viewST00Hotspot(3)" title="Vị trí 3: Rễ cây" aria-label="Vị trí 3: Rễ cây">
+              <span>3</span>
+              <div class="pulse-ring"></div>
+            </button>
+
+            <!-- Điểm 4: Lá -->
+            <button type="button" class="hook-hotspot" id="hotspot-0-4" style="top: 26%; left: 52%;" onclick="viewST00Hotspot(4)" title="Vị trí 4: Lá cây" aria-label="Vị trí 4: Lá cây">
+              <span>4</span>
+              <div class="pulse-ring"></div>
+            </button>
+          </div>
+          <div class="hotspot-caption-box" id="captionST00-2">
+            <span><i class="ti ti-hand-click"></i> Nhấn vào điểm số 3 hoặc 4 trên hình để xem hoạt động.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Khối kết luận ST00 -->
+      <div class="conclude-card hidden" id="concludeST00">
+        <div class="conclude-card__title"><i class="ti ti-bulb"></i> Nhận xét mở đầu</div>
+        <p class="conclude-card__text">Những biểu hiện vừa quan sát mới chỉ cho thấy một phần của quá trình trao đổi chất. Để nhận biết đầy đủ hơn, chúng ta cần tìm hiểu những dấu hiệu đặc trưng diễn ra từ khi sinh vật tiếp nhận chất cho đến khi chất được biến đổi, sử dụng và thải ra ngoài.</p>
+      </div>
+
+      <!-- Điều khiển ST00 -->
+      <div class="stage-actions">
+        <div></div>
+        <button type="button" class="btn btn-primary" id="btnNextST00" onclick="goToStage(1)" disabled>
+          <span>TIẾP TỤC</span> <i class="ti ti-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ST01: Tiếp nhận, vận chuyển và biến đổi chất (Dấu hiệu 1 & 2) -->
+    <section class="stage-section hidden" id="stage-1">
+      <div class="lead-box">
+        <p class="lead-text">Trước hết, hãy xem các chất từ môi trường được sinh vật tiếp nhận và vận chuyển đến tế bào như thế nào.</p>
+        <div class="guide-box">
+          <i class="ti ti-hand-finger"></i>
+          <span><strong>HƯỚNG DẪN:</strong> Nhấn vào từng vị trí 1, 2, 3, 4 trên sơ đồ. Vị trí đã xem sẽ đổi trạng thái. Khi xem đủ bốn vị trí, hoạt động phân loại sẽ xuất hiện.</span>
+        </div>
+      </div>
+
+      <!-- Sơ đồ dòng vật chất 2 nhánh Thực vật & Động vật (HTML + CSS Responsive Cards) -->
+      <div class="flowchart-container">
+        <!-- Nhánh Thực vật -->
+        <div class="flow-branch flow-branch--plant">
+          <div class="flow-branch__header">
+            <i class="ti ti-plant"></i>
+            <span>NHÁNH THỰC VẬT</span>
+          </div>
+
+          <!-- Card 1: Lá cây -->
+          <div class="flow-card" id="flowCard-1" onclick="selectST01Hotspot(1)">
+            <div class="flow-card__top">
+              <div class="flow-card__title">
+                <span class="flow-card__name">Lá cây (Khí khổng)</span>
+                <span class="flow-tag flow-tag--plant">Nhận CO₂ & Thoát nước</span>
+              </div>
+              <button type="button" class="diag-hotspot-btn" id="diagBtn-1" onclick="event.stopPropagation(); selectST01Hotspot(1)" aria-label="Vị trí 1">
+                <span>1</span>
+              </button>
+            </div>
+            <p class="flow-card__desc">Tiếp nhận CO₂ từ không khí để quang hợp, đồng thời thoát hơi nước qua khí khổng.</p>
+          </div>
+
+          <!-- Connector giữa Lá và Thân -->
+          <div class="flow-connector flow-connector--plant">
+            <span class="connector-line"></span>
+            <span class="connector-badge"><i class="ti ti-arrows-vertical"></i> Dòng mạch dẫn 2 chiều</span>
+            <span class="connector-line"></span>
+          </div>
+
+          <!-- Card 2: Thân & Hệ mạch -->
+          <div class="flow-card" id="flowCard-2" onclick="selectST01Hotspot(2)">
+            <div class="flow-card__top">
+              <div class="flow-card__title">
+                <span class="flow-card__name">Thân & Hệ mạch (Mạch gỗ / Mạch rây)</span>
+                <span class="flow-tag flow-tag--plant">Vận chuyển nội bộ</span>
+              </div>
+              <button type="button" class="diag-hotspot-btn" id="diagBtn-2" onclick="event.stopPropagation(); selectST01Hotspot(2)" aria-label="Vị trí 2">
+                <span>2</span>
+              </button>
+            </div>
+            <p class="flow-card__desc">Vận chuyển 2 chiều: nước, ion khoáng lên lá; chất hữu cơ đến các cơ quan sử dụng hoặc dự trữ.</p>
+          </div>
+
+          <!-- Connector giữa Thân và Rễ -->
+          <div class="flow-connector flow-connector--plant">
+            <span class="connector-line"></span>
+            <span class="connector-badge"><i class="ti ti-arrow-up"></i> Hút nước và khoáng đưa lên</span>
+            <span class="connector-line"></span>
+          </div>
+
+          <!-- Card 3: Đất & Hệ rễ -->
+          <div class="flow-card flow-card--passive">
+            <div class="flow-card__top">
+              <div class="flow-card__title">
+                <span class="flow-card__name">Đất & Hệ rễ</span>
+                <span class="flow-tag flow-tag--plant">Nguồn tiếp nhận</span>
+              </div>
+            </div>
+            <p class="flow-card__desc">Hấp thụ nước và các ion khoáng hòa tan từ môi trường đất đưa vào mạch gỗ.</p>
+          </div>
+        </div>
+
+        <!-- Nhánh Động vật -->
+        <div class="flow-branch flow-branch--animal">
+          <div class="flow-branch__header">
+            <i class="ti ti-heart-rate-monitor"></i>
+            <span>NHÁNH ĐỘNG VẬT</span>
+          </div>
+
+          <!-- Card 1: Tiêu hóa & Hô hấp -->
+          <div class="flow-card" id="flowCard-3" onclick="selectST01Hotspot(3)">
+            <div class="flow-card__top">
+              <div class="flow-card__title">
+                <span class="flow-card__name">Hệ tiêu hoá & Hệ hô hấp</span>
+                <span class="flow-tag flow-tag--animal">Tiếp nhận chất</span>
+              </div>
+              <button type="button" class="diag-hotspot-btn" id="diagBtn-3" onclick="event.stopPropagation(); selectST01Hotspot(3)" aria-label="Vị trí 3">
+                <span>3</span>
+              </button>
+            </div>
+            <p class="flow-card__desc">Tiếp nhận thức ăn (biến đổi thành chất dinh dưỡng) và lấy khí O₂ từ không khí, thải CO₂ ra ngoài.</p>
+          </div>
+
+          <!-- Connector giữa Tiêu hóa/Hô hấp và Tuần hoàn -->
+          <div class="flow-connector flow-connector--animal">
+            <span class="connector-line"></span>
+            <span class="connector-badge"><i class="ti ti-arrow-down"></i> Hấp thu vào máu</span>
+            <span class="connector-line"></span>
+          </div>
+
+          <!-- Card 2: Hệ tuần hoàn -->
+          <div class="flow-card" id="flowCard-4" onclick="selectST01Hotspot(4)">
+            <div class="flow-card__top">
+              <div class="flow-card__title">
+                <span class="flow-card__name">Hệ tuần hoàn (Máu & Tim)</span>
+                <span class="flow-tag flow-tag--animal">Vận chuyển máu</span>
+              </div>
+              <button type="button" class="diag-hotspot-btn" id="diagBtn-4" onclick="event.stopPropagation(); selectST01Hotspot(4)" aria-label="Vị trí 4">
+                <span>4</span>
+              </button>
+            </div>
+            <p class="flow-card__desc">Vận chuyển chất dinh dưỡng và O₂ đến từng tế bào; đồng thời đưa sản phẩm bài tiết đến cơ quan bài tiết.</p>
+          </div>
+
+          <!-- Connector giữa Tuần hoàn và Tế bào -->
+          <div class="flow-connector flow-connector--animal">
+            <span class="connector-line"></span>
+            <span class="connector-badge"><i class="ti ti-arrow-down"></i> Trao đổi tại tế bào</span>
+            <span class="connector-line"></span>
+          </div>
+
+          <!-- Card 3: Tế bào cơ thể -->
+          <div class="flow-card flow-card--passive">
+            <div class="flow-card__top">
+              <div class="flow-card__title">
+                <span class="flow-card__name">Tế bào cơ thể</span>
+                <span class="flow-tag flow-tag--animal">Chuyển hóa & Năng lượng</span>
+              </div>
+            </div>
+            <p class="flow-card__desc">Nơi trực tiếp diễn ra quá trình biến đổi chất (tổng hợp & phân giải) và chuyển hoá năng lượng cho hoạt động sống.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel chú thích vị trí đã chọn trên sơ đồ -->
+      <div class="st01-info-panel" id="st01InfoPanel">
+        <div class="st01-info-icon"><i class="ti ti-info-circle"></i></div>
+        <p class="st01-info-text" id="st01InfoText">Nhấn vào từng vị trí số (1, 2, 3, 4) trên sơ đồ để xem chi tiết cách các chất được tiếp nhận và vận chuyển.</p>
+      </div>
+
+      <!-- Lời giảng chuyển tiếp khi xem đủ 4 vị trí -->
+      <div class="conclude-card hidden" id="concludeST01-Lecture">
+        <div class="conclude-card__title"><i class="ti ti-transfer-in"></i> Chuyển hóa chất trong tế bào</div>
+        <p class="conclude-card__text">Sau khi được tiếp nhận và vận chuyển đến tế bào, các chất tiếp tục được biến đổi. Trong tế bào, các quá trình tổng hợp và phân giải chất luôn gắn với chuyển hoá năng lượng.</p>
+      </div>
+
+      <!-- Nhiệm vụ phân loại 4 hiện tượng (Mở khi xem đủ 4 vị trí) -->
+      <div class="sorting-section hidden" id="sortingSection">
+        <h3 class="sorting-title"><i class="ti ti-layout-grid"></i> Nhiệm vụ phân loại hiện tượng</h3>
+        <p class="sorting-guide">Kéo từng hiện tượng vào nhóm phù hợp (hoặc chạm chọn thẻ rồi chạm vùng đích). Bạn có thể thay đổi vị trí trước khi nhấn KIỂM TRA.</p>
+
+        <!-- Khay thẻ nguồn -->
+        <div class="source-tray" id="sourceTray" ondragover="allowDrop(event)" ondrop="handleDropToTray(event)">
+          <div class="drag-card" id="card-1" draggable="true" ondragstart="handleDragStart(event)" onclick="handleCardClick('card-1')">
+            <span>Rễ cây hấp thụ nước.</span>
+            <button type="button" class="btn-return-card" onclick="returnCard('card-1', event)" title="Trả về khay"><i class="ti ti-arrow-back-up"></i></button>
+          </div>
+          <div class="drag-card" id="card-2" draggable="true" ondragstart="handleDragStart(event)" onclick="handleCardClick('card-2')">
+            <span>Máu vận chuyển O₂ đến tế bào.</span>
+            <button type="button" class="btn-return-card" onclick="returnCard('card-2', event)" title="Trả về khay"><i class="ti ti-arrow-back-up"></i></button>
+          </div>
+          <div class="drag-card" id="card-3" draggable="true" ondragstart="handleDragStart(event)" onclick="handleCardClick('card-3')">
+            <span>Tế bào tổng hợp protein.</span>
+            <button type="button" class="btn-return-card" onclick="returnCard('card-3', event)" title="Trả về khay"><i class="ti ti-arrow-back-up"></i></button>
+          </div>
+          <div class="drag-card" id="card-4" draggable="true" ondragstart="handleDragStart(event)" onclick="handleCardClick('card-4')">
+            <span>Tế bào cơ phân giải glucose và giải phóng năng lượng.</span>
+            <button type="button" class="btn-return-card" onclick="returnCard('card-4', event)" title="Trả về khay"><i class="ti ti-arrow-back-up"></i></button>
+          </div>
+        </div>
+
+        <!-- 2 Vùng đích -->
+        <div class="target-zones-grid">
+          <div class="target-zone" id="zone-1" ondragover="allowDrop(event)" ondragleave="handleDragLeave(event)" ondrop="handleDropToZone('zone-1', event)" onclick="handleZoneClick('zone-1')">
+            <div class="target-zone__header"><i class="ti ti-truck-delivery"></i> 1. TIẾP NHẬN VÀ VẬN CHUYỂN CHẤT</div>
+            <div class="target-zone__items" id="zoneItems-1"></div>
+          </div>
+          <div class="target-zone" id="zone-2" ondragover="allowDrop(event)" ondragleave="handleDragLeave(event)" ondrop="handleDropToZone('zone-2', event)" onclick="handleZoneClick('zone-2')">
+            <div class="target-zone__header"><i class="ti ti-bolt"></i> 2. BIẾN ĐỔI CHẤT KÈM CHUYỂN HOÁ NĂNG LƯỢNG</div>
+            <div class="target-zone__items" id="zoneItems-2"></div>
+          </div>
+        </div>
+
+        <div style="text-align:right;">
+          <button type="button" class="btn btn-primary" id="btnCheckST01" onclick="checkSortingST01()" disabled>
+            <i class="ti ti-check"></i> <span>KIỂM TRA</span>
+          </button>
+        </div>
+
+        <div class="feedback-panel hidden" id="feedbackST01"></div>
+
+        <!-- Khối chốt ST01 -->
+        <div class="conclude-card hidden" id="concludeST01">
+          <div class="conclude-card__title"><i class="ti ti-star"></i> Kết luận hai dấu hiệu đầu</div>
+          <p class="conclude-card__text">Hai dấu hiệu đầu tiên là: sinh vật tiếp nhận và vận chuyển các chất; các chất được biến đổi trong tế bào đồng thời với quá trình chuyển hoá năng lượng.</p>
+        </div>
+      </div>
+
+      <!-- Điều khiển ST01 -->
+      <div class="stage-actions">
+        <button type="button" class="btn btn-secondary" onclick="goToStage(0)">
+          <i class="ti ti-arrow-left"></i> <span>QUAY LẠI</span>
+        </button>
+        <button type="button" class="btn btn-primary" id="btnNextST01" onclick="goToStage(2)" disabled>
+          <span>TIẾP TỤC</span> <i class="ti ti-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ST02: Thải chất và điều hoà (Dấu hiệu 3 & 4) -->
+    <section class="stage-section hidden" id="stage-2">
+      <div class="lead-box">
+        <p class="lead-text">Trao đổi chất không dừng lại sau khi các chất được biến đổi trong tế bào. Cơ thể còn phải loại bỏ những chất cần thải và điều chỉnh các quá trình này phù hợp với trạng thái hoạt động.</p>
+        <div class="guide-box">
+          <i class="ti ti-hand-finger"></i>
+          <span><strong>HƯỚNG DẪN:</strong> Nhấn vào hai trạng thái của cùng một người để so sánh. Trạng thái đã xem sẽ đổi màu viền.</span>
+        </div>
+      </div>
+
+      <!-- So sánh 2 trạng thái người (Nghỉ vs Chạy) -->
+      <div class="st02-panels">
+        <!-- Panel 1: Nghỉ -->
+        <div class="state-panel" id="panelRest" onclick="viewST02Panel('rest')" tabindex="0" role="button" aria-label="Trạng thái nghỉ ngơi">
+          <div class="state-panel__header">
+            <span class="state-panel__title"><i class="ti ti-coffee"></i> Trạng thái nghỉ ngơi</span>
+            <span class="state-panel__badge" id="badgeRest">Chưa xem</span>
+          </div>
+          <div class="state-panel__img-wrap">
+            <img src="images/SH11-B01-M02-A04_MASTER.png" alt="Người ở trạng thái nghỉ ngơi" class="state-panel__img">
+          </div>
+          <p class="state-panel__desc">Khi cơ thể nghỉ ngơi, nhịp tim và nhịp thở thường ở mức thấp hơn.</p>
+        </div>
+
+        <!-- Panel 2: Chạy -->
+        <div class="state-panel" id="panelRun" onclick="viewST02Panel('run')" tabindex="0" role="button" aria-label="Trạng thái vận động chạy">
+          <div class="state-panel__header">
+            <span class="state-panel__title"><i class="ti ti-run"></i> Trạng thái vận động (chạy)</span>
+            <span class="state-panel__badge" id="badgeRun">Chưa xem</span>
+          </div>
+          <div class="state-panel__img-wrap">
+            <img src="images/SH11-B01-M02-A04_RUN.png" alt="Người ở trạng thái chạy bộ" class="state-panel__img">
+          </div>
+          <p class="state-panel__desc">Khi vận động, nhu cầu cung cấp O₂ và năng lượng tăng nên nhịp tim và nhịp thở cũng tăng để đáp ứng hoạt động của cơ thể.</p>
+        </div>
+      </div>
+
+      <!-- Hoạt động nối cặp (Matching) (Mở khi xem cả 2 panel) -->
+      <div class="matching-section hidden" id="matchingSection">
+        <p class="lead-text" style="font-weight:600;">Sự thay đổi đó cho thấy trao đổi chất và chuyển hoá năng lượng được điều hoà theo nhu cầu của cơ thể. Bên cạnh đó, sinh vật còn phải loại bỏ những chất cần thải ra môi trường.</p>
+        <div class="guide-box" style="margin-bottom: 16px;">
+          <i class="ti ti-arrows-shuffle"></i>
+          <span><strong>HƯỚNG DẪN:</strong> Chọn một hiện tượng bên trái, sau đó chọn dấu hiệu phù hợp bên phải. Nhấn KIỂM TRA khi đã nối đủ bốn hiện tượng.</span>
+        </div>
+
+        <div class="matching-grid" id="matchingGrid">
+          <!-- SVG vẽ đường nối -->
+          <svg class="svg-lines-layer" id="matchingSvg"></svg>
+
+          <!-- Cột Hiện tượng (Trái) -->
+          <div class="matching-col" id="colLeft">
+            <div class="match-item" id="left-1" onclick="selectMatchItem('left', '1')">
+              <span>1. Người thải CO₂ khi thở ra.</span>
+              <span class="match-dot" id="dot-left-1"></span>
+            </div>
+            <div class="match-item" id="left-2" onclick="selectMatchItem('left', '2')">
+              <span>2. Cơ thể bài tiết nước tiểu.</span>
+              <span class="match-dot" id="dot-left-2"></span>
+            </div>
+            <div class="match-item" id="left-3" onclick="selectMatchItem('left', '3')">
+              <span>3. Nhịp tim và nhịp thở tăng khi vận động.</span>
+              <span class="match-dot" id="dot-left-3"></span>
+            </div>
+            <div class="match-item" id="left-4" onclick="selectMatchItem('left', '4')">
+              <span>4. Khi cây thiếu nước, khí khổng đóng bớt để hạn chế mất nước.</span>
+              <span class="match-dot" id="dot-left-4"></span>
+            </div>
+          </div>
+
+          <!-- Cột Dấu hiệu (Phải) -->
+          <div class="matching-col" id="colRight">
+            <div class="match-item" id="right-A" onclick="selectMatchItem('right', 'A')">
+              <span class="match-dot" id="dot-right-A"></span>
+              <span>A. THẢI CHẤT RA MÔI TRƯỜNG</span>
+            </div>
+            <div class="match-item" id="right-B" onclick="selectMatchItem('right', 'B')">
+              <span class="match-dot" id="dot-right-B"></span>
+              <span>B. ĐIỀU HOÀ</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align:right;">
+          <button type="button" class="btn btn-primary" id="btnCheckST02" onclick="checkMatchingST02()" disabled>
+            <i class="ti ti-check"></i> <span>KIỂM TRA</span>
+          </button>
+        </div>
+
+        <div class="feedback-panel hidden" id="feedbackST02"></div>
+
+        <!-- Khối chốt ST02 -->
+        <div class="conclude-card hidden" id="concludeST02">
+          <div class="conclude-card__title"><i class="ti ti-star"></i> Kết luận hai dấu hiệu sau</div>
+          <p class="conclude-card__text">Dấu hiệu thứ ba là sinh vật thải các chất cần loại bỏ ra môi trường. Dấu hiệu thứ tư là các quá trình trao đổi chất và chuyển hoá năng lượng được điều hoà phù hợp với nhu cầu của cơ thể.</p>
+        </div>
+      </div>
+
+      <!-- Điều khiển ST02 -->
+      <div class="stage-actions">
+        <button type="button" class="btn btn-secondary" onclick="goToStage(1)">
+          <i class="ti ti-arrow-left"></i> <span>QUAY LẠI</span>
+        </button>
+        <button type="button" class="btn btn-primary" id="btnNextST02" onclick="goToStage(3)" disabled>
+          <span>TIẾP TỤC</span> <i class="ti ti-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ST03: Ghi nhớ và kết nối sang bài tiếp theo -->
+    <section class="stage-section hidden" id="stage-3">
+      <!-- Khối Lời chốt -->
+      <div class="conclude-card" style="margin-top: 0;">
+        <div class="conclude-card__title"><i class="ti ti-star"></i> Lời chốt toàn diện</div>
+        <p class="conclude-card__text">Bốn dấu hiệu này không diễn ra tách rời mà liên hệ với nhau trong toàn bộ quá trình trao đổi chất và chuyển hoá năng lượng của sinh vật.</p>
+      </div>
+
+      <!-- Khối GHI NHỚ cốt lõi (4 Dấu hiệu) -->
+      <div class="summary-card">
+        <h2 class="summary-title"><i class="ti ti-bookmark-filled"></i> 4 Dấu hiệu đặc trưng cốt lõi</h2>
+        <ul class="summary-list">
+          <li><strong>1.</strong> Sinh vật tiếp nhận các chất từ môi trường và vận chuyển chúng đến những nơi cần sử dụng.</li>
+          <li><strong>2.</strong> Các chất được biến đổi trong tế bào, đồng thời năng lượng cũng được chuyển hoá.</li>
+          <li><strong>3.</strong> Sinh vật loại bỏ những chất cần thải ra môi trường.</li>
+          <li><strong>4.</strong> Cơ thể điều hoà quá trình trao đổi chất và chuyển hoá năng lượng phù hợp với nhu cầu sống.</li>
+        </ul>
+      </div>
+
+      <!-- Cầu nối sang Module 03 -->
+      <div class="bridge-card">
+        <h3 class="bridge-title"><i class="ti ti-link"></i> Kết nối sang bài tiếp theo</h3>
+        <p class="bridge-text">Trong đó, sự biến đổi chất ở tế bào luôn đi kèm với chuyển hoá năng lượng. Vậy năng lượng được chuyển hoá qua những giai đoạn nào trong sinh giới? Ở bài học tiếp theo, bạn sẽ tìm hiểu ba giai đoạn chuyển hoá năng lượng.</p>
+      </div>
+
+      <!-- Thông báo hoàn thành inline -->
+      <div class="complete-banner hidden" id="st03CompletedAlert">
+        <div class="complete-banner__icon"><i class="ti ti-check"></i></div>
+        <div>
+          <h4 class="complete-banner__title">Đã hoàn thành bài học!</h4>
+          <p class="complete-banner__text">Dữ liệu tiến trình học tập đã được ghi nhận và đồng bộ lên hệ thống.</p>
+        </div>
+      </div>
+
+      <!-- Điều khiển ST03 -->
+      <div class="stage-actions">
+        <button type="button" class="btn btn-secondary" onclick="goToStage(2)">
+          <i class="ti ti-arrow-left"></i> <span>QUAY LẠI</span>
+        </button>
+        <button type="button" class="btn btn-complete" id="btnCompleteModule" onclick="handleCompleteModule()">
+          <i class="ti ti-check"></i> <span>HOÀN THÀNH BÀI HỌC</span>
+        </button>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal Chúc mừng Hoàn thành -->
+  <div class="modal-backdrop hidden" id="completionModal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <div class="modal-icon"><i class="ti ti-trophy"></i></div>
+      <h3 class="modal-title">Hoàn thành bài học!</h3>
+      <p class="modal-desc">Bạn đã xuất sắc hoàn thành bài học <strong>Dấu hiệu đặc trưng của trao đổi chất và chuyển hoá năng lượng</strong>, nắm vững 4 dấu hiệu cốt lõi ở sinh vật.</p>
+      <div style="display:flex; gap:10px; justify-content:center;">
+        <button type="button" class="btn btn-secondary" onclick="closeCompletionModal()">Xem lại bài</button>
+        <button type="button" class="btn btn-primary" onclick="closeCompletionModal()">Đóng thông báo</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* LMS State Management */
+    const lmsState = {
+      currentStage: 0,
+      M02_st00_hs1: false,
+      M02_st00_hs2: false,
+      M02_st00_hs3: false,
+      M02_st00_hs4: false,
+      M02_st01_pos1: false,
+      M02_st01_pos2: false,
+      M02_st01_pos3: false,
+      M02_st01_pos4: false,
+      M02_st01_hoanthanh: false,
+      M02_st02_view_rest: false,
+      M02_st02_view_run: false,
+      M02_st02_hoanthanh: false,
+      M02_complete: false
+    };
+
+    /* Tự động co giãn iframe cho Shell mẹ */
+    function reportHeight() {
+      try {
+        const height = Math.max(
+          document.body.scrollHeight,
+          document.documentElement.scrollHeight,
+          document.body.offsetHeight,
+          document.documentElement.offsetHeight
+        );
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({
+            type: 'antigravity:resize',
+            moduleCode: 'SH11-B01-M02',
+            height: height + 24
+          }, '*');
+        }
+      } catch (e) {}
+    }
+
+    function sendLmsProgress(progressPercent, completed = false) {
+      try {
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({
+            type: completed ? 'antigravity:complete' : 'antigravity:progress',
+            moduleCode: 'SH11-B01-M02',
+            progress: progressPercent,
+            state: lmsState
+          }, '*');
+        }
+      } catch (e) {}
+    }
+
+    /* Chuyển Stage */
+    function goToStage(stageIdx) {
+      if (stageIdx < 0 || stageIdx > 3) return;
+
+      for (let i = 0; i < 4; i++) {
+        const tab = document.getElementById('stepTab-' + i);
+        const section = document.getElementById('stage-' + i);
+        if (tab && section) {
+          tab.classList.remove('active');
+          if (i < stageIdx) tab.classList.add('completed');
+          section.classList.add('hidden');
+        }
+      }
+
+      const activeTab = document.getElementById('stepTab-' + stageIdx);
+      const activeSection = document.getElementById('stage-' + stageIdx);
+      if (activeTab) activeTab.classList.add('active');
+      if (activeSection) activeSection.classList.remove('hidden');
+
+      lmsState.currentStage = stageIdx;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (stageIdx === 2) {
+        setTimeout(renderMatchingLines, 100);
+      }
+      reportHeight();
+    }
+
+    /* =========================================================
+       LOGIC ST00: KHÁM PHÁ 4 ĐIỂM BIỂU HIỆN (HOOK)
+       ========================================================= */
+    const st00HotspotInfo = {
+      1: {
+        targetCaption: 'captionST00-1',
+        html: '<strong>Vị trí 1 (Miệng):</strong> Cơ thể tiếp nhận chất dinh dưỡng từ thức ăn.'
+      },
+      2: {
+        targetCaption: 'captionST00-1',
+        html: '<strong>Vị trí 2 (Mũi & Ngực):</strong> Cơ thể trao đổi khí với môi trường thông qua hoạt động hô hấp.'
+      },
+      3: {
+        targetCaption: 'captionST00-2',
+        html: '<strong>Vị trí 3 (Rễ cây):</strong> Rễ hấp thụ nước và các ion khoáng từ đất.'
+      },
+      4: {
+        targetCaption: 'captionST00-2',
+        html: '<strong>Vị trí 4 (Lá cây):</strong> Lá trao đổi khí với môi trường và thoát hơi nước qua khí khổng.'
+      }
+    };
+
+    function viewST00Hotspot(idx) {
+      lmsState['M02_st00_hs' + idx] = true;
+
+      // Cập nhật nút hotspot
+      const btn = document.getElementById('hotspot-0-' + idx);
+      if (btn) {
+        btn.classList.add('viewed', 'active');
+      }
+
+      // Tắt active ở nút anh em
+      const siblingIdx = (idx === 1) ? 2 : (idx === 2) ? 1 : (idx === 3) ? 4 : 3;
+      const sibBtn = document.getElementById('hotspot-0-' + siblingIdx);
+      if (sibBtn) sibBtn.classList.remove('active');
+
+      // Cập nhật caption box
+      const info = st00HotspotInfo[idx];
+      const capBox = document.getElementById(info.targetCaption);
+      if (capBox) {
+        capBox.classList.add('active');
+        capBox.innerHTML = `<span><i class="ti ti-check" style="color:var(--jade)"></i> ${info.html}</span>`;
+      }
+
+      // Kiểm tra hoàn thành cả 4 điểm
+      if (lmsState.M02_st00_hs1 && lmsState.M02_st00_hs2 && lmsState.M02_st00_hs3 && lmsState.M02_st00_hs4) {
+        const conclude = document.getElementById('concludeST00');
+        const btnNext = document.getElementById('btnNextST00');
+        if (conclude) conclude.classList.remove('hidden');
+        if (btnNext) btnNext.disabled = false;
+        sendLmsProgress(25);
+      }
+      reportHeight();
+    }
+
+    /* =========================================================
+       LOGIC ST01: SƠ ĐỒ VẬT CHẤT & NHIỆM VỤ PHÂN LOẠI
+       ========================================================= */
+    const st01PosData = {
+      1: 'Vị trí 1 (Thực vật tiếp nhận chất): Rễ hấp thụ nước và các ion khoáng từ đất. Lá tiếp nhận CO₂ từ không khí qua khí khổng.',
+      2: 'Vị trí 2 (Thực vật vận chuyển chất): Hệ mạch vận chuyển nước, ion khoáng và các chất hữu cơ giữa các cơ quan của cây.',
+      3: 'Vị trí 3 (Động vật tiếp nhận chất): Hệ tiêu hoá tiếp nhận và biến đổi thức ăn để cơ thể hấp thụ các chất dinh dưỡng; hệ hô hấp giúp cơ thể trao đổi O₂ và CO₂ với môi trường.',
+      4: 'Vị trí 4 (Động vật vận chuyển chất): Hệ tuần hoàn vận chuyển các chất dinh dưỡng và O₂ đến tế bào, đồng thời vận chuyển một số sản phẩm chuyển hoá từ tế bào đến cơ quan thải.'
+    };
+
+    function selectST01Hotspot(posIdx) {
+      lmsState['M02_st01_pos' + posIdx] = true;
+
+      for (let i = 1; i <= 4; i++) {
+        const btn = document.getElementById('diagBtn-' + i);
+        const card = document.getElementById('flowCard-' + i);
+        if (btn) {
+          btn.classList.remove('active');
+          if (lmsState['M02_st01_pos' + i]) btn.classList.add('viewed');
+        }
+        if (card) {
+          card.classList.remove('active');
+          if (lmsState['M02_st01_pos' + i]) card.classList.add('viewed');
+        }
+      }
+
+      const curBtn = document.getElementById('diagBtn-' + posIdx);
+      const curCard = document.getElementById('flowCard-' + posIdx);
+      if (curBtn) curBtn.classList.add('active');
+      if (curCard) curCard.classList.add('active');
+
+      const infoBox = document.getElementById('st01InfoPanel');
+      const infoText = document.getElementById('st01InfoText');
+      if (infoBox && infoText) {
+        infoBox.classList.add('active');
+        infoText.innerHTML = `<strong>${st01PosData[posIdx]}</strong>`;
+      }
+
+      // Kiểm tra xem đã xem đủ 4 vị trí chưa
+      if (lmsState.M02_st01_pos1 && lmsState.M02_st01_pos2 && lmsState.M02_st01_pos3 && lmsState.M02_st01_pos4) {
+        const lecture = document.getElementById('concludeST01-Lecture');
+        const sorting = document.getElementById('sortingSection');
+        if (lecture) lecture.classList.remove('hidden');
+        if (sorting) sorting.classList.remove('hidden');
+      }
+      reportHeight();
+    }
+
+    /* Logic Drag & Drop / Tap để phân loại */
+    let selectedSortCardId = null;
+    const cardCorrectZones = {
+      'card-1': 'zone-1', // Rễ cây hấp thụ nước -> Tiếp nhận & vận chuyển
+      'card-2': 'zone-1', // Máu vận chuyển O2 -> Tiếp nhận & vận chuyển
+      'card-3': 'zone-2', // Tổng hợp protein -> Biến đổi chất & chuyển hoá NL
+      'card-4': 'zone-2'  // Phân giải glucose -> Biến đổi chất & chuyển hoá NL
+    };
+
+    function handleCardClick(cardId) {
+      const card = document.getElementById(cardId);
+      if (!card) return;
+
+      // Nếu thẻ đang nằm ở zone đích, người dùng có thể bấm nút trả về
+      if (card.parentElement.classList.contains('target-zone__items')) {
+        return;
+      }
+
+      if (selectedSortCardId === cardId) {
+        card.classList.remove('selected');
+        selectedSortCardId = null;
+      } else {
+        if (selectedSortCardId) {
+          const prev = document.getElementById(selectedSortCardId);
+          if (prev) prev.classList.remove('selected');
+        }
+        selectedSortCardId = cardId;
+        card.classList.add('selected');
+      }
+    }
+
+    function handleZoneClick(zoneId) {
+      if (!selectedSortCardId) return;
+      placeCardToZone(selectedSortCardId, zoneId);
+      selectedSortCardId = null;
+    }
+
+    function placeCardToZone(cardId, zoneId) {
+      const card = document.getElementById(cardId);
+      const zoneItems = (zoneId === 'zone-1') ? document.getElementById('zoneItems-1') : document.getElementById('zoneItems-2');
+      if (card && zoneItems) {
+        card.classList.remove('selected');
+        zoneItems.appendChild(card);
+        checkTrayEmpty();
+        updateCheckBtnST01();
+        reportHeight();
+      }
+    }
+
+    function returnCard(cardId, e) {
+      if (e) e.stopPropagation();
+      const card = document.getElementById(cardId);
+      const tray = document.getElementById('sourceTray');
+      if (card && tray) {
+        card.classList.remove('selected');
+        tray.appendChild(card);
+        checkTrayEmpty();
+        updateCheckBtnST01();
+        reportHeight();
+      }
+    }
+
+    function handleDragStart(e) {
+      e.dataTransfer.setData('text/plain', e.target.id);
+      e.target.classList.add('dragging');
+    }
+
+    function allowDrop(e) {
+      e.preventDefault();
+      const zone = e.target.closest('.target-zone');
+      if (zone) zone.classList.add('drag-over');
+    }
+
+    function handleDragLeave(e) {
+      const zone = e.target.closest('.target-zone');
+      if (zone) zone.classList.remove('drag-over');
+    }
+
+    function handleDropToZone(zoneId, e) {
+      e.preventDefault();
+      const zone = document.getElementById(zoneId);
+      if (zone) zone.classList.remove('drag-over');
+
+      const cardId = e.dataTransfer.getData('text/plain');
+      const card = document.getElementById(cardId);
+      if (card) {
+        card.classList.remove('dragging');
+        placeCardToZone(cardId, zoneId);
+      }
+    }
+
+    function handleDropToTray(e) {
+      e.preventDefault();
+      const cardId = e.dataTransfer.getData('text/plain');
+      if (cardId) returnCard(cardId);
+    }
+
+    function checkTrayEmpty() {
+      const tray = document.getElementById('sourceTray');
+      if (!tray) return;
+      const cards = tray.querySelectorAll('.drag-card');
+      let emptyMsg = tray.querySelector('.source-tray-empty');
+      if (cards.length === 0) {
+        if (!emptyMsg) {
+          emptyMsg = document.createElement('div');
+          emptyMsg.className = 'source-tray-empty';
+          emptyMsg.innerText = 'Đã xếp hết các hiện tượng vào nhóm.';
+          tray.appendChild(emptyMsg);
+        }
+      } else {
+        if (emptyMsg) emptyMsg.remove();
+      }
+    }
+
+    function updateCheckBtnST01() {
+      const z1 = document.getElementById('zoneItems-1').children.length;
+      const z2 = document.getElementById('zoneItems-2').children.length;
+      const btn = document.getElementById('btnCheckST01');
+      if (btn) btn.disabled = (z1 + z2 < 4);
+    }
+
+    function checkSortingST01() {
+      const feedback = document.getElementById('feedbackST01');
+      const conclude = document.getElementById('concludeST01');
+      const btnNext = document.getElementById('btnNextST01');
+      if (!feedback) return;
+
+      let allCorrect = true;
+      let wrongCards = [];
+
+      for (let i = 1; i <= 4; i++) {
+        const cardId = 'card-' + i;
+        const card = document.getElementById(cardId);
+        const correctZone = cardCorrectZones[cardId];
+        const currentZone = card.parentElement.id === 'zoneItems-1' ? 'zone-1' : 'zone-2';
+
+        if (currentZone !== correctZone) {
+          allCorrect = false;
+          wrongCards.push(cardId);
+        }
+      }
+
+      feedback.classList.remove('hidden', 'correct', 'wrong');
+
+      if (allCorrect) {
+        lmsState.M02_st01_hoanthanh = true;
+        feedback.className = 'feedback-panel correct';
+        feedback.innerHTML = `
+          <i class="ti ti-circle-check"></i>
+          <div>
+            <strong>Chính xác!</strong> Tiếp nhận và vận chuyển chất đưa các chất từ môi trường đến nơi cần sử dụng; còn biến đổi chất kèm chuyển hoá năng lượng diễn ra trong tế bào thông qua các quá trình tổng hợp và phân giải chất.
+          </div>
+        `;
+        if (conclude) conclude.classList.remove('hidden');
+        if (btnNext) btnNext.disabled = false;
+        sendLmsProgress(50);
+      } else {
+        feedback.className = 'feedback-panel wrong';
+        feedback.innerHTML = `
+          <i class="ti ti-alert-triangle"></i>
+          <div>
+            <strong>Chưa đúng.</strong> Hãy xác định hiện tượng đang mô tả việc đưa chất vào hoặc vận chuyển chất, hay đang mô tả sự biến đổi chất ngay trong tế bào, rồi thử lại.
+          </div>
+        `;
+        // Quy tắc sửa sai: Chỉ trả thẻ sai về khay nguồn, giữ nguyên thẻ đúng
+        wrongCards.forEach(cId => returnCard(cId));
+        if (btnNext) btnNext.disabled = true;
+      }
+      reportHeight();
+    }
+
+    /* =========================================================
+       LOGIC ST02: THẢI CHẤT & ĐIỀU HOÀ (MATCHING)
+       ========================================================= */
+    function viewST02Panel(panelType) {
+      if (panelType === 'rest') {
+        lmsState.M02_st02_view_rest = true;
+        const p = document.getElementById('panelRest');
+        const b = document.getElementById('badgeRest');
+        if (p) p.classList.add('viewed');
+        if (b) b.innerHTML = '<i class="ti ti-check"></i> Đã xem';
+      } else if (panelType === 'run') {
+        lmsState.M02_st02_view_run = true;
+        const p = document.getElementById('panelRun');
+        const b = document.getElementById('badgeRun');
+        if (p) p.classList.add('viewed');
+        if (b) b.innerHTML = '<i class="ti ti-check"></i> Đã xem';
+      }
+
+      if (lmsState.M02_st02_view_rest && lmsState.M02_st02_view_run) {
+        const matchingSection = document.getElementById('matchingSection');
+        if (matchingSection) {
+          matchingSection.classList.remove('hidden');
+          setTimeout(renderMatchingLines, 100);
+        }
+      }
+      reportHeight();
+    }
+
+    /* Logic Nối Cặp ST02 */
+    const matchingCorrectPairs = {
+      '1': 'A', // Người thải CO2 khi thở ra -> Thải chất
+      '2': 'A', // Cơ thể bài tiết nước tiểu -> Thải chất
+      '3': 'B', // Nhịp tim, nhịp thở tăng khi vận động -> Điều hoà
+      '4': 'B'  // Cây thiếu nước khí khổng đóng bớt -> Điều hoà
+    };
+
+    let userMatches = {}; // { '1': 'A', '2': 'B', ... }
+    let selectedMatchLeft = null;
+    let selectedMatchRight = null;
+
+    function selectMatchItem(side, id) {
+      if (side === 'left') {
+        if (selectedMatchLeft === id) {
+          document.getElementById('left-' + id).classList.remove('selected');
+          selectedMatchLeft = null;
+          return;
+        }
+        if (selectedMatchLeft) {
+          document.getElementById('left-' + selectedMatchLeft).classList.remove('selected');
+        }
+        selectedMatchLeft = id;
+        document.getElementById('left-' + id).classList.add('selected');
+
+        if (selectedMatchRight) {
+          makeConnection(selectedMatchLeft, selectedMatchRight);
+          clearMatchSelections();
+        }
+      } else if (side === 'right') {
+        if (selectedMatchRight === id) {
+          document.getElementById('right-' + id).classList.remove('selected');
+          selectedMatchRight = null;
+          return;
+        }
+        if (selectedMatchRight) {
+          document.getElementById('right-' + selectedMatchRight).classList.remove('selected');
+        }
+        selectedMatchRight = id;
+        document.getElementById('right-' + id).classList.add('selected');
+
+        if (selectedMatchLeft) {
+          makeConnection(selectedMatchLeft, selectedMatchRight);
+          clearMatchSelections();
+        }
+      }
+    }
+
+    function makeConnection(leftId, rightId) {
+      userMatches[leftId] = rightId;
+      document.getElementById('left-' + leftId).classList.add('matched');
+      renderMatchingLines();
+      checkMatchBtnState();
+    }
+
+    function clearMatchSelections() {
+      if (selectedMatchLeft) {
+        const el = document.getElementById('left-' + selectedMatchLeft);
+        if (el) el.classList.remove('selected');
+      }
+      if (selectedMatchRight) {
+        const el = document.getElementById('right-' + selectedMatchRight);
+        if (el) el.classList.remove('selected');
+      }
+      selectedMatchLeft = null;
+      selectedMatchRight = null;
+    }
+
+    function checkMatchBtnState() {
+      const btn = document.getElementById('btnCheckST02');
+      const count = Object.keys(userMatches).length;
+      if (btn) btn.disabled = (count < 4);
+    }
+
+    function renderMatchingLines() {
+      const svg = document.getElementById('matchingSvg');
+      const container = document.getElementById('matchingGrid');
+      if (!svg || !container) return;
+
+      const rectC = container.getBoundingClientRect();
+      svg.setAttribute('viewBox', `0 0 ${rectC.width} ${rectC.height}`);
+      svg.innerHTML = '';
+
+      // Vẽ từng đường nối Bezier
+      Object.keys(userMatches).forEach(leftId => {
+        const rightId = userMatches[leftId];
+        const dotLeft = document.getElementById('dot-left-' + leftId);
+        const dotRight = document.getElementById('dot-right-' + rightId);
+
+        if (dotLeft && dotRight) {
+          const rectL = dotLeft.getBoundingClientRect();
+          const rectR = dotRight.getBoundingClientRect();
+
+          const x1 = rectL.left + rectL.width / 2 - rectC.left;
+          const y1 = rectL.top + rectL.height / 2 - rectC.top;
+          const x2 = rectR.left + rectR.width / 2 - rectC.left;
+          const y2 = rectR.top + rectR.height / 2 - rectC.top;
+
+          const dx = (x2 - x1) * 0.5;
+          const pathD = `M ${x1},${y1} C ${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}`;
+
+          const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          path.setAttribute('d', pathD);
+          path.setAttribute('fill', 'none');
+          path.setAttribute('stroke', '#2D8B6F');
+          path.setAttribute('stroke-width', '3');
+          path.setAttribute('stroke-linecap', 'round');
+          path.setAttribute('id', `line-${leftId}-${rightId}`);
+          svg.appendChild(path);
+        }
+      });
+    }
+
+    function checkMatchingST02() {
+      const feedback = document.getElementById('feedbackST02');
+      const conclude = document.getElementById('concludeST02');
+      const btnNext = document.getElementById('btnNextST02');
+      if (!feedback) return;
+
+      let allCorrect = true;
+      let wrongKeys = [];
+
+      Object.keys(matchingCorrectPairs).forEach(leftId => {
+        if (userMatches[leftId] !== matchingCorrectPairs[leftId]) {
+          allCorrect = false;
+          wrongKeys.push(leftId);
+        }
+      });
+
+      feedback.classList.remove('hidden', 'correct', 'wrong');
+
+      if (allCorrect) {
+        lmsState.M02_st02_hoanthanh = true;
+        feedback.className = 'feedback-panel correct';
+        feedback.innerHTML = `
+          <i class="ti ti-circle-check"></i>
+          <div>
+            <strong>Chính xác!</strong> Thải chất giúp đưa những chất cần loại bỏ ra khỏi cơ thể; còn điều hoà giúp các quá trình trao đổi chất và chuyển hoá năng lượng thay đổi phù hợp với điều kiện và nhu cầu của sinh vật.
+          </div>
+        `;
+        if (conclude) conclude.classList.remove('hidden');
+        if (btnNext) btnNext.disabled = false;
+        sendLmsProgress(75);
+      } else {
+        feedback.className = 'feedback-panel wrong';
+        feedback.innerHTML = `
+          <i class="ti ti-alert-triangle"></i>
+          <div>
+            <strong>Chưa đúng.</strong> Hãy xem hiện tượng đó đang mô tả một chất được đưa ra ngoài cơ thể hay sự thay đổi hoạt động của cơ thể để thích nghi với nhu cầu, rồi nối lại.
+          </div>
+        `;
+        // Quy tắc sửa sai: Chỉ gỡ các đường nối sai, giữ nguyên đường nối đúng
+        wrongKeys.forEach(k => {
+          delete userMatches[k];
+          const el = document.getElementById('left-' + k);
+          if (el) el.classList.remove('matched');
+        });
+        renderMatchingLines();
+        checkMatchBtnState();
+        if (btnNext) btnNext.disabled = true;
+      }
+      reportHeight();
+    }
+
+    /* =========================================================
+       LOGIC ST03: HOÀN THÀNH BÀI HỌC & LMS COMPLETION
+       ========================================================= */
+    function handleCompleteModule() {
+      lmsState.M02_complete = true;
+
+      const modal = document.getElementById('completionModal');
+      if (modal) modal.classList.remove('hidden');
+
+      const alertBox = document.getElementById('st03CompletedAlert');
+      if (alertBox) alertBox.classList.remove('hidden');
+
+      const lastTab = document.getElementById('stepTab-3');
+      if (lastTab) {
+        lastTab.classList.add('completed');
+        const num = lastTab.querySelector('.step-num');
+        if (num) num.innerHTML = '✓';
+      }
+
+      sendLmsProgress(100, true);
+      reportHeight();
+    }
+
+    function closeCompletionModal() {
+      const modal = document.getElementById('completionModal');
+      if (modal) modal.classList.add('hidden');
+      reportHeight();
+    }
+
+    window.addEventListener('load', function() {
+      goToStage(0);
+      reportHeight();
+
+      try {
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({ type: 'antigravity:ready', moduleCode: 'SH11-B01-M02' }, '*');
+        }
+      } catch (e) {}
+
+      if (window.ResizeObserver) {
+        new ResizeObserver(function() {
+          reportHeight();
+          if (lmsState.currentStage === 2) renderMatchingLines();
+        }).observe(document.body);
+      }
+
+      window.addEventListener('resize', function() {
+        if (lmsState.currentStage === 2) renderMatchingLines();
+      });
+    });
+  </script>
+</body>
+</html>
