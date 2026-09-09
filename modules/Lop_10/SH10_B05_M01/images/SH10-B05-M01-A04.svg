@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" role="img" aria-labelledby="title desc">
+  <title id="title">Cấu trúc vòng của fructose</title>
+  <desc id="desc">Biểu diễn Haworth beta-D-fructofuranose, vòng năm thành viên có một oxygen trong vòng.</desc>
+  <style>
+    .ring-line { fill: none; stroke: #1A1A1A; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+    .bond-line { fill: none; stroke: #1A1A1A; stroke-width: 4.5; stroke-linecap: round; }
+    .atom-text {
+      font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      fill: #1A1A1A;
+      text-anchor: middle;
+      dominant-baseline: central;
+      paint-order: stroke fill;
+      stroke: #FFFFFF;
+      stroke-width: 8px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .atom-o {
+      font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      fill: #1B5E48;
+      text-anchor: middle;
+      dominant-baseline: central;
+      paint-order: stroke fill;
+      stroke: #FFFFFF;
+      stroke-width: 12px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+
+  <!-- 1. Vòng 5 cạnh Haworth (vòng hở tại O để tránh nét cắt qua chữ O) -->
+  <g class="ring-line">
+    <path d="M 198 320 L 146 164 L 248 86" />
+    <path d="M 312 86 L 412 164 L 360 320 L 198 320" />
+  </g>
+
+  <!-- 2. Các liên kết nhánh đến nhóm chức (đầu mút dừng trước chữ, không đè nét) -->
+  <g class="bond-line">
+    <!-- C2 (412, 164) -->
+    <line x1="420" y1="156" x2="448" y2="134" />
+    <line x1="420" y1="172" x2="444" y2="202" />
+
+    <!-- C3 (360, 320) -->
+    <line x1="368" y1="330" x2="390" y2="356" />
+    <line x1="352" y1="310" x2="336" y2="290" />
+
+    <!-- C4 (198, 320) -->
+    <line x1="190" y1="330" x2="168" y2="356" />
+    <line x1="206" y1="310" x2="224" y2="290" />
+
+    <!-- C5 (146, 164) - Nhánh H hướng chếch xuống trái, không đè lên cạnh vòng -->
+    <line x1="138" y1="156" x2="110" y2="134" />
+    <line x1="138" y1="172" x2="112" y2="196" />
+  </g>
+
+  <!-- 3. Nhãn các nhóm chức (vị trí thoáng, không bị che) -->
+  <g class="atom-text">
+    <!-- C2: OH chếch lên phải, CH2OH chếch xuống phải -->
+    <text x="480" y="118">OH</text>
+    <text x="496" y="230">CH₂OH</text>
+
+    <!-- C3: OH chếch xuống phải, H bên trong vòng chếch lên trái -->
+    <text x="414" y="382">OH</text>
+    <text x="320" y="270">H</text>
+
+    <!-- C4: H chếch xuống trái, OH bên trong vòng chếch lên phải -->
+    <text x="144" y="382">H</text>
+    <text x="248" y="270">OH</text>
+
+    <!-- C5: CH2OH chếch lên trái, H chếch xuống trái ra ngoài vòng -->
+    <text x="65" y="118">CH₂OH</text>
+    <text x="88" y="220">H</text>
+  </g>
+
+  <!-- Nguyên tử Oxygen trong vòng -->
+  <text x="280" y="78" class="atom-o">O</text>
+</svg>

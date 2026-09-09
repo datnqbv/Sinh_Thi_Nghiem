@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 650" role="img" aria-labelledby="title desc">
+  <title id="title">Cầu nối từ carbohydrate sang lipid</title>
+  <desc id="desc">Cụm carbohydrate tái sử dụng ở bên trái, giọt dầu tách khỏi nước và đoạn lớp kép phospholipid ở bên phải; vùng giữa để trống cho câu hỏi chuyển tiếp bằng HTML.</desc>
+  <defs>
+    <radialGradient id="oil" cx="35%" cy="28%" r="70%"><stop offset="0" stop-color="#F7D899"/><stop offset="1" stop-color="#D79A35"/></radialGradient>
+    <g id="phospholipid">
+      <circle cx="0" cy="0" r="13" fill="#6A5AA8" stroke="#443A78" stroke-width="3"/>
+      <path d="M-5 13-11 55M5 13 11 55" fill="none" stroke="#CE8A33" stroke-width="5" stroke-linecap="round"/>
+    </g>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0 12 6 0 12Z" fill="#7C756A"/></marker>
+  </defs>
+  <g id="carbohydrate-side">
+    <rect x="25" y="55" width="650" height="540" rx="22" fill="#FFFFFF" stroke="#D6CCB6" stroke-width="4"/>
+    <image href="SH10-B05-M01-A13.svg" x="50" y="100" width="600" height="450" preserveAspectRatio="xMidYMid meet"/>
+  </g>
+  <g id="transition-space">
+    <path d="M700 325H800" fill="none" stroke="#7C756A" stroke-width="6" stroke-dasharray="12 10" marker-end="url(#arrow)"/>
+  </g>
+  <g id="lipid-side">
+    <rect x="825" y="55" width="650" height="540" rx="22" fill="#FFFFFF" stroke="#D6CCB6" stroke-width="4"/>
+    <rect x="865" y="110" width="230" height="350" rx="90" fill="#DCE7EB" stroke="#4E7F92" stroke-width="5"/>
+    <path d="M930 258C930 210 980 145 980 145S1030 210 1030 258A50 50 0 1 1 930 258Z" fill="url(#oil)" stroke="#A66C2F" stroke-width="6"/>
+    <path d="M882 380C920 363 961 397 999 380S1060 365 1078 382" fill="none" stroke="#8AB8C8" stroke-width="6"/>
+    <g transform="translate(1160 180)">
+      <g>
+        <use href="#phospholipid" x="0"/><use href="#phospholipid" x="42"/><use href="#phospholipid" x="84"/><use href="#phospholipid" x="126"/><use href="#phospholipid" x="168"/><use href="#phospholipid" x="210"/>
+      </g>
+      <g transform="translate(0 200) scale(1 -1)">
+        <use href="#phospholipid" x="0"/><use href="#phospholipid" x="42"/><use href="#phospholipid" x="84"/><use href="#phospholipid" x="126"/><use href="#phospholipid" x="168"/><use href="#phospholipid" x="210"/>
+      </g>
+    </g>
+  </g>
+</svg>
