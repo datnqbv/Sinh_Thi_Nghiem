@@ -755,6 +755,22 @@
       color:var(--ink-2);
       line-height:1.4;
     }
+    .situation-thumb {
+      width:100%;
+      height:68px;
+      background:var(--cream);
+      border-radius:6px;
+      margin-bottom:8px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid var(--paper-line);
+      overflow:hidden;
+    }
+    .situation-card.active .situation-thumb {
+      background:#fff;
+      border-color:var(--jade-soft);
+    }
 
     /* Beaker Simulation (S01C) */
     .beaker-container {
@@ -1069,7 +1085,7 @@
       <div class="visual-card">
         <div class="visual-card__head">
           <div class="eyebrow"><i class="ti ti-target"></i> GIAI ĐOẠN 1 / 6 · MỞ ĐẦU</div>
-          <h2 id="s01VisualTitle">Một nhóm chất, nhiều vai trò</h2>
+          <h2 id="s01VisualTitle">Kết nối từ Carbohydrate sang Lipid</h2>
         </div>
         <div class="visual-body">
           <!-- Visual 1A: Kế thừa từ M01 sang Lipid -->
@@ -1081,18 +1097,70 @@
           <div id="s01Visual1B" class="visual-pane hidden" style="width:100%;">
             <div class="situation-grid">
               <div class="situation-card active" data-sit="1" tabindex="0">
+                <div class="situation-thumb">
+                  <svg viewBox="0 0 160 68" width="100%" height="64" style="display:block;">
+                    <!-- Bề mặt nước -->
+                    <rect x="15" y="30" width="130" height="32" rx="4" fill="#D9ECF2" stroke="#4E7F92" stroke-width="1.5"/>
+                    <text x="80" y="50" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="9.5" font-weight="700" fill="#4E7F92">NƯỚC (H₂O)</text>
+                    <!-- Lớp dầu vàng nổi trên nước -->
+                    <rect x="15" y="14" width="130" height="16" rx="4" fill="#F7E7CD" stroke="#CE8A33" stroke-width="1.8"/>
+                    <ellipse cx="80" cy="22" rx="24" ry="4.5" fill="#E8A24A"/>
+                    <text x="80" y="25" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="9" font-weight="800" fill="#8A551A">LỚP DẦU NỔI TÁCH PHA</text>
+                  </svg>
+                </div>
                 <h4><i class="ti ti-droplet"></i> 1. Dầu thực vật</h4>
                 <p><b>Dầu không hòa tan vào nước.</b> Nổi thành lớp riêng trên mặt nước.</p>
               </div>
               <div class="situation-card" data-sit="2" tabindex="0">
+                <div class="situation-thumb">
+                  <svg viewBox="0 0 160 68" width="100%" height="64" style="display:block;">
+                    <!-- Khung Glycerol -->
+                    <rect x="15" y="9" width="28" height="50" rx="5" fill="#DCEAE1" stroke="#1B5E48" stroke-width="1.8"/>
+                    <text x="29" y="38" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="7.5" font-weight="700" fill="#1B5E48" transform="rotate(-90 29 38)">GLYCEROL</text>
+                    <!-- 3 Chuỗi acid béo -->
+                    <path d="M43 18 H56 L64 12 L72 24 L80 12 L88 24 L96 12 L104 24 L112 12 H135" fill="none" stroke="#2C3E50" stroke-width="2.2" stroke-linecap="round"/>
+                    <path d="M43 34 H56 L64 28 L72 40 L80 28 L88 40 L96 28 L104 40 L112 28 H135" fill="none" stroke="#2C3E50" stroke-width="2.2" stroke-linecap="round"/>
+                    <path d="M43 50 H56 L64 44 L72 56 L80 44 L88 56 L96 44 L104 56 L112 44 H135" fill="none" stroke="#2C3E50" stroke-width="2.2" stroke-linecap="round"/>
+                    <rect x="65" y="53" width="80" height="13" rx="3" fill="#FAF7F0" stroke="#1B5E48" stroke-width="1"/>
+                    <text x="105" y="62" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="7.5" font-weight="700" fill="#1B5E48">3 Acid béo (Triglyceride)</text>
+                  </svg>
+                </div>
                 <h4><i class="ti ti-activity"></i> 2. Mỡ cơ thể</h4>
                 <p><b>Mỡ dự trữ năng lượng lâu dài</b> trong các mô mỡ dưới da và nội tạng.</p>
               </div>
               <div class="situation-card" data-sit="3" tabindex="0">
+                <div class="situation-thumb">
+                  <svg viewBox="0 0 160 68" width="100%" height="64" style="display:block;">
+                    <!-- Đầu tròn PO4 ưa nước -->
+                    <circle cx="38" cy="34" r="16" fill="#DCE7EB" stroke="#4E7F92" stroke-width="2"/>
+                    <text x="38" y="38" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="10" font-weight="800" fill="#1A1A1A">PO₄</text>
+                    <!-- Khung Glycerol -->
+                    <rect x="54" y="24" width="14" height="20" rx="3" fill="#DCEAE1" stroke="#1B5E48" stroke-width="1.5"/>
+                    <!-- 2 Đuôi acid béo -->
+                    <path d="M68 29 H82 L90 23 L98 35 L106 23 L114 35 L135 29" fill="none" stroke="#2C3E50" stroke-width="2.4" stroke-linecap="round"/>
+                    <path d="M68 39 H82 L90 45 L98 35 L106 47 L116 41 L128 53" fill="none" stroke="#C15F3C" stroke-width="2.4" stroke-linecap="round"/>
+                    <circle cx="106" cy="47" r="2.5" fill="#CE8A33"/>
+                    <text x="38" y="60" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="7.5" font-weight="700" fill="#4E7F92">Đầu ưa nước</text>
+                    <text x="108" y="16" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="7.5" font-weight="700" fill="#C15F3C">2 Đuôi kị nước</text>
+                  </svg>
+                </div>
                 <h4><i class="ti ti-layers-subtract"></i> 3. Phospholipid</h4>
                 <p><b>Phospholipid tạo nền tảng màng tế bào</b>, tự xếp thành lớp kép trong nước.</p>
               </div>
               <div class="situation-card" data-sit="4" tabindex="0">
+                <div class="situation-thumb">
+                  <svg viewBox="0 0 160 68" width="100%" height="64" style="display:block;">
+                    <!-- Khung 4 vòng Steroid -->
+                    <g fill="#F7E7CD" stroke="#CE8A33" stroke-width="1.8" stroke-linejoin="round">
+                      <polygon points="32,42 42,26 59,26 69,42 59,58 42,58"/>
+                      <polygon points="59,26 69,10 86,10 96,26 86,42 69,42"/>
+                      <polygon points="86,26 96,10 113,10 123,26 113,42 86,42"/>
+                      <polygon points="123,26 139,16 147,32 135,44 113,42"/>
+                    </g>
+                    <text x="18" y="45" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="9" font-weight="700" fill="#8A551A">HO</text>
+                    <text x="90" y="60" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="8" font-weight="800" fill="#8A551A">Khung 4 vòng carbon</text>
+                  </svg>
+                </div>
                 <h4><i class="ti ti-hexagon"></i> 4. Cholesterol & Steroid</h4>
                 <p><b>Steroid tham gia cấu trúc và điều hòa sinh lí</b>, có khung bốn vòng carbon.</p>
               </div>
@@ -1597,18 +1665,20 @@
               <div style="font-size:.8rem;color:var(--jade-dark);font-weight:700;">
                 <i class="ti ti-puzzle"></i> Bấm chọn thành phần bên dưới để lắp ráp hoàn chỉnh một Phospholipid:
               </div>
-              <div class="pl-part-slot" data-part="head" style="width:140px;height:50px;border-radius:25px;">
-                <i class="ti ti-circle-dashed"></i> Gắn Nhóm Phosphate
-              </div>
-              <div class="pl-part-slot bonded" style="width:120px;height:40px;background:var(--cream-2);">
-                Khung Glycerol
-              </div>
-              <div style="display:flex;gap:10px;width:100%;justify-content:center;">
-                <div class="pl-part-slot" data-part="tail1" style="width:95px;height:70px;">
-                  <i class="ti ti-line"></i> Đuôi Acid béo 1
+              <div class="pl-assembly-diagram">
+                <div class="pl-slot-head pl-part-slot" data-part="head">
+                  <i class="ti ti-circle-dashed"></i> <span>Gắn Nhóm Phosphate</span>
                 </div>
-                <div class="pl-part-slot" data-part="tail2" style="width:95px;height:70px;">
-                  <i class="ti ti-angle"></i> Đuôi Acid béo 2 (cis)
+                <div class="pl-slot-glycerol">
+                  Khung Glycerol
+                </div>
+                <div class="pl-tails-row">
+                  <div class="pl-slot-tail pl-part-slot" data-part="tail1">
+                    <i class="ti ti-line"></i> <span>Đuôi Acid béo 1</span>
+                  </div>
+                  <div class="pl-slot-tail pl-part-slot" data-part="tail2">
+                    <i class="ti ti-angle"></i> <span>Đuôi Acid béo 2 (cis)</span>
+                  </div>
                 </div>
               </div>
               <div class="fatty-acid-palette" style="margin-top:6px;">
@@ -1624,12 +1694,12 @@
 
           <!-- Visual 4B & 4C: Sắp xếp thành lớp kép trong nước -->
           <div id="s04Visual4BC" class="visual-pane hidden" style="width:100%;">
-            <object type="image/svg+xml" data="images/SH10-B05-M02-A14.svg" class="visual-media" id="a14Svg"></object>
+            <object type="image/svg+xml" data="images/SH10-B05-M02-A14.svg" class="visual-media" id="a14Svg" style="width:100%;min-height:360px;"></object>
           </div>
 
           <!-- Visual 4D: Protein màng xen kẽ trong lớp kép -->
           <div id="s04Visual4D" class="visual-pane hidden" style="width:100%;">
-            <object type="image/svg+xml" data="images/SH10-B05-M02-A15.svg" class="visual-media"></object>
+            <object type="image/svg+xml" data="images/SH10-B05-M02-A15.svg" class="visual-media" style="width:100%;min-height:360px;"></object>
           </div>
         </div>
       </div>
@@ -2276,6 +2346,14 @@
   const s01Feedback = document.getElementById('s01Feedback');
   const btnNextS01 = document.getElementById('btnNext-s01');
 
+  const s01VisualTitle = document.getElementById('s01VisualTitle');
+  const s01VisualTitles = [
+    'Kết nối từ Carbohydrate sang Lipid',
+    'Bốn tình huống thực tế của Lipid',
+    'Thí nghiệm Tính tan: Dầu và Nước',
+    'Câu hỏi cốt lõi về bản chất của Lipid'
+  ];
+
   function showS01Sub(subIdx) {
     state.s01_sub = subIdx;
     s01Visuals.forEach((v, i) => v.classList.toggle('hidden', i !== subIdx));
@@ -2283,6 +2361,9 @@
     s01StepBtns.forEach((p, i) => {
       p.classList.toggle('active', i === subIdx);
     });
+    if (s01VisualTitle && s01VisualTitles[subIdx]) {
+      s01VisualTitle.textContent = s01VisualTitles[subIdx];
+    }
     reportHeight();
   }
 
@@ -2448,11 +2529,22 @@
   const s02Feedback = document.getElementById('s02Feedback');
   const btnNextS02 = document.getElementById('btnNext-s02');
 
+  const s02VisualTitle = document.getElementById('s02VisualTitle');
+  const s02VisualTitles = [
+    'Lắp ghép cấu tạo Triglyceride',
+    'Cấu trúc Acid béo No (Chất béo Động vật)',
+    'Cấu trúc Acid béo Không no (Dầu Thực vật)',
+    'Phân loại Nguồn gốc Chất béo trong Đời sống'
+  ];
+
   function showS02Sub(subIdx) {
     state.s02_sub = subIdx;
     s02Visuals.forEach((v, i) => v.classList.toggle('hidden', i !== subIdx));
     s02Screens.forEach((s, i) => s.classList.toggle('hidden', i !== subIdx));
     s02StepBtns.forEach((p, i) => p.classList.toggle('active', i === subIdx));
+    if (s02VisualTitle && s02VisualTitles[subIdx]) {
+      s02VisualTitle.textContent = s02VisualTitles[subIdx];
+    }
     reportHeight();
   }
 
@@ -2760,11 +2852,22 @@
   const btnNext3Bto3C = document.getElementById('btnNext3Bto3C');
   const btnNext3Cto3D = document.getElementById('btnNext3Cto3D');
 
+  const s03VisualTitle = document.getElementById('s03VisualTitle');
+  const s03VisualTitles = [
+    'Dự trữ năng lượng lâu dài',
+    'Lớp đệm cách nhiệt & Bảo vệ cơ học',
+    'Dung môi hòa tan các Vitamin tan trong dầu',
+    'Mô mỡ Sinh học: Cơ chế Dự trữ ở Lạc đà'
+  ];
+
   function showS03Sub(subIdx) {
     state.s03_sub = subIdx;
     s03Visuals.forEach((v, i) => v.classList.toggle('hidden', i !== subIdx));
     s03Screens.forEach((s, i) => s.classList.toggle('hidden', i !== subIdx));
     s03StepBtns.forEach((p, i) => p.classList.toggle('active', i === subIdx));
+    if (s03VisualTitle && s03VisualTitles[subIdx]) {
+      s03VisualTitle.textContent = s03VisualTitles[subIdx];
+    }
     reportHeight();
   }
 
@@ -2896,11 +2999,23 @@
   /* =======================================================
      STAGE 4 LOGIC
      ======================================================= */
-  const s04Visuals = [
+  const s04VisualTitle = document.getElementById('s04VisualTitle');
+  const s04VisualTitles = [
+    'Cấu tạo một Phospholipid',
+    'Dự đoán sắp xếp Phospholipid trong nước',
+    'Mô hình Lớp kép Phospholipid trong môi trường nước',
+    'Lớp kép Phospholipid và Protein màng (Mô hình khảm động)'
+  ];
+  const s04VisualPanes = [
     document.getElementById('s04Visual4A'),
     document.getElementById('s04Visual4BC'),
-    document.getElementById('s04Visual4BC'),
     document.getElementById('s04Visual4D')
+  ];
+  const s04VisualMap = [
+    s04VisualPanes[0], // 4A
+    s04VisualPanes[1], // 4B
+    s04VisualPanes[1], // 4C
+    s04VisualPanes[2]  // 4D
   ];
   const s04Screens = [
     document.getElementById('s04Screen4A'),
@@ -2922,9 +3037,15 @@
 
   function showS04Sub(subIdx) {
     state.s04_sub = subIdx;
-    s04Visuals.forEach((v, i) => v.classList.toggle('hidden', i !== subIdx));
+    const currentVis = s04VisualMap[subIdx];
+    s04VisualPanes.forEach(v => {
+      if (v) v.classList.toggle('hidden', v !== currentVis);
+    });
     s04Screens.forEach((s, i) => s.classList.toggle('hidden', i !== subIdx));
     s04StepBtns.forEach((p, i) => p.classList.toggle('active', i === subIdx));
+    if (s04VisualTitle && s04VisualTitles[subIdx]) {
+      s04VisualTitle.textContent = s04VisualTitles[subIdx];
+    }
     reportHeight();
   }
 
@@ -3099,11 +3220,23 @@
   /* =======================================================
      STAGE 5 LOGIC
      ======================================================= */
-  const s05Visuals = [
+  const s05VisualTitle = document.getElementById('s05VisualTitle');
+  const s05VisualTitles = [
+    'Khung bốn vòng của Steroid (Cholesterol)',
+    'Hormone Testosterone & Estrogen',
+    'Khung bốn vòng Steroid trong Cơ thể',
+    'Sắc tố Carotenoid & Lớp Sáp Bảo vệ'
+  ];
+  const s05VisualPanes = [
     document.getElementById('s05Visual5A'),
     document.getElementById('s05Visual5B'),
-    document.getElementById('s05Visual5A'),
     document.getElementById('s05Visual5D')
+  ];
+  const s05VisualMap = [
+    s05VisualPanes[0], // 5A
+    s05VisualPanes[1], // 5B
+    s05VisualPanes[0], // 5C
+    s05VisualPanes[2]  // 5D
   ];
   const s05Screens = [
     document.getElementById('s05Screen5A'),
@@ -3127,9 +3260,15 @@
 
   function showS05Sub(subIdx) {
     state.s05_sub = subIdx;
-    s05Visuals.forEach((v, i) => v.classList.toggle('hidden', i !== subIdx));
+    const currentVis = s05VisualMap[subIdx];
+    s05VisualPanes.forEach(v => {
+      if (v) v.classList.toggle('hidden', v !== currentVis);
+    });
     s05Screens.forEach((s, i) => s.classList.toggle('hidden', i !== subIdx));
     s05StepBtns.forEach((p, i) => p.classList.toggle('active', i === subIdx));
+    if (s05VisualTitle && s05VisualTitles[subIdx]) {
+      s05VisualTitle.textContent = s05VisualTitles[subIdx];
+    }
     reportHeight();
   }
 
@@ -3260,11 +3399,22 @@
   /* =======================================================
      STAGE 6 LOGIC (3-COLUMN MATCH CONNECTOR & COMPLETION)
      ======================================================= */
-  const s06Visuals = [
-    document.getElementById('s06Visual6A'),
-    document.getElementById('s06Visual6A'),
+  const s06VisualTitle = document.getElementById('s06VisualTitle');
+  const s06VisualTitles = [
+    'Tổng hợp Cấu trúc & Vai trò của Lipid',
+    'Nối Đặc điểm và Nhóm Lipid Phù hợp',
+    'Hoàn thiện Bảng Phân loại Lipid',
+    'Sơ đồ Tư duy & Tóm tắt Bài học'
+  ];
+  const s06VisualPanes = [
     document.getElementById('s06Visual6A'),
     document.getElementById('s06Visual6D')
+  ];
+  const s06VisualMap = [
+    s06VisualPanes[0], // 6A
+    s06VisualPanes[0], // 6B
+    s06VisualPanes[0], // 6C
+    s06VisualPanes[1]  // 6D
   ];
   const s06Screens = [
     document.getElementById('s06Screen6A'),
@@ -3288,10 +3438,19 @@
 
   function showS06Sub(subIdx) {
     state.s06_sub = subIdx;
-    s06Visuals.forEach((v, i) => v.classList.toggle('hidden', i !== subIdx));
+    const currentVis = s06VisualMap[subIdx];
+    s06VisualPanes.forEach(v => {
+      if (v) v.classList.toggle('hidden', v !== currentVis);
+    });
     s06Screens.forEach((s, i) => s.classList.toggle('hidden', i !== subIdx));
     s06StepBtns.forEach((p, i) => p.classList.toggle('active', i === subIdx));
+    if (s06VisualTitle && s06VisualTitles[subIdx]) {
+      s06VisualTitle.textContent = s06VisualTitles[subIdx];
+    }
     reportHeight();
+    if (subIdx !== 3) {
+      setTimeout(renderConnections, 100);
+    }
   }
 
   s06StepBtns.forEach((p, i) => p.addEventListener('click', () => showS06Sub(i)));

@@ -1,20 +1,118 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 720" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
   <title id="title">Lớp kép phospholipid có protein màng</title>
-  <desc id="desc">Tái sử dụng nguyên lớp kép A14, bổ sung một protein kênh xuyên màng, một thụ thể xuyên màng và một protein bám ở một phía.</desc>
-  <image href="SH10-B05-M02-A14.svg" x="0" y="0" width="1500" height="720" preserveAspectRatio="xMidYMid meet"/>
+  <desc id="desc">Mô hình màng sinh chất khảm động: Lớp kép phospholipid kích thước lớn kết hợp protein kênh xuyên màng, thụ thể tiếp nhận tín hiệu và protein bám màng.</desc>
+  
+  <defs>
+    <!-- Phospholipid Lớp Trên -->
+    <g id="pl-down">
+      <circle cx="0" cy="0" r="32" fill="#DCE7EB" stroke="#4E7F92" stroke-width="4"/>
+      <text x="0" y="7" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="18" font-weight="800" fill="#1A1A1A">PO₄</text>
+      <rect x="-24" y="34" width="48" height="30" rx="7" fill="#DCEAE1" stroke="#1B5E48" stroke-width="3"/>
+      <text x="0" y="54" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="700" fill="#1B5E48">Glycerol</text>
+      <path d="M-12 66 V85 L-18 102 L-12 120 L-18 138 L-12 156 L-18 174" fill="none" stroke="#2C3E50" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 66 V85 L18 102 L12 120 L24 135 L38 152 L36 174" fill="none" stroke="#C15F3C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="24" cy="135" r="3.5" fill="#CE8A33"/>
+    </g>
+
+    <!-- Phospholipid Lớp Dưới -->
+    <g id="pl-up">
+      <circle cx="0" cy="0" r="32" fill="#DCE7EB" stroke="#4E7F92" stroke-width="4"/>
+      <text x="0" y="7" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="18" font-weight="800" fill="#1A1A1A">PO₄</text>
+      <rect x="-24" y="-64" width="48" height="30" rx="7" fill="#DCEAE1" stroke="#1B5E48" stroke-width="3"/>
+      <text x="0" y="-45" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="700" fill="#1B5E48">Glycerol</text>
+      <path d="M-12 -66 V-85 L-18 -102 L-12 -120 L-18 -138 L-12 -156 L-18 -174" fill="none" stroke="#2C3E50" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 -66 V-85 L18 -102 L12 -120 L24 -135 L38 -152 L36 -174" fill="none" stroke="#C15F3C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="24" cy="-135" r="3.5" fill="#CE8A33"/>
+    </g>
+  </defs>
+
+  <!-- Nền bể nước sinh học -->
+  <rect width="960" height="560" rx="14" fill="#EDF6F9" stroke="#D6CCB6" stroke-width="2"/>
+  <!-- Vùng nước ngoại bào phía trên -->
+  <rect x="0" y="0" width="960" height="85" rx="14" fill="#D9ECF2" opacity=".75"/>
+  <!-- Vùng nước nội bào phía dưới -->
+  <rect x="0" y="475" width="960" height="85" rx="14" fill="#D9ECF2" opacity=".75"/>
+
+  <!-- Nhãn môi trường nước -->
+  <g font-family="'Be Vietnam Pro',system-ui,sans-serif">
+    <text x="480" y="36" text-anchor="middle" font-size="15" font-weight="800" fill="#1B5E48" letter-spacing=".6px">
+      MÔI TRƯỜNG NƯỚC NGOẠI BÀO (BÊN NGOÀI TẾ BÀO)
+    </text>
+    <text x="480" y="532" text-anchor="middle" font-size="15" font-weight="800" fill="#1B5E48" letter-spacing=".6px">
+      MÔI TRƯỜNG NƯỚC NỘI BÀO (BÊN TRONG TẾ BÀO CHẤT)
+    </text>
+  </g>
+
+  <!-- Các phân tử nước minh họa -->
+  <g fill="#A9D0BE" opacity=".75">
+    <circle cx="65" cy="40" r="10"/><circle cx="85" cy="48" r="6"/><circle cx="50" cy="50" r="6"/>
+    <circle cx="880" cy="35" r="10"/><circle cx="900" cy="43" r="6"/><circle cx="865" cy="45" r="6"/>
+    <circle cx="80" cy="510" r="10"/><circle cx="100" cy="518" r="6"/><circle cx="65" cy="520" r="6"/>
+    <circle cx="870" cy="515" r="10"/><circle cx="890" cy="523" r="6"/><circle cx="855" cy="525" r="6"/>
+  </g>
+
+  <!-- Lớp Phospholipid Trên: tại các vị trí x = 110, 382, 654, 790 (vị trí 246 và 518 nhường chỗ cho Protein) -->
+  <g id="upper-layer">
+    <use href="#pl-down" x="110" y="95"/>
+    <use href="#pl-down" x="382" y="95"/>
+    <use href="#pl-down" x="654" y="95"/>
+    <use href="#pl-down" x="790" y="95"/>
+  </g>
+
+  <!-- Vùng lõi kị nước -->
+  <rect x="30" y="264" width="900" height="32" rx="16" fill="#F7E7CD" opacity=".55"/>
+
+  <!-- Lớp Phospholipid Dưới: tại các vị trí x = 110, 382, 654 (790 có protein bám màng) -->
+  <g id="lower-layer">
+    <use href="#pl-up" x="110" y="465"/>
+    <use href="#pl-up" x="382" y="465"/>
+    <use href="#pl-up" x="654" y="465"/>
+    <use href="#pl-up" x="790" y="465"/>
+  </g>
+
+  <!-- =======================================================
+       CÁC PROTEIN MÀNG (KHẢM VÀO LỚP KÉP PHOSPHOLIPID)
+       ======================================================= -->
+
+  <!-- 1. Protein Kênh Xuyên Màng (Channel Protein) tại x=246 -->
   <g id="channel-protein">
-    <path d="M430 125C365 190 370 525 430 590L505 590C550 510 550 205 505 125Z" fill="#9C86C8" stroke="#443A78" stroke-width="8"/>
-    <path d="M455 155C430 250 430 470 455 560" fill="none" stroke="#EEF6F8" stroke-width="22" stroke-linecap="round"/>
+    <!-- Thùy trái của kênh -->
+    <path d="M205 75 C175 140 175 420 205 485 L235 485 C250 420 250 140 235 75 Z" fill="#8A76B8" stroke="#443A78" stroke-width="3.5"/>
+    <!-- Thùy phải của kênh -->
+    <path d="M255 75 C240 140 240 420 255 485 L285 485 C315 420 315 140 285 75 Z" fill="#8A76B8" stroke="#443A78" stroke-width="3.5"/>
+    <!-- Lòng kênh rỗng dẫn truyền chất ưa nước qua màng -->
+    <path d="M245 65 V495" fill="none" stroke="#EDF6F9" stroke-width="16" stroke-linecap="round"/>
+    <path d="M245 80 V480" fill="none" stroke="#8A76B8" stroke-width="2" stroke-dasharray="6 6"/>
+    <!-- Nhãn tên protein kênh -->
+    <rect x="175" y="495" width="140" height="28" rx="6" fill="#8A76B8" stroke="#443A78" stroke-width="1.5"/>
+    <text x="245" y="514" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11.5" font-weight="800" fill="#FFFFFF">Protein kênh xuyên màng</text>
   </g>
+
+  <!-- 2. Thụ thể màng tiếp nhận tín hiệu (Receptor Protein) tại x=518 -->
   <g id="receptor-protein">
-    <path d="M920 145C875 220 890 500 930 575L1005 575C1035 480 1035 235 995 145Z" fill="#7CA792" stroke="#46685A" stroke-width="8"/>
-    <path d="M890 145 845 80M995 145 1045 80" fill="none" stroke="#46685A" stroke-width="13" stroke-linecap="round"/>
-    <circle cx="842" cy="74" r="24" fill="#A8C9B8" stroke="#46685A" stroke-width="6"/>
+    <!-- Thân protein xuyên màng -->
+    <path d="M490 85 C470 150 470 410 490 475 L546 475 C566 410 566 150 546 85 Z" fill="#4E8C72" stroke="#245842" stroke-width="3.5"/>
+    <!-- Các nhánh thụ thể vươn ra dịch ngoại bào đón phối tử -->
+    <path d="M504 85 L480 45 M532 85 L556 45" fill="none" stroke="#245842" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="480" cy="40" r="14" fill="#A8D0BE" stroke="#245842" stroke-width="3"/>
+    <circle cx="556" cy="40" r="14" fill="#A8D0BE" stroke="#245842" stroke-width="3"/>
+    <path d="M472 40 Q480 47 488 40" fill="none" stroke="#245842" stroke-width="2.5"/>
+    <path d="M548 40 Q556 47 564 40" fill="none" stroke="#245842" stroke-width="2.5"/>
+    <!-- Nhãn thụ thể -->
+    <rect x="453" y="495" width="130" height="28" rx="6" fill="#4E8C72" stroke="#245842" stroke-width="1.5"/>
+    <text x="518" y="514" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11.5" font-weight="800" fill="#FFFFFF">Thụ thể màng tế bào</text>
   </g>
+
+  <!-- 3. Protein bám màng phía nội bào (Peripheral Protein) tại x=790 -->
   <g id="peripheral-protein">
-    <ellipse cx="1225" cy="585" rx="95" ry="50" fill="#E8A24A" stroke="#8A551A" stroke-width="8"/>
+    <ellipse cx="790" cy="470" rx="55" ry="30" fill="#E8A24A" stroke="#8A551A" stroke-width="3.5"/>
+    <rect x="725" y="456" width="130" height="28" rx="6" fill="#E8A24A" stroke="#8A551A" stroke-width="1.5"/>
+    <text x="790" y="475" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11.5" font-weight="800" fill="#FFFFFF">Protein bám màng</text>
   </g>
-  <g id="protein-highlights" opacity="0" fill="none" stroke="#CE8A33" stroke-width="7" stroke-dasharray="12 10">
-    <rect x="350" y="85" width="220" height="550" rx="40"/><rect x="820" y="45" width="260" height="570" rx="40"/><ellipse cx="1225" cy="585" rx="118" ry="72"/>
+
+  <!-- Chú thích mô hình khảm lỏng phía trên góc trái -->
+  <g font-family="'Be Vietnam Pro',system-ui,sans-serif">
+    <rect x="15" y="10" width="220" height="26" rx="5" fill="#FFFFFF" stroke="#3CA57A" stroke-width="1.5"/>
+    <text x="125" y="27" text-anchor="middle" font-size="11" font-weight="800" fill="#14432F">MÔ HÌNH KHẢM ĐỘNG (FLUID MOSAIC)</text>
   </g>
 </svg>

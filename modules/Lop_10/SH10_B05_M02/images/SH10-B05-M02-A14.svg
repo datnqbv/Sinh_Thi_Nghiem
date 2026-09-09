@@ -1,18 +1,110 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 720" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
   <title id="title">Lớp kép phospholipid trong môi trường nước</title>
-  <desc id="desc">Các phospholipid A13 được nhân bản thành hai lớp: đầu ưa nước hướng ra hai phía nước và đuôi kị nước quay vào nhau.</desc>
-  <rect width="1500" height="720" fill="#EEF6F8"/>
-  <g id="upper-leaflet">
-    <image href="SH10-B05-M02-A13.svg" x="80" y="70" width="150" height="250"/><image href="SH10-B05-M02-A13.svg" x="250" y="70" width="150" height="250"/>
-    <image href="SH10-B05-M02-A13.svg" x="420" y="70" width="150" height="250"/><image href="SH10-B05-M02-A13.svg" x="590" y="70" width="150" height="250"/>
-    <image href="SH10-B05-M02-A13.svg" x="760" y="70" width="150" height="250"/><image href="SH10-B05-M02-A13.svg" x="930" y="70" width="150" height="250"/>
-    <image href="SH10-B05-M02-A13.svg" x="1100" y="70" width="150" height="250"/><image href="SH10-B05-M02-A13.svg" x="1270" y="70" width="150" height="250"/>
+  <desc id="desc">Mô hình lớp kép phospholipid kích thước lớn, sắc nét: đầu ưa nước chứa PO4 tiếp xúc với nước ở hai phía ngoại bào và nội bào, hai đuôi acid béo kị nước quay vào nhau ở giữa.</desc>
+  
+  <defs>
+    <!-- Phospholipid Lớp Trên: đầu ở trên (0,0), glycerol ở (0, 48), đuôi kéo xuống đến y=174 -->
+    <g id="pl-down">
+      <!-- Đầu ưa nước PO4 -->
+      <circle cx="0" cy="0" r="32" fill="#DCE7EB" stroke="#4E7F92" stroke-width="4"/>
+      <text x="0" y="7" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="18" font-weight="800" fill="#1A1A1A">PO₄</text>
+      <!-- Khung Glycerol -->
+      <rect x="-24" y="34" width="48" height="30" rx="7" fill="#DCEAE1" stroke="#1B5E48" stroke-width="3"/>
+      <text x="0" y="54" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="700" fill="#1B5E48">Glycerol</text>
+      <!-- Đuôi 1: Acid béo no (thẳng) -->
+      <path d="M-12 66 V85 L-18 102 L-12 120 L-18 138 L-12 156 L-18 174" fill="none" stroke="#2C3E50" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Đuôi 2: Acid béo không no (gấp khúc cis) -->
+      <path d="M12 66 V85 L18 102 L12 120 L24 135 L38 152 L36 174" fill="none" stroke="#C15F3C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="24" cy="135" r="3.5" fill="#CE8A33"/>
+    </g>
+
+    <!-- Phospholipid Lớp Dưới: đầu ở dưới (0,0), glycerol ở (0, -48), đuôi kéo lên đến y=-174 -->
+    <g id="pl-up">
+      <!-- Đầu ưa nước PO4 -->
+      <circle cx="0" cy="0" r="32" fill="#DCE7EB" stroke="#4E7F92" stroke-width="4"/>
+      <text x="0" y="7" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="18" font-weight="800" fill="#1A1A1A">PO₄</text>
+      <!-- Khung Glycerol -->
+      <rect x="-24" y="-64" width="48" height="30" rx="7" fill="#DCEAE1" stroke="#1B5E48" stroke-width="3"/>
+      <text x="0" y="-45" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="700" fill="#1B5E48">Glycerol</text>
+      <!-- Đuôi 1: Acid béo no (thẳng) -->
+      <path d="M-12 -66 V-85 L-18 -102 L-12 -120 L-18 -138 L-12 -156 L-18 -174" fill="none" stroke="#2C3E50" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Đuôi 2: Acid béo không no (gấp khúc cis) -->
+      <path d="M12 -66 V-85 L18 -102 L12 -120 L24 -135 L38 -152 L36 -174" fill="none" stroke="#C15F3C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="24" cy="-135" r="3.5" fill="#CE8A33"/>
+    </g>
+  </defs>
+
+  <!-- Nền bể nước sinh học -->
+  <rect width="960" height="560" rx="14" fill="#EDF6F9" stroke="#D6CCB6" stroke-width="2"/>
+  <!-- Vùng nước ngoại bào phía trên -->
+  <rect x="0" y="0" width="960" height="85" rx="14" fill="#D9ECF2" opacity=".75"/>
+  <!-- Vùng nước nội bào phía dưới -->
+  <rect x="0" y="475" width="960" height="85" rx="14" fill="#D9ECF2" opacity=".75"/>
+
+  <!-- Nhãn môi trường nước -->
+  <g font-family="'Be Vietnam Pro',system-ui,sans-serif">
+    <text x="480" y="36" text-anchor="middle" font-size="15" font-weight="800" fill="#1B5E48" letter-spacing=".6px">
+      MÔI TRƯỜNG NƯỚC NGOẠI BÀO (BÊN NGOÀI TẾ BÀO)
+    </text>
+    <text x="480" y="532" text-anchor="middle" font-size="15" font-weight="800" fill="#1B5E48" letter-spacing=".6px">
+      MÔI TRƯỜNG NƯỚC NỘI BÀO (BÊN TRONG TẾ BÀO CHẤT)
+    </text>
   </g>
-  <g id="lower-leaflet" transform="translate(0 720) scale(1 -1)">
-    <image href="SH10-B05-M02-A13.svg" x="80" y="70" width="150" height="250"/><image href="SH10-B05-M02-A13.svg" x="250" y="70" width="150" height="250"/>
-    <image href="SH10-B05-M02-A13.svg" x="420" y="70" width="150" height="250"/><image href="SH10-B05-M02-A13.svg" x="590" y="70" width="150" height="250"/>
-    <image href="SH10-B05-M02-A13.svg" x="760" y="70" width="150" height="250"/><image href="SH10-B05-M02-A13.svg" x="930" y="70" width="150" height="250"/>
-    <image href="SH10-B05-M02-A13.svg" x="1100" y="70" width="150" height="250"/><image href="SH10-B05-M02-A13.svg" x="1270" y="70" width="150" height="250"/>
+
+  <!-- Các phân tử nước minh họa -->
+  <g fill="#A9D0BE" opacity=".75">
+    <circle cx="65" cy="40" r="10"/><circle cx="85" cy="48" r="6"/><circle cx="50" cy="50" r="6"/>
+    <circle cx="880" cy="35" r="10"/><circle cx="900" cy="43" r="6"/><circle cx="865" cy="45" r="6"/>
+    <circle cx="80" cy="510" r="10"/><circle cx="100" cy="518" r="6"/><circle cx="65" cy="520" r="6"/>
+    <circle cx="870" cy="515" r="10"/><circle cx="890" cy="523" r="6"/><circle cx="855" cy="525" r="6"/>
   </g>
-  <g fill="#BFDDE8" opacity=".8"><circle cx="35" cy="90" r="12"/><circle cx="540" cy="35" r="10"/><circle cx="1160" cy="42" r="13"/><circle cx="1460" cy="115" r="10"/><circle cx="60" cy="630" r="11"/><circle cx="500" cy="680" r="13"/><circle cx="1050" cy="675" r="10"/><circle cx="1440" cy="620" r="13"/></g>
+
+  <!-- Lớp Phospholipid Trên (Đầu ở y=95, đuôi kéo xuống y=269) -->
+  <g id="upper-layer">
+    <use href="#pl-down" x="120" y="95"/>
+    <use href="#pl-down" x="260" y="95"/>
+    <use href="#pl-down" x="400" y="95"/>
+    <use href="#pl-down" x="540" y="95"/>
+    <use href="#pl-down" x="680" y="95"/>
+    <use href="#pl-down" x="820" y="95"/>
+  </g>
+
+  <!-- Vùng lõi kị nước ở giữa (vệt nền nhẹ nối dài) -->
+  <rect x="30" y="264" width="900" height="32" rx="16" fill="#F7E7CD" opacity=".55"/>
+  
+  <!-- Lớp Phospholipid Dưới (Đầu ở y=465, đuôi kéo lên y=291) -->
+  <g id="lower-layer">
+    <use href="#pl-up" x="120" y="465"/>
+    <use href="#pl-up" x="260" y="465"/>
+    <use href="#pl-up" x="400" y="465"/>
+    <use href="#pl-up" x="540" y="465"/>
+    <use href="#pl-up" x="680" y="465"/>
+    <use href="#pl-up" x="820" y="465"/>
+  </g>
+
+  <!-- Badge Vùng lõi kị nước đặt nổi bật ở giữa -->
+  <g id="hydrophobic-core">
+    <rect x="315" y="266" width="330" height="28" rx="14" fill="#F7E7CD" stroke="#CE8A33" stroke-width="1.8"/>
+    <text x="480" y="285" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="12.5" font-weight="800" fill="#8A551A" letter-spacing=".6px">
+      VÙNG LÕI KỊ NƯỚC (ĐUÔI QUAY VÀO NHAU)
+    </text>
+  </g>
+
+  <!-- Nhãn chỉ dẫn cấu trúc hai bên -->
+  <g font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="12">
+    <!-- Nhãn đầu ưa nước phía trên -->
+    <path d="M35 95 H84" stroke="#4E7F92" stroke-width="2" stroke-dasharray="4 3"/>
+    <rect x="8" y="80" width="102" height="30" rx="6" fill="#DCE7EB" stroke="#4E7F92" stroke-width="1.5"/>
+    <text x="59" y="100" text-anchor="middle" font-weight="700" fill="#1B5E48">Đầu ưa nước</text>
+
+    <!-- Nhãn đuôi kị nước bên phải -->
+    <path d="M925 200 H860" stroke="#C15F3C" stroke-width="2" stroke-dasharray="4 3"/>
+    <rect x="850" y="185" width="102" height="30" rx="6" fill="#F3E2D6" stroke="#C15F3C" stroke-width="1.5"/>
+    <text x="901" y="205" text-anchor="middle" font-weight="700" fill="#8A551A">Đuôi kị nước</text>
+
+    <!-- Nhãn đầu ưa nước phía dưới -->
+    <path d="M35 465 H84" stroke="#4E7F92" stroke-width="2" stroke-dasharray="4 3"/>
+    <rect x="8" y="450" width="102" height="30" rx="6" fill="#DCE7EB" stroke="#4E7F92" stroke-width="1.5"/>
+    <text x="59" y="470" text-anchor="middle" font-weight="700" fill="#1B5E48">Đầu ưa nước</text>
+  </g>
 </svg>
