@@ -449,51 +449,122 @@
     }
 
     /* =========================================================
-       SƠ ĐỒ DÒNG CHUYỂN HOÁ NĂNG LƯỢNG (ENERGY FLOW DIAGRAM)
+       SƠ ĐỒ DÒNG CHUYỂN HOÁ NĂNG LƯỢNG (BIOLOGICAL INFOGRAPHIC FLOW)
        ========================================================= */
     .energy-flow-container {
       background: #FFFFFF;
       border: 1.5px solid var(--paper-line);
       border-radius: var(--radius-lg);
-      padding: 24px 20px;
+      padding: 22px 18px;
       margin-bottom: 24px;
       box-shadow: var(--shadow-sm);
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
+    }
+
+    /* Thanh công cụ & Chú giải sơ đồ */
+    .diagram-toolbar {
+      width: 100%;
+      max-width: 720px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+      border-bottom: 1.5px solid var(--paper-line);
+      flex-wrap: wrap;
+    }
+    .diagram-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .diagram-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+    .btn-flow-play {
+      background: var(--cream);
+      border: 1.5px solid var(--paper-line-2);
+      border-radius: 99px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--ink-2);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.22s ease;
+      user-select: none;
+    }
+    .btn-flow-play:hover {
+      background: var(--jade-pale);
+      border-color: var(--jade);
+      color: var(--jade-text);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-flow-play i {
+      color: var(--jade);
+      font-size: 1.05rem;
     }
 
     .flow-chain {
       width: 100%;
-      max-width: 680px;
+      max-width: 720px;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0;
+      position: relative;
     }
 
-    /* Các Node năng lượng */
+    /* Các Node năng lượng sinh học phong phú */
     .energy-node {
       width: 100%;
-      padding: 16px 20px;
+      padding: 18px 20px;
       border-radius: var(--radius);
       border: 2px solid var(--paper-line-2);
       background: var(--cream);
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 16px;
       transition: all 0.25s ease;
       box-shadow: var(--shadow-sm);
+      position: relative;
     }
-    .energy-node__icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
+    .energy-node:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-2px);
+    }
+    .energy-node.highlight-pulse {
+      animation: nodePulse 1.2s ease-in-out;
+    }
+    @keyframes nodePulse {
+      0% { transform: scale(1); box-shadow: var(--shadow-sm); }
+      50% { transform: scale(1.02); box-shadow: 0 0 0 4px rgba(60, 165, 122, 0.4); }
+      100% { transform: scale(1); box-shadow: var(--shadow-sm); }
+    }
+
+    .energy-node__icon-box {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     }
     .energy-node__content {
       flex: 1 1 auto;
@@ -503,114 +574,181 @@
       font-size: 0.72rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 2px;
+      letter-spacing: 0.6px;
+      margin-bottom: 4px;
       display: inline-block;
     }
     .energy-node__title {
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       font-weight: 800;
       color: var(--ink);
       line-height: 1.35;
+      margin-bottom: 6px;
+    }
+    .energy-node__chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+    .bio-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      line-height: 1.3;
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      color: var(--ink-2);
     }
 
     /* Node 1: Ánh sáng */
     .energy-node--light {
       border-color: #FCD34D;
-      background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+      background: linear-gradient(135deg, #FFFDF5 0%, #FEF3C7 100%);
     }
-    .energy-node--light .energy-node__icon {
-      background: #FDE68A;
+    .energy-node--light .energy-node__icon-box {
+      background: #FEF08A;
       color: #B45309;
+      border: 1.5px solid #FDE047;
     }
-    .energy-node--light .energy-node__tag {
-      color: #92400E;
-    }
+    .energy-node--light .energy-node__tag { color: #92400E; }
+    .energy-node--light .bio-chip { border-color: #FDE68A; background: #FFFBEB; color: #92400E; }
 
     /* Node 2: Chất hữu cơ */
     .energy-node--organic {
       border-color: var(--jade-soft);
-      background: linear-gradient(135deg, #F2FBF6 0%, #EAF6F0 100%);
+      background: linear-gradient(135deg, #F4FBF7 0%, #E6F5ED 100%);
     }
-    .energy-node--organic .energy-node__icon {
+    .energy-node--organic .energy-node__icon-box {
       background: #D1FAE5;
       color: var(--jade-dark);
+      border: 1.5px solid var(--jade-soft);
     }
-    .energy-node--organic .energy-node__tag {
-      color: var(--jade-text);
-    }
+    .energy-node--organic .energy-node__tag { color: var(--jade-text); }
+    .energy-node--organic .bio-chip { border-color: #A7F3D0; background: #F0FDF4; color: var(--jade-text); }
 
     /* Node 3: ATP */
     .energy-node--atp {
       border-color: #93C5FD;
-      background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+      background: linear-gradient(135deg, #F0F7FF 0%, #DBEAFE 100%);
     }
-    .energy-node--atp .energy-node__icon {
+    .energy-node--atp .energy-node__icon-box {
       background: #BFDBFE;
       color: #1E4E79;
+      border: 1.5px solid #93C5FD;
     }
-    .energy-node--atp .energy-node__tag {
-      color: #1E4E79;
-    }
+    .energy-node--atp .energy-node__tag { color: #1E4E79; }
+    .energy-node--atp .bio-chip { border-color: #BFDBFE; background: #EFF6FF; color: #1E40AF; }
 
     /* Node 4: Hoạt động sống */
     .energy-node--life {
       border-color: #FDBA74;
-      background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+      background: linear-gradient(135deg, #FFF9F2 0%, #FFEDD5 100%);
     }
-    .energy-node--life .energy-node__icon {
+    .energy-node--life .energy-node__icon-box {
       background: #FED7AA;
       color: #9A3412;
+      border: 1.5px solid #FDBA74;
     }
-    .energy-node--life .energy-node__tag {
-      color: #9A3412;
-    }
+    .energy-node--life .energy-node__tag { color: #9A3412; }
 
-    /* Connector Mũi tên & Nhánh nhiệt */
-    .stage-connector {
+    /* Lưới 4 chip công việc tế bào của Node 4 */
+    .work-chips-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 8px;
       width: 100%;
+    }
+    .work-chip-item {
+      background: #FFFFFF;
+      border: 1px solid #FED7AA;
+      border-radius: var(--radius-sm);
+      padding: 6px 10px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 10px 14px;
-      position: relative;
+      gap: 8px;
     }
-    .connector-main {
-      flex: 1 1 auto;
+    .work-chip-item i {
+      font-size: 1.15rem;
+      color: #EA580C;
+      flex-shrink: 0;
+    }
+    .work-chip-item div {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      position: relative;
+      line-height: 1.25;
     }
-    .connector-line {
-      width: 3px;
-      height: 48px;
-      background: var(--paper-line-2);
-      position: relative;
-      transition: all 0.25s ease;
+    .work-chip-item strong {
+      font-size: 0.8rem;
+      color: var(--ink);
     }
-    .connector-line::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 50%;
-      transform: translateX(-50%);
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
-      border-top: 8px solid var(--paper-line-2);
-      transition: all 0.25s ease;
+    .work-chip-item span {
+      font-size: 0.72rem;
+      color: var(--ink-3);
     }
 
-    /* Nút tương tác chọn Giai đoạn trên sơ đồ */
+    /* Connector Mũi tên & Nhánh nhiệt nâng cấp với SVG Canvas */
+    .stage-connector {
+      width: 100%;
+      height: 96px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* SVG Layer cho dòng chảy năng lượng & nhánh nhiệt */
+    .connector-svg-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    /* Trục dòng chính thẳng đứng */
+    .flow-main-path {
+      stroke: var(--paper-line-2);
+      stroke-width: 4px;
+      stroke-linecap: round;
+      fill: none;
+      transition: stroke 0.3s ease;
+    }
+    .flow-stream-animated {
+      stroke-dasharray: 6 8;
+      animation: energyFlowDown 1s linear infinite;
+    }
+    @keyframes energyFlowDown {
+      to { stroke-dashoffset: -28; }
+    }
+
+    /* Nhánh nhiệt rẽ góc sang phải */
+    .flow-heat-path {
+      stroke: var(--amber-soft);
+      stroke-width: 2.5px;
+      stroke-dasharray: 4 4;
+      stroke-linecap: round;
+      fill: none;
+      transition: stroke 0.3s ease;
+    }
+
+    /* Nút tương tác chọn Giai đoạn trên sơ đồ (Đặt tại nửa trên trục chính) */
     .stage-action-pill {
       position: absolute;
-      top: 50%;
+      top: 24px;
       left: 50%;
       transform: translate(-50%, -50%);
       background: #FFFFFF;
       border: 2px solid var(--paper-line-2);
       border-radius: 99px;
-      padding: 6px 14px;
+      padding: 6px 16px;
       font-size: 0.88rem;
       font-weight: 800;
       color: var(--ink-2);
@@ -618,21 +756,72 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      box-shadow: var(--shadow);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
       white-space: nowrap;
+      z-index: 3;
+      transition: all 0.25s ease;
+    }
+
+    /* Khối nhiệt tỏa ra môi trường (Đặt tại nửa dưới, rẽ sang phải, hoàn toàn tách biệt không bị che) */
+    .heat-branch-card {
+      position: absolute;
+      right: 12px;
+      top: 70px;
+      transform: translateY(-50%);
+      background: #FFFBEB;
+      border: 1.5px dashed var(--amber);
+      border-radius: var(--radius-sm);
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 6px rgba(197, 138, 46, 0.1);
       z-index: 2;
-      transition: all 0.22s ease;
+      transition: all 0.25s ease;
+    }
+    .heat-branch-card:hover {
+      background: #FEF3C7;
+      transform: translateY(-50%) scale(1.02);
+    }
+    .heat-icon-box {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #FEF3C7;
+      color: var(--amber-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      flex-shrink: 0;
+    }
+    .heat-text-group {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25;
+      text-align: left;
+    }
+    .heat-text-group strong {
+      font-size: 0.78rem;
+      color: var(--amber-dark);
+      white-space: nowrap;
+    }
+    .heat-text-group span {
+      font-size: 0.68rem;
+      color: #92400E;
+      white-space: nowrap;
     }
     .stage-action-pill:hover {
-      transform: translate(-50%, -50%) scale(1.05);
+      transform: translate(-50%, -50%) scale(1.06);
       border-color: var(--jade);
       color: var(--jade-dark);
+      box-shadow: 0 6px 14px rgba(60, 165, 122, 0.2);
     }
     .stage-action-pill.active {
       background: var(--jade);
       color: #FFFFFF;
       border-color: var(--jade-dark);
-      box-shadow: 0 0 0 3px rgba(60, 165, 122, 0.3);
+      box-shadow: 0 0 0 3px rgba(60, 165, 122, 0.35), 0 6px 14px rgba(45, 139, 111, 0.25);
     }
     .stage-action-pill.viewed {
       background: var(--jade-pale);
@@ -647,33 +836,14 @@
       font-size: 0.85rem;
     }
 
-    /* Nhánh Nhiệt toả ra môi trường */
-    .heat-branch {
-      flex: 0 0 auto;
-      margin-left: 12px;
-      background: var(--amber-pale);
-      border: 1.5px dashed var(--amber-soft);
-      border-radius: var(--radius-sm);
-      padding: 6px 12px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--amber-dark);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      white-space: nowrap;
+    /* Trạng thái Active / Highlight của Connector */
+    .stage-connector.active .flow-main-path {
+      stroke: var(--jade);
+      stroke-width: 5px;
     }
-    .heat-branch i {
-      color: var(--amber);
-      font-size: 1rem;
-    }
-
-    /* Khi Connector được Active / Highlight */
-    .stage-connector.active .connector-line {
-      background: var(--jade);
-    }
-    .stage-connector.active .connector-line::after {
-      border-top-color: var(--jade);
+    .stage-connector.active .flow-heat-path {
+      stroke: var(--amber);
+      stroke-width: 3px;
     }
 
     /* Panel hiển thị chú giải giai đoạn */
@@ -1207,6 +1377,14 @@
       .stage-connector { flex-direction: column; gap: 8px; }
       .heat-branch { margin-left: 0; }
     }
+    @media (max-width: 560px) {
+      .stage-connector { height: 104px; }
+      .stage-action-pill { top: 24px; font-size: 0.8rem; padding: 5px 12px; }
+      .heat-branch-card { top: 74px; right: 6px; padding: 4px 8px; gap: 6px; }
+      .heat-icon-box { width: 24px; height: 24px; font-size: 0.9rem; }
+      .heat-text-group strong { font-size: 0.72rem; }
+      .heat-text-group span { font-size: 0.64rem; }
+    }
     @media (max-width: 480px) {
       .stepper-nav { grid-template-columns: 1fr; }
       .stage-actions { flex-direction: column-reverse; }
@@ -1340,87 +1518,173 @@
 
       <!-- Sơ đồ dòng chuyển hoá năng lượng (ST01) -->
       <div class="energy-flow-container">
+        <!-- Thanh công cụ & Chú giải sơ đồ -->
+        <div class="diagram-toolbar">
+          <div class="diagram-title-wrap">
+            <i class="ti ti-chart-arrows-vertical" style="color:var(--jade); font-size:1.3rem;"></i>
+            <h4 class="diagram-title">Sơ đồ dòng chuyển hoá năng lượng</h4>
+            <span class="bio-chip" style="background:#FEF3C7; border-color:#FDE68A; color:#92400E;">Dòng một chiều &bull; Không hoàn nguyên</span>
+          </div>
+          <button type="button" class="btn-flow-play" id="btnSimulateFlowST01" onclick="runEnergyFlowSimulation('ST01')">
+            <i class="ti ti-player-play-filled"></i>
+            <span>Mô phỏng dòng chảy</span>
+          </button>
+        </div>
+
         <div class="flow-chain">
           <!-- Node 1: Năng lượng ánh sáng -->
-          <div class="energy-node energy-node--light">
-            <div class="energy-node__icon"><i class="ti ti-sun"></i></div>
+          <div class="energy-node energy-node--light" id="nodeST01-1">
+            <div class="energy-node__icon-box">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4" fill="#FDE047"></circle>
+                <path d="M12 2v2"></path><path d="M12 20v2"></path>
+                <path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path>
+                <path d="M2 12h2"></path><path d="M20 12h2"></path>
+                <path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path>
+              </svg>
+            </div>
             <div class="energy-node__content">
               <span class="energy-node__tag">Nguồn năng lượng khởi đầu</span>
-              <div class="energy-node__title">Năng lượng ánh sáng</div>
+              <div class="energy-node__title">Năng lượng ánh sáng (Quang năng)</div>
+              <div class="energy-node__chips">
+                <span class="bio-chip"><i class="ti ti-sun"></i> Bức xạ Mặt Trời</span>
+                <span class="bio-chip"><i class="ti ti-leaf"></i> Sinh vật quang hợp hấp thụ</span>
+              </div>
             </div>
           </div>
 
           <!-- Chặng 1: Giai đoạn tổng hợp -->
           <div class="stage-connector" id="connectorST01-1">
-            <div class="connector-main">
-              <div class="connector-line"></div>
-              <button type="button" class="stage-action-pill" id="btnStage1" onclick="selectEnergyStage(1)">
-                <i class="ti ti-circle-dot"></i>
-                <span>Giai đoạn tổng hợp</span>
-                <span class="pill-check">✓</span>
-              </button>
-            </div>
-            <div class="heat-branch">
-              <i class="ti ti-flame"></i>
-              <span>Nhiệt toả ra môi trường</span>
+            <svg class="connector-svg-layer" viewBox="0 0 720 96" preserveAspectRatio="none">
+              <defs>
+                <marker id="arrowST01-1" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--paper-line-2)"/>
+                </marker>
+                <marker id="heatArrowST01-1" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--amber)"/>
+                </marker>
+              </defs>
+              <line x1="360" y1="0" x2="360" y2="96" class="flow-main-path" marker-end="url(#arrowST01-1)" />
+              <line x1="360" y1="0" x2="360" y2="96" stroke="rgba(60, 165, 122, 0.5)" stroke-width="3" class="flow-stream-animated" />
+              <path d="M 360 48 C 420 48, 460 70, 510 70" class="flow-heat-path" marker-end="url(#heatArrowST01-1)" />
+            </svg>
+
+            <button type="button" class="stage-action-pill" id="btnStage1" onclick="selectEnergyStage(1)">
+              <i class="ti ti-circle-dot"></i>
+              <span>Giai đoạn tổng hợp</span>
+              <span class="pill-check">✓</span>
+            </button>
+
+            <div class="heat-branch-card">
+              <div class="heat-icon-box"><i class="ti ti-flame"></i></div>
+              <div class="heat-text-group">
+                <strong>Nhiệt toả ra môi trường</strong>
+                <span>Thất thoát một chiều &bull; Không hồi phục</span>
+              </div>
             </div>
           </div>
 
           <!-- Node 2: Hoá năng trong chất hữu cơ -->
-          <div class="energy-node energy-node--organic">
-            <div class="energy-node__icon"><i class="ti ti-molecule"></i></div>
+          <div class="energy-node energy-node--organic" id="nodeST01-2">
+            <div class="energy-node__icon-box">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 21 7 21 17 12 22 3 17 3 7" fill="#A7F3D0" stroke="var(--jade)"></polygon>
+                <circle cx="12" cy="12" r="2.5" fill="var(--jade-dark)"></circle>
+              </svg>
+            </div>
             <div class="energy-node__content">
               <span class="energy-node__tag">Dạng năng lượng tích luỹ</span>
               <div class="energy-node__title">Năng lượng hoá học trong chất hữu cơ</div>
+              <div class="energy-node__chips">
+                <span class="bio-chip"><i class="ti ti-hexagons"></i> C₆H₁₂O₆ (Glucose) & Polysaccharide</span>
+                <span class="bio-chip"><i class="ti ti-lock"></i> Tích luỹ trong các liên kết hoá học</span>
+              </div>
             </div>
           </div>
 
           <!-- Chặng 2: Giai đoạn phân giải -->
           <div class="stage-connector" id="connectorST01-2">
-            <div class="connector-main">
-              <div class="connector-line"></div>
-              <button type="button" class="stage-action-pill" id="btnStage2" onclick="selectEnergyStage(2)">
-                <i class="ti ti-circle-dot"></i>
-                <span>Giai đoạn phân giải</span>
-                <span class="pill-check">✓</span>
-              </button>
-            </div>
-            <div class="heat-branch">
-              <i class="ti ti-flame"></i>
-              <span>Nhiệt toả ra môi trường</span>
+            <svg class="connector-svg-layer" viewBox="0 0 720 96" preserveAspectRatio="none">
+              <defs>
+                <marker id="arrowST01-2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--paper-line-2)"/>
+                </marker>
+                <marker id="heatArrowST01-2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--amber)"/>
+                </marker>
+              </defs>
+              <line x1="360" y1="0" x2="360" y2="96" class="flow-main-path" marker-end="url(#arrowST01-2)" />
+              <line x1="360" y1="0" x2="360" y2="96" stroke="rgba(43, 108, 176, 0.5)" stroke-width="3" class="flow-stream-animated" />
+              <path d="M 360 48 C 420 48, 460 70, 510 70" class="flow-heat-path" marker-end="url(#heatArrowST01-2)" />
+            </svg>
+
+            <button type="button" class="stage-action-pill" id="btnStage2" onclick="selectEnergyStage(2)">
+              <i class="ti ti-circle-dot"></i>
+              <span>Giai đoạn phân giải</span>
+              <span class="pill-check">✓</span>
+            </button>
+
+            <div class="heat-branch-card">
+              <div class="heat-icon-box"><i class="ti ti-flame"></i></div>
+              <div class="heat-text-group">
+                <strong>Nhiệt toả ra môi trường</strong>
+                <span>Thất thoát một chiều &bull; Không hồi phục</span>
+              </div>
             </div>
           </div>
 
           <!-- Node 3: ATP -->
-          <div class="energy-node energy-node--atp">
-            <div class="energy-node__icon"><i class="ti ti-battery-charging"></i></div>
+          <div class="energy-node energy-node--atp" id="nodeST01-3">
+            <div class="energy-node__icon-box">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="7" height="10" rx="2" fill="#BFDBFE" stroke="#1E4E79"></rect>
+                <circle cx="12" cy="12" r="2.5" fill="#FDE047" stroke="#B45309"></circle>
+                <circle cx="17" cy="12" r="2.5" fill="#FDE047" stroke="#B45309"></circle>
+                <circle cx="22" cy="12" r="2.5" fill="#FDE047" stroke="#B45309"></circle>
+              </svg>
+            </div>
             <div class="energy-node__content">
               <span class="energy-node__tag">Đồng tiền năng lượng tế bào</span>
               <div class="energy-node__title">ATP (Adenosine Triphosphate)</div>
+              <div class="energy-node__chips">
+                <span class="bio-chip"><i class="ti ti-bolt"></i> 2 liên kết cao năng (~P~P)</span>
+                <span class="bio-chip"><i class="ti ti-battery-charging"></i> Năng lượng trực tiếp cho tế bào</span>
+              </div>
             </div>
           </div>
 
           <!-- Chặng 3 (Mờ ở ST01, mở ở ST02) -->
-          <div class="stage-connector" style="opacity: 0.4;">
-            <div class="connector-main">
-              <div class="connector-line"></div>
-              <div class="stage-action-pill" style="cursor: default;">
-                <i class="ti ti-lock"></i>
-                <span>Giai đoạn huy động (sẽ học ở bước sau)</span>
-              </div>
+          <div class="stage-connector" style="opacity: 0.45;">
+            <svg class="connector-svg-layer" viewBox="0 0 720 96" preserveAspectRatio="none">
+              <line x1="360" y1="0" x2="360" y2="96" stroke="var(--paper-line-2)" stroke-width="3" stroke-dasharray="4 4" />
+              <path d="M 360 48 C 420 48, 460 70, 510 70" stroke="var(--paper-line-2)" stroke-width="2" stroke-dasharray="3 3" fill="none" />
+            </svg>
+
+            <div class="stage-action-pill" style="cursor: default; opacity: 0.85;">
+              <i class="ti ti-lock"></i>
+              <span>Giai đoạn huy động (khám phá ở bước sau)</span>
             </div>
-            <div class="heat-branch">
-              <i class="ti ti-flame"></i>
-              <span>Nhiệt toả ra</span>
+
+            <div class="heat-branch-card" style="opacity: 0.6;">
+              <div class="heat-icon-box"><i class="ti ti-flame"></i></div>
+              <div class="heat-text-group">
+                <strong>Nhiệt toả ra môi trường</strong>
+                <span>Thất thoát một chiều</span>
+              </div>
             </div>
           </div>
 
           <!-- Node 4: Các hoạt động sống (Mờ ở ST01) -->
-          <div class="energy-node energy-node--life" style="opacity: 0.45;">
-            <div class="energy-node__icon"><i class="ti ti-activity"></i></div>
+          <div class="energy-node energy-node--life" id="nodeST01-4" style="opacity: 0.45;">
+            <div class="energy-node__icon-box">
+              <i class="ti ti-activity"></i>
+            </div>
             <div class="energy-node__content">
               <span class="energy-node__tag">Nơi sử dụng năng lượng</span>
-              <div class="energy-node__title">Các hoạt động sống</div>
+              <div class="energy-node__title">Các hoạt động sống của tế bào và cơ thể</div>
+              <div class="energy-node__chips">
+                <span class="bio-chip"><i class="ti ti-lock"></i> Sẽ tìm hiểu chi tiết ở bước sau</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1428,7 +1692,7 @@
         <!-- Panel hiển thị chi tiết khi bấm chặng -->
         <div class="stage-info-panel" id="st01InfoPanel">
           <div class="stage-info-icon"><i class="ti ti-info-circle"></i></div>
-          <p class="stage-info-text" id="st01InfoText">Nhấn lần lượt vào Giai đoạn tổng hợp và Giai đoạn phân giải trên sơ đồ để xem cách năng lượng được tích luỹ và giải phóng.</p>
+          <p class="stage-info-text" id="st01InfoText">Nhấn lần lượt vào <strong>Giai đoạn tổng hợp</strong> và <strong>Giai đoạn phân giải</strong> trên sơ đồ để xem cách năng lượng được tích luỹ và giải phóng.</p>
         </div>
       </div>
 
@@ -1509,78 +1773,167 @@
 
       <!-- Sơ đồ dòng chuyển hoá năng lượng (ST02) -->
       <div class="energy-flow-container">
+        <!-- Thanh công cụ ST02 -->
+        <div class="diagram-toolbar">
+          <div class="diagram-title-wrap">
+            <i class="ti ti-chart-arrows-vertical" style="color:var(--jade); font-size:1.3rem;"></i>
+            <h4 class="diagram-title">Sơ đồ dòng chuyển hoá năng lượng &bull; Chặng huy động ATP</h4>
+            <span class="bio-chip" style="background:#EFF6FF; border-color:#BFDBFE; color:#1E40AF;">Trọng tâm: Phân giải ATP sinh công</span>
+          </div>
+          <button type="button" class="btn-flow-play" id="btnSimulateFlowST02" onclick="runEnergyFlowSimulation('ST02')">
+            <i class="ti ti-player-play-filled"></i>
+            <span>Mô phỏng dòng chảy</span>
+          </button>
+        </div>
+
         <div class="flow-chain">
-          <!-- Node 1: Năng lượng ánh sáng -->
-          <div class="energy-node energy-node--light" style="opacity: 0.85;">
-            <div class="energy-node__icon"><i class="ti ti-sun"></i></div>
+          <!-- Node 1: Năng lượng ánh sáng (Thu nhỏ/gọn cho ST02) -->
+          <div class="energy-node energy-node--light" id="nodeST02-1" style="opacity: 0.85;">
+            <div class="energy-node__icon-box" style="width:42px; height:42px; font-size:1.4rem;">
+              <i class="ti ti-sun"></i>
+            </div>
             <div class="energy-node__content">
-              <span class="energy-node__tag">Giai đoạn 1: Tổng hợp</span>
-              <div class="energy-node__title">Năng lượng ánh sáng</div>
+              <span class="energy-node__tag">Giai đoạn 1: Đã học</span>
+              <div class="energy-node__title" style="font-size:0.98rem;">Năng lượng ánh sáng (Quang năng)</div>
             </div>
           </div>
 
-          <!-- Chặng 1 -->
-          <div class="stage-connector" style="opacity: 0.7;">
-            <div class="connector-main">
-              <div class="connector-line" style="background:var(--jade);"></div>
-              <div class="stage-action-pill viewed" style="cursor:default;">
-                <span>Tổng hợp (Đã học)</span> <span class="pill-check" style="display:inline-block;">✓</span>
+          <!-- Chặng 1 (Đã học) -->
+          <div class="stage-connector" style="height: 64px; opacity: 0.75;">
+            <svg class="connector-svg-layer" viewBox="0 0 720 64" preserveAspectRatio="none">
+              <line x1="360" y1="0" x2="360" y2="64" stroke="var(--jade-soft)" stroke-width="3" />
+              <path d="M 360 32 C 420 32, 460 46, 520 46" stroke="var(--amber-soft)" stroke-width="2" stroke-dasharray="3 3" fill="none" />
+            </svg>
+            <div class="stage-action-pill viewed" style="top: 18px; cursor:default; padding: 4px 12px; font-size: 0.8rem;">
+              <span>1. Tổng hợp</span> <span class="pill-check" style="display:inline-block;">✓</span>
+            </div>
+            <div class="heat-branch-card" style="top: 46px; padding: 4px 8px; opacity: 0.8;">
+              <div class="heat-icon-box" style="width:22px; height:22px; font-size:0.85rem;"><i class="ti ti-flame"></i></div>
+              <div class="heat-text-group">
+                <strong style="font-size:0.72rem;">Toả nhiệt</strong>
               </div>
             </div>
-            <div class="heat-branch"><i class="ti ti-flame"></i><span>Toả nhiệt</span></div>
           </div>
 
           <!-- Node 2: Hoá năng trong chất hữu cơ -->
-          <div class="energy-node energy-node--organic" style="opacity: 0.85;">
-            <div class="energy-node__icon"><i class="ti ti-molecule"></i></div>
+          <div class="energy-node energy-node--organic" id="nodeST02-2" style="opacity: 0.85;">
+            <div class="energy-node__icon-box" style="width:42px; height:42px; font-size:1.4rem;">
+              <i class="ti ti-leaf"></i>
+            </div>
             <div class="energy-node__content">
-              <span class="energy-node__tag">Giai đoạn 2: Phân giải</span>
-              <div class="energy-node__title">Năng lượng hoá học trong chất hữu cơ</div>
+              <span class="energy-node__tag">Giai đoạn 2: Đã học</span>
+              <div class="energy-node__title" style="font-size:0.98rem;">Năng lượng hoá học trong chất hữu cơ</div>
             </div>
           </div>
 
-          <!-- Chặng 2 -->
-          <div class="stage-connector" style="opacity: 0.7;">
-            <div class="connector-main">
-              <div class="connector-line" style="background:var(--jade);"></div>
-              <div class="stage-action-pill viewed" style="cursor:default;">
-                <span>Phân giải (Đã học)</span> <span class="pill-check" style="display:inline-block;">✓</span>
+          <!-- Chặng 2 (Đã học) -->
+          <div class="stage-connector" style="height: 64px; opacity: 0.75;">
+            <svg class="connector-svg-layer" viewBox="0 0 720 64" preserveAspectRatio="none">
+              <line x1="360" y1="0" x2="360" y2="64" stroke="var(--jade-soft)" stroke-width="3" />
+              <path d="M 360 32 C 420 32, 460 46, 520 46" stroke="var(--amber-soft)" stroke-width="2" stroke-dasharray="3 3" fill="none" />
+            </svg>
+            <div class="stage-action-pill viewed" style="top: 18px; cursor:default; padding: 4px 12px; font-size: 0.8rem;">
+              <span>2. Phân giải</span> <span class="pill-check" style="display:inline-block;">✓</span>
+            </div>
+            <div class="heat-branch-card" style="top: 46px; padding: 4px 8px; opacity: 0.8;">
+              <div class="heat-icon-box" style="width:22px; height:22px; font-size:0.85rem;"><i class="ti ti-flame"></i></div>
+              <div class="heat-text-group">
+                <strong style="font-size:0.72rem;">Toả nhiệt</strong>
               </div>
             </div>
-            <div class="heat-branch"><i class="ti ti-flame"></i><span>Toả nhiệt</span></div>
           </div>
 
-          <!-- Node 3: ATP -->
-          <div class="energy-node energy-node--atp" style="box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.3);">
-            <div class="energy-node__icon"><i class="ti ti-battery-charging"></i></div>
+          <!-- Node 3: ATP (Đồng tiền năng lượng trung gian) -->
+          <div class="energy-node energy-node--atp" id="nodeST02-3" style="box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.3);">
+            <div class="energy-node__icon-box">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="7" height="10" rx="2" fill="#BFDBFE" stroke="#1E4E79"></rect>
+                <circle cx="12" cy="12" r="2.5" fill="#FDE047" stroke="#B45309"></circle>
+                <circle cx="17" cy="12" r="2.5" fill="#FDE047" stroke="#B45309"></circle>
+                <circle cx="22" cy="12" r="2.5" fill="#FDE047" stroke="#B45309"></circle>
+              </svg>
+            </div>
             <div class="energy-node__content">
-              <span class="energy-node__tag" style="color:var(--primary); font-weight:800;">Cầu nối trung gian</span>
+              <span class="energy-node__tag" style="color:var(--primary); font-weight:800;">Cầu nối trung gian &bull; Đồng tiền năng lượng</span>
               <div class="energy-node__title">ATP (Adenosine Triphosphate)</div>
+              <div class="energy-node__chips">
+                <span class="bio-chip" style="background:#EFF6FF; border-color:#BFDBFE; color:#1E40AF;"><i class="ti ti-arrows-exchange"></i> ATP ⇄ ADP + Pi + Năng lượng sinh công</span>
+                <span class="bio-chip" style="background:#FEF3C7; border-color:#FDE68A; color:#92400E;"><i class="ti ti-flame"></i> Kèm toả nhiệt</span>
+              </div>
             </div>
           </div>
 
-          <!-- Chặng 3: Giai đoạn huy động năng lượng (Đang học) -->
+          <!-- Chặng 3: Giai đoạn huy động năng lượng -->
           <div class="stage-connector active" id="connectorST02-3">
-            <div class="connector-main">
-              <div class="connector-line" style="background:var(--primary); height: 56px;"></div>
-              <button type="button" class="stage-action-pill" id="btnStage3" onclick="selectEnergyStageST02()" style="border-color:var(--primary); color:var(--primary-dark);">
-                <i class="ti ti-circle-dot"></i>
-                <span>Giai đoạn huy động năng lượng</span>
-                <span class="pill-check" id="checkStage3">✓</span>
-              </button>
-            </div>
-            <div class="heat-branch">
-              <i class="ti ti-flame"></i>
-              <span>Nhiệt toả ra môi trường</span>
+            <svg class="connector-svg-layer" viewBox="0 0 720 96" preserveAspectRatio="none">
+              <defs>
+                <marker id="arrowST02-3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--primary)"/>
+                </marker>
+                <marker id="heatArrowST02-3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--amber)"/>
+                </marker>
+              </defs>
+              <line x1="360" y1="0" x2="360" y2="96" class="flow-main-path" marker-end="url(#arrowST02-3)" />
+              <line x1="360" y1="0" x2="360" y2="96" stroke="rgba(217, 119, 6, 0.6)" stroke-width="3" class="flow-stream-animated" />
+              <path d="M 360 48 C 420 48, 460 70, 510 70" class="flow-heat-path" marker-end="url(#heatArrowST02-3)" />
+            </svg>
+
+            <button type="button" class="stage-action-pill" id="btnStage3" onclick="selectEnergyStageST02()" style="border-color:var(--primary); color:var(--primary-dark);">
+              <i class="ti ti-circle-dot"></i>
+              <span>Giai đoạn huy động năng lượng</span>
+              <span class="pill-check" id="checkStage3">✓</span>
+            </button>
+
+            <div class="heat-branch-card">
+              <div class="heat-icon-box"><i class="ti ti-flame"></i></div>
+              <div class="heat-text-group">
+                <strong>Nhiệt toả ra môi trường</strong>
+                <span>Thất thoát một chiều &bull; Duy trì thân nhiệt</span>
+              </div>
             </div>
           </div>
 
           <!-- Node 4: Các hoạt động sống -->
-          <div class="energy-node energy-node--life" style="box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.25);">
-            <div class="energy-node__icon"><i class="ti ti-activity"></i></div>
+          <div class="energy-node energy-node--life" id="nodeST02-4" style="box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.25);">
+            <div class="energy-node__icon-box">
+              <i class="ti ti-activity"></i>
+            </div>
             <div class="energy-node__content">
-              <span class="energy-node__tag" style="color:#9A3412;">Giai đoạn 3: Sử dụng năng lượng</span>
+              <span class="energy-node__tag" style="color:#9A3412;">Giai đoạn 3: Sinh công hữu ích</span>
               <div class="energy-node__title">Các hoạt động sống của tế bào và cơ thể</div>
+              
+              <!-- Lưới 4 chip công việc sinh học -->
+              <div class="work-chips-grid">
+                <div class="work-chip-item">
+                  <i class="ti ti-heart-rate-monitor"></i>
+                  <div>
+                    <strong>1. Sinh công cơ học</strong>
+                    <span>Co cơ, vận động, cử động, tim co bóp</span>
+                  </div>
+                </div>
+                <div class="work-chip-item">
+                  <i class="ti ti-dna"></i>
+                  <div>
+                    <strong>2. Sinh công hoá học</strong>
+                    <span>Tổng hợp đại phân tử sinh học (protein, lipid, ADN)</span>
+                  </div>
+                </div>
+                <div class="work-chip-item">
+                  <i class="ti ti-arrows-transfer-down"></i>
+                  <div>
+                    <strong>3. Vận chuyển chủ động</strong>
+                    <span>Vận chuyển các chất ngược gradient nồng độ</span>
+                  </div>
+                </div>
+                <div class="work-chip-item">
+                  <i class="ti ti-plant"></i>
+                  <div>
+                    <strong>4. Sinh trưởng & Cảm ứng</strong>
+                    <span>Phân chia tế bào, hướng động, duy trì thân nhiệt</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1893,6 +2246,60 @@
       1: '<strong>Giai đoạn tổng hợp:</strong> Trong giai đoạn tổng hợp, năng lượng được tích luỹ trong các chất hữu cơ. Ở sinh vật quang hợp, năng lượng ánh sáng được chuyển thành hoá năng và tích luỹ trong chất hữu cơ được tổng hợp từ CO₂ và nước.',
       2: '<strong>Giai đoạn phân giải:</strong> Trong giai đoạn phân giải, các chất hữu cơ được phân giải, giải phóng năng lượng. Một phần năng lượng giải phóng được tích luỹ trong ATP để tế bào có thể sử dụng.'
     };
+
+    
+    /* Mô phỏng hoạt hoạ dòng chảy năng lượng liên hoàn */
+    let isSimulatingFlow = false;
+    function runEnergyFlowSimulation(stageContext) {
+      if (isSimulatingFlow) return;
+      isSimulatingFlow = true;
+
+      const prefix = stageContext === 'ST02' ? 'ST02' : 'ST01';
+      const nodes = prefix === 'ST01' 
+        ? [document.getElementById('nodeST01-1'), document.getElementById('nodeST01-2'), document.getElementById('nodeST01-3'), document.getElementById('nodeST01-4')]
+        : [document.getElementById('nodeST02-1'), document.getElementById('nodeST02-2'), document.getElementById('nodeST02-3'), document.getElementById('nodeST02-4')];
+      
+      const playBtn = document.getElementById(prefix === 'ST01' ? 'btnSimulateFlowST01' : 'btnSimulateFlowST02');
+      if (playBtn) {
+        playBtn.disabled = true;
+        playBtn.innerHTML = '<i class="ti ti-loader animate-spin"></i> <span>Đang mô phỏng...</span>';
+      }
+
+      let step = 0;
+      function highlightNextNode() {
+        if (step < nodes.length) {
+          nodes.forEach((n, idx) => {
+            if (!n) return;
+            if (idx === step) {
+              n.classList.add('highlight-pulse');
+            } else {
+              n.classList.remove('highlight-pulse');
+            }
+          });
+
+          if (prefix === 'ST01') {
+            if (step === 0 && typeof selectEnergyStage === 'function') selectEnergyStage(1);
+            if (step === 1 && typeof selectEnergyStage === 'function') selectEnergyStage(2);
+          } else if (prefix === 'ST02') {
+            if (step === 2 && typeof selectEnergyStageST02 === 'function') selectEnergyStageST02();
+          }
+
+          step++;
+          setTimeout(highlightNextNode, 800);
+        } else {
+          nodes.forEach(n => {
+            if (!n) return;
+            n.classList.remove('highlight-pulse');
+          });
+          if (playBtn) {
+            playBtn.disabled = false;
+            playBtn.innerHTML = '<i class="ti ti-player-play-filled"></i> <span>Mô phỏng lại</span>';
+          }
+          isSimulatingFlow = false;
+        }
+      }
+      highlightNextNode();
+    }
 
     function selectEnergyStage(stepIdx) {
       lmsState['M03_st01_step' + stepIdx] = true;
