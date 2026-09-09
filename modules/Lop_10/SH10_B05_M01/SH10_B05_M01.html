@@ -650,24 +650,101 @@
     }
     .step-pill {
       flex:1;
-      padding:6px 8px;
+      padding:7px 8px;
       border-radius:6px;
       background:var(--cream-2);
-      border:1px solid var(--paper-line-2);
+      border:1.5px solid var(--paper-line-2);
       color:var(--ink-3);
       font-size:.76rem;
       font-weight:700;
       text-align:center;
+      cursor:pointer;
+      user-select:none;
+      transition:all .2s ease;
+    }
+    .step-pill:hover {
+      border-color:var(--jade);
+      transform:translateY(-1px);
+      box-shadow:0 2px 4px rgba(0,0,0,0.05);
     }
     .step-pill.active {
       background:var(--jade);
       border-color:var(--jade);
       color:#fff;
+      box-shadow:0 2px 8px rgba(45,139,111,0.25);
     }
     .step-pill.done {
       background:var(--correct-bg);
       color:var(--jade-text);
       border-color:var(--correct);
+    }
+    .step-desc-card {
+      margin-top:10px;
+      padding:10px 14px;
+      border-radius:8px;
+      background:#FAFAFA;
+      border:1px solid var(--paper-line);
+      text-align:left;
+      transition:all .25s ease;
+    }
+    .step-desc-head {
+      font-size:.8rem;
+      font-weight:700;
+      color:var(--jade-dark);
+      display:flex;
+      align-items:center;
+      gap:6px;
+      margin-bottom:3px;
+    }
+    .step-desc-body {
+      font-size:.78rem;
+      color:var(--ink-2);
+      line-height:1.45;
+    }
+    @keyframes a06Pulse {
+      0%, 100% { transform: scale(1); opacity: 0.95; }
+      50% { transform: scale(1.08); opacity: 1; filter: drop-shadow(0 0 6px rgba(45,139,111,0.4)); }
+    }
+    .a06-pulse {
+      transform-origin: center;
+      animation: a06Pulse 2s infinite ease-in-out;
+    }
+    .anim-view-tabs {
+      display: inline-flex;
+      gap: 4px;
+      background: var(--cream-2);
+      padding: 3px;
+      border-radius: 6px;
+      border: 1px solid var(--paper-line);
+    }
+    .anim-vtab {
+      padding: 4px 10px;
+      font-size: .74rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background: transparent;
+      color: var(--ink-3);
+      transition: all .2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .anim-vtab:hover {
+      color: var(--ink);
+    }
+    .anim-vtab.active {
+      background: var(--jade);
+      color: #fff;
+      box-shadow: 0 1px 4px rgba(45,139,111,0.25);
+    }
+    .sucrose-rw-card {
+      background: #fff;
+      border: 1px solid var(--paper-line);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-top: 8px;
     }
 
     /* Stage 4: Polysaccharide Shapes */
@@ -1075,39 +1152,167 @@
         </div>
         <div class="visual-body">
           <div class="anim-display">
-            <!-- Inline SVG của A06 với các id layer có thể điều khiển trực tiếp -->
-            <svg id="svgA06" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-label="Hoạt cảnh hình thành đường đôi">
-              <defs>
-                <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
-                  <path d="M0 0 12 6 0 12Z" fill="#514C44"/>
-                </marker>
-              </defs>
-              <g id="a06-monosaccharides">
-                <image href="images/SH10-B05-M01-A02.svg" x="30" y="50" width="440" height="330" preserveAspectRatio="xMidYMid meet"/>
-                <image href="images/SH10-B05-M01-A04.svg" x="730" y="50" width="440" height="330" preserveAspectRatio="xMidYMid meet"/>
-              </g>
-              <g id="a06-reactive" style="opacity:0;transition:opacity .4s ease;">
-                <circle cx="395" cy="154" r="48" fill="#F7E7CD" fill-opacity=".7" stroke="#CE8A33" stroke-width="6" stroke-dasharray="10 8"/>
-                <circle cx="782" cy="154" r="48" fill="#F7E7CD" fill-opacity=".7" stroke="#CE8A33" stroke-width="6" stroke-dasharray="10 8"/>
-              </g>
-              <g id="a06-water" style="opacity:0;transition:opacity .4s ease;">
-                <path d="M535 195C535 155 600 91 600 91S665 155 665 195A65 65 0 1 1 535 195Z" fill="#DCE7EB" stroke="#4E7F92" stroke-width="6"/>
-                <text x="600" y="215" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="38" font-weight="700" fill="#1A1A1A">H₂O</text>
-                <path d="M600 285V360" fill="none" stroke="#514C44" stroke-width="6" marker-end="url(#arrow)"/>
-              </g>
-              <g id="a06-link" style="opacity:0;transition:opacity .4s ease;">
-                <path id="a06LinkPath" d="M425 162C505 112 695 112 775 162" fill="none" stroke="#2D8B6F" stroke-width="10" stroke-linecap="round"/>
-                <circle id="a06LinkO" cx="600" cy="126" r="25" fill="#FFFFFF" stroke="#2D8B6F" stroke-width="6"/>
-                <text id="a06LinkOText" x="600" y="137" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="30" font-weight="800" fill="#1B5E48">O</text>
-              </g>
-            </svg>
+            <!-- Header bar of anim-display with view switch tabs -->
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding:0 4px;">
+              <div style="font-size:.76rem;font-weight:700;color:var(--ink-2);text-transform:uppercase;letter-spacing:.5px;">
+                <i class="ti ti-atom"></i> Mô hình hình thành liên kết
+              </div>
+              <div class="anim-view-tabs">
+                <button class="anim-vtab active" id="btnViewMol" type="button"><i class="ti ti-atom-2"></i> Cấu trúc hóa học</button>
+                <button class="anim-vtab" id="btnViewReal" type="button"><i class="ti ti-leaf"></i> Sản phẩm thực tế (Đường mía)</button>
+              </div>
+            </div>
+
+            <!-- Chế độ 1: Cấu trúc hóa học phân tử SVG -->
+            <div id="s03MolView">
+              <svg id="svgA06" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-label="Hoạt cảnh hình thành đường đôi">
+                <defs>
+                  <filter id="a06Glow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#2D8B6F" flood-opacity="0.4"/>
+                  </filter>
+                  <filter id="a06WaterGlow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#0284C7" flood-opacity="0.35"/>
+                  </filter>
+                  <linearGradient id="a06LinkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#1B5E48"/>
+                    <stop offset="50%" stop-color="#2D8B6F"/>
+                    <stop offset="100%" stop-color="#1B5E48"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- KHUNG HỢP NHẤT PHÂN TỬ ĐƯỜNG ĐÔI SUCROSE (HIỆN Ở BƯỚC 4) -->
+                <g id="a06SucroseContainer" style="opacity:0; transition: opacity .5s ease;" filter="url(#a06Glow)">
+                  <rect x="18" y="38" width="1164" height="444" rx="16" fill="#FFFFFF" stroke="#1B5E48" stroke-width="2.5"/>
+                  <rect x="310" y="12" width="580" height="34" rx="17" fill="#1B5E48" filter="url(#a06Glow)"/>
+                  <text x="600" y="34" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">⭐ PHÂN TỬ ĐƯỜNG ĐÔI: SUCROSE (C₁₂H₂₂O₁₁)</text>
+                  <!-- Nhãn thành phần hợp nhất ở bước 4 -->
+                  <text x="250" y="440" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="18" font-weight="700" fill="#1B5E48">Gốc α-Glucose</text>
+                  <text x="950" y="440" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="18" font-weight="700" fill="#1B5E48">Gốc β-Fructose</text>
+                </g>
+
+                <!-- Hai đơn phân Glucose và Fructose -->
+                <g id="a06-monosaccharides">
+                  <!-- Thẻ Glucose bên trái -->
+                  <g id="a06CardGlucose" style="transition: transform .7s cubic-bezier(0.25, 1, 0.5, 1);">
+                    <rect id="a06BoxGlucose" x="25" y="45" width="450" height="380" rx="14" fill="#FFFFFF" stroke="#E6E1D8" stroke-width="1.5" style="transition: opacity .4s;"/>
+                    <image href="images/SH10-B05-M01-A02.svg" x="30" y="55" width="440" height="310" preserveAspectRatio="xMidYMid meet"/>
+                    <text id="a06LabelGlucose" x="250" y="402" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="20" font-weight="700" fill="#2E2822" style="transition: opacity .4s;">Glucose (Đơn phân 1 · C₆H₁₂O₆)</text>
+                    <!-- Miếng che nhóm OH đã tách khỏi C1 ở bước 2-4 -->
+                    <ellipse id="a06MaskOH" cx="401" cy="154" rx="28" ry="20" fill="#FFFFFF" style="opacity:0; transition: opacity .3s;"/>
+                  </g>
+
+                  <!-- Thẻ Fructose bên phải -->
+                  <g id="a06CardFructose" style="transition: transform .7s cubic-bezier(0.25, 1, 0.5, 1);">
+                    <rect id="a06BoxFructose" x="725" y="45" width="450" height="380" rx="14" fill="#FFFFFF" stroke="#E6E1D8" stroke-width="1.5" style="transition: opacity .4s;"/>
+                    <image href="images/SH10-B05-M01-A04.svg" x="730" y="55" width="440" height="310" preserveAspectRatio="xMidYMid meet"/>
+                    <text id="a06LabelFructose" x="950" y="402" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="20" font-weight="700" fill="#2E2822" style="transition: opacity .4s;">Fructose (Đơn phân 2 · C₆H₁₂O₆)</text>
+                    <!-- Miếng che phản ứng ở fructose -->
+                    <ellipse id="a06MaskH" cx="782" cy="154" rx="28" ry="20" fill="#FFFFFF" style="opacity:0; transition: opacity .3s;"/>
+                  </g>
+                </g>
+
+                <!-- BƯỚC 1 & 2: Nhóm phản ứng OH và H -->
+                <g id="a06-reactive" style="opacity:0; transition: opacity .4s ease;">
+                  <g id="a06PinOH" style="transition: transform .8s cubic-bezier(0.34, 1.3, 0.64, 1), opacity .5s ease;">
+                    <circle cx="401" cy="154" r="32" fill="#E8F5E9" fill-opacity="0.95" stroke="#2D8B6F" stroke-width="3.5" class="a06-pulse"/>
+                    <text x="401" y="162" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="20" font-weight="800" fill="#1B5E48">–OH</text>
+                    <text x="401" y="112" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="14" font-weight="700" fill="#2D8B6F">Nhóm –OH tại C1</text>
+                  </g>
+                  <g id="a06PinH" style="transition: transform .8s cubic-bezier(0.34, 1.3, 0.64, 1), opacity .5s ease;">
+                    <circle cx="782" cy="154" r="32" fill="#FFF7ED" fill-opacity="0.95" stroke="#EA580C" stroke-width="3.5" class="a06-pulse"/>
+                    <text x="782" y="162" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="20" font-weight="800" fill="#C2410C">–H</text>
+                    <text x="782" y="112" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="14" font-weight="700" fill="#EA580C">Nguyên tử –H</text>
+                  </g>
+                </g>
+
+                <!-- BƯỚC 2: Phân tử H2O hình thành từ -OH và -H -->
+                <g id="a06-water" style="opacity:0; transition: all .6s ease;" filter="url(#a06WaterGlow)">
+                  <g id="a06WaterDrop" style="transition: transform .6s ease;">
+                    <circle cx="600" cy="225" r="32" fill="#E0F2FE" stroke="#0284C7" stroke-width="4"/>
+                    <text x="600" y="234" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="24" font-weight="800" fill="#0369A1">H₂O</text>
+                    <rect x="490" y="270" width="220" height="30" rx="15" fill="#F0F9FF" stroke="#0284C7" stroke-width="2"/>
+                    <text x="600" y="290" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="14" font-weight="700" fill="#0369A1">+ Tách 1 phân tử H₂O (ngưng tụ)</text>
+                  </g>
+                </g>
+
+                <!-- BƯỚC 3 & 4: Cầu liên kết Glycosidic -->
+                <g id="a06-link" style="opacity:0; transition: opacity .4s ease;">
+                  <path id="a06LinkPath" d="M 401 154 C 480 92, 720 92, 782 154" fill="none" stroke="url(#a06LinkGrad)" stroke-width="9" stroke-linecap="round" filter="url(#a06Glow)"/>
+                  <g id="a06LinkO" transform="translate(600, 120)" style="transition: transform .5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity .4s ease;">
+                    <circle r="26" fill="#FFFFFF" stroke="#1B5E48" stroke-width="5" filter="url(#a06Glow)"/>
+                    <text y="9" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="28" font-weight="900" fill="#1B5E48">O</text>
+                  </g>
+                  <g id="a06LinkBadge" style="opacity:0; transition: opacity .4s ease;">
+                    <rect x="425" y="58" width="350" height="28" rx="14" fill="#E8F5E9" stroke="#2D8B6F" stroke-width="2"/>
+                    <text x="600" y="76" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="14" font-weight="800" fill="#1B5E48">Liên kết α-1,2-glycosidic (–O–)</text>
+                  </g>
+                </g>
+
+                <!-- BƯỚC 4: Phân tử nước tách ra ở trung tâm thoáng đãng -->
+                <g id="a06WaterProduct" style="opacity:0; transition: opacity .5s ease;" transform="translate(600, 255)">
+                  <circle r="26" fill="#E0F2FE" stroke="#0284C7" stroke-width="3.5" filter="url(#a06WaterGlow)"/>
+                  <text y="7" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="18" font-weight="800" fill="#0369A1">H₂O</text>
+                  <rect x="-65" y="32" width="130" height="24" rx="12" fill="#F0F9FF" stroke="#0284C7" stroke-width="1.5"/>
+                  <text y="48" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="12" font-weight="700" fill="#0369A1">+ H₂O giải phóng</text>
+                </g>
+              </svg>
+            </div>
+
+            <!-- Chế độ 2: Sản phẩm thực tế trong đời sống (Đường mía) -->
+            <div id="s03RealView" class="hidden" style="padding:10px;text-align:left;animation:fadeIn .3s ease;">
+              <div style="display:grid;grid-template-columns:180px 1fr;gap:14px;align-items:center;">
+                <!-- Vector đồ họa Cây mía & Đĩa đường kết tinh -->
+                <div style="background:var(--cream);border:1.5px solid var(--paper-line-2);border-radius:12px;padding:12px;text-align:center;">
+                  <svg viewBox="0 0 160 170" width="100%" height="150" aria-hidden="true">
+                    <!-- Thân cây mía -->
+                    <rect x="35" y="15" width="18" height="110" rx="4" fill="#A4C2A5" stroke="#3D6B42" stroke-width="2.5"/>
+                    <line x1="33" y1="45" x2="55" y2="45" stroke="#2D5A32" stroke-width="3"/>
+                    <line x1="33" y1="75" x2="55" y2="75" stroke="#2D5A32" stroke-width="3"/>
+                    <line x1="33" y1="105" x2="55" y2="105" stroke="#2D5A32" stroke-width="3"/>
+                    <!-- Lá mía cong mềm -->
+                    <path d="M44 45 C22 18, 8 32, 4 44" fill="none" stroke="#38703E" stroke-width="3.5" stroke-linecap="round"/>
+                    <path d="M44 75 C68 48, 85 64, 90 74" fill="none" stroke="#38703E" stroke-width="3.5" stroke-linecap="round"/>
+                    <!-- Đĩa đường cát trắng -->
+                    <ellipse cx="105" cy="142" rx="46" ry="16" fill="#EDE8DF" stroke="#8C8275" stroke-width="2"/>
+                    <ellipse cx="105" cy="138" rx="40" ry="12" fill="#FFFFFF"/>
+                    <!-- Tinh thể lấp lánh -->
+                    <polygon points="105,124 108,131 115,133 110,138 111,145 105,141 99,145 100,138 95,133 102,131" fill="#FBBF24" opacity=".85"/>
+                    <circle cx="86" cy="137" r="2.5" fill="#CBD5E1"/>
+                    <circle cx="124" cy="136" r="3" fill="#CBD5E1"/>
+                    <circle cx="105" cy="140" r="2.5" fill="#94A3B8"/>
+                  </svg>
+                  <div style="font-size:.78rem;font-weight:700;color:var(--ink);margin-top:4px;">Cây mía & Đường cát trắng</div>
+                </div>
+
+                <!-- Thẻ thông tin sản phẩm -->
+                <div>
+                  <div style="display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:12px;background:var(--jade-light);color:var(--jade-dark);font-size:.75rem;font-weight:700;margin-bottom:6px;">
+                    <i class="ti ti-check-circle"></i> Sản phẩm đường đôi trong đời sống
+                  </div>
+                  <h3 style="font-size:1.05rem;color:var(--ink);margin:0 0 6px;">Đường mía (Sucrose · C₁₂H₂₂O₁₁)</h3>
+                  <p style="font-size:.78rem;color:var(--ink-2);margin:0 0 8px;line-height:1.45;">
+                    Sucrose là loại đường phổ biến nhất trong đời sống, được kết tinh từ dịch ép <b>thân cây mía</b> (chứa 13–15%) hoặc <b>củ cải đường</b>.
+                  </p>
+                  <div style="font-size:.76rem;color:var(--ink-2);line-height:1.45;background:#fff;padding:8px 10px;border-radius:6px;border:1px solid var(--paper-line);">
+                    <div>• <b>Trong thực vật:</b> Là dạng đường vận chuyển chủ yếu trong mạch rây từ lá (nơi quang hợp) đến thân, rễ và củ để nuôi cây hoặc tích trữ.</div>
+                    <div style="margin-top:4px;">• <b>Trong cơ thể người:</b> Phân giải thành 1 Glucose + 1 Fructose, cung cấp năng lượng nhanh chóng cho các hoạt động sống.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="stepper-bar">
-            <div class="step-pill" id="pill-1">1. Định vị -OH & -H</div>
-            <div class="step-pill" id="pill-2">2. Tách nước (H₂O)</div>
-            <div class="step-pill" id="pill-3">3. Liên kết Glycosidic</div>
-            <div class="step-pill" id="pill-4">4. Sản phẩm Sucrose</div>
+            <div class="step-pill" id="pill-1" role="button" tabindex="0">1. Định vị –OH & –H</div>
+            <div class="step-pill" id="pill-2" role="button" tabindex="0">2. Tách nước (H₂O)</div>
+            <div class="step-pill" id="pill-3" role="button" tabindex="0">3. Liên kết Glycosidic</div>
+            <div class="step-pill" id="pill-4" role="button" tabindex="0">4. Sản phẩm Sucrose</div>
+          </div>
+
+          <!-- Chú thích chi tiết từng bước phản ứng -->
+          <div id="s03StepDesc" class="step-desc-card">
+            <div class="step-desc-head"><i class="ti ti-compass"></i> <span id="s03StepHead">Hướng dẫn quan sát</span></div>
+            <div class="step-desc-body" id="s03StepBody">Bấm nút <b>"Tạo liên kết (Chạy hoạt cảnh)"</b> hoặc chọn trực tiếp từng bước ở thanh trên để quan sát cơ chế hình thành liên kết glycosidic.</div>
           </div>
 
           <div style="display:flex;gap:10px;margin-top:12px;">
@@ -1146,15 +1351,15 @@
               <!-- Cột phải: Thành phần đơn phân -->
               <div id="colMonosaccharides">
                 <button class="match-btn" data-type="monosac" data-target="sucrose" id="btn-mono-sucrose">
-                  <span class="match-pin pin-left" id="pin-s03-sucrose-right"></span>
+                  <span class="match-pin pin-left" id="pin-s03-mono-sucrose"></span>
                   <span>Glucose + Fructose</span>
                 </button>
                 <button class="match-btn" data-type="monosac" data-target="maltose" id="btn-mono-maltose">
-                  <span class="match-pin pin-left" id="pin-s03-maltose-right"></span>
+                  <span class="match-pin pin-left" id="pin-s03-mono-maltose"></span>
                   <span>Glucose + Glucose</span>
                 </button>
                 <button class="match-btn" data-type="monosac" data-target="lactose" id="btn-mono-lactose">
-                  <span class="match-pin pin-left" id="pin-s03-lactose-right"></span>
+                  <span class="match-pin pin-left" id="pin-s03-mono-lactose"></span>
                   <span>Glucose + Galactose</span>
                 </button>
               </div>
@@ -1278,22 +1483,29 @@
           <div style="font-size:.92rem;font-weight:700;margin-bottom:8px;color:var(--ink);">
             3. Ghép chất dự trữ với nhóm sinh vật tương ứng:
           </div>
-          <div class="matching-cols">
-            <div id="colStorageSource">
-              <button class="match-btn" data-type="storage" data-id="starch">
-                <span><b>Tinh bột</b></span>
-              </button>
-              <button class="match-btn" data-type="storage" data-id="glycogen">
-                <span><b>Glycogen</b></span>
-              </button>
-            </div>
-            <div id="colStorageTarget">
-              <button class="match-btn" data-type="organism" data-target="starch">
-                <span>Thực vật (hạt, củ, thân rễ)</span>
-              </button>
-              <button class="match-btn" data-type="organism" data-target="glycogen">
-                <span>Động vật (gan, cơ) & Nấm</span>
-              </button>
+          <div class="matching-container" id="s04MatchContainer">
+            <svg class="match-svg-canvas" id="s04MatchSvg" aria-hidden="true"></svg>
+            <div class="matching-cols">
+              <div id="colStorageSource">
+                <button class="match-btn" data-type="storage" data-id="starch">
+                  <span><b>Tinh bột</b></span>
+                  <span class="match-pin pin-right" id="pin-s04-starch"></span>
+                </button>
+                <button class="match-btn" data-type="storage" data-id="glycogen">
+                  <span><b>Glycogen</b></span>
+                  <span class="match-pin pin-right" id="pin-s04-glycogen"></span>
+                </button>
+              </div>
+              <div id="colStorageTarget">
+                <button class="match-btn" data-type="organism" data-target="starch" id="btn-org-starch">
+                  <span class="match-pin pin-left" id="pin-s04-org-starch"></span>
+                  <span>Thực vật (hạt, củ, thân rễ)</span>
+                </button>
+                <button class="match-btn" data-type="organism" data-target="glycogen" id="btn-org-glycogen">
+                  <span class="match-pin pin-left" id="pin-s04-org-glycogen"></span>
+                  <span>Động vật (gan, cơ) & Nấm</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -1415,22 +1627,29 @@
           <div style="font-size:.92rem;font-weight:700;margin-bottom:8px;color:var(--ink);">
             3. Phân loại các polysaccharide theo vai trò sinh học chính:
           </div>
-          <div class="matching-cols">
-            <div id="colRoleTarget">
-              <button class="match-btn" data-type="groupRole" data-id="storageGroup">
-                <span><b>Dự trữ năng lượng</b></span>
-              </button>
-              <button class="match-btn" data-type="groupRole" data-id="structGroup">
-                <span><b>Tạo cấu trúc bền chắc</b></span>
-              </button>
-            </div>
-            <div id="colRoleSource">
-              <button class="match-btn" data-type="polysac" data-target="storageGroup">
-                <span>Tinh bột & Glycogen</span>
-              </button>
-              <button class="match-btn" data-type="polysac" data-target="structGroup">
-                <span>Cellulose & Chitin</span>
-              </button>
+          <div class="matching-container" id="s05MatchContainer">
+            <svg class="match-svg-canvas" id="s05MatchSvg" aria-hidden="true"></svg>
+            <div class="matching-cols">
+              <div id="colRoleTarget">
+                <button class="match-btn" data-type="groupRole" data-id="storageGroup">
+                  <span><b>Dự trữ năng lượng</b></span>
+                  <span class="match-pin pin-right" id="pin-s05-storageGroup"></span>
+                </button>
+                <button class="match-btn" data-type="groupRole" data-id="structGroup">
+                  <span><b>Tạo cấu trúc bền chắc</b></span>
+                  <span class="match-pin pin-right" id="pin-s05-structGroup"></span>
+                </button>
+              </div>
+              <div id="colRoleSource">
+                <button class="match-btn" data-type="polysac" data-target="storageGroup" id="btn-src-storageGroup">
+                  <span class="match-pin pin-left" id="pin-s05-src-storageGroup"></span>
+                  <span>Tinh bột & Glycogen</span>
+                </button>
+                <button class="match-btn" data-type="polysac" data-target="structGroup" id="btn-src-structGroup">
+                  <span class="match-pin pin-left" id="pin-s05-src-structGroup"></span>
+                  <span>Cellulose & Chitin</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -1470,7 +1689,7 @@
             </div>
             <img src="images/SH10-B05-M01-A12.svg" alt="Sơ đồ chất xơ hỗ trợ ruột già" style="width:100%;max-height:180px;object-fit:contain;">
             <div style="font-size:.78rem;color:var(--ink-2);margin-top:6px;line-height:1.45;">
-              Cellulose trong thức ăn giữ nước, làm tăng thể tích khối phân $\rightarrow$ kích thích nhu động ruột $\rightarrow$ hỗ trợ tiêu hóa và phòng ngừa táo bón.
+              Cellulose trong thức ăn giữ nước, làm tăng thể tích khối phân &rarr; kích thích nhu động ruột &rarr; hỗ trợ tiêu hóa và phòng ngừa táo bón.
             </div>
           </div>
 
@@ -1541,28 +1760,37 @@
           <div style="font-size:.92rem;font-weight:700;margin-bottom:8px;color:var(--ink);">
             3. Ghép đặc điểm cấu trúc với vai trò sinh học tương ứng:
           </div>
-          <div class="matching-cols">
-            <div id="colCoreStruct">
-              <button class="match-btn" data-type="coreStruct" data-id="cGlucose">
-                <span><b>Glucose</b> (kích thước nhỏ)</span>
-              </button>
-              <button class="match-btn" data-type="coreStruct" data-id="cGlycogen">
-                <span><b>Glycogen</b> (phân nhánh mạnh)</span>
-              </button>
-              <button class="match-btn" data-type="coreStruct" data-id="cCellulose">
-                <span><b>Cellulose</b> (chuỗi thẳng bó sợi)</span>
-              </button>
-            </div>
-            <div id="colCoreRole">
-              <button class="match-btn" data-type="coreRole" data-target="cGlycogen">
-                <span>Nhiều đầu mạch giúp huy động nhanh glucose dự trữ</span>
-              </button>
-              <button class="match-btn" data-type="coreRole" data-target="cCellulose">
-                <span>Tạo độ bền cơ học vững chắc cho thành tế bào</span>
-              </button>
-              <button class="match-btn" data-type="coreRole" data-target="cGlucose">
-                <span>Nguyên liệu trực tiếp tạo năng lượng cho tế bào</span>
-              </button>
+          <div class="matching-container" id="s06MatchContainer">
+            <svg class="match-svg-canvas" id="s06MatchSvg" aria-hidden="true"></svg>
+            <div class="matching-cols">
+              <div id="colCoreStruct">
+                <button class="match-btn" data-type="coreStruct" data-id="cGlucose">
+                  <span><b>Glucose</b> (kích thước nhỏ)</span>
+                  <span class="match-pin pin-right" id="pin-s06-cGlucose"></span>
+                </button>
+                <button class="match-btn" data-type="coreStruct" data-id="cGlycogen">
+                  <span><b>Glycogen</b> (phân nhánh mạnh)</span>
+                  <span class="match-pin pin-right" id="pin-s06-cGlycogen"></span>
+                </button>
+                <button class="match-btn" data-type="coreStruct" data-id="cCellulose">
+                  <span><b>Cellulose</b> (chuỗi thẳng bó sợi)</span>
+                  <span class="match-pin pin-right" id="pin-s06-cCellulose"></span>
+                </button>
+              </div>
+              <div id="colCoreRole">
+                <button class="match-btn" data-type="coreRole" data-target="cGlycogen" id="btn-role-cGlycogen">
+                  <span class="match-pin pin-left" id="pin-s06-role-cGlycogen"></span>
+                  <span>Nhiều đầu mạch giúp huy động nhanh glucose dự trữ</span>
+                </button>
+                <button class="match-btn" data-type="coreRole" data-target="cCellulose" id="btn-role-cCellulose">
+                  <span class="match-pin pin-left" id="pin-s06-role-cCellulose"></span>
+                  <span>Tạo độ bền cơ học vững chắc cho thành tế bào</span>
+                </button>
+                <button class="match-btn" data-type="coreRole" data-target="cGlucose" id="btn-role-cGlucose">
+                  <span class="match-pin pin-left" id="pin-s06-role-cGlucose"></span>
+                  <span>Nguyên liệu trực tiếp tạo năng lượng cho tế bào</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -1706,9 +1934,12 @@
     state.currentStage = index;
     LMS().state({ currentStage: index });
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    if(index === 2 && typeof updateAllS03Connections === 'function'){
-      setTimeout(() => updateAllS03Connections(false), 120);
-    }
+    setTimeout(() => {
+      if(index === 2 && typeof s03Connector !== 'undefined') s03Connector.update(state.s03_pairs, false);
+      if(index === 3 && typeof s04Connector !== 'undefined') s04Connector.update(state.s04_pairs, false);
+      if(index === 4 && typeof s05Connector !== 'undefined') s05Connector.update(state.s05_pairs, false);
+      if(index === 5 && typeof s06Connector !== 'undefined') s06Connector.update(state.s06_pairs, false);
+    }, 120);
     setTimeout(reportHeight, 150);
   }
 
@@ -1921,136 +2152,359 @@
   /* =======================================================
      STAGE 3 LOGIC: ĐƯỜNG ĐÔI
      ======================================================= */
+  const btnViewMol = document.getElementById('btnViewMol');
+  const btnViewReal = document.getElementById('btnViewReal');
+  const s03MolView = document.getElementById('s03MolView');
+  const s03RealView = document.getElementById('s03RealView');
+
+  function switchS03View(mode){
+    if(!btnViewReal || !btnViewMol || !s03MolView || !s03RealView) return;
+    if(mode === 'real'){
+      btnViewReal.classList.add('active');
+      btnViewMol.classList.remove('active');
+      s03MolView.classList.add('hidden');
+      s03RealView.classList.remove('hidden');
+    } else {
+      btnViewMol.classList.add('active');
+      btnViewReal.classList.remove('active');
+      s03RealView.classList.add('hidden');
+      s03MolView.classList.remove('hidden');
+    }
+    reportHeight();
+  }
+
+  if(btnViewMol) btnViewMol.addEventListener('click', () => switchS03View('mol'));
+  if(btnViewReal) btnViewReal.addEventListener('click', () => switchS03View('real'));
+
   const btnRunReaction = document.getElementById('btnRunReaction');
   const a06Reactive = document.getElementById('a06-reactive');
+  const a06PinOH = document.getElementById('a06PinOH');
+  const a06PinH = document.getElementById('a06PinH');
   const a06Water = document.getElementById('a06-water');
+  const a06WaterDrop = document.getElementById('a06WaterDrop');
   const a06Link = document.getElementById('a06-link');
   const a06LinkPath = document.getElementById('a06LinkPath');
   const a06LinkO = document.getElementById('a06LinkO');
-  const a06LinkOText = document.getElementById('a06LinkOText');
+  const a06LinkBadge = document.getElementById('a06LinkBadge');
+
+  const a06CardGlucose = document.getElementById('a06CardGlucose');
+  const a06CardFructose = document.getElementById('a06CardFructose');
+  const a06BoxGlucose = document.getElementById('a06BoxGlucose');
+  const a06BoxFructose = document.getElementById('a06BoxFructose');
+  const a06LabelGlucose = document.getElementById('a06LabelGlucose');
+  const a06LabelFructose = document.getElementById('a06LabelFructose');
+  const a06MaskOH = document.getElementById('a06MaskOH');
+  const a06MaskH = document.getElementById('a06MaskH');
+  const a06SucroseContainer = document.getElementById('a06SucroseContainer');
+  const a06WaterProduct = document.getElementById('a06WaterProduct');
+
   const pill1 = document.getElementById('pill-1');
   const pill2 = document.getElementById('pill-2');
   const pill3 = document.getElementById('pill-3');
   const pill4 = document.getElementById('pill-4');
+  const s03StepHead = document.getElementById('s03StepHead');
+  const s03StepBody = document.getElementById('s03StepBody');
   const s03Feedback = document.getElementById('s03Feedback');
   const btnNextS03 = document.getElementById('btnNext-s03');
 
-  btnRunReaction.addEventListener('click', () => {
-    btnRunReaction.disabled = true;
-    // Bước 1: Nổi bật nhóm OH và H
-    pill1.className = 'step-pill active';
-    a06Reactive.style.opacity = '1';
+  const stepDetails = {
+    0: {
+      head: 'Hướng dẫn quan sát',
+      body: 'Bấm nút <b>"Tạo liên kết (Chạy hoạt cảnh)"</b> hoặc chọn trực tiếp từng bước ở thanh trên để quan sát cơ chế hình thành liên kết glycosidic.'
+    },
+    1: {
+      head: 'Bước 1 / 4: Định vị nhóm tham gia phản ứng',
+      body: 'Loại một nhóm <b>–OH</b> ở carbon số 1 của glucose và một nguyên tử <b>–H</b> ở phân tử fructose.'
+    },
+    2: {
+      head: 'Bước 2 / 4: Hình thành và tách phân tử nước (H₂O)',
+      body: 'Nhóm <b>–OH</b> và nguyên tử <b>–H</b> tách ra từ hai vị trí phản ứng, tiến lại gần nhau và kết hợp thành phân tử <b>H₂O</b> giải phóng ra ngoài.'
+    },
+    3: {
+      head: 'Bước 3 / 4: Hình thành cầu liên kết Glycosidic',
+      body: 'Tại hai vị trí vừa tách –OH và –H, hình thành <b>cầu liên kết glycosidic (–O–)</b> vững chắc nối liền hai vòng đơn phân.'
+    },
+    4: {
+      head: 'Bước 4 / 4: Sản phẩm ổn định – Phân tử đường đôi Sucrose',
+      body: `Hai đơn phân đã hợp nhất hoàn toàn tạo thành <b>một phân tử đường đôi Sucrose (C₁₂H₂₂O₁₁)</b> duy nhất.
+      <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;">
+        <button class="btn btn-secondary btn-sm" id="btnInspectReal" type="button" style="font-size:.76rem;padding:5px 10px;">
+          <i class="ti ti-leaf"></i> Xem sản phẩm trong đời sống (Đường mía)
+        </button>
+      </div>`
+    }
+  };
 
-    setTimeout(() => {
-      // Bước 2: Tách nước
-      pill1.className = 'step-pill done';
-      pill2.className = 'step-pill active';
-      a06Water.style.opacity = '1';
-    }, 1200);
+  let animTimer = null;
+  function clearAnimTimers(){
+    if(animTimer){
+      clearTimeout(animTimer);
+      animTimer = null;
+    }
+  }
 
-    setTimeout(() => {
-      // Bước 3: Tạo liên kết glycosidic với hiệu ứng vẽ nét (stroke animation)
-      pill2.className = 'step-pill done';
-      pill3.className = 'step-pill active';
-      a06Link.style.opacity = '1';
-      if(a06LinkPath){
-        const len = a06LinkPath.getTotalLength() || 400;
-        a06LinkPath.style.strokeDasharray = len;
-        a06LinkPath.style.strokeDashoffset = len;
-        a06LinkPath.getBoundingClientRect(); // reflow
-        a06LinkPath.style.transition = 'stroke-dashoffset 0.8s cubic-bezier(0.25, 1, 0.5, 1)';
-        a06LinkPath.style.strokeDashoffset = '0';
+  function setS03Step(step){
+    if(s03StepHead && s03StepBody && stepDetails[step]){
+      s03StepHead.textContent = stepDetails[step].head;
+      s03StepBody.innerHTML = stepDetails[step].body;
+      const btnInspect = document.getElementById('btnInspectReal');
+      if(btnInspect) btnInspect.addEventListener('click', () => switchS03View('real'));
+    }
+
+    [pill1, pill2, pill3, pill4].forEach((p, i) => {
+      const idx = i + 1;
+      if(idx < step){
+        p.className = 'step-pill done';
+      } else if(idx === step){
+        p.className = 'step-pill active';
+      } else {
+        p.className = 'step-pill';
       }
-      if(a06LinkO && a06LinkOText){
-        a06LinkO.style.opacity = '0';
-        a06LinkOText.style.opacity = '0';
-        setTimeout(() => {
-          a06LinkO.style.transition = 'opacity .4s ease';
-          a06LinkOText.style.transition = 'opacity .4s ease';
+    });
+
+    if(step === 0 || step === 1){
+      switchS03View('mol');
+      if(a06CardGlucose) a06CardGlucose.style.transform = 'translateX(0px)';
+      if(a06CardFructose) a06CardFructose.style.transform = 'translateX(0px)';
+      if(a06BoxGlucose) a06BoxGlucose.style.opacity = '1';
+      if(a06BoxFructose) a06BoxFructose.style.opacity = '1';
+      if(a06LabelGlucose) a06LabelGlucose.style.opacity = '1';
+      if(a06LabelFructose) a06LabelFructose.style.opacity = '1';
+      if(a06MaskOH) a06MaskOH.style.opacity = '0';
+      if(a06MaskH) a06MaskH.style.opacity = '0';
+      if(a06SucroseContainer) a06SucroseContainer.style.opacity = '0';
+      if(a06WaterProduct) a06WaterProduct.style.opacity = '0';
+      if(a06LinkPath) a06LinkPath.setAttribute('d', 'M 401 154 C 480 92, 720 92, 782 154');
+      if(a06LinkO) a06LinkO.style.transform = 'translate(600px, 120px) scale(0)';
+      if(a06LinkBadge) a06LinkBadge.style.opacity = '0';
+
+      if(step === 0){
+        if(a06Reactive) a06Reactive.style.opacity = '0';
+        if(a06PinOH){ a06PinOH.style.transform = 'translate(0px, 0px)'; a06PinOH.style.opacity = '1'; }
+        if(a06PinH){ a06PinH.style.transform = 'translate(0px, 0px)'; a06PinH.style.opacity = '1'; }
+        if(a06Water) a06Water.style.opacity = '0';
+        if(a06Link) a06Link.style.opacity = '0';
+      } else {
+        if(a06Reactive) a06Reactive.style.opacity = '1';
+        if(a06PinOH){ a06PinOH.style.transform = 'translate(0px, 0px)'; a06PinOH.style.opacity = '1'; }
+        if(a06PinH){ a06PinH.style.transform = 'translate(0px, 0px)'; a06PinH.style.opacity = '1'; }
+        if(a06Water) a06Water.style.opacity = '0';
+        if(a06Link) a06Link.style.opacity = '0';
+      }
+    } else if(step === 2){
+      switchS03View('mol');
+      if(a06CardGlucose) a06CardGlucose.style.transform = 'translateX(0px)';
+      if(a06CardFructose) a06CardFructose.style.transform = 'translateX(0px)';
+      if(a06BoxGlucose) a06BoxGlucose.style.opacity = '1';
+      if(a06BoxFructose) a06BoxFructose.style.opacity = '1';
+      if(a06LabelGlucose) a06LabelGlucose.style.opacity = '1';
+      if(a06LabelFructose) a06LabelFructose.style.opacity = '1';
+      if(a06MaskOH) a06MaskOH.style.opacity = '1';
+      if(a06MaskH) a06MaskH.style.opacity = '1';
+      if(a06SucroseContainer) a06SucroseContainer.style.opacity = '0';
+      if(a06WaterProduct) a06WaterProduct.style.opacity = '0';
+      if(a06LinkPath) a06LinkPath.setAttribute('d', 'M 401 154 C 480 92, 720 92, 782 154');
+      if(a06LinkO) a06LinkO.style.transform = 'translate(600px, 120px) scale(0)';
+      if(a06LinkBadge) a06LinkBadge.style.opacity = '0';
+
+      if(a06Reactive) a06Reactive.style.opacity = '1';
+      if(a06PinOH){ a06PinOH.style.transform = 'translate(170px, 50px) scale(0.85)'; a06PinOH.style.opacity = '0'; }
+      if(a06PinH){ a06PinH.style.transform = 'translate(-170px, 50px) scale(0.85)'; a06PinH.style.opacity = '0'; }
+      if(a06Water){
+        a06Water.style.opacity = '1';
+        if(a06WaterDrop) a06WaterDrop.style.transform = 'translate(0px, 16px)';
+      }
+      if(a06Link) a06Link.style.opacity = '0';
+    } else if(step === 3){
+      switchS03View('mol');
+      if(a06CardGlucose) a06CardGlucose.style.transform = 'translateX(0px)';
+      if(a06CardFructose) a06CardFructose.style.transform = 'translateX(0px)';
+      if(a06BoxGlucose) a06BoxGlucose.style.opacity = '1';
+      if(a06BoxFructose) a06BoxFructose.style.opacity = '1';
+      if(a06LabelGlucose) a06LabelGlucose.style.opacity = '1';
+      if(a06LabelFructose) a06LabelFructose.style.opacity = '1';
+      if(a06MaskOH) a06MaskOH.style.opacity = '1';
+      if(a06MaskH) a06MaskH.style.opacity = '1';
+      if(a06SucroseContainer) a06SucroseContainer.style.opacity = '0';
+      if(a06WaterProduct) a06WaterProduct.style.opacity = '0';
+
+      if(a06Reactive) a06Reactive.style.opacity = '0';
+      if(a06Water){
+        a06Water.style.opacity = '0.3';
+        if(a06WaterDrop) a06WaterDrop.style.transform = 'translate(0px, 20px)';
+      }
+      if(a06Link){
+        a06Link.style.opacity = '1';
+        if(a06LinkPath){
+          a06LinkPath.setAttribute('d', 'M 401 154 C 480 92, 720 92, 782 154');
+          const len = a06LinkPath.getTotalLength() || 460;
+          a06LinkPath.style.strokeDasharray = len;
+          a06LinkPath.style.strokeDashoffset = len;
+          a06LinkPath.getBoundingClientRect(); // reflow
+          a06LinkPath.style.transition = 'stroke-dashoffset 0.8s cubic-bezier(0.25, 1, 0.5, 1)';
+          a06LinkPath.style.strokeDashoffset = '0';
+        }
+        if(a06LinkO){
+          a06LinkO.style.opacity = '0';
+          a06LinkO.style.transform = 'translate(600px, 120px) scale(0.2)';
+          setTimeout(() => {
+            a06LinkO.style.opacity = '1';
+            a06LinkO.style.transform = 'translate(600px, 120px) scale(1)';
+          }, 350);
+        }
+        if(a06LinkBadge){
+          a06LinkBadge.style.opacity = '0';
+          setTimeout(() => { a06LinkBadge.style.opacity = '1'; }, 450);
+        }
+      }
+    } else if(step === 4){
+      switchS03View('mol');
+      // BƯỚC 4: HỢP NHẤT THÀNH MỘT PHÂN TỬ SUCROSE DUY NHẤT!
+      if(a06Reactive) a06Reactive.style.opacity = '0';
+      if(a06Water) a06Water.style.opacity = '0';
+      if(a06MaskOH) a06MaskOH.style.opacity = '1';
+      if(a06MaskH) a06MaskH.style.opacity = '1';
+
+      // Giữ vị trí chuẩn tự nhiên (không dồn ép làm che khuất chữ hay méo liên kết)
+      if(a06CardGlucose) a06CardGlucose.style.transform = 'translateX(0px)';
+      if(a06CardFructose) a06CardFructose.style.transform = 'translateX(0px)';
+
+      // Ẩn khung hộp riêng lẻ và nhãn riêng
+      if(a06BoxGlucose) a06BoxGlucose.style.opacity = '0';
+      if(a06BoxFructose) a06BoxFructose.style.opacity = '0';
+      if(a06LabelGlucose) a06LabelGlucose.style.opacity = '0';
+      if(a06LabelFructose) a06LabelFructose.style.opacity = '0';
+
+      // Hiện khung hợp nhất phân tử Sucrose
+      if(a06SucroseContainer) a06SucroseContainer.style.opacity = '1';
+
+      // Cầu liên kết glycosidic gắn kết giữa C1 và C2
+      if(a06Link){
+        a06Link.style.opacity = '1';
+        if(a06LinkPath){
+          a06LinkPath.setAttribute('d', 'M 401 154 C 480 92, 720 92, 782 154');
+          a06LinkPath.style.strokeDasharray = 'none';
+          a06LinkPath.style.strokeDashoffset = '0';
+        }
+        if(a06LinkO){
           a06LinkO.style.opacity = '1';
-          a06LinkOText.style.opacity = '1';
-        }, 400);
+          a06LinkO.style.transform = 'translate(600px, 120px) scale(1.05)';
+        }
+        if(a06LinkBadge) a06LinkBadge.style.opacity = '1';
       }
-    }, 2400);
 
-    setTimeout(() => {
-      // Bước 4: Hoàn thành sản phẩm
-      pill3.className = 'step-pill done';
-      pill4.className = 'step-pill done';
+      // Hiện nước tách ra ở vị trí trung tâm thoáng đãng
+      if(a06WaterProduct) a06WaterProduct.style.opacity = '1';
+
       state.s03_animRan = true;
       btnRunReaction.disabled = false;
       btnRunReaction.innerHTML = '<i class="ti ti-refresh"></i> Chạy lại hoạt cảnh';
       checkS03Completion();
-    }, 3600);
+    }
+  }
+
+  [pill1, pill2, pill3, pill4].forEach((p, idx) => {
+    p.addEventListener('click', () => {
+      clearAnimTimers();
+      setS03Step(idx + 1);
+    });
   });
 
-  // HỆ THỐNG ĐƯỜNG VẼ NỐI SVG (STAGE 3 MATCHING CONNECTIONS)
-  const s03Lines = {};
+  btnRunReaction.addEventListener('click', () => {
+    clearAnimTimers();
+    btnRunReaction.disabled = true;
+    setS03Step(1);
 
-  function drawS03Connection(leftId, rightTargetId, animate = true){
-    const container = document.getElementById('s03MatchContainer');
-    const svg = document.getElementById('s03MatchSvg');
-    if(!container || !svg) return;
+    animTimer = setTimeout(() => {
+      setS03Step(2);
+      animTimer = setTimeout(() => {
+        setS03Step(3);
+        animTimer = setTimeout(() => {
+          setS03Step(4);
+        }, 1300);
+      }, 1300);
+    }, 1300);
+  });
 
-    const p1 = document.getElementById('pin-s03-' + leftId);
-    const p2 = document.getElementById('pin-s03-' + rightTargetId + '-right');
-    if(!p1 || !p2) return;
+  // HỆ THỐNG ĐƯỜNG VẼ NỐI SVG DÙNG CHUNG (STAGES 3, 4, 5, 6)
+  function createMatchConnector(containerId, svgId, leftPrefix, rightPrefix){
+    const lines = {};
 
-    const cRect = container.getBoundingClientRect();
-    const r1 = p1.getBoundingClientRect();
-    const r2 = p2.getBoundingClientRect();
+    function draw(leftId, rightTargetId, animate = true){
+      const container = document.getElementById(containerId);
+      const svg = document.getElementById(svgId);
+      if(!container || !svg) return;
 
-    if(cRect.width === 0 || cRect.height === 0) return;
+      const p1 = document.getElementById(leftPrefix + '-' + leftId);
+      const p2 = document.getElementById(rightPrefix + '-' + rightTargetId);
+      if(!p1 || !p2) return;
 
-    const x1 = r1.left + r1.width / 2 - cRect.left;
-    const y1 = r1.top + r1.height / 2 - cRect.top;
-    const x2 = r2.left + r2.width / 2 - cRect.left;
-    const y2 = r2.top + r2.height / 2 - cRect.top;
+      const cRect = container.getBoundingClientRect();
+      const r1 = p1.getBoundingClientRect();
+      const r2 = p2.getBoundingClientRect();
 
-    const dx = Math.max(25, (x2 - x1) * 0.45);
-    const d = `M ${x1} ${y1} C ${x1 + dx} ${y1}, ${x2 - dx} ${y2}, ${x2} ${y2}`;
+      if(cRect.width === 0 || cRect.height === 0) return;
 
-    let path = s03Lines[leftId];
-    if(!path){
-      path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      path.setAttribute('class', 'match-connect-line');
-      svg.appendChild(path);
-      s03Lines[leftId] = path;
-    }
+      const x1 = r1.left + r1.width / 2 - cRect.left;
+      const y1 = r1.top + r1.height / 2 - cRect.top;
+      const x2 = r2.left + r2.width / 2 - cRect.left;
+      const y2 = r2.top + r2.height / 2 - cRect.top;
 
-    path.setAttribute('d', d);
+      const dx = Math.max(25, (x2 - x1) * 0.45);
+      const d = `M ${x1} ${y1} C ${x1 + dx} ${y1}, ${x2 - dx} ${y2}, ${x2} ${y2}`;
 
-    if(animate){
-      const len = path.getTotalLength() || 260;
-      path.style.strokeDasharray = len;
-      path.style.strokeDashoffset = len;
-      path.getBoundingClientRect(); // reflow
-      path.style.transition = 'stroke-dashoffset 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
-      path.style.strokeDashoffset = '0';
-    } else {
-      path.style.strokeDasharray = 'none';
-      path.style.strokeDashoffset = '0';
-      path.style.transition = 'none';
-    }
-  }
-
-  function updateAllS03Connections(animate = false){
-    if(!state.s03_pairs) return;
-    Object.keys(state.s03_pairs).forEach(k => {
-      if(state.s03_pairs[k]){
-        drawS03Connection(k, k, animate);
+      let path = lines[leftId];
+      if(!path){
+        path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('class', 'match-connect-line');
+        svg.appendChild(path);
+        lines[leftId] = path;
       }
-    });
+
+      path.setAttribute('d', d);
+
+      if(animate){
+        const len = path.getTotalLength() || 260;
+        path.style.strokeDasharray = len;
+        path.style.strokeDashoffset = len;
+        path.getBoundingClientRect(); // reflow
+        path.style.transition = 'stroke-dashoffset 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+        path.style.strokeDashoffset = '0';
+      } else {
+        path.style.strokeDasharray = 'none';
+        path.style.strokeDashoffset = '0';
+        path.style.transition = 'none';
+      }
+    }
+
+    function update(pairsObj, animate = false){
+      if(!pairsObj) return;
+      Object.keys(pairsObj).forEach(k => {
+        if(pairsObj[k]){
+          draw(k, k, animate);
+        }
+      });
+    }
+
+    function clear(){
+      const svg = document.getElementById(svgId);
+      if(svg) svg.innerHTML = '';
+      for(const k in lines) delete lines[k];
+    }
+
+    return { draw, update, clear };
   }
 
-  function clearAllS03Connections(){
-    const svg = document.getElementById('s03MatchSvg');
-    if(svg) svg.innerHTML = '';
-    for(const k in s03Lines) delete s03Lines[k];
-  }
+  const s03Connector = createMatchConnector('s03MatchContainer', 's03MatchSvg', 'pin-s03', 'pin-s03-mono');
+  const s04Connector = createMatchConnector('s04MatchContainer', 's04MatchSvg', 'pin-s04', 'pin-s04-org');
+  const s05Connector = createMatchConnector('s05MatchContainer', 's05MatchSvg', 'pin-s05', 'pin-s05-src');
+  const s06Connector = createMatchConnector('s06MatchContainer', 's06MatchSvg', 'pin-s06', 'pin-s06-role');
 
   window.addEventListener('resize', () => {
-    if(state.currentStage === 2) updateAllS03Connections(false);
+    if(state.currentStage === 2) s03Connector.update(state.s03_pairs, false);
+    if(state.currentStage === 3) s04Connector.update(state.s04_pairs, false);
+    if(state.currentStage === 4) s05Connector.update(state.s05_pairs, false);
+    if(state.currentStage === 5) s06Connector.update(state.s06_pairs, false);
   });
 
   // Ghép đôi Stage 3
@@ -2082,7 +2536,7 @@
         leftBtn.classList.add('paired');
         leftBtn.classList.remove('active');
         state.s03_pairs[target] = true;
-        drawS03Connection(target, target, true); // HIỆU ỨNG VẼ ĐƯỜNG NỐI VÀO NHAU
+        s03Connector.draw(target, target, true); // HIỆU ỨNG VẼ ĐƯỜNG NỐI VÀO NHAU
         state.s03_selectedLeft = null;
         s03Feedback.className = 'inline-feedback ok';
         s03Feedback.innerHTML = `<div class="feedback-head"><i class="ti ti-check"></i> Ghép chính xác!</div><span>${leftBtn.textContent.trim()} được cấu tạo từ: ${btn.textContent.trim()}.</span>`;
@@ -2110,20 +2564,17 @@
   }
 
   document.getElementById('btnReset-s03').addEventListener('click', () => {
-    a06Reactive.style.opacity = '0';
-    a06Water.style.opacity = '0';
-    a06Link.style.opacity = '0';
-    if(a06LinkPath){
-      a06LinkPath.style.strokeDashoffset = '0';
-      a06LinkPath.style.transition = 'none';
-    }
+    clearAnimTimers();
+    setS03Step(0);
     [pill1, pill2, pill3, pill4].forEach(p => p.className = 'step-pill');
+    btnRunReaction.disabled = false;
+    btnRunReaction.innerHTML = '<i class="ti ti-player-play"></i> Tạo liên kết (Chạy hoạt cảnh)';
     disacButtons.forEach(b => b.classList.remove('active', 'paired', 'wrong'));
     monosacButtons.forEach(b => b.classList.remove('active', 'paired', 'wrong'));
     state.s03_animRan = false;
     state.s03_pairs = { maltose: false, lactose: false, sucrose: false };
     state.s03_selectedLeft = null;
-    clearAllS03Connections(); // Xóa sạch các đường vẽ nối
+    s03Connector.clear(); // Xóa sạch các đường vẽ nối
     btnNextS03.disabled = true;
     s03Feedback.className = 'inline-feedback info';
     s03Feedback.innerHTML = '<div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn</div><span>Bấm nút <b>"Tạo liên kết"</b> để chạy hoạt cảnh và ghép đúng cả 3 cặp đường đôi.</span>';
@@ -2260,6 +2711,7 @@
         leftBtn.classList.add('paired');
         leftBtn.classList.remove('active');
         state.s04_pairs[target] = true;
+        s04Connector.draw(target, target, true); // HIỆU ỨNG VẼ ĐƯỜNG NỐI VÀO NHAU
         state.s04_selectedSource = null;
         checkS04Completion();
       } else {
@@ -2294,6 +2746,7 @@
     state.s04_q2 = false;
     state.s04_pairs = { starch: false, glycogen: false };
     state.s04_selectedSource = null;
+    s04Connector.clear(); // Xóa sạch các đường vẽ nối
     btnNextS04.disabled = true;
     s04Feedback.className = 'inline-feedback info';
     s04Feedback.innerHTML = '<div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn</div><span>Hoàn thành 2 câu hỏi và ghép đúng nơi dự trữ của tinh bột và glycogen.</span>';
@@ -2410,6 +2863,7 @@
         leftBtn.classList.add('paired');
         leftBtn.classList.remove('active');
         state.s05_pairs[target] = true;
+        s05Connector.draw(target, target, true); // HIỆU ỨNG VẼ ĐƯỜNG NỐI VÀO NHAU
         state.s05_selectedRole = null;
         checkS05Completion();
       } else {
@@ -2441,6 +2895,7 @@
     state.s05_q2 = false;
     state.s05_pairs = { storageGroup: false, structGroup: false };
     state.s05_selectedRole = null;
+    s05Connector.clear(); // Xóa sạch các đường vẽ nối
     btnNextS05.disabled = true;
     s05Feedback.className = 'inline-feedback info';
     s05Feedback.innerHTML = '<div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn</div><span>Trả lời đúng 2 câu hỏi và phân loại đúng vai trò của các nhóm polysaccharide.</span>';
@@ -2535,6 +2990,7 @@
         leftBtn.classList.add('paired');
         leftBtn.classList.remove('active');
         state.s06_pairs[target] = true;
+        s06Connector.draw(target, target, true); // HIỆU ỨNG VẼ ĐƯỜNG NỐI VÀO NHAU
         state.s06_selectedCore = null;
         checkS06Completion();
       } else {
@@ -2566,6 +3022,7 @@
     state.s06_q2 = false;
     state.s06_pairs = { cGlucose: false, cGlycogen: false, cCellulose: false };
     state.s06_selectedCore = null;
+    s06Connector.clear(); // Xóa sạch các đường vẽ nối
     btnCompleteModule.disabled = true;
     s06Feedback.className = 'inline-feedback info';
     s06Feedback.innerHTML = '<div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn</div><span>Hoàn thành 2 câu hỏi và ghép đúng 3 cặp cấu trúc – vai trò để hoàn thành bài học.</span>';
