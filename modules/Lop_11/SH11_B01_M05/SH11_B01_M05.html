@@ -286,6 +286,7 @@
       gap: 8px;
     }
 
+    /* Khung ảnh tương tác chạm (Chạm trực tiếp vào khung để khám phá) */
     .image-interactive-wrapper {
       position: relative;
       width: 100%;
@@ -293,110 +294,87 @@
       border-radius: var(--radius-sm);
       overflow: hidden;
       background: #F1F5F9;
-      border: 1px solid var(--paper-line);
+      border: 1.5px solid var(--paper-line);
       margin-bottom: 12px;
+      cursor: pointer;
+      transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
     .image-interactive-wrapper.aspect-3-2 {
       aspect-ratio: 3 / 2;
+    }
+    .image-interactive-wrapper:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      border-color: var(--jade);
+    }
+    .image-interactive-wrapper.theme-primary:hover {
+      border-color: var(--primary);
+    }
+    .image-interactive-wrapper:active {
+      transform: scale(0.99);
+    }
+    .image-interactive-wrapper.viewed {
+      border-color: var(--jade);
+      box-shadow: 0 0 0 2px rgba(45, 90, 71, 0.25);
+    }
+    .image-interactive-wrapper.theme-primary.viewed {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(200, 90, 50, 0.25);
     }
     .image-interactive-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: contain;
       display: block;
-    }    /* Điểm đánh dấu tương tác chạm trên hình (Touch Marker) */
-    .touch-marker-btn {
-      position: absolute;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: #FFFFFF;
-      border: 3px solid var(--jade);
-      color: var(--jade-deep);
-      font-weight: 800;
-      font-size: 1.15rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28), 0 0 0 2px rgba(255, 255, 255, 0.85);
-      transform: translate(-50%, -50%);
-      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
-      z-index: 10;
-      outline: none;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.3s ease;
     }
-    .touch-marker-btn.theme-primary {
-      border-color: var(--primary);
-      color: var(--primary-dark);
-    }
-    .touch-marker-btn:hover {
-      transform: translate(-50%, -50%) scale(1.15);
-      background: var(--cream);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35), 0 0 0 3px rgba(255, 255, 255, 0.9);
-    }
-    .touch-marker-btn.viewed {
-      background: var(--jade-deep);
-      border-color: #FFFFFF;
-      color: #FFFFFF;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    }
-    .touch-marker-btn.theme-primary.viewed {
-      background: var(--primary-dark);
-      border-color: #FFFFFF;
-      color: #FFFFFF;
-    }
-    .touch-marker-btn.viewed .pulse-ring {
-      display: none;
+    .image-interactive-wrapper:hover img {
+      transform: scale(1.02);
     }
 
-    /* Hiệu ứng gợn sóng thu hút tương tác */
-    .pulse-ring {
-      position: absolute;
-      inset: -6px;
-      border-radius: 50%;
-      border: 2.5px solid var(--jade);
-      animation: pulseMarkerAnim 2s infinite ease-out;
-      pointer-events: none;
-    }
-    .touch-marker-btn.theme-primary .pulse-ring {
-      border-color: var(--primary);
-    }
-    @keyframes pulseMarkerAnim {
-      0% { transform: scale(0.9); opacity: 0.95; }
-      60% { transform: scale(1.45); opacity: 0.2; }
-      100% { transform: scale(1.6); opacity: 0; }
-    }
-
-    /* Nhãn gợi ý chạm trực quan trên ảnh */
+    /* Nhãn gợi ý chạm trực quan trên khung ảnh */
     .touch-hint-badge {
       position: absolute;
       top: 10px;
       left: 10px;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
       background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(4px);
       border: 1px solid var(--paper-line);
       border-radius: var(--radius-full);
-      padding: 4px 10px;
-      font-size: 0.78rem;
+      padding: 5px 12px;
+      font-size: 0.8rem;
       font-weight: 700;
       color: var(--ink-2);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       pointer-events: none;
       z-index: 5;
-      transition: opacity 0.3s ease;
+      transition: all 0.25s ease;
     }
     .touch-hint-badge i {
       color: var(--jade);
-      font-size: 0.95rem;
-      animation: nudgeAnim 1.5s infinite ease-in-out;
+      font-size: 1rem;
+      animation: nudgeAnim 1.6s infinite ease-in-out;
     }
     .touch-hint-badge.theme-primary i {
       color: var(--primary);
+    }
+    .image-interactive-wrapper.viewed .touch-hint-badge {
+      background: var(--jade-pale);
+      border-color: var(--jade-soft);
+      color: var(--jade-text);
+    }
+    .image-interactive-wrapper.theme-primary.viewed .touch-hint-badge {
+      background: var(--primary-pale);
+      border-color: var(--primary-soft);
+      color: var(--primary-dark);
+    }
+    .image-interactive-wrapper.viewed .touch-hint-badge i {
+      animation: none;
     }
     @keyframes nudgeAnim {
       0%, 100% { transform: translateY(0); }
@@ -954,7 +932,7 @@
         <p class="lead-text">Quan sát hai hình dưới đây. Nhấn vào từng hình để xem cây và người có được chất hữu cơ theo những cách khác nhau như thế nào.</p>
         <div class="guide-box">
           <i class="ti ti-hand-finger"></i>
-          <span><strong>HƯỚNG DẪN:</strong> Nhấn vào từng điểm đánh dấu. Điểm đã xem sẽ đổi trạng thái. Khi xem đủ hai điểm, nút TIẾP TỤC sẽ xuất hiện.</span>
+          <span><strong>HƯỚNG DẪN:</strong> Nhấn vào từng hình để xem. Hình đã xem sẽ đổi trạng thái. Khi xem đủ hai hình, nút TIẾP TỤC sẽ xuất hiện.</span>
         </div>
       </div>
 
@@ -966,17 +944,13 @@
             <h3 class="image-card-title"><i class="ti ti-plant" style="color:var(--jade);"></i> Cây xanh</h3>
             <span class="badge-pill" id="badgeST00-1" style="background:#F0FDF4; border-color:#BBF7D0; color:var(--jade-text);">Chưa xem</span>
           </div>
-          <div class="image-interactive-wrapper" id="wrapST00-1" onclick="viewST00Point(1)" style="cursor: pointer;" title="Chạm để xem cách cây xanh thu nhận chất hữu cơ">
-            <div class="touch-hint-badge" id="hintST00-1"><i class="ti ti-hand-finger"></i> Chạm để xem</div>
-            <img src="images/REUSE_SH11-B01-M03-A01_CAY.png" alt="Cây xanh quang hợp" id="imgST00-1">
-            <button type="button" class="touch-marker-btn" id="touchMarkerST00-1" style="left: 50%; top: 40%;" onclick="viewST00Point(1); event.stopPropagation();" aria-label="Điểm chạm cây xanh">
-              <span class="pulse-ring"></span>
-              <span>1</span>
-            </button>
+          <div class="image-interactive-wrapper" id="wrapST00-1" onclick="viewST00Point(1)" title="Chạm vào hình để xem cách cây xanh thu nhận chất hữu cơ">
+            <div class="touch-hint-badge" id="hintST00-1"><i class="ti ti-hand-finger"></i> Chạm vào hình để xem</div>
+            <img src="https://lh3.googleusercontent.com/d/1mjs4wEsdYJ4v9alw32rinpOM8mWsvpOK" alt="Cây xanh quang hợp" id="imgST00-1">
           </div>
           <div class="detail-text-box" id="detailST00-1">
             <i class="ti ti-info-circle"></i>
-            <span id="textST00-1">Nhấn vào điểm đánh dấu trên hình để xem cách cây xanh thu nhận chất hữu cơ.</span>
+            <span id="textST00-1">Nhấn vào hình để xem cách cây xanh thu nhận chất hữu cơ.</span>
           </div>
         </div>
 
@@ -986,17 +960,13 @@
             <h3 class="image-card-title"><i class="ti ti-user" style="color:var(--primary);"></i> Con người</h3>
             <span class="badge-pill" id="badgeST00-2" style="background:var(--primary-pale); border-color:var(--primary-soft); color:var(--primary-dark);">Chưa xem</span>
           </div>
-          <div class="image-interactive-wrapper" id="wrapST00-2" onclick="viewST00Point(2)" style="cursor: pointer;" title="Chạm để xem cách con người thu nhận chất hữu cơ">
-            <div class="touch-hint-badge theme-primary" id="hintST00-2"><i class="ti ti-hand-finger"></i> Chạm để xem</div>
-            <img src="images/REUSE_SH11-B01-M02-A01_NGUOI_AN.png" alt="Người đang ăn thức ăn" id="imgST00-2">
-            <button type="button" class="touch-marker-btn theme-primary" id="touchMarkerST00-2" style="left: 50%; top: 52%;" onclick="viewST00Point(2); event.stopPropagation();" aria-label="Điểm chạm con người">
-              <span class="pulse-ring"></span>
-              <span>2</span>
-            </button>
+          <div class="image-interactive-wrapper theme-primary" id="wrapST00-2" onclick="viewST00Point(2)" title="Chạm vào hình để xem cách con người thu nhận chất hữu cơ">
+            <div class="touch-hint-badge theme-primary" id="hintST00-2"><i class="ti ti-hand-finger"></i> Chạm vào hình để xem</div>
+            <img src="https://lh3.googleusercontent.com/d/1pYvMeCktNiq2sKHJZ-qkMxySyYLVdJ1l" alt="Người đang ăn thức ăn" id="imgST00-2">
           </div>
           <div class="detail-text-box" id="detailST00-2">
             <i class="ti ti-info-circle"></i>
-            <span id="textST00-2">Nhấn vào điểm đánh dấu trên hình để xem cách con người thu nhận chất hữu cơ.</span>
+            <span id="textST00-2">Nhấn vào hình để xem cách con người thu nhận chất hữu cơ.</span>
           </div>
         </div>
       </div>
@@ -1035,13 +1005,9 @@
             <h3 class="image-card-title"><i class="ti ti-sun" style="color:var(--amber);"></i> Quang tự dưỡng</h3>
             <span class="badge-pill" id="badgeST01-1" style="background:#F0FDF4; border-color:#BBF7D0; color:var(--jade-text);">Chưa xem</span>
           </div>
-          <div class="image-interactive-wrapper" id="wrapST01-1" onclick="viewST01Type(1)" style="cursor: pointer;" title="Chạm để khám phá quang tự dưỡng">
-            <div class="touch-hint-badge" id="hintST01-1"><i class="ti ti-hand-finger"></i> Chạm để xem</div>
-            <img src="images/REUSE_SH11-B01-M03-A01_CAY.png" alt="Quang tự dưỡng ở thực vật" id="imgST01-1">
-            <button type="button" class="touch-marker-btn" id="touchMarkerST01-1" style="left: 50%; top: 40%;" onclick="viewST01Type(1); event.stopPropagation();" aria-label="Khám phá quang tự dưỡng">
-              <span class="pulse-ring"></span>
-              <i class="ti ti-sun"></i>
-            </button>
+          <div class="image-interactive-wrapper" id="wrapST01-1" onclick="viewST01Type(1)" title="Chạm vào hình để xem đặc điểm của sinh vật quang tự dưỡng">
+            <div class="touch-hint-badge" id="hintST01-1"><i class="ti ti-hand-finger"></i> Chạm vào hình để xem</div>
+            <img src="https://lh3.googleusercontent.com/d/1mjs4wEsdYJ4v9alw32rinpOM8mWsvpOK" alt="Quang tự dưỡng ở thực vật" id="imgST01-1">
             <div class="science-overlay-tags hidden" id="overlayTagsST01-1">
               <span class="science-tag"><i class="ti ti-bolt" style="color:var(--amber);"></i> Năng lượng ánh sáng</span>
               <span class="science-tag"><i class="ti ti-leaf" style="color:var(--jade);"></i> Nguồn carbon vô cơ (CO₂)</span>
@@ -1049,7 +1015,7 @@
           </div>
           <div class="detail-text-box" id="detailST01-1">
             <i class="ti ti-info-circle"></i>
-            <span id="textST01-1">Nhấn vào để xem đặc điểm nguồn năng lượng của sinh vật quang tự dưỡng.</span>
+            <span id="textST01-1">Nhấn vào hình để xem đặc điểm nguồn năng lượng của sinh vật quang tự dưỡng.</span>
           </div>
         </div>
 
@@ -1059,8 +1025,8 @@
             <h3 class="image-card-title"><i class="ti ti-flask-2" style="color:var(--primary);"></i> Hoá tự dưỡng</h3>
             <span class="badge-pill" id="badgeST01-2" style="background:var(--primary-pale); border-color:var(--primary-soft); color:var(--primary-dark);">Chưa xem</span>
           </div>
-          <div class="image-interactive-wrapper" id="wrapST01-2" onclick="viewST01Type(2)" style="cursor: pointer;" title="Chạm để khám phá hoá tự dưỡng">
-            <div class="touch-hint-badge theme-primary" id="hintST01-2"><i class="ti ti-hand-finger"></i> Chạm để xem</div>
+          <div class="image-interactive-wrapper theme-primary" id="wrapST01-2" onclick="viewST01Type(2)" title="Chạm vào hình để xem đặc điểm của sinh vật hoá tự dưỡng">
+            <div class="touch-hint-badge theme-primary" id="hintST01-2"><i class="ti ti-hand-finger"></i> Chạm vào hình để xem</div>
             <!-- Minh hoạ Code/SVG vi khuẩn trên nền hạt khoáng -->
             <svg class="chemo-svg-container" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
               <defs>
@@ -1103,10 +1069,6 @@
               <rect x="270" y="110" width="23" height="10" rx="5" fill="#94A3B8" stroke="#64748B" stroke-width="1" transform="rotate(-20, 281, 115)"/>
             </svg>
 
-            <button type="button" class="touch-marker-btn theme-primary" id="touchMarkerST01-2" style="left: 50%; top: 50%;" onclick="viewST01Type(2); event.stopPropagation();" aria-label="Khám phá hoá tự dưỡng">
-              <span class="pulse-ring"></span>
-              <i class="ti ti-flask-2"></i>
-            </button>
             <div class="science-overlay-tags hidden" id="overlayTagsST01-2">
               <span class="science-tag"><i class="ti ti-flame" style="color:var(--primary);"></i> Oxy hoá chất vô cơ → thu năng lượng</span>
               <span class="science-tag"><i class="ti ti-leaf" style="color:var(--jade);"></i> Nguồn carbon vô cơ (CO₂)</span>
@@ -1215,17 +1177,13 @@
             <h3 class="image-card-title"><i class="ti ti-paw" style="color:var(--primary);"></i> Động vật</h3>
             <span class="badge-pill" id="badgeST02-1" style="background:var(--primary-pale); border-color:var(--primary-soft); color:var(--primary-dark);">Chưa xem</span>
           </div>
-          <div class="image-interactive-wrapper" id="wrapST02-1" onclick="viewST02Point(1)" style="cursor: pointer;" title="Chạm để xem cách động vật thu nhận chất hữu cơ">
-            <div class="touch-hint-badge theme-primary" id="hintST02-1"><i class="ti ti-hand-finger"></i> Chạm để xem</div>
-            <img src="images/REUSE_SH11-B01-M03-A02_THO.png" alt="Thỏ ăn cỏ (Động vật dị dưỡng)" id="imgST02-1">
-            <button type="button" class="touch-marker-btn theme-primary" id="touchMarkerST02-1" style="left: 32%; top: 58%;" onclick="viewST02Point(1); event.stopPropagation();" aria-label="Điểm chạm động vật">
-              <span class="pulse-ring"></span>
-              <span>1</span>
-            </button>
+          <div class="image-interactive-wrapper theme-primary" id="wrapST02-1" onclick="viewST02Point(1)" title="Chạm vào hình để xem cách động vật thu nhận chất hữu cơ">
+            <div class="touch-hint-badge theme-primary" id="hintST02-1"><i class="ti ti-hand-finger"></i> Chạm vào hình để xem</div>
+            <img src="https://lh3.googleusercontent.com/d/1Qh2qobTI7rkpHKlzBfoWOdsBH2tHl6VK" alt="Thỏ ăn cỏ (Động vật dị dưỡng)" id="imgST02-1">
           </div>
           <div class="detail-text-box" id="detailST02-1">
             <i class="ti ti-info-circle"></i>
-            <span id="textST02-1">Nhấn vào điểm đánh dấu trên hình để xem cách động vật thu nhận và sử dụng chất hữu cơ.</span>
+            <span id="textST02-1">Nhấn vào hình để xem cách động vật thu nhận và sử dụng chất hữu cơ.</span>
           </div>
         </div>
 
@@ -1236,17 +1194,13 @@
             <span class="badge-pill" id="badgeST02-2" style="background:#F0FDF4; border-color:#BBF7D0; color:var(--jade-text);">Chưa xem</span>
           </div>
           <p style="font-size:0.86rem; color:var(--amber-deep); font-weight:700; margin-bottom:8px; line-height:1.4;">Cây nắp ấm vừa quang hợp vừa bắt côn trùng. Vậy việc bắt côn trùng có làm cây nắp ấm trở thành sinh vật dị dưỡng không?</p>
-          <div class="image-interactive-wrapper aspect-3-2" id="wrapST02-2" onclick="viewST02Point(2)" style="cursor: pointer;" title="Chạm để xem giải thích về cây nắp ấm">
-            <div class="touch-hint-badge" id="hintST02-2"><i class="ti ti-hand-finger"></i> Chạm để xem</div>
-            <img src="images/SH11-B01-M05-A07.png" alt="Cây nắp ấm bắt côn trùng" id="imgST02-2">
-            <button type="button" class="touch-marker-btn" id="touchMarkerST02-2" style="left: 66%; top: 60%;" onclick="viewST02Point(2); event.stopPropagation();" aria-label="Điểm chạm cây nắp ấm">
-              <span class="pulse-ring"></span>
-              <span>2</span>
-            </button>
+          <div class="image-interactive-wrapper aspect-3-2" id="wrapST02-2" onclick="viewST02Point(2)" title="Chạm vào hình để xem giải thích về cây nắp ấm">
+            <div class="touch-hint-badge" id="hintST02-2"><i class="ti ti-hand-finger"></i> Chạm vào hình để xem</div>
+            <img src="https://lh3.googleusercontent.com/d/13CN589OyHSiySYRhI50djlHUNK-CHyjL" alt="Cây nắp ấm bắt côn trùng" id="imgST02-2">
           </div>
           <div class="detail-text-box" id="detailST02-2">
             <i class="ti ti-info-circle"></i>
-            <span id="textST02-2">Nhấn vào bình bắt mồi của cây nắp ấm để xem giải thích khoa học.</span>
+            <span id="textST02-2">Nhấn vào hình để xem giải thích khoa học về cây nắp ấm.</span>
           </div>
         </div>
       </div>
@@ -1433,14 +1387,16 @@
     function viewST00Point(idx) {
       lmsState['M05_st00_point' + idx] = true;
 
-      const marker = document.getElementById('touchMarkerST00-' + idx);
+      const wrap = document.getElementById('wrapST00-' + idx);
       const textEl = document.getElementById('textST00-' + idx);
       const badge = document.getElementById('badgeST00-' + idx);
       const detail = document.getElementById('detailST00-' + idx);
       const hint = document.getElementById('hintST00-' + idx);
 
-      if (marker) marker.classList.add('active', 'viewed');
-      if (hint) hint.style.display = 'none';
+      if (wrap) wrap.classList.add('viewed');
+      if (hint) {
+        hint.innerHTML = '<i class="ti ti-circle-check"></i> Đã khám phá';
+      }
       if (textEl) textEl.textContent = pointTextsST00[idx];
       if (badge) {
         badge.textContent = 'Đã xem';
@@ -1485,15 +1441,17 @@
     function viewST01Type(idx) {
       lmsState['M05_st01_type' + idx] = true;
 
-      const marker = document.getElementById('touchMarkerST01-' + idx);
+      const wrap = document.getElementById('wrapST01-' + idx);
       const textEl = document.getElementById('textST01-' + idx);
       const badge = document.getElementById('badgeST01-' + idx);
       const detail = document.getElementById('detailST01-' + idx);
       const tags = document.getElementById('overlayTagsST01-' + idx);
       const hint = document.getElementById('hintST01-' + idx);
 
-      if (marker) marker.classList.add('active', 'viewed');
-      if (hint) hint.style.display = 'none';
+      if (wrap) wrap.classList.add('viewed');
+      if (hint) {
+        hint.innerHTML = '<i class="ti ti-circle-check"></i> Đã khám phá';
+      }
       if (textEl) textEl.textContent = typeTextsST01[idx];
       if (badge) {
         badge.textContent = 'Đã xem';
@@ -1706,14 +1664,16 @@
     function viewST02Point(idx) {
       lmsState['M05_st02_point' + idx] = true;
 
-      const marker = document.getElementById('touchMarkerST02-' + idx);
+      const wrap = document.getElementById('wrapST02-' + idx);
       const textEl = document.getElementById('textST02-' + idx);
       const badge = document.getElementById('badgeST02-' + idx);
       const detail = document.getElementById('detailST02-' + idx);
       const hint = document.getElementById('hintST02-' + idx);
 
-      if (marker) marker.classList.add('active', 'viewed');
-      if (hint) hint.style.display = 'none';
+      if (wrap) wrap.classList.add('viewed');
+      if (hint) {
+        hint.innerHTML = '<i class="ti ti-circle-check"></i> Đã khám phá';
+      }
       if (textEl) textEl.textContent = pointTextsST02[idx];
       if (badge) {
         badge.textContent = 'Đã xem';
