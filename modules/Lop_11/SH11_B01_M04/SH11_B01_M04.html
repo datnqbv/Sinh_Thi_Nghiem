@@ -607,12 +607,25 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 4px;
     }
     .arrows-svg {
-      width: 100%;
+      display: block;
+    }
+    .arrows-svg--desktop {
+      width: 120px;
       height: 48px;
       overflow: visible;
+    }
+    .arrows-svg--mobile {
+      display: none;
+    }
+    .arrows-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--ink-3);
+      text-align: center;
+      white-space: nowrap;
     }
 
     /* Panel hiển thị chú giải khi chọn Node */
@@ -930,26 +943,205 @@
       flex-direction: column;
       align-items: center;
     }
-    .svg-organism-flow-wrap {
+    .organism-flow-container {
       width: 100%;
-      position: relative;
       margin: 10px 0;
+      position: relative;
     }
-    .svg-organism-flow {
-      width: 100%;
-      height: 240px;
-      display: block;
-      overflow: visible;
+    .flow-svg-defs {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
     }
 
-    /* 3 Điểm chạm trên sơ đồ cơ thể */
+    /* Grid layout mặc định (Desktop: ngang 2 tầng) */
+    .flow-diagram-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 74px 1.25fr 74px 1.15fr;
+      grid-template-rows: auto auto;
+      column-gap: 6px;
+      row-gap: 16px;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* 3 Vùng (Cards) */
+    .org-zone {
+      border-radius: var(--radius);
+      padding: 16px 10px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 155px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.22s ease;
+    }
+    .org-zone--env {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      background: #F8FAFC;
+      border: 2px solid #CBD5E1;
+    }
+    .org-zone--body {
+      grid-column: 3;
+      grid-row: 1 / span 2;
+      background: #F0FDF4;
+      border: 2px solid #86EFAC;
+    }
+    .org-zone--cell {
+      grid-column: 5;
+      grid-row: 1 / span 2;
+      background: #EFF6FF;
+      border: 2px solid #93C5FD;
+    }
+
+    .org-zone-icon {
+      font-size: 1.6rem;
+      margin-bottom: 6px;
+    }
+    .org-zone--env .org-zone-icon { color: #475569; }
+    .org-zone--body .org-zone-icon { color: #166534; }
+    .org-zone--cell .org-zone-icon { color: #1E40AF; }
+
+    .org-zone-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .org-zone--env .org-zone-title { color: #334155; }
+    .org-zone--body .org-zone-title { color: #166534; }
+    .org-zone--cell .org-zone-title { color: #1E40AF; }
+
+    .org-zone-desc {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.35;
+    }
+    .org-zone-sub {
+      font-size: 0.74rem;
+      color: var(--ink-3);
+      line-height: 1.3;
+      margin-top: 2px;
+    }
+
+    /* Khối hệ vận chuyển trong Cơ thể */
+    .org-body-box {
+      background: #DCFCE7;
+      border: 1px solid #4ADE80;
+      border-radius: 8px;
+      padding: 6px 10px;
+      margin-top: 6px;
+      width: 90%;
+    }
+    .org-body-box-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #15803D;
+    }
+    .org-body-box-sub {
+      font-size: 0.72rem;
+      color: #166534;
+      opacity: 0.9;
+    }
+
+    /* Cụm Đồng hoá / Dị hoá thu nhỏ trong Tế bào */
+    .mini-cell-nodes {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      margin: 6px 0;
+      width: 100%;
+    }
+    .mini-node {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 6px;
+      border-radius: 6px;
+      border: 1px solid;
+      white-space: nowrap;
+    }
+    .mini-node--ana {
+      background: #DCFCE7;
+      border-color: #4ADE80;
+      color: #166534;
+    }
+    .mini-node--cata {
+      background: #DBEAFE;
+      border-color: #60A5FA;
+      color: #1E40AF;
+    }
+    .mini-node-sep {
+      font-size: 0.76rem;
+      color: #64748B;
+      font-weight: 700;
+    }
+
+    /* Các cầu nối Desktop */
+    .bridge-inflow-1 {
+      grid-column: 2;
+      grid-row: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .bridge-inflow-2 {
+      grid-column: 4;
+      grid-row: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .bridge-outflow-1 {
+      grid-column: 2;
+      grid-row: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .bridge-outflow-2 {
+      grid-column: 4;
+      grid-row: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .bridge-arrow-svg {
+      width: 100%;
+      height: 24px;
+      display: block;
+    }
+    .bridge-arrow-svg--in-mobile,
+    .outflow-mobile-track {
+      display: none;
+    }
+    .outflow-label-top,
+    .outflow-label-bot {
+      display: none;
+    }
+
+    /* Điểm chạm 1, 2, 3 */
     .flow-point-btn {
-      position: absolute;
       width: 38px;
       height: 38px;
       border-radius: 50%;
       background: #FFFFFF;
-      border: 2px solid var(--primary);
+      border: 2.5px solid var(--primary);
       color: var(--primary-dark);
       font-weight: 800;
       font-size: 0.95rem;
@@ -957,14 +1149,14 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-      transform: translate(-50%, -50%);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
       transition: all 0.22s ease;
-      z-index: 10;
+      z-index: 5;
       outline: none;
+      margin: 4px 0;
     }
     .flow-point-btn:hover {
-      transform: translate(-50%, -50%) scale(1.15);
+      transform: scale(1.12);
       background: var(--primary);
       color: #FFFFFF;
     }
@@ -976,7 +1168,22 @@
     .flow-point-btn.viewed {
       background: var(--jade);
       color: #FFFFFF;
-      border-color: #FFFFFF;
+      border-color: var(--jade);
+    }
+    .flow-point-btn--orange {
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+    .flow-point-btn--orange:hover,
+    .flow-point-btn--orange.active {
+      background: var(--amber);
+      color: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(201, 125, 46, 0.3);
+    }
+    .flow-point-btn--orange.viewed {
+      background: var(--jade);
+      color: #FFFFFF;
+      border-color: var(--jade);
     }
 
     /* Nhiệm vụ sắp xếp chuỗi ST02 */
@@ -1206,15 +1413,132 @@
     @media (max-width: 860px) {
       .stepper-nav { grid-template-columns: repeat(2, 1fr); }
       .source-tray, .target-zones-grid, .touch-cards-grid, .summary-grid { grid-template-columns: 1fr; }
-      .cell-nodes-row { flex-direction: column; gap: 14px; }
-      .cell-node-btn { width: 100%; }
-      .arrows-bridge { transform: rotate(90deg); margin: 10px 0; }
     }
+
+    @media (max-width: 640px) {
+      /* ST01 Mobile Optimization: Xếp dọc với mũi tên thẳng đứng ngược chiều, không xoay chữ */
+      .cell-nodes-row {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .cell-node-btn {
+        width: 100%;
+        padding: 14px;
+      }
+      .arrows-bridge {
+        flex-direction: row;
+        gap: 12px;
+        margin: 6px 0;
+        transform: none;
+      }
+      .arrows-svg--desktop {
+        display: none;
+      }
+      .arrows-svg--mobile {
+        display: block;
+        width: 36px;
+        height: 52px;
+      }
+      .arrows-label {
+        font-size: 0.78rem;
+        text-align: left;
+      }
+
+      /* ST02 Mobile Optimization: Cấu trúc dọc chuẩn kịch bản
+         Cột 1 (trái): Môi trường -> Cơ thể -> Tế bào
+         Cột 2 (phải): Tuyến chất cần thải chạy ngược về môi trường */
+      .organism-diagram-box {
+        padding: 16px 10px;
+      }
+      .flow-diagram-grid {
+        grid-template-columns: 1fr 78px;
+        grid-template-rows: auto auto auto auto auto;
+        column-gap: 10px;
+        row-gap: 8px;
+      }
+
+      .org-zone {
+        min-height: auto;
+        padding: 12px 10px;
+      }
+      .org-zone--env {
+        grid-column: 1;
+        grid-row: 1;
+      }
+      .bridge-inflow-1 {
+        grid-column: 1;
+        grid-row: 2;
+        flex-direction: row;
+        gap: 12px;
+        padding: 4px 0;
+      }
+      .org-zone--body {
+        grid-column: 1;
+        grid-row: 3;
+      }
+      .bridge-inflow-2 {
+        grid-column: 1;
+        grid-row: 4;
+        flex-direction: row;
+        gap: 12px;
+        padding: 4px 0;
+      }
+      .org-zone--cell {
+        grid-column: 1;
+        grid-row: 5;
+      }
+
+      /* Đổi mũi tên tuyến vào sang hướng thẳng đứng */
+      .bridge-arrow-svg--in-desktop {
+        display: none;
+      }
+      .bridge-arrow-svg--in-mobile {
+        display: block;
+        width: 24px;
+        height: 38px;
+      }
+
+      /* Cột 2 (bên phải): Tuyến chất cần thải chạy ngược */
+      .bridge-outflow-1 {
+        grid-column: 2;
+        grid-row: 1 / span 5;
+        border: 1.5px dashed var(--amber);
+        border-radius: var(--radius);
+        background: linear-gradient(180deg, #FEF3C7 0%, #FFFBEB 50%, #FEF3C7 100%);
+        padding: 10px 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .bridge-outflow-2 {
+        display: none;
+      }
+      .bridge-arrow-svg--out-desktop {
+        display: none;
+      }
+      .outflow-mobile-track {
+        display: block;
+        width: 28px;
+        height: 120px;
+      }
+      .outflow-label-top,
+      .outflow-label-bot {
+        display: block;
+        font-size: 0.64rem;
+        font-weight: 800;
+        color: var(--amber);
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+        line-height: 1.25;
+      }
+    }
+
     @media (max-width: 520px) {
       .stepper-nav { grid-template-columns: 1fr; }
       .stage-actions { flex-direction: column-reverse; }
       .btn { width: 100%; }
-      .svg-organism-flow { height: 320px; }
     }
   </style>
 </head>
@@ -1368,7 +1692,8 @@
 
             <!-- Cầu nối 2 mũi tên mảnh ngược chiều -->
             <div class="arrows-bridge">
-              <svg class="arrows-svg" viewBox="0 0 120 48">
+              <!-- Desktop SVG: 2 mũi tên song song ngược chiều nằm ngang -->
+              <svg class="arrows-svg arrows-svg--desktop" viewBox="0 0 120 48">
                 <defs>
                   <marker id="arrowRight" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                     <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--jade)"/>
@@ -1382,7 +1707,24 @@
                 <!-- Mũi tên dưới: Dị hoá giải phóng năng lượng ATP cho Đồng hoá (hướng sang trái) -->
                 <line x1="110" y1="32" x2="10" y2="32" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrowLeft)" />
               </svg>
-              <span style="font-size:0.7rem; font-weight:700; color:var(--ink-3); text-align:center;">Phối hợp mật thiết</span>
+
+              <!-- Mobile SVG: 2 mũi tên song song ngược chiều thẳng đứng -->
+              <svg class="arrows-svg arrows-svg--mobile" viewBox="0 0 48 56">
+                <defs>
+                  <marker id="arrowDownST01" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--jade)"/>
+                  </marker>
+                  <marker id="arrowUpST01" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--primary)"/>
+                  </marker>
+                </defs>
+                <!-- Mũi tên trái: Đồng hoá (trên) xuống Dị hoá (dưới) -->
+                <line x1="16" y1="8" x2="16" y2="48" stroke="var(--jade)" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrowDownST01)" />
+                <!-- Mũi tên phải: Dị hoá (dưới) lên Đồng hoá (trên) -->
+                <line x1="32" y1="48" x2="32" y2="8" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrowUpST01)" />
+              </svg>
+
+              <span class="arrows-label">Phối hợp mật thiết</span>
             </div>
 
             <!-- Node Dị hoá (phải) -->
@@ -1523,74 +1865,106 @@
           </div>
         </div>
 
-        <div class="svg-organism-flow-wrap">
-          <svg class="svg-organism-flow" viewBox="0 0 800 240" preserveAspectRatio="xMidYMid meet">
+        <div class="organism-flow-container">
+          <!-- Marker definitions for SVG arrows -->
+          <svg class="flow-svg-defs" aria-hidden="true">
             <defs>
-              <marker id="arrowBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <marker id="mBlueRight" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                 <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563EB"/>
               </marker>
-              <marker id="arrowOrange" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <marker id="mBlueDown" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563EB"/>
+              </marker>
+              <marker id="mOrangeLeft" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#D97706"/>
+              </marker>
+              <marker id="mOrangeUp" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                 <path d="M 0 1 L 10 5 L 0 9 z" fill="#D97706"/>
               </marker>
             </defs>
-
-            <!-- VÙNG 1: MÔI TRƯỜNG (Trái: x=20 đến x=200) -->
-            <rect x="20" y="30" width="180" height="180" rx="14" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2" />
-            <text x="110" y="60" text-anchor="middle" font-family="Be Vietnam Pro" font-size="14" font-weight="800" fill="#334155">MÔI TRƯỜNG</text>
-            <circle cx="110" cy="115" r="32" fill="#E2E8F0" />
-            <path d="M 95 115 A 15 15 0 0 1 125 115 A 15 15 0 0 1 95 115" fill="#94A3B8" />
-            <text x="110" y="170" text-anchor="middle" font-family="Be Vietnam Pro" font-size="11" font-weight="600" fill="#64748B">Các chất cần thiết</text>
-            <text x="110" y="186" text-anchor="middle" font-family="Be Vietnam Pro" font-size="10" font-weight="500" fill="#94A3B8">(Đa dạng theo loài)</text>
-
-            <!-- VÙNG 2: CƠ THỂ (Giữa: x=280 đến x=520) -->
-            <rect x="280" y="30" width="240" height="180" rx="14" fill="#F0FDF4" stroke="#86EFAC" stroke-width="2" />
-            <text x="400" y="60" text-anchor="middle" font-family="Be Vietnam Pro" font-size="14" font-weight="800" fill="#166534">CƠ THỂ SINH VẬT</text>
-            <!-- Biểu tượng hệ cơ quan vận chuyển trung tính -->
-            <rect x="340" y="80" width="120" height="70" rx="10" fill="#DCFCE7" stroke="#4ADE80" stroke-width="1.5" />
-            <text x="400" y="112" text-anchor="middle" font-family="Be Vietnam Pro" font-size="12" font-weight="700" fill="#15803D">Hệ vận chuyển</text>
-            <text x="400" y="130" text-anchor="middle" font-family="Be Vietnam Pro" font-size="10" font-weight="500" fill="#166534">Tiếp nhận & Đào thải</text>
-
-            <!-- VÙNG 3: TẾ BÀO (Phải: x=600 đến x=780) -->
-            <rect x="600" y="30" width="180" height="180" rx="14" fill="#EFF6FF" stroke="#93C5FD" stroke-width="2" />
-            <text x="690" y="60" text-anchor="middle" font-family="Be Vietnam Pro" font-size="14" font-weight="800" fill="#1E40AF">TẾ BÀO</text>
-            <!-- Node Đồng hoá & Dị hoá thu nhỏ bên trong -->
-            <rect x="620" y="80" width="60" height="42" rx="6" fill="#DCFCE7" stroke="#22C55E" />
-            <text x="650" y="104" text-anchor="middle" font-family="Be Vietnam Pro" font-size="9" font-weight="700" fill="#166534">Đồng hoá</text>
-            <rect x="700" y="80" width="60" height="42" rx="6" fill="#DBEAFE" stroke="#3B82F6" />
-            <text x="730" y="104" text-anchor="middle" font-family="Be Vietnam Pro" font-size="9" font-weight="700" fill="#1E40AF">Dị hoá</text>
-            <!-- Mũi tên tương hỗ 2 chiều thu nhỏ -->
-            <line x1="680" y1="95" x2="700" y2="95" stroke="#166534" stroke-width="1.5" />
-            <line x1="700" y1="107" x2="680" y2="107" stroke="#1E40AF" stroke-width="1.5" />
-            <text x="690" y="148" text-anchor="middle" font-family="Be Vietnam Pro" font-size="10" font-weight="700" fill="#1E3A8A">Chuyển hoá nội bào</text>
-            <text x="690" y="164" text-anchor="middle" font-family="Be Vietnam Pro" font-size="9" font-weight="500" fill="#3B82F6">Tích luỹ & Giải phóng NL</text>
-
-            <!-- TUYẾN VÀO (NẰM Ở NỬA TRÊN: y=90) -->
-            <!-- 1. Môi trường -> Cơ thể -->
-            <line x1="200" y1="90" x2="280" y2="90" stroke="#2563EB" stroke-width="3" marker-end="url(#arrowBlue)" />
-            <!-- 2. Cơ thể -> Tế bào -->
-            <line x1="520" y1="90" x2="600" y2="90" stroke="#2563EB" stroke-width="3" marker-end="url(#arrowBlue)" />
-
-            <!-- TUYẾN RA / ĐÀO THẢI (NẰM Ở NỬA DƯỚI: y=160, CHẠY NGƯỢC HƯỚNG VỀ MÔI TRƯỜNG) -->
-            <!-- 3. Tế bào -> Cơ thể -> Môi trường -->
-            <line x1="600" y1="160" x2="520" y2="160" stroke="#D97706" stroke-width="3" stroke-dasharray="5 5" marker-end="url(#arrowOrange)" />
-            <line x1="280" y1="160" x2="200" y2="160" stroke="#D97706" stroke-width="3" stroke-dasharray="5 5" marker-end="url(#arrowOrange)" />
           </svg>
 
-          <!-- 3 Vị trí tương tác đặt trực tiếp trên các tuyến -->
-          <!-- Vị trí 1: Tuyến Môi trường -> Cơ thể (x=240, y=90) -->
-          <button type="button" class="flow-point-btn" id="flowPointST02-1" style="left: 30%; top: 37%;" onclick="viewFlowPointST02(1)" aria-label="Vị trí 1: Môi trường đến cơ thể">
-            1
-          </button>
+          <div class="flow-diagram-grid">
+            <!-- 1. VÙNG MÔI TRƯỜNG -->
+            <div class="org-zone org-zone--env">
+              <div class="org-zone-icon"><i class="ti ti-world"></i></div>
+              <div class="org-zone-title">MÔI TRƯỜNG</div>
+              <div class="org-zone-desc">Các chất cần thiết</div>
+              <div class="org-zone-sub">(Đa dạng theo loài)</div>
+            </div>
 
-          <!-- Vị trí 2: Tuyến Cơ thể -> Tế bào (x=560, y=90) -->
-          <button type="button" class="flow-point-btn" id="flowPointST02-2" style="left: 70%; top: 37%;" onclick="viewFlowPointST02(2)" aria-label="Vị trí 2: Cơ thể đến tế bào">
-            2
-          </button>
+            <!-- CẦU NỐI 1: Tuyến vào Môi trường -> Cơ thể (Nút 1) -->
+            <div class="bridge-inflow-1">
+              <svg class="bridge-arrow-svg bridge-arrow-svg--in-desktop" viewBox="0 0 70 20">
+                <line x1="5" y1="10" x2="65" y2="10" stroke="#2563EB" stroke-width="2.5" marker-end="url(#mBlueRight)" />
+              </svg>
+              <svg class="bridge-arrow-svg bridge-arrow-svg--in-mobile" viewBox="0 0 24 36">
+                <line x1="12" y1="2" x2="12" y2="30" stroke="#2563EB" stroke-width="2.5" marker-end="url(#mBlueDown)" />
+              </svg>
+              <button type="button" class="flow-point-btn" id="flowPointST02-1" onclick="viewFlowPointST02(1)" aria-label="Vị trí 1: Môi trường đến cơ thể">
+                1
+              </button>
+            </div>
 
-          <!-- Vị trí 3: Tuyến Đào thải ra môi trường (x=240, y=160) -->
-          <button type="button" class="flow-point-btn" id="flowPointST02-3" style="left: 30%; top: 67%;" onclick="viewFlowPointST02(3)" aria-label="Vị trí 3: Đào thải ra môi trường">
-            3
-          </button>
+            <!-- 2. VÙNG CƠ THỂ SINH VẬT -->
+            <div class="org-zone org-zone--body">
+              <div class="org-zone-icon"><i class="ti ti-heart-rate-monitor"></i></div>
+              <div class="org-zone-title">CƠ THỂ SINH VẬT</div>
+              <div class="org-body-box">
+                <div class="org-body-box-title">Hệ vận chuyển</div>
+                <div class="org-body-box-sub">Tiếp nhận & Đào thải</div>
+              </div>
+            </div>
+
+            <!-- CẦU NỐI 2: Tuyến vào Cơ thể -> Tế bào (Nút 2) -->
+            <div class="bridge-inflow-2">
+              <svg class="bridge-arrow-svg bridge-arrow-svg--in-desktop" viewBox="0 0 70 20">
+                <line x1="5" y1="10" x2="65" y2="10" stroke="#2563EB" stroke-width="2.5" marker-end="url(#mBlueRight)" />
+              </svg>
+              <svg class="bridge-arrow-svg bridge-arrow-svg--in-mobile" viewBox="0 0 24 36">
+                <line x1="12" y1="2" x2="12" y2="30" stroke="#2563EB" stroke-width="2.5" marker-end="url(#mBlueDown)" />
+              </svg>
+              <button type="button" class="flow-point-btn" id="flowPointST02-2" onclick="viewFlowPointST02(2)" aria-label="Vị trí 2: Cơ thể đến tế bào">
+                2
+              </button>
+            </div>
+
+            <!-- 3. VÙNG TẾ BÀO -->
+            <div class="org-zone org-zone--cell">
+              <div class="org-zone-icon"><i class="ti ti-circle-square"></i></div>
+              <div class="org-zone-title">TẾ BÀO</div>
+              <div class="mini-cell-nodes">
+                <span class="mini-node mini-node--ana">Đồng hoá</span>
+                <span class="mini-node-sep">⇄</span>
+                <span class="mini-node mini-node--cata">Dị hoá</span>
+              </div>
+              <div class="org-zone-desc">Chuyển hoá nội bào</div>
+              <div class="org-zone-sub">Tích luỹ & Giải phóng NL</div>
+            </div>
+
+            <!-- TUYẾN ĐÀO THẢI 1: Cơ thể -> Môi trường (Desktop) / TOÀN BỘ TUYẾN RA (Mobile: Nút 3) -->
+            <div class="bridge-outflow-1">
+              <div class="outflow-label-top">Tuyến đào thải</div>
+              <svg class="bridge-arrow-svg bridge-arrow-svg--out-desktop" viewBox="0 0 70 20">
+                <line x1="65" y1="10" x2="5" y2="10" stroke="#D97706" stroke-width="2.5" stroke-dasharray="4 4" marker-end="url(#mOrangeLeft)" />
+              </svg>
+              <svg class="outflow-mobile-track" viewBox="0 0 32 120">
+                <!-- Đường nét đứt màu cam chạy từ dưới lên trên -->
+                <line x1="16" y1="115" x2="16" y2="10" stroke="#D97706" stroke-width="2.5" stroke-dasharray="4 4" marker-end="url(#mOrangeUp)" />
+              </svg>
+              <button type="button" class="flow-point-btn flow-point-btn--orange" id="flowPointST02-3" onclick="viewFlowPointST02(3)" aria-label="Vị trí 3: Đào thải ra môi trường">
+                3
+              </button>
+              <div class="outflow-label-bot">Ra môi trường</div>
+            </div>
+
+            <!-- TUYẾN ĐÀO THẢI 2: Tế bào -> Cơ thể (Desktop) -->
+            <div class="bridge-outflow-2">
+              <svg class="bridge-arrow-svg bridge-arrow-svg--out-desktop" viewBox="0 0 70 20">
+                <line x1="65" y1="10" x2="5" y2="10" stroke="#D97706" stroke-width="2.5" stroke-dasharray="4 4" marker-end="url(#mOrangeLeft)" />
+              </svg>
+            </div>
+          </div>
         </div>
 
         <!-- Panel hiển thị chi tiết khi bấm vị trí -->
