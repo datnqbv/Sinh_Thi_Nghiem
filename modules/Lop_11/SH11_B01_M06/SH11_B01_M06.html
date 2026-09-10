@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vai trò của sinh vật tự dưỡng trong sinh giới · Sinh học 11 · SH11-B01-M06</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css">
+  
+  <style>
+    :root {
+      /* Tom Haugomat Editorial Flat Design Tokens */
+      --cream: #FAF7F0;
+      --cream-2: #F0EADD;
+      --cream-3: #E7DECC;
+      --paper-line: #E5DECF;
+      --paper-line-2: #D6CCB6;
+      --ink: #1A1A1A;
+      --ink-2: #514C44;
+      --ink-3: #7C756A;
+      --ink-faint: #ABA396;
+
+      /* Jade - Primary Action */
+      --jade: #3CA57A;
+      --jade-deep: #2D8B6F;
+      --jade-dark: #14432F;
+      --jade-text: #1B5E48;
+      --jade-soft: #A9D0BE;
+      --jade-pale: #DCEAE1;
+
+      /* Sage - Secondary Neutral */
+      --sage: #A8C9B8;
+      --sage-deep: #7CA792;
+      --sage-text: #46685A;
+      --sage-pale: #E1ECE4;
+
+      /* Accent Warm */
+      --accent: #E8A24A;
+      --accent-deep: #CE8A33;
+      --accent-text: #8A551A;
+      --accent-pale: #F7E7CD;
+
+      /* Semantic Status */
+      --correct: #2D8B6F;
+      --correct-bg: #DCEAE1;
+      --wrong: #C15F3C;
+      --wrong-bg: #F3E2D6;
+      --warning: #C58A2E;
+      --warning-bg: #F5E7CB;
+      --info: #4E7F92;
+      --info-bg: #DCE7EB;
+
+      /* Borders & Shadows */
+      --radius: 10px;
+      --radius-lg: 14px;
+      --radius-sm: 6px;
+      --shadow: 0 4px 12px rgba(45, 139, 111, 0.10);
+      --shadow-sm: 0 2px 6px rgba(26, 26, 26, 0.05);
+      --shadow-hover: 0 8px 24px rgba(45, 139, 111, 0.16);
+
+      --font: 'Be Vietnam Pro', system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--cream);
+      color: var(--ink);
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding: 16px clamp(12px, 2.5vw, 24px) 48px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* 1. Module Header */
+    .module-header {
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .module-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--jade-pale);
+      color: var(--jade-text);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 99px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border: 1px solid var(--jade-soft);
+    }
+
+    .duration-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.82rem;
+      color: var(--ink-3);
+      font-weight: 500;
+    }
+
+    .module-title {
+      font-size: clamp(1.4rem, 2.8vw, 1.85rem);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.35;
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+
+    .module-outcome {
+      display: inline-flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.95rem;
+      color: var(--ink-2);
+      background: var(--cream-2);
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--jade);
+      line-height: 1.5;
+    }
+
+    /* 2. Progress Nav / Step Tabs */
+    .progress-nav {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 8px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+
+    .step-tab-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 14px;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      color: var(--ink-3);
+      font-family: var(--font);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .step-tab-btn:hover {
+      background: var(--cream-2);
+      color: var(--ink);
+    }
+
+    .step-tab-btn.active {
+      background: var(--jade-deep);
+      color: #FFFFFF;
+      box-shadow: 0 2px 8px rgba(45, 139, 111, 0.35);
+      border-color: var(--jade);
+    }
+
+    .step-tab-btn.completed:not(.active) {
+      background: var(--jade-pale);
+      color: var(--jade-text);
+      border-color: var(--jade-soft);
+    }
+
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.08);
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .step-tab-btn.active .step-num {
+      background: #FFFFFF;
+      color: var(--jade-deep);
+    }
+
+    .step-tab-btn.completed:not(.active) .step-num {
+      background: var(--jade-deep);
+      color: #FFFFFF;
+    }
+
+    /* 3. Stage Container */
+    .stage-section {
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-lg);
+      padding: clamp(18px, 3vw, 32px);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .stage-section.hidden {
+      display: none;
+    }
+
+    /* Pedagogical Banners */
+    .hook-question-banner {
+      background: #F4EFE6;
+      border-left: 4px solid var(--accent-deep);
+      padding: 16px 20px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .hook-question-icon {
+      font-size: 1.4rem;
+      color: var(--accent-deep);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .hook-question-text {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    .lead-instruction-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-bottom: 4px;
+    }
+
+    .lead-text {
+      font-size: 0.98rem;
+      color: var(--ink-2);
+      line-height: 1.6;
+    }
+
+    .instruction-text {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--jade-text);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--jade-pale);
+      padding: 4px 10px;
+      border-radius: 4px;
+      width: fit-content;
+    }
+
+    /* ST00: Side-by-side comparison images */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .comparison-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: var(--cream);
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 16px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .comparison-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .comparison-card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .image-interactive-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      background-color: var(--cream-2);
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    }
+
+    .image-interactive-wrapper:hover {
+      border-color: var(--jade);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .image-interactive-wrapper.viewed {
+      border-color: var(--jade-deep);
+    }
+
+    .image-interactive-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .image-interactive-wrapper:hover img {
+      transform: scale(1.02);
+    }
+
+    .touch-hint-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(26, 26, 26, 0.82);
+      color: #FFFFFF;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 99px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      backdrop-filter: blur(4px);
+      transition: all 0.25s ease;
+      z-index: 2;
+    }
+
+    .image-interactive-wrapper.viewed .touch-hint-badge {
+      background: var(--jade-deep);
+      color: #FFFFFF;
+    }
+
+    .comparison-explanation-box {
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-size: 0.92rem;
+      color: var(--ink-2);
+      line-height: 1.6;
+      border-left: 3px solid var(--jade);
+      transition: all 0.25s ease;
+    }
+
+    .comparison-explanation-box.hidden {
+      opacity: 0.5;
+      background: var(--cream-2);
+      border-left-color: var(--paper-line-2);
+      font-style: italic;
+      color: var(--ink-3);
+    }
+
+    /* Conclusion Box */
+    .stage-conclusion-box {
+      background: var(--jade-pale);
+      border: 1px solid var(--jade-soft);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .stage-conclusion-box.hidden {
+      display: none;
+    }
+
+    .conclusion-title {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--jade-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .conclusion-content {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    /* Navigation Action Row */
+    .controls-row {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--paper-line);
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      font-family: var(--font);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      border: none;
+    }
+
+    .btn-action.primary {
+      background: var(--jade);
+      color: var(--cream);
+    }
+
+    .btn-action.primary:hover:not(:disabled) {
+      background: var(--jade-deep);
+      box-shadow: 0 4px 12px rgba(45, 139, 111, 0.25);
+    }
+
+    .btn-action.primary:disabled {
+      background: var(--paper-line-2);
+      color: var(--ink-faint);
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .btn-action.secondary {
+      background: var(--cream-2);
+      color: var(--ink-2);
+      border: 1.5px solid var(--paper-line);
+    }
+
+    .btn-action.secondary:hover {
+      background: var(--cream-3);
+      color: var(--ink);
+    }
+
+    /* ST01: 3-Role Vector Diagram */
+    .roles-diagram-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .role-card {
+      background: var(--cream);
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .role-card:hover {
+      border-color: var(--jade);
+      box-shadow: var(--shadow);
+      transform: translateY(-2px);
+    }
+
+    .role-card.active {
+      border-color: var(--jade-deep);
+      background: #FFFFFF;
+      box-shadow: 0 4px 16px rgba(45, 139, 111, 0.12);
+    }
+
+    .role-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .role-num-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--cream-3);
+      color: var(--ink-2);
+      font-size: 0.85rem;
+      font-weight: 800;
+      transition: all 0.2s ease;
+    }
+
+    .role-card.active .role-num-badge,
+    .role-card.viewed .role-num-badge {
+      background: var(--jade-deep);
+      color: #FFFFFF;
+    }
+
+    .role-status-text {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--ink-3);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .role-card.viewed .role-status-text {
+      color: var(--jade-text);
+    }
+
+    .role-vector-box {
+      width: 100%;
+      height: 180px;
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .role-vector-box svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .role-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    .role-detail-box {
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.92rem;
+      color: var(--ink-2);
+      line-height: 1.6;
+      border-left: 3px solid var(--jade);
+    }
+
+    .role-detail-box.hidden {
+      display: none;
+    }
+
+    .role-example {
+      background: var(--cream);
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 0.86rem;
+      color: var(--ink-2);
+      border-left: 2px solid var(--accent);
+    }
+
+    /* ST01 Quiz Section */
+    .st01-quiz-section {
+      background: var(--cream);
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .st01-quiz-section.hidden {
+      display: none;
+    }
+
+    .quiz-card {
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .quiz-card.hidden {
+      display: none;
+    }
+
+    .quiz-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .quiz-tag {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--jade-text);
+      background: var(--jade-pale);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .quiz-question-text {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    .quiz-options-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .quiz-option-btn {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      background: var(--cream);
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius-sm);
+      font-family: var(--font);
+      font-size: 0.92rem;
+      color: var(--ink);
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      line-height: 1.5;
+    }
+
+    .quiz-option-btn:hover:not(:disabled) {
+      border-color: var(--jade);
+      background: #FFFFFF;
+    }
+
+    .quiz-option-btn.selected-correct {
+      border-color: var(--correct);
+      background: var(--correct-bg);
+      color: var(--jade-dark);
+      font-weight: 600;
+    }
+
+    .quiz-option-btn.selected-wrong {
+      border-color: var(--wrong);
+      background: var(--wrong-bg);
+      color: #6E260E;
+    }
+
+    .option-letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line-2);
+      font-weight: 700;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .quiz-feedback-box {
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .quiz-feedback-box.hidden {
+      display: none;
+    }
+
+    .quiz-feedback-box.correct {
+      background: var(--correct-bg);
+      border-left: 4px solid var(--correct);
+      color: var(--jade-dark);
+    }
+
+    .quiz-feedback-box.wrong {
+      background: var(--wrong-bg);
+      border-left: 4px solid var(--wrong);
+      color: #6E260E;
+    }
+
+    /* ST02: Summary & Close Unit 1 */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .summary-card {
+      background: var(--cream);
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .summary-card-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--jade-deep);
+      color: #FFFFFF;
+      font-size: 0.95rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .summary-card-text {
+      font-size: 0.95rem;
+      color: var(--ink);
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    .lesson-recap-box {
+      background: #FFFFFF;
+      border: 1.5px solid var(--jade-soft);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-left: 5px solid var(--jade-deep);
+    }
+
+    .lesson-recap-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--jade-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lesson-recap-text {
+      font-size: 1rem;
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    .next-bridge-box {
+      background: var(--accent-pale);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .next-bridge-icon {
+      font-size: 1.5rem;
+      color: var(--accent-deep);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .next-bridge-content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .next-bridge-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--accent-text);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .next-bridge-text {
+      font-size: 0.96rem;
+      color: var(--ink);
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    /* Modal completed */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(26, 26, 26, 0.5);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-backdrop.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .completion-modal {
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      max-width: 480px;
+      width: 90%;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+    }
+
+    .completion-icon-wrapper {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--jade-pale);
+      color: var(--jade-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+
+    .completion-modal h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .completion-modal p {
+      font-size: 0.95rem;
+      color: var(--ink-2);
+      line-height: 1.6;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+      .roles-diagram-grid {
+        grid-template-columns: 1fr;
+      }
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+      .progress-nav {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Athena Manifest JSON -->
+  <script type="application/json" id="athena-manifest">
+  {
+    "module": "SH11-B01-M06",
+    "grade": "11",
+    "lesson": "B01",
+    "title": "Vai trò của sinh vật tự dưỡng trong sinh giới",
+    "description": "Phân tích được vai trò của sinh vật tự dưỡng trong sinh giới: tạo nguồn chất hữu cơ ban đầu, điều hoà khí quyển và tạo nơi ở cho nhiều sinh vật.",
+    "durationMinutes": 10,
+    "stages": [
+      { "id": "ST00", "title": "Khởi động: Nếu thiếu sinh vật tự dưỡng, điều gì sẽ xảy ra?" },
+      { "id": "ST01", "title": "Ba vai trò của sinh vật tự dưỡng trong sinh giới" },
+      { "id": "ST02", "title": "Ghi nhớ và Khép lại Bài 1" }
+    ]
+  }
+  </script>
+
+  <div class="app-container">
+    
+    <!-- 1. Header -->
+    <header class="module-header">
+      <div class="header-top">
+        <span class="module-badge"><i class="ti ti-dna"></i> Sinh học 11 · Bài 1 · Module 06</span>
+        <span class="duration-badge"><i class="ti ti-clock"></i> Thời lượng: 10–12 phút</span>
+      </div>
+      <h1 class="module-title">Vai trò của sinh vật tự dưỡng trong sinh giới</h1>
+      <div class="module-outcome">
+        <i class="ti ti-target" style="color:var(--jade-deep); font-size:1.2rem; margin-top:2px;"></i>
+        <span><strong>Yêu cầu cần đạt:</strong> Phân tích được vai trò của sinh vật tự dưỡng trong sinh giới.</span>
+      </div>
+    </header>
+
+    <!-- 2. Step Tabs Navigation -->
+    <nav class="progress-nav" aria-label="Tiến trình học tập">
+      <button class="step-tab-btn active" id="tabST00" onclick="goToStage(0)">
+        <span class="step-num">1</span>
+        <span>Khởi động (ST00)</span>
+      </button>
+      <button class="step-tab-btn" id="tabST01" onclick="goToStage(1)">
+        <span class="step-num">2</span>
+        <span>Ba vai trò (ST01)</span>
+      </button>
+      <button class="step-tab-btn" id="tabST02" onclick="goToStage(2)">
+        <span class="step-num">3</span>
+        <span>Ghi nhớ & Khép bài (ST02)</span>
+      </button>
+    </nav>
+
+    <!-- 3. STAGE 0 (ST00) -->
+    <section class="stage-section" id="stage0">
+      <div class="hook-question-banner">
+        <i class="ti ti-help-circle hook-question-icon"></i>
+        <div class="hook-question-text">
+          “Các sinh vật dị dưỡng như động vật và con người không tự tổng hợp được chất hữu cơ từ CO₂. Vậy nếu một hệ sinh thái mất đi phần lớn sinh vật tự dưỡng, điều gì sẽ bị ảnh hưởng trước tiên?”
+        </div>
+      </div>
+
+      <div class="lead-instruction-row">
+        <p class="lead-text">Quan sát hai tình huống dưới đây. Nhấn vào từng hình để xem sự có mặt của sinh vật tự dưỡng liên quan như thế nào đến đời sống của các sinh vật khác.</p>
+        <span class="instruction-text"><i class="ti ti-hand-finger"></i> HƯỚNG DẪN: Nhấn vào từng hình. Hình đã xem sẽ đổi trạng thái. Khi xem đủ hai hình, nút TIẾP TỤC sẽ xuất hiện.</span>
+      </div>
+
+      <div class="comparison-grid">
+        <!-- Tình huống 1 -->
+        <div class="comparison-card" id="cardST00-1">
+          <div class="comparison-card-header">
+            <span class="comparison-card-title"><i class="ti ti-trees" style="color:var(--jade);"></i> Tình huống 1 – Hệ sinh thái có sinh vật tự dưỡng phát triển</span>
+          </div>
+          <div class="image-interactive-wrapper" id="wrapST00-1" onclick="viewST00Image(1)" title="Nhấn vào hình để xem tác động của sinh vật tự dưỡng phát triển">
+            <div class="touch-hint-badge" id="hintST00-1"><i class="ti ti-hand-finger"></i> Nhấn vào hình để xem</div>
+            <img src="https://lh3.googleusercontent.com/d/1TcGE_8rlV31b2FXF0jhuIq6tZgIuV1Y0" alt="Hệ sinh thái có sinh vật tự dưỡng phát triển">
+          </div>
+          <div class="comparison-explanation-box hidden" id="boxST00-1">
+            Sinh vật tự dưỡng tạo ra chất hữu cơ. Chất hữu cơ này trở thành nguồn vật chất và năng lượng ban đầu cho nhiều sinh vật dị dưỡng trong hệ sinh thái.
+          </div>
+        </div>
+
+        <!-- Tình huống 2 -->
+        <div class="comparison-card" id="cardST00-2">
+          <div class="comparison-card-header">
+            <span class="comparison-card-title"><i class="ti ti-alert-triangle" style="color:var(--accent-deep);"></i> Tình huống 2 – Hệ sinh thái suy giảm mạnh sinh vật tự dưỡng</span>
+          </div>
+          <div class="image-interactive-wrapper" id="wrapST00-2" onclick="viewST00Image(2)" title="Nhấn vào hình để xem tác động khi sinh vật tự dưỡng suy giảm">
+            <div class="touch-hint-badge" id="hintST00-2"><i class="ti ti-hand-finger"></i> Nhấn vào hình để xem</div>
+            <img src="https://lh3.googleusercontent.com/d/1sMDBB8hX_bGw3YfTeDm4bdH7AEIIF0PJ" alt="Hệ sinh thái suy giảm mạnh sinh vật tự dưỡng">
+          </div>
+          <div class="comparison-explanation-box hidden" id="boxST00-2">
+            Khi sinh vật tự dưỡng suy giảm mạnh, nguồn chất hữu cơ cung cấp cho các bậc dinh dưỡng khác cũng giảm, làm chuỗi và lưới thức ăn bị ảnh hưởng.
+          </div>
+        </div>
+      </div>
+
+      <!-- Khối chốt ST00 -->
+      <div class="stage-conclusion-box hidden" id="conclusionST00">
+        <div class="conclusion-title"><i class="ti ti-bulb"></i> Nhận xét quan trọng</div>
+        <div class="conclusion-content">
+          Sinh vật tự dưỡng không chỉ tự tạo chất hữu cơ cho chính mình. Chúng còn tạo nên nguồn vật chất và năng lượng ban đầu cho nhiều sinh vật khác. Ngoài vai trò đó, sinh vật tự dưỡng còn ảnh hưởng đến môi trường sống như thế nào?
+        </div>
+      </div>
+
+      <div class="controls-row">
+        <button class="btn-action primary" id="btnNextST00" onclick="goToStage(1)" disabled>
+          <span>TIẾP TỤC</span>
+          <i class="ti ti-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- 4. STAGE 1 (ST01) -->
+    <section class="stage-section hidden" id="stage1">
+      <div class="lead-instruction-row">
+        <p class="lead-text" style="font-size:1.05rem; font-weight:600; color:var(--ink);">Hãy khám phá ba vai trò lớn của sinh vật tự dưỡng đối với sinh giới.</p>
+        <span class="instruction-text"><i class="ti ti-hand-finger"></i> HƯỚNG DẪN: Nhấn vào từng vị trí 1, 2, 3 trên sơ đồ. Vị trí đã xem sẽ đổi trạng thái. Khi xem đủ ba vị trí, hoạt động củng cố sẽ xuất hiện.</span>
+      </div>
+
+      <!-- Sơ đồ 3 vai trò Code/SVG -->
+      <div class="roles-diagram-grid">
+        <!-- Vị trí 1 -->
+        <div class="role-card" id="roleCard1" onclick="viewRolePosition(1)">
+          <div class="role-card-top">
+            <span class="role-num-badge">1</span>
+            <span class="role-status-text" id="roleStatus1"><i class="ti ti-circle"></i> Chưa xem</span>
+          </div>
+          <div class="role-vector-box">
+            <!-- SVG Minh hoạ Chuỗi thức ăn: Cỏ -> Thỏ -> Cáo -->
+            <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="arrowF1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                  <path d="M 0 0 L 8 4 L 0 8 z" fill="#2D8B6F"/>
+                </marker>
+                <marker id="arrowF2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                  <path d="M 0 0 L 8 4 L 0 8 z" fill="#CE8A33"/>
+                </marker>
+              </defs>
+              <!-- Nền mềm -->
+              <rect width="320" height="180" fill="#FAF7F0"/>
+              
+              <!-- 1. Cỏ (Sinh vật sản xuất) -->
+              <g transform="translate(15, 60)">
+                <rect x="0" y="0" width="70" height="75" rx="6" fill="#DCEAE1" stroke="#A9D0BE" stroke-width="1.5"/>
+                <path d="M 18 55 Q 12 25 24 15 Q 28 35 25 55 Z" fill="#3CA57A"/>
+                <path d="M 32 55 Q 36 20 42 12 Q 46 32 40 55 Z" fill="#2D8B6F"/>
+                <path d="M 45 55 Q 56 26 58 20 Q 56 40 48 55 Z" fill="#3CA57A"/>
+                <text x="35" y="70" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#1B5E48" text-anchor="middle">Cỏ</text>
+              </g>
+
+              <!-- Mũi tên F1: Cỏ -> Thỏ -->
+              <g>
+                <line x1="88" y1="95" x2="122" y2="95" stroke="#2D8B6F" stroke-width="2.5" marker-end="url(#arrowF1)"/>
+                <text x="105" y="85" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="700" fill="#1B5E48" text-anchor="middle">F1</text>
+              </g>
+
+              <!-- 2. Thỏ (Sinh vật ăn cỏ) -->
+              <g transform="translate(125, 60)">
+                <rect x="0" y="0" width="70" height="75" rx="6" fill="#F0EADD" stroke="#D6CCB6" stroke-width="1.5"/>
+                <!-- Biểu tượng thỏ cách điệu Tom Haugomat -->
+                <ellipse cx="35" cy="46" rx="16" ry="12" fill="#ABA396"/>
+                <circle cx="25" cy="36" r="10" fill="#ABA396"/>
+                <!-- Tai thỏ -->
+                <ellipse cx="22" cy="20" rx="3.5" ry="9" fill="#ABA396" transform="rotate(-10 22 20)"/>
+                <ellipse cx="28" cy="20" rx="3.5" ry="9" fill="#ABA396" transform="rotate(10 28 20)"/>
+                <circle cx="23" cy="34" r="1.5" fill="#1A1A1A"/>
+                <text x="35" y="70" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#514C44" text-anchor="middle">Thỏ</text>
+              </g>
+
+              <!-- Mũi tên F2: Thỏ -> Cáo -->
+              <g>
+                <line x1="198" y1="95" x2="232" y2="95" stroke="#CE8A33" stroke-width="2.5" marker-end="url(#arrowF2)"/>
+                <text x="215" y="85" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="700" fill="#8A551A" text-anchor="middle">F2</text>
+              </g>
+
+              <!-- 3. Cáo (Sinh vật tiêu thụ) -->
+              <g transform="translate(235, 60)">
+                <rect x="0" y="0" width="70" height="75" rx="6" fill="#F7E7CD" stroke="#CE8A33" stroke-width="1.5"/>
+                <!-- Biểu tượng cáo cách điệu -->
+                <ellipse cx="35" cy="46" rx="18" ry="12" fill="#E8A24A"/>
+                <polygon points="18,34 32,34 25,48" fill="#E8A24A"/>
+                <polygon points="18,24 24,34 16,34" fill="#CE8A33"/>
+                <polygon points="32,24 34,34 26,34" fill="#CE8A33"/>
+                <circle cx="22" cy="38" r="1.5" fill="#1A1A1A"/>
+                <text x="35" y="70" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#8A551A" text-anchor="middle">Cáo</text>
+              </g>
+
+              <!-- Tiêu đề dưới SVG -->
+              <rect x="30" y="145" width="260" height="24" rx="4" fill="rgba(255,255,255,0.8)"/>
+              <text x="160" y="161" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="600" fill="#514C44" text-anchor="middle">Truyền vật chất & năng lượng hữu cơ (F1 → F2)</text>
+            </svg>
+          </div>
+          <div class="role-title">Vị trí 1 – Nguồn vật chất và năng lượng ban đầu</div>
+          <div class="role-detail-box hidden" id="roleDetail1">
+            <p>Sinh vật tự dưỡng tổng hợp chất hữu cơ từ nguồn carbon vô cơ. Vì vậy, chúng tạo ra nguồn vật chất và năng lượng ban đầu cho các bậc dinh dưỡng khác trong nhiều hệ sinh thái.</p>
+            <div class="role-example">
+              <strong>Ví dụ:</strong> Cỏ tạo chất hữu cơ → thỏ ăn cỏ → cáo ăn thỏ. Năng lượng và vật chất mà thỏ và cáo nhận được có nguồn gốc từ chất hữu cơ do sinh vật tự dưỡng tạo ra.
+            </div>
+          </div>
+        </div>
+
+        <!-- Vị trí 2 -->
+        <div class="role-card" id="roleCard2" onclick="viewRolePosition(2)">
+          <div class="role-card-top">
+            <span class="role-num-badge">2</span>
+            <span class="role-status-text" id="roleStatus2"><i class="ti ti-circle"></i> Chưa xem</span>
+          </div>
+          <div class="role-vector-box">
+            <!-- SVG Minh hoạ Quang hợp: CO2 vào -> O2 ra -->
+            <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="arrowG1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                  <path d="M 0 0 L 8 4 L 0 8 z" fill="#4E7F92"/>
+                </marker>
+                <marker id="arrowG2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                  <path d="M 0 0 L 8 4 L 0 8 z" fill="#3CA57A"/>
+                </marker>
+              </defs>
+              <rect width="320" height="180" fill="#FAF7F0"/>
+              
+              <!-- Khung nhóm Sinh vật tự dưỡng quang hợp -->
+              <rect x="75" y="45" width="170" height="100" rx="8" fill="#FFFFFF" stroke="#A9D0BE" stroke-width="1.5" stroke-dasharray="4,3"/>
+              <text x="160" y="38" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="700" fill="#1B5E48" text-anchor="middle">Sinh vật tự dưỡng quang hợp</text>
+
+              <!-- Cây xanh -->
+              <g transform="translate(100, 60)">
+                <rect x="18" y="40" width="8" height="30" fill="#7C756A"/>
+                <circle cx="22" cy="30" r="22" fill="#3CA57A"/>
+                <circle cx="15" cy="22" r="16" fill="#2D8B6F"/>
+                <circle cx="28" cy="24" r="15" fill="#46685A"/>
+                <text x="22" y="78" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="600" fill="#514C44" text-anchor="middle">Thực vật</text>
+              </g>
+
+              <!-- Tảo biển -->
+              <g transform="translate(175, 60)">
+                <rect x="5" y="55" width="45" height="15" rx="3" fill="#DCEAE1"/>
+                <path d="M 16 55 Q 10 35 18 18 Q 24 35 22 55 Z" fill="#2D8B6F"/>
+                <path d="M 28 55 Q 36 32 30 15 Q 26 34 32 55 Z" fill="#3CA57A"/>
+                <text x="27" y="78" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="600" fill="#514C44" text-anchor="middle">Tảo</text>
+              </g>
+
+              <!-- Mũi tên G1: CO2 từ khí quyển -> Nhóm quang hợp -->
+              <g>
+                <path d="M 20 40 Q 45 40 70 65" fill="none" stroke="#4E7F92" stroke-width="2.5" marker-end="url(#arrowG1)"/>
+                <rect x="12" y="24" width="36" height="18" rx="4" fill="#DCE7EB"/>
+                <text x="30" y="37" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#4E7F92" text-anchor="middle">CO₂</text>
+                <text x="45" y="75" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="700" fill="#4E7F92">G1</text>
+              </g>
+
+              <!-- Mũi tên G2: O2 từ Nhóm quang hợp -> Khí quyển -->
+              <g>
+                <path d="M 248 65 Q 275 40 300 40" fill="none" stroke="#3CA57A" stroke-width="2.5" marker-end="url(#arrowG2)"/>
+                <rect x="272" y="24" width="36" height="18" rx="4" fill="#DCEAE1"/>
+                <text x="290" y="37" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#1B5E48" text-anchor="middle">O₂</text>
+                <text x="268" y="75" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="700" fill="#2D8B6F">G2</text>
+              </g>
+
+              <!-- Chú thích chân -->
+              <text x="160" y="165" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="600" fill="#514C44" text-anchor="middle">Quang hợp hấp thụ CO₂ & giải phóng O₂</text>
+            </svg>
+          </div>
+          <div class="role-title">Vị trí 2 – Góp phần duy trì thành phần khí quyển và điều hoà môi trường</div>
+          <div class="role-detail-box hidden" id="roleDetail2">
+            <p>Các sinh vật tự dưỡng quang hợp hấp thụ CO₂ và giải phóng O₂. Hoạt động quang hợp của thực vật, tảo và các sinh vật quang hợp khác góp phần duy trì thành phần khí quyển và điều hoà môi trường sống.</p>
+          </div>
+        </div>
+
+        <!-- Vị trí 3 -->
+        <div class="role-card" id="roleCard3" onclick="viewRolePosition(3)">
+          <div class="role-card-top">
+            <span class="role-num-badge">3</span>
+            <span class="role-status-text" id="roleStatus3"><i class="ti ti-circle"></i> Chưa xem</span>
+          </div>
+          <div class="role-vector-box">
+            <!-- SVG Minh hoạ Nơi ở: Cây có tổ chim + Tảo bẹ có cá -->
+            <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+              <rect width="320" height="180" fill="#FAF7F0"/>
+              
+              <!-- Nửa trái: Cây có tổ chim -->
+              <g transform="translate(20, 20)">
+                <rect x="0" y="0" width="130" height="135" rx="6" fill="#FFFFFF" stroke="#E5DECF" stroke-width="1.5"/>
+                <!-- Cây -->
+                <path d="M 65 125 L 65 75 Q 65 60 50 45 M 65 75 Q 65 55 80 40" stroke="#7C756A" stroke-width="6" fill="none" stroke-linecap="round"/>
+                <ellipse cx="65" cy="40" rx="36" ry="24" fill="#3CA57A" opacity="0.85"/>
+                <ellipse cx="50" cy="35" rx="24" ry="18" fill="#2D8B6F" opacity="0.9"/>
+                <!-- Tổ chim neo trên chạc cành -->
+                <ellipse cx="68" cy="62" rx="12" ry="6" fill="#CE8A33"/>
+                <circle cx="66" cy="58" r="4" fill="#F7E7CD"/>
+                <circle cx="71" cy="59" r="3.5" fill="#F7E7CD"/>
+                <text x="65" y="125" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="700" fill="#514C44" text-anchor="middle">Tổ chim trên cành cây</text>
+              </g>
+
+              <!-- Nửa phải: Tảo bẹ lớn và cá nhỏ trú ngụ -->
+              <g transform="translate(170, 20)">
+                <rect x="0" y="0" width="130" height="135" rx="6" fill="#FFFFFF" stroke="#E5DECF" stroke-width="1.5"/>
+                <!-- Lớp nước nhạt -->
+                <rect x="4" y="4" width="122" height="127" rx="4" fill="#DCE7EB" opacity="0.4"/>
+                <!-- Dải tảo bẹ lớn -->
+                <path d="M 35 125 Q 25 85 45 55 Q 60 30 40 12" stroke="#2D8B6F" stroke-width="8" fill="none" stroke-linecap="round"/>
+                <path d="M 75 125 Q 90 80 65 50 Q 55 30 75 15" stroke="#3CA57A" stroke-width="7" fill="none" stroke-linecap="round"/>
+                <!-- Cá nhỏ bơi trú giữa nhánh tảo -->
+                <g transform="translate(48, 65)">
+                  <ellipse cx="10" cy="6" rx="10" ry="5" fill="#E8A24A"/>
+                  <polygon points="0,6 -6,1 -6,11" fill="#CE8A33"/>
+                  <circle cx="14" cy="5" r="1" fill="#1A1A1A"/>
+                </g>
+                <text x="65" y="125" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="700" fill="#46685A" text-anchor="middle">Cá trú ngụ trong rạn tảo</text>
+              </g>
+
+              <!-- Chú thích chân -->
+              <text x="160" y="170" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="600" fill="#514C44" text-anchor="middle">Tạo nơi ở, nơi trú ẩn & sinh sản</text>
+            </svg>
+          </div>
+          <div class="role-title">Vị trí 3 – Tạo môi trường sống cho nhiều sinh vật</div>
+          <div class="role-detail-box hidden" id="roleDetail3">
+            <p>Nhiều sinh vật tự dưỡng, đặc biệt là thực vật và các loài tảo kích thước lớn, còn tạo nơi ở, nơi trú ẩn hoặc nơi sinh sản cho nhiều loài sinh vật khác.</p>
+            <div class="role-example">
+              <strong>Ví dụ:</strong> Cây có thể cung cấp nơi làm tổ cho chim, nơi bám cho nhiều sinh vật và tạo vi môi trường cho các loài khác sinh sống.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hoạt động củng cố sau khi xem 3 vị trí -->
+      <div class="st01-quiz-section hidden" id="st01QuizSection">
+        <div class="quiz-card-header">
+          <span style="font-size:1.05rem; font-weight:800; color:var(--ink);"><i class="ti ti-checklist" style="color:var(--jade);"></i> Hoạt động củng cố nhận thức</span>
+          <span class="quiz-tag">Kiểm tra nhanh</span>
+        </div>
+
+        <!-- Câu hỏi 1 -->
+        <div class="quiz-card" id="quizCard1">
+          <div class="quiz-question-text">
+            <strong>Câu hỏi 1:</strong> Vai trò nào dưới đây có thể áp dụng trực tiếp cho mọi sinh vật tự dưỡng?
+          </div>
+          <div class="quiz-options-group" id="optsQ1">
+            <button class="quiz-option-btn" onclick="answerQ1('A')">
+              <span class="option-letter">A</span>
+              <span>Tổng hợp chất hữu cơ từ nguồn carbon vô cơ, tạo nguồn vật chất cho hệ sinh thái.</span>
+            </button>
+            <button class="quiz-option-btn" onclick="answerQ1('B')">
+              <span class="option-letter">B</span>
+              <span>Giải phóng O₂ nhờ quang hợp.</span>
+            </button>
+          </div>
+          <div class="quiz-feedback-box hidden" id="feedbackQ1"></div>
+        </div>
+
+        <!-- Câu hỏi 2 (Chỉ mở sau khi Câu 1 đúng) -->
+        <div class="quiz-card hidden" id="quizCard2">
+          <div class="quiz-question-text">
+            <strong>Câu hỏi 2:</strong> Sinh vật tự dưỡng chỉ gồm thực vật. Đúng hay sai?
+          </div>
+          <div class="quiz-options-group" id="optsQ2">
+            <button class="quiz-option-btn" onclick="answerQ2('A')">
+              <span class="option-letter">A</span>
+              <span>Sai — sinh vật tự dưỡng còn gồm tảo và một số vi khuẩn.</span>
+            </button>
+            <button class="quiz-option-btn" onclick="answerQ2('B')">
+              <span class="option-letter">B</span>
+              <span>Đúng — chỉ thực vật mới là sinh vật tự dưỡng.</span>
+            </button>
+          </div>
+          <div class="quiz-feedback-box hidden" id="feedbackQ2"></div>
+        </div>
+      </div>
+
+      <!-- Khối chốt ST01 -->
+      <div class="stage-conclusion-box hidden" id="conclusionST01">
+        <div class="conclusion-title"><i class="ti ti-badge-check"></i> Chốt kiến thức ST01</div>
+        <div class="conclusion-content">
+          Sinh vật tự dưỡng giữ vai trò nền tảng trong sinh giới: tạo nguồn vật chất và năng lượng ban đầu cho nhiều hệ sinh thái; các sinh vật tự dưỡng quang hợp góp phần duy trì thành phần khí quyển và điều hoà môi trường; nhiều thực vật và tảo còn tạo nơi sống cho các sinh vật khác.
+        </div>
+      </div>
+
+      <div class="controls-row" style="justify-content: space-between;">
+        <button class="btn-action secondary" onclick="goToStage(0)">
+          <i class="ti ti-arrow-left"></i>
+          <span>QUAY LẠI</span>
+        </button>
+        <button class="btn-action primary" id="btnNextST01" onclick="goToStage(2)" disabled>
+          <span>TIẾP TỤC: GHI NHỚ & KHÉP LẠI BÀI 1</span>
+          <i class="ti ti-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- 5. STAGE 2 (ST02) -->
+    <section class="stage-section hidden" id="stage2">
+      <div class="hook-question-banner" style="border-left-color:var(--jade-deep); background:var(--jade-pale);">
+        <i class="ti ti-bookmarks hook-question-icon" style="color:var(--jade-deep);"></i>
+        <div class="hook-question-text" style="color:var(--jade-dark);">
+          Ghi nhớ cốt lõi về Vai trò của sinh vật tự dưỡng trong sinh giới
+        </div>
+      </div>
+
+      <!-- 4 Ghi nhớ cốt lõi -->
+      <div class="summary-grid">
+        <div class="summary-card">
+          <span class="summary-card-num">1</span>
+          <p class="summary-card-text">Sinh vật tự dưỡng tổng hợp chất hữu cơ từ nguồn carbon vô cơ và tạo nguồn vật chất, năng lượng ban đầu cho nhiều hệ sinh thái.</p>
+        </div>
+
+        <div class="summary-card">
+          <span class="summary-card-num">2</span>
+          <p class="summary-card-text">Các sinh vật tự dưỡng quang hợp hấp thụ CO₂ và giải phóng O₂, góp phần duy trì thành phần khí quyển và điều hoà môi trường sống.</p>
+        </div>
+
+        <div class="summary-card">
+          <span class="summary-card-num">3</span>
+          <p class="summary-card-text">Nhiều thực vật và tảo còn tạo nơi ở, nơi trú ẩn hoặc nơi sinh sản cho các sinh vật khác.</p>
+        </div>
+
+        <div class="summary-card">
+          <span class="summary-card-num">4</span>
+          <p class="summary-card-text">Sinh vật tự dưỡng không chỉ gồm thực vật mà còn có tảo và một số vi khuẩn.</p>
+        </div>
+      </div>
+
+      <!-- Lời chốt toàn bài 1 -->
+      <div class="lesson-recap-box">
+        <div class="lesson-recap-title"><i class="ti ti-feather"></i> Lời chốt Bài 1</div>
+        <p class="lesson-recap-text">
+          Qua Bài 1, chúng ta đã thấy sinh vật phải liên tục trao đổi chất và chuyển hoá năng lượng để duy trì sự sống; các quá trình này diễn ra từ cấp tế bào đến cơ thể, với những phương thức khác nhau ở sinh vật tự dưỡng và dị dưỡng. Trong đó, sinh vật tự dưỡng giữ vai trò đặc biệt quan trọng vì tạo nên nguồn chất hữu cơ ban đầu cho nhiều hệ sinh thái.
+        </p>
+      </div>
+
+      <!-- Kết nối sang Bài 2 -->
+      <div class="next-bridge-box">
+        <i class="ti ti-bulb next-bridge-icon"></i>
+        <div class="next-bridge-content">
+          <span class="next-bridge-title">Kết nối sang Bài 2</span>
+          <p class="next-bridge-text">
+            Ở thực vật, quá trình nào giúp chuyển năng lượng ánh sáng thành hoá năng và tạo nên chất hữu cơ? Ở Bài 2 – Quang hợp ở thực vật, chúng ta sẽ đi sâu vào quá trình này.
+          </p>
+        </div>
+      </div>
+
+      <div class="controls-row" style="justify-content: space-between;">
+        <button class="btn-action secondary" onclick="goToStage(1)">
+          <i class="ti ti-arrow-left"></i>
+          <span>QUAY LẠI</span>
+        </button>
+        <button class="btn-action primary" id="btnCompleteModule" onclick="completeModule()">
+          <i class="ti ti-check"></i>
+          <span>HOÀN THÀNH MODULE</span>
+        </button>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Modal hoàn thành -->
+  <div class="modal-backdrop" id="completionModal">
+    <div class="completion-modal">
+      <div class="completion-icon-wrapper">
+        <i class="ti ti-circle-check"></i>
+      </div>
+      <h3>Đã hoàn thành module!</h3>
+      <p>Chúc mừng bạn đã hoàn thành bài học <strong>SH11-B01-M06: Vai trò của sinh vật tự dưỡng trong sinh giới</strong> và khép lại trọn vẹn toàn bộ <strong>Bài 1</strong>.</p>
+      <button class="btn-action primary" onclick="closeCompletionModal()">Đóng thông báo</button>
+    </div>
+  </div>
+
+  <!-- Interactive Logic -->
+  <script>
+    // LMS State Management in-memory (No storage APIs used)
+    const lmsState = {
+      currentStage: 0,
+      M06_st00_img1: false,
+      M06_st00_img2: false,
+      M06_st00_hoanthanh: false,
+      M06_st01_pos1: false,
+      M06_st01_pos2: false,
+      M06_st01_pos3: false,
+      M06_st01_q1_pass: false,
+      M06_st01_q2_pass: false,
+      M06_st01_hoanthanh: false,
+      M06_complete: false
+    };
+
+    // Auto-resize for parent iframe
+    function reportHeight() {
+      if (window.parent && window.parent !== window) {
+        const height = document.documentElement.scrollHeight || document.body.scrollHeight;
+        window.parent.postMessage({ type: 'setHeight', height: height }, '*');
+      }
+    }
+
+    window.addEventListener('load', reportHeight);
+    window.addEventListener('resize', reportHeight);
+
+    // Step Tabs Navigation
+    function goToStage(stageIndex) {
+      lmsState.currentStage = stageIndex;
+
+      // Update Tab UI
+      const tabs = [document.getElementById('tabST00'), document.getElementById('tabST01'), document.getElementById('tabST02')];
+      const stages = [document.getElementById('stage0'), document.getElementById('stage1'), document.getElementById('stage2')];
+
+      tabs.forEach((tab, idx) => {
+        if (!tab) return;
+        tab.classList.remove('active');
+        if (idx === stageIndex) {
+          tab.classList.add('active');
+        }
+      });
+
+      stages.forEach((stg, idx) => {
+        if (!stg) return;
+        if (idx === stageIndex) {
+          stg.classList.remove('hidden');
+        } else {
+          stg.classList.add('hidden');
+        }
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(reportHeight, 100);
+    }
+
+    // --- STAGE 0 LOGIC ---
+    function viewST00Image(id) {
+      if (id === 1) {
+        lmsState.M06_st00_img1 = true;
+        const wrap = document.getElementById('wrapST00-1');
+        const hint = document.getElementById('hintST00-1');
+        const box = document.getElementById('boxST00-1');
+        if (wrap) wrap.classList.add('viewed');
+        if (hint) hint.innerHTML = '<i class="ti ti-check"></i> Đã xem';
+        if (box) box.classList.remove('hidden');
+      } else if (id === 2) {
+        lmsState.M06_st00_img2 = true;
+        const wrap = document.getElementById('wrapST00-2');
+        const hint = document.getElementById('hintST00-2');
+        const box = document.getElementById('boxST00-2');
+        if (wrap) wrap.classList.add('viewed');
+        if (hint) hint.innerHTML = '<i class="ti ti-check"></i> Đã xem';
+        if (box) box.classList.remove('hidden');
+      }
+
+      // Check completion of ST00
+      if (lmsState.M06_st00_img1 && lmsState.M06_st00_img2) {
+        lmsState.M06_st00_hoanthanh = true;
+        const conclusion = document.getElementById('conclusionST00');
+        const btnNext = document.getElementById('btnNextST00');
+        const tabST00 = document.getElementById('tabST00');
+        if (conclusion) conclusion.classList.remove('hidden');
+        if (btnNext) btnNext.disabled = false;
+        if (tabST00) tabST00.classList.add('completed');
+      }
+      setTimeout(reportHeight, 50);
+    }
+
+    // --- STAGE 1 LOGIC ---
+    function viewRolePosition(pos) {
+      if (pos === 1) {
+        lmsState.M06_st01_pos1 = true;
+        const card = document.getElementById('roleCard1');
+        const status = document.getElementById('roleStatus1');
+        const detail = document.getElementById('roleDetail1');
+        if (card) { card.classList.add('active'); card.classList.add('viewed'); }
+        if (status) status.innerHTML = '<i class="ti ti-check"></i> Đã xem';
+        if (detail) detail.classList.remove('hidden');
+      } else if (pos === 2) {
+        lmsState.M06_st01_pos2 = true;
+        const card = document.getElementById('roleCard2');
+        const status = document.getElementById('roleStatus2');
+        const detail = document.getElementById('roleDetail2');
+        if (card) { card.classList.add('active'); card.classList.add('viewed'); }
+        if (status) status.innerHTML = '<i class="ti ti-check"></i> Đã xem';
+        if (detail) detail.classList.remove('hidden');
+      } else if (pos === 3) {
+        lmsState.M06_st01_pos3 = true;
+        const card = document.getElementById('roleCard3');
+        const status = document.getElementById('roleStatus3');
+        const detail = document.getElementById('roleDetail3');
+        if (card) { card.classList.add('active'); card.classList.add('viewed'); }
+        if (status) status.innerHTML = '<i class="ti ti-check"></i> Đã xem';
+        if (detail) detail.classList.remove('hidden');
+      }
+
+      // Check if all 3 positions viewed
+      if (lmsState.M06_st01_pos1 && lmsState.M06_st01_pos2 && lmsState.M06_st01_pos3) {
+        const quizSection = document.getElementById('st01QuizSection');
+        if (quizSection) quizSection.classList.remove('hidden');
+      }
+      setTimeout(reportHeight, 50);
+    }
+
+    // Question 1 Handler
+    function answerQ1(choice) {
+      const fb = document.getElementById('feedbackQ1');
+      const opts = document.getElementById('optsQ1');
+      if (!fb || !opts) return;
+
+      const buttons = opts.querySelectorAll('.quiz-option-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('selected-correct');
+        btn.classList.remove('selected-wrong');
+      });
+
+      if (choice === 'A') {
+        lmsState.M06_st01_q1_pass = true;
+        buttons[0].classList.add('selected-correct');
+        fb.className = 'quiz-feedback-box correct';
+        fb.innerHTML = '<i class="ti ti-check"></i> <div><strong>Chính xác.</strong> Khả năng tổng hợp chất hữu cơ từ nguồn carbon vô cơ là đặc trưng chung của sinh vật tự dưỡng. Giải phóng O₂ chỉ gắn với các sinh vật tự dưỡng thực hiện quang hợp tạo O₂.</div>';
+        
+        // Open Question 2
+        const cardQ2 = document.getElementById('quizCard2');
+        if (cardQ2) cardQ2.classList.remove('hidden');
+      } else {
+        buttons[1].classList.add('selected-wrong');
+        fb.className = 'quiz-feedback-box wrong';
+        fb.innerHTML = '<i class="ti ti-alert-circle"></i> <div><strong>Chưa đúng.</strong> Hãy nhớ lại M05: sinh vật tự dưỡng gồm cả quang tự dưỡng và hoá tự dưỡng. Vì vậy, không thể dùng một đặc điểm riêng của quang hợp để mô tả tất cả sinh vật tự dưỡng.</div>';
+      }
+      fb.classList.remove('hidden');
+      setTimeout(reportHeight, 50);
+    }
+
+    // Question 2 Handler
+    function answerQ2(choice) {
+      const fb = document.getElementById('feedbackQ2');
+      const opts = document.getElementById('optsQ2');
+      if (!fb || !opts) return;
+
+      const buttons = opts.querySelectorAll('.quiz-option-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('selected-correct');
+        btn.classList.remove('selected-wrong');
+      });
+
+      if (choice === 'A') {
+        lmsState.M06_st01_q2_pass = true;
+        lmsState.M06_st01_hoanthanh = true;
+        buttons[0].classList.add('selected-correct');
+        fb.className = 'quiz-feedback-box correct';
+        fb.innerHTML = '<i class="ti ti-check"></i> <div><strong>Chính xác.</strong> Thực vật là nhóm sinh vật tự dưỡng rất quen thuộc, nhưng sinh vật tự dưỡng còn có tảo và một số vi khuẩn.</div>';
+        
+        // Enable Next button & show conclusion
+        const conclusion = document.getElementById('conclusionST01');
+        const btnNext = document.getElementById('btnNextST01');
+        const tabST01 = document.getElementById('tabST01');
+        if (conclusion) conclusion.classList.remove('hidden');
+        if (btnNext) btnNext.disabled = false;
+        if (tabST01) tabST01.classList.add('completed');
+      } else {
+        buttons[1].classList.add('selected-wrong');
+        fb.className = 'quiz-feedback-box wrong';
+        fb.innerHTML = '<i class="ti ti-alert-circle"></i> <div><strong>Chưa đúng.</strong> Hãy nhớ lại module trước: ngoài thực vật, còn có tảo và một số vi khuẩn có khả năng tự tổng hợp chất hữu cơ từ nguồn carbon vô cơ.</div>';
+      }
+      fb.classList.remove('hidden');
+      setTimeout(reportHeight, 50);
+    }
+
+    // --- STAGE 2 LOGIC ---
+    function completeModule() {
+      lmsState.M06_complete = true;
+      const tabST02 = document.getElementById('tabST02');
+      if (tabST02) tabST02.classList.add('completed');
+
+      // Send LMS Completed PostMessage
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({
+          type: 'moduleCompleted',
+          moduleCode: 'SH11-B01-M06',
+          state: lmsState
+        }, '*');
+      }
+
+      // Show neutral celebration modal
+      const modal = document.getElementById('completionModal');
+      if (modal) modal.classList.add('show');
+    }
+
+    function closeCompletionModal() {
+      const modal = document.getElementById('completionModal');
+      if (modal) modal.classList.remove('show');
+    }
+  </script>
+</body>
+</html>
