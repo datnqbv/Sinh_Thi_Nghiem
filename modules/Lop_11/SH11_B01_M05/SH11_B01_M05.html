@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Các phương thức trao đổi chất và chuyển hoá năng lượng: Tự dưỡng và Dị dưỡng · Sinh học 11</title>
+
+  <!-- Google Fonts: Be Vietnam Pro -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+  <!-- Tabler Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+
+  <script type="application/json" id="athena-context">
+  {
+    "title": "Các phương thức trao đổi chất và chuyển hoá năng lượng: Tự dưỡng và Dị dưỡng",
+    "subject": "Sinh học",
+    "grade": "11",
+    "track": "Bài 1 · Khái quát về trao đổi chất và chuyển hoá năng lượng ở sinh vật",
+    "moduleCode": "SH11-B01-M05",
+    "objectives": [
+      "Phân tích được cơ sở phân biệt hai phương thức tự dưỡng và dị dưỡng dựa trên nguồn carbon mà sinh vật sử dụng.",
+      "Phân biệt được hai kiểu tự dưỡng: quang tự dưỡng (sử dụng năng lượng ánh sáng) và hoá tự dưỡng (sử dụng năng lượng từ oxy hoá chất vô cơ).",
+      "Mô tả được phương thức dị dưỡng ở động vật và giải thích bản chất phương thức dinh dưỡng của cây nắp ấm dựa trên nguồn carbon.",
+      "Khái quát được 4 ghi nhớ cốt lõi về tự dưỡng, dị dưỡng và chuẩn bị cho bài học về vai trò của sinh vật tự dưỡng trong sinh giới."
+    ],
+    "structure": [
+      {"id": "st00", "title": "ST00 — Khởi động: Sinh vật có được chất hữu cơ bằng cách nào?"},
+      {"id": "st01", "title": "ST01 — Tự dưỡng: Quang tự dưỡng và Hoá tự dưỡng"},
+      {"id": "st02", "title": "ST02 — Dị dưỡng và Tiêu chí phân biệt"},
+      {"id": "st03", "title": "ST03 — Ghi nhớ cốt lõi và kết nối sang bài tiếp theo"}
+    ],
+    "athenaGuidance": "Module lí thuyết tương tác Sinh học 11 gồm 4 Stage. ST00: Đối lập giữa cây xanh (quang hợp lấy CO₂ làm nguồn carbon) và con người (thu nhận carbon hữu cơ từ thức ăn). ST01: Khám phá quang tự dưỡng (cây xanh) và hoá tự dưỡng (vi khuẩn oxy hoá chất vô cơ), phân loại 4 ví dụ vào 2 nhóm. ST02: Khám phá động vật dị dưỡng điển hình (thỏ ăn cỏ) và phân tích cây nắp ấm (vẫn là tự dưỡng vì dùng CO₂ làm nguồn carbon chính, côn trùng chỉ bổ sung khoáng/nitơ), trả lời câu hỏi củng cố về tiêu chí nguồn carbon. ST03: Tổng kết 4 ghi nhớ cốt lõi và cầu nối sang Module 06. Tiêu chí quan trọng phân biệt tự dưỡng và dị dưỡng là nguồn carbon mà sinh vật sử dụng (Đáp án đúng câu hỏi củng cố: A)."
+  }
+  </script>
+
+  <style>
+    :root {
+      /* Neutrals · Tom Haugomat Palette */
+      --cream: #FAF7F0;
+      --cream-2: #F0EADD;
+      --cream-3: #E7DECC;
+      --paper-line: #E5DECF;
+      --paper-line-2: #D6CCB6;
+      --ink: #1A1A1A;
+      --ink-2: #514C44;
+      --ink-3: #7C756A;
+      --ink-faint: #ABA396;
+
+      /* Jade · Primary action */
+      --jade: #2D5A47;
+      --jade-deep: #1E3F31;
+      --jade-dark: #14432F;
+      --jade-text: #1B5E48;
+      --jade-soft: #85B59B;
+      --jade-pale: #EBF4F0;
+
+      /* Primary · Deep Blue */
+      --primary: #1C3B5E;
+      --primary-dark: #122840;
+      --primary-soft: #7A9EBF;
+      --primary-pale: #EEF4F9;
+
+      /* Amber / Warm accent */
+      --amber: #C97D2E;
+      --amber-deep: #B06922;
+      --amber-soft: #E8B982;
+      --amber-pale: #FAF0E4;
+
+      /* Semantic */
+      --correct: #2D5A47;
+      --correct-bg: #EBF4F0;
+      --wrong: #C85A32;
+      --wrong-bg: #FDF2EE;
+      --info: #1C3B5E;
+      --info-bg: #EEF4F9;
+
+      /* Typography & Radius */
+      --font: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+      --radius: 12px;
+      --radius-lg: 16px;
+      --radius-sm: 8px;
+      --shadow-sm: 0 2px 6px rgba(26, 26, 26, 0.05);
+      --shadow: 0 6px 18px rgba(26, 26, 26, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--cream);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      padding: 16px;
+    }
+
+    .app {
+      max-width: 960px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    /* Header Module */
+    .module-header {
+      margin-bottom: 20px;
+      border-bottom: 1.5px solid var(--paper-line);
+      padding-bottom: 16px;
+    }
+    .header-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--jade-pale);
+      color: var(--jade-text);
+      padding: 4px 12px;
+      border-radius: 99px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      border: 1px solid var(--jade-soft);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .module-title {
+      font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    /* Stepper Navigation */
+    .stepper-nav {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 24px;
+      background: var(--cream);
+      padding: 8px;
+      border-radius: var(--radius);
+      border: 1px solid var(--paper-line);
+    }
+    .step-tab {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      background: transparent;
+      font-family: var(--font);
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--ink-3);
+      cursor: pointer;
+      transition: all 0.22s ease;
+      outline: none;
+    }
+    .step-tab.active {
+      background: #FFFFFF;
+      color: var(--jade-text);
+      font-weight: 700;
+      border-color: var(--jade-soft);
+      box-shadow: var(--shadow-sm);
+    }
+    .step-tab.completed {
+      color: var(--jade);
+    }
+    .step-tab-badge {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--paper-line);
+      color: var(--ink-2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .step-tab.active .step-tab-badge {
+      background: var(--jade);
+      color: #FFFFFF;
+    }
+    .step-tab.completed .step-tab-badge {
+      background: var(--jade-soft);
+      color: var(--jade-deep);
+    }
+
+    /* Stage Container */
+    .stage-section {
+      display: block;
+      animation: fadeIn 0.25s ease-out;
+    }
+    .stage-section.hidden {
+      display: none;
+    }
+
+    /* Lead Box & Guidelines */
+    .lead-box {
+      background: var(--cream);
+      border-left: 4px solid var(--jade);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+      margin-bottom: 22px;
+    }
+    .question-lead {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--jade-deep);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    .lead-text {
+      font-size: 0.96rem;
+      color: var(--ink-2);
+      margin-bottom: 10px;
+    }
+    .guide-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      color: var(--ink-2);
+    }
+    .guide-box i {
+      color: var(--jade);
+      font-size: 1.15rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    /* Card Panels & Containers */
+    .dual-images-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+    .image-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 14px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+    }
+    .image-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .image-card-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .image-interactive-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: #F1F5F9;
+      border: 1px solid var(--paper-line);
+      margin-bottom: 12px;
+    }
+    .image-interactive-wrapper.aspect-3-2 {
+      aspect-ratio: 3 / 2;
+    }
+    .image-interactive-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }    /* Điểm đánh dấu tương tác chạm trên hình (Touch Marker) */
+    .touch-marker-btn {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 3px solid var(--jade);
+      color: var(--jade-deep);
+      font-weight: 800;
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28), 0 0 0 2px rgba(255, 255, 255, 0.85);
+      transform: translate(-50%, -50%);
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 10;
+      outline: none;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .touch-marker-btn.theme-primary {
+      border-color: var(--primary);
+      color: var(--primary-dark);
+    }
+    .touch-marker-btn:hover {
+      transform: translate(-50%, -50%) scale(1.15);
+      background: var(--cream);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35), 0 0 0 3px rgba(255, 255, 255, 0.9);
+    }
+    .touch-marker-btn.viewed {
+      background: var(--jade-deep);
+      border-color: #FFFFFF;
+      color: #FFFFFF;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    .touch-marker-btn.theme-primary.viewed {
+      background: var(--primary-dark);
+      border-color: #FFFFFF;
+      color: #FFFFFF;
+    }
+    .touch-marker-btn.viewed .pulse-ring {
+      display: none;
+    }
+
+    /* Hiệu ứng gợn sóng thu hút tương tác */
+    .pulse-ring {
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2.5px solid var(--jade);
+      animation: pulseMarkerAnim 2s infinite ease-out;
+      pointer-events: none;
+    }
+    .touch-marker-btn.theme-primary .pulse-ring {
+      border-color: var(--primary);
+    }
+    @keyframes pulseMarkerAnim {
+      0% { transform: scale(0.9); opacity: 0.95; }
+      60% { transform: scale(1.45); opacity: 0.2; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+
+    /* Nhãn gợi ý chạm trực quan trên ảnh */
+    .touch-hint-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-full);
+      padding: 4px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--ink-2);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+      pointer-events: none;
+      z-index: 5;
+      transition: opacity 0.3s ease;
+    }
+    .touch-hint-badge i {
+      color: var(--jade);
+      font-size: 0.95rem;
+      animation: nudgeAnim 1.5s infinite ease-in-out;
+    }
+    .touch-hint-badge.theme-primary i {
+      color: var(--primary);
+    }
+    @keyframes nudgeAnim {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+
+    /* Panel chú thích chi tiết */
+    .detail-text-box {
+      background: var(--cream);
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-size: 0.9rem;
+      color: var(--ink-2);
+      min-height: 72px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .detail-text-box i {
+      color: var(--jade);
+      font-size: 1.15rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .detail-text-box.active {
+      background: #FFFFFF;
+      border-color: var(--jade-soft);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Lớp HTML overlay xuất hiện sau tương tác */
+    .science-overlay-tags {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      right: 8px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .science-tag {
+      background: rgba(255, 255, 255, 0.94);
+      color: var(--ink);
+      border: 1px solid var(--paper-line);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      animation: fadeIn 0.3s ease;
+    }
+
+    /* Minh họa Code/SVG Hoá tự dưỡng (ST01) */
+    .chemo-svg-container {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: radial-gradient(circle at center, #F8FAFC 0%, #EDF2F7 100%);
+    }
+
+    /* Câu chuyển và Khối chốt */
+    .transition-text {
+      font-size: 0.96rem;
+      color: var(--ink-2);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .conclude-card {
+      background: var(--jade-pale);
+      border: 1.5px solid var(--jade-soft);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-top: 20px;
+      margin-bottom: 18px;
+      animation: fadeIn 0.3s ease;
+    }
+    .conclude-card.hidden {
+      display: none;
+    }
+    .conclude-card__title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--jade-deep);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .conclude-card__text {
+      font-size: 0.95rem;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    /* Hoạt động Phân loại ST01 */
+    .activity-section {
+      background: var(--cream);
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius-lg);
+      padding: 22px 18px;
+      margin-top: 24px;
+      animation: fadeIn 0.3s ease;
+    }
+    .activity-section.hidden {
+      display: none;
+    }
+    .activity-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .source-tray {
+      background: #FFFFFF;
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 14px;
+      margin-bottom: 18px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      min-height: 80px;
+    }
+
+    .drag-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--paper-line-2);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--ink);
+      cursor: grab;
+      user-select: none;
+      transition: all 0.22s ease;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .drag-card:hover {
+      border-color: var(--jade);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    .drag-card.selected {
+      border-color: var(--jade);
+      background: var(--jade-pale);
+      box-shadow: 0 0 0 3px rgba(45, 90, 71, 0.25);
+    }
+    .drag-card.dragging {
+      opacity: 0.45;
+    }
+    .drag-card.correct {
+      border-color: var(--correct);
+      background: #F0FDF4;
+      cursor: default;
+    }
+    .drag-card.wrong {
+      border-color: var(--wrong);
+      background: var(--wrong-bg);
+      animation: shakeAnim 0.35s ease;
+    }
+
+    @keyframes shakeAnim {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-4px); }
+      40%, 80% { transform: translateX(4px); }
+    }
+
+    .btn-return-card {
+      background: transparent;
+      border: none;
+      color: var(--ink-faint);
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 2px;
+      display: none;
+      border-radius: 4px;
+    }
+    .target-zone .btn-return-card {
+      display: inline-flex;
+    }
+    .btn-return-card:hover {
+      color: var(--wrong);
+      background: #FEE2E2;
+    }
+
+    .target-zones-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    .target-zone {
+      background: #FFFFFF;
+      border: 2px dashed var(--paper-line-2);
+      border-radius: var(--radius);
+      padding: 14px;
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.22s ease;
+      cursor: pointer;
+    }
+    .target-zone.drag-over {
+      border-color: var(--jade);
+      background: var(--jade-pale);
+    }
+    .target-zone.ready-to-place {
+      border-color: var(--jade);
+      background: rgba(45, 90, 71, 0.05);
+    }
+    .target-zone-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1.5px solid var(--paper-line);
+    }
+    .target-zone-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .target-zone-count {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--ink-3);
+      background: var(--cream-2);
+      padding: 2px 8px;
+      border-radius: 99px;
+    }
+    .zone-items-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex-grow: 1;
+    }
+
+    /* Câu hỏi củng cố A/B (ST02) */
+    .quiz-section {
+      background: #FFFFFF;
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 20px 18px;
+      margin-top: 20px;
+      animation: fadeIn 0.3s ease;
+    }
+    .quiz-section.hidden {
+      display: none;
+    }
+    .quiz-question-title {
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .quiz-options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .quiz-option-btn {
+      background: #FFFFFF;
+      border: 1.5px solid var(--paper-line-2);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      text-align: left;
+      font-family: var(--font);
+      font-size: 0.95rem;
+      color: var(--ink);
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: all 0.22s ease;
+      outline: none;
+    }
+    .quiz-option-btn:hover:not(:disabled) {
+      border-color: var(--jade);
+      background: var(--cream);
+    }
+    .quiz-option-btn.selected {
+      border-color: var(--jade);
+      background: var(--jade-pale);
+    }
+    .quiz-option-badge {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--cream-2);
+      color: var(--ink-2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      border: 1px solid var(--paper-line);
+    }
+    .quiz-option-btn.selected .quiz-option-badge {
+      background: var(--jade);
+      color: #FFFFFF;
+      border-color: var(--jade);
+    }
+
+    /* Feedback Box */
+    .feedback-panel {
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      margin-top: 14px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      animation: fadeIn 0.25s ease-out;
+    }
+    .feedback-panel.hidden {
+      display: none;
+    }
+    .feedback-panel.correct {
+      background: var(--correct-bg);
+      border-left: 4px solid var(--correct);
+      color: var(--jade-text);
+    }
+    .feedback-panel.wrong {
+      background: var(--wrong-bg);
+      border-left: 4px solid var(--wrong);
+      color: #8C2B0B;
+    }
+    .feedback-panel i {
+      font-size: 1.35rem;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    /* ST03: Ghi nhớ và kết nối */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .summary-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+    .summary-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--jade-pale);
+      color: var(--jade-text);
+      font-weight: 800;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1px solid var(--jade-soft);
+    }
+    .summary-text {
+      font-size: 0.92rem;
+      color: var(--ink);
+      line-height: 1.55;
+      font-weight: 500;
+    }
+    .bridge-box {
+      background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+      border: 1.5px solid #93C5FD;
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 24px;
+    }
+    .bridge-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #1E40AF;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .bridge-text {
+      font-size: 0.95rem;
+      color: #1E3A8A;
+      line-height: 1.6;
+    }
+
+    /* Modal / Alert hoàn thành */
+    .completion-alert {
+      background: var(--correct-bg);
+      border: 1.5px solid var(--correct);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--jade-text);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .completion-alert.hidden {
+      display: none;
+    }
+    .completion-alert i {
+      font-size: 1.6rem;
+      color: var(--jade-deep);
+    }
+
+    /* Nút điều khiển chuyển bước */
+    .stage-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1.5px solid var(--paper-line);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      outline: none;
+    }
+    .btn-primary {
+      background: var(--jade);
+      color: #FFFFFF;
+      border: none;
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-primary:hover:not(:disabled) {
+      background: var(--jade-deep);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+    }
+    .btn-primary:disabled {
+      background: var(--paper-line-2);
+      color: var(--ink-faint);
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+    .btn-secondary {
+      background: #FFFFFF;
+      color: var(--ink-2);
+      border: 1.5px solid var(--paper-line-2);
+    }
+    .btn-secondary:hover {
+      background: var(--cream-2);
+      color: var(--ink);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 860px) {
+      .stepper-nav { grid-template-columns: repeat(2, 1fr); }
+      .dual-images-grid, .source-tray, .target-zones-grid, .summary-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 520px) {
+      .app { padding: 16px; }
+      .stepper-nav { grid-template-columns: 1fr; }
+      .stage-actions { flex-direction: column-reverse; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app">
+    <!-- Header thông tin bài học -->
+    <header class="module-header">
+      <div class="header-top">
+        <span class="badge-pill"><i class="ti ti-dna"></i> Sinh học 11 · Bài 1</span>
+        <span class="badge-pill" style="background:var(--cream-2); border-color:var(--paper-line-2); color:var(--ink-3);">Học lí thuyết tương tác</span>
+      </div>
+      <h1 class="module-title">Các phương thức trao đổi chất và chuyển hoá năng lượng: Tự dưỡng và Dị dưỡng</h1>
+    </header>
+
+    <!-- Stepper 4 bước -->
+    <nav class="stepper-nav" aria-label="Tiến trình học tập">
+      <button type="button" class="step-tab active" id="stepTab-0" onclick="goToStage(0)">
+        <span class="step-tab-badge">1</span>
+        <span>Khởi động</span>
+      </button>
+      <button type="button" class="step-tab" id="stepTab-1" onclick="goToStage(1)">
+        <span class="step-tab-badge">2</span>
+        <span>Tự dưỡng</span>
+      </button>
+      <button type="button" class="step-tab" id="stepTab-2" onclick="goToStage(2)">
+        <span class="step-tab-badge">3</span>
+        <span>Dị dưỡng</span>
+      </button>
+      <button type="button" class="step-tab" id="stepTab-3" onclick="goToStage(3)">
+        <span class="step-tab-badge">4</span>
+        <span>Ghi nhớ & Kết nối</span>
+      </button>
+    </nav>
+
+    <!-- =========================================================
+         STAGE 00: KHỞI ĐỘNG (CÂY XANH VS CON NGƯỜI)
+         ========================================================= -->
+    <section class="stage-section" id="stage-0">
+      <div class="lead-box">
+        <p class="question-lead">Cây xanh và con người đều cần chất hữu cơ để xây dựng cơ thể và duy trì hoạt động sống. Vậy vì sao cây có thể tự tổng hợp chất hữu cơ, còn con người phải lấy chất hữu cơ từ thức ăn?</p>
+        <p class="lead-text">Quan sát hai hình dưới đây. Nhấn vào từng hình để xem cây và người có được chất hữu cơ theo những cách khác nhau như thế nào.</p>
+        <div class="guide-box">
+          <i class="ti ti-hand-finger"></i>
+          <span><strong>HƯỚNG DẪN:</strong> Nhấn vào từng điểm đánh dấu. Điểm đã xem sẽ đổi trạng thái. Khi xem đủ hai điểm, nút TIẾP TỤC sẽ xuất hiện.</span>
+        </div>
+      </div>
+
+      <!-- Khung 2 ảnh ST00: Cây xanh & Người đang ăn -->
+      <div class="dual-images-grid">
+        <!-- Ảnh 1: Cây xanh -->
+        <div class="image-card">
+          <div class="image-card-header">
+            <h3 class="image-card-title"><i class="ti ti-plant" style="color:var(--jade);"></i> Cây xanh</h3>
+            <span class="badge-pill" id="badgeST00-1" style="background:#F0FDF4; border-color:#BBF7D0; color:var(--jade-text);">Chưa xem</span>
+          </div>
+          <div class="image-interactive-wrapper" id="wrapST00-1" onclick="viewST00Point(1)" style="cursor: pointer;" title="Chạm để xem cách cây xanh thu nhận chất hữu cơ">
+            <div class="touch-hint-badge" id="hintST00-1"><i class="ti ti-hand-finger"></i> Chạm để xem</div>
+            <img src="images/REUSE_SH11-B01-M03-A01_CAY.png" alt="Cây xanh quang hợp" id="imgST00-1">
+            <button type="button" class="touch-marker-btn" id="touchMarkerST00-1" style="left: 50%; top: 40%;" onclick="viewST00Point(1); event.stopPropagation();" aria-label="Điểm chạm cây xanh">
+              <span class="pulse-ring"></span>
+              <span>1</span>
+            </button>
+          </div>
+          <div class="detail-text-box" id="detailST00-1">
+            <i class="ti ti-info-circle"></i>
+            <span id="textST00-1">Nhấn vào điểm đánh dấu trên hình để xem cách cây xanh thu nhận chất hữu cơ.</span>
+          </div>
+        </div>
+
+        <!-- Ảnh 2: Người đang ăn -->
+        <div class="image-card">
+          <div class="image-card-header">
+            <h3 class="image-card-title"><i class="ti ti-user" style="color:var(--primary);"></i> Con người</h3>
+            <span class="badge-pill" id="badgeST00-2" style="background:var(--primary-pale); border-color:var(--primary-soft); color:var(--primary-dark);">Chưa xem</span>
+          </div>
+          <div class="image-interactive-wrapper" id="wrapST00-2" onclick="viewST00Point(2)" style="cursor: pointer;" title="Chạm để xem cách con người thu nhận chất hữu cơ">
+            <div class="touch-hint-badge theme-primary" id="hintST00-2"><i class="ti ti-hand-finger"></i> Chạm để xem</div>
+            <img src="images/REUSE_SH11-B01-M02-A01_NGUOI_AN.png" alt="Người đang ăn thức ăn" id="imgST00-2">
+            <button type="button" class="touch-marker-btn theme-primary" id="touchMarkerST00-2" style="left: 50%; top: 52%;" onclick="viewST00Point(2); event.stopPropagation();" aria-label="Điểm chạm con người">
+              <span class="pulse-ring"></span>
+              <span>2</span>
+            </button>
+          </div>
+          <div class="detail-text-box" id="detailST00-2">
+            <i class="ti ti-info-circle"></i>
+            <span id="textST00-2">Nhấn vào điểm đánh dấu trên hình để xem cách con người thu nhận chất hữu cơ.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Khối chốt ST00 (Hiện sau khi xem xong và bấm TIẾP TỤC) -->
+      <div class="conclude-card hidden" id="concludeST00">
+        <div class="conclude-card__title"><i class="ti ti-bulb"></i> Cơ sở phân biệt hai phương thức</div>
+        <p class="conclude-card__text">Như vậy, sinh vật có thể khác nhau về cách thu nhận nguồn carbon để tạo nên các chất hữu cơ của cơ thể. Đây là cơ sở để phân biệt hai phương thức tự dưỡng và dị dưỡng.</p>
+      </div>
+
+      <!-- Điều khiển ST00 -->
+      <div class="stage-actions" style="justify-content: flex-end;">
+        <button type="button" class="btn btn-primary" id="btnNextST00" onclick="handleNextST00()" disabled>
+          <span>TIẾP TỤC</span> <i class="ti ti-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         STAGE 01: TỰ DƯỠNG (QUANG TỰ DƯỠNG VÀ HOÁ TỰ DƯỠNG)
+         ========================================================= -->
+    <section class="stage-section hidden" id="stage-1">
+      <div class="lead-box">
+        <p class="lead-text">Sinh vật tự dưỡng có khả năng tổng hợp chất hữu cơ từ nguồn carbon vô cơ. Tuy nhiên, không phải mọi sinh vật tự dưỡng đều sử dụng cùng một nguồn năng lượng.</p>
+        <div class="guide-box">
+          <i class="ti ti-hand-finger"></i>
+          <span><strong>HƯỚNG DẪN:</strong> Nhấn vào Quang tự dưỡng và Hoá tự dưỡng để xem nguồn năng lượng của mỗi kiểu. Khi xem đủ hai phần, hoạt động phân loại sẽ xuất hiện.</span>
+        </div>
+      </div>
+
+      <!-- 2 Khối khám phá ST01: Quang tự dưỡng & Hoá tự dưỡng -->
+      <div class="dual-images-grid">
+        <!-- Khối 1: Quang tự dưỡng (Cây xanh) -->
+        <div class="image-card">
+          <div class="image-card-header">
+            <h3 class="image-card-title"><i class="ti ti-sun" style="color:var(--amber);"></i> Quang tự dưỡng</h3>
+            <span class="badge-pill" id="badgeST01-1" style="background:#F0FDF4; border-color:#BBF7D0; color:var(--jade-text);">Chưa xem</span>
+          </div>
+          <div class="image-interactive-wrapper" id="wrapST01-1" onclick="viewST01Type(1)" style="cursor: pointer;" title="Chạm để khám phá quang tự dưỡng">
+            <div class="touch-hint-badge" id="hintST01-1"><i class="ti ti-hand-finger"></i> Chạm để xem</div>
+            <img src="images/REUSE_SH11-B01-M03-A01_CAY.png" alt="Quang tự dưỡng ở thực vật" id="imgST01-1">
+            <button type="button" class="touch-marker-btn" id="touchMarkerST01-1" style="left: 50%; top: 40%;" onclick="viewST01Type(1); event.stopPropagation();" aria-label="Khám phá quang tự dưỡng">
+              <span class="pulse-ring"></span>
+              <i class="ti ti-sun"></i>
+            </button>
+            <div class="science-overlay-tags hidden" id="overlayTagsST01-1">
+              <span class="science-tag"><i class="ti ti-bolt" style="color:var(--amber);"></i> Năng lượng ánh sáng</span>
+              <span class="science-tag"><i class="ti ti-leaf" style="color:var(--jade);"></i> Nguồn carbon vô cơ (CO₂)</span>
+            </div>
+          </div>
+          <div class="detail-text-box" id="detailST01-1">
+            <i class="ti ti-info-circle"></i>
+            <span id="textST01-1">Nhấn vào để xem đặc điểm nguồn năng lượng của sinh vật quang tự dưỡng.</span>
+          </div>
+        </div>
+
+        <!-- Khối 2: Hoá tự dưỡng (Minh hoạ vi khuẩn Code/SVG thuần) -->
+        <div class="image-card">
+          <div class="image-card-header">
+            <h3 class="image-card-title"><i class="ti ti-flask-2" style="color:var(--primary);"></i> Hoá tự dưỡng</h3>
+            <span class="badge-pill" id="badgeST01-2" style="background:var(--primary-pale); border-color:var(--primary-soft); color:var(--primary-dark);">Chưa xem</span>
+          </div>
+          <div class="image-interactive-wrapper" id="wrapST01-2" onclick="viewST01Type(2)" style="cursor: pointer;" title="Chạm để khám phá hoá tự dưỡng">
+            <div class="touch-hint-badge theme-primary" id="hintST01-2"><i class="ti ti-hand-finger"></i> Chạm để xem</div>
+            <!-- Minh hoạ Code/SVG vi khuẩn trên nền hạt khoáng -->
+            <svg class="chemo-svg-container" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <radialGradient id="grainGrad1" cx="40%" cy="40%" r="60%">
+                  <stop offset="0%" stop-color="#E2E8F0"/>
+                  <stop offset="100%" stop-color="#CBD5E1"/>
+                </radialGradient>
+                <radialGradient id="grainGrad2" cx="35%" cy="35%" r="65%">
+                  <stop offset="0%" stop-color="#CBD5E1"/>
+                  <stop offset="100%" stop-color="#94A3B8"/>
+                </radialGradient>
+              </defs>
+
+              <!-- Các hạt khoáng vô cơ trừu tượng -->
+              <path d="M 40,80 Q 90,40 150,70 Q 180,120 130,160 Q 60,150 40,80 Z" fill="url(#grainGrad1)" opacity="0.6"/>
+              <path d="M 240,160 Q 320,130 360,190 Q 340,260 260,250 Q 210,220 240,160 Z" fill="url(#grainGrad2)" opacity="0.5"/>
+              <path d="M 280,40 Q 340,20 370,60 Q 350,110 300,90 Z" fill="url(#grainGrad1)" opacity="0.5"/>
+              <path d="M 30,200 Q 80,180 110,230 Q 70,270 30,240 Z" fill="url(#grainGrad2)" opacity="0.4"/>
+
+              <!-- Cụm tế bào vi khuẩn trung tính (que ngắn & cầu nhỏ) -->
+              <!-- Cầu khuẩn (Cocci) -->
+              <circle cx="160" cy="110" r="7" fill="#64748B" stroke="#475569" stroke-width="1.2"/>
+              <circle cx="176" cy="115" r="6.5" fill="#64748B" stroke="#475569" stroke-width="1.2"/>
+              <circle cx="152" cy="125" r="7" fill="#64748B" stroke="#475569" stroke-width="1.2"/>
+              <circle cx="168" cy="130" r="6" fill="#64748B" stroke="#475569" stroke-width="1.2"/>
+              <circle cx="210" cy="95" r="7" fill="#64748B" stroke="#475569" stroke-width="1.2"/>
+              <circle cx="225" cy="102" r="6.5" fill="#64748B" stroke="#475569" stroke-width="1.2"/>
+
+              <!-- Trực khuẩn que ngắn (Bacilli) -->
+              <rect x="180" y="145" width="26" height="11" rx="5.5" fill="#475569" stroke="#334155" stroke-width="1.2" transform="rotate(-15, 193, 150)"/>
+              <rect x="130" y="160" width="24" height="10" rx="5" fill="#64748B" stroke="#475569" stroke-width="1.2" transform="rotate(25, 142, 165)"/>
+              <rect x="230" y="135" width="25" height="11" rx="5.5" fill="#64748B" stroke="#475569" stroke-width="1.2" transform="rotate(10, 242, 140)"/>
+              <rect x="200" y="180" width="28" height="11" rx="5.5" fill="#475569" stroke="#334155" stroke-width="1.2" transform="rotate(-30, 214, 185)"/>
+              <rect x="160" y="195" width="24" height="10" rx="5" fill="#64748B" stroke="#475569" stroke-width="1.2" transform="rotate(15, 172, 200)"/>
+              <rect x="250" y="175" width="25" height="10" rx="5" fill="#64748B" stroke="#475569" stroke-width="1.2" transform="rotate(-8, 262, 180)"/>
+
+              <circle cx="120" cy="105" r="6" fill="#94A3B8" stroke="#64748B" stroke-width="1"/>
+              <circle cx="105" cy="120" r="6.5" fill="#94A3B8" stroke="#64748B" stroke-width="1"/>
+              <rect x="90" y="135" width="22" height="9" rx="4.5" fill="#94A3B8" stroke="#64748B" stroke-width="1" transform="rotate(40, 101, 139)"/>
+              <rect x="270" y="110" width="23" height="10" rx="5" fill="#94A3B8" stroke="#64748B" stroke-width="1" transform="rotate(-20, 281, 115)"/>
+            </svg>
+
+            <button type="button" class="touch-marker-btn theme-primary" id="touchMarkerST01-2" style="left: 50%; top: 50%;" onclick="viewST01Type(2); event.stopPropagation();" aria-label="Khám phá hoá tự dưỡng">
+              <span class="pulse-ring"></span>
+              <i class="ti ti-flask-2"></i>
+            </button>
+            <div class="science-overlay-tags hidden" id="overlayTagsST01-2">
+              <span class="science-tag"><i class="ti ti-flame" style="color:var(--primary);"></i> Oxy hoá chất vô cơ → thu năng lượng</span>
+              <span class="science-tag"><i class="ti ti-leaf" style="color:var(--jade);"></i> Nguồn carbon vô cơ (CO₂)</span>
+            </div>
+          </div>
+          <div class="detail-text-box" id="detailST01-2">
+            <i class="ti ti-info-circle"></i>
+            <span id="textST01-2">Nhấn vào để xem đặc điểm nguồn năng lượng của sinh vật hoá tự dưỡng.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hoạt động Phân loại 4 ví dụ (Mở sau khi xem đủ 2 nhóm) -->
+      <div class="activity-section hidden" id="sortingSectionST01">
+        <p class="transition-text">Cả quang tự dưỡng và hoá tự dưỡng đều sử dụng nguồn carbon vô cơ để tổng hợp chất hữu cơ; điểm khác nhau nằm ở nguồn năng lượng mà chúng sử dụng.</p>
+        <h3 class="activity-title"><i class="ti ti-layout-grid"></i> Nhiệm vụ phân loại</h3>
+        <div class="guide-box" style="margin-bottom:16px;">
+          <i class="ti ti-hand-finger"></i>
+          <span><strong>HƯỚNG DẪN:</strong> Kéo từng ví dụ vào nhóm phù hợp. Bạn có thể thay đổi vị trí trước khi nhấn KIỂM TRA. (Trên thiết bị cảm ứng: chạm chọn thẻ rồi chạm nhóm đích).</span>
+        </div>
+
+        <!-- Khay thẻ nguồn ST01 -->
+        <div class="source-tray" id="sourceTrayST01" ondragover="allowDrop(event)" ondrop="handleDropToTrayST01(event)">
+          <div class="drag-card" id="cardST01-1" draggable="true" ondragstart="handleDragStart(event)" onclick="handleCardClickST01('cardST01-1')">
+            <span>Cây lúa sử dụng năng lượng ánh sáng để tổng hợp chất hữu cơ.</span>
+            <button type="button" class="btn-return-card" onclick="returnCardST01('cardST01-1', event)" title="Trả về khay"><i class="ti ti-arrow-back-up"></i></button>
+          </div>
+          <div class="drag-card" id="cardST01-2" draggable="true" ondragstart="handleDragStart(event)" onclick="handleCardClickST01('cardST01-2')">
+            <span>Tảo lục sử dụng năng lượng ánh sáng để tổng hợp chất hữu cơ.</span>
+            <button type="button" class="btn-return-card" onclick="returnCardST01('cardST01-2', event)" title="Trả về khay"><i class="ti ti-arrow-back-up"></i></button>
+          </div>
+          <div class="drag-card" id="cardST01-3" draggable="true" ondragstart="handleDragStart(event)" onclick="handleCardClickST01('cardST01-3')">
+            <span>Một số vi khuẩn oxy hoá hợp chất lưu huỳnh vô cơ để thu năng lượng.</span>
+            <button type="button" class="btn-return-card" onclick="returnCardST01('cardST01-3', event)" title="Trả về khay"><i class="ti ti-arrow-back-up"></i></button>
+          </div>
+          <div class="drag-card" id="cardST01-4" draggable="true" ondragstart="handleDragStart(event)" onclick="handleCardClickST01('cardST01-4')">
+            <span>Một số vi khuẩn nitrat hoá thu năng lượng từ quá trình oxy hoá các hợp chất nitơ vô cơ.</span>
+            <button type="button" class="btn-return-card" onclick="returnCardST01('cardST01-4', event)" title="Trả về khay"><i class="ti ti-arrow-back-up"></i></button>
+          </div>
+        </div>
+
+        <!-- 2 Vùng đích: Quang tự dưỡng & Hoá tự dưỡng -->
+        <div class="target-zones-grid">
+          <!-- Nhóm 1: Quang tự dưỡng -->
+          <div class="target-zone" id="zoneST01-1" ondragover="allowDrop(event)" ondragleave="handleDragLeave(event)" ondrop="handleDropToZoneST01(event, 1)" onclick="handleZoneClickST01(1)">
+            <div class="target-zone-header">
+              <span class="target-zone-title"><i class="ti ti-sun" style="color:var(--amber);"></i> Quang tự dưỡng</span>
+              <span class="target-zone-count" id="countST01-1">0 thẻ</span>
+            </div>
+            <div class="zone-items-container" id="zoneItemsST01-1"></div>
+          </div>
+
+          <!-- Nhóm 2: Hoá tự dưỡng -->
+          <div class="target-zone" id="zoneST01-2" ondragover="allowDrop(event)" ondragleave="handleDragLeave(event)" ondrop="handleDropToZoneST01(event, 2)" onclick="handleZoneClickST01(2)">
+            <div class="target-zone-header">
+              <span class="target-zone-title"><i class="ti ti-flask-2" style="color:var(--primary);"></i> Hoá tự dưỡng</span>
+              <span class="target-zone-count" id="countST01-2">0 thẻ</span>
+            </div>
+            <div class="zone-items-container" id="zoneItemsST01-2"></div>
+          </div>
+        </div>
+
+        <div style="text-align:right;">
+          <button type="button" class="btn btn-primary" id="btnCheckST01" onclick="checkSortingST01()" disabled>
+            <i class="ti ti-check"></i> <span>KIỂM TRA</span>
+          </button>
+        </div>
+
+        <div class="feedback-panel hidden" id="feedbackST01"></div>
+
+        <!-- Khối chốt ST01 -->
+        <div class="conclude-card hidden" id="concludeST01">
+          <div class="conclude-card__title"><i class="ti ti-star"></i> Kết luận tự dưỡng</div>
+          <p class="conclude-card__text">Tự dưỡng là phương thức sinh vật tổng hợp chất hữu cơ từ nguồn carbon vô cơ. Tự dưỡng gồm quang tự dưỡng và hoá tự dưỡng, khác nhau chủ yếu ở nguồn năng lượng sử dụng.</p>
+        </div>
+      </div>
+
+      <!-- Điều khiển ST01 -->
+      <div class="stage-actions">
+        <button type="button" class="btn btn-secondary" onclick="goToStage(0)">
+          <i class="ti ti-arrow-left"></i> <span>QUAY LẠI</span>
+        </button>
+        <button type="button" class="btn btn-primary" id="btnNextST01" onclick="goToStage(2)" disabled>
+          <span>TIẾP TỤC</span> <i class="ti ti-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         STAGE 02: DỊ DƯỠNG VÀ TIÊU CHÍ PHÂN BIỆT
+         ========================================================= -->
+    <section class="stage-section hidden" id="stage-2">
+      <div class="lead-box">
+        <p class="lead-text">Không phải sinh vật nào cũng có khả năng tổng hợp chất hữu cơ từ nguồn carbon vô cơ. Nhiều sinh vật phải sử dụng nguồn carbon hữu cơ có sẵn trong môi trường hoặc từ sinh vật khác.</p>
+        <div class="guide-box">
+          <i class="ti ti-hand-finger"></i>
+          <span><strong>HƯỚNG DẪN:</strong> Nhấn vào từng điểm đánh dấu trên hai hình để tìm hiểu phương thức dị dưỡng và bản chất dinh dưỡng của cây nắp ấm.</span>
+        </div>
+      </div>
+
+      <!-- Khung 2 ảnh ST02: Động vật dị dưỡng (Thỏ) & Cây nắp ấm bắt côn trùng -->
+      <div class="dual-images-grid">
+        <!-- Ảnh 1: Thỏ dị dưỡng -->
+        <div class="image-card">
+          <div class="image-card-header">
+            <h3 class="image-card-title"><i class="ti ti-paw" style="color:var(--primary);"></i> Động vật</h3>
+            <span class="badge-pill" id="badgeST02-1" style="background:var(--primary-pale); border-color:var(--primary-soft); color:var(--primary-dark);">Chưa xem</span>
+          </div>
+          <div class="image-interactive-wrapper" id="wrapST02-1" onclick="viewST02Point(1)" style="cursor: pointer;" title="Chạm để xem cách động vật thu nhận chất hữu cơ">
+            <div class="touch-hint-badge theme-primary" id="hintST02-1"><i class="ti ti-hand-finger"></i> Chạm để xem</div>
+            <img src="images/REUSE_SH11-B01-M03-A02_THO.png" alt="Thỏ ăn cỏ (Động vật dị dưỡng)" id="imgST02-1">
+            <button type="button" class="touch-marker-btn theme-primary" id="touchMarkerST02-1" style="left: 32%; top: 58%;" onclick="viewST02Point(1); event.stopPropagation();" aria-label="Điểm chạm động vật">
+              <span class="pulse-ring"></span>
+              <span>1</span>
+            </button>
+          </div>
+          <div class="detail-text-box" id="detailST02-1">
+            <i class="ti ti-info-circle"></i>
+            <span id="textST02-1">Nhấn vào điểm đánh dấu trên hình để xem cách động vật thu nhận và sử dụng chất hữu cơ.</span>
+          </div>
+        </div>
+
+        <!-- Ảnh 2: Cây nắp ấm bắt côn trùng -->
+        <div class="image-card">
+          <div class="image-card-header">
+            <h3 class="image-card-title"><i class="ti ti-leaf" style="color:var(--jade);"></i> Cây nắp ấm</h3>
+            <span class="badge-pill" id="badgeST02-2" style="background:#F0FDF4; border-color:#BBF7D0; color:var(--jade-text);">Chưa xem</span>
+          </div>
+          <p style="font-size:0.86rem; color:var(--amber-deep); font-weight:700; margin-bottom:8px; line-height:1.4;">Cây nắp ấm vừa quang hợp vừa bắt côn trùng. Vậy việc bắt côn trùng có làm cây nắp ấm trở thành sinh vật dị dưỡng không?</p>
+          <div class="image-interactive-wrapper aspect-3-2" id="wrapST02-2" onclick="viewST02Point(2)" style="cursor: pointer;" title="Chạm để xem giải thích về cây nắp ấm">
+            <div class="touch-hint-badge" id="hintST02-2"><i class="ti ti-hand-finger"></i> Chạm để xem</div>
+            <img src="images/SH11-B01-M05-A07.png" alt="Cây nắp ấm bắt côn trùng" id="imgST02-2">
+            <button type="button" class="touch-marker-btn" id="touchMarkerST02-2" style="left: 66%; top: 60%;" onclick="viewST02Point(2); event.stopPropagation();" aria-label="Điểm chạm cây nắp ấm">
+              <span class="pulse-ring"></span>
+              <span>2</span>
+            </button>
+          </div>
+          <div class="detail-text-box" id="detailST02-2">
+            <i class="ti ti-info-circle"></i>
+            <span id="textST02-2">Nhấn vào bình bắt mồi của cây nắp ấm để xem giải thích khoa học.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Câu hỏi củng cố A/B (Chỉ mở sau khi xem đủ 2 ảnh) -->
+      <div class="quiz-section hidden" id="quizSectionST02">
+        <p class="transition-text">Trường hợp cây nắp ấm cho thấy không thể phân biệt tự dưỡng và dị dưỡng chỉ dựa vào việc sinh vật có ‘ăn’ hay không. Cần dựa vào nguồn carbon mà sinh vật sử dụng.</p>
+        <h3 class="quiz-question-title"><i class="ti ti-help-circle"></i> Tiêu chí quan trọng để phân biệt tự dưỡng và dị dưỡng là gì?</h3>
+
+        <div class="quiz-options-list">
+          <button type="button" class="quiz-option-btn" id="quizOptST02-A" onclick="selectQuizST02('A')">
+            <span class="quiz-option-badge">A</span>
+            <span>Nguồn carbon mà sinh vật sử dụng để tạo nên chất hữu cơ của cơ thể.</span>
+          </button>
+          <button type="button" class="quiz-option-btn" id="quizOptST02-B" onclick="selectQuizST02('B')">
+            <span class="quiz-option-badge">B</span>
+            <span>Khả năng di chuyển của sinh vật.</span>
+          </button>
+        </div>
+
+        <div style="text-align:right;">
+          <button type="button" class="btn btn-primary" id="btnCheckQuizST02" onclick="checkQuizST02()" disabled>
+            <i class="ti ti-check"></i> <span>KIỂM TRA</span>
+          </button>
+        </div>
+
+        <div class="feedback-panel hidden" id="feedbackQuizST02"></div>
+
+        <!-- Khối chốt ST02 -->
+        <div class="conclude-card hidden" id="concludeST02">
+          <div class="conclude-card__title"><i class="ti ti-star"></i> Kết luận dị dưỡng & Tiêu chí phân biệt</div>
+          <p class="conclude-card__text">Dị dưỡng là phương thức sinh vật sử dụng nguồn carbon hữu cơ có sẵn. Vì vậy, điểm cốt lõi để phân biệt tự dưỡng và dị dưỡng là nguồn carbon mà sinh vật sử dụng.</p>
+        </div>
+      </div>
+
+      <!-- Điều khiển ST02 -->
+      <div class="stage-actions">
+        <button type="button" class="btn btn-secondary" onclick="goToStage(1)">
+          <i class="ti ti-arrow-left"></i> <span>QUAY LẠI</span>
+        </button>
+        <button type="button" class="btn btn-primary" id="btnNextST02" onclick="goToStage(3)" disabled>
+          <span>TIẾP TỤC</span> <i class="ti ti-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         STAGE 03: GHI NHỚ VÀ KẾT NỐI
+         ========================================================= -->
+    <section class="stage-section hidden" id="stage-3">
+      <div class="lead-box">
+        <h2 style="font-size:1.25rem; font-weight:800; color:var(--ink); margin-bottom:8px;">Ghi nhớ và kết nối bài học</h2>
+        <p style="font-size:0.95rem; color:var(--ink-2); line-height:1.6;">Tổng hợp 4 quy luật cốt lõi phân biệt tự dưỡng và dị dưỡng, mở đầu cho bài học về vai trò sinh giới.</p>
+      </div>
+
+      <!-- 4 Khối ghi nhớ cốt lõi -->
+      <div class="summary-grid">
+        <div class="summary-card">
+          <div class="summary-num">1</div>
+          <p class="summary-text">Sinh vật tự dưỡng tổng hợp chất hữu cơ từ nguồn carbon vô cơ.</p>
+        </div>
+        <div class="summary-card">
+          <div class="summary-num">2</div>
+          <p class="summary-text">Sinh vật quang tự dưỡng sử dụng năng lượng ánh sáng, còn sinh vật hoá tự dưỡng sử dụng năng lượng từ quá trình oxy hoá các chất vô cơ.</p>
+        </div>
+        <div class="summary-card">
+          <div class="summary-num">3</div>
+          <p class="summary-text">Sinh vật dị dưỡng sử dụng nguồn carbon hữu cơ có sẵn.</p>
+        </div>
+        <div class="summary-card">
+          <div class="summary-num">4</div>
+          <p class="summary-text">Nguồn carbon là tiêu chí quan trọng để phân biệt phương thức tự dưỡng và dị dưỡng.</p>
+        </div>
+      </div>
+
+      <!-- Lời chốt tổng kết -->
+      <div class="conclude-card" style="margin-bottom: 20px;">
+        <div class="conclude-card__title"><i class="ti ti-bulb"></i> Lời chốt bài học</div>
+        <p class="conclude-card__text">Như vậy, sự khác nhau giữa tự dưỡng và dị dưỡng nằm ở cách sinh vật có được nguồn carbon để tạo nên các chất hữu cơ của cơ thể.</p>
+      </div>
+
+      <!-- Khối cầu nối sang Module 06 -->
+      <div class="bridge-box">
+        <div class="bridge-title"><i class="ti ti-compass"></i> Cầu nối sang Module 06</div>
+        <p class="bridge-text">Sinh vật tự dưỡng có khả năng tạo chất hữu cơ từ nguồn carbon vô cơ. Vậy khả năng này giúp chúng giữ vai trò gì đối với các sinh vật khác và đối với toàn bộ sinh giới? Ở module tiếp theo, bạn sẽ tìm hiểu vai trò của sinh vật tự dưỡng trong sinh giới.</p>
+      </div>
+
+      <!-- Thông báo hoàn thành trung tính -->
+      <div class="completion-alert hidden" id="completionAlert">
+        <i class="ti ti-circle-check-filled"></i>
+        <div>
+          <div>Đã hoàn thành module.</div>
+          <div style="font-size:0.85rem; font-weight:500; opacity:0.9;">Bạn đã nắm vững các phương thức trao đổi chất và chuyển hoá năng lượng: tự dưỡng và dị dưỡng.</div>
+        </div>
+      </div>
+
+      <!-- Điều khiển ST03 -->
+      <div class="stage-actions">
+        <button type="button" class="btn btn-secondary" onclick="goToStage(2)">
+          <i class="ti ti-arrow-left"></i> <span>QUAY LẠI</span>
+        </button>
+        <button type="button" class="btn btn-primary" id="btnCompleteModule" onclick="handleCompleteModule()">
+          <i class="ti ti-check"></i> <span>HOÀN THÀNH MODULE</span>
+        </button>
+      </div>
+    </section>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC TỰ CHỨA -->
+  <script>
+    /* =========================================================
+       LMS STATE & REPORT HEIGHT (KHÔNG DÙNG LOCALSTORAGE/COOKIE)
+       ========================================================= */
+    const lmsState = {
+      currentStage: 0,
+      M05_st00_point1: false,
+      M05_st00_point2: false,
+      M05_st00_hoanthanh: false,
+      M05_st01_type1: false,
+      M05_st01_type2: false,
+      M05_st01_sorting_pass: false,
+      M05_st01_hoanthanh: false,
+      M05_st02_point1: false,
+      M05_st02_point2: false,
+      M05_st02_quiz_pass: false,
+      M05_st02_hoanthanh: false,
+      M05_complete: false
+    };
+
+    window.lmsState = lmsState;
+
+    function reportHeight() {
+      if (window.parent && window.parent.postMessage) {
+        const h = document.documentElement.scrollHeight || document.body.scrollHeight;
+        window.parent.postMessage({ type: 'setHeight', height: h }, '*');
+      }
+    }
+
+    window.addEventListener('resize', reportHeight);
+
+    /* =========================================================
+       ĐIỀU HƯỚNG STAGE (0 -> 1 -> 2 -> 3)
+       ========================================================= */
+    function goToStage(stageIdx) {
+      if (stageIdx > 0 && !lmsState.M05_st00_hoanthanh) return;
+      if (stageIdx > 1 && !lmsState.M05_st01_hoanthanh) return;
+      if (stageIdx > 2 && !lmsState.M05_st02_hoanthanh) return;
+
+      lmsState.currentStage = stageIdx;
+
+      for (let i = 0; i <= 3; i++) {
+        const stageEl = document.getElementById('stage-' + i);
+        const tabEl = document.getElementById('stepTab-' + i);
+        if (stageEl) {
+          if (i === stageIdx) {
+            stageEl.classList.remove('hidden');
+          } else {
+            stageEl.classList.add('hidden');
+          }
+        }
+        if (tabEl) {
+          if (i === stageIdx) {
+            tabEl.classList.add('active');
+          } else {
+            tabEl.classList.remove('active');
+          }
+        }
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      reportHeight();
+    }
+
+    /* =========================================================
+       LOGIC ST00: KHỞI ĐỘNG (CÂY XANH VS CON NGƯỜI)
+       ========================================================= */
+    const pointTextsST00 = {
+      1: 'Cây xanh sử dụng năng lượng ánh sáng để tổng hợp chất hữu cơ từ các chất vô cơ, trong đó CO₂ là nguồn carbon.',
+      2: 'Con người không tự tổng hợp chất hữu cơ từ CO₂. Cơ thể phải thu nhận nguồn carbon hữu cơ có sẵn từ thức ăn.'
+    };
+
+    let st00NextStep = 0; // 0: chưa xem đủ, 1: đã xem đủ chờ bấm hiện kết luận, 2: đã xem kết luận
+
+    function viewST00Point(idx) {
+      lmsState['M05_st00_point' + idx] = true;
+
+      const marker = document.getElementById('touchMarkerST00-' + idx);
+      const textEl = document.getElementById('textST00-' + idx);
+      const badge = document.getElementById('badgeST00-' + idx);
+      const detail = document.getElementById('detailST00-' + idx);
+      const hint = document.getElementById('hintST00-' + idx);
+
+      if (marker) marker.classList.add('active', 'viewed');
+      if (hint) hint.style.display = 'none';
+      if (textEl) textEl.textContent = pointTextsST00[idx];
+      if (badge) {
+        badge.textContent = 'Đã xem';
+        badge.style.background = 'var(--jade-pale)';
+        badge.style.borderColor = 'var(--jade-soft)';
+        badge.style.color = 'var(--jade-text)';
+      }
+      if (detail) detail.classList.add('active');
+
+      if (lmsState.M05_st00_point1 && lmsState.M05_st00_point2) {
+        st00NextStep = 1;
+        const btnNext = document.getElementById('btnNextST00');
+        if (btnNext) btnNext.disabled = false;
+      }
+      reportHeight();
+    }
+
+    function handleNextST00() {
+      if (st00NextStep === 1) {
+        const conclude = document.getElementById('concludeST00');
+        if (conclude) conclude.classList.remove('hidden');
+
+        lmsState.M05_st00_hoanthanh = true;
+        const tab0 = document.getElementById('stepTab-0');
+        if (tab0) tab0.classList.add('completed');
+
+        st00NextStep = 2;
+        reportHeight();
+      } else if (st00NextStep === 2) {
+        goToStage(1);
+      }
+    }
+
+    /* =========================================================
+       LOGIC ST01: QUANG TỰ DƯỠNG VÀ HOÁ TỰ DƯỠNG
+       ========================================================= */
+    const typeTextsST01 = {
+      1: 'Sinh vật quang tự dưỡng sử dụng năng lượng ánh sáng để tổng hợp chất hữu cơ từ nguồn carbon vô cơ. Thực vật xanh và nhiều loài tảo là những ví dụ quen thuộc.',
+      2: 'Sinh vật hoá tự dưỡng sử dụng năng lượng thu được từ quá trình oxy hoá các chất vô cơ để tổng hợp chất hữu cơ từ nguồn carbon vô cơ. Một số vi khuẩn là sinh vật hoá tự dưỡng.'
+    };
+
+    function viewST01Type(idx) {
+      lmsState['M05_st01_type' + idx] = true;
+
+      const marker = document.getElementById('touchMarkerST01-' + idx);
+      const textEl = document.getElementById('textST01-' + idx);
+      const badge = document.getElementById('badgeST01-' + idx);
+      const detail = document.getElementById('detailST01-' + idx);
+      const tags = document.getElementById('overlayTagsST01-' + idx);
+      const hint = document.getElementById('hintST01-' + idx);
+
+      if (marker) marker.classList.add('active', 'viewed');
+      if (hint) hint.style.display = 'none';
+      if (textEl) textEl.textContent = typeTextsST01[idx];
+      if (badge) {
+        badge.textContent = 'Đã xem';
+        badge.style.background = 'var(--jade-pale)';
+        badge.style.borderColor = 'var(--jade-soft)';
+        badge.style.color = 'var(--jade-text)';
+      }
+      if (detail) detail.classList.add('active');
+      if (tags) tags.classList.remove('hidden');
+
+      if (lmsState.M05_st01_type1 && lmsState.M05_st01_type2) {
+        const sortingSection = document.getElementById('sortingSectionST01');
+        if (sortingSection) sortingSection.classList.remove('hidden');
+      }
+      reportHeight();
+    }
+
+    /* Kéo thả & Chạm chọn phân loại ST01 */
+    let selectedCardST01 = null;
+    const correctZonesST01 = {
+      'cardST01-1': 'zoneST01-1', // Cây lúa -> Quang tự dưỡng
+      'cardST01-2': 'zoneST01-1', // Tảo lục -> Quang tự dưỡng
+      'cardST01-3': 'zoneST01-2', // Vi khuẩn lưu huỳnh -> Hoá tự dưỡng
+      'cardST01-4': 'zoneST01-2'  // Vi khuẩn nitrat hoá -> Hoá tự dưỡng
+    };
+
+    function handleCardClickST01(cardId) {
+      const card = document.getElementById(cardId);
+      if (!card || card.classList.contains('correct')) return;
+
+      if (selectedCardST01 === cardId) {
+        card.classList.remove('selected');
+        selectedCardST01 = null;
+        updateZoneReadyStatesST01(false);
+      } else {
+        if (selectedCardST01) {
+          const prev = document.getElementById(selectedCardST01);
+          if (prev) prev.classList.remove('selected');
+        }
+        selectedCardST01 = cardId;
+        card.classList.add('selected');
+        updateZoneReadyStatesST01(true);
+      }
+    }
+
+    function updateZoneReadyStatesST01(isReady) {
+      for (let i = 1; i <= 2; i++) {
+        const z = document.getElementById('zoneST01-' + i);
+        if (z) {
+          if (isReady) z.classList.add('ready-to-place');
+          else z.classList.remove('ready-to-place');
+        }
+      }
+    }
+
+    function handleZoneClickST01(zoneIdx) {
+      if (!selectedCardST01) return;
+      placeCardToZoneST01(selectedCardST01, zoneIdx);
+      const card = document.getElementById(selectedCardST01);
+      if (card) card.classList.remove('selected');
+      selectedCardST01 = null;
+      updateZoneReadyStatesST01(false);
+    }
+
+    function placeCardToZoneST01(cardId, zoneIdx) {
+      const card = document.getElementById(cardId);
+      const targetContainer = document.getElementById('zoneItemsST01-' + zoneIdx);
+      if (!card || !targetContainer) return;
+
+      targetContainer.appendChild(card);
+      card.classList.remove('wrong');
+      updateCardCountsST01();
+      checkCardPlacementST01();
+      reportHeight();
+    }
+
+    function returnCardST01(cardId, event) {
+      if (event) event.stopPropagation();
+      const card = document.getElementById(cardId);
+      const tray = document.getElementById('sourceTrayST01');
+      if (!card || !tray || card.classList.contains('correct')) return;
+
+      tray.appendChild(card);
+      card.classList.remove('wrong', 'selected');
+      if (selectedCardST01 === cardId) {
+        selectedCardST01 = null;
+        updateZoneReadyStatesST01(false);
+      }
+      updateCardCountsST01();
+      checkCardPlacementST01();
+      reportHeight();
+    }
+
+    function updateCardCountsST01() {
+      for (let i = 1; i <= 2; i++) {
+        const container = document.getElementById('zoneItemsST01-' + i);
+        const countBadge = document.getElementById('countST01-' + i);
+        if (container && countBadge) {
+          const cnt = container.querySelectorAll('.drag-card').length;
+          countBadge.textContent = cnt + ' thẻ';
+        }
+      }
+    }
+
+    /* Kéo thả HTML5 chuẩn */
+    function allowDrop(e) { e.preventDefault(); }
+
+    function handleDragStart(e) {
+      e.dataTransfer.setData('text/plain', e.target.id);
+      e.target.classList.add('dragging');
+    }
+
+    document.addEventListener('dragend', function(e) {
+      if (e.target && e.target.classList) {
+        e.target.classList.remove('dragging');
+      }
+    });
+
+    function handleDragLeave(e) {
+      const zone = e.currentTarget;
+      if (zone) zone.classList.remove('drag-over');
+    }
+
+    function handleDropToZoneST01(e, zoneIdx) {
+      e.preventDefault();
+      const zone = document.getElementById('zoneST01-' + zoneIdx);
+      if (zone) zone.classList.remove('drag-over');
+      const cardId = e.dataTransfer.getData('text/plain');
+      if (cardId) placeCardToZoneST01(cardId, zoneIdx);
+    }
+
+    function handleDropToTrayST01(e) {
+      e.preventDefault();
+      const cardId = e.dataTransfer.getData('text/plain');
+      if (cardId) returnCardST01(cardId, null);
+    }
+
+    function checkCardPlacementST01() {
+      const z1 = document.getElementById('zoneItemsST01-1');
+      const z2 = document.getElementById('zoneItemsST01-2');
+      const btn = document.getElementById('btnCheckST01');
+      if (!z1 || !z2 || !btn) return;
+
+      const totalPlaced = z1.querySelectorAll('.drag-card').length + z2.querySelectorAll('.drag-card').length;
+      btn.disabled = totalPlaced < 4;
+    }
+
+    function checkSortingST01() {
+      const z1 = document.getElementById('zoneItemsST01-1');
+      const z2 = document.getElementById('zoneItemsST01-2');
+      const fb = document.getElementById('feedbackST01');
+      if (!z1 || !z2 || !fb) return;
+
+      let allCorrect = true;
+      const wrongCards = [];
+
+      ['cardST01-1', 'cardST01-2', 'cardST01-3', 'cardST01-4'].forEach(cId => {
+        const card = document.getElementById(cId);
+        if (!card) return;
+        const currentZone = card.closest ? card.closest('.target-zone') : (card.parentElement && card.parentElement.parentElement);
+        const currentZoneId = currentZone ? currentZone.id : '';
+        if (currentZoneId === correctZonesST01[cId]) {
+          card.classList.add('correct');
+          card.classList.remove('wrong');
+        } else {
+          allCorrect = false;
+          card.classList.add('wrong');
+          wrongCards.push(cId);
+        }
+      });
+
+      fb.classList.remove('hidden', 'correct', 'wrong');
+      if (allCorrect) {
+        fb.classList.add('correct');
+        fb.innerHTML = '<i class="ti ti-circle-check"></i> <div><strong>Chính xác.</strong> Quang tự dưỡng sử dụng năng lượng ánh sáng, còn hoá tự dưỡng sử dụng năng lượng từ quá trình oxy hoá các chất vô cơ. Cả hai đều tổng hợp chất hữu cơ từ nguồn carbon vô cơ.</div>';
+        lmsState.M05_st01_sorting_pass = true;
+        lmsState.M05_st01_hoanthanh = true;
+
+        const conclude = document.getElementById('concludeST01');
+        if (conclude) conclude.classList.remove('hidden');
+
+        const tab1 = document.getElementById('stepTab-1');
+        if (tab1) tab1.classList.add('completed');
+
+        const btnNext = document.getElementById('btnNextST01');
+        if (btnNext) btnNext.disabled = false;
+
+        const btnCheck = document.getElementById('btnCheckST01');
+        if (btnCheck) btnCheck.disabled = true;
+      } else {
+        fb.classList.add('wrong');
+        fb.innerHTML = '<i class="ti ti-alert-triangle"></i> <div><strong>Chưa đúng.</strong> Hãy xem sinh vật trong ví dụ đang sử dụng năng lượng ánh sáng hay năng lượng từ quá trình oxy hoá chất vô cơ, rồi thử lại.</div>';
+
+        // Trả thẻ sai về khay nguồn
+        setTimeout(() => {
+          wrongCards.forEach(cId => returnCardST01(cId, null));
+        }, 900);
+      }
+      reportHeight();
+    }
+
+    /* =========================================================
+       LOGIC ST02: DỊ DƯỠNG VÀ TIÊU CHÍ PHÂN BIỆT
+       ========================================================= */
+    const pointTextsST02 = {
+      1: 'Động vật là những sinh vật dị dưỡng điển hình. Chúng thu nhận chất hữu cơ có sẵn qua thức ăn, sau đó tiêu hoá, hấp thụ và sử dụng các chất đó để xây dựng cơ thể và cung cấp năng lượng cho hoạt động sống.',
+      2: 'Cây nắp ấm vẫn tổng hợp phần lớn chất hữu cơ từ CO₂ nhờ quang hợp. Côn trùng mà cây bắt được chủ yếu cung cấp thêm các chất dinh dưỡng khoáng, đặc biệt là nguồn nitơ, nên không làm thay đổi phương thức dinh dưỡng tự dưỡng của cây.'
+    };
+
+    function viewST02Point(idx) {
+      lmsState['M05_st02_point' + idx] = true;
+
+      const marker = document.getElementById('touchMarkerST02-' + idx);
+      const textEl = document.getElementById('textST02-' + idx);
+      const badge = document.getElementById('badgeST02-' + idx);
+      const detail = document.getElementById('detailST02-' + idx);
+      const hint = document.getElementById('hintST02-' + idx);
+
+      if (marker) marker.classList.add('active', 'viewed');
+      if (hint) hint.style.display = 'none';
+      if (textEl) textEl.textContent = pointTextsST02[idx];
+      if (badge) {
+        badge.textContent = 'Đã xem';
+        badge.style.background = 'var(--jade-pale)';
+        badge.style.borderColor = 'var(--jade-soft)';
+        badge.style.color = 'var(--jade-text)';
+      }
+      if (detail) detail.classList.add('active');
+
+      if (lmsState.M05_st02_point1 && lmsState.M05_st02_point2) {
+        const quizSection = document.getElementById('quizSectionST02');
+        if (quizSection) quizSection.classList.remove('hidden');
+      }
+      reportHeight();
+    }
+
+    /* Câu hỏi củng cố A/B ST02 */
+    let selectedQuizOptST02 = null;
+
+    function selectQuizST02(opt) {
+      selectedQuizOptST02 = opt;
+      ['A', 'B'].forEach(o => {
+        const btn = document.getElementById('quizOptST02-' + o);
+        if (btn) {
+          if (o === opt) btn.classList.add('selected');
+          else btn.classList.remove('selected');
+        }
+      });
+
+      const btnCheck = document.getElementById('btnCheckQuizST02');
+      if (btnCheck) btnCheck.disabled = false;
+    }
+
+    function checkQuizST02() {
+      const fb = document.getElementById('feedbackQuizST02');
+      if (!fb || !selectedQuizOptST02) return;
+
+      fb.classList.remove('hidden', 'correct', 'wrong');
+      if (selectedQuizOptST02 === 'A') {
+        fb.classList.add('correct');
+        fb.innerHTML = '<i class="ti ti-circle-check"></i> <div><strong>Chính xác.</strong> Sinh vật tự dưỡng sử dụng nguồn carbon vô cơ để tổng hợp chất hữu cơ; sinh vật dị dưỡng sử dụng nguồn carbon hữu cơ có sẵn.</div>';
+        lmsState.M05_st02_quiz_pass = true;
+        lmsState.M05_st02_hoanthanh = true;
+
+        const conclude = document.getElementById('concludeST02');
+        if (conclude) conclude.classList.remove('hidden');
+
+        const tab2 = document.getElementById('stepTab-2');
+        if (tab2) tab2.classList.add('completed');
+
+        const btnNext = document.getElementById('btnNextST02');
+        if (btnNext) btnNext.disabled = false;
+
+        const btnCheck = document.getElementById('btnCheckQuizST02');
+        if (btnCheck) btnCheck.disabled = true;
+      } else {
+        fb.classList.add('wrong');
+        fb.innerHTML = '<i class="ti ti-alert-triangle"></i> <div><strong>Chưa đúng.</strong> Khả năng di chuyển không phản ánh cách sinh vật có được chất hữu cơ. Hãy xem lại nguồn carbon mà sinh vật sử dụng.</div>';
+      }
+      reportHeight();
+    }
+
+    /* =========================================================
+       LOGIC ST03: GHI NHỚ VÀ KẾT NỐI
+       ========================================================= */
+    function handleCompleteModule() {
+      lmsState.M05_complete = true;
+      const alertBox = document.getElementById('completionAlert');
+      if (alertBox) alertBox.classList.remove('hidden');
+
+      const tab3 = document.getElementById('stepTab-3');
+      if (tab3) tab3.classList.add('completed');
+
+      const btnComplete = document.getElementById('btnCompleteModule');
+      if (btnComplete) {
+        btnComplete.disabled = true;
+        btnComplete.innerHTML = '<i class="ti ti-circle-check"></i> <span>ĐÃ HOÀN THÀNH</span>';
+      }
+
+      if (window.parent && window.parent.postMessage) {
+        window.parent.postMessage({
+          type: 'moduleCompleted',
+          moduleCode: 'SH11-B01-M05',
+          state: lmsState
+        }, '*');
+      }
+      reportHeight();
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+      reportHeight();
+    });
+  </script>
+</body>
+</html>
