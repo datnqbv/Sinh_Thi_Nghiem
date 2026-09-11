@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ý nghĩa và ứng dụng của tái bản DNA · Sinh học 12 · SH12-B01-A01-M03</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+
+  <!-- Athena Context JSON -->
+  <script type="application/json" id="athena-context">
+  {
+    "title": "Ý nghĩa và ứng dụng của tái bản DNA",
+    "subject": "Sinh học",
+    "grade": "12",
+    "track": "Bài 1 · DNA và cơ chế tái bản DNA",
+    "moduleCode": "SH12-B01-A01-M03",
+    "objectives": [
+      "Phân tích được ý nghĩa của tái bản DNA đối với sinh trưởng, phát triển và di truyền.",
+      "Nêu được khái quát ứng dụng nguyên lí tái bản DNA trong kỹ thuật PCR và một số lĩnh vực thực tiễn (pháp y, y học, nông nghiệp, nghiên cứu khoa học)."
+    ],
+    "structure": [
+      {"id": "step0", "title": "Từ một tế bào đến cơ thể nhiều tế bào"},
+      {"id": "step1", "title": "Ý nghĩa của tái bản DNA"},
+      {"id": "step2", "title": "Ứng dụng nguyên lí tái bản DNA & PCR"},
+      {"id": "step3", "title": "Ghi nhớ và khép lại Bài 1"}
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      /* Neutrals · giấy & mực (Tom Haugomat Editorial Flat) */
+      --cream: #FAF7F0;
+      --cream-2: #F0EADD;
+      --cream-3: #E7DECC;
+      --paper-line: #E5DECF;
+      --paper-line-2: #D6CCB6;
+      --ink: #1A1A1A;
+      --ink-2: #514C44;
+      --ink-3: #7C756A;
+      --ink-faint: #ABA396;
+
+      /* Jade · hành động chính */
+      --jade: #3CA57A;
+      --jade-deep: #2D8B6F;
+      --jade-dark: #14432F;
+      --jade-text: #1B5E48;
+      --jade-soft: #A9D0BE;
+      --jade-pale: #DCEAE1;
+
+      /* Sage · phụ trợ */
+      --sage: #A8C9B8;
+      --sage-deep: #7CA792;
+      --sage-text: #46685A;
+      --sage-pale: #E1ECE4;
+
+      /* Accent · điểm nhấn ấm */
+      --accent: #E8A24A;
+      --accent-deep: #CE8A33;
+      --accent-text: #8A551A;
+      --accent-pale: #F7E7CD;
+
+      /* Semantic · phản hồi */
+      --correct: #2D8B6F;
+      --correct-bg: #DCEAE1;
+      --wrong: #C15F3C;
+      --wrong-bg: #F3E2D6;
+      --warning: #C58A2E;
+      --warning-bg: #F5E7CB;
+      --info: #4E7F92;
+      --info-bg: #DCE7EB;
+
+      /* Bán kính & bóng */
+      --radius-sm: 6px;
+      --radius: 12px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 2px 8px rgba(26, 26, 26, 0.04);
+      --shadow-md: 0 6px 18px rgba(26, 26, 26, 0.06);
+      --lesson-width: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+      background-color: var(--cream);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+      padding: 20px 16px 60px;
+    }
+
+    .lesson-wrapper {
+      max-width: var(--lesson-width);
+      margin: 0 auto;
+    }
+
+    /* Header Module */
+    .module-header {
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .module-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--jade-pale);
+      color: var(--jade-dark);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    .track-tag {
+      color: var(--ink-3);
+      font-size: 0.86rem;
+      font-weight: 500;
+    }
+
+    .module-title {
+      font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+
+    .module-outcome {
+      background: var(--cream);
+      border-left: 3.5px solid var(--jade);
+      padding: 10px 16px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.94rem;
+      color: var(--ink-2);
+    }
+
+    /* Navigation Bar: Chuyển bước tự do, position: relative (Không scroll ngang) */
+    .step-nav-bar {
+      position: relative;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 8px 12px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+      overflow: visible;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .step-nav-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .step-tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      border: 1px solid transparent;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--ink-3);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .step-tab-btn:hover {
+      background: var(--cream-2);
+      color: var(--ink);
+    }
+
+    .step-tab-btn.active {
+      background: var(--jade-pale);
+      border-color: var(--jade-soft);
+      color: var(--jade-dark);
+      font-weight: 700;
+    }
+
+    .step-tab-btn.completed i.step-status-icon {
+      color: var(--jade-deep);
+    }
+
+    .step-num-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--paper-line);
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--ink-2);
+    }
+
+    .step-tab-btn.active .step-num-pill {
+      background: var(--jade-deep);
+      color: #FFFFFF;
+    }
+
+    /* Section Card */
+    .section-card {
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .section-card.hidden {
+      display: none;
+    }
+
+    .section-header {
+      margin-bottom: 20px;
+    }
+
+    .section-subtitle {
+      font-size: 0.84rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--jade-text);
+      margin-bottom: 4px;
+    }
+
+    .section-heading {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.35;
+    }
+
+    /* Lời dẫn & Hướng dẫn */
+    .lead-box {
+      font-size: 1.05rem;
+      color: var(--ink-2);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+
+    .lead-box p {
+      margin-bottom: 10px;
+    }
+
+    .lead-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .question-lead {
+      background: var(--cream-2);
+      border-left: 3px solid var(--accent-deep);
+      padding: 12px 18px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 16px 0;
+    }
+
+    .instruction-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--cream);
+      border: 1px dashed var(--paper-line-2);
+      padding: 12px 18px;
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      font-size: 0.94rem;
+      color: var(--ink-2);
+    }
+
+    .instruction-row i {
+      font-size: 1.25rem;
+      color: var(--jade-deep);
+      flex-shrink: 0;
+    }
+
+    /* ========================================= */
+    /* ST00: Bố cục 3 thẻ Raster A01 (4:3)       */
+    /* ========================================= */
+    .tri-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 840px) {
+      .tri-cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .tri-card {
+      background: var(--cream);
+      border: 2px solid var(--paper-line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .tri-card:hover {
+      border-color: var(--sage-deep);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .tri-card.active-card {
+      border-color: var(--jade-deep);
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px var(--jade-pale), var(--shadow-md);
+    }
+
+    .tri-card.viewed-card {
+      border-color: var(--jade);
+    }
+
+    .tri-card-img-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--paper-line);
+      overflow: hidden;
+    }
+
+    .tri-card-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .tri-card:hover .tri-card-img-wrapper img {
+      transform: scale(1.03);
+    }
+
+    .tri-card-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-sm);
+      padding: 3px 8px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--ink-2);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .tri-card.viewed-card .tri-card-badge {
+      background: var(--jade-pale);
+      color: var(--jade-dark);
+      border-color: var(--jade-soft);
+    }
+
+    .tri-card-body {
+      padding: 16px 18px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tri-card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .tri-card-desc {
+      font-size: 0.92rem;
+      color: var(--ink-2);
+      line-height: 1.6;
+    }
+
+    /* Hộp kết quả & câu chốt */
+    .conclude-box {
+      background: var(--jade-pale);
+      border: 1px solid var(--jade-soft);
+      border-left: 4px solid var(--jade-deep);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      margin: 24px 0 28px;
+    }
+
+    .conclude-box-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--jade-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .conclude-box p {
+      font-size: 0.98rem;
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    /* ========================================= */
+    /* ST01: Bố cục 3 Nhánh Vector (CODE/SVG)    */
+    /* ========================================= */
+    .diagram-container {
+      background: var(--cream);
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .branches-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 820px) {
+      .branches-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .branch-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .branch-card:hover {
+      border-color: var(--sage-deep);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .branch-card.active-branch {
+      border-color: var(--jade-deep);
+      background: var(--jade-pale);
+    }
+
+    .branch-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .branch-icon-wrap {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--cream-2);
+      color: var(--jade-deep);
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .branch-card.active-branch .branch-icon-wrap {
+      background: var(--jade-deep);
+      color: #FFFFFF;
+    }
+
+    .branch-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .branch-content {
+      font-size: 0.94rem;
+      color: var(--ink-2);
+      line-height: 1.65;
+    }
+
+    /* ========================================= */
+    /* ST02: Sơ đồ PCR & 4 Lĩnh vực Ứng dụng     */
+    /* ========================================= */
+    .pcr-schema-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .pcr-schema-card:hover {
+      border-color: var(--jade-deep);
+    }
+
+    .pcr-schema-card.viewed {
+      border-color: var(--jade);
+      background: var(--cream);
+    }
+
+    .pcr-svg-wrapper {
+      width: 100%;
+      margin: 14px 0 10px;
+    }
+
+    .misconception-callout {
+      background: var(--warning-bg);
+      border-left: 3.5px solid var(--warning);
+      padding: 10px 16px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.92rem;
+      color: var(--ink);
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .misconception-callout i {
+      color: var(--accent-deep);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .app-fields-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 680px) {
+      .app-fields-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .app-field-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .app-field-card:hover {
+      border-color: var(--sage-deep);
+      transform: translateY(-2px);
+    }
+
+    .app-field-card.viewed {
+      border-color: var(--jade);
+      background: var(--cream);
+    }
+
+    .app-field-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .app-field-head i {
+      color: var(--jade-deep);
+      font-size: 1.2rem;
+    }
+
+    .app-field-desc {
+      font-size: 0.93rem;
+      color: var(--ink-2);
+      line-height: 1.6;
+    }
+
+    /* ========================================= */
+    /* Hộp câu hỏi củng cố (Quiz Box)            */
+    /* ========================================= */
+    .quiz-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-top: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .quiz-card.hidden {
+      display: none;
+    }
+
+    .quiz-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .quiz-question {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    .quiz-tag {
+      background: var(--cream-2);
+      color: var(--ink-2);
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .quiz-opt-btn {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--cream);
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-family: inherit;
+      font-size: 0.96rem;
+      color: var(--ink);
+      cursor: pointer;
+      text-align: left;
+      line-height: 1.55;
+      transition: all 0.2s ease;
+    }
+
+    .quiz-opt-btn:hover {
+      background: var(--cream-2);
+      border-color: var(--paper-line-2);
+    }
+
+    .quiz-opt-btn.correct {
+      background: var(--correct-bg);
+      border-color: var(--correct);
+      color: var(--jade-dark);
+      font-weight: 600;
+    }
+
+    .quiz-opt-btn.wrong {
+      background: var(--wrong-bg);
+      border-color: var(--wrong);
+      color: #782916;
+    }
+
+    .opt-letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line-2);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--ink-2);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .quiz-opt-btn.correct .opt-letter {
+      background: var(--correct);
+      color: #FFFFFF;
+      border-color: var(--correct);
+    }
+
+    .quiz-opt-btn.wrong .opt-letter {
+      background: var(--wrong);
+      color: #FFFFFF;
+      border-color: var(--wrong);
+    }
+
+    .quiz-feedback {
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-size: 0.94rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.6;
+    }
+
+    .quiz-feedback.hidden {
+      display: none;
+    }
+
+    .quiz-feedback.correct {
+      background: var(--correct-bg);
+      color: var(--jade-dark);
+      border-left: 3.5px solid var(--correct);
+    }
+
+    .quiz-feedback.wrong {
+      background: var(--wrong-bg);
+      color: #782916;
+      border-left: 3.5px solid var(--wrong);
+    }
+
+    .quiz-feedback i {
+      font-size: 1.25rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ========================================= */
+    /* ST03: Ghi nhớ, Lời chốt & Cầu nối        */
+    /* ========================================= */
+    .recap-card {
+      background: var(--cream);
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .recap-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .recap-title i {
+      color: var(--jade-deep);
+    }
+
+    .recap-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .recap-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.98rem;
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    .recap-list li i {
+      color: var(--jade);
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+
+    .summary-card {
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-left: 4px solid var(--jade-deep);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 24px;
+    }
+
+    .summary-card h4 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--jade-dark);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .summary-card p {
+      font-size: 0.96rem;
+      color: var(--ink-2);
+      line-height: 1.65;
+    }
+
+    .bridge-card {
+      background: linear-gradient(135deg, #FAF4E8 0%, #F5ECDA 100%);
+      border: 1.5px solid var(--accent-pale);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .bridge-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .bridge-card h4 {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--accent-text);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .bridge-card p {
+      font-size: 0.96rem;
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    /* Thanh nút hành động (Controls) */
+    .controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--paper-line);
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 0.96rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+    }
+
+    .btn-action.primary {
+      background: var(--jade-deep);
+      color: #FFFFFF;
+    }
+
+    .btn-action.primary:hover:not(:disabled) {
+      background: var(--jade-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-action.primary:disabled {
+      background: var(--cream-3);
+      color: var(--ink-faint);
+      cursor: not-allowed;
+      border: 1px solid var(--paper-line);
+    }
+
+    .btn-action.secondary {
+      background: transparent;
+      color: var(--ink-2);
+      border: 1px solid var(--paper-line-2);
+    }
+
+    .btn-action.secondary:hover {
+      background: var(--cream-2);
+      color: var(--ink);
+    }
+
+    /* Modal hoàn thành module */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(26, 26, 26, 0.45);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-backdrop.show {
+      display: flex;
+    }
+
+    .completion-modal {
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+      animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.94); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .completion-icon-wrapper {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: var(--jade-pale);
+      color: var(--jade-deep);
+      font-size: 2.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+    }
+
+    .completion-modal h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .completion-modal p {
+      font-size: 0.98rem;
+      color: var(--ink-2);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="lesson-wrapper">
+
+    <!-- Header Module -->
+    <header class="module-header">
+      <div class="header-badge-row">
+        <span class="module-badge"><i class="ti ti-dna"></i> Sinh học 12 · Bài 1 · M03</span>
+        <span class="track-tag">Ý nghĩa và ứng dụng của tái bản DNA</span>
+      </div>
+      <h1 class="module-title">Ý nghĩa và ứng dụng của tái bản DNA</h1>
+      <div class="module-outcome">
+        <strong>Yêu cầu cần đạt:</strong> Phân tích được ý nghĩa của tái bản DNA đối với sinh trưởng, phát triển và di truyền; nêu được khái quát ứng dụng nguyên lí tái bản DNA trong PCR và một số lĩnh vực thực tiễn.
+      </div>
+    </header>
+
+    <!-- Navigation Tabs: Chuyển bước tự do, không sticky -->
+    <nav class="step-nav-bar" aria-label="Các bước bài học">
+      <button class="step-tab-btn active" id="tabStep0" onclick="goToStep(0)">
+        <span class="step-num-pill">1</span>
+        <span>Từ một tế bào đến cơ thể</span>
+        <i class="ti ti-check step-status-icon"></i>
+      </button>
+      <button class="step-tab-btn" id="tabStep1" onclick="goToStep(1)">
+        <span class="step-num-pill">2</span>
+        <span>Ý nghĩa của tái bản DNA</span>
+        <i class="ti ti-check step-status-icon"></i>
+      </button>
+      <button class="step-tab-btn" id="tabStep2" onclick="goToStep(2)">
+        <span class="step-num-pill">3</span>
+        <span>Ứng dụng & Kỹ thuật PCR</span>
+        <i class="ti ti-check step-status-icon"></i>
+      </button>
+      <button class="step-tab-btn" id="tabStep3" onclick="goToStep(3)">
+        <span class="step-num-pill">4</span>
+        <span>Ghi nhớ & Khép lại Bài 1</span>
+        <i class="ti ti-check step-status-icon"></i>
+      </button>
+    </nav>
+
+    <!-- ========================================================= -->
+    <!-- BƯỚC 0: TỪ MỘT TẾ BÀO ĐẾN MỘT CƠ THỂ NHIỀU TẾ BÀO -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="stepCard0">
+      <div class="section-header">
+        <div class="section-subtitle">Khám phá mở đầu</div>
+        <h2 class="section-heading">Từ một tế bào đến một cơ thể nhiều tế bào</h2>
+      </div>
+
+      <div class="lead-box">
+        <p>Cơ thể người bắt đầu từ một hợp tử. Từ một tế bào ban đầu, qua nhiều lần phân bào, số lượng tế bào tăng dần và cơ thể được hình thành.</p>
+        <div class="question-lead">
+          Trước mỗi lần phân bào, DNA cần được tái bản. Vậy quá trình này có ý nghĩa gì đối với sinh trưởng, phát triển và di truyền?
+        </div>
+      </div>
+
+      <div class="instruction-row">
+        <i class="ti ti-hand-finger"></i>
+        <span>HƯỚNG DẪN: Nhấn lần lượt vào ba hình để theo dõi sự thay đổi từ một tế bào → nhiều tế bào → cơ thể nhiều tế bào. Hình đã xem sẽ đổi trạng thái.</span>
+      </div>
+
+      <!-- Lưới 3 Thẻ Raster 4:3 -->
+      <div class="tri-cards-grid">
+        <!-- Thẻ 1: Một tế bào -->
+        <div class="tri-card" id="cardRaster1" onclick="selectRasterCard(1)">
+          <div class="tri-card-img-wrapper">
+            <span class="tri-card-badge"><i class="ti ti-circle-dot"></i> Điểm 1</span>
+            <img src="images/SH12-B01-M03-A01-1.png" alt="Một tế bào - Hợp tử" loading="lazy">
+          </div>
+          <div class="tri-card-body">
+            <div class="tri-card-title">
+              <span>Một tế bào</span>
+              <i class="ti ti-circle-check" id="badgeCheck1" style="display:none; color:var(--jade-deep);"></i>
+            </div>
+            <div class="tri-card-desc">
+              Đây là hợp tử – tế bào ban đầu của cơ thể.
+            </div>
+          </div>
+        </div>
+
+        <!-- Thẻ 2: Nhiều tế bào -->
+        <div class="tri-card" id="cardRaster2" onclick="selectRasterCard(2)">
+          <div class="tri-card-img-wrapper">
+            <span class="tri-card-badge"><i class="ti ti-circles"></i> Điểm 2</span>
+            <img src="images/SH12-B01-M03-A01-2.png" alt="Nhiều tế bào qua phân bào" loading="lazy">
+          </div>
+          <div class="tri-card-body">
+            <div class="tri-card-title">
+              <span>Nhiều tế bào</span>
+              <i class="ti ti-circle-check" id="badgeCheck2" style="display:none; color:var(--jade-deep);"></i>
+            </div>
+            <div class="tri-card-desc">
+              Qua các lần phân bào, số lượng tế bào tăng lên. Trước mỗi lần phân bào, DNA được tái bản. Nhờ đó, khi phân bào kết thúc, mỗi tế bào con nhận được một bộ DNA mang thông tin di truyền của tế bào mẹ.
+            </div>
+          </div>
+        </div>
+
+        <!-- Thẻ 3: Cơ thể nhiều tế bào -->
+        <div class="tri-card" id="cardRaster3" onclick="selectRasterCard(3)">
+          <div class="tri-card-img-wrapper">
+            <span class="tri-card-badge"><i class="ti ti-user"></i> Điểm 3</span>
+            <img src="images/SH12-B01-M03-A01-3.png" alt="Cơ thể nhiều tế bào" loading="lazy">
+          </div>
+          <div class="tri-card-body">
+            <div class="tri-card-title">
+              <span>Cơ thể nhiều tế bào</span>
+              <i class="ti ti-circle-check" id="badgeCheck3" style="display:none; color:var(--jade-deep);"></i>
+            </div>
+            <div class="tri-card-desc">
+              Sự gia tăng số lượng tế bào góp phần vào sinh trưởng. Trong quá trình phát triển, các tế bào còn có thể phân hoá và đảm nhiệm những chức năng khác nhau.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hộp câu chốt hiển thị sau khi xem -->
+      <div class="conclude-box" id="concludeBoxStep0">
+        <div class="conclude-box-title">
+          <i class="ti ti-bulb"></i> Kết luận cốt lõi
+        </div>
+        <p>Trước mỗi lần phân bào, DNA được tái bản để tạo các bản sao của thông tin di truyền. Nhờ đó, sau phân bào, các tế bào con nhận được DNA mang thông tin di truyền của tế bào mẹ. Đây là cơ sở quan trọng của sinh trưởng, phát triển và sự truyền đạt thông tin di truyền.</p>
+      </div>
+
+      <div class="controls-row">
+        <div></div>
+        <button class="btn-action primary" id="btnNextStep0" onclick="goToStep(1)" disabled>
+          <span>TIẾP TỤC</span>
+          <i class="ti ti-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- BƯỚC 1: TÁI BẢN DNA CÓ Ý NGHĨA GÌ? -->
+    <!-- ========================================================= -->
+    <section class="section-card hidden" id="stepCard1">
+      <div class="section-header">
+        <div class="section-subtitle">Ý nghĩa sinh học</div>
+        <h2 class="section-heading">Tái bản DNA có ý nghĩa gì?</h2>
+      </div>
+
+      <div class="lead-box">
+        <p>Hãy xem xét ba ý nghĩa chính của tái bản DNA đối với cơ thể và sự di truyền.</p>
+      </div>
+
+      <div class="instruction-row">
+        <i class="ti ti-hand-finger"></i>
+        <span>HƯỚNG DẪN: Nhấn vào từng nhánh SINH TRƯỞNG – PHÁT TRIỂN – DI TRUYỀN. Nhánh đã xem sẽ đổi trạng thái. Khi xem đủ ba nhánh, câu hỏi củng cố sẽ xuất hiện.</span>
+      </div>
+
+      <!-- Sơ đồ vector 3 Nhánh -->
+      <div class="diagram-container">
+        <!-- SVG Minh họa kết nối trung tâm -->
+        <div style="text-align:center; margin-bottom: 8px;">
+          <svg viewBox="0 0 760 80" xmlns="http://www.w3.org/2000/svg" style="max-width: 600px; width: 100%;">
+            <!-- Khối trung tâm -->
+            <rect x="290" y="8" width="180" height="42" rx="21" fill="#2D8B6F"/>
+            <text x="380" y="34" font-family="'Be Vietnam Pro', sans-serif" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">TÁI BẢN DNA</text>
+            <!-- 3 đường nhánh tỏa ra -->
+            <path d="M 320 50 Q 200 65 120 78" fill="none" stroke="#A8C9B8" stroke-width="2.5" stroke-dasharray="4,4"/>
+            <path d="M 380 50 L 380 78" fill="none" stroke="#A8C9B8" stroke-width="2.5" stroke-dasharray="4,4"/>
+            <path d="M 440 50 Q 560 65 640 78" fill="none" stroke="#A8C9B8" stroke-width="2.5" stroke-dasharray="4,4"/>
+          </svg>
+        </div>
+
+        <div class="branches-grid">
+          <!-- Nhánh 1: Sinh trưởng -->
+          <div class="branch-card" id="branchCard1" onclick="selectBranch(1)">
+            <div class="branch-header">
+              <div class="branch-icon-wrap"><i class="ti ti-trending-up"></i></div>
+              <div class="branch-title">1. Sinh trưởng</div>
+            </div>
+            <div class="branch-content">
+              Trước mỗi lần phân bào, DNA được tái bản. Sau phân bào, các tế bào con nhận được DNA mang thông tin di truyền của tế bào mẹ. Qua nhiều lần phân bào, số lượng tế bào tăng lên, góp phần làm cơ thể sinh trưởng.
+            </div>
+          </div>
+
+          <!-- Nhánh 2: Phát triển -->
+          <div class="branch-card" id="branchCard2" onclick="selectBranch(2)">
+            <div class="branch-header">
+              <div class="branch-icon-wrap"><i class="ti ti-plant-2"></i></div>
+              <div class="branch-title">2. Phát triển</div>
+            </div>
+            <div class="branch-content">
+              Trong quá trình phát triển, nhiều tế bào mới được tạo ra qua phân bào. Tái bản DNA giúp thông tin di truyền được duy trì ở các tế bào mới hình thành. Các tế bào sau đó có thể tiếp tục phân hoá và đảm nhiệm những chức năng khác nhau.
+            </div>
+          </div>
+
+          <!-- Nhánh 3: Di truyền -->
+          <div class="branch-card" id="branchCard3" onclick="selectBranch(3)">
+            <div class="branch-header">
+              <div class="branch-icon-wrap"><i class="ti ti-dna"></i></div>
+              <div class="branch-title">3. Di truyền</div>
+            </div>
+            <div class="branch-content">
+              Tái bản DNA tạo ra các bản sao của thông tin di truyền trước khi tế bào phân chia. Nhờ đó, thông tin di truyền được truyền từ tế bào mẹ sang tế bào con và được duy trì qua các thế hệ tế bào.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Câu hỏi củng cố ST01 -->
+      <div class="quiz-card hidden" id="quizStep1">
+        <div class="quiz-header">
+          <div class="quiz-question">Phát biểu nào mô tả đầy đủ hơn ý nghĩa của tái bản DNA?</div>
+          <span class="quiz-tag">Kiểm tra nhanh</span>
+        </div>
+        <div class="quiz-options" id="optsStep1">
+          <button class="quiz-opt-btn" onclick="answerStepQuiz(1, 'A')">
+            <span class="opt-letter">A</span>
+            <span>Tái bản DNA chỉ giúp tế bào có đủ DNA trước khi phân chia.</span>
+          </button>
+          <button class="quiz-opt-btn" onclick="answerStepQuiz(1, 'B')">
+            <span class="opt-letter">B</span>
+            <span>Tái bản DNA giúp thông tin di truyền được sao chép trước phân bào và được duy trì ở các tế bào con, qua đó có ý nghĩa đối với sinh trưởng, phát triển và di truyền.</span>
+          </button>
+        </div>
+        <div class="quiz-feedback hidden" id="fbStep1"></div>
+      </div>
+
+      <div class="controls-row">
+        <button class="btn-action secondary" onclick="goToStep(0)">
+          <i class="ti ti-arrow-left"></i>
+          <span>QUAY LẠI</span>
+        </button>
+        <button class="btn-action primary" id="btnNextStep1" onclick="goToStep(2)" disabled>
+          <span>TIẾP TỤC</span>
+          <i class="ti ti-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- BƯỚC 2: CON NGƯỜI ỨNG DỤNG NGUYÊN LÍ TÁI BẢN DNA NHƯ THẾ NÀO? -->
+    <!-- ========================================================= -->
+    <section class="section-card hidden" id="stepCard2">
+      <div class="section-header">
+        <div class="section-subtitle">Ứng dụng thực tiễn & PCR</div>
+        <h2 class="section-heading">Con người ứng dụng nguyên lí tái bản DNA như thế nào?</h2>
+      </div>
+
+      <div class="lead-box">
+        <p>Con người đã khai thác nguyên lí sao chép DNA để tạo nhiều bản sao DNA trong phòng thí nghiệm. Một kỹ thuật tiêu biểu là PCR.</p>
+      </div>
+
+      <div class="instruction-row">
+        <i class="ti ti-hand-finger"></i>
+        <span>HƯỚNG DẪN: Trước hết, nhấn vào sơ đồ PCR để xem nguyên lí khái quát. Sau đó, nhấn vào từng lĩnh vực để xem một số ứng dụng.</span>
+      </div>
+
+      <!-- Sơ đồ khái quát Nguyên lý PCR (Vector CODE/SVG) -->
+      <div class="pcr-schema-card" id="pcrCard" onclick="selectPcrHotspot()">
+        <div style="display:flex; align-items:center; justify-content:space-between;">
+          <h3 style="font-size:1.1rem; font-weight:800; color:var(--jade-dark); display:flex; align-items:center; gap:8px;">
+            <i class="ti ti-microscope"></i> Nguyên lí kỹ thuật PCR trong ống nghiệm
+          </h3>
+          <span class="quiz-tag" id="pcrTag"><i class="ti ti-hand-finger"></i> Nhấn để xem</span>
+        </div>
+
+        <div class="pcr-svg-wrapper">
+          <svg viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
+            <rect width="900" height="200" rx="10" fill="#FAF7F0" stroke="#E5DECF" stroke-width="1.5"/>
+            
+            <!-- Khối 1: Lượng DNA ban đầu ít -->
+            <g transform="translate(60, 40)">
+              <rect width="180" height="120" rx="8" fill="#FFFFFF" stroke="#D6CCB6" stroke-width="1.5"/>
+              <text x="90" y="32" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#514C44" text-anchor="middle">MẪU BAN ĐẦU</text>
+              <!-- 1 đoạn DNA đôi ngắn -->
+              <line x1="30" y1="65" x2="150" y2="65" stroke="#203A43" stroke-width="4"/>
+              <line x1="30" y1="75" x2="150" y2="75" stroke="#2D8B6F" stroke-width="4"/>
+              <text x="90" y="105" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="600" fill="#7C756A" text-anchor="middle">Lượng DNA rất ít</text>
+            </g>
+
+            <!-- Mũi tên chuyển vào ống nghiệm -->
+            <line x1="250" y1="100" x2="310" y2="100" stroke="#2D8B6F" stroke-width="2.5" marker-end="url(#arrowJade)"/>
+
+            <!-- Khối 2: Ống nghiệm PCR -->
+            <g transform="translate(320, 30)">
+              <rect width="240" height="140" rx="10" fill="#E1ECE4" stroke="#7CA792" stroke-width="2"/>
+              <text x="120" y="28" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="800" fill="#14432F" text-anchor="middle">KỸ THUẬT PCR</text>
+              <text x="120" y="50" font-family="'Be Vietnam Pro', sans-serif" font-size="10.5" font-weight="600" fill="#46685A" text-anchor="middle">(Phản ứng trong ống nghiệm)</text>
+              <!-- Vẽ ống nghiệm cách điệu -->
+              <path d="M 105 70 L 105 110 A 15 15 0 0 0 135 110 L 135 70 Z" fill="#FFFFFF" stroke="#2D8B6F" stroke-width="2"/>
+              <path d="M 106 95 A 14 14 0 0 0 134 95 Z" fill="#A9D0BE"/>
+              <text x="120" y="132" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="600" fill="#1B5E48" text-anchor="middle">Sao chép nhân tạo</text>
+            </g>
+
+            <!-- Mũi tên ra kết quả -->
+            <line x1="570" y1="100" x2="630" y2="100" stroke="#2D8B6F" stroke-width="2.5" marker-end="url(#arrowJade)"/>
+
+            <!-- Khối 3: Nhiều bản sao DNA -->
+            <g transform="translate(640, 40)">
+              <rect width="200" height="120" rx="8" fill="#FFFFFF" stroke="#D6CCB6" stroke-width="1.5"/>
+              <text x="100" y="30" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#514C44" text-anchor="middle">HÀNG TRIỆU BẢN SAO</text>
+              <!-- Nhiều phân tử DNA đôi song song -->
+              <line x1="25" y1="52" x2="175" y2="52" stroke="#2D8B6F" stroke-width="3"/>
+              <line x1="25" y1="60" x2="175" y2="60" stroke="#203A43" stroke-width="3"/>
+              <line x1="25" y1="74" x2="175" y2="74" stroke="#2D8B6F" stroke-width="3"/>
+              <line x1="25" y1="82" x2="175" y2="82" stroke="#203A43" stroke-width="3"/>
+              <text x="100" y="106" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#2D8B6F" text-anchor="middle">Đủ phục vụ nghiên cứu</text>
+            </g>
+
+            <defs>
+              <marker id="arrowJade" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto">
+                <path d="M 1 1 L 7 4 L 1 7 Z" fill="#2D8B6F"/>
+              </marker>
+            </defs>
+          </svg>
+        </div>
+
+        <p style="font-size:0.96rem; color:var(--ink-2); line-height:1.65; margin-top:8px;">
+          <strong>Hotspot PCR:</strong> PCR là kỹ thuật nhân tạo thực hiện trong ống nghiệm, cho phép tạo nhiều bản sao của một đoạn DNA từ một lượng DNA ban đầu dựa trên nguyên lí sao chép DNA.
+        </p>
+
+        <!-- Câu khóa chống hiểu sai -->
+        <div class="misconception-callout">
+          <i class="ti ti-alert-circle"></i>
+          <div><strong>Câu khóa hiểu sai:</strong> PCR không phải là quá trình tái bản DNA tự nhiên diễn ra trong tế bào sống.</div>
+        </div>
+      </div>
+
+      <!-- 4 Lĩnh vực ứng dụng -->
+      <div class="app-fields-grid">
+        <!-- Lĩnh vực 1: Pháp y -->
+        <div class="app-field-card" id="appCard1" onclick="selectAppField(1)">
+          <div class="app-field-head">
+            <i class="ti ti-shield-check"></i>
+            <span>Pháp y</span>
+          </div>
+          <div class="app-field-desc">
+            Phân tích DNA có thể hỗ trợ xác định danh tính và so sánh các mẫu sinh học.
+          </div>
+        </div>
+
+        <!-- Lĩnh vực 2: Y học -->
+        <div class="app-field-card" id="appCard2" onclick="selectAppField(2)">
+          <div class="app-field-head">
+            <i class="ti ti-first-aid-kit"></i>
+            <span>Y học</span>
+          </div>
+          <div class="app-field-desc">
+            PCR và các kỹ thuật phân tích DNA có thể hỗ trợ phát hiện hoặc nghiên cứu những đặc điểm liên quan đến vật chất di truyền.
+          </div>
+        </div>
+
+        <!-- Lĩnh vực 3: Nông nghiệp -->
+        <div class="app-field-card" id="appCard3" onclick="selectAppField(3)">
+          <div class="app-field-head">
+            <i class="ti ti-leaf"></i>
+            <span>Nông nghiệp</span>
+          </div>
+          <div class="app-field-desc">
+            Các kỹ thuật phân tích DNA có thể được sử dụng trong nghiên cứu giống và phát hiện một số tác nhân gây bệnh ở cây trồng, vật nuôi.
+          </div>
+        </div>
+
+        <!-- Lĩnh vực 4: Nghiên cứu khoa học -->
+        <div class="app-field-card" id="appCard4" onclick="selectAppField(4)">
+          <div class="app-field-head">
+            <i class="ti ti-flask"></i>
+            <span>Nghiên cứu khoa học</span>
+          </div>
+          <div class="app-field-desc">
+            PCR giúp tạo đủ lượng DNA cần thiết để phục vụ các nghiên cứu về di truyền và sinh học phân tử.
+          </div>
+        </div>
+      </div>
+
+      <!-- Câu hỏi củng cố ST02 -->
+      <div class="quiz-card hidden" id="quizStep2">
+        <div class="quiz-header">
+          <div class="quiz-question">PCR có phải là quá trình tái bản DNA tự nhiên diễn ra trong tế bào không?</div>
+          <span class="quiz-tag">Kiểm tra nhanh</span>
+        </div>
+        <div class="quiz-options" id="optsStep2">
+          <button class="quiz-opt-btn" onclick="answerStepQuiz(2, 'A')">
+            <span class="opt-letter">A</span>
+            <span>Không. PCR là kỹ thuật nhân tạo trong ống nghiệm, khai thác nguyên lí sao chép DNA.</span>
+          </button>
+          <button class="quiz-opt-btn" onclick="answerStepQuiz(2, 'B')">
+            <span class="opt-letter">B</span>
+            <span>Có. PCR chính là quá trình tái bản DNA tự nhiên của tế bào.</span>
+          </button>
+        </div>
+        <div class="quiz-feedback hidden" id="fbStep2"></div>
+      </div>
+
+      <div class="controls-row">
+        <button class="btn-action secondary" onclick="goToStep(1)">
+          <i class="ti ti-arrow-left"></i>
+          <span>QUAY LẠI</span>
+        </button>
+        <button class="btn-action primary" id="btnNextStep2" onclick="goToStep(3)" disabled>
+          <span>TIẾP TỤC</span>
+          <i class="ti ti-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- BƯỚC 3: GHI NHỚ VÀ KHÉP LẠI BÀI 1 -->
+    <!-- ========================================================= -->
+    <section class="section-card hidden" id="stepCard3">
+      <div class="section-header">
+        <div class="section-subtitle">Tổng kết bài học</div>
+        <h2 class="section-heading">Ghi nhớ và khép lại Bài 1</h2>
+      </div>
+
+      <!-- 5 Điểm ghi nhớ cốt lõi -->
+      <div class="recap-card">
+        <div class="recap-title">
+          <i class="ti ti-bookmarks"></i>
+          <span>GHI NHỚ CỐT LÕI</span>
+        </div>
+        <ul class="recap-list">
+          <li>
+            <i class="ti ti-check"></i>
+            <span>Trước phân bào, DNA được tái bản để tạo các bản sao của thông tin di truyền.</span>
+          </li>
+          <li>
+            <i class="ti ti-check"></i>
+            <span>Nhờ tái bản DNA, thông tin di truyền được duy trì ở các tế bào con sau phân bào.</span>
+          </li>
+          <li>
+            <i class="ti ti-check"></i>
+            <span>Tái bản DNA có ý nghĩa đối với sinh trưởng, phát triển và di truyền.</span>
+          </li>
+          <li>
+            <i class="ti ti-check"></i>
+            <span>PCR là kỹ thuật nhân tạo trong ống nghiệm, khai thác nguyên lí sao chép DNA để tạo nhiều bản sao DNA.</span>
+          </li>
+          <li>
+            <i class="ti ti-check"></i>
+            <span>PCR và việc phân tích DNA có ứng dụng trong pháp y, y học, nông nghiệp và nghiên cứu khoa học.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Lời chốt Bài 1 -->
+      <div class="summary-card">
+        <h4>Lời chốt Bài 1</h4>
+        <p>Qua Bài 1, chúng ta đã tìm hiểu chức năng của DNA, cơ chế tái bản DNA và ý nghĩa của quá trình tái bản đối với sinh trưởng, phát triển, di truyền cũng như một số ứng dụng trong thực tiễn.</p>
+      </div>
+
+      <!-- Cầu nối sang Bài 2 -->
+      <div class="bridge-card">
+        <div class="bridge-icon"><i class="ti ti-bulb"></i></div>
+        <div>
+          <h4>Kết nối sang Bài 2</h4>
+          <p>DNA lưu giữ thông tin di truyền và được tái bản trước phân bào. Nhưng thông tin trong DNA được sử dụng như thế nào để tạo ra các sản phẩm cần thiết cho tế bào? Ở bài tiếp theo, chúng ta sẽ tìm hiểu gene và quá trình truyền đạt thông tin di truyền.</p>
+        </div>
+      </div>
+
+      <div class="controls-row">
+        <button class="btn-action secondary" onclick="goToStep(2)">
+          <i class="ti ti-arrow-left"></i>
+          <span>QUAY LẠI</span>
+        </button>
+        <button class="btn-action primary" id="btnCompleteModule" onclick="completeModule()">
+          <i class="ti ti-circle-check"></i>
+          <span>HOÀN THÀNH MODULE</span>
+        </button>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Modal hoàn thành module -->
+  <div class="modal-backdrop" id="completionModal">
+    <div class="completion-modal">
+      <div class="completion-icon-wrapper">
+        <i class="ti ti-circle-check"></i>
+      </div>
+      <h3>Đã hoàn thành module!</h3>
+      <p>Chúc mừng bạn đã hoàn thành bài học <strong>SH12-B01-A01-M03: Ý nghĩa và ứng dụng của tái bản DNA</strong> và khép lại trọn vẹn Bài 1.</p>
+      <button class="btn-action primary" onclick="closeCompletionModal()">Đóng thông báo</button>
+    </div>
+  </div>
+
+  <!-- Logic tương tác JavaScript -->
+  <script>
+    // LMS State in-memory (Không dùng storage API)
+    const lmsState = {
+      currentStep: 0,
+      rasterViewed: { 1: false, 2: false, 3: false },
+      branchesViewed: { 1: false, 2: false, 3: false },
+      pcrViewed: false,
+      appsViewed: { 1: false, 2: false, 3: false, 4: false },
+      quizPassed: { 1: false, 2: false },
+      M03_complete: false
+    };
+    window.lmsState = lmsState;
+
+    // Báo cáo chiều cao tự động cho Parent Frame
+    function reportHeight() {
+      if (window.parent && window.parent !== window) {
+        const height = document.documentElement.scrollHeight || document.body.scrollHeight;
+        window.parent.postMessage({ type: 'setHeight', height: height }, '*');
+      }
+    }
+
+    window.addEventListener('load', reportHeight);
+    window.addEventListener('resize', reportHeight);
+
+    // Chuyển bước (Tự do, không khóa cứng)
+    function goToStep(stepIndex) {
+      lmsState.currentStep = stepIndex;
+
+      for (let i = 0; i <= 3; i++) {
+        const tab = document.getElementById('tabStep' + i);
+        const card = document.getElementById('stepCard' + i);
+        if (tab) {
+          if (i === stepIndex) {
+            tab.classList.add('active');
+          } else {
+            tab.classList.remove('active');
+          }
+        }
+        if (card) {
+          if (i === stepIndex) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        }
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(reportHeight, 100);
+    }
+
+    // =========================================
+    // ST00: Xử lý chọn 3 thẻ Raster
+    // =========================================
+    function selectRasterCard(cardIndex) {
+      lmsState.rasterViewed[cardIndex] = true;
+
+      const card = document.getElementById('cardRaster' + cardIndex);
+      const badgeCheck = document.getElementById('badgeCheck' + cardIndex);
+      if (card) {
+        card.classList.add('active-card');
+        card.classList.add('viewed-card');
+      }
+      if (badgeCheck) {
+        badgeCheck.style.display = 'inline-block';
+      }
+
+      // Kiểm tra xem đã xem đủ 3 thẻ chưa
+      const allViewed = lmsState.rasterViewed[1] && lmsState.rasterViewed[2] && lmsState.rasterViewed[3];
+      const btnNext0 = document.getElementById('btnNextStep0');
+      const tab0 = document.getElementById('tabStep0');
+
+      if (allViewed) {
+        if (btnNext0) btnNext0.disabled = false;
+        if (tab0) tab0.classList.add('completed');
+      }
+
+      setTimeout(reportHeight, 50);
+    }
+
+    // =========================================
+    // ST01: Xử lý chọn 3 Nhánh ý nghĩa
+    // =========================================
+    function selectBranch(branchIndex) {
+      lmsState.branchesViewed[branchIndex] = true;
+
+      const card = document.getElementById('branchCard' + branchIndex);
+      if (card) {
+        card.classList.add('active-branch');
+      }
+
+      // Kiểm tra xem đã xem đủ 3 nhánh chưa
+      const allViewed = lmsState.branchesViewed[1] && lmsState.branchesViewed[2] && lmsState.branchesViewed[3];
+      const quizStep1 = document.getElementById('quizStep1');
+
+      if (allViewed && quizStep1) {
+        quizStep1.classList.remove('hidden');
+      }
+
+      setTimeout(reportHeight, 50);
+    }
+
+    // =========================================
+    // ST02: Xử lý chọn Hotspot PCR & 4 Lĩnh vực
+    // =========================================
+    function selectPcrHotspot() {
+      lmsState.pcrViewed = true;
+      const card = document.getElementById('pcrCard');
+      const tag = document.getElementById('pcrTag');
+      if (card) card.classList.add('viewed');
+      if (tag) {
+        tag.innerHTML = '<i class="ti ti-check"></i> Đã tìm hiểu';
+        tag.style.background = 'var(--jade-pale)';
+        tag.style.color = 'var(--jade-dark)';
+      }
+      checkStep2Completion();
+    }
+
+    function selectAppField(appIndex) {
+      lmsState.appsViewed[appIndex] = true;
+      const card = document.getElementById('appCard' + appIndex);
+      if (card) card.classList.add('viewed');
+      checkStep2Completion();
+    }
+
+    function checkStep2Completion() {
+      const allAppsViewed = lmsState.appsViewed[1] && lmsState.appsViewed[2] && lmsState.appsViewed[3] && lmsState.appsViewed[4];
+      const quizStep2 = document.getElementById('quizStep2');
+
+      if (lmsState.pcrViewed && allAppsViewed && quizStep2) {
+        quizStep2.classList.remove('hidden');
+      }
+      setTimeout(reportHeight, 50);
+    }
+
+    // =========================================
+    // Xử lý trắc nghiệm củng cố (ST01, ST02)
+    // =========================================
+    const correctAnswers = {
+      1: 'B',
+      2: 'A'
+    };
+
+    const feedbackTexts = {
+      1: {
+        correct: 'Chính xác. Tái bản DNA tạo ra các bản sao của thông tin di truyền trước phân bào. Nhờ đó, sau phân bào, thông tin di truyền được duy trì ở các tế bào con.',
+        wrong: 'Chưa đủ. Tái bản DNA không chỉ làm tăng lượng DNA trước phân bào. Quan trọng hơn, quá trình này tạo các bản sao của thông tin di truyền để truyền cho các tế bào con.'
+      },
+      2: {
+        correct: 'Chính xác. PCR là kỹ thuật nhân tạo thực hiện trong ống nghiệm. Kỹ thuật này khai thác nguyên lí sao chép DNA để tạo nhiều bản sao DNA phục vụ phân tích và nghiên cứu.',
+        wrong: 'Hãy chú ý nơi diễn ra quá trình. Tái bản DNA tự nhiên diễn ra trong tế bào; còn PCR được con người thực hiện trong ống nghiệm ở phòng thí nghiệm.'
+      }
+    };
+
+    function answerStepQuiz(stepNum, choice) {
+      const fb = document.getElementById('fbStep' + stepNum);
+      const opts = document.getElementById('optsStep' + stepNum);
+      const btnNext = document.getElementById('btnNextStep' + stepNum);
+      const tab = document.getElementById('tabStep' + stepNum);
+      if (!fb || !opts) return;
+
+      const buttons = opts.querySelectorAll('.quiz-opt-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('correct');
+        btn.classList.remove('wrong');
+      });
+
+      const isCorrect = (choice === correctAnswers[stepNum]);
+      const choiceIdx = choice === 'A' ? 0 : 1;
+      if (buttons[choiceIdx]) {
+        buttons[choiceIdx].classList.add(isCorrect ? 'correct' : 'wrong');
+      }
+
+      fb.className = 'quiz-feedback ' + (isCorrect ? 'correct' : 'wrong');
+      fb.innerHTML = '<i class="ti ti-' + (isCorrect ? 'check' : 'alert-circle') + '"></i> <div>' + (isCorrect ? feedbackTexts[stepNum].correct : feedbackTexts[stepNum].wrong) + '</div>';
+      fb.classList.remove('hidden');
+
+      if (isCorrect) {
+        lmsState.quizPassed[stepNum] = true;
+        if (btnNext) btnNext.disabled = false;
+        if (tab) tab.classList.add('completed');
+      }
+
+      setTimeout(reportHeight, 50);
+    }
+
+    // =========================================
+    // ST03: Hoàn thành Module
+    // =========================================
+    function completeModule() {
+      lmsState.M03_complete = true;
+      const tab = document.getElementById('tabStep3');
+      if (tab) tab.classList.add('completed');
+
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({
+          type: 'moduleCompleted',
+          moduleCode: 'SH12-B01-A01-M03',
+          state: lmsState
+        }, '*');
+      }
+
+      const modal = document.getElementById('completionModal');
+      if (modal) modal.classList.add('show');
+    }
+
+    function closeCompletionModal() {
+      const modal = document.getElementById('completionModal');
+      if (modal) modal.classList.remove('show');
+    }
+  </script>
+</body>
+</html>
