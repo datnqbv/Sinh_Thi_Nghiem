@@ -158,20 +158,19 @@
       color: var(--ink-2);
     }
 
-    /* Navigation Bar: Chuyển bước tự do, position: relative (Không scroll ngang) */
+    /* Navigation Bar: 4 tab luôn trên 1 hàng, không scroll ngang, không rớt dòng */
     .step-nav-bar {
       position: relative;
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
       background: #FFFFFF;
       border: 1px solid var(--paper-line);
       border-radius: var(--radius);
-      padding: 8px 12px;
+      padding: 6px 8px;
       margin-bottom: 24px;
       box-shadow: var(--shadow-sm);
-      overflow: visible;
+      overflow: hidden;
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
@@ -183,18 +182,27 @@
     .step-tab-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      gap: 6px;
       background: transparent;
       border: 1px solid transparent;
-      padding: 8px 16px;
+      padding: 8px 6px;
       border-radius: var(--radius-sm);
       font-family: inherit;
-      font-size: 0.92rem;
+      font-size: clamp(0.78rem, 1.1vw, 0.9rem);
       font-weight: 600;
       color: var(--ink-3);
       cursor: pointer;
       white-space: nowrap;
       transition: all 0.2s ease;
+      min-width: 0;
+      width: 100%;
+    }
+
+    .step-tab-btn span:not(.step-num-pill) {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .step-tab-btn:hover {
@@ -1072,7 +1080,7 @@
         <div class="tri-card" id="cardRaster1" onclick="selectRasterCard(1)">
           <div class="tri-card-img-wrapper">
             <span class="tri-card-badge"><i class="ti ti-circle-dot"></i> Điểm 1</span>
-            <img src="images/SH12-B01-M03-A01-1.png" alt="Một tế bào - Hợp tử" loading="lazy">
+            <img src="https://lh3.googleusercontent.com/d/1MqUP6v2XDsNUKGSq-Yllfr1jSngta_Vh" alt="Một tế bào - Hợp tử" loading="lazy">
           </div>
           <div class="tri-card-body">
             <div class="tri-card-title">
@@ -1089,7 +1097,7 @@
         <div class="tri-card" id="cardRaster2" onclick="selectRasterCard(2)">
           <div class="tri-card-img-wrapper">
             <span class="tri-card-badge"><i class="ti ti-circles"></i> Điểm 2</span>
-            <img src="images/SH12-B01-M03-A01-2.png" alt="Nhiều tế bào qua phân bào" loading="lazy">
+            <img src="https://lh3.googleusercontent.com/d/1B5ZuCVipxb4g8Aj-juZ-rELVdpwSbryG" alt="Nhiều tế bào qua phân bào" loading="lazy">
           </div>
           <div class="tri-card-body">
             <div class="tri-card-title">
@@ -1106,7 +1114,7 @@
         <div class="tri-card" id="cardRaster3" onclick="selectRasterCard(3)">
           <div class="tri-card-img-wrapper">
             <span class="tri-card-badge"><i class="ti ti-user"></i> Điểm 3</span>
-            <img src="images/SH12-B01-M03-A01-3.png" alt="Cơ thể nhiều tế bào" loading="lazy">
+            <img src="https://lh3.googleusercontent.com/d/133an2UqJdM0YeNcXH2mqj6FY1E7_5W02" alt="Cơ thể nhiều tế bào" loading="lazy">
           </div>
           <div class="tri-card-body">
             <div class="tri-card-title">
