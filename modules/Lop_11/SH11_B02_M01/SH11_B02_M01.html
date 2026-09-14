@@ -146,7 +146,18 @@ button:focus-visible, [tabindex]:focus-visible {
   line-height: 1.35;
 }
 
-/* Stepper navigation bar (Single row, responsive scroll) */
+/* Loại bỏ hoàn toàn Header banner và thanh tab theo chuẩn V10 */
+header,
+.module-header-bar,
+.progress-nav-container,
+.progress-nav,
+.stepper-container,
+.stepper-bar,
+.step-nav-bar {
+  display: none !important;
+}
+
+/* Stepper navigation bar */
 .stepper-container {
   width: 100%;
   overflow-x: auto;
@@ -672,17 +683,13 @@ button:focus-visible, [tabindex]:focus-visible {
 .leaf-image-wrap {
   width: 100%;
   position: relative;
-  aspect-ratio: 16 / 9;
-  max-height: 440px;
-  background: #FFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: #FAF7F0;
+  display: block;
+  line-height: 0;
 }
 .leaf-image-wrap img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
   display: block;
 }
 
@@ -1015,37 +1022,6 @@ button:focus-visible, [tabindex]:focus-visible {
 <canvas id="confettiCanvas" class="hidden"></canvas>
 
 <div class="app-container">
-  <!-- Top compact header -->
-  <header class="module-header-bar">
-    <div class="module-badge-row">
-      <i class="ti ti-dna"></i>
-      <span>Sinh học 11 · Bài 2 · Trao đổi nước và khoáng ở thực vật</span>
-    </div>
-    <h1 class="module-title-h1">Vai trò của nước và chất khoáng đối với thực vật</h1>
-  </header>
-
-  <!-- Horizontal Stepper Progress Nav -->
-  <nav class="stepper-container" aria-label="Tiến trình bài học">
-    <div class="stepper-bar">
-      <div class="step-item active" id="stepIndicator0">
-        <span class="step-num">1</span>
-        <span>Đối chứng ba cây</span>
-      </div>
-      <div class="step-item" id="stepIndicator1">
-        <span class="step-num">2</span>
-        <span>Vai trò của nước</span>
-      </div>
-      <div class="step-item" id="stepIndicator2">
-        <span class="step-num">3</span>
-        <span>Nguyên tố khoáng</span>
-      </div>
-      <div class="step-item" id="stepIndicator3">
-        <span class="step-num">4</span>
-        <span>Ghi nhớ & Kết nối</span>
-      </div>
-    </div>
-  </nav>
-
   <!-- ==================== STAGE 00 ==================== -->
   <section class="stage-card" id="stage00" role="region" aria-labelledby="st00Heading">
     <h2 class="stage-title" id="st00Heading">
@@ -1337,31 +1313,31 @@ button:focus-visible, [tabindex]:focus-visible {
         <img src="images/SH11-B02-M01-A06.png" alt="Bộ 5 lá so sánh biểu hiện thiếu khoáng">
 
         <!-- Hotspot 1: Bình thường -->
-        <button class="leaf-hotspot-btn" style="left: 11%; top: 48%;" id="leafBtn1" onclick="inspectLeaf(1)" aria-label="Mẫu 1: Lá bình thường">
+        <button class="leaf-hotspot-btn" style="left: 12%; top: 50%;" id="leafBtn1" onclick="inspectLeaf(1)" aria-label="Mẫu 1: Lá bình thường">
           <span>1</span>
           <span class="pulse-ring"></span>
         </button>
 
         <!-- Hotspot 2: Thiếu P -->
-        <button class="leaf-hotspot-btn" style="left: 31%; top: 48%;" id="leafBtn2" onclick="inspectLeaf(2)" aria-label="Mẫu 2: Thiếu Phốt pho">
+        <button class="leaf-hotspot-btn" style="left: 31%; top: 50%;" id="leafBtn2" onclick="inspectLeaf(2)" aria-label="Mẫu 2: Thiếu Phốt pho">
           <span>2</span>
           <span class="pulse-ring"></span>
         </button>
 
         <!-- Hotspot 3: Thiếu Mg -->
-        <button class="leaf-hotspot-btn" style="left: 50%; top: 48%;" id="leafBtn3" onclick="inspectLeaf(3)" aria-label="Mẫu 3: Thiếu Magie">
+        <button class="leaf-hotspot-btn" style="left: 50%; top: 50%;" id="leafBtn3" onclick="inspectLeaf(3)" aria-label="Mẫu 3: Thiếu Magie">
           <span>3</span>
           <span class="pulse-ring"></span>
         </button>
 
         <!-- Hotspot 4: Thiếu Zn -->
-        <button class="leaf-hotspot-btn" style="left: 69%; top: 48%;" id="leafBtn4" onclick="inspectLeaf(4)" aria-label="Mẫu 4: Thiếu Kẽm">
+        <button class="leaf-hotspot-btn" style="left: 69%; top: 54%;" id="leafBtn4" onclick="inspectLeaf(4)" aria-label="Mẫu 4: Thiếu Kẽm">
           <span>4</span>
           <span class="pulse-ring"></span>
         </button>
 
         <!-- Hotspot 5: Thiếu K -->
-        <button class="leaf-hotspot-btn" style="left: 88%; top: 48%;" id="leafBtn5" onclick="inspectLeaf(5)" aria-label="Mẫu 5: Thiếu Kali">
+        <button class="leaf-hotspot-btn" style="left: 88%; top: 50%;" id="leafBtn5" onclick="inspectLeaf(5)" aria-label="Mẫu 5: Thiếu Kali">
           <span>5</span>
           <span class="pulse-ring"></span>
         </button>
@@ -1605,14 +1581,18 @@ function goToStage(targetIndex) {
     const el = document.getElementById(id);
     const indicator = document.getElementById(`stepIndicator${idx}`);
     if (idx === targetIndex) {
-      el.classList.remove('hidden');
-      indicator.classList.add('active');
-      indicator.classList.remove('completed');
+      if (el) el.classList.remove('hidden');
+      if (indicator) {
+        indicator.classList.add('active');
+        indicator.classList.remove('completed');
+      }
     } else {
-      el.classList.add('hidden');
-      indicator.classList.remove('active');
-      if (idx < targetIndex) {
-        indicator.classList.add('completed');
+      if (el) el.classList.add('hidden');
+      if (indicator) {
+        indicator.classList.remove('active');
+        if (idx < targetIndex) {
+          indicator.classList.add('completed');
+        }
       }
     }
   });
