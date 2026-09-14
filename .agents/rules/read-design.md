@@ -18,10 +18,10 @@ Mọi file module được tạo mới hoặc nâng cấp bắt buộc tuân the
 
 1. **Quy Định Loại Bỏ Header Banner (BẮT BUỘC)**:
    - **Tuyệt đối KHÔNG DÙNG khối `<header>` banner**: Không dùng banner nền gradient xanh đậm, không dùng `.header-badge`, tiêu đề `<h1>` hay `.header-goal` ở đầu trang.
-2. **Loại Bỏ Hoàn Toàn Thanh Tab Bước Học Ở Đầu Trang (BẮT BUỘC THEO CHUẨN MẪU SH10_B02_M02)**:
-   - **Tuyệt đối KHÔNG HIỂN THỊ thanh tab bước học ở đầu trang**: Không dùng thanh tab chuyển bước (`.progress-nav-container`, `.progress-nav`, `.stepper-nav`, `.step-nav-bar`) ở đầu trang.
-   - **Bám sát kịch bản & file mẫu tham chiếu [`SH10_B02_M02.html`](modules/Lop_10/SH10_B02_M02/SH10_B02_M02.html)**: Trải nghiệm học tập là tiến trình tuyến tính (Linear Step Flow). Bài học bắt đầu trực tiếp từ vùng nội dung (ST00 / Hook), học sinh tương tác hoàn thành nhiệm vụ và chuyển bước tuần tự qua hàng nút điều hướng ở cuối mỗi stage ("QUAY LẠI", "TIẾP TỤC").
-   - Trong CSS bắt buộc có quy tắc ẩn:
+2. **Tối Ưu Giao Diện Tinh Gọn & Linh Hoạt Theo Kịch Bản Nội Dung**:
+   - **Luồng học tập bám sát kịch bản từng bài**: Mỗi bài học/thí nghiệm có cấu trúc bước học, số lượng màn và hệ thống nút điều hướng riêng theo kịch bản nội dung (`*_Kich_Ban.md` / `*_KICH_BAN_NOI_DUNG.txt`). Không áp đặt máy móc một khuôn mẫu cố định (như bắt buộc phải có ST00 hay phải có cùng một bộ nút cố định).
+   - **Giao diện tinh gọn ở đầu trang**: Tuyệt đối không dùng `<header>` banner cồng kềnh với nền gradient xanh đậm; không dùng sidebar 2 bên. Khi bài học đã có luồng chuyển bước thông qua các nút thao tác trong bài (như file mẫu tham chiếu `SH10_B02_M02.html`), ưu tiên ẩn thanh tab bước học ở đầu trang để học sinh tập trung tương tác trực tiếp. Nếu bài học có thanh tiến trình, phải luôn giữ trên 1 hàng ngang cuộn mượt mà, tuyệt đối cấm rớt dòng thành cột dọc.
+   - Khi cần ẩn thanh tab để tinh gọn giao diện theo kịch bản:
      ```css
      .progress-nav-container,
      .progress-nav,

@@ -308,7 +308,7 @@
     }
 
     /* Hộp Callout / Hướng dẫn */
-    .guidance-box {
+    .guidance-box, .guide-box {
       padding: 12px 16px;
       border-radius: var(--radius);
       border-left: 4px solid var(--jade);
@@ -320,7 +320,7 @@
       gap: 10px;
       align-items: flex-start;
     }
-    .guidance-box i {
+    .guidance-box i, .guide-box i {
       font-size: 1.3rem;
       color: var(--jade-dark);
       flex-shrink: 0;
@@ -1103,10 +1103,15 @@
         </div>
       </div>
 
+      <div class="guide-box">
+        <i class="ti ti-hand-finger"></i>
+        <span><strong>HƯỚNG DẪN:</strong> Kéo từng hình vào nhóm phù hợp hoặc chạm thẻ rồi chạm vùng đích. Nút KIỂM TRA sẽ mở khi bạn đã phân loại đủ cả 3 thẻ.</span>
+      </div>
+
       <!-- Khay 3 thẻ tình huống Hook A01 -->
       <div class="hook-tray-container">
         <div class="hook-tray-label">
-          <i class="ti ti-cards"></i> KHAY TÌNH HUỐNG (Kéo hoặc chạm thẻ để phân loại vào nhóm phù hợp):
+          <i class="ti ti-cards"></i> KHAY TÌNH HUỐNG
         </div>
         <div class="hook-cards-tray" id="hookTray">
           <!-- Thẻ a -->
@@ -1168,10 +1173,7 @@
       </div>
 
       <!-- Inline Feedback ST00 -->
-      <div class="inline-feedback info" id="st00Feedback">
-        <div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn thao tác</div>
-        <span>Kéo từng hình vào nhóm phù hợp hoặc chạm thẻ rồi chạm vùng đích. Nút KIỂM TRA sẽ mở khi bạn đã phân loại đủ cả 3 thẻ.</span>
-      </div>
+      <div class="inline-feedback hidden" id="st00Feedback"></div>
 
       <!-- Nút điều khiển ST00 -->
       <div class="btn-row">
@@ -1373,10 +1375,7 @@
         <div class="paired-explanations hidden" id="pairedExplanations"></div>
 
         <!-- Inline feedback ST01 -->
-        <div class="inline-feedback info" id="st01Feedback">
-          <div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn</div>
-          <span>Chạm/bấm vào 1 thẻ Vai trò bên trái, sau đó chạm 1 thẻ Ví dụ bên phải để tạo đường nối.</span>
-        </div>
+        <div class="inline-feedback hidden" id="st01Feedback"></div>
 
         <!-- Nút điều khiển ST01 Matching -->
         <div class="btn-row">
@@ -1773,8 +1772,8 @@
       if (state.st00_selected_card === cardKey) {
         // Chạm lại thẻ đang chọn -> Bỏ chọn
         deselectAllCards();
-        st00Feedback.className = 'inline-feedback info';
-        st00Feedback.innerHTML = '<div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn thao tác</div><span>Kéo từng hình vào nhóm phù hợp hoặc chạm thẻ rồi chạm vùng đích.</span>';
+        st00Feedback.classList.add('hidden');
+        st00Feedback.innerHTML = '';
       } else {
         selectCard(cardKey);
       }
@@ -1924,8 +1923,8 @@
     btnNextST00.classList.add('hidden');
     dropZones.forEach(z => z.classList.remove('zone-selected', 'drag-over'));
     hookTray.classList.remove('tray-selected');
-    st00Feedback.className = 'inline-feedback info';
-    st00Feedback.innerHTML = '<div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn thao tác</div><span>Kéo từng hình vào nhóm phù hợp hoặc chạm thẻ rồi chạm vùng đích.</span>';
+    st00Feedback.classList.add('hidden');
+    st00Feedback.innerHTML = '';
     updateZonePlaceholders();
   });
 
@@ -2060,8 +2059,8 @@
         if (state.st01_selected_role === roleId) {
           state.st01_selected_role = null;
           clearMatchingSelections();
-          st01Feedback.className = 'inline-feedback info';
-          st01Feedback.innerHTML = '<div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn</div><span>Chạm vào 1 thẻ ở một bên, sau đó chạm vào thẻ tương ứng ở bên kia để tạo đường nối.</span>';
+          st01Feedback.classList.add('hidden');
+          st01Feedback.innerHTML = '';
           return;
         }
 
@@ -2106,8 +2105,8 @@
         if (state.st01_selected_example === exKey) {
           state.st01_selected_example = null;
           clearMatchingSelections();
-          st01Feedback.className = 'inline-feedback info';
-          st01Feedback.innerHTML = '<div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn</div><span>Chạm vào 1 thẻ ở một bên, sau đó chạm vào thẻ tương ứng ở bên kia để tạo đường nối.</span>';
+          st01Feedback.classList.add('hidden');
+          st01Feedback.innerHTML = '';
           return;
         }
 
@@ -2289,8 +2288,8 @@
     btnCheckMatching.disabled = true;
     btnNextST01.classList.add('hidden');
     pairedExplanations.classList.add('hidden');
-    st01Feedback.className = 'inline-feedback info';
-    st01Feedback.innerHTML = '<div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn</div><span>Chọn một vai trò ở bên trái, sau đó chọn ví dụ phù hợp ở bên phải để tạo cặp nối. Nhấn KIỂM TRA khi đã nối đủ ba cặp.</span>';
+    st01Feedback.classList.add('hidden');
+    st01Feedback.innerHTML = '';
     updateMatchingUI();
   });
 

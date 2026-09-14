@@ -8,8 +8,11 @@
 ## 1. TỔNG QUAN KIẾN TRÚC GIAO DIỆN (Single-Column Centered Layout)
 
 - **Phân loại nguồn học liệu:** `modules/` chỉ chứa bài học; `experiments/` chỉ chứa thí nghiệm Sinh học; `shells/` chứa file mẹ và được phép nhúng nội dung từ cả hai thư mục bằng đường dẫn tương đối.
-- **Bố cục 1 cột trung tâm (Single-Column Centered)**: Độ rộng tối đa toàn trang là **`1200px`** (`max-width: var(--lesson-width)`), căn giữa màn hình (`margin: 0 auto`).
 - **Loại bỏ Sidebar 2 bên**: Tuyệt đối không dùng 2 thanh cố định 2 bên. Toàn bộ không gian được ưu tiên lấp đầy cho trải nghiệm học tập mô phỏng tương tác.
+- **Bố cục tinh gọn & Linh hoạt theo kịch bản nội dung**:
+  - Không dùng các khối header banner cồng kềnh với nền gradient xanh đậm; không dùng sidebar 2 bên chiếm diện tích.
+  - Cấu trúc các bước học, số lượng màn và cơ chế điều hướng **phải bám sát theo kịch bản nội dung cụ thể của từng bài học/thí nghiệm**, không áp đặt máy móc một khuôn mẫu cứng nhắc.
+  - Khi bài học đã có luồng chuyển bước thông qua các nút thao tác trong bài, ưu tiên giữ giao diện tinh gọn, không cần hiển thị thanh tab bước học ở đầu trang. Nếu bài học có thanh tiến trình, giữ dạng thanh ngang gọn gàng, tuyệt đối không để rớt dòng thành cột dọc.
 - **Bảng màu Design Tokens (`:root`)**:
   ```css
   :root {

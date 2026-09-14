@@ -169,8 +169,12 @@ chỉ thị, kết tủa, máu, tế bào... vẽ đúng màu sinh học. `ctx.f
 
 - `body`: `display:flex; flex-direction:column; align-items:center; gap:16px; padding:20px clamp(14px,2.5vw,32px)`.
   **KHÔNG** đặt `min-height:100vh`/`height:100vh` trên body (gây khoảng trắng khi nhúng LMS — xem MỤC 15).
-- Độ rộng tối đa khối chính (`header`, `.goal-bar`, `.main`, `.moduleNav`, `.link-section`): **1200px** — căn giữa màn hình, lấp đầy không gian PC/Laptop hiện đại, không dùng 2 sidebar cố định hai bên.
-- Thứ tự từ trên xuống: ① Header / Top bar → ② Thanh mục tiêu (`.goal-bar`) → ③ Thanh điều hướng Module (`.moduleNav`) → ④ Thanh hướng dẫn (`.guide-bar`) & Nút điều khiển (`.controls-row`) → ⑤ Khối Canvas / Workspace chính (`.canvas-card` / `.workspace`) → ⑥ Khối thông tin hỗ trợ & Bằng chứng học tập (`.support-panel`) → ⑦ Link section.
+- Độ rộng tối đa khối chính (`.main`, `.split-workspace`, `.canvas-card`, `.workspace`): **1200px** — căn giữa màn hình, lấp đầy không gian PC/Laptop hiện đại, **không dùng 2 sidebar cố định hai bên**.
+- **Bố cục tinh gọn & Linh hoạt theo kịch bản (Pedagogical Flow)**:
+  - **Không dùng `<header>` banner**: Không dùng banner nền gradient xanh đậm, không dùng `.header-badge`, tiêu đề `<h1>` hay `.header-goal` cồng kềnh ở đầu trang để ưu tiên tối đa không gian cho nội dung bài học.
+  - **Luồng học tập bám sát kịch bản từng bài**: Cấu trúc các màn học (Stage), số lượng bước, dạng bài (ST00, ST01..., hoặc Phase 1, Phase 2...) và các nút điều hướng chuyển màn (như Tiếp tục, Quay lại, Kiểm tra, Làm lại, Hoàn thành...) **phải tuân thủ theo kịch bản nội dung cụ thể của bài đó**. Không gò ép cứng nhắc mọi bài học phải có chung một khuôn mẫu nút bấm hay chung một định dạng bước học.
+  - **Thanh điều hướng bước học**: Khi bài học đã có luồng điều hướng chuyển màn tuần tự bằng các nút trong bài học, ưu tiên giữ giao diện tinh gọn, không hiển thị thanh tab bước học rườm rà ở đầu trang. Nếu bài học cần thanh tiến trình, bắt buộc giữ dạng thanh ngang tinh gọn, tuyệt đối không để rớt dòng thành cột dọc hay tạo sidebar 2 bên.
+- **Thứ tự thành phần trong màn học**: Lời dẫn/Nhiệm vụ → Khung Hướng dẫn thao tác duy nhất (`.guide-box`) → Khu vực tương tác/mô phỏng chính (`.workspace` / `.canvas-card`) → Hàng nút hành động của màn học → Modal hoàn thành (nếu là màn cuối).
 
 ```css
 .app {
@@ -187,17 +191,11 @@ chỉ thị, kết tủa, máu, tế bào... vẽ đúng màu sinh học. `ctx.f
   margin: 0 auto;
   padding: 24px 20px 48px;
 }
-.moduleNav, .progress-nav {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-bottom: 22px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: var(--cream);
-  padding: 12px 0;
-  box-shadow: 0 4px 12px rgba(26,26,26,0.06);
+.progress-nav-container,
+.progress-nav,
+.stepper-nav,
+.step-nav-bar {
+  display: none !important;
 }
 .moduleMini {
   display: flex;
