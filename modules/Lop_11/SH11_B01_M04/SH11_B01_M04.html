@@ -110,111 +110,138 @@
     }
 
     .app {
-      max-width: 980px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
-    /* Header Module */
-    .module-header {
-      background: #FFFFFF;
-      border: 1px solid var(--paper-line);
+    /* HEADER BANNER - FLAT GRADIENT WITH INTEGRATED GOAL (V10 STANDARD) */
+    header {
+      width: 100%;
       border-radius: var(--radius-lg);
-      padding: 18px 22px;
-      margin-bottom: 20px;
+      padding: 1.6rem 2rem;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(135deg, var(--jade-dark), var(--jade-deep));
       box-shadow: var(--shadow-sm);
+      color: #fff;
+      margin-bottom: 16px;
     }
-    .header-top {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 8px;
-      flex-wrap: wrap;
-    }
-    .badge-pill {
+    .header-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 12px;
-      border-radius: 99px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      background: var(--jade-pale);
-      color: var(--jade-text);
-      border: 1px solid var(--jade-soft);
-      white-space: nowrap;
-      flex-shrink: 0;
+      color: var(--sage-pale);
+      font-weight: 600;
+      font-size: 0.88rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
     }
-    .module-title {
-      font-size: 1.35rem;
+    header h1 {
+      margin: 0;
+      color: #fff;
+      font-size: clamp(1.4rem, 3.2vw, 2rem);
       font-weight: 800;
-      color: var(--ink);
-      line-height: 1.35;
+      line-height: 1.25;
     }
-
-    /* Stepper Tiến trình 4 Giai đoạn */
-    .stepper-nav {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-    .step-tab {
-      background: #FFFFFF;
-      border: 1.5px solid var(--paper-line);
-      border-radius: var(--radius);
-      padding: 12px 14px;
-      display: flex;
+    .header-goal {
+      display: inline-flex;
       align-items: center;
       gap: 10px;
-      cursor: pointer;
-      transition: all 0.22s ease;
-      position: relative;
+      margin-top: 10px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: var(--radius-sm);
+      padding: 8px 14px;
     }
-    .step-tab:hover {
-      border-color: var(--jade-soft);
-      background: #FAF8F4;
+    .header-goal .goal-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
     }
-    .step-tab.active {
-      border-color: var(--jade);
-      background: var(--jade-pale);
-      box-shadow: 0 0 0 2px rgba(60, 165, 122, 0.2);
+    .header-goal .goal-divider {
+      flex-shrink: 0;
+      width: 1px;
+      height: 14px;
+      background: rgba(255, 255, 255, 0.4);
     }
-    .step-tab.completed .step-num {
-      background: var(--jade);
-      color: #FFFFFF;
+    .header-goal .goal-text {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.95);
     }
-    .step-num {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: var(--cream-2);
-      color: var(--ink-2);
-      font-weight: 800;
-      font-size: 0.85rem;
+
+    /* PROGRESS STAGE TABS (STICKY TOP 0 - V10 STANDARD) */
+    .progress-nav {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--cream);
+      padding: 10px 0;
+      box-shadow: 0 4px 12px rgba(26, 26, 26, 0.06);
+      margin-bottom: 20px;
+    }
+    .stage-tab, .step-tab {
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
+      gap: 8px;
+      padding: 12px 14px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--paper-line-2);
+      background: var(--cream-2);
+      color: var(--ink-2);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      text-align: center;
     }
-    .step-tab.active .step-num {
-      background: var(--jade-dark);
-      color: #FFFFFF;
+    .stage-tab:hover:not(:disabled), .step-tab:hover {
+      border-color: var(--sage);
+      background: var(--cream-3);
     }
-    .step-label {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.25;
-      min-width: 0;
+    .stage-tab.current, .stage-tab.active, .step-tab.active {
+      background: var(--jade) !important;
+      border-color: var(--jade) !important;
+      color: #fff !important;
+      box-shadow: 0 3px 10px rgba(60, 165, 122, 0.25);
     }
-    .step-label span:first-child {
-      font-size: 0.85rem;
-      font-weight: 800;
-      color: var(--ink);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    .stage-tab.done, .stage-tab.completed, .step-tab.completed {
+      background: var(--jade-pale);
+      border-color: var(--sage);
+      color: var(--jade-text);
     }
-    .step-label .step-sub {
+    @media (max-width: 900px) {
+      .progress-nav {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        gap: 8px !important;
+        padding: 6px 4px !important;
+        scrollbar-width: none;
+      }
+      .progress-nav::-webkit-scrollbar { display: none; }
+      .stage-tab, .step-tab {
+        flex: 0 0 auto !important;
+        white-space: nowrap !important;
+        padding: 10px 14px !important;
+        font-size: 0.86rem !important;
+      }
+    }
+.step-label .step-sub {
       font-size: 0.72rem;
       font-weight: 500;
       color: var(--ink-3);
@@ -1540,50 +1567,86 @@
       .stage-actions { flex-direction: column-reverse; }
       .btn { width: 100%; }
     }
+  
+    /* CONGRATS MODAL (V10 STANDARD) */
+    .congrats-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 67, 47, 0.65);
+      backdrop-filter: blur(4px);
+      display: grid;
+      place-items: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+    .congrats-modal {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px 24px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+      animation: modalPop 0.3s ease;
+    }
+    @keyframes modalPop {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .congrats-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      background: var(--jade-pale);
+      color: var(--jade-text);
+      display: grid;
+      place-items: center;
+      font-size: 2.2rem;
+    }
+    .congrats-modal h2 {
+      margin: 0 0 10px 0;
+      font-size: 1.4rem;
+      color: var(--ink);
+      font-weight: 800;
+    }
+    .congrats-modal p {
+      margin: 0 0 20px 0;
+      font-size: 0.96rem;
+      color: var(--ink-2);
+      line-height: 1.6;
+    }
+
   </style>
 </head>
 <body>
 
   <div class="app">
-    <!-- Header thông tin bài học -->
-    <header class="module-header">
-      <div class="header-top">
-        <span class="badge-pill"><i class="ti ti-dna"></i> Sinh học 11 · Bài 1</span>
-        <span class="badge-pill" style="background:var(--cream-2); border-color:var(--paper-line-2); color:var(--ink-3);">Học lí thuyết tương tác</span>
+    <!-- Header thông tin bài học (V10 Standard) -->
+    <header>
+      <div class="header-badge"><i class="ti ti-dna"></i> Sinh học 11 · Bài 1 · Module 04</div>
+      <h1>Mối quan hệ giữa trao đổi chất và chuyển hoá năng lượng ở cấp tế bào và cơ thể</h1>
+      <div class="header-goal">
+        <span class="goal-label"><i class="ti ti-target"></i> Mục tiêu</span>
+        <span class="goal-divider"></span>
+        <span class="goal-text" id="goalText">Khám phá mối liên hệ giữa vật chất và năng lượng qua hình ảnh ẩn dụ công trường xây dựng.</span>
       </div>
-      <h1 class="module-title">Mối quan hệ giữa trao đổi chất và chuyển hoá năng lượng ở cấp tế bào và cơ thể</h1>
     </header>
 
-    <!-- Stepper Tiến trình 4 Giai đoạn -->
-    <nav class="stepper-nav" aria-label="Tiến trình bài học">
-      <div class="step-tab active" id="stepTab-0" onclick="goToStage(0)">
-        <div class="step-num">1</div>
-        <div class="step-label">
-          <span>Khởi động</span>
-          <span class="step-sub">Ẩn dụ công trường</span>
-        </div>
-      </div>
-      <div class="step-tab" id="stepTab-1" onclick="goToStage(1)">
-        <div class="step-num">2</div>
-        <div class="step-label">
-          <span>Cấp tế bào</span>
-          <span class="step-sub">Đồng hoá & Dị hoá</span>
-        </div>
-      </div>
-      <div class="step-tab" id="stepTab-2" onclick="goToStage(2)">
-        <div class="step-num">3</div>
-        <div class="step-label">
-          <span>Cấp cơ thể</span>
-          <span class="step-sub">Môi trường – Cơ thể – Tế bào</span>
-        </div>
-      </div>
-      <div class="step-tab" id="stepTab-3" onclick="goToStage(3)">
-        <div class="step-num">4</div>
-        <div class="step-label">
-          <span>Ghi nhớ & Kết nối</span>
-          <span class="step-sub">Chuyển giao bài học</span>
-        </div>
-      </div>
+    <!-- Progress Nav Sticky Top 0 (V10 Standard) -->
+    <nav class="progress-nav" aria-label="Tiến trình bài học">
+      <button type="button" class="stage-tab step-tab active current" id="stepTab-0" onclick="goToStage(0)">
+        <i class="ti ti-building"></i> S01. Khởi động
+      </button>
+      <button type="button" class="stage-tab step-tab" id="stepTab-1" onclick="goToStage(1)">
+        <i class="ti ti-dna-2"></i> S02. Cấp tế bào
+      </button>
+      <button type="button" class="stage-tab step-tab" id="stepTab-2" onclick="goToStage(2)">
+        <i class="ti ti-arrows-exchange"></i> S03. Cấp cơ thể
+      </button>
+      <button type="button" class="stage-tab step-tab" id="stepTab-3" onclick="goToStage(3)">
+        <i class="ti ti-bookmark-check"></i> S04. Ghi nhớ & Kết nối
+      </button>
     </nav>
 
     <!-- =========================================================
@@ -1744,7 +1807,7 @@
           <!-- Panel chi tiết khi bấm chọn Node -->
           <div class="node-info-panel" id="cellNodeInfoPanel">
             <div class="node-info-icon"><i class="ti ti-info-circle"></i></div>
-            <p class="node-info-text" id="cellNodeInfoText">Nhấn lần lượt vào <strong>Đồng hoá</strong> và <strong>Dị hoá</strong> trên sơ đồ để xem đặc điểm của từng quá trình.</p>
+            <p class="node-info-text" id="cellNodeInfoText">Chạm vào một quá trình trên sơ đồ để xem thông tin chi tiết.</p>
           </div>
         </div>
       </div>
@@ -1970,7 +2033,7 @@
         <!-- Panel hiển thị chi tiết khi bấm vị trí -->
         <div class="node-info-panel" id="flowInfoPanelST02">
           <div class="node-info-icon" style="color:var(--primary);"><i class="ti ti-info-circle"></i></div>
-          <p class="node-info-text" id="flowInfoTextST02">Nhấn vào từng vị trí <strong>1, 2, 3</strong> trên sơ đồ để theo dõi đường đi của các chất từ môi trường đến tế bào và trở lại môi trường.</p>
+          <p class="node-info-text" id="flowInfoTextST02">Chạm vào một vị trí trên sơ đồ để theo dõi chi tiết đường đi của các chất.</p>
         </div>
       </div>
 
@@ -2074,6 +2137,20 @@
         </button>
       </div>
     </section>
+  </div>
+
+
+  <!-- Modal Chúc mừng Hoàn thành (V10 Standard) -->
+  <div class="congrats-overlay hidden" id="completionModal" role="dialog" aria-modal="true">
+    <div class="congrats-modal">
+      <div class="congrats-icon"><i class="ti ti-trophy"></i></div>
+      <h2>Chúc mừng bạn đã hoàn thành!</h2>
+      <p>Bạn đã xuất sắc hoàn thành tất cả 4 màn học thuộc Module: <strong>Mối quan hệ giữa trao đổi chất và chuyển hoá năng lượng ở cấp tế bào và cơ thể</strong>.</p>
+      <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+        <button type="button" class="btn btn-secondary" onclick="closeCompletionModal()"><i class="ti ti-refresh"></i> Xem lại bài</button>
+        <button type="button" class="btn btn-primary" onclick="closeCompletionModal()"><i class="ti ti-check"></i> Đóng thông báo</button>
+      </div>
+    </div>
   </div>
 
   <!-- JAVASCRIPT LOGIC TỰ CHỨA -->
@@ -2559,6 +2636,8 @@
       lmsState.M04_complete = true;
       const alertBox = document.getElementById('completionAlert');
       if (alertBox) alertBox.classList.remove('hidden');
+      const modal = document.getElementById('completionModal');
+      if (modal) { modal.classList.remove('hidden'); launchConfetti(); }
 
       const tab3 = document.getElementById('stepTab-3');
       if (tab3) tab3.classList.add('completed');

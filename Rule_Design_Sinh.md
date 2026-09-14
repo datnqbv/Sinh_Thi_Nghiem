@@ -362,36 +362,76 @@ header {
 .header-goal .goal-text { font-size: 0.92rem; font-weight: 500; color: rgba(255,255,255,0.95); }
 ```
 
-**Thanh điều hướng Module / Màn (`.moduleNav` / `.progress-nav`) & Quy tắc Khóa Canvas không bị đè che (`position: sticky; top: 64px;`):**
-- **Thanh Nav cố định đỉnh (`top: 0`, `z-index: 100`, tổng chiều cao vừa tròn `64px`):**
-  Đặt ngay trên vùng học chính. Bắt buộc cài đặt `padding: 10px 0;` và các nút tab màn học (`.stage-tab`) trên 1 dòng nằm ngang (`min-height: 44px`) để tổng chiều cao thanh Nav chiếm vừa đúng **64px** trên đỉnh viewport.
+**Cơ chế đổi Mục tiêu Động (`stageGoals`) theo từng Stage:**
+Mỗi module có thể có nhiều màn (stage), mỗi màn có 1 mục tiêu sư phạm riêng. JS quản lý dictionary `stageGoals` và cập nhật trực tiếp nội dung `#goalText` hoặc `#headerGoal` mỗi khi gọi `goToStage(n)`:
+```js
+const stageGoals = {
+  0: 'Quan sát tình huống thực tế và đối chiếu đặc điểm sinh học ban đầu.',
+  1: 'Khám phá cấu trúc chi tiết và cơ chế trao đổi chất qua sơ đồ tương tác.',
+  2: 'Thực hành phân loại, nối ghép và củng cố kiến thức trọng tâm.',
+  3: 'Tổng kết nội dung bài học và ghi nhận kết quả hoàn thành module.'
+};
+function updateHeaderGoal(stageIdx) {
+  const goalEl = document.getElementById('goalText') || document.querySelector('#headerGoal .goal-text');
+  if (goalEl && stageGoals[stageIdx]) {
+    goalEl.textContent = stageGoals[stageIdx];
+  }
+}
+```
+
+**Thanh điều hướng Tiến trình Màn (`.progress-nav-container` / `.progress-nav`) — Chuẩn V10 Sticky Top 0:**
+- **Thanh Nav cố định đỉnh (`position: sticky; top: 0; z-index: 100`):**
+  Nằm ngay dưới Header và dính trên đỉnh khi cuộn trang. Hỗ trợ cuộn ngang linh hoạt trên mobile (`overflow-x: auto; scrollbar-width: none;`).
   ```css
-  .progress-nav {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    width: 100%;
+  .progress-nav-container {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: var(--cream);
-    padding: 10px 0;
-    box-shadow: 0 4px 12px rgba(26,26,26,0.06);
+    background: #fff;
+    border-bottom: 1px solid var(--paper-line);
+    box-shadow: 0 2px 8px rgba(26,26,26,0.05);
+    margin-bottom: 1.5rem;
   }
-  .stage-tab {
+  .progress-nav {
     display: flex;
-    align-items: center;
-    justify-content: center;
     gap: 8px;
-    padding: 12px 14px;
-    border-radius: var(--radius);
+    padding: 10px 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none; /* Firefox */
+  }
+  .progress-nav::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+  .step-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 99px;
     border: 1.5px solid var(--paper-line-2);
-    background: var(--cream-2);
+    background: var(--cream);
     color: var(--ink-2);
-    font-size: 0.92rem;
-    font-weight: 700;
+    font-size: 0.85rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: .18s;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+  .step-tab.active {
+    background: var(--jade-dark);
+    border-color: var(--jade);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(20,67,47,0.25);
+  }
+  .step-tab.completed {
+    border-color: var(--jade-soft);
+    color: var(--jade-text);
+  }
+  .step-tab.completed::after {
+    content: '✓';
+    font-weight: 800;
+    margin-left: 2px;
   }
   ```
 - **Cột Trái Canvas (`.canvas-card`) Dính Đúng `top: 64px` (`z-index: 10`):**
@@ -445,11 +485,11 @@ Card chung: nền `var(--cream-2)`, viền 1px `var(--paper-line)`, radius 12px,
   - Khung nội dung tương tác chính `#workspace`
 - **Thông báo phản hồi (Feedback) gọn gàng:** Khi học sinh thao tác, sử dụng các hộp thông báo kết luận gọn gàng (`.summary` hoặc `.summary.module-final`) đặt ngay bên dưới bài tập.
 
-### 8B. Hàng nút tương tác (`.controls-row`) — ĐẶT NẰM TRÊN FOOTER (BẮT BUỘC)
+### 8B. Hàng nút tương tác (`.controls-row` / `.stage-actions`) — ĐẶT NẰM TRÊN FOOTER (BẮT BUỘC)
 `display:flex; align-items:center; gap:10px`. **Bắt buộc đặt nằm ở cuối vùng làm việc chính, ngay TRÊN khối Footer (`.link-section`)**. Khi học sinh hoàn thành thao tác/stage, nút "Tiếp tục" sẽ sáng lên để bấm chuyển màn.
 
 **Cấu trúc nút trong `.controls-row`:**
-- **Nút "Quay lại"** (`#btnPrev` — icon `ti-arrow-left`): Thay thế hoàn toàn nút nghe đọc. Cho phép quay lại stage/màn trước đó.
+- **Nút "Quay lại"** (`#btnPrev` — icon `ti-arrow-left`): Cho phép quay lại stage/màn trước đó.
 - **Nút "Làm lại màn"** (`#btnReset` — icon `ti-refresh`): Đặt lại bài tập của màn hiện tại.
 - `<span class="spacer"></span>` (Đẩy nút tiếp theo sang góc phải).
 - **Nút "Tiếp tục"** (`#btnNext` — icon `ti-arrow-right`): Mặc định `disabled`, chỉ sáng lên khi học sinh đã hoàn thành stage/màn hiện tại.
@@ -462,6 +502,23 @@ Card chung: nền `var(--cream-2)`, viền 1px `var(--paper-line)`, radius 12px,
   <button class="btn btn-primary" id="btnNext" disabled type="button"><span>Tiếp tục</span><i class="ti ti-arrow-right"></i></button>
 </div>
 ```
+
+### 8C. QUY TẮC CHỐNG TRÙNG LẶP HƯỚNG DẪN (Anti-Duplication Guidance Rule — BẮT BUỘC "10 FILE NHƯ MỘT")
+Để giao diện học liệu số đạt chuẩn sư phạm cao cấp, không gây ức chế thị giác hay cảm giác lặp thừa chữ:
+- **Vị trí DUY NHẤT:** Khung hướng dẫn (`.guide-box` / `.guidance-box`) **CHỈ xuất hiện 1 lần duy nhất và BẮT BUỘC nằm NGAY PHÍA TRÊN khu vực làm bài/thao tác** (ngay sau tiêu đề/lời dẫn của stage, trước hình ảnh/sơ đồ/canvas/khay thẻ tương tác).
+- **Cấu trúc chuẩn của `.guide-box`:**
+  ```html
+  <div class="guide-box">
+    <i class="ti ti-info-circle"></i>
+    <span><strong>HƯỚNG DẪN:</strong> Nhấn vào từng điểm đánh dấu trên hình để xem thông tin chi tiết. Khi xem đủ các điểm, nút TIẾP TỤC sẽ xuất hiện.</span>
+  </div>
+  ```
+- **TUYỆT ĐỐI KHÔNG LẶP LẠI MỆNH LỆNH Ở CÁC VỊ TRÍ PHÍA DƯỚI (Loại bỏ 2 lần hướng dẫn):**
+  1. **Câu dẫn đầu (`.lead-text`):** Chỉ mang tính gợi mở bối cảnh khoa học (ví dụ: *"Quan sát hai hình đối chiếu dưới đây để tìm hiểu sự khác biệt..."*). **TUYỆT ĐỐI KHÔNG** chèn thêm câu *"Nhấn vào từng hình để xem..."* vào `lead-text` vì ngay bên dưới đã có hộp HƯỚNG DẪN đảm nhiệm việc này.
+  2. **Huy hiệu/Nhãn gợi ý trên hình (`.touch-hint-badge` / `.image-card`):** Giữ tinh gọn, chỉ mang tính gợi ý chạm nhẹ nhàng như `<div class="touch-hint-badge"><i class="ti ti-hand-finger"></i> Chạm để khám phá</div>`, không lặp lại nguyên câu mệnh lệnh *"Nhấn vào hình để xem cách cây xanh..."*.
+  3. **Khung hiển thị kết quả chi tiết bên dưới (`.detail-text-box`, `.info-panel`, `.hotspot-detail-box`):**
+     - **Trạng thái chờ (khi chưa tương tác):** Chỉ đặt tiêu đề ngắn hoặc placeholder trung tính (ví dụ: `<h4 id="hotspotTitle"><i class="ti ti-info-circle"></i> Thông tin chi tiết theo từng vị trí</h4>` kèm dòng mô tả `<p>Chạm vào từng vị trí số trên sơ đồ để xem thông tin chi tiết.</p>`).
+     - **Trạng thái đã kích hoạt (khi đã click/chạm):** Cập nhật trực tiếp nội dung kiến thức sinh học thu được, tuyệt đối không lặp lại câu mệnh lệnh hướng dẫn dài dòng.
 
 ---
 
@@ -476,6 +533,137 @@ Card chung được đặt xếp tầng ở vùng hỗ trợ bên dưới hoặc
 - Khối con — chờ trả lời: nền `var(--sage-pale)`, viền `var(--sage)`, `border-left:4px solid var(--accent)`. Sau khi đúng: nền `var(--correct-bg)`, `border-left:4px solid var(--correct)`.
 - **Quiz — căn hàng chống lệch (BẮT BUỘC):** mỗi option là `<button>` full-width `display:flex; align-items:flex-start; text-align:left; gap:10px; padding:10px 14px`; ký hiệu A/B/C/D trong `<span>` riêng `flex:0 0 24px`; nội dung `<span>` `flex:1`; icon feedback đặt ở CUỐI (không chèn đầu text); `<ul>` reset `list-style:none; margin:0; padding:0`.
 - Chọn đúng → viền/nền `var(--correct)`/`var(--correct-bg)` + icon check. Chọn sai → `var(--wrong)`/`var(--wrong-bg)` **nhẹ nhàng** + chỉ dẫn tới chỗ cần xem lại, **không "phạt", không đỏ gắt, không reset tiến trình đúng trước đó** (xem MỤC 13). Feedback tức thì + transition.
+
+### 9C. MODAL CHÚC MỪNG HOÀN THÀNH (V10 CONGRATULATIONS MODAL & CONFETTI)
+Khi học sinh hoàn thành toàn bộ các màn học trong Module, thay vì dùng popup `alert()` sơ sài, **BẮT BUỘC** hiển thị Modal Chúc mừng chuẩn V10 đi kèm hiệu ứng pháo hoa Canvas (`launchConfetti()`):
+
+```html
+<!-- Modal Chúc mừng Hoàn thành (V10 Standard) -->
+<div class="congrats-overlay hidden" id="completionModal" role="dialog" aria-modal="true">
+  <div class="congrats-modal">
+    <div class="congrats-icon"><i class="ti ti-trophy"></i></div>
+    <h2>Chúc mừng bạn đã hoàn thành!</h2>
+    <p>Bạn đã xuất sắc hoàn thành tất cả các màn học thuộc Module: <strong>[Tên Module Bài Học]</strong>.</p>
+    <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <button type="button" class="btn btn-secondary" onclick="closeCompletionModal()"><i class="ti ti-refresh"></i> Xem lại bài</button>
+      <button type="button" class="btn btn-primary" onclick="closeCompletionModal()"><i class="ti ti-check"></i> Đóng thông báo</button>
+    </div>
+  </div>
+</div>
+```
+
+```css
+.congrats-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 67, 47, 0.45);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+.congrats-overlay.hidden { display: none !important; }
+.congrats-modal {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2.2rem 2rem;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  border: 1px solid var(--paper-line);
+  box-shadow: 0 16px 40px rgba(26,26,26,0.15);
+  animation: modalPopIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.congrats-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--accent-pale);
+  color: var(--accent-deep);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+@keyframes modalPopIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+```
+
+```js
+// Hiệu ứng pháo hoa Canvas độc lập không cần thư viện ngoài
+function launchConfetti() {
+  const canvas = document.createElement('canvas');
+  canvas.id = 'confettiCanvas';
+  canvas.style.position = 'fixed';
+  canvas.style.inset = '0';
+  canvas.style.width = '100vw';
+  canvas.style.height = '100vh';
+  canvas.style.pointerEvents = 'none';
+  canvas.style.zIndex = '9998';
+  document.body.appendChild(canvas);
+
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = window.innerWidth * dpr;
+  canvas.height = window.innerHeight * dpr;
+  ctx.scale(dpr, dpr);
+
+  const colors = ['#3CA57A', '#2D8B6F', '#E8A24A', '#CE8A33', '#4E7F92', '#8B5CF6'];
+  const particles = Array.from({ length: 90 }, () => ({
+    x: window.innerWidth / 2,
+    y: window.innerHeight / 2,
+    vx: (Math.random() - 0.5) * 12,
+    vy: (Math.random() - 0.7) * 14,
+    size: Math.random() * 8 + 4,
+    color: colors[Math.floor(Math.random() * colors.length)],
+    alpha: 1,
+    decay: Math.random() * 0.015 + 0.008
+  }));
+
+  function animate() {
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    let alive = false;
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.25; // gravity
+      p.alpha -= p.decay;
+      if (p.alpha > 0) {
+        alive = true;
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = Math.max(0, p.alpha);
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size / 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    });
+    if (alive) {
+      requestAnimationFrame(animate);
+    } else {
+      ctx.globalAlpha = 1;
+      canvas.remove();
+    }
+  }
+  animate();
+}
+
+function handleCompleteModule() {
+  const modal = document.getElementById('completionModal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    launchConfetti();
+  }
+}
+function closeCompletionModal() {
+  const modal = document.getElementById('completionModal');
+  if (modal) modal.classList.add('hidden');
+}
+```
 
 ---
 
@@ -1180,6 +1368,9 @@ document.getElementById('linkFishImage').src = assetFiles.A02;
 - [ ] Font Be Vietnam Pro toàn trang **kể cả `ctx.font`**; không sót font khác (`grep -i "playfair\|inter\|jakarta\|roboto"`).
 - [ ] Chỉ dùng token UI ở MỤC 3 cho giao diện; **không** gradient/shadow nặng/glassmorphism/dark theme/emoji/robot.
 - [ ] Màu khoa học trong canvas theo MỤC 4; UI và science color **không trộn**.
+- [ ] **Chống lặp hướng dẫn (Anti-duplication — BẮT BUỘC)**: Khung `.guide-box` chỉ xuất hiện 1 lần duy nhất ngay trên phần làm bài; tuyệt đối không lặp lại câu lệnh hướng dẫn 2 lần (ở `lead-text` không lặp "Nhấn vào...", ở badge/caption dưới không lặp mệnh lệnh, chỉ là trạng thái/kết quả).
+- [ ] **Header V10 & Sticky Nav**: Header có dải gradient phẳng, hộp mục tiêu động `stageGoals` đồng bộ từng stage; thanh tiến trình sticky top 0 cuộn ngang mượt mà trên mobile.
+- [ ] **Modal chúc mừng V10**: Có Modal chúc mừng hoàn thành tiêu chuẩn (`#completionModal`) tích hợp `launchConfetti()` canvas độc lập; không dùng alert() mặc định.
 
 **Canvas & animation:**
 - [ ] `resizeCanvas()` gọi đầu mỗi frame; `drawGrid()` theo kích thước thật (lấp đầy, không méo).

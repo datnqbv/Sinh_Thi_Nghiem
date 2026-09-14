@@ -91,115 +91,134 @@
       gap: 16px;
     }
 
-    /* 1. Module Header */
-    .module-header {
-      background: #FFFFFF;
-      border: 1px solid var(--paper-line);
+    /* HEADER BANNER - FLAT GRADIENT WITH INTEGRATED GOAL (V10 STANDARD) */
+    header {
+      width: 100%;
       border-radius: var(--radius-lg);
-      padding: 20px 24px;
+      padding: 1.6rem 2rem;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(135deg, var(--jade-dark), var(--jade-deep));
       box-shadow: var(--shadow-sm);
+      color: #fff;
+      margin-bottom: 16px;
     }
-
-    .header-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-    }
-
-    .module-badge {
+    .header-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: var(--jade-pale);
-      color: var(--jade-text);
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 5px 12px;
-      border-radius: 99px;
+      color: var(--sage-pale);
+      font-weight: 600;
+      font-size: 0.88rem;
       letter-spacing: 0.5px;
+      margin-bottom: 6px;
       text-transform: uppercase;
-      border: 1px solid var(--jade-soft);
     }
-
-    .duration-badge {
+    header h1 {
+      margin: 0;
+      color: #fff;
+      font-size: clamp(1.4rem, 3.2vw, 2rem);
+      font-weight: 800;
+      line-height: 1.25;
+    }
+    .header-goal {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      font-size: 0.82rem;
-      color: var(--ink-3);
-      font-weight: 500;
-    }
-
-    .module-title {
-      font-size: clamp(1.4rem, 2.8vw, 1.85rem);
-      font-weight: 800;
-      color: var(--ink);
-      line-height: 1.35;
-      margin-bottom: 8px;
-      letter-spacing: -0.3px;
-    }
-
-    .module-outcome {
-      display: inline-flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-size: 0.95rem;
-      color: var(--ink-2);
-      background: var(--cream-2);
-      padding: 8px 14px;
+      gap: 10px;
+      margin-top: 10px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.22);
       border-radius: var(--radius-sm);
-      border-left: 3px solid var(--jade);
-      line-height: 1.5;
+      padding: 8px 14px;
+    }
+    .header-goal .goal-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+    }
+    .header-goal .goal-divider {
+      flex-shrink: 0;
+      width: 1px;
+      height: 14px;
+      background: rgba(255, 255, 255, 0.4);
+    }
+    .header-goal .goal-text {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.95);
     }
 
-    /* 2. Progress Nav / Step Tabs */
+    /* PROGRESS STAGE TABS (STICKY TOP 0 - V10 STANDARD) */
     .progress-nav {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
-      background: #FFFFFF;
-      border: 1px solid var(--paper-line);
-      border-radius: var(--radius);
-      padding: 8px;
-      box-shadow: var(--shadow-sm);
-      position: relative;
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--cream);
+      padding: 10px 0;
+      box-shadow: 0 4px 12px rgba(26, 26, 26, 0.06);
+      margin-bottom: 20px;
     }
-
-    .step-tab-btn {
+    .stage-tab, .step-tab-btn {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 10px 14px;
-      background: transparent;
-      border: 1px solid transparent;
-      border-radius: var(--radius-sm);
-      color: var(--ink-3);
-      font-family: var(--font);
-      font-size: 0.88rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-align: center;
-      white-space: nowrap;
-    }
-
-    .step-tab-btn:hover {
+      padding: 12px 14px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--paper-line-2);
       background: var(--cream-2);
-      color: var(--ink);
+      color: var(--ink-2);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      text-align: center;
     }
-
-    .step-tab-btn.active {
-      background: var(--jade-deep);
-      color: #FFFFFF;
-      box-shadow: 0 2px 8px rgba(45, 139, 111, 0.35);
-      border-color: var(--jade);
+    .stage-tab:hover:not(:disabled), .step-tab-btn:hover {
+      border-color: var(--sage);
+      background: var(--cream-3);
     }
-
-    .step-tab-btn.completed:not(.active) {
+    .stage-tab.current, .stage-tab.active, .step-tab-btn.active {
+      background: var(--jade) !important;
+      border-color: var(--jade) !important;
+      color: #fff !important;
+      box-shadow: 0 3px 10px rgba(60, 165, 122, 0.25);
+    }
+    .stage-tab.done, .stage-tab.completed, .step-tab-btn.completed {
+      background: var(--jade-pale);
+      border-color: var(--sage);
+      color: var(--jade-text);
+    }
+    @media (max-width: 900px) {
+      .progress-nav {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        gap: 8px !important;
+        padding: 6px 4px !important;
+        scrollbar-width: none;
+      }
+      .progress-nav::-webkit-scrollbar { display: none; }
+      .stage-tab, .step-tab-btn {
+        flex: 0 0 auto !important;
+        white-space: nowrap !important;
+        padding: 10px 14px !important;
+        font-size: 0.86rem !important;
+      }
+    }
+.step-tab-btn.completed:not(.active) {
       background: var(--jade-pale);
       color: var(--jade-text);
       border-color: var(--jade-soft);
@@ -858,69 +877,55 @@
       font-weight: 500;
     }
  
-    /* Modal completed */
-    .modal-backdrop {
+    /* CONGRATS MODAL (V10 STANDARD) */
+    .congrats-overlay, .modal-backdrop {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(26, 26, 26, 0.5);
+      inset: 0;
+      background: rgba(20, 67, 47, 0.65);
       backdrop-filter: blur(4px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease;
+      display: grid;
+      place-items: center;
+      z-index: 9999;
+      padding: 20px;
     }
-
-    .modal-backdrop.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .completion-modal {
-      background: #FFFFFF;
-      border: 1px solid var(--paper-line);
-      border-radius: var(--radius-lg);
-      padding: 32px 28px;
+    .congrats-modal, .completion-modal {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px 24px;
       max-width: 480px;
-      width: 90%;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.15);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      width: 100%;
       text-align: center;
-      gap: 16px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+      animation: modalPop 0.3s ease;
     }
-
-    .completion-icon-wrapper {
+    @keyframes modalPop {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .congrats-icon, .completion-icon-wrapper {
       width: 64px;
       height: 64px;
+      margin: 0 auto 16px;
       border-radius: 50%;
       background: var(--jade-pale);
-      color: var(--jade-deep);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
+      color: var(--jade-text);
+      display: grid;
+      place-items: center;
+      font-size: 2.2rem;
     }
-
-    .completion-modal h3 {
-      font-size: 1.3rem;
-      font-weight: 800;
+    .congrats-modal h2, .completion-modal h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.4rem;
       color: var(--ink);
+      font-weight: 800;
     }
-
-    .completion-modal p {
-      font-size: 0.95rem;
+    .congrats-modal p, .completion-modal p {
+      margin: 0 0 20px 0;
+      font-size: 0.96rem;
       color: var(--ink-2);
       line-height: 1.6;
     }
-
-    /* Responsive */
+/* Responsive */
     @media (max-width: 768px) {
       .comparison-grid {
         grid-template-columns: 1fr;
@@ -958,32 +963,27 @@
 
   <div class="app-container">
     
-    <!-- 1. Header -->
-    <header class="module-header">
-      <div class="header-top">
-        <span class="module-badge"><i class="ti ti-dna"></i> Sinh học 11 · Bài 1 · Module 06</span>
-        <span class="duration-badge"><i class="ti ti-clock"></i> Thời lượng: 10–12 phút</span>
-      </div>
-      <h1 class="module-title">Vai trò của sinh vật tự dưỡng trong sinh giới</h1>
-      <div class="module-outcome">
-        <i class="ti ti-target" style="color:var(--jade-deep); font-size:1.2rem; margin-top:2px;"></i>
-        <span><strong>Yêu cầu cần đạt:</strong> Phân tích được vai trò của sinh vật tự dưỡng trong sinh giới.</span>
+    <!-- 1. Header (V10 Standard) -->
+    <header>
+      <div class="header-badge"><i class="ti ti-dna"></i> Sinh học 11 · Bài 1 · Module 06</div>
+      <h1>Vai trò của sinh vật tự dưỡng trong sinh giới</h1>
+      <div class="header-goal">
+        <span class="goal-label"><i class="ti ti-target"></i> Mục tiêu</span>
+        <span class="goal-divider"></span>
+        <span class="goal-text" id="goalText">Khám phá hậu quả xảy ra với chuỗi thức ăn và hệ sinh thái nếu thiếu đi sinh vật tự dưỡng.</span>
       </div>
     </header>
 
-    <!-- 2. Step Tabs Navigation -->
+    <!-- 2. Step Tabs Navigation Sticky Top 0 (V10 Standard) -->
     <nav class="progress-nav" aria-label="Tiến trình học tập">
-      <button class="step-tab-btn active" id="tabST00" onclick="goToStage(0)">
-        <span class="step-num">1</span>
-        <span>Khởi động (ST00)</span>
+      <button type="button" class="stage-tab step-tab-btn active current" id="tabST00" onclick="goToStage(0)">
+        <i class="ti ti-help-circle"></i> S01. Khởi động (ST00)
       </button>
-      <button class="step-tab-btn" id="tabST01" onclick="goToStage(1)">
-        <span class="step-num">2</span>
-        <span>Ba vai trò (ST01)</span>
+      <button type="button" class="stage-tab step-tab-btn" id="tabST01" onclick="goToStage(1)">
+        <i class="ti ti-leaf"></i> S02. Ba vai trò (ST01)
       </button>
-      <button class="step-tab-btn" id="tabST02" onclick="goToStage(2)">
-        <span class="step-num">3</span>
-        <span>Ghi nhớ & Khép bài (ST02)</span>
+      <button type="button" class="stage-tab step-tab-btn" id="tabST02" onclick="goToStage(2)">
+        <i class="ti ti-bookmark-check"></i> S03. Ghi nhớ & Khép bài (ST02)
       </button>
     </nav>
 
@@ -997,7 +997,7 @@
       </div>
 
       <div class="lead-instruction-row">
-        <p class="lead-text">Quan sát hai tình huống dưới đây. Nhấn vào từng hình để xem sự có mặt của sinh vật tự dưỡng liên quan như thế nào đến đời sống của các sinh vật khác.</p>
+        <p class="lead-text">Quan sát hai tình huống dưới đây để tìm hiểu sự có mặt của sinh vật tự dưỡng liên quan như thế nào đến đời sống của các sinh vật khác.</p>
         <span class="instruction-text"><i class="ti ti-hand-finger"></i> HƯỚNG DẪN: Nhấn vào từng hình. Hình đã xem sẽ đổi trạng thái. Khi xem đủ hai hình, nút TIẾP TỤC sẽ xuất hiện.</span>
       </div>
 
@@ -1008,7 +1008,7 @@
             <span class="comparison-card-title"><i class="ti ti-trees" style="color:var(--jade);"></i> Tình huống 1 – Hệ sinh thái có sinh vật tự dưỡng phát triển</span>
           </div>
           <div class="image-interactive-wrapper" id="wrapST00-1" onclick="viewST00Image(1)" title="Nhấn vào hình để xem tác động của sinh vật tự dưỡng phát triển">
-            <div class="touch-hint-badge" id="hintST00-1"><i class="ti ti-hand-finger"></i> Nhấn vào hình để xem</div>
+            <div class="touch-hint-badge" id="hintST00-1"><i class="ti ti-hand-finger"></i> Chạm để khám phá</div>
             <img src="https://lh3.googleusercontent.com/d/1TcGE_8rlV31b2FXF0jhuIq6tZgIuV1Y0" alt="Hệ sinh thái có sinh vật tự dưỡng phát triển">
           </div>
           <div class="comparison-explanation-box hidden" id="boxST00-1">
@@ -1022,7 +1022,7 @@
             <span class="comparison-card-title"><i class="ti ti-alert-triangle" style="color:var(--accent-deep);"></i> Tình huống 2 – Hệ sinh thái suy giảm mạnh sinh vật tự dưỡng</span>
           </div>
           <div class="image-interactive-wrapper" id="wrapST00-2" onclick="viewST00Image(2)" title="Nhấn vào hình để xem tác động khi sinh vật tự dưỡng suy giảm">
-            <div class="touch-hint-badge" id="hintST00-2"><i class="ti ti-hand-finger"></i> Nhấn vào hình để xem</div>
+            <div class="touch-hint-badge" id="hintST00-2"><i class="ti ti-hand-finger"></i> Chạm để khám phá</div>
             <img src="https://lh3.googleusercontent.com/d/1sMDBB8hX_bGw3YfTeDm4bdH7AEIIF0PJ" alt="Hệ sinh thái suy giảm mạnh sinh vật tự dưỡng">
           </div>
           <div class="comparison-explanation-box hidden" id="boxST00-2">
@@ -1387,15 +1387,16 @@
 
   </div>
 
-  <!-- Modal hoàn thành -->
-  <div class="modal-backdrop" id="completionModal">
-    <div class="completion-modal">
-      <div class="completion-icon-wrapper">
-        <i class="ti ti-circle-check"></i>
+  <!-- Modal Chúc mừng Hoàn thành (V10 Standard) -->
+  <div class="congrats-overlay modal-backdrop hidden" id="completionModal" role="dialog" aria-modal="true">
+    <div class="congrats-modal completion-modal">
+      <div class="congrats-icon completion-icon-wrapper"><i class="ti ti-trophy"></i></div>
+      <h2>Chúc mừng bạn đã hoàn thành!</h2>
+      <p>Bạn đã xuất sắc hoàn thành bài học <strong>Vai trò của sinh vật tự dưỡng trong sinh giới</strong> và khép lại trọn vẹn toàn bộ <strong>Bài 1</strong>.</p>
+      <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+        <button type="button" class="btn-action secondary" onclick="closeCompletionModal()"><i class="ti ti-refresh"></i> Xem lại bài</button>
+        <button type="button" class="btn-action primary" onclick="closeCompletionModal()"><i class="ti ti-check"></i> Đóng thông báo</button>
       </div>
-      <h3>Đã hoàn thành module!</h3>
-      <p>Chúc mừng bạn đã hoàn thành bài học <strong>SH11-B01-M06: Vai trò của sinh vật tự dưỡng trong sinh giới</strong> và khép lại trọn vẹn toàn bộ <strong>Bài 1</strong>.</p>
-      <button class="btn-action primary" onclick="closeCompletionModal()">Đóng thông báo</button>
     </div>
   </div>
 
@@ -1427,6 +1428,68 @@
     window.addEventListener('load', reportHeight);
     window.addEventListener('resize', reportHeight);
 
+    
+    const stageGoals = {
+      0: 'Khám phá hậu quả xảy ra với chuỗi thức ăn và hệ sinh thái nếu thiếu đi sinh vật tự dưỡng.',
+      1: 'Phân tích ba vai trò trọng yếu của sinh vật tự dưỡng: cung cấp thức ăn, điều hòa khí quyển và tạo sinh cảnh.',
+      2: 'Hệ thống hóa 3 vai trò cốt lõi và khép lại trọn vẹn các kiến thức nền tảng của Bài 1.'
+    };
+
+    function launchConfetti() {
+      const canvas = document.createElement('canvas');
+      canvas.id = 'confettiCanvas';
+      canvas.style.position = 'fixed';
+      canvas.style.inset = '0';
+      canvas.style.width = '100vw';
+      canvas.style.height = '100vh';
+      canvas.style.pointerEvents = 'none';
+      canvas.style.zIndex = '9998';
+      document.body.appendChild(canvas);
+      const cctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const particles = [];
+      const colors = ['#3CA57A', '#2D8B6F', '#E8A24A', '#4E7F92', '#C15F3C'];
+      for (let i = 0; i < 120; i++) {
+        particles.push({
+          x: canvas.width / 2,
+          y: canvas.height / 2,
+          vx: (Math.random() - 0.5) * 18,
+          vy: (Math.random() - 0.7) * 18,
+          size: Math.random() * 8 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          rSpeed: (Math.random() - 0.5) * 10,
+          life: 1,
+          decay: Math.random() * 0.015 + 0.008
+        });
+      }
+      function animate() {
+        cctx.clearRect(0, 0, canvas.width, canvas.height);
+        let active = false;
+        particles.forEach(p => {
+          if (p.life > 0) {
+            active = true;
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += 0.3;
+            p.life -= p.decay;
+            p.rotation += p.rSpeed;
+            cctx.save();
+            cctx.translate(p.x, p.y);
+            cctx.rotate((p.rotation * Math.PI) / 180);
+            cctx.globalAlpha = Math.max(0, p.life);
+            cctx.fillStyle = p.color;
+            cctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+            cctx.restore();
+          }
+        });
+        if (active) requestAnimationFrame(animate);
+        else canvas.remove();
+      }
+      animate();
+    }
+
     // Step Tabs Navigation
     function goToStage(stageIndex) {
       lmsState.currentStage = stageIndex;
@@ -1439,8 +1502,16 @@
         if (!tab) return;
         tab.classList.remove('active');
         if (idx === stageIndex) {
-          tab.classList.add('active');
+          tab.classList.add('active', 'current');
+        } else {
+          tab.classList.remove('current');
+          if (idx < stageIndex) tab.classList.add('done');
         }
+
+      const goalEl = document.getElementById('goalText');
+      if (goalEl && stageGoals[stageIndex]) {
+        goalEl.textContent = stageGoals[stageIndex];
+      }
       });
 
       stages.forEach((stg, idx) => {
@@ -1607,12 +1678,12 @@
 
       // Show neutral celebration modal
       const modal = document.getElementById('completionModal');
-      if (modal) modal.classList.add('show');
+      if (modal) modal.classList.remove('hidden'); modal.classList.add('show'); launchConfetti();
     }
 
     function closeCompletionModal() {
       const modal = document.getElementById('completionModal');
-      if (modal) modal.classList.remove('show');
+      if (modal) modal.classList.remove('show'); modal.classList.add('hidden');
     }
   </script>
 </body>

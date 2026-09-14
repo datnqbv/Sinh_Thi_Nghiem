@@ -246,13 +246,66 @@ window.addEventListener('message', function(e) {
 
 Để đảm bảo hiển thị sạch sẽ, đồng bộ và **không bị trùng lặp giao diện** khi nhúng vào `iframe` của file mẹ:
 
-1. **KHÔNG CÓ Header riêng**: Các file con **BẮT BUỘC XÓA BỎ** khối `<header>` banner riêng (vì tiêu đề và mục tiêu đã hiển thị ở Header của file mẹ).
-2. **KHÔNG CÓ Thanh Tab Màn riêng (`.progress-nav`)**: Các file con **BẮT BUỘC XÓA BỎ** thanh tab chuyển màn (`01 · Đời sống`, `02 · Lĩnh vực`,... vì thanh Module cuộn ngang trên file mẹ đã quản lý điều hướng cấp cao, còn chuyển màn bên trong file con do 2 nút Quay lại / Tiếp tục đảm nhiệm).
-3. **KHÔNG CÓ Footer Link riêng**: Các file con **BẮT BUỘC XÓA BỎ** khối `.link-section` (*Sinh Học Aiducation - Truy cập aiducation.edu.vn*) ở chân trang.
-4. **Bắt đầu trực tiếp từ Split Workspace**:
-   - File con bắt đầu trực tiếp từ Lưới 2 cột `.split-workspace` với Cột trái Canvas (`.canvas-card`) và Cột phải Bài tập (`.workspace-card`).
-5. **Bắt buộc có CSS `.hidden`**:
-   - Khai báo `.hidden { display: none !important; }` để tránh tự động hiện Modal chúc mừng khi vừa tải trang.
-6. **Cảnh báo Thông Báo khi Thao Tác Sai / Thiếu Bước Qua Màn**:
+1. **Bắt buộc có CSS `.hidden`**: Khai báo `.hidden { display: none !important; }` để tránh tự động hiện Modal chúc mừng khi vừa tải trang.
+2. **Cảnh báo Thông Báo khi Thao Tác Sai / Thiếu Bước Qua Màn**:
    - Khi người học **thao tác sai**, **chọn chưa đúng**, hoặc **chưa hoàn thành đủ bước bắt buộc của Màn**, hệ thống phải hiển thị thông báo phản hồi màu Cảnh báo/Lỗi `bad` (`border-left: 4px solid var(--wrong); background: var(--wrong-bg);`) tại ô `#globalFeedback` hoặc `.inline-feedback`.
    - Nút "Tiếp tục" (`#btnNext`) giữ trạng thái vô hiệu hóa (`disabled`) cho đến khi người học hoàn thành chính xác 100% nhiệm vụ của Màn.
+3. **Báo cáo chiều cao tự động qua `postMessage`**: Mọi file con phải có hàm `reportHeight()` để file mẹ tự co giãn `iframe.style.height`, triệt tiêu hoàn toàn thanh cuộn đôi (double scrollbar).
+
+---
+
+## 5. TIÊU CHUẨN THIẾT KẾ MODULE CON CHUẨN V10 (Tham chiếu: `SH10_B02_M02.html`)
+> **Mục tiêu:** Định nghĩa bộ khung cấu trúc chuẩn V10 để chạy kịch bản tự sinh cho toàn bộ bài học (Lớp 10, Lớp 11, Lớp 12) đảm bảo **"10 file như một"**.
+
+### 5.1. Khung Header V10 Phẳng & Mục tiêu Động (`.module-header`)
+Header dạng banner phẳng editorial, không dùng ảnh ngoài:
+```html
+<header class="module-header">
+  <div class="header-badge"><i class="ti ti-dna"></i> SINH HỌC 11 · BÀI 1 · MODULE 02</div>
+  <h1>Trao đổi chất và chuyển hóa năng lượng ở tế bào</h1>
+  <div class="header-goal" id="headerGoal">
+    <span class="goal-label"><i class="ti ti-target"></i> MỤC TIÊU</span>
+    <span class="goal-divider"></span>
+    <span class="goal-text" id="goalText">Khám phá các quá trình trao đổi chất qua sơ đồ tương tác.</span>
+  </div>
+</header>
+```
+- Đi kèm biến `stageGoals = { 0: '...', 1: '...', 2: '...' };` trong Javascript để tự động cập nhật text mục tiêu khi học sinh chuyển stage (`goToStage(n)`).
+
+### 5.2. Thanh Tiến Trình Dính Đỉnh (`.progress-nav-container` Sticky Top 0)
+- Dính cố định ở `top: 0; z-index: 100;` để học sinh luôn nắm được tiến độ học tập.
+- Hỗ trợ cuộn ngang linh hoạt trên mobile/màn hình nhỏ (`overflow-x: auto; white-space: nowrap; scrollbar-width: none;`).
+- Các tab bước `.step-tab`: có trạng thái `.active` (đang học) và `.completed` (kèm biểu tượng check `✓`).
+
+### 5.3. QUY TẮC CHỐNG TRÙNG LẶP HƯỚNG DẪN (Anti-Duplication Guidance Rule — BẮT BUỘC)
+Để loại bỏ tình trạng lặp chữ hoặc xuất hiện 2 lần hướng dẫn gây rối mắt:
+1. **Khung Hướng Dẫn (`.guide-box`) chỉ xuất hiện 1 lần duy nhất**:
+   - **Vị trí bắt buộc:** Nằm **NGAY TRÊN** khu vực thao tác/làm bài (dưới tiêu đề hoặc dẫn dắt ngắn của màn).
+   - **Cấu trúc:** Icon Tabler + nhãn in hoa:
+     ```html
+     <div class="guide-box">
+       <i class="ti ti-info-circle"></i>
+       <span><strong>HƯỚNG DẪN:</strong> Nhấn vào từng điểm đánh dấu trên hình để xem thông tin chi tiết. Khi xem đủ các điểm, nút TIẾP TỤC sẽ xuất hiện.</span>
+     </div>
+     ```
+2. **Loại bỏ trùng lặp ở câu dẫn (`.lead-text`):**
+   - Câu dẫn chỉ mang tính định hướng bối cảnh khoa học (ví dụ: *"Quan sát hai hình đối chiếu dưới đây để tìm hiểu sự khác biệt..."*).
+   - **TUYỆT ĐỐI KHÔNG** viết lặp lại câu *"Nhấn vào từng hình để xem..."* trong `.lead-text` vì bên dưới đã có ngay `.guide-box`.
+3. **Loại bỏ trùng lặp ở các nhãn card và khung kết quả bên dưới:**
+   - Trên hình ảnh/card: Dùng badge gợi ý chạm ngắn gọn (ví dụ: `<div class="touch-hint-badge"><i class="ti ti-hand-finger"></i> Chạm để khám phá</div>`).
+   - Khung kết quả (`.detail-text-box`, `.hotspot-detail-box`): Trước khi click thì hiển thị placeholder nhẹ nhàng hoặc tiêu đề (ví dụ: *"Thông tin chi tiết theo từng vị trí"*); sau khi click thì cập nhật kiến thức sinh học, không lặp lại câu mệnh lệnh dài dòng.
+
+### 5.4. Hàng Nút Điều Hướng Stage (`.controls-row` / `.stage-actions`)
+Nằm ở cuối mỗi stage:
+- Nút "QUAY LẠI" (`.btn-secondary`): Trở về stage trước.
+- Nút "TIẾP TỤC" (`.btn-primary`): Bị vô hiệu hoá (`disabled`) khi chưa hoàn thành nhiệm vụ của stage; sáng lên khi hoàn thành xong.
+
+### 5.5. Modal Chúc Mừng Hoàn Thành V10 & Canvas Confetti (`#completionModal`)
+Khi hoàn thành stage cuối cùng:
+- Hiển thị Modal overlay mờ đục với cúp vàng (`ti ti-trophy`), tiêu đề chúc mừng và 2 nút "Xem lại bài" / "Đóng thông báo".
+- Bắn pháo hoa hạt rơi bằng hàm `launchConfetti()` tạo canvas tự động, tự hủy sau khi kết thúc hiệu ứng (không phụ thuộc thư viện ngoài).
+
+### 5.6. Bảng State LMS & Truyền Chiều Cao (Zero Storage)
+- Toàn bộ tiến trình lưu trong biến `const lmsState = { ... }; window.lmsState = lmsState;`. Tuyệt đối không dùng `localStorage`/cookie.
+- Hàm `reportHeight()` tự động tính `document.documentElement.scrollHeight` và gọi `window.parent.postMessage({ type: 'setHeight', height: h }, '*')`.
+

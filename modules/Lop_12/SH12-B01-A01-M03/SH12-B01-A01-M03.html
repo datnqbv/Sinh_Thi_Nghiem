@@ -1017,41 +1017,38 @@
 
   <div class="lesson-wrapper">
 
-    <!-- Header Module -->
+    <!-- Header Module (V10 Standard) -->
     <header class="module-header">
-      <div class="header-badge-row">
-        <span class="module-badge"><i class="ti ti-dna"></i> Sinh học 12 · Bài 1 · M03</span>
-        <span class="track-tag">Ý nghĩa và ứng dụng của tái bản DNA</span>
-      </div>
-      <h1 class="module-title">Ý nghĩa và ứng dụng của tái bản DNA</h1>
-      <div class="module-outcome">
-        <strong>Yêu cầu cần đạt:</strong> Phân tích được ý nghĩa của tái bản DNA đối với sinh trưởng, phát triển và di truyền; nêu được khái quát ứng dụng nguyên lí tái bản DNA trong PCR và một số lĩnh vực thực tiễn.
+      <div class="header-badge"><i class="ti ti-dna"></i> SINH HỌC 12 · BÀI 1 · MODULE 03</div>
+      <h1>Ý nghĩa và ứng dụng của tái bản DNA</h1>
+      <div class="header-goal" id="headerGoal">
+        <span class="goal-label"><i class="ti ti-target"></i> MỤC TIÊU</span>
+        <span class="goal-divider"></span>
+        <span class="goal-text" id="goalText">Phân tích ý nghĩa của tái bản DNA đối với sinh trưởng, phát triển, di truyền và các ứng dụng trong thực tiễn.</span>
       </div>
     </header>
 
-    <!-- Navigation Tabs: Chuyển bước tự do, không sticky -->
-    <nav class="step-nav-bar" aria-label="Các bước bài học">
-      <button class="step-tab-btn active" id="tabStep0" onclick="goToStep(0)">
-        <span class="step-num-pill">1</span>
-        <span>Từ một tế bào đến cơ thể</span>
-        <i class="ti ti-check step-status-icon"></i>
-      </button>
-      <button class="step-tab-btn" id="tabStep1" onclick="goToStep(1)">
-        <span class="step-num-pill">2</span>
-        <span>Ý nghĩa của tái bản DNA</span>
-        <i class="ti ti-check step-status-icon"></i>
-      </button>
-      <button class="step-tab-btn" id="tabStep2" onclick="goToStep(2)">
-        <span class="step-num-pill">3</span>
-        <span>Ứng dụng & Kỹ thuật PCR</span>
-        <i class="ti ti-check step-status-icon"></i>
-      </button>
-      <button class="step-tab-btn" id="tabStep3" onclick="goToStep(3)">
-        <span class="step-num-pill">4</span>
-        <span>Ghi nhớ & Khép lại Bài 1</span>
-        <i class="ti ti-check step-status-icon"></i>
-      </button>
-    </nav>
+    <!-- Thanh tiến trình Sticky Top 0 (V10 Standard) -->
+    <div class="progress-nav-container">
+      <nav class="progress-nav" aria-label="Tiến trình học tập">
+        <button type="button" class="step-tab-btn active" id="tabStep0" onclick="goToStep(0)">
+          <span class="step-num-pill">1</span>
+          <span>Từ một TB đến cơ thể</span>
+        </button>
+        <button type="button" class="step-tab-btn" id="tabStep1" onclick="goToStep(1)">
+          <span class="step-num-pill">2</span>
+          <span>Ý nghĩa tái bản DNA</span>
+        </button>
+        <button type="button" class="step-tab-btn" id="tabStep2" onclick="goToStep(2)">
+          <span class="step-num-pill">3</span>
+          <span>Ứng dụng & Kỹ thuật PCR</span>
+        </button>
+        <button type="button" class="step-tab-btn" id="tabStep3" onclick="goToStep(3)">
+          <span class="step-num-pill">4</span>
+          <span>Ghi nhớ & Tổng kết</span>
+        </button>
+      </nav>
+    </div>
 
     <!-- ========================================================= -->
     <!-- BƯỚC 0: TỪ MỘT TẾ BÀO ĐẾN MỘT CƠ THỂ NHIỀU TẾ BÀO -->
@@ -1517,9 +1514,79 @@
     window.addEventListener('load', reportHeight);
     window.addEventListener('resize', reportHeight);
 
+    
+    const stageGoals = {
+      0: 'Theo dõi sự gia tăng số lượng tế bào từ hợp tử ban đầu và vai trò của việc tái bản DNA trước phân bào.',
+      1: 'Phân tích 3 ý nghĩa trọng tâm của tái bản DNA: Sinh trưởng, Phát triển và Di truyền.',
+      2: 'Khám phá nguyên lí kỹ thuật PCR và các ứng dụng đa dạng trong y học, nông nghiệp, pháp y.',
+      3: 'Hệ thống hóa toàn bộ các ghi nhớ cốt lõi của Bài 1 và sẵn sàng kết nối sang Bài 2.'
+    };
+
+    function launchConfetti() {
+      const canvas = document.createElement('canvas');
+      canvas.id = 'confettiCanvas';
+      canvas.style.position = 'fixed';
+      canvas.style.inset = '0';
+      canvas.style.width = '100vw';
+      canvas.style.height = '100vh';
+      canvas.style.pointerEvents = 'none';
+      canvas.style.zIndex = '9998';
+      document.body.appendChild(canvas);
+
+      const ctx = canvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      ctx.scale(dpr, dpr);
+
+      const colors = ['#3CA57A', '#2D8B6F', '#E8A24A', '#CE8A33', '#4E7F92', '#8B5CF6'];
+      const particles = Array.from({ length: 90 }, () => ({
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2,
+        vx: (Math.random() - 0.5) * 12,
+        vy: (Math.random() - 0.7) * 14,
+        size: Math.random() * 8 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        alpha: 1,
+        decay: Math.random() * 0.015 + 0.008
+      }));
+
+      function animate() {
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+        let alive = false;
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.25;
+          p.alpha -= p.decay;
+          if (p.alpha > 0) {
+            alive = true;
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = Math.max(0, p.alpha);
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size / 2, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        });
+        if (alive) {
+          requestAnimationFrame(animate);
+        } else {
+          ctx.globalAlpha = 1;
+          canvas.remove();
+        }
+      }
+      animate();
+    }
+
     // Chuyển bước (Tự do, không khóa cứng)
     function goToStep(stepIndex) {
       lmsState.currentStep = stepIndex;
+
+      // Cập nhật mục tiêu động
+      const goalEl = document.getElementById('goalText');
+      if (goalEl && stageGoals[stepIndex]) {
+        goalEl.textContent = stageGoals[stepIndex];
+      }
 
       for (let i = 0; i <= 3; i++) {
         const tab = document.getElementById('tabStep' + i);
@@ -1696,12 +1763,15 @@
       }
 
       const modal = document.getElementById('completionModal');
-      if (modal) modal.classList.add('show');
+      if (modal) {
+        modal.classList.remove('hidden');
+        launchConfetti();
+      }
     }
 
     function closeCompletionModal() {
       const modal = document.getElementById('completionModal');
-      if (modal) modal.classList.remove('show');
+      if (modal) modal.classList.add('hidden');
     }
   </script>
 </body>

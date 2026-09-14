@@ -120,116 +120,188 @@
       padding: 16px clamp(12px, 2.4vw, 24px) 24px;
     }
 
-    /* Header bài học */
+    
+    /* =========================================================
+       CHUẨN V10: HEADER GRADIENT PHẲNG & MỤC TIÊU ĐỘNG
+       ========================================================= */
     .module-header {
-      background: var(--cream-2);
-      border: 1px solid var(--paper-line);
+      width: 100%;
       border-radius: var(--radius-lg);
-      padding: 16px 20px;
-      margin-bottom: 20px;
+      padding: 1.6rem 2rem;
+      background: linear-gradient(135deg, var(--jade-dark), #1c523d);
+      color: #fff;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.2rem;
+      position: relative;
     }
-    .header-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 8px;
-    }
-    .badge-pill {
+    .header-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: var(--jade-pale);
-      color: var(--jade-text);
-      font-size: 0.8rem;
-      font-weight: 700;
+      background: rgba(255, 255, 255, 0.15);
+      color: #A9D0BE;
       padding: 4px 12px;
       border-radius: 99px;
-      border: 1px solid var(--jade-soft);
-      text-transform: uppercase;
+      font-size: 0.8rem;
+      font-weight: 700;
       letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
-    .module-code {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--ink-3);
-    }
-    .module-title {
-      margin: 0 0 6px 0;
-      font-size: clamp(1.3rem, 2.8vw, 1.8rem);
+    .module-header h1 {
+      margin: 0 0 10px 0;
+      font-size: clamp(1.4rem, 2.5vw, 1.85rem);
       font-weight: 800;
-      color: var(--ink);
-      line-height: 1.3;
+      color: #fff;
+      line-height: 1.25;
     }
-    .module-desc {
-      margin: 0;
-      font-size: 0.95rem;
-      color: var(--ink-2);
+    .header-goal {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 8px;
+      padding: 8px 14px;
+      margin-top: 4px;
     }
-
-    /* Stepper tiến trình */
-    .stepper-nav {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-    .step-item {
+    .header-goal .goal-label {
+      color: #A9D0BE;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
       display: flex;
       align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+    .header-goal .goal-divider {
+      width: 1px;
+      height: 14px;
+      background: rgba(255, 255, 255, 0.3);
+    }
+    .header-goal .goal-text {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.4;
+    }
+
+    /* =========================================================
+       CHUẨN V10: STICKY NAV TOP 0 CUỘN NGANG MOBILE
+       ========================================================= */
+    .progress-nav-container {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--cream);
+      padding: 8px 0;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--paper-line);
+      box-shadow: 0 2px 8px rgba(26, 26, 26, 0.04);
+    }
+    .progress-nav {
+      display: flex;
       gap: 8px;
-      padding: 10px 12px;
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      padding: 2px 4px;
+    }
+    .progress-nav::-webkit-scrollbar { display: none; }
+    .step-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 99px;
+      border: 1.5px solid var(--paper-line-2);
       background: var(--cream-2);
-      border: 1px solid var(--paper-line);
-      border-radius: var(--radius);
-      color: var(--ink-3);
+      color: var(--ink-2);
       font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
-      user-select: none;
+      flex-shrink: 0;
     }
-    .step-item:hover:not(.active) {
+    .step-tab:hover:not(.active) {
       border-color: var(--jade-soft);
       background: #FAF7F0;
     }
-    .step-item.active {
-      background: #FFFFFF;
+    .step-tab.active {
+      background: var(--jade-dark);
       border-color: var(--jade);
-      color: var(--jade-text);
-      box-shadow: 0 2px 8px rgba(60, 165, 122, 0.15);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(20, 67, 47, 0.25);
     }
-    .step-item.completed {
+    .step-tab.active .step-num {
+      background: var(--jade);
+      color: #fff;
+    }
+    .step-tab.completed {
       border-color: var(--jade-soft);
-      color: var(--ink-2);
+      color: var(--jade-text);
     }
-    .step-num {
-      width: 26px;
-      height: 26px;
+    .step-tab.completed::after {
+      content: '✓';
+      font-weight: 800;
+      margin-left: 2px;
+      color: var(--jade);
+    }
+
+    /* =========================================================
+       CHUẨN V10: MODAL CHÚC MỪNG HOÀN THÀNH & CONFETTI
+       ========================================================= */
+    .congrats-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 67, 47, 0.45);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 1rem;
+    }
+    .congrats-modal {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2.2rem 2rem;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      border: 1px solid var(--paper-line);
+      box-shadow: 0 16px 40px rgba(26,26,26,0.15);
+      animation: modalPopIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .congrats-icon {
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
-      background: var(--paper-line);
-      color: var(--ink-2);
+      background: var(--accent-pale);
+      color: var(--accent-deep);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.75rem;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+    .congrats-modal h2 {
+      margin: 0 0 10px 0;
+      font-size: 1.35rem;
       font-weight: 800;
-      flex-shrink: 0;
-      transition: all 0.2s ease;
+      color: var(--ink);
     }
-    .step-item.active .step-num {
-      background: var(--jade);
-      color: #FFFFFF;
+    .congrats-modal p {
+      margin: 0 0 20px 0;
+      font-size: 0.95rem;
+      color: var(--ink-2);
+      line-height: 1.6;
     }
-    .step-item.completed .step-num {
-      background: var(--jade-pale);
-      color: var(--jade-text);
-    }
-    .step-title {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    @keyframes modalPopIn {
+      from { transform: scale(0.85); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
 
     /* Khung Stage Content */
@@ -957,34 +1029,38 @@
 <body>
 
   <div class="app">
-    <!-- Header thông tin bài học -->
+    <!-- Header thông tin bài học (V10 Standard) -->
     <header class="module-header">
-      <div class="header-top">
-        <span class="badge-pill"><i class="ti ti-dna-2"></i> Sinh học 12 · Bài 1</span>
+      <div class="header-badge"><i class="ti ti-dna"></i> SINH HỌC 12 · BÀI 1 · MODULE 01</div>
+      <h1>Chức năng của DNA</h1>
+      <div class="header-goal" id="headerGoal">
+        <span class="goal-label"><i class="ti ti-target"></i> MỤC TIÊU</span>
+        <span class="goal-divider"></span>
+        <span class="goal-text" id="goalText">Khám phá ý nghĩa của việc phân tích DNA trong các mẫu sinh học đối với việc nhận diện cá thể.</span>
       </div>
-      <h1 class="module-title">Chức năng của DNA</h1>
-      <p class="module-desc">Tìm hiểu cấu trúc xoắn kép, nguyên tắc bổ sung và vai trò mang, bảo quản, truyền đạt thông tin di truyền của phân tử DNA.</p>
     </header>
 
-    <!-- Stepper 4 bước -->
-    <nav class="stepper-nav" aria-label="Tiến trình học tập">
-      <div class="step-item active" id="stepTab-0" onclick="goToStage(0)">
-        <span class="step-num">01</span>
-        <span class="step-title">Đặt vấn đề (DNA)</span>
-      </div>
-      <div class="step-item" id="stepTab-1" onclick="goToStage(1)">
-        <span class="step-num">02</span>
-        <span class="step-title">Mô hình DNA</span>
-      </div>
-      <div class="step-item" id="stepTab-2" onclick="goToStage(2)">
-        <span class="step-num">03</span>
-        <span class="step-title">Cặp base & Liên kết H</span>
-      </div>
-      <div class="step-item" id="stepTab-3" onclick="goToStage(3)">
-        <span class="step-num">04</span>
-        <span class="step-title">Ghi nhớ & Kết nối</span>
-      </div>
-    </nav>
+    <!-- Thanh tiến trình Sticky Top 0 (V10 Standard) -->
+    <div class="progress-nav-container">
+      <nav class="progress-nav" aria-label="Tiến trình học tập">
+        <button type="button" class="step-tab active" id="stepTab-0" onclick="goToStage(0)">
+          <span class="step-num">1</span>
+          <span>Đặt vấn đề</span>
+        </button>
+        <button type="button" class="step-tab" id="stepTab-1" onclick="goToStage(1)">
+          <span class="step-num">2</span>
+          <span>Mô hình DNA</span>
+        </button>
+        <button type="button" class="step-tab" id="stepTab-2" onclick="goToStage(2)">
+          <span class="step-num">3</span>
+          <span>Cặp base A–T, G–C</span>
+        </button>
+        <button type="button" class="step-tab" id="stepTab-3" onclick="goToStage(3)">
+          <span class="step-num">4</span>
+          <span>Ghi nhớ & Kết nối</span>
+        </button>
+      </nav>
+    </div>
 
     <!-- ST00: DNA có thể cho chúng ta biết điều gì? -->
     <section class="stage-section" id="stage-0">
@@ -1375,15 +1451,15 @@
     </section>
   </div>
 
-  <!-- Modal Chúc mừng Hoàn thành -->
-  <div class="modal-backdrop hidden" id="completionModal" role="dialog" aria-modal="true">
-    <div class="modal-box">
-      <div class="modal-icon"><i class="ti ti-trophy"></i></div>
-      <h3 class="modal-title">Hoàn thành bài học!</h3>
-      <p class="modal-desc">Bạn đã xuất sắc hoàn thành bài học <strong>Chức năng của DNA</strong>, nắm vững cấu trúc xoắn kép và nguyên tắc bổ sung A–T, G–C.</p>
-      <div style="display:flex; gap:10px; justify-content:center;">
-        <button type="button" class="btn btn-secondary" onclick="closeCompletionModal()">Xem lại bài</button>
-        <button type="button" class="btn btn-primary" onclick="closeCompletionModal()">Đóng thông báo</button>
+  <!-- Modal Chúc mừng Hoàn thành (V10 Standard) -->
+  <div class="congrats-overlay hidden" id="completionModal" role="dialog" aria-modal="true">
+    <div class="congrats-modal">
+      <div class="congrats-icon"><i class="ti ti-trophy"></i></div>
+      <h2>Chúc mừng bạn đã hoàn thành!</h2>
+      <p>Bạn đã xuất sắc hoàn thành tất cả 4 màn học thuộc Module: <strong>Chức năng của DNA</strong>.</p>
+      <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+        <button type="button" class="btn btn-secondary" onclick="closeCompletionModal()"><i class="ti ti-refresh"></i> Xem lại bài</button>
+        <button type="button" class="btn btn-primary" onclick="closeCompletionModal()"><i class="ti ti-check"></i> Đóng thông báo</button>
       </div>
     </div>
   </div>
@@ -1438,9 +1514,79 @@
       } catch (e) {}
     }
 
+    
+    const stageGoals = {
+      0: 'Khám phá ý nghĩa của việc phân tích DNA trong các mẫu sinh học đối với việc nhận diện cá thể.',
+      1: 'Phân tích mối liên hệ giữa cấu trúc đa phân, xoắn kép và nguyên tắc bổ sung với các chức năng của DNA.',
+      2: 'Tìm hiểu cơ chế kết cặp đặc hiệu giữa A–T (2 liên kết H) và G–C (3 liên kết H).',
+      3: 'Hệ thống hóa các ghi nhớ cốt lõi về chức năng của DNA và chuẩn bị kết nối sang cơ chế tái bản.'
+    };
+
+    function launchConfetti() {
+      const canvas = document.createElement('canvas');
+      canvas.id = 'confettiCanvas';
+      canvas.style.position = 'fixed';
+      canvas.style.inset = '0';
+      canvas.style.width = '100vw';
+      canvas.style.height = '100vh';
+      canvas.style.pointerEvents = 'none';
+      canvas.style.zIndex = '9998';
+      document.body.appendChild(canvas);
+
+      const ctx = canvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      ctx.scale(dpr, dpr);
+
+      const colors = ['#3CA57A', '#2D8B6F', '#E8A24A', '#CE8A33', '#4E7F92', '#8B5CF6'];
+      const particles = Array.from({ length: 90 }, () => ({
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2,
+        vx: (Math.random() - 0.5) * 12,
+        vy: (Math.random() - 0.7) * 14,
+        size: Math.random() * 8 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        alpha: 1,
+        decay: Math.random() * 0.015 + 0.008
+      }));
+
+      function animate() {
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+        let alive = false;
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.25;
+          p.alpha -= p.decay;
+          if (p.alpha > 0) {
+            alive = true;
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = Math.max(0, p.alpha);
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size / 2, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        });
+        if (alive) {
+          requestAnimationFrame(animate);
+        } else {
+          ctx.globalAlpha = 1;
+          canvas.remove();
+        }
+      }
+      animate();
+    }
+
     /* Chuyển Stage */
     function goToStage(stageIdx) {
       if (stageIdx < 0 || stageIdx > 3) return;
+
+      // Cập nhật mục tiêu động
+      const goalEl = document.getElementById('goalText');
+      if (goalEl && stageGoals[stageIdx]) {
+        goalEl.textContent = stageGoals[stageIdx];
+      }
 
       // Cập nhật tab stepper
       for (let i = 0; i < 4; i++) {
@@ -1662,7 +1808,10 @@
 
       // Bật modal chúc mừng
       const modal = document.getElementById('completionModal');
-      if (modal) modal.classList.remove('hidden');
+      if (modal) {
+        modal.classList.remove('hidden');
+        launchConfetti();
+      }
 
       // Bật dải thông báo hoàn thành
       const alertBox = document.getElementById('st03CompletedAlert');

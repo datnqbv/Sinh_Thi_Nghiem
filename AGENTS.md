@@ -22,7 +22,7 @@ Không được bỏ qua hai file rule vì thay đổi nhỏ. Nếu kịch bản
 - `experiments/Lop_10/<MA_THI_NGHIEM>/`: thí nghiệm lớp 10.
 - `experiments/Lop_11/<MA_THI_NGHIEM>/`: thí nghiệm lớp 11.
 - `experiments/Lop_12/<MA_THI_NGHIEM>/`: thí nghiệm lớp 12 trong tương lai.
-- `shells/`: trang mẹ nhúng bài học từ `modules/` và thí nghiệm từ `experiments/`.
+- `shells/`: trang mẹ lưu trữ (dự án hiện tập trung phát triển trực tiếp các module tự chứa độc lập).
 - Mỗi bài học hoặc thí nghiệm chứa HTML, các file kịch bản giữ nguyên tên gốc và thư mục `images/`.
 
 Không đặt bài học, thí nghiệm hoặc ảnh mới trực tiếp ở thư mục gốc.

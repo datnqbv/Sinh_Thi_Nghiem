@@ -114,114 +114,138 @@
       padding: 16px clamp(12px, 2.4vw, 24px) 24px;
     }
 
-    /* Header bài học */
-    .module-header {
-      background: var(--cream-2);
-      border: 1px solid var(--paper-line);
+    /* HEADER BANNER - FLAT GRADIENT WITH INTEGRATED GOAL (V10 STANDARD) */
+    header {
+      width: 100%;
       border-radius: var(--radius-lg);
-      padding: 16px 20px;
-      margin-bottom: 20px;
+      padding: 1.6rem 2rem;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(135deg, var(--jade-dark), var(--jade-deep));
+      box-shadow: var(--shadow-sm);
+      color: #fff;
+      margin-bottom: 16px;
     }
-    .header-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 8px;
-    }
-    .badge-pill {
+    .header-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: var(--jade-pale);
-      color: var(--jade-text);
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 99px;
-      border: 1px solid var(--jade-soft);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .module-title {
-      margin: 0 0 6px 0;
-      font-size: clamp(1.3rem, 2.8vw, 1.8rem);
-      font-weight: 800;
-      color: var(--ink);
-      line-height: 1.3;
-    }
-    .module-desc {
-      margin: 0;
-      font-size: 0.95rem;
-      color: var(--ink-2);
-    }
-
-    /* Stepper tiến trình */
-    .stepper-nav {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-    .step-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 12px;
-      background: var(--cream-2);
-      border: 1px solid var(--paper-line);
-      border-radius: var(--radius);
-      color: var(--ink-3);
-      font-size: 0.85rem;
+      color: var(--sage-pale);
       font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      user-select: none;
+      font-size: 0.88rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
     }
-    .step-item:hover:not(.active) {
-      border-color: var(--jade-soft);
-      background: #FAF7F0;
+    header h1 {
+      margin: 0;
+      color: #fff;
+      font-size: clamp(1.4rem, 3.2vw, 2rem);
+      font-weight: 800;
+      line-height: 1.25;
     }
-    .step-item.active {
-      background: #FFFFFF;
-      border-color: var(--jade);
-      color: var(--jade-text);
-      box-shadow: 0 2px 8px rgba(60, 165, 122, 0.15);
-    }
-    .step-item.completed {
-      border-color: var(--jade-soft);
-      color: var(--ink-2);
-    }
-    .step-num {
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: var(--paper-line);
-      color: var(--ink-2);
+    .header-goal {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      font-weight: 800;
+      gap: 10px;
+      margin-top: 10px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: var(--radius-sm);
+      padding: 8px 14px;
+    }
+    .header-goal .goal-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
       flex-shrink: 0;
-      transition: all 0.2s ease;
-    }
-    .step-item.active .step-num {
-      background: var(--jade);
-      color: #FFFFFF;
-    }
-    .step-item.completed .step-num {
-      background: var(--jade-pale);
-      color: var(--jade-text);
-    }
-    .step-title {
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fff;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    }
+    .header-goal .goal-divider {
+      flex-shrink: 0;
+      width: 1px;
+      height: 14px;
+      background: rgba(255, 255, 255, 0.4);
+    }
+    .header-goal .goal-text {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.95);
     }
 
-    /* Khung Stage */
+    /* PROGRESS STAGE TABS (STICKY TOP 0 - V10 STANDARD) */
+    .progress-nav {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--cream);
+      padding: 10px 0;
+      box-shadow: 0 4px 12px rgba(26, 26, 26, 0.06);
+      margin-bottom: 20px;
+    }
+    .stage-tab {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 14px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--paper-line-2);
+      background: var(--cream-2);
+      color: var(--ink-2);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      text-align: center;
+    }
+    .stage-tab:hover:not(:disabled) {
+      border-color: var(--sage);
+      background: var(--cream-3);
+    }
+    .stage-tab.current, .stage-tab.active {
+      background: var(--jade) !important;
+      border-color: var(--jade) !important;
+      color: #fff !important;
+      box-shadow: 0 3px 10px rgba(60, 165, 122, 0.25);
+    }
+    .stage-tab.done, .stage-tab.completed {
+      background: var(--jade-pale);
+      border-color: var(--sage);
+      color: var(--jade-text);
+    }
+    .stage-tab:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+    @media (max-width: 900px) {
+      .progress-nav {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        gap: 8px !important;
+        padding: 6px 4px !important;
+        scrollbar-width: none;
+      }
+      .progress-nav::-webkit-scrollbar { display: none; }
+      .stage-tab {
+        flex: 0 0 auto !important;
+        white-space: nowrap !important;
+        padding: 10px 14px !important;
+        font-size: 0.86rem !important;
+      }
+    }
+/* Khung Stage */
     .stage-section {
       background: #FFFFFF;
       border: 1px solid var(--paper-line);
@@ -1186,58 +1210,54 @@
       box-shadow: 0 6px 16px rgba(20, 67, 47, 0.3);
     }
 
-    /* Modal hoàn thành */
-    .modal-backdrop {
+    /* CONGRATS MODAL (V10 STANDARD) */
+    .congrats-overlay {
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(26, 26, 26, 0.6);
+      inset: 0;
+      background: rgba(20, 67, 47, 0.65);
       backdrop-filter: blur(4px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      padding: 16px;
-      animation: fadeIn 0.25s ease;
+      display: grid;
+      place-items: center;
+      z-index: 9999;
+      padding: 20px;
     }
-    .modal-box {
-      background: #FFFFFF;
-      border: 1px solid var(--paper-line);
-      border-radius: var(--radius-lg);
+    .congrats-modal {
+      background: #fff;
+      border-radius: 16px;
       padding: 28px 24px;
       max-width: 480px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2);
-      animation: zoomIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+      animation: modalPop 0.3s ease;
     }
-    .modal-icon {
+    @keyframes modalPop {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .congrats-icon {
       width: 64px;
       height: 64px;
+      margin: 0 auto 16px;
       border-radius: 50%;
       background: var(--jade-pale);
-      color: var(--jade);
+      color: var(--jade-text);
+      display: grid;
+      place-items: center;
       font-size: 2.2rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
     }
-    .modal-title {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--ink);
+    .congrats-modal h2 {
       margin: 0 0 10px 0;
+      font-size: 1.4rem;
+      color: var(--ink);
+      font-weight: 800;
     }
-    .modal-desc {
-      font-size: 0.98rem;
-      color: var(--ink-2);
+    .congrats-modal p {
       margin: 0 0 20px 0;
+      font-size: 0.96rem;
+      color: var(--ink-2);
       line-height: 1.6;
     }
-
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes zoomIn { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
 
     @media (max-width: 860px) {
       .stepper-nav { grid-template-columns: repeat(2, 1fr); }
@@ -1256,33 +1276,31 @@
 <body>
 
   <div class="app">
-    <!-- Header thông tin bài học -->
-    <header class="module-header">
-      <div class="header-top">
-        <span class="badge-pill"><i class="ti ti-leaf"></i> Sinh học 11 · Bài 1</span>
+    <!-- Header thông tin bài học (V10 Standard) -->
+    <header>
+      <div class="header-badge"><i class="ti ti-leaf"></i> Sinh học 11 · Bài 1 · Module 02</div>
+      <h1>Dấu hiệu đặc trưng của trao đổi chất và chuyển hoá năng lượng</h1>
+      <div class="header-goal">
+        <span class="goal-label"><i class="ti ti-target"></i> Mục tiêu</span>
+        <span class="goal-divider"></span>
+        <span class="goal-text" id="goalText">Khám phá các biểu hiện trao đổi chất diễn ra bên ngoài cơ thể qua hình ảnh người và cây.</span>
       </div>
-      <h1 class="module-title">Dấu hiệu đặc trưng của trao đổi chất và chuyển hoá năng lượng</h1>
-      <p class="module-desc">Khám phá bốn dấu hiệu đặc trưng diễn ra từ khi sinh vật tiếp nhận, vận chuyển, biến đổi chất cho đến khi thải chất và điều hoà hoạt động sống.</p>
     </header>
 
-    <!-- Stepper 4 bước -->
-    <nav class="stepper-nav" aria-label="Tiến trình học tập">
-      <div class="step-item active" id="stepTab-0" onclick="goToStage(0)">
-        <span class="step-num">01</span>
-        <span class="step-title">Nhận biết biểu hiện</span>
-      </div>
-      <div class="step-item" id="stepTab-1" onclick="goToStage(1)">
-        <span class="step-num">02</span>
-        <span class="step-title">Tiếp nhận & Biến đổi</span>
-      </div>
-      <div class="step-item" id="stepTab-2" onclick="goToStage(2)">
-        <span class="step-num">03</span>
-        <span class="step-title">Thải chất & Điều hoà</span>
-      </div>
-      <div class="step-item" id="stepTab-3" onclick="goToStage(3)">
-        <span class="step-num">04</span>
-        <span class="step-title">Ghi nhớ & Kết nối</span>
-      </div>
+    <!-- Progress Nav Sticky Top 0 (V10 Standard) -->
+    <nav class="progress-nav" aria-label="Tiến trình học tập">
+      <button type="button" class="stage-tab current" id="stepTab-0" onclick="goToStage(0)">
+        <i class="ti ti-eye"></i> S01. Nhận biết biểu hiện
+      </button>
+      <button type="button" class="stage-tab" id="stepTab-1" onclick="goToStage(1)">
+        <i class="ti ti-arrows-exchange"></i> S02. Tiếp nhận & Biến đổi
+      </button>
+      <button type="button" class="stage-tab" id="stepTab-2" onclick="goToStage(2)">
+        <i class="ti ti-recycle"></i> S03. Thải chất & Điều hoà
+      </button>
+      <button type="button" class="stage-tab" id="stepTab-3" onclick="goToStage(3)">
+        <i class="ti ti-bookmark-check"></i> S04. Ghi nhớ & Kết nối
+      </button>
     </nav>
 
     <!-- ST00: Nhận biết biểu hiện trao đổi chất (Hook) -->
@@ -1316,7 +1334,7 @@
             </button>
           </div>
           <div class="hotspot-caption-box" id="captionST00-1">
-            <span><i class="ti ti-hand-click"></i> Nhấn vào điểm số 1 hoặc 2 trên hình để xem hoạt động.</span>
+            <span><i class="ti ti-info-circle"></i> Chạm vào điểm trên hình người để xem hoạt động.</span>
           </div>
         </div>
 
@@ -1339,7 +1357,7 @@
             </button>
           </div>
           <div class="hotspot-caption-box" id="captionST00-2">
-            <span><i class="ti ti-hand-click"></i> Nhấn vào điểm số 3 hoặc 4 trên hình để xem hoạt động.</span>
+            <span><i class="ti ti-info-circle"></i> Chạm vào điểm trên hình cây để xem hoạt động.</span>
           </div>
         </div>
       </div>
@@ -1497,7 +1515,7 @@
       <!-- Panel chú thích vị trí đã chọn trên sơ đồ -->
       <div class="st01-info-panel" id="st01InfoPanel">
         <div class="st01-info-icon"><i class="ti ti-info-circle"></i></div>
-        <p class="st01-info-text" id="st01InfoText">Nhấn vào từng vị trí số (1, 2, 3, 4) trên sơ đồ để xem chi tiết cách các chất được tiếp nhận và vận chuyển.</p>
+        <p class="st01-info-text" id="st01InfoText">Chạm vào một vị trí trên sơ đồ để xem chi tiết cách các chất được tiếp nhận và vận chuyển.</p>
       </div>
 
       <!-- Lời giảng chuyển tiếp khi xem đủ 4 vị trí -->
@@ -1723,15 +1741,15 @@
     </section>
   </div>
 
-  <!-- Modal Chúc mừng Hoàn thành -->
-  <div class="modal-backdrop hidden" id="completionModal" role="dialog" aria-modal="true">
-    <div class="modal-box">
-      <div class="modal-icon"><i class="ti ti-trophy"></i></div>
-      <h3 class="modal-title">Hoàn thành bài học!</h3>
-      <p class="modal-desc">Bạn đã xuất sắc hoàn thành bài học <strong>Dấu hiệu đặc trưng của trao đổi chất và chuyển hoá năng lượng</strong>, nắm vững 4 dấu hiệu cốt lõi ở sinh vật.</p>
-      <div style="display:flex; gap:10px; justify-content:center;">
-        <button type="button" class="btn btn-secondary" onclick="closeCompletionModal()">Xem lại bài</button>
-        <button type="button" class="btn btn-primary" onclick="closeCompletionModal()">Đóng thông báo</button>
+  <!-- Modal Chúc mừng Hoàn thành (V10 Standard) -->
+  <div class="congrats-overlay hidden" id="completionModal" role="dialog" aria-modal="true">
+    <div class="congrats-modal">
+      <div class="congrats-icon"><i class="ti ti-trophy"></i></div>
+      <h2>Chúc mừng bạn đã hoàn thành!</h2>
+      <p>Bạn đã xuất sắc hoàn thành tất cả 4 màn học thuộc Module: <strong>Dấu hiệu đặc trưng của trao đổi chất và chuyển hoá năng lượng</strong>.</p>
+      <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+        <button type="button" class="btn btn-secondary" onclick="closeCompletionModal()"><i class="ti ti-refresh"></i> Xem lại bài</button>
+        <button type="button" class="btn btn-primary" onclick="closeCompletionModal()"><i class="ti ti-check"></i> Đóng thông báo</button>
       </div>
     </div>
   </div>
@@ -1788,6 +1806,69 @@
     }
 
     /* Chuyển Stage */
+    
+    const stageGoals = {
+      0: 'Khám phá các biểu hiện trao đổi chất diễn ra bên ngoài cơ thể qua hình ảnh người và cây.',
+      1: 'Khám phá dấu hiệu 1 (Tiếp nhận & vận chuyển) và dấu hiệu 2 (Biến đổi chất & chuyển hoá năng lượng).',
+      2: 'Khám phá dấu hiệu 3 (Thải chất ra môi trường) và dấu hiệu 4 (Cơ thể điều hoà trao đổi chất).',
+      3: 'Hệ thống hóa 4 dấu hiệu đặc trưng cốt lõi và liên hệ gợi mở sang Module 03.'
+    };
+
+    function launchConfetti() {
+      const canvas = document.createElement('canvas');
+      canvas.id = 'confettiCanvas';
+      canvas.style.position = 'fixed';
+      canvas.style.inset = '0';
+      canvas.style.width = '100vw';
+      canvas.style.height = '100vh';
+      canvas.style.pointerEvents = 'none';
+      canvas.style.zIndex = '9998';
+      document.body.appendChild(canvas);
+      const cctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const particles = [];
+      const colors = ['#3CA57A', '#2D8B6F', '#E8A24A', '#4E7F92', '#C15F3C'];
+      for (let i = 0; i < 120; i++) {
+        particles.push({
+          x: canvas.width / 2,
+          y: canvas.height / 2,
+          vx: (Math.random() - 0.5) * 18,
+          vy: (Math.random() - 0.7) * 18,
+          size: Math.random() * 8 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          rSpeed: (Math.random() - 0.5) * 10,
+          life: 1,
+          decay: Math.random() * 0.015 + 0.008
+        });
+      }
+      function animate() {
+        cctx.clearRect(0, 0, canvas.width, canvas.height);
+        let active = false;
+        particles.forEach(p => {
+          if (p.life > 0) {
+            active = true;
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += 0.3;
+            p.life -= p.decay;
+            p.rotation += p.rSpeed;
+            cctx.save();
+            cctx.translate(p.x, p.y);
+            cctx.rotate((p.rotation * Math.PI) / 180);
+            cctx.globalAlpha = Math.max(0, p.life);
+            cctx.fillStyle = p.color;
+            cctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+            cctx.restore();
+          }
+        });
+        if (active) requestAnimationFrame(animate);
+        else canvas.remove();
+      }
+      animate();
+    }
+
     function goToStage(stageIdx) {
       if (stageIdx < 0 || stageIdx > 3) return;
 
@@ -1803,8 +1884,15 @@
 
       const activeTab = document.getElementById('stepTab-' + stageIdx);
       const activeSection = document.getElementById('stage-' + stageIdx);
-      if (activeTab) activeTab.classList.add('active');
+      if (activeTab) {
+        activeTab.classList.add('active', 'current');
+      }
       if (activeSection) activeSection.classList.remove('hidden');
+
+      const goalTextEl = document.getElementById('goalText');
+      if (goalTextEl && stageGoals[stageIdx]) {
+        goalTextEl.textContent = stageGoals[stageIdx];
+      }
 
       lmsState.currentStage = stageIdx;
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -2288,7 +2376,7 @@
       lmsState.M02_complete = true;
 
       const modal = document.getElementById('completionModal');
-      if (modal) modal.classList.remove('hidden');
+      if (modal) { modal.classList.remove('hidden'); launchConfetti(); }
 
       const alertBox = document.getElementById('st03CompletedAlert');
       if (alertBox) alertBox.classList.remove('hidden');

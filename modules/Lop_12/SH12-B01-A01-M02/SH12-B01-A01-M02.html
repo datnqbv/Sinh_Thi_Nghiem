@@ -768,16 +768,14 @@
 
   <div class="app-container">
     
-    <!-- 1. Header -->
+    <!-- 1. Header (V10 Standard) -->
     <header class="module-header">
-      <div class="header-top">
-        <span class="module-badge"><i class="ti ti-dna-2"></i> Sinh học 12 · Bài 1 · Module 02</span>
-        <span class="duration-badge"><i class="ti ti-clock"></i> Thời lượng: 15–20 phút</span>
-      </div>
-      <h1 class="module-title">Cơ chế tái bản DNA</h1>
-      <div class="module-outcome">
-        <i class="ti ti-target" style="color:var(--jade-deep); font-size:1.2rem; margin-top:2px;"></i>
-        <span><strong>Yêu cầu cần đạt:</strong> Phân tích được cơ chế tái bản của DNA là quá trình tự sao thông tin di truyền từ tế bào mẹ sang tế bào con hay từ thế hệ này sang thế hệ sau.</span>
+      <div class="header-badge"><i class="ti ti-dna-2"></i> SINH HỌC 12 · BÀI 1 · MODULE 02</div>
+      <h1>Cơ chế tái bản DNA</h1>
+      <div class="header-goal" id="headerGoal">
+        <span class="goal-label"><i class="ti ti-target"></i> MỤC TIÊU</span>
+        <span class="goal-divider"></span>
+        <span class="goal-text" id="goalText">Phân tích cơ chế tái bản DNA là quá trình tự sao thông tin di truyền chính xác qua các thế hệ tế bào.</span>
       </div>
     </header>
 
@@ -1908,9 +1906,85 @@
     window.addEventListener('load', reportHeight);
     window.addEventListener('resize', reportHeight);
 
+    
+    const stageGoals = {
+      0: 'Đặt vấn đề: Vì sao DNA phải được tái bản trước mỗi lần tế bào phân chia.',
+      1: 'Quan sát toàn cảnh bộ máy tái bản và sự phối hợp nhịp nhàng quanh chạc chữ Y.',
+      2: 'Tìm hiểu điểm khởi đầu tái bản Ori và sự hình thành hai chạc tái bản hai hướng.',
+      3: 'Khám phá vai trò của đoạn mồi RNA và chiều kéo dài bắt buộc 5′ → 3′ của DNA polymerase.',
+      4: 'So sánh cơ chế tổng hợp liên tục ở mạch dẫn đầu và gián đoạn (đoạn Okazaki) ở mạch theo sau.',
+      5: 'Tìm hiểu quá trình loại bỏ mồi RNA, thay thế bằng DNA và enzyme Ligase nối các đoạn Okazaki.',
+      6: 'Tổng hợp sự phối hợp đồng thời của các enzyme và thành phần trong bộ máy tái bản.',
+      7: 'Phân tích nguyên tắc bán bảo toàn: Mỗi phân tử DNA con mang một mạch cũ và một mạch mới.',
+      8: 'So sánh đặc điểm điểm khởi đầu Ori ở DNA vòng vi khuẩn và nhiễm sắc thể nhân thực.',
+      9: 'Hệ thống hóa toàn bộ kiến thức cốt lõi và kết nối sang ý nghĩa, ứng dụng ở Module 03.'
+    };
+
+    function launchConfetti() {
+      const canvas = document.createElement('canvas');
+      canvas.id = 'confettiCanvas';
+      canvas.style.position = 'fixed';
+      canvas.style.inset = '0';
+      canvas.style.width = '100vw';
+      canvas.style.height = '100vh';
+      canvas.style.pointerEvents = 'none';
+      canvas.style.zIndex = '9998';
+      document.body.appendChild(canvas);
+
+      const ctx = canvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      ctx.scale(dpr, dpr);
+
+      const colors = ['#3CA57A', '#2D8B6F', '#E8A24A', '#CE8A33', '#4E7F92', '#8B5CF6'];
+      const particles = Array.from({ length: 90 }, () => ({
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2,
+        vx: (Math.random() - 0.5) * 12,
+        vy: (Math.random() - 0.7) * 14,
+        size: Math.random() * 8 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        alpha: 1,
+        decay: Math.random() * 0.015 + 0.008
+      }));
+
+      function animate() {
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+        let alive = false;
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.25;
+          p.alpha -= p.decay;
+          if (p.alpha > 0) {
+            alive = true;
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = Math.max(0, p.alpha);
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size / 2, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        });
+        if (alive) {
+          requestAnimationFrame(animate);
+        } else {
+          ctx.globalAlpha = 1;
+          canvas.remove();
+        }
+      }
+      animate();
+    }
+
     // Chuyển bước (Tự do, không khóa cứng)
     function goToStep(stepIndex) {
       lmsState.currentStep = stepIndex;
+
+      // Cập nhật mục tiêu động
+      const goalEl = document.getElementById('goalText');
+      if (goalEl && stageGoals[stepIndex]) {
+        goalEl.textContent = stageGoals[stepIndex];
+      }
 
       for (let i = 0; i <= 9; i++) {
         const tab = document.getElementById('tabStep' + i);
@@ -2065,12 +2139,15 @@
       }
 
       const modal = document.getElementById('completionModal');
-      if (modal) modal.classList.add('show');
+      if (modal) {
+        modal.classList.remove('hidden');
+        launchConfetti();
+      }
     }
 
     function closeCompletionModal() {
       const modal = document.getElementById('completionModal');
-      if (modal) modal.classList.remove('show');
+      if (modal) modal.classList.add('hidden');
     }
   </script>
 </body>
