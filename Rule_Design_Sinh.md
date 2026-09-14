@@ -319,8 +319,11 @@ function setAsset(key) {
 function launchConfetti() { ... }
 ```
 
-**Responsive Mobile (≤900px) — Thanh Stage Nav / Module Nav Chỉ 1 Hàng Nút Cuộn Ngang (BẮT BUỘC):**
-Trên giao diện di động, thanh điều hướng Module / Stage (`.moduleNav` / `.progress-nav`) **BẮT BUỘC giữ trên 1 DÒNG DUY NHẤT (`flex-wrap: nowrap; overflow-x: auto;`)**, tuyệt đối không tự xếp chồng thành 2-4 dòng dọc chiếm diện tích. Học sinh cuộn/vuốt ngang mượt mà để chuyển giữa các Màn:
+**Quy Chuẩn Thanh Chuyển Tab / Tiến Trình Luôn Theo Chiều Ngang (Horizontal Tabs Only — BẮT BUỘC):**
+Thanh điều hướng chuyển màn / bước học (`.progress-nav-container`, `.progress-nav`, `.moduleNav`) **BẮT BUỘC 100% PHẢI THEO CHIỀU NGANG, TUYỆT ĐỐI CẤM XẾP DỌC:**
+- **Trên Desktop (Màn hình lớn):** Dàn đều trên 1 hàng ngang duy nhất (`display: grid; grid-template-columns: repeat(N, 1fr); gap: 8px; width: 100%;` hoặc `display: flex; gap: 8px;`).
+- **Trên Mobile / Màn hình nhỏ (≤900px):** Bắt buộc giữ **1 HÀNG DUY NHẤT cuộn ngang** (`flex-wrap: nowrap !important; overflow-x: auto !important; white-space: nowrap !important;`), học sinh vuốt ngang mượt mà.
+- **TUYỆT ĐỐI CẤM** dùng `grid-template-columns: 1fr` hoặc `flex-direction: column` làm các tab rớt dòng xếp chồng thành cột dọc. Tên class trong markup HTML bắt buộc phải khớp chính xác với CSS.
 
 ```css
 @media (max-width:900px){

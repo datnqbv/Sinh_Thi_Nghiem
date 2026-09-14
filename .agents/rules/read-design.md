@@ -19,10 +19,12 @@ Mọi file module được tạo mới hoặc nâng cấp bắt buộc tuân the
 1. **Quy Định Loại Bỏ Header Banner (BẮT BUỘC)**:
    - **Tuyệt đối KHÔNG DÙNG khối `<header>` banner**: Không dùng banner nền gradient xanh đậm, không dùng `.header-badge`, tiêu đề `<h1>` hay `.header-goal` ở đầu trang.
    - Bài học bắt đầu trực tiếp từ **Thanh tiến trình Sticky Top 0 (`.progress-nav-container`)** hoặc vùng làm việc tương tác, tối ưu toàn bộ chiều cao cho học sinh và tương thích tuyệt đối với file mẫu chuẩn [`SH10_B02_M02.html`](modules/Lop_10/SH10_B02_M02/SH10_B02_M02.html).
-2. **Thanh Tiến Trình Sticky Top 0 (`.progress-nav-container`)**:
+2. **Thanh Tiến Trình Sticky Top 0 (`.progress-nav-container` — BẮT BUỘC THEO CHIỀU NGANG)**:
    - Cố định dính trên đỉnh khi cuộn trang (`position: sticky; top: 0; z-index: 100;`).
-   - Hỗ trợ cuộn ngang mượt mà trên mobile (`overflow-x: auto; white-space: nowrap; scrollbar-width: none;`).
-   - Các tab bước `.step-tab`: hiển thị rõ trạng thái `active` (đang học) và `completed` (kèm biểu tượng check `✓`).
+   - **BẮT BUỘC 100% THEO CHIỀU NGANG, TUYỆT ĐỐI CẤM XẾP DỌC:**
+     - **Trên Desktop:** Dàn đều trên 1 hàng ngang (`display: grid; grid-template-columns: repeat(N, 1fr); gap: 8px;` hoặc `display: flex;`).
+     - **Trên Mobile / Màn hình nhỏ:** Bắt buộc giữ **1 HÀNG DUY NHẤT cuộn ngang** (`display: flex !important; flex-wrap: nowrap !important; overflow-x: auto !important; white-space: nowrap !important; scrollbar-width: none;`). Tuyệt đối **CẤM dùng `grid-template-columns: 1fr` hay `flex-direction: column`** khiến các tab bị rớt dòng xếp chồng thành cột dọc.
+   - Các tab bước `.step-tab` / `.step-tab-btn`: hiển thị rõ trạng thái `active` (đang học) và `completed` (kèm biểu tượng check `✓`).
 3. **Quy Tắc Chống Trùng Lặp Hướng Dẫn & Chống Tự Bịa Văn Bản (Anti-Duplication & Zero-Hallucination — BẮT BUỘC)**:
    - **Nguyên tắc "Đơn điểm hướng dẫn" (Single Point of Instruction):** Khung Hướng dẫn (`.guide-box` / `.guidance-box`) **CHỈ xuất hiện 1 lần duy nhất và nằm NGAY PHÍA TRÊN khu vực làm bài/thao tác** (dưới tiêu đề/lời dẫn ngắn, trước sơ đồ/hình ảnh/canvas/khay thẻ).
    - **Lọc sạch trùng lặp từ kịch bản gốc (Clean-up Lead Text):** Nếu file kịch bản gốc lỡ viết câu lệnh thao tác vào cả Lời dẫn (ví dụ: *"Quan sát hai hình dưới đây. Nhấn vào từng hình để xem..."*), AI khi render HTML **BẮT BUỘC phải lược bỏ vế câu lệnh thao tác ở `.lead-text`**, chỉ giữ lại câu bối cảnh khoa học thuần túy (ví dụ: *"Quan sát hai hình đối chiếu dưới đây để tìm hiểu sự khác biệt..."*). Câu lệnh hành động chỉ được phép xuất hiện duy nhất ở `.guide-box`.

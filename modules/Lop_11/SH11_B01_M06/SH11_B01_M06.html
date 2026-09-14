@@ -932,7 +932,20 @@
         grid-template-columns: 1fr;
       }
       .progress-nav {
-        grid-template-columns: 1fr;
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+      .progress-nav::-webkit-scrollbar {
+        display: none;
+      }
+      .step-tab {
+        flex: 0 0 auto !important;
+        width: auto !important;
+        min-width: 180px;
       }
     }
   </style>
@@ -1062,7 +1075,7 @@
               <!-- Nền mềm -->
               <rect width="320" height="180" fill="#FAF7F0"/>
               
-              <!-- 1. Cỏ (Sinh vật sản xuất) -->
+              <!-- 1. Cỏ (Sinh vật sản xuất) -->1
               <g transform="translate(15, 60)">
                 <rect x="0" y="0" width="70" height="75" rx="6" fill="#DCEAE1" stroke="#A9D0BE" stroke-width="1.5"/>
                 <path d="M 18 55 Q 12 25 24 15 Q 28 35 25 55 Z" fill="#3CA57A"/>

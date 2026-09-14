@@ -158,7 +158,18 @@
       color: var(--ink-2);
     }
 
-    /* Navigation Bar: 4 tab luôn trên 1 hàng, không scroll ngang, không rớt dòng */
+    /* Navigation Bar: Chuẩn V10 4 tab luôn trên 1 hàng ngang */
+    .progress-nav-container {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--cream);
+      padding: 8px 0;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .progress-nav,
     .step-nav-bar {
       position: relative;
       display: grid;
@@ -168,13 +179,14 @@
       border: 1px solid var(--paper-line);
       border-radius: var(--radius);
       padding: 6px 8px;
-      margin-bottom: 24px;
       box-shadow: var(--shadow-sm);
+      width: 100%;
       overflow: hidden;
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
 
+    .progress-nav::-webkit-scrollbar,
     .step-nav-bar::-webkit-scrollbar {
       display: none;
     }
@@ -942,6 +954,188 @@
       color: var(--ink);
     }
 
+    .quiz-feedback.hidden { display: none !important; }
+
+    .quiz-feedback.correct {
+      background: var(--correct-bg);
+      color: var(--jade-dark);
+      border-left: 3.5px solid var(--correct);
+    }
+
+    .quiz-feedback.wrong {
+      background: var(--wrong-bg);
+      color: #782916;
+      border-left: 3.5px solid var(--wrong);
+    }
+
+    .quiz-feedback i {
+      font-size: 1.25rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ========================================= */
+    /* ST03: Ghi nhớ, Lời chốt & Cầu nối        */
+    /* ========================================= */
+    .recap-card {
+      background: var(--cream);
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .recap-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .recap-title i {
+      color: var(--jade-deep);
+    }
+
+    .recap-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .recap-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.98rem;
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    .recap-list li i {
+      color: var(--jade);
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+
+    .summary-card {
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-left: 4px solid var(--jade-deep);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 24px;
+    }
+
+    .summary-card h4 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--jade-dark);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .summary-card p {
+      font-size: 0.96rem;
+      color: var(--ink-2);
+      line-height: 1.65;
+    }
+
+    .bridge-card {
+      background: linear-gradient(135deg, #FAF4E8 0%, #F5ECDA 100%);
+      border: 1.5px solid var(--accent-pale);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .bridge-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .bridge-card h4 {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--accent-text);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .bridge-card p {
+      font-size: 0.96rem;
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    /* Thanh nút hành động (Controls) */
+    .controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--paper-line);
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 0.96rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+    }
+
+    .btn-action.primary {
+      background: var(--jade-deep);
+      color: #FFFFFF;
+    }
+
+    .btn-action.primary:hover:not(:disabled) {
+      background: var(--jade-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-action.primary:disabled {
+      background: var(--cream-3);
+      color: var(--ink-faint);
+      cursor: not-allowed;
+      border: 1px solid var(--paper-line);
+    }
+
+    .btn-action.secondary {
+      background: transparent;
+      color: var(--ink-2);
+      border: 1px solid var(--paper-line-2);
+    }
+
+    .btn-action.secondary:hover {
+      background: var(--cream-2);
+      color: var(--ink);
+    }
+
     /* Modal hoàn thành module */
     .modal-backdrop {
       position: fixed;
@@ -963,7 +1157,6 @@
     #congratsModal.hidden {
       display: none !important;
     }
-
 
     .modal-backdrop.show {
       display: flex;
@@ -1012,14 +1205,32 @@
       margin-bottom: 24px;
       line-height: 1.6;
     }
+
+    @media (max-width: 900px) {
+      .progress-nav,
+      .step-nav-bar {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+      .progress-nav::-webkit-scrollbar,
+      .step-nav-bar::-webkit-scrollbar {
+        display: none;
+      }
+      .step-tab-btn {
+        flex: 0 0 auto !important;
+        width: auto !important;
+        min-width: 170px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <div class="lesson-wrapper">
-
-    
-
     <!-- Thanh tiến trình Sticky Top 0 (V10 Standard) -->
     <div class="progress-nav-container">
       <nav class="progress-nav" aria-label="Tiến trình học tập">

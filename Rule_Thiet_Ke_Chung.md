@@ -264,10 +264,13 @@ window.addEventListener('message', function(e) {
   1. **Thanh tiến trình Sticky Top 0 (`.progress-nav-container`)**: Dính trên đỉnh viewport để học sinh chuyển đổi giữa các màn học.
   2. **Vùng làm việc tương tác**: Các thẻ card/stage hoặc lưới 2 cột `.split-workspace`, đúng theo chuẩn file mẫu [`SH10_B02_M02.html`](modules/Lop_10/SH10_B02_M02/SH10_B02_M02.html).
 
-### 5.2. Thanh Tiến Trình Dính Đỉnh (`.progress-nav-container` Sticky Top 0)
+### 5.2. Thanh Tiến Trình Dính Đỉnh (`.progress-nav-container` Sticky Top 0 — BẮT BUỘC THEO CHIỀU NGANG)
 - Dính cố định ở `top: 0; z-index: 100;` để học sinh luôn nắm được tiến độ học tập.
-- Hỗ trợ cuộn ngang linh hoạt trên mobile/màn hình nhỏ (`overflow-x: auto; white-space: nowrap; scrollbar-width: none;`).
-- Các tab bước `.step-tab`: có trạng thái `.active` (đang học) và `.completed` (kèm biểu tượng check `✓`).
+- **BẮT BUỘC 100% THEO CHIỀU NGANG, TUYỆT ĐỐI CẤM XẾP DỌC:**
+  - **Trên Desktop:** Dàn đều trên 1 hàng ngang duy nhất (`display: grid; grid-template-columns: repeat(N, 1fr); gap: 8px;` hoặc `display: flex; gap: 8px;`).
+  - **Trên Mobile / Màn hình nhỏ:** Bắt buộc giữ **1 HÀNG DUY NHẤT cuộn ngang** (`display: flex !important; flex-wrap: nowrap !important; overflow-x: auto !important; white-space: nowrap !important; scrollbar-width: none;`).
+  - **TUYỆT ĐỐI CẤM** dùng `grid-template-columns: 1fr` hay `flex-direction: column` làm các tab rớt dòng xếp chồng thành cột dọc chiếm diện tích và gây vỡ layout.
+- Các tab bước `.step-tab` / `.step-tab-btn`: có trạng thái `.active` (đang học) và `.completed` (kèm biểu tượng check `✓`).
 
 ### 5.3. QUY TẮC CHỐNG TRÙNG LẶP HƯỚNG DẪN & CHỐNG TỰ BỊA VĂN BẢN (Anti-Duplication & Zero-Hallucination — BẮT BUỘC)
 Để loại bỏ tình trạng lặp chữ hoặc xuất hiện 2–3 lần hướng dẫn gây rối mắt:
