@@ -51,6 +51,10 @@ Mọi file module được tạo mới hoặc nâng cấp bắt buộc tuân the
 6. **Bảo toàn Tích Hợp LMS & Chiều Cao Tự Động**:
    - State lưu trong biến JS runtime `window.lmsState = { ... }`. Tuyệt đối không dùng `localStorage`, `sessionStorage` hoặc cookie.
    - Duy trì hàm `reportHeight()` tự động tính `document.documentElement.scrollHeight` và gửi `postMessage` để sẵn sàng nhúng vào bất kỳ hệ thống LMS/iframe nào mà không bị lỗi thanh cuộn đôi.
+7. **Chuẩn Tương Tác Nối Kéo & Bộ Micro-Animations Mượt Mà (BẮT BUỘC)**:
+   - **Kéo thả thẻ đa nền tảng (Hybrid Drag & Drop + Touch Fallback):** Hỗ trợ kéo thả chuột trên desktop và cơ chế chạm chọn nguồn $\rightarrow$ chạm đích trên thiết bị cảm ứng (`.selected` viền nét đứt phát sáng). Có tính năng hoàn tác (chạm thẻ trong vùng đích để trả về khay). Khay rỗng hiện thông báo ghi nhận `.source-tray-empty`.
+   - **Ghép đôi 2 cột bằng đường tia SVG (`2-Column Vertical Match with SVG Lines`):** Vẽ đường nối xanh ngọc trực tiếp nối giữa 2 chấm tròn `.dot` của thẻ trái và thẻ phải qua `getBoundingClientRect()`.
+   - **Bộ micro-animations mượt mà:** Bắt buộc có vòng xung nhịp lan tỏa ở hotspot (`.pulse-ring` & `pulseAnim`, tắt khi đã xem); hiệu ứng chuyển stage và panel êm dịu (`fadeIn`, `slideUp`); hiệu ứng rung nhẹ cảnh báo khi làm sai (`shake`); hiệu ứng viền xoay Canvas (`canvasBorderSpin`); hiệu ứng modal pop-in (`modalPop`) và pháo hoa giấy Confetti Canvas (`launchConfetti`).
 
 ## 3. Quy Trình 4 Bước Bắt Buộc Trước Khi Code
 - **Bước 1 (BẮT BUỘC):** Đọc đối chiếu các file quy chuẩn tại thư mục gốc:

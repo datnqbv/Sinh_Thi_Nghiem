@@ -284,10 +284,26 @@ Mọi file HTML con (Virtual Lab / Thí nghiệm tương tác) khi được tạ
      - **CẤM tự tạo huy hiệu chạm trên ảnh**: Không tự ý chèn các badge như `.touch-hint-badge` (*"Chạm để khám phá"*, *"Nhấn để xem"*).
      - **CẤM tự bịa câu hướng dẫn ở khung chú thích bên dưới ảnh**: Tuyệt đối không tự viết thêm các câu như *"Chạm vào điểm trên tán lá để xem hoạt động"*, *"Chạm vào chú thỏ..."*, *"Nhấn vào hình để xem..."*. Khung chú thích trước khi click chỉ hiển thị placeholder trạng thái trung tính ngắn gọn (ví dụ: *“Chọn một điểm trên hình để xem thông tin chi tiết”* hoặc để trống); sau khi click chỉ cập nhật kiến thức sinh học từ kịch bản.
      - **CẤM tự nối thêm chữ vào hướng dẫn**: Giữ nguyên văn bản hướng dẫn từ kịch bản, không tự ý nối thêm các vế như *" (Trên thiết bị cảm ứng: chạm chọn thẻ rồi chạm nhóm đích)"*.
+- **Quy tắc Kéo Thả Thẻ Đa Nền Tảng (Hybrid Drag & Drop & Touch Fallback — BẮT BUỘC):**
+  - **Trên Desktop:** Sử dụng HTML5 Drag & Drop API chuẩn (`draggable="true"`). Khi kéo thẻ, thẻ nhận class `.is-dragging` (`opacity: 0.5; transform: scale(0.98)`). Vùng đích nhận class `.drag-over` (`border-color: var(--jade); background: var(--jade-pale)`) khi thẻ rê qua.
+  - **Trên Mobile / Tablet (Màn hình cảm ứng):** Tích hợp song song cơ chế **"Chạm chọn $\rightarrow$ Chạm đích" (Tap-to-select, Tap-to-place)**:
+    - Chạm chọn thẻ nguồn: Thẻ nhận class `.selected` (viền nét đứt phát sáng `outline: 2px dashed var(--jade); box-shadow: 0 0 0 4px var(--jade-pale); transform: translateY(-2px);`).
+    - Chạm vùng đích: Thẻ lập tức bay vào vùng đích, gỡ bỏ class `.selected`.
+    - Chạm thẻ trong vùng đích để hoàn trả (Undo) về khay nguồn.
+  - **Khay rỗng:** Khi đã chuyển hết thẻ, khay nguồn hiển thị thông báo ghi nhận `.source-tray-empty` (ví dụ: *“Đã xếp hết các thẻ vào nhóm.”*).
+
 - **Quy tắc Ghép đôi Dạng Nối 2 Cột Dọc kèm Đường Tia SVG (`2-Column Vertical Match with SVG Lines` — BẮT BUỘC):**
-  - **Bố cục 2 Cột Dọc:** Xếp 2 danh sách ghép đôi song song theo chiều dọc (`.matching-container` với 2 cột `left` và `right`). Cột bên trái là danh sách thẻ nguồn, cột bên phải là danh sách thẻ đích.
-  - **Điểm nối & Đường nối SVG (`<svg class="matching-svg">`):** Mỗi thẻ có chấm tròn nối (`.dot`). Khi người học chọn 1 thẻ vế trái và 1 thẻ vế phải ghép đúng, JS sẽ vẽ 1 đường tia nối màu xanh ngọc (`stroke="var(--jade)" stroke-width="3"`) nối trực tiếp giữa 2 chấm tròn.
-  - **Trải nghiệm trực quan:** Người học nhìn rõ nét đường nối vật lý giữa 2 thẻ, tăng cảm giác tương tác học tập sinh động.
+  - **Bố cục 2 Cột Dọc:** Xếp 2 danh sách ghép đôi song song theo chiều dọc (`.matching-container` với 2 cột `left` và `right`). Cột bên trái là danh sách thẻ nguồn, cột bên phải là danh sách thẻ đích, mỗi thẻ có chấm tròn nối (`.dot`).
+  - **Điểm nối & Đường nối SVG (`<svg class="matching-svg">`):** Khi người học chọn 1 thẻ vế trái và 1 thẻ vế phải ghép đúng, JS sẽ vẽ 1 đường tia nối màu xanh ngọc (`stroke="var(--jade)" stroke-width="3" stroke-linecap="round"`) nối trực tiếp giữa 2 chấm tròn qua hàm tính tọa độ `getBoundingClientRect()`.
+  - **Trải nghiệm trực quan:** Người học nhìn rõ nét đường nối vật lý giữa 2 thẻ, tăng cảm giác tương tác học tập sinh động. Tự động vẽ lại đường khi resize cửa sổ (`renderLines()`).
+
+- **Bộ Micro-Animations Mượt Mà Chuẩn V10 (Smooth Micro-Animations — BẮT BUỘC):**
+  - **Vòng Xung Nhịp Hotspot (`.pulse-ring`):** Nút hotspot số tròn tỏa sóng vô hạn (`@keyframes pulseAnim { 0% { box-shadow: 0 0 0 0 rgba(60,165,122,0.7); } 70% { box-shadow: 0 0 0 14px rgba(60,165,122,0); } 100% { box-shadow: 0 0 0 0 rgba(60,165,122,0); } }`), tự tắt khi điểm đã xem (`.viewed`).
+  - **Chuyển Màn & Xuất Hiện Panel (`@keyframes fadeIn` & `@keyframes slideUp`):** Chuyển stage, mở nhận xét kết luận hoặc khung phản hồi với transition mượt (`translateY(6px)` lên `translateY(0)` kèm `opacity`), triệt tiêu hiện tượng giật layout.
+  - **Cảnh Báo Lỗi Rung Nhẹ (`@keyframes shake`):** Khi chọn sai hoặc phân loại chưa đúng, panel phản hồi rung nhẹ theo trục X (`translateX(-6px)` $\leftrightarrow$ `translateX(6px)`).
+  - **Viền Xoay Canvas Phát Sáng (`@keyframes canvasBorderSpin`):** Khung viền Canvas tự quay 360° bằng `conic-gradient` êm dịu quanh khung `.canvas-glow-wrap`.
+  - **Modal Pop-in & Pháo Hoa Canvas (`@keyframes modalPop` & `launchConfetti`):** Khi hoàn thành bài học, Modal chúc mừng nảy nhẹ (`scale(0.9)` lên `scale(1)`), kích hoạt hiệu ứng pháo hoa Confetti Canvas rơi đa góc độ.
+
 ```js
 // Hàm đổi hình minh họa/mô hình Canvas đơn giản (Canvas đã sticky ở cột trái)
 function setAsset(key) {
@@ -297,9 +313,6 @@ function setAsset(key) {
   }
 }
 ```
-- **Hiệu ứng Chúc mừng Hoàn thành Bài học (`Confetti Burst & Congrats Modal` — BẮT BUỘC):**
-  - Khi học sinh hoàn thành bài học/module (nhấn nút "Hoàn thành" ở Màn cuối), hệ thống **bắt buộc kích hoạt hiệu ứng pháo hoa giấy Confetti rơi rực rỡ (`launchConfetti()`)** bằng Canvas.
-  - Đồng thời hiển thị **Cửa sổ Modal Chúc mừng sang trọng (`.congrats-overlay`)** với biểu tượng cúp chiến thắng (`ti-trophy`), thống kê kết quả 100% đạt và lời khen ngợi kích thích động lực học tập.
 
 ```js
 // Hàm kích hoạt hiệu ứng pháo hoa giấy chúc mừng

@@ -315,3 +315,75 @@ Khi hoàn thành stage cuối cùng:
 - Toàn bộ tiến trình lưu trong biến `const lmsState = { ... }; window.lmsState = lmsState;`. Tuyệt đối không dùng `localStorage`/cookie.
 - Hàm `reportHeight()` tự động tính `document.documentElement.scrollHeight` và gọi `window.parent.postMessage({ type: 'setHeight', height: h }, '*')`.
 
+### 5.7. TIÊU CHUẨN TƯƠNG TÁC NỐI KÉO ĐA NỀN TẢNG (Drag & Drop, Tap-to-Place & SVG Line Matching)
+Nhằm đem lại trải nghiệm thao tác trực quan, sống động và mượt mà trên cả máy tính lẫn thiết bị cảm ứng:
+
+1. **Kéo thả thẻ phân loại đa nền tảng (Hybrid Drag & Drop + Touch Fallback — BẮT BUỘC)**:
+   - **Trên Desktop (Chuột):** Dùng HTML5 Drag & Drop API chuẩn:
+     - Thẻ nguồn: `draggable="true"`, khi kéo thêm class `.is-dragging` (`opacity: 0.5; transform: scale(0.98); cursor: grabbing;`).
+     - Vùng đích: bắt sự kiện `dragover` (gọi `e.preventDefault()`), khi thẻ di chuột qua thì thêm class `.drag-over` (`border-color: var(--jade); background: var(--jade-pale); transition: all 0.2s ease;`), khi `dragleave` hoặc `drop` thì gỡ bỏ class.
+   - **Trên Mobile / Tablet (Màn hình cảm ứng):** Người học không thể kéo thả mượt mà trên điện thoại. Bắt buộc tích hợp cơ chế **"Chạm chọn $\rightarrow$ Chạm đích" (Tap-to-select, Tap-to-place)**:
+     - **Chạm chọn thẻ:** Thẻ nguồn nhận class `.selected` (viền nét đứt phát sáng `outline: 2px dashed var(--jade); box-shadow: 0 0 0 4px var(--jade-pale); transform: translateY(-2px);`).
+     - **Chạm vùng đích:** Thẻ lập tức chuyển vào vùng đích đã chạm, gỡ bỏ class `.selected`.
+   - **Hoàn tác dễ dàng (Undo):** Cho phép học sinh chạm vào thẻ đã nằm trong vùng đích để hoàn trả ngay về khay nguồn (`returnCard`), không bắt học sinh phải làm lại từ đầu.
+   - **Trạng thái khay rỗng:** Khi toàn bộ thẻ đã được đưa vào vùng đích, khay nguồn tự động hiển thị thông báo ghi nhận trung tính `.source-tray-empty` (ví dụ: *“Đã xếp hết các thẻ vào nhóm.”*).
+
+2. **Ghép đôi 2 cột dọc nối bằng đường tia SVG (`2-Column Vertical Match with SVG Lines` — BẮT BUỘC)**:
+   - **Bố cục 2 cột dọc:** Cột trái là thẻ nguồn, cột phải là thẻ đích, mỗi thẻ có chấm tròn nối (`.dot`).
+   - **Vẽ đường nối động SVG:** Khi người học chọn 1 thẻ trái và 1 thẻ phải ghép đúng, JS tính tọa độ tâm của 2 chấm `.dot` bằng hàm `getBoundingClientRect()` và vẽ thẻ `<line x1="..." y1="..." x2="..." y2="..." stroke="var(--jade)" stroke-width="3" stroke-linecap="round" />` vào khung `<svg class="matching-svg">`.
+   - Giữ đường nối bám sát thẻ khi cuộn hoặc co giãn màn hình bằng cách gọi hàm vẽ lại `renderLines()` khi cửa sổ resize.
+
+### 5.8. BỘ MICRO-ANIMATIONS MƯỢT MÀ CHUẨN V10 (Smooth Micro-Animations)
+Mọi chuyển động trong bài học phải tinh tế, mượt mà, tạo cảm giác phần mềm cao cấp, không giật cục:
+
+1. **Hiệu ứng Vòng Xung Nhịp Hotspot (`.pulse-ring` & `@keyframes pulseAnim`)**:
+   - Các nút hotspot số tròn (1, 2, 3...) bắt buộc có vòng xung nhịp lan tỏa liên tục để thu hút sự chú ý:
+     ```css
+     .pulse-ring {
+       position: absolute;
+       width: 100%;
+       height: 100%;
+       border-radius: 50%;
+       box-shadow: 0 0 0 0 rgba(60, 165, 122, 0.7);
+       animation: pulseAnim 1.8s infinite;
+       pointer-events: none;
+     }
+     @keyframes pulseAnim {
+       0% { box-shadow: 0 0 0 0 rgba(60, 165, 122, 0.7); }
+       70% { box-shadow: 0 0 0 14px rgba(60, 165, 122, 0); }
+       100% { box-shadow: 0 0 0 0 rgba(60, 165, 122, 0); }
+     }
+     .hook-hotspot.viewed .pulse-ring { display: none; }
+     ```
+   - Khi điểm đã xem (`.viewed`), vòng xung nhịp tự động tắt, nút chuyển sang màu xanh tĩnh biểu thị đã hoàn thành.
+
+2. **Hiệu ứng Chuyển Màn & Xuất Hiện Panel Mượt (`@keyframes fadeIn` & `@keyframes slideUp`)**:
+   - Các khung nhận xét kết luận (`.conclude-card`), phản hồi đúng/sai (`.feedback-panel`), câu hỏi củng cố hoặc khi đổi stage bắt buộc có transition êm dịu:
+     ```css
+     @keyframes fadeIn {
+       from { opacity: 0; transform: translateY(6px); }
+       to { opacity: 1; transform: translateY(0); }
+     }
+     @keyframes slideUp {
+       from { opacity: 0; transform: translateY(16px); }
+       to { opacity: 1; transform: translateY(0); }
+     }
+     ```
+
+3. **Hiệu ứng Cảnh Báo Lỗi Rung Nhẹ (`@keyframes shake`)**:
+   - Khi người học chọn sai câu hỏi hoặc phân loại sai nhóm, khung phản hồi hoặc thẻ lựa chọn rung nhẹ:
+     ```css
+     @keyframes shake {
+       0%, 100% { transform: translateX(0); }
+       20%, 60% { transform: translateX(-6px); }
+       40%, 80% { transform: translateX(6px); }
+     }
+     ```
+
+4. **Hiệu ứng Viền Phát Sáng Canvas Xoay Tròn (`@keyframes canvasBorderSpin`)**:
+   - Khung viền Canvas tự quay 360° bằng `conic-gradient` êm dịu quanh khung `.canvas-glow-wrap`.
+
+5. **Hiệu ứng Modal Pop-in & Pháo Hoa Canvas (`@keyframes modalPop` & `launchConfetti`)**:
+   - Modal chúc mừng nảy nhẹ (`from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); }`).
+   - Pháo hoa giấy Confetti tự vẽ và rơi lơ lửng đa góc độ bằng Canvas độc lập.
+
