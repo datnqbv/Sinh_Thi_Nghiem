@@ -23,10 +23,13 @@ Mọi file module được tạo mới hoặc nâng cấp bắt buộc tuân the
    - Cố định dính trên đỉnh khi cuộn trang (`position: sticky; top: 0; z-index: 100;`).
    - Hỗ trợ cuộn ngang mượt mà trên mobile (`overflow-x: auto; white-space: nowrap; scrollbar-width: none;`).
    - Các tab bước `.step-tab`: hiển thị rõ trạng thái `active` (đang học) và `completed` (kèm biểu tượng check `✓`).
-3. **Quy Tắc Chống Trùng Lặp Hướng Dẫn (Anti-Duplication Guidance Rule — BẮT BUỘC)**:
-   - **Vị trí DUY NHẤT:** Khung Hướng dẫn (`.guide-box` / `.guidance-box`) **CHỈ xuất hiện 1 lần duy nhất và nằm NGAY PHÍA TRÊN khu vực làm bài/thao tác** (dưới tiêu đề/lời dẫn ngắn, trước sơ đồ/hình ảnh/canvas/khay thẻ).
-   - **Không lặp lại câu lệnh hướng dẫn ("Nhấn vào...") trong lời dẫn đầu (`.lead-text`)**: `lead-text` chỉ mang tính định hướng bối cảnh khoa học.
-   - **Không lặp lại mệnh lệnh ở các huy hiệu hoặc khung kết quả bên dưới**: Trên card/ảnh chỉ dùng badge chạm ngắn gọn (`Chạm để khám phá`); khung giải thích bên dưới chỉ hiển thị trạng thái chờ hoặc nội dung kiến thức sinh học, tuyệt đối không lặp lại nguyên văn câu mệnh lệnh hướng dẫn.
+3. **Quy Tắc Chống Trùng Lặp Hướng Dẫn & Chống Tự Bịa Văn Bản (Anti-Duplication & Zero-Hallucination — BẮT BUỘC)**:
+   - **Nguyên tắc "Đơn điểm hướng dẫn" (Single Point of Instruction):** Khung Hướng dẫn (`.guide-box` / `.guidance-box`) **CHỈ xuất hiện 1 lần duy nhất và nằm NGAY PHÍA TRÊN khu vực làm bài/thao tác** (dưới tiêu đề/lời dẫn ngắn, trước sơ đồ/hình ảnh/canvas/khay thẻ).
+   - **Lọc sạch trùng lặp từ kịch bản gốc (Clean-up Lead Text):** Nếu file kịch bản gốc lỡ viết câu lệnh thao tác vào cả Lời dẫn (ví dụ: *"Quan sát hai hình dưới đây. Nhấn vào từng hình để xem..."*), AI khi render HTML **BẮT BUỘC phải lược bỏ vế câu lệnh thao tác ở `.lead-text`**, chỉ giữ lại câu bối cảnh khoa học thuần túy (ví dụ: *"Quan sát hai hình đối chiếu dưới đây để tìm hiểu sự khác biệt..."*). Câu lệnh hành động chỉ được phép xuất hiện duy nhất ở `.guide-box`.
+   - **Tuyệt đối KHÔNG tự bịa badge và hướng dẫn phụ:**
+     - **CẤM tự tạo huy hiệu đè lên ảnh:** Không tự ý chèn các badge như `.touch-hint-badge` (*"Chạm để khám phá"*, *"Nhấn để xem"*). Trên ảnh chỉ đặt các nút hotspot số tròn (1, 2, 3...) chuẩn.
+     - **CẤM tự bịa câu hướng dẫn ở khung kết quả/caption box bên dưới:** Tuyệt đối không tự viết thêm các câu như *"Chạm vào điểm trên tán lá để xem hoạt động"*, *"Chạm vào chú thỏ..."*, *"Nhấn vào hình để xem..."*. Khung chú thích trước khi click chỉ hiển thị placeholder trạng thái trung tính ngắn gọn (ví dụ: *“Chọn một điểm trên hình để xem thông tin chi tiết”*); sau khi click chỉ hiển thị đúng kiến thức sinh học từ kịch bản.
+     - **CẤM tự nối thêm chữ vào hướng dẫn:** Không tự thêm câu *" (Trên thiết bị cảm ứng: chạm chọn thẻ rồi chạm nhóm đích)"* nếu kịch bản không yêu cầu.
 4. **Hàng Nút Điều Hướng Stage (`.controls-row` / `.stage-actions`)**:
    - Đặt ở cuối mỗi stage: Nút "QUAY LẠI" (`.btn-secondary`), nút "TIẾP TỤC" (`.btn-primary`).
    - Nút "TIẾP TỤC" mặc định bị khóa (`disabled`) và chỉ sáng lên khi học sinh đã hoàn thành 100% nhiệm vụ của stage.

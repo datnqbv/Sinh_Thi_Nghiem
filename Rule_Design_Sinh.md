@@ -277,6 +277,13 @@ Mọi file HTML con (Virtual Lab / Thí nghiệm tương tác) khi được tạ
      }
      ```
    - Tuyệt đối không được thiếu `.congrats-overlay.hidden` hoặc thiếu `!important`, vì selector `.congrats-overlay` nằm ở cuối CSS có `display: grid` sẽ ghi đè `.hidden` do thứ tự cascade, làm modal tự bung đè kín màn hình ngay khi tải trang khiến học sinh không thể tương tác.
+8. **Quy Tắc Chống Trùng Lặp Hướng Dẫn & Chống Tự Bịa Văn Bản (Anti-Duplication & Zero-Hallucination — BẮT BUỘC)**:
+   - **Nguyên tắc "Đơn điểm hướng dẫn"**: Câu lệnh thao tác (*Nhấn, Chọn, Kéo, Nối...*) **CHỈ xuất hiện duy nhất 1 lần tại khung `.guide-box`** nằm ngay trên khu vực tương tác.
+   - **Lọc sạch trùng lặp từ Lời dẫn (`.lead-text`)**: Thẻ `.lead-text` chỉ mang tính định hướng bối cảnh khoa học thuần túy. Nếu kịch bản gốc có lỡ viết câu lệnh (*"Nhấn vào từng hình để xem..."*, *"Khám phá từng vị trí..."*), AI **BẮT BUỘC phải lọc bỏ vế mệnh lệnh này**, không để xuất hiện lặp lại với `.guide-box`.
+   - **Tuyệt đối CẤM tự bịa huy hiệu và câu lệnh phụ (Zero UI Hallucination)**:
+     - **CẤM tự tạo huy hiệu chạm trên ảnh**: Không tự ý chèn các badge như `.touch-hint-badge` (*"Chạm để khám phá"*, *"Nhấn để xem"*).
+     - **CẤM tự bịa câu hướng dẫn ở khung chú thích bên dưới ảnh**: Tuyệt đối không tự viết thêm các câu như *"Chạm vào điểm trên tán lá để xem hoạt động"*, *"Chạm vào chú thỏ..."*, *"Nhấn vào hình để xem..."*. Khung chú thích trước khi click chỉ hiển thị placeholder trạng thái trung tính ngắn gọn (ví dụ: *“Chọn một điểm trên hình để xem thông tin chi tiết”* hoặc để trống); sau khi click chỉ cập nhật kiến thức sinh học từ kịch bản.
+     - **CẤM tự nối thêm chữ vào hướng dẫn**: Giữ nguyên văn bản hướng dẫn từ kịch bản, không tự ý nối thêm các vế như *" (Trên thiết bị cảm ứng: chạm chọn thẻ rồi chạm nhóm đích)"*.
 - **Quy tắc Ghép đôi Dạng Nối 2 Cột Dọc kèm Đường Tia SVG (`2-Column Vertical Match with SVG Lines` — BẮT BUỘC):**
   - **Bố cục 2 Cột Dọc:** Xếp 2 danh sách ghép đôi song song theo chiều dọc (`.matching-container` với 2 cột `left` và `right`). Cột bên trái là danh sách thẻ nguồn, cột bên phải là danh sách thẻ đích.
   - **Điểm nối & Đường nối SVG (`<svg class="matching-svg">`):** Mỗi thẻ có chấm tròn nối (`.dot`). Khi người học chọn 1 thẻ vế trái và 1 thẻ vế phải ghép đúng, JS sẽ vẽ 1 đường tia nối màu xanh ngọc (`stroke="var(--jade)" stroke-width="3"`) nối trực tiếp giữa 2 chấm tròn.

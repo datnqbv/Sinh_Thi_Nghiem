@@ -269,10 +269,10 @@ window.addEventListener('message', function(e) {
 - Hỗ trợ cuộn ngang linh hoạt trên mobile/màn hình nhỏ (`overflow-x: auto; white-space: nowrap; scrollbar-width: none;`).
 - Các tab bước `.step-tab`: có trạng thái `.active` (đang học) và `.completed` (kèm biểu tượng check `✓`).
 
-### 5.3. QUY TẮC CHỐNG TRÙNG LẶP HƯỚNG DẪN (Anti-Duplication Guidance Rule — BẮT BUỘC)
-Để loại bỏ tình trạng lặp chữ hoặc xuất hiện 2 lần hướng dẫn gây rối mắt:
-1. **Khung Hướng Dẫn (`.guide-box`) chỉ xuất hiện 1 lần duy nhất**:
-   - **Vị trí bắt buộc:** Nằm **NGAY TRÊN** khu vực thao tác/làm bài (dưới tiêu đề hoặc dẫn dắt ngắn của màn).
+### 5.3. QUY TẮC CHỐNG TRÙNG LẶP HƯỚNG DẪN & CHỐNG TỰ BỊA VĂN BẢN (Anti-Duplication & Zero-Hallucination — BẮT BUỘC)
+Để loại bỏ tình trạng lặp chữ hoặc xuất hiện 2–3 lần hướng dẫn gây rối mắt:
+1. **Nguyên tắc "Đơn điểm hướng dẫn" (Khung Hướng Dẫn `.guide-box` là duy nhất)**:
+   - **Vị trí bắt buộc:** Nằm **NGAY TRÊN** khu vực thao tác/làm bài (dưới tiêu đề hoặc dẫn dắt ngắn của màn, trước sơ đồ/ảnh/canvas).
    - **Cấu trúc:** Icon Tabler + nhãn in hoa:
      ```html
      <div class="guide-box">
@@ -282,10 +282,11 @@ window.addEventListener('message', function(e) {
      ```
 2. **Loại bỏ trùng lặp ở câu dẫn (`.lead-text`):**
    - Câu dẫn chỉ mang tính định hướng bối cảnh khoa học (ví dụ: *"Quan sát hai hình đối chiếu dưới đây để tìm hiểu sự khác biệt..."*).
-   - **TUYỆT ĐỐI KHÔNG** viết lặp lại câu *"Nhấn vào từng hình để xem..."* trong `.lead-text` vì bên dưới đã có ngay `.guide-box`.
-3. **Loại bỏ trùng lặp ở các nhãn card và khung kết quả bên dưới:**
-   - Trên hình ảnh/card: Dùng badge gợi ý chạm ngắn gọn (ví dụ: `<div class="touch-hint-badge"><i class="ti ti-hand-finger"></i> Chạm để khám phá</div>`).
-   - Khung kết quả (`.detail-text-box`, `.hotspot-detail-box`): Trước khi click thì hiển thị placeholder nhẹ nhàng hoặc tiêu đề (ví dụ: *"Thông tin chi tiết theo từng vị trí"*); sau khi click thì cập nhật kiến thức sinh học, không lặp lại câu mệnh lệnh dài dòng.
+   - **TUYỆT ĐỐI KHÔNG** viết câu mệnh lệnh thao tác (*"Nhấn vào từng hình để xem..."*, *"Hãy khám phá từng vị trí..."*) trong `.lead-text`. Nếu kịch bản gốc có lỡ viết vế này vào mục Lời dẫn, AI khi sinh HTML **BẮT BUỘC phải lọc bỏ vế mệnh lệnh** để tránh lặp với `.guide-box` bên dưới.
+3. **Tuyệt đối CẤM AI tự bịa huy hiệu và câu hướng dẫn phụ (Zero UI Hallucination):**
+   - **CẤM tự tạo huy hiệu chạm trên ảnh:** Tuyệt đối KHÔNG tự tạo các thẻ `.touch-hint-badge` như *"Chạm để khám phá"*, *"Nhấn để xem"*. Trên ảnh chỉ đặt các nút hotspot số tròn (1, 2, 3...) theo đúng kịch bản.
+   - **CẤM tự bịa câu lệnh ở khung chú thích bên dưới:** Tuyệt đối không tự viết thêm các câu như *"Chạm vào điểm trên tán lá để xem hoạt động"*, *"Chạm vào chú thỏ..."*, *"Nhấn vào hình để xem..."*. Khung chú thích trước khi click chỉ hiển thị placeholder trạng thái trung tính ngắn gọn (ví dụ: *“Chọn một điểm trên hình để xem thông tin chi tiết”* hoặc ẩn đi); sau khi click thì cập nhật kiến thức sinh học từ kịch bản, không lặp lại câu mệnh lệnh dài dòng.
+   - **CẤM tự nối thêm chữ vào hướng dẫn:** Giữ nguyên văn bản hướng dẫn từ kịch bản, không tự ý nối thêm các vế như *" (Trên thiết bị cảm ứng: chạm chọn thẻ rồi chạm nhóm đích)"*.
 
 ### 5.4. Hàng Nút Điều Hướng Stage (`.controls-row` / `.stage-actions`)
 Nằm ở cuối mỗi stage:
