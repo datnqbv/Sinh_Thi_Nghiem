@@ -1,0 +1,2175 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SH11_B02_M01 · Vai trò của nước và chất khoáng đối với thực vật</title>
+<script type="application/json" id="athena-context">
+{
+  "title": "Vai trò của nước và chất khoáng đối với thực vật",
+  "subject": "Sinh học",
+  "grade": "11",
+  "track": "SH11_B02_M01",
+  "objectives": [
+    "Nêu được khái niệm dinh dưỡng ở thực vật",
+    "Trình bày được vai trò của nước đối với thực vật",
+    "Nêu được vai trò sinh lí của một số nguyên tố khoáng và nhận biết được một số biểu hiện thiếu khoáng ở cây"
+  ],
+  "structure": [
+    {"id": "st00", "title": "Nước và chất khoáng quan trọng với cây như thế nào?"},
+    {"id": "st01", "title": "Nước có vai trò gì đối với thực vật?"},
+    {"id": "st02", "title": "Các nguyên tố khoáng có vai trò gì?"},
+    {"id": "st03", "title": "Ghi nhớ và kết nối"}
+  ],
+  "athenaGuidance": "Module lý thuyết tương tác gồm 4 stage: 1) ST00: Quan sát đối chiếu 3 cây (cây thiếu nước rũ lá, cây thiếu đạm vàng lá già, cây đối chứng xanh tốt), chốt khái niệm dinh dưỡng ở thực vật. 2) ST01: Khám phá sơ đồ 4 vai trò của nước và phân loại 4 thẻ hiện tượng vào vai trò tương ứng. 3) ST02: Nhận biết 4 biểu hiện thiếu khoáng (P tím, Mg vàng gân xanh, Zn lá nhỏ biến dạng, K cháy mép) trên bộ 5 lá và nối 4 cặp nguyên tố - vai trò sinh lí bằng dây SVG. 4) ST03: Chốt 3 ý ghi nhớ cốt lõi và kết nối bài cơ chế hấp thụ tiếp theo."
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css">
+<style>
+:root {
+  --cream: #FAF7F0;
+  --cream-2: #F0EADD;
+  --cream-3: #E7DECC;
+  --paper-line: #E5DECF;
+  --paper-line-2: #D6CCB6;
+  --ink: #1A1A1A;
+  --ink-2: #514C44;
+  --ink-3: #7C756A;
+  --ink-faint: #ABA396;
+  --jade: #3CA57A;
+  --jade-deep: #2D8B6F;
+  --jade-dark: #14432F;
+  --jade-text: #1B5E48;
+  --jade-soft: #A9D0BE;
+  --jade-pale: #DCEAE1;
+  --sage: #A8C9B8;
+  --sage-deep: #7CA792;
+  --sage-text: #46685A;
+  --sage-pale: #E1ECE4;
+  --accent: #E8A24A;
+  --accent-deep: #CE8A33;
+  --accent-text: #8A551A;
+  --accent-pale: #F7E7CD;
+  --correct: #2D8B6F;
+  --correct-bg: #DCEAE1;
+  --wrong: #C15F3C;
+  --wrong-bg: #F3E2D6;
+  --warning: #C58A2E;
+  --warning-bg: #F5E7CB;
+  --info: #4E7F92;
+  --info-bg: #DCE7EB;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --radius-sm: 8px;
+  --shadow: 0 4px 12px rgba(45, 139, 111, 0.10);
+  --shadow-sm: 0 2px 6px rgba(26, 26, 26, 0.05);
+  --lesson-width: 1080px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.65;
+  padding: 24px clamp(14px, 3vw, 32px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+button {
+  font: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+button:focus-visible, [tabindex]:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Modal visibility rules with high specificity */
+.hidden {
+  display: none !important;
+}
+.congrats-overlay.hidden,
+.modal-backdrop.hidden,
+#completionModal.hidden {
+  display: none !important;
+}
+
+/* App layout */
+.app-container {
+  width: 100%;
+  max-width: var(--lesson-width);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Compact top bar (No heavy header banner) */
+.module-header-bar {
+  background: #FFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 16px 22px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.module-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--jade-deep);
+}
+.module-title-h1 {
+  font-size: clamp(1.25rem, 2.8vw, 1.65rem);
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.35;
+}
+
+/* Stepper navigation bar (Single row, responsive scroll) */
+.stepper-container {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: thin;
+}
+.stepper-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 640px;
+}
+.step-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  background: var(--cream-2);
+  border: 1.5px solid var(--paper-line);
+  color: var(--ink-2);
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.step-item.active {
+  background: var(--jade);
+  border-color: var(--jade-deep);
+  color: #FFF;
+  box-shadow: 0 2px 8px rgba(60, 165, 122, 0.28);
+}
+.step-item.completed {
+  background: var(--correct-bg);
+  border-color: var(--jade-soft);
+  color: var(--jade-text);
+}
+.step-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.step-item.active .step-num {
+  background: rgba(255, 255, 255, 0.25);
+  color: #FFF;
+}
+.step-item.completed .step-num {
+  background: var(--jade);
+  color: #FFF;
+}
+
+/* Main card container */
+.stage-card {
+  background: #FFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: clamp(20px, 3.5vw, 32px);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Typography styles */
+.stage-title {
+  font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+  font-weight: 800;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.stage-title i {
+  color: var(--jade);
+}
+
+.lead-text {
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  line-height: 1.7;
+}
+
+/* Single Point of Instruction Guide Box */
+.guide-box {
+  background: var(--jade-pale);
+  border-left: 4px solid var(--jade);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--jade-text);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.guide-box i {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Callouts & Feedback */
+.summary-box {
+  background: var(--cream-2);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  color: var(--ink);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: slideUp 0.3s ease;
+}
+.summary-title {
+  font-weight: 700;
+  color: var(--accent-text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.feedback-bar {
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.feedback-bar.ok {
+  background: var(--correct-bg);
+  border-left: 4px solid var(--correct);
+  color: var(--jade-text);
+}
+.feedback-bar.bad {
+  background: var(--wrong-bg);
+  border-left: 4px solid var(--wrong);
+  color: var(--wrong);
+}
+.feedback-bar.info {
+  background: var(--info-bg);
+  border-left: 4px solid var(--info);
+  color: var(--info);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+.shake {
+  animation: shake 0.4s ease;
+}
+
+/* ST00: Plant Cards Grid */
+.plants-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .plants-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.plant-card {
+  border: 2px solid var(--paper-line);
+  border-radius: var(--radius);
+  background: var(--cream);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  position: relative;
+  text-align: left;
+}
+.plant-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  border-color: var(--sage);
+}
+.plant-card.selected {
+  border-color: var(--jade);
+  box-shadow: 0 0 0 3px var(--jade-pale);
+}
+.plant-card.viewed {
+  border-color: var(--jade-deep);
+}
+.plant-img-box {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #EFEBE4;
+  position: relative;
+}
+.plant-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.plant-card:hover .plant-img-box img {
+  transform: scale(1.02);
+}
+.plant-badge-status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(26, 26, 26, 0.65);
+  color: #FFF;
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s;
+}
+.plant-card.viewed .plant-badge-status {
+  background: var(--jade-deep);
+}
+.plant-card-body {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.plant-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--jade-deep);
+  text-transform: uppercase;
+}
+.plant-desc {
+  font-size: 0.95rem;
+  color: var(--ink);
+  font-weight: 500;
+  min-height: 48px;
+}
+
+/* Detailed caption callout box */
+.interactive-caption-box {
+  background: var(--cream-2);
+  border: 1px solid var(--paper-line-2);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ink);
+  font-size: 0.96rem;
+}
+.interactive-caption-box i {
+  font-size: 1.4rem;
+  color: var(--jade);
+  flex-shrink: 0;
+}
+
+/* ST01: SVG Diagram of 4 Roles */
+.diagram-wrapper {
+  width: 100%;
+  background: var(--cream);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.diagram-container {
+  width: 100%;
+  max-width: 860px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 32px 60px;
+  padding: 20px;
+}
+@media (max-width: 680px) {
+  .diagram-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+.diagram-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--jade-dark);
+  color: #FFF;
+  padding: 16px 22px;
+  border-radius: var(--radius);
+  font-size: 0.98rem;
+  font-weight: 800;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(20, 67, 47, 0.25);
+  z-index: 2;
+  border: 2px solid var(--jade-soft);
+  max-width: 200px;
+}
+@media (max-width: 680px) {
+  .diagram-center {
+    position: static;
+    transform: none;
+    margin: 0 auto 16px auto;
+    max-width: 100%;
+  }
+}
+.diagram-node {
+  background: #FFF;
+  border: 2px solid var(--paper-line-2);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+.diagram-node:hover {
+  border-color: var(--jade);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.diagram-node.viewed {
+  border-color: var(--jade-deep);
+  background: var(--correct-bg);
+}
+.diagram-node-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--jade-deep);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.diagram-node-text {
+  font-size: 0.88rem;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+
+/* ST01: Drag and Drop Classification Area */
+.dnd-section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--paper-line-2);
+}
+
+.source-tray-box {
+  background: var(--cream);
+  border: 1.5px dashed var(--paper-line-2);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.source-tray-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cards-tray {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-height: 52px;
+}
+.tray-empty-msg {
+  color: var(--jade-deep);
+  font-size: 0.9rem;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: auto;
+}
+
+.draggable-card {
+  background: #FFF;
+  border: 1.5px solid var(--paper-line-2);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: grab;
+  user-select: none;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.18s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+}
+.draggable-card:hover {
+  border-color: var(--jade);
+  background: var(--cream-2);
+}
+.draggable-card.selected {
+  outline: 2.5px dashed var(--jade-deep);
+  background: var(--jade-pale);
+  color: var(--jade-text);
+  box-shadow: 0 0 10px rgba(60, 165, 122, 0.35);
+}
+.draggable-card:active {
+  cursor: grabbing;
+}
+.draggable-card.in-dropzone {
+  width: 100%;
+  cursor: pointer;
+  background: var(--correct-bg);
+  border-color: var(--jade);
+  color: var(--jade-text);
+}
+
+.drop-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+@media (max-width: 680px) {
+  .drop-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.drop-zone {
+  background: #FFF;
+  border: 2px dashed var(--paper-line-2);
+  border-radius: var(--radius);
+  padding: 14px;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+.drop-zone.drag-over, .drop-zone.target-ready {
+  border-color: var(--jade);
+  background: var(--jade-pale);
+}
+.drop-zone.filled {
+  border-style: solid;
+  border-color: var(--jade);
+  background: #FAFCFA;
+}
+.drop-zone-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink-2);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.drop-zone-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.drop-placeholder {
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+/* ST02: 5-Leaf Image and Hotspots */
+.leaf-viewer-container {
+  width: 100%;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius);
+  background: var(--cream);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.leaf-image-wrap {
+  width: 100%;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  max-height: 440px;
+  background: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.leaf-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.leaf-hotspot-btn {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--jade);
+  color: #FFF;
+  font-weight: 800;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  border: 2.5px solid #FFF;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.18s, background 0.18s;
+  z-index: 10;
+}
+.leaf-hotspot-btn:hover {
+  transform: translate(-50%, -50%) scale(1.15);
+  background: var(--jade-deep);
+}
+.leaf-hotspot-btn.active {
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-pale);
+}
+.leaf-hotspot-btn.viewed {
+  background: var(--correct);
+}
+.pulse-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--jade);
+  animation: pulseAnim 2s infinite ease-out;
+}
+.leaf-hotspot-btn.viewed .pulse-ring {
+  display: none;
+}
+@keyframes pulseAnim {
+  0% { transform: scale(1); opacity: 0.9; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* ST02: 2-Column Match with SVG connector lines */
+.match-section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--paper-line-2);
+}
+
+.match-board {
+  position: relative;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 40px;
+  width: 100%;
+  padding: 10px 0;
+}
+@media (max-width: 680px) {
+  .match-board {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.match-svg-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.col-elements, .col-roles {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 6;
+}
+.match-item {
+  background: #FFF;
+  border: 1.5px solid var(--paper-line-2);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  position: relative;
+}
+.match-item:hover {
+  border-color: var(--jade);
+  background: var(--cream-2);
+}
+.match-item.selected {
+  border-color: var(--jade-deep);
+  background: var(--jade-pale);
+  box-shadow: 0 0 0 3px var(--jade-soft);
+}
+.match-item.matched {
+  border-color: var(--correct);
+  background: var(--correct-bg);
+  color: var(--jade-text);
+  cursor: default;
+}
+.match-item.matched:hover {
+  background: var(--correct-bg);
+}
+.item-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.94rem;
+  font-weight: 600;
+}
+.item-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--paper-line-2);
+  border: 2px solid #FFF;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+.match-item.selected .item-dot {
+  background: var(--jade);
+  box-shadow: 0 0 6px var(--jade);
+}
+.match-item.matched .item-dot {
+  background: var(--correct);
+}
+
+/* ST03: Memory Cards */
+.memory-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.memory-card {
+  background: var(--cream);
+  border-left: 4px solid var(--jade);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.memory-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--jade-pale);
+  color: var(--jade-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.memory-text {
+  font-size: 1rem;
+  color: var(--ink);
+  line-height: 1.65;
+}
+
+.connection-card {
+  background: #FFF;
+  border: 1.5px solid var(--paper-line-2);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.connection-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent-pale);
+  color: var(--accent-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+.connection-text {
+  font-size: 1rem;
+  color: var(--ink-2);
+  line-height: 1.7;
+}
+
+/* Bottom Controls Row */
+.controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+  padding-top: 16px;
+  border-top: 1px solid var(--paper-line);
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.btn-primary {
+  background: var(--jade);
+  color: #FFF;
+  box-shadow: 0 2px 8px rgba(60, 165, 122, 0.28);
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--jade-deep);
+  box-shadow: 0 4px 12px rgba(45, 139, 111, 0.35);
+  transform: translateY(-1px);
+}
+.btn-secondary {
+  border: 1.5px solid var(--paper-line-2);
+  color: var(--ink-2);
+  background: var(--cream);
+}
+.btn-secondary:hover:not(:disabled) {
+  border-color: var(--sage);
+  background: var(--cream-2);
+}
+
+/* Completion Modal V10 */
+.congrats-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.65);
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+  padding: 20px;
+}
+.congrats-modal {
+  background: #FFF;
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  position: relative;
+  animation: modalPop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes modalPop {
+  0% { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.congrats-trophy {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #FEF3C7;
+  color: #D97706;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.4rem;
+  margin-bottom: 4px;
+}
+.congrats-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+.congrats-desc {
+  font-size: 0.98rem;
+  color: var(--ink-2);
+  line-height: 1.65;
+}
+.congrats-actions {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  margin-top: 8px;
+}
+.congrats-actions button {
+  flex: 1;
+}
+
+#confettiCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 10000;
+}
+</style>
+</head>
+<body>
+
+<canvas id="confettiCanvas" class="hidden"></canvas>
+
+<div class="app-container">
+  <!-- Top compact header -->
+  <header class="module-header-bar">
+    <div class="module-badge-row">
+      <i class="ti ti-dna"></i>
+      <span>Sinh học 11 · Bài 2 · Trao đổi nước và khoáng ở thực vật</span>
+    </div>
+    <h1 class="module-title-h1">Vai trò của nước và chất khoáng đối với thực vật</h1>
+  </header>
+
+  <!-- Horizontal Stepper Progress Nav -->
+  <nav class="stepper-container" aria-label="Tiến trình bài học">
+    <div class="stepper-bar">
+      <div class="step-item active" id="stepIndicator0">
+        <span class="step-num">1</span>
+        <span>Đối chứng ba cây</span>
+      </div>
+      <div class="step-item" id="stepIndicator1">
+        <span class="step-num">2</span>
+        <span>Vai trò của nước</span>
+      </div>
+      <div class="step-item" id="stepIndicator2">
+        <span class="step-num">3</span>
+        <span>Nguyên tố khoáng</span>
+      </div>
+      <div class="step-item" id="stepIndicator3">
+        <span class="step-num">4</span>
+        <span>Ghi nhớ & Kết nối</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== STAGE 00 ==================== -->
+  <section class="stage-card" id="stage00" role="region" aria-labelledby="st00Heading">
+    <h2 class="stage-title" id="st00Heading">
+      <i class="ti ti-plant-2"></i>
+      Nước và chất khoáng quan trọng với cây như thế nào?
+    </h2>
+
+    <p class="lead-text">
+      Quan sát ba cây dưới đây. Một cây bị thiếu nước, một cây bị thiếu đạm và một cây được cung cấp đủ nước, dinh dưỡng.
+    </p>
+
+    <!-- Single point of instruction -->
+    <div class="guide-box">
+      <i class="ti ti-info-circle"></i>
+      <span>Nhấn vào từng cây để quan sát trạng thái của cây. Cây đã xem sẽ đổi trạng thái.</span>
+    </div>
+
+    <!-- 3 Plant Cards -->
+    <div class="plants-grid">
+      <!-- Plant 1: Thiếu nước -->
+      <button class="plant-card" id="cardPlant1" onclick="selectPlant(1)" aria-label="Cây 1: Cây thiếu nước">
+        <div class="plant-img-box">
+          <img src="images/SH11-B02-M01-A01.png" alt="Cây 1 biểu hiện rũ mềm do thiếu nước">
+          <span class="plant-badge-status" id="badgePlant1">
+            <i class="ti ti-eye"></i> Chưa xem
+          </span>
+        </div>
+        <div class="plant-card-body">
+          <span class="plant-label">Cây số 1</span>
+          <div class="plant-desc" id="descPlant1">Chạm để quan sát trạng thái cây...</div>
+        </div>
+      </button>
+
+      <!-- Plant 2: Thiếu đạm -->
+      <button class="plant-card" id="cardPlant2" onclick="selectPlant(2)" aria-label="Cây 2: Cây thiếu đạm">
+        <div class="plant-img-box">
+          <img src="images/SH11-B02-M01-A02.png" alt="Cây 2 biểu hiện lá già ngả vàng do thiếu đạm">
+          <span class="plant-badge-status" id="badgePlant2">
+            <i class="ti ti-eye"></i> Chưa xem
+          </span>
+        </div>
+        <div class="plant-card-body">
+          <span class="plant-label">Cây số 2</span>
+          <div class="plant-desc" id="descPlant2">Chạm để quan sát trạng thái cây...</div>
+        </div>
+      </button>
+
+      <!-- Plant 3: Đủ nước và dinh dưỡng -->
+      <button class="plant-card" id="cardPlant3" onclick="selectPlant(3)" aria-label="Cây 3: Cây đối chứng đủ nước và dinh dưỡng">
+        <div class="plant-img-box">
+          <img src="images/SH11-B02-M01-A03.png" alt="Cây 3 xanh tốt sinh trưởng bình thường">
+          <span class="plant-badge-status" id="badgePlant3">
+            <i class="ti ti-eye"></i> Chưa xem
+          </span>
+        </div>
+        <div class="plant-card-body">
+          <span class="plant-label">Cây số 3 (Đối chứng)</span>
+          <div class="plant-desc" id="descPlant3">Chạm để quan sát trạng thái cây...</div>
+        </div>
+      </button>
+    </div>
+
+    <!-- Feedback caption box -->
+    <div class="interactive-caption-box" id="plantCaptionBox">
+      <i class="ti ti-notes"></i>
+      <span id="plantCaptionText">Chọn một cây để quan sát trạng thái chi tiết.</span>
+    </div>
+
+    <!-- Summary Box appearing after viewing all 3 -->
+    <div class="summary-box hidden" id="st00SummaryBox">
+      <div class="summary-title">
+        <i class="ti ti-bulb"></i> Khái niệm dinh dưỡng ở thực vật
+      </div>
+      <p>
+        Thiếu nước hoặc thiếu chất khoáng đều ảnh hưởng đến sinh trưởng và phát triển của cây. Ở thực vật, dinh dưỡng là quá trình hấp thụ nước, chất khoáng và đồng hoá chúng thành chất sống của cơ thể. Vậy nước và các nguyên tố khoáng có vai trò gì đối với thực vật?
+      </p>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls-row">
+      <div></div>
+      <button class="btn btn-primary" id="btnNextST00" onclick="goToStage(1)" disabled>
+        <span>TIẾP TỤC</span>
+        <i class="ti ti-arrow-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- ==================== STAGE 01 ==================== -->
+  <section class="stage-card hidden" id="stage01" role="region" aria-labelledby="st01Heading">
+    <h2 class="stage-title" id="st01Heading">
+      <i class="ti ti-droplet"></i>
+      Nước có vai trò gì đối với thực vật?
+    </h2>
+
+    <p class="lead-text">
+      Nước là thành phần quan trọng của cơ thể thực vật và tham gia vào nhiều hoạt động sống của cây.
+    </p>
+
+    <!-- Guide 1 -->
+    <div class="guide-box">
+      <i class="ti ti-info-circle"></i>
+      <span>Nhấn lần lượt vào bốn nhánh để tìm hiểu vai trò của nước. Nhánh đã xem sẽ đổi trạng thái.</span>
+    </div>
+
+    <!-- SVG-assisted 4 Roles Diagram -->
+    <div class="diagram-wrapper">
+      <div class="diagram-container">
+        <div class="diagram-center">
+          VAI TRÒ CỦA NƯỚC
+        </div>
+
+        <!-- Role 1 -->
+        <button class="diagram-node" id="roleNode1" onclick="exploreWaterRole(1)">
+          <div class="diagram-node-title">
+            <span>1. Cấu tạo tế bào</span>
+            <i class="ti ti-circle" id="roleIcon1"></i>
+          </div>
+          <p class="diagram-node-text">
+            Nước là thành phần cấu tạo của tế bào thực vật và chiếm phần lớn khối lượng tươi của cây.
+          </p>
+        </button>
+
+        <!-- Role 2 -->
+        <button class="diagram-node" id="roleNode2" onclick="exploreWaterRole(2)">
+          <div class="diagram-node-title">
+            <span>2. Dung môi & Vận chuyển</span>
+            <i class="ti ti-circle" id="roleIcon2"></i>
+          </div>
+          <p class="diagram-node-text">
+            Nước hoà tan nhiều chất và tham gia vận chuyển các chất trong cơ thể thực vật.
+          </p>
+        </button>
+
+        <!-- Role 3 -->
+        <button class="diagram-node" id="roleNode3" onclick="exploreWaterRole(3)">
+          <div class="diagram-node-title">
+            <span>3. Phản ứng sinh hoá</span>
+            <i class="ti ti-circle" id="roleIcon3"></i>
+          </div>
+          <p class="diagram-node-text">
+            Nước vừa tham gia một số phản ứng sinh hoá, vừa tạo môi trường cho nhiều phản ứng diễn ra trong tế bào.
+          </p>
+        </button>
+
+        <!-- Role 4 -->
+        <button class="diagram-node" id="roleNode4" onclick="exploreWaterRole(4)">
+          <div class="diagram-node-title">
+            <span>4. Điều hoà nhiệt độ</span>
+            <i class="ti ti-circle" id="roleIcon4"></i>
+          </div>
+          <p class="diagram-node-text">
+            Nước góp phần điều hoà nhiệt độ của cơ thể thực vật.
+          </p>
+        </button>
+      </div>
+    </div>
+
+    <!-- Drag & Drop Task (Asset A05) -->
+    <div class="dnd-section" id="dndSection">
+      <p class="lead-text">
+        Như vậy, nước đảm nhiệm nhiều vai trò khác nhau trong cây. Hãy ghép mỗi hiện tượng với vai trò phù hợp nhất.
+      </p>
+
+      <div class="guide-box">
+        <i class="ti ti-hand-grab"></i>
+        <span>Kéo từng thẻ hiện tượng vào đúng vai trò của nước. Thẻ đặt sai sẽ trở về vị trí ban đầu.</span>
+      </div>
+
+      <!-- Source Cards Tray -->
+      <div class="source-tray-box">
+        <div class="source-tray-title">
+          <i class="ti ti-cards"></i> Khay thẻ hiện tượng (chạm chọn thẻ hoặc kéo chuột)
+        </div>
+        <div class="cards-tray" id="cardsTray">
+          <div class="draggable-card" id="dragCard1" draggable="true" ondragstart="handleDragStart(event, 1)" onclick="handleCardClick(1)">
+            <i class="ti ti-grip-vertical"></i>
+            <span>Nước chiếm phần lớn khối lượng tươi của cây.</span>
+          </div>
+          <div class="draggable-card" id="dragCard2" draggable="true" ondragstart="handleDragStart(event, 2)" onclick="handleCardClick(2)">
+            <i class="ti ti-grip-vertical"></i>
+            <span>Muối khoáng hoà tan và được vận chuyển trong cây.</span>
+          </div>
+          <div class="draggable-card" id="dragCard3" draggable="true" ondragstart="handleDragStart(event, 3)" onclick="handleCardClick(3)">
+            <i class="ti ti-grip-vertical"></i>
+            <span>Nước tham gia phản ứng quang hợp.</span>
+          </div>
+          <div class="draggable-card" id="dragCard4" draggable="true" ondragstart="handleDragStart(event, 4)" onclick="handleCardClick(4)">
+            <i class="ti ti-grip-vertical"></i>
+            <span>Sự thoát hơi nước góp phần làm giảm nhiệt độ của lá.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Target Drop Zones -->
+      <div class="drop-grid">
+        <!-- Zone 1 -->
+        <div class="drop-zone" id="dropZone1" ondragover="handleDragOver(event)" ondrop="handleDrop(event, 1)" onclick="handleZoneClick(1)">
+          <div class="drop-zone-title">
+            <i class="ti ti-folder-check"></i>
+            <span>Thành phần cấu tạo tế bào</span>
+          </div>
+          <div class="drop-zone-content" id="zoneContent1">
+            <span class="drop-placeholder">Thả thẻ hiện tượng vào đây</span>
+          </div>
+        </div>
+
+        <!-- Zone 2 -->
+        <div class="drop-zone" id="dropZone2" ondragover="handleDragOver(event)" ondrop="handleDrop(event, 2)" onclick="handleZoneClick(2)">
+          <div class="drop-zone-title">
+            <i class="ti ti-folder-check"></i>
+            <span>Dung môi và tham gia vận chuyển các chất</span>
+          </div>
+          <div class="drop-zone-content" id="zoneContent2">
+            <span class="drop-placeholder">Thả thẻ hiện tượng vào đây</span>
+          </div>
+        </div>
+
+        <!-- Zone 3 -->
+        <div class="drop-zone" id="dropZone3" ondragover="handleDragOver(event)" ondrop="handleDrop(event, 3)" onclick="handleZoneClick(3)">
+          <div class="drop-zone-title">
+            <i class="ti ti-folder-check"></i>
+            <span>Nguyên liệu và môi trường của phản ứng</span>
+          </div>
+          <div class="drop-zone-content" id="zoneContent3">
+            <span class="drop-placeholder">Thả thẻ hiện tượng vào đây</span>
+          </div>
+        </div>
+
+        <!-- Zone 4 -->
+        <div class="drop-zone" id="dropZone4" ondragover="handleDragOver(event)" ondrop="handleDrop(event, 4)" onclick="handleZoneClick(4)">
+          <div class="drop-zone-title">
+            <i class="ti ti-folder-check"></i>
+            <span>Điều hoà nhiệt độ</span>
+          </div>
+          <div class="drop-zone-content" id="zoneContent4">
+            <span class="drop-placeholder">Thả thẻ hiện tượng vào đây</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feedback -->
+      <div class="feedback-bar info hidden" id="dndFeedback"></div>
+
+      <!-- ST01 Conclusion box -->
+      <div class="summary-box hidden" id="st01SummaryBox">
+        <div class="summary-title">
+          <i class="ti ti-check"></i> Kết luận về vai trò của nước
+        </div>
+        <p>
+          Nước có bốn vai trò chính: là thành phần cấu tạo tế bào; là dung môi và tham gia vận chuyển các chất; là nguyên liệu, môi trường của các phản ứng sinh hoá; và góp phần điều hoà nhiệt độ của cơ thể thực vật.
+        </p>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls-row">
+      <button class="btn btn-secondary" onclick="goToStage(0)">
+        <i class="ti ti-arrow-left"></i>
+        <span>QUAY LẠI</span>
+      </button>
+      <button class="btn btn-primary" id="btnNextST01" onclick="goToStage(2)" disabled>
+        <span>TIẾP TỤC</span>
+        <i class="ti ti-arrow-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- ==================== STAGE 02 ==================== -->
+  <section class="stage-card hidden" id="stage02" role="region" aria-labelledby="st02Heading">
+    <h2 class="stage-title" id="st02Heading">
+      <i class="ti ti-atom"></i>
+      Các nguyên tố khoáng có vai trò gì?
+    </h2>
+
+    <p class="lead-text">
+      Không chỉ cần nước, thực vật còn cần nhiều nguyên tố khoáng. Mỗi nguyên tố tham gia vào những cấu trúc hoặc quá trình sinh lí nhất định.
+    </p>
+
+    <!-- Guide 1 -->
+    <div class="guide-box">
+      <i class="ti ti-info-circle"></i>
+      <span>Quan sát lá bình thường và bốn mẫu lá thiếu khoáng trong hình. Nhấn vào từng mẫu để xem biểu hiện tương ứng.</span>
+    </div>
+
+    <!-- 5-Leaf Image Viewer (Asset A06) -->
+    <div class="leaf-viewer-container">
+      <div class="leaf-image-wrap">
+        <img src="images/SH11-B02-M01-A06.png" alt="Bộ 5 lá so sánh biểu hiện thiếu khoáng">
+
+        <!-- Hotspot 1: Bình thường -->
+        <button class="leaf-hotspot-btn" style="left: 11%; top: 48%;" id="leafBtn1" onclick="inspectLeaf(1)" aria-label="Mẫu 1: Lá bình thường">
+          <span>1</span>
+          <span class="pulse-ring"></span>
+        </button>
+
+        <!-- Hotspot 2: Thiếu P -->
+        <button class="leaf-hotspot-btn" style="left: 31%; top: 48%;" id="leafBtn2" onclick="inspectLeaf(2)" aria-label="Mẫu 2: Thiếu Phốt pho">
+          <span>2</span>
+          <span class="pulse-ring"></span>
+        </button>
+
+        <!-- Hotspot 3: Thiếu Mg -->
+        <button class="leaf-hotspot-btn" style="left: 50%; top: 48%;" id="leafBtn3" onclick="inspectLeaf(3)" aria-label="Mẫu 3: Thiếu Magie">
+          <span>3</span>
+          <span class="pulse-ring"></span>
+        </button>
+
+        <!-- Hotspot 4: Thiếu Zn -->
+        <button class="leaf-hotspot-btn" style="left: 69%; top: 48%;" id="leafBtn4" onclick="inspectLeaf(4)" aria-label="Mẫu 4: Thiếu Kẽm">
+          <span>4</span>
+          <span class="pulse-ring"></span>
+        </button>
+
+        <!-- Hotspot 5: Thiếu K -->
+        <button class="leaf-hotspot-btn" style="left: 88%; top: 48%;" id="leafBtn5" onclick="inspectLeaf(5)" aria-label="Mẫu 5: Thiếu Kali">
+          <span>5</span>
+          <span class="pulse-ring"></span>
+        </button>
+      </div>
+
+      <!-- Leaf Detail Caption Box -->
+      <div class="interactive-caption-box" style="border-radius: 0; border: none; border-top: 1px solid var(--paper-line);">
+        <i class="ti ti-microscope"></i>
+        <span id="leafDetailText">Nhấn vào một số tròn trên mẫu lá để quan sát chi tiết triệu chứng.</span>
+      </div>
+    </div>
+
+    <!-- Match Task (Asset A07) -->
+    <div class="match-section" id="matchSection">
+      <p class="lead-text">
+        Các biểu hiện thiếu khoáng không giống nhau. Vì vậy, không nên thấy lá vàng rồi mặc định rằng cây chỉ thiếu đạm. Trong hình này, mỗi trạng thái lá gắn với một nguyên tố khoáng cụ thể.
+      </p>
+
+      <div class="guide-box">
+        <i class="ti ti-arrows-join-2"></i>
+        <span>Nối mỗi nguyên tố với vai trò sinh lí phù hợp. Cặp nối sai sẽ được đánh dấu để bạn chọn lại.</span>
+      </div>
+
+      <!-- Match Board -->
+      <div class="match-board" id="matchBoard">
+        <!-- Dynamic SVG lines container -->
+        <svg class="match-svg-canvas" id="matchSvgCanvas"></svg>
+
+        <!-- Column Elements (Left) -->
+        <div class="col-elements" id="colElements">
+          <button class="match-item" id="elemMg" onclick="selectMatchElement('Mg')">
+            <div class="item-content">
+              <i class="ti ti-atom-2"></i>
+              <span>Magie (Mg)</span>
+            </div>
+            <div class="item-dot" id="dotElemMg"></div>
+          </button>
+
+          <button class="match-item" id="elemK" onclick="selectMatchElement('K')">
+            <div class="item-content">
+              <i class="ti ti-atom-2"></i>
+              <span>Kali (K)</span>
+            </div>
+            <div class="item-dot" id="dotElemK"></div>
+          </button>
+
+          <button class="match-item" id="elemFe" onclick="selectMatchElement('Fe')">
+            <div class="item-content">
+              <i class="ti ti-atom-2"></i>
+              <span>Sắt (Fe)</span>
+            </div>
+            <div class="item-dot" id="dotElemFe"></div>
+          </button>
+
+          <button class="match-item" id="elemN" onclick="selectMatchElement('N')">
+            <div class="item-content">
+              <i class="ti ti-atom-2"></i>
+              <span>Nitơ (N)</span>
+            </div>
+            <div class="item-dot" id="dotElemN"></div>
+          </button>
+        </div>
+
+        <!-- Column Roles (Right - Shuffled) -->
+        <div class="col-roles" id="colRoles">
+          <button class="match-item" id="roleItemN" onclick="selectMatchRole('N')">
+            <div class="item-dot" id="dotRoleN"></div>
+            <div class="item-content">
+              <span>Thành phần của nhiều hợp chất hữu cơ trong cơ thể thực vật.</span>
+            </div>
+          </button>
+
+          <button class="match-item" id="roleItemMg" onclick="selectMatchRole('Mg')">
+            <div class="item-dot" id="dotRoleMg"></div>
+            <div class="item-content">
+              <span>Thành phần của diệp lục.</span>
+            </div>
+          </button>
+
+          <button class="match-item" id="roleItemFe" onclick="selectMatchRole('Fe')">
+            <div class="item-dot" id="dotRoleFe"></div>
+            <div class="item-content">
+              <span>Thành phần của cytochrome, tham gia hoạt hoá enzyme liên quan đến tổng hợp diệp lục.</span>
+            </div>
+          </button>
+
+          <button class="match-item" id="roleItemK" onclick="selectMatchRole('K')">
+            <div class="item-dot" id="dotRoleK"></div>
+            <div class="item-content">
+              <span>Điều tiết áp suất thẩm thấu và thúc đẩy vận chuyển sản phẩm quang hợp.</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Feedback for matching -->
+      <div class="feedback-bar info hidden" id="matchFeedback"></div>
+
+      <!-- ST02 Conclusion -->
+      <div class="summary-box hidden" id="st02SummaryBox">
+        <div class="summary-title">
+          <i class="ti ti-check"></i> Kết luận về vai trò của nguyên tố khoáng
+        </div>
+        <p>
+          Các nguyên tố khoáng tham gia cấu tạo các thành phần của tế bào và điều tiết nhiều quá trình sinh lí. Mỗi nguyên tố có vai trò riêng; khi thiếu, cây có thể xuất hiện những biểu hiện khác nhau.
+        </p>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls-row">
+      <button class="btn btn-secondary" onclick="goToStage(1)">
+        <i class="ti ti-arrow-left"></i>
+        <span>QUAY LẠI</span>
+      </button>
+      <button class="btn btn-primary" id="btnNextST02" onclick="goToStage(3)" disabled>
+        <span>TIẾP TỤC</span>
+        <i class="ti ti-arrow-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- ==================== STAGE 03 ==================== -->
+  <section class="stage-card hidden" id="stage03" role="region" aria-labelledby="st03Heading">
+    <h2 class="stage-title" id="st03Heading">
+      <i class="ti ti-bookmark-check"></i>
+      Ghi nhớ và kết nối
+    </h2>
+
+    <div class="memory-grid">
+      <div class="memory-card">
+        <div class="memory-icon"><i class="ti ti-plant-2"></i></div>
+        <div class="memory-text">
+          <strong>1. Dinh dưỡng ở thực vật:</strong> Là quá trình hấp thụ nước, chất khoáng và đồng hoá chúng thành chất sống của cơ thể thực vật.
+        </div>
+      </div>
+
+      <div class="memory-card">
+        <div class="memory-icon"><i class="ti ti-droplet"></i></div>
+        <div class="memory-text">
+          <strong>2. Bốn vai trò của nước:</strong> Là thành phần cấu tạo tế bào; là dung môi và tham gia vận chuyển các chất; là nguyên liệu, môi trường của các phản ứng sinh hoá; góp phần điều hoà nhiệt độ.
+        </div>
+      </div>
+
+      <div class="memory-card">
+        <div class="memory-icon"><i class="ti ti-atom"></i></div>
+        <div class="memory-text">
+          <strong>3. Vai trò của chất khoáng:</strong> Các nguyên tố khoáng có vai trò cấu tạo và điều tiết nhiều quá trình sinh lí; thiếu các nguyên tố khác nhau có thể làm cây xuất hiện những biểu hiện khác nhau.
+        </div>
+      </div>
+    </div>
+
+    <!-- Connecting Callout -->
+    <div class="connection-card">
+      <div class="connection-icon">
+        <i class="ti ti-arrow-right-circle"></i>
+      </div>
+      <div class="connection-text">
+        <strong>Kết nối bài sau:</strong> Nước và các ion khoáng có vai trò thiết yếu đối với cây. Nhưng chúng được hấp thụ từ môi trường vào rễ bằng cơ chế nào? Đây là nội dung của module tiếp theo.
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls-row">
+      <button class="btn btn-secondary" onclick="goToStage(2)">
+        <i class="ti ti-arrow-left"></i>
+        <span>QUAY LẠI</span>
+      </button>
+      <button class="btn btn-primary" id="btnCompleteModule" onclick="completeModule()">
+        <i class="ti ti-circle-check"></i>
+        <span>HOÀN THÀNH MODULE</span>
+      </button>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== COMPLETION MODAL V10 ==================== -->
+<div class="congrats-overlay hidden" id="completionModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="congrats-modal">
+    <div class="congrats-trophy">
+      <i class="ti ti-trophy"></i>
+    </div>
+    <h3 class="congrats-title" id="modalTitle">Chúc mừng bạn đã hoàn thành!</h3>
+    <p class="congrats-desc">
+      Bạn đã nắm vững toàn bộ kiến thức về vai trò của nước, cơ chế phân loại và biểu hiện thiếu các nguyên tố khoáng thiết yếu ở thực vật.
+    </p>
+    <div class="congrats-actions">
+      <button class="btn btn-secondary" onclick="restartModule()">
+        <i class="ti ti-rotate-clockwise"></i>
+        <span>Xem lại bài</span>
+      </button>
+      <button class="btn btn-primary" onclick="closeModal()">
+        <i class="ti ti-check"></i>
+        <span>Đóng thông báo</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ==========================================================================
+   LMS RUNTIME STATE & HEIGHT REPORTING
+   ========================================================================== */
+window.lmsState = {
+  currentStage: 0,
+  st00Viewed: [],
+  st01NodesViewed: [],
+  st01Matches: {},
+  st02LeavesViewed: [],
+  st02PairsMatched: [],
+  completed: false
+};
+
+function reportHeight() {
+  const height = Math.max(
+    document.body.scrollHeight,
+    document.documentElement.scrollHeight
+  );
+  if (window.parent && window.parent !== window) {
+    window.parent.postMessage({ type: 'resize', height: height }, '*');
+  }
+}
+
+window.addEventListener('load', () => {
+  reportHeight();
+  window.addEventListener('resize', () => {
+    reportHeight();
+    redrawMatchLines();
+  });
+});
+
+/* ==========================================================================
+   STAGE NAVIGATION
+   ========================================================================== */
+const STAGE_IDS = ['stage00', 'stage01', 'stage02', 'stage03'];
+
+function goToStage(targetIndex) {
+  if (targetIndex < 0 || targetIndex >= STAGE_IDS.length) return;
+  
+  STAGE_IDS.forEach((id, idx) => {
+    const el = document.getElementById(id);
+    const indicator = document.getElementById(`stepIndicator${idx}`);
+    if (idx === targetIndex) {
+      el.classList.remove('hidden');
+      indicator.classList.add('active');
+      indicator.classList.remove('completed');
+    } else {
+      el.classList.add('hidden');
+      indicator.classList.remove('active');
+      if (idx < targetIndex) {
+        indicator.classList.add('completed');
+      }
+    }
+  });
+
+  window.lmsState.currentStage = targetIndex;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  
+  if (targetIndex === 2) {
+    setTimeout(redrawMatchLines, 100);
+  }
+  
+  setTimeout(reportHeight, 80);
+}
+
+/* ==========================================================================
+   STAGE 00: 3 PLANTS OBSERVATION
+   ========================================================================== */
+const PLANT_DATA = {
+  1: {
+    desc: 'Cây héo rũ do thiếu nước.',
+    caption: 'Cây số 1: Các lá và cuống lá rũ mềm rõ rệt do giảm sức trương nước trong đất khô, nhưng màu lá vẫn chủ yếu còn xanh.'
+  },
+  2: {
+    desc: 'Lá vàng, cây sinh trưởng kém do thiếu đạm.',
+    caption: 'Cây số 2: Các lá già phía dưới chuyển màu vàng nhạt đến vàng rõ rệt do thiếu nitơ; lá non phía trên còn xanh hơn, thân đứng thẳng.'
+  },
+  3: {
+    desc: 'Cây xanh tốt, sinh trưởng bình thường.',
+    caption: 'Cây số 3 (Đối chứng): Được cung cấp đầy đủ nước và dinh dưỡng khoáng, tán lá căng xanh tự nhiên, đất đủ ẩm, sinh trưởng cân đối.'
+  }
+};
+
+function selectPlant(plantId) {
+  // Update viewed status
+  if (!window.lmsState.st00Viewed.includes(plantId)) {
+    window.lmsState.st00Viewed.push(plantId);
+  }
+
+  // Update cards
+  for (let i = 1; i <= 3; i++) {
+    const card = document.getElementById(`cardPlant${i}`);
+    if (i === plantId) {
+      card.classList.add('selected');
+      card.classList.add('viewed');
+      document.getElementById(`badgePlant${i}`).innerHTML = '<i class="ti ti-check"></i> Đã xem';
+      document.getElementById(`descPlant${i}`).textContent = PLANT_DATA[i].desc;
+    } else {
+      card.classList.remove('selected');
+    }
+  }
+
+  // Update caption
+  const captionBox = document.getElementById('plantCaptionBox');
+  const captionText = document.getElementById('plantCaptionText');
+  captionText.textContent = PLANT_DATA[plantId].caption;
+  captionBox.style.background = 'var(--jade-pale)';
+  captionBox.style.borderColor = 'var(--jade-soft)';
+
+  // Check if all 3 viewed
+  if (window.lmsState.st00Viewed.length === 3) {
+    const summaryBox = document.getElementById('st00SummaryBox');
+    summaryBox.classList.remove('hidden');
+    document.getElementById('btnNextST00').disabled = false;
+  }
+
+  reportHeight();
+}
+
+/* ==========================================================================
+   STAGE 01: WATER ROLES DIAGRAM & DRAG-AND-DROP
+   ========================================================================== */
+function exploreWaterRole(roleId) {
+  if (!window.lmsState.st01NodesViewed.includes(roleId)) {
+    window.lmsState.st01NodesViewed.push(roleId);
+  }
+
+  const node = document.getElementById(`roleNode${roleId}`);
+  node.classList.add('viewed');
+  const icon = document.getElementById(`roleIcon${roleId}`);
+  icon.className = 'ti ti-circle-check';
+  icon.style.color = 'var(--jade-deep)';
+
+  reportHeight();
+}
+
+// Drag & Drop Handling
+let draggedCardId = null;
+let selectedCardId = null; // For touch / click fallback
+
+const DND_CORRECT_MAP = {
+  1: 1, // Card 1 -> Zone 1 (Cấu tạo tế bào)
+  2: 2, // Card 2 -> Zone 2 (Dung môi & vận chuyển)
+  3: 3, // Card 3 -> Zone 3 (Phản ứng sinh hoá)
+  4: 4  // Card 4 -> Zone 4 (Điều hoà nhiệt độ)
+};
+
+const CARD_TEXTS = {
+  1: 'Nước chiếm phần lớn khối lượng tươi của cây.',
+  2: 'Muối khoáng hoà tan và được vận chuyển trong cây.',
+  3: 'Nước tham gia phản ứng quang hợp.',
+  4: 'Sự thoát hơi nước góp phần làm giảm nhiệt độ của lá.'
+};
+
+function handleDragStart(ev, cardId) {
+  draggedCardId = cardId;
+  ev.dataTransfer.setData('text/plain', cardId.toString());
+}
+
+function handleDragOver(ev) {
+  ev.preventDefault();
+  const zone = ev.currentTarget;
+  zone.classList.add('drag-over');
+}
+
+function handleDrop(ev, zoneId) {
+  ev.preventDefault();
+  const zone = ev.currentTarget;
+  zone.classList.remove('drag-over');
+  
+  const cardId = parseInt(ev.dataTransfer.getData('text/plain') || draggedCardId, 10);
+  if (!cardId) return;
+
+  processClassification(cardId, zoneId);
+}
+
+// Touch fallback: Click card to select, then click target zone
+function handleCardClick(cardId) {
+  const cardEl = document.getElementById(`dragCard${cardId}`);
+  if (!cardEl) return;
+
+  // Toggle selection
+  if (selectedCardId === cardId) {
+    cardEl.classList.remove('selected');
+    selectedCardId = null;
+    clearZoneReadyHighlight();
+    showDndFeedback('info', 'Đã bỏ chọn thẻ.');
+  } else {
+    // Clear previous
+    if (selectedCardId) {
+      const prev = document.getElementById(`dragCard${selectedCardId}`);
+      if (prev) prev.classList.remove('selected');
+    }
+    selectedCardId = cardId;
+    cardEl.classList.add('selected');
+    highlightReadyZones();
+    showDndFeedback('info', 'Chạm vào một vùng vai trò bên dưới để đặt thẻ vào.');
+  }
+}
+
+function handleZoneClick(zoneId) {
+  if (!selectedCardId) return;
+  processClassification(selectedCardId, zoneId);
+}
+
+function highlightReadyZones() {
+  for (let z = 1; z <= 4; z++) {
+    const zone = document.getElementById(`dropZone${z}`);
+    if (!zone.classList.contains('filled')) {
+      zone.classList.add('target-ready');
+    }
+  }
+}
+
+function clearZoneReadyHighlight() {
+  for (let z = 1; z <= 4; z++) {
+    const zone = document.getElementById(`dropZone${z}`);
+    zone.classList.remove('target-ready');
+    zone.classList.remove('drag-over');
+  }
+}
+
+function processClassification(cardId, zoneId) {
+  clearZoneReadyHighlight();
+  const cardEl = document.getElementById(`dragCard${cardId}`);
+
+  if (DND_CORRECT_MAP[cardId] === zoneId) {
+    // Correct!
+    window.lmsState.st01Matches[cardId] = zoneId;
+
+    // Place into zone
+    const zoneContent = document.getElementById(`zoneContent${zoneId}`);
+    const zone = document.getElementById(`dropZone${zoneId}`);
+    
+    zoneContent.innerHTML = `
+      <div class="draggable-card in-dropzone" onclick="undoClassification(${cardId}, ${zoneId})" title="Chạm để hoàn tác về khay">
+        <i class="ti ti-check" style="color:var(--jade-deep)"></i>
+        <span>${CARD_TEXTS[cardId]}</span>
+      </div>
+    `;
+    zone.classList.add('filled');
+
+    // Remove from tray
+    if (cardEl) cardEl.remove();
+
+    selectedCardId = null;
+    showDndFeedback('ok', 'Chính xác! Thẻ đã được ghép đúng vào vai trò tương ứng.');
+
+    // Check if tray is empty
+    const tray = document.getElementById('cardsTray');
+    if (tray.children.length === 0) {
+      tray.innerHTML = '<span class="tray-empty-msg"><i class="ti ti-circle-check"></i> Đã phân loại tất cả các thẻ thành công!</span>';
+    }
+
+    // Check if all 4 matched
+    if (Object.keys(window.lmsState.st01Matches).length === 4) {
+      document.getElementById('st01SummaryBox').classList.remove('hidden');
+      document.getElementById('btnNextST01').disabled = false;
+    }
+  } else {
+    // Wrong drop
+    if (cardEl) {
+      cardEl.classList.remove('selected');
+      cardEl.classList.add('shake');
+      setTimeout(() => cardEl.classList.remove('shake'), 450);
+    }
+    selectedCardId = null;
+    showDndFeedback('bad', 'Chưa chính xác! Thẻ hiện tượng này thuộc về một vai trò khác của nước, hãy thử lại.');
+  }
+
+  reportHeight();
+}
+
+function undoClassification(cardId, zoneId) {
+  delete window.lmsState.st01Matches[cardId];
+  
+  // Reset zone
+  const zoneContent = document.getElementById(`zoneContent${zoneId}`);
+  const zone = document.getElementById(`dropZone${zoneId}`);
+  zoneContent.innerHTML = '<span class="drop-placeholder">Thả thẻ hiện tượng vào đây</span>';
+  zone.classList.remove('filled');
+
+  // Return card to tray
+  const tray = document.getElementById('cardsTray');
+  const emptyMsg = tray.querySelector('.tray-empty-msg');
+  if (emptyMsg) emptyMsg.remove();
+
+  const newCard = document.createElement('div');
+  newCard.className = 'draggable-card';
+  newCard.id = `dragCard${cardId}`;
+  newCard.draggable = true;
+  newCard.ondragstart = (e) => handleDragStart(e, cardId);
+  newCard.onclick = () => handleCardClick(cardId);
+  newCard.innerHTML = `
+    <i class="ti ti-grip-vertical"></i>
+    <span>${CARD_TEXTS[cardId]}</span>
+  `;
+  tray.appendChild(newCard);
+
+  // Disable next button if undone
+  document.getElementById('st01SummaryBox').classList.add('hidden');
+  document.getElementById('btnNextST01').disabled = true;
+
+  showDndFeedback('info', 'Đã trả thẻ về khay.');
+  reportHeight();
+}
+
+function showDndFeedback(type, message) {
+  const fb = document.getElementById('dndFeedback');
+  fb.className = `feedback-bar ${type}`;
+  let icon = 'ti-info-circle';
+  if (type === 'ok') icon = 'ti-circle-check';
+  if (type === 'bad') icon = 'ti-alert-circle';
+  
+  fb.innerHTML = `<i class="ti ${icon}"></i> <span>${message}</span>`;
+  fb.classList.remove('hidden');
+}
+
+/* ==========================================================================
+   STAGE 02: 5 LEAVES OBSERVATION & 2-COLUMN SVG MATCHING
+   ========================================================================== */
+const LEAF_DATA = {
+  1: {
+    title: 'Mẫu 1: Lá bình thường (Đối chứng)',
+    desc: 'Lá bình thường: Màu xanh lục tự nhiên đồng đều, phiến lá phẳng căng, không có dấu hiệu biến dạng hay hoại tử.'
+  },
+  2: {
+    title: 'Mẫu 2: Lá thiếu Phốt pho (P)',
+    desc: 'Thiếu Phốt pho (P): Lá có màu tím hoặc tía sẫm (do tích tụ sắc tố anthocyanin), lá hẹp và sinh trưởng bị ức chế.'
+  },
+  3: {
+    title: 'Mẫu 3: Lá thiếu Magie (Mg)',
+    desc: 'Thiếu Magie (Mg): Phần phiến lá giữa các gân bị vàng (mất diệp lục) nhưng hệ gân chính và phụ vẫn giữ màu xanh đậm (vàng phiến gân xanh).'
+  },
+  4: {
+    title: 'Mẫu 4: Lá thiếu Kẽm (Zn)',
+    desc: 'Thiếu Kẽm (Zn): Lá có kích thước nhỏ hơn bình thường và phiến lá bị biến dạng, mép uốn lượn nhăn nheo.'
+  },
+  5: {
+    title: 'Mẫu 5: Lá thiếu Kali (K)',
+    desc: 'Thiếu Kali (K): Xuất hiện tổn thương cháy khô màu vàng nâu ở mép lá và chóp lá (cháy mép), phần giữa phiến lá vẫn xanh.'
+  }
+};
+
+function inspectLeaf(leafId) {
+  if (!window.lmsState.st02LeavesViewed.includes(leafId)) {
+    window.lmsState.st02LeavesViewed.push(leafId);
+  }
+
+  // Update hotspots
+  for (let i = 1; i <= 5; i++) {
+    const btn = document.getElementById(`leafBtn${i}`);
+    if (i === leafId) {
+      btn.classList.add('active');
+      btn.classList.add('viewed');
+    } else {
+      btn.classList.remove('active');
+    }
+  }
+
+  // Update caption
+  const detailText = document.getElementById('leafDetailText');
+  detailText.innerHTML = `<strong>${LEAF_DATA[leafId].title}:</strong> ${LEAF_DATA[leafId].desc}`;
+
+  reportHeight();
+}
+
+// 2-Column Matching Logic with SVG Lines
+let selectedMatchElem = null;
+let selectedMatchRole = null;
+
+const MATCH_CORRECT_PAIRS = {
+  'Mg': 'Mg', // Thành phần của diệp lục
+  'K': 'K',   // Điều tiết áp suất thẩm thấu & vận chuyển quang hợp
+  'Fe': 'Fe', // Thành phần cytochrome & hoạt hoá enzyme diệp lục
+  'N': 'N'    // Thành phần hợp chất hữu cơ
+};
+
+function selectMatchElement(elemKey) {
+  // If already matched, ignore
+  if (window.lmsState.st02PairsMatched.includes(elemKey)) return;
+
+  // Clear previous element selection
+  if (selectedMatchElem && selectedMatchElem !== elemKey) {
+    document.getElementById(`elem${selectedMatchElem}`).classList.remove('selected');
+  }
+
+  selectedMatchElem = elemKey;
+  document.getElementById(`elem${elemKey}`).classList.add('selected');
+
+  if (selectedMatchRole) {
+    verifyMatchPair(selectedMatchElem, selectedMatchRole);
+  } else {
+    showMatchFeedback('info', `Đã chọn nguyên tố ${elemKey}. Hãy chọn vai trò sinh lí phù hợp ở cột bên phải.`);
+  }
+}
+
+function selectMatchRole(roleKey) {
+  // If already matched, ignore
+  const alreadyMatchedRole = Object.keys(MATCH_CORRECT_PAIRS).find(
+    k => MATCH_CORRECT_PAIRS[k] === roleKey && window.lmsState.st02PairsMatched.includes(k)
+  );
+  if (alreadyMatchedRole) return;
+
+  // Clear previous role selection
+  if (selectedMatchRole && selectedMatchRole !== roleKey) {
+    document.getElementById(`roleItem${selectedMatchRole}`).classList.remove('selected');
+  }
+
+  selectedMatchRole = roleKey;
+  document.getElementById(`roleItem${roleKey}`).classList.add('selected');
+
+  if (selectedMatchElem) {
+    verifyMatchPair(selectedMatchElem, selectedMatchRole);
+  } else {
+    showMatchFeedback('info', 'Hãy chọn một nguyên tố ở cột bên trái để ghép với vai trò này.');
+  }
+}
+
+function verifyMatchPair(elemKey, roleKey) {
+  const elemItem = document.getElementById(`elem${elemKey}`);
+  const roleItem = document.getElementById(`roleItem${roleKey}`);
+
+  if (MATCH_CORRECT_PAIRS[elemKey] === roleKey) {
+    // Correct!
+    window.lmsState.st02PairsMatched.push(elemKey);
+    elemItem.classList.remove('selected');
+    elemItem.classList.add('matched');
+    roleItem.classList.remove('selected');
+    roleItem.classList.add('matched');
+
+    selectedMatchElem = null;
+    selectedMatchRole = null;
+
+    drawSvgMatchLine(elemKey, roleKey, 'correct');
+    showMatchFeedback('ok', `Chính xác! Đã nối thành công ${elemKey} với vai trò sinh lí.`);
+
+    // Check all 4 matched
+    if (window.lmsState.st02PairsMatched.length === 4) {
+      document.getElementById('st02SummaryBox').classList.remove('hidden');
+      document.getElementById('btnNextST02').disabled = false;
+    }
+  } else {
+    // Wrong pair
+    elemItem.classList.add('shake');
+    roleItem.classList.add('shake');
+
+    drawSvgMatchLine(elemKey, roleKey, 'wrong');
+    showMatchFeedback('bad', 'Cặp nối chưa chính xác! Hãy đọc lại biểu hiện và vai trò để thử lại.');
+
+    setTimeout(() => {
+      elemItem.classList.remove('shake');
+      roleItem.classList.remove('shake');
+      elemItem.classList.remove('selected');
+      roleItem.classList.remove('selected');
+      removeTempWrongLine();
+      selectedMatchElem = null;
+      selectedMatchRole = null;
+    }, 700);
+  }
+
+  reportHeight();
+}
+
+function drawSvgMatchLine(elemKey, roleKey, status) {
+  const svg = document.getElementById('matchSvgCanvas');
+  const board = document.getElementById('matchBoard');
+  const dotElem = document.getElementById(`dotElem${elemKey}`);
+  const dotRole = document.getElementById(`dotRole${roleKey}`);
+
+  if (!svg || !board || !dotElem || !dotRole) return;
+
+  const boardRect = board.getBoundingClientRect();
+  const elemRect = dotElem.getBoundingClientRect();
+  const roleRect = dotRole.getBoundingClientRect();
+
+  const x1 = elemRect.left + elemRect.width / 2 - boardRect.left;
+  const y1 = elemRect.top + elemRect.height / 2 - boardRect.top;
+  const x2 = roleRect.left + roleRect.width / 2 - boardRect.left;
+  const y2 = roleRect.top + roleRect.height / 2 - boardRect.top;
+
+  const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  line.setAttribute('x1', x1);
+  line.setAttribute('y1', y1);
+  line.setAttribute('x2', x2);
+  line.setAttribute('y2', y2);
+  line.setAttribute('stroke-width', '3');
+  line.setAttribute('stroke-linecap', 'round');
+
+  if (status === 'correct') {
+    line.setAttribute('stroke', '#2D8B6F');
+    line.setAttribute('id', `line-${elemKey}-${roleKey}`);
+  } else {
+    line.setAttribute('stroke', '#C15F3C');
+    line.setAttribute('stroke-dasharray', '5,5');
+    line.setAttribute('id', 'tempWrongLine');
+  }
+
+  svg.appendChild(line);
+}
+
+function removeTempWrongLine() {
+  const line = document.getElementById('tempWrongLine');
+  if (line) line.remove();
+}
+
+function redrawMatchLines() {
+  const svg = document.getElementById('matchSvgCanvas');
+  if (!svg) return;
+  svg.innerHTML = '';
+
+  window.lmsState.st02PairsMatched.forEach(elemKey => {
+    const roleKey = MATCH_CORRECT_PAIRS[elemKey];
+    drawSvgMatchLine(elemKey, roleKey, 'correct');
+  });
+}
+
+function showMatchFeedback(type, msg) {
+  const fb = document.getElementById('matchFeedback');
+  fb.className = `feedback-bar ${type}`;
+  let icon = 'ti-info-circle';
+  if (type === 'ok') icon = 'ti-circle-check';
+  if (type === 'bad') icon = 'ti-alert-circle';
+
+  fb.innerHTML = `<i class="ti ${icon}"></i> <span>${msg}</span>`;
+  fb.classList.remove('hidden');
+}
+
+/* ==========================================================================
+   STAGE 03: COMPLETION & MODAL V10 WITH CANVAS CONFETTI
+   ========================================================================== */
+function completeModule() {
+  window.lmsState.completed = true;
+  const modal = document.getElementById('completionModal');
+  modal.classList.remove('hidden');
+  launchConfetti();
+  reportHeight();
+}
+
+function closeModal() {
+  const modal = document.getElementById('completionModal');
+  modal.classList.add('hidden');
+}
+
+function restartModule() {
+  closeModal();
+  goToStage(0);
+}
+
+// Independent Lightweight Canvas Confetti
+function launchConfetti() {
+  const canvas = document.getElementById('confettiCanvas');
+  canvas.classList.remove('hidden');
+  const ctx = canvas.getContext('2d');
+  
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const confettiCount = 120;
+  const pieces = [];
+  const colors = ['#3CA57A', '#E8A24A', '#2D8B6F', '#10B981', '#F59E0B', '#60A5FA'];
+
+  for (let i = 0; i < confettiCount; i++) {
+    pieces.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height - canvas.height,
+      w: Math.random() * 8 + 6,
+      h: Math.random() * 8 + 6,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      vy: Math.random() * 3 + 2,
+      vx: (Math.random() - 0.5) * 2,
+      rotation: Math.random() * 360,
+      rotSpeed: (Math.random() - 0.5) * 8
+    });
+  }
+
+  let animationFrame;
+  const startTime = Date.now();
+
+  function render() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const elapsed = Date.now() - startTime;
+
+    pieces.forEach(p => {
+      p.y += p.vy;
+      p.x += p.vx;
+      p.rotation += p.rotSpeed;
+
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate((p.rotation * Math.PI) / 180);
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+      ctx.restore();
+    });
+
+    if (elapsed < 3500) {
+      animationFrame = requestAnimationFrame(render);
+    } else {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      canvas.classList.add('hidden');
+      cancelAnimationFrame(animationFrame);
+    }
+  }
+
+  render();
+}
+</script>
+
+</body>
+</html>
