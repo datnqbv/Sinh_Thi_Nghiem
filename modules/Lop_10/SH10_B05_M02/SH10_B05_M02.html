@@ -1038,7 +1038,16 @@
     @media (max-width:980px) {
       .split-workspace { grid-template-columns:1fr; }
       .visual-card { position:static; }
-      .stepper-nav { grid-template-columns:repeat(3,1fr); }
+      .stepper-nav {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+      .stepper-nav::-webkit-scrollbar { display: none; }
+      .stepper-tab { flex: 0 0 auto !important; min-width: 140px; }
     }
     @media (max-width:680px) {
       body { font-size:16px; }
@@ -1046,7 +1055,15 @@
       .workspace-card { padding:14px; }
       .matching-cols { grid-template-columns:1fr; }
       .food-drop-zones { grid-template-columns:1fr; }
-      .stepper-nav { grid-template-columns:repeat(2,1fr); }
+    }
+  
+    /* Loại bỏ thanh tab điều hướng bước học theo chuẩn tuyến tính SH10_B02_M02 */
+    .progress-nav-container,
+    .progress-nav,
+    .stepper-nav,
+    .stepper-bar,
+    .step-nav-bar {
+      display: none !important;
     }
   </style>
 </head>

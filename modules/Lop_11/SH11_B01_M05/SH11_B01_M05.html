@@ -923,14 +923,12 @@
 
     /* Responsive Queries */
     @media (max-width: 860px) {
-      .stepper-nav { grid-template-columns: repeat(2, 1fr); }
       .dual-images-grid, .source-tray, .target-zones-grid, .summary-grid {
         grid-template-columns: 1fr;
       }
     }
     @media (max-width: 520px) {
       .app { padding: 16px; }
-      .stepper-nav { grid-template-columns: 1fr; }
       .stage-actions { flex-direction: column-reverse; }
       .btn { width: 100%; }
     }
@@ -991,6 +989,15 @@
       line-height: 1.6;
     }
 
+  
+    /* Loại bỏ thanh tab điều hướng bước học theo chuẩn tuyến tính SH10_B02_M02 */
+    .progress-nav-container,
+    .progress-nav,
+    .stepper-nav,
+    .stepper-bar,
+    .step-nav-bar {
+      display: none !important;
+    }
   </style>
 </head>
 <body>

@@ -936,10 +936,10 @@ function renderStage3(){
         <div class="section-label"><i class="ti ti-tool"></i> Bốn thiết bị</div>
         <div class="device-grid" id="s3Devices">${['centrifuge','pipette','magnifier','light'].map(id=>deviceButton(id,s.lastDevice===id)).join('')}</div>
       </section>
-      <aside class="device-info-panel">
+      <div class="device-info-panel">
         <img src="${assetFiles[deviceAssets[preview]]}" alt="${deviceNames[preview]}">
         <h3>${deviceNames[preview]}</h3><p>${deviceInfo[preview]}</p>
-      </aside>
+      </div>
     </div>
     <div class="actions"><button class="btn btn-primary" id="s3Check" ${!all||s.matchComplete?'disabled':''}><i class="ti ti-check"></i> Kiểm tra</button></div>
     

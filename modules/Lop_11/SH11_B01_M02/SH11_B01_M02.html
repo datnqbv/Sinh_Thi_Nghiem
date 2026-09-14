@@ -1267,16 +1267,23 @@
     }
 
     @media (max-width: 860px) {
-      .stepper-nav { grid-template-columns: repeat(2, 1fr); }
       .st00-grid, .flowchart-container, .target-zones-grid, .source-tray, .st02-panels, .matching-grid { grid-template-columns: 1fr; }
       .matching-grid { gap: 24px; }
     }
     @media (max-width: 480px) {
-      .stepper-nav { grid-template-columns: 1fr; }
       .stage-actions { flex-direction: column-reverse; }
       .btn { width: 100%; }
       .state-panel__title { font-size: 0.93rem; }
       .state-panel__badge { font-size: 0.76rem; padding: 4px 8px; }
+    }
+  
+    /* Loại bỏ thanh tab điều hướng bước học theo chuẩn tuyến tính SH10_B02_M02 */
+    .progress-nav-container,
+    .progress-nav,
+    .stepper-nav,
+    .stepper-bar,
+    .step-nav-bar {
+      display: none !important;
     }
   </style>
 </head>
