@@ -258,9 +258,7 @@
       gap: 24px;
     }
 
-    .stage-section.hidden {
-      display: none;
-    }
+    .stage-section.hidden { display: none !important; }
 
     /* Pedagogical Banners */
     .hook-question-banner {
@@ -436,9 +434,7 @@
       gap: 8px;
     }
 
-    .stage-conclusion-box.hidden {
-      display: none;
-    }
+    .stage-conclusion-box.hidden { display: none !important; }
 
     .conclusion-title {
       font-size: 0.92rem;
@@ -621,9 +617,7 @@
       border-left: 3px solid var(--jade);
     }
 
-    .role-detail-box.hidden {
-      display: none;
-    }
+    .role-detail-box.hidden { display: none !important; }
 
     .role-example {
       background: var(--cream);
@@ -646,9 +640,7 @@
       transition: all 0.3s ease;
     }
 
-    .st01-quiz-section.hidden {
-      display: none;
-    }
+    .st01-quiz-section.hidden { display: none !important; }
 
     .quiz-card {
       background: #FFFFFF;
@@ -660,9 +652,7 @@
       gap: 12px;
     }
 
-    .quiz-card.hidden {
-      display: none;
-    }
+    .quiz-card.hidden { display: none !important; }
 
     .quiz-card-header {
       display: flex;
@@ -755,9 +745,7 @@
       gap: 10px;
     }
 
-    .quiz-feedback-box.hidden {
-      display: none;
-    }
+    .quiz-feedback-box.hidden { display: none !important; }
 
     .quiz-feedback-box.correct {
       background: var(--correct-bg);
@@ -888,6 +876,13 @@
       z-index: 9999;
       padding: 20px;
     }
+    .congrats-overlay.hidden,
+    .modal-backdrop.hidden,
+    #completionModal.hidden,
+    #congratsModal.hidden {
+      display: none !important;
+    }
+
     .congrats-modal, .completion-modal {
       background: #fff;
       border-radius: 16px;
@@ -963,16 +958,7 @@
 
   <div class="app-container">
     
-    <!-- 1. Header (V10 Standard) -->
-    <header>
-      <div class="header-badge"><i class="ti ti-dna"></i> Sinh học 11 · Bài 1 · Module 06</div>
-      <h1>Vai trò của sinh vật tự dưỡng trong sinh giới</h1>
-      <div class="header-goal">
-        <span class="goal-label"><i class="ti ti-target"></i> Mục tiêu</span>
-        <span class="goal-divider"></span>
-        <span class="goal-text" id="goalText">Khám phá hậu quả xảy ra với chuỗi thức ăn và hệ sinh thái nếu thiếu đi sinh vật tự dưỡng.</span>
-      </div>
-    </header>
+    
 
     <!-- 2. Step Tabs Navigation Sticky Top 0 (V10 Standard) -->
     <nav class="progress-nav" aria-label="Tiến trình học tập">

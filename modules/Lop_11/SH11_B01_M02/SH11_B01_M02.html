@@ -1221,6 +1221,13 @@
       z-index: 9999;
       padding: 20px;
     }
+    .congrats-overlay.hidden,
+    .modal-backdrop.hidden,
+    #completionModal.hidden,
+    #congratsModal.hidden {
+      display: none !important;
+    }
+
     .congrats-modal {
       background: #fff;
       border-radius: 16px;
@@ -1276,16 +1283,7 @@
 <body>
 
   <div class="app">
-    <!-- Header thông tin bài học (V10 Standard) -->
-    <header>
-      <div class="header-badge"><i class="ti ti-leaf"></i> Sinh học 11 · Bài 1 · Module 02</div>
-      <h1>Dấu hiệu đặc trưng của trao đổi chất và chuyển hoá năng lượng</h1>
-      <div class="header-goal">
-        <span class="goal-label"><i class="ti ti-target"></i> Mục tiêu</span>
-        <span class="goal-divider"></span>
-        <span class="goal-text" id="goalText">Khám phá các biểu hiện trao đổi chất diễn ra bên ngoài cơ thể qua hình ảnh người và cây.</span>
-      </div>
-    </header>
+    
 
     <!-- Progress Nav Sticky Top 0 (V10 Standard) -->
     <nav class="progress-nav" aria-label="Tiến trình học tập">

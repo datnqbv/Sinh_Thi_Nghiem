@@ -260,9 +260,7 @@
       box-shadow: var(--shadow-sm);
       animation: fadeIn 0.28s ease-in-out;
     }
-    .stage-section.hidden {
-      display: none;
-    }
+    .stage-section.hidden { display: none !important; }
 
     /* Hộp dẫn dắt & Hướng dẫn */
     .lead-box {
@@ -423,9 +421,7 @@
       margin-bottom: 24px;
       position: relative;
     }
-    .conclude-card.hidden {
-      display: none;
-    }
+    .conclude-card.hidden { display: none !important; }
     .conclude-card__title {
       font-size: 0.92rem;
       font-weight: 800;
@@ -705,9 +701,7 @@
       margin-top: 24px;
       box-shadow: var(--shadow-sm);
     }
-    .activity-section.hidden {
-      display: none;
-    }
+    .activity-section.hidden { display: none !important; }
     .activity-title {
       font-size: 1.05rem;
       font-weight: 800;
@@ -857,9 +851,7 @@
       margin-bottom: 18px;
       box-shadow: var(--shadow-sm);
     }
-    .quiz-card.hidden {
-      display: none;
-    }
+    .quiz-card.hidden { display: none !important; }
     .quiz-question-title {
       font-size: 0.98rem;
       font-weight: 800;
@@ -935,9 +927,7 @@
       align-items: flex-start;
       gap: 10px;
     }
-    .feedback-panel.hidden {
-      display: none;
-    }
+    .feedback-panel.hidden { display: none !important; }
     .feedback-panel.correct {
       background: var(--correct-bg);
       border-left: 4px solid var(--correct);
@@ -1369,9 +1359,7 @@
       font-size: 1rem;
       font-weight: 700;
     }
-    .completion-alert.hidden {
-      display: none;
-    }
+    .completion-alert.hidden { display: none !important; }
     .completion-alert i {
       font-size: 1.6rem;
       color: var(--jade-deep);
@@ -1579,6 +1567,13 @@
       z-index: 9999;
       padding: 20px;
     }
+    .congrats-overlay.hidden,
+    .modal-backdrop.hidden,
+    #completionModal.hidden,
+    #congratsModal.hidden {
+      display: none !important;
+    }
+
     .congrats-modal {
       background: #fff;
       border-radius: 16px;
@@ -1622,16 +1617,7 @@
 <body>
 
   <div class="app">
-    <!-- Header thông tin bài học (V10 Standard) -->
-    <header>
-      <div class="header-badge"><i class="ti ti-dna"></i> Sinh học 11 · Bài 1 · Module 04</div>
-      <h1>Mối quan hệ giữa trao đổi chất và chuyển hoá năng lượng ở cấp tế bào và cơ thể</h1>
-      <div class="header-goal">
-        <span class="goal-label"><i class="ti ti-target"></i> Mục tiêu</span>
-        <span class="goal-divider"></span>
-        <span class="goal-text" id="goalText">Khám phá mối liên hệ giữa vật chất và năng lượng qua hình ảnh ẩn dụ công trường xây dựng.</span>
-      </div>
-    </header>
+    
 
     <!-- Progress Nav Sticky Top 0 (V10 Standard) -->
     <nav class="progress-nav" aria-label="Tiến trình bài học">
@@ -2155,6 +2141,72 @@
 
   <!-- JAVASCRIPT LOGIC TỰ CHỨA -->
   <script>
+
+    function launchConfetti() {
+      const canvas = document.createElement('canvas');
+      canvas.id = 'confettiCanvas';
+      canvas.style.position = 'fixed';
+      canvas.style.inset = '0';
+      canvas.style.width = '100vw';
+      canvas.style.height = '100vh';
+      canvas.style.pointerEvents = 'none';
+      canvas.style.zIndex = '9998';
+      document.body.appendChild(canvas);
+      const cctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const particles = [];
+      const colors = ['#3CA57A', '#2D8B6F', '#E8A24A', '#4E7F92', '#C15F3C'];
+      for (let i = 0; i < 120; i++) {
+        particles.push({
+          x: canvas.width / 2,
+          y: canvas.height / 2,
+          vx: (Math.random() - 0.5) * 18,
+          vy: (Math.random() - 0.7) * 18,
+          size: Math.random() * 8 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          rSpeed: (Math.random() - 0.5) * 10,
+          life: 1,
+          decay: Math.random() * 0.015 + 0.008
+        });
+      }
+      function animate() {
+        cctx.clearRect(0, 0, canvas.width, canvas.height);
+        let active = false;
+        particles.forEach(p => {
+          if (p.life > 0) {
+            active = true;
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += 0.3;
+            p.life -= p.decay;
+            p.rotation += p.rSpeed;
+            cctx.save();
+            cctx.translate(p.x, p.y);
+            cctx.rotate((p.rotation * Math.PI) / 180);
+            cctx.globalAlpha = Math.max(0, p.life);
+            cctx.fillStyle = p.color;
+            cctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+            cctx.restore();
+          }
+        });
+        if (active) requestAnimationFrame(animate);
+        else canvas.remove();
+      }
+      requestAnimationFrame(animate);
+    }
+
+
+    function closeCompletionModal() {
+      const modal = document.getElementById('completionModal') || document.getElementById('congratsModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('show');
+      }
+      if (typeof reportHeight === 'function') reportHeight();
+    }
+
     /* =========================================================
        LMS STATE & REPORT HEIGHT (KHÔNG DÙNG LOCALSTORAGE/COOKIE)
        ========================================================= */

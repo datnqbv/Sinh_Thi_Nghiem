@@ -264,8 +264,19 @@ Mọi file HTML con (Virtual Lab / Thí nghiệm tương tác) khi được tạ
    - Nút "Tiếp tục" (`#btnNext`) duy trì `disabled` khi chưa đủ điều kiện hoàn thành màn.
 6. **Cảnh Báo Thông Báo khi Thao Tác Sai / Thiếu Bước Qua Màn**:
    - Khi người học chọn sai hoặc thiếu bước, hệ thống ngay lập tức đổi màu ô phản hồi `#globalFeedback` hoặc `.inline-feedback` sang màu Cảnh báo `bad` (`border-left: 4px solid var(--wrong); background: var(--wrong-bg);`) kèm icon `<i class="ti ti-alert-triangle"></i>` và thông báo nguyên nhân chi tiết.
-7. **Khai Báo CSS `.hidden` Bắt Buộc**:
-   - Khai báo `.hidden { display: none !important; }` để ngăn Modal Chúc mừng tự động hiển thị khi vừa tải trang.
+7. **Khai Báo CSS Ẩn Modal Bắt Buộc (CHỐNG LỖI TỰ ĐỘNG HIỆN MODAL)**:
+   - Thẻ HTML Modal hoàn thành (`#completionModal` hoặc `#congratsModal`) bắt buộc phải có sẵn class `hidden`: `<div class="congrats-overlay hidden" id="completionModal" role="dialog" aria-modal="true">`.
+   - Trong CSS bắt buộc khai báo cả `.hidden` toàn cục và selector đặc hiệu với độ ưu tiên cao:
+     ```css
+     .hidden { display: none !important; }
+     .congrats-overlay.hidden,
+     .modal-backdrop.hidden,
+     #completionModal.hidden,
+     #congratsModal.hidden {
+       display: none !important;
+     }
+     ```
+   - Tuyệt đối không được thiếu `.congrats-overlay.hidden` hoặc thiếu `!important`, vì selector `.congrats-overlay` nằm ở cuối CSS có `display: grid` sẽ ghi đè `.hidden` do thứ tự cascade, làm modal tự bung đè kín màn hình ngay khi tải trang khiến học sinh không thể tương tác.
 - **Quy tắc Ghép đôi Dạng Nối 2 Cột Dọc kèm Đường Tia SVG (`2-Column Vertical Match with SVG Lines` — BẮT BUỘC):**
   - **Bố cục 2 Cột Dọc:** Xếp 2 danh sách ghép đôi song song theo chiều dọc (`.matching-container` với 2 cột `left` và `right`). Cột bên trái là danh sách thẻ nguồn, cột bên phải là danh sách thẻ đích.
   - **Điểm nối & Đường nối SVG (`<svg class="matching-svg">`):** Mỗi thẻ có chấm tròn nối (`.dot`). Khi người học chọn 1 thẻ vế trái và 1 thẻ vế phải ghép đúng, JS sẽ vẽ 1 đường tia nối màu xanh ngọc (`stroke="var(--jade)" stroke-width="3"`) nối trực tiếp giữa 2 chấm tròn.
@@ -318,70 +329,16 @@ Trên giao diện di động, thanh điều hướng Module / Stage (`.moduleNav
 
 ---
 
-## 6. HEADER (GỘP MỤC TIÊU) + THANH ĐIỀU HƯỚNG MODULE & CHỐNG ĐÈ CANVAS
+## 6. QUY ĐỊNH LOẠI BỎ HEADER BANNER & THANH ĐIỀU HƯỚNG TIẾN TRÌNH (STICKY TOP 0)
 
-**Header (Banner phong cách Flat/Editorial — Gộp Mục tiêu):**
-- Không dùng ảnh nền URL ngoài; sử dụng nền gradient CSS màu thương hiệu (`var(--jade-dark)` đến `var(--jade-deep)`).
-- **Loại bỏ dòng mô tả phụ `<p>`** phía dưới tên bài học.
-- **Gộp trực tiếp khối Mục tiêu (`.header-goal`) vào bên trong Header**:
-```html
-<header>
-  <div class="header-badge"><i class="ti ti-dna"></i> SINH HỌC 10 · BÀI 1 · MODULE 02</div>
-  <h1>Vai trò và ứng dụng của Sinh học</h1>
-  <div class="header-goal">
-    <span class="goal-label"><i class="ti ti-target"></i> MỤC TIÊU</span>
-    <span class="goal-divider"></span>
-    <span class="goal-text" id="goalText">Ghép hiểu biết Sinh học với tình huống phù hợp trong đời sống.</span>
-  </div>
-</header>
-```
-```css
-header {
-  width: 100%;
-  max-width: 1200px;
-  border-radius: 16px;
-  padding: 1.6rem 2rem;
-  overflow: hidden;
-  position: relative;
-  background: linear-gradient(135deg, var(--jade-dark), var(--jade-deep));
-  box-shadow: var(--shadow);
-  color: #fff;
-}
-.header-goal {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
-  background: rgba(255,255,255,0.14);
-  border: 1px solid rgba(255,255,255,0.22);
-  border-radius: 8px;
-  padding: 8px 14px;
-}
-.header-goal .goal-label { color: #fff; font-weight: 700; font-size: 0.82rem; }
-.header-goal .goal-divider { width: 1px; height: 14px; background: rgba(255,255,255,0.4); }
-.header-goal .goal-text { font-size: 0.92rem; font-weight: 500; color: rgba(255,255,255,0.95); }
-```
+**Tuyệt đối KHÔNG DÙNG khối `<header>` banner (BẮT BUỘC):**
+- **Không dùng khối `<header>` banner màu xanh gradient**: Không đặt thẻ `<header>` chứa banner nền gradient (`linear-gradient(135deg, var(--jade-dark), #1c523d)`), không dùng badge `.header-badge`, tiêu đề `<h1>` hay hộp mục tiêu `.header-goal` trên cùng nữa.
+- **Lý do:** Học liệu số cần tối ưu không gian chiều dọc tối đa cho học sinh. Việc để một banner header to phía trên chiếm mất 140–180px màn hình, đẩy vùng thao tác xuống dưới và gây trùng lặp tiêu đề khi nhúng vào hệ thống LMS/Portal.
+- **Quy chuẩn bắt đầu trang:** Trang bài học bắt đầu **TRỰC TIẾP** từ **Thanh tiến trình Sticky Top 0 (`.progress-nav-container`)** hoặc vùng làm việc tương tác (`.split-workspace` / thẻ màn học đầu tiên), hoàn toàn đồng nhất với file mẫu chuẩn [`SH10_B02_M02.html`](modules/Lop_10/SH10_B02_M02/SH10_B02_M02.html).
 
-**Cơ chế đổi Mục tiêu Động (`stageGoals`) theo từng Stage:**
-Mỗi module có thể có nhiều màn (stage), mỗi màn có 1 mục tiêu sư phạm riêng. JS quản lý dictionary `stageGoals` và cập nhật trực tiếp nội dung `#goalText` hoặc `#headerGoal` mỗi khi gọi `goToStage(n)`:
-```js
-const stageGoals = {
-  0: 'Quan sát tình huống thực tế và đối chiếu đặc điểm sinh học ban đầu.',
-  1: 'Khám phá cấu trúc chi tiết và cơ chế trao đổi chất qua sơ đồ tương tác.',
-  2: 'Thực hành phân loại, nối ghép và củng cố kiến thức trọng tâm.',
-  3: 'Tổng kết nội dung bài học và ghi nhận kết quả hoàn thành module.'
-};
-function updateHeaderGoal(stageIdx) {
-  const goalEl = document.getElementById('goalText') || document.querySelector('#headerGoal .goal-text');
-  if (goalEl && stageGoals[stageIdx]) {
-    goalEl.textContent = stageGoals[stageIdx];
-  }
-}
-```
-
-**Thanh điều hướng Tiến trình Màn (`.progress-nav-container` / `.progress-nav`) — Chuẩn V10 Sticky Top 0:**
+**Thanh điều hướng Tiến trình Màn (`.progress-nav-container` / `.progress-nav`) — Chuẩn Sticky Top 0:**
 - **Thanh Nav cố định đỉnh (`position: sticky; top: 0; z-index: 100`):**
-  Nằm ngay dưới Header và dính trên đỉnh khi cuộn trang. Hỗ trợ cuộn ngang linh hoạt trên mobile (`overflow-x: auto; scrollbar-width: none;`).
+  Dính trên đỉnh viewport khi cuộn trang, giúp học sinh luôn nắm được tiến độ học tập và chuyển màn thuận tiện. Hỗ trợ cuộn ngang linh hoạt trên mobile (`overflow-x: auto; white-space: nowrap; scrollbar-width: none;`).
   ```css
   .progress-nav-container {
     position: sticky;
@@ -1369,7 +1326,7 @@ document.getElementById('linkFishImage').src = assetFiles.A02;
 - [ ] Chỉ dùng token UI ở MỤC 3 cho giao diện; **không** gradient/shadow nặng/glassmorphism/dark theme/emoji/robot.
 - [ ] Màu khoa học trong canvas theo MỤC 4; UI và science color **không trộn**.
 - [ ] **Chống lặp hướng dẫn (Anti-duplication — BẮT BUỘC)**: Khung `.guide-box` chỉ xuất hiện 1 lần duy nhất ngay trên phần làm bài; tuyệt đối không lặp lại câu lệnh hướng dẫn 2 lần (ở `lead-text` không lặp "Nhấn vào...", ở badge/caption dưới không lặp mệnh lệnh, chỉ là trạng thái/kết quả).
-- [ ] **Header V10 & Sticky Nav**: Header có dải gradient phẳng, hộp mục tiêu động `stageGoals` đồng bộ từng stage; thanh tiến trình sticky top 0 cuộn ngang mượt mà trên mobile.
+- [ ] **Loại bỏ Header banner & Dùng Sticky Nav Top 0**: Tuyệt đối không dùng header banner xanh gradient/h1 ở đầu bài; bắt đầu trực tiếp từ thanh tiến trình Sticky Top 0 cuộn ngang mượt mà trên mobile.
 - [ ] **Modal chúc mừng V10**: Có Modal chúc mừng hoàn thành tiêu chuẩn (`#completionModal`) tích hợp `launchConfetti()` canvas độc lập; không dùng alert() mặc định.
 
 **Canvas & animation:**

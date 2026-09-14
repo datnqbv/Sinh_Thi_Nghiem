@@ -1008,6 +1008,13 @@
       z-index: 9999;
       padding: 20px;
     }
+    .congrats-overlay.hidden,
+    .modal-backdrop.hidden,
+    #completionModal.hidden,
+    #congratsModal.hidden {
+      display: none !important;
+    }
+
     .congrats-modal, .neutral-modal {
       background: #fff;
       border-radius: 16px;
@@ -1054,16 +1061,7 @@
 <body>
 
 <div class="app">
-  <!-- Header thông tin bài học (V10 Standard) -->
-  <header>
-    <div class="header-badge"><i class="ti ti-leaf"></i> Sinh học 11 · Bài 1 · Module 01</div>
-    <h1>Vai trò của trao đổi chất và chuyển hoá năng lượng</h1>
-    <div class="header-goal">
-      <span class="goal-label"><i class="ti ti-target"></i> Mục tiêu</span>
-      <span class="goal-divider"></span>
-      <span class="goal-text" id="goalText">Khái quát trao đổi chất và chuyển hoá năng lượng thông qua các tình huống thực tiễn.</span>
-    </div>
-  </header>
+  
 
   <!-- Progress Nav Sticky Top 0 (V10 Standard) -->
   <nav class="progress-nav" aria-label="Tiến trình học tập">
@@ -1458,6 +1456,16 @@
 </div>
 
 <script>
+
+    function closeCompletionModal() {
+      const modal = document.getElementById('completionModal') || document.getElementById('congratsModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('show');
+      }
+      if (typeof reportHeight === 'function') reportHeight();
+    }
+
   /* =======================================================
      LMS & ATHENA PROTOCOL
      ======================================================= */

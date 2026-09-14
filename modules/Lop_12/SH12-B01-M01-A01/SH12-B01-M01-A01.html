@@ -264,6 +264,13 @@
       z-index: 9999;
       padding: 1rem;
     }
+    .congrats-overlay.hidden,
+    .modal-backdrop.hidden,
+    #completionModal.hidden,
+    #congratsModal.hidden {
+      display: none !important;
+    }
+
     .congrats-modal {
       background: #fff;
       border-radius: 16px;
@@ -1029,16 +1036,7 @@
 <body>
 
   <div class="app">
-    <!-- Header thông tin bài học (V10 Standard) -->
-    <header class="module-header">
-      <div class="header-badge"><i class="ti ti-dna"></i> SINH HỌC 12 · BÀI 1 · MODULE 01</div>
-      <h1>Chức năng của DNA</h1>
-      <div class="header-goal" id="headerGoal">
-        <span class="goal-label"><i class="ti ti-target"></i> MỤC TIÊU</span>
-        <span class="goal-divider"></span>
-        <span class="goal-text" id="goalText">Khám phá ý nghĩa của việc phân tích DNA trong các mẫu sinh học đối với việc nhận diện cá thể.</span>
-      </div>
-    </header>
+    
 
     <!-- Thanh tiến trình Sticky Top 0 (V10 Standard) -->
     <div class="progress-nav-container">

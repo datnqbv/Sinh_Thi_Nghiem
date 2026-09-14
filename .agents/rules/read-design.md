@@ -16,10 +16,9 @@ trigger: always_on
 ## 2. Tiêu Chuẩn Thiết Kế Module V10 Thống Nhất ("10 File Như Một")
 Mọi file module được tạo mới hoặc nâng cấp bắt buộc tuân theo khuôn mẫu chuẩn V10 tham chiếu từ [`modules/Lop_10/SH10_B02_M02/SH10_B02_M02.html`](modules/Lop_10/SH10_B02_M02/SH10_B02_M02.html):
 
-1. **Header Banner Gradient V10 Phẳng & Mục Tiêu Động**:
-   - Nền gradient thương hiệu (`linear-gradient(135deg, var(--jade-dark), #1c523d)`), không dùng ảnh nền ngoài.
-   - Có badge định danh `.header-badge`, tiêu đề `<h1>`.
-   - **Hộp mục tiêu động `.header-goal` (`#headerGoal` / `#goalText`)**: Cập nhật tự động nội dung mục tiêu tương ứng theo từng Stage khi chuyển màn qua dictionary `stageGoals = { 0: '...', 1: '...', ... }`.
+1. **Quy Định Loại Bỏ Header Banner (BẮT BUỘC)**:
+   - **Tuyệt đối KHÔNG DÙNG khối `<header>` banner**: Không dùng banner nền gradient xanh đậm, không dùng `.header-badge`, tiêu đề `<h1>` hay `.header-goal` ở đầu trang.
+   - Bài học bắt đầu trực tiếp từ **Thanh tiến trình Sticky Top 0 (`.progress-nav-container`)** hoặc vùng làm việc tương tác, tối ưu toàn bộ chiều cao cho học sinh và tương thích tuyệt đối với file mẫu chuẩn [`SH10_B02_M02.html`](modules/Lop_10/SH10_B02_M02/SH10_B02_M02.html).
 2. **Thanh Tiến Trình Sticky Top 0 (`.progress-nav-container`)**:
    - Cố định dính trên đỉnh khi cuộn trang (`position: sticky; top: 0; z-index: 100;`).
    - Hỗ trợ cuộn ngang mượt mà trên mobile (`overflow-x: auto; white-space: nowrap; scrollbar-width: none;`).
@@ -34,6 +33,18 @@ Mọi file module được tạo mới hoặc nâng cấp bắt buộc tuân the
 5. **Modal Chúc Mừng Hoàn Thành V10 + Pháo Hoa Canvas (`#completionModal`)**:
    - Khi hoàn thành bài học, bắt buộc hiển thị Modal overlay chúc mừng chuẩn V10 với biểu tượng cúp vàng (`ti ti-trophy`) và 2 nút hành động ("Xem lại bài", "Đóng thông báo").
    - Kích hoạt hiệu ứng pháo hoa bằng hàm `launchConfetti()` vẽ Canvas tự sinh độc lập, không dùng thư viện ngoài, không dùng popup `alert()` sơ sài.
+   - **Quy tắc ẩn Modal khi tải trang (CHỐNG LỖI TỰ ĐỘNG HIỆN MODAL)**:
+     - Thẻ modal ban đầu trong HTML bắt buộc phải có class `hidden`: `<div class="congrats-overlay hidden" id="completionModal" role="dialog" aria-modal="true">`.
+     - Trong CSS bắt buộc phải có quy tắc độ ưu tiên cao:
+       ```css
+       .hidden { display: none !important; }
+       .congrats-overlay.hidden,
+       .modal-backdrop.hidden,
+       #completionModal.hidden {
+         display: none !important;
+       }
+       ```
+     - *Tuyệt đối không được thiếu `.congrats-overlay.hidden` hoặc thiếu `!important`*, vì nếu không selector `.congrats-overlay { display: grid; }` ở cuối CSS sẽ ghi đè `.hidden`, làm modal tự hiện đè lên toàn trang ngay khi vừa mở file khiến học sinh không thao tác được.
 6. **Bảo toàn Tích Hợp LMS & Chiều Cao Tự Động**:
    - State lưu trong biến JS runtime `window.lmsState = { ... }`. Tuyệt đối không dùng `localStorage`, `sessionStorage` hoặc cookie.
    - Duy trì hàm `reportHeight()` tự động tính `document.documentElement.scrollHeight` và gửi `postMessage` để sẵn sàng nhúng vào bất kỳ hệ thống LMS/iframe nào mà không bị lỗi thanh cuộn đôi.

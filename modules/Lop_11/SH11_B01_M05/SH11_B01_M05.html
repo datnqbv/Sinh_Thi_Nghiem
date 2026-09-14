@@ -270,9 +270,7 @@
       display: block;
       animation: fadeIn 0.25s ease-out;
     }
-    .stage-section.hidden {
-      display: none;
-    }
+    .stage-section.hidden { display: none !important; }
 
     /* Lead Box & Guidelines */
     .lead-box {
@@ -515,9 +513,7 @@
       margin-bottom: 18px;
       animation: fadeIn 0.3s ease;
     }
-    .conclude-card.hidden {
-      display: none;
-    }
+    .conclude-card.hidden { display: none !important; }
     .conclude-card__title {
       font-size: 0.95rem;
       font-weight: 800;
@@ -542,9 +538,7 @@
       margin-top: 24px;
       animation: fadeIn 0.3s ease;
     }
-    .activity-section.hidden {
-      display: none;
-    }
+    .activity-section.hidden { display: none !important; }
     .activity-title {
       font-size: 1.05rem;
       font-weight: 800;
@@ -697,9 +691,7 @@
       margin-top: 20px;
       animation: fadeIn 0.3s ease;
     }
-    .quiz-section.hidden {
-      display: none;
-    }
+    .quiz-section.hidden { display: none !important; }
     .quiz-question-title {
       font-size: 1.02rem;
       font-weight: 800;
@@ -771,9 +763,7 @@
       gap: 12px;
       animation: fadeIn 0.25s ease-out;
     }
-    .feedback-panel.hidden {
-      display: none;
-    }
+    .feedback-panel.hidden { display: none !important; }
     .feedback-panel.correct {
       background: var(--correct-bg);
       border-left: 4px solid var(--correct);
@@ -865,9 +855,7 @@
       font-size: 1rem;
       font-weight: 700;
     }
-    .completion-alert.hidden {
-      display: none;
-    }
+    .completion-alert.hidden { display: none !important; }
     .completion-alert i {
       font-size: 1.6rem;
       color: var(--jade-deep);
@@ -958,6 +946,13 @@
       z-index: 9999;
       padding: 20px;
     }
+    .congrats-overlay.hidden,
+    .modal-backdrop.hidden,
+    #completionModal.hidden,
+    #congratsModal.hidden {
+      display: none !important;
+    }
+
     .congrats-modal {
       background: #fff;
       border-radius: 16px;
@@ -1001,16 +996,7 @@
 <body>
 
   <div class="app">
-    <!-- Header thông tin bài học (V10 Standard) -->
-    <header>
-      <div class="header-badge"><i class="ti ti-dna"></i> Sinh học 11 · Bài 1 · Module 05</div>
-      <h1>Các phương thức trao đổi chất và chuyển hoá năng lượng: Tự dưỡng và Dị dưỡng</h1>
-      <div class="header-goal">
-        <span class="goal-label"><i class="ti ti-target"></i> Mục tiêu</span>
-        <span class="goal-divider"></span>
-        <span class="goal-text" id="goalText">Khám phá cách sinh vật thu nhận nguồn carbon để tạo nên chất hữu cơ qua đối chiếu cây xanh và con người.</span>
-      </div>
-    </header>
+    
 
     <!-- Progress Nav Sticky Top 0 (V10 Standard) -->
     <nav class="progress-nav" aria-label="Tiến trình học tập">

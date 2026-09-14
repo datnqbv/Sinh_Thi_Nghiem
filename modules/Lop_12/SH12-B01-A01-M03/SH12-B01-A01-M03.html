@@ -249,9 +249,7 @@
       box-shadow: var(--shadow-sm);
     }
 
-    .section-card.hidden {
-      display: none;
-    }
+    .section-card.hidden { display: none !important; }
 
     .section-header {
       margin-bottom: 20px;
@@ -654,9 +652,7 @@
       box-shadow: var(--shadow-sm);
     }
 
-    .quiz-card.hidden {
-      display: none;
-    }
+    .quiz-card.hidden { display: none !important; }
 
     .quiz-header {
       display: flex;
@@ -764,9 +760,7 @@
       line-height: 1.6;
     }
 
-    .quiz-feedback.hidden {
-      display: none;
-    }
+    .quiz-feedback.hidden { display: none !important; }
 
     .quiz-feedback.correct {
       background: var(--correct-bg);
@@ -963,6 +957,13 @@
       z-index: 1000;
       padding: 20px;
     }
+    .congrats-overlay.hidden,
+    .modal-backdrop.hidden,
+    #completionModal.hidden,
+    #congratsModal.hidden {
+      display: none !important;
+    }
+
 
     .modal-backdrop.show {
       display: flex;
@@ -1017,16 +1018,7 @@
 
   <div class="lesson-wrapper">
 
-    <!-- Header Module (V10 Standard) -->
-    <header class="module-header">
-      <div class="header-badge"><i class="ti ti-dna"></i> SINH HỌC 12 · BÀI 1 · MODULE 03</div>
-      <h1>Ý nghĩa và ứng dụng của tái bản DNA</h1>
-      <div class="header-goal" id="headerGoal">
-        <span class="goal-label"><i class="ti ti-target"></i> MỤC TIÊU</span>
-        <span class="goal-divider"></span>
-        <span class="goal-text" id="goalText">Phân tích ý nghĩa của tái bản DNA đối với sinh trưởng, phát triển, di truyền và các ứng dụng trong thực tiễn.</span>
-      </div>
-    </header>
+    
 
     <!-- Thanh tiến trình Sticky Top 0 (V10 Standard) -->
     <div class="progress-nav-container">
@@ -1478,7 +1470,7 @@
   </div>
 
   <!-- Modal hoàn thành module -->
-  <div class="modal-backdrop" id="completionModal">
+  <div class="modal-backdrop hidden" id="completionModal">
     <div class="completion-modal">
       <div class="completion-icon-wrapper">
         <i class="ti ti-circle-check"></i>

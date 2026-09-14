@@ -257,20 +257,12 @@ window.addEventListener('message', function(e) {
 ## 5. TIÊU CHUẨN THIẾT KẾ MODULE CON CHUẨN V10 (Tham chiếu: `SH10_B02_M02.html`)
 > **Mục tiêu:** Định nghĩa bộ khung cấu trúc chuẩn V10 để chạy kịch bản tự sinh cho toàn bộ bài học (Lớp 10, Lớp 11, Lớp 12) đảm bảo **"10 file như một"**.
 
-### 5.1. Khung Header V10 Phẳng & Mục tiêu Động (`.module-header`)
-Header dạng banner phẳng editorial, không dùng ảnh ngoài:
-```html
-<header class="module-header">
-  <div class="header-badge"><i class="ti ti-dna"></i> SINH HỌC 11 · BÀI 1 · MODULE 02</div>
-  <h1>Trao đổi chất và chuyển hóa năng lượng ở tế bào</h1>
-  <div class="header-goal" id="headerGoal">
-    <span class="goal-label"><i class="ti ti-target"></i> MỤC TIÊU</span>
-    <span class="goal-divider"></span>
-    <span class="goal-text" id="goalText">Khám phá các quá trình trao đổi chất qua sơ đồ tương tác.</span>
-  </div>
-</header>
-```
-- Đi kèm biến `stageGoals = { 0: '...', 1: '...', 2: '...' };` trong Javascript để tự động cập nhật text mục tiêu khi học sinh chuyển stage (`goToStage(n)`).
+### 5.1. Quy Định Loại Bỏ Header Banner (BẮT BUỘC)
+- **Tuyệt đối KHÔNG DÙNG khối `<header>` banner**: Không tạo banner màu xanh gradient (`linear-gradient(135deg, var(--jade-dark), #1c523d)`), không có thẻ `<header>` chứa `.header-badge`, tiêu đề `<h1>` hay hộp mục tiêu `.header-goal` ở đầu trang.
+- **Lý do:** Tối ưu tối đa không gian màn hình chiều dọc cho học sinh, giúp học sinh mở bài là tương tác ngay, không bị chiếm 140–180px chiều cao và không gây trùng lặp tiêu đề khi nhúng vào hệ thống LMS/Portal.
+- **Trang bắt đầu trực tiếp từ:**
+  1. **Thanh tiến trình Sticky Top 0 (`.progress-nav-container`)**: Dính trên đỉnh viewport để học sinh chuyển đổi giữa các màn học.
+  2. **Vùng làm việc tương tác**: Các thẻ card/stage hoặc lưới 2 cột `.split-workspace`, đúng theo chuẩn file mẫu [`SH10_B02_M02.html`](modules/Lop_10/SH10_B02_M02/SH10_B02_M02.html).
 
 ### 5.2. Thanh Tiến Trình Dính Đỉnh (`.progress-nav-container` Sticky Top 0)
 - Dính cố định ở `top: 0; z-index: 100;` để học sinh luôn nắm được tiến độ học tập.
@@ -304,6 +296,19 @@ Nằm ở cuối mỗi stage:
 Khi hoàn thành stage cuối cùng:
 - Hiển thị Modal overlay mờ đục với cúp vàng (`ti ti-trophy`), tiêu đề chúc mừng và 2 nút "Xem lại bài" / "Đóng thông báo".
 - Bắn pháo hoa hạt rơi bằng hàm `launchConfetti()` tạo canvas tự động, tự hủy sau khi kết thúc hiệu ứng (không phụ thuộc thư viện ngoài).
+- **Quy tắc ẩn Modal khi tải trang (CHỐNG LỖI TỰ ĐỘNG HIỆN MODAL)**:
+  - Thẻ modal ban đầu trong HTML bắt buộc phải có class `hidden`: `<div class="congrats-overlay hidden" id="completionModal" role="dialog" aria-modal="true">`.
+  - Trong CSS bắt buộc phải có khai báo với độ ưu tiên cao:
+    ```css
+    .hidden { display: none !important; }
+    .congrats-overlay.hidden,
+    .modal-backdrop.hidden,
+    #completionModal.hidden,
+    #congratsModal.hidden {
+      display: none !important;
+    }
+    ```
+  - *Tuyệt đối không được thiếu `.congrats-overlay.hidden` hoặc thiếu `!important`*, vì nếu không selector `.congrats-overlay { display: grid; }` ở cuối file CSS sẽ ghi đè `.hidden`, khiến modal tự hiện đè lên toàn màn hình ngay khi tải trang và làm học sinh không thao tác được.
 
 ### 5.6. Bảng State LMS & Truyền Chiều Cao (Zero Storage)
 - Toàn bộ tiến trình lưu trong biến `const lmsState = { ... }; window.lmsState = lmsState;`. Tuyệt đối không dùng `localStorage`/cookie.
