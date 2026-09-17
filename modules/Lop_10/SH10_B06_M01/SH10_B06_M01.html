@@ -1,0 +1,3656 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SH10_B06_M01 · Thực hành nhận biết glucose bằng thuốc thử Benedict</title>
+<script type="application/json" id="athena-context">
+{
+  "title": "Thực hành nhận biết glucose bằng thuốc thử Benedict",
+  "subject": "Sinh học",
+  "grade": "10",
+  "track": "SH10_B06_M01",
+  "objectives": [
+    "Thực hiện được thí nghiệm nhận biết glucose bằng thuốc thử Benedict",
+    "Thao tác đúng trình tự và bảo đảm an toàn trong phòng thí nghiệm",
+    "Quan sát được kết quả sinh ra từ chính quá trình thao tác (kết tủa đỏ gạch Cu2O)",
+    "Trả lời được các câu hỏi khai thác kết quả và hoàn thành báo cáo thực hành",
+    "Thu dọn khu vực thực hành đúng cách sau khi kết thúc"
+  ],
+  "structure": [
+    {"id": "st01", "title": "An toàn trước khi thực hành"},
+    {"id": "st02", "title": "Mục đích và quy trình thí nghiệm"},
+    {"id": "st03", "title": "Chọn mẫu, dụng cụ, thiết bị và hóa chất"},
+    {"id": "st04", "title": "Pha dung dịch glucose"},
+    {"id": "st05", "title": "Cho glucose và Benedict vào ống nghiệm"},
+    {"id": "st06", "title": "Đun cách thủy và quan sát kết quả"},
+    {"id": "st07", "title": "Thu dọn sau khi thực hành"},
+    {"id": "st08", "title": "Trả lời câu hỏi về kết quả"},
+    {"id": "st09", "title": "Chọn thành phần và xem báo cáo hoàn chỉnh"}
+  ],
+  "athenaGuidance": "Module thực hành ảo Sinh học 10 độc lập V10 gồm 9 màn: 1) Quy tắc an toàn (chọn 3 hành động đúng trong 6 hình). 2) Sắp xếp 4 bước quy trình thí nghiệm. 3) Chuẩn bị đúng 11 vật tư, loại 4 vật tư gây nhiễu. 4) Tương tác pha 20 g glucose vào 100 mL nước, khuấy tan hoàn toàn. 5) Hút chính xác 2 mL glucose và 2 mL Benedict vào ống nghiệm. 6) Hướng miệng ống ra vùng an toàn, đun cách thủy 80-90°C trong 3 phút, quan sát đổi màu và kết tủa Cu2O, tắt bếp và kẹp ống ra giá. 7) Thu dọn an toàn (chọn 5 hình đúng trong 8 hình). 8) Khai thác ảnh kết tủa cố định để trả lời 3 câu hỏi tích lũy dữ liệu báo cáo. 9) Chọn 6 thành phần cần có của báo cáo và xuất báo cáo thực hành hoàn chỉnh, hoàn tất với pháo hoa chúc mừng."
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css">
+<style>
+:root {
+  --cream: #FAF7F0;
+  --cream-2: #F0EADD;
+  --cream-3: #E7DECC;
+  --paper-line: #E5DECF;
+  --paper-line-2: #D6CCB6;
+  --ink: #1A1A1A;
+  --ink-2: #514C44;
+  --ink-3: #7C756A;
+  --ink-faint: #ABA396;
+  --jade: #3CA57A;
+  --jade-deep: #2D8B6F;
+  --jade-dark: #14432F;
+  --jade-text: #1B5E48;
+  --jade-soft: #A9D0BE;
+  --jade-pale: #DCEAE1;
+  --sage: #A8C9B8;
+  --sage-deep: #7CA792;
+  --sage-text: #46685A;
+  --sage-pale: #E1ECE4;
+  --accent: #E8A24A;
+  --accent-deep: #CE8A33;
+  --accent-text: #8A551A;
+  --accent-pale: #F7E7CD;
+  --correct: #2D8B6F;
+  --correct-bg: #DCEAE1;
+  --wrong: #C15F3C;
+  --wrong-bg: #F3E2D6;
+  --warning: #C58A2E;
+  --warning-bg: #F5E7CB;
+  --info: #4E7F92;
+  --info-bg: #DCE7EB;
+  --blue: #2563EB;
+  --blue-pale: #EFF6FF;
+  --blue-text: #1D4ED8;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --radius-sm: 8px;
+  --shadow: 0 4px 12px rgba(45, 139, 111, 0.10);
+  --shadow-sm: 0 2px 6px rgba(26, 26, 26, 0.05);
+  --lesson-width: 1100px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.65;
+  padding: 20px clamp(12px, 2.5vw, 28px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+button { font: inherit; cursor: pointer; border: none; }
+button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* ẨN HEADER VÀ PROGRESS NAV CỒNG KỀNH THEO QUY CHUẨN V10 */
+header,
+.progress-nav-container,
+.progress-nav,
+.stepper-nav,
+.stepper-bar,
+.step-nav-bar {
+  display: none !important;
+}
+
+/* QUY TẮC ẨN CHUẨN ĐỘ ƯU TIÊN CAO */
+.hidden { display: none !important; }
+.congrats-overlay.hidden,
+.modal-backdrop.hidden,
+#completionModal.hidden {
+  display: none !important;
+}
+
+.app {
+  width: 100%;
+  max-width: var(--lesson-width);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* STAGE CONTAINER */
+.stage {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--paper-line);
+  box-shadow: var(--shadow-sm);
+  padding: clamp(18px, 3vw, 28px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* STAGE HEADER TINH GỌN */
+.stage-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1.5px solid var(--cream-2);
+  padding-bottom: 12px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.stage-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.stage-badge {
+  background: var(--jade-pale);
+  color: var(--jade-text);
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.stage-title {
+  font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+  font-weight: 800;
+  color: var(--ink);
+}
+.stage-step-indicator {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink-3);
+  background: var(--cream-2);
+  padding: 4px 12px;
+  border-radius: 99px;
+}
+
+/* LỜI DẪN BỐI CẢNH KHOA HỌC THUẦN TÚY (KHÔNG CÂU LỆNH THAO TÁC) */
+.lead-text {
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+/* KHUNG HƯỚNG DẪN THAO TÁC DUY NHẤT (SINGLE POINT OF INSTRUCTION) */
+.guide-box {
+  background: var(--jade-pale);
+  border-left: 4px solid var(--jade);
+  padding: 12px 16px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.95rem;
+  color: var(--jade-text);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.55;
+  font-weight: 500;
+}
+.guide-box i {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--jade-deep);
+}
+
+/* CẢNH BÁO AN TOÀN */
+.callout-warning {
+  background: var(--warning-bg);
+  border-left: 4px solid var(--warning);
+  padding: 12px 16px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.92rem;
+  color: var(--ink-2);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.55;
+}
+.callout-warning i {
+  font-size: 1.25rem;
+  color: var(--warning);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* KHUNG PHẢN HỒI (FEEDBACK BOX) */
+.feedback-box {
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 0.96rem;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  animation: slideUp 0.25s ease;
+}
+.feedback-box.correct {
+  background: var(--correct-bg);
+  border-left: 4px solid var(--correct);
+  color: var(--jade-text);
+}
+.feedback-box.wrong {
+  background: var(--wrong-bg);
+  border-left: 4px solid var(--wrong);
+  color: var(--ink);
+  animation: shake 0.4s ease;
+}
+.feedback-title {
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.02rem;
+}
+.feedback-box.correct .feedback-title { color: var(--correct); }
+.feedback-box.wrong .feedback-title { color: var(--wrong); }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+/* HÀNG NÚT ĐIỀU HƯỚNG CỦA MỖI MÀN */
+.controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1.5px solid var(--cream-2);
+  flex-wrap: wrap;
+}
+.btn-group-left, .btn-group-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+.btn-primary {
+  background: var(--jade);
+  color: #ffffff;
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--jade-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(60, 165, 122, 0.25);
+}
+.btn-secondary {
+  background: var(--cream-2);
+  color: var(--ink-2);
+  border: 1px solid var(--paper-line);
+}
+.btn-secondary:hover:not(:disabled) {
+  background: var(--cream-3);
+  color: var(--ink);
+}
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--jade);
+  color: var(--jade-text);
+}
+.btn-outline:hover:not(:disabled) {
+  background: var(--jade-pale);
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ==========================================================================
+   GIAO DIỆN CHI TIẾT TỪNG STAGE
+   ========================================================================== */
+
+/* LƯỚI 6 HÌNH AN TOÀN (MÀN 1) & 8 HÌNH THU DỌN (MÀN 7) */
+.safety-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.cleanup-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.select-card {
+  background: var(--cream);
+  border: 2px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  user-select: none;
+}
+.select-card:hover {
+  border-color: var(--sage);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.select-card.selected {
+  border-color: #E53E3E !important; /* Khung đỏ theo đúng kịch bản */
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.25);
+  background: #FFF5F5;
+}
+.select-card-img-wrap {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.select-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.select-card-img-wrap img.svg-fit {
+  object-fit: contain;
+  padding: 12px;
+}
+.select-card-desc {
+  font-size: 0.88rem;
+  color: var(--ink-2);
+  line-height: 1.45;
+  font-weight: 500;
+}
+.select-indicator {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid var(--paper-line-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+.select-card.selected .select-indicator {
+  background: #E53E3E;
+  border-color: #E53E3E;
+  color: #fff;
+}
+
+/* SẮP XẾP 4 BƯỚC QUY TRÌNH (MÀN 2) */
+.flow-step-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.step-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.step-slot {
+  background: var(--cream);
+  border: 2px dashed var(--paper-line-2);
+  border-radius: var(--radius);
+  min-height: 160px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  transition: all 0.2s;
+}
+.step-slot.drag-over, .step-slot.highlight {
+  border-color: var(--jade);
+  background: var(--jade-pale);
+}
+.slot-badge {
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--jade-text);
+  background: #fff;
+  padding: 2px 10px;
+  border-radius: 99px;
+  border: 1px solid var(--jade-soft);
+}
+.cards-source-tray {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 14px;
+  background: var(--cream-2);
+  border-radius: var(--radius);
+  border: 1px solid var(--paper-line);
+}
+.draggable-card {
+  background: #ffffff;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: grab;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+.draggable-card:active { cursor: grabbing; }
+.draggable-card.is-dragging { opacity: 0.45; transform: scale(0.98); }
+.draggable-card.selected {
+  outline: 2px dashed var(--jade);
+  box-shadow: 0 0 0 4px var(--jade-pale);
+  transform: translateY(-2px);
+}
+.draggable-card .card-icon {
+  font-size: 1.4rem;
+  color: var(--jade-deep);
+}
+
+/* CHỌN VẬT TƯ (MÀN 3) */
+.materials-workspace {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+.material-card {
+  background: #ffffff;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  position: relative;
+}
+.material-card:hover {
+  border-color: var(--sage);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.material-card.selected {
+  border-color: #E53E3E !important; /* Khung đỏ */
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.25);
+  background: #FFF5F5;
+}
+.material-card img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+.material-card span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+.prep-tray {
+  background: var(--cream-2);
+  border: 1.5px dashed var(--jade);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.prep-tray-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--jade-text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.prep-tray-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 42px;
+}
+.prep-tag {
+  background: #ffffff;
+  border: 1px solid var(--jade-soft);
+  color: var(--jade-text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 99px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* THAO TÁC PHA GLUCOSE (MÀN 4) */
+.lab-bench {
+  background: linear-gradient(180deg, #FFFFFF 0%, var(--cream) 100%);
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 24px;
+  align-items: center;
+}
+.bench-items-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.bench-item-btn {
+  background: #ffffff;
+  border: 2px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+.bench-item-btn:hover {
+  border-color: var(--sage);
+  background: var(--cream);
+}
+.bench-item-btn.selected {
+  border-color: #E53E3E !important;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.25);
+  background: #FFF5F5;
+}
+.bench-item-btn img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+.bench-item-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.bench-item-val {
+  font-size: 0.82rem;
+  color: var(--jade-text);
+  font-weight: 600;
+}
+.beaker-stage-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  position: relative;
+  min-height: 320px;
+}
+.beaker-interactive-wrap {
+  width: 200px;
+  height: 250px;
+  position: relative;
+  cursor: pointer;
+}
+.beaker-svg-bg {
+  width: 100%;
+  height: 100%;
+}
+.beaker-liquid {
+  position: absolute;
+  bottom: 12px;
+  left: 20px;
+  width: 160px;
+  height: 0px;
+  background: rgba(220, 240, 248, 0.6);
+  border-radius: 0 0 16px 16px;
+  transition: height 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+  border-top: 1.5px solid rgba(100, 160, 210, 0.5);
+}
+.crystal-particles {
+  position: absolute;
+  bottom: 6px;
+  left: 10px;
+  right: 10px;
+  height: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  align-items: flex-end;
+  transition: opacity 0.5s;
+}
+.crystal-dot {
+  width: 6px;
+  height: 6px;
+  background: #E2E8F0;
+  border: 1px solid #CBD5E0;
+  border-radius: 1px;
+}
+.stirrer-tool {
+  position: absolute;
+  top: -20px;
+  left: 90px;
+  width: 12px;
+  height: 220px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.8), rgba(200,225,235,0.9), rgba(160,195,210,0.8));
+  border: 1px solid rgba(120,150,170,0.7);
+  border-radius: 6px;
+  transform-origin: top center;
+  cursor: grab;
+  z-index: 10;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+  display: none;
+}
+.stirrer-tool.active { display: block; }
+.stirrer-tool.stirring {
+  animation: stirAnim 0.8s infinite linear;
+}
+@keyframes stirAnim {
+  0% { transform: rotate(0deg) translateX(12px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(12px) rotate(-360deg); }
+}
+.progress-bar-wrap {
+  width: 100%;
+  max-width: 320px;
+  background: var(--cream-2);
+  border-radius: 99px;
+  height: 14px;
+  overflow: hidden;
+  border: 1px solid var(--paper-line);
+}
+.progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--jade);
+  transition: width 0.2s ease;
+}
+
+/* LẤY MẪU & THUỐC THỬ (MÀN 5) */
+.pipette-stage {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+  background: #ffffff;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+.reagents-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.reagent-btn {
+  background: var(--cream);
+  border: 2px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.reagent-btn:hover { border-color: var(--sage); }
+.reagent-btn.selected {
+  border-color: #E53E3E !important;
+  background: #FFF5F5;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.25);
+}
+.reagent-btn img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+.pipette-work-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+.tube-rack-display {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 20px;
+  min-height: 240px;
+  position: relative;
+}
+.volume-gauges {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  max-width: 420px;
+}
+.gauge-box {
+  flex: 1;
+  background: var(--cream);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  text-align: center;
+}
+.gauge-label { font-size: 0.82rem; font-weight: 700; color: var(--ink-3); text-transform: uppercase; }
+.gauge-val { font-size: 1.25rem; font-weight: 800; color: var(--jade-text); }
+
+/* ĐUN CÁCH THỦY & KẾT QUẢ TỰ SINH (MÀN 6) */
+.heating-workspace {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 20px;
+  background: #ffffff;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  align-items: start;
+}
+.heating-sim-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--cream);
+  border-radius: var(--radius);
+  border: 1px solid var(--paper-line);
+  padding: 16px;
+  min-height: 380px;
+  position: relative;
+}
+.heating-sim-view img {
+  max-width: 100%;
+  max-height: 350px;
+  object-fit: contain;
+  transition: opacity 0.4s ease;
+}
+.heating-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.dash-card {
+  background: var(--cream);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.dash-card-title {
+  font-size: 0.84rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.timer-readout {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 1px;
+}
+.temp-gauge-bar {
+  height: 8px;
+  background: var(--paper-line-2);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.temp-gauge-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #3B82F6, #F59E0B, #EF4444);
+  transition: width 0.3s;
+}
+
+/* KHAI THÁC KẾT QUẢ & CÂU HỎI (MÀN 8) */
+.report-q-layout {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.fixed-result-preview {
+  background: var(--cream);
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: sticky;
+  top: 16px;
+}
+.fixed-result-preview img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: var(--radius-sm);
+}
+.report-live-data {
+  background: #ffffff;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.report-data-item {
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  padding: 6px 8px;
+  border-radius: 4px;
+  background: var(--cream);
+}
+.report-data-item.filled {
+  background: var(--jade-pale);
+  color: var(--jade-text);
+  font-weight: 600;
+}
+.questions-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.q-card {
+  background: #ffffff;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.q-text {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+}
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.option-btn {
+  background: var(--cream);
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  text-align: left;
+  font-size: 0.92rem;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.15s;
+}
+.option-btn:hover {
+  border-color: var(--sage);
+  background: #ffffff;
+}
+.option-btn.selected {
+  border-color: var(--jade);
+  background: var(--jade-pale);
+  color: var(--jade-text);
+  font-weight: 600;
+}
+
+/* CHỌN THÀNH PHẦN BÁO CÁO (MÀN 9) */
+.report-sections-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.section-choice-card {
+  background: var(--cream);
+  border: 2px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.15s;
+}
+.section-choice-card:hover { border-color: var(--sage); background: #fff; }
+.section-choice-card.selected {
+  border-color: #E53E3E !important;
+  background: #FFF5F5;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.25);
+}
+
+/* BÁO CÁO HOÀN CHỈNH TRANG TRỌNG */
+.formal-report-paper {
+  background: #ffffff;
+  border: 1.5px solid var(--paper-line-2);
+  border-radius: var(--radius);
+  padding: clamp(20px, 4vw, 36px);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  line-height: 1.7;
+}
+.report-header-text {
+  text-align: center;
+  border-bottom: 2px solid var(--paper-line);
+  padding-bottom: 14px;
+}
+.report-header-text h3 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--jade-dark);
+  text-transform: uppercase;
+}
+.report-header-text p {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+.report-section-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.report-section-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--jade-text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.report-section-body {
+  font-size: 0.95rem;
+  color: var(--ink-2);
+  padding-left: 14px;
+  border-left: 2px solid var(--cream-2);
+}
+
+/* ==========================================================================
+   MODAL CHÚC MỪNG HOÀN THÀNH V10
+   ========================================================================== */
+.congrats-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(14, 38, 28, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.congrats-modal {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  max-width: 520px;
+  width: 100%;
+  padding: 32px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  animation: modalPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+@keyframes modalPop {
+  0% { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.trophy-icon-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #FEF3C7;
+  color: #D97706;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+.congrats-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--jade-dark);
+}
+.congrats-desc {
+  font-size: 0.96rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+#confettiCanvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .safety-grid { grid-template-columns: repeat(2, 1fr); }
+  .cleanup-grid { grid-template-columns: repeat(2, 1fr); }
+  .step-slots-grid, .cards-source-tray { grid-template-columns: 1fr 1fr; }
+  .materials-grid { grid-template-columns: repeat(3, 1fr); }
+  .lab-bench, .pipette-stage, .heating-workspace, .report-q-layout {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .safety-grid, .cleanup-grid { grid-template-columns: 1fr; }
+  .step-slots-grid, .cards-source-tray { grid-template-columns: 1fr; }
+  .materials-grid { grid-template-columns: repeat(2, 1fr); }
+  .report-sections-grid { grid-template-columns: 1fr; }
+}
+
+.material-card svg {
+  width: 64px;
+  height: 64px;
+  display: block;
+}
+.bench-item-btn svg {
+  width: 48px;
+  height: 48px;
+  display: block;
+  flex-shrink: 0;
+}
+.reagent-btn svg {
+  width: 52px;
+  height: 52px;
+  display: block;
+  flex-shrink: 0;
+}
+.select-card-img-wrap svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  padding: 8px;
+}
+.heating-sim-view svg {
+  max-width: 100%;
+  max-height: 350px;
+  display: block;
+  margin: 0 auto;
+}
+.fixed-result-preview svg {
+  width: 100%;
+  max-height: 280px;
+  display: block;
+  background: #fff;
+  border-radius: var(--radius-sm);
+}
+
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- =====================================================================
+       MÀN 1: AN TOÀN TRƯỚC KHI THỰC HÀNH (P1_C01)
+       ===================================================================== -->
+  <section class="stage" id="stage-1" role="region" aria-label="Màn 1: An toàn trước khi thực hành">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-shield-check"></i> Màn 1 · An toàn</span>
+        <h2 class="stage-title">An toàn trước khi thực hành</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 1 / 9</span>
+    </div>
+
+    <p class="lead-text">Quy tắc an toàn trong phòng thí nghiệm là điều kiện bắt buộc trước khi tiến hành mọi hoạt động thực hành.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Nhấn vào từng hình để chọn hành động đúng. Hình đã chọn xuất hiện khung đỏ. Bạn có thể nhấn lại để bỏ chọn.</span>
+    </div>
+
+    <div class="safety-grid" id="safetyGrid">
+      <!-- 6 thẻ an toàn -->
+      <div class="select-card" data-id="1" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M01-A01-01.jpg" alt="Trang phục và tóc gọn gàng, đeo kính bảo hộ">
+        </div>
+        <div class="select-card-desc">Trang phục và tóc gọn gàng, đeo kính bảo hộ.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="2" data-correct="false" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M01-A01-02.jpg" alt="Đưa lọ hóa chất sát mũi ngửi trực tiếp">
+        </div>
+        <div class="select-card-desc">Đưa lọ hóa chất sát mũi để ngửi trực tiếp.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="3" data-correct="false" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M01-A01-03.jpg" alt="Dùng tay không cầm ống nghiệm đang nóng">
+        </div>
+        <div class="select-card-desc">Dùng tay không cầm ống nghiệm đang nóng.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="4" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M01-A01-04.jpg" alt="Dùng kẹp để lấy ống nghiệm nóng">
+        </div>
+        <div class="select-card-desc">Dùng kẹp để lấy ống nghiệm nóng.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="5" data-correct="false" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M01-A01-05.jpg" alt="Để đồ ăn hoặc nước uống trên bàn thực hành">
+        </div>
+        <div class="select-card-desc">Để đồ ăn hoặc nước uống trên bàn thực hành.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="6" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M01-A01-06.jpg" alt="Giữ bàn thực hành sạch, gọn và làm theo hướng dẫn">
+        </div>
+        <div class="select-card-desc">Giữ bàn thực hành sạch, gọn và làm theo hướng dẫn.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+    </div>
+
+    <div class="feedback-box hidden" id="fbStage1"></div>
+
+    <div class="controls-row">
+      <div class="btn-group-left"></div>
+      <div class="btn-group-right">
+        <button class="btn btn-primary" id="btnCheckStage1" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
+        <button class="btn btn-secondary hidden" id="btnRetryStage1"><i class="ti ti-rotate"></i> LÀM LẠI</button>
+        <button class="btn btn-primary hidden" id="btnNextStage1">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 2: MỤC ĐÍCH VÀ QUY TRÌNH THÍ NGHIỆM (P1_C02)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-2" role="region" aria-label="Màn 2: Mục đích và quy trình">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-list-numbers"></i> Màn 2 · Quy trình</span>
+        <h2 class="stage-title">Mục đích và quy trình thí nghiệm</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 2 / 9</span>
+    </div>
+
+    <p class="lead-text">Trong thí nghiệm này, bạn sẽ dùng thuốc thử Benedict để nhận biết glucose.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-drag-drop"></i>
+      <span>Kéo và thả từng thẻ vào vị trí từ Bước 1 đến Bước 4. Thẻ đã đặt sẽ nằm trong ô tương ứng. Bạn có thể kéo thẻ sang vị trí khác để thay đổi.</span>
+    </div>
+
+    <div class="flow-step-container">
+      <!-- Vùng 4 slot -->
+      <div class="step-slots-grid">
+        <div class="step-slot" data-slot="1" id="slot-1">
+          <span class="slot-badge">Bước 1</span>
+          <span class="slot-placeholder">Thả thẻ bước 1 vào đây</span>
+        </div>
+        <div class="step-slot" data-slot="2" id="slot-2">
+          <span class="slot-badge">Bước 2</span>
+          <span class="slot-placeholder">Thả thẻ bước 2 vào đây</span>
+        </div>
+        <div class="step-slot" data-slot="3" id="slot-3">
+          <span class="slot-badge">Bước 3</span>
+          <span class="slot-placeholder">Thả thẻ bước 3 vào đây</span>
+        </div>
+        <div class="step-slot" data-slot="4" id="slot-4">
+          <span class="slot-badge">Bước 4</span>
+          <span class="slot-placeholder">Thả thẻ bước 4 vào đây</span>
+        </div>
+      </div>
+
+      <!-- Khay 4 thẻ xáo trộn -->
+      <div class="cards-source-tray" id="trayStage2">
+        <div class="draggable-card" draggable="true" data-step="3" id="card-step-3" tabindex="0">
+          <i class="ti ti-flame card-icon"></i>
+          <span>Đặt ống nghiệm vào cốc nước và đun trên bếp điện.</span>
+        </div>
+        <div class="draggable-card" draggable="true" data-step="1" id="card-step-1" tabindex="0">
+          <i class="ti ti-flask-2 card-icon"></i>
+          <span>Pha dung dịch glucose loãng.</span>
+        </div>
+        <div class="draggable-card" draggable="true" data-step="4" id="card-step-4" tabindex="0">
+          <i class="ti ti-eye card-icon"></i>
+          <span>Quan sát sự thay đổi màu và kết tủa trong ống nghiệm.</span>
+        </div>
+        <div class="draggable-card" draggable="true" data-step="2" id="card-step-2" tabindex="0">
+          <i class="ti ti-test-pipe card-icon"></i>
+          <span>Cho dung dịch glucose và thuốc thử Benedict với thể tích bằng nhau vào ống nghiệm.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="feedback-box hidden" id="fbStage2"></div>
+
+    <div class="controls-row">
+      <div class="btn-group-left">
+        <button class="btn btn-secondary" onclick="goToStage(1)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      </div>
+      <div class="btn-group-right">
+        <button class="btn btn-primary" id="btnCheckStage2" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
+        <button class="btn btn-secondary hidden" id="btnRetryStage2"><i class="ti ti-rotate"></i> LÀM LẠI</button>
+        <button class="btn btn-primary hidden" id="btnNextStage2">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 3: CHỌN MẪU, DỤNG CỤ, THIẾT BỊ VÀ HÓA CHẤT (P1_C03)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-3" role="region" aria-label="Màn 3: Chọn vật tư">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-tools"></i> Màn 3 · Chuẩn bị</span>
+        <h2 class="stage-title">Chọn mẫu, dụng cụ, thiết bị và hóa chất</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 3 / 9</span>
+    </div>
+
+    <p class="lead-text">Dựa vào quy trình thí nghiệm, bạn hãy lựa chọn dụng cụ, thiết bị, hóa chất cần dùng.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Nhấn vào từng hình để chọn. Hình đã chọn xuất hiện khung đỏ. Bạn có thể nhấn lại để bỏ chọn.</span>
+    </div>
+
+    <div class="materials-workspace">
+      <!-- Lưới 15 vật tư -->
+      <div class="materials-grid" id="materialsGrid">
+        <div class="material-card" data-id="glucose" data-correct="true" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+    <defs>
+      <linearGradient id="jarGlass" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#e2e8f0" stop-opacity="0.8"/>
+        <stop offset="20%" stop-color="#ffffff" stop-opacity="0.9"/>
+        <stop offset="80%" stop-color="#ffffff" stop-opacity="0.7"/>
+        <stop offset="100%" stop-color="#cbd5e1" stop-opacity="0.8"/>
+      </linearGradient>
+    </defs>
+    <!-- Bottle body -->
+    <rect x="35" y="45" width="90" height="115" rx="10" fill="url(#jarGlass)" stroke="#64748b" stroke-width="2.5"/>
+    <!-- Powder level -->
+    <path d="M 37 95 Q 80 90 123 95 L 123 150 Q 123 158 115 158 L 45 158 Q 37 158 37 150 Z" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+    <circle cx="55" cy="115" r="1.5" fill="#94a3b8"/>
+    <circle cx="75" cy="130" r="1.5" fill="#94a3b8"/>
+    <circle cx="95" cy="110" r="1.5" fill="#94a3b8"/>
+    <circle cx="105" cy="135" r="1.5" fill="#94a3b8"/>
+    <!-- Bottle neck & cap -->
+    <rect x="55" y="25" width="50" height="22" rx="3" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+    <rect x="50" y="12" width="60" height="16" rx="4" fill="#1e293b" stroke="#0f172a" stroke-width="2"/>
+    <!-- Label -->
+    <rect x="43" y="60" width="74" height="42" rx="4" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="80" y="78" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="800" fill="#0f172a" text-anchor="middle">GLUCOSE</text>
+    <text x="80" y="93" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="600" fill="#64748b" text-anchor="middle">20 g · C₆H₁₂O₆</text>
+  </svg>
+          <span>Glucose</span>
+        </div>
+        <div class="material-card" data-id="water" data-correct="true" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+    <defs>
+      <linearGradient id="flaskLiquid" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#e0f2fe" stop-opacity="0.85"/>
+        <stop offset="100%" stop-color="#bae6fd" stop-opacity="0.95"/>
+      </linearGradient>
+    </defs>
+    <!-- Flask Body -->
+    <path d="M 68 25 L 68 55 L 25 145 Q 20 158 35 158 L 125 158 Q 140 158 135 145 L 92 55 L 92 25 Z" fill="#f8fafc" stroke="#64748b" stroke-width="2.5"/>
+    <!-- Water liquid -->
+    <path d="M 43 110 L 30 145 Q 25 156 38 156 L 122 156 Q 135 156 130 145 L 117 110 Q 80 108 43 110 Z" fill="url(#flaskLiquid)" stroke="#38bdf8" stroke-width="1.5"/>
+    <!-- Flask lip -->
+    <rect x="63" y="16" width="34" height="10" rx="3" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+    <!-- Graduations -->
+    <line x1="105" y1="110" x2="118" y2="110" stroke="#0284c7" stroke-width="2"/>
+    <text x="100" y="113" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="700" fill="#0284c7" text-anchor="end">100 mL</text>
+    <line x1="112" y1="130" x2="124" y2="130" stroke="#94a3b8" stroke-width="1.5"/>
+    <!-- Label -->
+    <rect x="52" y="70" width="56" height="28" rx="3" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2"/>
+    <text x="80" y="84" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#0369a1" text-anchor="middle">NƯỚC CẤT</text>
+    <text x="80" y="94" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="600" fill="#64748b" text-anchor="middle">H₂O</text>
+  </svg>
+          <span>Nước cất</span>
+        </div>
+        <div class="material-card" data-id="benedict" data-correct="true" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+    <defs>
+      <linearGradient id="benedictBlue" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#0284c7"/>
+        <stop offset="50%" stop-color="#0ea5e9"/>
+        <stop offset="100%" stop-color="#0369a1"/>
+      </linearGradient>
+    </defs>
+    <!-- Bottle body -->
+    <rect x="42" y="45" width="76" height="115" rx="8" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
+    <!-- Liquid -->
+    <rect x="44.5" y="75" width="71" height="82" rx="6" fill="url(#benedictBlue)"/>
+    <!-- Neck & dropper cap -->
+    <rect x="62" y="28" width="36" height="18" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+    <rect x="57" y="14" width="46" height="16" rx="4" fill="#334155" stroke="#1e293b" stroke-width="2"/>
+    <!-- Label -->
+    <rect x="48" y="90" width="64" height="42" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="80" y="106" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="800" fill="#0369a1" text-anchor="middle">BENEDICT</text>
+    <text x="80" y="120" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="600" fill="#475569" text-anchor="middle">Thuốc thử</text>
+  </svg>
+          <span>Thuốc thử Benedict</span>
+        </div>
+        <div class="material-card" data-id="iodine" data-correct="false" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+    <defs>
+      <linearGradient id="iodineBrown" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#78350f"/>
+        <stop offset="50%" stop-color="#9a3412"/>
+        <stop offset="100%" stop-color="#7c2d12"/>
+      </linearGradient>
+    </defs>
+    <!-- Bottle body -->
+    <rect x="42" y="45" width="76" height="115" rx="8" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
+    <!-- Liquid amber brown -->
+    <rect x="44.5" y="75" width="71" height="82" rx="6" fill="url(#iodineBrown)"/>
+    <!-- Neck & dropper cap -->
+    <rect x="62" y="28" width="36" height="18" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+    <rect x="57" y="14" width="46" height="16" rx="4" fill="#334155" stroke="#1e293b" stroke-width="2"/>
+    <!-- Label -->
+    <rect x="48" y="90" width="64" height="42" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="80" y="106" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="800" fill="#78350f" text-anchor="middle">IODINE</text>
+    <text x="80" y="120" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="600" fill="#475569" text-anchor="middle">Thuốc thử</text>
+  </svg>
+          <span>Thuốc thử Iodine</span>
+        </div>
+        <div class="material-card" data-id="biuret" data-correct="false" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+    <defs>
+      <linearGradient id="biuretViolet" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#7c3aed"/>
+        <stop offset="50%" stop-color="#8b5cf6"/>
+        <stop offset="100%" stop-color="#6d28d9"/>
+      </linearGradient>
+    </defs>
+    <!-- Bottle body -->
+    <rect x="42" y="45" width="76" height="115" rx="8" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
+    <!-- Liquid violet/blue -->
+    <rect x="44.5" y="75" width="71" height="82" rx="6" fill="url(#biuretViolet)"/>
+    <!-- Neck & dropper cap -->
+    <rect x="62" y="28" width="36" height="18" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+    <rect x="57" y="14" width="46" height="16" rx="4" fill="#334155" stroke="#1e293b" stroke-width="2"/>
+    <!-- Label -->
+    <rect x="48" y="90" width="64" height="42" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="80" y="106" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="800" fill="#6d28d9" text-anchor="middle">BIURET</text>
+    <text x="80" y="120" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="600" fill="#475569" text-anchor="middle">Thuốc thử</text>
+  </svg>
+          <span>Thuốc thử Biuret</span>
+        </div>
+        <div class="material-card" data-id="ethanol" data-correct="false" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+    <!-- Bottle body -->
+    <rect x="42" y="45" width="76" height="115" rx="8" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
+    <!-- Liquid transparent -->
+    <rect x="44.5" y="75" width="71" height="82" rx="6" fill="rgba(241, 245, 249, 0.6)" stroke="#cbd5e1" stroke-width="1"/>
+    <!-- Neck & cap -->
+    <rect x="62" y="28" width="36" height="18" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+    <rect x="57" y="14" width="46" height="16" rx="4" fill="#334155" stroke="#1e293b" stroke-width="2"/>
+    <!-- Label -->
+    <rect x="48" y="90" width="64" height="42" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="80" y="106" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="800" fill="#0f172a" text-anchor="middle">ETHANOL</text>
+    <text x="80" y="120" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="600" fill="#dc2626" text-anchor="middle">C₂H₅OH · Dễ cháy</text>
+  </svg>
+          <span>Ethanol</span>
+        </div>
+        <div class="material-card" data-id="testtube" data-correct="true" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+    <!-- Tube Body -->
+    <path d="M 68 18 L 68 145 C 68 160 92 160 92 145 L 92 18 Z" fill="rgba(241, 245, 249, 0.75)" stroke="#64748b" stroke-width="2.5"/>
+    <!-- Lip rim -->
+    <ellipse cx="80" cy="18" rx="14" ry="4" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+    <!-- Reflection highlights -->
+    <line x1="72" y1="28" x2="72" y2="135" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+  </svg>
+          <span>Ống nghiệm</span>
+        </div>
+        <div class="material-card" data-id="rack" data-correct="true" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+    <!-- Wooden rack base -->
+    <rect x="15" y="130" width="130" height="16" rx="3" fill="#d97706" stroke="#92400e" stroke-width="2"/>
+    <!-- Uprights -->
+    <rect x="18" y="50" width="14" height="82" fill="#b45309" stroke="#78350f" stroke-width="1.5"/>
+    <rect x="128" y="50" width="14" height="82" fill="#b45309" stroke="#78350f" stroke-width="1.5"/>
+    <!-- Top shelf with holes -->
+    <rect x="15" y="60" width="130" height="14" rx="3" fill="#d97706" stroke="#92400e" stroke-width="2"/>
+    <ellipse cx="45" cy="67" rx="9" ry="3.5" fill="#78350f"/>
+    <ellipse cx="68" cy="67" rx="9" ry="3.5" fill="#78350f"/>
+    <ellipse cx="92" cy="67" rx="9" ry="3.5" fill="#78350f"/>
+    <ellipse cx="115" cy="67" rx="9" ry="3.5" fill="#78350f"/>
+    <!-- Lower stabilizer shelf -->
+    <rect x="15" y="100" width="130" height="10" fill="#f59e0b" stroke="#92400e" stroke-width="1.5"/>
+  </svg>
+          <span>Giá ống nghiệm</span>
+        </div>
+        <div class="material-card" data-id="pipette" data-correct="true" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+    <!-- Bulb top -->
+    <path d="M 72 35 C 65 25 65 12 80 12 C 95 12 95 25 88 35 Z" fill="#ef4444" stroke="#b91c1c" stroke-width="2"/>
+    <!-- Pipette stem -->
+    <rect x="74" y="35" width="12" height="100" fill="#f8fafc" stroke="#64748b" stroke-width="1.8"/>
+    <!-- Tapered tip -->
+    <path d="M 74 135 L 78 165 L 82 165 L 86 135 Z" fill="#f8fafc" stroke="#64748b" stroke-width="1.8"/>
+    <!-- Graduations -->
+    <line x1="74" y1="55" x2="80" y2="55" stroke="#475569" stroke-width="1.2"/>
+    <text x="71" y="57" font-family="monospace" font-size="7" font-weight="700" fill="#475569" text-anchor="end">4</text>
+    <line x1="74" y1="75" x2="80" y2="75" stroke="#475569" stroke-width="1.2"/>
+    <text x="71" y="77" font-family="monospace" font-size="7" font-weight="700" fill="#475569" text-anchor="end">3</text>
+    <!-- 2 mL mark highlighted in red -->
+    <line x1="74" y1="95" x2="84" y2="95" stroke="#dc2626" stroke-width="2"/>
+    <text x="71" y="97" font-family="monospace" font-size="8.5" font-weight="800" fill="#dc2626" text-anchor="end">2 mL</text>
+    <line x1="74" y1="115" x2="80" y2="115" stroke="#475569" stroke-width="1.2"/>
+    <text x="71" y="117" font-family="monospace" font-size="7" font-weight="700" fill="#475569" text-anchor="end">1</text>
+  </svg>
+          <span>Pipet</span>
+        </div>
+        <div class="material-card" data-id="beaker-heat" data-correct="true" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+    <!-- Beaker Body with spout -->
+    <path d="M 32 30 L 25 30 L 35 150 Q 38 158 50 158 L 110 158 Q 122 158 125 150 L 125 30 Z" fill="rgba(248, 250, 252, 0.75)" stroke="#64748b" stroke-width="2.5"/>
+    <!-- Water level (250 mL) -->
+    <path d="M 34 70 L 37 148 Q 39 155 50 155 L 110 155 Q 120 155 123 148 L 124 70 Z" fill="rgba(224, 242, 254, 0.85)" stroke="#38bdf8" stroke-width="1.5"/>
+    <!-- Graduation marks -->
+    <line x1="95" y1="70" x2="124" y2="70" stroke="#0284c7" stroke-width="2"/>
+    <text x="90" y="73" font-family="'Be Vietnam Pro', sans-serif" font-size="8.5" font-weight="700" fill="#0284c7" text-anchor="end">250 mL</text>
+    <line x1="100" y1="95" x2="124" y2="95" stroke="#64748b" stroke-width="1.5"/>
+    <text x="96" y="98" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="600" fill="#64748b" text-anchor="end">200</text>
+    <line x1="105" y1="120" x2="124" y2="120" stroke="#64748b" stroke-width="1.5"/>
+    <text x="101" y="123" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="600" fill="#64748b" text-anchor="end">100</text>
+    <!-- Heat resistance badge -->
+    <text x="80" y="48" font-family="'Be Vietnam Pro', sans-serif" font-size="7.5" font-weight="700" fill="#dc2626" text-anchor="middle">CHỊU NHIỆT</text>
+  </svg>
+          <span>Cốc chịu nhiệt</span>
+        </div>
+        <div class="material-card" data-id="clamp" data-correct="true" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+    <!-- Wooden clamp jaws -->
+    <path d="M 30 65 Q 45 45 65 60 L 140 100 L 135 110 L 60 75 Q 40 68 30 65 Z" fill="#d97706" stroke="#92400e" stroke-width="2"/>
+    <path d="M 30 85 Q 45 105 65 90 L 140 130 L 135 140 L 60 105 Q 40 92 30 85 Z" fill="#b45309" stroke="#78350f" stroke-width="2"/>
+    <!-- Metal spring / hinge -->
+    <circle cx="65" cy="85" r="9" fill="#94a3b8" stroke="#475569" stroke-width="2"/>
+    <circle cx="65" cy="85" r="3" fill="#1e293b"/>
+  </svg>
+          <span>Kẹp ống nghiệm</span>
+        </div>
+        <div class="material-card" data-id="stove" data-correct="true" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+    <!-- Stove base body -->
+    <rect x="18" y="90" width="124" height="60" rx="8" fill="#e2e8f0" stroke="#64748b" stroke-width="2.5"/>
+    <!-- Feet -->
+    <rect x="28" y="150" width="16" height="8" rx="2" fill="#334155"/>
+    <rect x="116" y="150" width="16" height="8" rx="2" fill="#334155"/>
+    <!-- Hot plate disc -->
+    <ellipse cx="80" cy="88" rx="55" ry="16" fill="#475569" stroke="#1e293b" stroke-width="2.5"/>
+    <ellipse cx="80" cy="88" rx="42" ry="11" fill="#334155" stroke="#64748b" stroke-width="1.5"/>
+    <ellipse cx="80" cy="88" rx="26" ry="6" fill="#1e293b"/>
+    <!-- Control knob -->
+    <circle cx="55" cy="120" r="14" fill="#334155" stroke="#1e293b" stroke-width="2"/>
+    <line x1="55" y1="110" x2="55" y2="120" stroke="#ffffff" stroke-width="2.5"/>
+    <!-- Power switch & LED -->
+    <rect x="95" y="112" width="22" height="14" rx="3" fill="#1e293b"/>
+    <circle cx="106" cy="119" r="3.5" fill="#22c55e" stroke="#15803d" stroke-width="1"/>
+  </svg>
+          <span>Bếp điện</span>
+        </div>
+        <div class="material-card" data-id="beaker-prep" data-correct="true" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+    <!-- Beaker Body -->
+    <path d="M 38 40 L 32 40 L 40 148 Q 42 156 52 156 L 108 156 Q 118 156 120 148 L 120 40 Z" fill="rgba(248, 250, 252, 0.75)" stroke="#64748b" stroke-width="2.5"/>
+    <!-- Graduations -->
+    <line x1="90" y1="65" x2="119" y2="65" stroke="#64748b" stroke-width="2"/>
+    <text x="86" y="68" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="700" fill="#475569" text-anchor="end">150 mL</text>
+    <line x1="90" y1="95" x2="119" y2="95" stroke="#0284c7" stroke-width="2"/>
+    <text x="86" y="98" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="800" fill="#0284c7" text-anchor="end">100 mL</text>
+    <line x1="96" y1="125" x2="119" y2="125" stroke="#64748b" stroke-width="1.5"/>
+    <text x="92" y="128" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="600" fill="#64748b" text-anchor="end">50</text>
+    <text x="76" y="55" font-family="'Be Vietnam Pro', sans-serif" font-size="7.5" font-weight="700" fill="#64748b" text-anchor="middle">CỐC PHA MẪU</text>
+  </svg>
+          <span>Cốc pha mẫu</span>
+        </div>
+        <div class="material-card" data-id="stirrer" data-correct="true" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+    <!-- Diagonal glass rod -->
+    <rect x="74" y="15" width="12" height="150" rx="6" transform="rotate(-25 80 90)" fill="rgba(241, 245, 249, 0.85)" stroke="#64748b" stroke-width="2"/>
+    <!-- Highlight line -->
+    <line x1="77" y1="20" x2="77" y2="160" stroke="#ffffff" stroke-width="2" transform="rotate(-25 80 90)" opacity="0.9"/>
+  </svg>
+          <span>Que khuấy</span>
+        </div>
+        <div class="material-card" data-id="petri" data-correct="false" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+    <!-- Bottom dish -->
+    <ellipse cx="80" cy="105" rx="62" ry="24" fill="rgba(241, 245, 249, 0.7)" stroke="#64748b" stroke-width="2"/>
+    <ellipse cx="80" cy="98" rx="62" ry="24" fill="rgba(248, 250, 252, 0.5)" stroke="#64748b" stroke-width="2"/>
+    <!-- Top lid -->
+    <ellipse cx="80" cy="85" rx="66" ry="25" fill="rgba(241, 245, 249, 0.65)" stroke="#475569" stroke-width="2.5"/>
+    <!-- Highlight on glass -->
+    <path d="M 35 85 Q 80 65 125 85" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+  </svg>
+          <span>Đĩa Petri</span>
+        </div>
+      </div>
+
+      <!-- Khay đồ đã chọn -->
+      <div class="prep-tray">
+        <div class="prep-tray-title"><i class="ti ti-archive"></i> KHAY VẬT TƯ ĐÃ CHỌN (<span id="countSelectedMat">0</span>/11 vật tư đúng)</div>
+        <div class="prep-tray-items" id="prepTrayItems">
+          <span style="color: var(--ink-3); font-size: 0.88rem; font-style: italic;">Chưa có vật tư nào được chọn.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="feedback-box hidden" id="fbStage3"></div>
+
+    <div class="controls-row">
+      <div class="btn-group-left">
+        <button class="btn btn-secondary" onclick="goToStage(2)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      </div>
+      <div class="btn-group-right">
+        <button class="btn btn-primary" id="btnCheckStage3" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
+        <button class="btn btn-secondary hidden" id="btnRetryStage3"><i class="ti ti-rotate"></i> LÀM LẠI</button>
+        <button class="btn btn-primary hidden" id="btnNextStage3">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 4: PHA DUNG DỊCH GLUCOSE (P2_C01)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-4" role="region" aria-label="Màn 4: Pha dung dịch glucose">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-flask"></i> Màn 4 · Pha mẫu</span>
+        <h2 class="stage-title">Pha dung dịch glucose</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 4 / 9</span>
+    </div>
+
+    <p class="lead-text">Trước tiên, bạn cần pha dung dịch glucose dùng cho thí nghiệm.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Nhấn vào lọ glucose rồi nhấn vào cốc để cho 20 g glucose vào. Tiếp tục nhấn vào bình nước rồi nhấn vào cốc để thêm 100 mL nước. Sau đó, kéo que khuấy theo vòng tròn đến khi không còn tinh thể glucose nhìn thấy. Vật đang được chọn sẽ có khung đỏ.</span>
+    </div>
+
+    <div class="lab-bench">
+      <!-- Cột vật tư trên bàn -->
+      <div class="bench-items-col">
+        <div class="bench-item-btn" id="itemGlucose" data-type="glucose" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+    <defs>
+      <linearGradient id="jarGlass" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#e2e8f0" stop-opacity="0.8"/>
+        <stop offset="20%" stop-color="#ffffff" stop-opacity="0.9"/>
+        <stop offset="80%" stop-color="#ffffff" stop-opacity="0.7"/>
+        <stop offset="100%" stop-color="#cbd5e1" stop-opacity="0.8"/>
+      </linearGradient>
+    </defs>
+    <!-- Bottle body -->
+    <rect x="35" y="45" width="90" height="115" rx="10" fill="url(#jarGlass)" stroke="#64748b" stroke-width="2.5"/>
+    <!-- Powder level -->
+    <path d="M 37 95 Q 80 90 123 95 L 123 150 Q 123 158 115 158 L 45 158 Q 37 158 37 150 Z" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+    <circle cx="55" cy="115" r="1.5" fill="#94a3b8"/>
+    <circle cx="75" cy="130" r="1.5" fill="#94a3b8"/>
+    <circle cx="95" cy="110" r="1.5" fill="#94a3b8"/>
+    <circle cx="105" cy="135" r="1.5" fill="#94a3b8"/>
+    <!-- Bottle neck & cap -->
+    <rect x="55" y="25" width="50" height="22" rx="3" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+    <rect x="50" y="12" width="60" height="16" rx="4" fill="#1e293b" stroke="#0f172a" stroke-width="2"/>
+    <!-- Label -->
+    <rect x="43" y="60" width="74" height="42" rx="4" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="80" y="78" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="800" fill="#0f172a" text-anchor="middle">GLUCOSE</text>
+    <text x="80" y="93" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="600" fill="#64748b" text-anchor="middle">20 g · C₆H₁₂O₆</text>
+  </svg>
+          <div>
+            <div class="bench-item-title">Lọ Glucose</div>
+            <div class="bench-item-val">Khối lượng: 20 g</div>
+          </div>
+        </div>
+
+        <div class="bench-item-btn" id="itemWater" data-type="water" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+    <defs>
+      <linearGradient id="flaskLiquid" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#e0f2fe" stop-opacity="0.85"/>
+        <stop offset="100%" stop-color="#bae6fd" stop-opacity="0.95"/>
+      </linearGradient>
+    </defs>
+    <!-- Flask Body -->
+    <path d="M 68 25 L 68 55 L 25 145 Q 20 158 35 158 L 125 158 Q 140 158 135 145 L 92 55 L 92 25 Z" fill="#f8fafc" stroke="#64748b" stroke-width="2.5"/>
+    <!-- Water liquid -->
+    <path d="M 43 110 L 30 145 Q 25 156 38 156 L 122 156 Q 135 156 130 145 L 117 110 Q 80 108 43 110 Z" fill="url(#flaskLiquid)" stroke="#38bdf8" stroke-width="1.5"/>
+    <!-- Flask lip -->
+    <rect x="63" y="16" width="34" height="10" rx="3" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+    <!-- Graduations -->
+    <line x1="105" y1="110" x2="118" y2="110" stroke="#0284c7" stroke-width="2"/>
+    <text x="100" y="113" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="700" fill="#0284c7" text-anchor="end">100 mL</text>
+    <line x1="112" y1="130" x2="124" y2="130" stroke="#94a3b8" stroke-width="1.5"/>
+    <!-- Label -->
+    <rect x="52" y="70" width="56" height="28" rx="3" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2"/>
+    <text x="80" y="84" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#0369a1" text-anchor="middle">NƯỚC CẤT</text>
+    <text x="80" y="94" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="600" fill="#64748b" text-anchor="middle">H₂O</text>
+  </svg>
+          <div>
+            <div class="bench-item-title">Bình nước cất</div>
+            <div class="bench-item-val">Thể tích: 100 mL</div>
+          </div>
+        </div>
+
+        <div class="bench-item-btn" id="itemStirrer" data-type="stirrer" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+    <!-- Diagonal glass rod -->
+    <rect x="74" y="15" width="12" height="150" rx="6" transform="rotate(-25 80 90)" fill="rgba(241, 245, 249, 0.85)" stroke="#64748b" stroke-width="2"/>
+    <!-- Highlight line -->
+    <line x1="77" y1="20" x2="77" y2="160" stroke="#ffffff" stroke-width="2" transform="rotate(-25 80 90)" opacity="0.9"/>
+  </svg>
+          <div>
+            <div class="bench-item-title">Que khuấy</div>
+            <div class="bench-item-val" id="stirrerStatusText">Chưa dùng</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Khu vực cốc pha mẫu trung tâm -->
+      <div class="beaker-stage-area">
+        <div class="beaker-interactive-wrap" id="beakerInteractive" tabindex="0" title="Nhấn vào cốc sau khi chọn chất để đổ vào">
+          <!-- Cốc pha mẫu SVG -->
+          <svg class="beaker-svg-bg" viewBox="0 0 200 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 20 L20 220 C20 236 34 246 50 246 L150 246 C166 246 180 236 180 220 L180 20 L190 12 L180 12 L170 12 L20 12 Z" fill="rgba(255,255,255,0.7)" stroke="#94A3B8" stroke-width="3"/>
+            <!-- Vạch chia độ -->
+            <line x1="20" y1="60" x2="45" y2="60" stroke="#64748B" stroke-width="2"/>
+            <text x="50" y="64" font-family="system-ui, sans-serif" font-size="11" fill="#475569">150 mL</text>
+            <line x1="20" y1="110" x2="55" y2="110" stroke="#3B82F6" stroke-width="2.5"/>
+            <text x="60" y="114" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#2563EB">100 mL</text>
+            <line x1="20" y1="160" x2="45" y2="160" stroke="#64748B" stroke-width="2"/>
+            <text x="50" y="164" font-family="system-ui, sans-serif" font-size="11" fill="#475569">50 mL</text>
+          </svg>
+
+          <!-- Khối chất lỏng dâng lên -->
+          <div class="beaker-liquid" id="beakerLiquid">
+            <div class="crystal-particles" id="crystalParticles">
+              <span class="crystal-dot"></span><span class="crystal-dot"></span><span class="crystal-dot"></span>
+              <span class="crystal-dot"></span><span class="crystal-dot"></span><span class="crystal-dot"></span>
+              <span class="crystal-dot"></span><span class="crystal-dot"></span><span class="crystal-dot"></span>
+              <span class="crystal-dot"></span><span class="crystal-dot"></span><span class="crystal-dot"></span>
+            </div>
+          </div>
+
+          <!-- Que khuấy chuyển động -->
+          <div class="stirrer-tool" id="stirrerTool"></div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; width: 100%;">
+          <div style="display: flex; justify-content: space-between; width: 320px; font-size: 0.82rem; font-weight: 700; color: var(--ink-3);">
+            <span>ĐỘ HÒA TAN GLUCOSE:</span>
+            <span id="dissolvePercent">0%</span>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar-fill" id="dissolveFill"></div>
+          </div>
+          <div style="font-size: 0.85rem; color: var(--jade-text); font-weight: 600;" id="beakerStatus">
+            Cốc đang rỗng. Hãy chọn glucose để bắt đầu.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feedback-box hidden" id="fbStage4"></div>
+
+    <div class="controls-row">
+      <div class="btn-group-left">
+        <button class="btn btn-secondary" onclick="goToStage(3)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      </div>
+      <div class="btn-group-right">
+        <button class="btn btn-primary" id="btnFinishStage4" disabled><i class="ti ti-check"></i> HOÀN THÀNH</button>
+        <button class="btn btn-secondary hidden" id="btnRetryStage4"><i class="ti ti-rotate"></i> LÀM LẠI</button>
+        <button class="btn btn-primary hidden" id="btnNextStage4">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 5: CHO GLUCOSE VÀ BENEDICT VÀO ỐNG NGHIỆM (P2_C02)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-5" role="region" aria-label="Màn 5: Lấy dung dịch vào ống nghiệm">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-test-pipe"></i> Màn 5 · Phối trộn mẫu</span>
+        <h2 class="stage-title">Cho glucose và Benedict vào ống nghiệm</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 5 / 9</span>
+    </div>
+
+    <p class="lead-text">Hai dung dịch glucose và thuốc thử Benedict cần được lấy với thể tích bằng nhau vào cùng một ống nghiệm.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Nhấn vào pipet, chọn dung dịch cần lấy rồi kéo pittông đến vạch 2 mL. Sau đó, nhấn vào ống nghiệm để cho dung dịch vào. Thực hiện lần lượt với dung dịch glucose và Benedict. Dung dịch đang được chọn sẽ có khung đỏ.</span>
+    </div>
+
+    <div class="pipette-stage">
+      <!-- Cột dung dịch nguồn -->
+      <div class="reagents-col">
+        <div class="reagent-btn" id="srcGlucose" data-source="glucose" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+    <!-- Beaker Body -->
+    <path d="M 38 40 L 32 40 L 40 148 Q 42 156 52 156 L 108 156 Q 118 156 120 148 L 120 40 Z" fill="rgba(248, 250, 252, 0.75)" stroke="#64748b" stroke-width="2.5"/>
+    <!-- Graduations -->
+    <line x1="90" y1="65" x2="119" y2="65" stroke="#64748b" stroke-width="2"/>
+    <text x="86" y="68" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="700" fill="#475569" text-anchor="end">150 mL</text>
+    <line x1="90" y1="95" x2="119" y2="95" stroke="#0284c7" stroke-width="2"/>
+    <text x="86" y="98" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="800" fill="#0284c7" text-anchor="end">100 mL</text>
+    <line x1="96" y1="125" x2="119" y2="125" stroke="#64748b" stroke-width="1.5"/>
+    <text x="92" y="128" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="600" fill="#64748b" text-anchor="end">50</text>
+    <text x="76" y="55" font-family="'Be Vietnam Pro', sans-serif" font-size="7.5" font-weight="700" fill="#64748b" text-anchor="middle">CỐC PHA MẪU</text>
+  </svg>
+          <div>
+            <div style="font-weight: 700; font-size: 0.95rem;">Dung dịch Glucose</div>
+            <div style="font-size: 0.82rem; color: var(--ink-3);">Trong suốt (đã pha từ Màn 4)</div>
+          </div>
+        </div>
+
+        <div class="reagent-btn" id="srcBenedict" data-source="benedict" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+    <defs>
+      <linearGradient id="benedictBlue" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#0284c7"/>
+        <stop offset="50%" stop-color="#0ea5e9"/>
+        <stop offset="100%" stop-color="#0369a1"/>
+      </linearGradient>
+    </defs>
+    <!-- Bottle body -->
+    <rect x="42" y="45" width="76" height="115" rx="8" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
+    <!-- Liquid -->
+    <rect x="44.5" y="75" width="71" height="82" rx="6" fill="url(#benedictBlue)"/>
+    <!-- Neck & dropper cap -->
+    <rect x="62" y="28" width="36" height="18" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+    <rect x="57" y="14" width="46" height="16" rx="4" fill="#334155" stroke="#1e293b" stroke-width="2"/>
+    <!-- Label -->
+    <rect x="48" y="90" width="64" height="42" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="80" y="106" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="800" fill="#0369a1" text-anchor="middle">BENEDICT</text>
+    <text x="80" y="120" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="600" fill="#475569" text-anchor="middle">Thuốc thử</text>
+  </svg>
+          <div>
+            <div style="font-weight: 700; font-size: 0.95rem;">Thuốc thử Benedict</div>
+            <div style="font-size: 0.82rem; color: #2563EB;">Dung dịch màu xanh lam đặc trưng</div>
+          </div>
+        </div>
+
+        <div style="background: var(--cream); border: 1px dashed var(--paper-line-2); border-radius: var(--radius); padding: 12px; text-align: center;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+    <!-- Bulb top -->
+    <path d="M 72 35 C 65 25 65 12 80 12 C 95 12 95 25 88 35 Z" fill="#ef4444" stroke="#b91c1c" stroke-width="2"/>
+    <!-- Pipette stem -->
+    <rect x="74" y="35" width="12" height="100" fill="#f8fafc" stroke="#64748b" stroke-width="1.8"/>
+    <!-- Tapered tip -->
+    <path d="M 74 135 L 78 165 L 82 165 L 86 135 Z" fill="#f8fafc" stroke="#64748b" stroke-width="1.8"/>
+    <!-- Graduations -->
+    <line x1="74" y1="55" x2="80" y2="55" stroke="#475569" stroke-width="1.2"/>
+    <text x="71" y="57" font-family="monospace" font-size="7" font-weight="700" fill="#475569" text-anchor="end">4</text>
+    <line x1="74" y1="75" x2="80" y2="75" stroke="#475569" stroke-width="1.2"/>
+    <text x="71" y="77" font-family="monospace" font-size="7" font-weight="700" fill="#475569" text-anchor="end">3</text>
+    <!-- 2 mL mark highlighted in red -->
+    <line x1="74" y1="95" x2="84" y2="95" stroke="#dc2626" stroke-width="2"/>
+    <text x="71" y="97" font-family="monospace" font-size="8.5" font-weight="800" fill="#dc2626" text-anchor="end">2 mL</text>
+    <line x1="74" y1="115" x2="80" y2="115" stroke="#475569" stroke-width="1.2"/>
+    <text x="71" y="117" font-family="monospace" font-size="7" font-weight="700" fill="#475569" text-anchor="end">1</text>
+  </svg>
+          <div style="font-size: 0.85rem; font-weight: 700; color: var(--jade-text); margin-top: 6px;">Pipet định mức (Vạch 2 mL)</div>
+        </div>
+      </div>
+
+      <!-- Khu vực ống nghiệm trên giá -->
+      <div class="pipette-work-area">
+        <div class="tube-rack-display" id="tubeTargetArea" tabindex="0" title="Nhấn vào ống nghiệm để bơm dung dịch vào">
+          <div style="position: relative; width: 140px; height: 260px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; cursor: pointer;">
+            <!-- Ống nghiệm SVG -->
+            <svg width="60" height="230" viewBox="0 0 60 230" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 10 L10 195 C10 212 22 224 30 224 C38 224 50 212 50 195 L50 10" stroke="#94A3B8" stroke-width="3" fill="rgba(255,255,255,0.6)"/>
+              <path d="M6 10 L54 10" stroke="#64748B" stroke-width="3" stroke-linecap="round"/>
+              <!-- Vạch 2 mL và 4 mL -->
+              <line x1="20" y1="180" x2="40" y2="180" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="2 2"/>
+              <line x1="20" y1="140" x2="40" y2="140" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="2 2"/>
+              <!-- Khối chất lỏng trong ống nghiệm -->
+              <path id="tubeLiquidPath" d="M11 220 C11 220 11 220 30 220 C49 220 49 220 49 220 L49 220 L11 220 Z" fill="transparent"/>
+            </svg>
+            <div style="margin-top: -10px; z-index: 1;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+    <!-- Wooden rack base -->
+    <rect x="15" y="130" width="130" height="16" rx="3" fill="#d97706" stroke="#92400e" stroke-width="2"/>
+    <!-- Uprights -->
+    <rect x="18" y="50" width="14" height="82" fill="#b45309" stroke="#78350f" stroke-width="1.5"/>
+    <rect x="128" y="50" width="14" height="82" fill="#b45309" stroke="#78350f" stroke-width="1.5"/>
+    <!-- Top shelf with holes -->
+    <rect x="15" y="60" width="130" height="14" rx="3" fill="#d97706" stroke="#92400e" stroke-width="2"/>
+    <ellipse cx="45" cy="67" rx="9" ry="3.5" fill="#78350f"/>
+    <ellipse cx="68" cy="67" rx="9" ry="3.5" fill="#78350f"/>
+    <ellipse cx="92" cy="67" rx="9" ry="3.5" fill="#78350f"/>
+    <ellipse cx="115" cy="67" rx="9" ry="3.5" fill="#78350f"/>
+    <!-- Lower stabilizer shelf -->
+    <rect x="15" y="100" width="130" height="10" fill="#f59e0b" stroke="#92400e" stroke-width="1.5"/>
+  </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="volume-gauges">
+          <div class="gauge-box">
+            <div class="gauge-label">Glucose trong ống</div>
+            <div class="gauge-val" id="valGlucoseInTube">0 mL</div>
+          </div>
+          <div class="gauge-box">
+            <div class="gauge-label">Benedict trong ống</div>
+            <div class="gauge-val" id="valBenedictInTube">0 mL</div>
+          </div>
+        </div>
+
+        <div id="tubeActionNotice" style="font-size: 0.9rem; font-weight: 600; color: var(--jade-text); text-align: center;">
+          Chọn lọ dung dịch ở bên trái để hút 2 mL.
+        </div>
+      </div>
+    </div>
+
+    <div class="feedback-box hidden" id="fbStage5"></div>
+
+    <div class="controls-row">
+      <div class="btn-group-left">
+        <button class="btn btn-secondary" onclick="goToStage(4)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      </div>
+      <div class="btn-group-right">
+        <button class="btn btn-primary" id="btnCheckStage5" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
+        <button class="btn btn-secondary hidden" id="btnRetryStage5"><i class="ti ti-rotate"></i> LÀM LẠI</button>
+        <button class="btn btn-primary hidden" id="btnNextStage5">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 6: ĐUN CÁCH THỦY VÀ QUAN SÁT KẾT QUẢ (P2_C03)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-6" role="region" aria-label="Màn 6: Đun cách thủy">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-flame"></i> Màn 6 · Đun cách thủy</span>
+        <h2 class="stage-title">Đun cách thủy và quan sát kết quả</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 6 / 9</span>
+    </div>
+
+    <p class="lead-text">Hỗn hợp phản ứng được làm nóng gián tiếp trong cốc nước ở 80–90°C trên bếp điện để phản ứng sinh kết tủa đỏ gạch xảy ra.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Đặt ống nghiệm vào cốc nước sao cho miệng ống hướng ra xa người. Nhấn nút nguồn để bật bếp. Theo dõi đồng hồ trong 3 phút và quan sát sự thay đổi trong ống nghiệm. Khi quá trình kết thúc, tắt bếp, chọn kẹp rồi kéo ống nghiệm về giá.</span>
+    </div>
+
+    <div class="callout-warning">
+      <i class="ti ti-alert-triangle"></i>
+      <div><strong>CHÚ Ý AN TOÀN:</strong> Luôn hướng miệng ống nghiệm ra xa người. Không chạm tay vào ống nghiệm hoặc cốc nước đang nóng. Không để dung dịch trong ống nghiệm sôi mạnh.</div>
+    </div>
+
+    <div class="heating-workspace">
+      <!-- Khung hiển thị mô phỏng các trạng thái SVG -->
+      <div class="heating-sim-view">
+        <div id="heatingSimImgWrap" style="width:100%; display:flex; justify-content:center; align-items:center;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="600" height="450">
+  <defs>
+    <!-- Background table surface gradient -->
+    <linearGradient id="benchGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f1f5f9"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#bae6fd" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#7dd3fc" stop-opacity="0.75"/>
+    </linearGradient>
+    <!-- Glass reflections -->
+    <linearGradient id="glassReflect" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Laboratory Table Surface -->
+  <rect x="0" y="320" width="600" height="130" fill="url(#benchGrad)"/>
+  <line x1="0" y1="320" x2="600" y2="320" stroke="#cbd5e1" stroke-width="2.5"/>
+
+  <!-- Left: Test tube rack with spare tubes & clamp -->
+  <g id="accessoryGroup">
+    <!-- Wooden rack -->
+    <rect x="30" y="270" width="110" height="12" rx="2" fill="#d97706" stroke="#92400e" stroke-width="1.5"/>
+    <rect x="35" y="190" width="10" height="80" fill="#b45309"/>
+    <rect x="125" y="190" width="10" height="80" fill="#b45309"/>
+    <rect x="30" y="200" width="110" height="10" rx="2" fill="#d97706" stroke="#92400e" stroke-width="1.5"/>
+    <!-- Tube in rack -->
+    <rect x="55" y="150" width="16" height="110" rx="8" fill="rgba(241, 245, 249, 0.6)" stroke="#64748b" stroke-width="1.5"/>
+    <rect x="85" y="150" width="16" height="110" rx="8" fill="rgba(241, 245, 249, 0.6)" stroke="#64748b" stroke-width="1.5"/>
+    <!-- Wooden clamp lying on bench -->
+    <path d="M 50 350 L 130 350 L 140 340 L 70 340 Z" fill="#b45309" stroke="#78350f" stroke-width="1.5"/>
+    <circle cx="95" cy="345" r="4" fill="#94a3b8"/>
+    <text x="85" y="375" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="700" fill="#64748b" text-anchor="middle">Kẹp ống nghiệm</text>
+  </g>
+
+  <!-- Center-Right: Electric stove (Hot plate) -->
+  <g id="electricStove">
+    <!-- Stove main body -->
+    <rect x="230" y="260" width="220" height="70" rx="10" fill="#334155" stroke="#1e293b" stroke-width="2.5"/>
+    <rect x="245" y="330" width="24" height="10" rx="2" fill="#0f172a"/>
+    <rect x="410" y="330" width="24" height="10" rx="2" fill="#0f172a"/>
+    <!-- Hot plate top disc -->
+    <ellipse cx="340" cy="258" rx="95" ry="24" fill="#64748b" stroke="#334155" stroke-width="2"/>
+    <ellipse cx="340" cy="258" rx="80" ry="19" fill="#475569" stroke="#64748b" stroke-width="1.5"/>
+    <!-- Control dial & switch -->
+    <circle cx="280" cy="295" r="14" fill="#1e293b" stroke="#0f172a" stroke-width="2"/>
+    <line x1="280" y1="285" x2="280" y2="295" stroke="#38bdf8" stroke-width="2"/>
+    <!-- LED Indicator (Green: ON) -->
+    <circle cx="390" cy="295" r="5" fill="#22c55e" stroke="#15803d" stroke-width="1.5"/>
+    <circle cx="390" cy="295" r="8" fill="none" stroke="#22c55e" stroke-width="1" opacity="0.6"/>
+    <text x="390" y="315" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="700" fill="#94a3b8" text-anchor="middle">BẬT</text>
+  </g>
+
+  <!-- Heat-resistant 250 mL Beaker on the hot plate -->
+  <g id="waterBathBeaker">
+    <!-- Beaker Body -->
+    <path d="M 275 140 L 265 140 L 275 250 Q 278 258 290 258 L 390 258 Q 402 258 405 250 L 405 140 Z" fill="rgba(248, 250, 252, 0.4)" stroke="#475569" stroke-width="2.5"/>
+    <!-- Water level 250 mL in beaker -->
+    <path d="M 273 175 L 277 248 Q 279 255 290 255 L 390 255 Q 399 255 403 248 L 405 175 Z" fill="url(#waterGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+    <!-- Water bubbles (simulating 80-90°C hot water, no violent boiling) -->
+    <circle cx="310" cy="230" r="3" fill="#ffffff" opacity="0.7"/>
+    <circle cx="360" cy="210" r="2.5" fill="#ffffff" opacity="0.7"/>
+    <circle cx="335" cy="190" r="2" fill="#ffffff" opacity="0.8"/>
+    <!-- Beaker Graduation marks -->
+    <line x1="380" y1="175" x2="405" y2="175" stroke="#0284c7" stroke-width="2"/>
+    <text x="375" y="179" font-family="'Be Vietnam Pro', sans-serif" font-size="8.5" font-weight="700" fill="#0284c7" text-anchor="end">250 mL</text>
+    <line x1="385" y1="205" x2="405" y2="205" stroke="#64748b" stroke-width="1.5"/>
+    <text x="380" y="208" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="600" fill="#64748b" text-anchor="end">200</text>
+    <line x1="390" y1="230" x2="405" y2="230" stroke="#64748b" stroke-width="1.5"/>
+    <text x="385" y="233" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="600" fill="#64748b" text-anchor="end">100</text>
+  </g>
+
+  <!-- Reaction Test Tube (Tilted in beaker, mouth pointing safely to the right) -->
+  <g id="reactionTube" transform="rotate(18 340 200)">
+    <!-- Tube Glass Outline -->
+    <path d="M 330 60 L 330 225 C 330 240 354 240 354 225 L 354 60 Z" fill="rgba(241, 245, 249, 0.4)" stroke="#334155" stroke-width="2.5"/>
+    <ellipse cx="342" cy="60" rx="14" ry="4" fill="#e2e8f0" stroke="#334155" stroke-width="2"/>
+    <!-- Liquid Content (4 mL: 2 mL glucose + 2 mL Benedict) -->
+    <path d="M 331 165 L 331 224 C 331 238 353 238 353 224 L 353 165 Z" fill="#0284c7"/>
+    <!-- Precipitate content (if any) -->
+    
+    <!-- Glass reflection line -->
+    <line x1="334" y1="70" x2="334" y2="220" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+  </g>
+
+  <!-- Safety Zone Arrow (Pointing away from student) -->
+  <g id="safetyIndicator">
+    <path d="M 410 90 Q 450 70 480 65" fill="none" stroke="#16a34a" stroke-width="2" stroke-dasharray="4,4"/>
+    <polygon points="485,63 475,60 478,68" fill="#16a34a"/>
+    <rect x="440" y="40" width="130" height="24" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="1.2"/>
+    <text x="505" y="56" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="700" fill="#15803d" text-anchor="middle">HƯỚNG RA VÙNG AN TOÀN</text>
+  </g>
+</svg></div>
+        <div id="simColorBadge" style="margin-top: 10px; font-weight: 700; font-size: 0.95rem; color: var(--jade-text);">
+          Trạng thái ban đầu: Dung dịch màu xanh lam đồng nhất
+        </div>
+      </div>
+
+      <!-- Bảng điều khiển & chỉ số thời gian / nhiệt độ -->
+      <div class="heating-dashboard">
+        <div class="dash-card">
+          <div class="dash-card-title"><i class="ti ti-compass"></i> HƯỚNG MIỆNG ỐNG NGHIỆM</div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-secondary" id="btnOrientSafe" style="flex: 1; padding: 8px; font-size: 0.85rem;"><i class="ti ti-shield"></i> Hướng ra xa</button>
+            <button class="btn btn-secondary" id="btnOrientWrong" style="flex: 1; padding: 8px; font-size: 0.85rem;"><i class="ti ti-user"></i> Hướng về người</button>
+          </div>
+          <div id="orientNotice" style="font-size: 0.82rem; font-weight: 700; color: var(--warning);">
+            Miệng ống chưa được điều chỉnh an toàn!
+          </div>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-card-title"><i class="ti ti-clock"></i> THỜI GIAN ĐUN CÁCH THỦY</div>
+          <div class="timer-readout" id="timerDisplay">00:00 / 03:00</div>
+          <div style="display: flex; gap: 8px; margin-top: 6px;">
+            <button class="btn btn-primary" id="btnToggleStove" style="flex: 1;"><i class="ti ti-power"></i> BẬT BẾP ĐIỆN</button>
+          </div>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-card-title"><i class="ti ti-temperature"></i> NHIỆT ĐỘ CỐC CÁCH THỦY</div>
+          <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 0.92rem;">
+            <span>Nhiệt độ:</span>
+            <span id="tempDisplay" style="color: #EF4444;">25°C (Nhiệt độ phòng)</span>
+          </div>
+          <div class="temp-gauge-bar">
+            <div class="temp-gauge-fill" id="tempGaugeFill"></div>
+          </div>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-card-title"><i class="ti ti-tools"></i> THAO TÁC KẸP ỐNG NGHIỆM</div>
+          <button class="btn btn-outline" id="btnUseClamp" disabled><i class="ti ti-cut"></i> DÙNG KẸP GẮP ỐNG RA GIÁ</button>
+          <div id="clampNotice" style="font-size: 0.8rem; color: var(--ink-3);">Bếp phải tắt trước khi gắp ống nghiệm.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feedback-box hidden" id="fbStage6"></div>
+
+    <div class="controls-row">
+      <div class="btn-group-left">
+        <button class="btn btn-secondary" onclick="goToStage(5)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      </div>
+      <div class="btn-group-right">
+        <button class="btn btn-primary" id="btnFinishStage6" disabled><i class="ti ti-check"></i> HOÀN THÀNH</button>
+        <button class="btn btn-secondary hidden" id="btnRetryStage6"><i class="ti ti-rotate"></i> LÀM LẠI</button>
+        <button class="btn btn-primary hidden" id="btnNextStage6">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 7: THU DỌN SAU KHI THỰC HÀNH (P3_C01)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-7" role="region" aria-label="Màn 7: Thu dọn sau thực hành">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-trash"></i> Màn 7 · Vệ sinh</span>
+        <h2 class="stage-title">Thu dọn sau khi thực hành</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 7 / 9</span>
+    </div>
+
+    <p class="lead-text">Thí nghiệm đã kết thúc nhưng công việc trong phòng thí nghiệm chưa hoàn thành. Bạn cần xử lí chất thải, vệ sinh dụng cụ và sắp xếp lại khu vực thực hành đúng cách.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Nhấn vào từng hình để chọn hành động đúng. Hình đã chọn xuất hiện khung đỏ. Bạn có thể nhấn lại để bỏ chọn.</span>
+    </div>
+
+    <div class="cleanup-grid" id="cleanupGrid">
+      <!-- 8 hình thu dọn -->
+      <div class="select-card" data-id="1" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M01-A07-01.jpg" alt="Tắt bếp và ngắt nguồn khi an toàn">
+        </div>
+        <div class="select-card-desc">Tắt bếp và ngắt nguồn khi thiết bị đã an toàn.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="2" data-correct="false" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M01-A07-02.jpg" alt="Đổ dung dịch vào bồn rửa">
+        </div>
+        <div class="select-card-desc">Đổ dung dịch thí nghiệm trực tiếp vào bồn rửa.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="3" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M01-A07-03.jpg" alt="Cho chất thải vào bình thu gom riêng">
+        </div>
+        <div class="select-card-desc">Cho chất thải vào bình thu gom có nhãn theo hướng dẫn.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="4" data-correct="false" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M01-A07-04.jpg" alt="Dùng tay chạm ống còn nóng">
+        </div>
+        <div class="select-card-desc">Dùng tay chạm vào ống nghiệm còn nóng.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="5" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M01-A07-05.jpg" alt="Chờ dụng cụ nguội rồi vệ sinh">
+        </div>
+        <div class="select-card-desc">Chờ dụng cụ nguội rồi vệ sinh theo hướng dẫn.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="6" data-correct="false" tabindex="0">
+        <div class="select-card-img-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bgWall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="tableTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d97706" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#b45309" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+  <!-- Background wall -->
+  <rect x="0" y="0" width="800" height="600" fill="url(#bgWall)"/>
+  <!-- Table surface -->
+  <rect x="0" y="360" width="800" height="240" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
+
+  <!-- Messy bench scene -->
+  <!-- Liquid spill on table -->
+  <path d="M 220 440 Q 320 420 380 450 Q 420 480 340 470 Q 240 480 220 440 Z" fill="rgba(56, 189, 248, 0.4)" stroke="#38bdf8" stroke-width="1.5"/>
+
+  <!-- Uncapped chemical bottle 1 -->
+  <rect x="160" y="320" width="80" height="130" rx="8" fill="#f8fafc" stroke="#475569" stroke-width="3"/>
+  <rect x="182" y="295" width="36" height="25" fill="#e2e8f0" stroke="#475569" stroke-width="2.5"/>
+  <rect x="163" y="360" width="74" height="80" fill="#0284c7" opacity="0.8"/>
+  <!-- Loose cap lying beside -->
+  <ellipse cx="280" cy="420" rx="20" ry="10" fill="#1e293b" stroke="#0f172a" stroke-width="2"/>
+
+  <!-- Uncapped bottle 2 -->
+  <rect x="440" y="310" width="90" height="140" rx="8" fill="#f8fafc" stroke="#475569" stroke-width="3"/>
+  <rect x="465" y="285" width="40" height="25" fill="#e2e8f0" stroke="#475569" stroke-width="2.5"/>
+  <rect x="443.5" y="350" width="83" height="90" fill="#d97706" opacity="0.8"/>
+  <!-- Cap lying tipped -->
+  <ellipse cx="570" cy="430" rx="22" ry="12" fill="#334155" stroke="#0f172a" stroke-width="2" transform="rotate(25 570 430)"/>
+
+  <!-- Fallen test tube rolling -->
+  <g transform="rotate(75 350 420)">
+    <rect x="330" y="360" width="22" height="120" rx="11" fill="rgba(241, 245, 249, 0.7)" stroke="#64748b" stroke-width="2.5"/>
+  </g>
+
+  <!-- Dropped pipettes and scattered glassware -->
+  <line x1="280" y1="470" x2="420" y2="490" stroke="#64748b" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="280" cy="470" r="10" fill="#ef4444"/>
+
+  <!-- Disorganized beakers -->
+  <rect x="620" y="360" width="70" height="90" rx="4" fill="rgba(248, 250, 252, 0.6)" stroke="#64748b" stroke-width="2.5"/>
+  <rect x="80" y="370" width="60" height="80" rx="4" fill="rgba(248, 250, 252, 0.6)" stroke="#64748b" stroke-width="2.5"/>
+</svg>
+        </div>
+        <div class="select-card-desc">Để hóa chất mở nắp và dụng cụ bừa bộn.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="7" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bgLab" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0fdf4"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+  </defs>
+  <!-- Background wall -->
+  <rect x="0" y="0" width="800" height="600" fill="url(#bgLab)"/>
+  <!-- Tidy shelf in background -->
+  <rect x="80" y="100" width="640" height="20" rx="3" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="140" y="40" width="40" height="60" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <rect x="200" y="30" width="45" height="70" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+
+  <!-- Clean, dry table surface -->
+  <rect x="0" y="350" width="800" height="250" fill="#ffffff" stroke="#94a3b8" stroke-width="2.5"/>
+  <line x1="0" y1="350" x2="800" y2="350" stroke="#16a34a" stroke-width="3"/>
+
+  <!-- Tightly capped bottles in order -->
+  <!-- Bottle 1 -->
+  <g id="cappedB1">
+    <rect x="150" y="270" width="70" height="110" rx="8" fill="#f8fafc" stroke="#334155" stroke-width="2.5"/>
+    <rect x="167" y="250" width="36" height="20" fill="#e2e8f0" stroke="#334155" stroke-width="2"/>
+    <rect x="162" y="235" width="46" height="16" rx="4" fill="#0f172a"/>
+    <rect x="157" y="300" width="56" height="40" rx="3" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  </g>
+  <!-- Bottle 2 -->
+  <g id="cappedB2">
+    <rect x="240" y="270" width="70" height="110" rx="8" fill="#f8fafc" stroke="#334155" stroke-width="2.5"/>
+    <rect x="257" y="250" width="36" height="20" fill="#e2e8f0" stroke="#334155" stroke-width="2"/>
+    <rect x="252" y="235" width="46" height="16" rx="4" fill="#0f172a"/>
+    <rect x="247" y="300" width="56" height="40" rx="3" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  </g>
+
+  <!-- Clean test tubes inverted in rack to dry -->
+  <rect x="360" y="320" width="160" height="15" rx="3" fill="#d97706" stroke="#92400e" stroke-width="2"/>
+  <rect x="365" y="220" width="10" height="100" fill="#b45309"/>
+  <rect x="510" y="220" width="10" height="100" fill="#b45309"/>
+  <rect x="360" y="230" width="160" height="12" rx="2" fill="#d97706"/>
+  <!-- Tubes in rack -->
+  <rect x="390" y="180" width="18" height="120" rx="9" fill="rgba(241, 245, 249, 0.7)" stroke="#64748b" stroke-width="2"/>
+  <rect x="425" y="180" width="18" height="120" rx="9" fill="rgba(241, 245, 249, 0.7)" stroke="#64748b" stroke-width="2"/>
+  <rect x="460" y="180" width="18" height="120" rx="9" fill="rgba(241, 245, 249, 0.7)" stroke="#64748b" stroke-width="2"/>
+
+  <!-- Clean wiping cloth neatly folded -->
+  <rect x="580" y="330" width="110" height="35" rx="6" fill="#38bdf8" stroke="#0284c7" stroke-width="2"/>
+  <text x="635" y="352" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">Khăn lau sạch</text>
+</svg>
+        </div>
+        <div class="select-card-desc">Đậy nắp, trả dụng cụ đúng vị trí, lau sạch bàn.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="8" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="sinkWater" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e0f2fe" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.95"/>
+    </linearGradient>
+  </defs>
+  <!-- Background tiles -->
+  <rect x="0" y="0" width="800" height="600" fill="#f8fafc"/>
+  <line x1="0" y1="200" x2="800" y2="200" stroke="#e2e8f0" stroke-width="2"/>
+  <line x1="0" y1="400" x2="800" y2="400" stroke="#e2e8f0" stroke-width="2"/>
+  <line x1="266" y1="0" x2="266" y2="600" stroke="#e2e8f0" stroke-width="2"/>
+  <line x1="533" y1="0" x2="533" y2="600" stroke="#e2e8f0" stroke-width="2"/>
+
+  <!-- Stainless steel lab sink -->
+  <rect x="120" y="280" width="560" height="280" rx="16" fill="#f1f5f9" stroke="#94a3b8" stroke-width="4"/>
+  <rect x="160" y="310" width="480" height="220" rx="12" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
+  <!-- Drain -->
+  <ellipse cx="400" cy="480" rx="25" ry="12" fill="#64748b" stroke="#334155" stroke-width="2"/>
+
+  <!-- Goose-neck Faucet -->
+  <path d="M 400 120 C 400 60 450 60 450 140 L 450 280" fill="none" stroke="#94a3b8" stroke-width="18" stroke-linecap="round"/>
+  <path d="M 400 120 C 400 60 450 60 450 140 L 450 280" fill="none" stroke="#e2e8f0" stroke-width="12" stroke-linecap="round"/>
+  <rect x="435" y="270" width="30" height="15" rx="3" fill="#64748b"/>
+
+  <!-- Water stream flowing down -->
+  <path d="M 396 140 L 394 380 Q 400 400 406 380 L 404 140 Z" fill="url(#sinkWater)"/>
+  <!-- Water splashes -->
+  <circle cx="380" cy="380" r="4" fill="#38bdf8" opacity="0.8"/>
+  <circle cx="420" cy="385" r="3.5" fill="#38bdf8" opacity="0.8"/>
+  <circle cx="365" cy="410" r="3" fill="#38bdf8" opacity="0.7"/>
+
+  <!-- Two hands washing with rich soap bubbles -->
+  <!-- Left hand -->
+  <path d="M 330 380 Q 370 350 400 380 Q 380 420 330 410 Z" fill="#fdba74" stroke="#c2410c" stroke-width="2"/>
+  <!-- Right hand over left -->
+  <path d="M 470 380 Q 430 350 400 380 Q 420 420 470 410 Z" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+  <!-- White soap lather foam bubbles -->
+  <circle cx="400" cy="370" r="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <circle cx="385" cy="385" r="11" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <circle cx="415" cy="385" r="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <circle cx="395" cy="395" r="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <circle cx="410" cy="360" r="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <!-- Soap dispenser beside sink -->
+  <rect x="620" y="200" width="45" height="75" rx="8" fill="#38bdf8" stroke="#0284c7" stroke-width="2"/>
+  <rect x="637" y="180" width="12" height="20" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>
+  <path d="M 643 180 L 630 180" fill="none" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+</svg>
+        </div>
+        <div class="select-card-desc">Rửa tay bằng xà phòng sau khi thu dọn.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+    </div>
+
+    <div class="feedback-box hidden" id="fbStage7"></div>
+
+    <div class="controls-row">
+      <div class="btn-group-left">
+        <button class="btn btn-secondary" onclick="goToStage(6)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      </div>
+      <div class="btn-group-right">
+        <button class="btn btn-primary" id="btnCheckStage7" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
+        <button class="btn btn-secondary hidden" id="btnRetryStage7"><i class="ti ti-rotate"></i> LÀM LẠI</button>
+        <button class="btn btn-primary hidden" id="btnNextStage7">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 8: TRẢ LỜI CÂU HỎI VỀ KẾT QUẢ (P3_C02)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-8" role="region" aria-label="Màn 8: Khai thác kết quả">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-clipboard-data"></i> Màn 8 · Kết quả</span>
+        <h2 class="stage-title">Trả lời câu hỏi về kết quả</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 8 / 9</span>
+    </div>
+
+    <p class="lead-text">Bạn đã hoàn thành thí nghiệm và quan sát được kết quả. Hãy dựa vào ống nghiệm trước mặt để trả lời từng câu hỏi. Các câu trả lời đúng sẽ được lưu vào báo cáo của bạn.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-help"></i>
+      <span>Quan sát hình kết quả, chọn một phương án rồi nhấn TRẢ LỜI. Khi trả lời đúng, nội dung sẽ được lưu vào mục tương ứng của báo cáo.</span>
+    </div>
+
+    <div class="report-q-layout">
+      <!-- Cột trái: Ảnh ống nghiệm kết tủa Cu2O cố định + Khung dữ liệu báo cáo -->
+      <div class="fixed-result-preview">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="600" height="450">
+  <defs>
+    <!-- Background table surface gradient -->
+    <linearGradient id="benchGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f1f5f9"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#bae6fd" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#7dd3fc" stop-opacity="0.75"/>
+    </linearGradient>
+    <!-- Glass reflections -->
+    <linearGradient id="glassReflect" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Laboratory Table Surface -->
+  <rect x="0" y="320" width="600" height="130" fill="url(#benchGrad)"/>
+  <line x1="0" y1="320" x2="600" y2="320" stroke="#cbd5e1" stroke-width="2.5"/>
+
+  <!-- Left: Test tube rack with spare tubes & clamp -->
+  <g id="accessoryGroup">
+    <!-- Wooden rack -->
+    <rect x="30" y="270" width="110" height="12" rx="2" fill="#d97706" stroke="#92400e" stroke-width="1.5"/>
+    <rect x="35" y="190" width="10" height="80" fill="#b45309"/>
+    <rect x="125" y="190" width="10" height="80" fill="#b45309"/>
+    <rect x="30" y="200" width="110" height="10" rx="2" fill="#d97706" stroke="#92400e" stroke-width="1.5"/>
+    <!-- Tube in rack -->
+    <rect x="55" y="150" width="16" height="110" rx="8" fill="rgba(241, 245, 249, 0.6)" stroke="#64748b" stroke-width="1.5"/>
+    <rect x="85" y="150" width="16" height="110" rx="8" fill="rgba(241, 245, 249, 0.6)" stroke="#64748b" stroke-width="1.5"/>
+    <!-- Wooden clamp lying on bench -->
+    <path d="M 50 350 L 130 350 L 140 340 L 70 340 Z" fill="#b45309" stroke="#78350f" stroke-width="1.5"/>
+    <circle cx="95" cy="345" r="4" fill="#94a3b8"/>
+    <text x="85" y="375" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="700" fill="#64748b" text-anchor="middle">Kẹp ống nghiệm</text>
+  </g>
+
+  <!-- Center-Right: Electric stove (Hot plate) -->
+  <g id="electricStove">
+    <!-- Stove main body -->
+    <rect x="230" y="260" width="220" height="70" rx="10" fill="#334155" stroke="#1e293b" stroke-width="2.5"/>
+    <rect x="245" y="330" width="24" height="10" rx="2" fill="#0f172a"/>
+    <rect x="410" y="330" width="24" height="10" rx="2" fill="#0f172a"/>
+    <!-- Hot plate top disc -->
+    <ellipse cx="340" cy="258" rx="95" ry="24" fill="#64748b" stroke="#334155" stroke-width="2"/>
+    <ellipse cx="340" cy="258" rx="80" ry="19" fill="#475569" stroke="#64748b" stroke-width="1.5"/>
+    <!-- Control dial & switch -->
+    <circle cx="280" cy="295" r="14" fill="#1e293b" stroke="#0f172a" stroke-width="2"/>
+    <line x1="280" y1="285" x2="280" y2="295" stroke="#38bdf8" stroke-width="2"/>
+    <!-- LED Indicator (Green: ON) -->
+    <circle cx="390" cy="295" r="5" fill="#22c55e" stroke="#15803d" stroke-width="1.5"/>
+    <circle cx="390" cy="295" r="8" fill="none" stroke="#22c55e" stroke-width="1" opacity="0.6"/>
+    <text x="390" y="315" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="700" fill="#94a3b8" text-anchor="middle">BẬT</text>
+  </g>
+
+  <!-- Heat-resistant 250 mL Beaker on the hot plate -->
+  <g id="waterBathBeaker">
+    <!-- Beaker Body -->
+    <path d="M 275 140 L 265 140 L 275 250 Q 278 258 290 258 L 390 258 Q 402 258 405 250 L 405 140 Z" fill="rgba(248, 250, 252, 0.4)" stroke="#475569" stroke-width="2.5"/>
+    <!-- Water level 250 mL in beaker -->
+    <path d="M 273 175 L 277 248 Q 279 255 290 255 L 390 255 Q 399 255 403 248 L 405 175 Z" fill="url(#waterGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+    <!-- Water bubbles (simulating 80-90°C hot water, no violent boiling) -->
+    <circle cx="310" cy="230" r="3" fill="#ffffff" opacity="0.7"/>
+    <circle cx="360" cy="210" r="2.5" fill="#ffffff" opacity="0.7"/>
+    <circle cx="335" cy="190" r="2" fill="#ffffff" opacity="0.8"/>
+    <!-- Beaker Graduation marks -->
+    <line x1="380" y1="175" x2="405" y2="175" stroke="#0284c7" stroke-width="2"/>
+    <text x="375" y="179" font-family="'Be Vietnam Pro', sans-serif" font-size="8.5" font-weight="700" fill="#0284c7" text-anchor="end">250 mL</text>
+    <line x1="385" y1="205" x2="405" y2="205" stroke="#64748b" stroke-width="1.5"/>
+    <text x="380" y="208" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="600" fill="#64748b" text-anchor="end">200</text>
+    <line x1="390" y1="230" x2="405" y2="230" stroke="#64748b" stroke-width="1.5"/>
+    <text x="385" y="233" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="600" fill="#64748b" text-anchor="end">100</text>
+  </g>
+
+  <!-- Reaction Test Tube (Tilted in beaker, mouth pointing safely to the right) -->
+  <g id="reactionTube" transform="rotate(18 340 200)">
+    <!-- Tube Glass Outline -->
+    <path d="M 330 60 L 330 225 C 330 240 354 240 354 225 L 354 60 Z" fill="rgba(241, 245, 249, 0.4)" stroke="#334155" stroke-width="2.5"/>
+    <ellipse cx="342" cy="60" rx="14" ry="4" fill="#e2e8f0" stroke="#334155" stroke-width="2"/>
+    <!-- Liquid Content (4 mL: 2 mL glucose + 2 mL Benedict) -->
+    <path d="M 331 165 L 331 224 C 331 238 353 238 353 224 L 353 165 Z" fill="#f59e0b"/>
+    <!-- Precipitate content (if any) -->
+    
+    <!-- Dense brick-red precipitate cake at the very bottom -->
+    <path d="M 331 216 Q 342 213 353 216 L 353 224 C 353 238 331 238 331 224 Z" fill="#991b1b" stroke="#7f1d1d" stroke-width="1"/>
+    <circle cx="337" cy="213" r="2.5" fill="#b91c1c"/>
+    <circle cx="343" cy="211" r="3" fill="#b91c1c"/>
+    <circle cx="348" cy="214" r="2" fill="#991b1b"/>
+    <!-- Label indicating Cu2O -->
+    <rect x="365" y="215" width="80" height="20" rx="3" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/>
+    <text x="405" y="229" font-family="'Be Vietnam Pro', sans-serif" font-size="8.5" font-weight="800" fill="#b91c1c" text-anchor="middle">Kết tủa Cu₂O đỏ gạch</text>
+    <line x1="365" y1="225" x2="354" y2="225" stroke="#dc2626" stroke-width="1.5"/>
+
+    <!-- Glass reflection line -->
+    <line x1="334" y1="70" x2="334" y2="220" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+  </g>
+
+  <!-- Safety Zone Arrow (Pointing away from student) -->
+  <g id="safetyIndicator">
+    <path d="M 410 90 Q 450 70 480 65" fill="none" stroke="#16a34a" stroke-width="2" stroke-dasharray="4,4"/>
+    <polygon points="485,63 475,60 478,68" fill="#16a34a"/>
+    <rect x="440" y="40" width="130" height="24" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="1.2"/>
+    <text x="505" y="56" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="700" fill="#15803d" text-anchor="middle">HƯỚNG RA VÙNG AN TOÀN</text>
+  </g>
+</svg>
+        <div style="font-size: 0.82rem; font-weight: 700; color: var(--jade-dark); text-align: center;">
+          Ống nghiệm sau phản ứng: Kết tủa đỏ gạch Cu₂O đọng ở đáy
+        </div>
+
+        <div class="report-live-data">
+          <div style="font-size: 0.85rem; font-weight: 800; color: var(--jade-text); margin-bottom: 4px;">
+            <i class="ti ti-device-floppy"></i> DỮ LIỆU BÁO CÁO CỦA BẠN:
+          </div>
+          <div class="report-data-item" id="dataItemResult">
+            <strong>4. Kết quả:</strong> <span id="resText1">Chưa ghi nhận</span>
+          </div>
+          <div class="report-data-item" id="dataItemExp">
+            <strong>5. Nhận xét & giải thích:</strong> <span id="resText2">Chưa ghi nhận</span>
+          </div>
+          <div class="report-data-item" id="dataItemConc">
+            <strong>6. Kết luận:</strong> <span id="resText3">Chưa ghi nhận</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cột phải: Bộ 3 câu hỏi lần lượt -->
+      <div class="questions-flow">
+        <!-- Câu 1 -->
+        <div class="q-card" id="qCard1">
+          <div class="q-text">Câu 1 (Kết quả): Sau khi đun nóng hỗn hợp glucose và Benedict, bạn quan sát thấy hiện tượng gì?</div>
+          <div class="options-list">
+            <button class="option-btn" data-qid="1" data-val="A"><span class="opt-label">A.</span> Hỗn hợp vẫn màu xanh, không có chất rắn lắng.</button>
+            <button class="option-btn" data-qid="1" data-val="B"><span class="opt-label">B.</span> Hỗn hợp thay đổi màu và xuất hiện kết tủa đỏ gạch ở đáy ống nghiệm.</button>
+            <button class="option-btn" data-qid="1" data-val="C"><span class="opt-label">C.</span> Hỗn hợp chuyển màu tím.</button>
+          </div>
+          <button class="btn btn-primary" id="btnAnswerQ1" disabled style="align-self: flex-start;">TRẢ LỜI</button>
+          <div class="feedback-box hidden" id="fbQ1"></div>
+        </div>
+
+        <!-- Câu 2 -->
+        <div class="q-card hidden" id="qCard2">
+          <div class="q-text">Câu 2 (Nhận xét và giải thích): Dấu hiệu nào được dùng làm căn cứ nhận biết glucose trong thí nghiệm này?</div>
+          <div class="options-list">
+            <button class="option-btn" data-qid="2" data-val="A"><span class="opt-label">A.</span> Dung dịch ban đầu có màu xanh.</button>
+            <button class="option-btn" data-qid="2" data-val="B"><span class="opt-label">B.</span> Xuất hiện kết tủa đỏ gạch sau khi đun nóng với Benedict.</button>
+            <button class="option-btn" data-qid="2" data-val="C"><span class="opt-label">C.</span> Có nước trong cốc làm nóng.</button>
+          </div>
+          <button class="btn btn-primary" id="btnAnswerQ2" disabled style="align-self: flex-start;">TRẢ LỜI</button>
+          <div class="feedback-box hidden" id="fbQ2"></div>
+        </div>
+
+        <!-- Câu 3 -->
+        <div class="q-card hidden" id="qCard3">
+          <div class="q-text">Câu 3 (Kết luận): Từ kết quả thí nghiệm, bạn có thể kết luận gì?</div>
+          <div class="options-list">
+            <button class="option-btn" data-qid="3" data-val="A"><span class="opt-label">A.</span> Có thể dùng Benedict kết hợp với đun nóng để nhận biết glucose.</button>
+            <button class="option-btn" data-qid="3" data-val="B"><span class="opt-label">B.</span> Có thể dùng Benedict để nhận biết protein.</button>
+            <button class="option-btn" data-qid="3" data-val="C"><span class="opt-label">C.</span> Có thể dùng Benedict để nhận biết tinh bột.</button>
+          </div>
+          <button class="btn btn-primary" id="btnAnswerQ3" disabled style="align-self: flex-start;">TRẢ LỜI</button>
+          <div class="feedback-box hidden" id="fbQ3"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls-row">
+      <div class="btn-group-left">
+        <button class="btn btn-secondary" onclick="goToStage(7)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      </div>
+      <div class="btn-group-right">
+        <button class="btn btn-primary hidden" id="btnNextStage8">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 9: CHỌN THÀNH PHẦN VÀ XEM BÁO CÁO HOÀN CHỈNH (P3_C03)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-9" role="region" aria-label="Màn 9: Báo cáo hoàn chỉnh">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-file-text"></i> Màn 9 · Báo cáo</span>
+        <h2 class="stage-title">Chọn thành phần và xem báo cáo hoàn chỉnh</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 9 / 9</span>
+    </div>
+
+    <p class="lead-text">Bạn đã hoàn thành các bước thực hành và trả lời các câu hỏi về kết quả. Hãy lựa chọn những nội dung cần có trong một báo cáo thí nghiệm.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-checkbox"></i>
+      <span>Nhấn vào từng nội dung cần có trong báo cáo. Nội dung đã chọn xuất hiện khung đỏ. Bạn có thể nhấn lại để bỏ chọn.</span>
+    </div>
+
+    <div class="report-sections-grid" id="reportSectionsGrid">
+      <div class="section-choice-card" data-id="s1" data-correct="true" tabindex="0">
+        <i class="ti ti-target"></i> 1. Mục đích
+      </div>
+      <div class="section-choice-card" data-id="s2" data-correct="true" tabindex="0">
+        <i class="ti ti-tools"></i> 2. Mẫu, dụng cụ, thiết bị và hóa chất
+      </div>
+      <div class="section-choice-card" data-id="s3" data-correct="true" tabindex="0">
+        <i class="ti ti-list-check"></i> 3. Cách tiến hành
+      </div>
+      <div class="section-choice-card" data-id="s4" data-correct="true" tabindex="0">
+        <i class="ti ti-eye"></i> 4. Kết quả
+      </div>
+      <div class="section-choice-card" data-id="s5" data-correct="true" tabindex="0">
+        <i class="ti ti-bulb"></i> 5. Nhận xét và giải thích
+      </div>
+      <div class="section-choice-card" data-id="s6" data-correct="true" tabindex="0">
+        <i class="ti ti-check"></i> 6. Kết luận
+      </div>
+      <div class="section-choice-card" data-id="s7" data-correct="false" tabindex="0">
+        <i class="ti ti-mood-smile"></i> Cảm xúc của người thực hiện
+      </div>
+      <div class="section-choice-card" data-id="s8" data-correct="false" tabindex="0">
+        <i class="ti ti-palette"></i> Màu sắc yêu thích
+      </div>
+      <div class="section-choice-card" data-id="s9" data-correct="false" tabindex="0">
+        <i class="ti ti-bookmarks"></i> Danh sách các bài đã học
+      </div>
+      <div class="section-choice-card" data-id="s10" data-correct="false" tabindex="0">
+        <i class="ti ti-info-circle"></i> Thông tin không liên quan đến thí nghiệm
+      </div>
+    </div>
+
+    <div class="feedback-box hidden" id="fbStage9"></div>
+
+    <div style="display: flex; justify-content: flex-end; gap: 10px;">
+      <button class="btn btn-primary" id="btnCheckStage9" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
+      <button class="btn btn-secondary hidden" id="btnRetryStage9"><i class="ti ti-rotate"></i> LÀM LẠI</button>
+      <button class="btn btn-primary hidden" id="btnShowReport"><i class="ti ti-file-text"></i> XEM BÁO CÁO</button>
+    </div>
+
+    <!-- KHỐI BÁO CÁO HOÀN CHỈNH TỔNG HỢP TỪ DỮ LIỆU ĐÃ LƯU -->
+    <div class="formal-report-paper hidden" id="formalReportPaper">
+      <div class="report-header-text">
+        <h3>BÁO CÁO THỰC HÀNH</h3>
+        <p>Tên thí nghiệm: Nhận biết glucose bằng thuốc thử Benedict</p>
+      </div>
+
+      <div class="report-section-block">
+        <div class="report-section-title"><i class="ti ti-target"></i> 1. Mục đích</div>
+        <div class="report-section-body">Nhận biết glucose bằng thuốc thử Benedict.</div>
+      </div>
+
+      <div class="report-section-block">
+        <div class="report-section-title"><i class="ti ti-tools"></i> 2. Mẫu, dụng cụ, thiết bị và hóa chất</div>
+        <div class="report-section-body">
+          <p>• <strong>Mẫu:</strong> glucose; nước.</p>
+          <p>• <strong>Dụng cụ:</strong> cốc pha mẫu, que khuấy, pipet, một ống nghiệm, giá ống nghiệm, cốc thủy tinh chịu nhiệt, kẹp ống nghiệm.</p>
+          <p>• <strong>Thiết bị:</strong> bếp điện.</p>
+          <p>• <strong>Hóa chất:</strong> thuốc thử Benedict.</p>
+        </div>
+      </div>
+
+      <div class="report-section-block">
+        <div class="report-section-title"><i class="ti ti-list-check"></i> 3. Cách tiến hành</div>
+        <div class="report-section-body">
+          <p>1. Hòa tan 20 g glucose trong 100 mL nước.</p>
+          <p>2. Lấy 2 mL dung dịch glucose và 2 mL Benedict cho vào cùng một ống nghiệm.</p>
+          <p>3. Đặt ống nghiệm vào cốc chứa 250 mL nước; miệng ống hướng ra xa người.</p>
+          <p>4. Làm nóng ở 80–90°C trong 3 phút.</p>
+          <p>5. Tắt bếp, dùng kẹp lấy ống nghiệm ra và đặt lên giá.</p>
+          <p>6. Thu dọn khu vực thực hành đúng cách.</p>
+        </div>
+      </div>
+
+      <div class="report-section-block">
+        <div class="report-section-title"><i class="ti ti-eye"></i> 4. Kết quả</div>
+        <div class="report-section-body" id="finalReportResult">Hỗn hợp thay đổi màu và xuất hiện kết tủa đỏ gạch ở đáy ống nghiệm.</div>
+      </div>
+
+      <div class="report-section-block">
+        <div class="report-section-title"><i class="ti ti-bulb"></i> 5. Nhận xét và giải thích</div>
+        <div class="report-section-body" id="finalReportExp">Sự xuất hiện của kết tủa đỏ gạch sau khi đun nóng với Benedict là căn cứ nhận biết glucose. Kết tủa đỏ gạch là Cu₂O.</div>
+      </div>
+
+      <div class="report-section-block">
+        <div class="report-section-title"><i class="ti ti-check"></i> 6. Kết luận</div>
+        <div class="report-section-body" id="finalReportConc">Có thể dùng thuốc thử Benedict kết hợp với đun nóng để nhận biết glucose.</div>
+      </div>
+
+      <div style="display: flex; justify-content: center; margin-top: 16px;">
+        <button class="btn btn-primary" id="btnFinishModule" style="padding: 12px 28px; font-size: 1.05rem;">
+          <i class="ti ti-circle-check"></i> HOÀN THÀNH MODULE
+        </button>
+      </div>
+    </div>
+
+    <div class="controls-row">
+      <div class="btn-group-left">
+        <button class="btn btn-secondary" onclick="goToStage(8)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      </div>
+      <div class="btn-group-right"></div>
+    </div>
+  </section>
+
+</div>
+
+<!-- MODAL CHÚC MỪNG HOÀN THÀNH V10 -->
+<div class="congrats-overlay hidden" id="completionModal" role="dialog" aria-modal="true" aria-labelledby="modalCongratsTitle">
+  <div class="congrats-modal">
+    <div class="trophy-icon-wrap">
+      <i class="ti ti-trophy"></i>
+    </div>
+    <h3 class="congrats-title" id="modalCongratsTitle">CHÚC MỪNG HOÀN THÀNH!</h3>
+    <p class="congrats-desc">
+      Bạn đã hoàn thành xuất sắc thí nghiệm nhận biết glucose bằng thuốc thử Benedict và lập được báo cáo khoa học từ chính quá trình thực hành.
+    </p>
+    <div style="background: var(--cream); border-radius: var(--radius-sm); padding: 10px 14px; font-size: 0.9rem; color: var(--jade-text); font-weight: 600;">
+      <i class="ti ti-arrow-right"></i> Bài học tiếp theo: Nhận biết tinh bột bằng thuốc thử iodine (M02).
+    </div>
+    <div style="display: flex; gap: 10px; width: 100%; margin-top: 8px;">
+      <button class="btn btn-secondary" style="flex: 1;" onclick="reviewLesson()"><i class="ti ti-eye"></i> Xem lại bài</button>
+      <button class="btn btn-primary" style="flex: 1;" onclick="closeModal()"><i class="ti ti-check"></i> Đóng thông báo</button>
+    </div>
+  </div>
+</div>
+
+<canvas id="confettiCanvas"></canvas>
+
+<script>
+/* ==========================================================================
+   16 BIẾN DỮ LIỆU HỆ THỐNG VÀ RUNTIME LMS (MỤC C.1 KỊCH BẢN)
+   ========================================================================== */
+window.lmsState = {
+  safety_correct: false,
+  process_order_correct: false,
+  materials_correct: false,
+  glucose_mass: 20,
+  water_volume: 100,
+  glucose_sample_volume: 2,
+  benedict_volume: 2,
+  bath_water_volume: 250,
+  bath_temperature: "80–90",
+  heating_time: 180, // giây
+  heating_completed: false,
+  cleanup_correct: false,
+  report_result: "",
+  report_explanation: "",
+  report_conclusion: "",
+  report_sections_correct: false,
+  completed: false
+};
+
+// Tự động báo chiều cao iframe lên LMS mẹ
+function reportHeight() {
+  if (window.parent && window.parent !== window) {
+    var h = document.documentElement.scrollHeight || document.body.scrollHeight;
+    window.parent.postMessage({ type: 'resize', height: h }, '*');
+  }
+}
+window.addEventListener('load', reportHeight);
+window.addEventListener('resize', reportHeight);
+
+// Điều hướng Stage
+var currentStage = 1;
+function goToStage(stageNum) {
+  // Gatekeeper: kiểm tra điều kiện khóa tiến trình
+  if (stageNum === 2 && !window.lmsState.safety_correct) return;
+  if (stageNum === 4 && !window.lmsState.materials_correct) return;
+  if (stageNum === 8 && !window.lmsState.cleanup_correct) return;
+
+  for (var i = 1; i <= 9; i++) {
+    var st = document.getElementById('stage-' + i);
+    if (st) st.classList.add('hidden');
+  }
+  var target = document.getElementById('stage-' + stageNum);
+  if (target) {
+    target.classList.remove('hidden');
+    currentStage = stageNum;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(reportHeight, 150);
+  }
+}
+
+/* ==========================================================================
+   MÀN 1: AN TOÀN TRƯỚC KHI THỰC HÀNH
+   ========================================================================== */
+var safetyCards = document.querySelectorAll('#safetyGrid .select-card');
+var btnCheckStage1 = document.getElementById('btnCheckStage1');
+var btnRetryStage1 = document.getElementById('btnRetryStage1');
+var btnNextStage1 = document.getElementById('btnNextStage1');
+var fbStage1 = document.getElementById('fbStage1');
+
+safetyCards.forEach(function(card) {
+  card.addEventListener('click', function() {
+    if (window.lmsState.safety_correct) return;
+    card.classList.toggle('selected');
+    var hasSelected = Array.from(safetyCards).some(function(c) { return c.classList.contains('selected'); });
+    btnCheckStage1.disabled = !hasSelected;
+  });
+});
+
+btnCheckStage1.addEventListener('click', function() {
+  var selectedCards = Array.from(safetyCards).filter(function(c) { return c.classList.contains('selected'); });
+  var selectedIds = selectedCards.map(function(c) { return c.dataset.id; }).sort().join(',');
+  var isCorrect = (selectedIds === '1,4,6');
+
+  fbStage1.classList.remove('hidden', 'correct', 'wrong');
+  if (isCorrect) {
+    window.lmsState.safety_correct = true;
+    fbStage1.classList.add('correct');
+    fbStage1.innerHTML = '<div class="feedback-title"><i class="ti ti-circle-check"></i> CHÍNH XÁC</div>' +
+      '<div>Bạn đã nhận biết đúng các hành động an toàn. Khi vào phòng thí nghiệm, cần giữ trang phục và tóc gọn gàng, sử dụng phương tiện bảo hộ phù hợp, không ngửi trực tiếp hóa chất, không dùng tay không chạm vào dụng cụ nóng, không ăn uống và luôn giữ khu vực thực hành sạch, gọn. Bạn đã nắm được các quy tắc an toàn cơ bản. Hãy tiếp tục tìm hiểu mục đích và quy trình thí nghiệm.</div>';
+    btnCheckStage1.classList.add('hidden');
+    btnRetryStage1.classList.add('hidden');
+    btnNextStage1.classList.remove('hidden');
+  } else {
+    fbStage1.classList.add('wrong');
+    fbStage1.innerHTML = '<div class="feedback-title"><i class="ti ti-alert-triangle"></i> CHƯA CHÍNH XÁC</div>' +
+      '<div>Bạn chưa chọn đúng tất cả các hành động an toàn. Hãy xem lại các hình có hành động liên quan đến hóa chất, dụng cụ nóng và việc giữ bàn thực hành gọn gàng.</div>';
+    btnCheckStage1.classList.add('hidden');
+    btnRetryStage1.classList.remove('hidden');
+  }
+  reportHeight();
+});
+
+btnRetryStage1.addEventListener('click', function() {
+  fbStage1.classList.add('hidden');
+  btnRetryStage1.classList.add('hidden');
+  btnCheckStage1.classList.remove('hidden');
+  safetyCards.forEach(function(c) {
+    var isCorrectCard = (c.dataset.correct === 'true');
+    if (!isCorrectCard) c.classList.remove('selected');
+  });
+  var hasSelected = Array.from(safetyCards).some(function(c) { return c.classList.contains('selected'); });
+  btnCheckStage1.disabled = !hasSelected;
+  reportHeight();
+});
+
+btnNextStage1.addEventListener('click', function() { goToStage(2); });
+
+/* ==========================================================================
+   MÀN 2: SẮP XẾP 4 BƯỚC QUY TRÌNH (HYBRID D&D + TAP-TO-PLACE)
+   ========================================================================== */
+var dragCards = document.querySelectorAll('#trayStage2 .draggable-card');
+var stepSlots = document.querySelectorAll('.step-slot');
+var btnCheckStage2 = document.getElementById('btnCheckStage2');
+var btnRetryStage2 = document.getElementById('btnRetryStage2');
+var btnNextStage2 = document.getElementById('btnNextStage2');
+var fbStage2 = document.getElementById('fbStage2');
+var trayStage2 = document.getElementById('trayStage2');
+
+var selectedCardM2 = null;
+
+dragCards.forEach(function(card) {
+  card.addEventListener('dragstart', function(e) {
+    card.classList.add('is-dragging');
+    e.dataTransfer.setData('text/plain', card.id);
+  });
+  card.addEventListener('dragend', function() {
+    card.classList.remove('is-dragging');
+  });
+
+  card.addEventListener('click', function() {
+    if (window.lmsState.process_order_correct) return;
+    if (selectedCardM2 === card) {
+      card.classList.remove('selected');
+      selectedCardM2 = null;
+    } else {
+      dragCards.forEach(function(c) { c.classList.remove('selected'); });
+      card.classList.add('selected');
+      selectedCardM2 = card;
+    }
+  });
+});
+
+stepSlots.forEach(function(slot) {
+  slot.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    slot.classList.add('drag-over');
+  });
+  slot.addEventListener('dragleave', function() { slot.classList.remove('drag-over'); });
+  slot.addEventListener('drop', function(e) {
+    e.preventDefault();
+    slot.classList.remove('drag-over');
+    var cardId = e.dataTransfer.getData('text/plain');
+    var card = document.getElementById(cardId);
+    if (card) placeCardInSlot(card, slot);
+  });
+
+  slot.addEventListener('click', function() {
+    if (window.lmsState.process_order_correct) return;
+    if (selectedCardM2) {
+      placeCardInSlot(selectedCardM2, slot);
+      selectedCardM2.classList.remove('selected');
+      selectedCardM2 = null;
+    } else {
+      var cardInside = slot.querySelector('.draggable-card');
+      if (cardInside) {
+        trayStage2.appendChild(cardInside);
+        checkM2SlotsFilled();
+      }
+    }
+  });
+});
+
+function placeCardInSlot(card, slot) {
+  var existing = slot.querySelector('.draggable-card');
+  if (existing) {
+    trayStage2.appendChild(existing);
+  }
+  slot.appendChild(card);
+  checkM2SlotsFilled();
+}
+
+function checkM2SlotsFilled() {
+  var allFilled = Array.from(stepSlots).every(function(s) { return s.querySelector('.draggable-card') !== null; });
+  btnCheckStage2.disabled = !allFilled;
+  reportHeight();
+}
+
+btnCheckStage2.addEventListener('click', function() {
+  var isCorrect = true;
+  stepSlots.forEach(function(slot) {
+    var card = slot.querySelector('.draggable-card');
+    if (!card || card.dataset.step !== slot.dataset.slot) {
+      isCorrect = false;
+    }
+  });
+
+  fbStage2.classList.remove('hidden', 'correct', 'wrong');
+  if (isCorrect) {
+    window.lmsState.process_order_correct = true;
+    fbStage2.classList.add('correct');
+    fbStage2.innerHTML = '<div class="feedback-title"><i class="ti ti-circle-check"></i> CHÍNH XÁC</div>' +
+      '<div>Bạn hãy ghi nhớ thứ tự các bước để bắt đầu thực hiện nhé. Tiếp theo, hãy lựa chọn những thứ cần dùng.</div>';
+    btnCheckStage2.classList.add('hidden');
+    btnRetryStage2.classList.add('hidden');
+    btnNextStage2.classList.remove('hidden');
+  } else {
+    fbStage2.classList.add('wrong');
+    fbStage2.innerHTML = '<div class="feedback-title"><i class="ti ti-alert-triangle"></i> THỨ TỰ CHƯA CHÍNH XÁC</div>' +
+      '<div>Hãy xác định bước chuẩn bị mẫu trước, sau đó xem thao tác nào phải được thực hiện trước khi quan sát kết quả.</div>';
+    btnCheckStage2.classList.add('hidden');
+    btnRetryStage2.classList.remove('hidden');
+  }
+  reportHeight();
+});
+
+btnRetryStage2.addEventListener('click', function() {
+  fbStage2.classList.add('hidden');
+  btnRetryStage2.classList.add('hidden');
+  btnCheckStage2.classList.remove('hidden');
+});
+
+btnNextStage2.addEventListener('click', function() { goToStage(3); });
+
+/* ==========================================================================
+   MÀN 3: CHỌN MẪU, DỤNG CỤ, THIẾT BỊ VÀ HÓA CHẤT
+   ========================================================================== */
+var matCards = document.querySelectorAll('#materialsGrid .material-card');
+var prepTrayItems = document.getElementById('prepTrayItems');
+var countSelectedMat = document.getElementById('countSelectedMat');
+var btnCheckStage3 = document.getElementById('btnCheckStage3');
+var btnRetryStage3 = document.getElementById('btnRetryStage3');
+var btnNextStage3 = document.getElementById('btnNextStage3');
+var fbStage3 = document.getElementById('fbStage3');
+
+matCards.forEach(function(card) {
+  card.addEventListener('click', function() {
+    if (window.lmsState.materials_correct) return;
+    card.classList.toggle('selected');
+    updatePrepTray();
+  });
+});
+
+function updatePrepTray() {
+  var selected = Array.from(matCards).filter(function(c) { return c.classList.contains('selected'); });
+  var correctSelected = selected.filter(function(c) { return c.dataset.correct === 'true'; });
+  countSelectedMat.innerText = correctSelected.length;
+
+  if (selected.length === 0) {
+    prepTrayItems.innerHTML = '<span style="color: var(--ink-3); font-size: 0.88rem; font-style: italic;">Chưa có vật tư nào được chọn.</span>';
+    btnCheckStage3.disabled = true;
+  } else {
+    prepTrayItems.innerHTML = selected.map(function(c) {
+      return '<span class="prep-tag"><i class="ti ti-check"></i> ' + c.querySelector('span').innerText + '</span>';
+    }).join('');
+    btnCheckStage3.disabled = false;
+  }
+  reportHeight();
+}
+
+btnCheckStage3.addEventListener('click', function() {
+  var selected = Array.from(matCards).filter(function(c) { return c.classList.contains('selected'); });
+  var selectedIds = selected.map(function(c) { return c.dataset.id; });
+  var correctIds = Array.from(matCards).filter(function(c) { return c.dataset.correct === 'true'; }).map(function(c) { return c.dataset.id; });
+
+  var hasWrongItem = selected.some(function(c) { return c.dataset.correct === 'false'; });
+  var isMissing = correctIds.some(function(id) { return !selectedIds.includes(id); });
+
+  fbStage3.classList.remove('hidden', 'correct', 'wrong');
+
+  if (!hasWrongItem && !isMissing) {
+    window.lmsState.materials_correct = true;
+    fbStage3.classList.add('correct');
+    fbStage3.innerHTML = '<div class="feedback-title"><i class="ti ti-circle-check"></i> CHÍNH XÁC</div>' +
+      '<div>Bạn đã chọn đúng những thứ cần dùng. Glucose và nước dùng để pha mẫu; Benedict là thuốc thử; ống nghiệm chứa hỗn hợp phản ứng; pipet dùng để lấy dung dịch; cốc nước và bếp điện dùng để làm nóng gián tiếp ống nghiệm. Hãy tiếp tục chuẩn bị dung dịch glucose.</div>';
+    btnCheckStage3.classList.add('hidden');
+    btnRetryStage3.classList.add('hidden');
+    btnNextStage3.classList.remove('hidden');
+  } else {
+    fbStage3.classList.add('wrong');
+    var msg = hasWrongItem
+      ? "Có vật bạn chọn thuộc thí nghiệm khác trong Bài 6. Hãy xem lại nhãn các thuốc thử và mục đích của phép thử Benedict."
+      : "Bạn chưa chọn đủ. Hãy đối chiếu lại với quy trình và xác định những vật cần dùng để pha mẫu, lấy dung dịch, chứa phản ứng và làm nóng.";
+    fbStage3.innerHTML = '<div class="feedback-title"><i class="ti ti-alert-triangle"></i> CHƯA CHÍNH XÁC</div>' +
+      '<div>' + msg + '</div>';
+    btnCheckStage3.classList.add('hidden');
+    btnRetryStage3.classList.remove('hidden');
+  }
+  reportHeight();
+});
+
+btnRetryStage3.addEventListener('click', function() {
+  fbStage3.classList.add('hidden');
+  btnRetryStage3.classList.add('hidden');
+  btnCheckStage3.classList.remove('hidden');
+  matCards.forEach(function(c) {
+    if (c.dataset.correct === 'false') c.classList.remove('selected');
+  });
+  updatePrepTray();
+});
+
+btnNextStage3.addEventListener('click', function() { goToStage(4); });
+
+/* ==========================================================================
+   MÀN 4: THAO TÁC PHA DUNG DỊCH GLUCOSE
+   ========================================================================== */
+var itemGlucose = document.getElementById('itemGlucose');
+var itemWater = document.getElementById('itemWater');
+var itemStirrer = document.getElementById('itemStirrer');
+var beakerInteractive = document.getElementById('beakerInteractive');
+var beakerLiquid = document.getElementById('beakerLiquid');
+var crystalParticles = document.getElementById('crystalParticles');
+var stirrerTool = document.getElementById('stirrerTool');
+var dissolveFill = document.getElementById('dissolveFill');
+var dissolvePercent = document.getElementById('dissolvePercent');
+var beakerStatus = document.getElementById('beakerStatus');
+var stirrerStatusText = document.getElementById('stirrerStatusText');
+var btnFinishStage4 = document.getElementById('btnFinishStage4');
+var btnNextStage4 = document.getElementById('btnNextStage4');
+var fbStage4 = document.getElementById('fbStage4');
+
+var m4SelectedTool = null;
+var m4GlucoseAdded = false;
+var m4WaterAdded = false;
+var m4DissolveScore = 0;
+
+[itemGlucose, itemWater, itemStirrer].forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    if (m4DissolveScore >= 100) return;
+    if (m4SelectedTool === btn) {
+      btn.classList.remove('selected');
+      m4SelectedTool = null;
+    } else {
+      [itemGlucose, itemWater, itemStirrer].forEach(function(b) { b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      m4SelectedTool = btn;
+    }
+  });
+});
+
+beakerInteractive.addEventListener('click', function() {
+  if (!m4SelectedTool) {
+    alert("Vui lòng nhấn chọn lọ glucose hoặc bình nước cất ở bên trái trước!");
+    return;
+  }
+  var type = m4SelectedTool.dataset.type;
+
+  if (type === 'glucose') {
+    if (m4GlucoseAdded) return;
+    m4GlucoseAdded = true;
+    itemGlucose.style.opacity = '0.5';
+    itemGlucose.classList.remove('selected');
+    m4SelectedTool = null;
+    beakerLiquid.style.height = '24px';
+    crystalParticles.style.opacity = '1';
+    beakerStatus.innerText = "Đã cho 20 g glucose vào cốc. Tiếp theo hãy thêm 100 mL nước.";
+  } else if (type === 'water') {
+    if (!m4GlucoseAdded) {
+      alert("Hãy cho glucose vào cốc trước theo trình tự pha mẫu.");
+      return;
+    }
+    if (m4WaterAdded) return;
+    m4WaterAdded = true;
+    itemWater.style.opacity = '0.5';
+    itemWater.classList.remove('selected');
+    m4SelectedTool = null;
+    beakerLiquid.style.height = '140px';
+    beakerStatus.innerText = "Đã thêm 100 mL nước. Hãy chọn que khuấy và khuấy đều để hòa tan.";
+  } else if (type === 'stirrer') {
+    if (!m4WaterAdded) {
+      alert("Chưa đủ nước để khuấy tan glucose!");
+      return;
+    }
+    stirrerTool.classList.add('active', 'stirring');
+    stirrerStatusText.innerText = "Đang khuấy...";
+
+    var stirInterval = setInterval(function() {
+      m4DissolveScore += 10;
+      if (m4DissolveScore > 100) m4DissolveScore = 100;
+      dissolveFill.style.width = m4DissolveScore + '%';
+      dissolvePercent.innerText = m4DissolveScore + '%';
+      crystalParticles.style.opacity = (1 - m4DissolveScore / 100);
+
+      if (m4DissolveScore >= 100) {
+        clearInterval(stirInterval);
+        stirrerTool.classList.remove('stirring');
+        beakerStatus.innerText = "Glucose đã tan hoàn toàn! Dung dịch đồng nhất trong suốt.";
+        stirrerStatusText.innerText = "Đã tan hết";
+        btnFinishStage4.disabled = false;
+        reportHeight();
+      }
+    }, 200);
+  }
+  reportHeight();
+});
+
+btnFinishStage4.addEventListener('click', function() {
+  fbStage4.classList.remove('hidden', 'correct', 'wrong');
+  fbStage4.classList.add('correct');
+  fbStage4.innerHTML = '<div class="feedback-title"><i class="ti ti-circle-check"></i> CHÍNH XÁC</div>' +
+    '<div>Glucose đã tan trong nước, tạo thành dung dịch glucose dùng cho thí nghiệm. Hãy tiếp tục lấy mẫu và thuốc thử cho vào ống nghiệm.</div>';
+  btnFinishStage4.classList.add('hidden');
+  btnNextStage4.classList.remove('hidden');
+  reportHeight();
+});
+
+btnNextStage4.addEventListener('click', function() { goToStage(5); });
+
+/* ==========================================================================
+   MÀN 5: CHO GLUCOSE VÀ BENEDICT VÀO ỐNG NGHIỆM
+   ========================================================================== */
+var srcGlucose = document.getElementById('srcGlucose');
+var srcBenedict = document.getElementById('srcBenedict');
+var tubeTargetArea = document.getElementById('tubeTargetArea');
+var tubeLiquidPath = document.getElementById('tubeLiquidPath');
+var valGlucoseInTube = document.getElementById('valGlucoseInTube');
+var valBenedictInTube = document.getElementById('valBenedictInTube');
+var tubeActionNotice = document.getElementById('tubeActionNotice');
+var btnCheckStage5 = document.getElementById('btnCheckStage5');
+var btnNextStage5 = document.getElementById('btnNextStage5');
+var fbStage5 = document.getElementById('fbStage5');
+
+var m5SelectedSource = null;
+var m5GlucoseVol = 0;
+var m5BenedictVol = 0;
+
+[srcGlucose, srcBenedict].forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    if (m5GlucoseVol === 2 && m5BenedictVol === 2) return;
+    if (m5SelectedSource === btn) {
+      btn.classList.remove('selected');
+      m5SelectedSource = null;
+    } else {
+      [srcGlucose, srcBenedict].forEach(function(b) { b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      m5SelectedSource = btn;
+      tubeActionNotice.innerText = "Đã hút 2 mL " + (btn.dataset.source === 'glucose' ? 'dung dịch glucose' : 'thuốc thử Benedict') + ". Nhấn vào ống nghiệm để bơm vào.";
+    }
+  });
+});
+
+tubeTargetArea.addEventListener('click', function() {
+  if (!m5SelectedSource) {
+    alert("Vui lòng chọn dung dịch cần lấy ở bên trái trước!");
+    return;
+  }
+  var type = m5SelectedSource.dataset.source;
+
+  if (type === 'glucose') {
+    if (m5GlucoseVol === 2) {
+      alert("Đã lấy đủ 2 mL dung dịch glucose rồi!");
+      return;
+    }
+    m5GlucoseVol = 2;
+    valGlucoseInTube.innerText = "2 mL";
+    srcGlucose.classList.remove('selected');
+    srcGlucose.style.opacity = '0.5';
+    m5SelectedSource = null;
+  } else if (type === 'benedict') {
+    if (m5BenedictVol === 2) {
+      alert("Đã lấy đủ 2 mL thuốc thử Benedict rồi!");
+      return;
+    }
+    m5BenedictVol = 2;
+    valBenedictInTube.innerText = "2 mL";
+    srcBenedict.classList.remove('selected');
+    srcBenedict.style.opacity = '0.5';
+    m5SelectedSource = null;
+  }
+
+  if (m5GlucoseVol === 2 && m5BenedictVol === 0) {
+    tubeLiquidPath.setAttribute('d', 'M11 220 C11 220 11 220 30 220 C49 220 49 220 49 220 L49 180 L11 180 Z');
+    tubeLiquidPath.setAttribute('fill', 'rgba(210,230,240,0.45)');
+    tubeActionNotice.innerText = "Đã cho 2 mL glucose (không màu). Tiếp tục lấy 2 mL thuốc thử Benedict.";
+  } else if (m5GlucoseVol === 2 && m5BenedictVol === 2) {
+    tubeLiquidPath.setAttribute('d', 'M11 220 C11 220 11 220 30 220 C49 220 49 220 49 220 L49 140 L11 140 Z');
+    tubeLiquidPath.setAttribute('fill', '#1C6FB0');
+    tubeActionNotice.innerText = "Đã lấy đủ 2 mL glucose và 2 mL Benedict. Hỗn hợp có màu xanh lam đồng nhất.";
+    btnCheckStage5.disabled = false;
+  }
+  reportHeight();
+});
+
+btnCheckStage5.addEventListener('click', function() {
+  fbStage5.classList.remove('hidden', 'correct', 'wrong');
+  fbStage5.classList.add('correct');
+  fbStage5.innerHTML = '<div class="feedback-title"><i class="ti ti-circle-check"></i> CHÍNH XÁC</div>' +
+    '<div>Bạn đã lấy đúng 2 mL glucose và 2 mL Benedict. Hai dung dịch có thể tích bằng nhau và hỗn hợp ban đầu có màu xanh. Hãy tiếp tục làm nóng để quan sát phản ứng.</div>';
+  btnCheckStage5.classList.add('hidden');
+  btnNextStage5.classList.remove('hidden');
+  reportHeight();
+});
+
+btnNextStage5.addEventListener('click', function() { goToStage(6); });
+
+/* ==========================================================================
+   MÀN 6: ĐUN CÁCH THỦY VÀ QUAN SÁT KẾT QUẢ TỰ SINH
+   ========================================================================== */
+
+var SVG_HEATING_STATES = {
+  state0: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 450\" width=\"600\" height=\"450\">\n  <defs>\n    <!-- Background table surface gradient -->\n    <linearGradient id=\"benchGrad\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#f1f5f9\"/>\n      <stop offset=\"100%\" stop-color=\"#e2e8f0\"/>\n    </linearGradient>\n    <linearGradient id=\"waterGrad\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#bae6fd\" stop-opacity=\"0.5\"/>\n      <stop offset=\"100%\" stop-color=\"#7dd3fc\" stop-opacity=\"0.75\"/>\n    </linearGradient>\n    <!-- Glass reflections -->\n    <linearGradient id=\"glassReflect\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"0\">\n      <stop offset=\"0%\" stop-color=\"#ffffff\" stop-opacity=\"0.6\"/>\n      <stop offset=\"50%\" stop-color=\"#ffffff\" stop-opacity=\"0.1\"/>\n      <stop offset=\"100%\" stop-color=\"#ffffff\" stop-opacity=\"0.5\"/>\n    </linearGradient>\n  </defs>\n\n  <!-- Laboratory Table Surface -->\n  <rect x=\"0\" y=\"320\" width=\"600\" height=\"130\" fill=\"url(#benchGrad)\"/>\n  <line x1=\"0\" y1=\"320\" x2=\"600\" y2=\"320\" stroke=\"#cbd5e1\" stroke-width=\"2.5\"/>\n\n  <!-- Left: Test tube rack with spare tubes & clamp -->\n  <g id=\"accessoryGroup\">\n    <!-- Wooden rack -->\n    <rect x=\"30\" y=\"270\" width=\"110\" height=\"12\" rx=\"2\" fill=\"#d97706\" stroke=\"#92400e\" stroke-width=\"1.5\"/>\n    <rect x=\"35\" y=\"190\" width=\"10\" height=\"80\" fill=\"#b45309\"/>\n    <rect x=\"125\" y=\"190\" width=\"10\" height=\"80\" fill=\"#b45309\"/>\n    <rect x=\"30\" y=\"200\" width=\"110\" height=\"10\" rx=\"2\" fill=\"#d97706\" stroke=\"#92400e\" stroke-width=\"1.5\"/>\n    <!-- Tube in rack -->\n    <rect x=\"55\" y=\"150\" width=\"16\" height=\"110\" rx=\"8\" fill=\"rgba(241, 245, 249, 0.6)\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <rect x=\"85\" y=\"150\" width=\"16\" height=\"110\" rx=\"8\" fill=\"rgba(241, 245, 249, 0.6)\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <!-- Wooden clamp lying on bench -->\n    <path d=\"M 50 350 L 130 350 L 140 340 L 70 340 Z\" fill=\"#b45309\" stroke=\"#78350f\" stroke-width=\"1.5\"/>\n    <circle cx=\"95\" cy=\"345\" r=\"4\" fill=\"#94a3b8\"/>\n    <text x=\"85\" y=\"375\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"10\" font-weight=\"700\" fill=\"#64748b\" text-anchor=\"middle\">Kẹp ống nghiệm</text>\n  </g>\n\n  <!-- Center-Right: Electric stove (Hot plate) -->\n  <g id=\"electricStove\">\n    <!-- Stove main body -->\n    <rect x=\"230\" y=\"260\" width=\"220\" height=\"70\" rx=\"10\" fill=\"#334155\" stroke=\"#1e293b\" stroke-width=\"2.5\"/>\n    <rect x=\"245\" y=\"330\" width=\"24\" height=\"10\" rx=\"2\" fill=\"#0f172a\"/>\n    <rect x=\"410\" y=\"330\" width=\"24\" height=\"10\" rx=\"2\" fill=\"#0f172a\"/>\n    <!-- Hot plate top disc -->\n    <ellipse cx=\"340\" cy=\"258\" rx=\"95\" ry=\"24\" fill=\"#64748b\" stroke=\"#334155\" stroke-width=\"2\"/>\n    <ellipse cx=\"340\" cy=\"258\" rx=\"80\" ry=\"19\" fill=\"#475569\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <!-- Control dial & switch -->\n    <circle cx=\"280\" cy=\"295\" r=\"14\" fill=\"#1e293b\" stroke=\"#0f172a\" stroke-width=\"2\"/>\n    <line x1=\"280\" y1=\"285\" x2=\"280\" y2=\"295\" stroke=\"#38bdf8\" stroke-width=\"2\"/>\n    <!-- LED Indicator (Green: ON) -->\n    <circle cx=\"390\" cy=\"295\" r=\"5\" fill=\"#22c55e\" stroke=\"#15803d\" stroke-width=\"1.5\"/>\n    <circle cx=\"390\" cy=\"295\" r=\"8\" fill=\"none\" stroke=\"#22c55e\" stroke-width=\"1\" opacity=\"0.6\"/>\n    <text x=\"390\" y=\"315\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"9\" font-weight=\"700\" fill=\"#94a3b8\" text-anchor=\"middle\">BẬT</text>\n  </g>\n\n  <!-- Heat-resistant 250 mL Beaker on the hot plate -->\n  <g id=\"waterBathBeaker\">\n    <!-- Beaker Body -->\n    <path d=\"M 275 140 L 265 140 L 275 250 Q 278 258 290 258 L 390 258 Q 402 258 405 250 L 405 140 Z\" fill=\"rgba(248, 250, 252, 0.4)\" stroke=\"#475569\" stroke-width=\"2.5\"/>\n    <!-- Water level 250 mL in beaker -->\n    <path d=\"M 273 175 L 277 248 Q 279 255 290 255 L 390 255 Q 399 255 403 248 L 405 175 Z\" fill=\"url(#waterGrad)\" stroke=\"#38bdf8\" stroke-width=\"1.5\"/>\n    <!-- Water bubbles (simulating 80-90°C hot water, no violent boiling) -->\n    <circle cx=\"310\" cy=\"230\" r=\"3\" fill=\"#ffffff\" opacity=\"0.7\"/>\n    <circle cx=\"360\" cy=\"210\" r=\"2.5\" fill=\"#ffffff\" opacity=\"0.7\"/>\n    <circle cx=\"335\" cy=\"190\" r=\"2\" fill=\"#ffffff\" opacity=\"0.8\"/>\n    <!-- Beaker Graduation marks -->\n    <line x1=\"380\" y1=\"175\" x2=\"405\" y2=\"175\" stroke=\"#0284c7\" stroke-width=\"2\"/>\n    <text x=\"375\" y=\"179\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"8.5\" font-weight=\"700\" fill=\"#0284c7\" text-anchor=\"end\">250 mL</text>\n    <line x1=\"385\" y1=\"205\" x2=\"405\" y2=\"205\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <text x=\"380\" y=\"208\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"8\" font-weight=\"600\" fill=\"#64748b\" text-anchor=\"end\">200</text>\n    <line x1=\"390\" y1=\"230\" x2=\"405\" y2=\"230\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <text x=\"385\" y=\"233\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"8\" font-weight=\"600\" fill=\"#64748b\" text-anchor=\"end\">100</text>\n  </g>\n\n  <!-- Reaction Test Tube (Tilted in beaker, mouth pointing safely to the right) -->\n  <g id=\"reactionTube\" transform=\"rotate(18 340 200)\">\n    <!-- Tube Glass Outline -->\n    <path d=\"M 330 60 L 330 225 C 330 240 354 240 354 225 L 354 60 Z\" fill=\"rgba(241, 245, 249, 0.4)\" stroke=\"#334155\" stroke-width=\"2.5\"/>\n    <ellipse cx=\"342\" cy=\"60\" rx=\"14\" ry=\"4\" fill=\"#e2e8f0\" stroke=\"#334155\" stroke-width=\"2\"/>\n    <!-- Liquid Content (4 mL: 2 mL glucose + 2 mL Benedict) -->\n    <path d=\"M 331 165 L 331 224 C 331 238 353 238 353 224 L 353 165 Z\" fill=\"#0284c7\"/>\n    <!-- Precipitate content (if any) -->\n    \n    <!-- Glass reflection line -->\n    <line x1=\"334\" y1=\"70\" x2=\"334\" y2=\"220\" stroke=\"#ffffff\" stroke-width=\"2\" opacity=\"0.8\"/>\n  </g>\n\n  <!-- Safety Zone Arrow (Pointing away from student) -->\n  <g id=\"safetyIndicator\">\n    <path d=\"M 410 90 Q 450 70 480 65\" fill=\"none\" stroke=\"#16a34a\" stroke-width=\"2\" stroke-dasharray=\"4,4\"/>\n    <polygon points=\"485,63 475,60 478,68\" fill=\"#16a34a\"/>\n    <rect x=\"440\" y=\"40\" width=\"130\" height=\"24\" rx=\"4\" fill=\"#dcfce7\" stroke=\"#16a34a\" stroke-width=\"1.2\"/>\n    <text x=\"505\" y=\"56\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"9\" font-weight=\"700\" fill=\"#15803d\" text-anchor=\"middle\">HƯỚNG RA VÙNG AN TOÀN</text>\n  </g>\n</svg>",
+  state1: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 450\" width=\"600\" height=\"450\">\n  <defs>\n    <!-- Background table surface gradient -->\n    <linearGradient id=\"benchGrad\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#f1f5f9\"/>\n      <stop offset=\"100%\" stop-color=\"#e2e8f0\"/>\n    </linearGradient>\n    <linearGradient id=\"waterGrad\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#bae6fd\" stop-opacity=\"0.5\"/>\n      <stop offset=\"100%\" stop-color=\"#7dd3fc\" stop-opacity=\"0.75\"/>\n    </linearGradient>\n    <!-- Glass reflections -->\n    <linearGradient id=\"glassReflect\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"0\">\n      <stop offset=\"0%\" stop-color=\"#ffffff\" stop-opacity=\"0.6\"/>\n      <stop offset=\"50%\" stop-color=\"#ffffff\" stop-opacity=\"0.1\"/>\n      <stop offset=\"100%\" stop-color=\"#ffffff\" stop-opacity=\"0.5\"/>\n    </linearGradient>\n  </defs>\n\n  <!-- Laboratory Table Surface -->\n  <rect x=\"0\" y=\"320\" width=\"600\" height=\"130\" fill=\"url(#benchGrad)\"/>\n  <line x1=\"0\" y1=\"320\" x2=\"600\" y2=\"320\" stroke=\"#cbd5e1\" stroke-width=\"2.5\"/>\n\n  <!-- Left: Test tube rack with spare tubes & clamp -->\n  <g id=\"accessoryGroup\">\n    <!-- Wooden rack -->\n    <rect x=\"30\" y=\"270\" width=\"110\" height=\"12\" rx=\"2\" fill=\"#d97706\" stroke=\"#92400e\" stroke-width=\"1.5\"/>\n    <rect x=\"35\" y=\"190\" width=\"10\" height=\"80\" fill=\"#b45309\"/>\n    <rect x=\"125\" y=\"190\" width=\"10\" height=\"80\" fill=\"#b45309\"/>\n    <rect x=\"30\" y=\"200\" width=\"110\" height=\"10\" rx=\"2\" fill=\"#d97706\" stroke=\"#92400e\" stroke-width=\"1.5\"/>\n    <!-- Tube in rack -->\n    <rect x=\"55\" y=\"150\" width=\"16\" height=\"110\" rx=\"8\" fill=\"rgba(241, 245, 249, 0.6)\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <rect x=\"85\" y=\"150\" width=\"16\" height=\"110\" rx=\"8\" fill=\"rgba(241, 245, 249, 0.6)\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <!-- Wooden clamp lying on bench -->\n    <path d=\"M 50 350 L 130 350 L 140 340 L 70 340 Z\" fill=\"#b45309\" stroke=\"#78350f\" stroke-width=\"1.5\"/>\n    <circle cx=\"95\" cy=\"345\" r=\"4\" fill=\"#94a3b8\"/>\n    <text x=\"85\" y=\"375\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"10\" font-weight=\"700\" fill=\"#64748b\" text-anchor=\"middle\">Kẹp ống nghiệm</text>\n  </g>\n\n  <!-- Center-Right: Electric stove (Hot plate) -->\n  <g id=\"electricStove\">\n    <!-- Stove main body -->\n    <rect x=\"230\" y=\"260\" width=\"220\" height=\"70\" rx=\"10\" fill=\"#334155\" stroke=\"#1e293b\" stroke-width=\"2.5\"/>\n    <rect x=\"245\" y=\"330\" width=\"24\" height=\"10\" rx=\"2\" fill=\"#0f172a\"/>\n    <rect x=\"410\" y=\"330\" width=\"24\" height=\"10\" rx=\"2\" fill=\"#0f172a\"/>\n    <!-- Hot plate top disc -->\n    <ellipse cx=\"340\" cy=\"258\" rx=\"95\" ry=\"24\" fill=\"#64748b\" stroke=\"#334155\" stroke-width=\"2\"/>\n    <ellipse cx=\"340\" cy=\"258\" rx=\"80\" ry=\"19\" fill=\"#475569\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <!-- Control dial & switch -->\n    <circle cx=\"280\" cy=\"295\" r=\"14\" fill=\"#1e293b\" stroke=\"#0f172a\" stroke-width=\"2\"/>\n    <line x1=\"280\" y1=\"285\" x2=\"280\" y2=\"295\" stroke=\"#38bdf8\" stroke-width=\"2\"/>\n    <!-- LED Indicator (Green: ON) -->\n    <circle cx=\"390\" cy=\"295\" r=\"5\" fill=\"#22c55e\" stroke=\"#15803d\" stroke-width=\"1.5\"/>\n    <circle cx=\"390\" cy=\"295\" r=\"8\" fill=\"none\" stroke=\"#22c55e\" stroke-width=\"1\" opacity=\"0.6\"/>\n    <text x=\"390\" y=\"315\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"9\" font-weight=\"700\" fill=\"#94a3b8\" text-anchor=\"middle\">BẬT</text>\n  </g>\n\n  <!-- Heat-resistant 250 mL Beaker on the hot plate -->\n  <g id=\"waterBathBeaker\">\n    <!-- Beaker Body -->\n    <path d=\"M 275 140 L 265 140 L 275 250 Q 278 258 290 258 L 390 258 Q 402 258 405 250 L 405 140 Z\" fill=\"rgba(248, 250, 252, 0.4)\" stroke=\"#475569\" stroke-width=\"2.5\"/>\n    <!-- Water level 250 mL in beaker -->\n    <path d=\"M 273 175 L 277 248 Q 279 255 290 255 L 390 255 Q 399 255 403 248 L 405 175 Z\" fill=\"url(#waterGrad)\" stroke=\"#38bdf8\" stroke-width=\"1.5\"/>\n    <!-- Water bubbles (simulating 80-90°C hot water, no violent boiling) -->\n    <circle cx=\"310\" cy=\"230\" r=\"3\" fill=\"#ffffff\" opacity=\"0.7\"/>\n    <circle cx=\"360\" cy=\"210\" r=\"2.5\" fill=\"#ffffff\" opacity=\"0.7\"/>\n    <circle cx=\"335\" cy=\"190\" r=\"2\" fill=\"#ffffff\" opacity=\"0.8\"/>\n    <!-- Beaker Graduation marks -->\n    <line x1=\"380\" y1=\"175\" x2=\"405\" y2=\"175\" stroke=\"#0284c7\" stroke-width=\"2\"/>\n    <text x=\"375\" y=\"179\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"8.5\" font-weight=\"700\" fill=\"#0284c7\" text-anchor=\"end\">250 mL</text>\n    <line x1=\"385\" y1=\"205\" x2=\"405\" y2=\"205\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <text x=\"380\" y=\"208\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"8\" font-weight=\"600\" fill=\"#64748b\" text-anchor=\"end\">200</text>\n    <line x1=\"390\" y1=\"230\" x2=\"405\" y2=\"230\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <text x=\"385\" y=\"233\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"8\" font-weight=\"600\" fill=\"#64748b\" text-anchor=\"end\">100</text>\n  </g>\n\n  <!-- Reaction Test Tube (Tilted in beaker, mouth pointing safely to the right) -->\n  <g id=\"reactionTube\" transform=\"rotate(18 340 200)\">\n    <!-- Tube Glass Outline -->\n    <path d=\"M 330 60 L 330 225 C 330 240 354 240 354 225 L 354 60 Z\" fill=\"rgba(241, 245, 249, 0.4)\" stroke=\"#334155\" stroke-width=\"2.5\"/>\n    <ellipse cx=\"342\" cy=\"60\" rx=\"14\" ry=\"4\" fill=\"#e2e8f0\" stroke=\"#334155\" stroke-width=\"2\"/>\n    <!-- Liquid Content (4 mL: 2 mL glucose + 2 mL Benedict) -->\n    <path d=\"M 331 165 L 331 224 C 331 238 353 238 353 224 L 353 165 Z\" fill=\"#16a34a\"/>\n    <!-- Precipitate content (if any) -->\n    \n    <!-- Glass reflection line -->\n    <line x1=\"334\" y1=\"70\" x2=\"334\" y2=\"220\" stroke=\"#ffffff\" stroke-width=\"2\" opacity=\"0.8\"/>\n  </g>\n\n  <!-- Safety Zone Arrow (Pointing away from student) -->\n  <g id=\"safetyIndicator\">\n    <path d=\"M 410 90 Q 450 70 480 65\" fill=\"none\" stroke=\"#16a34a\" stroke-width=\"2\" stroke-dasharray=\"4,4\"/>\n    <polygon points=\"485,63 475,60 478,68\" fill=\"#16a34a\"/>\n    <rect x=\"440\" y=\"40\" width=\"130\" height=\"24\" rx=\"4\" fill=\"#dcfce7\" stroke=\"#16a34a\" stroke-width=\"1.2\"/>\n    <text x=\"505\" y=\"56\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"9\" font-weight=\"700\" fill=\"#15803d\" text-anchor=\"middle\">HƯỚNG RA VÙNG AN TOÀN</text>\n  </g>\n</svg>",
+  state2: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 450\" width=\"600\" height=\"450\">\n  <defs>\n    <!-- Background table surface gradient -->\n    <linearGradient id=\"benchGrad\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#f1f5f9\"/>\n      <stop offset=\"100%\" stop-color=\"#e2e8f0\"/>\n    </linearGradient>\n    <linearGradient id=\"waterGrad\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#bae6fd\" stop-opacity=\"0.5\"/>\n      <stop offset=\"100%\" stop-color=\"#7dd3fc\" stop-opacity=\"0.75\"/>\n    </linearGradient>\n    <!-- Glass reflections -->\n    <linearGradient id=\"glassReflect\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"0\">\n      <stop offset=\"0%\" stop-color=\"#ffffff\" stop-opacity=\"0.6\"/>\n      <stop offset=\"50%\" stop-color=\"#ffffff\" stop-opacity=\"0.1\"/>\n      <stop offset=\"100%\" stop-color=\"#ffffff\" stop-opacity=\"0.5\"/>\n    </linearGradient>\n  </defs>\n\n  <!-- Laboratory Table Surface -->\n  <rect x=\"0\" y=\"320\" width=\"600\" height=\"130\" fill=\"url(#benchGrad)\"/>\n  <line x1=\"0\" y1=\"320\" x2=\"600\" y2=\"320\" stroke=\"#cbd5e1\" stroke-width=\"2.5\"/>\n\n  <!-- Left: Test tube rack with spare tubes & clamp -->\n  <g id=\"accessoryGroup\">\n    <!-- Wooden rack -->\n    <rect x=\"30\" y=\"270\" width=\"110\" height=\"12\" rx=\"2\" fill=\"#d97706\" stroke=\"#92400e\" stroke-width=\"1.5\"/>\n    <rect x=\"35\" y=\"190\" width=\"10\" height=\"80\" fill=\"#b45309\"/>\n    <rect x=\"125\" y=\"190\" width=\"10\" height=\"80\" fill=\"#b45309\"/>\n    <rect x=\"30\" y=\"200\" width=\"110\" height=\"10\" rx=\"2\" fill=\"#d97706\" stroke=\"#92400e\" stroke-width=\"1.5\"/>\n    <!-- Tube in rack -->\n    <rect x=\"55\" y=\"150\" width=\"16\" height=\"110\" rx=\"8\" fill=\"rgba(241, 245, 249, 0.6)\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <rect x=\"85\" y=\"150\" width=\"16\" height=\"110\" rx=\"8\" fill=\"rgba(241, 245, 249, 0.6)\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <!-- Wooden clamp lying on bench -->\n    <path d=\"M 50 350 L 130 350 L 140 340 L 70 340 Z\" fill=\"#b45309\" stroke=\"#78350f\" stroke-width=\"1.5\"/>\n    <circle cx=\"95\" cy=\"345\" r=\"4\" fill=\"#94a3b8\"/>\n    <text x=\"85\" y=\"375\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"10\" font-weight=\"700\" fill=\"#64748b\" text-anchor=\"middle\">Kẹp ống nghiệm</text>\n  </g>\n\n  <!-- Center-Right: Electric stove (Hot plate) -->\n  <g id=\"electricStove\">\n    <!-- Stove main body -->\n    <rect x=\"230\" y=\"260\" width=\"220\" height=\"70\" rx=\"10\" fill=\"#334155\" stroke=\"#1e293b\" stroke-width=\"2.5\"/>\n    <rect x=\"245\" y=\"330\" width=\"24\" height=\"10\" rx=\"2\" fill=\"#0f172a\"/>\n    <rect x=\"410\" y=\"330\" width=\"24\" height=\"10\" rx=\"2\" fill=\"#0f172a\"/>\n    <!-- Hot plate top disc -->\n    <ellipse cx=\"340\" cy=\"258\" rx=\"95\" ry=\"24\" fill=\"#64748b\" stroke=\"#334155\" stroke-width=\"2\"/>\n    <ellipse cx=\"340\" cy=\"258\" rx=\"80\" ry=\"19\" fill=\"#475569\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <!-- Control dial & switch -->\n    <circle cx=\"280\" cy=\"295\" r=\"14\" fill=\"#1e293b\" stroke=\"#0f172a\" stroke-width=\"2\"/>\n    <line x1=\"280\" y1=\"285\" x2=\"280\" y2=\"295\" stroke=\"#38bdf8\" stroke-width=\"2\"/>\n    <!-- LED Indicator (Green: ON) -->\n    <circle cx=\"390\" cy=\"295\" r=\"5\" fill=\"#22c55e\" stroke=\"#15803d\" stroke-width=\"1.5\"/>\n    <circle cx=\"390\" cy=\"295\" r=\"8\" fill=\"none\" stroke=\"#22c55e\" stroke-width=\"1\" opacity=\"0.6\"/>\n    <text x=\"390\" y=\"315\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"9\" font-weight=\"700\" fill=\"#94a3b8\" text-anchor=\"middle\">BẬT</text>\n  </g>\n\n  <!-- Heat-resistant 250 mL Beaker on the hot plate -->\n  <g id=\"waterBathBeaker\">\n    <!-- Beaker Body -->\n    <path d=\"M 275 140 L 265 140 L 275 250 Q 278 258 290 258 L 390 258 Q 402 258 405 250 L 405 140 Z\" fill=\"rgba(248, 250, 252, 0.4)\" stroke=\"#475569\" stroke-width=\"2.5\"/>\n    <!-- Water level 250 mL in beaker -->\n    <path d=\"M 273 175 L 277 248 Q 279 255 290 255 L 390 255 Q 399 255 403 248 L 405 175 Z\" fill=\"url(#waterGrad)\" stroke=\"#38bdf8\" stroke-width=\"1.5\"/>\n    <!-- Water bubbles (simulating 80-90°C hot water, no violent boiling) -->\n    <circle cx=\"310\" cy=\"230\" r=\"3\" fill=\"#ffffff\" opacity=\"0.7\"/>\n    <circle cx=\"360\" cy=\"210\" r=\"2.5\" fill=\"#ffffff\" opacity=\"0.7\"/>\n    <circle cx=\"335\" cy=\"190\" r=\"2\" fill=\"#ffffff\" opacity=\"0.8\"/>\n    <!-- Beaker Graduation marks -->\n    <line x1=\"380\" y1=\"175\" x2=\"405\" y2=\"175\" stroke=\"#0284c7\" stroke-width=\"2\"/>\n    <text x=\"375\" y=\"179\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"8.5\" font-weight=\"700\" fill=\"#0284c7\" text-anchor=\"end\">250 mL</text>\n    <line x1=\"385\" y1=\"205\" x2=\"405\" y2=\"205\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <text x=\"380\" y=\"208\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"8\" font-weight=\"600\" fill=\"#64748b\" text-anchor=\"end\">200</text>\n    <line x1=\"390\" y1=\"230\" x2=\"405\" y2=\"230\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <text x=\"385\" y=\"233\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"8\" font-weight=\"600\" fill=\"#64748b\" text-anchor=\"end\">100</text>\n  </g>\n\n  <!-- Reaction Test Tube (Tilted in beaker, mouth pointing safely to the right) -->\n  <g id=\"reactionTube\" transform=\"rotate(18 340 200)\">\n    <!-- Tube Glass Outline -->\n    <path d=\"M 330 60 L 330 225 C 330 240 354 240 354 225 L 354 60 Z\" fill=\"rgba(241, 245, 249, 0.4)\" stroke=\"#334155\" stroke-width=\"2.5\"/>\n    <ellipse cx=\"342\" cy=\"60\" rx=\"14\" ry=\"4\" fill=\"#e2e8f0\" stroke=\"#334155\" stroke-width=\"2\"/>\n    <!-- Liquid Content (4 mL: 2 mL glucose + 2 mL Benedict) -->\n    <path d=\"M 331 165 L 331 224 C 331 238 353 238 353 224 L 353 165 Z\" fill=\"#d97706\"/>\n    <!-- Precipitate content (if any) -->\n    \n    <!-- Glass reflection line -->\n    <line x1=\"334\" y1=\"70\" x2=\"334\" y2=\"220\" stroke=\"#ffffff\" stroke-width=\"2\" opacity=\"0.8\"/>\n  </g>\n\n  <!-- Safety Zone Arrow (Pointing away from student) -->\n  <g id=\"safetyIndicator\">\n    <path d=\"M 410 90 Q 450 70 480 65\" fill=\"none\" stroke=\"#16a34a\" stroke-width=\"2\" stroke-dasharray=\"4,4\"/>\n    <polygon points=\"485,63 475,60 478,68\" fill=\"#16a34a\"/>\n    <rect x=\"440\" y=\"40\" width=\"130\" height=\"24\" rx=\"4\" fill=\"#dcfce7\" stroke=\"#16a34a\" stroke-width=\"1.2\"/>\n    <text x=\"505\" y=\"56\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"9\" font-weight=\"700\" fill=\"#15803d\" text-anchor=\"middle\">HƯỚNG RA VÙNG AN TOÀN</text>\n  </g>\n</svg>",
+  state3: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 450\" width=\"600\" height=\"450\">\n  <defs>\n    <!-- Background table surface gradient -->\n    <linearGradient id=\"benchGrad\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#f1f5f9\"/>\n      <stop offset=\"100%\" stop-color=\"#e2e8f0\"/>\n    </linearGradient>\n    <linearGradient id=\"waterGrad\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#bae6fd\" stop-opacity=\"0.5\"/>\n      <stop offset=\"100%\" stop-color=\"#7dd3fc\" stop-opacity=\"0.75\"/>\n    </linearGradient>\n    <!-- Glass reflections -->\n    <linearGradient id=\"glassReflect\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"0\">\n      <stop offset=\"0%\" stop-color=\"#ffffff\" stop-opacity=\"0.6\"/>\n      <stop offset=\"50%\" stop-color=\"#ffffff\" stop-opacity=\"0.1\"/>\n      <stop offset=\"100%\" stop-color=\"#ffffff\" stop-opacity=\"0.5\"/>\n    </linearGradient>\n  </defs>\n\n  <!-- Laboratory Table Surface -->\n  <rect x=\"0\" y=\"320\" width=\"600\" height=\"130\" fill=\"url(#benchGrad)\"/>\n  <line x1=\"0\" y1=\"320\" x2=\"600\" y2=\"320\" stroke=\"#cbd5e1\" stroke-width=\"2.5\"/>\n\n  <!-- Left: Test tube rack with spare tubes & clamp -->\n  <g id=\"accessoryGroup\">\n    <!-- Wooden rack -->\n    <rect x=\"30\" y=\"270\" width=\"110\" height=\"12\" rx=\"2\" fill=\"#d97706\" stroke=\"#92400e\" stroke-width=\"1.5\"/>\n    <rect x=\"35\" y=\"190\" width=\"10\" height=\"80\" fill=\"#b45309\"/>\n    <rect x=\"125\" y=\"190\" width=\"10\" height=\"80\" fill=\"#b45309\"/>\n    <rect x=\"30\" y=\"200\" width=\"110\" height=\"10\" rx=\"2\" fill=\"#d97706\" stroke=\"#92400e\" stroke-width=\"1.5\"/>\n    <!-- Tube in rack -->\n    <rect x=\"55\" y=\"150\" width=\"16\" height=\"110\" rx=\"8\" fill=\"rgba(241, 245, 249, 0.6)\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <rect x=\"85\" y=\"150\" width=\"16\" height=\"110\" rx=\"8\" fill=\"rgba(241, 245, 249, 0.6)\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <!-- Wooden clamp lying on bench -->\n    <path d=\"M 50 350 L 130 350 L 140 340 L 70 340 Z\" fill=\"#b45309\" stroke=\"#78350f\" stroke-width=\"1.5\"/>\n    <circle cx=\"95\" cy=\"345\" r=\"4\" fill=\"#94a3b8\"/>\n    <text x=\"85\" y=\"375\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"10\" font-weight=\"700\" fill=\"#64748b\" text-anchor=\"middle\">Kẹp ống nghiệm</text>\n  </g>\n\n  <!-- Center-Right: Electric stove (Hot plate) -->\n  <g id=\"electricStove\">\n    <!-- Stove main body -->\n    <rect x=\"230\" y=\"260\" width=\"220\" height=\"70\" rx=\"10\" fill=\"#334155\" stroke=\"#1e293b\" stroke-width=\"2.5\"/>\n    <rect x=\"245\" y=\"330\" width=\"24\" height=\"10\" rx=\"2\" fill=\"#0f172a\"/>\n    <rect x=\"410\" y=\"330\" width=\"24\" height=\"10\" rx=\"2\" fill=\"#0f172a\"/>\n    <!-- Hot plate top disc -->\n    <ellipse cx=\"340\" cy=\"258\" rx=\"95\" ry=\"24\" fill=\"#64748b\" stroke=\"#334155\" stroke-width=\"2\"/>\n    <ellipse cx=\"340\" cy=\"258\" rx=\"80\" ry=\"19\" fill=\"#475569\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <!-- Control dial & switch -->\n    <circle cx=\"280\" cy=\"295\" r=\"14\" fill=\"#1e293b\" stroke=\"#0f172a\" stroke-width=\"2\"/>\n    <line x1=\"280\" y1=\"285\" x2=\"280\" y2=\"295\" stroke=\"#38bdf8\" stroke-width=\"2\"/>\n    <!-- LED Indicator (Green: ON) -->\n    <circle cx=\"390\" cy=\"295\" r=\"5\" fill=\"#22c55e\" stroke=\"#15803d\" stroke-width=\"1.5\"/>\n    <circle cx=\"390\" cy=\"295\" r=\"8\" fill=\"none\" stroke=\"#22c55e\" stroke-width=\"1\" opacity=\"0.6\"/>\n    <text x=\"390\" y=\"315\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"9\" font-weight=\"700\" fill=\"#94a3b8\" text-anchor=\"middle\">BẬT</text>\n  </g>\n\n  <!-- Heat-resistant 250 mL Beaker on the hot plate -->\n  <g id=\"waterBathBeaker\">\n    <!-- Beaker Body -->\n    <path d=\"M 275 140 L 265 140 L 275 250 Q 278 258 290 258 L 390 258 Q 402 258 405 250 L 405 140 Z\" fill=\"rgba(248, 250, 252, 0.4)\" stroke=\"#475569\" stroke-width=\"2.5\"/>\n    <!-- Water level 250 mL in beaker -->\n    <path d=\"M 273 175 L 277 248 Q 279 255 290 255 L 390 255 Q 399 255 403 248 L 405 175 Z\" fill=\"url(#waterGrad)\" stroke=\"#38bdf8\" stroke-width=\"1.5\"/>\n    <!-- Water bubbles (simulating 80-90°C hot water, no violent boiling) -->\n    <circle cx=\"310\" cy=\"230\" r=\"3\" fill=\"#ffffff\" opacity=\"0.7\"/>\n    <circle cx=\"360\" cy=\"210\" r=\"2.5\" fill=\"#ffffff\" opacity=\"0.7\"/>\n    <circle cx=\"335\" cy=\"190\" r=\"2\" fill=\"#ffffff\" opacity=\"0.8\"/>\n    <!-- Beaker Graduation marks -->\n    <line x1=\"380\" y1=\"175\" x2=\"405\" y2=\"175\" stroke=\"#0284c7\" stroke-width=\"2\"/>\n    <text x=\"375\" y=\"179\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"8.5\" font-weight=\"700\" fill=\"#0284c7\" text-anchor=\"end\">250 mL</text>\n    <line x1=\"385\" y1=\"205\" x2=\"405\" y2=\"205\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <text x=\"380\" y=\"208\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"8\" font-weight=\"600\" fill=\"#64748b\" text-anchor=\"end\">200</text>\n    <line x1=\"390\" y1=\"230\" x2=\"405\" y2=\"230\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <text x=\"385\" y=\"233\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"8\" font-weight=\"600\" fill=\"#64748b\" text-anchor=\"end\">100</text>\n  </g>\n\n  <!-- Reaction Test Tube (Tilted in beaker, mouth pointing safely to the right) -->\n  <g id=\"reactionTube\" transform=\"rotate(18 340 200)\">\n    <!-- Tube Glass Outline -->\n    <path d=\"M 330 60 L 330 225 C 330 240 354 240 354 225 L 354 60 Z\" fill=\"rgba(241, 245, 249, 0.4)\" stroke=\"#334155\" stroke-width=\"2.5\"/>\n    <ellipse cx=\"342\" cy=\"60\" rx=\"14\" ry=\"4\" fill=\"#e2e8f0\" stroke=\"#334155\" stroke-width=\"2\"/>\n    <!-- Liquid Content (4 mL: 2 mL glucose + 2 mL Benedict) -->\n    <path d=\"M 331 165 L 331 224 C 331 238 353 238 353 224 L 353 165 Z\" fill=\"#ea580c\"/>\n    <!-- Precipitate content (if any) -->\n    \n    <!-- Precipitate particles starting to settle -->\n    <circle cx=\"338\" cy=\"225\" r=\"2.5\" fill=\"#b91c1c\"/>\n    <circle cx=\"344\" cy=\"228\" r=\"3\" fill=\"#991b1b\"/>\n    <circle cx=\"348\" cy=\"223\" r=\"2\" fill=\"#b91c1c\"/>\n    <circle cx=\"340\" cy=\"218\" r=\"2\" fill=\"#dc2626\"/>\n    <circle cx=\"346\" cy=\"215\" r=\"2\" fill=\"#dc2626\"/>\n\n    <!-- Glass reflection line -->\n    <line x1=\"334\" y1=\"70\" x2=\"334\" y2=\"220\" stroke=\"#ffffff\" stroke-width=\"2\" opacity=\"0.8\"/>\n  </g>\n\n  <!-- Safety Zone Arrow (Pointing away from student) -->\n  <g id=\"safetyIndicator\">\n    <path d=\"M 410 90 Q 450 70 480 65\" fill=\"none\" stroke=\"#16a34a\" stroke-width=\"2\" stroke-dasharray=\"4,4\"/>\n    <polygon points=\"485,63 475,60 478,68\" fill=\"#16a34a\"/>\n    <rect x=\"440\" y=\"40\" width=\"130\" height=\"24\" rx=\"4\" fill=\"#dcfce7\" stroke=\"#16a34a\" stroke-width=\"1.2\"/>\n    <text x=\"505\" y=\"56\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"9\" font-weight=\"700\" fill=\"#15803d\" text-anchor=\"middle\">HƯỚNG RA VÙNG AN TOÀN</text>\n  </g>\n</svg>",
+  final: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 450\" width=\"600\" height=\"450\">\n  <defs>\n    <!-- Background table surface gradient -->\n    <linearGradient id=\"benchGrad\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#f1f5f9\"/>\n      <stop offset=\"100%\" stop-color=\"#e2e8f0\"/>\n    </linearGradient>\n    <linearGradient id=\"waterGrad\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#bae6fd\" stop-opacity=\"0.5\"/>\n      <stop offset=\"100%\" stop-color=\"#7dd3fc\" stop-opacity=\"0.75\"/>\n    </linearGradient>\n    <!-- Glass reflections -->\n    <linearGradient id=\"glassReflect\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"0\">\n      <stop offset=\"0%\" stop-color=\"#ffffff\" stop-opacity=\"0.6\"/>\n      <stop offset=\"50%\" stop-color=\"#ffffff\" stop-opacity=\"0.1\"/>\n      <stop offset=\"100%\" stop-color=\"#ffffff\" stop-opacity=\"0.5\"/>\n    </linearGradient>\n  </defs>\n\n  <!-- Laboratory Table Surface -->\n  <rect x=\"0\" y=\"320\" width=\"600\" height=\"130\" fill=\"url(#benchGrad)\"/>\n  <line x1=\"0\" y1=\"320\" x2=\"600\" y2=\"320\" stroke=\"#cbd5e1\" stroke-width=\"2.5\"/>\n\n  <!-- Left: Test tube rack with spare tubes & clamp -->\n  <g id=\"accessoryGroup\">\n    <!-- Wooden rack -->\n    <rect x=\"30\" y=\"270\" width=\"110\" height=\"12\" rx=\"2\" fill=\"#d97706\" stroke=\"#92400e\" stroke-width=\"1.5\"/>\n    <rect x=\"35\" y=\"190\" width=\"10\" height=\"80\" fill=\"#b45309\"/>\n    <rect x=\"125\" y=\"190\" width=\"10\" height=\"80\" fill=\"#b45309\"/>\n    <rect x=\"30\" y=\"200\" width=\"110\" height=\"10\" rx=\"2\" fill=\"#d97706\" stroke=\"#92400e\" stroke-width=\"1.5\"/>\n    <!-- Tube in rack -->\n    <rect x=\"55\" y=\"150\" width=\"16\" height=\"110\" rx=\"8\" fill=\"rgba(241, 245, 249, 0.6)\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <rect x=\"85\" y=\"150\" width=\"16\" height=\"110\" rx=\"8\" fill=\"rgba(241, 245, 249, 0.6)\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <!-- Wooden clamp lying on bench -->\n    <path d=\"M 50 350 L 130 350 L 140 340 L 70 340 Z\" fill=\"#b45309\" stroke=\"#78350f\" stroke-width=\"1.5\"/>\n    <circle cx=\"95\" cy=\"345\" r=\"4\" fill=\"#94a3b8\"/>\n    <text x=\"85\" y=\"375\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"10\" font-weight=\"700\" fill=\"#64748b\" text-anchor=\"middle\">Kẹp ống nghiệm</text>\n  </g>\n\n  <!-- Center-Right: Electric stove (Hot plate) -->\n  <g id=\"electricStove\">\n    <!-- Stove main body -->\n    <rect x=\"230\" y=\"260\" width=\"220\" height=\"70\" rx=\"10\" fill=\"#334155\" stroke=\"#1e293b\" stroke-width=\"2.5\"/>\n    <rect x=\"245\" y=\"330\" width=\"24\" height=\"10\" rx=\"2\" fill=\"#0f172a\"/>\n    <rect x=\"410\" y=\"330\" width=\"24\" height=\"10\" rx=\"2\" fill=\"#0f172a\"/>\n    <!-- Hot plate top disc -->\n    <ellipse cx=\"340\" cy=\"258\" rx=\"95\" ry=\"24\" fill=\"#64748b\" stroke=\"#334155\" stroke-width=\"2\"/>\n    <ellipse cx=\"340\" cy=\"258\" rx=\"80\" ry=\"19\" fill=\"#475569\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <!-- Control dial & switch -->\n    <circle cx=\"280\" cy=\"295\" r=\"14\" fill=\"#1e293b\" stroke=\"#0f172a\" stroke-width=\"2\"/>\n    <line x1=\"280\" y1=\"285\" x2=\"280\" y2=\"295\" stroke=\"#38bdf8\" stroke-width=\"2\"/>\n    <!-- LED Indicator (Green: ON) -->\n    <circle cx=\"390\" cy=\"295\" r=\"5\" fill=\"#22c55e\" stroke=\"#15803d\" stroke-width=\"1.5\"/>\n    <circle cx=\"390\" cy=\"295\" r=\"8\" fill=\"none\" stroke=\"#22c55e\" stroke-width=\"1\" opacity=\"0.6\"/>\n    <text x=\"390\" y=\"315\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"9\" font-weight=\"700\" fill=\"#94a3b8\" text-anchor=\"middle\">BẬT</text>\n  </g>\n\n  <!-- Heat-resistant 250 mL Beaker on the hot plate -->\n  <g id=\"waterBathBeaker\">\n    <!-- Beaker Body -->\n    <path d=\"M 275 140 L 265 140 L 275 250 Q 278 258 290 258 L 390 258 Q 402 258 405 250 L 405 140 Z\" fill=\"rgba(248, 250, 252, 0.4)\" stroke=\"#475569\" stroke-width=\"2.5\"/>\n    <!-- Water level 250 mL in beaker -->\n    <path d=\"M 273 175 L 277 248 Q 279 255 290 255 L 390 255 Q 399 255 403 248 L 405 175 Z\" fill=\"url(#waterGrad)\" stroke=\"#38bdf8\" stroke-width=\"1.5\"/>\n    <!-- Water bubbles (simulating 80-90°C hot water, no violent boiling) -->\n    <circle cx=\"310\" cy=\"230\" r=\"3\" fill=\"#ffffff\" opacity=\"0.7\"/>\n    <circle cx=\"360\" cy=\"210\" r=\"2.5\" fill=\"#ffffff\" opacity=\"0.7\"/>\n    <circle cx=\"335\" cy=\"190\" r=\"2\" fill=\"#ffffff\" opacity=\"0.8\"/>\n    <!-- Beaker Graduation marks -->\n    <line x1=\"380\" y1=\"175\" x2=\"405\" y2=\"175\" stroke=\"#0284c7\" stroke-width=\"2\"/>\n    <text x=\"375\" y=\"179\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"8.5\" font-weight=\"700\" fill=\"#0284c7\" text-anchor=\"end\">250 mL</text>\n    <line x1=\"385\" y1=\"205\" x2=\"405\" y2=\"205\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <text x=\"380\" y=\"208\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"8\" font-weight=\"600\" fill=\"#64748b\" text-anchor=\"end\">200</text>\n    <line x1=\"390\" y1=\"230\" x2=\"405\" y2=\"230\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n    <text x=\"385\" y=\"233\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"8\" font-weight=\"600\" fill=\"#64748b\" text-anchor=\"end\">100</text>\n  </g>\n\n  <!-- Reaction Test Tube (Tilted in beaker, mouth pointing safely to the right) -->\n  <g id=\"reactionTube\" transform=\"rotate(18 340 200)\">\n    <!-- Tube Glass Outline -->\n    <path d=\"M 330 60 L 330 225 C 330 240 354 240 354 225 L 354 60 Z\" fill=\"rgba(241, 245, 249, 0.4)\" stroke=\"#334155\" stroke-width=\"2.5\"/>\n    <ellipse cx=\"342\" cy=\"60\" rx=\"14\" ry=\"4\" fill=\"#e2e8f0\" stroke=\"#334155\" stroke-width=\"2\"/>\n    <!-- Liquid Content (4 mL: 2 mL glucose + 2 mL Benedict) -->\n    <path d=\"M 331 165 L 331 224 C 331 238 353 238 353 224 L 353 165 Z\" fill=\"#f59e0b\"/>\n    <!-- Precipitate content (if any) -->\n    \n    <!-- Dense brick-red precipitate cake at the very bottom -->\n    <path d=\"M 331 216 Q 342 213 353 216 L 353 224 C 353 238 331 238 331 224 Z\" fill=\"#991b1b\" stroke=\"#7f1d1d\" stroke-width=\"1\"/>\n    <circle cx=\"337\" cy=\"213\" r=\"2.5\" fill=\"#b91c1c\"/>\n    <circle cx=\"343\" cy=\"211\" r=\"3\" fill=\"#b91c1c\"/>\n    <circle cx=\"348\" cy=\"214\" r=\"2\" fill=\"#991b1b\"/>\n    <!-- Label indicating Cu2O -->\n    <rect x=\"365\" y=\"215\" width=\"80\" height=\"20\" rx=\"3\" fill=\"#fef2f2\" stroke=\"#dc2626\" stroke-width=\"1.2\"/>\n    <text x=\"405\" y=\"229\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"8.5\" font-weight=\"800\" fill=\"#b91c1c\" text-anchor=\"middle\">Kết tủa Cu₂O đỏ gạch</text>\n    <line x1=\"365\" y1=\"225\" x2=\"354\" y2=\"225\" stroke=\"#dc2626\" stroke-width=\"1.5\"/>\n\n    <!-- Glass reflection line -->\n    <line x1=\"334\" y1=\"70\" x2=\"334\" y2=\"220\" stroke=\"#ffffff\" stroke-width=\"2\" opacity=\"0.8\"/>\n  </g>\n\n  <!-- Safety Zone Arrow (Pointing away from student) -->\n  <g id=\"safetyIndicator\">\n    <path d=\"M 410 90 Q 450 70 480 65\" fill=\"none\" stroke=\"#16a34a\" stroke-width=\"2\" stroke-dasharray=\"4,4\"/>\n    <polygon points=\"485,63 475,60 478,68\" fill=\"#16a34a\"/>\n    <rect x=\"440\" y=\"40\" width=\"130\" height=\"24\" rx=\"4\" fill=\"#dcfce7\" stroke=\"#16a34a\" stroke-width=\"1.2\"/>\n    <text x=\"505\" y=\"56\" font-family=\"'Be Vietnam Pro', sans-serif\" font-size=\"9\" font-weight=\"700\" fill=\"#15803d\" text-anchor=\"middle\">HƯỚNG RA VÙNG AN TOÀN</text>\n  </g>\n</svg>"
+};
+var heatingSimImgWrap = document.getElementById('heatingSimImgWrap');
+
+var simColorBadge = document.getElementById('simColorBadge');
+var btnOrientSafe = document.getElementById('btnOrientSafe');
+var btnOrientWrong = document.getElementById('btnOrientWrong');
+var orientNotice = document.getElementById('orientNotice');
+var btnToggleStove = document.getElementById('btnToggleStove');
+var timerDisplay = document.getElementById('timerDisplay');
+var tempDisplay = document.getElementById('tempDisplay');
+var tempGaugeFill = document.getElementById('tempGaugeFill');
+var btnUseClamp = document.getElementById('btnUseClamp');
+var clampNotice = document.getElementById('clampNotice');
+var btnFinishStage6 = document.getElementById('btnFinishStage6');
+var btnNextStage6 = document.getElementById('btnNextStage6');
+var fbStage6 = document.getElementById('fbStage6');
+
+var m6OrientedSafe = false;
+var m6StoveOn = false;
+var m6TimerSeconds = 0;
+var m6TimerInterval = null;
+
+btnOrientSafe.addEventListener('click', function() {
+  m6OrientedSafe = true;
+  btnOrientSafe.classList.add('btn-primary');
+  btnOrientSafe.classList.remove('btn-secondary');
+  btnOrientWrong.classList.remove('btn-primary');
+  btnOrientWrong.classList.add('btn-secondary');
+  orientNotice.innerText = "Miệng ống đã hướng ra vùng an toàn!";
+  orientNotice.style.color = "var(--jade-text)";
+});
+
+btnOrientWrong.addEventListener('click', function() {
+  m6OrientedSafe = false;
+  btnOrientWrong.classList.add('btn-primary');
+  btnOrientWrong.classList.remove('btn-secondary');
+  btnOrientSafe.classList.remove('btn-primary');
+  btnOrientSafe.classList.add('btn-secondary');
+  orientNotice.innerText = "CẢNH BÁO: Miệng ống đang hướng về phía người học, rất nguy hiểm!";
+  orientNotice.style.color = "var(--wrong)";
+});
+
+btnToggleStove.addEventListener('click', function() {
+  if (!m6OrientedSafe) {
+    alert("Miệng ống nghiệm đang hướng về phía có người! Hãy xoay ống ra vùng an toàn trước khi bật bếp.");
+    return;
+  }
+
+  if (!m6StoveOn) {
+    m6StoveOn = true;
+    btnToggleStove.innerHTML = '<i class="ti ti-power"></i> TẮT BẾP ĐIỆN';
+    btnToggleStove.style.background = '#EF4444';
+    tempDisplay.innerText = "85°C (Đang làm nóng cách thủy)";
+    tempGaugeFill.style.width = "85%";
+
+    m6TimerInterval = setInterval(function() {
+      m6TimerSeconds += 4;
+      if (m6TimerSeconds > 180) m6TimerSeconds = 180;
+
+      var mins = String(Math.floor(m6TimerSeconds / 60)).padStart(2, '0');
+      var secs = String(m6TimerSeconds % 60).padStart(2, '0');
+      timerDisplay.innerText = mins + ':' + secs + ' / 03:00';
+
+      if (m6TimerSeconds < 45) {
+        if (heatingSimImgWrap) heatingSimImgWrap.innerHTML = SVG_HEATING_STATES.state0;
+        simColorBadge.innerText = "0:00 - Hỗn hợp màu xanh lam ban đầu";
+      } else if (m6TimerSeconds < 75) {
+        if (heatingSimImgWrap) heatingSimImgWrap.innerHTML = SVG_HEATING_STATES.state1;
+        simColorBadge.innerText = "Khoảng 1 phút: Hỗn hợp chuyển màu xanh lục";
+      } else if (m6TimerSeconds < 120) {
+        if (heatingSimImgWrap) heatingSimImgWrap.innerHTML = SVG_HEATING_STATES.state2;
+        simColorBadge.innerText = "Khoảng 1:30 - 2:00: Chuyển màu vàng rồi cam";
+      } else if (m6TimerSeconds < 180) {
+        if (heatingSimImgWrap) heatingSimImgWrap.innerHTML = SVG_HEATING_STATES.state3;
+        simColorBadge.innerText = "Khoảng 2:00 - 3:00: Xuất hiện hạt kết tủa đỏ gạch lắng dần xuống đáy";
+      } else {
+        clearInterval(m6TimerInterval);
+        if (heatingSimImgWrap) heatingSimImgWrap.innerHTML = SVG_HEATING_STATES.final;
+        simColorBadge.innerText = "3:00 - Phản ứng hoàn tất! Xuất hiện kết tủa đỏ gạch Cu2O lắng ở đáy ống.";
+        clampNotice.innerText = "Đã đủ 3 phút. Hãy bấm TẮT BẾP rồi dùng kẹp lấy ống nghiệm ra giá.";
+        reportHeight();
+      }
+    }, 250);
+  } else {
+    m6StoveOn = false;
+    clearInterval(m6TimerInterval);
+    btnToggleStove.innerHTML = '<i class="ti ti-power"></i> BẬT BẾP ĐIỆN';
+    btnToggleStove.style.background = 'var(--jade)';
+    tempDisplay.innerText = "Đang nguội dần...";
+    if (m6TimerSeconds >= 180) {
+      btnUseClamp.disabled = false;
+      clampNotice.innerText = "Bếp đã tắt an toàn. Bạn có thể dùng kẹp để gắp ống nghiệm ra giá.";
+    }
+  }
+  reportHeight();
+});
+
+btnUseClamp.addEventListener('click', function() {
+  if (m6StoveOn) {
+    alert("Hãy tắt bếp trước khi lấy ống nghiệm ra!");
+    return;
+  }
+  btnUseClamp.disabled = true;
+  clampNotice.innerText = "Đã dùng kẹp gắp ống nghiệm đặt lên giá an toàn.";
+  clampNotice.style.color = "var(--jade-text)";
+  btnFinishStage6.disabled = false;
+  reportHeight();
+});
+
+btnFinishStage6.addEventListener('click', function() {
+  window.lmsState.heating_completed = true;
+  fbStage6.classList.remove('hidden', 'correct', 'wrong');
+  fbStage6.classList.add('correct');
+  fbStage6.innerHTML = '<div class="feedback-title"><i class="ti ti-circle-check"></i> CHÍNH XÁC</div>' +
+    '<div>Bạn đã thực hiện đúng thao tác làm nóng. Sau khi đun, trong ống nghiệm xuất hiện kết tủa đỏ gạch ở đáy. Đây là kết quả bạn sẽ dùng để trả lời các câu hỏi trong báo cáo. Trước khi ghi kết quả, hãy thu dọn khu vực thực hành đúng cách.</div>';
+  btnFinishStage6.classList.add('hidden');
+  btnNextStage6.classList.remove('hidden');
+  reportHeight();
+});
+
+btnNextStage6.addEventListener('click', function() { goToStage(7); });
+
+/* ==========================================================================
+   MÀN 7: THU DỌN SAU KHI THỰC HÀNH
+   ========================================================================== */
+var cleanupCards = document.querySelectorAll('#cleanupGrid .select-card');
+var btnCheckStage7 = document.getElementById('btnCheckStage7');
+var btnRetryStage7 = document.getElementById('btnRetryStage7');
+var btnNextStage7 = document.getElementById('btnNextStage7');
+var fbStage7 = document.getElementById('fbStage7');
+
+cleanupCards.forEach(function(card) {
+  card.addEventListener('click', function() {
+    if (window.lmsState.cleanup_correct) return;
+    card.classList.toggle('selected');
+    var hasSelected = Array.from(cleanupCards).some(function(c) { return c.classList.contains('selected'); });
+    btnCheckStage7.disabled = !hasSelected;
+  });
+});
+
+btnCheckStage7.addEventListener('click', function() {
+  var selected = Array.from(cleanupCards).filter(function(c) { return c.classList.contains('selected'); });
+  var selectedIds = selected.map(function(c) { return c.dataset.id; }).sort().join(',');
+  var isCorrect = (selectedIds === '1,3,5,7,8');
+
+  fbStage7.classList.remove('hidden', 'correct', 'wrong');
+  if (isCorrect) {
+    window.lmsState.cleanup_correct = true;
+    fbStage7.classList.add('correct');
+    fbStage7.innerHTML = '<div class="feedback-title"><i class="ti ti-circle-check"></i> CHÍNH XÁC</div>' +
+      '<div>Bạn đã chọn đúng các bước thu dọn. Sau thực hành, cần tắt nguồn nhiệt, xử lí chất thải theo hướng dẫn, chờ dụng cụ nguội trước khi vệ sinh, đậy nắp và trả hóa chất – dụng cụ về đúng vị trí, lau sạch bàn và rửa tay. Khu vực thực hành đã an toàn. Hãy tiếp tục trả lời các câu hỏi về kết quả thí nghiệm.</div>';
+    btnCheckStage7.classList.add('hidden');
+    btnRetryStage7.classList.add('hidden');
+    btnNextStage7.classList.remove('hidden');
+  } else {
+    fbStage7.classList.add('wrong');
+    fbStage7.innerHTML = '<div class="feedback-title"><i class="ti ti-alert-triangle"></i> CHƯA CHÍNH XÁC</div>' +
+      '<div>Bạn chưa xác định đúng tất cả các hành động. Hãy xem lại cách xử lí chất thải, dụng cụ còn nóng và việc sắp xếp hóa chất sau thực hành.</div>';
+    btnCheckStage7.classList.add('hidden');
+    btnRetryStage7.classList.remove('hidden');
+  }
+  reportHeight();
+});
+
+btnRetryStage7.addEventListener('click', function() {
+  fbStage7.classList.add('hidden');
+  btnRetryStage7.classList.add('hidden');
+  btnCheckStage7.classList.remove('hidden');
+  cleanupCards.forEach(function(c) {
+    if (c.dataset.correct === 'false') c.classList.remove('selected');
+  });
+  var hasSelected = Array.from(cleanupCards).some(function(c) { return c.classList.contains('selected'); });
+  btnCheckStage7.disabled = !hasSelected;
+  reportHeight();
+});
+
+btnNextStage7.addEventListener('click', function() { goToStage(8); });
+
+/* ==========================================================================
+   MÀN 8: TRẢ LỜI CÂU HỎI VỀ KẾT QUẢ & LƯU VÀO BÁO CÁO
+   ========================================================================== */
+var qCard1 = document.getElementById('qCard1');
+var qCard2 = document.getElementById('qCard2');
+var qCard3 = document.getElementById('qCard3');
+var btnAnswerQ1 = document.getElementById('btnAnswerQ1');
+var btnAnswerQ2 = document.getElementById('btnAnswerQ2');
+var btnAnswerQ3 = document.getElementById('btnAnswerQ3');
+var fbQ1 = document.getElementById('fbQ1');
+var fbQ2 = document.getElementById('fbQ2');
+var fbQ3 = document.getElementById('fbQ3');
+var btnNextStage8 = document.getElementById('btnNextStage8');
+
+var resText1 = document.getElementById('resText1');
+var resText2 = document.getElementById('resText2');
+var resText3 = document.getElementById('resText3');
+var dataItemResult = document.getElementById('dataItemResult');
+var dataItemExp = document.getElementById('dataItemExp');
+var dataItemConc = document.getElementById('dataItemConc');
+
+var q1Selected = null;
+var q2Selected = null;
+var q3Selected = null;
+
+// Chọn đáp án câu 1
+document.querySelectorAll('.option-btn[data-qid="1"]').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    if (window.lmsState.report_result) return;
+    document.querySelectorAll('.option-btn[data-qid="1"]').forEach(function(b) { b.classList.remove('selected'); });
+    btn.classList.add('selected');
+    q1Selected = btn.dataset.val;
+    btnAnswerQ1.disabled = false;
+  });
+});
+
+btnAnswerQ1.addEventListener('click', function() {
+  fbQ1.classList.remove('hidden', 'correct', 'wrong');
+  if (q1Selected === 'B') {
+    window.lmsState.report_result = "Hỗn hợp thay đổi màu và xuất hiện kết tủa đỏ gạch ở đáy ống nghiệm.";
+    resText1.innerText = window.lmsState.report_result;
+    dataItemResult.classList.add('filled');
+    fbQ1.classList.add('correct');
+    fbQ1.innerHTML = '<strong>Chính xác!</strong> Hiện tượng quan sát được là sự thay đổi màu và sự xuất hiện của kết tủa đỏ gạch ở đáy ống nghiệm. Nội dung này đã được lưu vào mục Kết quả.';
+    btnAnswerQ1.classList.add('hidden');
+    qCard2.classList.remove('hidden');
+  } else {
+    fbQ1.classList.add('wrong');
+    fbQ1.innerHTML = 'Hãy quan sát phần đáy ống nghiệm và xác định dấu hiệu mới xuất hiện sau khi đun.';
+  }
+  reportHeight();
+});
+
+// Chọn đáp án câu 2
+document.querySelectorAll('.option-btn[data-qid="2"]').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    if (window.lmsState.report_explanation) return;
+    document.querySelectorAll('.option-btn[data-qid="2"]').forEach(function(b) { b.classList.remove('selected'); });
+    btn.classList.add('selected');
+    q2Selected = btn.dataset.val;
+    btnAnswerQ2.disabled = false;
+  });
+});
+
+btnAnswerQ2.addEventListener('click', function() {
+  fbQ2.classList.remove('hidden', 'correct', 'wrong');
+  if (q2Selected === 'B') {
+    window.lmsState.report_explanation = "Sự xuất hiện của kết tủa đỏ gạch sau khi đun nóng với Benedict là căn cứ nhận biết glucose. Kết tủa này là Cu₂O.";
+    resText2.innerText = window.lmsState.report_explanation;
+    dataItemExp.classList.add('filled');
+    fbQ2.classList.add('correct');
+    fbQ2.innerHTML = '<strong>Chính xác!</strong> Sự xuất hiện của kết tủa đỏ gạch sau khi đun nóng với Benedict là căn cứ nhận biết glucose. Kết tủa này là Cu₂O. Nội dung đã được lưu vào mục Nhận xét và giải thích.';
+    btnAnswerQ2.classList.add('hidden');
+    qCard3.classList.remove('hidden');
+  } else {
+    fbQ2.classList.add('wrong');
+    fbQ2.innerHTML = 'Hãy phân biệt điều kiện tiến hành với dấu hiệu xuất hiện sau phản ứng.';
+  }
+  reportHeight();
+});
+
+// Chọn đáp án câu 3
+document.querySelectorAll('.option-btn[data-qid="3"]').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    if (window.lmsState.report_conclusion) return;
+    document.querySelectorAll('.option-btn[data-qid="3"]').forEach(function(b) { b.classList.remove('selected'); });
+    btn.classList.add('selected');
+    q3Selected = btn.dataset.val;
+    btnAnswerQ3.disabled = false;
+  });
+});
+
+btnAnswerQ3.addEventListener('click', function() {
+  fbQ3.classList.remove('hidden', 'correct', 'wrong');
+  if (q3Selected === 'A') {
+    window.lmsState.report_conclusion = "Có thể dùng thuốc thử Benedict kết hợp với đun nóng để nhận biết glucose.";
+    resText3.innerText = window.lmsState.report_conclusion;
+    dataItemConc.classList.add('filled');
+    fbQ3.classList.add('correct');
+    fbQ3.innerHTML = '<strong>Chính xác!</strong> Có thể dùng thuốc thử Benedict kết hợp với đun nóng để nhận biết glucose. Nội dung này đã được lưu vào mục Kết luận. Hãy tiếp tục hoàn thành báo cáo thí nghiệm.';
+    btnAnswerQ3.classList.add('hidden');
+    btnNextStage8.classList.remove('hidden');
+  } else {
+    fbQ3.classList.add('wrong');
+    fbQ3.innerHTML = 'Hãy đối chiếu với mục đích của thí nghiệm và chất đã được dùng làm mẫu.';
+  }
+  reportHeight();
+});
+
+btnNextStage8.addEventListener('click', function() { goToStage(9); });
+
+/* ==========================================================================
+   MÀN 9: CHỌN THÀNH PHẦN & XEM BÁO CÁO HOÀN CHỈNH
+   ========================================================================== */
+var sectionCards = document.querySelectorAll('#reportSectionsGrid .section-choice-card');
+var btnCheckStage9 = document.getElementById('btnCheckStage9');
+var btnRetryStage9 = document.getElementById('btnRetryStage9');
+var btnShowReport = document.getElementById('btnShowReport');
+var fbStage9 = document.getElementById('fbStage9');
+var formalReportPaper = document.getElementById('formalReportPaper');
+var btnFinishModule = document.getElementById('btnFinishModule');
+var completionModal = document.getElementById('completionModal');
+
+sectionCards.forEach(function(card) {
+  card.addEventListener('click', function() {
+    if (window.lmsState.report_sections_correct) return;
+    card.classList.toggle('selected');
+    var hasSelected = Array.from(sectionCards).some(function(c) { return c.classList.contains('selected'); });
+    btnCheckStage9.disabled = !hasSelected;
+  });
+});
+
+btnCheckStage9.addEventListener('click', function() {
+  var selected = Array.from(sectionCards).filter(function(c) { return c.classList.contains('selected'); });
+  var selectedIds = selected.map(function(c) { return c.dataset.id; }).sort().join(',');
+  var isCorrect = (selectedIds === 's1,s2,s3,s4,s5,s6');
+
+  fbStage9.classList.remove('hidden', 'correct', 'wrong');
+  if (isCorrect) {
+    window.lmsState.report_sections_correct = true;
+    fbStage9.classList.add('correct');
+    fbStage9.innerHTML = '<div class="feedback-title"><i class="ti ti-circle-check"></i> CHÍNH XÁC</div>' +
+      '<div>Một báo cáo thí nghiệm cần thể hiện mục đích, phần chuẩn bị, cách tiến hành, kết quả, nhận xét – giải thích và kết luận. Hệ thống đã tổng hợp dữ liệu của bạn để lập báo cáo hoàn chỉnh.</div>';
+    btnCheckStage9.classList.add('hidden');
+    btnRetryStage9.classList.add('hidden');
+    btnShowReport.classList.remove('hidden');
+  } else {
+    fbStage9.classList.add('wrong');
+    fbStage9.innerHTML = '<div class="feedback-title"><i class="ti ti-alert-triangle"></i> CHƯA CHÍNH XÁC</div>' +
+      '<div>Bạn chưa chọn đúng các thành phần cần có. Hãy ưu tiên những nội dung giúp người đọc biết thí nghiệm nhằm mục đích gì, được thực hiện như thế nào và thu được kết quả gì.</div>';
+    btnCheckStage9.classList.add('hidden');
+    btnRetryStage9.classList.remove('hidden');
+  }
+  reportHeight();
+});
+
+btnRetryStage9.addEventListener('click', function() {
+  fbStage9.classList.add('hidden');
+  btnRetryStage9.classList.add('hidden');
+  btnCheckStage9.classList.remove('hidden');
+  sectionCards.forEach(function(c) {
+    if (c.dataset.correct === 'false') c.classList.remove('selected');
+  });
+  var hasSelected = Array.from(sectionCards).some(function(c) { return c.classList.contains('selected'); });
+  btnCheckStage9.disabled = !hasSelected;
+  reportHeight();
+});
+
+btnShowReport.addEventListener('click', function() {
+  document.getElementById('finalReportResult').innerText = window.lmsState.report_result || "Hỗn hợp thay đổi màu và xuất hiện kết tủa đỏ gạch ở đáy ống nghiệm.";
+  document.getElementById('finalReportExp').innerText = window.lmsState.report_explanation || "Sự xuất hiện của kết tủa đỏ gạch sau khi đun nóng với Benedict là căn cứ nhận biết glucose. Kết tủa đỏ gạch là Cu₂O.";
+  document.getElementById('finalReportConc').innerText = window.lmsState.report_conclusion || "Có thể dùng thuốc thử Benedict kết hợp với đun nóng để nhận biết glucose.";
+
+  formalReportPaper.classList.remove('hidden');
+  btnShowReport.classList.add('hidden');
+  formalReportPaper.scrollIntoView({ behavior: 'smooth' });
+  reportHeight();
+});
+
+btnFinishModule.addEventListener('click', function() {
+  window.lmsState.completed = true;
+  completionModal.classList.remove('hidden');
+  launchConfetti();
+  reportHeight();
+});
+
+function closeModal() {
+  completionModal.classList.add('hidden');
+}
+
+function reviewLesson() {
+  completionModal.classList.add('hidden');
+  goToStage(1);
+}
+
+/* ==========================================================================
+   HIỆU ỨNG PHÁO HOA CANVAS (CONFETTI ANIMATION)
+   ========================================================================== */
+function launchConfetti() {
+  var canvas = document.getElementById('confettiCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  var pieces = [];
+  var colors = ['#3CA57A', '#2D8B6F', '#E8A24A', '#2563EB', '#F59E0B', '#10B981', '#E11D48'];
+
+  for (var i = 0; i < 120; i++) {
+    pieces.push({
+      x: canvas.width / 2,
+      y: canvas.height / 2,
+      vx: (Math.random() - 0.5) * 16,
+      vy: (Math.random() - 0.7) * 18,
+      size: Math.random() * 8 + 4,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      tilt: Math.random() * 10,
+      tiltAngle: 0,
+      tiltAngleInc: (Math.random() * 0.07) + 0.05,
+      gravity: 0.35,
+      alpha: 1
+    });
+  }
+
+  var animationFrame;
+  function updateConfetti() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    var alive = 0;
+
+    pieces.forEach(function(p) {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += p.gravity;
+      p.tiltAngle += p.tiltAngleInc;
+      p.tilt = Math.sin(p.tiltAngle) * 12;
+      p.alpha -= 0.006;
+
+      if (p.alpha > 0 && p.y < canvas.height + 50) {
+        alive++;
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, p.alpha);
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.rect(p.x + p.tilt, p.y, p.size, p.size * 0.6);
+        ctx.fill();
+        ctx.restore();
+      }
+    });
+
+    if (alive > 0) {
+      animationFrame = requestAnimationFrame(updateConfetti);
+    } else {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      cancelAnimationFrame(animationFrame);
+    }
+  }
+
+  updateConfetti();
+}
+</script>
+</body>
+</html>
