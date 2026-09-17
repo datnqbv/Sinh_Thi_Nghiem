@@ -466,7 +466,7 @@
     .struct-item.viewed {
       border-color:var(--jade-soft);
     }
-    .struct-item img {
+    .struct-item img, .struct-item svg {
       width:100%;
       height:140px;
       object-fit:contain;
@@ -766,7 +766,7 @@
       border-color:var(--jade);
       background:var(--jade-pale);
     }
-    .poly-item img {
+    .poly-item img, .poly-item svg {
       width:100%;
       height:130px;
       object-fit:contain;
@@ -910,6 +910,37 @@
     .step-nav-bar {
       display: none !important;
     }
+  
+    /* Haworth & Carbohydrate Chemical Vector Styles */
+    .ring-line { fill: none; stroke: #1A1A1A; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+    .bond-line { fill: none; stroke: #1A1A1A; stroke-width: 4.5; stroke-linecap: round; }
+    .atom-text {
+      font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      fill: #1A1A1A;
+      text-anchor: middle;
+      dominant-baseline: central;
+      paint-order: stroke fill;
+      stroke: #FFFFFF;
+      stroke-width: 8px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .atom-o {
+      font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      fill: #1B5E48;
+      text-anchor: middle;
+      dominant-baseline: central;
+      paint-order: stroke fill;
+      stroke: #FFFFFF;
+      stroke-width: 12px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
   </style>
 </head>
 <body>
@@ -1039,17 +1070,106 @@
           <div class="structures-grid">
             <div class="struct-item" data-struct="glu" id="struct-glu">
               <div class="struct-name">Glucose</div>
-              <img src="images/SH10-B05-M01-A02.svg" alt="Cấu trúc glucose">
+              <svg viewBox="0 0 560 420" role="img" aria-label="Cấu trúc glucose" class="struct-svg"><!-- 1. Vòng 6 cạnh Haworth -->
+  <g class="ring-line">
+    <path d="M 137 274 L 142 126 L 240 82" />
+    <path d="M 300 82 L 398 132 L 390 276 L 267 342 L 137 274" />
+  </g>
+  <!-- 2. Nhánh nhóm chức -->
+  <g class="bond-line">
+    <line x1="398" y1="122" x2="398" y2="96" />
+    <line x1="408" y1="132" x2="434" y2="132" />
+    <line x1="400" y1="276" x2="428" y2="276" />
+    <line x1="390" y1="286" x2="390" y2="318" />
+    <line x1="267" y1="332" x2="267" y2="304" />
+    <line x1="267" y1="352" x2="267" y2="380" />
+    <line x1="127" y1="274" x2="98" y2="274" />
+    <line x1="137" y1="284" x2="137" y2="318" />
+    <line x1="134" y1="116" x2="110" y2="88" />
+    <line x1="132" y1="134" x2="102" y2="158" />
+  </g>
+  <!-- 3. Nhãn nhóm chức -->
+  <g class="atom-text">
+    <text x="398" y="74">H</text>
+    <text x="472" y="132">OH</text>
+    <text x="452" y="276">H</text>
+    <text x="390" y="346">OH</text>
+    <text x="267" y="282">H</text>
+    <text x="267" y="404">OH</text>
+    <text x="74" y="274">H</text>
+    <text x="137" y="346">OH</text>
+    <text x="62" y="66">CH₂OH</text>
+    <text x="78" y="176">H</text>
+  </g>
+  <text x="270" y="78" class="atom-o">O</text></svg>
               <div class="struct-formula">C₆H₁₂O₆ (vòng 6)</div>
             </div>
             <div class="struct-item" data-struct="gal" id="struct-gal">
               <div class="struct-name">Galactose</div>
-              <img src="images/SH10-B05-M01-A03.svg" alt="Cấu trúc galactose">
+              <svg viewBox="0 0 560 420" role="img" aria-label="Cấu trúc galactose" class="struct-svg"><!-- 1. Vòng 6 cạnh Haworth -->
+  <g class="ring-line">
+    <path d="M 137 274 L 142 126 L 240 82" />
+    <path d="M 300 82 L 398 132 L 390 276 L 267 342 L 137 274" />
+  </g>
+  <!-- 2. Nhánh nhóm chức (C4 OH hướng sang trái) -->
+  <g class="bond-line">
+    <line x1="398" y1="122" x2="398" y2="96" />
+    <line x1="408" y1="132" x2="434" y2="132" />
+    <line x1="400" y1="276" x2="428" y2="276" />
+    <line x1="390" y1="286" x2="390" y2="318" />
+    <line x1="267" y1="332" x2="267" y2="304" />
+    <line x1="267" y1="352" x2="267" y2="380" />
+    <line x1="127" y1="274" x2="96" y2="274" />
+    <line x1="137" y1="284" x2="137" y2="318" />
+    <line x1="134" y1="116" x2="110" y2="88" />
+    <line x1="132" y1="134" x2="102" y2="158" />
+  </g>
+  <!-- 3. Nhãn nhóm chức -->
+  <g class="atom-text">
+    <text x="398" y="74">H</text>
+    <text x="472" y="132">OH</text>
+    <text x="452" y="276">H</text>
+    <text x="390" y="346">OH</text>
+    <text x="267" y="282">H</text>
+    <text x="267" y="404">OH</text>
+    <text x="68" y="274">OH</text>
+    <text x="137" y="346">H</text>
+    <text x="62" y="66">CH₂OH</text>
+    <text x="78" y="176">H</text>
+  </g>
+  <text x="270" y="78" class="atom-o">O</text></svg>
               <div class="struct-formula">C₆H₁₂O₆ (vòng 6)</div>
             </div>
             <div class="struct-item" data-struct="fru" id="struct-fru">
               <div class="struct-name">Fructose</div>
-              <img src="images/SH10-B05-M01-A04.svg" alt="Cấu trúc fructose">
+              <svg viewBox="0 0 560 420" role="img" aria-label="Cấu trúc fructose" class="struct-svg"><!-- 1. Vòng 5 cạnh Haworth -->
+  <g class="ring-line">
+    <path d="M 198 320 L 146 164 L 248 86" />
+    <path d="M 312 86 L 412 164 L 360 320 L 198 320" />
+  </g>
+  <!-- 2. Nhánh nhóm chức -->
+  <g class="bond-line">
+    <line x1="420" y1="156" x2="448" y2="134" />
+    <line x1="420" y1="172" x2="444" y2="202" />
+    <line x1="368" y1="330" x2="390" y2="356" />
+    <line x1="352" y1="310" x2="336" y2="290" />
+    <line x1="190" y1="330" x2="168" y2="356" />
+    <line x1="206" y1="310" x2="224" y2="290" />
+    <line x1="138" y1="156" x2="110" y2="134" />
+    <line x1="138" y1="172" x2="112" y2="196" />
+  </g>
+  <!-- 3. Nhãn nhóm chức -->
+  <g class="atom-text">
+    <text x="480" y="118">OH</text>
+    <text x="496" y="230">CH₂OH</text>
+    <text x="414" y="382">OH</text>
+    <text x="320" y="270">H</text>
+    <text x="144" y="382">H</text>
+    <text x="248" y="270">OH</text>
+    <text x="65" y="118">CH₂OH</text>
+    <text x="88" y="220">H</text>
+  </g>
+  <text x="280" y="78" class="atom-o">O</text></svg>
               <div class="struct-formula">C₆H₁₂O₆ (vòng 5)</div>
             </div>
           </div>
@@ -1204,7 +1324,38 @@
                   <!-- Thẻ Glucose bên trái -->
                   <g id="a06CardGlucose" style="transition: transform .7s cubic-bezier(0.25, 1, 0.5, 1);">
                     <rect id="a06BoxGlucose" x="25" y="45" width="450" height="380" rx="14" fill="#FFFFFF" stroke="#E6E1D8" stroke-width="1.5" style="transition: opacity .4s;"/>
-                    <image href="images/SH10-B05-M01-A02.svg" x="30" y="55" width="440" height="310" preserveAspectRatio="xMidYMid meet"/>
+                    <svg x="30" y="55" width="440" height="310" viewBox="0 0 560 420" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Cấu trúc glucose"><!-- 1. Vòng 6 cạnh Haworth -->
+  <g class="ring-line">
+    <path d="M 137 274 L 142 126 L 240 82" />
+    <path d="M 300 82 L 398 132 L 390 276 L 267 342 L 137 274" />
+  </g>
+  <!-- 2. Nhánh nhóm chức -->
+  <g class="bond-line">
+    <line x1="398" y1="122" x2="398" y2="96" />
+    <line x1="408" y1="132" x2="434" y2="132" />
+    <line x1="400" y1="276" x2="428" y2="276" />
+    <line x1="390" y1="286" x2="390" y2="318" />
+    <line x1="267" y1="332" x2="267" y2="304" />
+    <line x1="267" y1="352" x2="267" y2="380" />
+    <line x1="127" y1="274" x2="98" y2="274" />
+    <line x1="137" y1="284" x2="137" y2="318" />
+    <line x1="134" y1="116" x2="110" y2="88" />
+    <line x1="132" y1="134" x2="102" y2="158" />
+  </g>
+  <!-- 3. Nhãn nhóm chức -->
+  <g class="atom-text">
+    <text x="398" y="74">H</text>
+    <text x="472" y="132">OH</text>
+    <text x="452" y="276">H</text>
+    <text x="390" y="346">OH</text>
+    <text x="267" y="282">H</text>
+    <text x="267" y="404">OH</text>
+    <text x="74" y="274">H</text>
+    <text x="137" y="346">OH</text>
+    <text x="62" y="66">CH₂OH</text>
+    <text x="78" y="176">H</text>
+  </g>
+  <text x="270" y="78" class="atom-o">O</text></svg>
                     <text id="a06LabelGlucose" x="250" y="402" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="20" font-weight="700" fill="#2E2822" style="transition: opacity .4s;">Glucose (Đơn phân 1 · C₆H₁₂O₆)</text>
                     <!-- Miếng che nhóm OH đã tách khỏi C1 ở bước 2-4 -->
                     <ellipse id="a06MaskOH" cx="401" cy="154" rx="28" ry="20" fill="#FFFFFF" style="opacity:0; transition: opacity .3s;"/>
@@ -1213,7 +1364,34 @@
                   <!-- Thẻ Fructose bên phải -->
                   <g id="a06CardFructose" style="transition: transform .7s cubic-bezier(0.25, 1, 0.5, 1);">
                     <rect id="a06BoxFructose" x="725" y="45" width="450" height="380" rx="14" fill="#FFFFFF" stroke="#E6E1D8" stroke-width="1.5" style="transition: opacity .4s;"/>
-                    <image href="images/SH10-B05-M01-A04.svg" x="730" y="55" width="440" height="310" preserveAspectRatio="xMidYMid meet"/>
+                    <svg x="730" y="55" width="440" height="310" viewBox="0 0 560 420" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Cấu trúc fructose"><!-- 1. Vòng 5 cạnh Haworth -->
+  <g class="ring-line">
+    <path d="M 198 320 L 146 164 L 248 86" />
+    <path d="M 312 86 L 412 164 L 360 320 L 198 320" />
+  </g>
+  <!-- 2. Nhánh nhóm chức -->
+  <g class="bond-line">
+    <line x1="420" y1="156" x2="448" y2="134" />
+    <line x1="420" y1="172" x2="444" y2="202" />
+    <line x1="368" y1="330" x2="390" y2="356" />
+    <line x1="352" y1="310" x2="336" y2="290" />
+    <line x1="190" y1="330" x2="168" y2="356" />
+    <line x1="206" y1="310" x2="224" y2="290" />
+    <line x1="138" y1="156" x2="110" y2="134" />
+    <line x1="138" y1="172" x2="112" y2="196" />
+  </g>
+  <!-- 3. Nhãn nhóm chức -->
+  <g class="atom-text">
+    <text x="480" y="118">OH</text>
+    <text x="496" y="230">CH₂OH</text>
+    <text x="414" y="382">OH</text>
+    <text x="320" y="270">H</text>
+    <text x="144" y="382">H</text>
+    <text x="248" y="270">OH</text>
+    <text x="65" y="118">CH₂OH</text>
+    <text x="88" y="220">H</text>
+  </g>
+  <text x="280" y="78" class="atom-o">O</text></svg>
                     <text id="a06LabelFructose" x="950" y="402" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="20" font-weight="700" fill="#2E2822" style="transition: opacity .4s;">Fructose (Đơn phân 2 · C₆H₁₂O₆)</text>
                     <!-- Miếng che phản ứng ở fructose -->
                     <ellipse id="a06MaskH" cx="782" cy="154" rx="28" ry="20" fill="#FFFFFF" style="opacity:0; transition: opacity .3s;"/>
@@ -1409,15 +1587,68 @@
           </div>
           <div class="poly-grid">
             <div class="poly-item" data-poly="a07" id="poly-a07">
-              <img src="images/SH10-B05-M01-A07.svg" alt="Amylose">
+              <svg viewBox="0 0 720 420" role="img" aria-label="Amylose" class="poly-svg">
+  <defs>
+    <g id="a07-unit"><path d="M-22-38 22-38 44 0 22 38-22 38-44 0Z" fill="#DCEAE1" stroke="#1B5E48" stroke-width="5"/></g>
+  </defs>
+  <g fill="none" stroke="#2D8B6F" stroke-width="7" stroke-linecap="round">
+    <path d="M84 210C128 88 220 88 264 210S400 332 444 210 580 88 636 210"/>
+  </g>
+  <g>
+    <use href="#a07-unit" transform="translate(84 210) rotate(-50)"/>
+    <use href="#a07-unit" transform="translate(144 126) rotate(-20)"/>
+    <use href="#a07-unit" transform="translate(220 132) rotate(20)"/>
+    <use href="#a07-unit" transform="translate(278 230) rotate(52)"/>
+    <use href="#a07-unit" transform="translate(348 294) rotate(6)"/>
+    <use href="#a07-unit" transform="translate(420 244) rotate(-44)"/>
+    <use href="#a07-unit" transform="translate(474 142) rotate(-38)"/>
+    <use href="#a07-unit" transform="translate(552 126) rotate(18)"/>
+    <use href="#a07-unit" transform="translate(636 210) rotate(48)"/>
+  </g>
+</svg>
               <span class="poly-badge" id="badge-a07">Cấu trúc 1</span>
             </div>
             <div class="poly-item" data-poly="a08" id="poly-a08">
-              <img src="images/SH10-B05-M01-A08.svg" alt="Amylopectin">
+              <svg viewBox="0 0 720 420" role="img" aria-label="Amylopectin" class="poly-svg">
+  <defs>
+    <g id="a08-unit"><path d="M-22-38 22-38 44 0 22 38-22 38-44 0Z" fill="#DCEAE1" stroke="#1B5E48" stroke-width="5"/></g>
+  </defs>
+  <g fill="none" stroke="#2D8B6F" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M72 242H648M242 242V132L192 82M488 242V132L538 82"/>
+  </g>
+  <g>
+    <use href="#a08-unit" transform="translate(72 242)"/><use href="#a08-unit" transform="translate(144 242)"/>
+    <use href="#a08-unit" transform="translate(216 242)"/><use href="#a08-unit" transform="translate(288 242)"/>
+    <use href="#a08-unit" transform="translate(360 242)"/><use href="#a08-unit" transform="translate(432 242)"/>
+    <use href="#a08-unit" transform="translate(504 242)"/><use href="#a08-unit" transform="translate(576 242)"/>
+    <use href="#a08-unit" transform="translate(648 242)"/>
+    <use href="#a08-unit" transform="translate(242 142) rotate(30)"/><use href="#a08-unit" transform="translate(184 84) rotate(30)"/>
+    <use href="#a08-unit" transform="translate(488 142) rotate(-30)"/><use href="#a08-unit" transform="translate(546 84) rotate(-30)"/>
+  </g>
+</svg>
               <span class="poly-badge" id="badge-a08">Cấu trúc 2</span>
             </div>
             <div class="poly-item" data-poly="a09" id="poly-a09">
-              <img src="images/SH10-B05-M01-A09.svg" alt="Glycogen">
+              <svg viewBox="0 0 720 420" role="img" aria-label="Glycogen" class="poly-svg">
+  <defs>
+    <g id="a09-unit"><path d="M-22-38 22-38 44 0 22 38-22 38-44 0Z" fill="#DCEAE1" stroke="#1B5E48" stroke-width="5"/></g>
+  </defs>
+  <g fill="none" stroke="#2D8B6F" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M64 236H656M160 236V132L104 78M256 236V126L302 70M352 236V122M448 236V126L402 70M544 236V132L600 78M160 132 214 78M352 122 298 66M352 122 406 66M544 132 494 76"/>
+  </g>
+  <g>
+    <use href="#a09-unit" transform="translate(64 236)"/><use href="#a09-unit" transform="translate(136 236)"/>
+    <use href="#a09-unit" transform="translate(208 236)"/><use href="#a09-unit" transform="translate(280 236)"/>
+    <use href="#a09-unit" transform="translate(352 236)"/><use href="#a09-unit" transform="translate(424 236)"/>
+    <use href="#a09-unit" transform="translate(496 236)"/><use href="#a09-unit" transform="translate(568 236)"/>
+    <use href="#a09-unit" transform="translate(640 236)"/>
+    <use href="#a09-unit" transform="translate(160 140)"/><use href="#a09-unit" transform="translate(102 80) rotate(30)"/><use href="#a09-unit" transform="translate(216 80) rotate(-30)"/>
+    <use href="#a09-unit" transform="translate(256 132)"/><use href="#a09-unit" transform="translate(306 70) rotate(-30)"/>
+    <use href="#a09-unit" transform="translate(352 126)"/><use href="#a09-unit" transform="translate(298 66) rotate(30)"/><use href="#a09-unit" transform="translate(406 66) rotate(-30)"/>
+    <use href="#a09-unit" transform="translate(448 132)"/><use href="#a09-unit" transform="translate(400 70) rotate(30)"/>
+    <use href="#a09-unit" transform="translate(544 140)"/><use href="#a09-unit" transform="translate(494 76) rotate(30)"/><use href="#a09-unit" transform="translate(602 80) rotate(-30)"/>
+  </g>
+</svg>
               <span class="poly-badge" id="badge-a09">Cấu trúc 3</span>
             </div>
           </div>
@@ -1554,7 +1785,47 @@
           </div>
 
           <div style="border:1px solid var(--paper-line);border-radius:10px;padding:12px;background:#fff;text-align:center;">
-            <img src="images/SH10-B05-M01-A10.svg" alt="Cellulose 3 cấp độ" style="width:100%;max-height:220px;object-fit:contain;" id="imgA10">
+            <svg id="imgA10" viewBox="0 0 1200 520" style="width:100%;max-height:220px;object-fit:contain;display:block;" role="img" aria-label="Cellulose 3 cấp độ">
+  <defs>
+    <g id="a10-glucose"><path d="M-16-28 16-28 32 0 16 28-16 28-32 0Z" fill="#DCEAE1" stroke="#1B5E48" stroke-width="4"/></g>
+    <marker id="a10-arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0 12 6 0 12Z" fill="#7C756A"/></marker>
+  </defs>
+  <!-- Cấp 1: Một chuỗi cellulose thẳng -->
+  <g stroke="#2D8B6F" stroke-width="5" stroke-linecap="round">
+    <path d="M55 260H335"/>
+  </g>
+  <g>
+    <use href="#a10-glucose" transform="translate(70 260)"/><use href="#a10-glucose" transform="translate(125 260)"/>
+    <use href="#a10-glucose" transform="translate(180 260)"/><use href="#a10-glucose" transform="translate(235 260)"/>
+    <use href="#a10-glucose" transform="translate(290 260)"/><use href="#a10-glucose" transform="translate(335 260)"/>
+  </g>
+  <path d="M365 260H420" fill="none" stroke="#7C756A" stroke-width="5" marker-end="url(#a10-arrow)"/>
+  <!-- Cấp 2: Các chuỗi song song liên kết hydrogen -->
+  <g fill="none" stroke="#2D8B6F" stroke-width="7" stroke-linecap="round">
+    <path d="M450 170H735M450 205H735M450 240H735M450 275H735M450 310H735M450 345H735"/>
+  </g>
+  <g fill="#DCEAE1" stroke="#1B5E48" stroke-width="3">
+    <circle cx="470" cy="170" r="13"/><circle cx="525" cy="170" r="13"/><circle cx="580" cy="170" r="13"/><circle cx="635" cy="170" r="13"/><circle cx="690" cy="170" r="13"/>
+    <circle cx="470" cy="205" r="13"/><circle cx="525" cy="205" r="13"/><circle cx="580" cy="205" r="13"/><circle cx="635" cy="205" r="13"/><circle cx="690" cy="205" r="13"/>
+    <circle cx="470" cy="240" r="13"/><circle cx="525" cy="240" r="13"/><circle cx="580" cy="240" r="13"/><circle cx="635" cy="240" r="13"/><circle cx="690" cy="240" r="13"/>
+    <circle cx="470" cy="275" r="13"/><circle cx="525" cy="275" r="13"/><circle cx="580" cy="275" r="13"/><circle cx="635" cy="275" r="13"/><circle cx="690" cy="275" r="13"/>
+    <circle cx="470" cy="310" r="13"/><circle cx="525" cy="310" r="13"/><circle cx="580" cy="310" r="13"/><circle cx="635" cy="310" r="13"/><circle cx="690" cy="310" r="13"/>
+    <circle cx="470" cy="345" r="13"/><circle cx="525" cy="345" r="13"/><circle cx="580" cy="345" r="13"/><circle cx="635" cy="345" r="13"/><circle cx="690" cy="345" r="13"/>
+  </g>
+  <path d="M765 260H820" fill="none" stroke="#7C756A" stroke-width="5" marker-end="url(#a10-arrow)"/>
+  <!-- Cấp 3: Bó sợi trong thành tế bào thực vật -->
+  <g>
+    <rect x="840" y="75" width="315" height="370" rx="34" fill="#EEF0D8" stroke="#5E8C52" stroke-width="7"/>
+    <rect x="887" y="122" width="221" height="276" rx="42" fill="#E9F1DF" stroke="#6A5AA8" stroke-width="7"/>
+    <rect x="902" y="137" width="191" height="246" rx="35" fill="#F7FAF2"/>
+    <g fill="none" stroke="#1B5E48" stroke-width="8" stroke-linecap="round">
+      <path d="M858 112C905 134 929 95 975 116S1048 138 1094 112 1130 110 1140 118"/>
+      <path d="M856 148C900 170 932 133 974 152S1047 176 1093 150 1129 147 1142 154"/>
+      <path d="M854 366C900 342 930 383 974 362S1044 339 1090 366 1126 371 1140 363"/>
+      <path d="M856 402C901 379 931 418 976 398S1047 376 1092 402 1128 408 1142 400"/>
+    </g>
+  </g>
+</svg>
             <div id="cLevelCaption" style="font-size:.85rem;color:var(--jade-text);font-weight:600;margin-top:8px;">
               Các chuỗi cellulose thẳng, không phân nhánh, xếp song song và liên kết bằng liên kết hydrogen thành bó sợi bền chắc.
             </div>
@@ -1696,7 +1967,30 @@
             <div style="font-size:.82rem;font-weight:700;color:var(--jade-dark);margin-bottom:6px;">
               <i class="ti ti-activity"></i> Vai trò của chất xơ (Cellulose) đối với đường tiêu hóa:
             </div>
-            <img src="images/SH10-B05-M01-A12.svg" alt="Sơ đồ chất xơ hỗ trợ ruột già" style="width:100%;max-height:180px;object-fit:contain;">
+            <svg viewBox="0 0 1100 500" style="width:100%;max-height:180px;object-fit:contain;display:block;" role="img" aria-label="Sơ đồ chất xơ hỗ trợ ruột già">
+  <defs>
+    <path id="a12-colon" d="M110 110C105 70 160 55 195 82L390 82C430 55 482 78 475 120L475 340C480 385 430 410 394 379L195 379C155 410 105 382 112 338Z"/>
+    <marker id="a12-flow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0 12 6 0 12Z" fill="#4E7F92"/></marker>
+  </defs>
+  <!-- Trạng thái ít chất xơ -->
+  <g transform="translate(0 10)">
+    <use href="#a12-colon" fill="#F3D8C7" stroke="#A66C5A" stroke-width="25" stroke-linejoin="round"/>
+    <path d="M155 230C220 205 330 210 430 232" fill="none" stroke="#B89064" stroke-width="48" stroke-linecap="round"/>
+    <path d="M165 230H410" fill="none" stroke="#4E7F92" stroke-width="7" stroke-linecap="round" marker-end="url(#a12-flow)"/>
+    <text x="300" y="320" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="24" font-weight="700" fill="#7C756A">Ít chất xơ</text>
+  </g>
+  <!-- Trạng thái đủ chất xơ -->
+  <g transform="translate(530 10)">
+    <use href="#a12-colon" fill="#F3D8C7" stroke="#A66C5A" stroke-width="25" stroke-linejoin="round"/>
+    <path d="M150 230C222 196 335 196 438 232" fill="none" stroke="#9D7954" stroke-width="78" stroke-linecap="round"/>
+    <g fill="#BFDDE8" stroke="#4E7F92" stroke-width="3">
+      <circle cx="210" cy="214" r="10"/><circle cx="275" cy="239" r="9"/><circle cx="340" cy="210" r="11"/><circle cx="394" cy="241" r="8"/>
+    </g>
+    <path d="M160 230H420" fill="none" stroke="#4E7F92" stroke-width="7" stroke-linecap="round" marker-end="url(#a12-flow)"/>
+    <path d="M200 175C255 135 340 137 397 175" fill="none" stroke="#4E7F92" stroke-width="6" stroke-linecap="round" marker-end="url(#a12-flow)"/>
+    <text x="300" y="320" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="24" font-weight="700" fill="#1B5E48">Đủ chất xơ (Nhu động tốt)</text>
+  </g>
+</svg>
             <div style="font-size:.78rem;color:var(--ink-2);margin-top:6px;line-height:1.45;">
               Cellulose trong thức ăn giữ nước, làm tăng thể tích khối phân &rarr; kích thích nhu động ruột &rarr; hỗ trợ tiêu hóa và phòng ngừa táo bón.
             </div>
@@ -1707,7 +2001,140 @@
             <div style="font-size:.82rem;font-weight:700;color:var(--accent-text);margin-bottom:6px;">
               <i class="ti ti-arrow-right-circle"></i> Cầu nối sang phân tử sinh học tiếp theo: Lipid
             </div>
-            <img src="images/SH10-B05-M01-A14.svg" alt="Cầu nối sang lipid" style="width:100%;max-height:200px;object-fit:contain;">
+            <svg viewBox="0 0 1500 650" style="width:100%;max-height:200px;object-fit:contain;display:block;" role="img" aria-label="Cầu nối sang lipid">
+  <defs>
+    <radialGradient id="a14-oil" cx="35%" cy="28%" r="70%"><stop offset="0" stop-color="#F7D899"/><stop offset="1" stop-color="#D79A35"/></radialGradient>
+    <g id="a14-phospholipid">
+      <circle cx="0" cy="0" r="13" fill="#6A5AA8" stroke="#443A78" stroke-width="3"/>
+      <path d="M-5 13-11 55M5 13 11 55" fill="none" stroke="#CE8A33" stroke-width="5" stroke-linecap="round"/>
+    </g>
+    <marker id="a14-arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0 12 6 0 12Z" fill="#7C756A"/></marker>
+  </defs>
+
+  <!-- Bên trái: Nhóm Carbohydrate đã học (A13 self-contained) -->
+  <g id="carbohydrate-side">
+    <rect x="25" y="55" width="650" height="540" rx="22" fill="#FFFFFF" stroke="#D6CCB6" stroke-width="4"/>
+    <text x="350" y="95" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="24" font-weight="800" fill="#1B5E48">CARBOHYDRATE (ĐÃ HỌC)</text>
+    
+    <!-- 3 thẻ cấu trúc thu nhỏ: Glucose, Glycogen, Cellulose -->
+    <!-- Thẻ 1: Glucose -->
+    <g transform="translate(45 115)">
+      <rect x="0" y="0" width="185" height="380" rx="14" fill="#FBF9F4" stroke="#E6E1D8" stroke-width="2.5"/>
+      <text x="92" y="35" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="20" font-weight="700" fill="#1B5E48">Glucose</text>
+      <text x="92" y="60" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="14" fill="#7C756A">Đường đơn</text>
+      <svg x="10" y="80" width="165" height="190" viewBox="0 0 560 420" preserveAspectRatio="xMidYMid meet"><!-- 1. Vòng 6 cạnh Haworth -->
+  <g class="ring-line">
+    <path d="M 137 274 L 142 126 L 240 82" />
+    <path d="M 300 82 L 398 132 L 390 276 L 267 342 L 137 274" />
+  </g>
+  <!-- 2. Nhánh nhóm chức -->
+  <g class="bond-line">
+    <line x1="398" y1="122" x2="398" y2="96" />
+    <line x1="408" y1="132" x2="434" y2="132" />
+    <line x1="400" y1="276" x2="428" y2="276" />
+    <line x1="390" y1="286" x2="390" y2="318" />
+    <line x1="267" y1="332" x2="267" y2="304" />
+    <line x1="267" y1="352" x2="267" y2="380" />
+    <line x1="127" y1="274" x2="98" y2="274" />
+    <line x1="137" y1="284" x2="137" y2="318" />
+    <line x1="134" y1="116" x2="110" y2="88" />
+    <line x1="132" y1="134" x2="102" y2="158" />
+  </g>
+  <!-- 3. Nhãn nhóm chức -->
+  <g class="atom-text">
+    <text x="398" y="74">H</text>
+    <text x="472" y="132">OH</text>
+    <text x="452" y="276">H</text>
+    <text x="390" y="346">OH</text>
+    <text x="267" y="282">H</text>
+    <text x="267" y="404">OH</text>
+    <text x="74" y="274">H</text>
+    <text x="137" y="346">OH</text>
+    <text x="62" y="66">CH₂OH</text>
+    <text x="78" y="176">H</text>
+  </g>
+  <text x="270" y="78" class="atom-o">O</text></svg>
+      <rect x="15" y="295" width="155" height="60" rx="8" fill="#E8F5E9"/>
+      <text x="92" y="322" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="14" font-weight="700" fill="#1B5E48">⚡ Năng lượng</text>
+      <text x="92" y="342" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="12" fill="#2E7D32">Trực tiếp cho tế bào</text>
+    </g>
+
+    <!-- Thẻ 2: Glycogen -->
+    <g transform="translate(258 115)">
+      <rect x="0" y="0" width="185" height="380" rx="14" fill="#FBF9F4" stroke="#E6E1D8" stroke-width="2.5"/>
+      <text x="92" y="35" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="20" font-weight="700" fill="#1B5E48">Glycogen</text>
+      <text x="92" y="60" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="14" fill="#7C756A">Đa dự trữ</text>
+      <svg x="10" y="80" width="165" height="190" viewBox="0 0 720 420" preserveAspectRatio="xMidYMid meet">
+        <path d="M64 236H656M160 236V132L104 78M256 236V126L302 70M352 236V122M448 236V126L402 70M544 236V132L600 78M160 132 214 78M352 122 298 66M352 122 406 66M544 132 494 76" fill="none" stroke="#2D8B6F" stroke-width="12" stroke-linecap="round"/>
+        <circle cx="64" cy="236" r="16" fill="#1B5E48"/><circle cx="208" cy="236" r="16" fill="#1B5E48"/><circle cx="352" cy="236" r="16" fill="#1B5E48"/><circle cx="496" cy="236" r="16" fill="#1B5E48"/><circle cx="640" cy="236" r="16" fill="#1B5E48"/>
+      </svg>
+      <rect x="15" y="295" width="155" height="60" rx="8" fill="#E0F2FE"/>
+      <text x="92" y="322" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="14" font-weight="700" fill="#0369A1">📦 Dự trữ</text>
+      <text x="92" y="342" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="12" fill="#0284C7">Huy động nhanh</text>
+    </g>
+
+    <!-- Thẻ 3: Cellulose -->
+    <g transform="translate(470 115)">
+      <rect x="0" y="0" width="185" height="380" rx="14" fill="#FBF9F4" stroke="#E6E1D8" stroke-width="2.5"/>
+      <text x="92" y="35" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="20" font-weight="700" fill="#1B5E48">Cellulose</text>
+      <text x="92" y="60" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="14" fill="#7C756A">Đa cấu trúc</text>
+      <svg x="10" y="80" width="165" height="190" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid meet">
+        <path d="M50 160H1150M50 240H1150M50 320H1150M50 400H1150" fill="none" stroke="#2D8B6F" stroke-width="16" stroke-linecap="round"/>
+        <line x1="200" y1="160" x2="200" y2="240" stroke="#5E8C52" stroke-width="8" stroke-dasharray="10 8"/>
+        <line x1="500" y1="240" x2="500" y2="320" stroke="#5E8C52" stroke-width="8" stroke-dasharray="10 8"/>
+        <line x1="800" y1="320" x2="800" y2="400" stroke="#5E8C52" stroke-width="8" stroke-dasharray="10 8"/>
+      </svg>
+      <rect x="15" y="295" width="155" height="60" rx="8" fill="#FEF3C7"/>
+      <text x="92" y="322" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="14" font-weight="700" fill="#92400E">🛡️ Cấu trúc</text>
+      <text x="92" y="342" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="12" fill="#B45309">Thành tế bào</text>
+    </g>
+
+    <text x="350" y="540" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="17" font-weight="600" fill="#514C44">Đặc điểm: Cấu tạo đa phân · Tan trong nước</text>
+  </g>
+
+  <!-- Mũi tên chuyển tiếp -->
+  <g id="transition-space">
+    <path d="M700 325H780" fill="none" stroke="#7C756A" stroke-width="6" stroke-dasharray="12 10" marker-end="url(#a14-arrow)"/>
+    <circle cx="740" cy="325" r="28" fill="#FFFFFF" stroke="#7C756A" stroke-width="2"/>
+    <text x="740" y="333" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="22" font-weight="800" fill="#7C756A">VS</text>
+  </g>
+
+  <!-- Bên phải: Nhóm Lipid sắp học ở M02 -->
+  <g id="lipid-side">
+    <rect x="825" y="55" width="650" height="540" rx="22" fill="#FFFFFF" stroke="#D6CCB6" stroke-width="4"/>
+    <text x="1150" y="95" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="24" font-weight="800" fill="#92400E">LIPID (BÀI TIẾP THEO)</text>
+    
+    <!-- 1. Giọt dầu tách nước -->
+    <g transform="translate(860 115)">
+      <rect x="0" y="0" width="230" height="380" rx="14" fill="#FBF9F4" stroke="#E6E1D8" stroke-width="2.5"/>
+      <rect x="15" y="20" width="200" height="250" rx="20" fill="#DCE7EB" stroke="#4E7F92" stroke-width="3"/>
+      <!-- Giọt dầu -->
+      <path d="M115 160C115 118 155 60 155 60S195 118 195 160A40 40 0 1 1 115 160Z" fill="url(#a14-oil)" stroke="#A66C2F" stroke-width="4"/>
+      <!-- Nước -->
+      <path d="M25 210C60 195 100 225 135 210S180 198 205 212" fill="none" stroke="#8AB8C8" stroke-width="5"/>
+      <text x="115" y="315" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="16" font-weight="700" fill="#92400E">Tính kị nước</text>
+      <text x="115" y="340" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="13" fill="#7C756A">Không tan trong nước</text>
+    </g>
+
+    <!-- 2. Lớp kép phospholipid -->
+    <g transform="translate(1120 115)">
+      <rect x="0" y="0" width="325" height="380" rx="14" fill="#FBF9F4" stroke="#E6E1D8" stroke-width="2.5"/>
+      <text x="162" y="35" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="18" font-weight="700" fill="#443A78">Lớp kép phospholipid</text>
+      <g transform="translate(45 90)">
+        <g>
+          <use href="#a14-phospholipid" x="0"/><use href="#a14-phospholipid" x="48"/><use href="#a14-phospholipid" x="96"/><use href="#a14-phospholipid" x="144"/><use href="#a14-phospholipid" x="192"/><use href="#a14-phospholipid" x="240"/>
+        </g>
+        <g transform="translate(0 150) scale(1 -1)">
+          <use href="#a14-phospholipid" x="0"/><use href="#a14-phospholipid" x="48"/><use href="#a14-phospholipid" x="96"/><use href="#a14-phospholipid" x="144"/><use href="#a14-phospholipid" x="192"/><use href="#a14-phospholipid" x="240"/>
+        </g>
+      </g>
+      <text x="162" y="315" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="16" font-weight="700" fill="#443A78">Cấu trúc màng tế bào</text>
+      <text x="162" y="340" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="13" fill="#7C756A">Đầu ưa nước, đuôi kị nước</text>
+    </g>
+
+    <text x="1150" y="540" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="17" font-weight="600" fill="#92400E">Đặc điểm: Kị nước · Không theo nguyên tắc đa phân</text>
+  </g>
+</svg>
             <div style="font-size:.78rem;color:var(--ink-2);margin-top:6px;line-height:1.45;">
               Khác với carbohydrate tan trong nước và cấu tạo từ các đơn phân đường, <b>Lipid</b> là nhóm phân tử kị nước, không cấu tạo theo nguyên tắc đa phân.
             </div>
@@ -1862,19 +2289,19 @@
   /* CENTRALIZED ASSET FILES */
   const assetFiles = {
     A01: 'images/SH10-B05-M01-A01.png',
-    A02: 'images/SH10-B05-M01-A02.svg',
-    A03: 'images/SH10-B05-M01-A03.svg',
-    A04: 'images/SH10-B05-M01-A04.svg',
+    A02: 'inline',
+    A03: 'inline',
+    A04: 'inline',
     A05: 'images/SH10-B05-M01-A05.png',
-    A06: 'images/SH10-B05-M01-A06.svg',
-    A07: 'images/SH10-B05-M01-A07.svg',
-    A08: 'images/SH10-B05-M01-A08.svg',
-    A09: 'images/SH10-B05-M01-A09.svg',
-    A10: 'images/SH10-B05-M01-A10.svg',
+    A06: 'inline',
+    A07: 'inline',
+    A08: 'inline',
+    A09: 'inline',
+    A10: 'inline',
     A11: 'images/SH10-B05-M01-A11.png',
-    A12: 'images/SH10-B05-M01-A12.svg',
-    A13: 'images/SH10-B05-M01-A13.svg',
-    A14: 'images/SH10-B05-M01-A14.svg'
+    A12: 'inline',
+    A13: 'inline',
+    A14: 'inline'
   };
 
   /* STATE MANAGEMENT (In-memory session state) */

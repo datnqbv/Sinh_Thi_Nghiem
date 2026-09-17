@@ -1144,7 +1144,167 @@ header,
     </div>
 
     <div class="asset-img-wrap" style="margin-top:12px;">
-      <img src="images/SH10-B05-M04-A03.svg" alt="Cấu trúc một nucleotide DNA">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" style="max-width: 100%; height: auto; max-height: 460px; border-radius: var(--radius-sm); display: block;" role="img" aria-label="Cấu trúc một nucleotide DNA">
+  <defs>
+    <!-- Hiệu ứng đổ bóng mềm -->
+    <filter id="m04_a03_softShadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <filter id="m04_a03_elementShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+
+    <!-- Gradient màu sắc chuẩn Tom Haugomat -->
+    <linearGradient id="m04_a03_sugarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+
+    <linearGradient id="m04_a03_phosphateGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+
+    <linearGradient id="m04_a03_baseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#7e22ce"/>
+    </linearGradient>
+  </defs>
+
+  <style>
+    .a03-header-title { font-family: system-ui, -apple-system, sans-serif; font-size: 17px; font-weight: 800; fill: #0f172a; }
+    .a03-header-sub { font-family: system-ui, -apple-system, sans-serif; font-size: 12.5px; font-weight: 600; fill: #475569; }
+    .a03-box-title { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 800; }
+    .a03-box-sub { font-family: system-ui, -apple-system, sans-serif; font-size: 11.5px; font-weight: 600; }
+    .a03-chem-c { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: 800; fill: #0284c7; }
+    .a03-badge-text { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 700; }
+    .a03-bond-line { stroke: #334155; stroke-width: 3.5; stroke-linecap: round; }
+  </style>
+
+  <!-- Nền toàn khung -->
+  <rect width="760" height="500" fill="#f8fafc" rx="16" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- KHUNG 1: TIÊU ĐỀ ĐẦU TRANG -->
+  <g transform="translate(130, 16)" filter="url(#m04_a03_softShadow)">
+    <rect width="500" height="52" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="250" y="24" text-anchor="middle" class="a03-header-title">CẤU TRÚC MỘT NUCLEOTIDE CỦA DNA</text>
+    <text x="250" y="42" text-anchor="middle" class="a03-header-sub">Đơn phân cấu tạo gồm 3 thành phần: Phosphate - Đường - Base</text>
+  </g>
+
+  <!-- ĐƯỜNG LIÊN KẾT GIỮA CÁC THÀNH PHẦN -->
+  <!-- Liên kết Phosphate -> C5' của đường -->
+  <line x1="196" y1="200" x2="260" y2="225" class="a03-bond-line"/>
+  <!-- Liên kết C1' -> Base Nitrogen -->
+  <line x1="442" y1="255" x2="569" y2="240" class="a03-bond-line"/>
+
+  <!-- ==================== 1. NHÓM PHOSPHATE (BÊN TRÁI) ==================== -->
+  <!-- KHUNG NEO ĐẦU 5' -->
+  <g transform="translate(45, 90)" filter="url(#m04_a03_softShadow)">
+    <rect width="210" height="30" rx="15" fill="#fef2f2" stroke="#f87171" stroke-width="1.5"/>
+    <circle cx="16" cy="15" r="5" fill="#ef4444"/>
+    <text x="115" y="20" text-anchor="middle" class="a03-badge-text" fill="#b91c1c" style="fill:#b91c1c; font-weight:700;">Đầu 5' (Liên kết phosphodiester)</text>
+  </g>
+  <line x1="150" y1="120" x2="150" y2="150" stroke="#ef4444" stroke-width="2" stroke-dasharray="3 3"/>
+
+  <!-- Hình cầu Phosphate -->
+  <g transform="translate(150, 195)" filter="url(#m04_a03_softShadow)">
+    <circle cx="0" cy="0" r="46" fill="url(#m04_a03_phosphateGrad)" stroke="#b45309" stroke-width="2"/>
+    <text x="0" y="5" text-anchor="middle" font-family="system-ui" font-size="22" font-weight="800" fill="#ffffff">P</text>
+    <text x="0" y="25" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="700" fill="#fef3c7">PO₄³⁻</text>
+  </g>
+
+  <!-- KHUNG CHÚ THÍCH NHÓM PHOSPHATE -->
+  <g transform="translate(50, 265)" filter="url(#m04_a03_softShadow)">
+    <rect width="195" height="52" rx="10" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.5"/>
+    <text x="97.5" y="22" text-anchor="middle" class="a03-box-title" fill="#b45309">Nhóm phosphate</text>
+    <text x="97.5" y="40" text-anchor="middle" class="a03-box-sub" fill="#92400e">(Gắn tại vị trí carbon C5')</text>
+  </g>
+
+  <!-- ==================== 2. ĐƯỜNG DEOXYRIBOSE (Ở GIỮA) ==================== -->
+  <g transform="translate(360, 270)" filter="url(#m04_a03_softShadow)">
+    <!-- Ngũ giác pentose -->
+    <polygon points="0,-70 70,-15 42,60 -42,60 -70,-15" fill="url(#m04_a03_sugarGrad)" stroke="#0369a1" stroke-width="2"/>
+    
+    <!-- Cầu oxy C5 -->
+    <circle cx="0" cy="-70" r="14" fill="#ffffff" stroke="#0284c7" stroke-width="2.5"/>
+    <text x="0" y="-65" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="800" fill="#0284c7">O</text>
+
+    <!-- Khung tròn C1' (gắn base) -->
+    <circle cx="70" cy="-15" r="12" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
+    <text x="70" y="-11" text-anchor="middle" class="a03-chem-c">1'</text>
+
+    <!-- Khung tròn C2' và badge đặc trưng Deoxy -->
+    <circle cx="42" cy="60" r="12" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
+    <text x="42" y="64" text-anchor="middle" class="a03-chem-c">2'</text>
+
+    <!-- Khung tròn C3' (gắn nucleotide sau) -->
+    <circle cx="-42" cy="60" r="12" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
+    <text x="-42" y="64" text-anchor="middle" class="a03-chem-c">3'</text>
+
+    <!-- Khung tròn C4' -->
+    <circle cx="-70" cy="-15" r="12" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
+    <text x="-70" y="-11" text-anchor="middle" class="a03-chem-c">4'</text>
+
+    <!-- Nhánh vươn C5' -->
+    <line x1="-70" y1="-15" x2="-100" y2="-45" stroke="#ffffff" stroke-width="4"/>
+    <circle cx="-100" cy="-45" r="12" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
+    <text x="-100" y="-41" text-anchor="middle" class="a03-chem-c">5'</text>
+
+    <!-- Chữ đường bên trong ngũ giác -->
+    <text x="0" y="2" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="800" fill="#ffffff">Đường</text>
+    <text x="0" y="20" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="700" fill="#e0f2fe">5 Carbon</text>
+  </g>
+
+  <!-- KHUNG BADGE VỊ TRÍ C3' (-OH) -->
+  <g transform="translate(245, 325)" filter="url(#m04_a03_softShadow)">
+    <rect width="65" height="26" rx="6" fill="#f0f9ff" stroke="#7dd3fc" stroke-width="1.5"/>
+    <text x="32.5" y="17" text-anchor="middle" class="a03-badge-text" fill="#0284c7" style="fill:#0284c7; font-weight:700;">-OH</text>
+  </g>
+
+  <!-- KHUNG BADGE VỊ TRÍ C2' (-H Deoxy) - Tách biệt rõ ràng, không bị che khuất -->
+  <g transform="translate(416, 325)" filter="url(#m04_a03_softShadow)">
+    <rect width="80" height="26" rx="6" fill="#f0f9ff" stroke="#7dd3fc" stroke-width="1.5"/>
+    <text x="40" y="17" text-anchor="middle" class="a03-badge-text" fill="#0284c7" style="fill:#0284c7; font-weight:700;">-H (Deoxy)</text>
+  </g>
+
+  <!-- KHUNG CHÚ THÍCH ĐƯỜNG DEOXYRIBOSE -->
+  <g transform="translate(245, 375)" filter="url(#m04_a03_softShadow)">
+    <rect width="220" height="52" rx="10" fill="#f0f9ff" stroke="#7dd3fc" stroke-width="1.5"/>
+    <text x="110" y="22" text-anchor="middle" class="a03-box-title" fill="#0369a1">Đường Deoxyribose</text>
+    <text x="110" y="40" text-anchor="middle" class="a03-box-sub" fill="#0284c7">(C₅H₁₀O₄ - Vòng ngũ giác)</text>
+  </g>
+
+  <!-- KHUNG NEO ĐẦU 3'-OH -->
+  <g transform="translate(245, 442)" filter="url(#m04_a03_softShadow)">
+    <rect width="220" height="30" rx="15" fill="#fef2f2" stroke="#f87171" stroke-width="1.5"/>
+    <circle cx="16" cy="15" r="5" fill="#ef4444"/>
+    <text x="120" y="20" text-anchor="middle" class="a03-badge-text" fill="#b91c1c" style="fill:#b91c1c; font-weight:700;">Đầu 3'-OH (Kéo dài chuỗi)</text>
+  </g>
+
+  <!-- ==================== 3. BASE NITROGEN (BÊN PHẢI) ==================== -->
+  <!-- Khối lục giác Base (Đặt tại tâm X=615, Y=240) -->
+  <g transform="translate(615, 240)" filter="url(#m04_a03_softShadow)">
+    <polygon points="0,-48 46,-24 46,24 0,48 -46,24 -46,-24" fill="url(#m04_a03_baseGrad)" stroke="#581c87" stroke-width="2"/>
+    <text x="0" y="-3" text-anchor="middle" font-family="system-ui" font-size="16" font-weight="800" fill="#ffffff">Base</text>
+    <text x="0" y="17" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="700" fill="#f3e8ff">nitrogen</text>
+  </g>
+
+  <!-- KHUNG CHÚ THÍCH BASE NITROGEN (Đặt tại X=525, Y=335 - Cách -H Deoxy 29px, hoàn toàn không bị che) -->
+  <g transform="translate(525, 335)" filter="url(#m04_a03_softShadow)">
+    <rect width="186" height="52" rx="10" fill="#faf5ff" stroke="#d8b4fe" stroke-width="1.5"/>
+    <text x="93" y="22" text-anchor="middle" class="a03-box-title" fill="#7e22ce">Base nitrogen</text>
+    <text x="93" y="40" text-anchor="middle" class="a03-box-sub" fill="#6b21a8">(Gồm 1 trong 4 loại: A, T, G, C)</text>
+  </g>
+
+  <!-- KHUNG LIÊN KẾT HYDRO BỔ SUNG (BÊN PHẢI TRÊN) -->
+  <line x1="661" y1="240" x2="695" y2="240" stroke="#10b981" stroke-width="2.5" stroke-dasharray="4 3"/>
+  <g transform="translate(545, 105)" filter="url(#m04_a03_softShadow)">
+    <rect width="185" height="50" rx="10" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1.5"/>
+    <circle cx="18" cy="25" r="5" fill="#10b981"/>
+    <text x="100" y="21" text-anchor="middle" class="a03-badge-text" font-size="12" fill="#047857" style="fill:#047857; font-weight:700;">Liên kết Hydrogen</text>
+    <text x="100" y="38" text-anchor="middle" font-family="system-ui" font-size="10.5" font-weight="600" fill="#065f46">(Bắt cặp A=T hoặc G≡C)</text>
+  </g>
+</svg>
     </div>
 
     <div class="quiz-card">
@@ -1503,7 +1663,181 @@ header,
 
     <!-- Màn 5A: Hình thái DNA (Asset A06) -->
     <div class="asset-img-wrap">
-      <img src="images/SH10-B05-M04-A06.svg" alt="3 dạng cấu trúc DNA: Thẳng, Vòng, Plasmid">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" style="max-width: 100%; height: auto; max-height: 460px; border-radius: var(--radius-sm); display: block;" role="img" aria-label="3 dạng cấu trúc DNA: Thẳng, Vòng, Plasmid">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="m04_a06_cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f8fafc"/>
+    </linearGradient>
+    <linearGradient id="m04_a06_eukCellGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0f9ff"/>
+      <stop offset="100%" stop-color="#e0f2fe"/>
+    </linearGradient>
+    <linearGradient id="m04_a06_nucleusGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="m04_a06_bactGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fffbeb"/>
+      <stop offset="100%" stop-color="#fef3c7"/>
+    </linearGradient>
+    <filter id="m04_a06_boxShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <style>
+    .a06-main-title { font-family: system-ui, -apple-system, sans-serif; font-size: 18px; font-weight: 800; fill: #0f172a; }
+    .a06-main-sub { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: 500; fill: #475569; }
+    .a06-tag-title { font-family: system-ui, -apple-system, sans-serif; font-size: 12.5px; font-weight: 800; fill: #ffffff; }
+    .a06-section-title { font-family: system-ui, -apple-system, sans-serif; font-size: 13.5px; font-weight: 800; }
+    .a06-info-bullet { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: 500; fill: #334155; }
+    .a06-badge-label { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 700; }
+    .a06-dna-linear { stroke: #0284c7; stroke-width: 3.5; stroke-linecap: round; fill: none; }
+    .a06-dna-circular { stroke: #d97706; stroke-width: 3.5; stroke-linecap: round; fill: none; }
+    .a06-dna-plasmid { stroke: #10b981; stroke-width: 3; fill: none; }
+  </style>
+
+  <!-- Nền toàn khung -->
+  <rect width="960" height="520" fill="#f1f5f9" rx="16" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <!-- KHUNG 1: TIÊU ĐỀ LỚN ĐẦU TRANG -->
+  <g transform="translate(180, 16)" filter="url(#m04_a06_boxShadow)">
+    <rect width="600" height="52" rx="12" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="300" y="24" text-anchor="middle" class="a06-main-title">CÁC DẠNG CẤU TRÚC PHÂN TỬ DNA TRONG TỰ NHIÊN</text>
+    <text x="300" y="42" text-anchor="middle" class="a06-main-sub">Phân biệt DNA mạch thẳng, DNA mạch vòng vi khuẩn và Plasmid</text>
+  </g>
+
+  <!-- ==================== CỘT 1: DNA THẲNG (NHÂN THỰC) ==================== -->
+  <g transform="translate(30, 85)" filter="url(#m04_a06_boxShadow)">
+    <rect width="280" height="415" rx="14" fill="url(#m04_a06_cardGrad)" stroke="#cbd5e1" stroke-width="1.5"/>
+    
+    <!-- Badge Loại -->
+    <rect x="18" y="16" width="135" height="28" rx="14" fill="#0284c7"/>
+    <text x="85.5" y="34.5" text-anchor="middle" class="a06-tag-title">1. DNA MẠCH THẲNG</text>
+
+    <!-- Khung hình minh họa -->
+    <rect x="18" y="55" width="244" height="175" rx="10" fill="url(#m04_a06_eukCellGrad)" stroke="#7dd3fc" stroke-width="1"/>
+    
+    <!-- Màng nhân tế bào -->
+    <circle cx="140" cy="142" r="62" fill="url(#m04_a06_nucleusGrad)" stroke="#0369a1" stroke-width="2" stroke-dasharray="8 4"/>
+    
+    <!-- Badge Màng nhân -->
+    <g transform="translate(90, 85)">
+      <rect width="100" height="22" rx="11" fill="#0369a1"/>
+      <text x="50" y="15" text-anchor="middle" class="a06-badge-label" fill="#f0f9ff">MÀNG NHÂN</text>
+    </g>
+
+    <!-- DNA sợi thẳng -->
+    <path d="M 105 130 Q 120 115 140 135 T 175 125" class="a06-dna-linear" stroke="#ffffff" stroke-width="4"/>
+    <path d="M 100 150 Q 125 165 145 140 T 178 155" class="a06-dna-linear" stroke="#fef08a" stroke-width="4"/>
+    <path d="M 115 168 Q 135 155 155 170 T 170 160" class="a06-dna-linear" stroke="#ffffff" stroke-width="3.5"/>
+
+    <!-- Khung tiêu đề phụ -->
+    <g transform="translate(18, 240)">
+      <rect width="244" height="30" rx="8" fill="#e0f2fe" stroke="#7dd3fc" stroke-width="1"/>
+      <text x="122" y="20" text-anchor="middle" class="a06-section-title" fill="#0369a1">DNA trong nhân tế bào</text>
+    </g>
+
+    <!-- KHUNG CHỨA TOÀN BỘ CHỮ MÔ TẢ CỘT 1 -->
+    <g transform="translate(18, 280)">
+      <rect width="244" height="120" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+      <text x="12" y="24" class="a06-info-bullet">• <tspan font-weight="700">Dạng:</tspan> Phân tử sợi thẳng (linear).</text>
+      <text x="12" y="48" class="a06-info-bullet">• <tspan font-weight="700">Tổ chức:</tspan> Liên kết protein histone</text>
+      <text x="22" y="68" class="a06-info-bullet">tạo thành nhiễm sắc thể (NST).</text>
+      <text x="12" y="94" class="a06-info-bullet">• <tspan font-weight="700">Vị trí:</tspan> Trong nhân có màng bọc.</text>
+    </g>
+  </g>
+
+  <!-- ==================== CỘT 2: DNA VÒNG (VI KHUẨN) ==================== -->
+  <g transform="translate(340, 85)" filter="url(#m04_a06_boxShadow)">
+    <rect width="280" height="415" rx="14" fill="url(#m04_a06_cardGrad)" stroke="#cbd5e1" stroke-width="1.5"/>
+    
+    <!-- Badge Loại -->
+    <rect x="18" y="16" width="135" height="28" rx="14" fill="#d97706"/>
+    <text x="85.5" y="34.5" text-anchor="middle" class="a06-tag-title">2. DNA VÒNG LỚN</text>
+
+    <!-- Khung hình minh họa vi khuẩn -->
+    <rect x="18" y="55" width="244" height="175" rx="10" fill="url(#m04_a06_bactGrad)" stroke="#fcd34d" stroke-width="1"/>
+    
+    <!-- Tế bào vi khuẩn hình que capsule -->
+    <rect x="42" y="85" width="160" height="115" rx="45" fill="#fef9c3" stroke="#f59e0b" stroke-width="2.5"/>
+    
+    <!-- Badge Vùng nhân -->
+    <g transform="translate(62, 92)">
+      <rect width="120" height="22" rx="11" fill="#d97706"/>
+      <text x="60" y="15" text-anchor="middle" class="a06-badge-label" fill="#ffffff">VÙNG NHÂN (NUCLEOID)</text>
+    </g>
+
+    <!-- DNA vòng đơn phân tử lớn cuộn gập -->
+    <path d="M 85 145 C 80 120, 110 115, 125 130 C 145 115, 165 135, 155 155 C 165 175, 130 185, 115 165 C 95 180, 75 160, 85 145 Z" class="a06-dna-circular" stroke="#b45309"/>
+
+    <!-- Khung tiêu đề phụ -->
+    <g transform="translate(18, 240)">
+      <rect width="244" height="30" rx="8" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
+      <text x="122" y="20" text-anchor="middle" class="a06-section-title" fill="#b45309">DNA vùng nhân vi khuẩn</text>
+    </g>
+
+    <!-- KHUNG CHỨA TOÀN BỘ CHỮ MÔ TẢ CỘT 2 -->
+    <g transform="translate(18, 280)">
+      <rect width="244" height="120" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+      <text x="12" y="24" class="a06-info-bullet">• <tspan font-weight="700">Dạng:</tspan> Phân tử kép mạch vòng.</text>
+      <text x="12" y="48" class="a06-info-bullet">• <tspan font-weight="700">Số lượng:</tspan> 1 phân tử DNA duy nhất</text>
+      <text x="22" y="68" class="a06-info-bullet">mang gen thiết yếu cho tế bào.</text>
+      <text x="12" y="94" class="a06-info-bullet">• <tspan font-weight="700">Đặc điểm:</tspan> Không có màng bọc.</text>
+    </g>
+  </g>
+
+  <!-- ==================== CỘT 3: PLASMID (DNA VÒNG NHỎ) ==================== -->
+  <g transform="translate(650, 85)" filter="url(#m04_a06_boxShadow)">
+    <rect width="280" height="415" rx="14" fill="url(#m04_a06_cardGrad)" stroke="#cbd5e1" stroke-width="1.5"/>
+    
+    <!-- Badge Loại -->
+    <rect x="18" y="16" width="135" height="28" rx="14" fill="#10b981"/>
+    <text x="85.5" y="34.5" text-anchor="middle" class="a06-tag-title">3. PLASMID</text>
+
+    <!-- Khung hình minh họa -->
+    <rect x="18" y="55" width="244" height="175" rx="10" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1"/>
+    
+    <!-- Tế bào vi khuẩn chứa chromosome và plasmid -->
+    <rect x="42" y="85" width="160" height="115" rx="45" fill="#f0fdf4" stroke="#10b981" stroke-width="2"/>
+
+    <!-- DNA NST vi khuẩn mờ hơn ở góc trái -->
+    <path d="M 65 145 C 60 130, 85 125, 95 135 C 105 130, 115 145, 105 155 C 85 165, 60 155, 65 145 Z" stroke="#94a3b8" stroke-width="2.5" fill="none"/>
+    
+    <!-- Badge DNA NST -->
+    <g transform="translate(55, 168)">
+      <rect width="65" height="20" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+      <text x="32.5" y="14" text-anchor="middle" class="a06-badge-label" fill="#64748b">DNA NST</text>
+    </g>
+
+    <!-- Các vòng Plasmid nhỏ độc lập -->
+    <ellipse cx="150" cy="125" rx="18" ry="12" class="a06-dna-plasmid" stroke="#059669" stroke-width="3"/>
+    <ellipse cx="160" cy="160" rx="14" ry="10" class="a06-dna-plasmid" stroke="#059669" stroke-width="3"/>
+    
+    <!-- Badge Plasmid -->
+    <g transform="translate(125, 92)">
+      <rect width="90" height="22" rx="11" fill="#059669"/>
+      <text x="45" y="15" text-anchor="middle" class="a06-badge-label" fill="#ffffff">Plasmid (nhỏ)</text>
+    </g>
+
+    <!-- Khung tiêu đề phụ -->
+    <g transform="translate(18, 240)">
+      <rect width="244" height="30" rx="8" fill="#d1fae5" stroke="#a7f3d0" stroke-width="1"/>
+      <text x="122" y="20" text-anchor="middle" class="a06-section-title" fill="#047857">Plasmid (Vòng nhỏ ngoại NST)</text>
+    </g>
+
+    <!-- KHUNG CHỨA TOÀN BỘ CHỮ MÔ TẢ CỘT 3 -->
+    <g transform="translate(18, 280)">
+      <rect width="244" height="120" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+      <text x="12" y="24" class="a06-info-bullet">• <tspan font-weight="700">Dạng:</tspan> Vòng xoắn kép nhỏ.</text>
+      <text x="12" y="48" class="a06-info-bullet">• <tspan font-weight="700">Đặc tính:</tspan> Tách biệt với DNA NST,</text>
+      <text x="22" y="68" class="a06-info-bullet">tự nhân đôi độc lập trong TB chất.</text>
+      <text x="12" y="94" class="a06-info-bullet">• <tspan font-weight="700">Vai trò:</tspan> Mang gen phụ (kháng sinh).</text>
+    </g>
+  </g>
+</svg>
     </div>
 
     <div class="panel">
@@ -1697,7 +2031,206 @@ header,
 
     <!-- Màn 6B: So sánh DNA và RNA (Asset A08) -->
     <div class="asset-img-wrap">
-      <img src="images/SH10-B05-M04-A08.svg" alt="Bảng so sánh DNA và RNA">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 570" style="max-width: 100%; height: auto; max-height: 460px; border-radius: var(--radius-sm); display: block;" role="img" aria-label="Bảng so sánh DNA và RNA">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="m04_a08_dnaCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f0f9ff"/>
+    </linearGradient>
+    <linearGradient id="m04_a08_rnaCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#fdf4ff"/>
+    </linearGradient>
+    <linearGradient id="m04_a08_deoxyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="m04_a08_riboGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#be123c"/>
+    </linearGradient>
+    <filter id="m04_a08_boxShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <style>
+    .a08-title-main { font-family: system-ui, -apple-system, sans-serif; font-size: 18px; font-weight: 800; fill: #0f172a; }
+    .a08-title-sub { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: 500; fill: #64748b; }
+    .a08-header-dna { font-family: system-ui, -apple-system, sans-serif; font-size: 17px; font-weight: 800; fill: #0369a1; }
+    .a08-header-rna { font-family: system-ui, -apple-system, sans-serif; font-size: 17px; font-weight: 800; fill: #a21caf; }
+    .a08-section-badge { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: 700; }
+    .a08-text-bullet { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: 500; fill: #1e293b; }
+    .a08-badge-text { font-family: system-ui, -apple-system, sans-serif; font-size: 11.5px; font-weight: 800; fill: #ffffff; }
+    .a08-callout-text { font-family: system-ui, -apple-system, sans-serif; font-size: 11.5px; font-weight: 800; }
+  </style>
+
+  <!-- Nền Canvas -->
+  <rect width="960" height="570" fill="#f8fafc" rx="16" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- KHUNG TIÊU ĐỀ ĐẦU TRANG -->
+  <g transform="translate(180, 16)" filter="url(#m04_a08_boxShadow)">
+    <rect width="600" height="52" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="300" y="24" text-anchor="middle" class="a08-title-main">SO SÁNH CẤU TRÚC PHÂN TỬ DNA VÀ RNA</text>
+    <text x="300" y="42" text-anchor="middle" class="a08-title-sub">Đối chiếu 3 tiêu chí cốt lõi: Loại đường Pentose, Base Nitrogen và Cấu trúc mạch</text>
+  </g>
+
+  <!-- ==================== CỘT TRÁI: DNA ==================== -->
+  <g transform="translate(40, 85)" filter="url(#m04_a08_boxShadow)">
+    <rect width="425" height="465" rx="16" fill="url(#m04_a08_dnaCardGrad)" stroke="#bae6fd" stroke-width="2"/>
+    
+    <!-- Tiêu đề cột DNA -->
+    <rect x="20" y="16" width="385" height="38" rx="8" fill="#e0f2fe" stroke="#7dd3fc" stroke-width="1"/>
+    <text x="212.5" y="41" text-anchor="middle" class="a08-header-dna">DNA (Axit Deoxiribonucleic)</text>
+
+    <!-- MỤC 1: ĐƯỜNG PENTOSE -->
+    <g transform="translate(20, 68)">
+      <rect width="385" height="75" rx="10" fill="#ffffff" stroke="#e0f2fe" stroke-width="1.5"/>
+      <!-- Badge Tiêu đề mục -->
+      <rect x="12" y="8" width="180" height="22" rx="6" fill="#0284c7"/>
+      <text x="102" y="23" text-anchor="middle" class="a08-badge-text">1. ĐƯỜNG PENTOSE (5C)</text>
+      <!-- Icon đường -->
+      <polygon points="35,46 48,56 43,70 27,70 22,56" fill="url(#m04_a08_deoxyGrad)"/>
+      <!-- Nội dung đường -->
+      <text x="60" y="48" class="a08-text-bullet" font-weight="700">Đường Deoxyribose (C₅H₁₀O₄)</text>
+      <text x="60" y="66" class="a08-callout-text" fill="#0284c7">• Vị trí C2' là nhóm: -H (Thiếu 1 nguyên tử O)</text>
+    </g>
+
+    <!-- MỤC 2: BỐN LOẠI BASE NITROGEN -->
+    <g transform="translate(20, 155)">
+      <rect width="385" height="120" rx="10" fill="#ffffff" stroke="#e0f2fe" stroke-width="1.5"/>
+      <!-- Badge Tiêu đề mục -->
+      <rect x="12" y="8" width="180" height="22" rx="6" fill="#0284c7"/>
+      <text x="102" y="23" text-anchor="middle" class="a08-badge-text">2. BASE NITROGEN (4 LOẠI)</text>
+      
+      <!-- 4 Badges Base -->
+      <g transform="translate(12, 38)">
+        <rect x="0" y="0" width="82" height="32" rx="6" fill="#15803d"/>
+        <text x="41" y="21" text-anchor="middle" class="a08-badge-text">A (Adenine)</text>
+
+        <rect x="90" y="0" width="85" height="32" rx="6" fill="#b91c1c" stroke="#fca5a5" stroke-width="2"/>
+        <text x="132.5" y="21" text-anchor="middle" class="a08-badge-text">T (Thymine)</text>
+
+        <rect x="183" y="0" width="85" height="32" rx="6" fill="#d97706"/>
+        <text x="225.5" y="21" text-anchor="middle" class="a08-badge-text">G (Guanine)</text>
+
+        <rect x="276" y="0" width="85" height="32" rx="6" fill="#7e22ce"/>
+        <text x="318.5" y="21" text-anchor="middle" class="a08-badge-text">C (Cytosine)</text>
+      </g>
+
+      <!-- Khung Callout đặc trưng Thymine -->
+      <g transform="translate(12, 80)">
+        <rect width="360" height="28" rx="6" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+        <text x="180" y="19" text-anchor="middle" class="a08-callout-text" fill="#b91c1c">★ ĐẶC TRƯNG: Có THYMINE (T), tuyệt đối KHÔNG có U.</text>
+      </g>
+    </g>
+
+    <!-- MỤC 3: CẤU TRÚC MẠCH -->
+    <g transform="translate(20, 288)">
+      <rect width="385" height="158" rx="10" fill="#ffffff" stroke="#e0f2fe" stroke-width="1.5"/>
+      <!-- Badge Tiêu đề mục -->
+      <rect x="12" y="8" width="180" height="22" rx="6" fill="#0284c7"/>
+      <text x="102" y="23" text-anchor="middle" class="a08-badge-text">3. CẤU TRÚC MẠCH DNA</text>
+
+      <!-- Minh họa sơ đồ nhỏ bên trái -->
+      <g transform="translate(25, 45)">
+        <rect width="90" height="95" rx="8" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1"/>
+        <!-- 2 mạch xoắn đối xứng -->
+        <path d="M 15 25 Q 45 45 75 25" fill="none" stroke="#0284c7" stroke-width="3"/>
+        <path d="M 15 45 Q 45 25 75 45" fill="none" stroke="#0369a1" stroke-width="3"/>
+        <line x1="45" y1="35" x2="45" y2="35" stroke="#10b981" stroke-width="4"/>
+        <path d="M 15 70 Q 45 90 75 70" fill="none" stroke="#0284c7" stroke-width="3"/>
+        <path d="M 15 90 Q 45 70 75 90" fill="none" stroke="#0369a1" stroke-width="3"/>
+        <text x="45" y="15" text-anchor="middle" font-family="system-ui" font-size="9" font-weight="700" fill="#0369a1">2 MẠCH</text>
+      </g>
+
+      <!-- Khung text chi tiết bên phải -->
+      <g transform="translate(130, 38)">
+        <text x="0" y="18" class="a08-text-bullet">• Thường gồm <tspan font-weight="800" fill="#0369a1">2 MẠCH</tspan> polynucleotide.</text>
+        <text x="0" y="40" class="a08-text-bullet">• Chạy <tspan font-weight="700">ngược chiều</tspan> (5'→3' và 3'→5').</text>
+        <text x="0" y="62" class="a08-text-bullet">• Bổ sung: <tspan font-weight="700" fill="#15803d">A = T</tspan> (2H), <tspan font-weight="700" fill="#7e22ce">G ≡ C</tspan> (3H).</text>
+        <text x="0" y="84" class="a08-text-bullet">• Xoắn kép quanh trục (B-DNA xoắn phải).</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ==================== CỘT PHẢI: RNA ==================== -->
+  <g transform="translate(495, 85)" filter="url(#m04_a08_boxShadow)">
+    <rect width="425" height="465" rx="16" fill="url(#m04_a08_rnaCardGrad)" stroke="#f5d0fe" stroke-width="2"/>
+    
+    <!-- Tiêu đề cột RNA -->
+    <rect x="20" y="16" width="385" height="38" rx="8" fill="#fae8ff" stroke="#f0abfc" stroke-width="1"/>
+    <text x="212.5" y="41" text-anchor="middle" class="a08-header-rna">RNA (Axit Ribonucleic)</text>
+
+    <!-- MỤC 1: ĐƯỜNG PENTOSE -->
+    <g transform="translate(20, 68)">
+      <rect width="385" height="75" rx="10" fill="#ffffff" stroke="#fae8ff" stroke-width="1.5"/>
+      <!-- Badge Tiêu đề mục -->
+      <rect x="12" y="8" width="180" height="22" rx="6" fill="#a21caf"/>
+      <text x="102" y="23" text-anchor="middle" class="a08-badge-text">1. ĐƯỜNG PENTOSE (5C)</text>
+      <!-- Icon đường -->
+      <polygon points="35,46 48,56 43,70 27,70 22,56" fill="url(#m04_a08_riboGrad)"/>
+      <!-- Nội dung đường -->
+      <text x="60" y="48" class="a08-text-bullet" font-weight="700">Đường Ribose (C₅H₁₀O₅)</text>
+      <text x="60" y="66" class="a08-callout-text" fill="#be123c">• Vị trí C2' là nhóm: -OH (Đầy đủ nguyên tử O)</text>
+    </g>
+
+    <!-- MỤC 2: BỐN LOẠI BASE NITROGEN -->
+    <g transform="translate(20, 155)">
+      <rect width="385" height="120" rx="10" fill="#ffffff" stroke="#fae8ff" stroke-width="1.5"/>
+      <!-- Badge Tiêu đề mục -->
+      <rect x="12" y="8" width="180" height="22" rx="6" fill="#a21caf"/>
+      <text x="102" y="23" text-anchor="middle" class="a08-badge-text">2. BASE NITROGEN (4 LOẠI)</text>
+      
+      <!-- 4 Badges Base -->
+      <g transform="translate(12, 38)">
+        <rect x="0" y="0" width="82" height="32" rx="6" fill="#15803d"/>
+        <text x="41" y="21" text-anchor="middle" class="a08-badge-text">A (Adenine)</text>
+
+        <rect x="90" y="0" width="85" height="32" rx="6" fill="#e11d48" stroke="#fda4af" stroke-width="2"/>
+        <text x="132.5" y="21" text-anchor="middle" class="a08-badge-text">U (Uracil)</text>
+
+        <rect x="183" y="0" width="85" height="32" rx="6" fill="#d97706"/>
+        <text x="225.5" y="21" text-anchor="middle" class="a08-badge-text">G (Guanine)</text>
+
+        <rect x="276" y="0" width="85" height="32" rx="6" fill="#7e22ce"/>
+        <text x="318.5" y="21" text-anchor="middle" class="a08-badge-text">C (Cytosine)</text>
+      </g>
+
+      <!-- Khung Callout đặc trưng Uracil -->
+      <g transform="translate(12, 80)">
+        <rect width="360" height="28" rx="6" fill="#fff1f2" stroke="#fda4af" stroke-width="1"/>
+        <text x="180" y="19" text-anchor="middle" class="a08-callout-text" fill="#e11d48">★ ĐẶC TRƯNG: Có URACIL (U), tuyệt đối KHÔNG có T.</text>
+      </g>
+    </g>
+
+    <!-- MỤC 3: CẤU TRÚC MẠCH -->
+    <g transform="translate(20, 288)">
+      <rect width="385" height="158" rx="10" fill="#ffffff" stroke="#fae8ff" stroke-width="1.5"/>
+      <!-- Badge Tiêu đề mục -->
+      <rect x="12" y="8" width="180" height="22" rx="6" fill="#a21caf"/>
+      <text x="102" y="23" text-anchor="middle" class="a08-badge-text">3. CẤU TRÚC MẠCH RNA</text>
+
+      <!-- Minh họa sơ đồ nhỏ bên trái -->
+      <g transform="translate(25, 45)">
+        <rect width="90" height="95" rx="8" fill="#fdf4ff" stroke="#f5d0fe" stroke-width="1"/>
+        <!-- 1 mạch đơn cuộn uốn lượn -->
+        <path d="M 20 85 Q 45 40 70 85" fill="none" stroke="#e11d48" stroke-width="4" stroke-linecap="round"/>
+        <text x="45" y="25" text-anchor="middle" font-family="system-ui" font-size="9" font-weight="700" fill="#be123c">1 MẠCH</text>
+        <text x="45" y="40" text-anchor="middle" font-family="system-ui" font-size="9" font-weight="600" fill="#64748b">5' ──► 3'</text>
+      </g>
+
+      <!-- Khung text chi tiết bên phải -->
+      <g transform="translate(130, 38)">
+        <text x="0" y="18" class="a08-text-bullet">• Thường chỉ gồm <tspan font-weight="800" fill="#be123c">1 MẠCH ĐƠN</tspan>.</text>
+        <text x="0" y="40" class="a08-text-bullet">• Chiều mạch: 5' → 3'.</text>
+        <text x="0" y="62" class="a08-text-bullet">• Tự cuộn cục bộ (như tRNA cỏ 3 lá, rRNA).</text>
+        <text x="0" y="84" class="a08-text-bullet">• Bổ sung cục bộ: <tspan font-weight="700" fill="#15803d">A = U</tspan>, <tspan font-weight="700" fill="#7e22ce">G ≡ C</tspan>.</text>
+      </g>
+    </g>
+  </g>
+</svg>
     </div>
 
     <div class="panel">
@@ -1932,28 +2465,347 @@ header,
       </div>
       <div class="macro-grid">
         <div class="macro-card">
-          <div class="macro-img"><img src="images/SH10-B05-M04-A10-carbohydrate.svg" alt="Carbohydrate"></div>
+          <div class="macro-img"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 400" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;" role="img" aria-label="Carbohydrate">
+  <defs>
+    <linearGradient id="m04_a10_carb_carbGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f0fdf4"/>
+    </linearGradient>
+    <filter id="m04_a10_carb_badgeShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="520" height="400" rx="16" fill="url(#m04_a10_carb_carbGrad)" stroke="#86efac" stroke-width="2"/>
+  
+  <!-- KHUNG TIÊU ĐỀ CARD -->
+  <g transform="translate(25, 18)" filter="url(#m04_a10_carb_badgeShadow)">
+    <rect width="470" height="44" rx="10" fill="#dcfce7" stroke="#86efac" stroke-width="1.5"/>
+    <text x="235" y="27" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="800" fill="#15803d">1. CARBOHYDRATE (ĐẠI DIỆN: GLUCOSE)</text>
+  </g>
+
+  <!-- CẤU TRÚC VÒNG HAWORTH GLUCOSE -->
+  <g transform="translate(125, 105)">
+    <!-- Vòng 6 cạnh Haworth -->
+    <polygon points="140,25 220,55 200,135 80,135 60,55" fill="#bbf7d0" fill-opacity="0.3" stroke="#166534" stroke-width="4.5" stroke-linejoin="round"/>
+    
+    <!-- Cầu Oxy đỉnh trên bên phải (Trong khung tròn riêng) -->
+    <circle cx="180" cy="40" r="17" fill="#ffffff" stroke="#15803d" stroke-width="3"/>
+    <text x="180" y="47" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#15803d">O</text>
+
+    <!-- Nhóm -CH2OH tại C5 (Trong khung badge bo góc) -->
+    <line x1="80" y1="45" x2="65" y2="5" stroke="#166534" stroke-width="3.5"/>
+    <g transform="translate(25, -18)" filter="url(#m04_a10_carb_badgeShadow)">
+      <rect width="70" height="26" rx="13" fill="#ffffff" stroke="#166534" stroke-width="1.5"/>
+      <text x="35" y="17" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#166534">CH₂OH</text>
+    </g>
+
+    <!-- Các nhóm -OH phân nhánh (Mỗi nhóm đều nằm trong khung badge tròn/oval riêng) -->
+    <!-- OH tại C1 -->
+    <line x1="220" y1="55" x2="250" y2="70" stroke="#166534" stroke-width="3"/>
+    <g transform="translate(245, 55)" filter="url(#m04_a10_carb_badgeShadow)">
+      <rect width="42" height="24" rx="8" fill="#ffffff" stroke="#15803d" stroke-width="1.5"/>
+      <text x="21" y="16" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#15803d">OH</text>
+    </g>
+
+    <!-- OH tại C2 -->
+    <line x1="200" y1="135" x2="225" y2="160" stroke="#166534" stroke-width="3"/>
+    <g transform="translate(220, 150)" filter="url(#m04_a10_carb_badgeShadow)">
+      <rect width="42" height="24" rx="8" fill="#ffffff" stroke="#15803d" stroke-width="1.5"/>
+      <text x="21" y="16" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#15803d">OH</text>
+    </g>
+
+    <!-- OH tại C3 -->
+    <line x1="80" y1="135" x2="65" y2="165" stroke="#166534" stroke-width="3"/>
+    <g transform="translate(40, 155)" filter="url(#m04_a10_carb_badgeShadow)">
+      <rect width="42" height="24" rx="8" fill="#ffffff" stroke="#15803d" stroke-width="1.5"/>
+      <text x="21" y="16" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#15803d">OH</text>
+    </g>
+
+    <!-- OH tại C4 -->
+    <line x1="60" y1="55" x2="25" y2="55" stroke="#166534" stroke-width="3"/>
+    <g transform="translate(-10, 43)" filter="url(#m04_a10_carb_badgeShadow)">
+      <rect width="42" height="24" rx="8" fill="#ffffff" stroke="#15803d" stroke-width="1.5"/>
+      <text x="21" y="16" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#15803d">OH</text>
+    </g>
+  </g>
+
+  <!-- KHUNG TÓM TẮT ĐẶC ĐIỂM DƯỚI ĐÁY -->
+  <g transform="translate(25, 315)" filter="url(#m04_a10_carb_badgeShadow)">
+    <rect width="470" height="65" rx="10" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.5"/>
+    <text x="16" y="26" font-family="system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#334155">• <tspan font-weight="800" fill="#15803d">Đơn phân:</tspan> Monosaccharide (Glucose, Fructose...).</text>
+    <text x="16" y="48" font-family="system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#334155">• <tspan font-weight="800" fill="#15803d">Chức năng:</tspan> Cung cấp năng lượng ngắn hạn, cấu tạo vách tế bào.</text>
+  </g>
+</svg></div>
           <div class="macro-title">Carbohydrate</div>
           <div class="macro-desc">
             → cung cấp năng lượng, dự trữ năng lượng, tạo cấu trúc
           </div>
         </div>
         <div class="macro-card">
-          <div class="macro-img"><img src="images/SH10-B05-M04-A10-lipid.svg" alt="Lipid"></div>
+          <div class="macro-img"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 400" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;" role="img" aria-label="Lipid">
+  <defs>
+    <linearGradient id="m04_a10_lipid_lipidGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#fffbeb"/>
+    </linearGradient>
+    <filter id="m04_a10_lipid_badgeShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="520" height="400" rx="16" fill="url(#m04_a10_lipid_lipidGrad)" stroke="#fcd34d" stroke-width="2"/>
+  
+  <!-- KHUNG TIÊU ĐỀ CARD -->
+  <g transform="translate(25, 18)" filter="url(#m04_a10_lipid_badgeShadow)">
+    <rect width="470" height="44" rx="10" fill="#fef3c7" stroke="#fcd34d" stroke-width="1.5"/>
+    <text x="235" y="27" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="800" fill="#b45309">2. LIPID (ĐẠI DIỆN: PHOSPHOLIPID MÀNG)</text>
+  </g>
+
+  <!-- CẤU TRÚC PHOSPHOLIPID -->
+  <g transform="translate(140, 80)">
+    <!-- 1. KHUNG ĐẦU ƯA NƯỚC -->
+    <circle cx="80" cy="50" r="42" fill="#e0f2fe" stroke="#0284c7" stroke-width="3"/>
+    
+    <!-- Badge bên trong đầu ưa nước -->
+    <g transform="translate(20, 28)">
+      <rect width="120" height="22" rx="6" fill="#0284c7"/>
+      <text x="60" y="15" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#ffffff">ĐẦU ƯA NƯỚC</text>
+    </g>
+    <g transform="translate(25, 54)">
+      <rect width="110" height="18" rx="4" fill="#ffffff" stroke="#bae6fd" stroke-width="1"/>
+      <text x="55" y="13" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#0369a1">PO₄³⁻ + Glycerol</text>
+    </g>
+
+    <!-- 2 Đuôi acid béo kỵ nước -->
+    <!-- Đuôi 1: Acid béo no (thẳng) -->
+    <path d="M 65 92 V 110 L 58 125 L 65 140 L 58 155 L 65 170 L 58 185 L 65 200" fill="none" stroke="#d97706" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Đuôi 2: Acid béo không no (gấp khúc) -->
+    <path d="M 95 92 V 110 L 102 125 L 95 140 L 110 155 L 128 170 L 135 195" fill="none" stroke="#d97706" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- 2. KHUNG BADGE ĐUÔI KỴ NƯỚC (BÊN CẠNH ĐUÔI) -->
+    <g transform="translate(145, 125)" filter="url(#m04_a10_lipid_badgeShadow)">
+      <rect width="135" height="48" rx="8" fill="#ffffff" stroke="#fcd34d" stroke-width="1.5"/>
+      <rect x="8" y="6" width="119" height="18" rx="4" fill="#d97706"/>
+      <text x="67.5" y="19" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" font-weight="800" fill="#ffffff">ĐUÔI KỴ NƯỚC</text>
+      <text x="67.5" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#92400e">(2 chuỗi acid béo)</text>
+    </g>
+  </g>
+
+  <!-- KHUNG TÓM TẮT ĐẶC ĐIỂM DƯỚI ĐÁY -->
+  <g transform="translate(25, 315)" filter="url(#m04_a10_lipid_badgeShadow)">
+    <rect width="470" height="65" rx="10" fill="#ffffff" stroke="#fde68a" stroke-width="1.5"/>
+    <text x="16" y="26" font-family="system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#334155">• <tspan font-weight="800" fill="#b45309">Đặc tính:</tspan> Kỵ nước, không cấu tạo theo nguyên tắc đa phân.</text>
+    <text x="16" y="48" font-family="system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#334155">• <tspan font-weight="800" fill="#b45309">Chức năng:</tspan> Cấu tạo màng sinh chất (phospholipid), dự trữ năng lượng.</text>
+  </g>
+</svg></div>
           <div class="macro-title">Lipid</div>
           <div class="macro-desc">
             → dự trữ năng lượng, tạo màng, tham gia điều hòa
           </div>
         </div>
         <div class="macro-card">
-          <div class="macro-img"><img src="images/SH10-B05-M04-A10-protein.svg" alt="Protein"></div>
+          <div class="macro-img"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 400" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;" role="img" aria-label="Protein">
+  <defs>
+    <linearGradient id="m04_a10_prot_protGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#fdf2f8"/>
+    </linearGradient>
+    <filter id="m04_a10_prot_badgeShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="520" height="400" rx="16" fill="url(#m04_a10_prot_protGrad)" stroke="#f472b6" stroke-width="2"/>
+  
+  <!-- KHUNG TIÊU ĐỀ CARD -->
+  <g transform="translate(25, 18)" filter="url(#m04_a10_prot_badgeShadow)">
+    <rect width="470" height="44" rx="10" fill="#fce7f3" stroke="#f472b6" stroke-width="1.5"/>
+    <text x="235" y="27" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="800" fill="#be185d">3. PROTEIN (ĐẠI DIỆN: CHUỖI POLYPEPTIDE)</text>
+  </g>
+
+  <!-- CẤU TRÚC DI-PEPTIDE -->
+  <g transform="translate(50, 95)">
+    <!-- KHUNG ĐỨT NÉT BAO QUANH LIÊN KẾT PEPTIDE -->
+    <rect x="155" y="15" width="125" height="135" rx="10" fill="#fdf2f8" stroke="#db2777" stroke-width="2" stroke-dasharray="6 4"/>
+    
+    <!-- BADGE LIÊN KẾT PEPTIDE -->
+    <g transform="translate(160, 160)" filter="url(#m04_a10_prot_badgeShadow)">
+      <rect width="115" height="26" rx="6" fill="#be185d"/>
+      <text x="57.5" y="17" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" font-weight="800" fill="#ffffff">LIÊN KẾT PEPTIDE</text>
+    </g>
+
+    <!-- ===== AMINO ACID 1 (TRÁI) ===== -->
+    <g transform="translate(15, 35)">
+      <!-- 1. Khung Nhóm Amino H2N -->
+      <g filter="url(#m04_a10_prot_badgeShadow)">
+        <rect x="0" y="18" width="55" height="34" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+        <text x="27.5" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#0369a1">H₂N</text>
+      </g>
+      
+      <!-- Liên kết -->
+      <line x1="55" y1="35" x2="85" y2="35" stroke="#334155" stroke-width="3"/>
+      
+      <!-- 2. Khung Carbon Cα 1 -->
+      <circle cx="95" cy="35" r="16" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+      <text x="95" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#334155">Cα</text>
+
+      <!-- 3. Khung Nhóm R1 (ở trên) -->
+      <line x1="95" y1="19" x2="95" y2="-2" stroke="#334155" stroke-width="2.5"/>
+      <g transform="translate(77, -26)" filter="url(#m04_a10_prot_badgeShadow)">
+        <rect width="36" height="24" rx="6" fill="#fef08a" stroke="#ca8a04" stroke-width="1.5"/>
+        <text x="18" y="16" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#854d0e">R₁</text>
+      </g>
+
+      <!-- Liên kết tới C=O -->
+      <line x1="111" y1="35" x2="155" y2="35" stroke="#334155" stroke-width="3"/>
+
+      <!-- 4. Khung Carbonyl C=O -->
+      <g transform="translate(145, 18)" filter="url(#m04_a10_prot_badgeShadow)">
+        <rect width="36" height="34" rx="6" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+        <text x="18" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#b91c1c">C=O</text>
+      </g>
+    </g>
+
+    <!-- ===== AMINO ACID 2 (PHẢI) ===== -->
+    <g transform="translate(235, 35)">
+      <!-- 5. Khung Amide N-H -->
+      <g transform="translate(0, 18)" filter="url(#m04_a10_prot_badgeShadow)">
+        <rect width="36" height="34" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+        <text x="18" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#0369a1">N-H</text>
+      </g>
+
+      <!-- Liên kết tới Cα 2 -->
+      <line x1="36" y1="35" x2="65" y2="35" stroke="#334155" stroke-width="3"/>
+
+      <!-- 6. Khung Carbon Cα 2 -->
+      <circle cx="78" cy="35" r="16" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+      <text x="78" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#334155">Cα</text>
+
+      <!-- 7. Khung Nhóm R2 (ở trên) -->
+      <line x1="78" y1="19" x2="78" y2="-2" stroke="#334155" stroke-width="2.5"/>
+      <g transform="translate(60, -26)" filter="url(#m04_a10_prot_badgeShadow)">
+        <rect width="36" height="24" rx="6" fill="#bbf7d0" stroke="#16a34a" stroke-width="1.5"/>
+        <text x="18" y="16" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#15803d">R₂</text>
+      </g>
+
+      <!-- Liên kết tới COOH -->
+      <line x1="94" y1="35" x2="125" y2="35" stroke="#334155" stroke-width="3"/>
+
+      <!-- 8. Khung Nhóm Carboxyl -COOH -->
+      <g transform="translate(125, 18)" filter="url(#m04_a10_prot_badgeShadow)">
+        <rect width="60" height="34" rx="8" fill="#fce7f3" stroke="#db2777" stroke-width="1.5"/>
+        <text x="30" y="23" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12.5" font-weight="800" fill="#be185d">COOH</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- KHUNG TÓM TẮT ĐẶC ĐIỂM DƯỚI ĐÁY -->
+  <g transform="translate(25, 315)" filter="url(#m04_a10_prot_badgeShadow)">
+    <rect width="470" height="65" rx="10" fill="#ffffff" stroke="#fbcfe8" stroke-width="1.5"/>
+    <text x="16" y="26" font-family="system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#334155">• <tspan font-weight="800" fill="#be185d">Đơn phân:</tspan> 20 loại Amino acid kết nối bằng liên kết peptide (-CO-NH-).</text>
+    <text x="16" y="48" font-family="system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#334155">• <tspan font-weight="800" fill="#be185d">Cấu trúc:</tspan> Bậc 1 → Bậc 2 → Bậc 3 → Bậc 4 tạo nên đa dạng chức năng sinh học.</text>
+  </g>
+</svg></div>
           <div class="macro-title">Protein</div>
           <div class="macro-desc">
             → nhiều chức năng nhờ cấu trúc không gian đặc hiệu
           </div>
         </div>
         <div class="macro-card">
-          <div class="macro-img"><img src="images/SH10-B05-M04-A10-nucleic-acid.svg" alt="Nucleic acid"></div>
+          <div class="macro-img"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 400" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;" role="img" aria-label="Nucleic acid">
+  <defs>
+    <linearGradient id="m04_a10_na_naGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f5f3ff"/>
+    </linearGradient>
+    <filter id="m04_a10_na_badgeShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="520" height="400" rx="16" fill="url(#m04_a10_na_naGrad)" stroke="#c084fc" stroke-width="2"/>
+  
+  <!-- KHUNG TIÊU ĐỀ CARD -->
+  <g transform="translate(25, 18)" filter="url(#m04_a10_na_badgeShadow)">
+    <rect width="470" height="44" rx="10" fill="#f3e8ff" stroke="#c084fc" stroke-width="1.5"/>
+    <text x="235" y="27" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="800" fill="#7e22ce">4. NUCLEIC ACID (ĐẠI DIỆN: CẶP BASE DNA A=T)</text>
+  </g>
+
+  <!-- CẶP BASE BỔ SUNG A=T (2 MẠCH NGƯỢC CHIỀU) -->
+  <g transform="translate(60, 95)">
+    <!-- 1. Nucleotide A bên trái (Mạch 5' -> 3') -->
+    <g transform="translate(15, 30)">
+      <!-- Nhóm Phosphate trong khung tròn -->
+      <circle cx="0" cy="0" r="22" fill="#f59e0b" stroke="#d97706" stroke-width="2"/>
+      <text x="0" y="5" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="800" fill="#ffffff">P</text>
+      
+      <!-- Liên kết -->
+      <line x1="18" y1="12" x2="45" y2="40" stroke="#334155" stroke-width="3"/>
+      
+      <!-- Đường Deoxyribose -->
+      <polygon points="65,15 92,45 80,75 50,75 38,45" fill="#38bdf8" stroke="#0284c7" stroke-width="2"/>
+      <text x="65" y="50" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="700" fill="#ffffff">Đường</text>
+      
+      <!-- Liên kết -->
+      <line x1="88" y1="45" x2="115" y2="45" stroke="#334155" stroke-width="3"/>
+      
+      <!-- Base A (Khung xanh lá) -->
+      <rect x="115" y="25" width="55" height="40" rx="8" fill="#15803d" stroke="#166534" stroke-width="2"/>
+      <text x="142.5" y="50" text-anchor="middle" font-family="system-ui" font-size="18" font-weight="800" fill="#ffffff">A</text>
+    </g>
+
+    <!-- 2. KHUNG BADGE 2 LIÊN KẾT HYDRO (Ở GIỮA) -->
+    <g transform="translate(190, 20)" filter="url(#m04_a10_na_badgeShadow)">
+      <rect width="90" height="24" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+      <text x="45" y="16" text-anchor="middle" font-family="system-ui" font-size="10.5" font-weight="800" fill="#047857">2 LIÊN KẾT H</text>
+    </g>
+    <!-- 2 đường đứt nét liên kết hydro -->
+    <line x1="190" y1="65" x2="225" y2="65" stroke="#10b981" stroke-width="3" stroke-dasharray="4 3"/>
+    <line x1="190" y1="85" x2="225" y2="85" stroke="#10b981" stroke-width="3" stroke-dasharray="4 3"/>
+
+    <!-- 3. Nucleotide T bên phải (Mạch 3' -> 5') -->
+    <g transform="translate(230, 30)">
+      <!-- Base T (Khung đỏ) -->
+      <rect x="0" y="25" width="55" height="40" rx="8" fill="#b91c1c" stroke="#991b1b" stroke-width="2"/>
+      <text x="27.5" y="50" text-anchor="middle" font-family="system-ui" font-size="18" font-weight="800" fill="#ffffff">T</text>
+      
+      <!-- Liên kết -->
+      <line x1="55" y1="45" x2="82" y2="45" stroke="#334155" stroke-width="3"/>
+      
+      <!-- Đường Deoxyribose ngược -->
+      <polygon points="105,75 132,45 120,15 90,15 78,45" fill="#38bdf8" stroke="#0284c7" stroke-width="2"/>
+      <text x="105" y="50" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="700" fill="#ffffff">Đường</text>
+      
+      <!-- Liên kết -->
+      <line x1="125" y1="35" x2="150" y2="10" stroke="#334155" stroke-width="3"/>
+      
+      <!-- Nhóm Phosphate trong khung tròn -->
+      <circle cx="165" cy="0" r="22" fill="#f59e0b" stroke="#d97706" stroke-width="2"/>
+      <text x="165" y="5" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="800" fill="#ffffff">P</text>
+    </g>
+
+    <!-- 4. KHUNG BADGE CHIỀU HAI MẠCH NGƯỢC CHIỀU -->
+    <!-- Mạch 1: 5' -> 3' -->
+    <g transform="translate(25, 140)" filter="url(#m04_a10_na_badgeShadow)">
+      <rect width="150" height="26" rx="13" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="75" y="17" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="800" fill="#0369a1">Mạch 1: 5' ───► 3'</text>
+    </g>
+    <!-- Mạch 2: 3' <- 5' -->
+    <g transform="translate(230, 140)" filter="url(#m04_a10_na_badgeShadow)">
+      <rect width="150" height="26" rx="13" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+      <text x="75" y="17" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="800" fill="#b91c1c">Mạch 2: 3' ◄─── 5'</text>
+    </g>
+  </g>
+
+  <!-- KHUNG TÓM TẮT ĐẶC ĐIỂM DƯỚI ĐÁY -->
+  <g transform="translate(25, 315)" filter="url(#m04_a10_na_badgeShadow)">
+    <rect width="470" height="65" rx="10" fill="#ffffff" stroke="#e9d5ff" stroke-width="1.5"/>
+    <text x="16" y="26" font-family="system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#334155">• <tspan font-weight="800" fill="#7e22ce">Đơn phân:</tspan> Nucleotide (Đường pentose + Nhóm phosphate + Base nitrogen).</text>
+    <text x="16" y="48" font-family="system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#334155">• <tspan font-weight="800" fill="#7e22ce">Chức năng:</tspan> Lưu trữ, bảo quản và truyền đạt thông tin di truyền.</text>
+  </g>
+</svg></div>
           <div class="macro-title">Nucleic acid</div>
           <div class="macro-desc">
             → lưu giữ, truyền đạt và thực hiện thông tin di truyền
