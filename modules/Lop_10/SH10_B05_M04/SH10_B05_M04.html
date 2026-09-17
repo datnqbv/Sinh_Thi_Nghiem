@@ -410,6 +410,116 @@ header,
 }
 
 /* FLOW DIAGRAM & STEPPERS */
+
+/* SƠ ĐỒ DÒNG THÔNG TIN DNA -> RNA -> PROTEIN (STAGE 1) */
+.central-dogma-flow {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 12px;
+  background: #ffffff;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 16px 14px;
+  margin: 14px 0;
+  box-shadow: var(--shadow-sm);
+}
+.dogma-step {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 14px 12px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.dogma-step:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.dogma-step.step-dna {
+  background: #f0f7ff;
+  border-color: #bfdbfe;
+}
+.dogma-step.step-rna {
+  background: #faf5ff;
+  border-color: #e9d5ff;
+}
+.dogma-step.step-protein {
+  background: #fff7ed;
+  border-color: #fed7aa;
+}
+.dogma-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin-bottom: 6px;
+}
+.step-dna .dogma-badge { background: #dbeafe; color: #1d4ed8; }
+.step-rna .dogma-badge { background: #f3e8ff; color: #7e22ce; }
+.step-protein .dogma-badge { background: #ffedd5; color: #c2410c; }
+
+.dogma-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.step-dna .dogma-title { color: #1e40af; }
+.step-rna .dogma-title { color: #6b21a8; }
+.step-protein .dogma-title { color: #9a3412; }
+
+.dogma-desc {
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  line-height: 1.4;
+  margin-top: auto;
+}
+
+.dogma-arrow-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  color: var(--ink-3);
+  padding: 0 4px;
+}
+.dogma-arrow-icon {
+  font-size: 1.35rem;
+  color: var(--jade-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dogma-arrow-sub {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .central-dogma-flow {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .dogma-arrow-wrap {
+    padding: 2px 0;
+  }
+  .dogma-arrow-icon i {
+    transform: rotate(90deg);
+  }
+}
+
 .flow-diagram {
   display: flex;
   align-items: center;
@@ -495,6 +605,28 @@ header,
   transition: all 0.2s ease;
 }
 .target-slot:hover { border-color: var(--jade); }
+
+    .target-slot.active-target {
+      border: 2.5px dashed #0284c7 !important;
+      background: #f0f9ff !important;
+      box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.25) !important;
+      animation: targetPulse 1.5s infinite;
+    }
+    @keyframes targetPulse {
+      0% { box-shadow: 0 0 0 0 rgba(2, 132, 199, 0.5); }
+      70% { box-shadow: 0 0 0 8px rgba(2, 132, 199, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(2, 132, 199, 0); }
+    }
+    .target-slot.filled {
+      border-style: solid !important;
+      border-color: var(--jade) !important;
+      background: var(--jade-pale) !important;
+      cursor: pointer;
+    }
+    .target-slot.filled:hover {
+      box-shadow: 0 2px 8px rgba(22, 163, 74, 0.2);
+    }
+
 .target-slot.filled {
   border-style: solid;
   border-color: var(--jade);
@@ -842,20 +974,44 @@ header,
     </div>
 
     <!-- Màn 1B: Sơ đồ khái quát DNA -> RNA -> Protein -->
-    <div class="flow-schema">
-      <div class="flow-step">
-        <div class="flow-badge">1. Lưu giữ</div>
-        <div class="flow-title">DNA</div>
+    <div class="central-dogma-flow">
+      <!-- Bước 1: DNA -->
+      <div class="dogma-step step-dna">
+        <span class="dogma-badge">1. Lưu giữ</span>
+        <div class="dogma-title">
+          <i class="ti ti-dna"></i> DNA
+        </div>
+        <div class="dogma-desc">Lưu giữ &amp; bảo quản thông tin di truyền</div>
       </div>
-      <div class="flow-arrow"><i class="ti ti-arrow-right"></i></div>
-      <div class="flow-step">
-        <div class="flow-badge">2. Truyền đạt</div>
-        <div class="flow-title">RNA</div>
+
+      <!-- Mũi tên 1: Phiên mã -->
+      <div class="dogma-arrow-wrap">
+        <span class="dogma-arrow-sub">Phiên mã</span>
+        <div class="dogma-arrow-icon"><i class="ti ti-arrow-right"></i></div>
       </div>
-      <div class="flow-arrow"><i class="ti ti-arrow-right"></i></div>
-      <div class="flow-step">
-        <div class="flow-badge">3. Thực hiện</div>
-        <div class="flow-title">Protein</div>
+
+      <!-- Bước 2: RNA -->
+      <div class="dogma-step step-rna">
+        <span class="dogma-badge">2. Truyền đạt</span>
+        <div class="dogma-title">
+          <i class="ti ti-dna-2"></i> RNA
+        </div>
+        <div class="dogma-desc">Truyền đạt thông tin từ nhân ra tế bào chất</div>
+      </div>
+
+      <!-- Mũi tên 2: Dịch mã -->
+      <div class="dogma-arrow-wrap">
+        <span class="dogma-arrow-sub">Dịch mã</span>
+        <div class="dogma-arrow-icon"><i class="ti ti-arrow-right"></i></div>
+      </div>
+
+      <!-- Bước 3: Protein -->
+      <div class="dogma-step step-protein">
+        <span class="dogma-badge">3. Thực hiện</span>
+        <div class="dogma-title">
+          <i class="ti ti-atom-2"></i> Protein
+        </div>
+        <div class="dogma-desc">Thực hiện chức năng &amp; biểu hiện tính trạng</div>
       </div>
     </div>
 
@@ -1221,14 +1377,45 @@ header,
       </div>
     </div>
 
+    <!-- Hướng dẫn chi tiết Stage 4 -->
+    <div class="guide-box">
+      <i class="ti ti-info-circle"></i>
+      <span><strong>Hướng dẫn học tập:</strong> Quan sát sự khác biệt về trật tự nucleotide giữa 2 đoạn DNA mẫu dưới đây (cùng độ dài 6 cặp base), sau đó trả lời 2 câu hỏi trắc nghiệm để tìm hiểu cơ chế DNA lưu giữ và sao chép truyền đạt thông tin di truyền.</span>
+    </div>
+
     <!-- Màn 4A: Trình tự mang thông tin -->
     <div class="panel">
-      <div style="font-weight:700;color:var(--primary);margin-bottom:6px;">
-        <i class="ti ti-dna"></i> Đối chiếu hai đoạn DNA có cùng số nucleotide nhưng khác trình tự:
+      <div style="font-weight:700;color:var(--primary);margin-bottom:8px;">
+        <i class="ti ti-dna"></i> Màn 4A – Đối chiếu hai đoạn DNA có cùng số nucleotide nhưng khác trình tự:
       </div>
-      <div style="display:flex;flex-direction:column;gap:6px;font-family:monospace;font-size:1.05rem;font-weight:700;background:white;padding:10px 14px;border-radius:6px;border:1px solid var(--border);">
-        <div style="color:#0284c7;"><span style="color:var(--ink-muted);">Đoạn 1:</span> 5′–A–T–G–C–A–G–3′</div>
-        <div style="color:#e11d48;"><span style="color:var(--ink-muted);">Đoạn 2:</span> 5′–C–G–A–T–G–A–3′</div>
+      <div style="display:flex;flex-direction:column;gap:10px;background:white;padding:14px;border-radius:8px;border:1px solid var(--border);">
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+          <span style="font-weight:700;color:var(--ink-muted);min-width:65px;">Đoạn 1:</span>
+          <span style="font-family:monospace;font-weight:700;color:var(--ink);">5′–</span>
+          <span class="seq-pill p-a">A</span>
+          <span class="seq-pill p-t">T</span>
+          <span class="seq-pill p-g">G</span>
+          <span class="seq-pill p-c">C</span>
+          <span class="seq-pill p-a">A</span>
+          <span class="seq-pill p-g">G</span>
+          <span style="font-family:monospace;font-weight:700;color:var(--ink);">–3′</span>
+          <span style="font-size:0.85rem;color:var(--ink-muted);margin-left:8px;">(Trình tự 1)</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+          <span style="font-weight:700;color:var(--ink-muted);min-width:65px;">Đoạn 2:</span>
+          <span style="font-family:monospace;font-weight:700;color:var(--ink);">5′–</span>
+          <span class="seq-pill p-c">C</span>
+          <span class="seq-pill p-g">G</span>
+          <span class="seq-pill p-a">A</span>
+          <span class="seq-pill p-t">T</span>
+          <span class="seq-pill p-g">G</span>
+          <span class="seq-pill p-a">A</span>
+          <span style="font-family:monospace;font-weight:700;color:var(--ink);">–3′</span>
+          <span style="font-size:0.85rem;color:var(--ink-muted);margin-left:8px;">(Trình tự 2)</span>
+        </div>
+      </div>
+      <div style="font-size:0.86rem;color:var(--ink-2);margin-top:8px;">
+        <i class="ti ti-arrow-badge-right" style="color:var(--primary);"></i> Nhận xét: Dù cùng có 6 nucleotide, nhưng trật tự sắp xếp khác nhau sẽ tạo nên các thông điệp di truyền hoàn toàn khác nhau.
       </div>
     </div>
 
@@ -1254,7 +1441,7 @@ header,
         <i class="ti ti-copy"></i> Màn 4B – Hai mạch bổ sung và sao chép:
       </div>
       <p style="margin:0 0 8px 0;color:var(--ink-2);font-size:0.92rem;line-height:1.55;">
-        Khi DNA được sao chép, mỗi mạch có thể làm khuôn để tạo mạch bổ sung mới theo nguyên tắc bổ sung.
+        Khi DNA được sao chép, mỗi mạch có thể làm khuôn để tạo mạch bổ sung mới theo nguyên tắc bổ sung (A liên kết với T, G liên kết với C). Nhờ đó, thông tin di truyền được nhân đôi chính xác qua các thế hệ tế bào.
       </p>
       <div class="science-lock">
         <i class="ti ti-lock"></i>
@@ -1347,67 +1534,92 @@ header,
       <div class="quiz-feedback" id="quizFb5A"></div>
     </div>
 
-    <!-- Màn 5B: Hồ sơ DNA -->
+    <!-- Màn 5B: Hồ sơ DNA - Hướng dẫn thao tác điện di cực kỳ chi tiết -->
     <div class="guide-box">
-      <i class="ti ti-microscope"></i>
-      <span>Quan sát bản gel điện di: Nhấp vào các băng của Người con để đối chiếu nguồn gốc nhận từ Mẹ và xác định Người cha phù hợp (Người A hay Người B).</span>
+      <i class="ti ti-fingerprint"></i>
+      <span><strong>Hướng dẫn phân tích hồ sơ DNA (Bản gel điện di):</strong><br>
+      • <strong>Bước 1:</strong> Chạm lần lượt vào <strong>4 vạch băng màu vàng nét đứt ở cột Người con</strong>.<br>
+      • <strong>Bước 2:</strong> Quan sát hệ thống tự động dò tìm đối chiếu: vạch nào nhận từ Mẹ (chuyển màu hồng) và vạch nào bắt buộc nhận từ Cha (chuyển màu xanh dương).<br>
+      • <strong>Bước 3:</strong> So sánh kết quả xem <strong>Người A hay Người B</strong> mang đầy đủ các vạch màu xanh bắt buộc để xác định người cha huyết thống.</span>
     </div>
 
-    <div class="panel">
-      <div style="font-weight:700;color:var(--primary);margin-bottom:4px;">
-        <i class="ti ti-clipboard-check"></i> Nhiệm vụ phân tích:
+    <div class="panel" style="background:#0f172a;color:#ffffff;border:none;">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:8px;">
+        <div style="font-weight:700;color:#38bdf8;font-size:0.95rem;">
+          <i class="ti ti-microscope"></i> BẢN GEL ĐIỆN DI HUYẾT THỐNG
+        </div>
+        <div id="bandProgressBadge" style="font-size:0.85rem;background:rgba(56,189,248,0.2);color:#38bdf8;padding:3px 10px;border-radius:12px;font-weight:700;">
+          Tiến độ: <span id="bandCountNum">0</span>/4 vạch đã kiểm tra
+        </div>
       </div>
-      <p style="margin:0;color:var(--ink-2);font-size:0.92rem;">
-        Những băng của con không có ở mẹ phải tìm thấy ở người cha.
-      </p>
-    </div>
 
-    <div class="electrophoresis-box">
-      <!-- Cột 1: Mẹ -->
-      <div class="lane-col">
-        <div class="lane-head">Mẹ</div>
-        <div class="lane-track">
-          <div class="dna-band matched-mom" style="top: 30px;"></div>
-          <div class="dna-band matched-mom" style="top: 90px;"></div>
-          <div class="dna-band matched-mom" style="top: 150px;"></div>
+      <!-- Khung điện di 4 làn chạy -->
+      <div class="electrophoresis-box" style="margin-bottom:12px;">
+        <!-- Cột 1: Mẹ -->
+        <div class="lane-col">
+          <div class="lane-head">Mẹ</div>
+          <div class="lane-track">
+            <div class="dna-band matched-mom" style="top: 30px;" title="Vạch 30px của Mẹ"></div>
+            <div class="dna-band matched-mom" style="top: 90px;" title="Vạch 90px của Mẹ"></div>
+            <div class="dna-band matched-mom" style="top: 150px;" title="Vạch 150px của Mẹ"></div>
+          </div>
+        </div>
+        <!-- Cột 2: Con (Có hiệu ứng nhấp nháy thu hút học sinh bấm vào) -->
+        <div class="lane-col">
+          <div class="lane-head" style="color:#facc15;font-weight:800;">Con (Chạm vạch)</div>
+          <div class="lane-track">
+            <div class="dna-band band-clickable" id="bandC1" style="top: 30px;" onclick="checkBand(1)" title="Chạm để kiểm tra vạch 1 (30px)"></div>
+            <div class="dna-band band-clickable" id="bandC2" style="top: 70px;" onclick="checkBand(2)" title="Chạm để kiểm tra vạch 2 (70px)"></div>
+            <div class="dna-band band-clickable" id="bandC3" style="top: 90px;" onclick="checkBand(3)" title="Chạm để kiểm tra vạch 3 (90px)"></div>
+            <div class="dna-band band-clickable" id="bandC4" style="top: 130px;" onclick="checkBand(4)" title="Chạm để kiểm tra vạch 4 (130px)"></div>
+          </div>
+        </div>
+        <!-- Cột 3: Người A -->
+        <div class="lane-col">
+          <div class="lane-head">Người A</div>
+          <div class="lane-track">
+            <div class="dna-band" style="top: 50px;"></div>
+            <div class="dna-band" style="top: 110px;"></div>
+            <div class="dna-band" style="top: 140px;"></div>
+          </div>
+        </div>
+        <!-- Cột 4: Người B -->
+        <div class="lane-col">
+          <div class="lane-head" style="color:#4ade80;font-weight:700;">Người B</div>
+          <div class="lane-track">
+            <div class="dna-band matched-dad" style="top: 70px;" title="Vạch 70px của Người B"></div>
+            <div class="dna-band" style="top: 100px;"></div>
+            <div class="dna-band matched-dad" style="top: 130px;" title="Vạch 130px của Người B"></div>
+          </div>
         </div>
       </div>
-      <!-- Cột 2: Con -->
-      <div class="lane-col">
-        <div class="lane-head" style="color:var(--primary);font-weight:700;">Con</div>
-        <div class="lane-track">
-          <div class="dna-band" id="bandC1" style="top: 30px;" onclick="checkBand(1)"></div>
-          <div class="dna-band" id="bandC2" style="top: 70px;" onclick="checkBand(2)"></div>
-          <div class="dna-band" id="bandC3" style="top: 90px;" onclick="checkBand(3)"></div>
-          <div class="dna-band" id="bandC4" style="top: 130px;" onclick="checkBand(4)"></div>
+
+      <!-- Bảng trạng thái đối chiếu chi tiết 4 vạch -->
+      <div class="band-status-tracker">
+        <div class="band-status-item" id="statusBand1">
+          <i class="ti ti-circle"></i> Vạch 1 (30px): Chưa kiểm tra
         </div>
-      </div>
-      <!-- Cột 3: Người A -->
-      <div class="lane-col">
-        <div class="lane-head">Người A</div>
-        <div class="lane-track">
-          <div class="dna-band" style="top: 50px;"></div>
-          <div class="dna-band" style="top: 110px;"></div>
-          <div class="dna-band" style="top: 140px;"></div>
+        <div class="band-status-item" id="statusBand2">
+          <i class="ti ti-circle"></i> Vạch 2 (70px): Chưa kiểm tra
         </div>
-      </div>
-      <!-- Cột 4: Người B -->
-      <div class="lane-col">
-        <div class="lane-head" style="color:var(--secondary);font-weight:700;">Người B</div>
-        <div class="lane-track">
-          <div class="dna-band matched-dad" style="top: 70px;"></div>
-          <div class="dna-band" style="top: 100px;"></div>
-          <div class="dna-band matched-dad" style="top: 130px;"></div>
+        <div class="band-status-item" id="statusBand3">
+          <i class="ti ti-circle"></i> Vạch 3 (90px): Chưa kiểm tra
+        </div>
+        <div class="band-status-item" id="statusBand4">
+          <i class="ti ti-circle"></i> Vạch 4 (130px): Chưa kiểm tra
         </div>
       </div>
     </div>
 
     <div class="panel" id="gelAnalysisBox">
-      <div style="font-weight:700;color:var(--primary);margin-bottom:4px;">Kết quả phân tích hồ sơ DNA:</div>
+      <div style="font-weight:700;color:var(--primary);margin-bottom:4px;">
+        <i class="ti ti-file-analytics"></i> Kết quả phân tích hồ sơ DNA:
+      </div>
       <div id="gelAnalysisDesc" style="font-size:0.92rem;color:var(--ink-2);line-height:1.5;">
         • Băng 30px và 90px của Con trùng khớp với Mẹ (di truyền từ Mẹ).<br>
         • Băng 70px và 130px của Con không có ở Mẹ, bắt buộc phải nhận từ Cha.<br>
-        • Đối chiếu: Người B mang đầy đủ cả hai băng 70px và 130px → Xác định Người B là cha huyết thống.
+        • Đối chiếu: Người B mang đầy đủ cả hai băng 70px và 130px → Xác định Người B là cha huyết thống.<br>
+        <em>Nguyên tắc: Những băng của con không có ở mẹ phải tìm thấy ở người cha.</em>
       </div>
     </div>
 
@@ -1577,38 +1789,62 @@ header,
       </div>
     </div>
 
-    <!-- Màn 6F: Ghép chức năng 3 loại RNA -->
+    <!-- Màn 6F: Ghép chức năng 3 loại RNA - Hướng dẫn 2 bước trực quan -->
     <div class="guide-box">
-      <i class="ti ti-checks"></i>
-      <span>Nối đúng vai trò chính tương ứng với từng loại RNA trong tế bào:</span>
+      <i class="ti ti-puzzle"></i>
+      <span><strong>Hướng dẫn 2 bước nối vai trò RNA:</strong><br>
+      • <strong>Bước 1:</strong> Chạm chọn 1 thẻ vai trò ở khay bên dưới (thẻ sẽ sáng viền xanh lá).<br>
+      • <strong>Bước 2:</strong> Chạm vào ô loại RNA tương ứng ở trên (mRNA, tRNA hoặc rRNA) để ghép cặp.<br>
+      <em>(Mỗi loại RNA có cấu trúc và chức năng đặc thù phối hợp trong tổng hợp protein).</em></span>
     </div>
 
+    <!-- 3 Ô đích RNA -->
     <div class="assembly-target-box">
       <div class="target-slot" id="slotMRNA" onclick="assignRna('mRNA')">
-        <span style="font-weight:700;color:var(--primary);">mRNA</span>
-        <span id="txtMRNA" style="font-size:0.85rem;color:var(--ink-muted);">Chạm chọn vai trò...</span>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <i class="ti ti-file-text" style="color:var(--primary);font-size:1.2rem;"></i>
+          <span style="font-weight:700;color:var(--primary);font-size:1.05rem;">mRNA</span>
+        </div>
+        <span id="txtMRNA" style="font-size:0.86rem;color:var(--ink-muted);text-align:center;margin-top:4px;">
+          [Chạm để chọn ô này hoặc ghép thẻ]
+        </span>
       </div>
+
       <div class="target-slot" id="slotTRNA" onclick="assignRna('tRNA')">
-        <span style="font-weight:700;color:var(--primary);">tRNA</span>
-        <span id="txtTRNA" style="font-size:0.85rem;color:var(--ink-muted);">Chạm chọn vai trò...</span>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <i class="ti ti-truck" style="color:var(--primary);font-size:1.2rem;"></i>
+          <span style="font-weight:700;color:var(--primary);font-size:1.05rem;">tRNA</span>
+        </div>
+        <span id="txtTRNA" style="font-size:0.86rem;color:var(--ink-muted);text-align:center;margin-top:4px;">
+          [Chạm để chọn ô này hoặc ghép thẻ]
+        </span>
       </div>
+
       <div class="target-slot" id="slotRRNA" onclick="assignRna('rRNA')">
-        <span style="font-weight:700;color:var(--primary);">rRNA</span>
-        <span id="txtRRNA" style="font-size:0.85rem;color:var(--ink-muted);">Chạm chọn vai trò...</span>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <i class="ti ti-circles" style="color:var(--primary);font-size:1.2rem;"></i>
+          <span style="font-weight:700;color:var(--primary);font-size:1.05rem;">rRNA</span>
+        </div>
+        <span id="txtRRNA" style="font-size:0.86rem;color:var(--ink-muted);text-align:center;margin-top:4px;">
+          [Chạm để chọn ô này hoặc ghép thẻ]
+        </span>
       </div>
     </div>
 
+    <!-- Khay 3 thẻ vai trò -->
     <div class="assembly-tray" id="trayRnaRoles">
-      <button class="drag-part" onclick="pickRnaRole('role1', this)">
-        mang thông tin và làm khuôn
+      <button class="drag-part" id="partRole1" onclick="pickRnaRole('role1', this)">
+        <i class="ti ti-pointer"></i> mang thông tin và làm khuôn
       </button>
-      <button class="drag-part" onclick="pickRnaRole('role2', this)">
-        mang amino acid, nhận biết codon
+      <button class="drag-part" id="partRole2" onclick="pickRnaRole('role2', this)">
+        <i class="ti ti-pointer"></i> mang amino acid, nhận biết codon
       </button>
-      <button class="drag-part" onclick="pickRnaRole('role3', this)">
-        tạo ribosome và tham gia tổng hợp protein
+      <button class="drag-part" id="partRole3" onclick="pickRnaRole('role3', this)">
+        <i class="ti ti-pointer"></i> tạo ribosome và tham gia tổng hợp protein
       </button>
     </div>
+
+    <div class="quiz-feedback" id="rnaMatchFb" style="display:none;margin:10px 0;"></div>
 
     <!-- Màn 6F: Text chốt Stage 6 -->
     <div class="science-takeaway">
@@ -2208,13 +2444,53 @@ const checkedBands = { 1: false, 2: false, 3: false, 4: false };
 
 function checkBand(num) {
   const el = document.getElementById('bandC' + num);
-  el.classList.add('active-select');
+  const statusEl = document.getElementById('statusBand' + num);
   checkedBands[num] = true;
 
-  if (checkedBands[1] && checkedBands[2] && checkedBands[3] && checkedBands[4]) {
+  // Băng 1 và 3 trùng Mẹ (hồng), Băng 2 và 4 nhận từ Cha (xanh)
+  if (num === 1) {
+    el.className = 'dna-band inspected-mom';
+    if (statusEl) {
+      statusEl.className = 'band-status-item done-mom';
+      statusEl.innerHTML = '<i class="ti ti-check"></i> Vạch 1 (30px): Trùng với Mẹ ✓';
+    }
+  } else if (num === 2) {
+    el.className = 'dna-band inspected-dad';
+    if (statusEl) {
+      statusEl.className = 'band-status-item done-dad';
+      statusEl.innerHTML = '<i class="ti ti-star"></i> Vạch 2 (70px): Nhận từ Cha (Khớp B) ★';
+    }
+  } else if (num === 3) {
+    el.className = 'dna-band inspected-mom';
+    if (statusEl) {
+      statusEl.className = 'band-status-item done-mom';
+      statusEl.innerHTML = '<i class="ti ti-check"></i> Vạch 3 (90px): Trùng với Mẹ ✓';
+    }
+  } else if (num === 4) {
+    el.className = 'dna-band inspected-dad';
+    if (statusEl) {
+      statusEl.className = 'band-status-item done-dad';
+      statusEl.innerHTML = '<i class="ti ti-star"></i> Vạch 4 (130px): Nhận từ Cha (Khớp B) ★';
+    }
+  }
+
+  const count = Object.values(checkedBands).filter(Boolean).length;
+  const countNumEl = document.getElementById('bandCountNum');
+  if (countNumEl) countNumEl.textContent = count;
+
+  if (count === 4) {
     window.lmsState.st05.bandsChecked = true;
+    const desc = document.getElementById('gelAnalysisDesc');
+    if (desc) {
+      desc.innerHTML = '<strong style="color:#16a34a;">✓ ĐÃ HOÀN THÀNH ĐỐI CHIẾU CẢ 4 BĂNG HUYẾT THỐNG:</strong><br>' +
+        '• Băng 30px và 90px của Con (màu hồng) trùng khớp với Mẹ (di truyền từ Mẹ).<br>' +
+        '• Băng 70px và 130px của Con (màu xanh) không có ở Mẹ, bắt buộc phải nhận từ Cha.<br>' +
+        '• Đối chiếu: Người B mang đầy đủ cả hai băng 70px và 130px → Xác định Người B là cha huyết thống.<br>' +
+        '<em>Nguyên tắc: Những băng của con không có ở mẹ phải tìm thấy ở người cha.</em>';
+    }
   }
   checkStage5Progress();
+  reportHeight();
 }
 
 function checkStage5Progress() {
@@ -2267,38 +2543,186 @@ function checkQuiz6D(btn, isCorrect) {
   reportHeight();
 }
 
+const RNA_ROLE_DATA = {
+  role1: { text: 'mang thông tin và làm khuôn', type: 'mRNA', btnId: 'partRole1' },
+  role2: { text: 'mang amino acid, nhận biết codon', type: 'tRNA', btnId: 'partRole2' },
+  role3: { text: 'tạo ribosome và tham gia tổng hợp protein', type: 'rRNA', btnId: 'partRole3' }
+};
+
 let activeRnaRole = null;
-let activeRoleText = '';
+let activeTargetSlot = null;
+
+function getRnaSlotEl(type) {
+  return document.getElementById('slot' + type) ||
+         document.getElementById('slot' + type.toUpperCase()) ||
+         document.getElementById('slot' + type.toLowerCase());
+}
+
+function getRnaTxtEl(type) {
+  return document.getElementById('txt' + type) ||
+         document.getElementById('txt' + type.toUpperCase()) ||
+         document.getElementById('txt' + type.toLowerCase());
+}
 
 function pickRnaRole(roleId, btn) {
+  const fb = document.getElementById('rnaMatchFb');
+  const roleInfo = RNA_ROLE_DATA[roleId];
+  if (!roleInfo) return;
+
+  // Nếu người dùng đã chọn ô đích trước (Workflow 2: Chọn ô đích trước -> chọn thẻ khay)
+  if (activeTargetSlot) {
+    matchRna(activeTargetSlot, roleId);
+    return;
+  }
+
+  // Workflow 1: Chọn thẻ ở khay
+  if (activeRnaRole === roleId) {
+    // Toggle bỏ chọn nếu click lại chính nó
+    activeRnaRole = null;
+    btn.classList.remove('selected');
+    if (fb) fb.style.display = 'none';
+    return;
+  }
+
   document.querySelectorAll('#trayRnaRoles .drag-part').forEach(b => b.classList.remove('selected'));
   activeRnaRole = roleId;
-  activeRoleText = btn.textContent.trim();
   btn.classList.add('selected');
+
+  if (fb) {
+    fb.style.display = 'block';
+    fb.className = 'quiz-feedback';
+    fb.style.color = 'var(--primary)';
+    fb.innerHTML = '<i class="ti ti-hand-point-up"></i> <strong>Đang chọn:</strong> "' + roleInfo.text + '" → Hãy chạm vào ô <strong>' + roleInfo.type + '</strong> (hoặc mRNA, tRNA, rRNA) ở trên để ghép!';
+  }
+  reportHeight();
 }
 
 function assignRna(rnaType) {
-  if (!activeRnaRole) return;
-  const isCorrect = (rnaType === 'mRNA' && activeRnaRole === 'role1') ||
-                    (rnaType === 'tRNA' && activeRnaRole === 'role2') ||
-                    (rnaType === 'rRNA' && activeRnaRole === 'role3');
+  const slotEl = getRnaSlotEl(rnaType);
+  const txtEl = getRnaTxtEl(rnaType);
+  const fb = document.getElementById('rnaMatchFb');
+
+  // 1. TÍNH NĂNG HOÀN TÁC (UNDO): Nếu ô này đã ghép xong -> chạm vào để tháo thẻ trả về khay
+  if (window.lmsState.st06.rolesMatched[rnaType]) {
+    const assignedRoleId = window.lmsState.st06.rolesMatched[rnaType];
+    const roleInfo = RNA_ROLE_DATA[assignedRoleId];
+    if (roleInfo) {
+      const partBtn = document.getElementById(roleInfo.btnId);
+      if (partBtn) {
+        partBtn.style.display = 'inline-flex';
+        partBtn.classList.remove('selected');
+      }
+    }
+    window.lmsState.st06.rolesMatched[rnaType] = null;
+    if (slotEl) {
+      slotEl.classList.remove('filled');
+      slotEl.style.borderColor = '';
+    }
+    if (txtEl) {
+      txtEl.innerHTML = '[Chạm để chọn ô này hoặc ghép thẻ]';
+    }
+    activeRnaRole = null;
+    activeTargetSlot = null;
+    document.querySelectorAll('.target-slot').forEach(s => s.classList.remove('active-target'));
+    if (fb) {
+      fb.style.display = 'block';
+      fb.className = 'quiz-feedback';
+      fb.style.color = 'var(--ink-muted)';
+      fb.innerHTML = '<i class="ti ti-arrow-back-up"></i> Đã hoàn tác vai trò của ' + rnaType + ' về khay. Bạn có thể ghép lại!';
+    }
+    checkStage6Progress();
+    reportHeight();
+    return;
+  }
+
+  // 2. WORKFLOW 2: Người dùng chạm ô đích khi CHƯA chọn thẻ ở khay
+  if (!activeRnaRole) {
+    document.querySelectorAll('.target-slot').forEach(s => s.classList.remove('active-target'));
+    if (activeTargetSlot === rnaType) {
+      activeTargetSlot = null;
+      if (fb) fb.style.display = 'none';
+      return;
+    }
+    activeTargetSlot = rnaType;
+    if (slotEl) slotEl.classList.add('active-target');
+
+    if (fb) {
+      fb.style.display = 'block';
+      fb.className = 'quiz-feedback';
+      fb.style.color = 'var(--primary)';
+      fb.innerHTML = '<i class="ti ti-target"></i> <strong>Đang chọn ô ' + rnaType + ':</strong> Hãy chạm vào thẻ vai trò phù hợp ở khay bên dưới để ghép vào!';
+    }
+    reportHeight();
+    return;
+  }
+
+  // 3. WORKFLOW 1: Đã có thẻ chọn ở khay -> Tiến hành ghép vào ô đích
+  matchRna(rnaType, activeRnaRole);
+}
+
+function matchRna(rnaType, roleId) {
+  const roleInfo = RNA_ROLE_DATA[roleId];
+  const slotEl = getRnaSlotEl(rnaType);
+  const txtEl = getRnaTxtEl(rnaType);
+  const fb = document.getElementById('rnaMatchFb');
+
+  // Xóa viền active-target
+  document.querySelectorAll('.target-slot').forEach(s => s.classList.remove('active-target'));
+
+  const isCorrect = (roleInfo.type === rnaType);
 
   if (isCorrect) {
-    document.getElementById('txt' + rnaType).innerHTML = `<span style="color:var(--jade-text);font-weight:700">✓ ${activeRoleText}</span>`;
-    document.getElementById('slot' + rnaType).classList.add('filled');
-    window.lmsState.st06.rolesMatched[rnaType] = true;
+    if (txtEl) {
+      txtEl.innerHTML = '<span style="color:var(--jade-text);font-weight:700">✓ ' + roleInfo.text + '</span><br><span style="font-size:0.75rem;color:var(--ink-muted);">(Chạm để tháo)</span>';
+    }
+    if (slotEl) {
+      slotEl.classList.add('filled');
+      slotEl.style.borderColor = 'var(--jade)';
+    }
+    window.lmsState.st06.rolesMatched[rnaType] = roleId;
+
+    // Ẩn thẻ vai trò ở khay
+    const partBtn = document.getElementById(roleInfo.btnId);
+    if (partBtn) partBtn.style.display = 'none';
+
+    // Bỏ chọn
     activeRnaRole = null;
+    activeTargetSlot = null;
+    document.querySelectorAll('#trayRnaRoles .drag-part').forEach(b => b.classList.remove('selected'));
+
+    if (fb) {
+      const remaining = ['mRNA', 'tRNA', 'rRNA'].filter(t => !window.lmsState.st06.rolesMatched[t]).length;
+      if (remaining === 0) {
+        fb.style.display = 'block';
+        fb.className = 'quiz-feedback pass';
+        fb.innerHTML = '<i class="ti ti-checks"></i> <strong>Tuyệt vời!</strong> Bạn đã ghép chính xác vai trò của cả 3 loại RNA trong tế bào. (Có thể chạm vào ô đã ghép để tháo ra làm lại nếu muốn).';
+      } else {
+        fb.style.display = 'block';
+        fb.className = 'quiz-feedback pass';
+        fb.innerHTML = '<i class="ti ti-check"></i> Chính xác! <strong>' + rnaType + '</strong>: ' + roleInfo.text + '. Hãy tiếp tục ghép ' + remaining + ' ô còn lại!';
+      }
+    }
+  } else {
+    if (fb) {
+      fb.style.display = 'block';
+      fb.className = 'quiz-feedback fail';
+      fb.innerHTML = '<i class="ti ti-x"></i> <strong>Chưa chính xác:</strong> Vai trò "' + roleInfo.text + '" không phải của <strong>' + rnaType + '</strong>. Hãy xem lại kiến thức ở Màn 6B và chọn lại!';
+    }
+    activeTargetSlot = null;
   }
+
   checkStage6Progress();
   reportHeight();
 }
 
 function checkStage6Progress() {
   const { mRNA, tRNA, rRNA } = window.lmsState.st06.rolesMatched;
-  if (window.lmsState.st06.quiz6A && window.lmsState.st06.quiz6D && mRNA && tRNA && rRNA) {
-    document.getElementById('btnNext6').disabled = false;
-    window.lmsState.stagesCompleted.st06 = true;
-  }
+  const isDone = Boolean(window.lmsState.st06.quiz6A) &&
+                 Boolean(window.lmsState.st06.quiz6D) &&
+                 Boolean(mRNA) && Boolean(tRNA) && Boolean(rRNA);
+  const nextBtn = document.getElementById('btnNext6');
+  if (nextBtn) nextBtn.disabled = !isDone;
+  window.lmsState.stagesCompleted.st06 = isDone;
 }
 
 /* =========================================================================
