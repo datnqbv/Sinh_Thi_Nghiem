@@ -1,0 +1,2405 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SH10_B05_M04 · Nucleic acid – DNA và RNA</title>
+<script type="application/json" id="athena-context">
+{
+  "title": "Nucleic acid – DNA và RNA",
+  "subject": "Sinh học",
+  "grade": "10",
+  "track": "SH10_B05_M04",
+  "objectives": [
+    "Trình bày được thành phần cấu tạo và vai trò của nucleic acid (DNA và RNA)",
+    "Phân biệt được DNA và RNA theo một số tiêu chí cơ bản: loại đường, base nitrogen, số mạch và vai trò",
+    "Phân tích được mối quan hệ giữa cấu trúc và vai trò của DNA, RNA (nguyên tắc bổ sung, lưu giữ và truyền đạt thông tin)",
+    "Giải thích được vai trò của hồ sơ DNA trong xác định huyết thống và truy tìm nguồn gốc mẫu sinh học",
+    "Kết nối được thông tin di truyền trong DNA với trình tự amino acid của protein và tổng kết toàn bộ 4 đại phân tử Bài 5"
+  ],
+  "structure": [
+    {"id": "st01", "title": "Thông tin tạo protein được lưu ở đâu?"},
+    {"id": "st02", "title": "Một nucleotide và một mạch DNA"},
+    {"id": "st03", "title": "Hai mạch đối song song tạo DNA xoắn kép"},
+    {"id": "st04", "title": "Cấu trúc DNA giúp lưu giữ và truyền thông tin"},
+    {"id": "st05", "title": "Hình thái DNA và dấu vân tay DNA"},
+    {"id": "st06", "title": "RNA – Cấu trúc và ba loại chính"},
+    {"id": "st07", "title": "Tổng kết nucleic acid và toàn Bài 5"}
+  ],
+  "athenaGuidance": "Module lý thuyết tương tác độc lập V10 gồm 7 stage chuẩn: 1) ST01: Cầu nối từ trình tự amino acid M03 sang DNA/RNA, sơ đồ dòng thông tin DNA->RNA->protein và khám phá vị trí DNA/RNA trên ảnh tế bào cắt bổ. 2) ST02: Lắp ghép một nucleotide DNA (phosphate + deoxyribose + base), nối liên kết phosphodiester và nhận biết chiều 5'->3'. 3) ST03: Hai mạch đối song song, ghép base bổ sung A-T, G-C, liên kết hydrogen và mô hình B-DNA xoắn kép 3D toán học. 4) ST04: Trình tự mang thông tin, nguyên tắc bổ sung trong tự sao chép và dòng biểu hiện gene. 5) ST05: 3 hình thái DNA thẳng/vòng/plasmid, bài tập điện di đối chiếu hồ sơ DNA huyết thống đa locus. 6) ST06: Nucleotide RNA, đối chiếu bảng 3 tiêu chí DNA vs RNA, khám phá mRNA/tRNA/rRNA và ghép chức năng. 7) ST07: Trả lời câu hỏi trung tâm, tổng kết 4 nhóm phân tử sinh học Bài 5 và chúc mừng hoàn thành."
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css">
+<style>
+:root {
+  --cream: #FAF7F0;
+  --cream-2: #F0EADD;
+  --cream-3: #E7DECC;
+  --paper-line: #E5DECF;
+  --paper-line-2: #D6CCB6;
+  --ink: #1A1A1A;
+  --ink-2: #514C44;
+  --ink-3: #7C756A;
+  --ink-faint: #ABA396;
+  --jade: #3CA57A;
+  --jade-deep: #2D8B6F;
+  --jade-dark: #14432F;
+  --jade-text: #1B5E48;
+  --jade-soft: #A9D0BE;
+  --jade-pale: #DCEAE1;
+  --sage: #A8C9B8;
+  --sage-deep: #7CA792;
+  --sage-text: #46685A;
+  --sage-pale: #E1ECE4;
+  --accent: #E8A24A;
+  --accent-deep: #CE8A33;
+  --accent-text: #8A551A;
+  --accent-pale: #F7E7CD;
+  --correct: #2D8B6F;
+  --correct-bg: #DCEAE1;
+  --wrong: #C15F3C;
+  --wrong-bg: #F3E2D6;
+  --warning: #C58A2E;
+  --warning-bg: #F5E7CB;
+  --info: #4E7F92;
+  --info-bg: #DCE7EB;
+  --blue: #2563EB;
+  --blue-pale: #EFF6FF;
+  --blue-text: #1D4ED8;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --radius-sm: 8px;
+  --shadow: 0 4px 12px rgba(45, 139, 111, 0.10);
+  --shadow-sm: 0 2px 6px rgba(26, 26, 26, 0.05);
+  --lesson-width: 1060px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.65;
+  padding: 20px clamp(12px, 2.5vw, 28px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+button { font: inherit; cursor: pointer; border: none; }
+button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* ẨN TUYỆT ĐỐI HEADER VÀ THANH TAB BƯỚC HỌC CỒNG KỀNH THEO CHUẨN V10 */
+header,
+.progress-nav-container,
+.progress-nav,
+.stepper-nav,
+.stepper-bar,
+.step-nav-bar {
+  display: none !important;
+}
+
+/* QUY TẮC ẨN CHUẨN ĐỘ ƯU TIÊN CAO */
+.hidden { display: none !important; }
+.congrats-overlay.hidden,
+.modal-backdrop.hidden,
+#completionModal.hidden {
+  display: none !important;
+}
+
+.app {
+  width: 100%;
+  max-width: var(--lesson-width);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* STAGE CONTAINER */
+.stage {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--paper-line);
+  box-shadow: var(--shadow-sm);
+  padding: clamp(18px, 3vw, 28px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* STAGE HEADER TINH GỌN */
+.stage-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1.5px solid var(--cream-2);
+  padding-bottom: 12px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.stage-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.stage-badge {
+  background: var(--jade-pale);
+  color: var(--jade-text);
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.stage-title {
+  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+  font-weight: 800;
+  color: var(--ink);
+}
+
+/* LỜI DẪN THUẦN KHOA HỌC (CLEAN LEAD TEXT) */
+.lead-text {
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  line-height: 1.68;
+}
+
+/* KHUNG ĐƠN ĐIỂM HƯỚNG DẪN (SINGLE POINT OF INSTRUCTION) */
+.guide-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--cream-2);
+  border: 1px solid var(--paper-line-2);
+  border-left: 4px solid var(--jade);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.guide-box i {
+  color: var(--jade-deep);
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+/* WORKSPACE CARDS & PANELS */
+.panel {
+  background: var(--cream);
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* HÀNG NÚT ĐIỀU HƯỚNG CUỐI STAGE */
+.stage-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1.5px solid var(--cream-2);
+  padding-top: 16px;
+  margin-top: 8px;
+  gap: 12px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--jade-deep);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(45, 139, 111, 0.25);
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--jade-dark);
+  transform: translateY(-1px);
+}
+.btn-primary:disabled {
+  background: var(--cream-3);
+  color: var(--ink-faint);
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.7;
+}
+.btn-secondary {
+  background: #ffffff;
+  color: var(--ink-2);
+  border: 1.5px solid var(--paper-line-2);
+}
+.btn-secondary:hover:not(:disabled) {
+  background: var(--cream-2);
+  color: var(--ink);
+}
+
+/* CÂU HỎI TRẮC NGHIỆM */
+.quiz-card {
+  background: #ffffff;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.quiz-question {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.quiz-options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+@media (min-width: 640px) {
+  .quiz-options.grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.quiz-opt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--cream);
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  text-align: left;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink);
+  transition: all 0.15s ease;
+}
+.quiz-opt:hover:not(.disabled) {
+  border-color: var(--jade);
+  background: var(--sage-pale);
+}
+.quiz-opt.selected-correct {
+  background: var(--correct-bg);
+  border-color: var(--correct);
+  color: var(--jade-dark);
+  font-weight: 700;
+}
+.quiz-opt.selected-wrong {
+  background: var(--wrong-bg);
+  border-color: var(--wrong);
+  color: #991b1b;
+}
+.quiz-feedback {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  font-weight: 600;
+  display: none;
+}
+.quiz-feedback.show-correct {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--correct-bg);
+  color: var(--jade-dark);
+  border: 1px solid var(--correct);
+}
+.quiz-feedback.show-wrong {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--wrong-bg);
+  color: #991b1b;
+  border: 1px solid var(--wrong);
+}
+
+/* HOTSPOT TƯƠNG TÁC TẾ BÀO (STAGE 1) */
+.cell-viewer {
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1.5px solid var(--paper-line);
+  background: #eef2f6;
+  box-shadow: var(--shadow-sm);
+}
+.cell-viewer img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.hotspot-btn {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--jade-deep);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 0 4px rgba(60, 165, 122, 0.35);
+  transform: translate(-50%, -50%);
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+.hotspot-btn:hover {
+  transform: translate(-50%, -50%) scale(1.15);
+  background: var(--jade-dark);
+}
+.hotspot-btn.active {
+  background: var(--accent-deep);
+  box-shadow: 0 0 0 6px rgba(232, 162, 74, 0.45);
+}
+.hotspot-pulse {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  animation: pulseAnim 1.8s infinite;
+}
+@keyframes pulseAnim {
+  0% { transform: scale(1); opacity: 0.9; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+.hotspot-info-box {
+  background: #ffffff;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+.hotspot-info-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--jade-text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hotspot-info-desc {
+  font-size: 0.95rem;
+  color: var(--ink-2);
+}
+
+/* FLOW DIAGRAM & STEPPERS */
+.flow-diagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 16px;
+  background: #ffffff;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--paper-line);
+}
+.flow-node {
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  font-weight: 800;
+  background: var(--cream);
+  border: 1.5px solid var(--paper-line-2);
+  color: var(--ink);
+  transition: all 0.2s ease;
+}
+.flow-node.highlight-dna { background: #e0f2fe; border-color: #0284c7; color: #0369a1; }
+.flow-node.highlight-rna { background: #fae8ff; border-color: #c084fc; color: #7e22ce; }
+.flow-node.highlight-prot { background: #fce7f3; border-color: #f472b6; color: #be185d; }
+.flow-arrow {
+  font-size: 1.25rem;
+  color: var(--ink-3);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* LẮP GHÉP NUCLEOTIDE (STAGE 2) */
+.assembly-tray {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 14px;
+  background: var(--cream-2);
+  border-radius: var(--radius);
+}
+.drag-part {
+  padding: 10px 16px;
+  background: #ffffff;
+  border: 2px dashed var(--paper-line-2);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+}
+.drag-part:hover { border-color: var(--jade); background: var(--sage-pale); }
+.drag-part.selected {
+  border-color: var(--accent);
+  background: var(--accent-pale);
+  box-shadow: 0 0 10px rgba(232, 162, 74, 0.4);
+}
+.assembly-target-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  padding: 16px;
+  background: #ffffff;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--paper-line);
+}
+.target-slot {
+  min-height: 80px;
+  border: 2px dashed var(--paper-line-2);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  text-align: center;
+  background: var(--cream);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.target-slot:hover { border-color: var(--jade); }
+.target-slot.filled {
+  border-style: solid;
+  border-color: var(--jade);
+  background: var(--jade-pale);
+}
+
+/* GHÉP BASE BỔ SUNG (STAGE 3) */
+.base-match-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+.dna-ladder {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 14px;
+  background: #ffffff;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--paper-line);
+  max-width: 100%;
+}
+.base-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 65px;
+}
+.base-pill {
+  width: 54px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  user-select: none;
+}
+.base-a { background: #15803d; }
+.base-t { background: #b91c1c; }
+.base-g { background: #d97706; }
+.base-c { background: #7e22ce; }
+.base-u { background: #e11d48; }
+.h-bond-bridge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 36px;
+  color: var(--jade);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.h-dots {
+  width: 2px;
+  background: var(--jade);
+  height: 28px;
+  border-left: 2px dashed var(--jade);
+}
+.slot-drop {
+  width: 54px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  border: 2px dashed var(--paper-line-2);
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.15rem;
+  font-weight: 800;
+  transition: all 0.15s ease;
+}
+.slot-drop:hover { border-color: var(--jade); }
+.slot-drop.filled { border-style: solid; color: #ffffff; }
+
+/* B-DNA CANVAS 3D CONTAINER */
+.b-dna-canvas-box {
+  width: 100%;
+  height: 260px;
+  background: #0f172a;
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.b-dna-canvas-box canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.b-dna-overlay-badge {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #94a3b8;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+/* ĐIỆN DI DNA HUYẾT THỐNG (STAGE 5) */
+.electrophoresis-box {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 16px;
+  background: #0f172a;
+  border-radius: var(--radius);
+  color: #ffffff;
+}
+.lane-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  padding: 12px 6px;
+}
+.lane-head {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+.lane-track {
+  width: 100%;
+  height: 220px;
+  position: relative;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+.dna-band {
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  height: 8px;
+  border-radius: 2px;
+  background: #38bdf8;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.dna-band:hover { transform: scaleY(1.3); }
+.dna-band.matched-mom {
+  background: #94a3b8;
+  box-shadow: 0 0 6px rgba(148, 163, 184, 0.4);
+}
+.dna-band.matched-dad {
+  background: #4ade80;
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.8);
+}
+.dna-band.active-select {
+  box-shadow: 0 0 0 2px #facc15;
+}
+
+/* ASSET IMAGE EMBED CONTAINER */
+.asset-img-wrap {
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1.5px solid var(--paper-line);
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  padding: 12px;
+}
+.asset-img-wrap img {
+  max-width: 100%;
+  height: auto;
+  max-height: 460px;
+  border-radius: var(--radius-sm);
+}
+
+/* 4 THẺ TỔNG KẾT BÀI 5 (STAGE 7) */
+.macro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+.macro-card {
+  background: #ffffff;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+.macro-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  border-color: var(--jade);
+}
+.macro-img {
+  width: 100%;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+}
+.macro-img img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.macro-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+.macro-desc {
+  font-size: 0.86rem;
+  color: var(--ink-2);
+}
+
+/* CHỐT MODULE */
+.final-takeaway {
+  background: linear-gradient(135deg, var(--jade-pale), #f0fdf4);
+  border: 1.5px solid var(--jade-soft);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--jade-dark);
+  line-height: 1.7;
+}
+
+/* MODAL CHÚC MỪNG HOÀN THÀNH V10 + CANVAS PHÁO HOA */
+.congrats-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  animation: fadeIn 0.25s ease-out;
+}
+.congrats-modal {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--paper-line);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 520px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.congrats-icon-wrap {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: var(--accent-pale);
+  color: var(--accent-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+  box-shadow: 0 0 0 8px rgba(232, 162, 74, 0.2);
+}
+.congrats-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+.congrats-text {
+  font-size: 1rem;
+  color: var(--ink-2);
+  line-height: 1.65;
+}
+.congrats-actions {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  margin-top: 8px;
+}
+.congrats-actions .btn {
+  flex: 1;
+  justify-content: center;
+}
+#confettiCanvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (max-width: 640px) {
+  body { padding: 12px; }
+  .stage { padding: 16px; gap: 16px; }
+  .stage-actions { flex-direction: column-reverse; }
+  .stage-actions .btn { width: 100%; justify-content: center; }
+  .congrats-actions { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<main class="app" id="app">
+
+  <!-- =========================================================================
+       STAGE 1: THÔNG TIN TẠO PROTEIN ĐƯỢC LƯU Ở ĐÂU? (SH10_B05_M04_S01)
+  ========================================================================= -->
+  <section class="stage" id="st01">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge">Stage 1</span>
+        <h2 class="stage-title">Thông tin tạo protein được lưu ở đâu?</h2>
+      </div>
+    </div>
+
+    <!-- Màn 1A: Kết nối từ M03 -->
+    <div class="panel">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:6px;">
+        <i class="ti ti-link"></i> Kết nối kiến thức từ Module M03 (Protein):
+      </div>
+      <p style="margin:0 0 8px 0;color:var(--ink-2);font-size:0.95rem;line-height:1.5;">
+        Trình tự amino acid quyết định cấu trúc và chức năng của protein. Nhưng tế bào dựa vào thông tin nào để sắp xếp các amino acid theo đúng trình tự?
+      </p>
+    </div>
+
+    <!-- Màn 1B: Sơ đồ khái quát DNA -> RNA -> Protein -->
+    <div class="flow-schema">
+      <div class="flow-step">
+        <div class="flow-badge">1. Lưu giữ</div>
+        <div class="flow-title">DNA</div>
+      </div>
+      <div class="flow-arrow"><i class="ti ti-arrow-right"></i></div>
+      <div class="flow-step">
+        <div class="flow-badge">2. Truyền đạt</div>
+        <div class="flow-title">RNA</div>
+      </div>
+      <div class="flow-arrow"><i class="ti ti-arrow-right"></i></div>
+      <div class="flow-step">
+        <div class="flow-badge">3. Thực hiện</div>
+        <div class="flow-title">Protein</div>
+      </div>
+    </div>
+
+    <div class="science-note">
+      <i class="ti ti-info-circle"></i>
+      <div>
+        <strong>Sơ đồ khái quát:</strong> DNA lưu giữ thông tin di truyền. RNA tham gia truyền đạt và thực hiện thông tin để tổng hợp protein.
+      </div>
+    </div>
+
+    <!-- Màn 1C: Vị trí DNA và RNA trong tế bào (Asset A01) -->
+    <div class="guide-box">
+      <i class="ti ti-microscope"></i>
+      <span>Chạm vào các điểm số (1, 2, 3) trên sơ đồ tế bào cắt bổ để khám phá vị trí phân bố của DNA và RNA.</span>
+    </div>
+
+    <!-- Vùng tương tác tế bào (Asset A01) -->
+    <div class="cell-viewer" style="margin-bottom: 12px;">
+      <img src="images/SH10-B05-M04-A01.png" alt="Cấu trúc tế bào nhân thực cắt bổ">
+      
+      <!-- Hotspot 1: Nhân tế bào (Nucleus) -->
+      <button class="hotspot-btn" id="hs1" style="top: 53%; left: 40%;" onclick="showHotspot(1, this)" title="Nhân tế bào">
+        1<span class="hotspot-pulse"></span>
+      </button>
+      <!-- Hotspot 2: Ti thể (Mitochondria) -->
+      <button class="hotspot-btn" id="hs2" style="top: 30%; left: 58.5%;" onclick="showHotspot(2, this)" title="Ti thể">
+        2<span class="hotspot-pulse"></span>
+      </button>
+      <!-- Hotspot 3: Tế bào chất & Ribosome -->
+      <button class="hotspot-btn" id="hs3" style="top: 45%; left: 70%;" onclick="showHotspot(3, this)" title="Tế bào chất & Ribosome">
+        3<span class="hotspot-pulse"></span>
+      </button>
+    </div>
+
+    <!-- Khung thông tin chú thích vị trí tế bào -->
+    <div class="hotspot-info-box" id="cellInfoBox" style="margin-bottom: 14px;">
+      <div class="hotspot-info-title">
+        <i class="ti ti-map-pin"></i>
+        <span>Chọn một điểm trên hình để xem thông tin chi tiết</span>
+      </div>
+      <div class="hotspot-info-desc">
+        Tế bào nhân thực có các vùng phân bố đặc thù của DNA và RNA giữa nhân và tế bào chất.
+      </div>
+    </div>
+
+    <div class="science-lock">
+      <i class="ti ti-lock"></i>
+      <div>
+        <strong>Khóa khoa học:</strong> Nucleic acid gồm DNA và RNA. Tên “acid nhân” có nguồn gốc lịch sử, nhưng nucleic acid không chỉ tồn tại trong nhân tế bào mà còn có trong ti thể, lục lạp (DNA vòng) và tế bào chất (RNA).
+      </div>
+    </div>
+
+    <!-- Câu hỏi Màn 1B -->
+    <div class="quiz-card">
+      <div class="quiz-question">Câu hỏi: Nếu trình tự nucleotide trong DNA thay đổi, điều gì có thể thay đổi?</div>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkQuiz1(this, true)">A. Trình tự amino acid của protein</button>
+        <button class="quiz-opt" onclick="checkQuiz1(this, false)">B. Mọi lipid trong tế bào biến mất</button>
+        <button class="quiz-opt" onclick="checkQuiz1(this, false)">C. Số lượng nước trong tế bào luôn tăng</button>
+        <button class="quiz-opt" onclick="checkQuiz1(this, false)">D. Không có gì thay đổi</button>
+      </div>
+      <div class="quiz-feedback" id="quizFb1"></div>
+    </div>
+
+    <!-- Màn 1C: Câu hỏi trung tâm & Text chuyển -->
+    <div class="science-takeaway">
+      <i class="ti ti-help-circle"></i>
+      <div>
+        <strong>Câu hỏi trung tâm của bài học:</strong> DNA và RNA được cấu tạo như thế nào để lưu giữ, truyền đạt và thực hiện thông tin di truyền?<br>
+        <em>Trước hết, hãy bắt đầu từ đơn phân cấu tạo nên nucleic acid: nucleotide.</em>
+      </div>
+    </div>
+
+    <div class="stage-actions">
+      <div></div>
+      <button class="btn btn-primary" id="btnNext1" disabled onclick="goStage('st02')">
+        TIẾP TỤC <i class="ti ti-arrow-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <section class="stage hidden" id="st02">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge">Stage 2</span>
+        <h2 class="stage-title">Một nucleotide và một mạch DNA</h2>
+      </div>
+    </div>
+
+    <!-- Màn 2A: Ghép một nucleotide DNA (Asset A03) -->
+    <div class="guide-box">
+      <i class="ti ti-puzzle"></i>
+      <span>Chạm chọn từng mảnh thành phần ở khay bên dưới để ghép hoàn chỉnh một nucleotide DNA:</span>
+    </div>
+
+    <div class="assembly-area">
+      <div class="assembly-target-box" id="nucTargetBox">
+        <div class="target-slot" id="slotP" onclick="dropNucPart('P')">
+          <span style="font-size:0.8rem;color:var(--ink-muted);">Vị trí C5'</span>
+          <span style="font-weight:700;">[Nhóm Phosphate]</span>
+        </div>
+        <div class="target-slot" id="slotSugar" onclick="dropNucPart('Sugar')">
+          <span style="font-size:0.8rem;color:var(--ink-muted);">Trung tâm</span>
+          <span style="font-weight:700;">[Đường Deoxyribose]</span>
+        </div>
+        <div class="target-slot" id="slotBase" onclick="dropNucPart('Base')">
+          <span style="font-size:0.8rem;color:var(--ink-muted);">Vị trí C1'</span>
+          <span style="font-weight:700;">[Base Nitrogen]</span>
+        </div>
+      </div>
+
+      <div class="assembly-tray" id="trayNuc">
+        <button class="drag-part" id="partSugar" onclick="selectNucPart('Sugar', this)">
+          <i class="ti ti-polygon"></i> Đường Deoxyribose (C5H10O4)
+        </button>
+        <button class="drag-part" id="partP" onclick="selectNucPart('P', this)">
+          <i class="ti ti-circle-dot"></i> Nhóm Phosphate (PO4)
+        </button>
+        <button class="drag-part" id="partBase" onclick="selectNucPart('Base', this)">
+          <i class="ti ti-tag"></i> Base nitrogen (A, T, G, C)
+        </button>
+      </div>
+    </div>
+
+    <div class="science-note" id="nucCompleteNote" style="display:none;">
+      <i class="ti ti-check"></i>
+      <div>
+        <strong>Đã hoàn thành ghép nucleotide:</strong> Một nucleotide DNA gồm: nhóm phosphate + đường deoxyribose + một base nitrogen.
+      </div>
+    </div>
+
+    <div class="asset-img-wrap" style="margin-top:12px;">
+      <img src="images/SH10-B05-M04-A03.svg" alt="Cấu trúc một nucleotide DNA">
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-question">1. Thành phần nào mang tính đặc trưng A, T, G hoặc C?</div>
+      <div class="quiz-options grid-3">
+        <button class="quiz-opt" onclick="checkQuiz2A(this, false)">A. Nhóm phosphate</button>
+        <button class="quiz-opt" onclick="checkQuiz2A(this, false)">B. Đường deoxyribose</button>
+        <button class="quiz-opt" onclick="checkQuiz2A(this, true)">C. Base nitrogen</button>
+      </div>
+      <div class="quiz-feedback" id="quizFb2A"></div>
+    </div>
+
+    <!-- Màn 2B: Nối thành mạch polynucleotide -->
+    <div class="panel">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:6px;">
+        <i class="ti ti-vector-triangle"></i> Nối thành mạch polynucleotide:
+      </div>
+      <p style="margin:0 0 8px 0;color:var(--ink-2);font-size:0.95rem;line-height:1.55;">
+        Các nucleotide nối nhau ở khung đường – phosphate. Liên kết giữa các nucleotide trong cùng một mạch là <strong>liên kết phosphodiester</strong> (được hình thành giữa nhóm phosphate của nucleotide sau với nhóm -OH ở vị trí carbon 3' của đường deoxyribose thuộc nucleotide trước).
+      </p>
+    </div>
+
+    <!-- Màn 2C: Chiều của mạch -->
+    <div class="panel">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:6px;">
+        <i class="ti ti-arrow-right"></i> Chiều của mạch polynucleotide:
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;margin:8px 0;font-family:monospace;font-size:1.1rem;font-weight:700;background:white;padding:8px 12px;border-radius:6px;border:1px solid var(--border);">
+        <span style="color:#0284c7;">5′ đầu phosphate tự do</span>
+        <span style="color:var(--ink-muted);">→</span>
+        <span style="color:#16a34a;">Đường - Phosphate</span>
+        <span style="color:var(--ink-muted);">→</span>
+        <span style="color:#e11d48;">3′ đầu -OH tự do</span>
+      </div>
+      <p style="margin:0;color:var(--ink-2);font-size:0.92rem;line-height:1.5;">
+        Mỗi mạch polynucleotide có chiều xác định (5′ → 3′).
+      </p>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-question">2. Khung chính của một mạch DNA gồm thành phần nào lặp lại?</div>
+      <div class="quiz-options grid-2">
+        <button class="quiz-opt" onclick="checkQuiz2B(this, false)">A. Base – base</button>
+        <button class="quiz-opt" onclick="checkQuiz2B(this, true)">B. Đường – phosphate</button>
+        <button class="quiz-opt" onclick="checkQuiz2B(this, false)">C. Protein – lipid</button>
+        <button class="quiz-opt" onclick="checkQuiz2B(this, false)">D. Amino acid – nucleotide</button>
+      </div>
+      <div class="quiz-feedback" id="quizFb2B"></div>
+    </div>
+
+    <!-- Màn 2C: Text chốt & Text chuyển -->
+    <div class="science-takeaway">
+      <i class="ti ti-bulb"></i>
+      <div>
+        <strong>Text chốt Stage 2:</strong> Nucleotide DNA gồm phosphate, deoxyribose và một base. Các nucleotide nối bằng liên kết phosphodiester tạo mạch polynucleotide có chiều xác định.<br>
+        <em>Text chuyển: Một phân tử DNA điển hình không chỉ có một mạch mà gồm hai mạch liên kết với nhau.</em>
+      </div>
+    </div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" onclick="goStage('st01')">
+        <i class="ti ti-arrow-left"></i> QUAY LẠI
+      </button>
+      <button class="btn btn-primary" id="btnNext2" disabled onclick="goStage('st03')">
+        TIẾP TỤC <i class="ti ti-arrow-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <section class="stage hidden" id="st03">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge">Stage 3</span>
+        <h2 class="stage-title">Hai mạch đối song song tạo DNA xoắn kép</h2>
+      </div>
+    </div>
+
+    <!-- Màn 3A: Hai mạch ngược chiều -->
+    <div class="panel">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:6px;">
+        <i class="ti ti-arrows-sort"></i> Hai mạch đối song song:
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;font-family:monospace;font-size:1.05rem;font-weight:700;background:white;padding:10px 14px;border-radius:6px;border:1px solid var(--border);">
+        <div style="color:#0284c7;">Mạch 1: 5′ ─── A ─── T ─── G ─── C ─── 3′</div>
+        <div style="color:#e11d48;">Mạch 2: 3′ ─── T ─── A ─── C ─── G ─── 5′</div>
+      </div>
+      <p style="margin:8px 0 0 0;color:var(--ink-2);font-size:0.92rem;">
+        Hai mạch DNA đối song song (một mạch chạy theo chiều 5′ → 3′, mạch đối diện chạy theo chiều ngược lại 3′ → 5′).
+      </p>
+    </div>
+
+    <!-- Màn 3B: Ghép base bổ sung -->
+    <div class="guide-box">
+      <i class="ti ti-puzzle"></i>
+      <span>Chạm chọn nucleotide bổ sung (A, T, G, C) để ghép với mạch mẫu theo đúng nguyên tắc bổ sung và đối song song:</span>
+    </div>
+
+    <div class="dna-ladder-interactive">
+      <!-- Mạch mẫu (5' -> 3') -->
+      <div style="font-size:0.85rem;font-weight:700;color:var(--ink-muted);margin-bottom:4px;">
+        Mạch mẫu: 5′–A–T–G–C–3′
+      </div>
+      <div class="ladder-strand template-strand">
+        <span class="prime-tag">5'</span>
+        <div class="ladder-base base-a">A</div>
+        <div class="ladder-base base-t">T</div>
+        <div class="ladder-base base-g">G</div>
+        <div class="ladder-base base-c">C</div>
+        <span class="prime-tag">3'</span>
+      </div>
+
+      <!-- Vùng nối cầu liên kết -->
+      <div class="ladder-bridges">
+        <div class="h-bridge" id="hBond1">••</div>
+        <div class="h-bridge" id="hBond2">••</div>
+        <div class="h-bridge" id="hBond3">•••</div>
+        <div class="h-bridge" id="hBond4">•••</div>
+      </div>
+
+      <!-- Mạch bổ sung học sinh cần ghép (3' -> 5') -->
+      <div style="font-size:0.85rem;font-weight:700;color:var(--ink-muted);margin-bottom:4px;margin-top:6px;">
+        Mạch bổ sung: 3′–T–A–C–G–5′
+      </div>
+      <div class="ladder-strand complement-strand" id="userStrand">
+        <span class="prime-tag">3'</span>
+        <div class="ladder-slot slot-drop" id="slotMatch1" onclick="selectMatchSlot(1)">?</div>
+        <div class="ladder-slot slot-drop" id="slotMatch2" onclick="selectMatchSlot(2)">?</div>
+        <div class="ladder-slot slot-drop" id="slotMatch3" onclick="selectMatchSlot(3)">?</div>
+        <div class="ladder-slot slot-drop" id="slotMatch4" onclick="selectMatchSlot(4)">?</div>
+        <span class="prime-tag">5'</span>
+      </div>
+
+      <!-- Khay chọn Base -->
+      <div class="ladder-tray" id="ladderTray">
+        <button class="drag-part base-t" onclick="pickBaseForSlot('T')">T (Thymine)</button>
+        <button class="drag-part base-a" onclick="pickBaseForSlot('A')">A (Adenine)</button>
+        <button class="drag-part base-c" onclick="pickBaseForSlot('C')">C (Cytosine)</button>
+        <button class="drag-part base-g" onclick="pickBaseForSlot('G')">G (Guanine)</button>
+      </div>
+
+      <div class="quiz-feedback" id="baseMatchFb" style="display:block;margin-top:10px;"></div>
+    </div>
+
+    <!-- Màn 3C: Liên kết giữa hai mạch -->
+    <div class="panel">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:6px;">
+        <i class="ti ti-vector-bezier-2"></i> Liên kết giữa hai mạch và trong từng mạch:
+      </div>
+      <p style="margin:0 0 8px 0;color:var(--ink-2);font-size:0.92rem;line-height:1.55;">
+        • <strong>A–T có hai liên kết hydrogen</strong>.<br>
+        • <strong>G–C có ba liên kết hydrogen</strong>.
+      </p>
+      <div class="science-lock">
+        <i class="ti ti-lock"></i>
+        <div>
+          <strong>Phân biệt hai loại liên kết:</strong><br>
+          - Liên kết phosphodiester nằm trong một mạch (nối các nucleotide theo chiều dọc).<br>
+          - Liên kết hydrogen nằm giữa hai mạch (kết nối các base theo nguyên tắc bổ sung).
+        </div>
+      </div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-question">1. Cặp base nào có ba liên kết hydrogen?</div>
+      <div class="quiz-options grid-2">
+        <button class="quiz-opt" onclick="checkQuiz3C(this, false)">A. A–T</button>
+        <button class="quiz-opt" onclick="checkQuiz3C(this, true)">B. G–C</button>
+      </div>
+      <div class="quiz-feedback" id="quizFb3C"></div>
+    </div>
+
+    <!-- Màn 3D: Tạo xoắn kép B-DNA -->
+    <div class="panel">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:6px;">
+        <i class="ti ti-rotate-clockwise"></i> Màn 3D – Tạo xoắn kép (Mô hình B-DNA):
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin:10px 0;padding:12px;background:white;border-radius:8px;border:1px solid var(--border);text-align:center;font-size:0.92rem;font-weight:600;color:var(--primary);">
+        Hai mạch đối song song → Base quay vào trong → Khung đường – phosphate ở ngoài → Hình thành DNA xoắn kép
+      </div>
+      <div class="science-lock">
+        <i class="ti ti-shield-check"></i>
+        <div>
+          <strong>Khóa hình xoắn kép:</strong> xoắn phải; đường kính đồng đều (2 nm); không phình – thắt; cặp base nằm trong; khung đường – phosphate nằm ngoài. Mỗi chu kỳ xoắn gồm 10 cặp nucleotide (dài 3,4 nm).
+        </div>
+      </div>
+    </div>
+
+    <!-- Màn 3E: Hệ quả nguyên tắc bổ sung -->
+    <div class="quiz-card">
+      <div class="quiz-question">2. Trong DNA mạch kép, nhận định nào đúng?</div>
+      <div class="quiz-options grid-2">
+        <button class="quiz-opt" onclick="checkQuiz3(this, false)">A. A = G và T = C</button>
+        <button class="quiz-opt" onclick="checkQuiz3(this, true)">B. A = T và G = C</button>
+        <button class="quiz-opt" onclick="checkQuiz3(this, false)">C. A luôn nhiều hơn T</button>
+        <button class="quiz-opt" onclick="checkQuiz3(this, false)">D. G luôn ít hơn C</button>
+      </div>
+      <div class="quiz-feedback" id="quizFb3"></div>
+    </div>
+
+    <div class="science-lock">
+      <i class="ti ti-lock"></i>
+      <div>
+        <strong>Text khóa:</strong> Kết luận này áp dụng cho DNA mạch kép. (Tổng số A + G = T + C, tỉ số (A+T)/(G+C) mang tính đặc trưng cho loài).
+      </div>
+    </div>
+
+    <!-- Màn 3E: Text chốt Stage 3 -->
+    <div class="science-takeaway">
+      <i class="ti ti-bulb"></i>
+      <div>
+        <strong>Text chốt Stage 3:</strong> DNA gồm hai mạch đối song song liên kết theo nguyên tắc bổ sung. A ghép T, G ghép C. Hai mạch xoắn quanh cùng một trục tạo cấu trúc xoắn kép.
+      </div>
+    </div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" onclick="goStage('st02')">
+        <i class="ti ti-arrow-left"></i> QUAY LẠI
+      </button>
+      <button class="btn btn-primary" id="btnNext3" disabled onclick="goStage('st04')">
+        TIẾP TỤC <i class="ti ti-arrow-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <section class="stage hidden" id="st04">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge">Stage 4</span>
+        <h2 class="stage-title">Cấu trúc DNA giúp lưu giữ và truyền thông tin</h2>
+      </div>
+    </div>
+
+    <!-- Màn 4A: Trình tự mang thông tin -->
+    <div class="panel">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:6px;">
+        <i class="ti ti-dna"></i> Đối chiếu hai đoạn DNA có cùng số nucleotide nhưng khác trình tự:
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;font-family:monospace;font-size:1.05rem;font-weight:700;background:white;padding:10px 14px;border-radius:6px;border:1px solid var(--border);">
+        <div style="color:#0284c7;"><span style="color:var(--ink-muted);">Đoạn 1:</span> 5′–A–T–G–C–A–G–3′</div>
+        <div style="color:#e11d48;"><span style="color:var(--ink-muted);">Đoạn 2:</span> 5′–C–G–A–T–G–A–3′</div>
+      </div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-question">1. Hai đoạn DNA có chứa cùng thông tin không?</div>
+      <div class="quiz-options grid-2">
+        <button class="quiz-opt" onclick="checkQuiz4A(this, false)">A. Có, vì cùng số nucleotide</button>
+        <button class="quiz-opt" onclick="checkQuiz4A(this, true)">B. Không, vì trình tự nucleotide khác nhau</button>
+      </div>
+      <div class="quiz-feedback" id="quizFb4A"></div>
+    </div>
+
+    <div class="science-note">
+      <i class="ti ti-info-circle"></i>
+      <div>
+        <strong>Khẳng định cốt lõi:</strong> Thông tin di truyền được thể hiện trong trình tự nucleotide.
+      </div>
+    </div>
+
+    <!-- Màn 4B: Hai mạch bổ sung và sao chép -->
+    <div class="panel">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:6px;">
+        <i class="ti ti-copy"></i> Màn 4B – Hai mạch bổ sung và sao chép:
+      </div>
+      <p style="margin:0 0 8px 0;color:var(--ink-2);font-size:0.92rem;line-height:1.55;">
+        Khi DNA được sao chép, mỗi mạch có thể làm khuôn để tạo mạch bổ sung mới theo nguyên tắc bổ sung.
+      </p>
+      <div class="science-lock">
+        <i class="ti ti-lock"></i>
+        <div>
+          <strong>Text khóa:</strong> Chỉ giới thiệu nguyên tắc khái quát; cơ chế chi tiết sẽ được học ở phần Di truyền học.
+        </div>
+      </div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-question">2. Vì sao nguyên tắc bổ sung giúp truyền thông tin?</div>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkQuiz4B(this, true)">A. Vì mỗi mạch có thể định hướng tạo mạch bổ sung</button>
+        <button class="quiz-opt" onclick="checkQuiz4B(this, false)">B. Vì DNA không có trình tự</button>
+        <button class="quiz-opt" onclick="checkQuiz4B(this, false)">C. Vì mọi base ghép ngẫu nhiên</button>
+        <button class="quiz-opt" onclick="checkQuiz4B(this, false)">D. Vì protein trực tiếp trở thành DNA</button>
+      </div>
+      <div class="quiz-feedback" id="quizFb4B"></div>
+    </div>
+
+    <!-- Màn 4C: Từ DNA đến protein -->
+    <div class="panel">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:6px;">
+        <i class="ti ti-route"></i> Màn 4C – Dòng thông tin từ DNA đến Protein:
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin:10px 0;padding:10px;background:white;border-radius:8px;border:1px solid var(--border);font-family:monospace;font-weight:700;font-size:1.1rem;color:var(--primary);">
+        DNA → mRNA → Protein
+      </div>
+      <p style="margin:0;color:var(--ink-2);font-size:0.92rem;line-height:1.55;">
+        DNA chứa thông tin quy định trình tự amino acid của protein. Thông tin từ DNA được phiên mã thành RNA. mRNA được dùng làm khuôn để tổng hợp protein.
+      </p>
+    </div>
+
+    <!-- Màn 4C: Text chốt Stage 4 -->
+    <div class="science-takeaway">
+      <i class="ti ti-bulb"></i>
+      <div>
+        <strong>Text chốt Stage 4:</strong> Trình tự nucleotide giúp DNA lưu giữ thông tin. Hai mạch bổ sung giúp thông tin có thể được sao chép và truyền lại. RNA tham gia đưa thông tin đó vào quá trình tổng hợp protein.
+      </div>
+    </div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" onclick="goStage('st03')">
+        <i class="ti ti-arrow-left"></i> QUAY LẠI
+      </button>
+      <button class="btn btn-primary" id="btnNext4" disabled onclick="goStage('st05')">
+        TIẾP TỤC <i class="ti ti-arrow-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <section class="stage hidden" id="st05">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge">Stage 5</span>
+        <h2 class="stage-title">Hình thái DNA và dấu vân tay DNA</h2>
+      </div>
+    </div>
+
+    <!-- Màn 5A: Hình thái DNA (Asset A06) -->
+    <div class="asset-img-wrap">
+      <img src="images/SH10-B05-M04-A06.svg" alt="3 dạng cấu trúc DNA: Thẳng, Vòng, Plasmid">
+    </div>
+
+    <div class="panel">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:6px;">
+        <i class="ti ti-shapes"></i> Ba hình thái DNA phổ biến:
+      </div>
+      <p style="margin:0 0 6px 0;color:var(--ink-2);font-size:0.92rem;line-height:1.55;">
+        • <strong>DNA thẳng:</strong> thường gặp trong nhân tế bào nhân thực.<br>
+        • <strong>DNA vòng:</strong> thường gặp ở ti thể, lục lạp và nhiều sinh vật nhân sơ.<br>
+        • <strong>Plasmid:</strong> DNA ngoài nhiễm sắc thể; có thể mang gene tạo lợi thế (như gene kháng kháng sinh ở vi khuẩn).
+      </p>
+      <div class="science-lock">
+        <i class="ti ti-lock"></i>
+        <div>
+          <strong>Text khóa:</strong> Không trình bày mọi sinh vật nhân sơ đều chỉ có một DNA vòng.
+        </div>
+      </div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-question">Plasmid là gì?</div>
+      <div class="quiz-options grid-2">
+        <button class="quiz-opt" onclick="checkQuiz5A(this, false)">A. Một loại protein</button>
+        <button class="quiz-opt" onclick="checkQuiz5A(this, true)">B. DNA ngoài nhiễm sắc thể</button>
+        <button class="quiz-opt" onclick="checkQuiz5A(this, false)">C. Một loại carbohydrate</button>
+        <button class="quiz-opt" onclick="checkQuiz5A(this, false)">D. Một amino acid</button>
+      </div>
+      <div class="quiz-feedback" id="quizFb5A"></div>
+    </div>
+
+    <!-- Màn 5B: Hồ sơ DNA -->
+    <div class="guide-box">
+      <i class="ti ti-microscope"></i>
+      <span>Quan sát bản gel điện di: Nhấp vào các băng của Người con để đối chiếu nguồn gốc nhận từ Mẹ và xác định Người cha phù hợp (Người A hay Người B).</span>
+    </div>
+
+    <div class="panel">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:4px;">
+        <i class="ti ti-clipboard-check"></i> Nhiệm vụ phân tích:
+      </div>
+      <p style="margin:0;color:var(--ink-2);font-size:0.92rem;">
+        Những băng của con không có ở mẹ phải tìm thấy ở người cha.
+      </p>
+    </div>
+
+    <div class="electrophoresis-box">
+      <!-- Cột 1: Mẹ -->
+      <div class="lane-col">
+        <div class="lane-head">Mẹ</div>
+        <div class="lane-track">
+          <div class="dna-band matched-mom" style="top: 30px;"></div>
+          <div class="dna-band matched-mom" style="top: 90px;"></div>
+          <div class="dna-band matched-mom" style="top: 150px;"></div>
+        </div>
+      </div>
+      <!-- Cột 2: Con -->
+      <div class="lane-col">
+        <div class="lane-head" style="color:var(--primary);font-weight:700;">Con</div>
+        <div class="lane-track">
+          <div class="dna-band" id="bandC1" style="top: 30px;" onclick="checkBand(1)"></div>
+          <div class="dna-band" id="bandC2" style="top: 70px;" onclick="checkBand(2)"></div>
+          <div class="dna-band" id="bandC3" style="top: 90px;" onclick="checkBand(3)"></div>
+          <div class="dna-band" id="bandC4" style="top: 130px;" onclick="checkBand(4)"></div>
+        </div>
+      </div>
+      <!-- Cột 3: Người A -->
+      <div class="lane-col">
+        <div class="lane-head">Người A</div>
+        <div class="lane-track">
+          <div class="dna-band" style="top: 50px;"></div>
+          <div class="dna-band" style="top: 110px;"></div>
+          <div class="dna-band" style="top: 140px;"></div>
+        </div>
+      </div>
+      <!-- Cột 4: Người B -->
+      <div class="lane-col">
+        <div class="lane-head" style="color:var(--secondary);font-weight:700;">Người B</div>
+        <div class="lane-track">
+          <div class="dna-band matched-dad" style="top: 70px;"></div>
+          <div class="dna-band" style="top: 100px;"></div>
+          <div class="dna-band matched-dad" style="top: 130px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="gelAnalysisBox">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:4px;">Kết quả phân tích hồ sơ DNA:</div>
+      <div id="gelAnalysisDesc" style="font-size:0.92rem;color:var(--ink-2);line-height:1.5;">
+        • Băng 30px và 90px của Con trùng khớp với Mẹ (di truyền từ Mẹ).<br>
+        • Băng 70px và 130px của Con không có ở Mẹ, bắt buộc phải nhận từ Cha.<br>
+        • Đối chiếu: Người B mang đầy đủ cả hai băng 70px và 130px → Xác định Người B là cha huyết thống.
+      </div>
+    </div>
+
+    <div class="science-lock">
+      <i class="ti ti-lock"></i>
+      <div>
+        <strong>Text khóa:</strong> Ngoài thực tế, xét nghiệm huyết thống phân tích nhiều vị trí DNA và đánh giá xác suất. Không kết luận từ một băng DNA riêng lẻ.
+      </div>
+    </div>
+
+    <!-- Màn 5C: Ứng dụng -->
+    <div class="panel">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:6px;">
+        <i class="ti ti-fingerprint"></i> Màn 5C – Ứng dụng dấu vân tay DNA:
+      </div>
+      <p style="margin:0 0 6px 0;color:var(--ink-2);font-size:0.92rem;line-height:1.55;">
+        Hồ sơ DNA tại nhiều vị trí biến đổi có khả năng phân biệt cá thể rất cao.<br>
+        <strong>Ứng dụng:</strong><br>
+        - xác định huyết thống;<br>
+        - nhận dạng nguồn gốc mẫu sinh học (truy tìm tội phạm, xác định danh tính nạn nhân...).
+      </p>
+      <div class="science-lock">
+        <i class="ti ti-lock"></i>
+        <div>
+          <strong>Text khóa:</strong> Sinh đôi cùng trứng thường có hồ sơ DNA rất giống nhau ở các vị trí nhận dạng thông thường.
+        </div>
+      </div>
+    </div>
+
+    <div class="science-takeaway">
+      <i class="ti ti-bulb"></i>
+      <div>
+        <strong>Text chốt Stage 5:</strong> Sự khác nhau về trình tự DNA được ứng dụng trong xác định huyết thống và truy tìm nguồn gốc mẫu sinh học.
+      </div>
+    </div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" onclick="goStage('st04')">
+        <i class="ti ti-arrow-left"></i> QUAY LẠI
+      </button>
+      <button class="btn btn-primary" id="btnNext5" disabled onclick="goStage('st06')">
+        TIẾP TỤC <i class="ti ti-arrow-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <section class="stage hidden" id="st06">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge">Stage 6</span>
+        <h2 class="stage-title">RNA – Cấu trúc và ba loại chính</h2>
+      </div>
+    </div>
+
+    <!-- Màn 6A: Ghép nucleotide RNA -->
+    <div class="panel">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:6px;">
+        <i class="ti ti-dna-2"></i> Màn 6A – Cấu trúc một nucleotide RNA:
+      </div>
+      <p style="margin:0;color:var(--ink-2);font-size:0.92rem;line-height:1.55;">
+        Một nucleotide RNA gồm phosphate, ribose và một base A, U, G hoặc C.
+      </p>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-question">1. Base nào có trong RNA nhưng không có trong DNA?</div>
+      <div class="quiz-options grid-4">
+        <button class="quiz-opt" onclick="checkQuiz6A(this, false)">A. T</button>
+        <button class="quiz-opt" onclick="checkQuiz6A(this, true)">B. U</button>
+        <button class="quiz-opt" onclick="checkQuiz6A(this, false)">C. G</button>
+        <button class="quiz-opt" onclick="checkQuiz6A(this, false)">D. C</button>
+      </div>
+      <div class="quiz-feedback" id="quizFb6A"></div>
+    </div>
+
+    <!-- Màn 6B: So sánh DNA và RNA (Asset A08) -->
+    <div class="asset-img-wrap">
+      <img src="images/SH10-B05-M04-A08.svg" alt="Bảng so sánh DNA và RNA">
+    </div>
+
+    <div class="panel">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:6px;">
+        <i class="ti ti-columns"></i> Đối chiếu đặc điểm DNA và RNA:
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:0.9rem;line-height:1.5;">
+        <div style="background:white;padding:10px;border-radius:6px;border:1px solid var(--border);">
+          <strong style="color:var(--primary);">DNA:</strong><br>
+          • Đường: deoxyribose<br>
+          • Base: A, T, G, C<br>
+          • Cấu trúc: thường hai mạch<br>
+          • Vai trò: lưu giữ thông tin
+        </div>
+        <div style="background:white;padding:10px;border-radius:6px;border:1px solid var(--border);">
+          <strong style="color:var(--secondary);">RNA:</strong><br>
+          • Đường: ribose<br>
+          • Base: A, U, G, C<br>
+          • Cấu trúc: trong tế bào thường một mạch, có thể gấp cuộn<br>
+          • Vai trò: tham gia truyền và thực hiện thông tin
+        </div>
+      </div>
+      <div class="science-lock" style="margin-top:10px;">
+        <i class="ti ti-lock"></i>
+        <div>
+          <strong>Text khóa:</strong> Không nói mọi RNA trong toàn sinh giới đều chỉ có một mạch (một số virus có vật chất di truyền là RNA mạch kép).
+        </div>
+      </div>
+    </div>
+
+    <!-- Màn 6C: mRNA -->
+    <div class="panel">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:4px;">
+        <i class="ti ti-file-text"></i> 1. mRNA (RNA thông tin):
+      </div>
+      <p style="margin:0 0 6px 0;color:var(--ink-2);font-size:0.92rem;line-height:1.55;">
+        mRNA mang thông tin từ DNA đến ribosome và làm khuôn tổng hợp protein.
+      </p>
+      <div class="science-lock">
+        <i class="ti ti-lock"></i>
+        <div>
+          <strong>Text khóa:</strong> mRNA được vẽ dạng kéo dài để dễ quan sát; phân tử thật có thể gấp cuộn ở một số vùng.
+        </div>
+      </div>
+    </div>
+
+    <!-- Màn 6D: tRNA -->
+    <div class="panel">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:4px;">
+        <i class="ti ti-truck"></i> 2. tRNA (RNA vận chuyển):
+      </div>
+      <p style="margin:0 0 6px 0;color:var(--ink-2);font-size:0.92rem;line-height:1.55;">
+        tRNA mang amino acid đến ribosome. Anticodon của tRNA nhận biết codon trên mRNA, giúp đưa amino acid vào đúng vị trí.
+      </p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0;background:white;padding:10px;border-radius:6px;border:1px solid var(--border);">
+        <div>
+          <div style="font-weight:600;color:var(--primary);">1. Cấu trúc bậc hai dạng lá chẻ ba:</div>
+          <div style="font-size:0.88rem;color:var(--ink-2);">Có 3 thùy cuộn tròn tạo hình lá ba chẽ, thùy giữa chứa bộ ba đối mã (anticodon).</div>
+        </div>
+        <div>
+          <div style="font-weight:600;color:var(--primary);">2. Cấu trúc ba chiều dạng chữ L:</div>
+          <div style="font-size:0.88rem;color:var(--ink-2);">Gấp cuộn không gian 3D dạng chữ L, đầu trên mang amino acid, anticodon ở vòng dưới.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-question">2. Dạng lá chẻ ba và dạng chữ L có phải hai loại tRNA khác nhau không?</div>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkQuiz6D(this, false)">A. Có</button>
+        <button class="quiz-opt" onclick="checkQuiz6D(this, true)">B. Không, đó là hai cách biểu diễn hai mức cấu trúc của cùng một phân tử</button>
+      </div>
+      <div class="quiz-feedback" id="quizFb6D"></div>
+    </div>
+
+    <!-- Màn 6E: rRNA -->
+    <div class="panel">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:4px;">
+        <i class="ti ti-circles"></i> 3. rRNA (RNA ribosome):
+      </div>
+      <p style="margin:0 0 6px 0;color:var(--ink-2);font-size:0.92rem;line-height:1.55;">
+        rRNA cùng với protein tạo nên ribosome. rRNA tham gia trực tiếp vào quá trình tổng hợp protein.
+      </p>
+      <div class="science-note">
+        <i class="ti ti-sparkles"></i>
+        <div>
+          <strong>Text mở rộng:</strong> rRNA ở trung tâm xúc tác của ribosome tham gia hình thành liên kết peptide.
+        </div>
+      </div>
+    </div>
+
+    <!-- Màn 6F: Ghép chức năng 3 loại RNA -->
+    <div class="guide-box">
+      <i class="ti ti-checks"></i>
+      <span>Nối đúng vai trò chính tương ứng với từng loại RNA trong tế bào:</span>
+    </div>
+
+    <div class="assembly-target-box">
+      <div class="target-slot" id="slotMRNA" onclick="assignRna('mRNA')">
+        <span style="font-weight:700;color:var(--primary);">mRNA</span>
+        <span id="txtMRNA" style="font-size:0.85rem;color:var(--ink-muted);">Chạm chọn vai trò...</span>
+      </div>
+      <div class="target-slot" id="slotTRNA" onclick="assignRna('tRNA')">
+        <span style="font-weight:700;color:var(--primary);">tRNA</span>
+        <span id="txtTRNA" style="font-size:0.85rem;color:var(--ink-muted);">Chạm chọn vai trò...</span>
+      </div>
+      <div class="target-slot" id="slotRRNA" onclick="assignRna('rRNA')">
+        <span style="font-weight:700;color:var(--primary);">rRNA</span>
+        <span id="txtRRNA" style="font-size:0.85rem;color:var(--ink-muted);">Chạm chọn vai trò...</span>
+      </div>
+    </div>
+
+    <div class="assembly-tray" id="trayRnaRoles">
+      <button class="drag-part" onclick="pickRnaRole('role1', this)">
+        mang thông tin và làm khuôn
+      </button>
+      <button class="drag-part" onclick="pickRnaRole('role2', this)">
+        mang amino acid, nhận biết codon
+      </button>
+      <button class="drag-part" onclick="pickRnaRole('role3', this)">
+        tạo ribosome và tham gia tổng hợp protein
+      </button>
+    </div>
+
+    <!-- Màn 6F: Text chốt Stage 6 -->
+    <div class="science-takeaway">
+      <i class="ti ti-bulb"></i>
+      <div>
+        <strong>Text chốt Stage 6:</strong> RNA trong tế bào thường là mạch đơn nhưng có thể gấp cuộn. mRNA, tRNA và rRNA có cấu trúc khác nhau và phối hợp trong quá trình tổng hợp protein.
+      </div>
+    </div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" onclick="goStage('st05')">
+        <i class="ti ti-arrow-left"></i> QUAY LẠI
+      </button>
+      <button class="btn btn-primary" id="btnNext6" disabled onclick="goStage('st07')">
+        TIẾP TỤC <i class="ti ti-arrow-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <section class="stage hidden" id="st07">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge">Stage 7</span>
+        <h2 class="stage-title">Tổng kết nucleic acid và toàn Bài 5</h2>
+      </div>
+    </div>
+
+    <!-- Màn 7A: Ghép cấu trúc và vai trò -->
+    <div class="panel">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:6px;">
+        <i class="ti ti-arrows-exchange"></i> Màn 7A – Mối quan hệ cấu trúc và vai trò:
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:0.92rem;line-height:1.55;">
+        <div style="background:white;padding:10px;border-radius:6px;border:1px solid var(--border);">
+          <strong style="color:var(--primary);">DNA:</strong><br>
+          hai mạch bổ sung + trình tự nucleotide<br>
+          → lưu giữ và truyền thông tin di truyền.
+        </div>
+        <div style="background:white;padding:10px;border-radius:6px;border:1px solid var(--border);">
+          <strong style="color:var(--secondary);">RNA:</strong><br>
+          thường một mạch, có thể gấp cuộn, nhiều dạng cấu trúc<br>
+          → tham gia truyền và thực hiện thông tin.
+        </div>
+      </div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-question">Đặc điểm nào của DNA giúp thông tin được sao chép?</div>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkQuiz7A(this, true)">A. Hai mạch bổ sung</button>
+        <button class="quiz-opt" onclick="checkQuiz7A(this, false)">B. DNA không có trình tự</button>
+        <button class="quiz-opt" onclick="checkQuiz7A(this, false)">C. DNA chỉ có một base</button>
+        <button class="quiz-opt" onclick="checkQuiz7A(this, false)">D. DNA được cấu tạo từ amino acid</button>
+      </div>
+      <div class="quiz-feedback" id="quizFb7A"></div>
+    </div>
+
+    <!-- Màn 7B: Trả lời câu hỏi trung tâm -->
+    <div class="panel">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:6px;">
+        <i class="ti ti-help-circle"></i> Trả lời câu hỏi trung tâm: DNA và RNA được cấu tạo như thế nào để lưu giữ, truyền đạt và thực hiện thông tin di truyền?
+      </div>
+      <div style="font-size:0.92rem;color:var(--ink-2);margin-bottom:10px;">
+        Sắp xếp theo thứ tự logic đúng của dòng thông tin:
+      </div>
+      <div id="centralFlowContainer" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
+        <button class="drag-part" id="flow1" onclick="stepCentralFlow(1, this)">1. Nucleotide</button>
+        <button class="drag-part" id="flow2" onclick="stepCentralFlow(2, this)">2. Trình tự nucleotide</button>
+        <button class="drag-part" id="flow3" onclick="stepCentralFlow(3, this)">3. Thông tin di truyền</button>
+        <button class="drag-part" id="flow4" onclick="stepCentralFlow(4, this)">4. RNA tham gia truyền và thực hiện thông tin</button>
+        <button class="drag-part" id="flow5" onclick="stepCentralFlow(5, this)">5. Protein được tổng hợp theo trình tự amino acid</button>
+      </div>
+      <div id="flowSuccessBox" style="display:none;" class="science-takeaway">
+        <i class="ti ti-check"></i>
+        <div>
+          <strong>Phản hồi đúng:</strong> Nucleic acid lưu giữ, truyền đạt và tham gia thực hiện thông tin di truyền.
+        </div>
+      </div>
+    </div>
+
+    <!-- Màn 7C: Bộ 4 thẻ đại phân tử Bài 5 (Asset A10) -->
+    <div class="panel">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:8px;">
+        <i class="ti ti-layout-grid"></i> Màn 7C – Tổng kết 4 nhóm phân tử sinh học (Bài 5):
+      </div>
+      <div class="macro-grid">
+        <div class="macro-card">
+          <div class="macro-img"><img src="images/SH10-B05-M04-A10-carbohydrate.svg" alt="Carbohydrate"></div>
+          <div class="macro-title">Carbohydrate</div>
+          <div class="macro-desc">
+            → cung cấp năng lượng, dự trữ năng lượng, tạo cấu trúc
+          </div>
+        </div>
+        <div class="macro-card">
+          <div class="macro-img"><img src="images/SH10-B05-M04-A10-lipid.svg" alt="Lipid"></div>
+          <div class="macro-title">Lipid</div>
+          <div class="macro-desc">
+            → dự trữ năng lượng, tạo màng, tham gia điều hòa
+          </div>
+        </div>
+        <div class="macro-card">
+          <div class="macro-img"><img src="images/SH10-B05-M04-A10-protein.svg" alt="Protein"></div>
+          <div class="macro-title">Protein</div>
+          <div class="macro-desc">
+            → nhiều chức năng nhờ cấu trúc không gian đặc hiệu
+          </div>
+        </div>
+        <div class="macro-card">
+          <div class="macro-img"><img src="images/SH10-B05-M04-A10-nucleic-acid.svg" alt="Nucleic acid"></div>
+          <div class="macro-title">Nucleic acid</div>
+          <div class="macro-desc">
+            → lưu giữ, truyền đạt và thực hiện thông tin di truyền
+          </div>
+        </div>
+      </div>
+      <div class="science-takeaway" style="margin-top:12px;">
+        <i class="ti ti-world"></i>
+        <div>
+          Bốn nhóm phân tử sinh học không hoạt động tách rời mà phối hợp tạo nên và duy trì sự sống.
+        </div>
+      </div>
+    </div>
+
+    <!-- Màn 7D: Câu chốt toàn bài & Module -->
+    <div class="final-takeaway">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+        <i class="ti ti-bulb"></i> Màn 7D – Câu chốt toàn bài:
+      </div>
+      <p style="margin:0 0 8px 0;line-height:1.55;">
+        Cấu trúc đặc trưng của mỗi nhóm phân tử sinh học quyết định vai trò của chúng trong tế bào.
+      </p>
+      <p style="margin:0 0 10px 0;line-height:1.55;">
+        Carbohydrate, lipid, protein và nucleic acid phối hợp với nhau để tạo nên cấu trúc, cung cấp năng lượng, điều hòa hoạt động và duy trì thông tin di truyền của sự sống.
+      </p>
+      <div style="border-top:1px dashed rgba(15,118,110,0.3);padding-top:8px;font-size:0.92rem;line-height:1.55;">
+        <strong>Câu chốt module:</strong> DNA được cấu tạo từ các nucleotide, gồm hai mạch đối song song liên kết theo nguyên tắc bổ sung. Trình tự nucleotide giúp DNA lưu giữ thông tin di truyền. RNA trong tế bào thường là mạch đơn, có nhiều dạng cấu trúc và tham gia truyền, thực hiện thông tin để tổng hợp protein.
+      </div>
+    </div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" onclick="goStage('st06')">
+        <i class="ti ti-arrow-left"></i> QUAY LẠI
+      </button>
+      <button class="btn btn-primary" onclick="finishLesson()">
+        <i class="ti ti-trophy"></i> HOÀN THÀNH BÀI HỌC
+      </button>
+    </div>
+  </section>
+
+  </main>
+
+<!-- =========================================================================
+     MODAL CHÚC MỪNG HOÀN THÀNH V10 + CANVAS PHÁO HOA CONFETTI
+========================================================================= -->
+<div class="congrats-overlay hidden" id="completionModal" role="dialog" aria-modal="true">
+  <div class="congrats-modal">
+    <canvas id="confettiCanvas"></canvas>
+    <div class="congrats-icon-wrap">
+      <i class="ti ti-trophy"></i>
+    </div>
+    <h3 class="congrats-title">Xuất Sắc Hoàn Thành Bài Học!</h3>
+    <p class="congrats-text">
+      Bạn đã hoàn thành trọn vẹn 7 chặng học tập về <strong>Nucleic acid – DNA và RNA</strong>, nắm vững cấu trúc phân tử, nguyên tắc bổ sung và liên kết thông tin di truyền trong sự sống.
+    </p>
+    <div class="congrats-actions">
+      <button class="btn btn-secondary" onclick="restartLesson()">
+        <i class="ti ti-rotate-clockwise"></i> Học lại từ đầu
+      </button>
+      <button class="btn btn-primary" onclick="closeModal()">
+        <i class="ti ti-check"></i> Đóng thông báo
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =========================================================================
+   LMS RUNTIME STATE MANAGEMENT (KHÔNG DÙNG LOCALSTORAGE / COOKIE)
+========================================================================= */
+window.lmsState = {
+  currentStage: 'st01',
+  stagesCompleted: {
+    st01: false,
+    st02: false,
+    st03: false,
+    st04: false,
+    st05: false,
+    st06: false,
+    st07: true
+  },
+  st01: { hotspotViewed: [false, false, false], quizPassed: false },
+  st02: { assembled: { P: false, Sugar: false, Base: false }, quiz2A: false, quiz2B: false },
+  st03: { matchedSlots: { 1: null, 2: null, 3: null, 4: null }, quiz3C: false, quizPassed: false },
+  st04: { quiz4A: false, quiz4B: false },
+  st05: { quiz5A: false, bandsChecked: false },
+  st06: { quiz6A: false, quiz6D: false, rolesMatched: { mRNA: null, tRNA: null, rRNA: null } }
+};
+
+/* Báo cáo chiều cao tự động tới LMS iframe */
+function reportHeight() {
+  if (window.parent && window.parent.postMessage) {
+    const height = document.documentElement.scrollHeight || document.body.scrollHeight;
+    window.parent.postMessage({ type: 'setHeight', height: height }, '*');
+  }
+}
+
+window.addEventListener('load', reportHeight);
+window.addEventListener('resize', reportHeight);
+
+/* Chuyển Stage */
+function goStage(stageId) {
+  document.querySelectorAll('.stage').forEach(el => el.classList.add('hidden'));
+  const target = document.getElementById(stageId);
+  if (target) {
+    target.classList.remove('hidden');
+    window.lmsState.currentStage = stageId;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(reportHeight, 50);
+  }
+}
+
+/* =========================================================================
+   STAGE 1 LOGIC: HOTSPOTS VÀ TRẮC NGHIỆM
+========================================================================= */
+function showHotspot(id, btn) {
+  document.querySelectorAll('.hotspot-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const titleEl = document.querySelector('#cellInfoBox .hotspot-info-title');
+  const descEl = document.querySelector('#cellInfoBox .hotspot-info-desc');
+
+  window.lmsState.st01.hotspotViewed[id - 1] = true;
+
+  if (id === 1) {
+    titleEl.innerHTML = '<i class="ti ti-dna"></i> 1. DNA trong nhân tế bào';
+    descEl.textContent = 'Ở tế bào nhân thực, phần lớn DNA nằm trong nhân, liên kết với protein tạo thành chất nhiễm sắc (nhiễm sắc thể), lưu giữ thông tin di truyền thiết yếu.';
+  } else if (id === 2) {
+    titleEl.innerHTML = '<i class="ti ti-activity"></i> 2. DNA trong ti thể (và lục lạp)';
+    descEl.textContent = 'Ti thể (và lục lạp ở thực vật) chứa các phân tử DNA mạch vòng nhỏ, có khả năng tự nhân đôi độc lập với DNA trong nhân.';
+  } else if (id === 3) {
+    titleEl.innerHTML = '<i class="ti ti-molecule"></i> 3. RNA trong nhân và tế bào chất';
+    descEl.textContent = 'RNA được tổng hợp trong nhân, sau đó di chuyển ra tế bào chất và ribosome để thực hiện chức năng làm khuôn và dịch mã tổng hợp protein.';
+  }
+
+  checkStage1Progress();
+}
+
+function checkQuiz1(btn, isCorrect) {
+  const card = btn.closest('.quiz-card');
+  card.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected-correct', 'selected-wrong'));
+  const fb = document.getElementById('quizFb1');
+
+  if (isCorrect) {
+    btn.classList.add('selected-correct');
+    fb.className = 'quiz-feedback show-correct';
+    fb.innerHTML = '<i class="ti ti-check"></i> <strong>Phản hồi đúng:</strong> Trình tự nucleotide trong DNA chứa thông tin quy định trình tự amino acid của protein.';
+    window.lmsState.st01.quizPassed = true;
+  } else {
+    btn.classList.add('selected-wrong');
+    fb.className = 'quiz-feedback show-wrong';
+    fb.innerHTML = '<i class="ti ti-x"></i> Chưa chính xác. Hãy nhớ lại: DNA lưu thông tin di truyền để tổng hợp nên phân tử nào?';
+    window.lmsState.st01.quizPassed = false;
+  }
+  checkStage1Progress();
+  reportHeight();
+}
+
+function checkStage1Progress() {
+  const allHotspots = window.lmsState.st01.hotspotViewed.every(v => v === true);
+  if (allHotspots && window.lmsState.st01.quizPassed) {
+    document.getElementById('btnNext1').disabled = false;
+    window.lmsState.stagesCompleted.st01 = true;
+  }
+}
+
+/* =========================================================================
+   STAGE 2 LOGIC: LẮP GHÉP NUCLEOTIDE
+========================================================================= */
+let selectedPart = null;
+
+function selectNucPart(type, btn) {
+  document.querySelectorAll('#trayNuc .drag-part').forEach(b => b.classList.remove('selected'));
+  if (selectedPart === type) {
+    selectedPart = null;
+  } else {
+    selectedPart = type;
+    btn.classList.add('selected');
+  }
+}
+
+function dropNucPart(targetSlot) {
+  if (!selectedPart) return;
+  if (selectedPart === targetSlot) {
+    const slotEl = document.getElementById('slot' + targetSlot);
+    slotEl.classList.add('filled');
+    if (targetSlot === 'Sugar') {
+      slotEl.innerHTML = '<span style="font-weight:800;color:#0284c7">Đường Deoxyribose ✓</span>';
+    } else if (targetSlot === 'P') {
+      slotEl.innerHTML = '<span style="font-weight:800;color:#d97706">Nhóm Phosphate ✓</span>';
+    } else if (targetSlot === 'Base') {
+      slotEl.innerHTML = '<span style="font-weight:800;color:#7e22ce">Base Nitrogen ✓</span>';
+    }
+    const partBtn = document.getElementById('part' + targetSlot);
+    if (partBtn) partBtn.style.display = 'none';
+
+    window.lmsState.st02.assembled[targetSlot] = true;
+    selectedPart = null;
+    checkStage2Progress();
+    reportHeight();
+  }
+}
+
+function checkQuiz2A(btn, isCorrect) {
+  const card = btn.closest('.quiz-card');
+  card.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected-correct', 'selected-wrong'));
+  const fb = document.getElementById('quizFb2A');
+
+  if (isCorrect) {
+    btn.classList.add('selected-correct');
+    fb.className = 'quiz-feedback show-correct';
+    fb.innerHTML = '<i class="ti ti-check"></i> Chính xác! Base nitrogen (A, T, G hoặc C) quyết định tên gọi và đặc trưng của từng loại nucleotide.';
+    window.lmsState.st02.quiz2A = true;
+  } else {
+    btn.classList.add('selected-wrong');
+    fb.className = 'quiz-feedback show-wrong';
+    fb.innerHTML = '<i class="ti ti-x"></i> Chưa chính xác. Nhóm phosphate và đường deoxyribose giống hệt nhau ở mọi nucleotide DNA.';
+    window.lmsState.st02.quiz2A = false;
+  }
+  checkStage2Progress();
+  reportHeight();
+}
+
+function checkQuiz2B(btn, isCorrect) {
+  const card = btn.closest('.quiz-card');
+  card.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected-correct', 'selected-wrong'));
+  const fb = document.getElementById('quizFb2B');
+
+  if (isCorrect) {
+    btn.classList.add('selected-correct');
+    fb.className = 'quiz-feedback show-correct';
+    fb.innerHTML = '<i class="ti ti-check"></i> Đúng! Khung đường – phosphate lặp lại đều đặn tạo xương sống vững chắc cho mạch DNA.';
+    window.lmsState.st02.quiz2B = true;
+  } else {
+    btn.classList.add('selected-wrong');
+    fb.className = 'quiz-feedback show-wrong';
+    fb.innerHTML = '<i class="ti ti-x"></i> Chưa chính xác. Khung chính chạy dọc mạch do đường và phosphate liên kết tạo thành.';
+    window.lmsState.st02.quiz2B = false;
+  }
+  checkStage2Progress();
+  reportHeight();
+}
+
+function checkStage2Progress() {
+  const { P, Sugar, Base } = window.lmsState.st02.assembled;
+  if (P && Sugar && Base && window.lmsState.st02.quiz2A && window.lmsState.st02.quiz2B) {
+    document.getElementById('btnNext2').disabled = false;
+    window.lmsState.stagesCompleted.st02 = true;
+  }
+}
+
+/* =========================================================================
+   STAGE 3 LOGIC: GHÉP BASE BỔ SUNG & B-DNA CANVAS 3D
+========================================================================= */
+let activeMatchSlot = null;
+const correctBases = { 1: 'T', 2: 'A', 3: 'C', 4: 'G' };
+
+function selectMatchSlot(slotIndex) {
+  activeMatchSlot = slotIndex;
+  document.querySelectorAll('.slot-drop').forEach(s => s.style.borderColor = '');
+  const el = document.getElementById('slotMatch' + slotIndex);
+  if (el) el.style.borderColor = 'var(--accent)';
+}
+
+function pickBaseForSlot(baseChar) {
+  if (!activeMatchSlot) {
+    const fbEl = document.getElementById('baseMatchFb');
+    if (fbEl) {
+      fbEl.className = 'quiz-feedback fail';
+      fbEl.textContent = 'Hãy chạm chọn một ô vị trí (?) trên mạch bổ sung trước khi chọn base.';
+    }
+    return;
+  }
+  const slotEl = document.getElementById('slotMatch' + activeMatchSlot);
+  const correct = correctBases[activeMatchSlot];
+  const fbEl = document.getElementById('baseMatchFb');
+
+  if (baseChar === correct) {
+    slotEl.textContent = baseChar;
+    slotEl.className = 'ladder-slot slot-drop filled base-' + baseChar.toLowerCase();
+    window.lmsState.st03.matchedSlots[activeMatchSlot] = baseChar;
+
+    const bridgeEl = document.getElementById('hBond' + activeMatchSlot);
+    if (bridgeEl) {
+      if (baseChar === 'T' || baseChar === 'A') {
+        bridgeEl.textContent = '••';
+        bridgeEl.style.color = '#16a34a';
+      } else {
+        bridgeEl.textContent = '•••';
+        bridgeEl.style.color = '#7c3aed';
+      }
+    }
+
+    const allFilled = Object.values(window.lmsState.st03.matchedSlots).every(v => v !== null);
+    if (allFilled) {
+      fbEl.className = 'quiz-feedback pass';
+      fbEl.innerHTML = '<i class="ti ti-check"></i> <strong>Phản hồi đúng:</strong> Các base ghép theo nguyên tắc bổ sung và hai mạch đối song song.';
+    } else {
+      fbEl.className = 'quiz-feedback pass';
+      fbEl.innerHTML = '<i class="ti ti-check"></i> Ghép đúng base ' + baseChar + '! Tiếp tục chọn các ô còn lại.';
+    }
+
+    activeMatchSlot = null;
+  } else {
+    fbEl.className = 'quiz-feedback fail';
+    fbEl.innerHTML = '<i class="ti ti-alert-triangle"></i> <strong>Phản hồi sai:</strong> Hãy kiểm tra đồng thời: A chỉ ghép T, G chỉ ghép C; hai mạch phải ngược chiều.';
+  }
+
+  checkStage3Progress();
+}
+
+
+function checkQuiz3C(btn, isCorrect) {
+  const card = btn.closest('.quiz-card');
+  card.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected-correct', 'selected-wrong'));
+  const fb = document.getElementById('quizFb3C');
+  if (isCorrect) {
+    btn.classList.add('selected-correct');
+    fb.className = 'quiz-feedback show-correct';
+    fb.innerHTML = '<i class="ti ti-check"></i> Chính xác! Cặp G–C liên kết bằng 3 liên kết hydrogen, cặp A–T liên kết bằng 2 liên kết hydrogen.';
+    window.lmsState.st03.quiz3C = true;
+  } else {
+    btn.classList.add('selected-wrong');
+    fb.className = 'quiz-feedback show-wrong';
+    fb.innerHTML = '<i class="ti ti-x"></i> Chưa chính xác. A–T có 2 liên kết H, G–C có 3 liên kết H.';
+    window.lmsState.st03.quiz3C = false;
+  }
+  checkStage3Progress();
+  reportHeight();
+}
+
+function checkQuiz3(btn, isCorrect) {
+  const card = btn.closest('.quiz-card');
+  card.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected-correct', 'selected-wrong'));
+  const fb = document.getElementById('quizFb3');
+
+  if (isCorrect) {
+    btn.classList.add('selected-correct');
+    fb.className = 'quiz-feedback show-correct';
+    fb.innerHTML = '<i class="ti ti-check"></i> Chính xác! Vì A luôn liên kết với T và G luôn liên kết với C nên trong DNA mạch kép: A = T và G = C.';
+    window.lmsState.st03.quizPassed = true;
+  } else {
+    btn.classList.add('selected-wrong');
+    fb.className = 'quiz-feedback show-wrong';
+    fb.innerHTML = '<i class="ti ti-x"></i> Chưa chính xác. Hãy nhớ nguyên tắc cặp base bổ sung A-T và G-C.';
+    window.lmsState.st03.quizPassed = false;
+  }
+  checkStage3Progress();
+  reportHeight();
+}
+
+function checkStage3Progress() {
+  const allSlots = Object.values(window.lmsState.st03.matchedSlots).every(v => v !== null);
+  if (allSlots && window.lmsState.st03.quiz3C && window.lmsState.st03.quizPassed) {
+    document.getElementById('btnNext3').disabled = false;
+    window.lmsState.stagesCompleted.st03 = true;
+  }
+}
+
+/* Canvas B-DNA Xoắn phải 3D toán học */
+function initDnaCanvas() {
+  const canvas = document.getElementById('dnaCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let angle = 0;
+
+  function render() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const numPairs = 24;
+    const spacing = 28;
+    const startX = 20;
+    const centerY = canvas.height / 2;
+    const radius = 55;
+
+    for (let i = 0; i < numPairs; i++) {
+      const x = startX + i * spacing;
+      const currentAngle = angle + (i * 0.35);
+
+      const y1 = centerY + Math.sin(currentAngle) * radius;
+      const y2 = centerY + Math.sin(currentAngle + Math.PI) * radius;
+      const z1 = Math.cos(currentAngle);
+      const z2 = Math.cos(currentAngle + Math.PI);
+
+      // Đường liên kết hydrogen giữa cặp base
+      ctx.beginPath();
+      ctx.moveTo(x, y1);
+      ctx.lineTo(x, y2);
+      ctx.strokeStyle = 'rgba(16, 185, 129, 0.45)';
+      ctx.lineWidth = 2.5;
+      ctx.setLineDash([4, 4]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Điểm mạch 1 (Xanh dương)
+      ctx.beginPath();
+      ctx.arc(x, y1, 5 + z1 * 2, 0, Math.PI * 2);
+      ctx.fillStyle = z1 > 0 ? '#38bdf8' : '#0369a1';
+      ctx.fill();
+
+      // Điểm mạch 2 (Cam đỏ)
+      ctx.beginPath();
+      ctx.arc(x, y2, 5 + z2 * 2, 0, Math.PI * 2);
+      ctx.fillStyle = z2 > 0 ? '#f87171' : '#b91c1c';
+      ctx.fill();
+    }
+
+    angle += 0.02;
+    requestAnimationFrame(render);
+  }
+  render();
+}
+window.addEventListener('load', initDnaCanvas);
+
+/* =========================================================================
+   STAGE 4 LOGIC: TRÌNH TỰ VÀ TRUYỀN THÔNG TIN
+========================================================================= */
+function checkQuiz4A(btn, isCorrect) {
+  const card = btn.closest('.quiz-card');
+  card.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected-correct', 'selected-wrong'));
+  const fb = document.getElementById('quizFb4A');
+
+  if (isCorrect) {
+    btn.classList.add('selected-correct');
+    fb.className = 'quiz-feedback show-correct';
+    fb.innerHTML = '<i class="ti ti-check"></i> Chính xác! Thông tin di truyền được quyết định bởi trình tự sắp xếp các nucleotide, không chỉ bởi số lượng.';
+    window.lmsState.st04.quiz4A = true;
+  } else {
+    btn.classList.add('selected-wrong');
+    fb.className = 'quiz-feedback show-wrong';
+    fb.innerHTML = '<i class="ti ti-x"></i> Chưa chính xác. Hai đoạn DNA có thứ tự nucleotide khác nhau nên thông tin mã hóa hoàn toàn khác nhau.';
+    window.lmsState.st04.quiz4A = false;
+  }
+  checkStage4Progress();
+  reportHeight();
+}
+
+function checkQuiz4B(btn, isCorrect) {
+  const card = btn.closest('.quiz-card');
+  card.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected-correct', 'selected-wrong'));
+  const fb = document.getElementById('quizFb4B');
+
+  if (isCorrect) {
+    btn.classList.add('selected-correct');
+    fb.className = 'quiz-feedback show-correct';
+    fb.innerHTML = '<i class="ti ti-check"></i> Đúng! Cơ chế sao chép bán bảo toàn: Mỗi mạch làm khuôn tổng hợp mạch bổ sung chính xác.';
+    window.lmsState.st04.quiz4B = true;
+  } else {
+    btn.classList.add('selected-wrong');
+    fb.className = 'quiz-feedback show-wrong';
+    fb.innerHTML = '<i class="ti ti-x"></i> Chưa chính xác. Nhờ nguyên tắc bổ sung, trình tự mạch mới luôn được xác định chính xác từ mạch khuôn.';
+    window.lmsState.st04.quiz4B = false;
+  }
+  checkStage4Progress();
+  reportHeight();
+}
+
+function checkStage4Progress() {
+  if (window.lmsState.st04.quiz4A && window.lmsState.st04.quiz4B) {
+    document.getElementById('btnNext4').disabled = false;
+    window.lmsState.stagesCompleted.st04 = true;
+  }
+}
+
+/* =========================================================================
+   STAGE 5 LOGIC: HÌNH THÁI DNA & ĐIỆN DI HUYẾT THỐNG
+========================================================================= */
+function checkQuiz5A(btn, isCorrect) {
+  const card = btn.closest('.quiz-card');
+  card.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected-correct', 'selected-wrong'));
+  const fb = document.getElementById('quizFb5A');
+
+  if (isCorrect) {
+    btn.classList.add('selected-correct');
+    fb.className = 'quiz-feedback show-correct';
+    fb.innerHTML = '<i class="ti ti-check"></i> Chính xác! Plasmid là các phân tử DNA mạch vòng nhỏ, nằm ngoài nhiễm sắc thể trong tế bào chất của vi khuẩn.';
+    window.lmsState.st05.quiz5A = true;
+  } else {
+    btn.classList.add('selected-wrong');
+    fb.className = 'quiz-feedback show-wrong';
+    fb.innerHTML = '<i class="ti ti-x"></i> Chưa chính xác. Hãy nhớ lại sơ đồ 3 dạng DNA ở hình trên.';
+    window.lmsState.st05.quiz5A = false;
+  }
+  checkStage5Progress();
+  reportHeight();
+}
+
+const checkedBands = { 1: false, 2: false, 3: false, 4: false };
+
+function checkBand(num) {
+  const el = document.getElementById('bandC' + num);
+  el.classList.add('active-select');
+  checkedBands[num] = true;
+
+  if (checkedBands[1] && checkedBands[2] && checkedBands[3] && checkedBands[4]) {
+    window.lmsState.st05.bandsChecked = true;
+  }
+  checkStage5Progress();
+}
+
+function checkStage5Progress() {
+  if (window.lmsState.st05.quiz5A && window.lmsState.st05.bandsChecked) {
+    document.getElementById('btnNext5').disabled = false;
+    window.lmsState.stagesCompleted.st05 = true;
+  }
+}
+
+/* =========================================================================
+   STAGE 6 LOGIC: RNA VÀ GHÉP CHỨC NĂNG
+========================================================================= */
+function checkQuiz6A(btn, isCorrect) {
+  const card = btn.closest('.quiz-card');
+  card.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected-correct', 'selected-wrong'));
+  const fb = document.getElementById('quizFb6A');
+
+  if (isCorrect) {
+    btn.classList.add('selected-correct');
+    fb.className = 'quiz-feedback show-correct';
+    fb.innerHTML = '<i class="ti ti-check"></i> Chính xác! Phân tử RNA sử dụng Uracil (U) thay thế cho Thymine (T) trong DNA.';
+    window.lmsState.st06.quiz6A = true;
+  } else {
+    btn.classList.add('selected-wrong');
+    fb.className = 'quiz-feedback show-wrong';
+    fb.innerHTML = '<i class="ti ti-x"></i> Chưa chính xác. Quan sát lại bảng đối chiếu DNA và RNA ở hình trên.';
+    window.lmsState.st06.quiz6A = false;
+  }
+  checkStage6Progress();
+  reportHeight();
+}
+
+
+function checkQuiz6D(btn, isCorrect) {
+  const card = btn.closest('.quiz-card');
+  card.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected-correct', 'selected-wrong'));
+  const fb = document.getElementById('quizFb6D');
+  if (isCorrect) {
+    btn.classList.add('selected-correct');
+    fb.className = 'quiz-feedback show-correct';
+    fb.innerHTML = '<i class="ti ti-check"></i> Chính xác! Lá chẻ ba là cấu trúc bậc 2, còn chữ L là dạng 3D không gian của cùng một phân tử tRNA.';
+    window.lmsState.st06.quiz6D = true;
+  } else {
+    btn.classList.add('selected-wrong');
+    fb.className = 'quiz-feedback show-wrong';
+    fb.innerHTML = '<i class="ti ti-x"></i> Chưa chính xác. Đây là hai cách biểu diễn mức cấu trúc của cùng một phân tử tRNA.';
+    window.lmsState.st06.quiz6D = false;
+  }
+  checkStage6Progress();
+  reportHeight();
+}
+
+let activeRnaRole = null;
+let activeRoleText = '';
+
+function pickRnaRole(roleId, btn) {
+  document.querySelectorAll('#trayRnaRoles .drag-part').forEach(b => b.classList.remove('selected'));
+  activeRnaRole = roleId;
+  activeRoleText = btn.textContent.trim();
+  btn.classList.add('selected');
+}
+
+function assignRna(rnaType) {
+  if (!activeRnaRole) return;
+  const isCorrect = (rnaType === 'mRNA' && activeRnaRole === 'role1') ||
+                    (rnaType === 'tRNA' && activeRnaRole === 'role2') ||
+                    (rnaType === 'rRNA' && activeRnaRole === 'role3');
+
+  if (isCorrect) {
+    document.getElementById('txt' + rnaType).innerHTML = `<span style="color:var(--jade-text);font-weight:700">✓ ${activeRoleText}</span>`;
+    document.getElementById('slot' + rnaType).classList.add('filled');
+    window.lmsState.st06.rolesMatched[rnaType] = true;
+    activeRnaRole = null;
+  }
+  checkStage6Progress();
+  reportHeight();
+}
+
+function checkStage6Progress() {
+  const { mRNA, tRNA, rRNA } = window.lmsState.st06.rolesMatched;
+  if (window.lmsState.st06.quiz6A && window.lmsState.st06.quiz6D && mRNA && tRNA && rRNA) {
+    document.getElementById('btnNext6').disabled = false;
+    window.lmsState.stagesCompleted.st06 = true;
+  }
+}
+
+/* =========================================================================
+   STAGE 7 & MODAL HOÀN THÀNH + PHÁO HOA CANVAS
+========================================================================= */
+
+function checkQuiz7A(btn, isCorrect) {
+  const card = btn.closest('.quiz-card');
+  card.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected-correct', 'selected-wrong'));
+  const fb = document.getElementById('quizFb7A');
+  if (isCorrect) {
+    btn.classList.add('selected-correct');
+    fb.className = 'quiz-feedback show-correct';
+    fb.innerHTML = '<i class="ti ti-check"></i> Chính xác! Hai mạch bổ sung là cơ sở để mỗi mạch làm khuôn tạo mạch mới chính xác.';
+  } else {
+    btn.classList.add('selected-wrong');
+    fb.className = 'quiz-feedback show-wrong';
+    fb.innerHTML = '<i class="ti ti-x"></i> Chưa đúng. Hãy nhớ lại cơ chế sao chép bán bảo toàn nhờ hai mạch bổ sung.';
+  }
+  reportHeight();
+}
+
+let expectedFlowStep = 1;
+function stepCentralFlow(stepNum, btn) {
+  if (stepNum === expectedFlowStep) {
+    btn.style.background = 'var(--correct-bg)';
+    btn.style.borderColor = 'var(--correct)';
+    btn.style.color = 'var(--jade-dark)';
+    expectedFlowStep++;
+    if (expectedFlowStep > 5) {
+      document.getElementById('flowSuccessBox').style.display = 'block';
+      reportHeight();
+    }
+  }
+}
+
+function finishLesson() {
+  const modal = document.getElementById('completionModal');
+  modal.classList.remove('hidden');
+  launchConfetti();
+  reportHeight();
+}
+
+function closeModal() {
+  document.getElementById('completionModal').classList.add('hidden');
+  reportHeight();
+}
+
+function restartLesson() {
+  closeModal();
+  goStage('st01');
+}
+
+/* Hiệu ứng pháo hoa tự sinh độc lập trên Canvas */
+function launchConfetti() {
+  const canvas = document.getElementById('confettiCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const parent = canvas.parentElement;
+  canvas.width = parent.clientWidth;
+  canvas.height = parent.clientHeight;
+
+  const particles = [];
+  const colors = ['#10b981', '#38bdf8', '#f59e0b', '#ec4899', '#8b5cf6', '#ef4444'];
+
+  for (let i = 0; i < 90; i++) {
+    particles.push({
+      x: canvas.width / 2,
+      y: canvas.height / 2,
+      vx: (Math.random() - 0.5) * 12,
+      vy: (Math.random() - 0.8) * 14,
+      size: Math.random() * 6 + 4,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      life: 100,
+      gravity: 0.25
+    });
+  }
+
+  function frame() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let active = false;
+
+    particles.forEach(p => {
+      if (p.life > 0) {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += p.gravity;
+        p.life--;
+        ctx.fillStyle = p.color;
+        ctx.fillRect(p.x, p.y, p.size, p.size);
+        active = true;
+      }
+    });
+
+    if (active) {
+      requestAnimationFrame(frame);
+    }
+  }
+  frame();
+}
+</script>
+
+</body>
+</html>

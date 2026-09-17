@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="lipidGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#fffbeb"/>
+    </linearGradient>
+    <filter id="badgeShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="520" height="400" rx="16" fill="url(#lipidGrad)" stroke="#fcd34d" stroke-width="2"/>
+  
+  <!-- KHUNG TIÊU ĐỀ CARD -->
+  <g transform="translate(25, 18)" filter="url(#badgeShadow)">
+    <rect width="470" height="44" rx="10" fill="#fef3c7" stroke="#fcd34d" stroke-width="1.5"/>
+    <text x="235" y="27" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="800" fill="#b45309">2. LIPID (ĐẠI DIỆN: PHOSPHOLIPID MÀNG)</text>
+  </g>
+
+  <!-- CẤU TRÚC PHOSPHOLIPID -->
+  <g transform="translate(140, 80)">
+    <!-- 1. KHUNG ĐẦU ƯA NƯỚC -->
+    <circle cx="80" cy="50" r="42" fill="#e0f2fe" stroke="#0284c7" stroke-width="3"/>
+    
+    <!-- Badge bên trong đầu ưa nước -->
+    <g transform="translate(20, 28)">
+      <rect width="120" height="22" rx="6" fill="#0284c7"/>
+      <text x="60" y="15" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#ffffff">ĐẦU ƯA NƯỚC</text>
+    </g>
+    <g transform="translate(25, 54)">
+      <rect width="110" height="18" rx="4" fill="#ffffff" stroke="#bae6fd" stroke-width="1"/>
+      <text x="55" y="13" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#0369a1">PO₄³⁻ + Glycerol</text>
+    </g>
+
+    <!-- 2 Đuôi acid béo kỵ nước -->
+    <!-- Đuôi 1: Acid béo no (thẳng) -->
+    <path d="M 65 92 V 110 L 58 125 L 65 140 L 58 155 L 65 170 L 58 185 L 65 200" fill="none" stroke="#d97706" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Đuôi 2: Acid béo không no (gấp khúc) -->
+    <path d="M 95 92 V 110 L 102 125 L 95 140 L 110 155 L 128 170 L 135 195" fill="none" stroke="#d97706" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- 2. KHUNG BADGE ĐUÔI KỴ NƯỚC (BÊN CẠNH ĐUÔI) -->
+    <g transform="translate(145, 125)" filter="url(#badgeShadow)">
+      <rect width="135" height="48" rx="8" fill="#ffffff" stroke="#fcd34d" stroke-width="1.5"/>
+      <rect x="8" y="6" width="119" height="18" rx="4" fill="#d97706"/>
+      <text x="67.5" y="19" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" font-weight="800" fill="#ffffff">ĐUÔI KỴ NƯỚC</text>
+      <text x="67.5" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#92400e">(2 chuỗi acid béo)</text>
+    </g>
+  </g>
+
+  <!-- KHUNG TÓM TẮT ĐẶC ĐIỂM DƯỚI ĐÁY -->
+  <g transform="translate(25, 315)" filter="url(#badgeShadow)">
+    <rect width="470" height="65" rx="10" fill="#ffffff" stroke="#fde68a" stroke-width="1.5"/>
+    <text x="16" y="26" font-family="system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#334155">• <tspan font-weight="800" fill="#b45309">Đặc tính:</tspan> Kỵ nước, không cấu tạo theo nguyên tắc đa phân.</text>
+    <text x="16" y="48" font-family="system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#334155">• <tspan font-weight="800" fill="#b45309">Chức năng:</tspan> Cấu tạo màng sinh chất (phospholipid), dự trữ năng lượng.</text>
+  </g>
+</svg>
