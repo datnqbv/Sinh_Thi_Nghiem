@@ -518,25 +518,36 @@
     40%, 80% { transform: translateX(6px); }
   }
 
-  /* RIBOSOME S01 ANIMATION CLASSES */
+  /* RIBOSOME S01 ANIMATION CLASSES (SGK HÌNH 8.3) */
+  #s01_largeSubunit, #s01_smallSubunit {
+    transition: transform 1s cubic-bezier(0.34, 1.25, 0.64, 1);
+  }
   .ribo-separated #s01_largeSubunit {
-    transform: translate(0, -50px);
-    transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform: translate(-35px, -65px);
   }
   .ribo-separated #s01_smallSubunit {
-    transform: translate(0, 60px);
-    transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform: translate(-25px, 65px);
   }
   .ribo-assembled #s01_largeSubunit {
     transform: translate(0, 0);
-    transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
   .ribo-assembled #s01_smallSubunit {
     transform: translate(0, 0);
-    transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  #s01_assembledTitleGroup {
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .ribo-separated #s01_assembledTitleGroup {
+    opacity: 0;
+    transform: translate(450px, 525px) scale(0.9);
+    pointer-events: none;
+  }
+  .ribo-assembled #s01_assembledTitleGroup {
+    opacity: 1;
+    transform: translate(450px, 505px) scale(1);
   }
   .ribo-assembled {
-    filter: drop-shadow(0 0 16px rgba(16, 185, 129, 0.5));
+    filter: drop-shadow(0 0 16px rgba(147, 51, 234, 0.35));
   }
 
   /* S02 ROUGH ER ACTIVE SYNTHESIS ANIMATION */
@@ -791,130 +802,243 @@
             <span id="s01StatusBadge" style="font-size:0.8rem; font-weight:700; color:var(--ink-3); background:var(--cream); padding:2px 8px; border-radius:99px;">Trạng thái: 2 tiểu đơn vị tách rời</span>
           </div>
           <div class="visual-stage-canvas ribo-separated" id="s01CanvasWrapper">
-            <svg id="inlineSvgS01" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+            <svg id="inlineSvgS01" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="100%" height="100%">
   <defs>
-    <!-- Gradients for Large Subunit (Khối tiểu đơn vị lớn - đậm đặc, phức hợp rRNA + protein) -->
-    <radialGradient id="s01_largeSubunitGrad" cx="40%" cy="35%" r="65%">
-      <stop offset="0%" stop-color="#818CF8"/>
-      <stop offset="45%" stop-color="#6366F1"/>
-      <stop offset="85%" stop-color="#4F46E5"/>
-      <stop offset="100%" stop-color="#3730A3"/>
-    </radialGradient>
-    <linearGradient id="s01_largeSiteGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#312E81" stop-opacity="0.8"/>
-      <stop offset="100%" stop-color="#1E1B4B" stop-opacity="0.95"/>
-    </linearGradient>
-
-    <!-- Gradients for Small Subunit (Khối tiểu đơn vị nhỏ) -->
-    <radialGradient id="s01_smallSubunitGrad" cx="45%" cy="40%" r="60%">
-      <stop offset="0%" stop-color="#A5B4FC"/>
-      <stop offset="50%" stop-color="#818CF8"/>
-      <stop offset="90%" stop-color="#6366F1"/>
-      <stop offset="100%" stop-color="#4338CA"/>
-    </radialGradient>
-
-    <!-- Soft Drop Shadows -->
-    <filter id="s01_riboDropShadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#1E1B4B" flood-opacity="0.16"/>
+    <!-- 3D Shadow Filters -->
+    <filter id="s01_dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#2E1065" flood-opacity="0.16"/>
     </filter>
-    <filter id="s01_innerDepth" x="-10%" y="-10%" width="120%" height="120%">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
-      <feComposite in="SourceGraphic" in2="blur" operator="arithmetic" k2="1" k3="-0.5"/>
+    <filter id="s01_creviceBlur">
+      <feGaussianBlur stdDeviation="3"/>
     </filter>
+    <filter id="s01_specularBlur">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+    <filter id="s01_cardShadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.06"/>
+    </filter>
+
+    <!-- =====================================================================
+         TIỂU PHẦN LỚN GRADIENTS (Rich Violet-Purple Clay Shading)
+         ===================================================================== -->
+    <radialGradient id="s01_largeDomeGrad" cx="62%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#C084FC"/>
+      <stop offset="22%" stop-color="#A855F7"/>
+      <stop offset="55%" stop-color="#7E22CE"/>
+      <stop offset="82%" stop-color="#581C87"/>
+      <stop offset="100%" stop-color="#3B0764"/>
+    </radialGradient>
+
+    <radialGradient id="s01_largeLeftArmGrad" cx="42%" cy="28%" r="68%">
+      <stop offset="0%" stop-color="#D8B4FE"/>
+      <stop offset="28%" stop-color="#A855F7"/>
+      <stop offset="68%" stop-color="#6B21A8"/>
+      <stop offset="100%" stop-color="#3B0764"/>
+    </radialGradient>
+
+    <radialGradient id="s01_largeRearBulgeGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#A855F7"/>
+      <stop offset="60%" stop-color="#6B21A8"/>
+      <stop offset="100%" stop-color="#2E1065"/>
+    </radialGradient>
+
+    <radialGradient id="s01_largeFoldShadow" cx="45%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2E1065" stop-opacity="0.95"/>
+      <stop offset="60%" stop-color="#3B0764" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#581C87" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- =====================================================================
+         TIỂU PHẦN NHỎ GRADIENTS (Orchid / Magenta-Mauve Pinkish Purple)
+         ===================================================================== -->
+    <radialGradient id="s01_smallBodyGrad" cx="55%" cy="32%" r="72%">
+      <stop offset="0%" stop-color="#F5D0FE"/>
+      <stop offset="25%" stop-color="#E879F9"/>
+      <stop offset="60%" stop-color="#C026D3"/>
+      <stop offset="85%" stop-color="#86198F"/>
+      <stop offset="100%" stop-color="#4A044E"/>
+    </radialGradient>
+
+    <radialGradient id="s01_smallHeadGrad" cx="42%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#FDF4FF"/>
+      <stop offset="25%" stop-color="#F0ABFC"/>
+      <stop offset="60%" stop-color="#D946EF"/>
+      <stop offset="88%" stop-color="#9D174D"/>
+      <stop offset="100%" stop-color="#4A044E"/>
+    </radialGradient>
+
+    <radialGradient id="s01_smallFootGrad" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#E879F9"/>
+      <stop offset="55%" stop-color="#A21CAF"/>
+      <stop offset="100%" stop-color="#4A044E"/>
+    </radialGradient>
   </defs>
 
-  <!-- Background Base Canvas -->
-  <rect width="800" height="600" fill="#FAF7F0"/>
+  <rect width="900" height="560" fill="#FAF7F0"/>
 
-  <!-- Cytoplasmic Fluid Context (Dòng bào tương loãng không màng bao) -->
-  <g opacity="0.35">
-    <circle cx="120" cy="140" r="6" fill="#C7D2FE"/>
-    <circle cx="680" cy="180" r="5" fill="#C7D2FE"/>
-    <circle cx="160" cy="460" r="7" fill="#C7D2FE"/>
-    <circle cx="700" cy="450" r="6" fill="#C7D2FE"/>
-    <path d="M 80 300 Q 180 280 280 320" stroke="#E0E7FF" stroke-width="2" fill="none" stroke-dasharray="6 6"/>
-    <path d="M 520 280 Q 620 320 720 290" stroke="#E0E7FF" stroke-width="2" fill="none" stroke-dasharray="6 6"/>
+  <!-- Cytoplasm context hint (bào tương không màng) -->
+  <g opacity="0.4">
+    <circle cx="100" cy="120" r="4" fill="#C084FC"/>
+    <circle cx="780" cy="140" r="5" fill="#C084FC"/>
+    <circle cx="120" cy="460" r="5" fill="#E879F9"/>
+    <circle cx="800" cy="440" r="4" fill="#E879F9"/>
+    <path d="M 60 280 Q 140 260 220 290" stroke="#E9D5FF" stroke-width="2" fill="none" stroke-dasharray="6 6"/>
+    <path d="M 680 270 Q 760 300 840 280" stroke="#E9D5FF" stroke-width="2" fill="none" stroke-dasharray="6 6"/>
   </g>
 
   <!-- =========================================================================
-       MASTER RIBOSOME COMPLEX (2 SUBUNITS - TÁCH RỜI / CÓ THỂ GHÉP BẰNG TỊNH TIẾN)
-       KHÔNG CÓ MÀNG PHOSPHOLIPID BAO BỌC
+       DYNAMIC INTERACTIVE RIBOSOME (CENTRAL / ASSEMBLEABLE)
        ========================================================================= -->
-  <g id="s01_ribosomeMasterGroup" transform="translate(400, 290)" filter="url(#s01_riboDropShadow)">
-    
-    <!-- 1. TIỂU ĐƠN VỊ LỚN (LARGE SUBUNIT) - Nằm phía trên, thể tích lớn hơn rõ rệt (65%) -->
-    <!-- Coordinate origin centered around the contact interface -->
-    <g id="s01_largeSubunit" transform="translate(0, -35)">
-      <!-- Main globular crown body with central protuberance and stalks -->
+  <g id="s01_ribosomeMasterGroup" transform="translate(450, 245)">
+
+    <!-- 1. TIỂU PHẦN LỚN (LARGE SUBUNIT) -->
+    <g id="s01_largeSubunit" filter="url(#s01_dropShadow)">
+      
+      <!-- Far-left rear rounded protrusion -->
       <path d="
-        M -170 30
-        C -195 -10 -200 -70 -170 -120
-        C -150 -155 -110 -185 -40 -195
-        C 0 -200 40 -200 80 -190
-        C 140 -175 190 -130 195 -75
-        C 200 -20 185 20 160 30
-        C 120 42 60 45 0 45
-        C -60 45 -125 42 -170 30 Z"
-        fill="url(#s01_largeSubunitGrad)" stroke="#3730A3" stroke-width="3"/>
+        M -125 -15
+        C -145 -35, -165 -25, -170 10
+        C -175 40, -150 65, -120 65
+        C -95 65, -85 45, -95 20
+        C -105 0, -115 0, -125 -15 Z"
+        fill="url(#s01_largeRearBulgeGrad)"/>
 
-      <!-- Structural surface fissures & protein-rRNA relief contours -->
-      <path d="M -130 -140 C -80 -120 -30 -135 20 -150" fill="none" stroke="#A5B4FC" stroke-width="2.5" opacity="0.6" stroke-linecap="round"/>
-      <path d="M 60 -155 C 110 -140 145 -100 160 -50" fill="none" stroke="#A5B4FC" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
-      <path d="M -160 -50 C -130 -40 -100 -55 -70 -60" fill="none" stroke="#4338CA" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
+      <!-- Main Central & Right Voluminous Dome -->
+      <path d="
+        M -80 -105
+        C -30 -145, 60 -150, 125 -115
+        C 185 -80, 225 -20, 220 50
+        C 215 115, 170 155, 95 160
+        C 25 165, -45 155, -95 130
+        C -140 108, -145 75, -135 45
+        C -125 15, -110 -15, -100 -50
+        C -95 -80, -90 -95, -80 -105 Z"
+        fill="url(#s01_largeDomeGrad)"/>
 
-      <!-- Functional tRNA binding cavities at interface (A, P, E sites) -->
-      <g id="s01_trnaBindingSites" opacity="0.85">
-        <!-- Exit Site (E site) -->
-        <path d="M -95 10 C -95 -25 -70 -25 -70 10 C -70 28 -95 28 -95 10 Z" fill="url(#s01_largeSiteGrad)" stroke="#4338CA" stroke-width="1.5"/>
-        <text x="-82" y="5" font-family="'JetBrains Mono', monospace" font-size="11" fill="#C7D2FE" font-weight="700" text-anchor="middle">E</text>
+      <!-- Deep Fold / Crevice Shadow between arm and dome -->
+      <path d="
+        M -95 -50
+        C -65 -15, -45 25, -5 45
+        C 35 62, 75 60, 85 45
+        C 75 30, 25 25, -15 10
+        C -55 -5, -80 -30, -95 -50 Z"
+        fill="url(#s01_largeFoldShadow)" filter="url(#s01_creviceBlur)"/>
 
-        <!-- Peptidyl Site (P site) -->
-        <path d="M -30 12 C -30 -30 -5 -30 -5 12 C -5 32 -30 32 -30 12 Z" fill="url(#s01_largeSiteGrad)" stroke="#4338CA" stroke-width="1.5"/>
-        <text x="-17" y="5" font-family="'JetBrains Mono', monospace" font-size="11" fill="#FDE047" font-weight="700" text-anchor="middle">P</text>
+      <!-- Left Curled Lobe / Arm (Folded across front) -->
+      <path d="
+        M -130 -60
+        C -120 -115, -65 -135, -25 -115
+        C 15 -95, 30 -60, 25 -20
+        C 20 15, -10 38, -55 35
+        C -95 32, -125 15, -138 -15
+        C -145 -35, -140 -50, -130 -60 Z"
+        fill="url(#s01_largeLeftArmGrad)"/>
 
-        <!-- Aminoacyl Site (A site) -->
-        <path d="M 35 12 C 35 -30 60 -30 60 12 C 60 32 35 32 35 12 Z" fill="url(#s01_largeSiteGrad)" stroke="#4338CA" stroke-width="1.5"/>
-        <text x="48" y="5" font-family="'JetBrains Mono', monospace" font-size="11" fill="#C7D2FE" font-weight="700" text-anchor="middle">A</text>
-      </g>
+      <!-- Deep separating crease beneath the arm -->
+      <path d="M -130 -15 C -115 12, -75 22, -35 15 C -5 8, 15 -8, 18 -30"
+            fill="none" stroke="#2E1065" stroke-width="4.5" stroke-linecap="round" opacity="0.8" filter="url(#s01_creviceBlur)"/>
 
-      <!-- Nascent polypeptide exit tunnel opening (Đỉnh trên của tiểu đơn vị lớn) -->
-      <ellipse cx="-10" cy="-185" rx="14" ry="7" fill="#1E1B4B" stroke="#4338CA" stroke-width="1.5"/>
-      <path d="M -10 -185 C -15 -215 -5 -230 10 -245" fill="none" stroke="#F59E0B" stroke-width="4" stroke-linecap="round" stroke-dasharray="3 3"/>
-      <circle cx="10" cy="-245" r="5" fill="#EF4444"/>
+      <!-- Specular Highlights -->
+      <path d="M 20 -125 C 75 -130, 135 -105, 170 -65"
+            fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity="0.45" filter="url(#s01_specularBlur)"/>
+      <path d="M 40 -120 C 85 -125, 130 -105, 155 -75"
+            fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+
+      <path d="M -95 -85 C -75 -115, -40 -110, -10 -90"
+            fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.5" filter="url(#s01_specularBlur)"/>
+      <path d="M -85 -90 C -70 -110, -45 -105, -20 -90"
+            fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.75"/>
+
+      <!-- Subtle pointer anchor -->
+      <circle cx="70" cy="-60" r="3.5" fill="#4C1D95" stroke="#FFFFFF" stroke-width="1.5"/>
     </g>
 
 
-    <!-- 2. TIỂU ĐƠN VỊ NHỎ (SMALL SUBUNIT) - Nằm phía dưới, thể tích nhỏ hơn rõ rệt (35%) -->
-    <g id="s01_smallSubunit" transform="translate(0, 50)">
-      <!-- Head, platform and body of small subunit -->
+    <!-- 2. TIỂU PHẦN NHỎ (SMALL SUBUNIT) -->
+    <g id="s01_smallSubunit" filter="url(#s01_dropShadow)">
+      
+      <!-- Lower Left Foot -->
       <path d="
-        M -150 -18
-        C -110 -28 -40 -30 10 -30
-        C 70 -30 130 -26 160 -15
-        C 180 5 175 40 145 65
-        C 110 90 40 105 -20 105
-        C -90 105 -150 85 -170 50
-        C -185 22 -175 -5 -150 -18 Z"
-        fill="url(#s01_smallSubunitGrad)" stroke="#3730A3" stroke-width="2.8"/>
+        M -170 120
+        C -195 140, -195 175, -170 195
+        C -145 215, -105 215, -75 195
+        C -55 180, -65 155, -90 140
+        C -115 125, -145 110, -170 120 Z"
+        fill="url(#s01_smallFootGrad)"/>
 
-      <!-- mRNA binding groove / channel across interface -->
-      <path d="M -155 -12 Q -20 -22 145 -8" fill="none" stroke="#1E1B4B" stroke-width="5" stroke-linecap="round" opacity="0.75"/>
-      <path d="M -155 -12 Q -20 -22 145 -8" fill="none" stroke="#FDE047" stroke-width="2.5" stroke-dasharray="6 4" stroke-linecap="round"/>
+      <!-- Main Elongated Horizontal Body -->
+      <path d="
+        M -95 130
+        C -55 110, 25 110, 95 120
+        C 160 128, 205 145, 215 170
+        C 225 198, 195 225, 140 235
+        C 75 245, -15 245, -85 235
+        C -145 225, -180 205, -165 175
+        C -155 155, -130 142, -95 130 Z"
+        fill="url(#s01_smallBodyGrad)"/>
 
-      <!-- Surface contours on small subunit -->
-      <path d="M -120 40 Q -60 70 30 65" fill="none" stroke="#C7D2FE" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
-      <path d="M 60 50 Q 110 45 135 25" fill="none" stroke="#312E81" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+      <!-- Left Raised Head / Knob -->
+      <path d="
+        M -150 145
+        C -165 115, -145 80, -115 80
+        C -85 80, -60 105, -55 135
+        C -50 160, -75 180, -105 180
+        C -130 180, -145 165, -150 145 Z"
+        fill="url(#s01_smallHeadGrad)"/>
+
+      <!-- Crease separating raised head from lower foot -->
+      <path d="M -145 150 C -120 145, -95 155, -80 170"
+            fill="none" stroke="#4A044E" stroke-width="4" stroke-linecap="round" opacity="0.75" filter="url(#s01_creviceBlur)"/>
+
+      <!-- Specular Highlights -->
+      <path d="M -135 95 C -125 85, -105 85, -90 98"
+            fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity="0.6" filter="url(#s01_specularBlur)"/>
+      <path d="M -130 95 C -122 88, -108 88, -95 98"
+            fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+
+      <path d="M -30 122 C 35 120, 110 130, 165 148"
+            fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.45" filter="url(#s01_specularBlur)"/>
+      <path d="M -15 122 C 40 120, 105 130, 150 146"
+            fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.75"/>
+
+      <!-- Subtle pointer anchor -->
+      <circle cx="-110" cy="135" r="3.5" fill="#701A75" stroke="#FFFFFF" stroke-width="1.5"/>
     </g>
 
   </g>
 
-  <!-- Subunit Size Indicator Guide (Khẳng định tỷ lệ thể tích trực quan không vi phạm) -->
-  <g opacity="0.85" font-family="'Be Vietnam Pro', sans-serif" font-size="12">
-    <line x1="160" y1="180" x2="210" y2="210" stroke="#6366F1" stroke-width="1.5" stroke-dasharray="3 3"/>
-    <circle cx="160" cy="180" r="3" fill="#6366F1"/>
+  <!-- =========================================================================
+       LABELS & POINTER LINES (Đúng Hình 8.3 SGK)
+       ========================================================================= -->
+  <g id="s01_labelsGroup" font-family="'Be Vietnam Pro', sans-serif">
     
-    <line x1="160" y1="400" x2="210" y2="370" stroke="#818CF8" stroke-width="1.5" stroke-dasharray="3 3"/>
-    <circle cx="160" cy="400" r="3" fill="#818CF8"/>
+    <!-- Pointer Line to Tiểu phần lớn (Large Subunit) -->
+    <g id="s01_largeLabelGroup">
+      <line x1="520" y1="185" x2="680" y2="105" stroke="#4C1D95" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="680" cy="105" r="3.5" fill="#4C1D95"/>
+      <g filter="url(#s01_cardShadow)">
+        <rect x="688" y="85" width="170" height="38" rx="8" fill="#FFFFFF" stroke="#E9D5FF" stroke-width="1.5"/>
+        <text x="773" y="109" font-size="14" font-weight="700" fill="#581C87" text-anchor="middle">Tiểu phần lớn</text>
+      </g>
+    </g>
+
+    <!-- Pointer Line to Tiểu phần nhỏ (Small Subunit) -->
+    <g id="s01_smallLabelGroup">
+      <line x1="340" y1="380" x2="200" y2="435" stroke="#86198F" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="200" cy="435" r="3.5" fill="#86198F"/>
+      <g filter="url(#s01_cardShadow)">
+        <rect x="30" y="415" width="162" height="38" rx="8" fill="#FFFFFF" stroke="#FCE7F3" stroke-width="1.5"/>
+        <text x="111" y="439" font-size="14" font-weight="700" fill="#9D174D" text-anchor="middle">Tiểu phần nhỏ</text>
+      </g>
+    </g>
+
+    <!-- Assembled Label: "Ribosome" -->
+    <g id="s01_assembledTitleGroup">
+      <g filter="url(#s01_cardShadow)">
+        <rect x="-105" y="-22" width="210" height="44" rx="22" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+        <text x="0" y="7" font-size="22" font-weight="800" fill="#111827" text-anchor="middle" letter-spacing="1">Ribosome</text>
+      </g>
+    </g>
   </g>
 </svg>
 
@@ -1105,30 +1229,30 @@
          ===================================================================== -->
     <g id="s02_membraneBoundRibosomes">
       <!-- Ribosomes on Upper Margin of Sheet 1 (y ≈ 125 - 135) -->
-      <g transform="translate(240, 126)"><ellipse cx="0" cy="-6" rx="6" ry="4.5" fill="#818CF8"/><ellipse cx="0" cy="0" rx="8" ry="5.5" fill="#4F46E5"/><circle cx="0" cy="0" r="1.5" fill="#C7D2FE"/></g>
-      <g transform="translate(275, 124)"><ellipse cx="0" cy="-6" rx="6" ry="4.5" fill="#818CF8"/><ellipse cx="0" cy="0" rx="8" ry="5.5" fill="#4F46E5"/><circle cx="0" cy="0" r="1.5" fill="#C7D2FE"/></g>
-      <g transform="translate(310, 125)"><ellipse cx="0" cy="-6" rx="6" ry="4.5" fill="#818CF8"/><ellipse cx="0" cy="0" rx="8" ry="5.5" fill="#4F46E5"/><circle cx="0" cy="0" r="1.5" fill="#C7D2FE"/></g>
-      <g transform="translate(350, 130)"><ellipse cx="0" cy="-6" rx="6" ry="4.5" fill="#818CF8"/><ellipse cx="0" cy="0" rx="8" ry="5.5" fill="#4F46E5"/><circle cx="0" cy="0" r="1.5" fill="#C7D2FE"/></g>
-      <g transform="translate(390, 136)"><ellipse cx="0" cy="-6" rx="6" ry="4.5" fill="#818CF8"/><ellipse cx="0" cy="0" rx="8" ry="5.5" fill="#4F46E5"/><circle cx="0" cy="0" r="1.5" fill="#C7D2FE"/></g>
+      <g transform="translate(240, 126)"><ellipse cx="0" cy="-5" rx="5" ry="3.5" fill="#D946EF"/><ellipse cx="0" cy="1" rx="7" ry="5" fill="#7E22CE"/><circle cx="0" cy="1" r="1.5" fill="#E9D5FF"/></g>
+      <g transform="translate(275, 124)"><ellipse cx="0" cy="-5" rx="5" ry="3.5" fill="#D946EF"/><ellipse cx="0" cy="1" rx="7" ry="5" fill="#7E22CE"/><circle cx="0" cy="1" r="1.5" fill="#E9D5FF"/></g>
+      <g transform="translate(310, 125)"><ellipse cx="0" cy="-5" rx="5" ry="3.5" fill="#D946EF"/><ellipse cx="0" cy="1" rx="7" ry="5" fill="#7E22CE"/><circle cx="0" cy="1" r="1.5" fill="#E9D5FF"/></g>
+      <g transform="translate(350, 130)"><ellipse cx="0" cy="-5" rx="5" ry="3.5" fill="#D946EF"/><ellipse cx="0" cy="1" rx="7" ry="5" fill="#7E22CE"/><circle cx="0" cy="1" r="1.5" fill="#E9D5FF"/></g>
+      <g transform="translate(390, 136)"><ellipse cx="0" cy="-5" rx="5" ry="3.5" fill="#D946EF"/><ellipse cx="0" cy="1" rx="7" ry="5" fill="#7E22CE"/><circle cx="0" cy="1" r="1.5" fill="#E9D5FF"/></g>
 
       <!-- Ribosomes on Active Protein Synthesis Site (Site of Interest with growing protein) -->
       <g id="s02_activeTranslatingRibosome" transform="translate(290, 216)">
-        <ellipse cx="0" cy="-8" rx="7.5" ry="5.5" fill="#818CF8" stroke="#3730A3" stroke-width="1"/>
-        <ellipse cx="0" cy="0" rx="10" ry="7" fill="#4F46E5" stroke="#312E81" stroke-width="1.2"/>
+        <ellipse cx="0" cy="-6" rx="7" ry="4.5" fill="#D946EF" stroke="#86198F" stroke-width="1"/>
+        <ellipse cx="0" cy="2" rx="9.5" ry="6.5" fill="#7E22CE" stroke="#4C1D95" stroke-width="1.2"/>
         <!-- mRNA strand passing through small subunit cleft -->
-        <path d="M -16 -8 Q 0 -12 16 -8" stroke="#FDE047" stroke-width="2" fill="none"/>
+        <path d="M -16 -6 Q 0 -10 16 -6" stroke="#FDE047" stroke-width="2" fill="none"/>
         <!-- Nascent Polypeptide Chain entering ER lumen via translocon pore -->
-        <path d="M 0 4 C -2 15 5 22 2 35 C 0 45 8 52 15 55"
+        <path d="M 0 6 C -2 17 5 24 2 37 C 0 45 8 52 15 55"
               fill="none" stroke="#F59E0B" stroke-width="3" stroke-linecap="round" stroke-dasharray="3 2"/>
         <circle cx="15" cy="55" r="4.5" fill="#EF4444"/>
       </g>
 
       <!-- More bound ribosomes on Sheet 2 -->
-      <g transform="translate(230, 222)"><ellipse cx="0" cy="-6" rx="6" ry="4.5" fill="#818CF8"/><ellipse cx="0" cy="0" rx="8" ry="5.5" fill="#4F46E5"/></g>
-      <g transform="translate(350, 228)"><ellipse cx="0" cy="-6" rx="6" ry="4.5" fill="#818CF8"/><ellipse cx="0" cy="0" rx="8" ry="5.5" fill="#4F46E5"/></g>
-      <g transform="translate(440, 260)"><ellipse cx="0" cy="-6" rx="6" ry="4.5" fill="#818CF8"/><ellipse cx="0" cy="0" rx="8" ry="5.5" fill="#4F46E5"/></g>
-      <g transform="translate(250, 326)"><ellipse cx="0" cy="6" rx="6" ry="4.5" fill="#818CF8"/><ellipse cx="0" cy="0" rx="8" ry="5.5" fill="#4F46E5"/></g>
-      <g transform="translate(300, 335)"><ellipse cx="0" cy="6" rx="6" ry="4.5" fill="#818CF8"/><ellipse cx="0" cy="0" rx="8" ry="5.5" fill="#4F46E5"/></g>
+      <g transform="translate(230, 222)"><ellipse cx="0" cy="-5" rx="5" ry="3.5" fill="#D946EF"/><ellipse cx="0" cy="1" rx="7" ry="5" fill="#7E22CE"/></g>
+      <g transform="translate(350, 228)"><ellipse cx="0" cy="-5" rx="5" ry="3.5" fill="#D946EF"/><ellipse cx="0" cy="1" rx="7" ry="5" fill="#7E22CE"/></g>
+      <g transform="translate(440, 260)"><ellipse cx="0" cy="-5" rx="5" ry="3.5" fill="#D946EF"/><ellipse cx="0" cy="1" rx="7" ry="5" fill="#7E22CE"/></g>
+      <g transform="translate(250, 326)"><ellipse cx="0" cy="5" rx="5" ry="3.5" fill="#D946EF"/><ellipse cx="0" cy="-1" rx="7" ry="5" fill="#7E22CE"/></g>
+      <g transform="translate(300, 335)"><ellipse cx="0" cy="5" rx="5" ry="3.5" fill="#D946EF"/><ellipse cx="0" cy="-1" rx="7" ry="5" fill="#7E22CE"/></g>
     </g>
 
 
@@ -2615,20 +2739,33 @@
     const statusBadge = document.getElementById('s01StatusBadge');
     const btnAssemble = document.getElementById('btnAssembleS01');
 
-    if (canvasWrapper) {
+    if (!canvasWrapper) return;
+
+    if (canvasWrapper.classList.contains('ribo-assembled')) {
+      canvasWrapper.classList.remove('ribo-assembled');
+      canvasWrapper.classList.add('ribo-separated');
+      if (statusBadge) {
+        statusBadge.innerHTML = 'Trạng thái: 2 tiểu đơn vị tách rời';
+        statusBadge.style.background = 'var(--cream)';
+        statusBadge.style.color = 'var(--ink-3)';
+      }
+      if (btnAssemble) {
+        btnAssemble.innerHTML = '<i class="ti ti-link"></i> Ghép tiểu đơn vị';
+      }
+    } else {
       canvasWrapper.classList.remove('ribo-separated');
       canvasWrapper.classList.add('ribo-assembled');
+      if (statusBadge) {
+        statusBadge.innerHTML = '<i class="ti ti-circle-check" style="color:var(--jade-deep)"></i> Đã ghép: Ribosome hoàn chỉnh';
+        statusBadge.style.background = 'var(--jade-pale)';
+        statusBadge.style.color = 'var(--jade-text)';
+      }
+      if (btnAssemble) {
+        btnAssemble.innerHTML = '<i class="ti ti-arrows-split"></i> Tách rời để xem lại';
+      }
+      window.lmsState.s01.assembled = true;
+      checkStage1Readiness();
     }
-    if (statusBadge) {
-      statusBadge.innerHTML = '<i class="ti ti-circle-check" style="color:var(--jade-deep)"></i> Đã ghép: Ribosome hoàn chỉnh';
-      statusBadge.style.background = 'var(--jade-pale)';
-      statusBadge.style.color = 'var(--jade-text)';
-    }
-    if (btnAssemble) {
-      btnAssemble.innerHTML = '<i class="ti ti-rotate"></i> Ghép lại';
-    }
-    window.lmsState.s01.assembled = true;
-    checkStage1Readiness();
   }
 
   function selectOptionS01(labelEl, val) {
