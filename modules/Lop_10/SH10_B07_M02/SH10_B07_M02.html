@@ -1,0 +1,2700 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SH10_B07_M02 · Cấu trúc bao bọc tế bào nhân sơ</title>
+<script type="application/json" id="athena-context">
+{
+  "title": "Cấu trúc bao bọc tế bào nhân sơ",
+  "subject": "Sinh học",
+  "grade": "10",
+  "track": "SH10_B07_M02",
+  "objectives": [
+    "Mô tả được cấu tạo và chức năng các thành phần bao bọc của tế bào nhân sơ",
+    "Phân biệt được vị trí, đặc điểm hình thái và chức năng của lông (fimbriae/pili) và roi (flagella)",
+    "So sánh được sự khác biệt về thành tế bào giữa vi khuẩn Gram dương và Gram âm sau khi nhuộm Gram",
+    "Nhận biết được siêu cấu trúc màng ngoài bất đối xứng và hoạt tính nội độc tố của Lipid A trong lipopolysaccharide (LPS)",
+    "Hiểu được cấu tạo lớp kép phospholipid và tính thấm chọn lọc của màng tế bào",
+    "Sắp xếp hoàn chỉnh sơ đồ các lớp bao bọc từ ngoài vào trong và giải thích được cơ chế tác động của kháng sinh penicillin lên thành tế bào"
+  ],
+  "structure": [
+    {"id": "st01", "title": "Bản đồ từ ngoài vào trong"},
+    {"id": "st02", "title": "Lông và roi"},
+    {"id": "st03", "title": "Gram dương và Gram âm"},
+    {"id": "st04", "title": "Màng ngoài và LPS"},
+    {"id": "st05", "title": "Màng tế bào"},
+    {"id": "st06", "title": "Tổng hợp và ứng dụng"}
+  ],
+  "athenaGuidance": "Module lý thuyết tương tác Sinh học 10 chuẩn V10 gồm 6 màn: 1) Khám phá 5 cấu trúc trên bản đồ tế bào vi khuẩn từ ngoài vào trong (lông, roi, màng ngoài, thành tế bào, màng tế bào). 2) Kéo thả phân biệt chức năng bám dính của lông và vận động của roi. 3) Nhấn Nhuộm Gram quan sát đổi màu (tím/hồng đỏ) và nối đúng mô tả với 2 kiểu thành tế bào. 4) Phóng đại màng ngoài Gram âm, nhận diện 5 lớp và trả lời câu hỏi về hoạt tính nội độc tố của Lipid A. 5) Tương tác với mô hình màng sinh chất thử nghiệm tính thấm có chọn lọc của hạt phân tử qua kênh protein. 6) Kéo thả hoàn thiện 2 sơ đồ các lớp vỏ Gram+ và Gram-, trả lời câu hỏi chốt về đích tác động của penicillin và kết thúc với modal pháo hoa chúc mừng."
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css">
+<style>
+:root {
+  --cream: #FAF7F0;
+  --cream-2: #F0EADD;
+  --cream-3: #E7DECC;
+  --paper-line: #E5DECF;
+  --paper-line-2: #D6CCB6;
+  --ink: #1A1A1A;
+  --ink-2: #514C44;
+  --ink-3: #7C756A;
+  --ink-faint: #ABA396;
+  --jade: #3CA57A;
+  --jade-deep: #2D8B6F;
+  --jade-dark: #14432F;
+  --jade-text: #1B5E48;
+  --jade-soft: #A9D0BE;
+  --jade-pale: #DCEAE1;
+  --sage: #A8C9B8;
+  --sage-deep: #7CA792;
+  --sage-text: #46685A;
+  --sage-pale: #E1ECE4;
+  --accent: #E8A24A;
+  --accent-deep: #CE8A33;
+  --accent-text: #8A551A;
+  --accent-pale: #F7E7CD;
+  --correct: #2D8B6F;
+  --correct-bg: #DCEAE1;
+  --wrong: #C15F3C;
+  --wrong-bg: #F3E2D6;
+  --warning: #C58A2E;
+  --warning-bg: #F5E7CB;
+  --info: #4E7F92;
+  --info-bg: #DCE7EB;
+  --gram-pos: #7C3AED;
+  --gram-pos-bg: #EDE9FE;
+  --gram-neg: #E11D48;
+  --gram-neg-bg: #FFE4E6;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --radius-sm: 8px;
+  --shadow-sm: 0 2px 8px rgba(26, 26, 26, 0.06);
+  --shadow-md: 0 6px 18px rgba(26, 26, 26, 0.08);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  background-color: var(--cream);
+  color: var(--ink);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+/* Modal Hide Override (Anti-Auto-Popup Rule) */
+.hidden {
+  display: none !important;
+}
+.congrats-overlay.hidden,
+.modal-backdrop.hidden,
+#completionModal.hidden {
+  display: none !important;
+}
+
+.app {
+  width: 100%;
+  max-width: 1060px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Stage Card Layout */
+.stage {
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.stage-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--paper-line);
+  padding-bottom: 16px;
+}
+
+.stage-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stage-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--jade-text);
+  background: var(--jade-pale);
+  padding: 4px 10px;
+  border-radius: 99px;
+  width: fit-content;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stage-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.stage-step-indicator {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink-3);
+  background: var(--cream-2);
+  padding: 6px 14px;
+  border-radius: 99px;
+  border: 1px solid var(--paper-line-2);
+}
+
+.lead-text {
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  line-height: 1.65;
+}
+
+/* Single Point of Instruction */
+.guide-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--jade-pale);
+  border-left: 4px solid var(--jade);
+  padding: 12px 18px;
+  border-radius: var(--radius-sm);
+  color: var(--jade-text);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.guide-box i {
+  font-size: 1.3rem;
+  color: var(--jade-deep);
+  flex-shrink: 0;
+}
+
+/* Feedback Box */
+.inline-feedback {
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.55;
+  animation: slideUp 0.25s ease;
+}
+.inline-feedback i {
+  font-size: 1.25rem;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+.inline-feedback.correct {
+  background: var(--correct-bg);
+  border-left: 4px solid var(--correct);
+  color: var(--jade-text);
+}
+.inline-feedback.wrong {
+  background: var(--wrong-bg);
+  border-left: 4px solid var(--wrong);
+  color: #782613;
+}
+.inline-feedback.info {
+  background: var(--info-bg);
+  border-left: 4px solid var(--info);
+  color: #1E3A47;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Action Controls Row (Responsive V10) */
+.stage-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+  padding-top: 18px;
+  border-top: 1px solid var(--paper-line);
+  flex-wrap: wrap;
+}
+
+@media (min-width: 641px) {
+  .stage-actions > button[id^="btnPrev"] {
+    margin-right: auto;
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  border: none;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  background: var(--jade);
+  color: #FFFFFF;
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--jade-deep);
+  box-shadow: 0 4px 12px rgba(45, 139, 111, 0.25);
+  transform: translateY(-1px);
+}
+.btn-primary:disabled {
+  background: var(--cream-3);
+  color: var(--ink-faint);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background: #FFFFFF;
+  border: 1.5px solid var(--paper-line-2);
+  color: var(--ink-2);
+}
+.btn-secondary:hover:not(:disabled) {
+  background: var(--cream-2);
+  border-color: var(--ink-3);
+}
+
+.btn-outline {
+  background: #FFFFFF;
+  border: 1.5px solid var(--jade);
+  color: var(--jade-text);
+}
+.btn-outline:hover:not(:disabled) {
+  background: var(--jade-pale);
+}
+
+/* ==========================================================================
+   STAGE 1: INTERACTIVE BACTERIAL MAP
+   ========================================================================== */
+.map-layout {
+  display: grid;
+  grid-template-columns: 65% 33%;
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 840px) {
+  .map-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.map-view-card {
+  position: relative;
+  background: #FFFFFF;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.map-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #E5E7EB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.map-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Hotspot pulse rings */
+.map-hotspot {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid var(--jade);
+  color: var(--jade-text);
+  font-weight: 800;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: all 0.25s ease;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.map-hotspot::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--jade);
+  animation: pulseAnim 1.8s infinite;
+}
+@keyframes pulseAnim {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  70% { transform: scale(1.5); opacity: 0; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+.map-hotspot:hover {
+  transform: translate(-50%, -50%) scale(1.15);
+  background: var(--jade);
+  color: #FFFFFF;
+}
+.map-hotspot.viewed {
+  background: var(--correct);
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+}
+.map-hotspot.viewed::after {
+  display: none;
+}
+
+/* Hotspot Detail Popover */
+.hotspot-popover {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid var(--jade-soft);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  z-index: 20;
+  box-shadow: var(--shadow-md);
+  animation: slideUp 0.2s ease;
+}
+.popover-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.popover-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--jade-text);
+}
+.popover-text {
+  font-size: 0.88rem;
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+.popover-close {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--ink-3);
+  cursor: pointer;
+}
+
+/* Checklist Panel */
+.map-list-card {
+  background: var(--cream);
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.list-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--paper-line-2);
+  padding-bottom: 10px;
+}
+.list-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.list-counter {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--jade-text);
+  background: var(--jade-pale);
+  padding: 3px 8px;
+  border-radius: 99px;
+}
+
+.struct-item {
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+.struct-item.active {
+  border-color: var(--jade);
+  background: #F4FDF8;
+}
+.struct-item-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--cream-2);
+  border: 1px solid var(--paper-line-2);
+  color: var(--ink-faint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.struct-item.viewed .struct-item-icon {
+  background: var(--jade);
+  border-color: var(--jade);
+  color: #FFFFFF;
+}
+.struct-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.struct-item-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.struct-item-desc {
+  font-size: 0.8rem;
+  color: var(--ink-3);
+  line-height: 1.35;
+}
+
+/* ==========================================================================
+   STAGE 2: FIMBRIAE VS FLAGELLUM MATCHING
+   ========================================================================== */
+.s02-comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+@media (max-width: 680px) {
+  .s02-comparison-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.compare-card {
+  background: #FFFFFF;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+}
+.compare-img-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #F1F5F9;
+  position: relative;
+  overflow: hidden;
+}
+.compare-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.compare-meta {
+  padding: 0 16px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+}
+.compare-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+.compare-trait-list {
+  font-size: 0.88rem;
+  color: var(--ink-2);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.compare-trait-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.compare-trait-item i {
+  color: var(--jade);
+  font-size: 14px;
+}
+
+.target-drop-zone {
+  min-height: 60px;
+  background: var(--cream);
+  border: 2px dashed var(--paper-line-2);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.target-drop-zone.drag-over {
+  border-color: var(--jade);
+  background: var(--jade-pale);
+}
+.target-drop-zone.locked-correct {
+  border-color: var(--correct);
+  background: var(--correct-bg);
+  border-style: solid;
+}
+.zone-placeholder {
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  font-style: italic;
+  text-align: center;
+}
+
+.tray-cards-container {
+  background: var(--cream-2);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tray-label {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.cards-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.drag-card {
+  background: #FFFFFF;
+  border: 1.5px solid var(--paper-line-2);
+  border-radius: var(--radius-sm);
+  padding: 10px 18px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: grab;
+  user-select: none;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+.drag-card:active {
+  cursor: grabbing;
+}
+.drag-card.selected {
+  border-color: var(--jade);
+  box-shadow: 0 0 0 3px rgba(60, 165, 122, 0.25);
+  background: #F4FDF8;
+}
+.drag-card.placed {
+  cursor: pointer;
+  background: #FFFFFF;
+  border-color: var(--jade-deep);
+}
+
+/* ==========================================================================
+   STAGE 3: GRAM STAINING & WALL COMPARISON
+   ========================================================================== */
+.gram-view-box {
+  background: #FFFFFF;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.gram-img-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: #000;
+}
+.gram-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: filter 0.6s ease;
+}
+.gram-img-container.neutral img {
+  filter: grayscale(85%) contrast(85%) brightness(95%);
+}
+
+.gram-tint-layer {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.gram-img-container.stained .gram-tint-layer {
+  opacity: 1;
+}
+.tint-left-pos {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.28) 0%, rgba(124, 58, 237, 0.08) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+}
+.tint-right-neg {
+  background: linear-gradient(135deg, rgba(225, 29, 72, 0.28) 0%, rgba(225, 29, 72, 0.08) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+}
+.gram-badge-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 99px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.gram-badge-indicator.pos {
+  background: var(--gram-pos);
+  color: #FFFFFF;
+}
+.gram-badge-indicator.neg {
+  background: var(--gram-neg);
+  color: #FFFFFF;
+}
+
+.staining-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--cream);
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--paper-line);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.gram-matching-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+@media (max-width: 680px) {
+  .gram-matching-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gram-col-card {
+  background: var(--cream);
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.gram-col-header {
+  font-size: 0.95rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ==========================================================================
+   STAGE 4: OUTER MEMBRANE & LPS STRATA
+   ========================================================================== */
+.lps-stage-layout {
+  display: grid;
+  grid-template-columns: 58% 40%;
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .lps-stage-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.lps-img-card {
+  background: #FFFFFF;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.lps-img-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #111827;
+  position: relative;
+}
+.lps-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.lps-layers-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.layer-card-btn {
+  background: #FFFFFF;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.layer-card-btn:hover {
+  border-color: var(--jade-soft);
+  background: #FDFEFE;
+}
+.layer-card-btn.selected {
+  border-color: var(--jade);
+  background: #F4FDF8;
+  box-shadow: 0 0 0 2px rgba(60, 165, 122, 0.2);
+}
+.layer-card-title {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.layer-card-desc {
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  line-height: 1.4;
+  display: none;
+}
+.layer-card-btn.selected .layer-card-desc {
+  display: block;
+}
+
+.lps-qa-box {
+  background: var(--cream);
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: slideUp 0.3s ease;
+}
+
+/* ==========================================================================
+   STAGE 5: PLASMA MEMBRANE SELECTIVE TRANSPORT SVG
+   ========================================================================== */
+.membrane-sim-arena {
+  background: var(--cream);
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sim-svg-wrapper {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.sim-svg-wrapper svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.particles-control-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.particle-btn {
+  background: #FFFFFF;
+  border: 1.5px solid var(--paper-line-2);
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.particle-btn:hover {
+  border-color: var(--jade);
+  background: var(--jade-pale);
+}
+.p-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+.p-dot.small-water { background: #38BDF8; }
+.p-dot.large-sugar { background: #EAB308; }
+.p-dot.charged-ion { background: #EF4444; }
+
+/* Radio Options System */
+.qa-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.qa-option-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #FFFFFF;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+.qa-option-label:hover:not(.locked) {
+  border-color: var(--jade-soft);
+}
+.qa-option-label.selected {
+  border-color: var(--jade);
+  background: #F4FDF8;
+  color: var(--ink);
+  font-weight: 600;
+}
+.qa-option-radio {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--paper-line-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.qa-option-label.selected .qa-option-radio {
+  border-color: var(--jade);
+  background: var(--jade);
+}
+.qa-option-label.selected .qa-option-radio::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #FFFFFF;
+}
+
+/* ==========================================================================
+   STAGE 6: SYNTHESIS DIAGRAMS & PENICILLIN TARGET
+   ========================================================================== */
+.s06-synthesis-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 720px) {
+  .s06-synthesis-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.synthesis-diagram-box {
+  background: var(--cream);
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.synthesis-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.envelope-slots-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.strata-slot {
+  min-height: 56px;
+  background: #FFFFFF;
+  border: 2px dashed var(--paper-line-2);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.2s;
+}
+.strata-slot.drag-over {
+  border-color: var(--jade);
+  background: var(--jade-pale);
+}
+.strata-slot.filled {
+  border-style: solid;
+  border-color: var(--jade);
+  background: #F4FDF8;
+}
+.strata-pos-tag {
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   CONGRATULATIONS MODAL & CONFETTI CANVAS
+   ========================================================================== */
+.congrats-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 40, 30, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.25s ease;
+}
+
+.congrats-modal {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  max-width: 520px;
+  width: 100%;
+  padding: 36px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+.congrats-icon-wrap {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: #FEF3C7;
+  color: #D97706;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.25);
+}
+
+.congrats-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.congrats-text {
+  font-size: 0.95rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+.congrats-actions {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  margin-top: 10px;
+}
+.congrats-actions .btn {
+  flex: 1;
+}
+
+#confettiCanvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+/* ==========================================================================
+   RESPONSIVE MOBILE SYSTEM (< 640px & < 420px)
+   ========================================================================== */
+@media (max-width: 640px) {
+  body {
+    padding: 8px 6px;
+  }
+  .app {
+    gap: 14px;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  .stage {
+    padding: 18px 12px;
+    gap: 16px;
+    border-radius: var(--radius);
+  }
+  .stage-head {
+    gap: 8px;
+    padding-bottom: 12px;
+  }
+  .stage-title {
+    font-size: 1.22rem;
+    line-height: 1.35;
+  }
+  .stage-step-indicator {
+    font-size: 0.78rem;
+    padding: 4px 10px;
+  }
+  .lead-text {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+  .guide-box {
+    padding: 10px 12px;
+    font-size: 0.88rem;
+    gap: 8px;
+  }
+  .guide-box i {
+    font-size: 1.15rem;
+  }
+
+  /* Stage Actions Mobile Layout: perfectly distributed, zero overflow */
+  .stage-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: stretch;
+    padding-top: 14px;
+    margin-top: 8px;
+  }
+  .stage-actions > button[id^="btnPrev"] {
+    margin-right: 0;
+  }
+  .stage-actions .btn {
+    flex: 1 1 auto;
+    min-width: fit-content;
+    padding: 9px 8px;
+    font-size: 0.82rem;
+    gap: 5px;
+    white-space: nowrap;
+    justify-content: center;
+    text-align: center;
+  }
+  .stage-actions .btn i {
+    font-size: 0.95rem;
+  }
+
+  .compare-meta {
+    padding: 0 12px 12px 12px;
+  }
+  .compare-title {
+    font-size: 0.95rem;
+  }
+  .drag-card {
+    padding: 8px 12px;
+    font-size: 0.84rem;
+  }
+}
+
+@media (max-width: 420px) {
+  body {
+    padding: 6px 4px;
+  }
+  .stage {
+    padding: 14px 10px;
+  }
+  .stage-actions .btn {
+    padding: 8px 6px;
+    font-size: 0.78rem;
+    gap: 4px;
+  }
+  .stage-actions .btn i {
+    font-size: 0.9rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<canvas id="confettiCanvas"></canvas>
+
+<div class="app">
+
+  <!-- =====================================================================
+       MÀN S01: BẢN ĐỒ TỪ NGOÀI VÀO TRONG (SH10_B07_M02_S01)
+       ===================================================================== -->
+  <section class="stage" id="stage-1" role="region" aria-label="Màn 1: Quan sát một tế bào vi khuẩn điển hình">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-map-pin"></i> Màn 1 · Bản đồ cấu trúc</span>
+        <h2 class="stage-title">Quan sát một tế bào vi khuẩn điển hình</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 1 / 6</span>
+    </div>
+
+    <p class="lead-text">Tế bào vi khuẩn có thể mang các cấu trúc ở ngoài bề mặt như lông và roi. Bao quanh tế bào chất là màng tế bào và thường có thành tế bào; ở vi khuẩn Gram âm còn có màng ngoài. Không phải mọi vi khuẩn đều có đầy đủ tất cả cấu trúc minh họa.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Nhấn lần lượt vào năm điểm sáng. Điểm đã xem chuyển sang viền xanh và tên cấu trúc được ghi vào danh sách bên phải.</span>
+    </div>
+
+    <div class="map-layout">
+      <!-- Image Canvas with Hotspots -->
+      <div class="map-view-card">
+        <div class="map-img-wrap" id="mapWrap">
+          <img src="images/SH10-B07-M02-A01.jpg" alt="Lát cắt tổng quan tế bào vi khuẩn điển hình">
+          
+          <!-- 5 Hotspots Percentage Anchors -->
+          <button class="map-hotspot" id="hsFimbriae" style="top:26%; left:38%;" data-code="fimbriae" title="Lông (Fimbriae / Pili)">1</button>
+          <button class="map-hotspot" id="hsFlagellum" style="top:52%; left:12%;" data-code="flagellum" title="Roi (Flagella)">2</button>
+          <button class="map-hotspot" id="hsOuterMem" style="top:28%; left:62%;" data-code="outer_membrane" title="Màng ngoài">3</button>
+          <button class="map-hotspot" id="hsCellWall" style="top:32%; left:66%;" data-code="cell_wall" title="Thành tế bào">4</button>
+          <button class="map-hotspot" id="hsPlasmaMem" style="top:36%; left:71%;" data-code="plasma_membrane" title="Màng tế bào">5</button>
+        </div>
+
+        <!-- Hotspot Detail Popover -->
+        <div class="hotspot-popover hidden" id="mapPopover">
+          <div class="popover-body">
+            <span class="popover-title" id="popoverTitle">Tên cấu trúc</span>
+            <span class="popover-text" id="popoverDesc">Mô tả đặc điểm và vị trí của cấu trúc.</span>
+          </div>
+          <button class="popover-close" id="btnClosePopover" aria-label="Đóng chú giải">&times;</button>
+        </div>
+      </div>
+
+      <!-- Checklist of Discovered Structures -->
+      <div class="map-list-card">
+        <div class="list-head">
+          <span class="list-title">Các lớp từ ngoài vào trong</span>
+          <span class="list-counter" id="mapCounter">Đã xem 0/5</span>
+        </div>
+
+        <div class="struct-item" id="itemFimbriae">
+          <div class="struct-item-icon"><i class="ti ti-check"></i></div>
+          <div class="struct-item-info">
+            <span class="struct-item-name">1. Lông (Fimbriae / Pili)</span>
+            <span class="struct-item-desc">Sợi ngắn, mảnh, số lượng nhiều trên bề mặt.</span>
+          </div>
+        </div>
+
+        <div class="struct-item" id="itemFlagellum">
+          <div class="struct-item-icon"><i class="ti ti-check"></i></div>
+          <div class="struct-item-info">
+            <span class="struct-item-name">2. Roi (Flagellum)</span>
+            <span class="struct-item-desc">Sợi dài uốn lượn, số lượng ít, tạo chuyển động.</span>
+          </div>
+        </div>
+
+        <div class="struct-item" id="itemOuterMem">
+          <div class="struct-item-icon"><i class="ti ti-check"></i></div>
+          <div class="struct-item-info">
+            <span class="struct-item-name">3. Màng ngoài (Outer membrane)</span>
+            <span class="struct-item-desc">Lớp màng lipid bất đối xứng đặc trưng ở Gram âm.</span>
+          </div>
+        </div>
+
+        <div class="struct-item" id="itemCellWall">
+          <div class="struct-item-icon"><i class="ti ti-check"></i></div>
+          <div class="struct-item-info">
+            <span class="struct-item-name">4. Thành tế bào (Peptidoglycan)</span>
+            <span class="struct-item-desc">Mạng lưới peptit-đường bảo vệ và giữ hình dạng.</span>
+          </div>
+        </div>
+
+        <div class="struct-item" id="itemPlasmaMem">
+          <div class="struct-item-icon"><i class="ti ti-check"></i></div>
+          <div class="struct-item-info">
+            <span class="struct-item-name">5. Màng tế bào (Plasma membrane)</span>
+            <span class="struct-item-desc">Lớp kép phospholipid trong cùng sát tế bào chất.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="inline-feedback correct hidden" id="fbStage1">
+      <i class="ti ti-circle-check"></i>
+      <span>Bạn đã có bản đồ tổng quan. Tiếp theo, hãy phân biệt hai cấu trúc dạng sợi dễ bị nhầm lẫn nhất.</span>
+    </div>
+
+    <div class="stage-actions">
+      <button class="btn btn-primary" id="btnNextStage1" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN S02: LÔNG VÀ ROI (SH10_B07_M02_S02)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-2" role="region" aria-label="Màn 2: Lông và roi khác nhau như thế nào?">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-arrows-split"></i> Màn 2 · Phân biệt cấu trúc</span>
+        <h2 class="stage-title">Lông và roi khác nhau như thế nào?</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 2 / 6</span>
+    </div>
+
+    <p class="lead-text">Lông thường ngắn và nhiều, giúp bám dính; một số lông chuyên hóa tham gia tiếp hợp. Roi dài hơn và thường ít hơn, giúp tế bào vận động.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-grab"></i>
+      <span>Kéo từng thẻ chức năng vào cấu trúc phù hợp. Thẻ đặt đúng sẽ khóa tại vị trí; thẻ đặt sai trở về khay.</span>
+    </div>
+
+    <div class="s02-comparison-grid">
+      <!-- Card 1: Lông -->
+      <div class="compare-card">
+        <div class="compare-img-wrap">
+          <img src="images/SH10-B07-M02-A02.jpg" style="object-position: left center;" alt="Cận cảnh lông vi khuẩn">
+        </div>
+        <div class="compare-meta">
+          <span class="compare-title">Cấu trúc 1: Lông (Fimbriae / Pili)</span>
+          <div class="compare-trait-list">
+            <span class="compare-trait-item"><i class="ti ti-point"></i> Chiều dài: Thường ngắn, sợi thẳng và mảnh.</span>
+            <span class="compare-trait-item"><i class="ti ti-point"></i> Số lượng: Rất nhiều, phủ dày đặc khắp bề mặt.</span>
+          </div>
+          <div class="target-drop-zone" id="zoneFimbriae" data-target="fimbriae">
+            <span class="zone-placeholder">Thả thẻ chức năng của lông vào đây</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Roi -->
+      <div class="compare-card">
+        <div class="compare-img-wrap">
+          <img src="images/SH10-B07-M02-A02.jpg" style="object-position: right center;" alt="Cận cảnh roi vi khuẩn">
+        </div>
+        <div class="compare-meta">
+          <span class="compare-title">Cấu trúc 2: Roi (Flagellum)</span>
+          <div class="compare-trait-list">
+            <span class="compare-trait-item"><i class="ti ti-point"></i> Chiều dài: Dài vượt xa chiều dài thân tế bào.</span>
+            <span class="compare-trait-item"><i class="ti ti-point"></i> Số lượng: Thường ít (1 hoặc vài sợi ở cực/xung quanh).</span>
+          </div>
+          <div class="target-drop-zone" id="zoneFlagellum" data-target="flagellum">
+            <span class="zone-placeholder">Thả thẻ chức năng của roi vào đây</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards Tray -->
+    <div class="tray-cards-container" id="trayStage2">
+      <span class="tray-label">Khay thẻ chức năng (Chạm chọn hoặc Kéo thả):</span>
+      <div class="cards-row" id="cardsPoolStage2">
+        <div class="drag-card" id="cardAdhesion" draggable="true" data-role="adhesion">
+          <i class="ti ti-pin"></i> <span>Bám dính</span>
+        </div>
+        <div class="drag-card" id="cardMotility" draggable="true" data-role="motility">
+          <i class="ti ti-arrow-autofit-right"></i> <span>Vận động</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="inline-feedback hidden" id="fbStage2"></div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" id="btnPrevStage2"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      <button class="btn btn-outline" id="btnCheckStage2" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
+      <button class="btn btn-secondary hidden" id="btnRetryStage2"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+      <button class="btn btn-primary" id="btnNextStage2" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN S03: GRAM DƯƠNG VÀ GRAM ÂM (SH10_B07_M02_S03)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-3" role="region" aria-label="Màn 3: Thành tế bào tiết lộ điều gì khi nhuộm Gram?">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-color-swatch"></i> Màn 3 · Phân loại Gram</span>
+        <h2 class="stage-title">Thành tế bào tiết lộ điều gì khi nhuộm Gram?</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 3 / 6</span>
+    </div>
+
+    <p class="lead-text">Thành tế bào vi khuẩn chứa peptidoglycan, giúp duy trì hình dạng và bảo vệ tế bào. Vi khuẩn Gram dương có lớp peptidoglycan dày và thường bắt màu tím; vi khuẩn Gram âm có lớp peptidoglycan mỏng, nằm giữa màng ngoài và màng tế bào, và thường hiện màu hồng đỏ sau nhuộm Gram.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Nhấn NHUỘM GRAM, quan sát màu xuất hiện, rồi nối mỗi mô tả với mặt cắt phù hợp. Đường nối đúng chuyển xanh.</span>
+    </div>
+
+    <div class="gram-view-box">
+      <!-- Stained Wall Image Display -->
+      <div class="gram-img-container neutral" id="gramImgContainer">
+        <img src="images/SH10-B07-M02-A03.jpg" alt="Mặt cắt cấu trúc thành tế bào vi khuẩn Gram dương và Gram âm">
+        
+        <div class="gram-tint-layer">
+          <div class="tint-left-pos">
+            <span class="gram-badge-indicator pos"><i class="ti ti-circle-filled"></i> Bắt màu Tím</span>
+          </div>
+          <div class="tint-right-neg">
+            <span class="gram-badge-indicator neg"><i class="ti ti-circle-filled"></i> Hiện màu Hồng đỏ</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Button to Trigger Gram Staining -->
+      <div class="staining-action-bar">
+        <span style="font-size:0.9rem; font-weight:700; color:var(--ink-2);"><i class="ti ti-flask"></i> Thuốc nhuộm: Tím tinh thể & Safranin</span>
+        <button class="btn btn-outline" id="btnTriggerStain"><i class="ti ti-color-swatch"></i> NHUỘM GRAM</button>
+      </div>
+
+      <!-- Matching Grid -->
+      <div class="gram-matching-grid">
+        <!-- Target Left: Gram Positive -->
+        <div class="gram-col-card" id="cardGramPos">
+          <span class="gram-col-header" style="color:var(--gram-pos);"><i class="ti ti-shield-check"></i> Mặt cắt A: Vi khuẩn Gram dương</span>
+          <p style="font-size:0.85rem; color:var(--ink-3);">Quan sát cấu trúc bên trái: không có màng ngoài, lớp bảo vệ duy nhất là mạng lưới peptidoglycan gắn sát màng tế bào.</p>
+          <div class="target-drop-zone" id="zoneGramPos" data-target="pos">
+            <span class="zone-placeholder">Gắn mô tả phù hợp cho Gram dương</span>
+          </div>
+        </div>
+
+        <!-- Target Right: Gram Negative -->
+        <div class="gram-col-card" id="cardGramNeg">
+          <span class="gram-col-header" style="color:var(--gram-neg);"><i class="ti ti-shield-half"></i> Mặt cắt B: Vi khuẩn Gram âm</span>
+          <p style="font-size:0.85rem; color:var(--ink-3);">Quan sát cấu trúc bên phải: lớp ngoài cùng là màng kép bất đối xứng, ở giữa là lớp peptidoglycan mỏng và dưới cùng là màng tế bào.</p>
+          <div class="target-drop-zone" id="zoneGramNeg" data-target="neg">
+            <span class="zone-placeholder">Gắn mô tả phù hợp cho Gram âm</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards Tray for Gram Descriptions -->
+      <div class="tray-cards-container hidden" id="trayStage3">
+        <span class="tray-label">Các thẻ mô tả đặc điểm (Chạm chọn hoặc Kéo thả):</span>
+        <div class="cards-row" id="cardsPoolStage3">
+          <div class="drag-card" id="descThickPurple" draggable="true" data-type="pos">
+            <i class="ti ti-tag"></i> <span>Peptidoglycan dày – tím</span>
+          </div>
+          <div class="drag-card" id="descThinRed" draggable="true" data-type="neg">
+            <i class="ti ti-tag"></i> <span>Peptidoglycan mỏng + màng ngoài – hồng đỏ</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="inline-feedback hidden" id="fbStage3"></div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" id="btnPrevStage3"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      <button class="btn btn-outline" id="btnCheckStage3" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
+      <button class="btn btn-secondary hidden" id="btnRetryStage3"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+      <button class="btn btn-primary" id="btnNextStage3" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN S04: MÀNG NGOÀI VÀ LPS (SH10_B07_M02_S04)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-4" role="region" aria-label="Màn 4: Màng ngoài của vi khuẩn Gram âm">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-layers-subtract"></i> Màn 4 · Cấu trúc LPS</span>
+        <h2 class="stage-title">Màng ngoài của vi khuẩn Gram âm</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 4 / 6</span>
+    </div>
+
+    <p class="lead-text">Màng ngoài là hàng rào bảo vệ đặc trưng của vi khuẩn Gram âm. Lá ngoài của màng giàu lipopolysaccharide, viết tắt là LPS; phần lipid A của LPS có hoạt tính nội độc tố. LPS có thể được giải phóng trong quá trình vi khuẩn phát triển hoặc khi tế bào bị phá vỡ và có thể gây đáp ứng viêm mạnh.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Nhấn từng lớp theo thứ tự từ ngoài vào trong. Lớp đã chọn sáng lên và mô tả xuất hiện bên cạnh.</span>
+    </div>
+
+    <div class="lps-stage-layout">
+      <!-- Image Display -->
+      <div class="lps-img-card">
+        <div class="lps-img-wrap">
+          <img src="images/SH10-B07-M02-A04.jpg" alt="Siêu cấu trúc màng ngoài Gram âm và phân tử LPS">
+        </div>
+        <div style="padding:10px 14px; font-size:0.8rem; color:var(--ink-3); background:var(--cream);">
+          <i class="ti ti-info-circle"></i> Hình ảnh phóng đại 3D siêu cấu trúc màng ngoài bất đối xứng ở vi khuẩn Gram âm.
+        </div>
+      </div>
+
+      <!-- Interactive 5-Layer Stack -->
+      <div class="lps-layers-panel">
+        <button class="layer-card-btn" data-layer="1">
+          <div class="layer-card-title">
+            <span>1. Chuỗi Lipopolysaccharide (LPS)</span>
+            <i class="ti ti-chevron-right"></i>
+          </div>
+          <div class="layer-card-desc">Nằm ở lá ngoài. Gồm chuỗi kháng nguyên O vươn ra ngoài, lõi oligosaccharide và phần gốc Lipid A cắm sâu vào lớp màng.</div>
+        </button>
+
+        <button class="layer-card-btn" data-layer="2">
+          <div class="layer-card-title">
+            <span>2. Kênh Protein (Porin)</span>
+            <i class="ti ti-chevron-right"></i>
+          </div>
+          <div class="layer-card-desc">Protein dạng ống hình trụ rỗng xuyên qua màng ngoài, kiểm soát có chọn lọc sự khuếch tán của các chất tan phân tử nhỏ.</div>
+        </button>
+
+        <button class="layer-card-btn" data-layer="3">
+          <div class="layer-card-title">
+            <span>3. Phospholipid lá trong</span>
+            <i class="ti ti-chevron-right"></i>
+          </div>
+          <div class="layer-card-desc">Mặt trong của màng ngoài cấu tạo chủ yếu từ phospholipid thông thường, tạo tính bất đối xứng đặc trưng cho màng ngoài.</div>
+        </button>
+
+        <button class="layer-card-btn" data-layer="4">
+          <div class="layer-card-title">
+            <span>4. Peptidoglycan mỏng</span>
+            <i class="ti ti-chevron-right"></i>
+          </div>
+          <div class="layer-card-desc">Lớp lưới mỏng chỉ dày khoảng 1-2 lớp phân tử nằm trong khoang chu chất (periplasmic space) ngay bên dưới màng ngoài.</div>
+        </button>
+
+        <button class="layer-card-btn" data-layer="5">
+          <div class="layer-card-title">
+            <span>5. Màng tế bào (Màng sinh chất)</span>
+            <i class="ti ti-chevron-right"></i>
+          </div>
+          <div class="layer-card-desc">Lớp kép phospholipid đối xứng nằm ở trong cùng, bao bọc trực tiếp khối tế bào chất của vi khuẩn.</div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Question Box (Appears after exploring all 5 layers) -->
+    <div class="lps-qa-box hidden" id="boxQuestionLps">
+      <span style="font-size:0.95rem; font-weight:800; color:var(--jade-text);"><i class="ti ti-help"></i> CÂU HỎI NHẬN THỨC VỀ NỘI ĐỘC TỐ:</span>
+      <p style="font-size:0.95rem; font-weight:700; color:var(--ink);">Phần nào của LPS gắn với hoạt tính nội độc tố?</p>
+      
+      <div class="qa-options-list" id="optsLps">
+        <label class="qa-option-label" data-value="A">
+          <div class="qa-option-radio"></div>
+          <span>A. Lipid A (neo trong lớp lipid của màng ngoài)</span>
+        </label>
+        <label class="qa-option-label" data-value="B">
+          <div class="qa-option-radio"></div>
+          <span>B. Peptidoglycan (nằm trong khoang chu chất)</span>
+        </label>
+        <label class="qa-option-label" data-value="C">
+          <div class="qa-option-radio"></div>
+          <span>C. Phospholipid màng tế bào (ở lớp trong cùng)</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="inline-feedback hidden" id="fbStage4"></div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" id="btnPrevStage4"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      <button class="btn btn-outline" id="btnCheckStage4" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
+      <button class="btn btn-secondary hidden" id="btnRetryStage4"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+      <button class="btn btn-primary" id="btnNextStage4" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN S05: MÀNG TẾ BÀO (SH10_B07_M02_S05)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-5" role="region" aria-label="Màn 5: Màng tế bào – ranh giới trao đổi có chọn lọc">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-circle-half-2"></i> Màn 5 · Màng sinh chất</span>
+        <h2 class="stage-title">Màng tế bào – ranh giới trao đổi có chọn lọc</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 5 / 6</span>
+    </div>
+
+    <p class="lead-text">Nằm sát tế bào chất là màng tế bào, gồm chủ yếu lớp kép phospholipid và protein. Màng kiểm soát có chọn lọc sự trao đổi chất; ở tế bào nhân sơ, màng còn là nơi diễn ra một số quá trình chuyển hóa năng lượng và tiếp nhận tín hiệu.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Nhấn các phân tử ở ngoài màng để thử cho đi qua. Mũi tên xanh cho biết được vận chuyển; biểu tượng dừng cho biết chưa đi qua theo cơ chế đang mô phỏng.</span>
+    </div>
+
+    <div class="membrane-sim-arena">
+      <!-- SVG Bilayer Interactive Arena -->
+      <div class="sim-svg-wrapper">
+        <svg viewBox="0 0 800 280" id="membraneBilayerSvg">
+          <!-- External Environment Background -->
+          <rect x="0" y="0" width="800" height="90" fill="#F0F9FF"/>
+          <text x="20" y="30" font-size="12" font-weight="700" fill="#0369A1" font-family="'Be Vietnam Pro', sans-serif">MÔI TRƯỜNG NGOÀI TẾ BÀO (Aqueous exterior)</text>
+
+          <!-- Cytoplasm Background -->
+          <rect x="0" y="190" width="800" height="90" fill="#FEFCE8"/>
+          <text x="20" y="260" font-size="12" font-weight="700" fill="#854D0E" font-family="'Be Vietnam Pro', sans-serif">TẾ BÀO CHẤT (Cytoplasm)</text>
+
+          <!-- Phospholipid Bilayer Graphic -->
+          <g id="phospholipidHeadsTop">
+            <!-- Row of Top Heads (Hydrophilic facing up) -->
+            <!-- Dynamically generated or repeated circles with tails -->
+          </g>
+          <g id="phospholipidHeadsBottom">
+            <!-- Row of Bottom Heads (Hydrophilic facing down) -->
+          </g>
+
+          <!-- Transmembrane Protein Channel in Center -->
+          <g id="proteinChannelGroup" transform="translate(360, 75)">
+            <rect x="0" y="0" width="32" height="130" rx="10" fill="#14B8A6" stroke="#0F766E" stroke-width="2"/>
+            <rect x="48" y="0" width="32" height="130" rx="10" fill="#14B8A6" stroke="#0F766E" stroke-width="2"/>
+            <text x="40" y="65" font-size="11" font-weight="800" fill="#042F2E" text-anchor="middle" font-family="'Be Vietnam Pro', sans-serif">KÊNH</text>
+          </g>
+
+          <!-- Animated Particle Element -->
+          <g id="simParticleObj" style="transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1); transform: translate(400px, 40px); opacity: 0;">
+            <circle cx="0" cy="0" r="12" id="simParticleCircle" fill="#38BDF8" stroke="#0284C7" stroke-width="2"/>
+            <text x="0" y="4" font-size="10" font-weight="800" fill="#FFFFFF" text-anchor="middle" id="simParticleLetter">P</text>
+          </g>
+
+          <!-- Transport Indicator Icon -->
+          <g id="simResultIndicator" style="opacity:0; transition: opacity 0.3s;" transform="translate(400, 140)">
+            <circle cx="0" cy="0" r="16" id="simIndicatorBg" fill="#10B981"/>
+            <path id="simIndicatorIcon" d="M -6 0 L -2 4 L 6 -4" stroke="#FFFFFF" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Interactive Particles Control Strip -->
+      <div class="particles-control-strip">
+        <button class="particle-btn" data-particle="water">
+          <span class="p-dot small-water"></span>
+          <span>Hạt A: Phân tử nhỏ phù hợp kênh</span>
+        </button>
+        <button class="particle-btn" data-particle="sugar">
+          <span class="p-dot large-sugar"></span>
+          <span>Hạt B: Phân tử kích thước lớn</span>
+        </button>
+        <button class="particle-btn" data-particle="ion">
+          <span class="p-dot charged-ion"></span>
+          <span>Hạt C: Phân tử không tương thích</span>
+        </button>
+      </div>
+
+      <div style="font-size:0.85rem; font-weight:700; color:var(--ink-2); text-align:center;" id="simStatusFeedback">
+        Nhấn vào một loại hạt phân tử ở trên để quan sát phản ứng tương tác với màng tế bào.
+      </div>
+
+      <!-- Multiple Choice Question -->
+      <div class="lps-qa-box" style="margin-top:10px;">
+        <span style="font-size:0.95rem; font-weight:800; color:var(--jade-text);"><i class="ti ti-help"></i> KẾT LUẬN VỀ TÍNH CHẤT CỦA MÀNG TẾ BÀO:</span>
+        <p style="font-size:0.95rem; font-weight:700; color:var(--ink);">Chọn câu mô tả đúng về chức năng của màng tế bào:</p>
+        
+        <div class="qa-options-list" id="optsMembrane">
+          <label class="qa-option-label" data-value="A">
+            <div class="qa-option-radio"></div>
+            <span>A. Màng tế bào kiểm soát có chọn lọc sự trao đổi chất</span>
+          </label>
+          <label class="qa-option-label" data-value="B">
+            <div class="qa-option-radio"></div>
+            <span>B. Mọi chất đều có thể đi qua màng tế bào tự do</span>
+          </label>
+          <label class="qa-option-label" data-value="C">
+            <div class="qa-option-radio"></div>
+            <span>C. Màng tế bào chỉ có ở vi khuẩn Gram dương</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="inline-feedback hidden" id="fbStage5"></div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" id="btnPrevStage5"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      <button class="btn btn-outline" id="btnCheckStage5" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
+      <button class="btn btn-secondary hidden" id="btnRetryStage5"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+      <button class="btn btn-primary" id="btnNextStage5" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN S06: TỔNG HỢP VÀ ỨNG DỤNG (SH10_B07_M02_S06)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-6" role="region" aria-label="Màn 6: Hoàn thiện sơ đồ các lớp bao bọc">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-trophy"></i> Màn 6 · Tổng hợp & Ứng dụng</span>
+        <h2 class="stage-title">Hoàn thiện sơ đồ các lớp bao bọc</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 6 / 6</span>
+    </div>
+
+    <p class="lead-text">Từ ngoài vào trong, các cấu trúc thay đổi tùy nhóm vi khuẩn. Gram dương có peptidoglycan dày ở ngoài màng tế bào. Gram âm có màng ngoài, peptidoglycan mỏng và màng tế bào. Kháng sinh beta-lactam như penicillin ức chế tổng hợp peptidoglycan ở vi khuẩn đang sinh trưởng; hiệu quả còn phụ thuộc khả năng thuốc đi tới đích và cơ chế kháng thuốc.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-grab"></i>
+      <span>Kéo các thẻ vào hai sơ đồ. Thẻ đúng sẽ khóa. Khi hoàn tất, nhấn KIỂM TRA.</span>
+    </div>
+
+    <div class="s06-synthesis-grid">
+      <!-- Diagram 1: Gram Positive -->
+      <div class="synthesis-diagram-box">
+        <div class="synthesis-title">
+          <span>1. Vi khuẩn Gram dương</span>
+          <span style="font-size:0.8rem; color:var(--gram-pos); font-weight:700;">(2 lớp chính)</span>
+        </div>
+        <div class="envelope-slots-stack">
+          <div class="strata-slot" id="slotPos1" data-expect="peptidoglycan_thick">
+            <span class="strata-pos-tag">Ngoài</span>
+            <span class="zone-placeholder">Thả thẻ lớp ngoài</span>
+          </div>
+          <div class="strata-slot" id="slotPos2" data-expect="plasma_membrane">
+            <span class="strata-pos-tag">Trong</span>
+            <span class="zone-placeholder">Thả thẻ lớp trong</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diagram 2: Gram Negative -->
+      <div class="synthesis-diagram-box">
+        <div class="synthesis-title">
+          <span>2. Vi khuẩn Gram âm</span>
+          <span style="font-size:0.8rem; color:var(--gram-neg); font-weight:700;">(3 lớp chính)</span>
+        </div>
+        <div class="envelope-slots-stack">
+          <div class="strata-slot" id="slotNeg1" data-expect="outer_membrane">
+            <span class="strata-pos-tag">Ngoài cùng</span>
+            <span class="zone-placeholder">Thả thẻ lớp ngoài cùng</span>
+          </div>
+          <div class="strata-slot" id="slotNeg2" data-expect="peptidoglycan_thin">
+            <span class="strata-pos-tag">Ở giữa</span>
+            <span class="zone-placeholder">Thả thẻ lớp giữa</span>
+          </div>
+          <div class="strata-slot" id="slotNeg3" data-expect="plasma_membrane">
+            <span class="strata-pos-tag">Trong cùng</span>
+            <span class="zone-placeholder">Thả thẻ lớp trong cùng</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards Tray for 5 Envelope Layers -->
+    <div class="tray-cards-container" id="trayStage6">
+      <span class="tray-label">Các thẻ lớp vỏ bao bọc (Kéo thả hoặc chạm chọn):</span>
+      <div class="cards-row" id="cardsPoolStage6">
+        <div class="drag-card" id="cThickPep" draggable="true" data-role="peptidoglycan_thick">
+          <i class="ti ti-layers-linked"></i> <span>Peptidoglycan dày</span>
+        </div>
+        <div class="drag-card" id="cOuterMem" draggable="true" data-role="outer_membrane">
+          <i class="ti ti-layout-distribute-vertical"></i> <span>Màng ngoài</span>
+        </div>
+        <div class="drag-card" id="cThinPep" draggable="true" data-role="peptidoglycan_thin">
+          <i class="ti ti-line"></i> <span>Peptidoglycan mỏng</span>
+        </div>
+        <div class="drag-card" id="cPlasma1" draggable="true" data-role="plasma_membrane">
+          <i class="ti ti-circle-half-2"></i> <span>Màng tế bào</span>
+        </div>
+        <div class="drag-card" id="cPlasma2" draggable="true" data-role="plasma_membrane">
+          <i class="ti ti-circle-half-2"></i> <span>Màng tế bào</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Capstone Medical Application Question -->
+    <div class="lps-qa-box hidden" id="boxQuestionPenicillin">
+      <span style="font-size:0.95rem; font-weight:800; color:var(--jade-text);"><i class="ti ti-pill"></i> ỨNG DỤNG Y HỌC & KHÁNG SINH:</span>
+      <p style="font-size:0.95rem; font-weight:700; color:var(--ink);">Cấu trúc nào là đích tác động trực tiếp của kháng sinh penicillin?</p>
+      
+      <div class="qa-options-list" id="optsPenicillin">
+        <label class="qa-option-label" data-value="A">
+          <div class="qa-option-radio"></div>
+          <span>A. Quá trình tổng hợp peptidoglycan của thành tế bào</span>
+        </label>
+        <label class="qa-option-label" data-value="B">
+          <div class="qa-option-radio"></div>
+          <span>B. Phân tử DNA ở vùng nhân tế bào</span>
+        </label>
+        <label class="qa-option-label" data-value="C">
+          <div class="qa-option-radio"></div>
+          <span>C. Bào quan ribosome trong tế bào chất</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="inline-feedback hidden" id="fbStage6"></div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" id="btnPrevStage6"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      <button class="btn btn-outline" id="btnCheckStage6" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
+      <button class="btn btn-secondary hidden" id="btnRetryStage6"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+      <button class="btn btn-primary hidden" id="btnFinishStage6"><i class="ti ti-trophy"></i> HOÀN THÀNH</button>
+    </div>
+  </section>
+
+</div>
+
+<!-- =======================================================================
+     MODAL CHÚC MỪNG HOÀN THÀNH V10 & CONFETTI
+     ======================================================================= -->
+<div class="congrats-overlay hidden" id="completionModal" role="dialog" aria-modal="true">
+  <div class="congrats-modal">
+    <div class="congrats-icon-wrap">
+      <i class="ti ti-trophy"></i>
+    </div>
+    <h3 class="congrats-title">Xuất sắc hoàn thành Module!</h3>
+    <p class="congrats-text">
+      Bạn đã nắm vững đặc điểm và chức năng các cấu trúc bao bọc tế bào nhân sơ từ ngoài vào trong: phân biệt lông – roi, hai kiểu thành tế bào Gram dương / Gram âm, siêu cấu trúc màng ngoài LPS và tính chọn lọc của màng tế bào!
+    </p>
+    <div class="congrats-actions">
+      <button class="btn btn-secondary" id="btnReviewAll"><i class="ti ti-rotate-clockwise"></i> Xem lại bài</button>
+      <button class="btn btn-primary" id="btnCloseCongrats"><i class="ti ti-check"></i> Đóng thông báo</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ==========================================================================
+   BIOLOGY RUNTIME STATE & LMS INTEGRATION
+   ========================================================================== */
+window.lmsState = {
+  currentStage: 1,
+  totalStages: 6,
+  stage1: { viewed: new Set() },
+  stage2: { placed: {}, correct: false },
+  stage3: { stained: false, placed: {}, correct: false },
+  stage4: { layersExplored: new Set(), answer: null, correct: false },
+  stage5: { particleTested: false, answer: null, correct: false },
+  stage6: { layersPlaced: {}, answer: null, correct: false },
+  completed: false
+};
+
+function reportHeight() {
+  const height = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+  if (window.parent && window.parent !== window) {
+    window.parent.postMessage({ type: 'resize', height: height }, '*');
+  }
+}
+window.addEventListener('resize', reportHeight);
+window.addEventListener('load', reportHeight);
+
+function switchStage(stageNum) {
+  for (let i = 1; i <= 6; i++) {
+    const el = document.getElementById('stage-' + i);
+    if (el) {
+      if (i === stageNum) el.classList.remove('hidden');
+      else el.classList.add('hidden');
+    }
+  }
+  window.lmsState.currentStage = stageNum;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  setTimeout(reportHeight, 80);
+}
+
+/* ==========================================================================
+   STAGE 1 LOGIC: BẢN ĐỒ TẾ BÀO VI KHUẨN
+   ========================================================================== */
+const hsData = {
+  fimbriae: {
+    title: '1. Lông (Fimbriae / Pili)',
+    desc: 'Các sợi protein ngắn, mảnh và có số lượng rất lớn bao phủ bề mặt; chức năng chính giúp vi khuẩn bám dính vào bề mặt hoặc tế bào chủ. Một số lông tiếp hợp (sex pili) tham gia truyền DNA.',
+    item: 'itemFimbriae'
+  },
+  flagellum: {
+    title: '2. Roi (Flagellum)',
+    desc: 'Cấu trúc hình sợi dài uốn lượn hình xoắn ốc, gắn với động cơ thể gốc ở thành màng tế bào; quay để đẩy tế bào vi khuẩn di chuyển và bơi trong môi trường lỏng.',
+    item: 'itemFlagellum'
+  },
+  outer_membrane: {
+    title: '3. Màng ngoài (Outer membrane)',
+    desc: 'Lớp màng kép bất đối xứng đặc trưng của vi khuẩn Gram âm; lá ngoài giàu lipopolysaccharide (LPS) giúp chống lại hóa chất và kháng sinh, chứa kênh porin vận chuyển.',
+    item: 'itemOuterMem'
+  },
+  cell_wall: {
+    title: '4. Thành tế bào (Peptidoglycan)',
+    desc: 'Lớp khung cứng bao bọc tế bào, dày ở vi khuẩn Gram dương và mỏng ở vi khuẩn Gram âm; duy trì hình dạng ổn định và ngăn tế bào bị vỡ do áp suất thẩm thấu.',
+    item: 'itemCellWall'
+  },
+  plasma_membrane: {
+    title: '5. Màng tế bào (Plasma membrane)',
+    desc: 'Lớp kép phospholipid và protein nằm sát tế bào chất; có tính thấm chọn lọc, kiểm soát trao đổi chất và là nơi diễn ra các quá trình tổng hợp ATP ở nhân sơ.',
+    item: 'itemPlasmaMem'
+  }
+};
+
+const popover = document.getElementById('mapPopover');
+const popoverTitle = document.getElementById('popoverTitle');
+const popoverDesc = document.getElementById('popoverDesc');
+const btnClosePopover = document.getElementById('btnClosePopover');
+const mapCounter = document.getElementById('mapCounter');
+const btnNextStage1 = document.getElementById('btnNextStage1');
+const fbStage1 = document.getElementById('fbStage1');
+
+document.querySelectorAll('.map-hotspot').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const code = btn.dataset.code;
+    const info = hsData[code];
+    if (!info) return;
+
+    // Show popover
+    popoverTitle.textContent = info.title;
+    popoverDesc.textContent = info.desc;
+    popover.classList.remove('hidden');
+
+    // Mark hotspot
+    btn.classList.add('viewed');
+
+    // Mark list item
+    const listItem = document.getElementById(info.item);
+    if (listItem) listItem.classList.add('viewed');
+
+    // Update state
+    window.lmsState.stage1.viewed.add(code);
+    const count = window.lmsState.stage1.viewed.size;
+    mapCounter.textContent = 'Đã xem ' + count + '/5';
+
+    if (count === 5) {
+      btnNextStage1.removeAttribute('disabled');
+      fbStage1.classList.remove('hidden');
+    }
+    reportHeight();
+  });
+});
+
+btnClosePopover.addEventListener('click', () => {
+  popover.classList.add('hidden');
+});
+
+btnNextStage1.addEventListener('click', () => {
+  switchStage(2);
+});
+
+/* ==========================================================================
+   STAGE 2 LOGIC: LÔNG VÀ ROI (DRAG & DROP + TOUCH)
+   ========================================================================== */
+let selectedStage2Card = null;
+const cardsPoolStage2 = document.getElementById('cardsPoolStage2');
+const zoneFimbriae = document.getElementById('zoneFimbriae');
+const zoneFlagellum = document.getElementById('zoneFlagellum');
+const btnCheckStage2 = document.getElementById('btnCheckStage2');
+const btnRetryStage2 = document.getElementById('btnRetryStage2');
+const btnNextStage2 = document.getElementById('btnNextStage2');
+const fbStage2 = document.getElementById('fbStage2');
+
+function initStage2Drag() {
+  document.querySelectorAll('#trayStage2 .drag-card').forEach(card => {
+    card.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text/plain', card.dataset.role);
+      selectedStage2Card = card;
+    });
+
+    // Touch click selection fallback
+    card.addEventListener('click', () => {
+      if (card.parentElement.classList.contains('target-drop-zone')) {
+        // Return to tray if clicked inside drop zone
+        cardsPoolStage2.appendChild(card);
+        card.classList.remove('placed', 'selected');
+        checkStage2Ready();
+        return;
+      }
+      document.querySelectorAll('#trayStage2 .drag-card').forEach(c => c.classList.remove('selected'));
+      selectedStage2Card = card;
+      card.classList.add('selected');
+    });
+  });
+
+  [zoneFimbriae, zoneFlagellum].forEach(zone => {
+    zone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      zone.classList.add('drag-over');
+    });
+    zone.addEventListener('dragleave', () => {
+      zone.classList.remove('drag-over');
+    });
+    zone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      zone.classList.remove('drag-over');
+      if (selectedStage2Card) {
+        placeStage2Card(zone, selectedStage2Card);
+      }
+    });
+    zone.addEventListener('click', () => {
+      if (selectedStage2Card && !zone.querySelector('.drag-card')) {
+        placeStage2Card(zone, selectedStage2Card);
+      }
+    });
+  });
+}
+
+function placeStage2Card(zone, card) {
+  // If zone already has a card, return existing to tray
+  const existing = zone.querySelector('.drag-card');
+  if (existing) {
+    cardsPoolStage2.appendChild(existing);
+    existing.classList.remove('placed', 'selected');
+  }
+  zone.appendChild(card);
+  card.classList.add('placed');
+  card.classList.remove('selected');
+  selectedStage2Card = null;
+  checkStage2Ready();
+  reportHeight();
+}
+
+function checkStage2Ready() {
+  const c1 = zoneFimbriae.querySelector('.drag-card');
+  const c2 = zoneFlagellum.querySelector('.drag-card');
+  if (c1 && c2) {
+    btnCheckStage2.removeAttribute('disabled');
+  } else {
+    btnCheckStage2.setAttribute('disabled', 'true');
+  }
+}
+
+btnCheckStage2.addEventListener('click', () => {
+  const cFimbriae = zoneFimbriae.querySelector('.drag-card');
+  const cFlagellum = zoneFlagellum.querySelector('.drag-card');
+
+  const correct = (cFimbriae && cFimbriae.dataset.role === 'adhesion') &&
+                  (cFlagellum && cFlagellum.dataset.role === 'motility');
+
+  if (correct) {
+    zoneFimbriae.classList.add('locked-correct');
+    zoneFlagellum.classList.add('locked-correct');
+    cFimbriae.setAttribute('draggable', 'false');
+    cFlagellum.setAttribute('draggable', 'false');
+    btnCheckStage2.classList.add('hidden');
+    btnRetryStage2.classList.add('hidden');
+    btnNextStage2.removeAttribute('disabled');
+    fbStage2.className = 'inline-feedback correct';
+    fbStage2.innerHTML = '<i class="ti ti-circle-check"></i><span>Đúng. Lông ngắn, nhiều và chủ yếu giúp bám dính; roi dài hơn, ít hơn và tạo vận động. Tiếp theo, ta so sánh các lớp vỏ của hai nhóm Gram.</span>';
+    fbStage2.classList.remove('hidden');
+  } else {
+    btnCheckStage2.classList.add('hidden');
+    btnRetryStage2.classList.remove('hidden');
+    fbStage2.className = 'inline-feedback wrong';
+    fbStage2.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Hãy nhìn lại độ dài và số lượng: cấu trúc dài, ít là roi; cấu trúc ngắn, nhiều là lông. Bấm LÀM LẠI để thử lại.</span>';
+    fbStage2.classList.remove('hidden');
+  }
+  reportHeight();
+});
+
+btnRetryStage2.addEventListener('click', () => {
+  [zoneFimbriae, zoneFlagellum].forEach(zone => {
+    const card = zone.querySelector('.drag-card');
+    if (card) {
+      cardsPoolStage2.appendChild(card);
+      card.classList.remove('placed', 'selected');
+    }
+    zone.classList.remove('locked-correct');
+  });
+  btnRetryStage2.classList.add('hidden');
+  btnCheckStage2.classList.remove('hidden');
+  btnCheckStage2.setAttribute('disabled', 'true');
+  fbStage2.classList.add('hidden');
+  reportHeight();
+});
+
+document.getElementById('btnPrevStage2').addEventListener('click', () => switchStage(1));
+btnNextStage2.addEventListener('click', () => switchStage(3));
+
+/* ==========================================================================
+   STAGE 3 LOGIC: NHUỘM GRAM VÀ MẶT CẮT
+   ========================================================================== */
+const gramContainer = document.getElementById('gramImgContainer');
+const btnTriggerStain = document.getElementById('btnTriggerStain');
+const trayStage3 = document.getElementById('trayStage3');
+const cardsPoolStage3 = document.getElementById('cardsPoolStage3');
+const zoneGramPos = document.getElementById('zoneGramPos');
+const zoneGramNeg = document.getElementById('zoneGramNeg');
+const btnCheckStage3 = document.getElementById('btnCheckStage3');
+const btnRetryStage3 = document.getElementById('btnRetryStage3');
+const btnNextStage3 = document.getElementById('btnNextStage3');
+const fbStage3 = document.getElementById('fbStage3');
+let selectedStage3Card = null;
+
+btnTriggerStain.addEventListener('click', () => {
+  btnTriggerStain.setAttribute('disabled', 'true');
+  btnTriggerStain.innerHTML = '<i class="ti ti-loader-2"></i> Đang nhuộm mẫu (500 ms)...';
+
+  setTimeout(() => {
+    gramContainer.classList.remove('neutral');
+    gramContainer.classList.add('stained');
+    btnTriggerStain.innerHTML = '<i class="ti ti-check"></i> Đã hoàn tất Nhuộm Gram';
+    trayStage3.classList.remove('hidden');
+    window.lmsState.stage3.stained = true;
+    reportHeight();
+  }, 500);
+});
+
+function initStage3Drag() {
+  document.querySelectorAll('#trayStage3 .drag-card').forEach(card => {
+    card.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text/plain', card.dataset.type);
+      selectedStage3Card = card;
+    });
+    card.addEventListener('click', () => {
+      if (card.parentElement.classList.contains('target-drop-zone')) {
+        cardsPoolStage3.appendChild(card);
+        card.classList.remove('placed', 'selected');
+        checkStage3Ready();
+        return;
+      }
+      document.querySelectorAll('#trayStage3 .drag-card').forEach(c => c.classList.remove('selected'));
+      selectedStage3Card = card;
+      card.classList.add('selected');
+    });
+  });
+
+  [zoneGramPos, zoneGramNeg].forEach(zone => {
+    zone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      zone.classList.add('drag-over');
+    });
+    zone.addEventListener('dragleave', () => {
+      zone.classList.remove('drag-over');
+    });
+    zone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      zone.classList.remove('drag-over');
+      if (selectedStage3Card) {
+        placeStage3Card(zone, selectedStage3Card);
+      }
+    });
+    zone.addEventListener('click', () => {
+      if (selectedStage3Card && !zone.querySelector('.drag-card')) {
+        placeStage3Card(zone, selectedStage3Card);
+      }
+    });
+  });
+}
+
+function placeStage3Card(zone, card) {
+  const existing = zone.querySelector('.drag-card');
+  if (existing) {
+    cardsPoolStage3.appendChild(existing);
+    existing.classList.remove('placed', 'selected');
+  }
+  zone.appendChild(card);
+  card.classList.add('placed');
+  card.classList.remove('selected');
+  selectedStage3Card = null;
+  checkStage3Ready();
+  reportHeight();
+}
+
+function checkStage3Ready() {
+  const c1 = zoneGramPos.querySelector('.drag-card');
+  const c2 = zoneGramNeg.querySelector('.drag-card');
+  if (c1 && c2) {
+    btnCheckStage3.removeAttribute('disabled');
+  } else {
+    btnCheckStage3.setAttribute('disabled', 'true');
+  }
+}
+
+btnCheckStage3.addEventListener('click', () => {
+  const cPos = zoneGramPos.querySelector('.drag-card');
+  const cNeg = zoneGramNeg.querySelector('.drag-card');
+
+  const correct = (cPos && cPos.dataset.type === 'pos') &&
+                  (cNeg && cNeg.dataset.type === 'neg');
+
+  if (correct) {
+    zoneGramPos.classList.add('locked-correct');
+    zoneGramNeg.classList.add('locked-correct');
+    cPos.setAttribute('draggable', 'false');
+    cNeg.setAttribute('draggable', 'false');
+    btnCheckStage3.classList.add('hidden');
+    btnRetryStage3.classList.add('hidden');
+    btnNextStage3.removeAttribute('disabled');
+    fbStage3.className = 'inline-feedback correct';
+    fbStage3.innerHTML = '<i class="ti ti-circle-check"></i><span>Đúng. Điểm phân biệt không chỉ là màu, mà còn là độ dày peptidoglycan và sự có mặt của màng ngoài ở Gram âm.</span>';
+    fbStage3.classList.remove('hidden');
+  } else {
+    btnCheckStage3.classList.add('hidden');
+    btnRetryStage3.classList.remove('hidden');
+    fbStage3.className = 'inline-feedback wrong';
+    fbStage3.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Kiểm tra lại: Gram dương có peptidoglycan dày; Gram âm có peptidoglycan mỏng và thêm màng ngoài. Bấm LÀM LẠI để thử lại.</span>';
+    fbStage3.classList.remove('hidden');
+  }
+  reportHeight();
+});
+
+btnRetryStage3.addEventListener('click', () => {
+  [zoneGramPos, zoneGramNeg].forEach(zone => {
+    const card = zone.querySelector('.drag-card');
+    if (card) {
+      cardsPoolStage3.appendChild(card);
+      card.classList.remove('placed', 'selected');
+    }
+    zone.classList.remove('locked-correct');
+  });
+  btnRetryStage3.classList.add('hidden');
+  btnCheckStage3.classList.remove('hidden');
+  btnCheckStage3.setAttribute('disabled', 'true');
+  fbStage3.classList.add('hidden');
+  reportHeight();
+});
+
+document.getElementById('btnPrevStage3').addEventListener('click', () => switchStage(2));
+btnNextStage3.addEventListener('click', () => switchStage(4));
+
+/* ==========================================================================
+   STAGE 4 LOGIC: MÀNG NGOÀI VÀ PHỨC HỆ LPS
+   ========================================================================== */
+const layerBtns = document.querySelectorAll('.layer-card-btn');
+const boxQuestionLps = document.getElementById('boxQuestionLps');
+const btnCheckStage4 = document.getElementById('btnCheckStage4');
+const btnRetryStage4 = document.getElementById('btnRetryStage4');
+const btnNextStage4 = document.getElementById('btnNextStage4');
+const fbStage4 = document.getElementById('fbStage4');
+
+layerBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    layerBtns.forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    window.lmsState.stage4.layersExplored.add(btn.dataset.layer);
+
+    if (window.lmsState.stage4.layersExplored.size >= 5) {
+      boxQuestionLps.classList.remove('hidden');
+    }
+    reportHeight();
+  });
+});
+
+document.querySelectorAll('#optsLps .qa-option-label').forEach(lbl => {
+  lbl.addEventListener('click', () => {
+    if (window.lmsState.stage4.correct) return;
+    document.querySelectorAll('#optsLps .qa-option-label').forEach(l => l.classList.remove('selected'));
+    lbl.classList.add('selected');
+    window.lmsState.stage4.answer = lbl.dataset.value;
+    btnCheckStage4.removeAttribute('disabled');
+  });
+});
+
+btnCheckStage4.addEventListener('click', () => {
+  const ans = window.lmsState.stage4.answer;
+  if (ans === 'A') {
+    window.lmsState.stage4.correct = true;
+    btnCheckStage4.classList.add('hidden');
+    btnRetryStage4.classList.add('hidden');
+    btnNextStage4.removeAttribute('disabled');
+    fbStage4.className = 'inline-feedback correct';
+    fbStage4.innerHTML = '<i class="ti ti-circle-check"></i><span>Đúng. Lipid A là phần quyết định hoạt tính nội độc tố của LPS. Tiếp theo, hãy phân biệt màng ngoài với màng tế bào.</span>';
+    fbStage4.classList.remove('hidden');
+  } else {
+    btnCheckStage4.classList.add('hidden');
+    btnRetryStage4.classList.remove('hidden');
+    fbStage4.className = 'inline-feedback wrong';
+    fbStage4.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Xem lại cấu tạo LPS ở lá ngoài của màng ngoài; nội độc tố không được “tạo ra do LPS phân hủy”. Bấm LÀM LẠI để thử lại.</span>';
+    fbStage4.classList.remove('hidden');
+  }
+  reportHeight();
+});
+
+btnRetryStage4.addEventListener('click', () => {
+  document.querySelectorAll('#optsLps .qa-option-label').forEach(l => l.classList.remove('selected'));
+  window.lmsState.stage4.answer = null;
+  btnRetryStage4.classList.add('hidden');
+  btnCheckStage4.classList.remove('hidden');
+  btnCheckStage4.setAttribute('disabled', 'true');
+  fbStage4.classList.add('hidden');
+  reportHeight();
+});
+
+document.getElementById('btnPrevStage4').addEventListener('click', () => switchStage(3));
+btnNextStage4.addEventListener('click', () => switchStage(5));
+
+/* ==========================================================================
+   STAGE 5 LOGIC: MÀNG TẾ BÀO SVG VẬN CHUYỂN CÓ CHỌN LỌC
+   ========================================================================== */
+function buildPhospholipidBilayerSvg() {
+  const topGroup = document.getElementById('phospholipidHeadsTop');
+  const btmGroup = document.getElementById('phospholipidHeadsBottom');
+  if (!topGroup || !btmGroup) return;
+
+  let topHtml = '';
+  let btmHtml = '';
+
+  for (let x = 15; x < 790; x += 22) {
+    // Leave gap for channel in center 350 - 450
+    if (x >= 355 && x <= 445) continue;
+
+    // Top layer
+    topHtml += `
+      <circle cx="${x}" cy="80" r="8" fill="#FDE047" stroke="#CA8A04" stroke-width="1.5"/>
+      <path d="M ${x-3} 88 Q ${x-6} 105 ${x-3} 125" stroke="#EAB308" stroke-width="2" fill="none"/>
+      <path d="M ${x+3} 88 Q ${x+6} 105 ${x+3} 125" stroke="#EAB308" stroke-width="2" fill="none"/>
+    `;
+
+    // Bottom layer
+    btmHtml += `
+      <circle cx="${x}" cy="200" r="8" fill="#FDE047" stroke="#CA8A04" stroke-width="1.5"/>
+      <path d="M ${x-3} 192 Q ${x-6} 175 ${x-3} 155" stroke="#EAB308" stroke-width="2" fill="none"/>
+      <path d="M ${x+3} 192 Q ${x+6} 175 ${x+3} 155" stroke="#EAB308" stroke-width="2" fill="none"/>
+    `;
+  }
+
+  topGroup.innerHTML = topHtml;
+  btmGroup.innerHTML = btmHtml;
+}
+
+const simParticleObj = document.getElementById('simParticleObj');
+const simParticleCircle = document.getElementById('simParticleCircle');
+const simParticleLetter = document.getElementById('simParticleLetter');
+const simResultIndicator = document.getElementById('simResultIndicator');
+const simIndicatorBg = document.getElementById('simIndicatorBg');
+const simIndicatorIcon = document.getElementById('simIndicatorIcon');
+const simStatusFeedback = document.getElementById('simStatusFeedback');
+const btnCheckStage5 = document.getElementById('btnCheckStage5');
+const btnRetryStage5 = document.getElementById('btnRetryStage5');
+const btnNextStage5 = document.getElementById('btnNextStage5');
+const fbStage5 = document.getElementById('fbStage5');
+
+document.querySelectorAll('.particle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const type = btn.dataset.particle;
+    window.lmsState.stage5.particleTested = true;
+
+    simParticleObj.style.opacity = '1';
+    simResultIndicator.style.opacity = '0';
+
+    if (type === 'water') {
+      // Passes through channel
+      simParticleCircle.setAttribute('fill', '#38BDF8');
+      simParticleCircle.setAttribute('stroke', '#0284C7');
+      simParticleCircle.setAttribute('r', '10');
+      simParticleLetter.textContent = 'A';
+      simParticleObj.style.transform = 'translate(400px, 40px)';
+
+      setTimeout(() => {
+        simParticleObj.style.transform = 'translate(400px, 235px)';
+        simIndicatorBg.setAttribute('fill', '#10B981');
+        simIndicatorIcon.setAttribute('d', 'M -6 0 L -2 4 L 6 -4');
+        simResultIndicator.style.opacity = '1';
+        simStatusFeedback.innerHTML = '<span style="color:var(--jade-text);"><i class="ti ti-check"></i> Hạt A: Kích thước và cấu trúc phù hợp – Được vận chuyển qua kênh protein vào tế bào chất!</span>';
+      }, 200);
+
+    } else if (type === 'sugar') {
+      // Blocked at lipid head / channel
+      simParticleCircle.setAttribute('fill', '#EAB308');
+      simParticleCircle.setAttribute('stroke', '#CA8A04');
+      simParticleCircle.setAttribute('r', '15');
+      simParticleLetter.textContent = 'B';
+      simParticleObj.style.transform = 'translate(400px, 40px)';
+
+      setTimeout(() => {
+        simParticleObj.style.transform = 'translate(400px, 80px)';
+        simIndicatorBg.setAttribute('fill', '#EF4444');
+        simIndicatorIcon.setAttribute('d', 'M -5 -5 L 5 5 M 5 -5 L -5 5');
+        simResultIndicator.style.opacity = '1';
+        simStatusFeedback.innerHTML = '<span style="color:var(--wrong);"><i class="ti ti-circle-x"></i> Hạt B: Kích thước lớn – Bị chặn lại, không đi qua theo cơ chế đang mô phỏng!</span>';
+      }, 200);
+
+    } else if (type === 'ion') {
+      // Blocked at bilayer surface
+      simParticleCircle.setAttribute('fill', '#EF4444');
+      simParticleCircle.setAttribute('stroke', '#B91C1C');
+      simParticleCircle.setAttribute('r', '11');
+      simParticleLetter.textContent = 'C';
+      simParticleObj.style.transform = 'translate(260px, 40px)';
+
+      setTimeout(() => {
+        simParticleObj.style.transform = 'translate(260px, 75px)';
+        simIndicatorBg.setAttribute('fill', '#EF4444');
+        simIndicatorIcon.setAttribute('d', 'M -5 -5 L 5 5 M 5 -5 L -5 5');
+        simResultIndicator.style.opacity = '1';
+        simStatusFeedback.innerHTML = '<span style="color:var(--wrong);"><i class="ti ti-circle-x"></i> Hạt C: Tích điện, không có transporter tương thích – Chưa đi qua theo cơ chế này!</span>';
+      }, 200);
+    }
+  });
+});
+
+document.querySelectorAll('#optsMembrane .qa-option-label').forEach(lbl => {
+  lbl.addEventListener('click', () => {
+    if (window.lmsState.stage5.correct) return;
+    document.querySelectorAll('#optsMembrane .qa-option-label').forEach(l => l.classList.remove('selected'));
+    lbl.classList.add('selected');
+    window.lmsState.stage5.answer = lbl.dataset.value;
+    btnCheckStage5.removeAttribute('disabled');
+  });
+});
+
+btnCheckStage5.addEventListener('click', () => {
+  const ans = window.lmsState.stage5.answer;
+  if (ans === 'A') {
+    window.lmsState.stage5.correct = true;
+    btnCheckStage5.classList.add('hidden');
+    btnRetryStage5.classList.add('hidden');
+    btnNextStage5.removeAttribute('disabled');
+    fbStage5.className = 'inline-feedback correct';
+    fbStage5.innerHTML = '<i class="ti ti-circle-check"></i><span>Đúng. Màng tế bào có ở mọi tế bào và kiểm soát trao đổi có chọn lọc. Sang màn cuối, bạn sẽ ghép toàn bộ các lớp theo đúng thứ tự.</span>';
+    fbStage5.classList.remove('hidden');
+  } else {
+    btnCheckStage5.classList.add('hidden');
+    btnRetryStage5.classList.remove('hidden');
+    fbStage5.className = 'inline-feedback wrong';
+    fbStage5.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Hãy xem lại vị trí sát tế bào chất và vai trò của protein màng; màng tế bào có ở cả Gram dương và Gram âm. Bấm LÀM LẠI để chọn lại.</span>';
+    fbStage5.classList.remove('hidden');
+  }
+  reportHeight();
+});
+
+btnRetryStage5.addEventListener('click', () => {
+  document.querySelectorAll('#optsMembrane .qa-option-label').forEach(l => l.classList.remove('selected'));
+  window.lmsState.stage5.answer = null;
+  btnRetryStage5.classList.add('hidden');
+  btnCheckStage5.classList.remove('hidden');
+  btnCheckStage5.setAttribute('disabled', 'true');
+  fbStage5.classList.add('hidden');
+  reportHeight();
+});
+
+document.getElementById('btnPrevStage5').addEventListener('click', () => switchStage(4));
+btnNextStage5.addEventListener('click', () => switchStage(6));
+
+/* ==========================================================================
+   STAGE 6 LOGIC: SƠ ĐỒ TỔNG HỢP VÀ ĐÍCH PENICILLIN
+   ========================================================================== */
+let selectedStage6Card = null;
+const cardsPoolStage6 = document.getElementById('cardsPoolStage6');
+const slotsStage6 = [
+  document.getElementById('slotPos1'),
+  document.getElementById('slotPos2'),
+  document.getElementById('slotNeg1'),
+  document.getElementById('slotNeg2'),
+  document.getElementById('slotNeg3')
+];
+const boxQuestionPenicillin = document.getElementById('boxQuestionPenicillin');
+const btnCheckStage6 = document.getElementById('btnCheckStage6');
+const btnRetryStage6 = document.getElementById('btnRetryStage6');
+const btnFinishStage6 = document.getElementById('btnFinishStage6');
+const fbStage6 = document.getElementById('fbStage6');
+
+function initStage6Drag() {
+  document.querySelectorAll('#trayStage6 .drag-card').forEach(card => {
+    card.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text/plain', card.dataset.role);
+      selectedStage6Card = card;
+    });
+    card.addEventListener('click', () => {
+      if (card.parentElement.classList.contains('strata-slot')) {
+        cardsPoolStage6.appendChild(card);
+        card.classList.remove('placed', 'selected');
+        card.parentElement.classList.remove('filled');
+        checkStage6Ready();
+        return;
+      }
+      document.querySelectorAll('#trayStage6 .drag-card').forEach(c => c.classList.remove('selected'));
+      selectedStage6Card = card;
+      card.classList.add('selected');
+    });
+  });
+
+  slotsStage6.forEach(slot => {
+    slot.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      slot.classList.add('drag-over');
+    });
+    slot.addEventListener('dragleave', () => {
+      slot.classList.remove('drag-over');
+    });
+    slot.addEventListener('drop', (e) => {
+      e.preventDefault();
+      slot.classList.remove('drag-over');
+      if (selectedStage6Card) {
+        placeStage6Card(slot, selectedStage6Card);
+      }
+    });
+    slot.addEventListener('click', () => {
+      if (selectedStage6Card && !slot.querySelector('.drag-card')) {
+        placeStage6Card(slot, selectedStage6Card);
+      }
+    });
+  });
+}
+
+function placeStage6Card(slot, card) {
+  const existing = slot.querySelector('.drag-card');
+  if (existing) {
+    cardsPoolStage6.appendChild(existing);
+    existing.classList.remove('placed', 'selected');
+  }
+  slot.appendChild(card);
+  slot.classList.add('filled');
+  card.classList.add('placed');
+  card.classList.remove('selected');
+  selectedStage6Card = null;
+  checkStage6Ready();
+  reportHeight();
+}
+
+function checkStage6Ready() {
+  let allPlaced = true;
+  slotsStage6.forEach(s => {
+    if (!s.querySelector('.drag-card')) allPlaced = false;
+  });
+
+  if (allPlaced) {
+    btnCheckStage6.removeAttribute('disabled');
+  } else {
+    btnCheckStage6.setAttribute('disabled', 'true');
+  }
+}
+
+btnCheckStage6.addEventListener('click', () => {
+  let correct = true;
+  slotsStage6.forEach(slot => {
+    const card = slot.querySelector('.drag-card');
+    if (!card || card.dataset.role !== slot.dataset.expect) {
+      correct = false;
+    }
+  });
+
+  if (correct) {
+    slotsStage6.forEach(slot => {
+      slot.classList.add('locked-correct');
+      const card = slot.querySelector('.drag-card');
+      if (card) card.setAttribute('draggable', 'false');
+    });
+    boxQuestionPenicillin.classList.remove('hidden');
+    btnCheckStage6.classList.add('hidden');
+    btnRetryStage6.classList.add('hidden');
+    fbStage6.className = 'inline-feedback correct';
+    fbStage6.innerHTML = '<i class="ti ti-circle-check"></i><span>Ghép sơ đồ chính xác! Hãy trả lời câu hỏi ứng dụng y học bên dưới để hoàn thành bài học.</span>';
+    fbStage6.classList.remove('hidden');
+  } else {
+    btnCheckStage6.classList.add('hidden');
+    btnRetryStage6.classList.remove('hidden');
+    fbStage6.className = 'inline-feedback wrong';
+    fbStage6.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Sơ đồ chưa chính xác: Gram dương có peptidoglycan dày ở ngoài màng tế bào; Gram âm có màng ngoài, peptidoglycan mỏng và màng tế bào. Bấm LÀM LẠI để thử lại.</span>';
+    fbStage6.classList.remove('hidden');
+  }
+  reportHeight();
+});
+
+btnRetryStage6.addEventListener('click', () => {
+  slotsStage6.forEach(slot => {
+    const card = slot.querySelector('.drag-card');
+    if (card) {
+      cardsPoolStage6.appendChild(card);
+      card.classList.remove('placed', 'selected');
+    }
+    slot.classList.remove('filled', 'locked-correct');
+  });
+  btnRetryStage6.classList.add('hidden');
+  btnCheckStage6.classList.remove('hidden');
+  btnCheckStage6.setAttribute('disabled', 'true');
+  fbStage6.classList.add('hidden');
+  reportHeight();
+});
+
+document.querySelectorAll('#optsPenicillin .qa-option-label').forEach(lbl => {
+  lbl.addEventListener('click', () => {
+    if (window.lmsState.completed) return;
+    document.querySelectorAll('#optsPenicillin .qa-option-label').forEach(l => l.classList.remove('selected'));
+    lbl.classList.add('selected');
+    window.lmsState.stage6.answer = lbl.dataset.value;
+
+    if (lbl.dataset.value === 'A') {
+      window.lmsState.completed = true;
+      btnFinishStage6.classList.remove('hidden');
+      fbStage6.className = 'inline-feedback correct';
+      fbStage6.innerHTML = '<i class="ti ti-circle-check"></i><span>Chính xác! Penicillin ức chế enzyme tổng hợp lớp peptidoglycan của thành tế bào, khiến vi khuẩn dễ bị vỡ do áp suất thẩm thấu khi sinh trưởng. Bạn đã hoàn thành xuất sắc toàn bộ Module!</span>';
+      fbStage6.classList.remove('hidden');
+    } else {
+      fbStage6.className = 'inline-feedback wrong';
+      fbStage6.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Đích trực tiếp được nhắc ở đây là quá trình tạo peptidoglycan của thành tế bào, không phải DNA hay ribosome. Hãy chọn lại.</span>';
+      fbStage6.classList.remove('hidden');
+    }
+    reportHeight();
+  });
+});
+
+btnFinishStage6.addEventListener('click', () => {
+  document.getElementById('completionModal').classList.remove('hidden');
+  launchConfetti();
+  reportHeight();
+});
+
+document.getElementById('btnPrevStage6').addEventListener('click', () => switchStage(5));
+document.getElementById('btnCloseCongrats').addEventListener('click', () => {
+  document.getElementById('completionModal').classList.add('hidden');
+  reportHeight();
+});
+document.getElementById('btnReviewAll').addEventListener('click', () => {
+  document.getElementById('completionModal').classList.add('hidden');
+  switchStage(1);
+});
+
+/* ==========================================================================
+   CONFETTI CANVAS ENGINE (Self-contained, no external library)
+   ========================================================================== */
+function launchConfetti() {
+  const canvas = document.getElementById('confettiCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const pieces = [];
+  const colors = ['#10B981', '#3B82F6', '#F59E0B', '#EF4444', '#8B5CF6', '#EC4899'];
+
+  for (let i = 0; i < 90; i++) {
+    pieces.push({
+      x: canvas.width * 0.5,
+      y: canvas.height * 0.5,
+      vx: (Math.random() - 0.5) * 16,
+      vy: (Math.random() - 0.7) * 16,
+      size: Math.random() * 8 + 6,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      rot: Math.random() * 360,
+      vrot: (Math.random() - 0.5) * 10,
+      alpha: 1
+    });
+  }
+
+  let frames = 0;
+  function update() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let alive = false;
+    for (const p of pieces) {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.35; // gravity
+      p.rot += p.vrot;
+      p.alpha -= 0.009;
+      if (p.alpha > 0) {
+        alive = true;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rot * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.alpha;
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+        ctx.restore();
+      }
+    }
+    frames++;
+    if (alive && frames < 160) {
+      requestAnimationFrame(update);
+    } else {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+  }
+  requestAnimationFrame(update);
+}
+
+// Initial bootstrap
+window.addEventListener('DOMContentLoaded', () => {
+  initStage2Drag();
+  initStage3Drag();
+  buildPhospholipidBilayerSvg();
+  initStage6Drag();
+  reportHeight();
+});
+</script>
+</body>
+</html>
