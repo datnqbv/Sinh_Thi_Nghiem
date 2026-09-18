@@ -1132,9 +1132,9 @@ body {
               <path d="M -30 -35 Q 15 -15 35 -40 T 10 30 T -35 15 Z" fill="none" stroke="#A78BFA" stroke-width="2.5" stroke-linecap="round"/>
               <path d="M -15 10 Q 0 -25 25 -5 T -15 10 Z" fill="none" stroke="#7C3AED" stroke-width="3" stroke-linecap="round"/>
               
-              <!-- Floating label indicator -->
-              <rect x="-70" y="-8" width="140" height="20" rx="4" fill="rgba(255,255,255,0.9)" stroke="#DDD6FE"/>
-              <text x="0" y="6" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#5B21B6" text-anchor="middle">DNA VÙNG NHÂN (TRẦN)</text>
+              <!-- Floating label indicator (Solid background, zero line bleed-through) -->
+              <rect x="-80" y="-12" width="160" height="24" rx="12" fill="#FFFFFF" stroke="#A855F7" stroke-width="1.5"/>
+              <text x="0" y="4" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#5B21B6" text-anchor="middle">DNA VÙNG NHÂN (TRẦN)</text>
             </g>
           </svg>
 
@@ -1550,19 +1550,26 @@ body {
           <svg viewBox="0 0 400 225" id="svgSimUptake">
             <!-- Outside environment -->
             <rect width="400" height="90" fill="#EFF6FF"/>
-            <text x="12" y="24" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="700" fill="#1E40AF">NGOÀI TẾ BÀO</text>
+            <text x="12" y="24" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="700" fill="#1E40AF">NGOÀI TẾ BÀO</text>
 
             <!-- Outer Membrane -->
             <rect y="90" width="400" height="40" fill="#93C5FD" stroke="#3B82F6" stroke-width="2"/>
             <text x="12" y="114" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="800" fill="#1E3A8A">MÀNG NGOÀI (Lớp lipid kép)</text>
 
-            <!-- Porin Channels (Normal vs Narrowed) -->
-            <rect x="180" y="85" width="40" height="50" rx="6" id="porinChannelBar" fill="#2563EB" stroke="#1D4ED8" stroke-width="2"/>
-            <text x="200" y="115" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="800" fill="#FFFFFF" text-anchor="middle" id="porinStatusText">PORIN</text>
+            <!-- Porin Channels (Left & Right Subunits creating central conduit) -->
+            <rect x="174" y="82" width="18" height="56" rx="5" id="porinLeftBar" fill="#2563EB" stroke="#1D4ED8" stroke-width="2"/>
+            <rect x="208" y="82" width="18" height="56" rx="5" id="porinRightBar" fill="#2563EB" stroke="#1D4ED8" stroke-width="2"/>
+
+            <!-- Dedicated Side Pill Badge for Porin (Completely clear of central flow) -->
+            <g id="porinBadgeGroup" transform="translate(290, 110)">
+              <line x1="-60" y1="0" x2="-44" y2="0" stroke="#1E40AF" stroke-width="1.5" id="porinLeaderLine"/>
+              <rect x="-44" y="-13" width="88" height="26" rx="6" fill="#1E40AF" id="porinBadgeBg" stroke="#93C5FD" stroke-width="1.5"/>
+              <text x="0" y="4" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="800" fill="#FFFFFF" text-anchor="middle" id="porinStatusText">KÊNH PORIN</text>
+            </g>
 
             <!-- Cytoplasm Inside -->
             <rect y="130" width="400" height="95" fill="#FEFCE8"/>
-            <text x="12" y="210" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="700" fill="#854D0E">BÊN TRONG TẾ BÀO CHẤT</text>
+            <text x="12" y="210" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="700" fill="#854D0E">BÊN TRONG TẾ BÀO CHẤT</text>
 
             <!-- Animated Antibiotic Particles Group (Orange dots) -->
             <g id="uptakeParticlesGroup">
@@ -1571,8 +1578,11 @@ body {
               <circle cx="240" cy="55" r="6" fill="#F59E0B" stroke="#B45309" stroke-width="1.5"/>
             </g>
             
-            <!-- Influx Arrow Outside -> Inside -->
-            <path d="M 200 65 L 200 160" stroke="#2563EB" stroke-width="3" stroke-linecap="round" id="arrowUptakeDir" stroke-dasharray="4 3"/>
+            <!-- Influx Arrow Outside -> Inside (through central conduit at x=200) -->
+            <g id="arrowUptakeGroup">
+              <path d="M 200 60 L 200 155" stroke="#2563EB" stroke-width="3" stroke-linecap="round" id="arrowUptakeDir" stroke-dasharray="4 3"/>
+              <polygon points="200,165 194,153 206,153" fill="#2563EB" id="arrowUptakeHead"/>
+            </g>
           </svg>
         </div>
 
@@ -1594,26 +1604,37 @@ body {
           <svg viewBox="0 0 400 225" id="svgSimEfflux">
             <!-- Outside environment -->
             <rect width="400" height="90" fill="#F0FDF4"/>
-            <text x="12" y="24" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="700" fill="#166534">NGOÀI TẾ BÀO</text>
+            <text x="12" y="24" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="700" fill="#166534">NGOÀI TẾ BÀO</text>
 
             <!-- Plasma Membrane -->
             <rect y="90" width="400" height="40" fill="#A7F3D0" stroke="#10B981" stroke-width="2"/>
             <text x="12" y="114" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="800" fill="#065F46">MÀNG TẾ BÀO</text>
 
-            <!-- Transmembrane Efflux Pump Protein -->
-            <rect x="180" y="80" width="40" height="60" rx="8" id="effluxPumpBar" fill="#059669" stroke="#047857" stroke-width="2"/>
-            <text x="200" y="115" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="800" fill="#FFFFFF" text-anchor="middle">BƠM</text>
+            <!-- Transmembrane Efflux Pump Protein Barrel -->
+            <g id="effluxPumpGroup">
+              <rect x="174" y="76" width="52" height="68" rx="8" id="effluxPumpBar" fill="#059669" stroke="#047857" stroke-width="2"/>
+              <rect x="193" y="76" width="14" height="68" fill="#A7F3D0" opacity="0.35"/>
+            </g>
+
+            <!-- Dedicated Side Pill Badge for Efflux Pump (Completely clear of central flow) -->
+            <g id="effluxBadgeGroup" transform="translate(290, 110)">
+              <line x1="-58" y1="0" x2="-44" y2="0" stroke="#065F46" stroke-width="1.5"/>
+              <rect x="-44" y="-13" width="88" height="26" rx="6" fill="#065F46" id="effluxBadgeBg" stroke="#A7F3D0" stroke-width="1.5"/>
+              <text x="0" y="4" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="800" fill="#FFFFFF" text-anchor="middle" id="effluxStatusText">BƠM EFFLUX</text>
+            </g>
 
             <!-- Cytoplasm Inside -->
             <rect y="130" width="400" height="95" fill="#FEFCE8"/>
-            <text x="12" y="210" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="700" fill="#854D0E">BÊN TRONG TẾ BÀO CHẤT</text>
+            <text x="12" y="210" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="700" fill="#854D0E">BÊN TRONG TẾ BÀO CHẤT</text>
 
             <!-- Internal Drug Particle being captured & pumped -->
             <circle cx="200" cy="180" r="7" fill="#F59E0B" stroke="#B45309" stroke-width="1.5" id="drugDotPump"/>
             
-            <!-- Outflux Arrow Inside -> Outside -->
-            <path d="M 200 160 L 200 45" stroke="#059669" stroke-width="3" stroke-linecap="round" id="arrowEffluxDir" stroke-dasharray="4 3"/>
-            <polygon points="200,35 194,48 206,48" fill="#059669"/>
+            <!-- Outflux Arrow Inside -> Outside (through central conduit at x=200) -->
+            <g id="arrowEffluxGroup">
+              <path d="M 200 160 L 200 45" stroke="#059669" stroke-width="3" stroke-linecap="round" id="arrowEffluxDir" stroke-dasharray="4 3"/>
+              <polygon points="200,35 194,48 206,48" fill="#059669"/>
+            </g>
           </svg>
         </div>
 
@@ -1691,30 +1712,26 @@ body {
         </div>
 
         <div class="sim-canvas-box">
-          <svg viewBox="0 0 400 225" id="svgSimTarget">
-            <rect width="400" height="225" fill="#FBF9FE"/>
+          <svg viewBox="0 0 400 200" id="svgSimTarget">
+            <rect width="400" height="200" fill="#FBF9FE"/>
             
             <!-- Molecular Target (e.g. Ribosome binding pocket) -->
-            <g transform="translate(200, 140)">
+            <g transform="translate(200, 130)">
               <path id="targetBindingPocket" d="M -60 40 L -60 0 C -60 -20 -30 -20 -20 0 L 20 0 C 30 -20 60 -20 60 0 L 60 40 Z" fill="#DDD6FE" stroke="#7C3AED" stroke-width="3"/>
-              <text x="0" y="32" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="800" fill="#5B21B6" text-anchor="middle" id="targetLabel">ĐÍCH TÁC ĐỘNG</text>
+              <text x="0" y="28" font-family="'Be Vietnam Pro', sans-serif" font-size="10.5" font-weight="800" fill="#5B21B6" text-anchor="middle" id="targetLabel">ĐÍCH TÁC ĐỘNG</text>
             </g>
 
             <!-- Antibiotic Drug Key Molecule -->
-            <g id="drugKeyMolecule" transform="translate(200, 50)" style="transition: all 0.8s ease;">
+            <g id="drugKeyMolecule" transform="translate(200, 45)" style="transition: all 0.8s ease;">
               <rect x="-15" y="-12" width="30" height="24" rx="6" fill="#F59E0B" stroke="#B45309" stroke-width="2"/>
               <circle cx="0" cy="0" r="4" fill="#FFFFFF"/>
               <text x="0" y="-16" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="800" fill="#B45309" text-anchor="middle">KHÁNG SINH</text>
             </g>
-
-            <text x="200" y="212" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="700" fill="#7C3AED" text-anchor="middle" id="targetStatusNote">
-              Trạng thái: Đích ban đầu có hình học khớp với thuốc.
-            </text>
           </svg>
         </div>
 
-        <p class="sim-desc-text">
-          Đích sinh học (ribosome/enzyme) bị đột biến thay đổi nhẹ cấu dạng. Phân tử thuốc không còn gắn kết được, trong khi đích vẫn duy trì chức năng tế bào.
+        <p class="sim-desc-text" id="descTarget">
+          Trạng thái ban đầu: Đích sinh học (ribosome/enzyme) có hình học khớp với phân tử thuốc. Nhấn nút để xem diễn biến đột biến đổi đích.
         </p>
       </div>
 
@@ -1728,26 +1745,26 @@ body {
         </div>
 
         <div class="sim-canvas-box">
-          <svg viewBox="0 0 400 225" id="svgSimEnzyme">
-            <rect width="400" height="225" fill="#FFFBEB"/>
+          <svg viewBox="0 0 400 200" id="svgSimEnzyme">
+            <rect width="400" height="200" fill="#FFFBEB"/>
             
             <!-- Antibiotic Drug Molecule (Center) -->
-            <g id="drugToInactivate" transform="translate(160, 110)">
-              <rect x="-16" y="-14" width="32" height="28" rx="6" id="drugBodyShape" fill="#F59E0B" stroke="#B45309" stroke-width="2"/>
-              <text x="0" y="32" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="800" fill="#92400E" text-anchor="middle" id="drugActiveStatus">THUỐC HOẠT TÍNH</text>
+            <g id="drugToInactivate" transform="translate(160, 105)">
+              <rect x="-18" y="-16" width="36" height="32" rx="6" id="drugBodyShape" fill="#F59E0B" stroke="#B45309" stroke-width="2"/>
+              <text x="0" y="30" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="800" fill="#92400E" text-anchor="middle" id="drugActiveStatus">THUỐC HOẠT TÍNH</text>
             </g>
 
             <!-- Inactivating Enzyme (e.g. Beta-lactamase) approaching -->
-            <g id="enzymePacman" transform="translate(280, 110)" style="transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);">
+            <g id="enzymePacman" transform="translate(285, 105)" style="transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);">
               <path d="M 0 0 L 26 -16 A 28 28 0 1 0 26 16 Z" fill="#EA580C" stroke="#9A3412" stroke-width="2.5"/>
               <circle cx="-6" cy="-12" r="3.5" fill="#FFFFFF"/>
-              <text x="0" y="-36" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#C2410C" text-anchor="middle">ENZYME VI KHUẨN</text>
+              <text x="0" y="-34" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="800" fill="#C2410C" text-anchor="middle">ENZYME VI KHUẨN</text>
             </g>
           </svg>
         </div>
 
-        <p class="sim-desc-text">
-          Vi khuẩn tiết enzyme phá hủy cấu trúc hóa học hoặc gắn thêm gốc ức chế lên phân tử kháng sinh, làm thuốc mất hoàn toàn khả năng diệt khuẩn trước khi tới đích.
+        <p class="sim-desc-text" id="descEnzyme">
+          Trạng thái ban đầu: Phân tử kháng sinh còn nguyên vẹn hoạt tính diệt khuẩn. Nhấn nút để xem enzyme vi khuẩn tác động làm bất hoạt thuốc.
         </p>
       </div>
     </div>
@@ -1794,14 +1811,17 @@ body {
     
     <!-- Outer Membrane with Porin -->
     <rect x="15" y="48" width="340" height="22" rx="4" fill="#93C5FD" stroke="#3B82F6" stroke-width="1.5"/>
-    <!-- Closed / Reduced Porin Channel -->
-    <rect x="150" y="44" width="28" height="30" rx="4" fill="#EF4444" stroke="#B91C1C" stroke-width="1.5"/>
-    <text x="164" y="63" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="800" fill="#FFFFFF" text-anchor="middle">HẸP</text>
+    <!-- Closed / Reduced Porin Channel at x=122 -->
+    <rect x="122" y="44" width="28" height="30" rx="4" fill="#EF4444" stroke="#B91C1C" stroke-width="1.5"/>
     
-    <!-- Drug molecules outside attempting entry -->
-    <circle cx="164" cy="28" r="7" fill="#F59E0B" stroke="#B45309" stroke-width="1.5"/>
-    <path d="M 164 36 L 164 42" stroke="#EF4444" stroke-width="2.5" marker-end="url(#arrowRed)"/>
-    <line x1="158" y1="40" x2="170" y2="40" stroke="#EF4444" stroke-width="2.5"/>
+    <!-- Dedicated Pill Badge on the right of porin channel -->
+    <rect x="160" y="48" width="70" height="22" rx="5" fill="#EF4444"/>
+    <text x="195" y="63" font-family="'Be Vietnam Pro', sans-serif" font-size="8.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">KÊNH CO HẸP</text>
+    
+    <!-- Drug molecules outside attempting entry at x=136 -->
+    <circle cx="136" cy="24" r="6" fill="#F59E0B" stroke="#B45309" stroke-width="1.5"/>
+    <path d="M 136 32 L 136 40" stroke="#EF4444" stroke-width="2"/>
+    <line x1="130" y1="40" x2="142" y2="40" stroke="#EF4444" stroke-width="2.5"/>
 
     <text x="20" y="105" class="card-desc">• Vi khuẩn giảm số lượng hoặc biến đổi kênh porin màng ngoài.</text>
     <text x="20" y="123" class="card-desc">• Hướng tác động: <tspan font-weight="700" fill="#2563EB">NGOÀI → TRONG</tspan> bị hạn chế tối đa.</text>
@@ -1819,14 +1839,17 @@ body {
 
     <!-- Cell Membrane & Transmembrane Pump -->
     <rect x="15" y="48" width="340" height="22" rx="4" fill="#A7F3D0" stroke="#10B981" stroke-width="1.5"/>
-    <!-- Active Efflux Pump Barrel -->
-    <rect x="150" y="40" width="34" height="38" rx="6" fill="#047857" stroke="#064E3B" stroke-width="2"/>
-    <text x="167" y="63" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="800" fill="#FFFFFF" text-anchor="middle">BƠM</text>
+    <!-- Active Efflux Pump Barrel at x=122 -->
+    <rect x="122" y="40" width="30" height="38" rx="6" fill="#047857" stroke="#064E3B" stroke-width="2"/>
+    
+    <!-- Dedicated Pill Badge on the right of pump -->
+    <rect x="160" y="48" width="70" height="22" rx="5" fill="#047857"/>
+    <text x="195" y="63" font-family="'Be Vietnam Pro', sans-serif" font-size="8.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">BƠM THUỐC</text>
 
-    <!-- Drug expelled from inside to outside -->
-    <circle cx="167" cy="98" r="7" fill="#F59E0B" stroke="#B45309" stroke-width="1.5"/>
-    <path d="M 167 90 L 167 30" stroke="#059669" stroke-width="2.5" stroke-dasharray="3 2"/>
-    <polygon points="167,22 162,32 172,32" fill="#059669"/>
+    <!-- Drug expelled from inside to outside at x=137 -->
+    <circle cx="137" cy="98" r="6" fill="#F59E0B" stroke="#B45309" stroke-width="1.5"/>
+    <path d="M 137 90 L 137 28" stroke="#059669" stroke-width="2.5" stroke-dasharray="3 2"/>
+    <polygon points="137,20 132,30 142,30" fill="#059669"/>
 
     <text x="20" y="105" class="card-desc">• Protein bơm xuyên màng chủ động tống kháng sinh ra ngoài.</text>
     <text x="20" y="123" class="card-desc">• Hướng tác động: <tspan font-weight="700" fill="#059669">TRONG → NGOÀI</tspan> ngược chiều nồng độ.</text>
@@ -2344,14 +2367,20 @@ btnNextStage3.addEventListener('click', () => switchStage(4));
    ========================================================================== */
 const btnRunSimUptake = document.getElementById('btnRunSimUptake');
 const btnRunSimEfflux = document.getElementById('btnRunSimEfflux');
-const porinChannelBar = document.getElementById('porinChannelBar');
+const porinLeftBar = document.getElementById('porinLeftBar');
+const porinRightBar = document.getElementById('porinRightBar');
+const porinBadgeBg = document.getElementById('porinBadgeBg');
+const porinLeaderLine = document.getElementById('porinLeaderLine');
 const porinStatusText = document.getElementById('porinStatusText');
 const drugDotEntry1 = document.getElementById('drugDotEntry1');
 const arrowUptakeDir = document.getElementById('arrowUptakeDir');
+const arrowUptakeHead = document.getElementById('arrowUptakeHead');
 const descUptake = document.getElementById('descUptake');
 
 const drugDotPump = document.getElementById('drugDotPump');
 const arrowEffluxDir = document.getElementById('arrowEffluxDir');
+const effluxBadgeBg = document.getElementById('effluxBadgeBg');
+const effluxStatusText = document.getElementById('effluxStatusText');
 const descEfflux = document.getElementById('descEfflux');
 
 const boxMatchStage4 = document.getElementById('boxMatchStage4');
@@ -2364,12 +2393,35 @@ let selectedStage4Match = null;
 
 // Sim 1: Reduced Uptake
 btnRunSimUptake.addEventListener('click', () => {
-  porinChannelBar.setAttribute('fill', '#DC2626');
-  porinChannelBar.setAttribute('width', '16');
-  porinChannelBar.setAttribute('x', '192');
-  porinStatusText.textContent = 'HẸP';
-  arrowUptakeDir.setAttribute('stroke', '#DC2626');
-  arrowUptakeDir.setAttribute('stroke-dasharray', '2 4');
+  if (porinLeftBar) {
+    porinLeftBar.setAttribute('x', '186');
+    porinLeftBar.setAttribute('fill', '#DC2626');
+    porinLeftBar.setAttribute('stroke', '#B91C1C');
+  }
+  if (porinRightBar) {
+    porinRightBar.setAttribute('x', '196');
+    porinRightBar.setAttribute('fill', '#DC2626');
+    porinRightBar.setAttribute('stroke', '#B91C1C');
+  }
+  if (porinBadgeBg) {
+    porinBadgeBg.setAttribute('fill', '#DC2626');
+    porinBadgeBg.setAttribute('stroke', '#FCA5A5');
+  }
+  if (porinLeaderLine) {
+    porinLeaderLine.setAttribute('stroke', '#DC2626');
+  }
+  if (porinStatusText) {
+    porinStatusText.textContent = 'PORIN CO HẸP';
+  }
+  if (arrowUptakeDir) {
+    arrowUptakeDir.setAttribute('d', 'M 200 55 L 200 80');
+    arrowUptakeDir.setAttribute('stroke', '#DC2626');
+    arrowUptakeDir.setAttribute('stroke-dasharray', 'none');
+  }
+  if (arrowUptakeHead) {
+    arrowUptakeHead.setAttribute('fill', '#DC2626');
+    arrowUptakeHead.setAttribute('points', '200,86 195,78 205,78');
+  }
   descUptake.innerHTML = '<strong style="color:#DC2626;">Cơ chế kích hoạt:</strong> Đột biến làm hẹp/giảm kênh porin màng ngoài, ngăn cản dòng kháng sinh đi từ <strong>NGOÀI → TRONG</strong>!';
 
   window.lmsState.stage4.watched.add('reduced_uptake');
@@ -2381,9 +2433,19 @@ btnRunSimUptake.addEventListener('click', () => {
 
 // Sim 2: Efflux Pump
 btnRunSimEfflux.addEventListener('click', () => {
-  drugDotPump.style.transition = 'transform 1s cubic-bezier(0.25, 1, 0.5, 1)';
-  drugDotPump.style.transform = 'translateY(-140px)';
-  arrowEffluxDir.setAttribute('stroke-width', '4.5');
+  if (drugDotPump) {
+    drugDotPump.style.transition = 'transform 1s cubic-bezier(0.25, 1, 0.5, 1)';
+    drugDotPump.style.transform = 'translateY(-145px)';
+  }
+  if (arrowEffluxDir) {
+    arrowEffluxDir.setAttribute('stroke-width', '4.5');
+  }
+  if (effluxBadgeBg) {
+    effluxBadgeBg.setAttribute('fill', '#047857');
+  }
+  if (effluxStatusText) {
+    effluxStatusText.textContent = 'BƠM HOẠT ĐỘNG';
+  }
   descEfflux.innerHTML = '<strong style="color:#059669;">Cơ chế kích hoạt:</strong> Protein bơm xuyên màng chủ động tống ngược các hạt thuốc từ <strong>TRONG → NGOÀI</strong>, giữ nồng độ thuốc luôn dưới ngưỡng gây hại!';
 
   window.lmsState.stage4.watched.add('efflux');
@@ -2495,11 +2557,12 @@ const btnRunSimTarget = document.getElementById('btnRunSimTarget');
 const btnRunSimEnzyme = document.getElementById('btnRunSimEnzyme');
 const targetBindingPocket = document.getElementById('targetBindingPocket');
 const drugKeyMolecule = document.getElementById('drugKeyMolecule');
-const targetStatusNote = document.getElementById('targetStatusNote');
+const descTarget = document.getElementById('descTarget');
 
 const enzymePacman = document.getElementById('enzymePacman');
 const drugBodyShape = document.getElementById('drugBodyShape');
 const drugActiveStatus = document.getElementById('drugActiveStatus');
+const descEnzyme = document.getElementById('descEnzyme');
 
 const boxSummaryInfographic = document.getElementById('boxSummaryInfographic');
 const boxQuestionStage5 = document.getElementById('boxQuestionStage5');
@@ -2516,10 +2579,12 @@ btnRunSimTarget.addEventListener('click', () => {
   targetBindingPocket.setAttribute('fill', '#FEE2E2');
   
   // Drug tries to dock but bounces away
-  drugKeyMolecule.style.transform = 'translate(200px, 95px)';
+  drugKeyMolecule.style.transform = 'translate(200px, 90px)';
   setTimeout(() => {
     drugKeyMolecule.style.transform = 'translate(250px, 30px) rotate(25deg)';
-    targetStatusNote.innerHTML = '<strong style="color:#DC2626;">Đích đột biến đổi cấu dạng:</strong> Thuốc không thể liên kết khớp, bị bật ra!';
+    if (descTarget) {
+      descTarget.innerHTML = '<strong style="color:#DC2626;">Cơ chế kích hoạt:</strong> Đích đột biến thay đổi cấu hình không gian, thuốc không thể gắn kết khớp và bị đẩy bật ra ngoài!';
+    }
   }, 500);
 
   window.lmsState.stage5.watched.add('target_mod');
@@ -2531,12 +2596,18 @@ btnRunSimTarget.addEventListener('click', () => {
 
 // Sim 4: Drug Inactivation by Enzyme
 btnRunSimEnzyme.addEventListener('click', () => {
-  enzymePacman.style.transform = 'translate(195px, 110px)';
+  enzymePacman.style.transform = 'translate(195px, 105px)';
   setTimeout(() => {
     drugBodyShape.setAttribute('fill', '#94A3B8');
     drugBodyShape.setAttribute('stroke', '#475569');
     drugBodyShape.setAttribute('stroke-dasharray', '3 2');
-    drugActiveStatus.innerHTML = '<span style="color:#DC2626;">BỊ PHÂN CẮT / MẤT HOẠT TÍNH</span>';
+    if (drugActiveStatus) {
+      drugActiveStatus.textContent = 'MẤT HOẠT TÍNH';
+      drugActiveStatus.setAttribute('fill', '#DC2626');
+    }
+    if (descEnzyme) {
+      descEnzyme.innerHTML = '<strong style="color:#EA580C;">Cơ chế kích hoạt:</strong> Enzyme vi khuẩn phân cắt hoặc gắn nhóm hóa học làm biến tính thuốc, thuốc mất hoàn toàn khả năng diệt khuẩn!';
+    }
   }, 700);
 
   window.lmsState.stage5.watched.add('inactivation');
