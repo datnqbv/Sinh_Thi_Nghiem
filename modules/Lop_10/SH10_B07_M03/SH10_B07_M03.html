@@ -1325,36 +1325,127 @@ body {
     <div class="s03-layout">
       <!-- Visual Banner: Chromosome DNA vs Plasmids -->
       <div class="plasmid-view-banner">
-        <svg viewBox="0 0 800 180" style="width:100%; height:auto; display:block;">
-          <!-- Background Cytoplasm -->
-          <rect width="800" height="180" rx="8" fill="#FBF9F2" stroke="#E5DECF"/>
-          
-          <!-- Large Chromosome DNA (Left side) -->
-          <g transform="translate(240, 90)">
-            <path d="M -90 -20 Q -50 -60 0 -35 T 80 -45 Q 90 20 50 40 T -20 60 Q -80 50 -90 -20 Z" fill="#F3E8FF" stroke="#7C3AED" stroke-width="3.5" stroke-dasharray="6 3"/>
-            <path d="M -60 -10 Q -20 -40 20 -20 T 50 25 T -30 35 Z" fill="none" stroke="#9333EA" stroke-width="2.5"/>
-            <text x="0" y="8" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#5B21B6" text-anchor="middle">DNA NHIỄM SẮC THỂ LỚN</text>
-            <text x="0" y="24" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="600" fill="#7C3AED" text-anchor="middle">(Vòng kép cuộn xoắn, mang gen thiết yếu)</text>
+        <svg viewBox="0 0 800 230" style="width:100%; height:auto; display:block;" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background Base -->
+          <rect width="800" height="230" rx="10" fill="#FBF9F2" stroke="#E5DECF" stroke-width="1.5"/>
+
+          <!-- =========================================================
+               LEFT SECTION: DNA NHIỄM SẮC THỂ (LỚN)
+               ========================================================= -->
+          <!-- Top Header Badge -->
+          <g id="headerChromosome">
+            <rect x="50" y="14" width="310" height="30" rx="15" fill="#F3E8FF" stroke="#C084FC" stroke-width="1.5"/>
+            <circle cx="70" cy="29" r="7" fill="#7C3AED"/>
+            <text x="210" y="34" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#5B21B6" text-anchor="middle">
+              DNA NHIỄM SẮC THỂ (LỚN)
+            </text>
           </g>
 
-          <!-- 3 Separate Small Circular Plasmids (Right side, unconnected) -->
-          <g transform="translate(560, 50)">
-            <circle cx="0" cy="0" r="22" fill="#ECFDF5" stroke="#059669" stroke-width="3"/>
-            <circle cx="0" cy="0" r="15" fill="none" stroke="#10B981" stroke-width="1.5" stroke-dasharray="3 2"/>
-            <text x="0" y="4" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="800" fill="#047857" text-anchor="middle">Plasmid 1</text>
-          </g>
-          <g transform="translate(670, 95)">
-            <circle cx="0" cy="0" r="18" fill="#ECFDF5" stroke="#059669" stroke-width="3"/>
-            <circle cx="0" cy="0" r="12" fill="none" stroke="#10B981" stroke-width="1.5" stroke-dasharray="3 2"/>
-            <text x="0" y="4" font-family="'Be Vietnam Pro', sans-serif" font-size="8.5" font-weight="800" fill="#047857" text-anchor="middle">Plasmid 2</text>
-          </g>
-          <g transform="translate(540, 130)">
-            <circle cx="0" cy="0" r="16" fill="#ECFDF5" stroke="#059669" stroke-width="2.5"/>
-            <text x="0" y="3" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="800" fill="#047857" text-anchor="middle">Plasmid 3</text>
+          <!-- Chromosome Graphic (Center: x=205, y=112) -->
+          <!-- Nucleoid domain ambient shadow / zone -->
+          <g id="chromosomeGraphic">
+            <path d="M 100 100 C 100 65 140 55 190 60 C 240 55 310 65 310 105 C 310 145 260 165 200 160 C 140 165 100 140 100 100 Z"
+                  fill="#FAF5FF" stroke="#DDD6FE" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+            <!-- Supercoiled DNA loops (Double-stranded effect, continuous loops with NO text overlapping) -->
+            <!-- Outer Loop Complex -->
+            <path d="M 125 110 C 110 75 160 65 195 80 C 235 60 285 75 285 105 C 285 135 245 155 205 140 C 165 155 115 140 125 110 Z"
+                  fill="none" stroke="#7C3AED" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            
+            <!-- Inner Supercoiled Strand (Secondary twisted strand) -->
+            <path d="M 145 105 C 135 85 170 75 195 90 C 220 75 265 85 265 110 C 265 130 230 145 200 130 C 170 145 135 125 145 105 Z"
+                  fill="none" stroke="#A855F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 3"/>
+
+            <!-- Center Coils & Folds -->
+            <path d="M 165 112 C 155 98 185 92 205 102 C 225 92 245 100 245 115 C 245 128 220 135 205 122 C 185 135 155 125 165 112 Z"
+                  fill="none" stroke="#6D28D9" stroke-width="2.2" stroke-linecap="round"/>
+            
+            <path d="M 185 100 Q 205 115 225 102 T 215 125 T 180 115"
+                  fill="none" stroke="#9333EA" stroke-width="1.8" stroke-linecap="round"/>
           </g>
 
-          <!-- Legend label -->
-          <text x="610" y="165" font-family="'Be Vietnam Pro', sans-serif" font-size="10.5" font-weight="700" fill="#047857" text-anchor="middle">CÁC PHÂN TỬ PLASMID NHỎ TÁCH RỜI</text>
+          <!-- Chromosome Bottom Caption / Notes (Clear, completely outside lines) -->
+          <text x="205" y="188" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#4C1D95" text-anchor="middle">
+            • Dạng vòng kép cuộn xoắn (siêu xoắn)
+          </text>
+          <text x="205" y="206" font-family="'Be Vietnam Pro', sans-serif" font-size="10.5" font-weight="600" fill="#6B21A8" text-anchor="middle">
+            • Kích thước lớn, mang hầu hết thông tin di truyền thiết yếu
+          </text>
+
+
+          <!-- =========================================================
+               CENTER DIVIDER
+               ========================================================= -->
+          <line x1="410" y1="18" x2="410" y2="215" stroke="#E5DECF" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <g transform="translate(410, 115)">
+            <circle cx="0" cy="0" r="14" fill="#FFFFFF" stroke="#D6CCB6" stroke-width="1.5"/>
+            <text x="0" y="4" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="800" fill="#8C827A" text-anchor="middle">
+              VS
+            </text>
+          </g>
+
+
+          <!-- =========================================================
+               RIGHT SECTION: CÁC PHÂN TỬ PLASMID (NHỎ, TÁCH RỜI)
+               ========================================================= -->
+          <!-- Top Header Badge -->
+          <g id="headerPlasmid">
+            <rect x="460" y="14" width="290" height="30" rx="15" fill="#ECFDF5" stroke="#6EE7B7" stroke-width="1.5"/>
+            <circle cx="480" cy="29" r="7" fill="#059669"/>
+            <text x="610" y="34" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#065F46" text-anchor="middle">
+              CÁC PHÂN TỬ PLASMID (NHỎ)
+            </text>
+          </g>
+
+          <!-- Plasmids Graphic Area (Clean rings + dedicated white pill labels) -->
+          <!-- Plasmid 1: Top Left of right section -->
+          <g id="plasmid1Group" transform="translate(485, 90)">
+            <!-- Outer & Inner Circular DNA Strand -->
+            <circle cx="0" cy="0" r="24" fill="#ECFDF5" stroke="#059669" stroke-width="2.5"/>
+            <circle cx="0" cy="0" r="17" fill="none" stroke="#10B981" stroke-width="1.5" stroke-dasharray="4 2"/>
+            <circle cx="0" cy="0" r="4" fill="#059669" opacity="0.4"/>
+
+            <!-- Dedicated Tag Label (Placed beside ring, with own crisp badge) -->
+            <rect x="30" y="-12" width="76" height="24" rx="6" fill="#FFFFFF" stroke="#6EE7B7" stroke-width="1.2"/>
+            <text x="68" y="4" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#047857" text-anchor="middle">
+              Plasmid 1
+            </text>
+          </g>
+
+          <!-- Plasmid 2: Right side -->
+          <g id="plasmid2Group" transform="translate(680, 92)">
+            <!-- Outer & Inner Circular DNA Strand -->
+            <circle cx="0" cy="0" r="20" fill="#ECFDF5" stroke="#059669" stroke-width="2.5"/>
+            <circle cx="0" cy="0" r="14" fill="none" stroke="#10B981" stroke-width="1.5" stroke-dasharray="3 2"/>
+            <circle cx="0" cy="0" r="3.5" fill="#059669" opacity="0.4"/>
+
+            <!-- Dedicated Tag Label (Placed below) -->
+            <rect x="-38" y="26" width="76" height="22" rx="6" fill="#FFFFFF" stroke="#6EE7B7" stroke-width="1.2"/>
+            <text x="0" y="41" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="800" fill="#047857" text-anchor="middle">
+              Plasmid 2
+            </text>
+          </g>
+
+          <!-- Plasmid 3: Bottom Left of right section -->
+          <g id="plasmid3Group" transform="translate(565, 140)">
+            <!-- Outer & Inner Circular DNA Strand -->
+            <circle cx="0" cy="0" r="16" fill="#ECFDF5" stroke="#059669" stroke-width="2.2"/>
+            <circle cx="0" cy="0" r="11" fill="none" stroke="#10B981" stroke-width="1.2" stroke-dasharray="3 2"/>
+
+            <!-- Dedicated Tag Label (Placed beside) -->
+            <rect x="22" y="-11" width="74" height="22" rx="6" fill="#FFFFFF" stroke="#6EE7B7" stroke-width="1.2"/>
+            <text x="59" y="4" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="800" fill="#047857" text-anchor="middle">
+              Plasmid 3
+            </text>
+          </g>
+
+          <!-- Plasmids Bottom Caption / Notes (Clear, completely outside rings) -->
+          <text x="605" y="188" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#065F46" text-anchor="middle">
+            • Phân tử DNA nhỏ, dạng vòng kép, nằm ngoài NST
+          </text>
+          <text x="605" y="206" font-family="'Be Vietnam Pro', sans-serif" font-size="10.5" font-weight="600" fill="#047857" text-anchor="middle">
+            • Tự nhân đôi độc lập, có thể mang gene kháng thuốc
+          </text>
         </svg>
       </div>
 
