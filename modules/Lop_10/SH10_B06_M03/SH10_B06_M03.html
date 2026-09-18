@@ -1,0 +1,3437 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SH10_B06_M03 · Nhận biết protein bằng phản ứng Biuret</title>
+<script type="application/json" id="athena-context">
+{
+  "title": "Nhận biết protein bằng phản ứng Biuret",
+  "subject": "Sinh học",
+  "grade": "10",
+  "track": "SH10_B06_M03",
+  "objectives": [
+    "Thực hiện đúng quy trình nhận biết protein bằng phản ứng Biuret",
+    "Quan sát và nhận biết hiện tượng chuyển màu từ xanh sang xanh tím sau vài phút",
+    "Giải thích được nguyên lí tạo phức chất giữa ion Cu²⁺ và liên kết peptide trong môi trường kiềm",
+    "Rút ra kết luận mẫu thí nghiệm có chứa protein",
+    "Hoàn thành báo cáo thực hành chuẩn 5 mục SGK từ dữ liệu tích lũy",
+    "Thực hiện đúng quy tắc an toàn và thu dọn sau khi thực hành"
+  ],
+  "structure": [
+    {"id": "st01", "title": "An toàn trước thực hành"},
+    {"id": "st02", "title": "Mục đích và sắp xếp quy trình"},
+    {"id": "st03", "title": "Lựa chọn mẫu, dụng cụ và hóa chất"},
+    {"id": "st04", "title": "Cho mẫu vào ống nghiệm"},
+    {"id": "st05", "title": "Thêm 5 mL dung dịch NaOH loãng"},
+    {"id": "st06", "title": "Thêm 5 mL CuSO₄ 1%, chờ và quan sát"},
+    {"id": "st07", "title": "Thu dọn sau thực hành"},
+    {"id": "st08", "title": "Khai thác kết quả và tạo dữ liệu báo cáo"},
+    {"id": "st09", "title": "Chọn cấu trúc và xem báo cáo hoàn chỉnh"}
+  ],
+  "athenaGuidance": "Module thực hành ảo Sinh học 10 độc lập V10 gồm 9 màn: 1) Chọn 3 hành động an toàn đúng trong 6 hình. 2) Sắp xếp 4 bước quy trình Biuret. 3) Chuẩn bị đúng 7 vật tư, loại 7 vật tư gây nhiễu. 4) Cho lượng nhỏ mẫu albumin vào ống nghiệm. 5) Đong đúng 5 mL NaOH loãng cho vào ống tạo môi trường kiềm. 6) Đong đúng 5 mL CuSO₄ 1%, bấm Bắt đầu quan sát để theo dõi dung dịch tự sinh chuyển dần từ xanh sang xanh tím sau vài phút mô phỏng, không kết tủa. 7) Thu dọn an toàn (chọn 6 đúng trong 8 hình). 8) Khai thác ảnh cận kết quả trả lời 3 câu hỏi điền dữ liệu vào khung báo cáo. 9) Chọn 5 thành phần báo cáo chuẩn SGK và xuất báo cáo hoàn chỉnh, kết thúc với pháo hoa chúc mừng."
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css">
+<style>
+:root {
+  --cream: #FAF7F0;
+  --cream-2: #F0EADD;
+  --cream-3: #E7DECC;
+  --paper-line: #E5DECF;
+  --paper-line-2: #D6CCB6;
+  --ink: #1A1A1A;
+  --ink-2: #514C44;
+  --ink-3: #7C756A;
+  --ink-faint: #ABA396;
+  --jade: #3CA57A;
+  --jade-deep: #2D8B6F;
+  --jade-dark: #14432F;
+  --jade-text: #1B5E48;
+  --jade-soft: #A9D0BE;
+  --jade-pale: #DCEAE1;
+  --sage: #A8C9B8;
+  --sage-deep: #7CA792;
+  --sage-text: #46685A;
+  --sage-pale: #E1ECE4;
+  --accent: #E8A24A;
+  --accent-deep: #CE8A33;
+  --accent-text: #8A551A;
+  --accent-pale: #F7E7CD;
+  --correct: #2D8B6F;
+  --correct-bg: #DCEAE1;
+  --wrong: #C15F3C;
+  --wrong-bg: #F3E2D6;
+  --warning: #C58A2E;
+  --warning-bg: #F5E7CB;
+  --info: #4E7F92;
+  --info-bg: #DCE7EB;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --radius-sm: 8px;
+  --shadow-sm: 0 2px 8px rgba(26, 26, 26, 0.06);
+  --shadow-md: 0 6px 18px rgba(26, 26, 26, 0.08);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  background-color: var(--cream);
+  color: var(--ink);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Modal Hide Override (Anti-Auto-Popup Rule) */
+.hidden {
+  display: none !important;
+}
+.congrats-overlay.hidden,
+.modal-backdrop.hidden,
+#completionModal.hidden {
+  display: none !important;
+}
+
+.app {
+  width: 100%;
+  max-width: 1060px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Stage Card Layout */
+.stage {
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.stage-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--paper-line);
+  padding-bottom: 16px;
+}
+
+.stage-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stage-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--jade-text);
+  background: var(--jade-pale);
+  padding: 4px 10px;
+  border-radius: 99px;
+  width: fit-content;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stage-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.stage-step-indicator {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink-3);
+  background: var(--cream-2);
+  padding: 6px 14px;
+  border-radius: 99px;
+  border: 1px solid var(--paper-line-2);
+}
+
+.lead-text {
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  line-height: 1.65;
+}
+
+/* Single Point of Instruction */
+.guide-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--jade-pale);
+  border-left: 4px solid var(--jade);
+  padding: 12px 18px;
+  border-radius: var(--radius-sm);
+  color: var(--jade-text);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.guide-box i {
+  font-size: 1.3rem;
+  color: var(--jade-deep);
+  flex-shrink: 0;
+}
+
+/* Feedback Box */
+.inline-feedback {
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.55;
+  animation: slideUp 0.25s ease;
+}
+.inline-feedback i {
+  font-size: 1.25rem;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+.inline-feedback.correct {
+  background: var(--correct-bg);
+  border-left: 4px solid var(--correct);
+  color: var(--jade-text);
+}
+.inline-feedback.wrong {
+  background: var(--wrong-bg);
+  border-left: 4px solid var(--wrong);
+  color: #782613;
+}
+.inline-feedback.info {
+  background: var(--info-bg);
+  border-left: 4px solid var(--info);
+  color: #1E3A47;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Action Controls Row */
+.stage-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+  padding-top: 18px;
+  border-top: 1px solid var(--paper-line);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  outline: none;
+}
+
+.btn-primary {
+  background: var(--jade);
+  color: #FFFFFF;
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--jade-deep);
+}
+.btn-primary:disabled {
+  background: var(--cream-3);
+  color: var(--ink-faint);
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--ink-2);
+  border: 1.5px solid var(--paper-line-2);
+}
+.btn-secondary:hover:not(:disabled) {
+  background: var(--cream-2);
+  color: var(--ink);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--jade-text);
+  border: 1.5px solid var(--jade);
+}
+.btn-outline:hover:not(:disabled) {
+  background: var(--jade-pale);
+}
+
+/* ==========================================================================
+   STAGE 1 & 7: PHOTO TILE GRIDS (4:3 RATIO)
+   ========================================================================== */
+.safety-grid, .cleanup-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+@media (max-width: 820px) {
+  .safety-grid, .cleanup-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .safety-grid, .cleanup-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.select-card {
+  background: var(--cream);
+  border: 2px solid var(--paper-line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+  position: relative;
+  user-select: none;
+}
+.select-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--jade-soft);
+  box-shadow: var(--shadow-sm);
+}
+.select-card.selected {
+  border-color: var(--jade-deep);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(45, 139, 111, 0.2);
+}
+.select-card.selected .select-indicator {
+  opacity: 1;
+  background: var(--jade);
+  color: #FFFFFF;
+}
+
+.select-card-img-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #E2E8F0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.select-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.select-card-img-wrap svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.select-card-desc {
+  padding: 12px 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  line-height: 1.45;
+  flex-grow: 1;
+}
+
+.select-indicator {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid var(--paper-line-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.4;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+/* ==========================================================================
+   STAGE 2: STEP SORTING (PROCEDURE DRAG & DROP)
+   ========================================================================== */
+.procedure-slots {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 14px;
+}
+@media (max-width: 768px) {
+  .procedure-slots {
+    grid-template-columns: 1fr;
+  }
+}
+
+.slot-box {
+  background: var(--cream);
+  border: 2px dashed var(--paper-line-2);
+  border-radius: var(--radius);
+  padding: 16px;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s;
+}
+.slot-box.drag-over {
+  border-color: var(--jade);
+  background: var(--jade-pale);
+}
+.slot-header {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--jade-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.slot-content {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slot-empty-text {
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  text-align: center;
+  font-style: italic;
+}
+
+.procedure-tray {
+  background: var(--cream-2);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.procedure-tray-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.procedure-cards-pool {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+@media (max-width: 640px) {
+  .procedure-cards-pool {
+    grid-template-columns: 1fr;
+  }
+}
+
+.proc-card {
+  background: #FFFFFF;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  cursor: grab;
+  user-select: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-sm);
+}
+.proc-card:active {
+  cursor: grabbing;
+}
+.proc-card.selected {
+  border-color: var(--jade);
+  box-shadow: 0 0 0 3px rgba(60, 165, 122, 0.25);
+  background: #F4FDF8;
+}
+.proc-card-badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--cream-2);
+  color: var(--ink-2);
+  font-weight: 800;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.proc-card-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   STAGE 3: MATERIALS SELECTION (14 OBJECTS)
+   ========================================================================== */
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+}
+@media (max-width: 990px) {
+  .materials-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .materials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.mat-card {
+  background: var(--cream);
+  border: 2px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s;
+  position: relative;
+}
+.mat-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--jade-soft);
+}
+.mat-card.selected {
+  border-color: var(--jade);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(60, 165, 122, 0.2);
+}
+.mat-card-svg-wrap {
+  width: 80px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mat-card-svg-wrap svg {
+  max-width: 100%;
+  max-height: 100%;
+}
+.mat-card-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-align: center;
+  line-height: 1.3;
+}
+.mat-tag {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--cream-2);
+  border: 1px solid var(--paper-line-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--ink-faint);
+  transition: all 0.2s;
+}
+.mat-card.selected .mat-tag {
+  background: var(--jade);
+  border-color: var(--jade);
+  color: #FFFFFF;
+}
+
+.selected-tray {
+  background: var(--cream-2);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.selected-tray-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.selected-tray-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 32px;
+  align-items: center;
+}
+.mat-chip {
+  background: #FFFFFF;
+  border: 1px solid var(--jade-soft);
+  color: var(--jade-text);
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ==========================================================================
+   STAGE 4, 5, 6: BENCH SIMULATION ARENAS
+   ========================================================================== */
+.sim-arena {
+  background: #FFFFFF;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.sim-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: var(--cream);
+  border: 1px solid var(--paper-line);
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+}
+.sim-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 99px;
+  background: var(--cream-2);
+  color: var(--ink-3);
+  border: 1px solid var(--paper-line-2);
+}
+.sim-status-badge.active {
+  background: var(--jade-pale);
+  color: var(--jade-text);
+  border-color: var(--jade);
+}
+
+.sim-workbench {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 20px 10px 10px;
+  min-height: 300px;
+  background: linear-gradient(180deg, #FAF7F0 0%, #F0EADD 75%, #D6CCB6 75%, #D6CCB6 78%, #CBD5E1 78%, #E2E8F0 100%);
+  border-radius: var(--radius-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.bench-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  user-select: none;
+  z-index: 2;
+}
+.bench-item:hover {
+  transform: translateY(-4px);
+}
+.bench-item-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ink-2);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 3px 10px;
+  border-radius: 99px;
+  border: 1px solid var(--paper-line);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Interactive SVG Elements inside Workbench */
+.pipette-tool {
+  width: 50px;
+  height: 180px;
+  transition: all 0.5s ease;
+}
+.pipette-tool.animated-pour {
+  transform: translate(140px, -40px) rotate(-35deg);
+}
+
+/* Test Tube & Liquid SVG dynamic styles */
+.test-tube-rig {
+  width: 120px;
+  height: 240px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.test-tube-svg {
+  width: 80px;
+  height: 230px;
+}
+
+/* Magnifier / Observation window in Stage 6 */
+.obs-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: center;
+}
+@media (max-width: 680px) {
+  .obs-panel {
+    grid-template-columns: 1fr;
+  }
+}
+.magnifier-box {
+  background: #FFFFFF;
+  border: 2px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+}
+.magnifier-circle {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 4px solid var(--jade-deep);
+  box-shadow: inset 0 0 16px rgba(0,0,0,0.1), 0 4px 12px rgba(45,139,111,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: #F8FAFC;
+  transition: background-color 1.5s ease;
+}
+.magnifier-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink-2);
+}
+
+.obs-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #FFFFFF;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--paper-line);
+}
+.obs-table th, .obs-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--paper-line);
+  font-size: 0.9rem;
+}
+.obs-table th {
+  background: var(--cream-2);
+  font-weight: 800;
+  color: var(--ink-2);
+  width: 45%;
+}
+.obs-table td {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   STAGE 8: REPORT DATA ACCUMULATION (3 QUESTIONS)
+   ========================================================================== */
+.qa-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 24px;
+}
+@media (max-width: 820px) {
+  .qa-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tube-focus-box {
+  background: var(--cream);
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.tube-focus-svg {
+  width: 140px;
+  height: 280px;
+}
+
+.report-summary-box {
+  background: #FFFFFF;
+  border: 1.5px solid var(--jade-soft);
+  border-radius: var(--radius);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.report-summary-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--jade-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.report-cell {
+  background: var(--cream);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.85rem;
+}
+.report-cell-label {
+  font-weight: 700;
+  color: var(--ink-3);
+  margin-bottom: 3px;
+}
+.report-cell-val {
+  font-weight: 600;
+  color: var(--ink);
+}
+.report-cell-val.filled {
+  color: var(--jade-deep);
+  font-weight: 700;
+}
+
+.qa-card {
+  background: var(--cream);
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.qa-question {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.qa-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.qa-option-btn {
+  background: #FFFFFF;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  text-align: left;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.qa-option-btn:hover {
+  background: var(--cream-2);
+  border-color: var(--jade-soft);
+}
+.qa-option-btn.selected {
+  border-color: var(--jade);
+  background: var(--jade-pale);
+  color: var(--jade-text);
+  font-weight: 700;
+}
+.qa-option-letter {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--cream-2);
+  font-weight: 800;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.qa-option-btn.selected .qa-option-letter {
+  background: var(--jade);
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   STAGE 9: REPORT DISPLAY & MODAL
+   ========================================================================== */
+.report-doc {
+  background: #FFFFFF;
+  border: 2px solid var(--paper-line-2);
+  border-radius: var(--radius);
+  padding: 32px 36px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: 'Be Vietnam Pro', serif;
+}
+.report-doc-head {
+  text-align: center;
+  border-bottom: 2px solid var(--paper-line);
+  padding-bottom: 16px;
+}
+.report-doc-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.report-doc-sub {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-3);
+  margin-top: 4px;
+}
+.report-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.report-sec-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--jade-dark);
+}
+.report-sec-content {
+  font-size: 0.95rem;
+  color: var(--ink-2);
+  line-height: 1.65;
+  background: var(--cream);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--jade);
+}
+
+/* Celebration Modal V10 */
+.congrats-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+.congrats-card {
+  background: #FFFFFF;
+  border: 2px solid var(--jade);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  animation: modalPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes modalPop {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+.congrats-icon-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--accent-pale);
+  color: var(--accent-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+}
+.congrats-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+.congrats-desc {
+  font-size: 0.95rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+.congrats-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+  width: 100%;
+}
+.congrats-actions .btn {
+  flex: 1;
+}
+
+#confettiCanvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10000;
+}
+</style>
+</head>
+<body>
+
+<canvas id="confettiCanvas"></canvas>
+
+<div class="app">
+
+  <!-- =====================================================================
+       MÀN 1: AN TOÀN TRƯỚC THỰC HÀNH (SH10_B06_M03_C01)
+       ===================================================================== -->
+  <section class="stage" id="stage-1" role="region" aria-label="Màn 1: An toàn khi thực hiện phản ứng Biuret">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-shield-check"></i> Màn 1 · An toàn</span>
+        <h2 class="stage-title">An toàn khi thực hiện phản ứng Biuret</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 1 / 9</span>
+    </div>
+
+    <p class="lead-text">Thí nghiệm sử dụng dung dịch NaOH và CuSO₄. Trước khi thao tác, bạn cần nhận biết những hành động giúp hạn chế hóa chất tiếp xúc với da, mắt và khu vực làm việc.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Nhấn vào các hình thể hiện hành động an toàn. Hình đã chọn xuất hiện khung nổi bật. Bạn có thể nhấn lại để bỏ chọn.</span>
+    </div>
+
+    <div class="safety-grid" id="safetyGrid">
+      <div class="select-card" data-id="1" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M03-A01-01.jpg" alt="Trang phục và tóc gọn gàng, đeo kính bảo hộ">
+        </div>
+        <div class="select-card-desc">1. Trang phục và tóc gọn gàng, đeo kính bảo hộ.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="2" data-correct="false" tabindex="0">
+        <div class="select-card-img-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="wallA01_2_a01_2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E2E8F0"/>
+      <stop offset="60%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+    <linearGradient id="benchA01_2_a01_2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="30%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+    <linearGradient id="spillNaoh_a01_2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F1F5F9" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#CBD5E1" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#94A3B8" stop-opacity="0.8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Lab Background -->
+  <rect width="800" height="600" fill="url(#wallA01_2_a01_2)"/>
+  <line x1="0" y1="200" x2="800" y2="200" stroke="#CBD5E1" stroke-width="2"/>
+
+  <!-- Lab Bench -->
+  <rect x="0" y="320" width="800" height="280" fill="url(#benchA01_2_a01_2)"/>
+  <line x1="0" y1="320" x2="800" y2="320" stroke="#64748B" stroke-width="3"/>
+  <rect x="0" y="323" width="800" height="12" fill="#E2E8F0"/>
+
+  <!-- Tilted / Fallen Chemical Bottle (Lọ NaOH bị đổ) -->
+  <g transform="translate(180, 390) rotate(-65)">
+    <rect x="0" y="0" width="60" height="100" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="2.5"/>
+    <rect x="2" y="25" width="56" height="72" rx="6" fill="#E2E8F0" opacity="0.6"/>
+    <rect x="15" y="-14" width="30" height="16" fill="#CBD5E1" stroke="#475569" stroke-width="2"/>
+    <rect x="10" y="-24" width="40" height="12" rx="3" fill="#334155"/>
+    <!-- Blank label -->
+    <rect x="8" y="35" width="44" height="40" rx="3" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  </g>
+
+  <!-- Spilled pool of alkaline liquid (NaOH đổ loang trên mặt bàn) -->
+  <ellipse cx="380" cy="430" rx="140" ry="45" fill="url(#spillNaoh_a01_2)" stroke="#94A3B8" stroke-width="2"/>
+  <ellipse cx="420" cy="438" rx="70" ry="22" fill="#FFFFFF" opacity="0.4"/>
+  <ellipse cx="280" cy="425" rx="35" ry="14" fill="url(#spillNaoh_a01_2)"/>
+
+  <!-- Bare Hand (Tay trần không găng) reaching down to wipe/touch spilled caustic soda -->
+  <!-- Arm without sleeve / bare forearm -->
+  <path d="M 680 180 Q 560 290 440 370" stroke="#FBCFE8" stroke-width="50" stroke-linecap="round" fill="none" opacity="0.4"/>
+  <path d="M 680 180 Q 560 290 440 370" stroke="#F5D0C5" stroke-width="46" stroke-linecap="round" fill="none"/>
+  <!-- Bare hand & fingers touching liquid directly (CẤM TAY TRẦN CHẠM KIỀM) -->
+  <ellipse cx="430" cy="385" rx="28" ry="22" fill="#F5D0C5" stroke="#E2A696" stroke-width="2"/>
+  <!-- Fingers in puddle -->
+  <path d="M 420 395 L 390 422" stroke="#F5D0C5" stroke-width="14" stroke-linecap="round"/>
+  <path d="M 432 400 L 415 432" stroke="#F5D0C5" stroke-width="13" stroke-linecap="round"/>
+  <path d="M 445 398 L 440 435" stroke="#F5D0C5" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 456 392 L 462 425" stroke="#F5D0C5" stroke-width="11" stroke-linecap="round"/>
+
+  <!-- Splash ripples around bare fingers -->
+  <path d="M 375 425 Q 410 438 450 428" stroke="#38BDF8" stroke-width="2" fill="none" opacity="0.7"/>
+  <path d="M 365 432 Q 410 448 465 435" stroke="#38BDF8" stroke-width="1.5" fill="none" opacity="0.5"/>
+
+  <!-- Reagent rack in safe background -->
+  <rect x="40" y="240" width="100" height="80" rx="4" fill="#D97706" opacity="0.5"/>
+</svg>
+        </div>
+        <div class="select-card-desc">2. Dùng tay trần lau ngay dung dịch NaOH bị đổ.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="3" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M03-A01-03.jpg" alt="Đọc nhãn lọ trước khi lấy hóa chất">
+        </div>
+        <div class="select-card-desc">3. Đọc nhãn lọ trước khi lấy hóa chất.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="4" data-correct="false" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M03-A01-04.jpg" alt="Đưa lọ hóa chất sát mũi để ngửi">
+        </div>
+        <div class="select-card-desc">4. Đưa lọ hóa chất sát mũi để ngửi.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="5" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="wallA01_5_a01_5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E2E8F0"/>
+      <stop offset="60%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+    <linearGradient id="benchA01_5_a01_5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="30%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Lab Background -->
+  <rect width="800" height="600" fill="url(#wallA01_5_a01_5)"/>
+  <line x1="0" y1="200" x2="800" y2="200" stroke="#CBD5E1" stroke-width="2"/>
+
+  <!-- Lab Bench -->
+  <rect x="0" y="320" width="800" height="280" fill="url(#benchA01_5_a01_5)"/>
+  <line x1="0" y1="320" x2="800" y2="320" stroke="#64748B" stroke-width="3"/>
+  <rect x="0" y="323" width="800" height="12" fill="#E2E8F0"/>
+
+  <!-- Test tube in rack on bench -->
+  <rect x="180" y="360" width="90" height="70" rx="3" fill="#D97706" stroke="#92400E" stroke-width="2"/>
+  <rect x="215" y="270" width="22" height="100" rx="8" fill="rgba(241, 245, 249, 0.8)" stroke="#64748B" stroke-width="2"/>
+
+  <!-- Chemical Bottle resting on bench safely -->
+  <rect x="480" y="310" width="70" height="110" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="2.5"/>
+  <rect x="485" y="340" width="60" height="75" rx="5" fill="#E2E8F0" opacity="0.5"/>
+  <rect x="500" y="294" width="30" height="18" fill="#CBD5E1" stroke="#475569" stroke-width="2"/>
+  <rect x="495" y="280" width="40" height="16" rx="3" fill="#334155"/>
+  <!-- Label -->
+  <rect x="488" y="350" width="54" height="42" rx="3" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+
+  <!-- Student Gloved Arms holding measuring cylinder / pipette transferring chemical -->
+  <!-- Left arm holding measuring cylinder -->
+  <path d="M 120 540 Q 220 450 320 410" stroke="#FFFFFF" stroke-width="48" stroke-linecap="round" fill="none"/>
+  <path d="M 120 540 Q 220 450 320 410" stroke="#CBD5E1" stroke-width="52" stroke-linecap="round" fill="none" opacity="0.4"/>
+  <!-- Gloved hand holding cylinder body -->
+  <ellipse cx="325" cy="405" rx="22" ry="18" fill="#38BDF8" stroke="#0284C7" stroke-width="2"/>
+
+  <!-- Measuring Cylinder held upright at eye level -->
+  <polygon points="305,470 345,470 350,465 340,460 310,460 300,465" fill="#E2E8F0" stroke="#64748B" stroke-width="1.5"/>
+  <rect x="314" y="280" width="22" height="180" fill="rgba(248, 250, 252, 0.85)" stroke="#64748B" stroke-width="2"/>
+  <!-- 5 mL level indicated -->
+  <line x1="314" y1="360" x2="336" y2="360" stroke="#0284C7" stroke-width="2"/>
+  <!-- Liquid in cylinder -->
+  <rect x="316" y="360" width="18" height="98" fill="#BAE6FD" opacity="0.6"/>
+
+  <!-- Right arm holding pipette transferring liquid with control -->
+  <path d="M 640 540 Q 520 410 410 320" stroke="#FFFFFF" stroke-width="48" stroke-linecap="round" fill="none"/>
+  <path d="M 640 540 Q 520 410 410 320" stroke="#CBD5E1" stroke-width="52" stroke-linecap="round" fill="none" opacity="0.4"/>
+  <!-- Gloved hand squeezing pipette bulb -->
+  <ellipse cx="405" cy="315" rx="22" ry="18" fill="#38BDF8" stroke="#0284C7" stroke-width="2"/>
+  <ellipse cx="405" cy="275" rx="14" ry="18" fill="#EF4444" stroke="#B91C1C" stroke-width="2"/>
+  <!-- Pipette stem aiming into cylinder without touching edges -->
+  <rect x="400" y="290" width="10" height="75" fill="#F8FAFC" stroke="#64748B" stroke-width="1.5"/>
+  <path d="M 400 365 L 403 385 L 407 385 L 410 365 Z" fill="#F8FAFC" stroke="#64748B" stroke-width="1.5"/>
+  <circle cx="405" cy="392" r="3" fill="#38BDF8"/>
+</svg>
+        </div>
+        <div class="select-card-desc">5. Dùng dụng cụ lấy hóa chất, không chạm trực tiếp.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="6" data-correct="false" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M03-A01-06.jpg" alt="Đặt đồ ăn và nước uống trên bàn thực hành">
+        </div>
+        <div class="select-card-desc">6. Đặt đồ ăn và nước uống trên bàn thực hành.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+    </div>
+
+    <div class="inline-feedback hidden" id="fbStage1"></div>
+
+    <div class="stage-actions">
+      <button class="btn btn-outline" id="btnCheckStage1"><i class="ti ti-check"></i> KIỂM TRA</button>
+      <button class="btn btn-secondary hidden" id="btnRetryStage1"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+      <button class="btn btn-primary" id="btnNextStage1" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 2: MỤC ĐÍCH VÀ QUY TRÌNH (SH10_B06_M03_C02)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-2" role="region" aria-label="Màn 2: Mục đích và quy trình thí nghiệm">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-list-numbers"></i> Màn 2 · Quy trình</span>
+        <h2 class="stage-title">Mục đích và quy trình thí nghiệm</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 2 / 9</span>
+    </div>
+
+    <p class="lead-text">Protein trong mẫu không thể được nhận biết chỉ bằng màu sắc ban đầu. Trong thí nghiệm này, phản ứng Biuret làm xuất hiện dấu hiệu màu để nhận biết protein.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-arrows-sort"></i>
+      <span>Kéo hoặc chạm chọn bốn thẻ vào các ô BƯỚC 1 đến BƯỚC 4 theo đúng thứ tự. Thẻ đã đặt có thể chọn lại để chuyển vị trí.</span>
+    </div>
+
+    <div class="procedure-slots" id="procSlots">
+      <div class="slot-box" data-step="1">
+        <div class="slot-header"><i class="ti ti-circle-number-1"></i> BƯỚC 1</div>
+        <div class="slot-content"><span class="slot-empty-text">Thả thẻ bước 1 vào đây</span></div>
+      </div>
+      <div class="slot-box" data-step="2">
+        <div class="slot-header"><i class="ti ti-circle-number-2"></i> BƯỚC 2</div>
+        <div class="slot-content"><span class="slot-empty-text">Thả thẻ bước 2 vào đây</span></div>
+      </div>
+      <div class="slot-box" data-step="3">
+        <div class="slot-header"><i class="ti ti-circle-number-3"></i> BƯỚC 3</div>
+        <div class="slot-content"><span class="slot-empty-text">Thả thẻ bước 3 vào đây</span></div>
+      </div>
+      <div class="slot-box" data-step="4">
+        <div class="slot-header"><i class="ti ti-circle-number-4"></i> BƯỚC 4</div>
+        <div class="slot-content"><span class="slot-empty-text">Thả thẻ bước 4 vào đây</span></div>
+      </div>
+    </div>
+
+    <div class="procedure-tray">
+      <div class="procedure-tray-label">Khay thẻ quy trình:</div>
+      <div class="procedure-cards-pool" id="procPool">
+        <div class="proc-card" data-step-id="A" draggable="true" tabindex="0">
+          <div class="proc-card-badge">A</div>
+          <div class="proc-card-text">Cho một ít dung dịch albumin 1% hoặc một lượng nhỏ lòng trắng trứng vào ống nghiệm.</div>
+        </div>
+        <div class="proc-card" data-step-id="B" draggable="true" tabindex="0">
+          <div class="proc-card-badge">B</div>
+          <div class="proc-card-text">Thêm 5 mL dung dịch NaOH loãng.</div>
+        </div>
+        <div class="proc-card" data-step-id="C" draggable="true" tabindex="0">
+          <div class="proc-card-badge">C</div>
+          <div class="proc-card-text">Thêm 5 mL dung dịch CuSO₄ 1%.</div>
+        </div>
+        <div class="proc-card" data-step-id="D" draggable="true" tabindex="0">
+          <div class="proc-card-badge">D</div>
+          <div class="proc-card-text">Chờ vài phút và quan sát sự thay đổi màu.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="inline-feedback hidden" id="fbStage2"></div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" id="btnPrevStage2"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      <button class="btn btn-outline" id="btnCheckStage2"><i class="ti ti-check"></i> KIỂM TRA</button>
+      <button class="btn btn-secondary hidden" id="btnRetryStage2"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+      <button class="btn btn-primary" id="btnNextStage2" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 3: LỰA CHỌN MẪU, DỤNG CỤ VÀ HÓA CHẤT (SH10_B06_M03_C03)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-3" role="region" aria-label="Màn 3: Lựa chọn mẫu, dụng cụ và hóa chất">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-box-seam"></i> Màn 3 · Chuẩn bị</span>
+        <h2 class="stage-title">Chuẩn bị thí nghiệm</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 3 / 9</span>
+    </div>
+
+    <p class="lead-text">Dựa vào quy trình, bạn hãy lựa chọn mẫu, dụng cụ và hóa chất cần dùng để thực hiện phản ứng Biuret.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Nhấn vào từng vật cần dùng. Vật đã chọn chuyển vào khay chuẩn bị. Bạn có thể nhấn lại để bỏ chọn.</span>
+    </div>
+
+    <div class="materials-grid" id="materialsGrid">
+      <div class="mat-card" data-mat="albumin" data-correct="true" tabindex="0">
+        <div class="mat-card-svg-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+  <defs>
+    <linearGradient id="albuminGrad_st3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FEF9E7"/>
+      <stop offset="50%" stop-color="#FDF2D0"/>
+      <stop offset="100%" stop-color="#FBF0C7"/>
+    </linearGradient>
+    <linearGradient id="glassAlbumin_st3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8"/>
+      <stop offset="20%" stop-color="#E2E8F0" stop-opacity="0.4"/>
+      <stop offset="80%" stop-color="#E2E8F0" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#CBD5E1" stop-opacity="0.7"/>
+    </linearGradient>
+  </defs>
+  <!-- Beaker body with pouring spout -->
+  <path d="M 32 35 L 24 35 L 35 152 Q 38 160 52 160 L 108 160 Q 122 160 125 152 L 125 35 Z" fill="url(#glassAlbumin_st3)" stroke="#64748B" stroke-width="2.5"/>
+  <!-- Liquid: Albumin 1% slightly turbid off-white/pale cream -->
+  <path d="M 34 78 L 37 150 Q 39 157 52 157 L 108 157 Q 120 157 123 150 L 124 78 Z" fill="url(#albuminGrad_st3)" stroke="#EAB308" stroke-width="1" stroke-opacity="0.4"/>
+  <!-- Meniscus curve -->
+  <ellipse cx="79" cy="78" rx="45" ry="5" fill="#FEF9E7" stroke="#CA8A04" stroke-width="1.2" opacity="0.8"/>
+  <!-- Graduation marks -->
+  <line x1="95" y1="80" x2="124" y2="80" stroke="#64748B" stroke-width="1.8"/>
+  <line x1="102" y1="102" x2="124" y2="102" stroke="#94A3B8" stroke-width="1.5"/>
+  <line x1="95" y1="124" x2="124" y2="124" stroke="#94A3B8" stroke-width="1.5"/>
+  <!-- Clean white label for overlay -->
+  <rect x="46" y="94" width="56" height="34" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4"/>
+  <!-- Reflection sheen -->
+  <line x1="42" y1="45" x2="44" y2="145" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
+</svg></div>
+        <div class="mat-card-name">Dung dịch Albumin 1%</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+      <div class="mat-card" data-mat="testtube" data-correct="true" tabindex="0">
+        <div class="mat-card-svg-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+  <defs>
+    <linearGradient id="glassTubeGrad_st3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="30%" stop-color="#F1F5F9" stop-opacity="0.4"/>
+      <stop offset="70%" stop-color="#E2E8F0" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#CBD5E1" stop-opacity="0.8"/>
+    </linearGradient>
+  </defs>
+  <!-- Tube Body -->
+  <path d="M 68 18 L 68 145 C 68 162 92 162 92 145 L 92 18 Z" fill="url(#glassTubeGrad_st3)" stroke="#64748B" stroke-width="2.5"/>
+  <!-- Lip rim -->
+  <ellipse cx="80" cy="18" rx="14" ry="4" fill="#E2E8F0" stroke="#475569" stroke-width="2"/>
+  <!-- Inner opening -->
+  <ellipse cx="80" cy="18" rx="11" ry="3" fill="#F8FAFC"/>
+  <!-- Reflection highlight line -->
+  <line x1="72" y1="28" x2="72" y2="138" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" opacity="0.85"/>
+</svg></div>
+        <div class="mat-card-name">Một ống nghiệm</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+      <div class="mat-card" data-mat="rack" data-correct="true" tabindex="0">
+        <div class="mat-card-svg-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+  <!-- Wooden rack base -->
+  <rect x="15" y="130" width="130" height="16" rx="3" fill="#D97706" stroke="#92400E" stroke-width="2"/>
+  <!-- Uprights -->
+  <rect x="18" y="50" width="14" height="82" fill="#B45309" stroke="#78350F" stroke-width="1.5"/>
+  <rect x="128" y="50" width="14" height="82" fill="#B45309" stroke="#78350F" stroke-width="1.5"/>
+  <!-- Top shelf with test tube holes -->
+  <rect x="15" y="60" width="130" height="14" rx="3" fill="#D97706" stroke="#92400E" stroke-width="2"/>
+  <ellipse cx="45" cy="67" rx="9" ry="3.5" fill="#78350F"/>
+  <ellipse cx="68" cy="67" rx="9" ry="3.5" fill="#78350F"/>
+  <ellipse cx="92" cy="67" rx="9" ry="3.5" fill="#78350F"/>
+  <ellipse cx="115" cy="67" rx="9" ry="3.5" fill="#78350F"/>
+  <!-- Lower stabilizer shelf -->
+  <rect x="15" y="100" width="130" height="10" fill="#F59E0B" stroke="#92400E" stroke-width="1.5"/>
+</svg></div>
+        <div class="mat-card-name">Giá ống nghiệm</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+      <div class="mat-card" data-mat="sampletool" data-correct="true" tabindex="0">
+        <div class="mat-card-svg-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+  <!-- Rubber bulb top -->
+  <path d="M 70 36 C 62 25 64 12 80 12 C 96 12 98 25 90 36 Z" fill="#EF4444" stroke="#B91C1C" stroke-width="2"/>
+  <!-- Glass pipette stem -->
+  <rect x="74" y="36" width="12" height="98" fill="#F8FAFC" stroke="#64748B" stroke-width="1.8"/>
+  <!-- Tapered tip -->
+  <path d="M 74 134 L 78 165 L 82 165 L 86 134 Z" fill="#F8FAFC" stroke="#64748B" stroke-width="1.8"/>
+  <!-- Graduation marks -->
+  <line x1="74" y1="56" x2="81" y2="56" stroke="#64748B" stroke-width="1.2"/>
+  <line x1="74" y1="76" x2="81" y2="76" stroke="#64748B" stroke-width="1.2"/>
+  <line x1="74" y1="96" x2="81" y2="96" stroke="#64748B" stroke-width="1.2"/>
+  <line x1="74" y1="116" x2="81" y2="116" stroke="#64748B" stroke-width="1.2"/>
+  <!-- Highlight -->
+  <line x1="76" y1="40" x2="76" y2="130" stroke="#FFFFFF" stroke-width="1.5" opacity="0.8"/>
+</svg></div>
+        <div class="mat-card-name">Dụng cụ lấy mẫu</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+      <div class="mat-card" data-mat="cylinder" data-correct="true" tabindex="0">
+        <div class="mat-card-svg-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+  <defs>
+    <linearGradient id="cylinderGrad_st3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="30%" stop-color="#F1F5F9" stop-opacity="0.3"/>
+      <stop offset="70%" stop-color="#E2E8F0" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#CBD5E1" stop-opacity="0.8"/>
+    </linearGradient>
+  </defs>
+  <!-- Hexagonal / Flanged base -->
+  <polygon points="52,168 108,168 116,160 102,154 58,154 44,160" fill="#E2E8F0" stroke="#64748B" stroke-width="2"/>
+  <!-- Main cylinder body -->
+  <rect x="64" y="24" width="32" height="130" fill="url(#cylinderGrad_st3)" stroke="#64748B" stroke-width="2.2"/>
+  <!-- Spout rim top -->
+  <path d="M 60 24 L 64 24 L 64 20 L 96 20 L 96 24 L 100 24" stroke="#475569" stroke-width="2.2" fill="none"/>
+  <!-- Graduation marks -->
+  <line x1="76" y1="36" x2="96" y2="36" stroke="#475569" stroke-width="1.2"/>
+  <line x1="82" y1="48" x2="96" y2="48" stroke="#94A3B8" stroke-width="1"/>
+  <line x1="76" y1="60" x2="96" y2="60" stroke="#475569" stroke-width="1.2"/>
+  <line x1="82" y1="72" x2="96" y2="72" stroke="#94A3B8" stroke-width="1"/>
+  <!-- 5 mL Special Highlight Mark -->
+  <line x1="70" y1="84" x2="96" y2="84" stroke="#0284C7" stroke-width="2.2"/>
+  <circle cx="68" cy="84" r="2.5" fill="#0284C7"/>
+  <!-- Lower graduations -->
+  <line x1="82" y1="96" x2="96" y2="96" stroke="#94A3B8" stroke-width="1"/>
+  <line x1="76" y1="108" x2="96" y2="108" stroke="#475569" stroke-width="1.2"/>
+  <line x1="82" y1="120" x2="96" y2="120" stroke="#94A3B8" stroke-width="1"/>
+  <line x1="76" y1="132" x2="96" y2="132" stroke="#475569" stroke-width="1.2"/>
+  <!-- Reflection vertical line -->
+  <line x1="68" y1="28" x2="68" y2="148" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+</svg></div>
+        <div class="mat-card-name">Ống đong 5 mL</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+      <div class="mat-card" data-mat="naoh" data-correct="true" tabindex="0">
+        <div class="mat-card-svg-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+  <defs>
+    <linearGradient id="naohLiquid_st3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F8FAFC" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#E2E8F0" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#CBD5E1" stop-opacity="0.8"/>
+    </linearGradient>
+  </defs>
+  <!-- Bottle body -->
+  <rect x="42" y="45" width="76" height="115" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="2.5"/>
+  <!-- Transparent liquid inside -->
+  <rect x="45" y="76" width="70" height="81" rx="6" fill="url(#naohLiquid_st3)"/>
+  <!-- Bottle neck & cap -->
+  <rect x="62" y="28" width="36" height="18" fill="#E2E8F0" stroke="#475569" stroke-width="2"/>
+  <rect x="57" y="14" width="46" height="16" rx="4" fill="#334155" stroke="#1E293B" stroke-width="2"/>
+  <!-- White clean label for code overlay -->
+  <rect x="48" y="88" width="64" height="46" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  <!-- Highlight -->
+  <line x1="48" y1="52" x2="48" y2="152" stroke="#FFFFFF" stroke-width="2" opacity="0.8"/>
+</svg></div>
+        <div class="mat-card-name">Dung dịch NaOH loãng</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+      <div class="mat-card" data-mat="cuso4" data-correct="true" tabindex="0">
+        <div class="mat-card-svg-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+  <defs>
+    <linearGradient id="cuso4Liquid_st3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7DD3FC"/>
+      <stop offset="50%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+  </defs>
+  <!-- Bottle body -->
+  <rect x="42" y="45" width="76" height="115" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="2.5"/>
+  <!-- Pale blue liquid inside -->
+  <rect x="45" y="76" width="70" height="81" rx="6" fill="url(#cuso4Liquid_st3)"/>
+  <!-- Bottle neck & cap -->
+  <rect x="62" y="28" width="36" height="18" fill="#E2E8F0" stroke="#475569" stroke-width="2"/>
+  <rect x="57" y="14" width="46" height="16" rx="4" fill="#334155" stroke="#1E293B" stroke-width="2"/>
+  <!-- White clean label for code overlay -->
+  <rect x="48" y="88" width="64" height="46" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  <!-- Highlight -->
+  <line x1="48" y1="52" x2="48" y2="152" stroke="#FFFFFF" stroke-width="2" opacity="0.8"/>
+</svg></div>
+        <div class="mat-card-name">Dung dịch CuSO₄ 1%</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+
+      <!-- 7 NHIỄU -->
+      <div class="mat-card" data-mat="benedict" data-correct="false" tabindex="0">
+        <div class="mat-card-svg-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+  <defs>
+    <linearGradient id="benedictBlue_st3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="50%" stop-color="#0EA5E9"/>
+      <stop offset="100%" stop-color="#0369A1"/>
+    </linearGradient>
+  </defs>
+  <!-- Bottle body -->
+  <rect x="42" y="45" width="76" height="115" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="2.5"/>
+  <!-- Liquid -->
+  <rect x="44.5" y="75" width="71" height="82" rx="6" fill="url(#benedictBlue_st3)"/>
+  <!-- Neck & dropper cap -->
+  <rect x="62" y="28" width="36" height="18" fill="#E2E8F0" stroke="#475569" stroke-width="2"/>
+  <rect x="57" y="14" width="46" height="16" rx="4" fill="#334155" stroke="#1E293B" stroke-width="2"/>
+  <!-- White clean label for code overlay -->
+  <rect x="48" y="88" width="64" height="46" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+</svg></div>
+        <div class="mat-card-name">Thuốc thử Benedict</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+      <div class="mat-card" data-mat="lugol" data-correct="false" tabindex="0">
+        <div class="mat-card-svg-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+  <defs>
+    <linearGradient id="lugolBrown_st3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#78350F"/>
+      <stop offset="50%" stop-color="#9A3412"/>
+      <stop offset="100%" stop-color="#7C2D12"/>
+    </linearGradient>
+  </defs>
+  <!-- Bottle body -->
+  <rect x="42" y="45" width="76" height="115" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="2.5"/>
+  <!-- Liquid amber brown -->
+  <rect x="44.5" y="75" width="71" height="82" rx="6" fill="url(#lugolBrown_st3)"/>
+  <!-- Neck & cap -->
+  <rect x="62" y="28" width="36" height="18" fill="#E2E8F0" stroke="#475569" stroke-width="2"/>
+  <rect x="57" y="14" width="46" height="16" rx="4" fill="#334155" stroke="#1E293B" stroke-width="2"/>
+  <!-- White clean label -->
+  <rect x="48" y="88" width="64" height="46" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+</svg></div>
+        <div class="mat-card-name">Thuốc thử Lugol</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+      <div class="mat-card" data-mat="ethanol" data-correct="false" tabindex="0">
+        <div class="mat-card-svg-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+  <!-- Bottle body -->
+  <rect x="42" y="45" width="76" height="115" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="2.5"/>
+  <!-- Liquid transparent -->
+  <rect x="44.5" y="75" width="71" height="82" rx="6" fill="rgba(241, 245, 249, 0.6)" stroke="#CBD5E1" stroke-width="1"/>
+  <!-- Neck & cap -->
+  <rect x="62" y="28" width="36" height="18" fill="#E2E8F0" stroke="#475569" stroke-width="2"/>
+  <rect x="57" y="14" width="46" height="16" rx="4" fill="#334155" stroke="#1E293B" stroke-width="2"/>
+  <!-- White clean label -->
+  <rect x="48" y="88" width="64" height="46" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+</svg></div>
+        <div class="mat-card-name">Dung dịch Ethanol</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+      <div class="mat-card" data-mat="hotplate" data-correct="false" tabindex="0">
+        <div class="mat-card-svg-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+  <!-- Base body -->
+  <rect x="18" y="90" width="124" height="60" rx="8" fill="#E2E8F0" stroke="#64748B" stroke-width="2.5"/>
+  <!-- Feet -->
+  <rect x="28" y="150" width="16" height="8" rx="2" fill="#334155"/>
+  <rect x="116" y="150" width="16" height="8" rx="2" fill="#334155"/>
+  <!-- Heating plate top -->
+  <rect x="22" y="75" width="116" height="16" rx="3" fill="#475569" stroke="#1E293B" stroke-width="2"/>
+  <ellipse cx="80" cy="76" rx="42" ry="6" fill="#64748B"/>
+  <!-- Control knob -->
+  <circle cx="80" cy="120" r="14" fill="#94A3B8" stroke="#475569" stroke-width="2"/>
+  <line x1="80" y1="108" x2="80" y2="120" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Indicator light -->
+  <circle cx="118" cy="120" r="4" fill="#22C55E"/>
+</svg></div>
+        <div class="mat-card-name">Bếp điện đun nóng</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+      <div class="mat-card" data-mat="burner" data-correct="false" tabindex="0">
+        <div class="mat-card-svg-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+  <defs>
+    <linearGradient id="alcoholLiquid_st3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#E2E8F0" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#CBD5E1" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#94A3B8" stop-opacity="0.7"/>
+    </linearGradient>
+  </defs>
+  <!-- Glass body bulb shape -->
+  <path d="M 45 150 C 35 130 40 85 62 70 L 62 55 L 98 55 L 98 70 C 120 85 125 130 115 150 Z" fill="url(#alcoholLiquid_st3)" stroke="#64748B" stroke-width="2.5"/>
+  <!-- Base rim -->
+  <ellipse cx="80" cy="150" rx="35" ry="8" fill="#CBD5E1" stroke="#64748B" stroke-width="2"/>
+  <!-- Metal collar / Wick holder -->
+  <rect x="66" y="44" width="28" height="12" rx="2" fill="#E2E8F0" stroke="#475569" stroke-width="1.8"/>
+  <circle cx="80" cy="44" r="5" fill="#334155"/>
+  <!-- Fabric wick -->
+  <rect x="77" y="32" width="6" height="14" rx="2" fill="#FAF5FF" stroke="#A855F7" stroke-width="1.2"/>
+  <!-- Glass cap (off to the side or resting) -->
+  <path d="M 70 30 C 70 20 90 20 90 30 L 92 46 L 68 46 Z" fill="rgba(241, 245, 249, 0.7)" stroke="#64748B" stroke-width="1.5"/>
+</svg></div>
+        <div class="mat-card-name">Đèn cồn</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+      <div class="mat-card" data-mat="petri" data-correct="false" tabindex="0">
+        <div class="mat-card-svg-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+  <defs>
+    <linearGradient id="petriRim_st3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#CBD5E1" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#94A3B8" stop-opacity="0.7"/>
+    </linearGradient>
+    <radialGradient id="petriBase_st3" cx="50%" cy="50%" r="50%">
+      <stop offset="70%" stop-color="#F8FAFC" stop-opacity="0.2"/>
+      <stop offset="95%" stop-color="#E2E8F0" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#CBD5E1" stop-opacity="0.8"/>
+    </radialGradient>
+  </defs>
+  <!-- Base Shadow -->
+  <ellipse cx="80" cy="95" rx="66" ry="54" fill="#0F172A" fill-opacity="0.08"/>
+  <!-- Outer Dish Glass Rim -->
+  <ellipse cx="80" cy="90" rx="66" ry="52" fill="url(#petriBase_st3)" stroke="#64748B" stroke-width="2.5"/>
+  <ellipse cx="80" cy="90" rx="62" ry="48" fill="none" stroke="url(#petriRim_st3)" stroke-width="1.8"/>
+  <!-- Inner circular base floor -->
+  <ellipse cx="80" cy="90" rx="55" ry="40" fill="none" stroke="#94A3B8" stroke-width="1" stroke-dasharray="3 2" opacity="0.6"/>
+</svg></div>
+        <div class="mat-card-name">Đĩa Petri</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+      <div class="mat-card" data-mat="water" data-correct="false" tabindex="0">
+        <div class="mat-card-svg-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+  <defs>
+    <linearGradient id="waterGrad_st3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#E0F2FE"/>
+      <stop offset="50%" stop-color="#BAE6FD"/>
+      <stop offset="100%" stop-color="#7DD3FC"/>
+    </linearGradient>
+  </defs>
+  <!-- Erlenmeyer flask body -->
+  <path d="M 68 25 L 68 55 L 26 148 Q 24 156 36 156 L 124 156 Q 136 156 134 148 L 92 55 L 92 25 Z" fill="rgba(248, 250, 252, 0.75)" stroke="#64748B" stroke-width="2.5"/>
+  <!-- Water content -->
+  <path d="M 48 100 L 30 148 Q 28 153 36 153 L 124 153 Q 132 153 130 148 L 112 100 Z" fill="url(#waterGrad_st3)" stroke="#38BDF8" stroke-width="1.2"/>
+  <!-- Neck rim -->
+  <ellipse cx="80" cy="25" rx="14" ry="4" fill="#E2E8F0" stroke="#475569" stroke-width="2"/>
+  <!-- Graduation marks -->
+  <line x1="105" y1="110" x2="118" y2="110" stroke="#0284C7" stroke-width="2"/>
+  <line x1="112" y1="130" x2="124" y2="130" stroke="#94A3B8" stroke-width="1.5"/>
+  <!-- Label -->
+  <rect x="52" y="72" width="56" height="28" rx="3" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+</svg></div>
+        <div class="mat-card-name">Bình nước cất</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+    </div>
+
+    <div class="selected-tray">
+      <div class="selected-tray-title">Khay chuẩn bị thí nghiệm:</div>
+      <div class="selected-tray-chips" id="selectedTrayChips">
+        <span class="slot-empty-text">Chưa chọn vật tư nào</span>
+      </div>
+    </div>
+
+    <div class="inline-feedback hidden" id="fbStage3"></div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" id="btnPrevStage3"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      <button class="btn btn-outline" id="btnCheckStage3"><i class="ti ti-check"></i> KIỂM TRA</button>
+      <button class="btn btn-secondary hidden" id="btnRetryStage3"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+      <button class="btn btn-primary" id="btnNextStage3" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 4: CHO MẪU VÀO ỐNG NGHIỆM (SH10_B06_M03_C04)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-4" role="region" aria-label="Màn 4: Cho mẫu vào ống nghiệm">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-flask"></i> Màn 4 · Thao tác mẫu</span>
+        <h2 class="stage-title">Cho mẫu vào ống nghiệm</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 4 / 9</span>
+    </div>
+
+    <p class="lead-text">Trước tiên, cho một ít dung dịch albumin 1% hoặc một lượng nhỏ lòng trắng trứng vào ống nghiệm.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Nhấn vào dụng cụ lấy mẫu (pipet) để lấy một lượng nhỏ mẫu từ cốc rồi đưa vào ống nghiệm. Khi mẫu đã vào ống, ô trạng thái sẽ được đánh dấu.</span>
+    </div>
+
+    <div class="sim-arena">
+      <div class="sim-status-bar">
+        <span>Khu vực thao tác phòng thực hành</span>
+        <div class="sim-status-badge" id="statusBadgeStage4">
+          <i class="ti ti-circle"></i> MẪU ĐÃ CHO VÀO ỐNG
+        </div>
+      </div>
+
+      <div class="sim-workbench" id="benchStage4">
+        <!-- Sample Beaker -->
+        <div class="bench-item" id="beakerStage4" title="Cốc mẫu Albumin 1%">
+          <div style="width:100px; height:110px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+  <defs>
+    <linearGradient id="albuminGrad_st4" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FEF9E7"/>
+      <stop offset="50%" stop-color="#FDF2D0"/>
+      <stop offset="100%" stop-color="#FBF0C7"/>
+    </linearGradient>
+    <linearGradient id="glassAlbumin_st4" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8"/>
+      <stop offset="20%" stop-color="#E2E8F0" stop-opacity="0.4"/>
+      <stop offset="80%" stop-color="#E2E8F0" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#CBD5E1" stop-opacity="0.7"/>
+    </linearGradient>
+  </defs>
+  <!-- Beaker body with pouring spout -->
+  <path d="M 32 35 L 24 35 L 35 152 Q 38 160 52 160 L 108 160 Q 122 160 125 152 L 125 35 Z" fill="url(#glassAlbumin_st4)" stroke="#64748B" stroke-width="2.5"/>
+  <!-- Liquid: Albumin 1% slightly turbid off-white/pale cream -->
+  <path d="M 34 78 L 37 150 Q 39 157 52 157 L 108 157 Q 120 157 123 150 L 124 78 Z" fill="url(#albuminGrad_st4)" stroke="#EAB308" stroke-width="1" stroke-opacity="0.4"/>
+  <!-- Meniscus curve -->
+  <ellipse cx="79" cy="78" rx="45" ry="5" fill="#FEF9E7" stroke="#CA8A04" stroke-width="1.2" opacity="0.8"/>
+  <!-- Graduation marks -->
+  <line x1="95" y1="80" x2="124" y2="80" stroke="#64748B" stroke-width="1.8"/>
+  <line x1="102" y1="102" x2="124" y2="102" stroke="#94A3B8" stroke-width="1.5"/>
+  <line x1="95" y1="124" x2="124" y2="124" stroke="#94A3B8" stroke-width="1.5"/>
+  <!-- Clean white label for overlay -->
+  <rect x="46" y="94" width="56" height="34" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4"/>
+  <!-- Reflection sheen -->
+  <line x1="42" y1="45" x2="44" y2="145" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
+</svg></div>
+          <span class="bench-item-label">Cốc Albumin 1%</span>
+        </div>
+
+        <!-- Sample Pipette Tool -->
+        <div class="bench-item" id="toolStage4" title="Nhấn để lấy mẫu">
+          <div class="pipette-tool" id="pipetteToolStage4"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+  <!-- Rubber bulb top -->
+  <path d="M 70 36 C 62 25 64 12 80 12 C 96 12 98 25 90 36 Z" fill="#EF4444" stroke="#B91C1C" stroke-width="2"/>
+  <!-- Glass pipette stem -->
+  <rect x="74" y="36" width="12" height="98" fill="#F8FAFC" stroke="#64748B" stroke-width="1.8"/>
+  <!-- Tapered tip -->
+  <path d="M 74 134 L 78 165 L 82 165 L 86 134 Z" fill="#F8FAFC" stroke="#64748B" stroke-width="1.8"/>
+  <!-- Graduation marks -->
+  <line x1="74" y1="56" x2="81" y2="56" stroke="#64748B" stroke-width="1.2"/>
+  <line x1="74" y1="76" x2="81" y2="76" stroke="#64748B" stroke-width="1.2"/>
+  <line x1="74" y1="96" x2="81" y2="96" stroke="#64748B" stroke-width="1.2"/>
+  <line x1="74" y1="116" x2="81" y2="116" stroke="#64748B" stroke-width="1.2"/>
+  <!-- Highlight -->
+  <line x1="76" y1="40" x2="76" y2="130" stroke="#FFFFFF" stroke-width="1.5" opacity="0.8"/>
+</svg></div>
+          <span class="bench-item-label">Pipet lấy mẫu</span>
+        </div>
+
+        <!-- Test Tube on Rack -->
+        <div class="bench-item" id="tubeRigStage4" title="Ống nghiệm trên giá">
+          <div class="test-tube-rig">
+            <svg class="test-tube-svg" viewBox="0 0 80 230">
+              <rect x="5" y="160" width="70" height="70" rx="4" fill="#D97706" opacity="0.6"/>
+              <path d="M 22 20 L 22 195 C 22 215 58 215 58 195 L 58 20 Z" fill="rgba(248, 250, 252, 0.75)" stroke="#64748B" stroke-width="3"/>
+              <ellipse cx="40" cy="20" rx="20" ry="5" fill="#E2E8F0" stroke="#475569" stroke-width="2"/>
+              <!-- Sample Liquid in bottom (Hidden until added) -->
+              <path id="liquidStage4" d="M 24 180 L 24 195 C 24 212 56 212 56 195 L 56 180 Z" fill="#FDF2D0" opacity="0" style="transition: opacity 0.6s ease;"/>
+              <line x1="28" y1="30" x2="28" y2="190" stroke="#FFFFFF" stroke-width="2.5" opacity="0.7"/>
+            </svg>
+          </div>
+          <span class="bench-item-label">Ống nghiệm trên giá</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="inline-feedback hidden" id="fbStage4"></div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" id="btnPrevStage4"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      <button class="btn btn-outline" id="btnDoneStage4" disabled><i class="ti ti-check"></i> HOÀN THÀNH</button>
+      <button class="btn btn-primary" id="btnNextStage4" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 5: THÊM 5 mL NaOH LOÃNG (SH10_B06_M03_C05)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-5" role="region" aria-label="Màn 5: Thêm 5 mL dung dịch NaOH loãng">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-droplet"></i> Màn 5 · Kiềm hóa</span>
+        <h2 class="stage-title">Thêm dung dịch NaOH loãng</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 5 / 9</span>
+    </div>
+
+    <p class="lead-text">NaOH tạo môi trường kiềm cần thiết cho phản ứng Biuret. Theo quy trình, bạn cần thêm 5 mL dung dịch NaOH loãng vào ống nghiệm.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Nhấn vào lọ NaOH để đong đúng 5 mL vào ống đong, sau đó chuyển toàn bộ 5 mL vào ống nghiệm chứa mẫu.</span>
+    </div>
+
+    <div class="sim-arena">
+      <div class="sim-status-bar">
+        <span>Ống nghiệm kế thừa từ Màn 4</span>
+        <div class="sim-status-badge" id="statusBadgeStage5">
+          <i class="ti ti-droplet"></i> <span id="naohVolText">NaOH: 0 mL</span>
+        </div>
+      </div>
+
+      <div class="sim-workbench" id="benchStage5">
+        <!-- NaOH Bottle -->
+        <div class="bench-item" id="bottleNaohStage5" title="Nhấn để lấy NaOH">
+          <div style="width:90px; height:110px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+  <defs>
+    <linearGradient id="naohLiquid_st5" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F8FAFC" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#E2E8F0" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#CBD5E1" stop-opacity="0.8"/>
+    </linearGradient>
+  </defs>
+  <!-- Bottle body -->
+  <rect x="42" y="45" width="76" height="115" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="2.5"/>
+  <!-- Transparent liquid inside -->
+  <rect x="45" y="76" width="70" height="81" rx="6" fill="url(#naohLiquid_st5)"/>
+  <!-- Bottle neck & cap -->
+  <rect x="62" y="28" width="36" height="18" fill="#E2E8F0" stroke="#475569" stroke-width="2"/>
+  <rect x="57" y="14" width="46" height="16" rx="4" fill="#334155" stroke="#1E293B" stroke-width="2"/>
+  <!-- White clean label for code overlay -->
+  <rect x="48" y="88" width="64" height="46" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  <!-- Highlight -->
+  <line x1="48" y1="52" x2="48" y2="152" stroke="#FFFFFF" stroke-width="2" opacity="0.8"/>
+</svg></div>
+          <span class="bench-item-label">Lọ NaOH loãng</span>
+        </div>
+
+        <!-- Measuring Cylinder (5 mL) -->
+        <div class="bench-item" id="cylinderStage5" title="Ống đong 5 mL">
+          <div style="width:70px; height:150px; position:relative;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+  <defs>
+    <linearGradient id="cylinderGrad_st5" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="30%" stop-color="#F1F5F9" stop-opacity="0.3"/>
+      <stop offset="70%" stop-color="#E2E8F0" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#CBD5E1" stop-opacity="0.8"/>
+    </linearGradient>
+  </defs>
+  <!-- Hexagonal / Flanged base -->
+  <polygon points="52,168 108,168 116,160 102,154 58,154 44,160" fill="#E2E8F0" stroke="#64748B" stroke-width="2"/>
+  <!-- Main cylinder body -->
+  <rect x="64" y="24" width="32" height="130" fill="url(#cylinderGrad_st5)" stroke="#64748B" stroke-width="2.2"/>
+  <!-- Spout rim top -->
+  <path d="M 60 24 L 64 24 L 64 20 L 96 20 L 96 24 L 100 24" stroke="#475569" stroke-width="2.2" fill="none"/>
+  <!-- Graduation marks -->
+  <line x1="76" y1="36" x2="96" y2="36" stroke="#475569" stroke-width="1.2"/>
+  <line x1="82" y1="48" x2="96" y2="48" stroke="#94A3B8" stroke-width="1"/>
+  <line x1="76" y1="60" x2="96" y2="60" stroke="#475569" stroke-width="1.2"/>
+  <line x1="82" y1="72" x2="96" y2="72" stroke="#94A3B8" stroke-width="1"/>
+  <!-- 5 mL Special Highlight Mark -->
+  <line x1="70" y1="84" x2="96" y2="84" stroke="#0284C7" stroke-width="2.2"/>
+  <circle cx="68" cy="84" r="2.5" fill="#0284C7"/>
+  <!-- Lower graduations -->
+  <line x1="82" y1="96" x2="96" y2="96" stroke="#94A3B8" stroke-width="1"/>
+  <line x1="76" y1="108" x2="96" y2="108" stroke="#475569" stroke-width="1.2"/>
+  <line x1="82" y1="120" x2="96" y2="120" stroke="#94A3B8" stroke-width="1"/>
+  <line x1="76" y1="132" x2="96" y2="132" stroke="#475569" stroke-width="1.2"/>
+  <!-- Reflection vertical line -->
+  <line x1="68" y1="28" x2="68" y2="148" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+</svg>
+            <div id="cylinderLiquidStage5" style="position:absolute; bottom:26px; left:28px; width:14px; height:0px; background:#BAE6FD; opacity:0.7; transition: height 0.6s ease; border-radius:2px;"></div>
+          </div>
+          <span class="bench-item-label" id="cylinderLabelStage5">Ống đong: 0 mL</span>
+        </div>
+
+        <!-- Test Tube with sample -->
+        <div class="bench-item" id="tubeRigStage5" title="Ống nghiệm">
+          <div class="test-tube-rig">
+            <svg class="test-tube-svg" viewBox="0 0 80 230">
+              <rect x="5" y="160" width="70" height="70" rx="4" fill="#D97706" opacity="0.6"/>
+              <path d="M 22 20 L 22 195 C 22 215 58 215 58 195 L 58 20 Z" fill="rgba(248, 250, 252, 0.75)" stroke="#64748B" stroke-width="3"/>
+              <ellipse cx="40" cy="20" rx="20" ry="5" fill="#E2E8F0" stroke="#475569" stroke-width="2"/>
+              <!-- Sample + NaOH Liquid column (rises after adding NaOH) -->
+              <path id="liquidStage5" d="M 24 140 L 24 195 C 24 212 56 212 56 195 L 56 140 Z" fill="#F1F5F9" opacity="0.7" style="transition: all 0.6s ease;"/>
+              <line x1="28" y1="30" x2="28" y2="190" stroke="#FFFFFF" stroke-width="2.5" opacity="0.7"/>
+            </svg>
+          </div>
+          <span class="bench-item-label">Ống nghiệm chứa mẫu</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="inline-feedback hidden" id="fbStage5"></div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" id="btnPrevStage5"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      <button class="btn btn-outline" id="btnDoneStage5" disabled><i class="ti ti-check"></i> HOÀN THÀNH</button>
+      <button class="btn btn-primary" id="btnNextStage5" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 6: THÊM 5 mL CuSO₄ 1%, CHỜ VÀ QUAN SÁT (SH10_B06_M03_C06)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-6" role="region" aria-label="Màn 6: Thêm 5 mL CuSO₄ 1%, chờ và quan sát">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-eye"></i> Màn 6 · Phản ứng Biuret</span>
+        <h2 class="stage-title">Quan sát phản ứng Biuret</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 6 / 9</span>
+    </div>
+
+    <p class="lead-text">Sau khi đã tạo môi trường kiềm, thêm 5 mL dung dịch CuSO₄ 1%. Dung dịch ban đầu có màu xanh và sẽ chuyển dần nếu mẫu có các liên kết peptide.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Lấy 5 mL dung dịch CuSO₄ 1% và cho vào ống nghiệm. Sau đó đặt ống vào giá, nhấn BẮT ĐẦU QUAN SÁT và theo dõi sự thay đổi màu.</span>
+    </div>
+
+    <div class="sim-arena">
+      <div class="sim-status-bar">
+        <span id="simTimerLabel"><i class="ti ti-clock"></i> THỜI GIAN MÔ PHỎNG: <strong id="simTimerText">00:00 (Bắt đầu)</strong></span>
+        <div class="sim-status-badge" id="statusBadgeStage6">
+          <i class="ti ti-flask"></i> <span id="reactionStateText">Chưa thêm CuSO₄</span>
+        </div>
+      </div>
+
+      <div class="obs-panel">
+        <div class="sim-workbench" style="min-height:260px;" id="benchStage6">
+          <!-- CuSO4 Bottle -->
+          <div class="bench-item" id="bottleCuso4Stage6" title="Nhấn để lấy CuSO4">
+            <div style="width:85px; height:105px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+  <defs>
+    <linearGradient id="cuso4Liquid_st6" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7DD3FC"/>
+      <stop offset="50%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+  </defs>
+  <!-- Bottle body -->
+  <rect x="42" y="45" width="76" height="115" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="2.5"/>
+  <!-- Pale blue liquid inside -->
+  <rect x="45" y="76" width="70" height="81" rx="6" fill="url(#cuso4Liquid_st6)"/>
+  <!-- Bottle neck & cap -->
+  <rect x="62" y="28" width="36" height="18" fill="#E2E8F0" stroke="#475569" stroke-width="2"/>
+  <rect x="57" y="14" width="46" height="16" rx="4" fill="#334155" stroke="#1E293B" stroke-width="2"/>
+  <!-- White clean label for code overlay -->
+  <rect x="48" y="88" width="64" height="46" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  <!-- Highlight -->
+  <line x1="48" y1="52" x2="48" y2="152" stroke="#FFFFFF" stroke-width="2" opacity="0.8"/>
+</svg></div>
+            <span class="bench-item-label">Lọ CuSO₄ 1%</span>
+          </div>
+
+          <!-- Measuring Cylinder -->
+          <div class="bench-item" id="cylinderStage6" title="Ống đong">
+            <div style="width:60px; height:140px; position:relative;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+  <defs>
+    <linearGradient id="cylinderGrad_st6" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="30%" stop-color="#F1F5F9" stop-opacity="0.3"/>
+      <stop offset="70%" stop-color="#E2E8F0" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#CBD5E1" stop-opacity="0.8"/>
+    </linearGradient>
+  </defs>
+  <!-- Hexagonal / Flanged base -->
+  <polygon points="52,168 108,168 116,160 102,154 58,154 44,160" fill="#E2E8F0" stroke="#64748B" stroke-width="2"/>
+  <!-- Main cylinder body -->
+  <rect x="64" y="24" width="32" height="130" fill="url(#cylinderGrad_st6)" stroke="#64748B" stroke-width="2.2"/>
+  <!-- Spout rim top -->
+  <path d="M 60 24 L 64 24 L 64 20 L 96 20 L 96 24 L 100 24" stroke="#475569" stroke-width="2.2" fill="none"/>
+  <!-- Graduation marks -->
+  <line x1="76" y1="36" x2="96" y2="36" stroke="#475569" stroke-width="1.2"/>
+  <line x1="82" y1="48" x2="96" y2="48" stroke="#94A3B8" stroke-width="1"/>
+  <line x1="76" y1="60" x2="96" y2="60" stroke="#475569" stroke-width="1.2"/>
+  <line x1="82" y1="72" x2="96" y2="72" stroke="#94A3B8" stroke-width="1"/>
+  <!-- 5 mL Special Highlight Mark -->
+  <line x1="70" y1="84" x2="96" y2="84" stroke="#0284C7" stroke-width="2.2"/>
+  <circle cx="68" cy="84" r="2.5" fill="#0284C7"/>
+  <!-- Lower graduations -->
+  <line x1="82" y1="96" x2="96" y2="96" stroke="#94A3B8" stroke-width="1"/>
+  <line x1="76" y1="108" x2="96" y2="108" stroke="#475569" stroke-width="1.2"/>
+  <line x1="82" y1="120" x2="96" y2="120" stroke="#94A3B8" stroke-width="1"/>
+  <line x1="76" y1="132" x2="96" y2="132" stroke="#475569" stroke-width="1.2"/>
+  <!-- Reflection vertical line -->
+  <line x1="68" y1="28" x2="68" y2="148" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+</svg>
+              <div id="cylinderLiquidStage6" style="position:absolute; bottom:24px; left:24px; width:12px; height:0px; background:#38BDF8; opacity:0.8; transition: height 0.6s ease; border-radius:2px;"></div>
+            </div>
+            <span class="bench-item-label" id="cylinderLabelStage6">Ống đong: 0 mL</span>
+          </div>
+
+          <!-- Test Tube -->
+          <div class="bench-item" id="tubeRigStage6">
+            <div class="test-tube-rig">
+              <svg class="test-tube-svg" viewBox="0 0 80 230">
+                <rect x="5" y="160" width="70" height="70" rx="4" fill="#D97706" opacity="0.6"/>
+                <path d="M 22 20 L 22 195 C 22 215 58 215 58 195 L 58 20 Z" fill="rgba(248, 250, 252, 0.75)" stroke="#64748B" stroke-width="3"/>
+                <ellipse cx="40" cy="20" rx="20" ry="5" fill="#E2E8F0" stroke="#475569" stroke-width="2"/>
+                <!-- Liquid with dynamic Controlled Color Transition -->
+                <path id="liquidStage6" d="M 24 95 L 24 195 C 24 212 56 212 56 195 L 56 95 Z" fill="#F1F5F9" opacity="0.9" style="transition: fill 2s ease;"/>
+                <line x1="28" y1="30" x2="28" y2="190" stroke="#FFFFFF" stroke-width="2.5" opacity="0.7"/>
+              </svg>
+            </div>
+            <span class="bench-item-label">Ống nghiệm phản ứng</span>
+          </div>
+        </div>
+
+        <!-- Magnifier & Observation Table -->
+        <div class="magnifier-box">
+          <div class="magnifier-label">Vùng phóng đại màu dung dịch:</div>
+          <div class="magnifier-circle" id="magnifierColorStage6" style="background:#F1F5F9;">
+            <i class="ti ti-zoom-in" style="font-size:28px; opacity:0.25; color:#64748B;"></i>
+          </div>
+
+          <table class="obs-table">
+            <tr>
+              <th>Màu ban đầu:</th>
+              <td id="initialColorText">Chưa quan sát</td>
+            </tr>
+            <tr>
+              <th>Màu sau vài phút:</th>
+              <td id="finalColorText">Chưa quan sát</td>
+            </tr>
+          </table>
+
+          <button class="btn btn-outline" id="btnStartObserve" style="width:100%;" disabled><i class="ti ti-player-play"></i> BẮT ĐẦU QUAN SÁT</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="inline-feedback hidden" id="fbStage6"></div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" id="btnPrevStage6"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      <button class="btn btn-outline" id="btnDoneStage6" disabled><i class="ti ti-check"></i> HOÀN THÀNH</button>
+      <button class="btn btn-primary" id="btnNextStage6" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 7: THU DỌN SAU THỰC HÀNH (SH10_B06_M03_C07)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-7" role="region" aria-label="Màn 7: Thu dọn sau thực hành">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-trash"></i> Màn 7 · Thu dọn</span>
+        <h2 class="stage-title">Thu dọn sau thực hành</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 7 / 9</span>
+    </div>
+
+    <p class="lead-text">Sau khi quan sát, cần xử lí dung dịch và dụng cụ theo hướng dẫn, đậy nắp hóa chất và vệ sinh khu vực làm việc.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Nhấn vào các hành động đúng để hoàn tất việc thu dọn. Hình đã chọn xuất hiện khung nổi bật.</span>
+    </div>
+
+    <div class="cleanup-grid" id="cleanupGrid">
+      <div class="select-card" data-id="1" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="wallA07_1_a07_1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E2E8F0"/>
+      <stop offset="60%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+    <linearGradient id="benchA07_1_a07_1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="30%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+    <linearGradient id="violetBiuret_a07_1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="50%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#6D28D9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Lab Background -->
+  <rect width="800" height="600" fill="url(#wallA07_1_a07_1)"/>
+  <line x1="0" y1="200" x2="800" y2="200" stroke="#CBD5E1" stroke-width="2"/>
+
+  <!-- Lab Bench -->
+  <rect x="0" y="320" width="800" height="280" fill="url(#benchA07_1_a07_1)"/>
+  <line x1="0" y1="320" x2="800" y2="320" stroke="#64748B" stroke-width="3"/>
+  <rect x="0" y="323" width="800" height="12" fill="#E2E8F0"/>
+
+  <!-- Test Tube Rack (Giá ống nghiệm gỗ) placed firmly in center -->
+  <!-- Base -->
+  <rect x="220" y="440" width="360" height="30" rx="5" fill="#D97706" stroke="#92400E" stroke-width="3"/>
+  <!-- Upright pillars -->
+  <rect x="230" y="240" width="28" height="200" fill="#B45309" stroke="#78350F" stroke-width="2"/>
+  <rect x="542" y="240" width="28" height="200" fill="#B45309" stroke="#78350F" stroke-width="2"/>
+  <!-- Middle shelf with holes -->
+  <rect x="220" y="260" width="360" height="25" rx="4" fill="#D97706" stroke="#92400E" stroke-width="2.5"/>
+  <!-- Holes -->
+  <ellipse cx="290" cy="272" rx="20" ry="6" fill="#78350F"/>
+  <ellipse cx="360" cy="272" rx="20" ry="6" fill="#78350F"/>
+  <ellipse cx="440" cy="272" rx="20" ry="6" fill="#78350F"/>
+  <ellipse cx="510" cy="272" rx="20" ry="6" fill="#78350F"/>
+
+  <!-- Single test tube resting securely in hole 2 (holding purple Biuret product) -->
+  <g transform="translate(345, 140)">
+    <!-- Tube body -->
+    <path d="M 0 0 L 0 250 C 0 280 30 280 30 250 L 30 0 Z" fill="rgba(248, 250, 252, 0.8)" stroke="#64748B" stroke-width="2.5"/>
+    <ellipse cx="15" cy="0" rx="16" ry="4" fill="#E2E8F0" stroke="#475569" stroke-width="2"/>
+    <!-- Purple Biuret liquid in bottom half -->
+    <path d="M 2 170 L 2 250 C 2 276 28 276 28 250 L 28 170 Z" fill="url(#violetBiuret_a07_1)"/>
+    <ellipse cx="15" cy="170" rx="13" ry="3.5" fill="#A78BFA"/>
+    <!-- Reflection line -->
+    <line x1="5" y1="10" x2="5" y2="240" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+  </g>
+
+  <!-- Stable and safe visual cues -->
+  <ellipse cx="400" cy="475" rx="190" ry="12" fill="#0F172A" opacity="0.08"/>
+</svg></div>
+        <div class="select-card-desc">1. Đặt ống nghiệm vào giá an toàn.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+      <div class="select-card" data-id="2" data-correct="false" tabindex="0">
+        <div class="select-card-img-wrap"><img src="images/SH10-B06-M03-A07-02.jpg" alt="Đổ dung dịch vào bồn rửa"></div>
+        <div class="select-card-desc">2. Đổ dung dịch trực tiếp vào bồn rửa.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+      <div class="select-card" data-id="3" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap"><img src="images/SH10-B06-M03-A07-03.jpg" alt="Chuyển vào bình thu gom"></div>
+        <div class="select-card-desc">3. Chuyển dung dịch vào bình thu gom có nhãn theo hướng dẫn.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+      <div class="select-card" data-id="4" data-correct="false" tabindex="0">
+        <div class="select-card-img-wrap"><img src="images/SH10-B06-M03-A07-04.jpg" alt="Lọ hóa chất để mở nắp"></div>
+        <div class="select-card-desc">4. Để lọ NaOH và CuSO₄ mở nắp.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+      <div class="select-card" data-id="5" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="wallA07_5_a07_5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E2E8F0"/>
+      <stop offset="60%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+    <linearGradient id="benchA07_5_a07_5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="30%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Lab Background with Reagent Shelf -->
+  <rect width="800" height="600" fill="url(#wallA07_5_a07_5)"/>
+  <!-- Chemical storage shelf on wall -->
+  <rect x="140" y="160" width="520" height="20" rx="3" fill="#64748B" stroke="#475569" stroke-width="2"/>
+
+  <!-- Lab Bench -->
+  <rect x="0" y="320" width="800" height="280" fill="url(#benchA07_5_a07_5)"/>
+  <line x1="0" y1="320" x2="800" y2="320" stroke="#64748B" stroke-width="3"/>
+  <rect x="0" y="323" width="800" height="12" fill="#E2E8F0"/>
+
+  <!-- Storage tray on bench for returning chemicals -->
+  <rect x="220" y="360" width="360" height="120" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2.5"/>
+  <rect x="230" y="370" width="340" height="100" rx="6" fill="#E2E8F0" opacity="0.6"/>
+
+  <!-- Bottle 1: NaOH tightly closed & standing inside tray -->
+  <g transform="translate(260, 270)">
+    <rect x="0" y="35" width="70" height="110" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="2.5"/>
+    <rect x="18" y="18" width="34" height="18" fill="#CBD5E1" stroke="#475569" stroke-width="2"/>
+    <!-- Tightly screwed cap -->
+    <rect x="12" y="4" width="46" height="16" rx="4" fill="#1E293B" stroke="#0F172A" stroke-width="2"/>
+    <rect x="8" y="60" width="54" height="46" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  </g>
+
+  <!-- Bottle 2: CuSO4 tightly closed & standing inside tray -->
+  <g transform="translate(360, 270)">
+    <rect x="0" y="35" width="70" height="110" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="2.5"/>
+    <rect x="4" y="60" width="62" height="80" rx="6" fill="#38BDF8" opacity="0.5"/>
+    <rect x="18" y="18" width="34" height="18" fill="#CBD5E1" stroke="#475569" stroke-width="2"/>
+    <!-- Tightly screwed cap -->
+    <rect x="12" y="4" width="46" height="16" rx="4" fill="#1E293B" stroke="#0F172A" stroke-width="2"/>
+    <rect x="8" y="60" width="54" height="46" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  </g>
+
+  <!-- Student Hands placing / tightening the cap carefully -->
+  <!-- Hand tightening cap -->
+  <path d="M 580 500 Q 520 380 470 300" stroke="#FFFFFF" stroke-width="44" stroke-linecap="round" fill="none"/>
+  <path d="M 580 500 Q 520 380 470 300" stroke="#CBD5E1" stroke-width="48" stroke-linecap="round" fill="none" opacity="0.4"/>
+  <ellipse cx="465" cy="295" rx="20" ry="16" fill="#F5D0C5" stroke="#E2A696" stroke-width="2"/>
+</svg></div>
+        <div class="select-card-desc">5. Đậy nắp và trả các lọ về đúng vị trí.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+      <div class="select-card" data-id="6" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="wallA07_6_a07_6" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E2E8F0"/>
+      <stop offset="60%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+    <linearGradient id="sinkGrad_a07_6" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#CBD5E1"/>
+      <stop offset="40%" stop-color="#94A3B8"/>
+      <stop offset="100%" stop-color="#64748B"/>
+    </linearGradient>
+    <linearGradient id="streamWater_a07_6" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E0F2FE"/>
+      <stop offset="50%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Lab Wall -->
+  <rect width="800" height="600" fill="url(#wallA07_6_a07_6)"/>
+  <!-- Tiled lines on wall -->
+  <line x1="0" y1="120" x2="800" y2="120" stroke="#CBD5E1" stroke-width="2"/>
+  <line x1="0" y1="240" x2="800" y2="240" stroke="#CBD5E1" stroke-width="2"/>
+
+  <!-- Lab Sink Surround (Bồn rửa phòng thí nghiệm) -->
+  <rect x="120" y="280" width="560" height="320" rx="12" fill="#E2E8F0" stroke="#64748B" stroke-width="3"/>
+  <!-- Sink basin cavity -->
+  <rect x="160" y="320" width="480" height="240" rx="8" fill="url(#sinkGrad_a07_6)" stroke="#475569" stroke-width="2"/>
+  <!-- Drain hole in sink -->
+  <ellipse cx="400" cy="500" rx="28" ry="12" fill="#1E293B"/>
+  <ellipse cx="400" cy="500" rx="22" ry="8" fill="#475569"/>
+
+  <!-- Gooseneck Faucet (Vòi rửa phòng lab cán dài uốn cong) -->
+  <path d="M 400 300 L 400 130 Q 400 90 360 90 Q 330 90 330 140 L 330 160" stroke="#94A3B8" stroke-width="18" stroke-linecap="round" fill="none"/>
+  <path d="M 400 300 L 400 130 Q 400 90 360 90 Q 330 90 330 140 L 330 160" stroke="#E2E8F0" stroke-width="12" stroke-linecap="round" fill="none"/>
+  <!-- Faucet nozzle -->
+  <rect x="323" y="160" width="14" height="12" rx="2" fill="#475569"/>
+  <line x1="400" y1="250" x2="435" y2="250" stroke="#64748B" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- Running gentle rinse water stream -->
+  <path d="M 326 172 Q 330 260 332 380 Q 334 440 336 500" stroke="url(#streamWater_a07_6)" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.85"/>
+  <path d="M 328 172 Q 330 260 331 380" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.9"/>
+
+  <!-- Hands rinsing measuring cylinder under faucet -->
+  <!-- Left hand holding measuring cylinder under stream -->
+  <g transform="translate(315, 230) rotate(-18)">
+    <rect x="0" y="0" width="26" height="140" fill="rgba(248, 250, 252, 0.85)" stroke="#64748B" stroke-width="2"/>
+    <line x1="0" y1="60" x2="26" y2="60" stroke="#0284C7" stroke-width="1.8"/>
+  </g>
+  <path d="M 180 480 Q 240 370 300 310" stroke="#FFFFFF" stroke-width="42" stroke-linecap="round" fill="none"/>
+  <path d="M 180 480 Q 240 370 300 310" stroke="#CBD5E1" stroke-width="46" stroke-linecap="round" fill="none" opacity="0.4"/>
+  <ellipse cx="295" cy="310" rx="18" ry="15" fill="#F5D0C5" stroke="#E2A696" stroke-width="2"/>
+
+  <!-- Cleaning brush (Chổi cọ rửa ống nghiệm) in right hand -->
+  <path d="M 620 480 Q 520 360 410 270" stroke="#FFFFFF" stroke-width="42" stroke-linecap="round" fill="none"/>
+  <path d="M 620 480 Q 520 360 410 270" stroke="#CBD5E1" stroke-width="46" stroke-linecap="round" fill="none" opacity="0.4"/>
+  <ellipse cx="410" cy="275" rx="18" ry="15" fill="#F5D0C5" stroke="#E2A696" stroke-width="2"/>
+  <!-- Wire handle of brush inserted into cylinder rim -->
+  <line x1="410" y1="275" x2="355" y2="235" stroke="#94A3B8" stroke-width="3.5"/>
+  <rect x="335" y="215" width="22" height="16" rx="4" fill="#38BDF8" opacity="0.7"/>
+
+  <!-- Water droplets and rinse foam -->
+  <circle cx="340" cy="420" r="4" fill="#BAE6FD"/>
+  <circle cx="355" cy="445" r="3" fill="#BAE6FD"/>
+  <circle cx="320" cy="460" r="3.5" fill="#BAE6FD"/>
+</svg></div>
+        <div class="select-card-desc">6. Vệ sinh dụng cụ theo hướng dẫn.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+      <div class="select-card" data-id="7" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cleanTable_m03_a07_7" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="60%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+    <linearGradient id="clothGrad_m03_a07_7" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#0369A1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Lab Wall -->
+  <rect width="800" height="300" fill="#E2E8F0"/>
+  <line x1="0" y1="160" x2="800" y2="160" stroke="#CBD5E1" stroke-width="2"/>
+
+  <!-- Lab Bench (Lau sạch sáng bóng) -->
+  <rect x="0" y="280" width="800" height="320" fill="url(#cleanTable_m03_a07_7)"/>
+  <line x1="0" y1="280" x2="800" y2="280" stroke="#64748B" stroke-width="3"/>
+
+  <!-- Hand with Cleaning Cloth wiping surface -->
+  <path d="M 640 180 Q 520 280 430 350" stroke="#FFFFFF" stroke-width="52" stroke-linecap="round" fill="none"/>
+  <path d="M 640 180 Q 520 280 430 350" stroke="#CBD5E1" stroke-width="56" stroke-linecap="round" fill="none" opacity="0.4"/>
+  <!-- Hand -->
+  <ellipse cx="420" cy="355" rx="26" ry="20" fill="#F5D0C5" stroke="#E2A696" stroke-width="2"/>
+
+  <!-- Cleaning cloth (Khăn lau chuyên dụng xanh) -->
+  <path d="M 330 380 C 310 350 360 330 420 340 C 470 350 490 380 470 410 C 430 440 350 430 330 380 Z" fill="url(#clothGrad_m03_a07_7)" stroke="#075985" stroke-width="2.5"/>
+  <!-- Cloth folds -->
+  <path d="M 350 375 Q 400 365 440 380" stroke="#BAE6FD" stroke-width="2" fill="none"/>
+  <path d="M 360 395 Q 410 385 450 400" stroke="#0369A1" stroke-width="2" fill="none"/>
+
+  <!-- Clean sparkle / gleam marks on wiped tabletop -->
+  <path d="M 240 360 L 250 345 L 260 360 L 275 370 L 260 380 L 250 395 L 240 380 L 225 370 Z" fill="#38BDF8" opacity="0.75"/>
+  <path d="M 540 400 L 548 388 L 556 400 L 568 408 L 556 416 L 548 428 L 540 416 L 528 408 Z" fill="#38BDF8" opacity="0.75"/>
+
+  <!-- Tidy chemical bottles & equipment stored neatly in background -->
+  <rect x="80" y="210" width="46" height="70" rx="4" fill="#F8FAFC" stroke="#475569" stroke-width="1.8"/>
+  <rect x="90" y="196" width="26" height="14" rx="2" fill="#1E293B"/>
+  <rect x="136" y="210" width="46" height="70" rx="4" fill="#F8FAFC" stroke="#475569" stroke-width="1.8"/>
+  <rect x="146" y="196" width="26" height="14" rx="2" fill="#1E293B"/>
+  <rect x="192" y="225" width="50" height="55" rx="3" fill="#D97706" opacity="0.8"/>
+</svg></div>
+        <div class="select-card-desc">7. Lau bàn và sắp xếp khu vực gọn gàng.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+      <div class="select-card" data-id="8" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap"><img src="images/SH10-B06-M03-A07-08.jpg" alt="Rửa tay sau thực hành"></div>
+        <div class="select-card-desc">8. Rửa tay sau thực hành.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+    </div>
+
+    <div class="inline-feedback hidden" id="fbStage7"></div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" id="btnPrevStage7"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      <button class="btn btn-outline" id="btnCheckStage7"><i class="ti ti-check"></i> KIỂM TRA</button>
+      <button class="btn btn-secondary hidden" id="btnRetryStage7"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+      <button class="btn btn-primary" id="btnNextStage7" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 8: KHAI THÁC KẾT QUẢ VÀ TẠO DỮ LIỆU BÁO CÁO (SH10_B06_M03_C08)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-8" role="region" aria-label="Màn 8: Khai thác kết quả và tạo dữ liệu báo cáo">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-file-text"></i> Màn 8 · Dữ liệu báo cáo</span>
+        <h2 class="stage-title">Giải thích kết quả</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 8 / 9</span>
+    </div>
+
+    <p class="lead-text">Quan sát lại kết quả của chính thí nghiệm vừa thực hiện để xác định hiện tượng, giải thích nguyên lí và rút ra kết luận.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-help"></i>
+      <span>Lần lượt chọn phương án đúng cho 3 câu hỏi dưới đây để điền tự động dữ liệu vào khung Báo cáo thực hành.</span>
+    </div>
+
+    <div class="qa-grid">
+      <!-- Left Column: Tube Visual & Accumulated Report Data -->
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div class="tube-focus-box">
+          <svg class="tube-focus-svg" viewBox="0 0 80 230">
+            <rect x="5" y="160" width="70" height="70" rx="4" fill="#D97706" opacity="0.6"/>
+            <path d="M 22 20 L 22 195 C 22 215 58 215 58 195 L 58 20 Z" fill="rgba(248, 250, 252, 0.75)" stroke="#64748B" stroke-width="3"/>
+            <ellipse cx="40" cy="20" rx="20" ry="5" fill="#E2E8F0" stroke="#475569" stroke-width="2"/>
+            <!-- Purple Biuret result liquid -->
+            <path d="M 24 95 L 24 195 C 24 212 56 212 56 195 L 56 95 Z" fill="#7C3AED"/>
+            <ellipse cx="40" cy="95" rx="16" ry="4" fill="#A78BFA"/>
+            <line x1="28" y1="30" x2="28" y2="190" stroke="#FFFFFF" stroke-width="2.5" opacity="0.7"/>
+          </svg>
+          <span style="font-size:0.85rem; font-weight:700; color:var(--ink-2);">Ống nghiệm phản ứng Biuret (Xanh tím)</span>
+        </div>
+
+        <div class="report-summary-box">
+          <div class="report-summary-title"><i class="ti ti-clipboard-data"></i> DỮ LIỆU BÁO CÁO</div>
+          <div class="report-cell">
+            <div class="report-cell-label">1. Kết quả:</div>
+            <div class="report-cell-val" id="cellReportResult">(Chưa có dữ liệu)</div>
+          </div>
+          <div class="report-cell">
+            <div class="report-cell-label">2. Nhận xét và giải thích:</div>
+            <div class="report-cell-val" id="cellReportExplain">(Chưa có dữ liệu)</div>
+          </div>
+          <div class="report-cell">
+            <div class="report-cell-label">3. Kết luận:</div>
+            <div class="report-cell-val" id="cellReportConclusion">(Chưa có dữ liệu)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: 3 Sequential Interactive Questions -->
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <!-- Question 1 -->
+        <div class="qa-card" id="cardQ1">
+          <div class="qa-question">Câu 1: Dung dịch đã thay đổi như thế nào sau vài phút?</div>
+          <div class="qa-options">
+            <button class="qa-option-btn" data-q="1" data-opt="A"><span class="qa-option-letter">A</span> Từ xanh chuyển dần sang xanh tím.</button>
+            <button class="qa-option-btn" data-q="1" data-opt="B"><span class="qa-option-letter">B</span> Từ xanh chuyển sang đỏ gạch và tạo kết tủa.</button>
+            <button class="qa-option-btn" data-q="1" data-opt="C"><span class="qa-option-letter">C</span> Chuyển sang xanh đen.</button>
+            <button class="qa-option-btn" data-q="1" data-opt="D"><span class="qa-option-letter">D</span> Không thay đổi.</button>
+          </div>
+          <div class="inline-feedback hidden" id="fbQ1"></div>
+          <div style="display:flex; justify-content:flex-end;">
+            <button class="btn btn-outline" id="btnAnsQ1"><i class="ti ti-send"></i> TRẢ LỜI</button>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="qa-card" id="cardQ2" style="opacity:0.6; pointer-events:none;">
+          <div class="qa-question">Câu 2: Vì sao màu xanh tím xuất hiện?</div>
+          <div class="qa-options">
+            <button class="qa-option-btn" data-q="2" data-opt="A"><span class="qa-option-letter">A</span> Trong môi trường kiềm, ion Cu²⁺ tương tác với các liên kết peptide tạo phức chất có màu.</button>
+            <button class="qa-option-btn" data-q="2" data-opt="B"><span class="qa-option-letter">B</span> Iodine tương tác với cấu trúc xoắn của amylose.</button>
+            <button class="qa-option-btn" data-q="2" data-opt="C"><span class="qa-option-letter">C</span> Glucose khử ion đồng khi đun nóng.</button>
+            <button class="qa-option-btn" data-q="2" data-opt="D"><span class="qa-option-letter">D</span> Protein bị đông tụ do nhiệt.</button>
+          </div>
+          <div class="inline-feedback hidden" id="fbQ2"></div>
+          <div style="display:flex; justify-content:flex-end;">
+            <button class="btn btn-outline" id="btnAnsQ2" disabled><i class="ti ti-send"></i> TRẢ LỜI</button>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="qa-card" id="cardQ3" style="opacity:0.6; pointer-events:none;">
+          <div class="qa-question">Câu 3: Có thể kết luận gì về mẫu?</div>
+          <div class="qa-options">
+            <button class="qa-option-btn" data-q="3" data-opt="A"><span class="qa-option-letter">A</span> Mẫu có protein.</button>
+            <button class="qa-option-btn" data-q="3" data-opt="B"><span class="qa-option-letter">B</span> Mẫu có tinh bột.</button>
+            <button class="qa-option-btn" data-q="3" data-opt="C"><span class="qa-option-letter">C</span> Mẫu có đường khử.</button>
+            <button class="qa-option-btn" data-q="3" data-opt="D"><span class="qa-option-letter">D</span> Mẫu có lipid.</button>
+          </div>
+          <div class="inline-feedback hidden" id="fbQ3"></div>
+          <div style="display:flex; justify-content:flex-end;">
+            <button class="btn btn-outline" id="btnAnsQ3" disabled><i class="ti ti-send"></i> TRẢ LỜI</button>
+          </div>
+        </div>
+
+        <!-- Stage 8 Key Insight Callout -->
+        <div class="inline-feedback correct hidden" id="boxKeyInsightStage8">
+          <i class="ti ti-bulb"></i>
+          <span><strong>Chốt kiến thức:</strong> Phản ứng Biuret nhận biết protein qua dấu hiệu màu liên quan đến các liên kết peptide. Đây là phản ứng khác biệt hoàn toàn với phép thử Benedict (đường khử) và Lugol (tinh bột).</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" id="btnPrevStage8"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      <button class="btn btn-primary" id="btnNextStage8" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 9: CHỌN CẤU TRÚC VÀ XEM BÁO CÁO HOÀN CHỈNH (SH10_B06_M03_C09)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-9" role="region" aria-label="Màn 9: Hoàn thành báo cáo thực hành">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-award"></i> Màn 9 · Báo cáo</span>
+        <h2 class="stage-title">Hoàn thành báo cáo thực hành</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 9 / 9</span>
+    </div>
+
+    <p class="lead-text">Báo cáo cần phản ánh đúng mục đích, cách tiến hành, kết quả, giải thích và kết luận của thí nghiệm. Dữ liệu bạn đã tạo ở các màn trước sẽ được dùng để lập báo cáo.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-checkbox"></i>
+      <span>Nhấn chọn những thành phần cần có của báo cáo theo SGK (5 mục), sau đó nhấn KIỂM TRA.</span>
+    </div>
+
+    <!-- 9 Structure Cards -->
+    <div class="procedure-cards-pool" id="reportSecCards" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="proc-card" data-sec="1" data-correct="true" tabindex="0">
+        <div class="proc-card-badge">1</div>
+        <div class="proc-card-text">Mục đích</div>
+      </div>
+      <div class="proc-card" data-sec="2" data-correct="true" tabindex="0">
+        <div class="proc-card-badge">2</div>
+        <div class="proc-card-text">Cách tiến hành</div>
+      </div>
+      <div class="proc-card" data-sec="3" data-correct="true" tabindex="0">
+        <div class="proc-card-badge">3</div>
+        <div class="proc-card-text">Kết quả</div>
+      </div>
+      <div class="proc-card" data-sec="4" data-correct="true" tabindex="0">
+        <div class="proc-card-badge">4</div>
+        <div class="proc-card-text">Giải thích và kết luận</div>
+      </div>
+      <div class="proc-card" data-sec="5" data-correct="true" tabindex="0">
+        <div class="proc-card-badge">5</div>
+        <div class="proc-card-text">Trả lời câu hỏi</div>
+      </div>
+      <!-- 4 NHIỄU -->
+      <div class="proc-card" data-sec="6" data-correct="false" tabindex="0">
+        <div class="proc-card-badge"><i class="ti ti-x"></i></div>
+        <div class="proc-card-text">Thành tích cá nhân</div>
+      </div>
+      <div class="proc-card" data-sec="7" data-correct="false" tabindex="0">
+        <div class="proc-card-badge"><i class="ti ti-x"></i></div>
+        <div class="proc-card-text">Điểm số của nhóm</div>
+      </div>
+      <div class="proc-card" data-sec="8" data-correct="false" tabindex="0">
+        <div class="proc-card-badge"><i class="ti ti-x"></i></div>
+        <div class="proc-card-text">Danh sách toàn bộ kiến thức về protein</div>
+      </div>
+      <div class="proc-card" data-sec="9" data-correct="false" tabindex="0">
+        <div class="proc-card-badge"><i class="ti ti-x"></i></div>
+        <div class="proc-card-text">Dự đoán không dựa trên quan sát</div>
+      </div>
+    </div>
+
+    <div class="inline-feedback hidden" id="fbStage9"></div>
+
+    <div style="display:flex; justify-content:center; margin:10px 0;">
+      <button class="btn btn-outline" id="btnCheckStage9"><i class="ti ti-check"></i> KIỂM TRA THÀNH PHẦN</button>
+      <button class="btn btn-primary hidden" id="btnViewReportDoc"><i class="ti ti-file-text"></i> XEM BÁO CÁO HOÀN CHỈNH</button>
+    </div>
+
+    <!-- Complete Report Document Container -->
+    <div class="report-doc hidden" id="fullReportDoc">
+      <div class="report-doc-head">
+        <h3 class="report-doc-title">BÁO CÁO THỰC HÀNH: NHẬN BIẾT PROTEIN BẰNG PHÉP THỬ BIURET</h3>
+        <p class="report-doc-sub">Môn: Sinh học 10 · Bài 6: Nhận biết một số phân tử sinh học</p>
+      </div>
+
+      <div class="report-section">
+        <h4 class="report-sec-title">1. Mục đích</h4>
+        <div class="report-sec-content">
+          Nhận biết protein trong mẫu lòng trắng trứng hoặc dung dịch albumin bằng phép thử Biuret.
+        </div>
+      </div>
+
+      <div class="report-section">
+        <h4 class="report-sec-title">2. Cách tiến hành</h4>
+        <div class="report-sec-content">
+          Chuẩn bị một ống nghiệm, giá ống nghiệm, dụng cụ lấy mẫu, dụng cụ đong, dung dịch NaOH loãng và dung dịch CuSO₄ 1%. Cho một ít dung dịch albumin 1% hoặc một lượng nhỏ lòng trắng trứng vào ống nghiệm cùng với 5 mL dung dịch NaOH loãng. Sau đó thêm 5 mL dung dịch CuSO₄ 1%, chờ vài phút và quan sát.
+        </div>
+      </div>
+
+      <div class="report-section">
+        <h4 class="report-sec-title">3. Kết quả</h4>
+        <div class="report-sec-content" id="reportDocResult">
+          Dung dịch chuyển dần từ màu xanh sang màu xanh tím sau vài phút.
+        </div>
+      </div>
+
+      <div class="report-section">
+        <h4 class="report-sec-title">4. Giải thích và kết luận</h4>
+        <div class="report-sec-content" id="reportDocExplainConclusion">
+          <p><strong>Giải thích:</strong> Trong môi trường kiềm, ion Cu²⁺ tương tác với các liên kết peptide tạo phức chất có màu xanh tím đặc trưng.</p>
+          <p style="margin-top:6px;"><strong>Kết luận:</strong> Mẫu lòng trắng trứng/albumin có chứa protein.</p>
+        </div>
+      </div>
+
+      <div class="report-section">
+        <h4 class="report-sec-title">5. Trả lời câu hỏi</h4>
+        <div class="report-sec-content">
+          Quy trình nhận biết protein và glucose dựa trên các phản ứng hóa học tạo ra dấu hiệu màu đặc trưng; trong đó phép thử Benedict cần đun nóng, còn phép thử Biuret được thực hiện trong môi trường kiềm. Quy trình nhận biết lipid dựa vào tính tan: lipid tan trong ethanol nhưng không tan trong nước, nên khi dung dịch lipid trong ethanol được rót vào nước sẽ tạo huyền phù trắng sữa. Sự khác nhau này do protein, glucose và lipid có cấu tạo, tính chất hóa học và tính tan khác nhau.
+        </div>
+      </div>
+
+      <div class="inline-feedback info" style="margin-top:10px;">
+        <i class="ti ti-arrow-right"></i>
+        <span><strong>Chuyển tiếp:</strong> Bạn đã hoàn thành xuất sắc việc nhận biết protein bằng phép thử Biuret. Ở module tiếp theo, bạn sẽ thực hiện phép thử nhũ tương để nhận biết lipid.</span>
+      </div>
+    </div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" id="btnPrevStage9"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      <button class="btn btn-primary" id="btnFinishModule" disabled><i class="ti ti-trophy"></i> HOÀN THÀNH MODULE</button>
+    </div>
+  </section>
+
+</div>
+
+<!-- =====================================================================
+     MODAL CHÚC MỪNG HOÀN THÀNH V10
+     ===================================================================== -->
+<div class="congrats-overlay hidden" id="completionModal" role="dialog" aria-modal="true" aria-labelledby="congratsTitle">
+  <div class="congrats-card">
+    <div class="congrats-icon-wrap">
+      <i class="ti ti-trophy"></i>
+    </div>
+    <h3 class="congrats-title" id="congratsTitle">CHÚC MỪNG HOÀN THÀNH!</h3>
+    <p class="congrats-desc">
+      Bạn đã hoàn thành xuất sắc module <strong>SH10_B06_M03: Nhận biết protein bằng phản ứng Biuret</strong>. Toàn bộ quy trình an toàn, thao tác thí nghiệm, quan sát hiện tượng và báo cáo 5 mục đã được ghi nhận vào hệ thống học tập.
+    </p>
+    <div class="congrats-actions">
+      <button class="btn btn-secondary" id="btnReviewModule"><i class="ti ti-refresh"></i> Xem lại bài</button>
+      <button class="btn btn-primary" id="btnCloseCongratsModal"><i class="ti ti-check"></i> Đóng thông báo</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ==========================================================================
+   LMS STATE & REPORT HEIGHT INTEGRATION (AIDUCATION V10 STANDARD)
+   ========================================================================== */
+window.lmsState = {
+  currentStage: 1,
+  safety_completed: false,
+  procedure_order: [],
+  procedure_completed: false,
+  materials_completed: false,
+  sample_added: false,
+  naoh_volume_ml: 0,
+  naoh_added: false,
+  cuso4_volume_ml: 0,
+  initial_color: "xanh",
+  final_color: "xanh tím",
+  reaction_observed: false,
+  cleanup_completed: false,
+  report_result: "Dung dịch chuyển dần từ màu xanh sang màu xanh tím sau vài phút.",
+  report_explanation: "Trong môi trường kiềm, ion Cu²⁺ tương tác với các liên kết peptide tạo phức chất có màu.",
+  report_conclusion: "Mẫu lòng trắng trứng/albumin có protein.",
+  questions_completed: false,
+  report_completed: false,
+  module_completed: false
+};
+
+function reportHeight() {
+  try {
+    const height = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({ type: 'resize', height: height }, '*');
+    }
+  } catch (e) {}
+}
+window.addEventListener('resize', reportHeight);
+window.addEventListener('load', reportHeight);
+
+// Navigate Stages
+function goToStage(stageNum) {
+  for (let i = 1; i <= 9; i++) {
+    const el = document.getElementById('stage-' + i);
+    if (el) el.classList.add('hidden');
+  }
+  const target = document.getElementById('stage-' + stageNum);
+  if (target) {
+    target.classList.remove('hidden');
+    window.lmsState.currentStage = stageNum;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(reportHeight, 60);
+  }
+}
+
+/* ==========================================================================
+   STAGE 1 LOGIC: AN TOÀN TRƯỚC THỰC HÀNH (Chọn 1, 3, 5)
+   ========================================================================== */
+(function initStage1() {
+  const grid = document.getElementById('safetyGrid');
+  const cards = grid.querySelectorAll('.select-card');
+  const btnCheck = document.getElementById('btnCheckStage1');
+  const btnRetry = document.getElementById('btnRetryStage1');
+  const btnNext = document.getElementById('btnNextStage1');
+  const fb = document.getElementById('fbStage1');
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      if (window.lmsState.safety_completed) return;
+      card.classList.toggle('selected');
+    });
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.click();
+      }
+    });
+  });
+
+  btnCheck.addEventListener('click', () => {
+    const selectedIds = Array.from(cards).filter(c => c.classList.contains('selected')).map(c => c.dataset.id);
+    if (selectedIds.length === 0) {
+      fb.className = 'inline-feedback wrong';
+      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Bạn chưa chọn hình nào. Hãy chọn các hình thể hiện hành động an toàn.</span>';
+      fb.classList.remove('hidden');
+      reportHeight();
+      return;
+    }
+
+    const isCorrect = selectedIds.length === 3 &&
+      selectedIds.includes('1') &&
+      selectedIds.includes('3') &&
+      selectedIds.includes('5');
+
+    if (isCorrect) {
+      window.lmsState.safety_completed = true;
+      fb.className = 'inline-feedback correct';
+      fb.innerHTML = '<i class="ti ti-check"></i><span>Chính xác. Khi làm việc với NaOH và CuSO₄, cần đọc nhãn, dùng dụng cụ phù hợp, bảo vệ mắt và tránh để hóa chất tiếp xúc trực tiếp với cơ thể. Tiếp theo, hãy xác định mục đích và thứ tự của thí nghiệm.</span>';
+      fb.classList.remove('hidden');
+      btnCheck.classList.add('hidden');
+      btnRetry.classList.add('hidden');
+      btnNext.disabled = false;
+    } else {
+      fb.className = 'inline-feedback wrong';
+      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Có lựa chọn chưa an toàn hoặc còn thiếu. Hãy xem lại những hành động có thể làm hóa chất tiếp xúc trực tiếp với cơ thể hoặc làm nhiễm bẩn khu vực thực hành.</span>';
+      fb.classList.remove('hidden');
+      btnRetry.classList.remove('hidden');
+    }
+    reportHeight();
+  });
+
+  btnRetry.addEventListener('click', () => {
+    cards.forEach(c => c.classList.remove('selected'));
+    fb.classList.add('hidden');
+    btnRetry.classList.add('hidden');
+    reportHeight();
+  });
+
+  btnNext.addEventListener('click', () => goToStage(2));
+})();
+
+/* ==========================================================================
+   STAGE 2 LOGIC: QUY TRÌNH (A -> B -> C -> D)
+   ========================================================================== */
+(function initStage2() {
+  const slots = document.querySelectorAll('#procSlots .slot-box');
+  const pool = document.getElementById('procPool');
+  const cards = pool.querySelectorAll('.proc-card');
+  const btnPrev = document.getElementById('btnPrevStage2');
+  const btnCheck = document.getElementById('btnCheckStage2');
+  const btnRetry = document.getElementById('btnRetryStage2');
+  const btnNext = document.getElementById('btnNextStage2');
+  const fb = document.getElementById('fbStage2');
+
+  let activeCard = null;
+
+  // Touch / Click Tap-to-place
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      if (window.lmsState.procedure_completed) return;
+      if (activeCard === card) {
+        activeCard.classList.remove('selected');
+        activeCard = null;
+      } else {
+        if (activeCard) activeCard.classList.remove('selected');
+        activeCard = card;
+        activeCard.classList.add('selected');
+      }
+    });
+
+    // Drag support
+    card.addEventListener('dragstart', (e) => {
+      if (window.lmsState.procedure_completed) return;
+      e.dataTransfer.setData('text/plain', card.dataset.stepId);
+      activeCard = card;
+    });
+  });
+
+  slots.forEach(slot => {
+    slot.addEventListener('click', () => {
+      if (window.lmsState.procedure_completed) return;
+      if (activeCard) {
+        placeCardInSlot(activeCard, slot);
+        activeCard.classList.remove('selected');
+        activeCard = null;
+      }
+    });
+
+    slot.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      slot.classList.add('drag-over');
+    });
+    slot.addEventListener('dragleave', () => slot.classList.remove('drag-over'));
+    slot.addEventListener('drop', (e) => {
+      e.preventDefault();
+      slot.classList.remove('drag-over');
+      if (activeCard) {
+        placeCardInSlot(activeCard, slot);
+        activeCard = null;
+      }
+    });
+  });
+
+  function placeCardInSlot(card, slot) {
+    const content = slot.querySelector('.slot-content');
+    const existing = content.querySelector('.proc-card');
+    if (existing) {
+      pool.appendChild(existing);
+    }
+    content.innerHTML = '';
+    content.appendChild(card);
+    reportHeight();
+  }
+
+  btnCheck.addEventListener('click', () => {
+    const placed = [];
+    slots.forEach(s => {
+      const c = s.querySelector('.proc-card');
+      if (c) placed.push(c.dataset.stepId);
+    });
+
+    if (placed.length < 4) {
+      fb.className = 'inline-feedback wrong';
+      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Bạn chưa xếp đủ 4 bước quy trình. Hãy kéo đủ 4 thẻ vào 4 ô Bước 1 đến Bước 4.</span>';
+      fb.classList.remove('hidden');
+      reportHeight();
+      return;
+    }
+
+    const isCorrect = placed[0] === 'A' && placed[1] === 'B' && placed[2] === 'C' && placed[3] === 'D';
+    if (isCorrect) {
+      window.lmsState.procedure_completed = true;
+      window.lmsState.procedure_order = placed;
+      fb.className = 'inline-feedback correct';
+      fb.innerHTML = '<i class="ti ti-check"></i><span>Chính xác. Quy trình được thực hiện theo thứ tự: cho mẫu vào ống nghiệm, thêm NaOH, thêm CuSO₄, sau đó chờ và quan sát. Tiếp theo, hãy lựa chọn những thứ cần dùng.</span>';
+      fb.classList.remove('hidden');
+      btnCheck.classList.add('hidden');
+      btnRetry.classList.add('hidden');
+      btnNext.disabled = false;
+    } else {
+      fb.className = 'inline-feedback wrong';
+      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Thứ tự chưa chính xác. Hãy xác định bước chuẩn bị mẫu trước, sau đó đối chiếu thứ tự thêm hai dung dịch được nêu trong quy trình.</span>';
+      fb.classList.remove('hidden');
+      btnRetry.classList.remove('hidden');
+    }
+    reportHeight();
+  });
+
+  btnRetry.addEventListener('click', () => {
+    slots.forEach(s => {
+      const c = s.querySelector('.proc-card');
+      if (c) pool.appendChild(c);
+      s.querySelector('.slot-content').innerHTML = '<span class="slot-empty-text">Thả thẻ vào đây</span>';
+    });
+    fb.classList.add('hidden');
+    btnRetry.classList.add('hidden');
+    reportHeight();
+  });
+
+  btnPrev.addEventListener('click', () => goToStage(1));
+  btnNext.addEventListener('click', () => goToStage(3));
+})();
+
+/* ==========================================================================
+   STAGE 3 LOGIC: CHUẨN BỊ VẬT TƯ (7 đúng, 7 nhiễu)
+   ========================================================================== */
+(function initStage3() {
+  const cards = document.querySelectorAll('#materialsGrid .mat-card');
+  const chipsWrap = document.getElementById('selectedTrayChips');
+  const btnPrev = document.getElementById('btnPrevStage3');
+  const btnCheck = document.getElementById('btnCheckStage3');
+  const btnRetry = document.getElementById('btnRetryStage3');
+  const btnNext = document.getElementById('btnNextStage3');
+  const fb = document.getElementById('fbStage3');
+
+  const requiredMats = ['albumin', 'testtube', 'rack', 'sampletool', 'cylinder', 'naoh', 'cuso4'];
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      if (window.lmsState.materials_completed) return;
+      card.classList.toggle('selected');
+      updateTrayChips();
+    });
+  });
+
+  function updateTrayChips() {
+    chipsWrap.innerHTML = '';
+    const selected = Array.from(cards).filter(c => c.classList.contains('selected'));
+    if (selected.length === 0) {
+      chipsWrap.innerHTML = '<span class="slot-empty-text">Chưa chọn vật tư nào</span>';
+    } else {
+      selected.forEach(c => {
+        const name = c.querySelector('.mat-card-name').textContent;
+        const chip = document.createElement('span');
+        chip.className = 'mat-chip';
+        chip.innerHTML = '<i class="ti ti-check"></i> ' + name;
+        chipsWrap.appendChild(chip);
+      });
+    }
+    reportHeight();
+  }
+
+  btnCheck.addEventListener('click', () => {
+    const selected = Array.from(cards).filter(c => c.classList.contains('selected')).map(c => c.dataset.mat);
+    if (selected.length === 0) {
+      fb.className = 'inline-feedback wrong';
+      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Bạn chưa chọn vật tư nào. Hãy chọn mẫu, dụng cụ và hóa chất cần dùng theo quy trình.</span>';
+      fb.classList.remove('hidden');
+      reportHeight();
+      return;
+    }
+
+    const isCorrect = selected.length === requiredMats.length && requiredMats.every(m => selected.includes(m));
+
+    if (isCorrect) {
+      window.lmsState.materials_completed = true;
+      fb.className = 'inline-feedback correct';
+      fb.innerHTML = '<i class="ti ti-check"></i><span>Chính xác. Thí nghiệm cần một mẫu có protein, một ống nghiệm, dụng cụ lấy và đong dung dịch, NaOH loãng và CuSO₄ 1%. Thí nghiệm không cần đun nóng. Tiếp theo, hãy cho mẫu vào ống nghiệm.</span>';
+      fb.classList.remove('hidden');
+      btnCheck.classList.add('hidden');
+      btnRetry.classList.add('hidden');
+      btnNext.disabled = false;
+    } else {
+      fb.className = 'inline-feedback wrong';
+      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Có vật chưa phù hợp hoặc còn thiếu. Hãy đối chiếu từng bước của quy trình và xác định vật nào trực tiếp phục vụ việc lấy mẫu, đong dung dịch và tạo phản ứng Biuret.</span>';
+      fb.classList.remove('hidden');
+      btnRetry.classList.remove('hidden');
+    }
+    reportHeight();
+  });
+
+  btnRetry.addEventListener('click', () => {
+    cards.forEach(c => c.classList.remove('selected'));
+    updateTrayChips();
+    fb.classList.add('hidden');
+    btnRetry.classList.add('hidden');
+    reportHeight();
+  });
+
+  btnPrev.addEventListener('click', () => goToStage(2));
+  btnNext.addEventListener('click', () => goToStage(4));
+})();
+
+/* ==========================================================================
+   STAGE 4 LOGIC: CHO MẪU VÀO ỐNG NGHIỆM
+   ========================================================================== */
+(function initStage4() {
+  const tool = document.getElementById('toolStage4');
+  const pipette = document.getElementById('pipetteToolStage4');
+  const liquid = document.getElementById('liquidStage4');
+  const badge = document.getElementById('statusBadgeStage4');
+  const btnPrev = document.getElementById('btnPrevStage4');
+  const btnDone = document.getElementById('btnDoneStage4');
+  const btnNext = document.getElementById('btnNextStage4');
+  const fb = document.getElementById('fbStage4');
+
+  tool.addEventListener('click', () => {
+    if (window.lmsState.sample_added) return;
+    pipette.classList.add('animated-pour');
+    setTimeout(() => {
+      liquid.style.opacity = '1';
+      badge.className = 'sim-status-badge active';
+      badge.innerHTML = '<i class="ti ti-circle-check"></i> MẪU ĐÃ CHO VÀO ỐNG';
+      btnDone.disabled = false;
+      setTimeout(() => {
+        pipette.classList.remove('animated-pour');
+      }, 700);
+    }, 600);
+  });
+
+  btnDone.addEventListener('click', () => {
+    window.lmsState.sample_added = true;
+    fb.className = 'inline-feedback correct';
+    fb.innerHTML = '<i class="ti ti-check"></i><span>Mẫu đã được chuẩn bị trong ống nghiệm. Tiếp theo, hãy thêm dung dịch NaOH loãng theo đúng quy trình.</span>';
+    fb.classList.remove('hidden');
+    btnDone.classList.add('hidden');
+    btnNext.disabled = false;
+    reportHeight();
+  });
+
+  btnPrev.addEventListener('click', () => goToStage(3));
+  btnNext.addEventListener('click', () => goToStage(5));
+})();
+
+/* ==========================================================================
+   STAGE 5 LOGIC: THÊM 5 mL NaOH LOÃNG
+   ========================================================================== */
+(function initStage5() {
+  const bottle = document.getElementById('bottleNaohStage5');
+  const cylinder = document.getElementById('cylinderStage5');
+  const cylLiquid = document.getElementById('cylinderLiquidStage5');
+  const cylLabel = document.getElementById('cylinderLabelStage5');
+  const tubeLiquid = document.getElementById('liquidStage5');
+  const badge = document.getElementById('statusBadgeStage5');
+  const naohText = document.getElementById('naohVolText');
+  const btnPrev = document.getElementById('btnPrevStage5');
+  const btnDone = document.getElementById('btnDoneStage5');
+  const btnNext = document.getElementById('btnNextStage5');
+  const fb = document.getElementById('fbStage5');
+
+  let pouredToCylinder = false;
+
+  bottle.addEventListener('click', () => {
+    if (window.lmsState.naoh_added || pouredToCylinder) return;
+    cylLiquid.style.height = '60px'; // fill to 5 mL mark
+    cylLabel.textContent = 'Ống đong: 5 mL';
+    pouredToCylinder = true;
+  });
+
+  cylinder.addEventListener('click', () => {
+    if (!pouredToCylinder || window.lmsState.naoh_added) return;
+    cylLiquid.style.height = '0px';
+    cylLabel.textContent = 'Ống đong: 0 mL';
+    tubeLiquid.style.opacity = '1';
+    tubeLiquid.setAttribute('d', 'M 24 110 L 24 195 C 24 212 56 212 56 195 L 56 110 Z'); // risen volume
+    badge.className = 'sim-status-badge active';
+    naohText.textContent = 'NaOH: 5 mL';
+    btnDone.disabled = false;
+  });
+
+  btnDone.addEventListener('click', () => {
+    window.lmsState.naoh_added = true;
+    window.lmsState.naoh_volume_ml = 5;
+    fb.className = 'inline-feedback correct';
+    fb.innerHTML = '<i class="ti ti-check"></i><span>Bạn đã thêm đúng 5 mL NaOH loãng. Môi trường kiềm đã được tạo. Tiếp theo, hãy thêm CuSO₄ 1%.</span>';
+    fb.classList.remove('hidden');
+    btnDone.classList.add('hidden');
+    btnNext.disabled = false;
+    reportHeight();
+  });
+
+  btnPrev.addEventListener('click', () => goToStage(4));
+  btnNext.addEventListener('click', () => goToStage(6));
+})();
+
+/* ==========================================================================
+   STAGE 6 LOGIC: THÊM 5 mL CuSO₄ 1%, CHỜ VÀ QUAN SÁT
+   ========================================================================== */
+(function initStage6() {
+  const bottle = document.getElementById('bottleCuso4Stage6');
+  const cylLiquid = document.getElementById('cylinderLiquidStage6');
+  const cylLabel = document.getElementById('cylinderLabelStage6');
+  const tubeRig = document.getElementById('tubeRigStage6');
+  const tubeLiquid = document.getElementById('liquidStage6');
+  const magnifier = document.getElementById('magnifierColorStage6');
+  const timerText = document.getElementById('simTimerText');
+  const badge = document.getElementById('statusBadgeStage6');
+  const reactionText = document.getElementById('reactionStateText');
+  const initialText = document.getElementById('initialColorText');
+  const finalText = document.getElementById('finalColorText');
+  const btnObserve = document.getElementById('btnStartObserve');
+  const btnPrev = document.getElementById('btnPrevStage6');
+  const btnDone = document.getElementById('btnDoneStage6');
+  const btnNext = document.getElementById('btnNextStage6');
+  const fb = document.getElementById('fbStage6');
+
+  let cuso4Measured = false;
+  let cuso4PouredInTube = false;
+
+  bottle.addEventListener('click', () => {
+    if (cuso4Measured || window.lmsState.reaction_observed) return;
+    cylLiquid.style.height = '60px';
+    cylLabel.textContent = 'Ống đong: 5 mL';
+    cuso4Measured = true;
+  });
+
+  document.getElementById('cylinderStage6').addEventListener('click', () => {
+    if (!cuso4Measured || cuso4PouredInTube || window.lmsState.reaction_observed) return;
+    cylLiquid.style.height = '0px';
+    cylLabel.textContent = 'Ống đong: 0 mL';
+    tubeLiquid.style.fill = '#38BDF8'; // Initial Blue
+    magnifier.style.backgroundColor = '#38BDF8';
+    initialText.textContent = 'Màu xanh lam';
+    badge.className = 'sim-status-badge active';
+    reactionText.textContent = 'Đã thêm CuSO₄ (Xanh lam)';
+    cuso4PouredInTube = true;
+    btnObserve.disabled = false;
+    reportHeight();
+  });
+
+  btnObserve.addEventListener('click', () => {
+    btnObserve.disabled = true;
+    btnObserve.innerHTML = '<i class="ti ti-loader"></i> Đang quan sát phản ứng...';
+
+    // Simulation timeline compression
+    timerText.textContent = '00:30 (Trộn đều)...';
+    setTimeout(() => {
+      timerText.textContent = '01:30 (Màu bắt đầu chuyển)...';
+      tubeLiquid.style.fill = '#9366F6'; // Lavender transition
+      magnifier.style.backgroundColor = '#9366F6';
+    }, 1200);
+
+    setTimeout(() => {
+      timerText.textContent = '03:00 (Sau vài phút - Hoàn tất)';
+      tubeLiquid.style.fill = '#7C3AED'; // Final Purple
+      magnifier.style.backgroundColor = '#7C3AED';
+      finalText.textContent = 'Màu xanh tím';
+      reactionText.textContent = 'Xanh tím ổn định';
+      window.lmsState.reaction_observed = true;
+      window.lmsState.cuso4_volume_ml = 5;
+      btnDone.disabled = false;
+      btnObserve.innerHTML = '<i class="ti ti-check"></i> Đã hoàn thành quan sát';
+      reportHeight();
+    }, 2500);
+  });
+
+  btnDone.addEventListener('click', () => {
+    fb.className = 'inline-feedback correct';
+    fb.innerHTML = '<i class="ti ti-check"></i><span>Bạn đã quan sát được dung dịch chuyển dần từ màu xanh sang màu xanh tím. Dấu hiệu này cho thấy mẫu có các liên kết peptide và được xác định là có protein. Tiếp theo, hãy thu dọn khu vực thực hành.</span>';
+    fb.classList.remove('hidden');
+    btnDone.classList.add('hidden');
+    btnNext.disabled = false;
+    reportHeight();
+  });
+
+  btnPrev.addEventListener('click', () => goToStage(5));
+  btnNext.addEventListener('click', () => goToStage(7));
+})();
+
+/* ==========================================================================
+   STAGE 7 LOGIC: THU DỌN SAU THỰC HÀNH (Chọn 1, 3, 5, 6, 7, 8)
+   ========================================================================== */
+(function initStage7() {
+  const grid = document.getElementById('cleanupGrid');
+  const cards = grid.querySelectorAll('.select-card');
+  const btnPrev = document.getElementById('btnPrevStage7');
+  const btnCheck = document.getElementById('btnCheckStage7');
+  const btnRetry = document.getElementById('btnRetryStage7');
+  const btnNext = document.getElementById('btnNextStage7');
+  const fb = document.getElementById('fbStage7');
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      if (window.lmsState.cleanup_completed) return;
+      card.classList.toggle('selected');
+    });
+  });
+
+  btnCheck.addEventListener('click', () => {
+    const selectedIds = Array.from(cards).filter(c => c.classList.contains('selected')).map(c => c.dataset.id);
+    if (selectedIds.length === 0) {
+      fb.className = 'inline-feedback wrong';
+      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Bạn chưa chọn hành động nào. Hãy chọn các hành động đúng để thu dọn an toàn.</span>';
+      fb.classList.remove('hidden');
+      reportHeight();
+      return;
+    }
+
+    const isCorrect = selectedIds.length === 6 &&
+      selectedIds.includes('1') &&
+      selectedIds.includes('3') &&
+      selectedIds.includes('5') &&
+      selectedIds.includes('6') &&
+      selectedIds.includes('7') &&
+      selectedIds.includes('8');
+
+    if (isCorrect) {
+      window.lmsState.cleanup_completed = true;
+      fb.className = 'inline-feedback correct';
+      fb.innerHTML = '<i class="ti ti-check"></i><span>Chính xác. Dung dịch sau phản ứng phải được xử lí theo hướng dẫn; hóa chất và dụng cụ cần được đóng, vệ sinh và trả về đúng vị trí. Tiếp theo, hãy dùng kết quả quan sát để hoàn thành dữ liệu báo cáo.</span>';
+      fb.classList.remove('hidden');
+      btnCheck.classList.add('hidden');
+      btnRetry.classList.add('hidden');
+      btnNext.disabled = false;
+    } else {
+      fb.className = 'inline-feedback wrong';
+      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Có hành động chưa phù hợp hoặc còn thiếu. Hãy chú ý cách xử lí dung dịch, trạng thái các lọ hóa chất và vệ sinh cá nhân sau thực hành.</span>';
+      fb.classList.remove('hidden');
+      btnRetry.classList.remove('hidden');
+    }
+    reportHeight();
+  });
+
+  btnRetry.addEventListener('click', () => {
+    cards.forEach(c => c.classList.remove('selected'));
+    fb.classList.add('hidden');
+    btnRetry.classList.add('hidden');
+    reportHeight();
+  });
+
+  btnPrev.addEventListener('click', () => goToStage(6));
+  btnNext.addEventListener('click', () => goToStage(8));
+})();
+
+/* ==========================================================================
+   STAGE 8 LOGIC: KHAI THÁC KẾT QUẢ & DỮ LIỆU BÁO CÁO (3 CÂU HỎI)
+   ========================================================================== */
+(function initStage8() {
+  const cellResult = document.getElementById('cellReportResult');
+  const cellExplain = document.getElementById('cellReportExplain');
+  const cellConclusion = document.getElementById('cellReportConclusion');
+  const boxInsight = document.getElementById('boxKeyInsightStage8');
+
+  const btnPrev = document.getElementById('btnPrevStage8');
+  const btnNext = document.getElementById('btnNextStage8');
+
+  let q1Ans = null, q2Ans = null, q3Ans = null;
+
+  // Q1 Setup
+  const cardQ1 = document.getElementById('cardQ1');
+  const optsQ1 = cardQ1.querySelectorAll('.qa-option-btn');
+  const btnAnsQ1 = document.getElementById('btnAnsQ1');
+  const fbQ1 = document.getElementById('fbQ1');
+
+  optsQ1.forEach(b => b.addEventListener('click', () => {
+    optsQ1.forEach(o => o.classList.remove('selected'));
+    b.classList.add('selected');
+    q1Ans = b.dataset.opt;
+  }));
+
+  btnAnsQ1.addEventListener('click', () => {
+    if (!q1Ans) return;
+    if (q1Ans === 'A') {
+      fbQ1.className = 'inline-feedback correct';
+      fbQ1.innerHTML = '<i class="ti ti-check"></i><span>Chính xác. Dung dịch chuyển dần từ xanh sang xanh tím.</span>';
+      fbQ1.classList.remove('hidden');
+      btnAnsQ1.classList.add('hidden');
+      cellResult.textContent = window.lmsState.report_result;
+      cellResult.classList.add('filled');
+
+      // Unlock Q2
+      const cardQ2 = document.getElementById('cardQ2');
+      cardQ2.style.opacity = '1';
+      cardQ2.style.pointerEvents = 'auto';
+      document.getElementById('btnAnsQ2').disabled = false;
+    } else {
+      fbQ1.className = 'inline-feedback wrong';
+      fbQ1.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Hãy quan sát lại màu ở trạng thái đầu và trạng thái cuối của chính ống nghiệm.</span>';
+      fbQ1.classList.remove('hidden');
+    }
+    reportHeight();
+  });
+
+  // Q2 Setup
+  const cardQ2 = document.getElementById('cardQ2');
+  const optsQ2 = cardQ2.querySelectorAll('.qa-option-btn');
+  const btnAnsQ2 = document.getElementById('btnAnsQ2');
+  const fbQ2 = document.getElementById('fbQ2');
+
+  optsQ2.forEach(b => b.addEventListener('click', () => {
+    optsQ2.forEach(o => o.classList.remove('selected'));
+    b.classList.add('selected');
+    q2Ans = b.dataset.opt;
+  }));
+
+  btnAnsQ2.addEventListener('click', () => {
+    if (!q2Ans) return;
+    if (q2Ans === 'A') {
+      fbQ2.className = 'inline-feedback correct';
+      fbQ2.innerHTML = '<i class="ti ti-check"></i><span>Chính xác. Trong môi trường kiềm, ion Cu²⁺ tương tác với các liên kết peptide tạo phức chất có màu.</span>';
+      fbQ2.classList.remove('hidden');
+      btnAnsQ2.classList.add('hidden');
+      cellExplain.textContent = window.lmsState.report_explanation;
+      cellExplain.classList.add('filled');
+
+      // Unlock Q3
+      const cardQ3 = document.getElementById('cardQ3');
+      cardQ3.style.opacity = '1';
+      cardQ3.style.pointerEvents = 'auto';
+      document.getElementById('btnAnsQ3').disabled = false;
+    } else {
+      fbQ2.className = 'inline-feedback wrong';
+      fbQ2.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Hãy đối chiếu các chất đã dùng và xác định cấu trúc đặc trưng của protein tham gia phản ứng.</span>';
+      fbQ2.classList.remove('hidden');
+    }
+    reportHeight();
+  });
+
+  // Q3 Setup
+  const cardQ3 = document.getElementById('cardQ3');
+  const optsQ3 = cardQ3.querySelectorAll('.qa-option-btn');
+  const btnAnsQ3 = document.getElementById('btnAnsQ3');
+  const fbQ3 = document.getElementById('fbQ3');
+
+  optsQ3.forEach(b => b.addEventListener('click', () => {
+    optsQ3.forEach(o => o.classList.remove('selected'));
+    b.classList.add('selected');
+    q3Ans = b.dataset.opt;
+  }));
+
+  btnAnsQ3.addEventListener('click', () => {
+    if (!q3Ans) return;
+    if (q3Ans === 'A') {
+      fbQ3.className = 'inline-feedback correct';
+      fbQ3.innerHTML = '<i class="ti ti-check"></i><span>Chính xác. Kết quả cho phép xác định mẫu có protein.</span>';
+      fbQ3.classList.remove('hidden');
+      btnAnsQ3.classList.add('hidden');
+      cellConclusion.textContent = window.lmsState.report_conclusion;
+      cellConclusion.classList.add('filled');
+
+      window.lmsState.questions_completed = true;
+      boxInsight.classList.remove('hidden');
+      btnNext.disabled = false;
+    } else {
+      fbQ3.className = 'inline-feedback wrong';
+      fbQ3.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Hãy liên hệ dấu hiệu xanh tím với mục đích của phản ứng Biuret.</span>';
+      fbQ3.classList.remove('hidden');
+    }
+    reportHeight();
+  });
+
+  btnPrev.addEventListener('click', () => goToStage(7));
+  btnNext.addEventListener('click', () => goToStage(9));
+})();
+
+/* ==========================================================================
+   STAGE 9 LOGIC: CẤU TRÚC BÁO CÁO & XUẤT BÁO CÁO SGK
+   ========================================================================== */
+(function initStage9() {
+  const cards = document.querySelectorAll('#reportSecCards .proc-card');
+  const btnCheck = document.getElementById('btnCheckStage9');
+  const btnViewDoc = document.getElementById('btnViewReportDoc');
+  const fullDoc = document.getElementById('fullReportDoc');
+  const fb = document.getElementById('fbStage9');
+  const btnPrev = document.getElementById('btnPrevStage9');
+  const btnFinish = document.getElementById('btnFinishModule');
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      if (window.lmsState.report_completed) return;
+      card.classList.toggle('selected');
+    });
+  });
+
+  btnCheck.addEventListener('click', () => {
+    const selectedSecs = Array.from(cards).filter(c => c.classList.contains('selected')).map(c => c.dataset.sec);
+    if (selectedSecs.length === 0) {
+      fb.className = 'inline-feedback wrong';
+      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Bạn chưa chọn thành phần nào. Hãy chọn đúng 5 thành phần cần có theo SGK.</span>';
+      fb.classList.remove('hidden');
+      reportHeight();
+      return;
+    }
+
+    const isCorrect = selectedSecs.length === 5 &&
+      selectedSecs.includes('1') &&
+      selectedSecs.includes('2') &&
+      selectedSecs.includes('3') &&
+      selectedSecs.includes('4') &&
+      selectedSecs.includes('5');
+
+    if (isCorrect) {
+      window.lmsState.report_completed = true;
+      fb.className = 'inline-feedback correct';
+      fb.innerHTML = '<i class="ti ti-check"></i><span>Chính xác. Báo cáo đã có đủ các phần theo yêu cầu. Nhấn XEM BÁO CÁO để xem sản phẩm hoàn chỉnh.</span>';
+      fb.classList.remove('hidden');
+      btnCheck.classList.add('hidden');
+      btnViewDoc.classList.remove('hidden');
+    } else {
+      fb.className = 'inline-feedback wrong';
+      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Danh sách chưa đúng. Hãy chọn các phần phản ánh mục đích, quá trình thực hiện, dữ liệu quan sát, giải thích, kết luận và câu hỏi thu hoạch.</span>';
+      fb.classList.remove('hidden');
+    }
+    reportHeight();
+  });
+
+  btnViewDoc.addEventListener('click', () => {
+    fullDoc.classList.remove('hidden');
+    btnFinish.disabled = false;
+    fullDoc.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(reportHeight, 100);
+  });
+
+  btnFinish.addEventListener('click', () => {
+    window.lmsState.module_completed = true;
+    const modal = document.getElementById('completionModal');
+    modal.classList.remove('hidden');
+    launchConfetti();
+  });
+
+  document.getElementById('btnCloseCongratsModal').addEventListener('click', () => {
+    document.getElementById('completionModal').classList.add('hidden');
+  });
+
+  document.getElementById('btnReviewModule').addEventListener('click', () => {
+    document.getElementById('completionModal').classList.add('hidden');
+    goToStage(1);
+  });
+
+  btnPrev.addEventListener('click', () => goToStage(8));
+})();
+
+/* ==========================================================================
+   CONFETTI CANVASES (NO EXTERNAL LIBS)
+   ========================================================================== */
+function launchConfetti() {
+  const canvas = document.getElementById('confettiCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const particles = [];
+  const colors = ['#3CA57A', '#2D8B6F', '#E8A24A', '#7C3AED', '#38BDF8', '#F59E0B'];
+
+  for (let i = 0; i < 90; i++) {
+    particles.push({
+      x: canvas.width / 2,
+      y: canvas.height / 2 + 80,
+      vx: (Math.random() - 0.5) * 16,
+      vy: (Math.random() - 0.7) * 18,
+      size: Math.random() * 8 + 4,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      rotation: Math.random() * 360,
+      rotSpeed: (Math.random() - 0.5) * 10,
+      opacity: 1
+    });
+  }
+
+  let animationFrame;
+  function render() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let alive = 0;
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.35; // gravity
+      p.rotation += p.rotSpeed;
+      p.opacity -= 0.008;
+
+      if (p.opacity > 0) {
+        alive++;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = Math.max(0, p.opacity);
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 1.4);
+        ctx.restore();
+      }
+    });
+
+    if (alive > 0) {
+      animationFrame = requestAnimationFrame(render);
+    } else {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      cancelAnimationFrame(animationFrame);
+    }
+  }
+  render();
+}
+</script>
+</body>
+</html>
