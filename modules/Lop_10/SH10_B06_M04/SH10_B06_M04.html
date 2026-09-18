@@ -1,0 +1,3225 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SH10_B06_M04 · Nhận biết lipid bằng phép thử nhũ tương</title>
+<script type="application/json" id="athena-context">
+{
+  "title": "Nhận biết lipid bằng phép thử nhũ tương",
+  "subject": "Sinh học",
+  "grade": "10",
+  "track": "SH10_B06_M04",
+  "objectives": [
+    "Thực hiện đúng quy trình nhận biết lipid bằng phép thử nhũ tương",
+    "Quan sát và nhận biết hiện tượng xuất hiện hỗn hợp trắng đục như sữa khi rót dung dịch dầu trong cồn vào nước cất",
+    "Giải thích được nguyên lí: cồn hòa vào nước làm độ tan của lipid giảm, lipid phân tán thành nhiều giọt rất nhỏ làm tán xạ ánh sáng",
+    "Rút ra kết luận mẫu dầu ăn có lipid",
+    "So sánh được cách chuẩn bị mẫu dầu với mẫu glucose và albumin trong Bài 6",
+    "Hoàn thành báo cáo thực hành chuẩn SGK từ dữ liệu tích lũy",
+    "Thực hiện đúng quy tắc an toàn khi sử dụng cồn tuyệt đối và thu dọn sau khi thực hành"
+  ],
+  "structure": [
+    {"id": "st01", "title": "An toàn trước thực hành"},
+    {"id": "st02", "title": "Mục đích và sắp xếp quy trình"},
+    {"id": "st03", "title": "Lựa chọn mẫu, dụng cụ và hóa chất"},
+    {"id": "st04", "title": "Chuẩn bị dung dịch dầu trong cồn"},
+    {"id": "st05", "title": "Hòa tan dầu trong cồn"},
+    {"id": "st06", "title": "Quan sát phép thử nhũ tương"},
+    {"id": "st07", "title": "Thu dọn sau thực hành"},
+    {"id": "st08", "title": "Giải thích kết quả"},
+    {"id": "st09", "title": "Hoàn thành báo cáo thực hành"}
+  ],
+  "athenaGuidance": "Module thực hành ảo Sinh học 10 độc lập V10 gồm 9 màn: 1) Chọn 3 hành động an toàn đúng trong 6 hình (trang phục kính, đọc nhãn, giữ ống nghiệm trên giá/kẹp). 2) Sắp xếp 4 bước quy trình nhũ tương (A -> B -> C -> D). 3) Chuẩn bị đúng 7 vật tư, loại 7 vật tư gây nhiễu. 4) Cho đúng 2 giọt dầu ăn và 5 mL cồn tuyệt đối vào Ống 1. 5) Lắc mạnh ống nghiệm có nút đậy đến khi dầu tan hết, dung dịch trong suốt đồng nhất. 6) Bấm Bắt đầu rót để chuyển toàn bộ Ống 1 sang Ống 2 chứa nước cất, quan sát dung dịch chuyển dần từ trong sang trắng đục như sữa do giọt lipid tán xạ ánh sáng. 7) Thu dọn an toàn (chọn 6 đúng trong 8 hình). 8) Khai thác kết quả trả lời 4 câu hỏi khoa học điền dữ liệu vào khung báo cáo. 9) Chọn 5 thành phần báo cáo chuẩn SGK, xuất báo cáo hoàn chỉnh M04 và xem báo cáo tổng hợp toàn Bài 6, kết thúc với pháo hoa chúc mừng."
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css">
+<style>
+:root {
+  --cream: #FAF7F0;
+  --cream-2: #F0EADD;
+  --cream-3: #E7DECC;
+  --paper-line: #E5DECF;
+  --paper-line-2: #D6CCB6;
+  --ink: #1A1A1A;
+  --ink-2: #514C44;
+  --ink-3: #7C756A;
+  --ink-faint: #ABA396;
+  --jade: #3CA57A;
+  --jade-deep: #2D8B6F;
+  --jade-dark: #14432F;
+  --jade-text: #1B5E48;
+  --jade-soft: #A9D0BE;
+  --jade-pale: #DCEAE1;
+  --sage: #A8C9B8;
+  --sage-deep: #7CA792;
+  --sage-text: #46685A;
+  --sage-pale: #E1ECE4;
+  --accent: #E8A24A;
+  --accent-deep: #CE8A33;
+  --accent-text: #8A551A;
+  --accent-pale: #F7E7CD;
+  --correct: #2D8B6F;
+  --correct-bg: #DCEAE1;
+  --wrong: #C15F3C;
+  --wrong-bg: #F3E2D6;
+  --warning: #C58A2E;
+  --warning-bg: #F5E7CB;
+  --info: #4E7F92;
+  --info-bg: #DCE7EB;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --radius-sm: 8px;
+  --shadow-sm: 0 2px 8px rgba(26, 26, 26, 0.06);
+  --shadow-md: 0 6px 18px rgba(26, 26, 26, 0.08);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  background-color: var(--cream);
+  color: var(--ink);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Modal Hide Override (Anti-Auto-Popup Rule) */
+.hidden {
+  display: none !important;
+}
+.congrats-overlay.hidden,
+.modal-backdrop.hidden,
+#completionModal.hidden,
+#allReportsModal.hidden {
+  display: none !important;
+}
+
+.app {
+  width: 100%;
+  max-width: 1060px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Stage Card Layout */
+.stage {
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.stage-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--paper-line);
+  padding-bottom: 16px;
+}
+
+.stage-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stage-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--jade-text);
+  background: var(--jade-pale);
+  padding: 4px 10px;
+  border-radius: 99px;
+  width: fit-content;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stage-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.stage-step-indicator {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink-3);
+  background: var(--cream-2);
+  padding: 6px 14px;
+  border-radius: 99px;
+  border: 1px solid var(--paper-line-2);
+}
+
+.lead-text {
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  line-height: 1.65;
+}
+
+/* Single Point of Instruction */
+.guide-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--jade-pale);
+  border-left: 4px solid var(--jade);
+  padding: 12px 18px;
+  border-radius: var(--radius-sm);
+  color: var(--jade-text);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.guide-box i {
+  font-size: 1.3rem;
+  color: var(--jade-deep);
+  flex-shrink: 0;
+}
+
+/* Feedback Box */
+.inline-feedback {
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.55;
+  animation: slideUp 0.25s ease;
+}
+.inline-feedback i {
+  font-size: 1.25rem;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+.inline-feedback.correct {
+  background: var(--correct-bg);
+  border-left: 4px solid var(--correct);
+  color: var(--jade-text);
+}
+.inline-feedback.wrong {
+  background: var(--wrong-bg);
+  border-left: 4px solid var(--wrong);
+  color: #782613;
+}
+.inline-feedback.info {
+  background: var(--info-bg);
+  border-left: 4px solid var(--info);
+  color: #1E3A47;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Action Controls Row */
+.stage-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+  padding-top: 18px;
+  border-top: 1px solid var(--paper-line);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--jade);
+  color: #FFFFFF;
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--jade-deep);
+  box-shadow: 0 4px 12px rgba(45, 139, 111, 0.25);
+  transform: translateY(-1px);
+}
+.btn-primary:disabled {
+  background: var(--cream-3);
+  color: var(--ink-faint);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background: #FFFFFF;
+  border: 1.5px solid var(--paper-line-2);
+  color: var(--ink-2);
+}
+.btn-secondary:hover:not(:disabled) {
+  background: var(--cream-2);
+  border-color: var(--ink-3);
+}
+
+.btn-outline {
+  background: #FFFFFF;
+  border: 1.5px solid var(--jade);
+  color: var(--jade-text);
+}
+.btn-outline:hover:not(:disabled) {
+  background: var(--jade-pale);
+}
+
+/* ==========================================================================
+   STAGE 1 & 7: PHOTO TILE GRIDS (4:3 RATIO)
+   ========================================================================== */
+.safety-grid, .cleanup-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+@media (max-width: 820px) {
+  .safety-grid, .cleanup-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .safety-grid, .cleanup-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.select-card {
+  background: var(--cream);
+  border: 2px solid var(--paper-line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+  position: relative;
+  user-select: none;
+}
+.select-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--jade-soft);
+  box-shadow: var(--shadow-sm);
+}
+.select-card.selected {
+  border-color: var(--jade-deep);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(45, 139, 111, 0.2);
+}
+.select-card.selected .select-indicator {
+  opacity: 1;
+  background: var(--jade);
+  color: #FFFFFF;
+}
+
+.select-card-img-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #E2E8F0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.select-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.select-card-desc {
+  padding: 12px 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  line-height: 1.45;
+  flex-grow: 1;
+}
+
+.select-indicator {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid var(--paper-line-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.4;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+/* ==========================================================================
+   STAGE 2: STEP SORTING (PROCEDURE DRAG & DROP)
+   ========================================================================== */
+.procedure-slots {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 14px;
+}
+@media (max-width: 768px) {
+  .procedure-slots {
+    grid-template-columns: 1fr;
+  }
+}
+
+.slot-box {
+  background: var(--cream);
+  border: 2px dashed var(--paper-line-2);
+  border-radius: var(--radius);
+  padding: 16px;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s;
+}
+.slot-box.drag-over {
+  border-color: var(--jade);
+  background: var(--jade-pale);
+}
+.slot-header {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--jade-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.slot-content {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slot-empty-text {
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  text-align: center;
+  font-style: italic;
+}
+
+.procedure-tray {
+  background: var(--cream-2);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.procedure-tray-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.procedure-cards-pool {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+@media (max-width: 640px) {
+  .procedure-cards-pool {
+    grid-template-columns: 1fr;
+  }
+}
+
+.proc-card {
+  background: #FFFFFF;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  cursor: grab;
+  user-select: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-sm);
+}
+.proc-card:active {
+  cursor: grabbing;
+}
+.proc-card.selected {
+  border-color: var(--jade);
+  box-shadow: 0 0 0 3px rgba(60, 165, 122, 0.25);
+  background: #F4FDF8;
+}
+.proc-card-badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--cream-2);
+  color: var(--ink-2);
+  font-weight: 800;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.proc-card-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   STAGE 3: MATERIALS SELECTION (14 OBJECTS)
+   ========================================================================== */
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+}
+@media (max-width: 990px) {
+  .materials-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .materials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.mat-card {
+  background: var(--cream);
+  border: 2px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s;
+  position: relative;
+}
+.mat-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--jade-soft);
+}
+.mat-card.selected {
+  border-color: var(--jade);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(60, 165, 122, 0.2);
+}
+.mat-card-svg-wrap {
+  width: 80px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mat-card-svg-wrap svg {
+  max-width: 100%;
+  max-height: 100%;
+}
+.mat-card-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-align: center;
+  line-height: 1.3;
+}
+.mat-tag {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--cream-2);
+  border: 1px solid var(--paper-line-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--ink-faint);
+  transition: all 0.2s;
+}
+.mat-card.selected .mat-tag {
+  background: var(--jade);
+  border-color: var(--jade);
+  color: #FFFFFF;
+}
+
+.selected-tray {
+  background: var(--cream-2);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.selected-tray-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink-2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.selected-tray-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 38px;
+  align-items: center;
+}
+.mat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line-2);
+  padding: 6px 12px;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.mat-chip:hover {
+  background: var(--wrong-bg);
+  border-color: var(--wrong);
+  color: var(--wrong);
+}
+
+/* ==========================================================================
+   STAGE 4, 5, 6: SIMULATION WORKBENCH (VIRTUAL LAB ARENA)
+   ========================================================================== */
+.sim-arena {
+  background: var(--cream);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sim-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink-2);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sim-dosing-metrics {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.metric-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 99px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: var(--cream-2);
+  border: 1px solid var(--paper-line-2);
+  color: var(--ink);
+}
+.metric-pill.target-ok {
+  background: var(--correct-bg);
+  border-color: var(--correct);
+  color: var(--jade-text);
+}
+.metric-pill.error {
+  background: var(--wrong-bg);
+  border-color: var(--wrong);
+  color: var(--wrong);
+}
+
+.sim-workbench {
+  min-height: 360px;
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 24px 20px;
+  position: relative;
+  overflow: hidden;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.bench-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
+  transition: transform 0.2s ease;
+  position: relative;
+}
+
+.bench-item.interactive-action {
+  cursor: pointer;
+}
+.bench-item.interactive-action:hover {
+  transform: translateY(-4px);
+}
+.bench-item.interactive-action:active {
+  transform: scale(0.97);
+}
+
+.bench-item-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink-2);
+  background: var(--cream-2);
+  padding: 4px 10px;
+  border-radius: 99px;
+  border: 1px solid var(--paper-line-2);
+  text-align: center;
+}
+
+.test-tube-rig {
+  width: 140px;
+  height: 250px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.test-tube-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.06));
+}
+
+/* Shake Animation for Stage 5 */
+@keyframes shakeTubeAnim {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  15% { transform: translate(-8px, -4px) rotate(-6deg); }
+  30% { transform: translate(8px, 4px) rotate(6deg); }
+  45% { transform: translate(-8px, 4px) rotate(-5deg); }
+  60% { transform: translate(8px, -4px) rotate(5deg); }
+  75% { transform: translate(-4px, -2px) rotate(-3deg); }
+  90% { transform: translate(4px, 2px) rotate(3deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.shaking {
+  animation: shakeTubeAnim 0.35s infinite ease-in-out;
+}
+
+/* Pouring Animation for Stage 6 */
+@keyframes pourStreamAnim {
+  0% { opacity: 0; stroke-dashoffset: 40; }
+  50% { opacity: 1; stroke-dashoffset: 0; }
+  100% { opacity: 0; }
+}
+
+/* Emulsion Scattering Optics Box */
+.emulsion-zoom-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: var(--cream-2);
+  border: 1px solid var(--paper-line-2);
+  border-radius: var(--radius);
+  padding: 12px;
+  width: 170px;
+}
+.emulsion-lens {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid var(--paper-line-2);
+  overflow: hidden;
+  background: #FFFFFF;
+  position: relative;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.08);
+}
+.emulsion-lens svg {
+  width: 100%;
+  height: 100%;
+}
+.emulsion-lens-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* Stage 6 Observation Table */
+.observation-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #FFFFFF;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--paper-line);
+}
+.observation-table th, .observation-table td {
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--paper-line);
+  font-size: 0.9rem;
+}
+.observation-table th {
+  background: var(--cream-2);
+  color: var(--ink-2);
+  font-weight: 700;
+}
+.observation-table td {
+  color: var(--ink);
+  font-weight: 500;
+}
+.observation-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ==========================================================================
+   STAGE 8: QA & REPORT DATA ACCUMULATION
+   ========================================================================== */
+.qa-layout {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 24px;
+}
+@media (max-width: 860px) {
+  .qa-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.report-summary-box {
+  background: #FFFFFF;
+  border: 1.5px solid var(--paper-line-2);
+  border-radius: var(--radius);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: var(--shadow-sm);
+}
+
+.report-summary-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--jade-text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--paper-line);
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.report-field-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.report-field-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ink-3);
+  text-transform: uppercase;
+}
+.report-field-value {
+  font-size: 0.88rem;
+  color: var(--ink);
+  background: var(--cream);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  min-height: 38px;
+  line-height: 1.45;
+  font-weight: 500;
+}
+.report-field-value.filled {
+  background: var(--correct-bg);
+  border-color: var(--correct);
+  color: var(--jade-text);
+  font-weight: 600;
+}
+
+.qa-card {
+  background: var(--cream);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.qa-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.qa-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.qa-opt {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #FFFFFF;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+.qa-opt:hover:not(.locked) {
+  border-color: var(--jade-soft);
+  background: #FDFEFE;
+}
+.qa-opt.selected {
+  border-color: var(--jade);
+  background: #F4FDF8;
+  color: var(--ink);
+  font-weight: 600;
+}
+.qa-opt.locked {
+  cursor: default;
+}
+.qa-opt-radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--paper-line-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.qa-opt.selected .qa-opt-radio {
+  border-color: var(--jade);
+  background: var(--jade);
+}
+.qa-opt.selected .qa-opt-radio::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #FFFFFF;
+}
+
+/* ==========================================================================
+   STAGE 9: REPORT CREATION & MULTI-MODULE OVERVIEW
+   ========================================================================== */
+.report-structure-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+@media (max-width: 768px) {
+  .report-structure-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .report-structure-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.structure-card {
+  background: #FFFFFF;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s;
+  user-select: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+.structure-card:hover {
+  border-color: var(--jade-soft);
+}
+.structure-card.selected {
+  border-color: var(--jade);
+  background: var(--jade-pale);
+  color: var(--jade-text);
+  font-weight: 700;
+}
+
+.full-report-sheet {
+  background: #FFFFFF;
+  border: 1.5px solid var(--paper-line-2);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: var(--shadow-sm);
+  animation: slideUp 0.3s ease;
+}
+
+.report-header-banner {
+  text-align: center;
+  border-bottom: 2px solid var(--paper-line);
+  padding-bottom: 16px;
+}
+.report-school-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.report-main-heading {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin-top: 6px;
+}
+
+.report-section-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.report-sec-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--jade-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.report-sec-content {
+  font-size: 0.95rem;
+  color: var(--ink);
+  line-height: 1.6;
+  background: var(--cream);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--jade-soft);
+}
+
+/* Four-Module Cards for Lesson 6 */
+.lesson6-modules-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 10px;
+}
+@media (max-width: 900px) {
+  .lesson6-modules-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 500px) {
+  .lesson6-modules-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mod-summary-card {
+  background: #FFFFFF;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: var(--shadow-sm);
+}
+.mod-summary-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--jade-text);
+  background: var(--jade-pale);
+  padding: 2px 8px;
+  border-radius: 99px;
+  width: fit-content;
+}
+.mod-summary-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.mod-summary-reagent {
+  font-size: 0.8rem;
+  color: var(--ink-3);
+}
+
+/* ==========================================================================
+   CONGRATULATIONS MODAL & CONFETTI CANVAS
+   ========================================================================== */
+.congrats-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 40, 30, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.25s ease;
+}
+
+.congrats-modal {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  max-width: 520px;
+  width: 100%;
+  padding: 36px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+.congrats-icon-wrap {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: #FEF3C7;
+  color: #D97706;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.25);
+}
+
+.congrats-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.congrats-text {
+  font-size: 0.95rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+.congrats-actions {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  margin-top: 10px;
+}
+.congrats-actions .btn {
+  flex: 1;
+}
+
+#confettiCanvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10000;
+}
+</style>
+</head>
+<body>
+
+<canvas id="confettiCanvas"></canvas>
+
+<div class="app">
+
+  <!-- =====================================================================
+       MÀN 1: AN TOÀN TRƯỚC THỰC HÀNH (SH10_B06_M04_C01)
+       ===================================================================== -->
+  <section class="stage" id="stage-1" role="region" aria-label="Màn 1: An toàn khi sử dụng cồn và dụng cụ thủy tinh">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-shield-check"></i> Màn 1 · An toàn</span>
+        <h2 class="stage-title">An toàn khi sử dụng cồn và dụng cụ thủy tinh</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 1 / 9</span>
+    </div>
+
+    <p class="lead-text">Cồn dễ bắt cháy và có thể gây kích ứng khi tiếp xúc trực tiếp. Trước khi thao tác, bạn cần nhận biết những hành động giúp hạn chế nguy cơ cháy, đổ vỡ và hóa chất tiếp xúc với cơ thể.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Nhấn vào các hình thể hiện hành động an toàn. Hình đã chọn xuất hiện khung nổi bật. Bạn có thể nhấn lại để bỏ chọn.</span>
+    </div>
+
+    <div class="safety-grid" id="safetyGrid">
+      <div class="select-card" data-id="1" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M04-A01-01.jpg" alt="Trang phục và tóc gọn gàng, đeo kính bảo hộ">
+        </div>
+        <div class="select-card-desc">1. Trang phục và tóc gọn gàng, đeo kính bảo hộ.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="2" data-correct="false" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M04-A01-02.jpg" alt="Đặt đèn cồn đang cháy cạnh lọ cồn tuyệt đối">
+        </div>
+        <div class="select-card-desc">2. Đặt đèn cồn đang cháy cạnh lọ cồn tuyệt đối.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="3" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M04-A01-03.jpg" alt="Đọc nhãn lọ trước khi lấy hóa chất">
+        </div>
+        <div class="select-card-desc">3. Đọc nhãn lọ trước khi lấy hóa chất.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="4" data-correct="false" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M04-A01-04.jpg" alt="Đưa lọ cồn sát mũi để ngửi trực tiếp">
+        </div>
+        <div class="select-card-desc">4. Đưa lọ cồn sát mũi để ngửi.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="5" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M04-A01-05.jpg" alt="Giữ ống nghiệm bằng giá hoặc kẹp chuyên dụng">
+        </div>
+        <div class="select-card-desc">5. Giữ ống nghiệm bằng giá hoặc dụng cụ phù hợp khi thao tác.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="6" data-correct="false" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M04-A01-06.jpg" alt="Đặt ống nghiệm sát mép bàn">
+        </div>
+        <div class="select-card-desc">6. Đặt ống nghiệm sát mép bàn.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+    </div>
+
+    <div class="inline-feedback hidden" id="fbStage1"></div>
+
+    <div class="stage-actions">
+      <button class="btn btn-outline" id="btnCheckStage1"><i class="ti ti-check"></i> KIỂM TRA</button>
+      <button class="btn btn-secondary hidden" id="btnRetryStage1"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+      <button class="btn btn-primary" id="btnNextStage1" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 2: MỤC ĐÍCH VÀ QUY TRÌNH (SH10_B06_M04_C02)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-2" role="region" aria-label="Màn 2: Mục đích và quy trình thí nghiệm">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-list-numbers"></i> Màn 2 · Quy trình</span>
+        <h2 class="stage-title">Mục đích và quy trình thí nghiệm</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 2 / 9</span>
+    </div>
+
+    <p class="lead-text">Dầu và nước không tạo thành dung dịch đồng nhất. Phép thử nhũ tương khai thác sự khác nhau về tính tan của lipid trong cồn và trong nước để tạo dấu hiệu quan sát được.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-drag-drop"></i>
+      <span>Kéo bốn thẻ vào các ô BƯỚC 1 đến BƯỚC 4 theo đúng thứ tự. Thẻ đã đặt có thể kéo sang vị trí khác.</span>
+    </div>
+
+    <div class="procedure-slots" id="procedureSlots">
+      <div class="slot-box" data-step="1">
+        <div class="slot-header"><i class="ti ti-circle-number-1"></i> BƯỚC 1</div>
+        <div class="slot-content"><span class="slot-empty-text">Thả thẻ bước 1 vào đây</span></div>
+      </div>
+      <div class="slot-box" data-step="2">
+        <div class="slot-header"><i class="ti ti-circle-number-2"></i> BƯỚC 2</div>
+        <div class="slot-content"><span class="slot-empty-text">Thả thẻ bước 2 vào đây</span></div>
+      </div>
+      <div class="slot-box" data-step="3">
+        <div class="slot-header"><i class="ti ti-circle-number-3"></i> BƯỚC 3</div>
+        <div class="slot-content"><span class="slot-empty-text">Thả thẻ bước 3 vào đây</span></div>
+      </div>
+      <div class="slot-box" data-step="4">
+        <div class="slot-header"><i class="ti ti-circle-number-4"></i> BƯỚC 4</div>
+        <div class="slot-content"><span class="slot-empty-text">Thả thẻ bước 4 vào đây</span></div>
+      </div>
+    </div>
+
+    <div class="procedure-tray">
+      <div class="procedure-tray-label">Các bước quy trình cần sắp xếp:</div>
+      <div class="procedure-cards-pool" id="procedurePool">
+        <div class="proc-card" draggable="true" data-code="C" id="cardC" tabindex="0">
+          <div class="proc-card-badge">C</div>
+          <div class="proc-card-text">Rót hỗn hợp sang ống nghiệm thứ hai chứa vài mL nước cất.</div>
+        </div>
+        <div class="proc-card" draggable="true" data-code="A" id="cardA" tabindex="0">
+          <div class="proc-card-badge">A</div>
+          <div class="proc-card-text">Cho 2 giọt dầu ăn và 5 mL cồn tuyệt đối vào ống nghiệm thứ nhất.</div>
+        </div>
+        <div class="proc-card" draggable="true" data-code="D" id="cardD" tabindex="0">
+          <div class="proc-card-badge">D</div>
+          <div class="proc-card-text">Quan sát trạng thái và độ trong của hỗn hợp.</div>
+        </div>
+        <div class="proc-card" draggable="true" data-code="B" id="cardB" tabindex="0">
+          <div class="proc-card-badge">B</div>
+          <div class="proc-card-text">Lắc mạnh cho đến khi dầu tan hết.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="inline-feedback hidden" id="fbStage2"></div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" id="btnPrevStage2"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      <button class="btn btn-outline" id="btnCheckStage2"><i class="ti ti-check"></i> KIỂM TRA</button>
+      <button class="btn btn-secondary hidden" id="btnRetryStage2"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+      <button class="btn btn-primary" id="btnNextStage2" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 3: LỰA CHỌN VẬT TƯ VÀ HÓA CHẤT (SH10_B06_M04_C03)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-3" role="region" aria-label="Màn 3: Lựa chọn mẫu, dụng cụ và hóa chất">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-box"></i> Màn 3 · Chuẩn bị</span>
+        <h2 class="stage-title">Chuẩn bị thí nghiệm</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 3 / 9</span>
+    </div>
+
+    <p class="lead-text">Dựa vào quy trình, bạn hãy lựa chọn mẫu, dụng cụ và hóa chất cần dùng để thực hiện phép thử nhũ tương.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Nhấn vào từng vật cần dùng. Vật đã chọn chuyển vào khay chuẩn bị. Bạn có thể nhấn lại để bỏ chọn.</span>
+    </div>
+
+    <div class="materials-grid" id="materialsGrid">
+      <!-- 7 VẬT TƯ ĐÚNG -->
+      <div class="mat-card" data-mat="oil" data-correct="true" tabindex="0">
+        <div class="mat-card-svg-wrap">
+          <svg viewBox="0 0 100 120">
+            <rect x="25" y="35" width="50" height="75" rx="8" fill="#FEF08A" stroke="#CA8A04" stroke-width="2"/>
+            <rect x="40" y="20" width="20" height="15" fill="#E2E8F0" stroke="#64748B" stroke-width="1.8"/>
+            <rect x="36" y="10" width="28" height="12" rx="3" fill="#D97706"/>
+            <rect x="30" y="60" width="40" height="30" rx="3" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+            <line x1="30" y1="42" x2="30" y2="100" stroke="#FFFFFF" stroke-width="2" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="mat-card-name">Dầu ăn</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="mat-card" data-mat="tube1" data-correct="true" tabindex="0">
+        <div class="mat-card-svg-wrap">
+          <svg viewBox="0 0 60 120">
+            <path d="M 18 15 L 18 98 C 18 112 42 112 42 98 L 42 15 Z" fill="rgba(248, 250, 252, 0.85)" stroke="#64748B" stroke-width="2"/>
+            <ellipse cx="30" cy="15" rx="12" ry="4" fill="#E2E8F0" stroke="#475569" stroke-width="1.5"/>
+            <rect x="20" y="45" width="20" height="18" rx="2" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+            <text x="30" y="58" font-size="8" font-weight="800" fill="#0D9488" text-anchor="middle" font-family="sans-serif">1</text>
+          </svg>
+        </div>
+        <div class="mat-card-name">Ống nghiệm 1</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="mat-card" data-mat="tube2" data-correct="true" tabindex="0">
+        <div class="mat-card-svg-wrap">
+          <svg viewBox="0 0 60 120">
+            <path d="M 18 15 L 18 98 C 18 112 42 112 42 98 L 42 15 Z" fill="rgba(248, 250, 252, 0.85)" stroke="#64748B" stroke-width="2"/>
+            <ellipse cx="30" cy="15" rx="12" ry="4" fill="#E2E8F0" stroke="#475569" stroke-width="1.5"/>
+            <rect x="20" y="45" width="20" height="18" rx="2" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+            <text x="30" y="58" font-size="8" font-weight="800" fill="#0D9488" text-anchor="middle" font-family="sans-serif">2</text>
+          </svg>
+        </div>
+        <div class="mat-card-name">Ống nghiệm 2</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="mat-card" data-mat="rack" data-correct="true" tabindex="0">
+        <div class="mat-card-svg-wrap">
+          <svg viewBox="0 0 100 80">
+            <rect x="10" y="20" width="80" height="48" rx="3" fill="#D97706" stroke="#92400E" stroke-width="2"/>
+            <rect x="18" y="28" width="12" height="32" rx="2" fill="#FEF3C7"/>
+            <rect x="36" y="28" width="12" height="32" rx="2" fill="#FEF3C7"/>
+            <rect x="54" y="28" width="12" height="32" rx="2" fill="#FEF3C7"/>
+            <rect x="72" y="28" width="12" height="32" rx="2" fill="#FEF3C7"/>
+          </svg>
+        </div>
+        <div class="mat-card-name">Giá ống nghiệm</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="mat-card" data-mat="pipette" data-correct="true" tabindex="0">
+        <div class="mat-card-svg-wrap">
+          <svg viewBox="0 0 50 120">
+            <path d="M 18 20 C 12 12 14 5 25 5 C 36 5 38 12 32 20 Z" fill="#EF4444" stroke="#B91C1C" stroke-width="1.5"/>
+            <rect x="22" y="20" width="6" height="75" fill="#F8FAFC" stroke="#64748B" stroke-width="1.5"/>
+            <path d="M 22 95 L 24 112 L 26 112 L 28 95 Z" fill="#F8FAFC" stroke="#64748B" stroke-width="1.5"/>
+            <line x1="22" y1="40" x2="26" y2="40" stroke="#64748B" stroke-width="1"/>
+            <line x1="22" y1="60" x2="26" y2="60" stroke="#64748B" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="mat-card-name">Dụng cụ lấy giọt</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="mat-card" data-mat="cylinder" data-correct="true" tabindex="0">
+        <div class="mat-card-svg-wrap">
+          <svg viewBox="0 0 60 120">
+            <polygon points="16,112 44,112 48,106 40,102 20,102 12,106" fill="#E2E8F0" stroke="#64748B" stroke-width="1.5"/>
+            <rect x="22" y="16" width="16" height="88" fill="rgba(241, 245, 249, 0.7)" stroke="#64748B" stroke-width="1.8"/>
+            <line x1="22" y1="48" x2="34" y2="48" stroke="#0284C7" stroke-width="2"/>
+            <circle cx="20" cy="48" r="2" fill="#0284C7"/>
+            <line x1="22" y1="32" x2="30" y2="32" stroke="#64748B" stroke-width="1"/>
+            <line x1="22" y1="64" x2="30" y2="64" stroke="#64748B" stroke-width="1"/>
+            <line x1="22" y1="80" x2="30" y2="80" stroke="#64748B" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="mat-card-name">Dụng cụ đong 5 mL</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="mat-card" data-mat="ethanol" data-correct="true" tabindex="0">
+        <div class="mat-card-svg-wrap">
+          <svg viewBox="0 0 80 120">
+            <rect x="18" y="32" width="44" height="76" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="2"/>
+            <rect x="30" y="18" width="20" height="14" fill="#E2E8F0" stroke="#475569" stroke-width="1.5"/>
+            <rect x="27" y="8" width="26" height="12" rx="3" fill="#334155"/>
+            <rect x="22" y="55" width="36" height="34" rx="2" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="mat-card-name">Cồn tuyệt đối</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+
+      <!-- 7 VẬT TƯ NHIỄU -->
+      <div class="mat-card" data-mat="water" data-correct="true" tabindex="0">
+        <div class="mat-card-svg-wrap">
+          <svg viewBox="0 0 80 120">
+            <path d="M 32 20 L 32 40 L 14 98 Q 12 106 22 106 L 58 106 Q 68 106 66 98 L 48 40 L 48 20 Z" fill="rgba(248, 250, 252, 0.85)" stroke="#64748B" stroke-width="2"/>
+            <ellipse cx="40" cy="20" rx="10" ry="3" fill="#E2E8F0" stroke="#475569" stroke-width="1.5"/>
+            <rect x="25" y="65" width="30" height="22" rx="2" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="mat-card-name">Bình nước cất</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="mat-card" data-mat="benedict" data-correct="false" tabindex="0">
+        <div class="mat-card-svg-wrap">
+          <svg viewBox="0 0 80 120">
+            <rect x="18" y="32" width="44" height="76" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="2"/>
+            <rect x="20" y="52" width="40" height="54" rx="4" fill="#0284C7"/>
+            <rect x="27" y="8" width="26" height="12" rx="3" fill="#334155"/>
+            <rect x="22" y="55" width="36" height="30" rx="2" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="mat-card-name">Thuốc thử Benedict</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="mat-card" data-mat="lugol" data-correct="false" tabindex="0">
+        <div class="mat-card-svg-wrap">
+          <svg viewBox="0 0 80 120">
+            <rect x="18" y="32" width="44" height="76" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="2"/>
+            <rect x="20" y="52" width="40" height="54" rx="4" fill="#78350F"/>
+            <rect x="27" y="8" width="26" height="12" rx="3" fill="#334155"/>
+            <rect x="22" y="55" width="36" height="30" rx="2" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="mat-card-name">Thuốc thử Lugol</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="mat-card" data-mat="naoh" data-correct="false" tabindex="0">
+        <div class="mat-card-svg-wrap">
+          <svg viewBox="0 0 80 120">
+            <rect x="18" y="32" width="44" height="76" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="2"/>
+            <rect x="27" y="8" width="26" height="12" rx="3" fill="#334155"/>
+            <rect x="22" y="55" width="36" height="30" rx="2" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="mat-card-name">Dung dịch NaOH loãng</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="mat-card" data-mat="cuso4" data-correct="false" tabindex="0">
+        <div class="mat-card-svg-wrap">
+          <svg viewBox="0 0 80 120">
+            <rect x="18" y="32" width="44" height="76" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="2"/>
+            <rect x="20" y="55" width="40" height="50" rx="4" fill="#38BDF8"/>
+            <rect x="27" y="8" width="26" height="12" rx="3" fill="#334155"/>
+            <rect x="22" y="55" width="36" height="30" rx="2" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="mat-card-name">Dung dịch CuSO₄ 1%</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="mat-card" data-mat="lamp" data-correct="false" tabindex="0">
+        <div class="mat-card-svg-wrap">
+          <svg viewBox="0 0 80 100">
+            <path d="M 25 50 Q 15 85 40 85 Q 65 85 55 50 Z" fill="rgba(241, 245, 249, 0.8)" stroke="#475569" stroke-width="1.8"/>
+            <rect x="35" y="42" width="10" height="10" fill="#334155"/>
+            <ellipse cx="40" cy="32" rx="5" ry="10" fill="#F59E0B"/>
+          </svg>
+        </div>
+        <div class="mat-card-name">Đèn cồn</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="mat-card" data-mat="hotplate" data-correct="false" tabindex="0">
+        <div class="mat-card-svg-wrap">
+          <svg viewBox="0 0 100 80">
+            <rect x="12" y="35" width="76" height="35" rx="4" fill="#E2E8F0" stroke="#64748B" stroke-width="2"/>
+            <ellipse cx="50" cy="35" rx="30" ry="10" fill="#334155"/>
+          </svg>
+        </div>
+        <div class="mat-card-name">Bếp điện</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="mat-card" data-mat="petri" data-correct="false" tabindex="0">
+        <div class="mat-card-svg-wrap">
+          <svg viewBox="0 0 100 60">
+            <ellipse cx="50" cy="32" rx="42" ry="22" fill="rgba(241, 245, 249, 0.8)" stroke="#64748B" stroke-width="1.8"/>
+            <ellipse cx="50" cy="28" rx="38" ry="18" fill="none" stroke="#94A3B8" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <div class="mat-card-name">Đĩa Petri</div>
+        <div class="mat-tag"><i class="ti ti-check"></i></div>
+      </div>
+    </div>
+
+    <div class="selected-tray">
+      <div class="selected-tray-title">Khay chuẩn bị thí nghiệm:</div>
+      <div class="selected-tray-chips" id="selectedTrayChips">
+        <span class="slot-empty-text">Chưa chọn vật tư nào</span>
+      </div>
+    </div>
+
+    <div class="inline-feedback hidden" id="fbStage3"></div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" id="btnPrevStage3"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      <button class="btn btn-outline" id="btnCheckStage3"><i class="ti ti-check"></i> KIỂM TRA</button>
+      <button class="btn btn-secondary hidden" id="btnRetryStage3"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+      <button class="btn btn-primary" id="btnNextStage3" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 4: CHUẨN BỊ DUNG DỊCH DẦU TRONG CỒN (SH10_B06_M04_C04)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-4" role="region" aria-label="Màn 4: Chuẩn bị dung dịch dầu trong cồn">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-flask"></i> Màn 4 · Định lượng</span>
+        <h2 class="stage-title">Chuẩn bị dung dịch dầu trong cồn</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 4 / 9</span>
+    </div>
+
+    <p class="lead-text">Cho 2 giọt dầu ăn và 5 mL cồn tuyệt đối vào ống nghiệm thứ nhất.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Lấy đúng 2 giọt dầu cho vào ống 1. Sau đó đong cồn tuyệt đối đến vạch 5 mL và chuyển toàn bộ lượng đã đong vào cùng ống.</span>
+    </div>
+
+    <div class="sim-arena">
+      <div class="sim-status-bar">
+        <span>Bàn thực hành định lượng mẫu</span>
+        <div class="sim-dosing-metrics">
+          <div class="metric-pill" id="metricOil">DẦU: <span id="countOil">0</span> / 2 GIỌT</div>
+          <div class="metric-pill" id="metricEthanol">CỒN TUYỆT ĐỐI: <span id="countEthanol">0</span> / 5 mL</div>
+        </div>
+      </div>
+
+      <div class="sim-workbench" id="benchStage4">
+        <!-- Oil Dropper Tool -->
+        <div class="bench-item interactive-action" id="itemOil" title="Nhấn để nhỏ giọt dầu ăn vào Ống 1">
+          <div style="width:70px; height:130px;">
+            <svg viewBox="0 0 70 130">
+              <rect x="15" y="45" width="40" height="65" rx="6" fill="#FEF08A" stroke="#CA8A04" stroke-width="2"/>
+              <rect x="25" y="32" width="20" height="14" fill="#E2E8F0" stroke="#64748B" stroke-width="1.5"/>
+              <path d="M 25 32 C 20 22 22 10 35 10 C 48 10 50 22 45 32 Z" fill="#EF4444" stroke="#B91C1C" stroke-width="1.5"/>
+              <rect x="22" y="65" width="26" height="24" rx="2" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+            </svg>
+          </div>
+          <button class="btn btn-outline" style="padding:4px 10px; font-size:0.8rem;" id="btnAddDrop"><i class="ti ti-droplet"></i> Nhỏ giọt dầu</button>
+          <span class="bench-item-label">Lọ dầu ăn & Pipet</span>
+        </div>
+
+        <!-- Ethanol Measuring Tool -->
+        <div class="bench-item interactive-action" id="itemEthanol" title="Nhấn để đong 5 mL cồn tuyệt đối và chuyển vào Ống 1">
+          <div style="width:70px; height:130px;">
+            <svg viewBox="0 0 70 130">
+              <rect x="12" y="40" width="46" height="75" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="2"/>
+              <rect x="25" y="24" width="20" height="16" fill="#E2E8F0" stroke="#475569" stroke-width="1.5"/>
+              <rect x="22" y="12" width="26" height="14" rx="3" fill="#334155"/>
+              <rect x="18" y="65" width="34" height="30" rx="2" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+            </svg>
+          </div>
+          <button class="btn btn-outline" style="padding:4px 10px; font-size:0.8rem;" id="btnAddEthanol"><i class="ti ti-flask-2"></i> Đong 5 mL cồn</button>
+          <span class="bench-item-label">Lọ cồn & Ống đong</span>
+        </div>
+
+        <!-- Test Tube 1 Rig -->
+        <div class="bench-item" id="rigStage4">
+          <div class="test-tube-rig">
+            <svg class="test-tube-svg" viewBox="0 0 90 240">
+              <!-- Rack support -->
+              <rect x="10" y="170" width="70" height="60" rx="4" fill="#D97706" opacity="0.6"/>
+              <!-- Glass Tube 1 -->
+              <path d="M 28 20 L 28 200 C 28 220 62 220 62 200 L 62 20 Z" fill="rgba(248, 250, 252, 0.8)" stroke="#64748B" stroke-width="3"/>
+              <ellipse cx="45" cy="20" rx="17" ry="5" fill="#E2E8F0" stroke="#475569" stroke-width="2"/>
+              <!-- Label '1' -->
+              <rect x="36" y="70" width="18" height="18" rx="2" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+              <text x="45" y="83" font-size="10" font-weight="800" fill="#0D9488" text-anchor="middle" font-family="sans-serif">1</text>
+              
+              <!-- Ethanol Liquid Column (5 mL level, hidden initially) -->
+              <path id="st4EthanolLiquid" d="M 30 115 L 30 200 C 30 216 60 216 60 200 L 60 115 Z" fill="rgba(224, 242, 254, 0.45)" opacity="0" style="transition: opacity 0.5s ease;"/>
+              <ellipse id="st4EthanolMeniscus" cx="45" cy="115" rx="15" ry="3.5" fill="#BAE6FD" opacity="0" style="transition: opacity 0.5s ease;"/>
+              
+              <!-- Oil Droplets in Tube bottom -->
+              <circle id="st4Drop1" cx="40" cy="202" r="5" fill="#EAB308" stroke="#CA8A04" stroke-width="1" opacity="0" style="transition: all 0.3s;"/>
+              <circle id="st4Drop2" cx="50" cy="200" r="5" fill="#EAB308" stroke="#CA8A04" stroke-width="1" opacity="0" style="transition: all 0.3s;"/>
+
+              <!-- Reflection highlight -->
+              <line x1="33" y1="30" x2="33" y2="195" stroke="#FFFFFF" stroke-width="2.5" opacity="0.75"/>
+            </svg>
+          </div>
+          <span class="bench-item-label">ỐNG 1 trên giá</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="inline-feedback hidden" id="fbStage4"></div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" id="btnPrevStage4"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      <button class="btn btn-outline hidden" id="btnResetStage4"><i class="ti ti-rotate-clockwise"></i> ĐẶT LẠI MÀN 4</button>
+      <button class="btn btn-primary" id="btnFinishStage4" disabled><i class="ti ti-check"></i> HOÀN THÀNH</button>
+      <button class="btn btn-primary hidden" id="btnNextStage4"><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 5: HÒA TAN DẦU TRONG CỒN (SH10_B06_M04_C05)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-5" role="region" aria-label="Màn 5: Hòa tan dầu trong cồn">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-rotate-clockwise-2"></i> Màn 5 · Hòa tan</span>
+        <h2 class="stage-title">Hòa tan dầu trong cồn</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 5 / 9</span>
+    </div>
+
+    <p class="lead-text">Lắc mạnh ống nghiệm cho đến khi không còn thấy giọt hoặc lớp dầu tách riêng.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Nhấn LẮC ỐNG NGHIỆM. Hệ thống sẽ mô phỏng một chu kì lắc hoàn chỉnh. Quan sát vùng phóng đại để nhận biết khi dầu đã tan hết.</span>
+    </div>
+
+    <div class="sim-arena">
+      <div class="sim-status-bar">
+        <span>Quan sát quá trình hòa tan của lipid trong cồn tuyệt đối</span>
+        <div id="st5DissolveStatus" style="font-size:0.85rem; font-weight:700; color:var(--ink-3);">Trạng thái: Chưa lắc</div>
+      </div>
+
+      <div class="sim-workbench" id="benchStage5">
+        <!-- Test Tube 1 with Rubber Stopper -->
+        <div class="bench-item" id="tubeContainerSt5">
+          <div class="test-tube-rig" id="rigStage5">
+            <svg class="test-tube-svg" viewBox="0 0 90 240">
+              <!-- Rack support -->
+              <rect x="10" y="170" width="70" height="60" rx="4" fill="#D97706" opacity="0.6"/>
+              <!-- Glass Tube 1 -->
+              <path d="M 28 20 L 28 200 C 28 220 62 220 62 200 L 62 20 Z" fill="rgba(248, 250, 252, 0.8)" stroke="#64748B" stroke-width="3"/>
+              <ellipse cx="45" cy="20" rx="17" ry="5" fill="#E2E8F0" stroke="#475569" stroke-width="2"/>
+              
+              <!-- Rubber Stopper on Tube Opening -->
+              <polygon points="34,14 56,14 52,24 38,24" fill="#334155" stroke="#0F172A" stroke-width="1.5"/>
+              <rect x="33" y="6" width="24" height="8" rx="2" fill="#475569"/>
+
+              <!-- Label '1' -->
+              <rect x="36" y="70" width="18" height="18" rx="2" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+              <text x="45" y="83" font-size="10" font-weight="800" fill="#0D9488" text-anchor="middle" font-family="sans-serif">1</text>
+
+              <!-- Homogeneous Clear Liquid -->
+              <path d="M 30 115 L 30 200 C 30 216 60 216 60 200 L 60 115 Z" fill="rgba(224, 242, 254, 0.5)"/>
+              <ellipse cx="45" cy="115" rx="15" ry="3.5" fill="#BAE6FD"/>
+
+              <!-- Dissolving Oil Droplets in Stage 5 -->
+              <g id="st5OilParticles">
+                <circle cx="42" cy="195" r="4.5" fill="#EAB308" opacity="0.9"/>
+                <circle cx="50" cy="188" r="4" fill="#EAB308" opacity="0.9"/>
+                <circle cx="38" cy="180" r="3.5" fill="#EAB308" opacity="0.7"/>
+              </g>
+
+              <line x1="33" y1="30" x2="33" y2="195" stroke="#FFFFFF" stroke-width="2.5" opacity="0.75"/>
+            </svg>
+          </div>
+          <span class="bench-item-label">ỐNG 1 (Đã đậy nút an toàn)</span>
+        </div>
+
+        <!-- Optics Zoom: Dissolution View -->
+        <div class="emulsion-zoom-card">
+          <div class="emulsion-lens-title">Kính phóng đại</div>
+          <div class="emulsion-lens">
+            <svg viewBox="0 0 100 100" id="st5LensSvg">
+              <!-- Magnified Clear solvent background -->
+              <rect width="100" height="100" fill="#F0F9FF"/>
+              <!-- Oil drops dissolving -->
+              <g id="lensOilGroup">
+                <circle cx="40" cy="45" r="14" fill="#FACC15" opacity="0.85"/>
+                <circle cx="62" cy="58" r="11" fill="#FACC15" opacity="0.85"/>
+                <circle cx="52" cy="30" r="7" fill="#FACC15" opacity="0.7"/>
+              </g>
+              <text id="lensTextSt5" x="50" y="88" font-size="8" font-weight="700" fill="#0369A1" text-anchor="middle" font-family="sans-serif">Dầu chưa tan hết</text>
+            </svg>
+          </div>
+          <div style="font-size:0.75rem; text-align:center; color:var(--ink-2);">Theo dõi dầu tan trong cồn</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="inline-feedback hidden" id="fbStage5"></div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" id="btnPrevStage5"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      <button class="btn btn-outline" id="btnActionShake"><i class="ti ti-rotate-clockwise-2"></i> LẮC ỐNG NGHIỆM</button>
+      <button class="btn btn-primary" id="btnFinishStage5" disabled><i class="ti ti-check"></i> HOÀN THÀNH</button>
+      <button class="btn btn-primary hidden" id="btnNextStage5"><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 6: QUAN SÁT PHÉP THỬ NHŨ TƯƠNG (SH10_B06_M04_C06)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-6" role="region" aria-label="Màn 6: Quan sát phép thử nhũ tương">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-eye"></i> Màn 6 · Kết quả</span>
+        <h2 class="stage-title">Quan sát phép thử nhũ tương</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 6 / 9</span>
+    </div>
+
+    <p class="lead-text">Rót dung dịch dầu trong cồn sang ống nghiệm thứ hai chứa vài mL nước cất và quan sát sự thay đổi.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Nhấn BẮT ĐẦU RÓT. Hệ thống sẽ mô phỏng trọn vẹn thao tác rót. Theo dõi vùng phóng đại và sự thay đổi độ trong của hỗn hợp.</span>
+    </div>
+
+    <div class="sim-arena">
+      <div class="sim-workbench" id="benchStage6" style="min-height:380px;">
+        <!-- Tube 1 (Pouring Tube) -->
+        <div class="bench-item" id="tube1ContainerSt6" style="transition: transform 0.8s ease; transform-origin: top right;">
+          <div class="test-tube-rig" style="width:110px; height:240px;">
+            <svg class="test-tube-svg" viewBox="0 0 90 240">
+              <path d="M 28 20 L 28 200 C 28 220 62 220 62 200 L 62 20 Z" fill="rgba(248, 250, 252, 0.8)" stroke="#64748B" stroke-width="3"/>
+              <ellipse cx="45" cy="20" rx="17" ry="5" fill="#E2E8F0" stroke="#475569" stroke-width="2"/>
+              <rect x="36" y="70" width="18" height="18" rx="2" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+              <text x="45" y="83" font-size="10" font-weight="800" fill="#0D9488" text-anchor="middle" font-family="sans-serif">1</text>
+              
+              <!-- Dissolved Clear Solution in Tube 1 -->
+              <path id="st6Liquid1" d="M 30 115 L 30 200 C 30 216 60 216 60 200 L 60 115 Z" fill="rgba(224, 242, 254, 0.55)" style="transition: all 0.8s ease;"/>
+              <ellipse id="st6Meniscus1" cx="45" cy="115" rx="15" ry="3.5" fill="#BAE6FD" style="transition: all 0.8s ease;"/>
+
+              <line x1="33" y1="30" x2="33" y2="195" stroke="#FFFFFF" stroke-width="2.5" opacity="0.75"/>
+            </svg>
+          </div>
+          <span class="bench-item-label">ỐNG 1 (Dung dịch cồn + dầu)</span>
+        </div>
+
+        <!-- Pouring stream SVG arc -->
+        <svg id="pourStreamSvg" style="position:absolute; width:120px; height:140px; top:60px; left:230px; opacity:0; pointer-events:none; transition:opacity 0.4s;">
+          <path d="M 20 20 Q 70 20 85 110" fill="none" stroke="#BAE6FD" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+
+        <!-- Tube 2 (Receiving Tube with Water -> Emulsion) -->
+        <div class="bench-item" id="tube2ContainerSt6">
+          <div class="test-tube-rig" style="width:120px; height:250px;">
+            <svg class="test-tube-svg" viewBox="0 0 90 240">
+              <rect x="10" y="170" width="70" height="60" rx="4" fill="#D97706" opacity="0.6"/>
+              <path d="M 28 20 L 28 200 C 28 220 62 220 62 200 L 62 20 Z" fill="rgba(248, 250, 252, 0.8)" stroke="#64748B" stroke-width="3"/>
+              <ellipse cx="45" cy="20" rx="17" ry="5" fill="#E2E8F0" stroke="#475569" stroke-width="2"/>
+              <rect x="36" y="70" width="18" height="18" rx="2" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+              <text x="45" y="83" font-size="10" font-weight="800" fill="#0D9488" text-anchor="middle" font-family="sans-serif">2</text>
+
+              <!-- Liquid in Tube 2: Transitions from clear water to milky white emulsion -->
+              <path id="st6Liquid2" d="M 30 160 L 30 200 C 30 216 60 216 60 200 L 60 160 Z" fill="rgba(224, 242, 254, 0.4)" style="transition: all 1.2s ease;"/>
+              <ellipse id="st6Meniscus2" cx="45" cy="160" rx="15" ry="3.5" fill="#BAE6FD" style="transition: all 1.2s ease;"/>
+
+              <line x1="33" y1="30" x2="33" y2="195" stroke="#FFFFFF" stroke-width="2.5" opacity="0.75"/>
+            </svg>
+          </div>
+          <span class="bench-item-label" id="labelTube2St6">ỐNG 2 (Nước cất)</span>
+        </div>
+
+        <!-- Optics Zoom: Emulsion Dispersion & Light Scattering -->
+        <div class="emulsion-zoom-card">
+          <div class="emulsion-lens-title">Kính hiển vi / Quang học</div>
+          <div class="emulsion-lens">
+            <svg viewBox="0 0 100 100" id="st6LensSvg">
+              <!-- Ambient background -->
+              <rect id="st6LensBg" width="100" height="100" fill="#F0F9FF"/>
+              <!-- Countless tiny lipid micro-droplets (Nhũ tương phân tán) -->
+              <g id="lipidMicellesGroup" opacity="0" style="transition:opacity 1s ease;">
+                <!-- Light ray scattering effect -->
+                <path d="M 10 30 L 90 70" stroke="#FFFFFF" stroke-width="8" opacity="0.6"/>
+                <!-- Micro droplets scattering light -->
+                <circle cx="20" cy="30" r="2" fill="#FFFFFF"/>
+                <circle cx="35" cy="22" r="1.8" fill="#FDFBF7"/>
+                <circle cx="50" cy="35" r="2.2" fill="#FFFFFF"/>
+                <circle cx="65" cy="28" r="1.5" fill="#FDFBF7"/>
+                <circle cx="80" cy="38" r="2" fill="#FFFFFF"/>
+                <circle cx="25" cy="55" r="2.2" fill="#FFFFFF"/>
+                <circle cx="45" cy="60" r="1.8" fill="#FDFBF7"/>
+                <circle cx="60" cy="50" r="2" fill="#FFFFFF"/>
+                <circle cx="75" cy="65" r="2.4" fill="#FFFFFF"/>
+                <circle cx="30" cy="75" r="1.6" fill="#FDFBF7"/>
+                <circle cx="55" cy="80" r="2" fill="#FFFFFF"/>
+                <circle cx="70" cy="82" r="1.8" fill="#FFFFFF"/>
+              </g>
+              <text id="lensTextSt6" x="50" y="90" font-size="7.5" font-weight="700" fill="#0369A1" text-anchor="middle" font-family="sans-serif">Nước cất trong</text>
+            </svg>
+          </div>
+          <div style="font-size:0.75rem; text-align:center; color:var(--ink-2);">Hiện tượng tán xạ ánh sáng</div>
+        </div>
+      </div>
+
+      <!-- Comparison Observation Table -->
+      <table class="observation-table">
+        <thead>
+          <tr>
+            <th>Thời điểm</th>
+            <th>Trạng thái Ống 1</th>
+            <th>Trạng thái Ống 2</th>
+            <th>Hiện tượng sinh học</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Trước khi rót</strong></td>
+            <td>Dung dịch cồn + dầu trong suốt</td>
+            <td>Nước cất trong suốt</td>
+            <td>Dầu tan hoàn toàn trong cồn tuyệt đối</td>
+          </tr>
+          <tr id="obsRowAfter">
+            <td><strong>Sau khi rót</strong></td>
+            <td id="obsTube1After">—</td>
+            <td id="obsTube2After">—</td>
+            <td id="obsPhenomAfter">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="inline-feedback hidden" id="fbStage6"></div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" id="btnPrevStage6"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      <button class="btn btn-outline" id="btnActionPour"><i class="ti ti-rotate-clockwise"></i> BẮT ĐẦU RÓT</button>
+      <button class="btn btn-primary" id="btnFinishStage6" disabled><i class="ti ti-check"></i> HOÀN THÀNH</button>
+      <button class="btn btn-primary hidden" id="btnNextStage6"><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 7: THU DỌN SAU THỰC HÀNH (SH10_B06_M04_C07)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-7" role="region" aria-label="Màn 7: Thu dọn sau thực hành">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-trash"></i> Màn 7 · Thu dọn</span>
+        <h2 class="stage-title">Thu dọn sau thực hành</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 7 / 9</span>
+    </div>
+
+    <p class="lead-text">Sau khi quan sát, cần xử lí hỗn hợp theo hướng dẫn, đậy nắp lọ cồn, vệ sinh dụng cụ và sắp xếp khu vực làm việc.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Nhấn vào các hành động đúng để hoàn tất việc thu dọn. Hình đã chọn xuất hiện khung nổi bật.</span>
+    </div>
+
+    <div class="cleanup-grid" id="cleanupGrid">
+      <div class="select-card" data-id="1" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M04-A07-01.jpg" alt="Đặt ống nghiệm vào giá">
+        </div>
+        <div class="select-card-desc">1. Đặt ống nghiệm vào giá.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="2" data-correct="false" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M04-A07-02.jpg" alt="Đổ hỗn hợp trực tiếp vào bồn rửa">
+        </div>
+        <div class="select-card-desc">2. Đổ hỗn hợp trực tiếp vào bồn rửa.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="3" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M04-A07-03.jpg" alt="Chuyển hỗn hợp vào bình thu gom có nhãn theo hướng dẫn">
+        </div>
+        <div class="select-card-desc">3. Chuyển hỗn hợp vào bình thu gom có nhãn theo hướng dẫn.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="4" data-correct="false" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M04-A07-04.jpg" alt="Để lọ cồn mở nắp">
+        </div>
+        <div class="select-card-desc">4. Để lọ cồn mở nắp.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="5" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M04-A07-05.jpg" alt="Đậy nắp và trả lọ cồn về đúng vị trí, xa nguồn lửa">
+        </div>
+        <div class="select-card-desc">5. Đậy nắp và trả lọ cồn về đúng vị trí, xa nguồn lửa.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="6" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M04-A07-06.jpg" alt="Vệ sinh dụng cụ theo hướng dẫn">
+        </div>
+        <div class="select-card-desc">6. Vệ sinh dụng cụ theo hướng dẫn.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="7" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M04-A07-07.jpg" alt="Lau bàn và sắp xếp khu vực gọn gàng">
+        </div>
+        <div class="select-card-desc">7. Lau bàn và sắp xếp khu vực gọn gàng.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+
+      <div class="select-card" data-id="8" data-correct="true" tabindex="0">
+        <div class="select-card-img-wrap">
+          <img src="images/SH10-B06-M04-A07-08.jpg" alt="Rửa tay sau thực hành">
+        </div>
+        <div class="select-card-desc">8. Rửa tay sau thực hành.</div>
+        <div class="select-indicator"><i class="ti ti-check"></i></div>
+      </div>
+    </div>
+
+    <div class="inline-feedback hidden" id="fbStage7"></div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" id="btnPrevStage7"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      <button class="btn btn-outline" id="btnCheckStage7"><i class="ti ti-check"></i> KIỂM TRA</button>
+      <button class="btn btn-secondary hidden" id="btnRetryStage7"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+      <button class="btn btn-primary" id="btnNextStage7" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 8: GIẢI THÍCH KẾT QUẢ VÀ TRẢ LỜI CÂU HỎI THU HOẠCH (SH10_B06_M04_C08)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-8" role="region" aria-label="Màn 8: Giải thích kết quả">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-file-text"></i> Màn 8 · Dữ liệu báo cáo</span>
+        <h2 class="stage-title">Giải thích kết quả</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 8 / 9</span>
+    </div>
+
+    <p class="lead-text">Quan sát lại kết quả của chính thí nghiệm để xác định hiện tượng, giải thích nguyên lí và so sánh cách chuẩn bị các mẫu trong Bài 6.</p>
+
+    <div class="guide-box">
+      <i class="ti ti-help"></i>
+      <span>Lần lượt chọn phương án đúng cho 4 câu hỏi dưới đây để điền tự động dữ liệu vào khung Báo cáo thực hành.</span>
+    </div>
+
+    <div class="qa-layout">
+      <!-- Left Column: Tube Visual & Accumulated Report Data -->
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; flex-direction:column; align-items:center; background:#FFFFFF; border:1px solid var(--paper-line); border-radius:var(--radius); padding:16px;">
+          <svg viewBox="0 0 90 220" style="width:100px; height:180px;">
+            <rect x="10" y="150" width="70" height="60" rx="4" fill="#D97706" opacity="0.6"/>
+            <path d="M 28 20 L 28 190 C 28 206 62 206 62 190 L 62 20 Z" fill="rgba(248, 250, 252, 0.85)" stroke="#64748B" stroke-width="3"/>
+            <ellipse cx="45" cy="20" rx="17" ry="5" fill="#E2E8F0" stroke="#475569" stroke-width="2"/>
+            <!-- Milky White Emulsion Liquid -->
+            <path d="M 30 75 L 30 190 C 30 204 60 204 60 190 L 60 75 Z" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+            <ellipse cx="45" cy="75" rx="15" ry="3.5" fill="#FFFFFF"/>
+            <line x1="33" y1="30" x2="33" y2="185" stroke="#FFFFFF" stroke-width="2.5" opacity="0.7"/>
+          </svg>
+          <span style="font-size:0.85rem; font-weight:700; color:var(--ink-2); margin-top:6px;">Ống 2: Hỗn hợp trắng đục như sữa</span>
+        </div>
+
+        <div class="report-summary-box">
+          <div class="report-summary-title"><i class="ti ti-clipboard-data"></i> DỮ LIỆU BÁO CÁO</div>
+          <div class="report-field-item">
+            <div class="report-field-label">1. Kết quả:</div>
+            <div class="report-field-value" id="boxReportResult">— Chưa có dữ liệu —</div>
+          </div>
+          <div class="report-field-item">
+            <div class="report-field-label">2. Nhận xét & giải thích:</div>
+            <div class="report-field-value" id="boxReportExplanation">— Chưa có dữ liệu —</div>
+          </div>
+          <div class="report-field-item">
+            <div class="report-field-label">3. Kết luận:</div>
+            <div class="report-field-value" id="boxReportConclusion">— Chưa có dữ liệu —</div>
+          </div>
+          <div class="report-field-item">
+            <div class="report-field-label">4. Trả lời câu hỏi thu hoạch:</div>
+            <div class="report-field-value" id="boxReportComparison">— Chưa có dữ liệu —</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: 4 Progressive Questions -->
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <!-- Question 1 -->
+        <div class="qa-card" id="cardQ1">
+          <div class="qa-title">Câu 1: Sau khi rót dung dịch dầu trong cồn vào nước cất, hỗn hợp thay đổi như thế nào?</div>
+          <div class="qa-options">
+            <div class="qa-opt" data-ans="A"><div class="qa-opt-radio"></div><span>A. Chuyển từ trong sang trắng đục như sữa.</span></div>
+            <div class="qa-opt" data-ans="B"><div class="qa-opt-radio"></div><span>B. Tạo kết tủa đỏ gạch.</span></div>
+            <div class="qa-opt" data-ans="C"><div class="qa-opt-radio"></div><span>C. Chuyển sang xanh đen.</span></div>
+            <div class="qa-opt" data-ans="D"><div class="qa-opt-radio"></div><span>D. Chuyển từ xanh sang xanh tím.</span></div>
+          </div>
+          <div class="inline-feedback hidden" id="fbQ1"></div>
+          <div style="display:flex; justify-content:flex-end;">
+            <button class="btn btn-outline" id="btnAnsQ1">TRẢ LỜI</button>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="qa-card hidden" id="cardQ2">
+          <div class="qa-title">Câu 2: Vì sao hỗn hợp trở nên trắng đục?</div>
+          <div class="qa-options">
+            <div class="qa-opt" data-ans="A"><div class="qa-opt-radio"></div><span>A. Cồn hòa vào nước làm độ tan của lipid giảm; lipid phân tán thành các giọt rất nhỏ và làm tán xạ ánh sáng.</span></div>
+            <div class="qa-opt" data-ans="B"><div class="qa-opt-radio"></div><span>B. Lipid phản ứng với nước tạo kết tủa trắng.</span></div>
+            <div class="qa-opt" data-ans="C"><div class="qa-opt-radio"></div><span>C. Cồn làm lipid biến đổi thành protein.</span></div>
+            <div class="qa-opt" data-ans="D"><div class="qa-opt-radio"></div><span>D. Nước làm xuất hiện phức chất có màu.</span></div>
+          </div>
+          <div class="inline-feedback hidden" id="fbQ2"></div>
+          <div style="display:flex; justify-content:flex-end;">
+            <button class="btn btn-outline" id="btnAnsQ2">TRẢ LỜI</button>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="qa-card hidden" id="cardQ3">
+          <div class="qa-title">Câu 3: Trong mẫu và quy trình này, có thể kết luận gì?</div>
+          <div class="qa-options">
+            <div class="qa-opt" data-ans="A"><div class="qa-opt-radio"></div><span>A. Mẫu dầu ăn có lipid.</span></div>
+            <div class="qa-opt" data-ans="B"><div class="qa-opt-radio"></div><span>B. Mẫu có tinh bột.</span></div>
+            <div class="qa-opt" data-ans="C"><div class="qa-opt-radio"></div><span>C. Mẫu có đường khử.</span></div>
+            <div class="qa-opt" data-ans="D"><div class="qa-opt-radio"></div><span>D. Mẫu có protein.</span></div>
+          </div>
+          <div class="inline-feedback hidden" id="fbQ3"></div>
+          <div style="display:flex; justify-content:flex-end;">
+            <button class="btn btn-outline" id="btnAnsQ3">TRẢ LỜI</button>
+          </div>
+        </div>
+
+        <!-- Question 4 (Thu hoạch) -->
+        <div class="qa-card hidden" id="cardQ4">
+          <div class="qa-title">Câu 4 (Thu hoạch): Cách chuẩn bị mẫu glucose và albumin khác cách chuẩn bị mẫu dầu như thế nào? Vì sao?</div>
+          <div class="qa-options">
+            <div class="qa-opt" data-ans="A"><div class="qa-opt-radio"></div><span>A. Glucose và albumin có thể pha với nước; dầu không tan trong nước nên phải hòa tan trong cồn tuyệt đối trước khi rót vào nước.</span></div>
+            <div class="qa-opt" data-ans="B"><div class="qa-opt-radio"></div><span>B. Cả ba mẫu đều chỉ có thể pha bằng cồn tuyệt đối.</span></div>
+            <div class="qa-opt" data-ans="C"><div class="qa-opt-radio"></div><span>C. Dầu tan tốt trong nước, còn glucose và albumin không tan trong nước.</span></div>
+            <div class="qa-opt" data-ans="D"><div class="qa-opt-radio"></div><span>D. Sự khác nhau chỉ do màu ban đầu của các mẫu.</span></div>
+          </div>
+          <div class="inline-feedback hidden" id="fbQ4"></div>
+          <div style="display:flex; justify-content:flex-end;">
+            <button class="btn btn-outline" id="btnAnsQ4">TRẢ LỜI</button>
+          </div>
+        </div>
+
+        <!-- Final Synthesis Callout after 4 Questions -->
+        <div class="inline-feedback info hidden" id="qaSynthesisBox">
+          <i class="ti ti-bulb"></i>
+          <span>Phép thử nhũ tương nhận biết lipid dựa trên sự khác nhau về tính tan. Câu hỏi trung tâm được trả lời: khi cồn hòa vào nước, lipid giảm độ tan, tạo các giọt rất nhỏ phân tán và làm hỗn hợp trắng đục.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage-actions">
+      <button class="btn btn-secondary" id="btnPrevStage8"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      <button class="btn btn-primary" id="btnNextStage8" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MÀN 9: HOÀN THÀNH BÁO CÁO THỰC HÀNH (SH10_B06_M04_C09)
+       ===================================================================== -->
+  <section class="stage hidden" id="stage-9" role="region" aria-label="Màn 9: Hoàn thành báo cáo thực hành">
+    <div class="stage-head">
+      <div class="stage-title-wrap">
+        <span class="stage-badge"><i class="ti ti-certificate"></i> Màn 9 · Báo cáo</span>
+        <h2 class="stage-title">Hoàn thành báo cáo thực hành</h2>
+      </div>
+      <span class="stage-step-indicator">Bước 9 / 9</span>
+    </div>
+
+    <p class="lead-text">Báo cáo cần phản ánh đúng mục đích, cách tiến hành, kết quả, giải thích, kết luận và câu hỏi thu hoạch. Dữ liệu bạn đã tạo ở các màn trước sẽ được dùng để lập báo cáo.</p>
+
+    <!-- Part 1: Select 5 Standard Report Components -->
+    <div id="part1Report">
+      <div class="guide-box">
+        <i class="ti ti-checkbox"></i>
+        <span>Nhấn chọn những thành phần cần có của báo cáo, sau đó nhấn KIỂM TRA.</span>
+      </div>
+
+      <div class="report-structure-grid" id="structureGrid" style="margin-top:16px;">
+        <div class="structure-card" data-key="purpose" data-correct="true" tabindex="0"><i class="ti ti-target"></i> Mục đích</div>
+        <div class="structure-card" data-key="distractor1" data-correct="false" tabindex="0"><i class="ti ti-award"></i> Thành tích cá nhân</div>
+        <div class="structure-card" data-key="procedure" data-correct="true" tabindex="0"><i class="ti ti-list-check"></i> Cách tiến hành</div>
+        <div class="structure-card" data-key="distractor2" data-correct="false" tabindex="0"><i class="ti ti-users"></i> Điểm số của nhóm</div>
+        <div class="structure-card" data-key="result" data-correct="true" tabindex="0"><i class="ti ti-eye"></i> Kết quả</div>
+        <div class="structure-card" data-key="distractor3" data-correct="false" tabindex="0"><i class="ti ti-flask"></i> Danh sách dung môi ngoài bài</div>
+        <div class="structure-card" data-key="conclusion" data-correct="true" tabindex="0"><i class="ti ti-bulb"></i> Giải thích và kết luận</div>
+        <div class="structure-card" data-key="distractor4" data-correct="false" tabindex="0"><i class="ti ti-question-mark"></i> Dự đoán không dựa trên quan sát</div>
+        <div class="structure-card" data-key="questions" data-correct="true" tabindex="0"><i class="ti ti-messages"></i> Trả lời câu hỏi</div>
+      </div>
+
+      <div class="inline-feedback hidden" id="fbStage9"></div>
+
+      <div class="stage-actions">
+        <button class="btn btn-secondary" id="btnPrevStage9"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+        <button class="btn btn-outline" id="btnCheckStage9"><i class="ti ti-check"></i> KIỂM TRA</button>
+        <button class="btn btn-secondary hidden" id="btnRetryStage9"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+        <button class="btn btn-primary hidden" id="btnViewFinalReport"><i class="ti ti-file-text"></i> XEM BÁO CÁO</button>
+      </div>
+    </div>
+
+    <!-- Part 2: Render Completed Report & Four-Module Lesson 6 Hub -->
+    <div class="hidden" id="part2Report" style="display:flex; flex-direction:column; gap:24px;">
+      <!-- Generated Report Sheet -->
+      <div class="full-report-sheet">
+        <div class="report-header-banner">
+          <div class="report-school-title">BÀI 6 · BÁO CÁO THỰC HÀNH SINH HỌC 10</div>
+          <h3 class="report-main-heading">NHẬN BIẾT LIPID BẰNG PHÉP THỬ NHŨ TƯƠNG</h3>
+        </div>
+
+        <div class="report-section-block">
+          <div class="report-sec-title">1. Mục đích</div>
+          <div class="report-sec-content">Nhận biết lipid trong mẫu dầu ăn bằng phép thử nhũ tương.</div>
+        </div>
+
+        <div class="report-section-block">
+          <div class="report-sec-title">2. Cách tiến hành</div>
+          <div class="report-sec-content">Chuẩn bị dầu ăn, hai ống nghiệm, giá ống nghiệm, dụng cụ lấy giọt, dụng cụ đong, cồn tuyệt đối và nước cất. Cho 2 giọt dầu ăn và 5 mL cồn tuyệt đối vào ống nghiệm thứ nhất, lắc mạnh cho đến khi dầu tan hết. Rót hỗn hợp sang ống nghiệm thứ hai chứa vài mL nước cất và quan sát.</div>
+        </div>
+
+        <div class="report-section-block">
+          <div class="report-sec-title">3. Kết quả</div>
+          <div class="report-sec-content" id="finalRepResult">Sau khi rót dung dịch dầu trong cồn vào nước cất, hỗn hợp chuyển từ trong sang trắng đục như sữa.</div>
+        </div>
+
+        <div class="report-section-block">
+          <div class="report-sec-title">4. Giải thích và kết luận</div>
+          <div class="report-sec-content" id="finalRepExplanation">Cồn hòa vào nước làm độ tan của lipid giảm; lipid không tan trong nước nên phân tán thành các giọt rất nhỏ và làm tán xạ ánh sáng. Trong mẫu và quy trình này, dầu ăn được xác định là có lipid.</div>
+        </div>
+
+        <div class="report-section-block">
+          <div class="report-sec-title">5. Trả lời câu hỏi thu hoạch</div>
+          <div class="report-sec-content" id="finalRepComparison">Glucose và albumin có thể pha với nước; dầu không tan trong nước nên phải hòa tan trong cồn tuyệt đối trước khi rót vào nước.</div>
+        </div>
+      </div>
+
+      <!-- Synthesis Hub: Four Reports of Lesson 6 -->
+      <div style="background:var(--cream); border:1px solid var(--paper-line); border-radius:var(--radius); padding:20px; display:flex; flex-direction:column; gap:12px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+          <div style="font-size:0.95rem; font-weight:800; color:var(--ink);"><i class="ti ti-folders" style="color:var(--jade);"></i> TỔNG HỢP CÁC BÁO CÁO THỰC HÀNH BÀI 6</div>
+          <button class="btn btn-outline" style="padding:6px 14px; font-size:0.85rem;" id="btnViewAllReports"><i class="ti ti-external-link"></i> XEM BÁO CÁO TOÀN BÀI</button>
+        </div>
+
+        <div class="lesson6-modules-grid">
+          <div class="mod-summary-card">
+            <span class="mod-summary-badge">M01 · Glucose</span>
+            <div class="mod-summary-title">Thuốc thử Benedict</div>
+            <div class="mod-summary-reagent">Đun cách thủy $\rightarrow$ Kết tủa đỏ gạch Cu₂O</div>
+          </div>
+          <div class="mod-summary-card">
+            <span class="mod-summary-badge">M02 · Tinh bột</span>
+            <div class="mod-summary-title">Dung dịch Lugol (Iodine)</div>
+            <div class="mod-summary-reagent">Nhiệt độ thường $\rightarrow$ Xanh tím đậm</div>
+          </div>
+          <div class="mod-summary-card">
+            <span class="mod-summary-badge">M03 · Protein</span>
+            <div class="mod-summary-title">Phản ứng Biuret</div>
+            <div class="mod-summary-reagent">NaOH + CuSO₄ 1% $\rightarrow$ Màu xanh tím</div>
+          </div>
+          <div class="mod-summary-card" style="border-color:var(--jade); background:#F4FDF8;">
+            <span class="mod-summary-badge" style="background:var(--jade); color:#FFF;">M04 · Lipid</span>
+            <div class="mod-summary-title">Phép thử nhũ tương</div>
+            <div class="mod-summary-reagent">Cồn tuyệt đối + Nước cất $\rightarrow$ Trắng đục</div>
+          </div>
+        </div>
+
+        <p style="font-size:0.9rem; color:var(--ink-2); font-style:italic; margin-top:4px;">
+          Qua bốn thí nghiệm, bạn đã dùng những dấu hiệu quan sát được để nhận biết glucose, tinh bột, protein và lipid, đồng thời hoàn thành báo cáo dựa trên chính dữ liệu thực hành.
+        </p>
+      </div>
+
+      <div class="stage-actions">
+        <button class="btn btn-secondary" id="btnBackToStructure"><i class="ti ti-arrow-left"></i> CHỌN LẠI CẤU TRÚC</button>
+        <button class="btn btn-primary" id="btnFinishLesson6"><i class="ti ti-trophy"></i> HOÀN THÀNH BÀI 6</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- =======================================================================
+     MODAL BÁO CÁO TOÀN BÀI 6 (#allReportsModal)
+     ======================================================================= -->
+<div class="congrats-overlay hidden" id="allReportsModal" role="dialog" aria-modal="true" aria-label="Báo cáo toàn bộ Bài 6">
+  <div class="congrats-modal" style="max-width:760px; text-align:left; align-items:stretch;">
+    <div style="display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--paper-line); padding-bottom:12px;">
+      <h3 style="font-size:1.2rem; font-weight:800; color:var(--ink); display:flex; align-items:center; gap:8px;">
+        <i class="ti ti-files" style="color:var(--jade);"></i> Báo cáo tổng hợp Bài 6
+      </h3>
+      <button class="btn btn-secondary" style="padding:4px 10px; font-size:0.85rem;" id="btnCloseAllReportsModal"><i class="ti ti-x"></i> Đóng</button>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:16px; max-height:460px; overflow-y:auto; padding-right:6px; margin-top:8px;">
+      <div style="background:var(--cream); padding:12px 16px; border-radius:var(--radius-sm); border-left:3px solid #E8A24A;">
+        <strong style="color:var(--ink);">M01 · Nhận biết glucose (Đường khử):</strong>
+        <p style="font-size:0.88rem; color:var(--ink-2); margin-top:4px;">Khi đun nóng dung dịch glucose với thuốc thử Benedict, xuất hiện kết tủa đỏ gạch (Cu₂O) do nhóm aldehyde của glucose khử ion Cu²⁺.</p>
+      </div>
+      <div style="background:var(--cream); padding:12px 16px; border-radius:var(--radius-sm); border-left:3px solid #3B82F6;">
+        <strong style="color:var(--ink);">M02 · Nhận biết tinh bột:</strong>
+        <p style="font-size:0.88rem; color:var(--ink-2); margin-top:4px;">Khi nhỏ thuốc thử Lugol (iodine) vào hồ tinh bột ở nhiệt độ phòng, dung dịch chuyển sang màu xanh tím đặc trưng do các phân tử iodine chui vào cấu trúc xoắn của amylose.</p>
+      </div>
+      <div style="background:var(--cream); padding:12px 16px; border-radius:var(--radius-sm); border-left:3px solid #8B5CF6;">
+        <strong style="color:var(--ink);">M03 · Nhận biết protein:</strong>
+        <p style="font-size:0.88rem; color:var(--ink-2); margin-top:4px;">Trong môi trường kiềm (NaOH), các liên kết peptide của protein (albumin) tạo phức chất với ion Cu²⁺ (từ dung dịch CuSO₄ 1%), làm dung dịch chuyển sang màu xanh tím.</p>
+      </div>
+      <div style="background:var(--cream); padding:12px 16px; border-radius:var(--radius-sm); border-left:3px solid var(--jade);">
+        <strong style="color:var(--ink);">M04 · Nhận biết lipid (Phép thử nhũ tương):</strong>
+        <p style="font-size:0.88rem; color:var(--ink-2); margin-top:4px;">Hòa tan dầu ăn trong cồn tuyệt đối rồi rót vào nước cất. Cồn hòa vào nước làm độ tan của lipid giảm; lipid không tan trong nước nên phân tán thành vô số giọt siêu nhỏ làm tán xạ ánh sáng, tạo hỗn hợp trắng đục như sữa.</p>
+      </div>
+    </div>
+
+    <div style="display:flex; justify-content:flex-end; margin-top:12px;">
+      <button class="btn btn-primary" id="btnOkAllReports">Đã hiểu</button>
+    </div>
+  </div>
+</div>
+
+<!-- =======================================================================
+     MODAL CHÚC MỪNG HOÀN THÀNH V10 (#completionModal)
+     ======================================================================= -->
+<div class="congrats-overlay hidden" id="completionModal" role="dialog" aria-modal="true" aria-label="Chúc mừng hoàn thành bài học">
+  <div class="congrats-modal">
+    <div class="congrats-icon-wrap">
+      <i class="ti ti-trophy"></i>
+    </div>
+    <h3 class="congrats-title">Chúc Mừng Hoàn Thành!</h3>
+    <p class="congrats-text">
+      Bạn đã hoàn thành xuất sắc toàn bộ 9 màn học của module <strong>Nhận biết lipid bằng phép thử nhũ tương</strong> và hoàn tất 4 thí nghiệm nhận biết phân tử sinh học trong <strong>Bài 6 (Sinh học 10)</strong>!
+    </p>
+    <div class="congrats-actions">
+      <button class="btn btn-secondary" id="btnReviewLesson"><i class="ti ti-rotate-clockwise"></i> Xem lại bài</button>
+      <button class="btn btn-primary" id="btnCloseModal"><i class="ti ti-check"></i> Đóng thông báo</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ==========================================================================
+   LMS STATE CONTRACT & HEIGHT POSTING (ZERO COOKIE / STORAGE)
+   ========================================================================== */
+window.lmsState = {
+  safety_completed: false,
+  procedure_order: [],
+  procedure_completed: false,
+  materials_completed: false,
+  oil_drops: 0,
+  absolute_ethanol_ml: 0,
+  mixture_prepared: false,
+  oil_dissolved_in_ethanol: false,
+  pour_completed: false,
+  initial_appearance: "trong",
+  final_appearance: "trắng đục như sữa",
+  emulsion_observed: false,
+  cleanup_completed: false,
+  report_result: "Sau khi rót dung dịch dầu trong cồn vào nước cất, hỗn hợp chuyển từ trong sang trắng đục như sữa.",
+  report_explanation: "Cồn hòa vào nước làm độ tan của lipid giảm; lipid không tan trong nước nên phân tán thành các giọt rất nhỏ và làm tán xạ ánh sáng.",
+  report_conclusion: "Trong mẫu và quy trình này, dầu ăn được xác định là có lipid.",
+  report_comparison_answer: "Glucose và albumin có thể pha với nước; dầu không tan trong nước nên phải hòa tan trong cồn tuyệt đối trước khi rót vào nước.",
+  questions_completed: false,
+  report_completed: false,
+  lesson_report_completed: false,
+  module_completed: false
+};
+
+function reportHeight() {
+  const h = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+  try {
+    window.parent.postMessage({ type: 'setHeight', height: h }, '*');
+  } catch (err) {
+    // Ignore cross-origin issues
+  }
+}
+window.addEventListener('resize', reportHeight);
+window.addEventListener('load', reportHeight);
+
+/* Navigation between Stages */
+let currentStage = 1;
+
+function goToStage(step) {
+  if (step < 1 || step > 9) return;
+  document.querySelectorAll('.stage').forEach(el => el.classList.add('hidden'));
+  const target = document.getElementById('stage-' + step);
+  if (target) {
+    target.classList.remove('hidden');
+    currentStage = step;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(reportHeight, 60);
+  }
+}
+
+/* ==========================================================================
+   STAGE 1: SAFETY TILES INTERACTION
+   ========================================================================== */
+const safetyGrid = document.getElementById('safetyGrid');
+const btnCheckStage1 = document.getElementById('btnCheckStage1');
+const btnRetryStage1 = document.getElementById('btnRetryStage1');
+const btnNextStage1 = document.getElementById('btnNextStage1');
+const fbStage1 = document.getElementById('fbStage1');
+
+safetyGrid.addEventListener('click', e => {
+  if (window.lmsState.safety_completed) return;
+  const card = e.target.closest('.select-card');
+  if (!card) return;
+  card.classList.toggle('selected');
+  fbStage1.classList.add('hidden');
+});
+
+btnCheckStage1.addEventListener('click', () => {
+  const selectedCards = Array.from(safetyGrid.querySelectorAll('.select-card.selected'));
+  if (selectedCards.length === 0) {
+    fbStage1.className = 'inline-feedback wrong';
+    fbStage1.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Bạn chưa chọn hình nào. Hãy nhấn vào các hình thể hiện hành động an toàn.</span>';
+    fbStage1.classList.remove('hidden');
+    reportHeight();
+    return;
+  }
+
+  const selectedIds = selectedCards.map(c => c.getAttribute('data-id')).sort().join(',');
+  if (selectedIds === '1,3,5') {
+    window.lmsState.safety_completed = true;
+    fbStage1.className = 'inline-feedback correct';
+    fbStage1.innerHTML = '<i class="ti ti-check"></i><span>Chính xác. Khi sử dụng cồn, cần tránh hoàn toàn nguồn lửa, đọc nhãn, bảo vệ mắt và đặt dụng cụ thủy tinh ở vị trí chắc chắn. Tiếp theo, hãy xác định mục đích và thứ tự thí nghiệm.</span>';
+    fbStage1.classList.remove('hidden');
+    btnCheckStage1.classList.add('hidden');
+    btnRetryStage1.classList.add('hidden');
+    btnNextStage1.disabled = false;
+  } else {
+    fbStage1.className = 'inline-feedback wrong';
+    fbStage1.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Có lựa chọn chưa an toàn hoặc còn thiếu. Hãy xem lại những hành động có thể gây cháy, làm đổ vỡ dụng cụ hoặc khiến cồn tiếp xúc trực tiếp với cơ thể.</span>';
+    fbStage1.classList.remove('hidden');
+    btnRetryStage1.classList.remove('hidden');
+  }
+  reportHeight();
+});
+
+btnRetryStage1.addEventListener('click', () => {
+  safetyGrid.querySelectorAll('.select-card').forEach(c => c.classList.remove('selected'));
+  fbStage1.classList.add('hidden');
+  btnRetryStage1.classList.add('hidden');
+  reportHeight();
+});
+
+btnNextStage1.addEventListener('click', () => goToStage(2));
+
+/* ==========================================================================
+   STAGE 2: PROCEDURE DRAG & DROP + TAP TO PLACE
+   ========================================================================== */
+const procedurePool = document.getElementById('procedurePool');
+const procedureSlots = document.getElementById('procedureSlots');
+const btnCheckStage2 = document.getElementById('btnCheckStage2');
+const btnRetryStage2 = document.getElementById('btnRetryStage2');
+const btnNextStage2 = document.getElementById('btnNextStage2');
+const fbStage2 = document.getElementById('fbStage2');
+
+let selectedCardStage2 = null;
+
+// Desktop Drag & Drop
+procedurePool.addEventListener('dragstart', e => {
+  const card = e.target.closest('.proc-card');
+  if (!card) return;
+  e.dataTransfer.setData('text/plain', card.id);
+  card.classList.add('is-dragging');
+});
+procedurePool.addEventListener('dragend', e => {
+  const card = e.target.closest('.proc-card');
+  if (card) card.classList.remove('is-dragging');
+});
+
+procedureSlots.querySelectorAll('.slot-box').forEach(slot => {
+  slot.addEventListener('dragover', e => {
+    e.preventDefault();
+    slot.classList.add('drag-over');
+  });
+  slot.addEventListener('dragleave', () => slot.classList.remove('drag-over'));
+  slot.addEventListener('drop', e => {
+    e.preventDefault();
+    slot.classList.remove('drag-over');
+    const id = e.dataTransfer.getData('text/plain');
+    const card = document.getElementById(id);
+    if (!card) return;
+
+    const content = slot.querySelector('.slot-content');
+    // If there is already a card, return it to pool
+    const existing = content.querySelector('.proc-card');
+    if (existing) procedurePool.appendChild(existing);
+
+    content.innerHTML = '';
+    content.appendChild(card);
+    fbStage2.classList.add('hidden');
+  });
+
+  // Tap-to-Place mobile fallback & Undo
+  slot.addEventListener('click', () => {
+    const content = slot.querySelector('.slot-content');
+    if (selectedCardStage2) {
+      const existing = content.querySelector('.proc-card');
+      if (existing) procedurePool.appendChild(existing);
+      content.innerHTML = '';
+      content.appendChild(selectedCardStage2);
+      selectedCardStage2.classList.remove('selected');
+      selectedCardStage2 = null;
+      fbStage2.classList.add('hidden');
+    } else {
+      // Undo: Click card inside slot to return it to pool
+      const cardInside = content.querySelector('.proc-card');
+      if (cardInside && !window.lmsState.procedure_completed) {
+        procedurePool.appendChild(cardInside);
+        content.innerHTML = '<span class="slot-empty-text">Thả thẻ bước vào đây</span>';
+        fbStage2.classList.add('hidden');
+      }
+    }
+  });
+});
+
+procedurePool.addEventListener('click', e => {
+  const card = e.target.closest('.proc-card');
+  if (!card) return;
+  if (selectedCardStage2 === card) {
+    card.classList.remove('selected');
+    selectedCardStage2 = null;
+  } else {
+    if (selectedCardStage2) selectedCardStage2.classList.remove('selected');
+    selectedCardStage2 = card;
+    card.classList.add('selected');
+  }
+});
+
+btnCheckStage2.addEventListener('click', () => {
+  const slots = Array.from(procedureSlots.querySelectorAll('.slot-box'));
+  const cardsInSlots = slots.map(s => s.querySelector('.proc-card'));
+  if (cardsInSlots.some(c => !c)) {
+    fbStage2.className = 'inline-feedback wrong';
+    fbStage2.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Bạn chưa xếp đủ cả 4 bước. Hãy kéo hoặc chạm đặt đủ 4 thẻ vào 4 ô.</span>';
+    fbStage2.classList.remove('hidden');
+    reportHeight();
+    return;
+  }
+
+  const order = cardsInSlots.map(c => c.getAttribute('data-code')).join('');
+  if (order === 'ABCD') {
+    window.lmsState.procedure_completed = true;
+    window.lmsState.procedure_order = ['A', 'B', 'C', 'D'];
+    fbStage2.className = 'inline-feedback correct';
+    fbStage2.innerHTML = '<i class="ti ti-check"></i><span>Chính xác. Trước hết hòa tan dầu trong cồn tuyệt đối, sau đó rót hỗn hợp vào nước cất và quan sát. Tiếp theo, hãy lựa chọn những thứ cần dùng.</span>';
+    fbStage2.classList.remove('hidden');
+    btnCheckStage2.classList.add('hidden');
+    btnRetryStage2.classList.add('hidden');
+    btnNextStage2.disabled = false;
+  } else {
+    fbStage2.className = 'inline-feedback wrong';
+    fbStage2.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Thứ tự chưa chính xác. Hãy xác định bước tạo dung dịch dầu trong cồn trước, rồi mới chuyển hỗn hợp đó vào nước để quan sát.</span>';
+    fbStage2.classList.remove('hidden');
+    btnRetryStage2.classList.remove('hidden');
+  }
+  reportHeight();
+});
+
+btnRetryStage2.addEventListener('click', () => {
+  procedureSlots.querySelectorAll('.slot-content').forEach((c, idx) => {
+    const card = c.querySelector('.proc-card');
+    if (card) procedurePool.appendChild(card);
+    c.innerHTML = `<span class="slot-empty-text">Thả thẻ bước ${idx + 1} vào đây</span>`;
+  });
+  fbStage2.classList.add('hidden');
+  btnRetryStage2.classList.add('hidden');
+  reportHeight();
+});
+
+document.getElementById('btnPrevStage2').addEventListener('click', () => goToStage(1));
+btnNextStage2.addEventListener('click', () => goToStage(3));
+
+/* ==========================================================================
+   STAGE 3: MATERIALS PICKING
+   ========================================================================== */
+const materialsGrid = document.getElementById('materialsGrid');
+const selectedTrayChips = document.getElementById('selectedTrayChips');
+const btnCheckStage3 = document.getElementById('btnCheckStage3');
+const btnRetryStage3 = document.getElementById('btnRetryStage3');
+const btnNextStage3 = document.getElementById('btnNextStage3');
+const fbStage3 = document.getElementById('fbStage3');
+
+function updateTrayChips() {
+  selectedTrayChips.innerHTML = '';
+  const selectedCards = Array.from(materialsGrid.querySelectorAll('.mat-card.selected'));
+  if (selectedCards.length === 0) {
+    selectedTrayChips.innerHTML = '<span class="slot-empty-text">Chưa chọn vật tư nào</span>';
+    return;
+  }
+  selectedCards.forEach(c => {
+    const name = c.querySelector('.mat-card-name').textContent;
+    const matKey = c.getAttribute('data-mat');
+    const chip = document.createElement('div');
+    chip.className = 'mat-chip';
+    chip.innerHTML = `<span>${name}</span><i class="ti ti-x"></i>`;
+    chip.title = 'Nhấn để bỏ chọn';
+    chip.addEventListener('click', () => {
+      if (window.lmsState.materials_completed) return;
+      c.classList.remove('selected');
+      updateTrayChips();
+      fbStage3.classList.add('hidden');
+    });
+    selectedTrayChips.appendChild(chip);
+  });
+}
+
+materialsGrid.addEventListener('click', e => {
+  if (window.lmsState.materials_completed) return;
+  const card = e.target.closest('.mat-card');
+  if (!card) return;
+  card.classList.toggle('selected');
+  updateTrayChips();
+  fbStage3.classList.add('hidden');
+});
+
+btnCheckStage3.addEventListener('click', () => {
+  const selectedCards = Array.from(materialsGrid.querySelectorAll('.mat-card.selected'));
+  if (selectedCards.length === 0) {
+    fbStage3.className = 'inline-feedback wrong';
+    fbStage3.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Bạn chưa chọn vật tư nào. Hãy đối chiếu các bước quy trình để chuẩn bị đúng.</span>';
+    fbStage3.classList.remove('hidden');
+    reportHeight();
+    return;
+  }
+
+  const selectedMats = selectedCards.map(c => c.getAttribute('data-mat')).sort().join(',');
+  // Required: oil, tube1, tube2, rack, pipette, cylinder, ethanol, water
+  const correctSet = 'cylinder,ethanol,oil,pipette,rack,tube1,tube2,water';
+
+  if (selectedMats === correctSet) {
+    window.lmsState.materials_completed = true;
+    fbStage3.className = 'inline-feedback correct';
+    fbStage3.innerHTML = '<i class="ti ti-check"></i><span>Chính xác. Thí nghiệm cần dầu ăn, hai ống nghiệm, dụng cụ lấy và đong dung dịch, cồn tuyệt đối và nước cất. Không sử dụng nguồn lửa. Tiếp theo, hãy chuẩn bị dung dịch dầu trong cồn.</span>';
+    fbStage3.classList.remove('hidden');
+    btnCheckStage3.classList.add('hidden');
+    btnRetryStage3.classList.add('hidden');
+    btnNextStage3.disabled = false;
+  } else {
+    fbStage3.className = 'inline-feedback wrong';
+    fbStage3.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Có vật chưa phù hợp hoặc còn thiếu. Hãy đối chiếu từng bước của quy trình và loại những thuốc thử thuộc các thí nghiệm nhận biết phân tử khác.</span>';
+    fbStage3.classList.remove('hidden');
+    btnRetryStage3.classList.remove('hidden');
+  }
+  reportHeight();
+});
+
+btnRetryStage3.addEventListener('click', () => {
+  materialsGrid.querySelectorAll('.mat-card').forEach(c => c.classList.remove('selected'));
+  updateTrayChips();
+  fbStage3.classList.add('hidden');
+  btnRetryStage3.classList.add('hidden');
+  reportHeight();
+});
+
+document.getElementById('btnPrevStage3').addEventListener('click', () => goToStage(2));
+btnNextStage3.addEventListener('click', () => goToStage(4));
+
+/* ==========================================================================
+   STAGE 4: DOSING OIL & ETHANOL INTO TUBE 1
+   ========================================================================== */
+const countOil = document.getElementById('countOil');
+const countEthanol = document.getElementById('countEthanol');
+const metricOil = document.getElementById('metricOil');
+const metricEthanol = document.getElementById('metricEthanol');
+const btnAddDrop = document.getElementById('btnAddDrop');
+const btnAddEthanol = document.getElementById('btnAddEthanol');
+const st4Drop1 = document.getElementById('st4Drop1');
+const st4Drop2 = document.getElementById('st4Drop2');
+const st4EthanolLiquid = document.getElementById('st4EthanolLiquid');
+const st4EthanolMeniscus = document.getElementById('st4EthanolMeniscus');
+const btnResetStage4 = document.getElementById('btnResetStage4');
+const btnFinishStage4 = document.getElementById('btnFinishStage4');
+const btnNextStage4 = document.getElementById('btnNextStage4');
+const fbStage4 = document.getElementById('fbStage4');
+
+let oilCount = 0;
+let ethanolDosed = false;
+
+function checkStage4Ready() {
+  if (oilCount === 2 && ethanolDosed) {
+    btnFinishStage4.disabled = false;
+  } else {
+    btnFinishStage4.disabled = true;
+  }
+}
+
+btnAddDrop.addEventListener('click', () => {
+  if (window.lmsState.mixture_prepared) return;
+  oilCount++;
+  if (oilCount === 1) {
+    countOil.textContent = '1';
+    st4Drop1.style.opacity = '1';
+    metricOil.className = 'metric-pill';
+  } else if (oilCount === 2) {
+    countOil.textContent = '2';
+    st4Drop2.style.opacity = '1';
+    metricOil.className = 'metric-pill target-ok';
+    btnAddDrop.disabled = true;
+  } else {
+    countOil.textContent = oilCount;
+    metricOil.className = 'metric-pill error';
+    fbStage4.className = 'inline-feedback wrong';
+    fbStage4.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Bạn đã lấy quá 2 giọt dầu. Thao tác định lượng đòi hỏi sự chính xác. Hãy nhấn ĐẶT LẠI MÀN 4 để làm lại từ đầu.</span>';
+    fbStage4.classList.remove('hidden');
+    btnResetStage4.classList.remove('hidden');
+    btnAddDrop.disabled = true;
+    btnAddEthanol.disabled = true;
+    btnFinishStage4.disabled = true;
+    reportHeight();
+    return;
+  }
+  checkStage4Ready();
+});
+
+btnAddEthanol.addEventListener('click', () => {
+  if (window.lmsState.mixture_prepared) return;
+  if (!ethanolDosed) {
+    ethanolDosed = true;
+    countEthanol.textContent = '5';
+    metricEthanol.className = 'metric-pill target-ok';
+    st4EthanolLiquid.style.opacity = '1';
+    st4EthanolMeniscus.style.opacity = '1';
+    btnAddEthanol.disabled = true;
+    checkStage4Ready();
+  }
+});
+
+btnResetStage4.addEventListener('click', () => {
+  oilCount = 0;
+  ethanolDosed = false;
+  countOil.textContent = '0';
+  countEthanol.textContent = '0';
+  metricOil.className = 'metric-pill';
+  metricEthanol.className = 'metric-pill';
+  st4Drop1.style.opacity = '0';
+  st4Drop2.style.opacity = '0';
+  st4EthanolLiquid.style.opacity = '0';
+  st4EthanolMeniscus.style.opacity = '0';
+  btnAddDrop.disabled = false;
+  btnAddEthanol.disabled = false;
+  btnFinishStage4.disabled = true;
+  btnResetStage4.classList.add('hidden');
+  fbStage4.classList.add('hidden');
+  reportHeight();
+});
+
+btnFinishStage4.addEventListener('click', () => {
+  if (oilCount === 2 && ethanolDosed) {
+    window.lmsState.oil_drops = 2;
+    window.lmsState.absolute_ethanol_ml = 5;
+    window.lmsState.mixture_prepared = true;
+    fbStage4.className = 'inline-feedback correct';
+    fbStage4.innerHTML = '<i class="ti ti-check"></i><span>Bạn đã chuẩn bị đúng lượng dầu và cồn tuyệt đối. Tiếp theo, hãy lắc mạnh để dầu tan hết.</span>';
+    fbStage4.classList.remove('hidden');
+    btnFinishStage4.classList.add('hidden');
+    btnNextStage4.classList.remove('hidden');
+    reportHeight();
+  }
+});
+
+document.getElementById('btnPrevStage4').addEventListener('click', () => goToStage(3));
+btnNextStage4.addEventListener('click', () => goToStage(5));
+
+/* ==========================================================================
+   STAGE 5: SHAKE TO DISSOLVE OIL IN ETHANOL
+   ========================================================================== */
+const rigStage5 = document.getElementById('rigStage5');
+const btnActionShake = document.getElementById('btnActionShake');
+const btnFinishStage5 = document.getElementById('btnFinishStage5');
+const btnNextStage5 = document.getElementById('btnNextStage5');
+const fbStage5 = document.getElementById('fbStage5');
+const st5OilParticles = document.getElementById('st5OilParticles');
+const lensOilGroup = document.getElementById('lensOilGroup');
+const lensTextSt5 = document.getElementById('lensTextSt5');
+const st5DissolveStatus = document.getElementById('st5DissolveStatus');
+
+let isShaking = false;
+
+btnActionShake.addEventListener('click', () => {
+  if (isShaking || window.lmsState.oil_dissolved_in_ethanol) return;
+  isShaking = true;
+  btnActionShake.disabled = true;
+  rigStage5.classList.add('shaking');
+  st5DissolveStatus.textContent = 'Đang lắc mạnh ống nghiệm...';
+  st5DissolveStatus.style.color = 'var(--accent-deep)';
+
+  // Animate oil dissolving over 2.5s
+  setTimeout(() => {
+    st5OilParticles.style.transition = 'opacity 1.5s ease';
+    lensOilGroup.style.transition = 'opacity 1.5s ease, transform 1.5s ease';
+    st5OilParticles.style.opacity = '0.3';
+    lensOilGroup.style.opacity = '0.3';
+    lensOilGroup.style.transform = 'scale(0.5)';
+  }, 800);
+
+  setTimeout(() => {
+    st5OilParticles.style.opacity = '0';
+    lensOilGroup.style.opacity = '0';
+    rigStage5.classList.remove('shaking');
+    isShaking = false;
+    lensTextSt5.textContent = 'Đã tan hoàn toàn';
+    lensTextSt5.setAttribute('fill', 'var(--jade-deep)');
+    st5DissolveStatus.textContent = 'Trạng thái: Dầu đã tan hoàn toàn trong cồn (đồng nhất, trong suốt)';
+    st5DissolveStatus.style.color = 'var(--jade-deep)';
+    btnFinishStage5.disabled = false;
+    reportHeight();
+  }, 2600);
+});
+
+btnFinishStage5.addEventListener('click', () => {
+  window.lmsState.oil_dissolved_in_ethanol = true;
+  fbStage5.className = 'inline-feedback correct';
+  fbStage5.innerHTML = '<i class="ti ti-check"></i><span>Không còn thấy dầu tách riêng trong ống nghiệm. Dung dịch đã sẵn sàng để rót vào nước cất.</span>';
+  fbStage5.classList.remove('hidden');
+  btnFinishStage5.classList.add('hidden');
+  btnActionShake.classList.add('hidden');
+  btnNextStage5.classList.remove('hidden');
+  reportHeight();
+});
+
+document.getElementById('btnPrevStage5').addEventListener('click', () => goToStage(4));
+btnNextStage5.addEventListener('click', () => goToStage(6));
+
+/* ==========================================================================
+   STAGE 6: POUR INTO WATER & EMULSION FORMATION
+   ========================================================================== */
+const btnActionPour = document.getElementById('btnActionPour');
+const btnFinishStage6 = document.getElementById('btnFinishStage6');
+const btnNextStage6 = document.getElementById('btnNextStage6');
+const fbStage6 = document.getElementById('fbStage6');
+const tube1ContainerSt6 = document.getElementById('tube1ContainerSt6');
+const pourStreamSvg = document.getElementById('pourStreamSvg');
+const st6Liquid1 = document.getElementById('st6Liquid1');
+const st6Meniscus1 = document.getElementById('st6Meniscus1');
+const st6Liquid2 = document.getElementById('st6Liquid2');
+const st6Meniscus2 = document.getElementById('st6Meniscus2');
+const lipidMicellesGroup = document.getElementById('lipidMicellesGroup');
+const lensTextSt6 = document.getElementById('lensTextSt6');
+const labelTube2St6 = document.getElementById('labelTube2St6');
+const obsTube1After = document.getElementById('obsTube1After');
+const obsTube2After = document.getElementById('obsTube2After');
+const obsPhenomAfter = document.getElementById('obsPhenomAfter');
+
+btnActionPour.addEventListener('click', () => {
+  if (window.lmsState.pour_completed) return;
+  btnActionPour.disabled = true;
+
+  // Step 1: Tilt Tube 1
+  tube1ContainerSt6.style.transform = 'translate(60px, -20px) rotate(45deg)';
+  
+  setTimeout(() => {
+    pourStreamSvg.style.opacity = '1';
+    // Empty Tube 1
+    st6Liquid1.style.opacity = '0';
+    st6Meniscus1.style.opacity = '0';
+
+    // Fill Tube 2 & turn milky white emulsion
+    st6Liquid2.setAttribute('d', 'M 30 90 L 30 200 C 30 216 60 216 60 200 L 60 90 Z');
+    st6Liquid2.setAttribute('fill', '#FFFFFF');
+    st6Liquid2.setAttribute('stroke', '#E2E8F0');
+    st6Liquid2.setAttribute('stroke-width', '1.5');
+    st6Meniscus2.setAttribute('cy', '90');
+    st6Meniscus2.setAttribute('fill', '#F8FAFC');
+
+    // Microscope lens: lipid dispersion scattering
+    lipidMicellesGroup.style.opacity = '1';
+    lensTextSt6.textContent = 'Nhũ tương tán xạ ánh sáng';
+    lensTextSt6.setAttribute('fill', '#475569');
+  }, 600);
+
+  setTimeout(() => {
+    pourStreamSvg.style.opacity = '0';
+    tube1ContainerSt6.style.transform = 'translate(0, 0) rotate(0deg)';
+    labelTube2St6.textContent = 'ỐNG 2 (Nhũ tương trắng đục)';
+    labelTube2St6.style.borderColor = 'var(--jade)';
+    labelTube2St6.style.color = 'var(--jade-text)';
+
+    // Update observation table
+    obsTube1After.textContent = 'Rỗng (đã rót hết)';
+    obsTube2After.textContent = 'Xuất hiện hỗn hợp trắng đục như sữa';
+    obsPhenomAfter.textContent = 'Lipid giảm độ tan trong nước, phân tán thành giọt li ti tán xạ ánh sáng';
+    obsTube2After.style.fontWeight = '700';
+    obsTube2After.style.color = 'var(--jade-text)';
+
+    btnFinishStage6.disabled = false;
+    reportHeight();
+  }, 2000);
+});
+
+btnFinishStage6.addEventListener('click', () => {
+  window.lmsState.pour_completed = true;
+  window.lmsState.emulsion_observed = true;
+  fbStage6.className = 'inline-feedback correct';
+  fbStage6.innerHTML = '<i class="ti ti-check"></i><span>Hỗn hợp trắng đục như sữa đã xuất hiện. Trong mẫu và quy trình này, đây là kết quả dùng để nhận biết lipid. Tiếp theo, hãy thu dọn khu vực thực hành.</span>';
+  fbStage6.classList.remove('hidden');
+  btnFinishStage6.classList.add('hidden');
+  btnActionPour.classList.add('hidden');
+  btnNextStage6.classList.remove('hidden');
+  reportHeight();
+});
+
+document.getElementById('btnPrevStage6').addEventListener('click', () => goToStage(5));
+btnNextStage6.addEventListener('click', () => goToStage(7));
+
+/* ==========================================================================
+   STAGE 7: CLEANUP TILES (8 TILES)
+   ========================================================================== */
+const cleanupGrid = document.getElementById('cleanupGrid');
+const btnCheckStage7 = document.getElementById('btnCheckStage7');
+const btnRetryStage7 = document.getElementById('btnRetryStage7');
+const btnNextStage7 = document.getElementById('btnNextStage7');
+const fbStage7 = document.getElementById('fbStage7');
+
+cleanupGrid.addEventListener('click', e => {
+  if (window.lmsState.cleanup_completed) return;
+  const card = e.target.closest('.select-card');
+  if (!card) return;
+  card.classList.toggle('selected');
+  fbStage7.classList.add('hidden');
+});
+
+btnCheckStage7.addEventListener('click', () => {
+  const selectedCards = Array.from(cleanupGrid.querySelectorAll('.select-card.selected'));
+  if (selectedCards.length === 0) {
+    fbStage7.className = 'inline-feedback wrong';
+    fbStage7.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Bạn chưa chọn hành động nào. Hãy chọn các hành vi thu dọn an toàn theo quy định.</span>';
+    fbStage7.classList.remove('hidden');
+    reportHeight();
+    return;
+  }
+
+  const selectedIds = selectedCards.map(c => c.getAttribute('data-id')).sort().join(',');
+  // Correct 6 actions: 1, 3, 5, 6, 7, 8 (Wrong: 2 - pour in sink, 4 - uncap bottle)
+  if (selectedIds === '1,3,5,6,7,8') {
+    window.lmsState.cleanup_completed = true;
+    fbStage7.className = 'inline-feedback correct';
+    fbStage7.innerHTML = '<i class="ti ti-check"></i><span>Chính xác. Hỗn hợp phải được xử lí theo hướng dẫn; lọ cồn cần đóng kín, dụng cụ và khu vực làm việc phải được vệ sinh. Tiếp theo, hãy dùng kết quả quan sát để hoàn thành dữ liệu báo cáo.</span>';
+    fbStage7.classList.remove('hidden');
+    btnCheckStage7.classList.add('hidden');
+    btnRetryStage7.classList.add('hidden');
+    btnNextStage7.disabled = false;
+  } else {
+    fbStage7.className = 'inline-feedback wrong';
+    fbStage7.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Có hành động chưa phù hợp hoặc còn thiếu. Hãy chú ý cách xử lí hỗn hợp, trạng thái lọ cồn, vị trí dụng cụ và vệ sinh cá nhân.</span>';
+    fbStage7.classList.remove('hidden');
+    btnRetryStage7.classList.remove('hidden');
+  }
+  reportHeight();
+});
+
+btnRetryStage7.addEventListener('click', () => {
+  cleanupGrid.querySelectorAll('.select-card').forEach(c => c.classList.remove('selected'));
+  fbStage7.classList.add('hidden');
+  btnRetryStage7.classList.add('hidden');
+  reportHeight();
+});
+
+document.getElementById('btnPrevStage7').addEventListener('click', () => goToStage(6));
+btnNextStage7.addEventListener('click', () => goToStage(8));
+
+/* ==========================================================================
+   STAGE 8: QA & REPORT DATA ACCUMULATION (4 QUESTIONS)
+   ========================================================================== */
+const cardQ1 = document.getElementById('cardQ1');
+const cardQ2 = document.getElementById('cardQ2');
+const cardQ3 = document.getElementById('cardQ3');
+const cardQ4 = document.getElementById('cardQ4');
+const fbQ1 = document.getElementById('fbQ1');
+const fbQ2 = document.getElementById('fbQ2');
+const fbQ3 = document.getElementById('fbQ3');
+const fbQ4 = document.getElementById('fbQ4');
+const btnAnsQ1 = document.getElementById('btnAnsQ1');
+const btnAnsQ2 = document.getElementById('btnAnsQ2');
+const btnAnsQ3 = document.getElementById('btnAnsQ3');
+const btnAnsQ4 = document.getElementById('btnAnsQ4');
+const btnNextStage8 = document.getElementById('btnNextStage8');
+const qaSynthesisBox = document.getElementById('qaSynthesisBox');
+
+const boxReportResult = document.getElementById('boxReportResult');
+const boxReportExplanation = document.getElementById('boxReportExplanation');
+const boxReportConclusion = document.getElementById('boxReportConclusion');
+const boxReportComparison = document.getElementById('boxReportComparison');
+
+function setupRadioOptions(cardEl) {
+  cardEl.querySelectorAll('.qa-opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      if (opt.classList.contains('locked')) return;
+      cardEl.querySelectorAll('.qa-opt').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+    });
+  });
+}
+[cardQ1, cardQ2, cardQ3, cardQ4].forEach(setupRadioOptions);
+
+// Q1
+btnAnsQ1.addEventListener('click', () => {
+  const sel = cardQ1.querySelector('.qa-opt.selected');
+  if (!sel) return;
+  if (sel.getAttribute('data-ans') === 'A') {
+    boxReportResult.textContent = window.lmsState.report_result;
+    boxReportResult.classList.add('filled');
+    fbQ1.className = 'inline-feedback correct';
+    fbQ1.innerHTML = '<i class="ti ti-check"></i><span>Chính xác. Hỗn hợp chuyển từ trong sang trắng đục như sữa.</span>';
+    fbQ1.classList.remove('hidden');
+    btnAnsQ1.classList.add('hidden');
+    cardQ1.querySelectorAll('.qa-opt').forEach(o => o.classList.add('locked'));
+    cardQ2.classList.remove('hidden');
+  } else {
+    fbQ1.className = 'inline-feedback wrong';
+    fbQ1.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Hãy quan sát lại độ trong và màu ở trạng thái trước và sau khi rót.</span>';
+    fbQ1.classList.remove('hidden');
+  }
+  reportHeight();
+});
+
+// Q2
+btnAnsQ2.addEventListener('click', () => {
+  const sel = cardQ2.querySelector('.qa-opt.selected');
+  if (!sel) return;
+  if (sel.getAttribute('data-ans') === 'A') {
+    boxReportExplanation.textContent = window.lmsState.report_explanation;
+    boxReportExplanation.classList.add('filled');
+    fbQ2.className = 'inline-feedback correct';
+    fbQ2.innerHTML = '<i class="ti ti-check"></i><span>Chính xác. Khi cồn hòa vào nước, độ tan của lipid giảm; các giọt lipid rất nhỏ phân tán trong nước làm tán xạ ánh sáng.</span>';
+    fbQ2.classList.remove('hidden');
+    btnAnsQ2.classList.add('hidden');
+    cardQ2.querySelectorAll('.qa-opt').forEach(o => o.classList.add('locked'));
+    cardQ3.classList.remove('hidden');
+  } else {
+    fbQ2.className = 'inline-feedback wrong';
+    fbQ2.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Hãy liên hệ tính tan của lipid trong cồn và trong nước; hiện tượng này không phải phản ứng tạo kết tủa.</span>';
+    fbQ2.classList.remove('hidden');
+  }
+  reportHeight();
+});
+
+// Q3
+btnAnsQ3.addEventListener('click', () => {
+  const sel = cardQ3.querySelector('.qa-opt.selected');
+  if (!sel) return;
+  if (sel.getAttribute('data-ans') === 'A') {
+    boxReportConclusion.textContent = window.lmsState.report_conclusion;
+    boxReportConclusion.classList.add('filled');
+    fbQ3.className = 'inline-feedback correct';
+    fbQ3.innerHTML = '<i class="ti ti-check"></i><span>Chính xác. Trong mẫu và quy trình này, hiện tượng quan sát được cho phép xác định dầu ăn có lipid.</span>';
+    fbQ3.classList.remove('hidden');
+    btnAnsQ3.classList.add('hidden');
+    cardQ3.querySelectorAll('.qa-opt').forEach(o => o.classList.add('locked'));
+    cardQ4.classList.remove('hidden');
+  } else {
+    fbQ3.className = 'inline-feedback wrong';
+    fbQ3.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Hãy liên hệ hiện tượng trắng đục với mục đích của phép thử nhũ tương.</span>';
+    fbQ3.classList.remove('hidden');
+  }
+  reportHeight();
+});
+
+// Q4
+btnAnsQ4.addEventListener('click', () => {
+  const sel = cardQ4.querySelector('.qa-opt.selected');
+  if (!sel) return;
+  if (sel.getAttribute('data-ans') === 'A') {
+    boxReportComparison.textContent = window.lmsState.report_comparison_answer;
+    boxReportComparison.classList.add('filled');
+    fbQ4.className = 'inline-feedback correct';
+    fbQ4.innerHTML = '<i class="ti ti-check"></i><span>Chính xác. Glucose và albumin có thể pha với nước; dầu không tan trong nước nên cần hòa tan trong cồn tuyệt đối trước.</span>';
+    fbQ4.classList.remove('hidden');
+    btnAnsQ4.classList.add('hidden');
+    cardQ4.querySelectorAll('.qa-opt').forEach(o => o.classList.add('locked'));
+    qaSynthesisBox.classList.remove('hidden');
+    window.lmsState.questions_completed = true;
+    btnNextStage8.disabled = false;
+  } else {
+    fbQ4.className = 'inline-feedback wrong';
+    fbQ4.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Hãy so sánh khả năng hòa tan của glucose, albumin và dầu trong nước trước khi chọn.</span>';
+    fbQ4.classList.remove('hidden');
+  }
+  reportHeight();
+});
+
+document.getElementById('btnPrevStage8').addEventListener('click', () => goToStage(7));
+btnNextStage8.addEventListener('click', () => goToStage(9));
+
+/* ==========================================================================
+   STAGE 9: REPORT STRUCTURE & LESSON 6 CONCLUSION
+   ========================================================================== */
+const structureGrid = document.getElementById('structureGrid');
+const btnCheckStage9 = document.getElementById('btnCheckStage9');
+const btnRetryStage9 = document.getElementById('btnRetryStage9');
+const btnViewFinalReport = document.getElementById('btnViewFinalReport');
+const fbStage9 = document.getElementById('fbStage9');
+const part1Report = document.getElementById('part1Report');
+const part2Report = document.getElementById('part2Report');
+
+structureGrid.addEventListener('click', e => {
+  const card = e.target.closest('.structure-card');
+  if (!card) return;
+  card.classList.toggle('selected');
+  fbStage9.classList.add('hidden');
+});
+
+btnCheckStage9.addEventListener('click', () => {
+  const selectedCards = Array.from(structureGrid.querySelectorAll('.structure-card.selected'));
+  if (selectedCards.length === 0) {
+    fbStage9.className = 'inline-feedback wrong';
+    fbStage9.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Bạn chưa chọn thành phần nào. Hãy chọn các mục cần có trong một báo cáo thực hành khoa học.</span>';
+    fbStage9.classList.remove('hidden');
+    reportHeight();
+    return;
+  }
+
+  const selectedKeys = selectedCards.map(c => c.getAttribute('data-key')).sort().join(',');
+  const correctKeys = 'conclusion,procedure,purpose,questions,result';
+
+  if (selectedKeys === correctKeys) {
+    fbStage9.className = 'inline-feedback correct';
+    fbStage9.innerHTML = '<i class="ti ti-check"></i><span>Chính xác. Báo cáo đã có đủ các phần theo yêu cầu. Nhấn XEM BÁO CÁO để xem sản phẩm hoàn chỉnh.</span>';
+    fbStage9.classList.remove('hidden');
+    btnCheckStage9.classList.add('hidden');
+    btnRetryStage9.classList.add('hidden');
+    btnViewFinalReport.classList.remove('hidden');
+  } else {
+    fbStage9.className = 'inline-feedback wrong';
+    fbStage9.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Danh sách chưa đúng. Hãy chọn các phần phản ánh mục đích, quá trình thực hiện, dữ liệu quan sát, giải thích, kết luận và câu hỏi thu hoạch.</span>';
+    fbStage9.classList.remove('hidden');
+    btnRetryStage9.classList.remove('hidden');
+  }
+  reportHeight();
+});
+
+btnRetryStage9.addEventListener('click', () => {
+  structureGrid.querySelectorAll('.structure-card').forEach(c => c.classList.remove('selected'));
+  fbStage9.classList.add('hidden');
+  btnRetryStage9.classList.add('hidden');
+  reportHeight();
+});
+
+btnViewFinalReport.addEventListener('click', () => {
+  part1Report.classList.add('hidden');
+  part2Report.classList.remove('hidden');
+  window.lmsState.report_completed = true;
+  reportHeight();
+});
+
+document.getElementById('btnBackToStructure').addEventListener('click', () => {
+  part2Report.classList.add('hidden');
+  part1Report.classList.remove('hidden');
+  reportHeight();
+});
+
+// All Reports Modal (Lesson 6)
+const allReportsModal = document.getElementById('allReportsModal');
+document.getElementById('btnViewAllReports').addEventListener('click', () => {
+  allReportsModal.classList.remove('hidden');
+});
+document.getElementById('btnCloseAllReportsModal').addEventListener('click', () => {
+  allReportsModal.classList.add('hidden');
+});
+document.getElementById('btnOkAllReports').addEventListener('click', () => {
+  allReportsModal.classList.add('hidden');
+});
+
+// Finish Lesson 6 & Launch Confetti
+const completionModal = document.getElementById('completionModal');
+document.getElementById('btnFinishLesson6').addEventListener('click', () => {
+  window.lmsState.lesson_report_completed = true;
+  window.lmsState.module_completed = true;
+  completionModal.classList.remove('hidden');
+  launchConfetti();
+});
+
+document.getElementById('btnCloseModal').addEventListener('click', () => {
+  completionModal.classList.add('hidden');
+});
+document.getElementById('btnReviewLesson').addEventListener('click', () => {
+  completionModal.classList.add('hidden');
+  goToStage(1);
+});
+document.getElementById('btnPrevStage9').addEventListener('click', () => goToStage(8));
+
+/* ==========================================================================
+   CONFETTI FIREWORKS CANVAS (ZERO DEPENDENCY)
+   ========================================================================== */
+function launchConfetti() {
+  const canvas = document.getElementById('confettiCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const pieces = [];
+  const colors = ['#3CA57A', '#2D8B6F', '#E8A24A', '#F59E0B', '#38BDF8', '#7DD3FC', '#F43F5E'];
+  for (let i = 0; i < 90; i++) {
+    pieces.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height * 0.4,
+      w: Math.random() * 8 + 4,
+      h: Math.random() * 8 + 4,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      vx: (Math.random() - 0.5) * 4,
+      vy: Math.random() * 3 + 2,
+      rot: Math.random() * 360,
+      vrot: (Math.random() - 0.5) * 6
+    });
+  }
+
+  let animationFrame;
+  let start = performance.now();
+
+  function render(time) {
+    const elapsed = time - start;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    pieces.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.rot += p.vrot;
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate((p.rot * Math.PI) / 180);
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+      ctx.restore();
+    });
+
+    if (elapsed < 3500) {
+      animationFrame = requestAnimationFrame(render);
+    } else {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      cancelAnimationFrame(animationFrame);
+    }
+  }
+  animationFrame = requestAnimationFrame(render);
+}
+</script>
+</body>
+</html>
