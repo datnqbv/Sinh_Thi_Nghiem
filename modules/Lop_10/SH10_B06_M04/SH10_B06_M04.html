@@ -93,6 +93,7 @@ body {
   padding: 16px;
   display: flex;
   justify-content: center;
+  overflow-x: hidden;
 }
 
 /* Modal Hide Override (Anti-Auto-Popup Rule) */
@@ -253,6 +254,14 @@ body {
   margin-top: 10px;
   padding-top: 18px;
   border-top: 1px solid var(--paper-line);
+  flex-wrap: wrap;
+}
+
+@media (min-width: 641px) {
+  .stage-actions > button[id^="btnPrev"],
+  .stage-actions > #btnBackToStructure {
+    margin-right: auto;
+  }
 }
 
 .btn {
@@ -260,7 +269,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 22px;
+  padding: 10px 20px;
   border-radius: var(--radius-sm);
   font-family: inherit;
   font-size: 0.95rem;
@@ -269,6 +278,8 @@ body {
   transition: all 0.2s ease;
   text-decoration: none;
   border: none;
+  white-space: nowrap;
+  box-sizing: border-box;
 }
 
 .btn-primary {
@@ -1204,6 +1215,166 @@ body {
   inset: 0;
   pointer-events: none;
   z-index: 10000;
+}
+
+/* ==========================================================================
+   RESPONSIVE MOBILE DESIGN SYSTEM (< 640px & < 420px)
+   ========================================================================== */
+@media (max-width: 640px) {
+  body {
+    padding: 8px 6px;
+  }
+  .app {
+    gap: 14px;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  .stage {
+    padding: 18px 12px;
+    gap: 16px;
+    border-radius: var(--radius);
+  }
+  .stage-head {
+    gap: 8px;
+    padding-bottom: 12px;
+  }
+  .stage-title {
+    font-size: 1.2rem;
+    line-height: 1.35;
+  }
+  .stage-step-indicator {
+    font-size: 0.78rem;
+    padding: 4px 10px;
+  }
+  .lead-text {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+  .guide-box {
+    padding: 10px 12px;
+    font-size: 0.88rem;
+    gap: 8px;
+  }
+  .guide-box i {
+    font-size: 1.15rem;
+  }
+
+  /* Stage Actions Mobile Layout: perfectly distributed, zero overflow, single line text */
+  .stage-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: stretch;
+    padding-top: 14px;
+    margin-top: 8px;
+  }
+  .stage-actions > button[id^="btnPrev"],
+  .stage-actions > #btnBackToStructure {
+    margin-right: 0;
+  }
+  .stage-actions .btn {
+    flex: 1 1 auto;
+    min-width: fit-content;
+    padding: 9px 8px;
+    font-size: 0.82rem;
+    gap: 5px;
+    white-space: nowrap;
+    justify-content: center;
+    text-align: center;
+  }
+  .stage-actions .btn i {
+    font-size: 0.95rem;
+  }
+
+  /* Procedure slots in Stage 2 */
+  .slot-box {
+    min-height: 90px;
+    padding: 10px;
+  }
+  .proc-card {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+  .proc-card-text {
+    font-size: 0.85rem;
+  }
+
+  /* Workbench in Stages 4, 5, 6 */
+  .sim-arena {
+    padding: 14px 10px;
+    gap: 14px;
+  }
+  .sim-status-bar {
+    padding: 8px 12px;
+    font-size: 0.82rem;
+  }
+  .sim-dosing-metrics {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .metric-pill {
+    padding: 4px 10px;
+    font-size: 0.78rem;
+  }
+  .sim-workbench {
+    padding: 16px 8px;
+    min-height: 280px;
+    gap: 14px;
+  }
+
+  /* Observation Table scroll on narrow screen */
+  .observation-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+  }
+  .observation-table th, .observation-table td {
+    padding: 8px 10px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  /* Report sheet in Stage 9 */
+  .full-report-sheet {
+    padding: 18px 14px;
+    gap: 16px;
+  }
+  .report-main-heading {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 420px) {
+  body {
+    padding: 6px 4px;
+  }
+  .stage {
+    padding: 14px 10px;
+  }
+  .stage-actions .btn {
+    padding: 8px 6px;
+    font-size: 0.78rem;
+    gap: 4px;
+  }
+  .stage-actions .btn i {
+    font-size: 0.9rem;
+  }
+  .materials-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+  .mat-card {
+    padding: 6px 4px;
+  }
+  .mat-card-svg-wrap {
+    width: 60px;
+    height: 70px;
+  }
+  .mat-card-name {
+    font-size: 0.72rem;
+  }
 }
 </style>
 </head>
