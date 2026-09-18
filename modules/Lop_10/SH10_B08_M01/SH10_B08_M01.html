@@ -224,41 +224,43 @@ button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent
 }
 
 /* INLINE SVG RESPONSIVE */
-/* INTERACTIVE SVG HOVER & ANIMATIONS */
-#s02_plantCellWall, #s02_plantVacuole, #s02_plantChloroplasts,
-#s02_animalCentrosome, #s02_animalLysosomes, #s02_plantMito,
-#s02_animalMito, #s02_plantGolgi, #s02_animalGolgi,
-#s02_plantER, #s02_animalER, #s02_plantNucleus, #s02_animalNucleus {
-  cursor: pointer;
-  transition: all 0.2s ease;
+
+/* HIGH VISIBILITY ORGANELLE CHIP ACTIVE & SVG HIGHLIGHT */
+.organelle-chip {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
 }
-#s02_plantCellWall:hover, #s02_plantVacuole:hover, #s02_plantChloroplasts:hover,
-#s02_animalCentrosome:hover, #s02_animalLysosomes:hover, #s02_plantMito:hover,
-#s02_animalMito:hover, #s02_plantGolgi:hover, #s02_animalGolgi:hover,
-#s02_plantER:hover, #s02_animalER:hover, #s02_plantNucleus:hover, #s02_animalNucleus:hover {
-  filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.7));
-  opacity: 0.9;
+.organelle-chip.active {
+  background: #D1FAE5 !important;
+  border-color: #059669 !important;
+  color: #065F46 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 0 0 2px #059669, 0 4px 12px rgba(5, 150, 105, 0.35) !important;
+  transform: translateY(-2px);
+}
+.organelle-chip.active i {
+  color: #059669 !important;
+  transform: scale(1.2);
 }
 
-@keyframes pulseGlow {
-  0% { transform: scale(1); filter: drop-shadow(0 0 4px #FDE047); }
-  50% { transform: scale(1.08); filter: drop-shadow(0 0 14px #F59E0B); }
-  100% { transform: scale(1); filter: drop-shadow(0 0 4px #FDE047); }
+.svg-organelle-highlight {
+  filter: drop-shadow(0 0 12px #10B981) drop-shadow(0 0 6px #047857) !important;
+  opacity: 1 !important;
+  animation: organelleGlowAnim 1.2s infinite alternate ease-in-out;
 }
-.gene-active {
-  animation: pulseGlow 0.8s infinite ease-in-out;
-  transform-origin: 10px 45px;
-}
-@keyframes mrnaFlow {
-  0% { stroke-dashoffset: 40; opacity: 0.4; }
-  50% { stroke-dashoffset: 0; opacity: 1; filter: drop-shadow(0 0 6px #EF4444); }
-  100% { stroke-dashoffset: -40; opacity: 0.7; }
-}
-.mrna-moving {
-  animation: mrnaFlow 1.2s infinite linear;
+@keyframes organelleGlowAnim {
+  0% { filter: drop-shadow(0 0 6px #10B981); transform: scale(1); }
+  100% { filter: drop-shadow(0 0 16px #059669) brightness(1.25); transform: scale(1.02); }
 }
 
-
+.clickable-organelle {
+  cursor: pointer !important;
+  pointer-events: all !important;
+}
+.clickable-organelle:hover {
+  filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.75));
+  opacity: 0.95;
+}
 .stage-inline-svg {
   width: 100%;
   max-width: 100%;
@@ -1150,7 +1152,7 @@ button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent
        ========================================================================= -->
   <g id="s02_plantCell" transform="translate(30, 40)" filter="url(#s02_subtleDrop)">
     <!-- 1.1 THÀNH TẾ BÀO (CELL WALL) - Cứng, đa giác -->
-    <g id="s02_plantCellWall">
+    <g id="s02_plantCellWall" class="clickable-organelle" onclick="selectOrganelle('thanh-te-bao')">
       <!-- Outer Wall Layer (Thành sơ cấp & phiến giữa) -->
       <polygon points="120,20 340,20 420,130 420,380 340,490 120,490 40,380 40,130"
                fill="#047857" stroke="#064E3B" stroke-width="3"/>
@@ -1160,16 +1162,16 @@ button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent
     </g>
 
     <!-- 1.2 MÀNG SINH CHẤT THỰC VẬT (PLANT PLASMA MEMBRANE) -->
-    <polygon id="s02_plantPlasmaMembrane" points="128,38 332,38 402,140 402,370 332,472 128,472 58,370 58,140"
+    <polygon id="s02_plantPlasmaMembrane" class="clickable-organelle" onclick="selectOrganelle('mang-te-bao')" points="128,38 332,38 402,140 402,370 332,472 128,472 58,370 58,140"
              fill="url(#s02_plantCytoplasmGrad)" stroke="#34D399" stroke-width="2"/>
 
     <!-- 1.3 KHUNG XƯƠNG TẾ BÀO THỰC VẬT (CYTOSKELETON) -->
-    <g id="s02_plantCytoskeleton" stroke="#6EE7B7" stroke-width="1.2" opacity="0.4" fill="none">
+    <g id="s02_plantCytoskeleton" class="clickable-organelle" onclick="selectOrganelle('khung-xuong')" stroke="#6EE7B7" stroke-width="1.2" opacity="0.4" fill="none">
       <path d="M 70 150 Q 150 200 100 350 M 350 100 Q 300 250 380 350 M 150 450 Q 250 400 350 450"/>
     </g>
 
     <!-- 1.4 KHÔNG BÀO TRUNG TÂM LỚN (CENTRAL VACUOLE - CHIẾM 60% THỂ TÍCH) -->
-    <g id="s02_plantCentralVacuole" transform="translate(190, 230)">
+    <g id="s02_plantCentralVacuole" class="clickable-organelle" onclick="selectOrganelle('khong-bao')" transform="translate(190, 230)">
       <path d="M -100 -60 C -60 -110 90 -100 140 -60 C 180 -20 180 80 130 130 C 80 170 -60 170 -100 120 C -140 70 -130 -20 -100 -60 Z"
             fill="url(#s02_vacuoleGrad)" stroke="#0284C7" stroke-width="2.5"/>
       <!-- Vacuole internal highlights / fluid tone -->
@@ -1177,7 +1179,7 @@ button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent
     </g>
 
     <!-- 1.5 NHÂN TẾ BÀO THỰC VẬT (NUCLEUS - BỊ ĐẨY LỆCH RA NGOẠI VI) -->
-    <g id="s02_plantNucleus" transform="translate(140, 115)">
+    <g id="s02_plantNucleus" class="clickable-organelle" onclick="selectOrganelle('nhan')" transform="translate(140, 115)">
       <!-- Nuclear Envelope (Double membrane) -->
       <circle cx="0" cy="0" r="48" fill="url(#s02_nucleusGrad)" stroke="#581C87" stroke-width="2.5"/>
       <circle cx="0" cy="0" r="45" fill="none" stroke="#E9D5FF" stroke-width="1.2" stroke-dasharray="4 2"/>
@@ -1188,7 +1190,7 @@ button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent
     </g>
 
     <!-- 1.6 LƯỚI NỘI CHẤT THỰC VẬT (PLANT ER) -->
-    <g id="s02_plantER" transform="translate(140, 115)">
+    <g id="s02_plantER" class="clickable-organelle" onclick="selectOrganelle('luoi-noi-chat')" transform="translate(140, 115)">
       <!-- Rough ER with Ribosomes wrapping around nucleus -->
       <path d="M -54 -10 C -70 -10 -75 25 -52 40 M -60 -25 C -85 -20 -90 35 -60 52"
             stroke="#8B5CF6" stroke-width="3" fill="none" stroke-linecap="round"/>
@@ -1200,7 +1202,7 @@ button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent
     </g>
 
     <!-- 1.7 LỤC LẠP (CHLOROPLASTS - NHIỀU Ở NGOẠI VI) -->
-    <g id="s02_plantChloroplasts">
+    <g id="s02_plantChloroplasts" class="clickable-organelle" onclick="selectOrganelle('luc-lap')">
       <!-- Chloroplast 1: Top Right -->
       <g transform="translate(340, 95) rotate(-35)">
         <ellipse cx="0" cy="0" rx="34" ry="20" fill="url(#s02_chloroplastGrad)" stroke="#14532D" stroke-width="2"/>
@@ -1238,7 +1240,7 @@ button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent
     </g>
 
     <!-- 1.8 TI THỂ THỰC VẬT (PLANT MITOCHONDRIA) -->
-    <g id="s02_plantMitochondria">
+    <g id="s02_plantMitochondria" class="clickable-organelle" onclick="selectOrganelle('ti-the')">
       <g transform="translate(230, 65) rotate(40)">
         <rect x="-18" y="-9" width="36" height="18" rx="9" fill="url(#s02_mitoGrad)" stroke="#9F1239" stroke-width="1.5"/>
         <path d="M -11 -4 L -11 4 M -5 -5 L -5 5 M 0 -5 L 0 5 M 5 -5 L 5 5 M 11 -4 L 11 4" stroke="#FFE4E6" stroke-width="1.2"/>
@@ -1250,14 +1252,14 @@ button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent
     </g>
 
     <!-- 1.9 BỘ MÁY GOLGI THỰC VẬT (PLANT GOLGI) -->
-    <g id="s02_plantGolgi" transform="translate(370, 240) rotate(80)">
+    <g id="s02_plantGolgi" class="clickable-organelle" onclick="selectOrganelle('golgi')" transform="translate(370, 240) rotate(80)">
       <path d="M -22 -10 Q 0 -15 22 -10 M -18 -3 Q 0 -8 18 -3 M -16 4 Q 0 0 16 4" stroke="#EA580C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
       <circle cx="-25" cy="-6" r="3" fill="#F97316"/>
       <circle cx="25" cy="0" r="3" fill="#F97316"/>
     </g>
 
     <!-- 1.10 PEROXISOME & RIBOSOME TỰ DO -->
-    <g id="s02_plantPeroxisomes">
+    <g id="s02_plantPeroxisomes" class="clickable-organelle" onclick="selectOrganelle('peroxysome')">
       <circle cx="280" cy="110" r="7" fill="#FDE047" stroke="#CA8A04" stroke-width="1.5"/>
       <circle cx="160" cy="440" r="7" fill="#FDE047" stroke="#CA8A04" stroke-width="1.5"/>
     </g>
@@ -1270,17 +1272,17 @@ button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent
        ========================================================================= -->
   <g id="s02_animalCell" transform="translate(530, 40)" filter="url(#s02_subtleDrop)">
     <!-- 2.1 MÀNG SINH CHẤT ĐỘNG VẬT (ANIMAL PLASMA MEMBRANE - UỐN LƯỢN MỀM DẺO) -->
-    <path id="s02_animalPlasmaMembrane"
+    <path id="s02_animalPlasmaMembrane" class="clickable-organelle" onclick="selectOrganelle('mang-te-bao')"
           d="M 120 40 C 220 20 340 40 400 110 C 450 170 440 280 420 360 C 390 440 310 480 220 480 C 130 480 60 430 40 340 C 20 250 30 160 60 100 C 80 60 100 45 120 40 Z"
           fill="url(#s02_animalCytoplasmGrad)" stroke="#F43F5E" stroke-width="3"/>
 
     <!-- 2.2 KHUNG XƯƠNG TẾ BÀO ĐỘNG VẬT (CYTOSKELETON - DÀY ĐẶC) -->
-    <g id="s02_animalCytoskeleton" stroke="#FDA4AF" stroke-width="1.2" opacity="0.5" fill="none">
+    <g id="s02_animalCytoskeleton" class="clickable-organelle" onclick="selectOrganelle('khung-xuong')" stroke="#FDA4AF" stroke-width="1.2" opacity="0.5" fill="none">
       <path d="M 80 120 Q 200 180 120 350 M 360 100 Q 260 220 380 340 M 140 440 Q 240 380 340 440 M 180 60 Q 240 180 300 60"/>
     </g>
 
     <!-- 2.3 NHÂN TẾ BÀO ĐỘNG VẬT (NUCLEUS - LỚN Ở TRUNG TÂM) -->
-    <g id="s02_animalNucleus" transform="translate(230, 250)">
+    <g id="s02_animalNucleus" class="clickable-organelle" onclick="selectOrganelle('nhan')" transform="translate(230, 250)">
       <!-- Nuclear Envelope with Pores -->
       <circle cx="0" cy="0" r="62" fill="url(#s02_nucleusGrad)" stroke="#581C87" stroke-width="2.5"/>
       <circle cx="0" cy="0" r="58" fill="none" stroke="#E9D5FF" stroke-width="1.5" stroke-dasharray="5 3"/>
@@ -1291,7 +1293,7 @@ button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent
     </g>
 
     <!-- 2.4 LƯỚI NỘI CHẤT ĐỘNG VẬT (ANIMAL ER - ROUGH & SMOOTH) -->
-    <g id="s02_animalER" transform="translate(230, 250)">
+    <g id="s02_animalER" class="clickable-organelle" onclick="selectOrganelle('luoi-noi-chat')" transform="translate(230, 250)">
       <!-- Rough ER with ribosomes -->
       <path d="M -70 -20 C -95 -15 -100 30 -70 50 M -80 -35 C -115 -25 -120 45 -80 70"
             stroke="#8B5CF6" stroke-width="3.5" fill="none" stroke-linecap="round"/>
@@ -1306,7 +1308,7 @@ button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent
     </g>
 
     <!-- 2.5 TRUNG THỂ ĐẶC TRƯNG ĐỘNG VẬT (CENTROSOME - CẶP CENTRIOLES VUÔNG GÓC) -->
-    <g id="s02_animalCentrosome" transform="translate(290, 160)">
+    <g id="s02_animalCentrosome" class="clickable-organelle" onclick="selectOrganelle('trung-the')" transform="translate(290, 160)">
       <circle cx="0" cy="0" r="20" fill="#E0F2FE" opacity="0.5"/>
       <!-- Centriole 1: Vertical barrel -->
       <rect x="-10" y="-8" width="8" height="18" rx="2" fill="#0284C7" stroke="#0369A1" stroke-width="1.2"/>
@@ -1319,7 +1321,7 @@ button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent
     </g>
 
     <!-- 2.6 LYSOSOME ĐẶC TRƯNG ĐỘNG VẬT (LYSOSOMES - TÚI ENZYME TIÊU HÓA) -->
-    <g id="s02_animalLysosomes">
+    <g id="s02_animalLysosomes" class="clickable-organelle" onclick="selectOrganelle('lysosome')">
       <g transform="translate(130, 180)">
         <circle cx="0" cy="0" r="14" fill="#F43F5E" stroke="#BE123C" stroke-width="2"/>
         <circle cx="-4" cy="-4" r="3" fill="#FFFFFF" opacity="0.6"/>
@@ -1332,7 +1334,7 @@ button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent
     </g>
 
     <!-- 2.7 BỘ MÁY GOLGI ĐỘNG VẬT (ANIMAL GOLGI) -->
-    <g id="s02_animalGolgi" transform="translate(230, 370)">
+    <g id="s02_animalGolgi" class="clickable-organelle" onclick="selectOrganelle('golgi')" transform="translate(230, 370)">
       <path d="M -36 -12 Q 0 -18 36 -12 M -30 -4 Q 0 -10 30 -4 M -26 4 Q 0 -2 26 4 M -22 12 Q 0 6 22 12"
             stroke="#EA580C" stroke-width="3" fill="none" stroke-linecap="round"/>
       <!-- Secretory vesicles budding off -->
@@ -1343,7 +1345,7 @@ button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent
     </g>
 
     <!-- 2.8 TI THỂ ĐỘNG VẬT (ANIMAL MITOCHONDRIA - NHIỀU) -->
-    <g id="s02_animalMitochondria">
+    <g id="s02_animalMitochondria" class="clickable-organelle" onclick="selectOrganelle('ti-the')">
       <g transform="translate(130, 90) rotate(35)">
         <rect x="-22" y="-11" width="44" height="22" rx="11" fill="url(#s02_mitoGrad)" stroke="#9F1239" stroke-width="1.8"/>
         <path d="M -14 -5 L -14 5 M -7 -7 L -7 7 M 0 -7 L 0 7 M 7 -7 L 7 7 M 14 -5 L 14 5" stroke="#FFE4E6" stroke-width="1.4"/>
@@ -1359,7 +1361,7 @@ button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent
     </g>
 
     <!-- 2.9 PEROXISOME & TÚI TIẾT ĐỘNG VẬT -->
-    <g id="s02_animalPeroxisomes">
+    <g id="s02_animalPeroxisomes" class="clickable-organelle" onclick="selectOrganelle('peroxysome')">
       <circle cx="340" cy="270" r="9" fill="#FDE047" stroke="#CA8A04" stroke-width="1.8"/>
       <circle cx="160" cy="260" r="8" fill="#FDE047" stroke="#CA8A04" stroke-width="1.8"/>
     </g>
@@ -1379,49 +1381,48 @@ button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent
           <i class="ti ti-category"></i> 14 Thành phần cấu trúc tế bào
         </div>
         
-        <div class="organelles-grid" id="organellesGrid">
-          <!-- Chips will be generated or mapped -->
-          <div class="organelle-chip plant-only" onclick="inspectOrganelle('Thành tế bào', 'Chỉ có ở tế bào thực vật; cấu tạo từ sợi xenlulose giúp bảo vệ và tạo hình dạng cứng cáp.')">
+                <div class="organelles-grid" id="organellesGrid">
+          <div class="organelle-chip plant-only" data-organelle="thanh-te-bao" onclick="selectOrganelle('thanh-te-bao')">
             <i class="ti ti-shield"></i> Thành tế bào
           </div>
-          <div class="organelle-chip plant-only" onclick="inspectOrganelle('Lục lạp', 'Chỉ có ở thực vật và sinh vật quang dưỡng; chứa chất diệp lục hấp thu ánh sáng để quang hợp.')">
+          <div class="organelle-chip plant-only" data-organelle="luc-lap" onclick="selectOrganelle('luc-lap')">
             <i class="ti ti-sun"></i> Lục lạp
           </div>
-          <div class="organelle-chip plant-only" onclick="inspectOrganelle('Không bào trung tâm lớn', 'Chiếm phần lớn thể tích tế bào thực vật trưởng thành; chứa dịch tế bào, dự trữ nước và ion.')">
+          <div class="organelle-chip plant-only" data-organelle="khong-bao" onclick="selectOrganelle('khong-bao')">
             <i class="ti ti-droplet"></i> Không bào lớn
           </div>
-          <div class="organelle-chip animal-only" onclick="inspectOrganelle('Trung thể', 'Cấu trúc điển hình ở tế bào động vật; gồm cặp trung tử xếp vuông góc tham gia phân chia tế bào.')">
+          <div class="organelle-chip animal-only" data-organelle="trung-the" onclick="selectOrganelle('trung-the')">
             <i class="ti ti-target"></i> Trung thể
           </div>
-          <div class="organelle-chip animal-only" onclick="inspectOrganelle('Lysosome', 'Bào quan dạng túi chứa enzyme thủy phân ở tế bào động vật; phân giải bào quan già và dị vật.')">
+          <div class="organelle-chip animal-only" data-organelle="lysosome" onclick="selectOrganelle('lysosome')">
             <i class="ti ti-flame"></i> Lysosome
           </div>
-          <div class="organelle-chip" onclick="inspectOrganelle('Nhân tế bào', 'Có ở cả 2 loại tế bào; chứa chất nhiễm sắc mang DNA và là trung tâm điều khiển hoạt động sống.')">
+          <div class="organelle-chip" data-organelle="nhan" onclick="selectOrganelle('nhan')">
             <i class="ti ti-circle-dot"></i> Nhân tế bào
           </div>
-          <div class="organelle-chip" onclick="inspectOrganelle('Ribosome', 'Có ở cả 2 loại tế bào; là nơi diễn ra quá trình tổng hợp protein của tế bào.')">
+          <div class="organelle-chip" data-organelle="ribosome" onclick="selectOrganelle('ribosome')">
             <i class="ti ti-dots"></i> Ribosome
           </div>
-          <div class="organelle-chip" onclick="inspectOrganelle('Lưới nội chất (ER)', 'Hệ thống xoang màng gồm ER hạt (tổng hợp protein) và ER trơn (tổng hợp lipid, khử độc).')">
+          <div class="organelle-chip" data-organelle="luoi-noi-chat" onclick="selectOrganelle('luoi-noi-chat')">
             <i class="ti ti-layers-subtract"></i> Lưới nội chất
           </div>
-          <div class="organelle-chip" onclick="inspectOrganelle('Ti thể', 'Có ở cả 2 tế bào; được ví là nhà máy năng lượng của tế bào, tạo ATP qua hô hấp tế bào.')">
+          <div class="organelle-chip" data-organelle="ti-the" onclick="selectOrganelle('ti-the')">
             <i class="ti ti-bolt"></i> Ti thể
           </div>
-          <div class="organelle-chip" onclick="inspectOrganelle('Thể Golgi', 'Hệ thống túi dẹp xếp chồng; tiếp nhận, chế biến, đóng gói và phân phối các sản phẩm sinh học.')">
+          <div class="organelle-chip" data-organelle="golgi" onclick="selectOrganelle('golgi')">
             <i class="ti ti-package"></i> Thể Golgi
           </div>
-          <div class="organelle-chip" onclick="inspectOrganelle('Peroxysome', 'Bào quan có màng đơn chứa enzyme chuyển hóa peroxide độc hại thành nước và oxy.')">
+          <div class="organelle-chip" data-organelle="peroxysome" onclick="selectOrganelle('peroxysome')">
             <i class="ti ti-sparkles"></i> Peroxysome
           </div>
-          <div class="organelle-chip" onclick="inspectOrganelle('Màng tế bào (Sinh chất)', 'Lớp kép phospholipid gắn protein bao bọc tế bào chất, kiểm soát trao đổi chất.')">
+          <div class="organelle-chip" data-organelle="mang-te-bao" onclick="selectOrganelle('mang-te-bao')">
             <i class="ti ti-circle"></i> Màng tế bào
           </div>
-          <div class="organelle-chip" onclick="inspectOrganelle('Tế bào chất / Bào tương', 'Khối dịch keo chứa bào quan và các ion hòa tan, nơi diễn ra phần lớn chuyển hóa.')">
+          <div class="organelle-chip" data-organelle="te-bao-chat" onclick="selectOrganelle('te-bao-chat')">
             <i class="ti ti-wave-sine"></i> Tế bào chất
           </div>
-          <div class="organelle-chip" onclick="inspectOrganelle('Khung xương tế bào', 'Hệ thống vi sợi, vi ống neo giữ bào quan và duy trì cấu trúc hình học tế bào.')">
-            <i class="ti ti-grid-dots"></i> Khung xương
+          <div class="organelle-chip" data-organelle="khung-xuong" onclick="selectOrganelle('khung-xuong')">
+            <i class="ti ti-grid-dots"></i> Khung xương tế bào
           </div>
         </div>
 
