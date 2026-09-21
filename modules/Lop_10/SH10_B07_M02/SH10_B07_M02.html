@@ -106,6 +106,17 @@ body {
   display: none !important;
 }
 
+/* HIDE HEADER BANNER & STAGE HEAD (V10 STANDARD) */
+header.banner,
+.progress-nav-container,
+.progress-nav,
+.stepper-nav,
+.stepper-bar,
+.step-nav-bar,
+.stage-head {
+  display: none !important;
+}
+
 .app {
   width: 100%;
   max-width: 1060px;
@@ -1445,14 +1456,6 @@ body {
        MÀN S01: BẢN ĐỒ TỪ NGOÀI VÀO TRONG (SH10_B07_M02_S01)
        ===================================================================== -->
   <section class="stage" id="stage-1" role="region" aria-label="Màn 1: Quan sát một tế bào vi khuẩn điển hình">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-map-pin"></i> Màn 1 · Bản đồ cấu trúc</span>
-        <h2 class="stage-title">Quan sát một tế bào vi khuẩn điển hình</h2>
-      </div>
-      <span class="stage-step-indicator">Bước 1 / 6</span>
-    </div>
-
     <div class="lead-box">
       <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
         <div class="lead-title">
@@ -1562,14 +1565,6 @@ body {
        MÀN S02: LÔNG VÀ ROI (SH10_B07_M02_S02)
        ===================================================================== -->
   <section class="stage hidden" id="stage-2" role="region" aria-label="Màn 2: Lông và roi khác nhau như thế nào?">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-arrows-split"></i> Màn 2 · Phân biệt cấu trúc</span>
-        <h2 class="stage-title">Lông và roi khác nhau như thế nào?</h2>
-      </div>
-      <span class="stage-step-indicator">Bước 2 / 6</span>
-    </div>
-
     <div class="lead-box">
       <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
         <div class="lead-title">
@@ -1654,14 +1649,6 @@ body {
        MÀN S03: GRAM DƯƠNG VÀ GRAM ÂM (SH10_B07_M02_S03)
        ===================================================================== -->
   <section class="stage hidden" id="stage-3" role="region" aria-label="Màn 3: Thành tế bào tiết lộ điều gì khi nhuộm Gram?">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-color-swatch"></i> Màn 3 · Phân loại Gram</span>
-        <h2 class="stage-title">Thành tế bào tiết lộ điều gì khi nhuộm Gram?</h2>
-      </div>
-      <span class="stage-step-indicator">Bước 3 / 6</span>
-    </div>
-
     <div class="lead-box">
       <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
         <div class="lead-title">
@@ -1753,14 +1740,6 @@ body {
        MÀN S04: MÀNG NGOÀI VÀ LPS (SH10_B07_M02_S04)
        ===================================================================== -->
   <section class="stage hidden" id="stage-4" role="region" aria-label="Màn 4: Màng ngoài của vi khuẩn Gram âm">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-layers-subtract"></i> Màn 4 · Cấu trúc LPS</span>
-        <h2 class="stage-title">Màng ngoài của vi khuẩn Gram âm</h2>
-      </div>
-      <span class="stage-step-indicator">Bước 4 / 6</span>
-    </div>
-
     <div class="lead-box">
       <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
         <div class="lead-title">
@@ -1873,14 +1852,6 @@ body {
        MÀN S05: MÀNG TẾ BÀO (SH10_B07_M02_S05)
        ===================================================================== -->
   <section class="stage hidden" id="stage-5" role="region" aria-label="Màn 5: Màng tế bào – ranh giới trao đổi có chọn lọc">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-circle-half-2"></i> Màn 5 · Màng sinh chất</span>
-        <h2 class="stage-title">Màng tế bào – ranh giới trao đổi có chọn lọc</h2>
-      </div>
-      <span class="stage-step-indicator">Bước 5 / 6</span>
-    </div>
-
     <div class="lead-box">
       <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
         <div class="lead-title">
@@ -2025,14 +1996,6 @@ body {
        MÀN S06: TỔNG HỢP VÀ ỨNG DỤNG (SH10_B07_M02_S06)
        ===================================================================== -->
   <section class="stage hidden" id="stage-6" role="region" aria-label="Màn 6: Hoàn thiện sơ đồ các lớp bao bọc">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-trophy"></i> Màn 6 · Tổng hợp & Ứng dụng</span>
-        <h2 class="stage-title">Hoàn thiện sơ đồ các lớp bao bọc</h2>
-      </div>
-      <span class="stage-step-indicator">Bước 6 / 6</span>
-    </div>
-
     <div class="lead-box">
       <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
         <div class="lead-title">
