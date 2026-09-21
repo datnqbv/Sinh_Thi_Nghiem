@@ -1326,6 +1326,113 @@ body {
   flex-shrink: 0;
 }
 
+
+  /* COLLAPSIBLE LEAD BOX (BỐI CẢNH KHOA HỌC) */
+  .lead-box {
+    background: #FFFFFF;
+    border: 1px solid var(--paper-line, #E5DECF);
+    border-left: 4px solid var(--jade, #3CA57A);
+    border-radius: var(--radius-md, 12px);
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(26, 26, 26, 0.04);
+    overflow: hidden;
+    transition: box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .lead-box:hover {
+    box-shadow: 0 4px 14px rgba(26, 26, 26, 0.08);
+    border-color: var(--paper-line-2, #D6CCB6);
+  }
+  .lead-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: #FAFAF7;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid var(--paper-line, #E5DECF);
+    transition: background-color 0.2s ease, border-color 0.25s ease;
+  }
+  .lead-header:hover {
+    background: #F0F4F1;
+  }
+  .lead-header:focus-visible {
+    outline: 2px solid var(--jade, #3CA57A);
+    outline-offset: -2px;
+  }
+  .lead-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--jade-dark, #14432F);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  .lead-title i {
+    font-size: 1.15rem;
+    color: var(--jade, #3CA57A);
+  }
+  .lead-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink-3, #7C756A);
+    background: #FFFFFF;
+    border: 1px solid var(--paper-line, #E5DECF);
+    padding: 4px 10px;
+    border-radius: 9999px;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  }
+  .lead-header:hover .lead-toggle {
+    color: var(--jade-text, #1B5E48);
+    border-color: var(--jade-soft, #A9D0BE);
+    background: var(--jade-pale, #DCEAE1);
+  }
+  .lead-toggle-icon {
+    font-size: 0.95rem;
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .lead-content {
+    max-height: 1000px;
+    opacity: 1;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.25s ease,
+                padding 0.35s ease;
+  }
+  .lead-box.collapsed {
+    box-shadow: none;
+  }
+  .lead-box.collapsed .lead-header {
+    border-bottom-color: transparent;
+    background: #FFFFFF;
+  }
+  .lead-box.collapsed .lead-toggle-icon {
+    transform: rotate(180deg);
+  }
+  .lead-box.collapsed .lead-content {
+    max-height: 0 !important;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .lead-box .lead-text {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 14px 18px !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    font-size: 1.02rem;
+    line-height: 1.68;
+    color: var(--ink-2, #514C44);
+  }
+
 </style>
 </head>
 <body>
@@ -1346,7 +1453,21 @@ body {
       <span class="stage-step-indicator">Bước 1 / 6</span>
     </div>
 
-    <p class="lead-text">Tế bào vi khuẩn có thể mang các cấu trúc ở ngoài bề mặt như lông và roi. Bao quanh tế bào chất là màng tế bào và thường có thành tế bào; ở vi khuẩn Gram âm còn có màng ngoài. Không phải mọi vi khuẩn đều có đầy đủ tất cả cấu trúc minh họa.</p>
+    <div class="lead-box">
+      <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
+        <div class="lead-title">
+          <i class="ti ti-notes"></i>
+          <span>Bối cảnh khoa học</span>
+        </div>
+        <div class="lead-toggle">
+          <span class="lead-toggle-label">Thu gọn</span>
+          <i class="ti ti-chevron-up lead-toggle-icon"></i>
+        </div>
+      </div>
+      <div class="lead-content">
+        <p class="lead-text">Tế bào vi khuẩn có thể mang các cấu trúc ở ngoài bề mặt như lông và roi. Bao quanh tế bào chất là màng tế bào và thường có thành tế bào; ở vi khuẩn Gram âm còn có màng ngoài. Không phải mọi vi khuẩn đều có đầy đủ tất cả cấu trúc minh họa.</p>
+      </div>
+    </div>
 
     <div class="guide-box">
       <i class="ti ti-hand-click"></i>
@@ -1449,7 +1570,21 @@ body {
       <span class="stage-step-indicator">Bước 2 / 6</span>
     </div>
 
-    <p class="lead-text">Lông thường ngắn và nhiều, giúp bám dính; một số lông chuyên hóa tham gia tiếp hợp. Roi dài hơn và thường ít hơn, giúp tế bào vận động.</p>
+    <div class="lead-box">
+      <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
+        <div class="lead-title">
+          <i class="ti ti-notes"></i>
+          <span>Bối cảnh khoa học</span>
+        </div>
+        <div class="lead-toggle">
+          <span class="lead-toggle-label">Thu gọn</span>
+          <i class="ti ti-chevron-up lead-toggle-icon"></i>
+        </div>
+      </div>
+      <div class="lead-content">
+        <p class="lead-text">Lông thường ngắn và nhiều, giúp bám dính; một số lông chuyên hóa tham gia tiếp hợp. Roi dài hơn và thường ít hơn, giúp tế bào vận động.</p>
+      </div>
+    </div>
 
     <div class="guide-box">
       <i class="ti ti-hand-grab"></i>
@@ -1527,7 +1662,21 @@ body {
       <span class="stage-step-indicator">Bước 3 / 6</span>
     </div>
 
-    <p class="lead-text">Thành tế bào vi khuẩn chứa peptidoglycan, giúp duy trì hình dạng và bảo vệ tế bào. Vi khuẩn Gram dương có lớp peptidoglycan dày và thường bắt màu tím; vi khuẩn Gram âm có lớp peptidoglycan mỏng, nằm giữa màng ngoài và màng tế bào, và thường hiện màu hồng đỏ sau nhuộm Gram.</p>
+    <div class="lead-box">
+      <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
+        <div class="lead-title">
+          <i class="ti ti-notes"></i>
+          <span>Bối cảnh khoa học</span>
+        </div>
+        <div class="lead-toggle">
+          <span class="lead-toggle-label">Thu gọn</span>
+          <i class="ti ti-chevron-up lead-toggle-icon"></i>
+        </div>
+      </div>
+      <div class="lead-content">
+        <p class="lead-text">Thành tế bào vi khuẩn chứa peptidoglycan, giúp duy trì hình dạng và bảo vệ tế bào. Vi khuẩn Gram dương có lớp peptidoglycan dày và thường bắt màu tím; vi khuẩn Gram âm có lớp peptidoglycan mỏng, nằm giữa màng ngoài và màng tế bào, và thường hiện màu hồng đỏ sau nhuộm Gram.</p>
+      </div>
+    </div>
 
     <div class="guide-box">
       <i class="ti ti-hand-click"></i>
@@ -1612,7 +1761,21 @@ body {
       <span class="stage-step-indicator">Bước 4 / 6</span>
     </div>
 
-    <p class="lead-text">Màng ngoài là hàng rào bảo vệ đặc trưng của vi khuẩn Gram âm. Lá ngoài của màng giàu lipopolysaccharide, viết tắt là LPS; phần lipid A của LPS có hoạt tính nội độc tố. LPS có thể được giải phóng trong quá trình vi khuẩn phát triển hoặc khi tế bào bị phá vỡ và có thể gây đáp ứng viêm mạnh.</p>
+    <div class="lead-box">
+      <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
+        <div class="lead-title">
+          <i class="ti ti-notes"></i>
+          <span>Bối cảnh khoa học</span>
+        </div>
+        <div class="lead-toggle">
+          <span class="lead-toggle-label">Thu gọn</span>
+          <i class="ti ti-chevron-up lead-toggle-icon"></i>
+        </div>
+      </div>
+      <div class="lead-content">
+        <p class="lead-text">Màng ngoài là hàng rào bảo vệ đặc trưng của vi khuẩn Gram âm. Lá ngoài của màng giàu lipopolysaccharide, viết tắt là LPS; phần lipid A của LPS có hoạt tính nội độc tố. LPS có thể được giải phóng trong quá trình vi khuẩn phát triển hoặc khi tế bào bị phá vỡ và có thể gây đáp ứng viêm mạnh.</p>
+      </div>
+    </div>
 
     <div class="guide-box">
       <i class="ti ti-hand-click"></i>
@@ -1718,7 +1881,21 @@ body {
       <span class="stage-step-indicator">Bước 5 / 6</span>
     </div>
 
-    <p class="lead-text">Nằm sát tế bào chất là màng tế bào, gồm chủ yếu lớp kép phospholipid và protein. Màng kiểm soát có chọn lọc sự trao đổi chất; ở tế bào nhân sơ, màng còn là nơi diễn ra một số quá trình chuyển hóa năng lượng và tiếp nhận tín hiệu.</p>
+    <div class="lead-box">
+      <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
+        <div class="lead-title">
+          <i class="ti ti-notes"></i>
+          <span>Bối cảnh khoa học</span>
+        </div>
+        <div class="lead-toggle">
+          <span class="lead-toggle-label">Thu gọn</span>
+          <i class="ti ti-chevron-up lead-toggle-icon"></i>
+        </div>
+      </div>
+      <div class="lead-content">
+        <p class="lead-text">Nằm sát tế bào chất là màng tế bào, gồm chủ yếu lớp kép phospholipid và protein. Màng kiểm soát có chọn lọc sự trao đổi chất; ở tế bào nhân sơ, màng còn là nơi diễn ra một số quá trình chuyển hóa năng lượng và tiếp nhận tín hiệu.</p>
+      </div>
+    </div>
 
     <div class="guide-box">
       <i class="ti ti-hand-click"></i>
@@ -1856,7 +2033,21 @@ body {
       <span class="stage-step-indicator">Bước 6 / 6</span>
     </div>
 
-    <p class="lead-text">Từ ngoài vào trong, các cấu trúc thay đổi tùy nhóm vi khuẩn. Gram dương có peptidoglycan dày ở ngoài màng tế bào. Gram âm có màng ngoài, peptidoglycan mỏng và màng tế bào. Kháng sinh beta-lactam như penicillin ức chế tổng hợp peptidoglycan ở vi khuẩn đang sinh trưởng; hiệu quả còn phụ thuộc khả năng thuốc đi tới đích và cơ chế kháng thuốc.</p>
+    <div class="lead-box">
+      <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
+        <div class="lead-title">
+          <i class="ti ti-notes"></i>
+          <span>Bối cảnh khoa học</span>
+        </div>
+        <div class="lead-toggle">
+          <span class="lead-toggle-label">Thu gọn</span>
+          <i class="ti ti-chevron-up lead-toggle-icon"></i>
+        </div>
+      </div>
+      <div class="lead-content">
+        <p class="lead-text">Từ ngoài vào trong, các cấu trúc thay đổi tùy nhóm vi khuẩn. Gram dương có peptidoglycan dày ở ngoài màng tế bào. Gram âm có màng ngoài, peptidoglycan mỏng và màng tế bào. Kháng sinh beta-lactam như penicillin ức chế tổng hợp peptidoglycan ở vi khuẩn đang sinh trưởng; hiệu quả còn phụ thuộc khả năng thuốc đi tới đích và cơ chế kháng thuốc.</p>
+      </div>
+    </div>
 
     <div class="guide-box">
       <i class="ti ti-hand-grab"></i>
@@ -2910,6 +3101,29 @@ window.addEventListener('DOMContentLoaded', () => {
   initStage6Drag();
   reportHeight();
 });
+
+  /* COLLAPSIBLE LEAD BOX LOGIC */
+  function toggleLeadBox(headerEl) {
+    const box = headerEl.closest('.lead-box');
+    if (!box) return;
+    const isCollapsed = box.classList.toggle('collapsed');
+    const label = box.querySelector('.lead-toggle-label');
+    headerEl.setAttribute('aria-expanded', !isCollapsed);
+    if (label) {
+      label.textContent = isCollapsed ? 'Mở rộng' : 'Thu gọn';
+    }
+    if (typeof reportHeight === 'function') {
+      setTimeout(reportHeight, 360);
+    }
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.classList.contains('lead-header')) {
+      e.preventDefault();
+      toggleLeadBox(e.target);
+    }
+  });
+
 </script>
 </body>
 </html>

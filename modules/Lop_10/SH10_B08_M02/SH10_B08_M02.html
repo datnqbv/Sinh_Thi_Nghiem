@@ -767,7 +767,114 @@
     pointer-events: none;
     z-index: 99998;
   }
-  </style>
+  
+  /* COLLAPSIBLE LEAD BOX (BỐI CẢNH KHOA HỌC) */
+  .lead-box {
+    background: #FFFFFF;
+    border: 1px solid var(--paper-line, #E5DECF);
+    border-left: 4px solid var(--jade, #3CA57A);
+    border-radius: var(--radius-md, 12px);
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(26, 26, 26, 0.04);
+    overflow: hidden;
+    transition: box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .lead-box:hover {
+    box-shadow: 0 4px 14px rgba(26, 26, 26, 0.08);
+    border-color: var(--paper-line-2, #D6CCB6);
+  }
+  .lead-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: #FAFAF7;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid var(--paper-line, #E5DECF);
+    transition: background-color 0.2s ease, border-color 0.25s ease;
+  }
+  .lead-header:hover {
+    background: #F0F4F1;
+  }
+  .lead-header:focus-visible {
+    outline: 2px solid var(--jade, #3CA57A);
+    outline-offset: -2px;
+  }
+  .lead-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--jade-dark, #14432F);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  .lead-title i {
+    font-size: 1.15rem;
+    color: var(--jade, #3CA57A);
+  }
+  .lead-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink-3, #7C756A);
+    background: #FFFFFF;
+    border: 1px solid var(--paper-line, #E5DECF);
+    padding: 4px 10px;
+    border-radius: 9999px;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  }
+  .lead-header:hover .lead-toggle {
+    color: var(--jade-text, #1B5E48);
+    border-color: var(--jade-soft, #A9D0BE);
+    background: var(--jade-pale, #DCEAE1);
+  }
+  .lead-toggle-icon {
+    font-size: 0.95rem;
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .lead-content {
+    max-height: 1000px;
+    opacity: 1;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.25s ease,
+                padding 0.35s ease;
+  }
+  .lead-box.collapsed {
+    box-shadow: none;
+  }
+  .lead-box.collapsed .lead-header {
+    border-bottom-color: transparent;
+    background: #FFFFFF;
+  }
+  .lead-box.collapsed .lead-toggle-icon {
+    transform: rotate(180deg);
+  }
+  .lead-box.collapsed .lead-content {
+    max-height: 0 !important;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .lead-box .lead-text {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 14px 18px !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    font-size: 1.02rem;
+    line-height: 1.68;
+    color: var(--ink-2, #514C44);
+  }
+
+</style>
 </head>
 <body>
 
@@ -785,8 +892,22 @@
         <h1 class="stage-title">Bào quan không màng nhưng bận rộn nhất</h1>
       </div>
 
-      <div class="lead-text">
+      <div class="lead-box">
+        <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
+          <div class="lead-title">
+            <i class="ti ti-notes"></i>
+            <span>Bối cảnh khoa học</span>
+          </div>
+          <div class="lead-toggle">
+            <span class="lead-toggle-label">Thu gọn</span>
+            <i class="ti ti-chevron-up lead-toggle-icon"></i>
+          </div>
+        </div>
+        <div class="lead-content">
+          <div class="lead-text">
         Ribosome là bào quan không có màng bao bọc, có dạng hình cầu. Thành phần hóa học của ribosome gồm rRNA và protein. Mỗi ribosome được tạo bởi hai tiểu đơn vị có kích thước khác nhau: tiểu đơn vị lớn và tiểu đơn vị nhỏ. Ribosome là nơi diễn ra quá trình tổng hợp protein. Ở các tế bào có tốc độ tổng hợp protein cao, số lượng ribosome trong một tế bào khá lớn, có thể lên tới vài triệu như tế bào tuyến tụy ở người.
+      </div>
+        </div>
       </div>
 
       <div class="guide-box">
@@ -1098,8 +1219,22 @@
         <h2 class="stage-title">Ribosome gắn màng — khởi đầu của protein tiết</h2>
       </div>
 
-      <div class="lead-text">
+      <div class="lead-box">
+        <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
+          <div class="lead-title">
+            <i class="ti ti-notes"></i>
+            <span>Bối cảnh khoa học</span>
+          </div>
+          <div class="lead-toggle">
+            <span class="lead-toggle-label">Thu gọn</span>
+            <i class="ti ti-chevron-up lead-toggle-icon"></i>
+          </div>
+        </div>
+        <div class="lead-content">
+          <div class="lead-text">
         Lưới nội chất là một hệ thống gồm các ống và các túi dẹp chứa dịch nối thông nhau thành một mạng lưới, gồm lưới nội chất hạt và lưới nội chất trơn. Lưới nội chất hạt gồm hệ thống các đường ống tạo nên bởi lớp kép phospholipid, một đầu liên kết với màng nhân, liên tục với lưới nội chất trơn. Trên màng lưới nội chất hạt có các hạt ribosome. Các protein tiết, protein màng và một số protein của hệ nội màng được tổng hợp trên ribosome bám lưới nội chất hạt, đi vào lòng hoặc gắn vào màng lưới nội chất, rồi được vận chuyển bằng túi đến bộ máy Golgi.
+      </div>
+        </div>
       </div>
 
       <div class="guide-box">
@@ -1375,8 +1510,22 @@
         <h2 class="stage-title">Không ribosome nhưng đa năng — ER trơn</h2>
       </div>
 
-      <div class="lead-text">
+      <div class="lead-box">
+        <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
+          <div class="lead-title">
+            <i class="ti ti-notes"></i>
+            <span>Bối cảnh khoa học</span>
+          </div>
+          <div class="lead-toggle">
+            <span class="lead-toggle-label">Thu gọn</span>
+            <i class="ti ti-chevron-up lead-toggle-icon"></i>
+          </div>
+        </div>
+        <div class="lead-content">
+          <div class="lead-text">
         Lưới nội chất trơn là hệ thống màng dạng ống dẹp thông với lưới nội chất hạt, có ít hoặc không có ribosome. Lưới nội chất trơn chứa các enzyme tham gia tổng hợp nhiều loại lipid, chuyển hóa đường, khử độc và là kho dự trữ canxi để thực hiện nhiều chức năng khác nhau như co cơ và truyền tin tế bào. Lưới nội chất trơn còn là nơi tổng hợp nên các sterol và phospholipid cấu tạo nên các loại màng của tế bào và các hormone sinh dục, tổng hợp và dự trữ triglyceride, tổng hợp và phân giải glycogen giúp điều hòa đường huyết. Các tế bào gan có lưới nội chất phát triển mạnh chứa các enzyme tham gia vào quá trình khử độc các chất như rượu và nhiều loại hóa chất độc hại khác.
+      </div>
+        </div>
       </div>
 
       <div class="guide-box">
@@ -1611,8 +1760,22 @@
         <h2 class="stage-title">Từ nguyên liệu thô đến sản phẩm hoàn chỉnh</h2>
       </div>
 
-      <div class="lead-text">
+      <div class="lead-box">
+        <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
+          <div class="lead-title">
+            <i class="ti ti-notes"></i>
+            <span>Bối cảnh khoa học</span>
+          </div>
+          <div class="lead-toggle">
+            <span class="lead-toggle-label">Thu gọn</span>
+            <i class="ti ti-chevron-up lead-toggle-icon"></i>
+          </div>
+        </div>
+        <div class="lead-content">
+          <div class="lead-text">
         Bộ máy Golgi gồm các túi dẹp nằm song song với nhau nhưng tách rời nhau. Bộ máy Golgi là nơi tập trung chế biến, lắp ráp, đóng gói các phân tử protein, lipid rồi phân phối chúng đến những nơi cần thiết. Ví dụ: protein được tổng hợp từ ribosome trên lưới nội chất hạt được gửi đến bộ máy Golgi bằng các túi vận chuyển. Tại đây, chúng được gắn thêm các chất khác, như chuỗi đường ngắn tạo nên glycoprotein, rồi bao gói vào trong các túi vận chuyển để chuyển đến các vị trí khác nhau trong tế bào hoặc xuất ra ngoài qua màng tế bào.
+      </div>
+        </div>
       </div>
 
       <div class="guide-box">
@@ -1870,8 +2033,22 @@
         <h2 class="stage-title">Túi enzyme dọn dẹp tế bào</h2>
       </div>
 
-      <div class="lead-text">
+      <div class="lead-box">
+        <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
+          <div class="lead-title">
+            <i class="ti ti-notes"></i>
+            <span>Bối cảnh khoa học</span>
+          </div>
+          <div class="lead-toggle">
+            <span class="lead-toggle-label">Thu gọn</span>
+            <i class="ti ti-chevron-up lead-toggle-icon"></i>
+          </div>
+        </div>
+        <div class="lead-content">
+          <div class="lead-text">
         Lysosome là bào quan dạng túi có màng đơn, chứa các loại enzyme thủy phân protein, nucleic acid, carbohydrate, lipid, các bào quan và thậm chí cả các tế bào cần thay thế. Lysosome được hình thành từ bộ máy Golgi và có ở các tế bào động vật. Những tế bào bị tổn thương, các tế bào và bào quan quá hạn sử dụng được enzyme của lysosome phân giải, lấy những gì có thể tái sử dụng, còn chất thải được xuất ra ngoài tế bào. Lysosome không chỉ làm nhiệm vụ tái chế mà còn hỗ trợ tế bào tiêu hóa thức ăn theo con đường thực bào.
+      </div>
+        </div>
       </div>
 
       <div class="guide-box">
@@ -2095,8 +2272,22 @@
         <h2 class="stage-title">Vì sao rau tươi lại héo, rồi tươi lại khi ngâm nước?</h2>
       </div>
 
-      <div class="lead-text">
+      <div class="lead-box">
+        <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
+          <div class="lead-title">
+            <i class="ti ti-notes"></i>
+            <span>Bối cảnh khoa học</span>
+          </div>
+          <div class="lead-toggle">
+            <span class="lead-toggle-label">Thu gọn</span>
+            <i class="ti ti-chevron-up lead-toggle-icon"></i>
+          </div>
+        </div>
+        <div class="lead-content">
+          <div class="lead-text">
         Ở tế bào thực vật, không bào là bào quan có một lớp màng bao bọc. Không bào lớn nằm giữa tế bào được gọi là không bào trung tâm, giúp điều hòa áp suất thẩm thấu trong tế bào. Các không bào thường được bắt nguồn từ lưới nội chất và bộ máy Golgi. Một số không bào chứa sắc tố thu hút côn trùng thụ phấn, số khác dự trữ nước, ion, đường hoặc enzyme khử độc. Một số loài động vật nguyên sinh như trùng giày có các không bào co bóp làm nhiệm vụ như những chiếc bơm, bơm nước ra khỏi tế bào; không bào tiêu hóa chứa enzyme giúp tiêu hóa thức ăn.
+      </div>
+        </div>
       </div>
 
       <div class="guide-box">
@@ -2391,8 +2582,22 @@
         <h2 class="stage-title">Tất cả đều kết nối với nhau</h2>
       </div>
 
-      <div class="lead-text">
+      <div class="lead-box">
+        <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
+          <div class="lead-title">
+            <i class="ti ti-notes"></i>
+            <span>Bối cảnh khoa học</span>
+          </div>
+          <div class="lead-toggle">
+            <span class="lead-toggle-label">Thu gọn</span>
+            <i class="ti ti-chevron-up lead-toggle-icon"></i>
+          </div>
+        </div>
+        <div class="lead-content">
+          <div class="lead-text">
         Những bào quan như lưới nội chất, màng nhân, lysosome, bộ máy Golgi, không bào và màng tế bào đều được xếp vào hệ thống nội màng vì các bộ phận này có thể kết nối trực tiếp với nhau hoặc có thể chuyển đổi các đoạn màng cho nhau.
+      </div>
+        </div>
       </div>
 
       <div class="guide-box">
@@ -3286,6 +3491,29 @@
     }
     render();
   }
-  </script>
+  
+  /* COLLAPSIBLE LEAD BOX LOGIC */
+  function toggleLeadBox(headerEl) {
+    const box = headerEl.closest('.lead-box');
+    if (!box) return;
+    const isCollapsed = box.classList.toggle('collapsed');
+    const label = box.querySelector('.lead-toggle-label');
+    headerEl.setAttribute('aria-expanded', !isCollapsed);
+    if (label) {
+      label.textContent = isCollapsed ? 'Mở rộng' : 'Thu gọn';
+    }
+    if (typeof reportHeight === 'function') {
+      setTimeout(reportHeight, 360);
+    }
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.classList.contains('lead-header')) {
+      e.preventDefault();
+      toggleLeadBox(e.target);
+    }
+  });
+
+</script>
 </body>
 </html>

@@ -1,0 +1,3833 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SH10_B08_M03 — Ti thể, Lục lạp và Peroxysome: Bào quan năng lượng và giải độc</title>
+
+  <!-- Athena LMS Context Meta -->
+  <script type="application/json" id="athena-context">
+  {
+    "moduleId": "SH10_B08_M03",
+    "grade": 10,
+    "subject": "Sinh học",
+    "chapter": "Chương 2: Cấu trúc tế bào",
+    "lesson": "Bài 8: Cấu trúc tế bào nhân thực",
+    "title": "Ti thể, Lục lạp và Peroxysome: Bào quan năng lượng và giải độc",
+    "outcomes": [
+      "Phân tích được mối quan hệ giữa cấu tạo và chức năng của các bào quan trong tế bào.",
+      "Giải thích được bằng chứng thuyết nội cộng sinh dựa trên đặc điểm của ti thể và lục lạp."
+    ],
+    "researchQuestion": "Ti thể và lục lạp có cấu trúc như thế nào? Đặc điểm nào của chúng là bằng chứng cho thuyết nội cộng sinh?",
+    "stages": 7,
+    "version": "v2 FINAL"
+  }
+  </script>
+
+  <!-- Google Fonts: Be Vietnam Pro & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Tabler Icons Webfont -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css">
+
+  <style>
+  /* ==========================================================================
+     1. DESIGN SYSTEM TOKENS (TOM HAUGOMAT EDITORIAL FLAT - AIDUCATION STANDARD)
+     ========================================================================== */
+  :root {
+    /* Neutrals */
+    --cream: #FAF7F0;
+    --cream-2: #F0EADD;
+    --cream-3: #E7DECC;
+    --paper-line: #E5DECF;
+    --paper-line-2: #D6CCB6;
+    --ink: #1A1A1A;
+    --ink-2: #514C44;
+    --ink-3: #7C756A;
+    --ink-faint: #ABA396;
+
+    /* Jade (Main Action & Plant/Chloroplast) */
+    --jade: #3CA57A;
+    --jade-deep: #2D8B6F;
+    --jade-dark: #14432F;
+    --jade-text: #1B5E48;
+    --jade-soft: #A9D0BE;
+    --jade-pale: #DCEAE1;
+
+    /* Amber (Mitochondrion / Energy Action) */
+    --accent: #E8A24A;
+    --accent-deep: #D97706;
+    --accent-dark: #B45309;
+    --accent-text: #8A551A;
+    --accent-pale: #FEF3C7;
+
+    /* Sky Blue (Peroxysome / Liquid Detoxing) */
+    --sky: #0284C7;
+    --sky-deep: #0369A1;
+    --sky-pale: #E0F2FE;
+    --sky-text: #075985;
+
+    /* Semantic States */
+    --correct: #2D8B6F;
+    --correct-bg: #DCEAE1;
+    --wrong: #C15F3C;
+    --wrong-bg: #F3E2D6;
+    --warning: #C58A2E;
+    --warning-bg: #F5E7CB;
+
+    /* Layout & Elevation */
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --shadow-subtle: 0 4px 16px rgba(26, 26, 26, 0.05);
+    --shadow-card: 0 8px 24px rgba(26, 26, 26, 0.07);
+    --shadow-float: 0 16px 36px rgba(26, 26, 26, 0.12);
+  }
+
+  /* RESET & BASE */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    background-color: var(--cream);
+    color: var(--ink);
+  }
+
+  body {
+    font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    background-color: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  /* HIDE HEADER BANNER & TOP NAV TABS (V10 STANDARD) */
+  header.banner,
+  .progress-nav-container,
+  .progress-nav,
+  .stepper-nav,
+  .stepper-bar,
+  .step-nav-bar {
+    display: none !important;
+  }
+
+  /* HIGH SPECIFICITY MODAL HIDDEN RULE (CHỐNG LỖI TỰ ĐỘNG HIỆN MODAL) */
+  .hidden {
+    display: none !important;
+  }
+  .congrats-overlay.hidden,
+  .modal-backdrop.hidden,
+  #completionModal.hidden {
+    display: none !important;
+  }
+
+  /* MAIN WRAPPER */
+  .module-wrapper {
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 24px 24px 48px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* STAGE CONTAINER */
+  .stage {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: fadeInStage 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes fadeInStage {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* STAGE HEADER AREA */
+  .stage-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .stage-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .stage-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--jade-text);
+    background: var(--jade-pale);
+    padding: 4px 12px;
+    border-radius: 99px;
+  }
+  .stage-step-indicator {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--ink-3);
+    background: var(--cream-2);
+    padding: 4px 14px;
+    border-radius: 99px;
+    border: 1px solid var(--paper-line);
+  }
+  .stage-title {
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  /* LEAD BOX (COLLAPSIBLE BIOLOGICAL CONTEXT) */
+  .lead-box {
+    background: #FFFFFF;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--paper-line);
+    border-left: 4px solid var(--jade);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    margin-bottom: 12px;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .lead-box:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .lead-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    cursor: pointer;
+    user-select: none;
+    background: #FFFFFF;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid transparent;
+  }
+  .lead-box:not(.collapsed) .lead-header {
+    border-bottom-color: var(--paper-line-2, #F0EADD);
+    background: rgba(46, 117, 89, 0.02);
+  }
+  .lead-header:hover {
+    background: rgba(46, 117, 89, 0.05);
+  }
+
+  .lead-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--jade-dark, #205c43);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .lead-title i {
+    font-size: 1.15rem;
+    color: var(--jade, #2E7559);
+  }
+
+  .lead-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink-3, #7A756B);
+    background: var(--cream, #FAF7F0);
+    padding: 4px 10px;
+    border-radius: 99px;
+    border: 1px solid var(--paper-line, #E5DFC9);
+    transition: all 0.2s ease;
+  }
+  .lead-header:hover .lead-toggle {
+    color: var(--jade-dark, #205c43);
+    border-color: var(--jade-soft, #A3D9C9);
+    background: #FFFFFF;
+  }
+  .lead-toggle-icon {
+    font-size: 1rem;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .lead-box.collapsed .lead-toggle-icon {
+    transform: rotate(180deg);
+  }
+
+  .lead-content {
+    max-height: 600px;
+    opacity: 1;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.25s ease,
+                padding 0.35s ease;
+  }
+  .lead-box.collapsed .lead-content {
+    max-height: 0 !important;
+    opacity: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .lead-text {
+    font-size: 1.02rem;
+    color: var(--ink-2);
+    line-height: 1.68;
+    padding: 12px 18px 14px 18px;
+    margin: 0;
+    background: transparent;
+    border: none;
+  }
+
+  /* SINGLE POINT OF INSTRUCTION (GUIDE BOX) */
+  .guide-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 18px;
+    background: var(--jade-pale);
+    border: 1px solid var(--jade-soft);
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--jade-text);
+    line-height: 1.5;
+  }
+  .guide-box i {
+    font-size: 1.25rem;
+    color: var(--jade-deep);
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+
+  /* STAGE BODY LAYOUT: 68% LEFT vs 32% RIGHT */
+  .stage-body {
+    display: grid;
+    grid-template-columns: 68% 32%;
+    gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 1080px) {
+    .stage-body {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* VISUAL PANEL (LEFT) */
+  .visual-panel {
+    background: #FFFFFF;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--paper-line);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .visual-panel-header {
+    padding: 10px 18px;
+    background: var(--cream-2);
+    border-bottom: 1px solid var(--paper-line);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--ink-2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .visual-stage-canvas {
+    position: relative;
+    width: 100%;
+    min-height: 380px;
+    background: #FAF7F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+  }
+  .visual-stage-canvas img,
+  .visual-stage-canvas svg,
+  .stage-inline-svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius-sm);
+    transition: transform 0.3s ease;
+  }
+
+  /* VISUAL PANEL CONTROLS / TOOLBAR */
+  .visual-panel-toolbar {
+    padding: 12px 18px;
+    background: #FFFFFF;
+    border-top: 1px solid var(--paper-line);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .chip-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 99px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--ink-2);
+    background: var(--cream-2);
+    border: 1px solid var(--paper-line-2);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .chip-btn:hover {
+    background: var(--cream-3);
+    color: var(--ink);
+  }
+  .chip-btn.active {
+    background: var(--jade);
+    color: #FFFFFF;
+    border-color: var(--jade-deep);
+  }
+  .chip-btn.active.amber {
+    background: var(--accent-deep);
+    border-color: var(--accent-dark);
+  }
+  .chip-btn.active.sky {
+    background: var(--sky);
+    border-color: var(--sky-deep);
+  }
+
+  /* INTERACTIVE PANEL (RIGHT) */
+  .interactive-panel {
+    background: #FFFFFF;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--paper-line);
+    box-shadow: var(--shadow-card);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  /* DYNAMIC INFO CARD */
+  .info-card {
+    background: var(--cream);
+    border: 1px solid var(--paper-line);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .info-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--jade-text);
+  }
+  .info-card-desc {
+    font-size: 0.92rem;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+
+  /* MCQ SECTION */
+  .mcq-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .mcq-question {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  .mcq-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .option-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--paper-line);
+    background: #FFFFFF;
+    cursor: pointer;
+    font-size: 0.92rem;
+    color: var(--ink-2);
+    transition: all 0.2s ease;
+  }
+  .option-label:hover {
+    background: var(--cream);
+    border-color: var(--paper-line-2);
+  }
+  .option-label.selected {
+    background: var(--jade-pale);
+    border-color: var(--jade);
+    color: var(--jade-dark);
+    font-weight: 600;
+  }
+  .option-radio {
+    margin-top: 3px;
+    accent-color: var(--jade);
+  }
+
+  /* FEEDBACK BOX */
+  .feedback-box {
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .feedback-box.correct {
+    background: var(--correct-bg);
+    color: var(--jade-dark);
+    border: 1px solid var(--correct);
+  }
+  .feedback-box.wrong {
+    background: var(--wrong-bg);
+    color: #991B1B;
+    border: 1px solid var(--wrong);
+  }
+  .feedback-box i {
+    font-size: 1.2rem;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+
+  /* STAGE CONTROLS ROW */
+  .controls-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding-top: 10px;
+    border-top: 1px solid var(--paper-line);
+    margin-top: 10px;
+  }
+  .btn-primary, .btn-secondary, .btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    text-decoration: none;
+  }
+  .btn-primary {
+    background: var(--jade);
+    color: #FFFFFF;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--jade-deep);
+    box-shadow: 0 4px 12px rgba(45, 139, 111, 0.3);
+  }
+  .btn-primary:disabled {
+    background: var(--ink-faint);
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
+  .btn-secondary {
+    background: var(--cream-2);
+    color: var(--ink-2);
+    border: 1px solid var(--paper-line);
+  }
+  .btn-secondary:hover:not(:disabled) {
+    background: var(--cream-3);
+    color: var(--ink);
+  }
+  .btn-action {
+    background: var(--accent-deep);
+    color: #FFFFFF;
+    width: 100%;
+  }
+  .btn-action:hover:not(:disabled) {
+    background: var(--accent-dark);
+  }
+  .btn-action:disabled {
+    background: var(--cream-3);
+    color: var(--ink-faint);
+    cursor: not-allowed;
+  }
+
+  /* STAGE 7: MATRIX TABLE STYLES */
+  .matrix-table-container {
+    width: 100%;
+    overflow-x: auto;
+    background: #FFFFFF;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--paper-line);
+  }
+  .matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+  .matrix-table th, .matrix-table td {
+    padding: 12px 14px;
+    border: 1px solid var(--paper-line);
+    text-align: left;
+    vertical-align: top;
+  }
+  .matrix-table th {
+    background: var(--cream-2);
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .matrix-slot {
+    min-height: 48px;
+    border: 2px dashed var(--paper-line-2);
+    border-radius: var(--radius-sm);
+    padding: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    background: var(--cream);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .matrix-slot.filled {
+    border-style: solid;
+    border-color: var(--jade);
+    background: var(--jade-pale);
+  }
+  .matrix-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    background: #FFFFFF;
+    border: 1px solid var(--paper-line);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink-2);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .matrix-chip:hover {
+    background: var(--cream-2);
+  }
+  .matrix-chip.selected {
+    border-color: var(--jade);
+    background: var(--jade-pale);
+    color: var(--jade-dark);
+    box-shadow: 0 0 0 2px var(--jade-soft);
+  }
+  .matrix-chip.placed {
+    opacity: 0.45;
+    pointer-events: none;
+  }
+
+  /* V10 COMPLETION MODAL & CANVAS */
+  .congrats-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+  }
+  .congrats-card {
+    background: #FFFFFF;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-float);
+    max-width: 520px;
+    width: 100%;
+    padding: 36px 28px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    animation: modalPop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes modalPop {
+    from { opacity: 0; transform: scale(0.92) translateY(12px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .trophy-badge {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #FEF3C7;
+    color: #D97706;
+    display: grid;
+    place-items: center;
+    font-size: 2.75rem;
+    box-shadow: 0 8px 24px rgba(217, 119, 6, 0.2);
+  }
+  .congrats-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--ink);
+  }
+  .congrats-text {
+    font-size: 1rem;
+    color: var(--ink-2);
+    line-height: 1.6;
+  }
+  .congrats-actions {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .congrats-actions button {
+    flex: 1;
+  }
+  #confettiCanvas {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 10000;
+  }
+
+  /* MICRO ANIMATIONS */
+  .shake {
+    animation: shake 0.35s ease-in-out;
+  }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+  }
+  </style>
+</head>
+<body>
+
+  <canvas id="confettiCanvas"></canvas>
+
+  <main class="module-wrapper">
+
+    <!-- =========================================================================
+         STAGE 1: TI THỂ - CẤU TRÚC MÀNG KÉP & 2 KHOANG
+         ========================================================================= -->
+    <section id="stage-1" class="stage">
+      <div class="stage-header">
+        <div class="stage-meta">
+          <span class="stage-badge"><i class="ti ti-bolt"></i> Bào quan chuyển hóa năng lượng</span>
+          <span class="stage-step-indicator">Màn 1 / 7</span>
+        </div>
+        <h1 class="stage-title">Nếp gấp tăng diện tích — bí quyết của "nhà máy điện"</h1>
+      </div>
+
+      <div class="lead-box">
+        <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
+          <div class="lead-title">
+            <i class="ti ti-notes"></i>
+            <span>Bối cảnh khoa học</span>
+          </div>
+          <div class="lead-toggle">
+            <span class="lead-toggle-label">Thu gọn</span>
+            <i class="ti ti-chevron-up lead-toggle-icon"></i>
+          </div>
+        </div>
+        <div class="lead-content">
+          <div class="lead-text">
+        Ti thể là một loại bào quan có màng kép. Lớp màng ngoài trơn nhẵn, màng trong gấp nếp hình răng lược tạo nhiều mào (cristae) ngăn ti thể thành hai khoang. Khoang gian màng là nơi H⁺ được tích lũy khi chuỗi chuyền electron hoạt động. Chất nền chứa nhiều enzyme của chu trình Krebs. Màng trong mang chuỗi chuyền electron và enzyme ATP synthase. Ngoài ra, trong chất nền còn chứa nhiều phân tử DNA nhỏ, dạng vòng và ribosome. Do đó, ti thể có khả năng tự nhân đôi và tổng hợp protein cho riêng mình.
+      </div>
+        </div>
+      </div>
+
+      <div class="guide-box">
+        <i class="ti ti-click"></i>
+        <span>Nhấn vào các nút bên dưới khung ảnh để quan sát chi tiết 4 vùng cấu trúc ti thể, sau đó trả lời câu hỏi bên phải.</span>
+      </div>
+
+      <div class="stage-body">
+        <!-- Visual Panel (Left 68%) -->
+        <div class="visual-panel">
+          <div class="visual-panel-header">
+            <span><i class="ti ti-eye"></i> Mô hình 3D cắt lớp Ti thể (Mitochondrion)</span>
+            <span id="s01ViewCount" style="color:var(--accent-dark); font-weight:700;">Đã xem: 0/4</span>
+          </div>
+          <div class="visual-stage-canvas">
+            <svg id="imgStage1" class="stage-inline-svg" role="img" aria-label="Cắt lớp 3D Ti thể" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <!-- Background Shadow -->
+    <filter id="a01_dropShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#78350F" flood-opacity="0.15"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#78350F" flood-opacity="0.1"/>
+    </filter>
+
+    <!-- Outer Membrane Gradients -->
+    <linearGradient id="a01_outerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="40%" stop-color="#F59E0B"/>
+      <stop offset="85%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#B45309"/>
+    </linearGradient>
+
+    <!-- Outer Membrane Cut Section / Rim -->
+    <linearGradient id="a01_outerRimGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#92400E"/>
+    </linearGradient>
+
+    <!-- Intermembrane Space (Khoang gian màng) -->
+    <linearGradient id="a01_imsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FEF3C7"/>
+      <stop offset="100%" stop-color="#FDE68A"/>
+    </linearGradient>
+
+    <!-- Inner Membrane (Màng trong & Mào Cristae) -->
+    <linearGradient id="a01_innerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FB923C"/>
+      <stop offset="40%" stop-color="#EA580C"/>
+      <stop offset="100%" stop-color="#C2410C"/>
+    </linearGradient>
+
+    <!-- Matrix Fill (Chất nền) -->
+    <linearGradient id="a01_matrixGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFBEB"/>
+      <stop offset="50%" stop-color="#FEF3C7"/>
+      <stop offset="100%" stop-color="#FDE68A"/>
+    </linearGradient>
+
+    <!-- Cristae Ridge Lighting -->
+    <linearGradient id="a01_cristaeHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFEDD5"/>
+      <stop offset="100%" stop-color="#F97316"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Clean Canvas Background -->
+  <rect width="800" height="500" fill="#FAF7F0" rx="16"/>
+
+  <!-- Subtle Coordinate Grid / Gridlines -->
+  <g opacity="0.15" stroke="#78350F" stroke-width="1" stroke-dasharray="4 8">
+    <line x1="80" y1="0" x2="80" y2="500"/>
+    <line x1="240" y1="0" x2="240" y2="500"/>
+    <line x1="400" y1="0" x2="400" y2="500"/>
+    <line x1="560" y1="0" x2="560" y2="500"/>
+    <line x1="720" y1="0" x2="720" y2="500"/>
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="250" x2="800" y2="250"/>
+    <line x1="0" y1="400" x2="800" y2="400"/>
+  </g>
+
+  <!-- MASTER MITOCHONDRION GROUP -->
+  <g id="a01_mitochondrion" transform="translate(400, 250) rotate(-6)" filter="url(#a01_dropShadow)">
+
+    <!-- =======================================================
+         1. OUTER MEMBRANE (MÀNG NGOÀI - TRƠN NHẴN, NGUYÊN VẸN NỬA SAU)
+         ======================================================= -->
+    <g id="a01_outerMembraneFullBack">
+      <!-- Full exterior capsule shape -->
+      <path d="M -260 0 
+               C -260 -135, -170 -165, 0 -165 
+               C 170 -165, 260 -135, 260 0 
+               C 260 135, 170 165, 0 165 
+               C -170 165, -260 135, -260 0 Z"
+            fill="url(#a01_outerGrad)" stroke="#B45309" stroke-width="3"/>
+      <!-- Surface sheen/reflection on closed dome -->
+      <path d="M -220 -30 
+               C -220 -115, -140 -140, 0 -140 
+               C 120 -140, 190 -115, 200 -50 
+               C 160 -105, 90 -125, -10 -125 
+               C -110 -125, -185 -100, -220 -30 Z"
+            fill="#FFFFFF" opacity="0.35"/>
+    </g>
+
+    <!-- =======================================================
+         2. CUTAWAY OPENING (CẮT LỚP MỞ RA BÊN TRONG 3D)
+         Khoang cắt hình elip mở góc nhìn phía trước
+         ======================================================= -->
+    <g id="a01_cutawayWindow">
+      <!-- Outer Membrane Thickness Cut Rim (Thành cắt của màng ngoài) -->
+      <path id="a01_outerMembraneCutRim"
+            d="M -240 10 
+               C -240 -110, -150 -135, 0 -135 
+               C 150 -135, 240 -110, 240 10 
+               C 240 115, 150 145, 0 145 
+               C -150 145, -240 115, -240 10 Z"
+            fill="url(#a01_outerRimGrad)"/>
+
+      <!-- Intermembrane Space Rim (Khoang gian màng lộ mặt cắt, 8px) -->
+      <path id="a01_intermembraneSpaceCut"
+            d="M -232 10 
+               C -232 -103, -145 -127, 0 -127 
+               C 145 -127, 232 -103, 232 10 
+               C 232 107, 145 137, 0 137 
+               C -145 137, -232 107, -232 10 Z"
+            fill="url(#a01_imsGrad)" stroke="#F59E0B" stroke-width="1.5"/>
+
+      <!-- Matrix Base Cavity (Lòng chất nền bên trong màng trong) -->
+      <path id="a01_matrixCavity"
+            d="M -222 10 
+               C -222 -95, -138 -118, 0 -118 
+               C 138 -118, 222 -95, 222 10 
+               C 222 98, 138 128, 0 128 
+               C -138 128, -222 98, -222 10 Z"
+            fill="url(#a01_matrixGrad)"/>
+    </g>
+
+    <!-- =======================================================
+         3. INNER MEMBRANE & CRISTAE (MÀNG TRONG & CÁC NẾP MÀO RĂNG LƯỢC)
+         Gấp nếp sâu vào lòng chất nền làm tăng diện tích tiếp xúc
+         ======================================================= -->
+    <g id="a01_innerMembraneAndCristae">
+      <!-- Continuous Inner Membrane Perimeter with complex inward cristae folds -->
+      <!-- Top Half Folds & Bottom Half Folds -->
+      <path id="a01_cristaeBody"
+            d="
+            M -220 10
+            /* Fold L1: Leftward crista */
+            C -220 -20, -180 -30, -160 -20
+            C -140 -10, -140 15, -160 25
+            C -180 35, -215 25, -218 35
+
+            /* Fold B1: Bottom-left long crista reaching center */
+            C -220 50, -195 70, -150 75
+            C -100 80, -60 50, -40 20
+            C -30 0, -45 -15, -70 -10
+            C -105 -5, -135 45, -170 50
+            C -195 55, -210 65, -205 75
+
+            /* Fold B2: Bottom mid-left crista */
+            C -190 95, -140 105, -90 100
+            C -40 95, -20 70, -10 40
+            C -5 20, -20 5, -35 15
+            C -55 35, -70 75, -110 80
+            C -140 85, -160 90, -150 105
+
+            /* Fold B3: Bottom central crista stretching up */
+            C -120 118, -60 120, 0 120
+            C 20 120, 30 100, 35 70
+            C 40 30, 20 0, 10 -20
+            C 0 -35, -15 -25, -10 -5
+            C -5 15, 10 50, 10 80
+            C 10 105, -20 112, 15 120
+
+            /* Fold B4: Bottom right crista */
+            C 60 120, 110 110, 150 95
+            C 180 80, 170 50, 140 35
+            C 115 20, 95 35, 110 55
+            C 125 70, 150 75, 175 80
+            C 195 85, 210 65, 215 50
+
+            /* Fold R1: Right apical fold */
+            C 220 30, 210 10, 180 0
+            C 150 -10, 150 -30, 180 -35
+            C 205 -40, 220 -20, 222 -10
+
+            /* Fold T4: Top right crista */
+            C 220 -35, 195 -60, 160 -70
+            C 120 -80, 90 -60, 70 -30
+            C 60 -10, 80 5, 95 -10
+            C 115 -30, 135 -60, 170 -60
+            C 195 -60, 210 -75, 200 -85
+
+            /* Fold T3: Top central deep crista */
+            C 170 -98, 120 -108, 60 -110
+            C 10 -112, -20 -95, -30 -60
+            C -40 -20, -20 10, -10 20
+            C 5 30, 15 15, 10 -5
+            C 5 -35, -5 -70, 20 -85
+            C 50 -100, 90 -98, 10 -112
+
+            /* Fold T2: Top left crista */
+            C -40 -112, -100 -108, -140 -90
+            C -175 -70, -165 -45, -135 -30
+            C -110 -15, -95 -30, -115 -50
+            C -130 -65, -150 -70, -170 -75
+            C -200 -80, -215 -60, -215 -40
+
+            /* Fold T1 closing back to start */
+            C -215 -20, -220 -5, -220 10 Z"
+            fill="url(#a01_innerGrad)" stroke="#9A3412" stroke-width="3" stroke-linejoin="round"/>
+
+      <!-- Cristae Upper Surface Lighting (Tạo độ nổi khối 3D cho mép mào) -->
+      <path d="M -160 -20 C -140 -10, -140 15, -160 25 M -40 20 C -30 0, -45 -15, -70 -10 M -10 40 C -5 20, -20 5, -35 15 M 10 -20 C 0 -35, -15 -25, -10 -5 M 140 35 C 115 20, 95 35, 110 55 M 180 -35 C 150 -30, 150 -10, 180 0 M 70 -30 C 60 -10, 80 5, 95 -10 M -10 20 C 5 30, 15 15, 10 -5 M -135 -30 C -110 -15, -95 -30, -115 -50"
+            fill="none" stroke="url(#a01_cristaeHighlight)" stroke-width="2.5" stroke-linecap="round"/>
+
+      <!-- ATP Synthase Complex Particles (Chuỗi hạt tổng hợp ATP & chuỗi chuyền electron) -->
+      <!-- Studded along cristae membranes facing the matrix -->
+      <g id="a01_atpSynthaseParticles">
+        <!-- Cluster 1 on left crista -->
+        <g transform="translate(-165, 5)"><circle cx="0" cy="0" r="3" fill="#FDE047" stroke="#CA8A04" stroke-width="0.8"/><line x1="0" y1="3" x2="0" y2="6" stroke="#CA8A04" stroke-width="1"/></g>
+        <g transform="translate(-150, 15)"><circle cx="0" cy="0" r="3" fill="#FDE047" stroke="#CA8A04" stroke-width="0.8"/><line x1="0" y1="3" x2="0" y2="6" stroke="#CA8A04" stroke-width="1"/></g>
+        <g transform="translate(-140, 0)"><circle cx="0" cy="0" r="3" fill="#FDE047" stroke="#CA8A04" stroke-width="0.8"/><line x1="0" y1="3" x2="0" y2="6" stroke="#CA8A04" stroke-width="1"/></g>
+
+        <!-- Cluster 2 on bottom-left crista -->
+        <g transform="translate(-80, -2)"><circle cx="0" cy="0" r="3" fill="#FDE047" stroke="#CA8A04" stroke-width="0.8"/><line x1="2" y1="2" x2="5" y2="5" stroke="#CA8A04" stroke-width="1"/></g>
+        <g transform="translate(-60, 8)"><circle cx="0" cy="0" r="3" fill="#FDE047" stroke="#CA8A04" stroke-width="0.8"/><line x1="2" y1="2" x2="5" y2="5" stroke="#CA8A04" stroke-width="1"/></g>
+        <g transform="translate(-45, 25)"><circle cx="0" cy="0" r="3" fill="#FDE047" stroke="#CA8A04" stroke-width="0.8"/><line x1="2" y1="2" x2="5" y2="5" stroke="#CA8A04" stroke-width="1"/></g>
+
+        <!-- Cluster 3 on center crista -->
+        <g transform="translate(18, -12)"><circle cx="0" cy="0" r="3" fill="#FDE047" stroke="#CA8A04" stroke-width="0.8"/><line x1="-2" y1="2" x2="-5" y2="5" stroke="#CA8A04" stroke-width="1"/></g>
+        <g transform="translate(25, 10)"><circle cx="0" cy="0" r="3" fill="#FDE047" stroke="#CA8A04" stroke-width="0.8"/><line x1="-2" y1="2" x2="-5" y2="5" stroke="#CA8A04" stroke-width="1"/></g>
+        <g transform="translate(28, 40)"><circle cx="0" cy="0" r="3" fill="#FDE047" stroke="#CA8A04" stroke-width="0.8"/><line x1="-2" y1="2" x2="-5" y2="5" stroke="#CA8A04" stroke-width="1"/></g>
+
+        <!-- Cluster 4 on right crista -->
+        <g transform="translate(100, 25)"><circle cx="0" cy="0" r="3" fill="#FDE047" stroke="#CA8A04" stroke-width="0.8"/><line x1="-2" y1="2" x2="-5" y2="5" stroke="#CA8A04" stroke-width="1"/></g>
+        <g transform="translate(125, 45)"><circle cx="0" cy="0" r="3" fill="#FDE047" stroke="#CA8A04" stroke-width="0.8"/><line x1="-2" y1="2" x2="-5" y2="5" stroke="#CA8A04" stroke-width="1"/></g>
+        <g transform="translate(160, 50)"><circle cx="0" cy="0" r="3" fill="#FDE047" stroke="#CA8A04" stroke-width="0.8"/><line x1="-2" y1="2" x2="-5" y2="5" stroke="#CA8A04" stroke-width="1"/></g>
+      </g>
+    </g>
+
+    <!-- =======================================================
+         4. MITOCHONDRIAL MATRIX CONTENTS (NỘI DUNG TRONG CHẤT NỀN)
+         BẮT BUỘC: DNA DẠNG VÒNG KÉP & HẠT RIBOSOME 70S
+         ======================================================= -->
+    <g id="a01_matrixContents">
+
+      <!-- Circular DNA Molecule 1 (DNA vòng khép kín nhỏ, dạng sợi xoắn) -->
+      <g id="a01_circularDna_1" transform="translate(-115, -45) scale(0.9)">
+        <path d="M 0 -18 C 16 -20, 28 -10, 25 5 C 22 20, 8 26, -10 22 C -26 18, -30 2, -24 -12 C -18 -22, -8 -17, 0 -18 Z"
+              fill="none" stroke="#DC2626" stroke-width="2.5" stroke-dasharray="6 3"/>
+        <path d="M 3 -15 C 17 -17, 24 -7, 21 3 C 18 16, 7 21, -6 18 C -19 15, -23 4, -18 -8 C -13 -16, -5 -14, 3 -15 Z"
+              fill="none" stroke="#EF4444" stroke-width="1.8"/>
+      </g>
+
+      <!-- Circular DNA Molecule 2 (DNA vòng thứ 2 ở góc phải chất nền) -->
+      <g id="a01_circularDna_2" transform="translate(120, -15) rotate(25) scale(0.8)">
+        <path d="M 0 -18 C 16 -20, 28 -10, 25 5 C 22 20, 8 26, -10 22 C -26 18, -30 2, -24 -12 C -18 -22, -8 -17, 0 -18 Z"
+              fill="none" stroke="#DC2626" stroke-width="2.5" stroke-dasharray="6 3"/>
+        <path d="M 3 -15 C 17 -17, 24 -7, 21 3 C 18 16, 7 21, -6 18 C -19 15, -23 4, -18 -8 C -13 -16, -5 -14, 3 -15 Z"
+              fill="none" stroke="#EF4444" stroke-width="1.8"/>
+      </g>
+
+      <!-- Circular DNA Molecule 3 (DNA vòng thứ 3 ở trung tâm) -->
+      <g id="a01_circularDna_3" transform="translate(-20, 60) rotate(-15) scale(0.75)">
+        <path d="M 0 -18 C 16 -20, 28 -10, 25 5 C 22 20, 8 26, -10 22 C -26 18, -30 2, -24 -12 C -18 -22, -8 -17, 0 -18 Z"
+              fill="none" stroke="#DC2626" stroke-width="2.5" stroke-dasharray="6 3"/>
+        <path d="M 3 -15 C 17 -17, 24 -7, 21 3 C 18 16, 7 21, -6 18 C -19 15, -23 4, -18 -8 C -13 -16, -5 -14, 3 -15 Z"
+              fill="none" stroke="#EF4444" stroke-width="1.8"/>
+      </g>
+
+      <!-- 70S Mitochondrial Ribosomes (Các hạt ribosome kích thước nhỏ trong chất nền) -->
+      <g id="a01_ribosomesGroup">
+        <!-- Ribosome cluster left -->
+        <g transform="translate(-130, -25)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+        <g transform="translate(-100, -65)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+        <g transform="translate(-85, -20)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+        <g transform="translate(-145, -70)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+
+        <!-- Ribosome cluster mid -->
+        <g transform="translate(-5, -60)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+        <g transform="translate(45, -50)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+        <g transform="translate(5, 15)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+        <g transform="translate(-65, 45)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+
+        <!-- Ribosome cluster right -->
+        <g transform="translate(75, -20)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+        <g transform="translate(145, 10)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+        <g transform="translate(85, 45)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+        <g transform="translate(130, -55)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+        <g transform="translate(170, -25)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+      </g>
+    </g>
+
+    <!-- Front Cut Shadow Gradient Rim (Tạo bóng viền mép cắt phía trước) -->
+    <path d="M -240 10 C -240 -110, -150 -135, 0 -135 C 150 -135, 240 -110, 240 10" 
+          fill="none" stroke="#78350F" stroke-width="2" opacity="0.3"/>
+  </g>
+</svg>
+          </div>
+          <div class="visual-panel-toolbar">
+            <button class="chip-btn active amber" onclick="exploreStage1('all')"><i class="ti ti-layout-grid"></i> Toàn cảnh</button>
+            <button class="chip-btn amber" onclick="exploreStage1('outer')"><i class="ti ti-circle"></i> 1. Màng ngoài trơn</button>
+            <button class="chip-btn amber" onclick="exploreStage1('ims')"><i class="ti ti-arrows-diff"></i> 2. Khoang gian màng</button>
+            <button class="chip-btn amber" onclick="exploreStage1('inner')"><i class="ti ti-wave-saw-tool"></i> 3. Màng trong & Mào cristae</button>
+            <button class="chip-btn amber" onclick="exploreStage1('matrix')"><i class="ti ti-dna"></i> 4. Chất nền (DNA & Ribosome)</button>
+          </div>
+        </div>
+
+        <!-- Interactive Panel (Right 32%) -->
+        <div class="interactive-panel">
+          <div class="info-card" id="s01InfoCard">
+            <div class="info-card-header"><i class="ti ti-info-circle"></i> <span id="s01InfoTitle">Cấu trúc chung của Ti thể</span></div>
+            <div class="info-card-desc" id="s01InfoDesc">Bào quan màng kép hình hạt hoặc hình sợi, đóng vai trò trạm biến áp và nhà máy sản xuất ATP chính của tế bào.</div>
+          </div>
+
+          <div class="mcq-box">
+            <div class="mcq-question">Thành phần nào của ti thể trực tiếp mang chuỗi chuyền electron và enzyme ATP synthase?</div>
+            <div class="mcq-options" id="s01Options">
+              <label class="option-label" onclick="selectOptionS01(this, 'A')">
+                <input type="radio" name="optS01" class="option-radio">
+                <span>Màng trong ti thể</span>
+              </label>
+              <label class="option-label" onclick="selectOptionS01(this, 'B')">
+                <input type="radio" name="optS01" class="option-radio">
+                <span>Màng ngoài ti thể</span>
+              </label>
+              <label class="option-label" onclick="selectOptionS01(this, 'C')">
+                <input type="radio" name="optS01" class="option-radio">
+                <span>Khoang gian màng</span>
+              </label>
+              <label class="option-label" onclick="selectOptionS01(this, 'D')">
+                <input type="radio" name="optS01" class="option-radio">
+                <span>Chất nền ti thể</span>
+              </label>
+            </div>
+            <button class="btn-action" id="btnCheckS01" onclick="submitStage1()" disabled><i class="ti ti-check"></i> TRẢ LỜI</button>
+            <div class="feedback-box hidden" id="fbStage1"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls-row">
+        <div></div>
+        <button class="btn-primary" id="btnNextS01" onclick="goToStage(2)" disabled>TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </section>
+
+
+    <!-- =========================================================================
+         STAGE 2: TI THỂ - HÔ HẤP TẾ BÀO VÀ SỐ LƯỢNG THEO NHU CẦU
+         ========================================================================= -->
+    <section id="stage-2" class="stage hidden">
+      <div class="stage-header">
+        <div class="stage-meta">
+          <span class="stage-badge"><i class="ti ti-activity"></i> Mật độ ti thể và nhu cầu ATP</span>
+          <span class="stage-step-indicator">Màn 2 / 7</span>
+        </div>
+        <h1 class="stage-title">Tế bào càng hoạt động, càng cần nhiều "nhà máy điện"</h1>
+      </div>
+
+      <div class="lead-box">
+        <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
+          <div class="lead-title">
+            <i class="ti ti-notes"></i>
+            <span>Bối cảnh khoa học</span>
+          </div>
+          <div class="lead-toggle">
+            <span class="lead-toggle-label">Thu gọn</span>
+            <i class="ti ti-chevron-up lead-toggle-icon"></i>
+          </div>
+        </div>
+        <div class="lead-content">
+          <div class="lead-text">
+        Ti thể là nơi diễn ra quá trình phân giải carbohydrate giải phóng năng lượng cung cấp cho mọi hoạt động sống, đồng thời tạo nhiều sản phẩm trung gian cho quá trình chuyển hóa vật chất của tế bào. Ti thể có nhiều hình dạng khác nhau. Hình dạng, kích thước và số lượng của ti thể phụ thuộc vào loại tế bào. Nhìn chung, tế bào có nhu cầu năng lượng cao thường có nhiều ti thể hơn. Một tế bào có thể có tới hàng nghìn ti thể.
+      </div>
+        </div>
+      </div>
+
+      <div class="guide-box">
+        <i class="ti ti-click"></i>
+        <span>Nhấn nút "So sánh mật độ ti thể" trên hình vẽ, sau đó chọn đáp án đúng cho câu hỏi vận dụng.</span>
+      </div>
+
+      <div class="stage-body">
+        <!-- Visual Panel (Left 68%) -->
+        <div class="visual-panel">
+          <div class="visual-panel-header">
+            <span><i class="ti ti-scale"></i> Đối chiếu tế bào lông hút rễ vs tế bào biểu bì lá</span>
+            <span id="s02CompareStatus" style="color:var(--jade-deep); font-weight:700;">Chế độ: Tiêu chuẩn</span>
+          </div>
+          <div class="visual-stage-canvas">
+            <svg id="imgStage2" class="stage-inline-svg" role="img" aria-label="So sánh mật độ ti thể" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="100%" height="100%">
+  <defs>
+    <!-- Soft Drop Shadow for Cell Panels -->
+    <filter id="a02_panelShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#1E293B" flood-opacity="0.06"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1E293B" flood-opacity="0.04"/>
+    </filter>
+
+    <!-- Mini Mitochondrion Symbol (Dạng hạt con nhộng màng cam + mào nếp gấp) -->
+    <g id="a02_miniMito">
+      <ellipse cx="0" cy="0" rx="9" ry="5.5" fill="#F59E0B" stroke="#B45309" stroke-width="1.2"/>
+      <path d="M -6 0 C -4 -2.5, -2 -2.5, 0 0 C 2 2.5, 4 2.5, 6 0" fill="none" stroke="#9A3412" stroke-width="1.2" stroke-linecap="round"/>
+      <circle cx="-3" cy="1" r="0.8" fill="#DC2626"/>
+      <circle cx="3" cy="-1" r="0.8" fill="#7E22CE"/>
+    </g>
+
+    <!-- Cell Wall Gradient (Thành tế bào thực vật) -->
+    <linearGradient id="a02_wallGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+
+    <!-- Cytoplasm Gradient (Tế bào chất) -->
+    <linearGradient id="a02_cytoGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ECFDF5"/>
+      <stop offset="100%" stop-color="#D1FAE5"/>
+    </linearGradient>
+
+    <!-- Vacuole Gradient (Không bào) -->
+    <linearGradient id="a02_vacuoleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EFF6FF"/>
+      <stop offset="100%" stop-color="#DBEAFE"/>
+    </linearGradient>
+
+    <!-- Nucleus Gradient (Nhân) -->
+    <linearGradient id="a02_nucleusGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C084FC"/>
+      <stop offset="100%" stop-color="#7E22CE"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="900" height="480" fill="#FAF7F0" rx="16"/>
+
+  <!-- Subtle Dividers and Grid -->
+  <line x1="450" y1="30" x2="450" y2="450" stroke="#E5DECF" stroke-width="2" stroke-dasharray="6 6"/>
+
+  <!-- =========================================================================
+       PANEL TRÁI: TẾ BÀO LÔNG HÚT RỄ CÂY (ROOT HAIR CELL) - NHU CẦU NĂNG LƯỢNG CAO
+       ========================================================================= -->
+  <g id="a02_panelLeft" transform="translate(30, 30)">
+    <!-- Card Frame -->
+    <rect width="390" height="420" rx="14" fill="#FFFFFF" stroke="#E5DECF" stroke-width="1.5" filter="url(#a02_panelShadow)"/>
+
+    <!-- Header Tag (No baked words, pure icon/badge) -->
+    <rect x="20" y="20" width="130" height="26" rx="6" fill="#FEF3C7" stroke="#FDE68A"/>
+    <circle cx="34" cy="33" r="4" fill="#D97706"/>
+    <rect x="46" y="30" width="90" height="6" rx="3" fill="#B45309" opacity="0.6"/>
+
+    <!-- Master Root Hair Cell Geometry -->
+    <g id="a02_rootHairCell" transform="translate(45, 75)">
+      <!-- Outer Cell Wall Layer (Thành tế bào dày) -->
+      <!-- Shape: rectangular base on the left, long tubular hair extension projecting upwards-right -->
+      <path d="
+        M 20 280
+        L 20 180
+        C 20 160, 40 150, 70 150
+        C 75 140, 85 110, 110 70
+        C 130 38, 155 15, 185 10
+        C 205 7, 218 18, 220 32
+        C 222 50, 205 85, 180 135
+        C 165 165, 155 185, 160 200
+        C 165 215, 190 220, 230 220
+        L 270 220
+        C 290 220, 300 230, 300 250
+        L 300 280
+        C 300 300, 290 310, 270 310
+        L 40 310
+        C 25 310, 20 300, 20 280 Z"
+        fill="url(#a02_wallGrad)" stroke="#047857" stroke-width="5" stroke-linejoin="round"/>
+
+      <!-- Inner Plasma Membrane & Cytoplasm (Tế bào chất) -->
+      <path d="
+        M 26 276
+        L 26 184
+        C 26 168, 44 158, 70 158
+        C 79 146, 91 114, 115 75
+        C 134 44, 158 22, 184 17
+        C 200 14, 211 23, 213 33
+        C 215 48, 198 80, 174 130
+        C 159 160, 149 180, 153 197
+        C 158 215, 186 226, 226 226
+        L 266 226
+        C 282 226, 292 234, 292 250
+        L 292 276
+        C 292 292, 282 302, 266 302
+        L 46 302
+        C 30 302, 26 292, 26 276 Z"
+        fill="url(#a02_cytoGrad)" stroke="#10B981" stroke-width="2"/>
+
+      <!-- Large Central Vacuole (Không bào trung tâm len lỏi vào thân lông hút) -->
+      <path id="a02_rootVacuole"
+            d="
+        M 45 285
+        L 45 200
+        C 45 180, 60 170, 78 170
+        C 86 160, 98 135, 118 100
+        C 135 70, 155 45, 176 38
+        C 188 34, 195 40, 196 48
+        C 197 60, 185 88, 165 125
+        C 148 155, 138 178, 140 195
+        C 142 208, 160 215, 195 215
+        L 245 215
+        C 260 215, 270 225, 270 240
+        L 270 270
+        C 270 285, 260 290, 245 290
+        L 65 290
+        C 50 290, 45 285, 45 285 Z"
+            fill="url(#a02_vacuoleGrad)" stroke="#93C5FD" stroke-width="1.8"/>
+
+      <!-- Nucleus (Nhân tế bào lông hút) -->
+      <g id="a02_rootNucleus" transform="translate(225, 260)">
+        <circle cx="0" cy="0" r="18" fill="url(#a02_nucleusGrad)" stroke="#6B21A8" stroke-width="1.5"/>
+        <circle cx="-3" cy="-3" r="5" fill="#FAF5FF" opacity="0.8"/>
+      </g>
+
+      <!-- DENSE POPULATION OF MITOCHONDRIA (MẬT ĐỘ TI THỂ DÀY ĐẶC ~ 28 TI THỂ) -->
+      <!-- Tập trung mạnh ở chóp lông hút và dọc vùng cận màng tích cực hấp thụ khoáng -->
+      <g id="a02_denseMitochondria">
+        <!-- Cluster in Tip of Root Hair (Vùng chóp hoạt động sinh trưởng & bơm chủ động) -->
+        <use href="#a02_miniMito" x="188" y="24" transform="rotate(35, 188, 24)"/>
+        <use href="#a02_miniMito" x="175" y="30" transform="rotate(-20, 175, 30)"/>
+        <use href="#a02_miniMito" x="202" y="38" transform="rotate(75, 202, 38)"/>
+        <use href="#a02_miniMito" x="160" y="55" transform="rotate(45, 160, 55)"/>
+        <use href="#a02_miniMito" x="180" y="65" transform="rotate(-30, 180, 65)"/>
+        <use href="#a02_miniMito" x="145" y="85" transform="rotate(60, 145, 85)"/>
+        <use href="#a02_miniMito" x="165" y="100" transform="rotate(-40, 165, 100)"/>
+        <use href="#a02_miniMito" x="130" y="120" transform="rotate(50, 130, 120)"/>
+        <use href="#a02_miniMito" x="150" y="135" transform="rotate(-15, 150, 135)"/>
+        <use href="#a02_miniMito" x="115" y="150" transform="rotate(40, 115, 150)"/>
+        <use href="#a02_miniMito" x="138" y="165" transform="rotate(-55, 138, 165)"/>
+
+        <!-- Cluster along Peripheral Cytoplasm in Base Cell -->
+        <use href="#a02_miniMito" x="35" y="175" transform="rotate(10, 35, 175)"/>
+        <use href="#a02_miniMito" x="55" y="160" transform="rotate(-35, 55, 160)"/>
+        <use href="#a02_miniMito" x="80" y="155" transform="rotate(25, 80, 155)"/>
+        <use href="#a02_miniMito" x="35" y="210" transform="rotate(80, 35, 210)"/>
+        <use href="#a02_miniMito" x="35" y="245" transform="rotate(-15, 35, 245)"/>
+        <use href="#a02_miniMito" x="35" y="275" transform="rotate(30, 35, 275)"/>
+        <use href="#a02_miniMito" x="70" y="295" transform="rotate(-45, 70, 295)"/>
+        <use href="#a02_miniMito" x="110" y="295" transform="rotate(15, 110, 295)"/>
+        <use href="#a02_miniMito" x="150" y="295" transform="rotate(-25, 150, 295)"/>
+        <use href="#a02_miniMito" x="190" y="295" transform="rotate(65, 190, 295)"/>
+        <use href="#a02_miniMito" x="250" y="295" transform="rotate(-10, 250, 295)"/>
+        <use href="#a02_miniMito" x="280" y="275" transform="rotate(45, 280, 275)"/>
+        <use href="#a02_miniMito" x="280" y="240" transform="rotate(-70, 280, 240)"/>
+        <use href="#a02_miniMito" x="250" y="225" transform="rotate(20, 250, 225)"/>
+        <use href="#a02_miniMito" x="175" y="215" transform="rotate(-30, 175, 215)"/>
+        <use href="#a02_miniMito" x="185" y="250" transform="rotate(15, 185, 250)"/>
+      </g>
+    </g>
+
+    <!-- Visual Density Metric Indicator Left (High Energy Bar) -->
+    <g id="a02_densityIndicatorLeft" transform="translate(30, 375)">
+      <rect width="330" height="24" rx="6" fill="#FEF3C7" stroke="#FDE68A"/>
+      <rect width="280" height="16" x="4" y="4" rx="4" fill="#F59E0B"/>
+      <!-- Small Mitochondria Icon Count marker -->
+      <circle cx="20" cy="12" r="5" fill="#B45309"/>
+      <circle cx="35" cy="12" r="5" fill="#B45309"/>
+      <circle cx="50" cy="12" r="5" fill="#B45309"/>
+      <circle cx="65" cy="12" r="5" fill="#B45309"/>
+    </g>
+  </g>
+
+
+  <!-- =========================================================================
+       PANEL PHẢI: TẾ BÀO BIỂU BÌ LÁ (LEAF EPIDERMAL CELL) - NHU CẦU NĂNG LƯỢNG THẤP
+       ========================================================================= -->
+  <g id="a02_panelRight" transform="translate(480, 30)">
+    <!-- Card Frame -->
+    <rect width="390" height="420" rx="14" fill="#FFFFFF" stroke="#E5DECF" stroke-width="1.5" filter="url(#a02_panelShadow)"/>
+
+    <!-- Header Tag (No baked words, pure icon/badge) -->
+    <rect x="20" y="20" width="130" height="26" rx="6" fill="#E2E8F0" stroke="#CBD5E1"/>
+    <circle cx="34" cy="33" r="4" fill="#64748B"/>
+    <rect x="46" y="30" width="90" height="6" rx="3" fill="#475569" opacity="0.6"/>
+
+    <!-- Master Leaf Epidermal Cell Geometry -->
+    <!-- Wavy puzzle-like protective epidermal cell with thick cuticle outer wall -->
+    <g id="a02_leafEpidermalCell" transform="translate(45, 75)">
+
+      <!-- Thick Protective Cuticle on outer apical surface -->
+      <path d="M 25 25 C 90 15, 180 35, 275 20 L 275 35 C 180 50, 90 30, 25 40 Z" fill="#FDE047" opacity="0.75"/>
+
+      <!-- Cell Wall (Thành tế bào dạng phiến sóng bảo vệ) -->
+      <path d="
+        M 25 35
+        C 80 25, 140 45, 200 30
+        C 235 20, 260 25, 275 30
+        C 290 35, 295 50, 290 85
+        C 285 125, 295 160, 288 200
+        C 282 245, 290 280, 280 295
+        C 270 305, 230 300, 180 305
+        C 120 310, 60 295, 30 302
+        C 15 305, 10 290, 12 260
+        C 15 220, 8 175, 14 130
+        C 18 85, 10 50, 25 35 Z"
+        fill="url(#a02_wallGrad)" stroke="#047857" stroke-width="5" stroke-linejoin="round"/>
+
+      <!-- Plasma Membrane & Cytoplasm (Tế bào chất) -->
+      <path d="
+        M 31 43
+        C 82 34, 138 52, 196 38
+        C 230 30, 254 34, 268 38
+        C 280 43, 285 55, 281 87
+        C 276 125, 285 158, 279 196
+        C 273 238, 281 272, 272 286
+        C 263 295, 226 291, 178 296
+        C 120 301, 62 287, 34 293
+        C 21 296, 17 283, 19 256
+        C 22 218, 15 175, 21 133
+        C 25 91, 17 58, 31 43 Z"
+        fill="url(#a02_cytoGrad)" stroke="#10B981" stroke-width="2"/>
+
+      <!-- Huge Central Vacuole (Không bào lớn chiếm hầu hết thể tích tế bào biểu bì) -->
+      <path id="a02_leafVacuole"
+            d="
+        M 45 65
+        C 100 55, 160 70, 220 58
+        C 245 55, 255 70, 252 100
+        C 248 140, 255 170, 250 210
+        C 245 245, 240 265, 220 270
+        C 170 275, 110 268, 60 272
+        C 40 273, 35 255, 38 225
+        C 42 185, 36 145, 40 105
+        C 42 78, 35 70, 45 65 Z"
+            fill="url(#a02_vacuoleGrad)" stroke="#93C5FD" stroke-width="1.8"/>
+
+      <!-- Nucleus (Nhân tế bào biểu bì lá bị ép sát màng) -->
+      <g id="a02_leafNucleus" transform="translate(75, 95)">
+        <circle cx="0" cy="0" r="16" fill="url(#a02_nucleusGrad)" stroke="#6B21A8" stroke-width="1.5"/>
+        <circle cx="-2" cy="-2" r="4.5" fill="#FAF5FF" opacity="0.8"/>
+      </g>
+
+      <!-- SPARSE POPULATION OF MITOCHONDRIA (MẬT ĐỘ TI THỂ THƯA THỚT ~ CHỈ 7 TI THỂ) -->
+      <!-- Chỉ có số lượng ít nằm rải rác ở lớp tế bào chất mỏng dính sát thành -->
+      <g id="a02_sparseMitochondria">
+        <use href="#a02_miniMito" x="120" y="48" transform="rotate(20, 120, 48)"/>
+        <use href="#a02_miniMito" x="180" y="45" transform="rotate(-35, 180, 45)"/>
+        <use href="#a02_miniMito" x="260" y="110" transform="rotate(75, 260, 110)"/>
+        <use href="#a02_miniMito" x="265" y="220" transform="rotate(-40, 265, 220)"/>
+        <use href="#a02_miniMito" x="160" y="282" transform="rotate(15, 160, 282)"/>
+        <use href="#a02_miniMito" x="90" y="280" transform="rotate(-60, 90, 280)"/>
+        <use href="#a02_miniMito" x="28" y="180" transform="rotate(50, 28, 180)"/>
+      </g>
+    </g>
+
+    <!-- Visual Density Metric Indicator Right (Low Energy Bar) -->
+    <g id="a02_densityIndicatorRight" transform="translate(30, 375)">
+      <rect width="330" height="24" rx="6" fill="#F1F5F9" stroke="#E2E8F0"/>
+      <rect width="70" height="16" x="4" y="4" rx="4" fill="#94A3B8"/>
+      <!-- Small Mitochondria Icon Count marker -->
+      <circle cx="20" cy="12" r="5" fill="#475569"/>
+    </g>
+  </g>
+</svg>
+          </div>
+          <div class="visual-panel-toolbar">
+            <button class="chip-btn active amber" id="btnCompareS02" onclick="toggleCompareStage2()"><i class="ti ti-bolt"></i> So sánh mật độ ti thể &amp; Nhu cầu năng lượng</button>
+          </div>
+        </div>
+
+        <!-- Interactive Panel (Right 32%) -->
+        <div class="interactive-panel">
+          <div class="info-card">
+            <div class="info-card-header"><i class="ti ti-bulb"></i> Quy luật thích nghi cấu trúc</div>
+            <div class="info-card-desc" id="s02InfoDesc">Tế bào lông hút rễ liên tục hấp thụ chủ động nước và khoáng chất ngược dốc nồng độ nên tiêu tốn lượng ATP khổng lồ, do đó sở hữu mật độ ti thể vượt trội so với tế bào biểu bì lá bảo vệ bề mặt.</div>
+          </div>
+
+          <div class="mcq-box">
+            <div class="mcq-question">Tế bào nào sau đây thường có NHIỀU ti thể hơn: tế bào lông hút của rễ cây hay tế bào biểu bì lá cây?</div>
+            <div class="mcq-options" id="s02Options">
+              <label class="option-label" onclick="selectOptionS02(this, 'A')">
+                <input type="radio" name="optS02" class="option-radio">
+                <span>Tế bào lông hút của rễ cây — vì phải hoạt động tích cực để hấp thụ nước và khoáng chất, cần nhiều năng lượng hơn</span>
+              </label>
+              <label class="option-label" onclick="selectOptionS02(this, 'B')">
+                <input type="radio" name="optS02" class="option-radio">
+                <span>Tế bào biểu bì lá cây — vì tiếp xúc trực tiếp ánh sáng mặt trời nên cần nhiều ti thể</span>
+              </label>
+              <label class="option-label" onclick="selectOptionS02(this, 'C')">
+                <input type="radio" name="optS02" class="option-radio">
+                <span>Cả hai tế bào có số lượng ti thể hoàn toàn bằng nhau</span>
+              </label>
+            </div>
+            <button class="btn-action" id="btnCheckS02" onclick="submitStage2()" disabled><i class="ti ti-check"></i> TRẢ LỜI</button>
+            <div class="feedback-box hidden" id="fbStage2"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls-row">
+        <button class="btn-secondary" onclick="goToStage(1)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+        <button class="btn-primary" id="btnNextS02" onclick="goToStage(3)" disabled>TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </section>
+
+
+    <!-- =========================================================================
+         STAGE 3: LỤC LẠP - THYLAKOID, GRANA VÀ STROMA
+         ========================================================================= -->
+    <section id="stage-3" class="stage hidden">
+      <div class="stage-header">
+        <div class="stage-meta">
+          <span class="stage-badge"><i class="ti ti-plant"></i> Bào quan quang hợp</span>
+          <span class="stage-step-indicator">Màn 3 / 7</span>
+        </div>
+        <h1 class="stage-title">Nơi ánh sáng biến thành thức ăn</h1>
+      </div>
+
+      <div class="lead-box">
+        <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
+          <div class="lead-title">
+            <i class="ti ti-notes"></i>
+            <span>Bối cảnh khoa học</span>
+          </div>
+          <div class="lead-toggle">
+            <span class="lead-toggle-label">Thu gọn</span>
+            <i class="ti ti-chevron-up lead-toggle-icon"></i>
+          </div>
+        </div>
+        <div class="lead-content">
+          <div class="lead-text">
+        Trong tế bào của thực vật và nhiều loài sinh vật nhân thực khác như tảo có loại bào quan với hai lớp màng được gọi là lục lạp. Lớp màng ngoài của lục lạp tạo khoảng không hẹp với lớp màng trong, màng trong không gấp khúc. Bên trong lục lạp có thêm một hệ thống màng ở dạng các túi dẹp, được gọi là thylakoid. Trên bề mặt của màng thylakoid chứa chất diệp lục cùng các enzyme và protein tham gia vào quá trình quang hợp. Các túi này xếp chồng và nối thông với nhau bằng các phiến màng tạo nên cấu trúc được gọi là grana. Mỗi lục lạp có nhiều grana. Bao quanh các grana là vật chất dạng lỏng được gọi là chất nền — stroma. Stroma chứa hệ enzyme tham gia vào quá trình cố định CO2 trong quang hợp, ngoài ra còn chứa nhiều phân tử DNA dạng vòng và ribosome.
+      </div>
+        </div>
+      </div>
+
+      <div class="guide-box">
+        <i class="ti ti-click"></i>
+        <span>Nhấn các nút bên dưới khung ảnh để phân tích cấu tạo lục lạp, sau đó trả lời câu hỏi so sánh với ti thể.</span>
+      </div>
+
+      <div class="stage-body">
+        <!-- Visual Panel (Left 68%) -->
+        <div class="visual-panel">
+          <div class="visual-panel-header">
+            <span><i class="ti ti-eye"></i> Mô hình 3D cắt lớp Lục lạp (Chloroplast)</span>
+            <span id="s03ViewCount" style="color:var(--jade-deep); font-weight:700;">Đã xem: 0/4</span>
+          </div>
+          <div class="visual-stage-canvas">
+            <svg id="imgStage3" class="stage-inline-svg" role="img" aria-label="Cắt lớp 3D Lục lạp" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <!-- Soft 3D Drop Shadow -->
+    <filter id="a03_dropShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#064E3B" flood-opacity="0.18"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#064E3B" flood-opacity="0.12"/>
+    </filter>
+
+    <!-- Outer Membrane Gradient (Vỏ màng ngoài trơn nhẵn) -->
+    <linearGradient id="a03_outerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4ADE80"/>
+      <stop offset="35%" stop-color="#22C55E"/>
+      <stop offset="80%" stop-color="#16A34A"/>
+      <stop offset="100%" stop-color="#15803D"/>
+    </linearGradient>
+
+    <!-- Outer Cut Rim Gradient -->
+    <linearGradient id="a03_outerRimGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#16A34A"/>
+      <stop offset="100%" stop-color="#14532D"/>
+    </linearGradient>
+
+    <!-- Intermembrane Space Gradient (Khoang gian màng hẹp) -->
+    <linearGradient id="a03_imsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DCFCE7"/>
+      <stop offset="100%" stop-color="#BBF7D0"/>
+    </linearGradient>
+
+    <!-- Inner Membrane Gradient (Màng trong TRƠN NHẴN - KHÔNG GẤP KHÚC) -->
+    <linearGradient id="a03_innerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#86EFAC"/>
+      <stop offset="100%" stop-color="#22C55E"/>
+    </linearGradient>
+
+    <!-- Stroma Fluid Gradient (Chất nền stroma dạng lỏng trong suốt) -->
+    <linearGradient id="a03_stromaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F0FDF4"/>
+      <stop offset="50%" stop-color="#DCFCE7"/>
+      <stop offset="100%" stop-color="#BBF7D0"/>
+    </linearGradient>
+
+    <!-- Thylakoid Disc Disc Top Gradient -->
+    <linearGradient id="a03_thylakoidTop" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4ADE80"/>
+      <stop offset="100%" stop-color="#16A34A"/>
+    </linearGradient>
+
+    <!-- Thylakoid Disc Side Rim Gradient -->
+    <linearGradient id="a03_thylakoidSide" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#15803D"/>
+      <stop offset="100%" stop-color="#14532D"/>
+    </linearGradient>
+
+    <!-- Single Thylakoid Disc Symbol -->
+    <g id="a03_thylakoidDisc">
+      <!-- Disc Rim -->
+      <path d="M -22 0 L -22 4 C -22 8, 22 8, 22 4 L 22 0 Z" fill="url(#a03_thylakoidSide)"/>
+      <!-- Disc Top Surface -->
+      <ellipse cx="0" cy="0" rx="22" ry="5.5" fill="url(#a03_thylakoidTop)" stroke="#166534" stroke-width="0.8"/>
+      <!-- Chlorophyll Highlight -->
+      <ellipse cx="-4" cy="-1.5" rx="14" ry="2.5" fill="#86EFAC" opacity="0.45"/>
+    </g>
+  </defs>
+
+  <!-- Clean Canvas Background -->
+  <rect width="800" height="500" fill="#FAF7F0" rx="16"/>
+
+  <!-- Subtle Coordinate Grid -->
+  <g opacity="0.12" stroke="#065F46" stroke-width="1" stroke-dasharray="4 8">
+    <line x1="80" y1="0" x2="80" y2="500"/>
+    <line x1="240" y1="0" x2="240" y2="500"/>
+    <line x1="400" y1="0" x2="400" y2="500"/>
+    <line x1="560" y1="0" x2="560" y2="500"/>
+    <line x1="720" y1="0" x2="720" y2="500"/>
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="250" x2="800" y2="250"/>
+    <line x1="0" y1="400" x2="800" y2="400"/>
+  </g>
+
+  <!-- MASTER CHLOROPLAST GROUP -->
+  <g id="a03_chloroplast" transform="translate(400, 250) rotate(-4)" filter="url(#a03_dropShadow)">
+
+    <!-- =======================================================
+         1. OUTER MEMBRANE (MÀNG NGOÀI - HÌNH THỂ DĨA KHỐI CẦU ELIP)
+         ======================================================= -->
+    <g id="a03_outerMembraneFullBack">
+      <!-- Full exterior convex dome -->
+      <path d="M -270 0 
+               C -270 -140, -180 -170, 0 -170 
+               C 180 -170, 270 -140, 270 0 
+               C 270 140, 180 170, 0 170 
+               C -180 170, -270 140, -270 0 Z"
+            fill="url(#a03_outerGrad)" stroke="#166534" stroke-width="3.5"/>
+      <!-- Soft sunlight reflection on upper dome -->
+      <path d="M -230 -35 
+               C -230 -120, -150 -145, 0 -145 
+               C 130 -145, 200 -120, 210 -55 
+               C 170 -110, 100 -130, -10 -130 
+               C -120 -130, -195 -105, -230 -35 Z"
+            fill="#FFFFFF" opacity="0.38"/>
+    </g>
+
+    <!-- =======================================================
+         2. CUTAWAY WINDOW (CẮT LỚP MỞ RA BÊN TRONG 3D)
+         Khoang cắt mở góc nhìn phía trước
+         ======================================================= -->
+    <g id="a03_cutawayWindow">
+      <!-- Outer Membrane Thickness Cut Rim (Thành cắt của màng ngoài) -->
+      <path id="a03_outerMembraneCutRim"
+            d="M -250 10 
+               C -250 -115, -160 -140, 0 -140 
+               C 160 -140, 250 -115, 250 10 
+               C 250 120, 160 150, 0 150 
+               C -160 150, -250 120, -250 10 Z"
+            fill="url(#a03_outerRimGrad)"/>
+
+      <!-- Intermembrane Space (Khoang gian màng hẹp ~7px) -->
+      <path id="a03_intermembraneSpace"
+            d="M -242 10 
+               C -242 -108, -154 -132, 0 -132 
+               C 154 -132, 242 -108, 242 10 
+               C 242 112, 154 142, 0 142 
+               C -154 142, -242 112, -242 10 Z"
+            fill="url(#a03_imsGrad)" stroke="#22C55E" stroke-width="1.5"/>
+
+      <!-- Inner Membrane Cut Rim (MÀNG TRONG - TRƠN NHẴN, KHÔNG GẤP MÀO) -->
+      <path id="a03_innerMembrane"
+            d="M -232 10 
+               C -232 -100, -148 -124, 0 -124 
+               C 148 -124, 232 -100, 232 10 
+               C 232 104, 148 134, 0 134 
+               C -148 134, -232 104, -232 10 Z"
+            fill="url(#a03_innerGrad)" stroke="#15803D" stroke-width="2.5"/>
+
+      <!-- Stroma Fluid Cavity (Chất nền stroma bên trong màng trong) -->
+      <path id="a03_stroma"
+            d="M -224 10 
+               C -224 -92, -142 -116, 0 -116 
+               C 142 -116, 224 -92, 224 10 
+               C 224 96, 142 126, 0 126 
+               C -142 126, -224 96, -224 10 Z"
+            fill="url(#a03_stromaGrad)"/>
+    </g>
+
+    <!-- =======================================================
+         3. LAMELLAE (CÁC PHIẾN MÀNG NỐI THÔNG CÁC CHỒNG GRANA)
+         Stromal thylakoids / intergranal lamellae
+         ======================================================= -->
+    <g id="a03_lamellae">
+      <!-- Bridge between Granum 1 and Granum 2 -->
+      <path d="M -150 -15 C -110 -25, -60 -10, -20 -15" fill="none" stroke="#16A34A" stroke-width="4.5" stroke-linecap="round"/>
+      <!-- Bridge between Granum 2 and Granum 3 -->
+      <path d="M 15 -18 C 55 -28, 95 -10, 130 -22" fill="none" stroke="#16A34A" stroke-width="4.5" stroke-linecap="round"/>
+      <!-- Bridge between Granum 1 and Granum 4 (Lower left) -->
+      <path d="M -160 10 C -140 35, -110 55, -80 60" fill="none" stroke="#16A34A" stroke-width="4.5" stroke-linecap="round"/>
+      <!-- Bridge between Granum 4 and Granum 5 (Lower center) -->
+      <path d="M -40 65 C 0 75, 40 60, 65 55" fill="none" stroke="#16A34A" stroke-width="4.5" stroke-linecap="round"/>
+      <!-- Bridge between Granum 5 and Granum 6 (Lower right) -->
+      <path d="M 105 52 C 125 45, 145 35, 165 20" fill="none" stroke="#16A34A" stroke-width="4.5" stroke-linecap="round"/>
+      <!-- Bridge crossing middle -->
+      <path d="M -70 50 C -40 20, -10 15, 0 -10" fill="none" stroke="#15803D" stroke-width="3.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- =======================================================
+         4. GRANA STACKS (CÁC CHỒNG THYLAKOID DẠNG DĨA XẾP LỚP)
+         ======================================================= -->
+    <g id="a03_granaStacks">
+
+      <!-- Granum 1: Left Mid Stack (6 thylakoids) -->
+      <g id="a03_granum_1" transform="translate(-150, -10)">
+        <use href="#a03_thylakoidDisc" x="0" y="16"/>
+        <use href="#a03_thylakoidDisc" x="0" y="10"/>
+        <use href="#a03_thylakoidDisc" x="0" y="4"/>
+        <use href="#a03_thylakoidDisc" x="0" y="-2"/>
+        <use href="#a03_thylakoidDisc" x="0" y="-8"/>
+        <use href="#a03_thylakoidDisc" x="0" y="-14"/>
+      </g>
+
+      <!-- Granum 2: Center Upper Stack (7 thylakoids) -->
+      <g id="a03_granum_2" transform="translate(-5, -25)">
+        <use href="#a03_thylakoidDisc" x="0" y="18"/>
+        <use href="#a03_thylakoidDisc" x="0" y="12"/>
+        <use href="#a03_thylakoidDisc" x="0" y="6"/>
+        <use href="#a03_thylakoidDisc" x="0" y="0"/>
+        <use href="#a03_thylakoidDisc" x="0" y="-6"/>
+        <use href="#a03_thylakoidDisc" x="0" y="-12"/>
+        <use href="#a03_thylakoidDisc" x="0" y="-18"/>
+      </g>
+
+      <!-- Granum 3: Right Upper Stack (5 thylakoids) -->
+      <g id="a03_granum_3" transform="translate(145, -30)">
+        <use href="#a03_thylakoidDisc" x="0" y="12"/>
+        <use href="#a03_thylakoidDisc" x="0" y="6"/>
+        <use href="#a03_thylakoidDisc" x="0" y="0"/>
+        <use href="#a03_thylakoidDisc" x="0" y="-6"/>
+        <use href="#a03_thylakoidDisc" x="0" y="-12"/>
+      </g>
+
+      <!-- Granum 4: Lower Left Stack (6 thylakoids) -->
+      <g id="a03_granum_4" transform="translate(-75, 55)">
+        <use href="#a03_thylakoidDisc" x="0" y="15"/>
+        <use href="#a03_thylakoidDisc" x="0" y="9"/>
+        <use href="#a03_thylakoidDisc" x="0" y="3"/>
+        <use href="#a03_thylakoidDisc" x="0" y="-3"/>
+        <use href="#a03_thylakoidDisc" x="0" y="-9"/>
+        <use href="#a03_thylakoidDisc" x="0" y="-15"/>
+      </g>
+
+      <!-- Granum 5: Lower Mid-Right Stack (7 thylakoids) -->
+      <g id="a03_granum_5" transform="translate(80, 50)">
+        <use href="#a03_thylakoidDisc" x="0" y="18"/>
+        <use href="#a03_thylakoidDisc" x="0" y="12"/>
+        <use href="#a03_thylakoidDisc" x="0" y="6"/>
+        <use href="#a03_thylakoidDisc" x="0" y="0"/>
+        <use href="#a03_thylakoidDisc" x="0" y="-6"/>
+        <use href="#a03_thylakoidDisc" x="0" y="-12"/>
+        <use href="#a03_thylakoidDisc" x="0" y="-18"/>
+      </g>
+
+      <!-- Granum 6: Far Right Deep Stack (5 thylakoids) -->
+      <g id="a03_granum_6" transform="translate(170, 20)">
+        <use href="#a03_thylakoidDisc" x="0" y="12"/>
+        <use href="#a03_thylakoidDisc" x="0" y="6"/>
+        <use href="#a03_thylakoidDisc" x="0" y="0"/>
+        <use href="#a03_thylakoidDisc" x="0" y="-6"/>
+        <use href="#a03_thylakoidDisc" x="0" y="-12"/>
+      </g>
+
+      <!-- Granum 7: Far Left Background Stack (4 thylakoids) -->
+      <g id="a03_granum_7" transform="translate(-185, -55) scale(0.85)">
+        <use href="#a03_thylakoidDisc" x="0" y="9"/>
+        <use href="#a03_thylakoidDisc" x="0" y="3"/>
+        <use href="#a03_thylakoidDisc" x="0" y="-3"/>
+        <use href="#a03_thylakoidDisc" x="0" y="-9"/>
+      </g>
+    </g>
+
+    <!-- =======================================================
+         5. STROMA CONTENTS (NỘI DUNG CHẤT NỀN STROMA)
+         DNA VÒNG & RIBOSOME 70S NẰM TỰ DO TRONG STROMA
+         (TUYỆT ĐỐI KHÔNG NẰM TRONG LÒNG TÚI THYLAKOID)
+         ======================================================= -->
+    <g id="a03_stromaContents">
+
+      <!-- Chloroplast Circular DNA 1 (DNA lục lạp dạng vòng khép kín) -->
+      <g id="a03_circularDna_1" transform="translate(-105, -60) scale(0.85)">
+        <path d="M 0 -16 C 14 -18, 26 -8, 23 4 C 20 18, 7 24, -9 20 C -24 16, -28 2, -22 -10 C -16 -20, -7 -15, 0 -16 Z"
+              fill="none" stroke="#DC2626" stroke-width="2.2" stroke-dasharray="5 2.5"/>
+        <path d="M 2 -13 C 15 -15, 22 -5, 19 4 C 16 15, 6 20, -6 16 C -18 13, -21 3, -16 -7 C -12 -15, -4 -13, 2 -13 Z"
+              fill="none" stroke="#EF4444" stroke-width="1.6"/>
+      </g>
+
+      <!-- Chloroplast Circular DNA 2 (DNA lục lạp thứ 2) -->
+      <g id="a03_circularDna_2" transform="translate(65, -65) rotate(40) scale(0.8)">
+        <path d="M 0 -16 C 14 -18, 26 -8, 23 4 C 20 18, 7 24, -9 20 C -24 16, -28 2, -22 -10 C -16 -20, -7 -15, 0 -16 Z"
+              fill="none" stroke="#DC2626" stroke-width="2.2" stroke-dasharray="5 2.5"/>
+        <path d="M 2 -13 C 15 -15, 22 -5, 19 4 C 16 15, 6 20, -6 16 C -18 13, -21 3, -16 -7 C -12 -15, -4 -13, 2 -13 Z"
+              fill="none" stroke="#EF4444" stroke-width="1.6"/>
+      </g>
+
+      <!-- Chloroplast Circular DNA 3 (DNA lục lạp thứ 3 ở góc dưới) -->
+      <g id="a03_circularDna_3" transform="translate(-15, 80) rotate(-20) scale(0.75)">
+        <path d="M 0 -16 C 14 -18, 26 -8, 23 4 C 20 18, 7 24, -9 20 C -24 16, -28 2, -22 -10 C -16 -20, -7 -15, 0 -16 Z"
+              fill="none" stroke="#DC2626" stroke-width="2.2" stroke-dasharray="5 2.5"/>
+        <path d="M 2 -13 C 15 -15, 22 -5, 19 4 C 16 15, 6 20, -6 16 C -18 13, -21 3, -16 -7 C -12 -15, -4 -13, 2 -13 Z"
+              fill="none" stroke="#EF4444" stroke-width="1.6"/>
+      </g>
+
+      <!-- 70S Chloroplast Ribosomes (Ribosome 70S phân bố trong stroma) -->
+      <g id="a03_ribosomes">
+        <g transform="translate(-135, -50)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+        <g transform="translate(-75, -55)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+        <g transform="translate(-40, -65)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+        <g transform="translate(35, -70)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+        <g transform="translate(100, -70)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+        <g transform="translate(-140, 50)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+        <g transform="translate(-115, 80)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+        <g transform="translate(-25, 40)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+        <g transform="translate(30, 45)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+        <g transform="translate(35, 85)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+        <g transform="translate(135, 60)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+        <g transform="translate(180, -35)"><ellipse cx="0" cy="-2" rx="3.5" ry="2.5" fill="#7E22CE"/><ellipse cx="0" cy="2" rx="3" ry="2" fill="#D946EF"/></g>
+      </g>
+
+      <!-- Starch Granule / Lipid Droplet (Hạt tinh bột nhỏ dự trữ đặc trưng) -->
+      <ellipse cx="-70" cy="-35" rx="9" ry="5.5" fill="#FEF08A" stroke="#CA8A04" stroke-width="1.2" opacity="0.85"/>
+      <ellipse cx="110" cy="-15" rx="8" ry="5" fill="#FEF08A" stroke="#CA8A04" stroke-width="1.2" opacity="0.85"/>
+    </g>
+
+    <!-- Front Cut Shadow Rim -->
+    <path d="M -250 10 C -250 -115, -160 -140, 0 -140 C 160 -140, 250 -115, 250 10" 
+          fill="none" stroke="#064E3B" stroke-width="2" opacity="0.25"/>
+  </g>
+</svg>
+          </div>
+          <div class="visual-panel-toolbar">
+            <button class="chip-btn active" onclick="exploreStage3('all')"><i class="ti ti-layout-grid"></i> Toàn cảnh</button>
+            <button class="chip-btn" onclick="exploreStage3('envelope')"><i class="ti ti-circle"></i> 1. Vỏ màng kép trơn nhẵn</button>
+            <button class="chip-btn" onclick="exploreStage3('grana')"><i class="ti ti-stack-2"></i> 2. Hệ Grana &amp; Thylakoid</button>
+            <button class="chip-btn" onclick="exploreStage3('lamellae')"><i class="ti ti-git-branch"></i> 3. Phiến màng Lamellae</button>
+            <button class="chip-btn" onclick="exploreStage3('stroma')"><i class="ti ti-droplet"></i> 4. Chất nền Stroma (DNA &amp; 70S)</button>
+          </div>
+        </div>
+
+        <!-- Interactive Panel (Right 32%) -->
+        <div class="interactive-panel">
+          <div class="info-card" id="s03InfoCard">
+            <div class="info-card-header"><i class="ti ti-info-circle"></i> <span id="s03InfoTitle">Cấu trúc Lục lạp</span></div>
+            <div class="info-card-desc" id="s03InfoDesc">Bào quan chứa chất diệp lục giúp chuyển hóa quang năng thành hóa năng trong các hợp chất hữu cơ.</div>
+          </div>
+
+          <div class="mcq-box">
+            <div class="mcq-question">Màng trong của lục lạp có gấp khúc như ti thể không?</div>
+            <div class="mcq-options" id="s03Options">
+              <label class="option-label" onclick="selectOptionS03(this, 'A')">
+                <input type="radio" name="optS03" class="option-radio">
+                <span>Không — màng trong lục lạp không gấp khúc (cấu trúc gấp nếp nằm ở thylakoid bên trong)</span>
+              </label>
+              <label class="option-label" onclick="selectOptionS03(this, 'B')">
+                <input type="radio" name="optS03" class="option-radio">
+                <span>Có — màng trong lục lạp cũng gấp khúc tạo thành mào như ti thể</span>
+              </label>
+            </div>
+            <button class="btn-action" id="btnCheckS03" onclick="submitStage3()" disabled><i class="ti ti-check"></i> TRẢ LỜI</button>
+            <div class="feedback-box hidden" id="fbStage3"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls-row">
+        <button class="btn-secondary" onclick="goToStage(2)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+        <button class="btn-primary" id="btnNextS03" onclick="goToStage(4)" disabled>TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </section>
+
+
+    <!-- =========================================================================
+         STAGE 4: MỐI QUAN HỆ LỤC LẠP - TI THỂ
+         ========================================================================= -->
+    <section id="stage-4" class="stage hidden">
+      <div class="stage-header">
+        <div class="stage-meta">
+          <span class="stage-badge"><i class="ti ti-refresh"></i> Chu trình chuyển hóa 2 chiều</span>
+          <span class="stage-step-indicator">Màn 4 / 7</span>
+        </div>
+        <h1 class="stage-title">Một vòng tròn khép kín trong tế bào lá xanh</h1>
+      </div>
+
+      <div class="lead-box">
+        <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
+          <div class="lead-title">
+            <i class="ti ti-notes"></i>
+            <span>Bối cảnh khoa học</span>
+          </div>
+          <div class="lead-toggle">
+            <span class="lead-toggle-label">Thu gọn</span>
+            <i class="ti ti-chevron-up lead-toggle-icon"></i>
+          </div>
+        </div>
+        <div class="lead-content">
+          <div class="lead-text">
+        Ở tế bào thực vật, lục lạp và ti thể có mối quan hệ mật thiết với nhau trong quá trình chuyển hóa nội bào. Lục lạp dùng năng lượng ánh sáng để thực hiện quang hợp, tạo ra carbohydrate và khí oxygen. Ti thể sử dụng chính carbohydrate và oxygen đó để thực hiện hô hấp tế bào, tạo ra khí carbon dioxide, nước và năng lượng hóa học ATP. Khí carbon dioxide và nước từ hô hấp tế bào lại được lục lạp sử dụng để tiếp tục quang hợp.
+      </div>
+        </div>
+      </div>
+
+      <div class="guide-box">
+        <i class="ti ti-click"></i>
+        <span>Nhấn "Kích hoạt chu trình chuyển hóa" để theo dõi dòng luân chuyển vật chất và năng lượng giữa hai bào quan.</span>
+      </div>
+
+      <div class="stage-body">
+        <!-- Visual Panel (Left 68%) -->
+        <div class="visual-panel">
+          <div class="visual-panel-header">
+            <span><i class="ti ti-repeat"></i> Sơ đồ tương hỗ: Quang hợp (Lục lạp) &harr; Hô hấp (Ti thể)</span>
+            <span id="s04CycleStatus" style="color:var(--jade-deep); font-weight:700;">Trạng thái: Tĩnh</span>
+          </div>
+          <div class="visual-stage-canvas">
+            <svg id="imgStage4" class="stage-inline-svg" role="img" aria-label="Chu trình Lục lạp và Ti thể" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="100%" height="100%">
+  <defs>
+    <!-- Soft Node Shadow -->
+    <filter id="a04_nodeShadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0F172A" flood-opacity="0.08"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.05"/>
+    </filter>
+
+    <!-- Arrow Marker: Jade / Photosynthesis Flow -->
+    <marker id="a04_arrowJade" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#10B981"/>
+    </marker>
+
+    <!-- Arrow Marker: Amber / Respiration Flow -->
+    <marker id="a04_arrowAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#F59E0B"/>
+    </marker>
+
+    <!-- Gradient: Light Energy Rays -->
+    <linearGradient id="a04_sunlightGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE047"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+
+    <!-- Gradient: ATP Energy Badge -->
+    <linearGradient id="a04_atpGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FB923C"/>
+      <stop offset="100%" stop-color="#DC2626"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Clean Base Canvas -->
+  <rect width="900" height="520" fill="#FAF7F0" rx="16"/>
+
+  <!-- Subtle Cell Matrix Boundary (Minh họa không gian tế bào chất bao quanh) -->
+  <rect x="25" y="25" width="850" height="470" rx="20" fill="#FFFFFF" stroke="#E5DECF" stroke-width="1.5"/>
+
+  <!-- Background decorative water/cytosol flow particles -->
+  <g opacity="0.25" fill="#A8C9B8">
+    <circle cx="120" cy="80" r="3"/>
+    <circle cx="280" cy="60" r="2.5"/>
+    <circle cx="620" cy="70" r="3"/>
+    <circle cx="780" cy="90" r="2"/>
+    <circle cx="150" cy="450" r="3"/>
+    <circle cx="340" cy="460" r="2.5"/>
+    <circle cx="560" cy="450" r="3"/>
+    <circle cx="750" cy="430" r="2.5"/>
+  </g>
+
+
+  <!-- =========================================================================
+       NODE TRÁI: LỤC LẠP (CHLOROPLAST) - QUANG HỢP
+       ========================================================================= -->
+  <g id="a04_chloroplastNode" transform="translate(180, 260)" filter="url(#a04_nodeShadow)">
+    <!-- Node Enclosing Halo -->
+    <ellipse cx="0" cy="0" rx="135" ry="110" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="2"/>
+
+    <!-- Scaled Chloroplast 3D Geometry (Reused from A03) -->
+    <g transform="scale(0.48) translate(-10, -5)">
+      <!-- Outer Membrane -->
+      <path d="M -220 0 C -220 -115, -145 -140, 0 -140 C 145 -140, 220 -115, 220 0 C 220 115, 145 140, 0 140 C -145 140, -220 115, -220 0 Z"
+            fill="#22C55E" stroke="#15803D" stroke-width="4"/>
+      <!-- Cutaway -->
+      <path d="M -200 10 C -200 -95, -130 -115, 0 -115 C 130 -115, 200 -95, 200 10 C 200 100, 130 125, 0 125 C -130 125, -200 100, -200 10 Z"
+            fill="#DCFCE7" stroke="#16A34A" stroke-width="3"/>
+      <!-- Grana Discs & Lamellae -->
+      <path d="M -120 -15 L -20 -15 M 10 -15 L 110 -15 M -60 45 L 60 45" stroke="#15803D" stroke-width="5"/>
+      <!-- Grana Stacks -->
+      <g transform="translate(-110, -15)">
+        <ellipse cx="0" cy="-12" rx="18" ry="4.5" fill="#16A34A" stroke="#14532D"/>
+        <ellipse cx="0" cy="-6" rx="18" ry="4.5" fill="#16A34A" stroke="#14532D"/>
+        <ellipse cx="0" cy="0" rx="18" ry="4.5" fill="#16A34A" stroke="#14532D"/>
+        <ellipse cx="0" cy="6" rx="18" ry="4.5" fill="#16A34A" stroke="#14532D"/>
+        <ellipse cx="0" cy="12" rx="18" ry="4.5" fill="#16A34A" stroke="#14532D"/>
+      </g>
+      <g transform="translate(0, -20)">
+        <ellipse cx="0" cy="-12" rx="18" ry="4.5" fill="#16A34A" stroke="#14532D"/>
+        <ellipse cx="0" cy="-6" rx="18" ry="4.5" fill="#16A34A" stroke="#14532D"/>
+        <ellipse cx="0" cy="0" rx="18" ry="4.5" fill="#16A34A" stroke="#14532D"/>
+        <ellipse cx="0" cy="6" rx="18" ry="4.5" fill="#16A34A" stroke="#14532D"/>
+        <ellipse cx="0" cy="12" rx="18" ry="4.5" fill="#16A34A" stroke="#14532D"/>
+      </g>
+      <g transform="translate(100, -20)">
+        <ellipse cx="0" cy="-12" rx="18" ry="4.5" fill="#16A34A" stroke="#14532D"/>
+        <ellipse cx="0" cy="-6" rx="18" ry="4.5" fill="#16A34A" stroke="#14532D"/>
+        <ellipse cx="0" cy="0" rx="18" ry="4.5" fill="#16A34A" stroke="#14532D"/>
+        <ellipse cx="0" cy="6" rx="18" ry="4.5" fill="#16A34A" stroke="#14532D"/>
+        <ellipse cx="0" cy="12" rx="18" ry="4.5" fill="#16A34A" stroke="#14532D"/>
+      </g>
+      <g transform="translate(-50, 45)">
+        <ellipse cx="0" cy="-6" rx="18" ry="4.5" fill="#16A34A" stroke="#14532D"/>
+        <ellipse cx="0" cy="0" rx="18" ry="4.5" fill="#16A34A" stroke="#14532D"/>
+        <ellipse cx="0" cy="6" rx="18" ry="4.5" fill="#16A34A" stroke="#14532D"/>
+      </g>
+      <g transform="translate(50, 45)">
+        <ellipse cx="0" cy="-6" rx="18" ry="4.5" fill="#16A34A" stroke="#14532D"/>
+        <ellipse cx="0" cy="0" rx="18" ry="4.5" fill="#16A34A" stroke="#14532D"/>
+        <ellipse cx="0" cy="6" rx="18" ry="4.5" fill="#16A34A" stroke="#14532D"/>
+      </g>
+      <!-- Circular DNA loops -->
+      <circle cx="-60" cy="-35" r="8" fill="none" stroke="#DC2626" stroke-width="2" stroke-dasharray="3 2"/>
+      <circle cx="60" cy="-40" r="7" fill="none" stroke="#DC2626" stroke-width="2" stroke-dasharray="3 2"/>
+    </g>
+
+    <!-- Solar Energy Input Arrow (Quang năng chiếu vào lục lạp) -->
+    <g id="a04_lightInput" transform="translate(-100, -110)">
+      <!-- Sun rays -->
+      <path d="M 0 0 L 35 45 M 15 -10 L 48 35 M -10 15 L 25 60" stroke="url(#a04_sunlightGrad)" stroke-width="3.5" stroke-linecap="round"/>
+      <polygon points="40,52 26,45 35,36" fill="#F59E0B"/>
+      <!-- Sun icon -->
+      <circle cx="0" cy="-5" r="14" fill="#FDE047" stroke="#EAB308" stroke-width="2"/>
+    </g>
+  </g>
+
+
+  <!-- =========================================================================
+       NODE PHẢI: TI THỂ (MITOCHONDRION) - HÔ HẤP TẾ BÀO
+       ========================================================================= -->
+  <g id="a04_mitochondrionNode" transform="translate(720, 260)" filter="url(#a04_nodeShadow)">
+    <!-- Node Enclosing Halo -->
+    <ellipse cx="0" cy="0" rx="135" ry="110" fill="#FFFBEB" stroke="#FDE68A" stroke-width="2"/>
+
+    <!-- Scaled Mitochondrion 3D Geometry (Reused from A01) -->
+    <g transform="scale(0.48) translate(-5, -5)">
+      <!-- Outer Capsule -->
+      <path d="M -210 0 C -210 -110, -140 -135, 0 -135 C 140 -135, 210 -110, 210 0 C 210 110, 140 135, 0 135 C -140 135, -210 110, -210 0 Z"
+            fill="#F59E0B" stroke="#B45309" stroke-width="4"/>
+      <!-- Cutaway Matrix -->
+      <path d="M -190 10 C -190 -90, -120 -110, 0 -110 C 120 -110, 190 -90, 190 10 C 190 95, 120 120, 0 120 C -120 120, -190 95, -190 10 Z"
+            fill="#FEF3C7" stroke="#D97706" stroke-width="3"/>
+      <!-- Cristae folds inside -->
+      <path d="M -180 5 C -150 -10, -130 10, -110 0 
+               C -130 25, -90 45, -60 20 
+               C -75 60, -20 70, 0 40 
+               C 10 65, 60 60, 50 30 
+               C 70 45, 120 40, 100 10 
+               C 120 15, 150 0, 175 10" 
+            fill="none" stroke="#EA580C" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M -160 -40 C -130 -30, -110 -50, -90 -35 
+               C -70 -55, -30 -40, -10 -60 
+               C 20 -45, 60 -55, 70 -30 
+               C 90 -45, 130 -35, 155 -40" 
+            fill="none" stroke="#EA580C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Circular DNA & Ribosomes -->
+      <circle cx="-40" cy="-25" r="7" fill="none" stroke="#DC2626" stroke-width="2" stroke-dasharray="3 2"/>
+      <circle cx="50" cy="-20" r="7" fill="none" stroke="#DC2626" stroke-width="2" stroke-dasharray="3 2"/>
+    </g>
+
+    <!-- Chemical Energy Output Badge (ATP giải phóng phục vụ hoạt động sống) -->
+    <g id="a04_atpOutput" transform="translate(90, -110)">
+      <!-- ATP Flash Badge -->
+      <polygon points="10,-20 30,-5 45,-25 40,0 60,10 38,15 45,35 25,20 10,38 12,15 -10,12 8,0"
+               fill="url(#a04_atpGrad)" stroke="#B91C1C" stroke-width="1.5"/>
+      <!-- Flash Burst Ray -->
+      <line x1="25" y1="5" x2="45" y2="45" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
+    </g>
+  </g>
+
+
+  <!-- =========================================================================
+       NHÁNH TRÊN: TỪ LỤC LẠP -> TI THỂ (SẢN PHẨM QUANG HỢP: GLUCOSE + O2)
+       ========================================================================= -->
+  <g id="a04_flowPhotosynthesisToRespiration">
+    <!-- Curved Main Connecting Arc -->
+    <path d="M 270 180 C 370 90, 530 90, 630 180" 
+          fill="none" stroke="#10B981" stroke-width="4.5" stroke-dasharray="8 6" marker-end="url(#a04_arrowJade)"/>
+
+    <!-- Central Cargo Container / Molecule Pills -->
+    <g transform="translate(450, 115)">
+      <rect x="-105" y="-30" width="210" height="60" rx="14" fill="#FFFFFF" stroke="#10B981" stroke-width="2" filter="url(#a04_nodeShadow)"/>
+      <!-- Organic Molecule / Glucose Badge -->
+      <rect x="-95" y="-18" width="90" height="36" rx="8" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1.5"/>
+      <circle cx="-80" cy="0" r="8" fill="#10B981"/>
+      <rect x="-65" y="-4" width="48" height="8" rx="4" fill="#065F46" opacity="0.7"/>
+
+      <!-- Oxygen Molecule (O2) Badge -->
+      <rect x="5" y="-18" width="90" height="36" rx="8" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.5"/>
+      <circle cx="25" cy="0" r="8" fill="#3B82F6"/>
+      <rect x="40" y="-4" width="45" height="8" rx="4" fill="#1E40AF" opacity="0.7"/>
+    </g>
+  </g>
+
+
+  <!-- =========================================================================
+       NHÁNH DƯỚI: TỪ TI THỂ -> LỤC LẠP (SẢN PHẨM HÔ HẤP: CO2 + H2O)
+       ========================================================================= -->
+  <g id="a04_flowRespirationToPhotosynthesis">
+    <!-- Curved Main Connecting Arc -->
+    <path d="M 630 340 C 530 430, 370 430, 270 340" 
+          fill="none" stroke="#F59E0B" stroke-width="4.5" stroke-dasharray="8 6" marker-end="url(#a04_arrowAmber)"/>
+
+    <!-- Central Cargo Container / Molecule Pills -->
+    <g transform="translate(450, 405)">
+      <rect x="-105" y="-30" width="210" height="60" rx="14" fill="#FFFFFF" stroke="#F59E0B" stroke-width="2" filter="url(#a04_nodeShadow)"/>
+      <!-- Carbon Dioxide (CO2) Badge -->
+      <rect x="-95" y="-18" width="90" height="36" rx="8" fill="#FFFBEB" stroke="#FDE68A" stroke-width="1.5"/>
+      <circle cx="-80" cy="0" r="8" fill="#F59E0B"/>
+      <rect x="-65" y="-4" width="48" height="8" rx="4" fill="#92400E" opacity="0.7"/>
+
+      <!-- Water (H2O) Badge -->
+      <rect x="5" y="-18" width="90" height="36" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1.5"/>
+      <circle cx="25" cy="0" r="8" fill="#06B6D4"/>
+      <rect x="40" y="-4" width="45" height="8" rx="4" fill="#0E7490" opacity="0.7"/>
+    </g>
+  </g>
+</svg>
+          </div>
+          <div class="visual-panel-toolbar">
+            <button class="chip-btn active" id="btnAnimateS04" onclick="toggleCycleStage4()"><i class="ti ti-player-play"></i> Kích hoạt chu trình chuyển hóa</button>
+          </div>
+        </div>
+
+        <!-- Interactive Panel (Right 32%) -->
+        <div class="interactive-panel">
+          <div class="info-card">
+            <div class="info-card-header"><i class="ti ti-arrows-exchange"></i> Mối liên hệ năng lượng</div>
+            <div class="info-card-desc">Lục lạp tích trữ năng lượng ánh sáng thành hóa năng trong Glucose; Ti thể giải phóng hóa năng từ Glucose thành dạng ATP sẵn sàng cho mọi hoạt động sống của tế bào.</div>
+          </div>
+
+          <div class="mcq-box">
+            <div class="mcq-question">Nếu 1 tế bào thực vật chỉ có lục lạp mà không có ti thể, điều gì xảy ra vào ban đêm (không có ánh sáng)?</div>
+            <div class="mcq-options" id="s04Options">
+              <label class="option-label" onclick="selectOptionS04(this, 'A')">
+                <input type="radio" name="optS04" class="option-radio">
+                <span>Tế bào sẽ thiếu năng lượng, vì hô hấp tế bào (ở ti thể) mới cung cấp ATP liên tục, không phụ thuộc ánh sáng</span>
+              </label>
+              <label class="option-label" onclick="selectOptionS04(this, 'B')">
+                <input type="radio" name="optS04" class="option-radio">
+                <span>Không có vấn đề gì vì thực vật hoàn toàn ngừng sử dụng năng lượng vào ban đêm</span>
+              </label>
+              <label class="option-label" onclick="selectOptionS04(this, 'C')">
+                <input type="radio" name="optS04" class="option-radio">
+                <span>Lục lạp sẽ tự động quang hợp tạo ATP ngay cả khi không có ánh sáng</span>
+              </label>
+            </div>
+            <button class="btn-action" id="btnCheckS04" onclick="submitStage4()" disabled><i class="ti ti-check"></i> TRẢ LỜI</button>
+            <div class="feedback-box hidden" id="fbStage4"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls-row">
+        <button class="btn-secondary" onclick="goToStage(3)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+        <button class="btn-primary" id="btnNextS04" onclick="goToStage(5)" disabled>TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </section>
+
+
+    <!-- =========================================================================
+         STAGE 5: BẰNG CHỨNG THUYẾT NỘI CỘNG SINH
+         ========================================================================= -->
+    <section id="stage-5" class="stage hidden">
+      <div class="stage-header">
+        <div class="stage-meta">
+          <span class="stage-badge"><i class="ti ti-git-merge"></i> Nguồn gốc tiến hóa sinh học</span>
+          <span class="stage-step-indicator">Màn 5 / 7</span>
+        </div>
+        <h1 class="stage-title">Ti thể và lục lạp — hậu duệ của vi khuẩn cổ đại?</h1>
+      </div>
+
+      <div class="lead-box">
+        <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
+          <div class="lead-title">
+            <i class="ti ti-notes"></i>
+            <span>Bối cảnh khoa học</span>
+          </div>
+          <div class="lead-toggle">
+            <span class="lead-toggle-label">Thu gọn</span>
+            <i class="ti ti-chevron-up lead-toggle-icon"></i>
+          </div>
+        </div>
+        <div class="lead-content">
+          <div class="lead-text">
+        Ti thể và lục lạp đều có màng kép, DNA dạng vòng riêng và ribosome — loại 70S, giống ribosome của vi khuẩn, khác với ribosome 80S trong tế bào chất của tế bào nhân thực. Điều này cho thấy chúng có thể có nguồn gốc từ vi khuẩn sống cộng sinh trong tế bào nhân thực nguyên thủy.
+      </div>
+        </div>
+      </div>
+
+      <div class="guide-box">
+        <i class="ti ti-click"></i>
+        <span>Nhấn vào từng bằng chứng bên dưới để đối chiếu 3 đặc tính tương đồng với vi khuẩn cổ đại.</span>
+      </div>
+
+      <div class="stage-body">
+        <!-- Visual Panel (Left 68%) -->
+        <div class="visual-panel">
+          <div class="visual-panel-header">
+            <span><i class="ti ti-columns"></i> Đối chiếu 3 bằng chứng: Ti thể | Lục lạp | Vi khuẩn nhân sơ</span>
+            <span id="s05ProofCount" style="color:var(--jade-deep); font-weight:700;">Đã xét: 0/3</span>
+          </div>
+          <div class="visual-stage-canvas">
+            <svg id="imgStage5" class="stage-inline-svg" role="img" aria-label="3 Bằng chứng thuyết nội cộng sinh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="100%" height="100%">
+  <defs>
+    <!-- Soft Card Shadow -->
+    <filter id="a05_cardShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0F172A" flood-opacity="0.06"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.04"/>
+    </filter>
+
+    <!-- Mini Ribosome 70S (Nhỏ hơn 80S) -->
+    <g id="a05_ribosome70s">
+      <ellipse cx="0" cy="-2" rx="4" ry="2.8" fill="#7E22CE"/>
+      <ellipse cx="0" cy="2.2" rx="3.5" ry="2" fill="#D946EF"/>
+    </g>
+
+    <!-- Circular DNA Coil Symbol -->
+    <g id="a05_circDnaSymbol">
+      <circle cx="0" cy="0" r="10" fill="none" stroke="#DC2626" stroke-width="2.5" stroke-dasharray="4 2"/>
+      <circle cx="0" cy="0" r="7" fill="none" stroke="#EF4444" stroke-width="1.8"/>
+    </g>
+  </defs>
+
+  <!-- Clean Canvas Background -->
+  <rect width="960" height="540" fill="#FAF7F0" rx="16"/>
+
+  <!-- =========================================================================
+       3 CỘT ĐỐI CHIẾU: TI THỂ | LỤC LẠP | VI KHUẨN NHÂN SƠ
+       ========================================================================= -->
+
+  <!-- CỘT 1: TI THỂ (MITOCHONDRION) -->
+  <g id="a05_colMitochondrion" transform="translate(40, 30)">
+    <rect width="270" height="480" rx="14" fill="#FFFFFF" stroke="#FDE68A" stroke-width="2" filter="url(#a05_cardShadow)"/>
+    
+    <!-- Top Header Badge -->
+    <rect x="20" y="16" width="230" height="32" rx="8" fill="#FEF3C7"/>
+    <circle cx="36" cy="32" r="6" fill="#D97706"/>
+    <rect x="52" y="28" width="120" height="8" rx="4" fill="#B45309" opacity="0.8"/>
+
+    <!-- Organelle Graphic Mini 3D (A01 Geometry) -->
+    <g id="a05_mitoIcon" transform="translate(135, 115) scale(0.38)">
+      <path d="M -180 0 C -180 -95, -120 -115, 0 -115 C 120 -115, 180 -95, 180 0 C 180 95, 120 115, 0 115 C -120 115, -180 95, -180 0 Z"
+            fill="#F59E0B" stroke="#B45309" stroke-width="4"/>
+      <path d="M -160 10 C -160 -75, -100 -95, 0 -95 C 100 -95, 160 -75, 160 10 C 160 80, 100 100, 0 100 C -100 100, -160 80, -160 10 Z"
+            fill="#FEF3C7" stroke="#D97706" stroke-width="3"/>
+      <path d="M -130 0 C -110 -15, -90 10, -70 0 C -90 25, -50 40, -30 20 C -40 50, 0 55, 20 30 C 30 50, 70 45, 60 20 C 80 25, 120 10, 135 15" 
+            fill="none" stroke="#EA580C" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="-30" cy="-20" r="8" fill="none" stroke="#DC2626" stroke-width="2.5" stroke-dasharray="3 2"/>
+      <circle cx="35" cy="-15" r="8" fill="none" stroke="#DC2626" stroke-width="2.5" stroke-dasharray="3 2"/>
+    </g>
+
+    <!-- Evidence Feature 1: Double Membrane (Màng kép) -->
+    <g id="a05_mitoProof1" transform="translate(20, 180)">
+      <rect width="230" height="75" rx="8" fill="#FFFBEB" stroke="#FDE68A"/>
+      <!-- Concentric Double Oval Lines (Biểu tượng 2 lớp màng) -->
+      <ellipse cx="40" cy="37" rx="22" ry="15" fill="none" stroke="#B45309" stroke-width="2.5"/>
+      <ellipse cx="40" cy="37" rx="16" ry="10" fill="none" stroke="#EA580C" stroke-width="2"/>
+      <!-- Descriptor bars -->
+      <rect x="75" y="25" width="135" height="10" rx="5" fill="#B45309" opacity="0.8"/>
+      <rect x="75" y="43" width="95" height="7" rx="3.5" fill="#D97706" opacity="0.6"/>
+    </g>
+
+    <!-- Evidence Feature 2: Circular DNA (DNA vòng) -->
+    <g id="a05_mitoProof2" transform="translate(20, 275)">
+      <rect width="230" height="75" rx="8" fill="#FFFBEB" stroke="#FDE68A"/>
+      <use href="#a05_circDnaSymbol" x="40" y="37"/>
+      <rect x="75" y="25" width="135" height="10" rx="5" fill="#DC2626" opacity="0.8"/>
+      <rect x="75" y="43" width="105" height="7" rx="3.5" fill="#EF4444" opacity="0.6"/>
+    </g>
+
+    <!-- Evidence Feature 3: 70S Ribosomes -->
+    <g id="a05_mitoProof3" transform="translate(20, 370)">
+      <rect width="230" height="75" rx="8" fill="#FFFBEB" stroke="#FDE68A"/>
+      <use href="#a05_ribosome70s" x="40" y="37" transform="scale(1.4) translate(-11,-11)"/>
+      <rect x="75" y="25" width="135" height="10" rx="5" fill="#7E22CE" opacity="0.8"/>
+      <rect x="75" y="43" width="85" height="7" rx="3.5" fill="#A855F7" opacity="0.6"/>
+    </g>
+  </g>
+
+
+  <!-- CỘT 2: LỤC LẠP (CHLOROPLAST) -->
+  <g id="a05_colChloroplast" transform="translate(345, 30)">
+    <rect width="270" height="480" rx="14" fill="#FFFFFF" stroke="#A7F3D0" stroke-width="2" filter="url(#a05_cardShadow)"/>
+    
+    <!-- Top Header Badge -->
+    <rect x="20" y="16" width="230" height="32" rx="8" fill="#ECFDF5"/>
+    <circle cx="36" cy="32" r="6" fill="#10B981"/>
+    <rect x="52" y="28" width="120" height="8" rx="4" fill="#047857" opacity="0.8"/>
+
+    <!-- Organelle Graphic Mini 3D (A03 Geometry) -->
+    <g id="a05_chloroIcon" transform="translate(135, 115) scale(0.38)">
+      <path d="M -180 0 C -180 -95, -120 -115, 0 -115 C 120 -115, 180 -95, 180 0 C 180 95, 120 115, 0 115 C -120 115, -180 95, -180 0 Z"
+            fill="#22C55E" stroke="#15803D" stroke-width="4"/>
+      <path d="M -160 10 C -160 -75, -100 -95, 0 -95 C 100 -95, 160 -75, 160 10 C 160 80, 100 100, 0 100 C -100 100, -160 80, -160 10 Z"
+            fill="#DCFCE7" stroke="#16A34A" stroke-width="3"/>
+      <!-- Grana and Lamellae -->
+      <line x1="-90" y1="0" x2="90" y2="0" stroke="#15803D" stroke-width="4"/>
+      <g transform="translate(-70, 0)">
+        <ellipse cx="0" cy="-8" rx="14" ry="3.5" fill="#16A34A"/>
+        <ellipse cx="0" cy="0" rx="14" ry="3.5" fill="#16A34A"/>
+        <ellipse cx="0" cy="8" rx="14" ry="3.5" fill="#16A34A"/>
+      </g>
+      <g transform="translate(0, -5)">
+        <ellipse cx="0" cy="-8" rx="14" ry="3.5" fill="#16A34A"/>
+        <ellipse cx="0" cy="0" rx="14" ry="3.5" fill="#16A34A"/>
+        <ellipse cx="0" cy="8" rx="14" ry="3.5" fill="#16A34A"/>
+      </g>
+      <g transform="translate(70, 0)">
+        <ellipse cx="0" cy="-8" rx="14" ry="3.5" fill="#16A34A"/>
+        <ellipse cx="0" cy="0" rx="14" ry="3.5" fill="#16A34A"/>
+        <ellipse cx="0" cy="8" rx="14" ry="3.5" fill="#16A34A"/>
+      </g>
+      <circle cx="-30" cy="-25" r="8" fill="none" stroke="#DC2626" stroke-width="2.5" stroke-dasharray="3 2"/>
+    </g>
+
+    <!-- Evidence Feature 1: Double Membrane (Màng kép) -->
+    <g id="a05_chloroProof1" transform="translate(20, 180)">
+      <rect width="230" height="75" rx="8" fill="#F0FDF4" stroke="#BBF7D0"/>
+      <ellipse cx="40" cy="37" rx="22" ry="15" fill="none" stroke="#15803D" stroke-width="2.5"/>
+      <ellipse cx="40" cy="37" rx="16" ry="10" fill="none" stroke="#22C55E" stroke-width="2"/>
+      <rect x="75" y="25" width="135" height="10" rx="5" fill="#047857" opacity="0.8"/>
+      <rect x="75" y="43" width="95" height="7" rx="3.5" fill="#10B981" opacity="0.6"/>
+    </g>
+
+    <!-- Evidence Feature 2: Circular DNA (DNA vòng) -->
+    <g id="a05_chloroProof2" transform="translate(20, 275)">
+      <rect width="230" height="75" rx="8" fill="#F0FDF4" stroke="#BBF7D0"/>
+      <use href="#a05_circDnaSymbol" x="40" y="37"/>
+      <rect x="75" y="25" width="135" height="10" rx="5" fill="#DC2626" opacity="0.8"/>
+      <rect x="75" y="43" width="105" height="7" rx="3.5" fill="#EF4444" opacity="0.6"/>
+    </g>
+
+    <!-- Evidence Feature 3: 70S Ribosomes -->
+    <g id="a05_chloroProof3" transform="translate(20, 370)">
+      <rect width="230" height="75" rx="8" fill="#F0FDF4" stroke="#BBF7D0"/>
+      <use href="#a05_ribosome70s" x="40" y="37" transform="scale(1.4) translate(-11,-11)"/>
+      <rect x="75" y="25" width="135" height="10" rx="5" fill="#7E22CE" opacity="0.8"/>
+      <rect x="75" y="43" width="85" height="7" rx="3.5" fill="#A855F7" opacity="0.6"/>
+    </g>
+  </g>
+
+
+  <!-- CỘT 3: VI KHUẨN NHÂN SƠ TỔ TIÊN (ANCESTRAL PROKARYOTE) -->
+  <g id="a05_colBacterium" transform="translate(650, 30)">
+    <rect width="270" height="480" rx="14" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2" filter="url(#a05_cardShadow)"/>
+    
+    <!-- Top Header Badge -->
+    <rect x="20" y="16" width="230" height="32" rx="8" fill="#F1F5F9"/>
+    <circle cx="36" cy="32" r="6" fill="#3B82F6"/>
+    <rect x="52" y="28" width="120" height="8" rx="4" fill="#1E40AF" opacity="0.8"/>
+
+    <!-- Bacterium Graphic (B07 Geometry: capsule, cell wall, plasma membrane, naked nucleoid, 70S ribosomes) -->
+    <g id="a05_bactIcon" transform="translate(135, 115) scale(0.38)">
+      <!-- Capsule outer layer -->
+      <rect x="-160" y="-80" width="320" height="160" rx="80" fill="#93C5FD" stroke="#3B82F6" stroke-width="3"/>
+      <!-- Peptidoglycan Cell Wall -->
+      <rect x="-145" y="-68" width="290" height="136" rx="68" fill="#DBEAFE" stroke="#2563EB" stroke-width="3"/>
+      <!-- Plasma Membrane & Cytoplasm -->
+      <rect x="-132" y="-56" width="264" height="112" rx="56" fill="#EFF6FF" stroke="#1D4ED8" stroke-width="2.5"/>
+      <!-- Naked Circular Supercoiled Chromosome (Vùng nhân không màng bao) -->
+      <path d="M -70 0 C -50 -30, -20 -20, 0 -35 C 20 -15, 50 -30, 70 0 C 50 25, 20 15, 0 30 C -25 20, -55 35, -70 0 Z" 
+            fill="none" stroke="#DC2626" stroke-width="4" stroke-dasharray="6 3"/>
+      <!-- 70S Ribosomes inside bacterium -->
+      <circle cx="-90" cy="-15" r="4" fill="#7E22CE"/>
+      <circle cx="-85" cy="20" r="4" fill="#7E22CE"/>
+      <circle cx="80" cy="-20" r="4" fill="#7E22CE"/>
+      <circle cx="95" cy="15" r="4" fill="#7E22CE"/>
+    </g>
+
+    <!-- Evidence Feature 1: Membrane Origin (Tương đồng màng) -->
+    <g id="a05_bactProof1" transform="translate(20, 180)">
+      <rect width="230" height="75" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <!-- Single Cell Membrane Border Representation -->
+      <rect x="18" y="24" width="45" height="26" rx="13" fill="none" stroke="#2563EB" stroke-width="2.5"/>
+      <rect x="75" y="25" width="135" height="10" rx="5" fill="#1E40AF" opacity="0.8"/>
+      <rect x="75" y="43" width="95" height="7" rx="3.5" fill="#3B82F6" opacity="0.6"/>
+    </g>
+
+    <!-- Evidence Feature 2: Circular DNA (DNA trần dạng vòng) -->
+    <g id="a05_bactProof2" transform="translate(20, 275)">
+      <rect width="230" height="75" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <use href="#a05_circDnaSymbol" x="40" y="37"/>
+      <rect x="75" y="25" width="135" height="10" rx="5" fill="#DC2626" opacity="0.8"/>
+      <rect x="75" y="43" width="105" height="7" rx="3.5" fill="#EF4444" opacity="0.6"/>
+    </g>
+
+    <!-- Evidence Feature 3: 70S Ribosomes -->
+    <g id="a05_bactProof3" transform="translate(20, 370)">
+      <rect width="230" height="75" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <use href="#a05_ribosome70s" x="40" y="37" transform="scale(1.4) translate(-11,-11)"/>
+      <rect x="75" y="25" width="135" height="10" rx="5" fill="#7E22CE" opacity="0.8"/>
+      <rect x="75" y="43" width="85" height="7" rx="3.5" fill="#A855F7" opacity="0.6"/>
+    </g>
+  </g>
+
+  <!-- Horizontal Comparative Sync Guidelines (Đường tia liên kết 3 hàng bằng chứng) -->
+  <line x1="270" y1="245" x2="365" y2="245" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4 4"/>
+  <line x1="575" y1="245" x2="670" y2="245" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4 4"/>
+
+  <line x1="270" y1="340" x2="365" y2="340" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4 4"/>
+  <line x1="575" y1="340" x2="670" y2="340" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4 4"/>
+
+  <line x1="270" y1="435" x2="365" y2="435" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4 4"/>
+  <line x1="575" y1="435" x2="670" y2="435" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4 4"/>
+</svg>
+          </div>
+          <div class="visual-panel-toolbar">
+            <button class="chip-btn active" onclick="highlightProofS05('all')"><i class="ti ti-layout-grid"></i> Tất cả bằng chứng</button>
+            <button class="chip-btn" onclick="highlightProofS05('membrane')"><i class="ti ti-circle-half-2"></i> Bằng chứng 1: Màng kép</button>
+            <button class="chip-btn" onclick="highlightProofS05('dna')"><i class="ti ti-dna"></i> Bằng chứng 2: DNA dạng vòng</button>
+            <button class="chip-btn" onclick="highlightProofS05('ribosome')"><i class="ti ti-dots"></i> Bằng chứng 3: Ribosome 70S</button>
+          </div>
+        </div>
+
+        <!-- Interactive Panel (Right 32%) -->
+        <div class="interactive-panel">
+          <div class="info-card" id="s05InfoCard">
+            <div class="info-card-header"><i class="ti ti-certificate"></i> Thuyết nội cộng sinh (Endosymbiosis)</div>
+            <div class="info-card-desc" id="s05InfoDesc">Ti thể bắt nguồn từ vi khuẩn hiếu khí bị thực bào; Lục lạp bắt nguồn từ vi khuẩn lam quang hợp. Cả hai trở thành bào quan phụ thuộc trong tế bào nhân thực.</div>
+          </div>
+
+          <div class="mcq-box">
+            <div class="mcq-question">Bằng chứng nào sau đây KHÔNG thuộc thuyết nội cộng sinh của ti thể và lục lạp?</div>
+            <div class="mcq-options" id="s05Options">
+              <label class="option-label" onclick="selectOptionS05(this, 'A')">
+                <input type="radio" name="optS05" class="option-radio">
+                <span>Màng trong gấp nếp tạo nhiều mào răng lược tăng diện tích tiếp xúc</span>
+              </label>
+              <label class="option-label" onclick="selectOptionS05(this, 'B')">
+                <input type="radio" name="optS05" class="option-radio">
+                <span>Đều có 2 lớp màng bao bọc (màng kép)</span>
+              </label>
+              <label class="option-label" onclick="selectOptionS05(this, 'C')">
+                <input type="radio" name="optS05" class="option-radio">
+                <span>Đều chứa phân tử DNA trần dạng vòng tự nhân đôi độc lập</span>
+              </label>
+              <label class="option-label" onclick="selectOptionS05(this, 'D')">
+                <input type="radio" name="optS05" class="option-radio">
+                <span>Đều sở hữu ribosome loại nhỏ 70S đặc trưng của vi khuẩn</span>
+              </label>
+            </div>
+            <button class="btn-action" id="btnCheckS05" onclick="submitStage5()" disabled><i class="ti ti-check"></i> TRẢ LỜI</button>
+            <div class="feedback-box hidden" id="fbStage5"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls-row">
+        <button class="btn-secondary" onclick="goToStage(4)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+        <button class="btn-primary" id="btnNextS05" onclick="goToStage(6)" disabled>TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </section>
+
+
+    <!-- =========================================================================
+         STAGE 6: PEROXYSOME - GIẢI ĐỘC VÀ CHUYỂN HÓA LIPID
+         ========================================================================= -->
+    <section id="stage-6" class="stage hidden">
+      <div class="stage-header">
+        <div class="stage-meta">
+          <span class="stage-badge" style="background:var(--sky-pale); color:var(--sky-text);"><i class="ti ti-shield-check"></i> Bào quan khử độc tế bào</span>
+          <span class="stage-step-indicator">Màn 6 / 7</span>
+        </div>
+        <h1 class="stage-title">Bào quan nhỏ bé chống lại gốc oxy tự do</h1>
+      </div>
+
+      <div class="lead-box">
+        <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
+          <div class="lead-title">
+            <i class="ti ti-notes"></i>
+            <span>Bối cảnh khoa học</span>
+          </div>
+          <div class="lead-toggle">
+            <span class="lead-toggle-label">Thu gọn</span>
+            <i class="ti ti-chevron-up lead-toggle-icon"></i>
+          </div>
+        </div>
+        <div class="lead-content">
+          <div class="lead-text">
+        Peroxysome là bào quan có dạng hình cầu, được bao bọc bởi một màng đơn mỏng, thường nằm gần lưới nội chất. Tuy nhiên, peroxysome không có nguồn gốc từ hệ thống màng nội bào. Vì chứa enzyme phân giải H₂O₂ (peroxide) nên bào quan này có tên là peroxysome. H₂O₂ là một loại chất dễ phân giải thành các gốc oxy tự do làm tổn thương tế bào, được sản sinh trong một số phản ứng hóa học trong tế bào. Các tế bào gan, thận của người có nhiều peroxysome chứa các enzyme khử các chất độc từ máu đưa tới. Peroxysome chứa enzyme oxy hóa acid béo và tham gia chuyển hóa một số lipid. Khi một số enzyme phân giải chất béo trong peroxysome ở tế bào não bị mất chức năng, lipid bị tích tụ trong não làm tổn thương não và có thể dẫn đến tử vong. Ở hạt thực vật đang nảy mầm, glyoxysome là peroxysome chuyên hóa, tham gia chuyển acid béo thành chất trung gian để tổng hợp đường.
+      </div>
+        </div>
+      </div>
+
+      <div class="guide-box">
+        <i class="ti ti-click"></i>
+        <span>Nhấn các nút để xem cơ chế phân giải H₂O₂ thành H₂O và O₂ cùng vai trò tại tế bào gan/thận.</span>
+      </div>
+
+      <div class="stage-body">
+        <!-- Visual Panel (Left 68%) -->
+        <div class="visual-panel">
+          <div class="visual-panel-header">
+            <span><i class="ti ti-shield"></i> Cấu trúc Peroxysome màng đơn &amp; Phản ứng khử độc</span>
+            <span id="s06Status" style="color:var(--sky-text); font-weight:700;">Chế độ: Cắt lớp 3D</span>
+          </div>
+          <div class="visual-stage-canvas">
+            <svg id="imgStage6" class="stage-inline-svg" role="img" aria-label="Cấu trúc Peroxysome" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 500" width="100%" height="100%">
+  <defs>
+    <!-- Soft Drop Shadow -->
+    <filter id="a06_softShadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#0369A1" flood-opacity="0.14"/>
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0369A1" flood-opacity="0.08"/>
+    </filter>
+
+    <filter id="a06_cardShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0F172A" flood-opacity="0.06"/>
+    </filter>
+
+    <!-- Outer Single Membrane Gradient (MÀNG ĐƠN DUY NHẤT) -->
+    <linearGradient id="a06_singleMembraneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#0369A1"/>
+    </linearGradient>
+
+    <!-- Cut Rim Gradient (Màng đơn lộ mặt cắt mỏng ~4px) -->
+    <linearGradient id="a06_cutRimGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#075985"/>
+    </linearGradient>
+
+    <!-- Peroxysome Matrix/Lumen Fluid Gradient -->
+    <linearGradient id="a06_lumenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F0F9FF"/>
+      <stop offset="50%" stop-color="#E0F2FE"/>
+      <stop offset="100%" stop-color="#BAE6FD"/>
+    </linearGradient>
+
+    <!-- Catalase Enzyme Molecule Symbol -->
+    <g id="a06_catalaseEnzyme">
+      <circle cx="0" cy="0" r="5" fill="#0284C7" stroke="#0369A1" stroke-width="1"/>
+      <circle cx="-3.5" cy="-3.5" r="3" fill="#38BDF8"/>
+      <circle cx="3.5" cy="-3.5" r="3" fill="#38BDF8"/>
+      <circle cx="0" cy="4.5" r="3" fill="#38BDF8"/>
+    </g>
+
+    <!-- Peroxide H2O2 Molecule Symbol -->
+    <g id="a06_molH2O2">
+      <!-- 2 Oxygen (Red) + 2 Hydrogen (White) -->
+      <circle cx="-6" cy="0" r="5.5" fill="#EF4444" stroke="#DC2626" stroke-width="1"/>
+      <circle cx="6" cy="0" r="5.5" fill="#EF4444" stroke="#DC2626" stroke-width="1"/>
+      <circle cx="-11" cy="-4" r="3.5" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+      <circle cx="11" cy="4" r="3.5" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+    </g>
+
+    <!-- Water H2O Molecule Symbol -->
+    <g id="a06_molH2O">
+      <circle cx="0" cy="-2" r="5.5" fill="#3B82F6" stroke="#2563EB" stroke-width="1"/>
+      <circle cx="-5" cy="4" r="3.5" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+      <circle cx="5" cy="4" r="3.5" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+    </g>
+
+    <!-- Oxygen O2 Molecule Symbol -->
+    <g id="a06_molO2">
+      <circle cx="-5" cy="0" r="5.5" fill="#10B981" stroke="#059669" stroke-width="1"/>
+      <circle cx="5" cy="0" r="5.5" fill="#10B981" stroke="#059669" stroke-width="1"/>
+    </g>
+  </defs>
+
+  <!-- Clean Canvas Base -->
+  <rect width="880" height="500" fill="#FAF7F0" rx="16"/>
+
+  <!-- Background decorative grid lines -->
+  <g opacity="0.12" stroke="#0284C7" stroke-width="1" stroke-dasharray="4 8">
+    <line x1="100" y1="0" x2="100" y2="500"/>
+    <line x1="300" y1="0" x2="300" y2="500"/>
+    <line x1="560" y1="0" x2="560" y2="500"/>
+    <line x1="0" y1="120" x2="880" y2="120"/>
+    <line x1="0" y1="360" x2="880" y2="360"/>
+  </g>
+
+
+  <!-- =========================================================================
+       KHU VỰC TRÁI: CẤU TRÚC CẮT LỚP PEROXYSOME (MÀNG ĐƠN & ENZYME KHỬ ĐỘC)
+       ========================================================================= -->
+  <g id="a06_peroxisomeMain" transform="translate(280, 250)" filter="url(#a06_softShadow)">
+
+    <!-- Full Outer Spherical Dome Back (Màng đơn hình cầu mỏng) -->
+    <circle cx="0" cy="0" r="180" fill="url(#a06_singleMembraneGrad)" stroke="#0369A1" stroke-width="3"/>
+    
+    <!-- Spherical Sheen Highlight -->
+    <path d="M -140 -60 C -140 -130, -70 -160, 0 -160 C 60 -160, 120 -130, 140 -80 C 110 -120, 60 -140, 0 -140 C -70 -140, -120 -110, -140 -60 Z"
+          fill="#FFFFFF" opacity="0.4"/>
+
+    <!-- Cutaway Window (Mặt cắt bán cầu 3D để lộ lòng túi lumen) -->
+    <g id="a06_cutaway">
+      <!-- Cut Rim Membrane Thickness (CHỈ 1 LỚP MÀNG DUY NHẤT ~ 4px) -->
+      <path id="a06_singleMembraneCutRim"
+            d="M -160 10 C -160 -110, -90 -140, 0 -140 C 90 -140, 160 -110, 160 10 C 160 115, 90 145, 0 145 C -90 145, -160 115, -160 10 Z"
+            fill="url(#a06_cutRimGrad)"/>
+
+      <!-- Inner Lumen Cavity (Lòng peroxysome) -->
+      <path id="a06_lumenCavity"
+            d="M -152 10 C -152 -103, -85 -133, 0 -133 C 85 -133, 152 -103, 152 10 C 152 108, 85 138, 0 138 C -85 138, -152 108, -152 10 Z"
+            fill="url(#a06_lumenGrad)" stroke="#0284C7" stroke-width="1.5"/>
+    </g>
+
+    <!-- Catalase & Peroxidase Enzyme Molecules in Lumen (Cụm enzyme phân giải trong lòng) -->
+    <g id="a06_enzymesLumen">
+      <use href="#a06_catalaseEnzyme" x="-90" y="-30"/>
+      <use href="#a06_catalaseEnzyme" x="-60" y="-70"/>
+      <use href="#a06_catalaseEnzyme" x="-30" y="-20"/>
+      <use href="#a06_catalaseEnzyme" x="0" y="-60"/>
+      <use href="#a06_catalaseEnzyme" x="40" y="-30"/>
+      <use href="#a06_catalaseEnzyme" x="80" y="-60"/>
+      <use href="#a06_catalaseEnzyme" x="-80" y="30"/>
+      <use href="#a06_catalaseEnzyme" x="-40" y="60"/>
+      <use href="#a06_catalaseEnzyme" x="10" y="40"/>
+      <use href="#a06_catalaseEnzyme" x="60" y="50"/>
+      <use href="#a06_catalaseEnzyme" x="90" y="10"/>
+      <use href="#a06_catalaseEnzyme" x="-10" y="0" transform="scale(1.3)"/>
+      <use href="#a06_catalaseEnzyme" x="-50" y="10"/>
+    </g>
+
+    <!-- Detoxification Reaction Visualization (Hoạt cảnh phân giải H2O2 -> H2O + O2) -->
+    <g id="a06_reactionPathway" transform="translate(0, -10)">
+      <!-- Toxic Input: H2O2 coming into catalytic core -->
+      <g transform="translate(-85, 0)">
+        <use href="#a06_molH2O2" x="0" y="0"/>
+        <line x1="20" y1="0" x2="38" y2="0" stroke="#EF4444" stroke-width="2" stroke-dasharray="3 2"/>
+      </g>
+
+      <!-- Central Catalase Active Site Halo -->
+      <circle cx="-15" cy="0" r="16" fill="#BAE6FD" stroke="#0284C7" stroke-width="1.5" stroke-dasharray="3 2"/>
+
+      <!-- Catalytic Conversion Arrow -->
+      <path d="M 5 0 L 25 0" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round"/>
+      <polygon points="25,-4 32,0 25,4" fill="#0284C7"/>
+
+      <!-- Safe Outputs: H2O + O2 -->
+      <g transform="translate(55, -15)">
+        <use href="#a06_molH2O" x="0" y="0"/>
+      </g>
+      <g transform="translate(55, 15)">
+        <use href="#a06_molO2" x="0" y="0"/>
+      </g>
+    </g>
+  </g>
+
+
+  <!-- =========================================================================
+       KHU VỰC PHẢI: LIÊN HỆ CƠ QUAN GAN & THẬN (MẬT ĐỘ PEROXYSOME CAO ĐỂ KHỬ ĐỘC)
+       ========================================================================= -->
+  <g id="a06_clinicalRelevance" transform="translate(590, 45)">
+
+    <!-- Top Card: Tế bào gan (Liver Hepatocyte) -->
+    <g id="a06_liverCard" transform="translate(0, 0)">
+      <rect width="250" height="185" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#a06_cardShadow)"/>
+      
+      <!-- Mini Badge -->
+      <rect x="15" y="14" width="130" height="24" rx="6" fill="#FEE2E2"/>
+      <circle cx="27" cy="26" r="4" fill="#EF4444"/>
+      <rect x="38" y="23" width="90" height="6" rx="3" fill="#B91C1C" opacity="0.8"/>
+
+      <!-- Hepatocyte Cell Graphic (Tế bào gan đa giác, giàu peroxysome) -->
+      <g transform="translate(125, 110) scale(0.65)">
+        <!-- Polygonal Hepatocyte Membrane -->
+        <polygon points="-80,-40 -20,-75 60,-55 85,20 30,75 -60,60" fill="#FEF2F2" stroke="#EF4444" stroke-width="3"/>
+        <!-- Large Nucleus -->
+        <circle cx="0" cy="0" r="22" fill="#FCA5A5" stroke="#DC2626" stroke-width="2"/>
+        <!-- Abundant Peroxisomes scattered throughout cytoplasm -->
+        <circle cx="-45" cy="-35" r="7" fill="#0284C7" stroke="#0369A1" stroke-width="1.2"/>
+        <circle cx="-25" cy="-55" r="6" fill="#0284C7" stroke="#0369A1" stroke-width="1.2"/>
+        <circle cx="35" cy="-35" r="7" fill="#0284C7" stroke="#0369A1" stroke-width="1.2"/>
+        <circle cx="55" cy="0" r="6" fill="#0284C7" stroke="#0369A1" stroke-width="1.2"/>
+        <circle cx="50" cy="35" r="7" fill="#0284C7" stroke="#0369A1" stroke-width="1.2"/>
+        <circle cx="15" cy="50" r="6" fill="#0284C7" stroke="#0369A1" stroke-width="1.2"/>
+        <circle cx="-35" cy="40" r="7" fill="#0284C7" stroke="#0369A1" stroke-width="1.2"/>
+        <circle cx="-55" cy="10" r="6" fill="#0284C7" stroke="#0369A1" stroke-width="1.2"/>
+      </g>
+    </g>
+
+    <!-- Bottom Card: Tế bào biểu mô thận (Kidney Tubule Cell) -->
+    <g id="a06_kidneyCard" transform="translate(0, 215)">
+      <rect width="250" height="185" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#a06_cardShadow)"/>
+      
+      <!-- Mini Badge -->
+      <rect x="15" y="14" width="130" height="24" rx="6" fill="#E0F2FE"/>
+      <circle cx="27" cy="26" r="4" fill="#0284C7"/>
+      <rect x="38" y="23" width="90" height="6" rx="3" fill="#0369A1" opacity="0.8"/>
+
+      <!-- Kidney Tubule Cell Graphic (Tế bào biểu mô khối vuông ống thận) -->
+      <g transform="translate(125, 110) scale(0.65)">
+        <!-- Cuboidal Epithelial Cell Boundary -->
+        <rect x="-70" y="-60" width="140" height="120" rx="10" fill="#F0F9FF" stroke="#0284C7" stroke-width="3"/>
+        <!-- Apical Microvilli border on top -->
+        <path d="M -65 -60 L -65 -70 L -55 -70 L -55 -60 L -45 -60 L -45 -70 L -35 -70 L -35 -60 L -25 -60 L -25 -70 L -15 -70 L -15 -60 L -5 -60 L -5 -70 L 5 -70 L 5 -60 L 15 -60 L 15 -70 L 25 -70 L 25 -60 L 35 -60 L 35 -70 L 45 -70 L 45 -60 L 55 -60 L 55 -70 L 65 -70 L 65 -60"
+              fill="none" stroke="#0284C7" stroke-width="2"/>
+        <!-- Nucleus -->
+        <circle cx="0" cy="10" r="20" fill="#BAE6FD" stroke="#0284C7" stroke-width="2"/>
+        <!-- High density of peroxisomes -->
+        <circle cx="-45" cy="-30" r="7" fill="#0284C7" stroke="#0369A1" stroke-width="1.2"/>
+        <circle cx="-20" cy="-35" r="6" fill="#0284C7" stroke="#0369A1" stroke-width="1.2"/>
+        <circle cx="20" cy="-35" r="7" fill="#0284C7" stroke="#0369A1" stroke-width="1.2"/>
+        <circle cx="45" cy="-30" r="6" fill="#0284C7" stroke="#0369A1" stroke-width="1.2"/>
+        <circle cx="-45" cy="15" r="6" fill="#0284C7" stroke="#0369A1" stroke-width="1.2"/>
+        <circle cx="45" cy="15" r="6" fill="#0284C7" stroke="#0369A1" stroke-width="1.2"/>
+        <circle cx="-35" cy="40" r="6" fill="#0284C7" stroke="#0369A1" stroke-width="1.2"/>
+        <circle cx="35" cy="40" r="6" fill="#0284C7" stroke="#0369A1" stroke-width="1.2"/>
+      </g>
+    </g>
+  </g>
+</svg>
+          </div>
+          <div class="visual-panel-toolbar">
+            <button class="chip-btn active sky" onclick="exploreStage6('structure')"><i class="ti ti-circle"></i> 1. Cấu trúc màng đơn</button>
+            <button class="chip-btn sky" onclick="exploreStage6('catalase')"><i class="ti ti-atom"></i> 2. Khử độc: 2 H₂O₂ &rarr; 2 H₂O + O₂</button>
+            <button class="chip-btn sky" onclick="exploreStage6('clinical')"><i class="ti ti-building-hospital"></i> 3. Mật độ cao ở Gan &amp; Thận</button>
+          </div>
+        </div>
+
+        <!-- Interactive Panel (Right 32%) -->
+        <div class="interactive-panel">
+          <div class="info-card" id="s06InfoCard">
+            <div class="info-card-header" style="color:var(--sky-text);"><i class="ti ti-shield-check"></i> Đặc điểm Peroxysome</div>
+            <div class="info-card-desc" id="s06InfoDesc">Khác với Ti thể và Lục lạp, Peroxysome CHỈ CÓ MÀNG ĐƠN duy nhất, không chứa DNA và ribosome riêng, đóng vai trò như một bộ lọc khử độc tố hydrogen peroxide độc hại.</div>
+          </div>
+
+          <div class="mcq-box">
+            <div class="mcq-question">Peroxysome có màng kép giống ti thể/lục lạp không?</div>
+            <div class="mcq-options" id="s06Options">
+              <label class="option-label" onclick="selectOptionS06(this, 'A')">
+                <input type="radio" name="optS06" class="option-radio">
+                <span>Không — peroxysome chỉ có màng đơn</span>
+              </label>
+              <label class="option-label" onclick="selectOptionS06(this, 'B')">
+                <input type="radio" name="optS06" class="option-radio">
+                <span>Có — peroxysome cũng có màng kép và DNA riêng</span>
+              </label>
+            </div>
+            <button class="btn-action" id="btnCheckS06" onclick="submitStage6()" disabled><i class="ti ti-check"></i> TRẢ LỜI</button>
+            <div class="feedback-box hidden" id="fbStage6"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls-row">
+        <button class="btn-secondary" onclick="goToStage(5)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+        <button class="btn-primary" id="btnNextS06" onclick="goToStage(7)" disabled>TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </section>
+
+
+    <!-- =========================================================================
+         STAGE 7: SỬA HIỂU SAI VÀ KẾT LUẬN MODULE - TỔNG KẾT 3 BÀO QUAN
+         ========================================================================= -->
+    <section id="stage-7" class="stage hidden">
+      <div class="stage-header">
+        <div class="stage-meta">
+          <span class="stage-badge"><i class="ti ti-award"></i> Tổng kết &amp; Đánh giá năng lực</span>
+          <span class="stage-step-indicator">Màn 7 / 7</span>
+        </div>
+        <h1 class="stage-title">Tổng kết: 3 bào quan, 3 câu chuyện năng lượng</h1>
+      </div>
+
+      <div class="lead-box">
+        <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
+          <div class="lead-title">
+            <i class="ti ti-notes"></i>
+            <span>Bối cảnh khoa học</span>
+          </div>
+          <div class="lead-toggle">
+            <span class="lead-toggle-label">Thu gọn</span>
+            <i class="ti ti-chevron-up lead-toggle-icon"></i>
+          </div>
+        </div>
+        <div class="lead-content">
+          <div class="lead-text">
+        Chúng ta vừa tìm hiểu ba bào quan quan trọng: ti thể — hô hấp tế bào, tạo ATP; lục lạp — quang hợp, chỉ có ở thực vật và một số sinh vật khác; peroxysome — giải độc và chuyển hóa lipid. Ti thể và lục lạp có màng kép, DNA riêng và ribosome 70S — bằng chứng của thuyết nội cộng sinh. Peroxysome chỉ có màng đơn và không có nguồn gốc nội cộng sinh.
+      </div>
+        </div>
+      </div>
+
+      <div class="guide-box">
+        <i class="ti ti-pointer"></i>
+        <span>Chọn các thẻ đặc điểm bên dưới để điền vào đúng các ô trong Bảng tổng kết đối chiếu 3 bào quan.</span>
+      </div>
+
+      <div class="stage-body">
+        <!-- Visual Panel: Interactive Comparison Matrix (Left 68%) -->
+        <div class="visual-panel">
+          <div class="visual-panel-header">
+            <span><i class="ti ti-table"></i> Đối chiếu đặc điểm sinh học 3 Bào quan</span>
+            <div style="display:flex; gap:8px;">
+              <button class="chip-btn active" id="btnS07ViewTable" onclick="switchStage7View('table')"><i class="ti ti-table"></i> Bảng tương tác</button>
+              <button class="chip-btn" id="btnS07ViewGraphic" onclick="switchStage7View('graphic')"><i class="ti ti-photo"></i> Sơ đồ trực quan</button>
+              <button class="chip-btn" onclick="resetMatrixS07()"><i class="ti ti-rotate"></i> Làm lại bảng</button>
+            </div>
+          </div>
+          
+          <!-- Graphic View (Hidden by default) -->
+          <div id="s07GraphicContainer" class="visual-stage-canvas hidden">
+            <svg id="imgStage7" class="stage-inline-svg" role="img" aria-label="Sơ đồ tổng hợp 3 Bào quan" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" width="100%" height="100%" style="max-height: 480px;">
+  <defs>
+    <!-- Soft Drop Shadow for Column Cards -->
+    <filter id="a07_cardShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0F172A" flood-opacity="0.06"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.04"/>
+    </filter>
+
+    <!-- Checkmark Icon (Đúng tiêu chí) -->
+    <g id="a07_checkIcon">
+      <circle cx="12" cy="12" r="10" fill="#D1FAE5" stroke="#10B981" stroke-width="1.5"/>
+      <path d="M 7 12 L 10.5 15.5 L 17 8.5" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+
+    <!-- Cross/Minus Icon (Không có tiêu chí) -->
+    <g id="a07_crossIcon">
+      <circle cx="12" cy="12" r="10" fill="#FEE2E2" stroke="#EF4444" stroke-width="1.5"/>
+      <path d="M 8 12 L 16 12" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/>
+    </g>
+  </defs>
+
+  <!-- Clean Canvas Background -->
+  <rect width="920" height="540" fill="#FAF7F0" rx="16"/>
+
+  <!-- Row Background Strips for Contrast and Table Readability -->
+  <rect x="30" y="190" width="860" height="65" rx="8" fill="#F4EFE6" opacity="0.5"/>
+  <rect x="30" y="270" width="860" height="65" rx="8" fill="#F4EFE6" opacity="0.5"/>
+  <rect x="30" y="350" width="860" height="65" rx="8" fill="#F4EFE6" opacity="0.5"/>
+  <rect x="30" y="430" width="860" height="85" rx="8" fill="#F4EFE6" opacity="0.5"/>
+
+
+  <!-- =========================================================================
+       CỘT 1: TI THỂ (MITOCHONDRION) - AMBER/ORANGE THEME
+       ========================================================================= -->
+  <g id="a07_colMitochondrion" transform="translate(45, 25)">
+    <!-- Column Card Shell -->
+    <rect width="260" height="495" rx="14" fill="#FFFFFF" stroke="#FDE68A" stroke-width="2" filter="url(#a07_cardShadow)"/>
+
+    <!-- Header & Mini Graphic -->
+    <rect x="15" y="15" width="230" height="135" rx="10" fill="#FFFBEB" stroke="#FEF3C7"/>
+    
+    <!-- Mini 3D Mitochondrion Representation -->
+    <g transform="translate(130, 75) scale(0.35)">
+      <path d="M -180 0 C -180 -95, -120 -115, 0 -115 C 120 -115, 180 -95, 180 0 C 180 95, 120 115, 0 115 C -120 115, -180 95, -180 0 Z"
+            fill="#F59E0B" stroke="#B45309" stroke-width="4"/>
+      <path d="M -160 10 C -160 -75, -100 -95, 0 -95 C 100 -95, 160 -75, 160 10 C 160 80, 100 100, 0 100 C -100 100, -160 80, -160 10 Z"
+            fill="#FEF3C7" stroke="#D97706" stroke-width="3"/>
+      <path d="M -130 0 C -110 -15, -90 10, -70 0 C -90 25, -50 40, -30 20 C -40 50, 0 55, 20 30 C 30 50, 70 45, 60 20 C 80 25, 120 10, 135 15" 
+            fill="none" stroke="#EA580C" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="-30" cy="-20" r="8" fill="none" stroke="#DC2626" stroke-width="2.5" stroke-dasharray="3 2"/>
+    </g>
+
+    <!-- Header Label Badge -->
+    <rect x="25" y="120" width="210" height="22" rx="5" fill="#FEF3C7"/>
+    <circle cx="38" cy="131" r="4" fill="#D97706"/>
+    <rect x="50" y="128" width="95" height="6" rx="3" fill="#B45309" opacity="0.8"/>
+
+    <!-- Row 1: Số lớp màng (MÀNG KÉP - MÀO CRISTAE) -->
+    <g transform="translate(15, 175)">
+      <rect width="230" height="48" rx="8" fill="#FFFBEB" stroke="#FDE68A"/>
+      <!-- Double ring icon -->
+      <ellipse cx="30" cy="24" rx="14" ry="9" fill="none" stroke="#D97706" stroke-width="2"/>
+      <ellipse cx="30" cy="24" rx="10" ry="6" fill="none" stroke="#EA580C" stroke-width="1.8"/>
+      <!-- Text bars -->
+      <rect x="55" y="16" width="120" height="8" rx="4" fill="#B45309"/>
+      <rect x="55" y="28" width="150" height="6" rx="3" fill="#D97706" opacity="0.7"/>
+    </g>
+
+    <!-- Row 2: DNA vòng & Ribosome 70S (CÓ CẢ HAI) -->
+    <g transform="translate(15, 255)">
+      <rect width="230" height="48" rx="8" fill="#FFFBEB" stroke="#FDE68A"/>
+      <use href="#a07_checkIcon" x="18" y="12"/>
+      <rect x="55" y="16" width="130" height="8" rx="4" fill="#DC2626"/>
+      <rect x="55" y="28" width="100" height="6" rx="3" fill="#7E22CE" opacity="0.8"/>
+    </g>
+
+    <!-- Row 3: Cấu trúc đặc trưng (MÀO RĂNG LƯỢC & CHẤT NỀN) -->
+    <g transform="translate(15, 335)">
+      <rect width="230" height="48" rx="8" fill="#FFFBEB" stroke="#FDE68A"/>
+      <!-- Comb/Cristae miniature -->
+      <path d="M 22 24 C 26 18, 30 30, 34 24 C 38 18, 42 30, 46 24" fill="none" stroke="#EA580C" stroke-width="2.5" stroke-linecap="round"/>
+      <rect x="55" y="16" width="135" height="8" rx="4" fill="#B45309"/>
+      <rect x="55" y="28" width="115" height="6" rx="3" fill="#D97706" opacity="0.7"/>
+    </g>
+
+    <!-- Row 4: Chức năng chính (HÔ HẤP TẠO NĂNG LƯỢNG ATP) -->
+    <g transform="translate(15, 415)">
+      <rect width="230" height="65" rx="8" fill="#FFFBEB" stroke="#FDE68A"/>
+      <!-- Energy lightning icon -->
+      <polygon points="28,16 35,28 30,30 36,44 24,32 29,30" fill="#F59E0B" stroke="#D97706" stroke-width="1"/>
+      <rect x="55" y="20" width="150" height="10" rx="5" fill="#B45309"/>
+      <rect x="55" y="36" width="120" height="7" rx="3.5" fill="#D97706" opacity="0.7"/>
+    </g>
+  </g>
+
+
+  <!-- =========================================================================
+       CỘT 2: LỤC LẠP (CHLOROPLAST) - JADE/GREEN THEME
+       ========================================================================= -->
+  <g id="a07_colChloroplast" transform="translate(330, 25)">
+    <!-- Column Card Shell -->
+    <rect width="260" height="495" rx="14" fill="#FFFFFF" stroke="#A7F3D0" stroke-width="2" filter="url(#a07_cardShadow)"/>
+
+    <!-- Header & Mini Graphic -->
+    <rect x="15" y="15" width="230" height="135" rx="10" fill="#ECFDF5" stroke="#D1FAE5"/>
+    
+    <!-- Mini 3D Chloroplast Representation -->
+    <g transform="translate(130, 75) scale(0.35)">
+      <path d="M -180 0 C -180 -95, -120 -115, 0 -115 C 120 -115, 180 -95, 180 0 C 180 95, 120 115, 0 115 C -120 115, -180 95, -180 0 Z"
+            fill="#22C55E" stroke="#15803D" stroke-width="4"/>
+      <path d="M -160 10 C -160 -75, -100 -95, 0 -95 C 100 -95, 160 -75, 160 10 C 160 80, 100 100, 0 100 C -100 100, -160 80, -160 10 Z"
+            fill="#DCFCE7" stroke="#16A34A" stroke-width="3"/>
+      <!-- Grana Discs -->
+      <line x1="-80" y1="0" x2="80" y2="0" stroke="#15803D" stroke-width="4"/>
+      <g transform="translate(-50, 0)">
+        <ellipse cx="0" cy="-6" rx="14" ry="3" fill="#16A34A"/>
+        <ellipse cx="0" cy="0" rx="14" ry="3" fill="#16A34A"/>
+        <ellipse cx="0" cy="6" rx="14" ry="3" fill="#16A34A"/>
+      </g>
+      <g transform="translate(50, 0)">
+        <ellipse cx="0" cy="-6" rx="14" ry="3" fill="#16A34A"/>
+        <ellipse cx="0" cy="0" rx="14" ry="3" fill="#16A34A"/>
+        <ellipse cx="0" cy="6" rx="14" ry="3" fill="#16A34A"/>
+      </g>
+    </g>
+
+    <!-- Header Label Badge -->
+    <rect x="25" y="120" width="210" height="22" rx="5" fill="#D1FAE5"/>
+    <circle cx="38" cy="131" r="4" fill="#10B981"/>
+    <rect x="50" y="128" width="95" height="6" rx="3" fill="#047857" opacity="0.8"/>
+
+    <!-- Row 1: Số lớp màng (MÀNG KÉP - MÀNG TRONG TRƠN) -->
+    <g transform="translate(15, 175)">
+      <rect width="230" height="48" rx="8" fill="#F0FDF4" stroke="#BBF7D0"/>
+      <ellipse cx="30" cy="24" rx="14" ry="9" fill="none" stroke="#15803D" stroke-width="2"/>
+      <ellipse cx="30" cy="24" rx="10" ry="6" fill="none" stroke="#22C55E" stroke-width="1.8"/>
+      <rect x="55" y="16" width="120" height="8" rx="4" fill="#047857"/>
+      <rect x="55" y="28" width="150" height="6" rx="3" fill="#10B981" opacity="0.7"/>
+    </g>
+
+    <!-- Row 2: DNA vòng & Ribosome 70S (CÓ CẢ HAI) -->
+    <g transform="translate(15, 255)">
+      <rect width="230" height="48" rx="8" fill="#F0FDF4" stroke="#BBF7D0"/>
+      <use href="#a07_checkIcon" x="18" y="12"/>
+      <rect x="55" y="16" width="130" height="8" rx="4" fill="#DC2626"/>
+      <rect x="55" y="28" width="100" height="6" rx="3" fill="#7E22CE" opacity="0.8"/>
+    </g>
+
+    <!-- Row 3: Cấu trúc đặc trưng (THYLAKOID, GRANA & STROMA) -->
+    <g transform="translate(15, 335)">
+      <rect width="230" height="48" rx="8" fill="#F0FDF4" stroke="#BBF7D0"/>
+      <!-- Coin stack icon -->
+      <g transform="translate(30, 24)">
+        <ellipse cx="0" cy="-5" rx="9" ry="2.5" fill="#16A34A" stroke="#15803D"/>
+        <ellipse cx="0" cy="0" rx="9" ry="2.5" fill="#16A34A" stroke="#15803D"/>
+        <ellipse cx="0" cy="5" rx="9" ry="2.5" fill="#16A34A" stroke="#15803D"/>
+      </g>
+      <rect x="55" y="16" width="135" height="8" rx="4" fill="#047857"/>
+      <rect x="55" y="28" width="115" height="6" rx="3" fill="#10B981" opacity="0.7"/>
+    </g>
+
+    <!-- Row 4: Chức năng chính (QUANG HỢP TỔNG HỢP CHẤT HỮU CƠ) -->
+    <g transform="translate(15, 415)">
+      <rect width="230" height="65" rx="8" fill="#F0FDF4" stroke="#BBF7D0"/>
+      <!-- Sun leaf icon -->
+      <circle cx="30" cy="32" r="10" fill="#FEF08A" stroke="#EAB308" stroke-width="1"/>
+      <path d="M 27 34 C 27 27, 34 26, 34 26 C 34 32, 27 34, 27 34 Z" fill="#10B981"/>
+      <rect x="55" y="20" width="150" height="10" rx="5" fill="#047857"/>
+      <rect x="55" y="36" width="120" height="7" rx="3.5" fill="#10B981" opacity="0.7"/>
+    </g>
+  </g>
+
+
+  <!-- =========================================================================
+       CỘT 3: PEROXYSOME - SKY/BLUE THEME
+       ========================================================================= -->
+  <g id="a07_colPeroxysome" transform="translate(615, 25)">
+    <!-- Column Card Shell -->
+    <rect width="260" height="495" rx="14" fill="#FFFFFF" stroke="#BAE6FD" stroke-width="2" filter="url(#a07_cardShadow)"/>
+
+    <!-- Header & Mini Graphic -->
+    <rect x="15" y="15" width="230" height="135" rx="10" fill="#F0F9FF" stroke="#E0F2FE"/>
+    
+    <!-- Mini 3D Peroxysome Representation -->
+    <g transform="translate(130, 75) scale(0.35)">
+      <circle cx="0" cy="0" r="120" fill="#0284C7" stroke="#0369A1" stroke-width="4"/>
+      <circle cx="0" cy="0" r="105" fill="#E0F2FE" stroke="#0284C7" stroke-width="2"/>
+      <!-- Enzymes -->
+      <circle cx="-30" cy="-20" r="12" fill="#0284C7"/>
+      <circle cx="30" cy="-20" r="12" fill="#0284C7"/>
+      <circle cx="0" cy="30" r="12" fill="#0284C7"/>
+    </g>
+
+    <!-- Header Label Badge -->
+    <rect x="25" y="120" width="210" height="22" rx="5" fill="#E0F2FE"/>
+    <circle cx="38" cy="131" r="4" fill="#0284C7"/>
+    <rect x="50" y="128" width="95" height="6" rx="3" fill="#0369A1" opacity="0.8"/>
+
+    <!-- Row 1: Số lớp màng (MÀNG ĐƠN DUY NHẤT) -->
+    <g transform="translate(15, 175)">
+      <rect width="230" height="48" rx="8" fill="#F0F9FF" stroke="#BAE6FD"/>
+      <!-- Single ring icon -->
+      <ellipse cx="30" cy="24" rx="14" ry="9" fill="none" stroke="#0284C7" stroke-width="2.5"/>
+      <rect x="55" y="16" width="120" height="8" rx="4" fill="#0369A1"/>
+      <rect x="55" y="28" width="150" height="6" rx="3" fill="#0EA5E9" opacity="0.7"/>
+    </g>
+
+    <!-- Row 2: DNA vòng & Ribosome 70S (KHÔNG CÓ) -->
+    <g transform="translate(15, 255)">
+      <rect width="230" height="48" rx="8" fill="#F0F9FF" stroke="#BAE6FD"/>
+      <use href="#a07_crossIcon" x="18" y="12"/>
+      <rect x="55" y="16" width="130" height="8" rx="4" fill="#DC2626"/>
+      <rect x="55" y="28" width="100" height="6" rx="3" fill="#94A3B8" opacity="0.8"/>
+    </g>
+
+    <!-- Row 3: Cấu trúc đặc trưng (ENZYME OXY HÓA CATALASE) -->
+    <g transform="translate(15, 335)">
+      <rect width="230" height="48" rx="8" fill="#F0F9FF" stroke="#BAE6FD"/>
+      <!-- Catalytic molecule icon -->
+      <circle cx="30" cy="24" r="8" fill="#0284C7" stroke="#0369A1"/>
+      <circle cx="25" cy="20" r="3" fill="#38BDF8"/>
+      <circle cx="35" cy="20" r="3" fill="#38BDF8"/>
+      <rect x="55" y="16" width="135" height="8" rx="4" fill="#0369A1"/>
+      <rect x="55" y="28" width="115" height="6" rx="3" fill="#0EA5E9" opacity="0.7"/>
+    </g>
+
+    <!-- Row 4: Chức năng chính (KHỬ ĐỘC H2O2 & CHUYỂN HÓA LIPID) -->
+    <g transform="translate(15, 415)">
+      <rect width="230" height="65" rx="8" fill="#F0F9FF" stroke="#BAE6FD"/>
+      <!-- Shield protection icon -->
+      <path d="M 22 22 L 30 18 L 38 22 C 38 32, 30 38, 30 38 C 30 38, 22 32, 22 22 Z" fill="#0284C7" stroke="#0369A1" stroke-width="1"/>
+      <rect x="55" y="20" width="150" height="10" rx="5" fill="#0369A1"/>
+      <rect x="55" y="36" width="120" height="7" rx="3.5" fill="#0EA5E9" opacity="0.7"/>
+    </g>
+  </g>
+</svg>
+          </div>
+
+          <!-- Table View -->
+          <div id="s07TableContainer" style="padding: 16px; display:flex; flex-direction:column; gap:16px;">
+            <!-- Matrix Table -->
+            <div class="matrix-table-container">
+              <table class="matrix-table">
+                <thead>
+                  <tr>
+                    <th style="width: 25%;">Tiêu chí</th>
+                    <th style="width: 25%; color:var(--accent-dark);"><i class="ti ti-bolt"></i> Ti thể</th>
+                    <th style="width: 25%; color:var(--jade-dark);"><i class="ti ti-plant"></i> Lục lạp</th>
+                    <th style="width: 25%; color:var(--sky-text);"><i class="ti ti-shield"></i> Peroxysome</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>1. Số lớp màng</strong></td>
+                    <td><div class="matrix-slot" id="slot-mito-membrane" onclick="placeChipIntoSlot('mito', 'membrane')"><span class="placeholder">Chạm để điền</span></div></td>
+                    <td><div class="matrix-slot" id="slot-chloro-membrane" onclick="placeChipIntoSlot('chloro', 'membrane')"><span class="placeholder">Chạm để điền</span></div></td>
+                    <td><div class="matrix-slot" id="slot-perox-membrane" onclick="placeChipIntoSlot('perox', 'membrane')"><span class="placeholder">Chạm để điền</span></div></td>
+                  </tr>
+                  <tr>
+                    <td><strong>2. DNA vòng &amp; 70S</strong></td>
+                    <td><div class="matrix-slot" id="slot-mito-dna" onclick="placeChipIntoSlot('mito', 'dna')"><span class="placeholder">Chạm để điền</span></div></td>
+                    <td><div class="matrix-slot" id="slot-chloro-dna" onclick="placeChipIntoSlot('chloro', 'dna')"><span class="placeholder">Chạm để điền</span></div></td>
+                    <td><div class="matrix-slot" id="slot-perox-dna" onclick="placeChipIntoSlot('perox', 'dna')"><span class="placeholder">Chạm để điền</span></div></td>
+                  </tr>
+                  <tr>
+                    <td><strong>3. Cấu trúc đặc trưng</strong></td>
+                    <td><div class="matrix-slot" id="slot-mito-struct" onclick="placeChipIntoSlot('mito', 'struct')"><span class="placeholder">Chạm để điền</span></div></td>
+                    <td><div class="matrix-slot" id="slot-chloro-struct" onclick="placeChipIntoSlot('chloro', 'struct')"><span class="placeholder">Chạm để điền</span></div></td>
+                    <td><div class="matrix-slot" id="slot-perox-struct" onclick="placeChipIntoSlot('perox', 'struct')"><span class="placeholder">Chạm để điền</span></div></td>
+                  </tr>
+                  <tr>
+                    <td><strong>4. Chức năng chính</strong></td>
+                    <td><div class="matrix-slot" id="slot-mito-func" onclick="placeChipIntoSlot('mito', 'func')"><span class="placeholder">Chạm để điền</span></div></td>
+                    <td><div class="matrix-slot" id="slot-chloro-func" onclick="placeChipIntoSlot('chloro', 'func')"><span class="placeholder">Chạm để điền</span></div></td>
+                    <td><div class="matrix-slot" id="slot-perox-func" onclick="placeChipIntoSlot('perox', 'func')"><span class="placeholder">Chạm để điền</span></div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Chips Tray -->
+            <div style="background:var(--cream-2); padding:12px; border-radius:var(--radius-sm); display:flex; flex-direction:column; gap:8px;">
+              <span style="font-size:0.85rem; font-weight:700; color:var(--ink-2);"><i class="ti ti-package"></i> Khay thẻ đặc điểm (Chạm chọn 1 thẻ rồi chạm ô đích tương ứng trên bảng):</span>
+              <div id="matrixChipsTray" style="display:flex; flex-wrap:wrap; gap:8px;">
+                <!-- Chips will be generated by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Panel (Right 32%) -->
+        <div class="interactive-panel">
+          <div class="info-card">
+            <div class="info-card-header"><i class="ti ti-target"></i> Tiến độ hoàn thành bảng</div>
+            <div class="info-card-desc" id="matrixStatus">Đã điền: 0 / 12 ô</div>
+          </div>
+
+          <div class="mcq-box">
+            <div class="mcq-question">Nhận định nào sau đây là ĐÚNG về 3 bào quan vừa học?</div>
+            <div class="mcq-options" id="s07Options">
+              <label class="option-label" onclick="selectOptionS07(this, 'A')">
+                <input type="radio" name="optS07" class="option-radio">
+                <span>Ti thể và lục lạp có màng kép cùng DNA/ribosome 70S riêng chứng minh nguồn gốc nội cộng sinh; peroxysome có màng đơn và không thuộc nguồn gốc này</span>
+              </label>
+              <label class="option-label" onclick="selectOptionS07(this, 'B')">
+                <input type="radio" name="optS07" class="option-radio">
+                <span>Tế bào thực vật chỉ có lục lạp mà không có ti thể</span>
+              </label>
+              <label class="option-label" onclick="selectOptionS07(this, 'C')">
+                <input type="radio" name="optS07" class="option-radio">
+                <span>Cả 3 bào quan đều có màng kép và có khả năng tự nhân đôi</span>
+              </label>
+            </div>
+            <button class="btn-action" id="btnCheckS07" onclick="submitStage7()" disabled><i class="ti ti-check"></i> KIỂM TRA ĐÁP ÁN</button>
+            <div class="feedback-box hidden" id="fbStage7"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls-row">
+        <button class="btn-secondary" onclick="goToStage(6)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+        <button class="btn-primary" id="btnFinishS07" onclick="openCompletionModal()" disabled><i class="ti ti-trophy"></i> HOÀN THÀNH BÀI HỌC</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       MODAL CHÚC MỪNG HOÀN THÀNH V10
+       ========================================================================= -->
+  <div class="congrats-overlay hidden" id="completionModal" role="dialog" aria-modal="true">
+    <div class="congrats-card">
+      <div class="trophy-badge">
+        <i class="ti ti-trophy"></i>
+      </div>
+      <h2 class="congrats-title">Xuất Sắc Hoàn Thành!</h2>
+      <p class="congrats-text">
+        Chúc mừng bạn đã nắm vững toàn bộ kiến thức về cấu trúc màng kép, chu trình chuyển hóa năng lượng giữa Ti thể và Lục lạp, 3 bằng chứng thuyết nội cộng sinh cũng như cơ chế khử độc của Peroxysome!
+      </p>
+      <div class="congrats-actions">
+        <button class="btn-secondary" onclick="reviewLesson()"><i class="ti ti-rotate"></i> Xem lại bài</button>
+        <button class="btn-primary" onclick="closeCompletionModal()"><i class="ti ti-check"></i> Đóng thông báo</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =========================================================================
+     JAVASCRIPT LOGIC & ATHENA LMS INTEGRATION
+     ========================================================================= -->
+  <script>
+  /* --------------------------------------------------------------------------
+     1. RUNTIME STATE & LMS INTEGRATION
+     -------------------------------------------------------------------------- */
+  window.lmsState = {
+    currentStage: 1,
+    s01: { viewed: new Set(), selected: null, correct: false },
+    s02: { compared: false, selected: null, correct: false },
+    s03: { viewed: new Set(), selected: null, correct: false },
+    s04: { animated: false, selected: null, correct: false },
+    s05: { viewed: new Set(), selected: null, correct: false },
+    s06: { mode: 'structure', selected: null, correct: false },
+    s07: {
+      matrix: {},
+      selectedChip: null,
+      mcqSelected: null,
+      tableCorrect: false,
+      correct: false
+    },
+    completed: false
+  };
+
+  // Report height for iframe host
+  function reportHeight() {
+    if (window.parent && window.parent.postMessage) {
+      const height = document.documentElement.scrollHeight || document.body.scrollHeight;
+      window.parent.postMessage({ type: 'setHeight', height: height }, '*');
+    }
+  }
+
+  window.addEventListener('load', () => {
+    reportHeight();
+    initMatrixChipsTray();
+  });
+  window.addEventListener('resize', reportHeight);
+
+  // ResizeObserver for dynamic height adjustments
+  if (window.ResizeObserver) {
+    new ResizeObserver(() => reportHeight()).observe(document.body);
+  }
+
+  /* --------------------------------------------------------------------------
+     2. STAGE NAVIGATION LOGIC
+     -------------------------------------------------------------------------- */
+  function goToStage(stageNum) {
+    for (let i = 1; i <= 7; i++) {
+      const s = document.getElementById('stage-' + i);
+      if (s) {
+        if (i === stageNum) {
+          s.classList.remove('hidden');
+        } else {
+          s.classList.add('hidden');
+        }
+      }
+    }
+    window.lmsState.currentStage = stageNum;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    reportHeight();
+  }
+
+  /* --------------------------------------------------------------------------
+     3. STAGE 1: TI THỂ CẮT LỚP 3D
+     -------------------------------------------------------------------------- */
+  const s01Descriptions = {
+    all: {
+      title: "Cấu trúc chung của Ti thể",
+      desc: "Bào quan màng kép hình hạt hoặc hình sợi, đóng vai trò trạm biến áp và nhà máy sản xuất ATP chính của tế bào."
+    },
+    outer: {
+      title: "1. Màng ngoài trơn nhẵn",
+      desc: "Lớp màng ngoài trơn nhẵn, chứa nhiều kênh protein porin cho phép các phân tử nhỏ và ion tự do đi qua."
+    },
+    ims: {
+      title: "2. Khoang gian màng (Intermembrane space)",
+      desc: "Khoảng không gian hẹp giữa 2 màng; là nơi các ion H⁺ được bơm và tích lũy tạo thế năng gradient điện hóa khi chuỗi chuyền electron hoạt động."
+    },
+    inner: {
+      title: "3. Màng trong & Mào cristae",
+      desc: "Màng trong gấp nếp sâu hình răng lược tạo các mào (cristae) làm tăng diện tích bề mặt; trực tiếp mang chuỗi chuyền electron hô hấp và các phức hệ enzyme tổng hợp ATP (ATP synthase)."
+    },
+    matrix: {
+      title: "4. Chất nền (Matrix)",
+      desc: "Chứa hệ enzyme của chu trình Krebs, cùng các phân tử DNA dạng vòng kép nhỏ và ribosome 70S giúp ti thể có khả năng tự nhân đôi độc lập."
+    }
+  };
+
+  function exploreStage1(part) {
+    const cardTitle = document.getElementById('s01InfoTitle');
+    const cardDesc = document.getElementById('s01InfoDesc');
+    const data = s01Descriptions[part] || s01Descriptions.all;
+    cardTitle.textContent = data.title;
+    cardDesc.textContent = data.desc;
+
+    if (part !== 'all') {
+      window.lmsState.s01.viewed.add(part);
+      const counter = document.getElementById('s01ViewCount');
+      if (counter) counter.textContent = `Đã xem: ${window.lmsState.s01.viewed.size}/4`;
+    }
+
+    document.querySelectorAll('#stage-1 .chip-btn').forEach(btn => btn.classList.remove('active'));
+    if (event && event.currentTarget) event.currentTarget.classList.add('active');
+
+    checkStage1Readiness();
+  }
+
+  function selectOptionS01(labelEl, val) {
+    if (window.lmsState.s01.correct) return;
+    document.querySelectorAll('#s01Options .option-label').forEach(el => el.classList.remove('selected'));
+    labelEl.classList.add('selected');
+    window.lmsState.s01.selected = val;
+    checkStage1Readiness();
+  }
+
+  function checkStage1Readiness() {
+    const btn = document.getElementById('btnCheckS01');
+    if (btn && window.lmsState.s01.selected && !window.lmsState.s01.correct) {
+      btn.disabled = false;
+    }
+  }
+
+  function submitStage1() {
+    const sel = window.lmsState.s01.selected;
+    const fb = document.getElementById('fbStage1');
+    const btnCheck = document.getElementById('btnCheckS01');
+    const btnNext = document.getElementById('btnNextS01');
+
+    if (sel === 'A') {
+      window.lmsState.s01.correct = true;
+      fb.className = 'feedback-box correct';
+      fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác!</strong> Màng trong ti thể mang chuỗi chuyền electron và enzyme ATP synthase. Tiếp tục sang nội dung kế tiếp.</span>';
+      fb.classList.remove('hidden');
+      if (btnCheck) btnCheck.disabled = true;
+      if (btnNext) btnNext.disabled = false;
+    } else {
+      fb.className = 'feedback-box wrong shake';
+      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Không đúng —</strong> chuỗi chuyền electron và ATP synthase nằm trên MÀNG TRONG; chất nền chứa các enzyme của chu trình Krebs. H⁺ được tích lũy ở khoang gian màng khi hô hấp diễn ra.</span>';
+      fb.classList.remove('hidden');
+      setTimeout(() => fb.classList.remove('shake'), 400);
+    }
+    reportHeight();
+  }
+
+  /* --------------------------------------------------------------------------
+     4. STAGE 2: SO SÁNH MẬT ĐỘ TI THỂ
+     -------------------------------------------------------------------------- */
+  function toggleCompareStage2() {
+    window.lmsState.s02.compared = true;
+    const status = document.getElementById('s02CompareStatus');
+    const desc = document.getElementById('s02InfoDesc');
+    const img = document.getElementById('imgStage2');
+    
+    if (img) {
+      img.style.transform = 'scale(1.02)';
+      setTimeout(() => img.style.transform = 'scale(1)', 300);
+    }
+    if (status) status.textContent = 'Chế độ: Đã làm nổi bật mật độ ATP';
+    if (desc) desc.textContent = 'Quan sát đối chiếu: Tế bào lông hút rễ chứa mật độ dày đặc ~28 ti thể để duy trì các bơm ion chủ động; tế bào biểu bì lá chỉ chứa ~7 ti thể do nhu cầu cơ bản.';
+    checkStage2Readiness();
+  }
+
+  function selectOptionS02(labelEl, val) {
+    if (window.lmsState.s02.correct) return;
+    document.querySelectorAll('#s02Options .option-label').forEach(el => el.classList.remove('selected'));
+    labelEl.classList.add('selected');
+    window.lmsState.s02.selected = val;
+    checkStage2Readiness();
+  }
+
+  function checkStage2Readiness() {
+    const btn = document.getElementById('btnCheckS02');
+    if (btn && window.lmsState.s02.selected && !window.lmsState.s02.correct) {
+      btn.disabled = false;
+    }
+  }
+
+  function submitStage2() {
+    const sel = window.lmsState.s02.selected;
+    const fb = document.getElementById('fbStage2');
+    const btnCheck = document.getElementById('btnCheckS02');
+    const btnNext = document.getElementById('btnNextS02');
+
+    if (sel === 'A') {
+      window.lmsState.s02.correct = true;
+      fb.className = 'feedback-box correct';
+      fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác!</strong> Tế bào lông hút của rễ cây — vì phải hoạt động tích cực để hấp thụ nước và khoáng chất, cần nhiều năng lượng hơn.</span>';
+      fb.classList.remove('hidden');
+      if (btnCheck) btnCheck.disabled = true;
+      if (btnNext) btnNext.disabled = false;
+    } else {
+      fb.className = 'feedback-box wrong shake';
+      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Không đúng —</strong> ánh sáng liên quan đến LỤC LẠP (quang hợp), không phải ti thể. Tế bào lông hút phải hoạt động tích cực (hấp thụ nước/khoáng) nên cần nhiều năng lượng — nhiều ti thể hơn.</span>';
+      fb.classList.remove('hidden');
+      setTimeout(() => fb.classList.remove('shake'), 400);
+    }
+    reportHeight();
+  }
+
+  /* --------------------------------------------------------------------------
+     5. STAGE 3: LỤC LẠP CẮT LỚP 3D
+     -------------------------------------------------------------------------- */
+  const s03Descriptions = {
+    all: {
+      title: "Cấu trúc Lục lạp (Chloroplast)",
+      desc: "Bào quan quang hợp ở thực vật và tảo, chuyển đổi năng lượng mặt trời thành năng lượng hóa học trong phân tử hữu cơ."
+    },
+    envelope: {
+      title: "1. Vỏ màng kép trơn nhẵn",
+      desc: "Gồm màng ngoài và màng trong; điểm mấu chốt là MÀNG TRONG KHÔNG GẤP KHÚC (khác biệt cơ bản với mào ti thể)."
+    },
+    grana: {
+      title: "2. Hệ Grana & Thylakoid",
+      desc: "Túi dẹp thylakoid chứa sắc tố diệp lục, enzyme và chuỗi quang hóa; xếp chồng lên nhau thành các hạt grana để thu nhận photon ánh sáng."
+    },
+    lamellae: {
+      title: "3. Phiến màng Lamellae",
+      desc: "Các ống màng kéo dài nối thông các grana với nhau, tạo mạng lưới xoang thylakoid liên tục bên trong lục lạp."
+    },
+    stroma: {
+      title: "4. Chất nền Stroma",
+      desc: "Dung dịch dạng lỏng chứa enzyme của pha tối (cố định CO₂ tạo đường), hạt tinh bột, phân tử DNA dạng vòng và ribosome 70S."
+    }
+  };
+
+  function exploreStage3(part) {
+    const cardTitle = document.getElementById('s03InfoTitle');
+    const cardDesc = document.getElementById('s03InfoDesc');
+    const data = s03Descriptions[part] || s03Descriptions.all;
+    cardTitle.textContent = data.title;
+    cardDesc.textContent = data.desc;
+
+    if (part !== 'all') {
+      window.lmsState.s03.viewed.add(part);
+      const counter = document.getElementById('s03ViewCount');
+      if (counter) counter.textContent = `Đã xem: ${window.lmsState.s03.viewed.size}/4`;
+    }
+
+    document.querySelectorAll('#stage-3 .chip-btn').forEach(btn => btn.classList.remove('active'));
+    if (event && event.currentTarget) event.currentTarget.classList.add('active');
+
+    checkStage3Readiness();
+  }
+
+  function selectOptionS03(labelEl, val) {
+    if (window.lmsState.s03.correct) return;
+    document.querySelectorAll('#s03Options .option-label').forEach(el => el.classList.remove('selected'));
+    labelEl.classList.add('selected');
+    window.lmsState.s03.selected = val;
+    checkStage3Readiness();
+  }
+
+  function checkStage3Readiness() {
+    const btn = document.getElementById('btnCheckS03');
+    if (btn && window.lmsState.s03.selected && !window.lmsState.s03.correct) {
+      btn.disabled = false;
+    }
+  }
+
+  function submitStage3() {
+    const sel = window.lmsState.s03.selected;
+    const fb = document.getElementById('fbStage3');
+    const btnCheck = document.getElementById('btnCheckS03');
+    const btnNext = document.getElementById('btnNextS03');
+
+    if (sel === 'A') {
+      window.lmsState.s03.correct = true;
+      fb.className = 'feedback-box correct';
+      fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác!</strong> Màng trong lục lạp không gấp khúc. Cấu trúc nếp gấp nằm ở các túi thylakoid xếp chồng bên trong.</span>';
+      fb.classList.remove('hidden');
+      if (btnCheck) btnCheck.disabled = true;
+      if (btnNext) btnNext.disabled = false;
+    } else {
+      fb.className = 'feedback-box wrong shake';
+      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Không đúng —</strong> đây là điểm khác biệt quan trọng: màng trong TI THỂ gấp khúc tạo mào, còn màng trong LỤC LẠP không gấp khúc. Cấu trúc gấp nếp đặc biệt của lục lạp nằm ở thylakoid bên trong, không phải ở màng trong.</span>';
+      fb.classList.remove('hidden');
+      setTimeout(() => fb.classList.remove('shake'), 400);
+    }
+    reportHeight();
+  }
+
+  /* --------------------------------------------------------------------------
+     6. STAGE 4: CHU TRÌNH CHUYỂN HÓA 2 CHIỀU
+     -------------------------------------------------------------------------- */
+  function toggleCycleStage4() {
+    window.lmsState.s04.animated = true;
+    const status = document.getElementById('s04CycleStatus');
+    const img = document.getElementById('imgStage4');
+    if (status) status.innerHTML = '<span style="color:#059669"><i class="ti ti-refresh"></i> Đang luân chuyển vật chất 2 chiều</span>';
+    if (img) {
+      img.style.filter = 'drop-shadow(0 0 10px rgba(16, 185, 129, 0.4))';
+    }
+    checkStage4Readiness();
+  }
+
+  function selectOptionS04(labelEl, val) {
+    if (window.lmsState.s04.correct) return;
+    document.querySelectorAll('#s04Options .option-label').forEach(el => el.classList.remove('selected'));
+    labelEl.classList.add('selected');
+    window.lmsState.s04.selected = val;
+    checkStage4Readiness();
+  }
+
+  function checkStage4Readiness() {
+    const btn = document.getElementById('btnCheckS04');
+    if (btn && window.lmsState.s04.selected && !window.lmsState.s04.correct) {
+      btn.disabled = false;
+    }
+  }
+
+  function submitStage4() {
+    const sel = window.lmsState.s04.selected;
+    const fb = document.getElementById('fbStage4');
+    const btnCheck = document.getElementById('btnCheckS04');
+    const btnNext = document.getElementById('btnNextS04');
+
+    if (sel === 'A') {
+      window.lmsState.s04.correct = true;
+      fb.className = 'feedback-box correct';
+      fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác!</strong> Tế bào sẽ thiếu năng lượng, vì hô hấp tế bào (ở ti thể) mới cung cấp ATP liên tục, không phụ thuộc ánh sáng.</span>';
+      fb.classList.remove('hidden');
+      if (btnCheck) btnCheck.disabled = true;
+      if (btnNext) btnNext.disabled = false;
+    } else {
+      fb.className = 'feedback-box wrong shake';
+      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Không đúng —</strong> thực vật vẫn cần năng lượng liên tục để duy trì hoạt động sống, kể cả ban đêm. Đây là lý do thực vật LUÔN cần có ti thể, dù đã có lục lạp.</span>';
+      fb.classList.remove('hidden');
+      setTimeout(() => fb.classList.remove('shake'), 400);
+    }
+    reportHeight();
+  }
+
+  /* --------------------------------------------------------------------------
+     7. STAGE 5: BẰNG CHỨNG THUYẾT NỘI CỘNG SINH
+     -------------------------------------------------------------------------- */
+  const s05Proofs = {
+    all: "Thuyết nội cộng sinh giải thích rằng ti thể bắt nguồn từ vi khuẩn hiếu khí, lục lạp bắt nguồn từ vi khuẩn lam quang hợp bị tế bào nhân thực nguyên thủy nuốt vào.",
+    membrane: "Bằng chứng 1 (Màng kép): Màng ngoài là màng của túi thực bào tế bào chủ; màng trong chính là màng sinh chất nguyên thủy của vi khuẩn cổ.",
+    dna: "Bằng chứng 2 (DNA dạng vòng trần): Cả ti thể và lục lạp đều có phân tử DNA dạng vòng khép kín không liên kết với histone, tương đồng tuyệt đối với vùng nhân vi khuẩn.",
+    ribosome: "Bằng chứng 3 (Ribosome 70S): Ribosome bên trong ti thể và lục lạp có hệ số lắng 70S và nhạy cảm với kháng sinh tương tự vi khuẩn, khác biệt với ribosome 80S ở tế bào chất."
+  };
+
+  function highlightProofS05(key) {
+    const desc = document.getElementById('s05InfoDesc');
+    if (desc) desc.textContent = s05Proofs[key] || s05Proofs.all;
+
+    if (key !== 'all') {
+      window.lmsState.s05.viewed.add(key);
+      const counter = document.getElementById('s05ProofCount');
+      if (counter) counter.textContent = `Đã xét: ${window.lmsState.s05.viewed.size}/3`;
+    }
+
+    document.querySelectorAll('#stage-5 .chip-btn').forEach(btn => btn.classList.remove('active'));
+    if (event && event.currentTarget) event.currentTarget.classList.add('active');
+
+    checkStage5Readiness();
+  }
+
+  function selectOptionS05(labelEl, val) {
+    if (window.lmsState.s05.correct) return;
+    document.querySelectorAll('#s05Options .option-label').forEach(el => el.classList.remove('selected'));
+    labelEl.classList.add('selected');
+    window.lmsState.s05.selected = val;
+    checkStage5Readiness();
+  }
+
+  function checkStage5Readiness() {
+    const btn = document.getElementById('btnCheckS05');
+    if (btn && window.lmsState.s05.selected && !window.lmsState.s05.correct) {
+      btn.disabled = false;
+    }
+  }
+
+  function submitStage5() {
+    const sel = window.lmsState.s05.selected;
+    const fb = document.getElementById('fbStage5');
+    const btnCheck = document.getElementById('btnCheckS05');
+    const btnNext = document.getElementById('btnNextS05');
+
+    if (sel === 'A') {
+      window.lmsState.s05.correct = true;
+      fb.className = 'feedback-box correct';
+      fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác!</strong> Cấu trúc mào răng lược là đặc điểm cấu tạo thích nghi chức năng của ti thể, không phải bằng chứng thuyết nội cộng sinh.</span>';
+      fb.classList.remove('hidden');
+      if (btnCheck) btnCheck.disabled = true;
+      if (btnNext) btnNext.disabled = false;
+    } else {
+      fb.className = 'feedback-box wrong shake';
+      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Đây LÀ một trong 3 bằng chứng —</strong> hãy xem lại 3 bằng chứng cốt lõi: màng kép, DNA dạng vòng và ribosome loại 70S.</span>';
+      fb.classList.remove('hidden');
+      setTimeout(() => fb.classList.remove('shake'), 400);
+    }
+    reportHeight();
+  }
+
+  /* --------------------------------------------------------------------------
+     8. STAGE 6: PEROXYSOME MÀNG ĐƠN & GIẢI ĐỘC
+     -------------------------------------------------------------------------- */
+  const s06Modes = {
+    structure: "Cấu tạo màng đơn: Peroxysome được bao bọc bởi 1 lớp màng lipid duy nhất, không thuộc hệ thống nội màng, không chứa DNA hay ribosome riêng.",
+    catalase: "Hoạt tính Catalase: Xúc tác phân giải 2 H₂O₂ (gốc peroxide độc hại) thành 2 H₂O và O₂ an toàn, bảo vệ tế bào khỏi stress oxy hóa.",
+    clinical: "Ý nghĩa y sinh: Tế bào gan và thận có mật độ peroxysome rất cao để liên tục lọc và khử các chất độc từ máu đưa tới."
+  };
+
+  function exploreStage6(mode) {
+    window.lmsState.s06.mode = mode;
+    const desc = document.getElementById('s06InfoDesc');
+    const status = document.getElementById('s06Status');
+    if (desc) desc.textContent = s06Modes[mode] || s06Modes.structure;
+    if (status) status.textContent = 'Chế độ: ' + (mode === 'structure' ? 'Cấu trúc màng đơn' : mode === 'catalase' ? 'Phản ứng Catalase' : 'Gan & Thận');
+
+    document.querySelectorAll('#stage-6 .chip-btn').forEach(btn => btn.classList.remove('active'));
+    if (event && event.currentTarget) event.currentTarget.classList.add('active');
+
+    checkStage6Readiness();
+  }
+
+  function selectOptionS06(labelEl, val) {
+    if (window.lmsState.s06.correct) return;
+    document.querySelectorAll('#s06Options .option-label').forEach(el => el.classList.remove('selected'));
+    labelEl.classList.add('selected');
+    window.lmsState.s06.selected = val;
+    checkStage6Readiness();
+  }
+
+  function checkStage6Readiness() {
+    const btn = document.getElementById('btnCheckS06');
+    if (btn && window.lmsState.s06.selected && !window.lmsState.s06.correct) {
+      btn.disabled = false;
+    }
+  }
+
+  function submitStage6() {
+    const sel = window.lmsState.s06.selected;
+    const fb = document.getElementById('fbStage6');
+    const btnCheck = document.getElementById('btnCheckS06');
+    const btnNext = document.getElementById('btnNextS06');
+
+    if (sel === 'A') {
+      window.lmsState.s06.correct = true;
+      fb.className = 'feedback-box correct';
+      fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác!</strong> Peroxysome chỉ có màng đơn, khác với ti thể và lục lạp có màng kép.</span>';
+      fb.classList.remove('hidden');
+      if (btnCheck) btnCheck.disabled = true;
+      if (btnNext) btnNext.disabled = false;
+    } else {
+      fb.className = 'feedback-box wrong shake';
+      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Không đúng —</strong> peroxysome chỉ có MÀNG ĐƠN, không có màng kép hay DNA riêng. Đây cũng là lý do peroxysome không thuộc nhóm bào quan nội cộng sinh.</span>';
+      fb.classList.remove('hidden');
+      setTimeout(() => fb.classList.remove('shake'), 400);
+    }
+    reportHeight();
+  }
+
+  /* --------------------------------------------------------------------------
+     9. STAGE 7: MA TRẬN ĐỐI CHIẾU 3 BÀO QUAN
+     -------------------------------------------------------------------------- */
+  const matrixChipsData = [
+    { id: 'c1', text: 'Màng kép (màng trong gấp mào)', target: 'mito-membrane' },
+    { id: 'c2', text: 'Màng kép (màng trong trơn nhẵn)', target: 'chloro-membrane' },
+    { id: 'c3', text: 'Màng đơn duy nhất', target: 'perox-membrane' },
+    { id: 'c4', text: 'Có DNA vòng & Ribosome 70S', target: 'mito-dna' },
+    { id: 'c5', text: 'Có DNA vòng & Ribosome 70S', target: 'chloro-dna' },
+    { id: 'c6', text: 'Không có DNA/ribosome riêng', target: 'perox-dna' },
+    { id: 'c7', text: 'Mào răng lược cristae & chất nền', target: 'mito-struct' },
+    { id: 'c8', text: 'Thylakoid, Grana & Stroma', target: 'chloro-struct' },
+    { id: 'c9', text: 'Lòng chứa enzyme Catalase', target: 'perox-struct' },
+    { id: 'c10', text: 'Hô hấp tế bào tạo năng lượng ATP', target: 'mito-func' },
+    { id: 'c11', text: 'Quang hợp tổng hợp Glucose', target: 'chloro-func' },
+    { id: 'c12', text: 'Khử độc H₂O₂ & chuyển hóa lipid', target: 'perox-func' }
+  ];
+
+  function switchStage7View(view) {
+    const tableCont = document.getElementById('s07TableContainer');
+    const graphicCont = document.getElementById('s07GraphicContainer');
+    const btnTable = document.getElementById('btnS07ViewTable');
+    const btnGraphic = document.getElementById('btnS07ViewGraphic');
+
+    if (view === 'table') {
+      if (tableCont) tableCont.classList.remove('hidden');
+      if (graphicCont) graphicCont.classList.add('hidden');
+      if (btnTable) btnTable.classList.add('active');
+      if (btnGraphic) btnGraphic.classList.remove('active');
+    } else {
+      if (tableCont) tableCont.classList.add('hidden');
+      if (graphicCont) graphicCont.classList.remove('hidden');
+      if (btnTable) btnTable.classList.remove('active');
+      if (btnGraphic) btnGraphic.classList.add('active');
+    }
+    reportHeight();
+  }
+
+  function initMatrixChipsTray() {
+    const tray = document.getElementById('matrixChipsTray');
+    if (!tray) return;
+    tray.innerHTML = '';
+    matrixChipsData.forEach(chip => {
+      const el = document.createElement('div');
+      el.className = 'matrix-chip';
+      el.id = 'chip-' + chip.id;
+      el.textContent = chip.text;
+      el.onclick = () => selectMatrixChip(chip.id);
+      tray.appendChild(el);
+    });
+  }
+
+  function selectMatrixChip(chipId) {
+    if (window.lmsState.s07.tableCorrect) return;
+    document.querySelectorAll('.matrix-chip').forEach(c => c.classList.remove('selected'));
+    const chipEl = document.getElementById('chip-' + chipId);
+    if (chipEl && !chipEl.classList.contains('placed')) {
+      chipEl.classList.add('selected');
+      window.lmsState.s07.selectedChip = chipId;
+    }
+  }
+
+  function placeChipIntoSlot(organelle, criterion) {
+    const chipId = window.lmsState.s07.selectedChip;
+    if (!chipId || window.lmsState.s07.tableCorrect) return;
+
+    const chipData = matrixChipsData.find(c => c.id === chipId);
+    if (!chipData) return;
+
+    const slotKey = `${organelle}-${criterion}`;
+    const slotEl = document.getElementById(`slot-${slotKey}`);
+    if (!slotEl) return;
+
+    // Check if slot matches target
+    if (chipData.target === slotKey) {
+      // Correct placement
+      slotEl.innerHTML = `<span class="matrix-chip" style="background:#DCEAE1; color:#14432F; border-color:#2D8B6F"><i class="ti ti-check"></i> ${chipData.text}</span>`;
+      slotEl.classList.add('filled');
+      
+      const chipEl = document.getElementById('chip-' + chipId);
+      if (chipEl) {
+        chipEl.classList.add('placed');
+        chipEl.classList.remove('selected');
+      }
+
+      window.lmsState.s07.matrix[slotKey] = chipId;
+      window.lmsState.s07.selectedChip = null;
+
+      updateMatrixProgress();
+    } else {
+      // Wrong slot shake
+      slotEl.classList.add('shake');
+      setTimeout(() => slotEl.classList.remove('shake'), 400);
+    }
+  }
+
+  function updateMatrixProgress() {
+    const filledCount = Object.keys(window.lmsState.s07.matrix).length;
+    const status = document.getElementById('matrixStatus');
+    if (status) status.textContent = `Đã điền: ${filledCount} / 12 ô`;
+
+    if (filledCount === 12) {
+      window.lmsState.s07.tableCorrect = true;
+      if (status) status.innerHTML = '<span style="color:#059669; font-weight:700;"><i class="ti ti-circle-check"></i> Bảng đã hoàn thiện chính xác 100%!</span>';
+    }
+    checkStage7Readiness();
+  }
+
+  function resetMatrixS07() {
+    window.lmsState.s07.matrix = {};
+    window.lmsState.s07.selectedChip = null;
+    window.lmsState.s07.tableCorrect = false;
+
+    // Clear all slots
+    document.querySelectorAll('.matrix-slot').forEach(slot => {
+      slot.classList.remove('filled');
+      slot.innerHTML = '<span class="placeholder">Chạm để điền</span>';
+    });
+
+    // Reset chips
+    document.querySelectorAll('.matrix-chip').forEach(chip => {
+      chip.classList.remove('placed', 'selected');
+    });
+
+    const status = document.getElementById('matrixStatus');
+    if (status) status.textContent = 'Đã điền: 0 / 12 ô';
+
+    checkStage7Readiness();
+  }
+
+  function selectOptionS07(labelEl, val) {
+    if (window.lmsState.s07.correct) return;
+    document.querySelectorAll('#s07Options .option-label').forEach(el => el.classList.remove('selected'));
+    labelEl.classList.add('selected');
+    window.lmsState.s07.mcqSelected = val;
+    checkStage7Readiness();
+  }
+
+  function checkStage7Readiness() {
+    const btn = document.getElementById('btnCheckS07');
+    if (btn && window.lmsState.s07.tableCorrect && window.lmsState.s07.mcqSelected && !window.lmsState.s07.correct) {
+      btn.disabled = false;
+    }
+  }
+
+  function submitStage7() {
+    const sel = window.lmsState.s07.mcqSelected;
+    const fb = document.getElementById('fbStage7');
+    const btnCheck = document.getElementById('btnCheckS07');
+    const btnFinish = document.getElementById('btnFinishS07');
+
+    if (sel === 'A') {
+      window.lmsState.s07.correct = true;
+      fb.className = 'feedback-box correct';
+      fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác!</strong> Bạn đã điền đúng toàn bộ bảng đối chiếu 3 bào quan và nhận định khoa học chuẩn xác.</span>';
+      fb.classList.remove('hidden');
+      if (btnCheck) btnCheck.disabled = true;
+      if (btnFinish) btnFinish.disabled = false;
+    } else {
+      fb.className = 'feedback-box wrong shake';
+      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Chưa đúng —</strong> xem lại đặc điểm của từng bào quan đã học trong module này và chọn lại.</span>';
+      fb.classList.remove('hidden');
+      setTimeout(() => fb.classList.remove('shake'), 400);
+    }
+    reportHeight();
+  }
+
+  /* --------------------------------------------------------------------------
+     10. COMPLETION MODAL V10 & CONFETTI CANVAS
+     -------------------------------------------------------------------------- */
+  function openCompletionModal() {
+    window.lmsState.completed = true;
+    const modal = document.getElementById('completionModal');
+    if (modal) {
+      modal.classList.remove('hidden');
+      launchConfetti();
+    }
+  }
+
+  function closeCompletionModal() {
+    const modal = document.getElementById('completionModal');
+    if (modal) modal.classList.add('hidden');
+  }
+
+  function reviewLesson() {
+    closeCompletionModal();
+    goToStage(1);
+  }
+
+  function launchConfetti() {
+    const canvas = document.getElementById('confettiCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const pieces = [];
+    const colors = ['#10B981', '#F59E0B', '#0284C7', '#EF4444', '#8B5CF6', '#14B8A6'];
+    for (let i = 0; i < 90; i++) {
+      pieces.push({
+        x: canvas.width / 2,
+        y: canvas.height / 2,
+        w: Math.random() * 8 + 4,
+        h: Math.random() * 6 + 4,
+        vx: (Math.random() - 0.5) * 16,
+        vy: (Math.random() - 0.5) * 16 - 3,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rotation: Math.random() * 360,
+        rotSpeed: (Math.random() - 0.5) * 10
+      });
+    }
+
+    let frame = 0;
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pieces.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.35;
+        p.vx *= 0.98;
+        p.rotation += p.rotSpeed;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+      });
+
+      frame++;
+      if (frame < 130) {
+        requestAnimationFrame(render);
+      } else {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+    render();
+  }
+
+  /* COLLAPSIBLE LEAD BOX LOGIC */
+  function toggleLeadBox(headerEl) {
+    const box = headerEl.closest('.lead-box');
+    if (!box) return;
+    const isCollapsed = box.classList.toggle('collapsed');
+    const label = box.querySelector('.lead-toggle-label');
+    headerEl.setAttribute('aria-expanded', !isCollapsed);
+    if (label) {
+      label.textContent = isCollapsed ? 'Mở rộng' : 'Thu gọn';
+    }
+    if (typeof reportHeight === 'function') {
+      setTimeout(reportHeight, 360);
+    }
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.classList.contains('lead-header')) {
+      e.preventDefault();
+      toggleLeadBox(e.target);
+    }
+  });
+  </script>
+</body>
+</html>
