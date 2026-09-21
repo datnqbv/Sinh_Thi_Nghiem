@@ -1,0 +1,3683 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SH10_B08_M04 — Tế bào chất, khung xương tế bào, Trung thể và Màng tế bào</title>
+
+  <!-- Athena LMS Context Meta -->
+  <script type="application/json" id="athena-context">
+  {
+    "moduleId": "SH10_B08_M04",
+    "grade": 10,
+    "subject": "Sinh học",
+    "chapter": "Chương 2: Cấu trúc tế bào",
+    "lesson": "Bài 8: Cấu trúc tế bào nhân thực",
+    "title": "Tế bào chất, khung xương tế bào, Trung thể và Màng tế bào",
+    "outcomes": [
+      "Nêu được cấu tạo và chức năng của tế bào chất.",
+      "Phân tích được mối quan hệ phù hợp giữa cấu tạo và chức năng của màng sinh chất."
+    ],
+    "researchQuestion": "Điều gì nâng đỡ và duy trì hình dạng cho tế bào, và màng tế bào có cấu trúc như thế nào để vừa là 'ranh giới' vừa là 'cửa khẩu' của tế bào?",
+    "stages": 7,
+    "version": "v2 FINAL"
+  }
+  </script>
+
+  <!-- Google Fonts: Be Vietnam Pro & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Tabler Icons Webfont -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css">
+
+  <style>
+  /* ==========================================================================
+     1. DESIGN SYSTEM TOKENS (TOM HAUGOMAT EDITORIAL FLAT - AIDUCATION STANDARD)
+     ========================================================================== */
+  :root {
+    /* Neutrals */
+    --cream: #FAF7F0;
+    --cream-2: #F0EADD;
+    --cream-3: #E7DECC;
+    --paper-line: #E5DECF;
+    --paper-line-2: #D6CCB6;
+    --ink: #1A1A1A;
+    --ink-2: #514C44;
+    --ink-3: #7C756A;
+    --ink-faint: #ABA396;
+
+    /* Jade (Main Action & Cell Membrane) */
+    --jade: #3CA57A;
+    --jade-deep: #2D8B6F;
+    --jade-dark: #14432F;
+    --jade-text: #1B5E48;
+    --jade-soft: #A9D0BE;
+    --jade-pale: #DCEAE1;
+
+    /* Amber (Cytoskeleton / Energy / Centrosome) */
+    --accent: #E8A24A;
+    --accent-deep: #D97706;
+    --accent-dark: #B45309;
+    --accent-text: #8A551A;
+    --accent-pale: #FEF3C7;
+
+    /* Sky Blue (Fluid & Transport) */
+    --sky: #0284C7;
+    --sky-deep: #0369A1;
+    --sky-pale: #E0F2FE;
+    --sky-text: #075985;
+
+    /* Purple (Transmembrane Proteins & Nucleus) */
+    --purple: #7B68B8;
+    --purple-deep: #51428C;
+    --purple-pale: #F3EFFB;
+    --purple-text: #37276B;
+
+    /* Semantic States */
+    --correct: #2D8B6F;
+    --correct-bg: #DCEAE1;
+    --wrong: #C15F3C;
+    --wrong-bg: #F3E2D6;
+    --warning: #C58A2E;
+    --warning-bg: #F5E7CB;
+
+    /* Layout & Elevation */
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --shadow-subtle: 0 4px 16px rgba(26, 26, 26, 0.05);
+    --shadow-card: 0 8px 24px rgba(26, 26, 26, 0.07);
+    --shadow-float: 0 16px 36px rgba(26, 26, 26, 0.12);
+  }
+
+  /* RESET & BASE */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    background-color: var(--cream);
+    color: var(--ink);
+  }
+
+  body {
+    font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    background-color: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: clip;
+  }
+
+  /* HIDE HEADER BANNER & TOP NAV TABS & STAGE HEADERS (V10 STANDARD) */
+  header.banner,
+  .progress-nav-container,
+  .progress-nav,
+  .stepper-nav,
+  .stepper-bar,
+  .step-nav-bar,
+  .stage-head,
+  .stage-header {
+    display: none !important;
+  }
+
+  /* MODAL DISPLAY PROTECTION (CHỐNG LỖI TỰ ĐỘNG HIỆN MODAL) */
+  .hidden {
+    display: none !important;
+  }
+  .congrats-overlay.hidden,
+  .modal-backdrop.hidden,
+  #completionModal.hidden {
+    display: none !important;
+  }
+
+  /* CONTAINER & WORKSPACE */
+  .main-container {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 24px 20px 48px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .stage-section {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .stage-section.active {
+    display: flex;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* SPLIT WORKSPACE: 68% LEFT (VISUAL) / 32% RIGHT (PEDAGOGY) */
+  .workspace-layout {
+    display: grid;
+    grid-template-columns: 68fr 32fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  @media (max-width: 960px) {
+    .workspace-layout {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .visual-panel {
+      position: static !important;
+      top: auto !important;
+      max-height: none !important;
+      overflow-y: visible !important;
+    }
+  }
+
+  /* LEFT PANEL: VISUAL LEARNING CANVAS / INTERACTIVE SVG (STICKY DI THEO CUỘN) */
+  .visual-panel {
+    background: #FFFFFF;
+    border: 2px solid var(--paper-line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 16px;
+    z-index: 10;
+    align-self: start;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--paper-line-2) transparent;
+  }
+  .visual-panel::-webkit-scrollbar {
+    width: 6px;
+  }
+  .visual-panel::-webkit-scrollbar-thumb {
+    background: var(--paper-line-2);
+    border-radius: 4px;
+  }
+
+  .visual-media-box {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    max-height: min(520px, calc(100vh - 150px));
+    background: var(--cream);
+    border: 1.5px solid var(--paper-line);
+    border-radius: var(--radius-md);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .visual-media-box img,
+  .visual-media-box svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .visual-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding-top: 4px;
+  }
+
+  .tab-btn {
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--paper-line-2);
+    background: var(--cream-2);
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--ink-2);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+  }
+  .tab-btn:hover {
+    background: var(--jade-pale);
+    color: var(--jade-text);
+    border-color: var(--jade-soft);
+  }
+  .tab-btn.active {
+    background: var(--jade-deep);
+    color: #FFFFFF;
+    border-color: var(--jade-deep);
+    box-shadow: 0 4px 12px rgba(45, 139, 111, 0.25);
+  }
+
+  .action-btn {
+    padding: 9px 18px;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--jade-deep);
+    background: var(--jade-pale);
+    color: var(--jade-text);
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+  }
+  .action-btn:hover {
+    background: var(--jade-deep);
+    color: #FFFFFF;
+  }
+  .action-btn.active-action {
+    background: var(--accent);
+    border-color: var(--accent-deep);
+    color: #FFFFFF;
+  }
+
+  /* RIGHT PANEL: PEDAGOGY & TASKS */
+  .pedagogy-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* LECTURE / CONTEXT BOX */
+  .lecture-box {
+    background: #FFFFFF;
+    border: 1.5px solid var(--paper-line);
+    border-left: 5px solid var(--jade-deep);
+    border-radius: var(--radius-md);
+    padding: 16px 18px;
+    box-shadow: var(--shadow-subtle);
+  }
+  .lecture-box-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--jade-text);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .lecture-box-content {
+    font-size: 0.98rem;
+    color: var(--ink-2);
+    line-height: 1.65;
+  }
+
+  /* SINGLE POINT OF INSTRUCTION: GUIDE BOX */
+  .guide-box {
+    background: var(--jade-pale);
+    border: 1.5px dashed var(--jade-soft);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.94rem;
+    color: var(--jade-text);
+    font-weight: 600;
+    line-height: 1.55;
+  }
+  .guide-box i {
+    font-size: 1.25rem;
+    color: var(--jade-deep);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* QUIZ / TASK CARD */
+  .task-card {
+    background: #FFFFFF;
+    border: 1.5px solid var(--paper-line);
+    border-radius: var(--radius-md);
+    padding: 18px;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .question-prompt {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  .options-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .quiz-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1.5px solid var(--paper-line-2);
+    border-radius: var(--radius-sm);
+    background: var(--cream);
+    cursor: pointer;
+    font-size: 0.96rem;
+    font-weight: 600;
+    color: var(--ink-2);
+    transition: all 0.2s ease;
+    user-select: none;
+  }
+  .quiz-option:hover:not(.locked) {
+    border-color: var(--jade);
+    background: #FFFFFF;
+    transform: translateX(2px);
+  }
+  .quiz-option.selected {
+    border-color: var(--jade-deep);
+    background: var(--jade-pale);
+    color: var(--jade-text);
+  }
+  .quiz-option.correct-choice {
+    border-color: var(--correct);
+    background: var(--correct-bg);
+    color: var(--jade-dark);
+  }
+  .quiz-option.wrong-choice {
+    border-color: var(--wrong);
+    background: var(--wrong-bg);
+    color: #782D1B;
+  }
+  .quiz-option.locked {
+    cursor: default;
+  }
+
+  .option-indicator {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid var(--paper-line-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    background: #FFFFFF;
+    color: var(--ink-3);
+    transition: all 0.2s ease;
+  }
+  .quiz-option.selected .option-indicator {
+    border-color: var(--jade-deep);
+    background: var(--jade-deep);
+    color: #FFFFFF;
+  }
+
+  /* FEEDBACK BOX */
+  .feedback-box {
+    display: none;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 0.94rem;
+    line-height: 1.55;
+    font-weight: 500;
+  }
+  .feedback-box.active-feedback {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    animation: fadeIn 0.25s ease;
+  }
+  .feedback-box.feedback-correct {
+    background: var(--correct-bg);
+    border: 1.5px solid var(--correct);
+    color: var(--jade-dark);
+  }
+  .feedback-box.feedback-wrong {
+    background: var(--wrong-bg);
+    border: 1.5px solid var(--wrong);
+    color: #782D1B;
+  }
+  .feedback-box i {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* STAGE CONTROLS ROW */
+  .stage-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    border-top: 1.5px solid var(--paper-line);
+    margin-top: 10px;
+  }
+
+  .btn {
+    padding: 10px 22px;
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 0.96rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    border: none;
+  }
+  .btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    filter: grayscale(0.5);
+  }
+
+  .btn-secondary {
+    background: var(--cream-2);
+    border: 1.5px solid var(--paper-line-2);
+    color: var(--ink-2);
+  }
+  .btn-secondary:hover:not(:disabled) {
+    background: var(--cream-3);
+    color: var(--ink);
+  }
+
+  .btn-primary {
+    background: var(--jade-deep);
+    color: #FFFFFF;
+    box-shadow: 0 4px 14px rgba(45, 139, 111, 0.3);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--jade-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(45, 139, 111, 0.4);
+  }
+
+  .btn-submit {
+    width: 100%;
+    justify-content: center;
+    background: var(--jade-deep);
+    color: #FFFFFF;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: var(--radius-sm);
+  }
+  .btn-submit:hover:not(:disabled) {
+    background: var(--jade-dark);
+  }
+
+  .btn-retry {
+    display: none;
+    width: 100%;
+    justify-content: center;
+    background: var(--accent);
+    color: #FFFFFF;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: var(--radius-sm);
+  }
+  .btn-retry.active-retry {
+    display: inline-flex;
+  }
+  .btn-retry:hover {
+    background: var(--accent-deep);
+  }
+
+  /* MATCHING INTERFACE FOR STAGE 6 */
+  .match-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .match-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    align-items: center;
+  }
+  .match-card {
+    padding: 10px 12px;
+    border: 1.5px solid var(--paper-line-2);
+    border-radius: var(--radius-sm);
+    background: var(--cream);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--ink-2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .match-card:hover {
+    border-color: var(--jade);
+    background: #FFFFFF;
+  }
+  .match-card.matched {
+    border-color: var(--correct);
+    background: var(--correct-bg);
+    color: var(--jade-dark);
+    cursor: default;
+  }
+  .match-card.selected-source {
+    border-color: var(--accent-deep);
+    background: var(--accent-pale);
+    color: var(--accent-text);
+  }
+
+  /* COMPLETION MODAL & CONFETTI CANVAS */
+  .congrats-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(26, 26, 26, 0.72);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .congrats-card {
+    background: #FFFFFF;
+    border: 2px solid var(--jade-soft);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-float);
+    width: 100%;
+    max-width: 540px;
+    padding: 36px 28px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    position: relative;
+    animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  @keyframes modalPop {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .trophy-badge {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--accent-pale);
+    border: 3px solid var(--accent);
+    color: var(--accent-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.6rem;
+    box-shadow: 0 8px 24px rgba(232, 162, 74, 0.3);
+  }
+
+  .congrats-title {
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: var(--jade-dark);
+  }
+  .congrats-desc {
+    font-size: 1rem;
+    color: var(--ink-2);
+    line-height: 1.6;
+  }
+
+  #confettiCanvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10000;
+  }
+  </style>
+</head>
+<body>
+
+  <main class="main-container">
+
+    <!-- ====================================================================
+         STAGE 1 (S01): TẾ BÀO CHẤT — BÀO TƯƠNG VÀ KHUNG XƯƠNG
+         ==================================================================== -->
+    <section class="stage-section active" id="stage1">
+      <div class="workspace-layout">
+        <!-- Visual Workspace -->
+        <div class="visual-panel">
+          <div class="visual-media-box" id="mediaBoxS01">
+            <svg xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; display:block;" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <!-- Background & Cell Gradients -->
+    <radialGradient id="s1_bgGlow" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#FAF7F0" />
+      <stop offset="100%" stop-color="#F0EADD" />
+    </radialGradient>
+    
+    <radialGradient id="s1_cytoplasmGrad" cx="45%" cy="48%" r="55%">
+      <stop offset="0%" stop-color="#E2F0D9" stop-opacity="0.85" />
+      <stop offset="70%" stop-color="#D5E8CC" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#BDD7A8" stop-opacity="0.9" />
+    </radialGradient>
+
+    <!-- Nucleus Gradient -->
+    <radialGradient id="s1_nucleusGrad" cx="42%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#A594D1" />
+      <stop offset="60%" stop-color="#7B68B8" />
+      <stop offset="90%" stop-color="#5B4699" />
+      <stop offset="100%" stop-color="#46337A" />
+    </radialGradient>
+
+    <radialGradient id="s1_nucleolusGrad" cx="35%" cy="35%" r="50%">
+      <stop offset="0%" stop-color="#3C2A69" />
+      <stop offset="100%" stop-color="#241744" />
+    </radialGradient>
+
+    <!-- Mitochondria Gradient -->
+    <linearGradient id="s1_mitoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E87A5D" />
+      <stop offset="100%" stop-color="#C24E32" />
+    </linearGradient>
+
+    <!-- Golgi Gradient -->
+    <linearGradient id="s1_golgiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4BA62" />
+      <stop offset="100%" stop-color="#D98A2B" />
+    </linearGradient>
+
+    <!-- Filter for subtle drop shadow -->
+    <filter id="s1_shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="3" dy="6" stdDeviation="8" flood-color="#1A1A1A" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1200" height="800" fill="url(#s1_bgGlow)" />
+
+  <!-- Outer Cell Border / Plasma Membrane -->
+  <g filter="url(#s1_shadow)">
+    <!-- Plasma Membrane (Double layer representation via outline) -->
+    <path d="M 180,400 
+             C 160,250 280,120 480,110 
+             C 680,100 890,140 1010,260 
+             C 1090,340 1080,500 1020,610 
+             C 960,710 800,750 600,740 
+             C 400,730 260,680 190,580 
+             Z" 
+          fill="url(#s1_cytoplasmGrad)" 
+          stroke="#2D8B6F" 
+          stroke-width="7" 
+          stroke-linejoin="round" />
+          
+    <path d="M 183,400 
+             C 164,253 281,126 479,116 
+             C 677,106 885,145 1003,263 
+             C 1081,341 1071,498 1013,606 
+             C 955,704 797,743 600,733 
+             C 403,723 265,674 195,577 
+             Z" 
+          fill="none" 
+          stroke="#7CA792" 
+          stroke-width="2.5" 
+          stroke-opacity="0.6" />
+  </g>
+
+  <!-- ==================== ORGANELLES (Master Baseline) ==================== -->
+
+  <!-- 1. Central Nucleus -->
+  <g transform="translate(480, 390)">
+    <!-- Nuclear Envelope -->
+    <circle cx="0" cy="0" r="130" fill="url(#s1_nucleusGrad)" stroke="#46337A" stroke-width="5" />
+    <!-- Nuclear Pores (dots on perimeter) -->
+    <g stroke="#FAF7F0" stroke-width="3" stroke-linecap="round">
+      <line x1="0" y1="-132" x2="0" y2="-128" />
+      <line x1="92" y1="-92" x2="89" y2="-89" />
+      <line x1="132" y1="0" x2="128" y2="0" />
+      <line x1="92" y1="92" x2="89" y2="89" />
+      <line x1="0" y1="132" x2="0" y2="128" />
+      <line x1="-92" y1="92" x2="-89" y2="89" />
+      <line x1="-132" y1="0" x2="-128" y2="0" />
+      <line x1="-92" y1="-92" x2="-89" y2="-89" />
+    </g>
+    <!-- Chromatin fibers inside -->
+    <path d="M -70,-50 Q -30,-80 10,-50 T 60,-20 T 20,40 T -50,60" fill="none" stroke="#927FC4" stroke-width="3.5" opacity="0.6" />
+    <path d="M -40,-20 Q 0,-40 40,-10 T 60,30" fill="none" stroke="#927FC4" stroke-width="3" opacity="0.5" />
+    <!-- Nucleolus -->
+    <circle cx="-25" cy="-20" r="38" fill="url(#s1_nucleolusGrad)" />
+  </g>
+
+  <!-- 2. Endoplasmic Reticulum (ER) around Nucleus -->
+  <g fill="none" stroke="#688FA3" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+    <path d="M 350,330 C 310,310 270,350 280,410 C 290,460 330,480 350,470" />
+    <path d="M 330,300 C 270,280 230,350 250,440 C 265,510 320,530 355,510" />
+    <path d="M 380,270 C 330,240 250,260 220,350 C 200,430 230,530 300,560" />
+  </g>
+  <!-- Ribosomes on Rough ER -->
+  <g fill="#435B66">
+    <circle cx="340" cy="315" r="3" /><circle cx="310" cy="320" r="3" /><circle cx="280" cy="350" r="3" />
+    <circle cx="282" cy="380" r="3" /><circle cx="288" cy="420" r="3" /><circle cx="310" cy="465" r="3" />
+    <circle cx="320" cy="290" r="3" /><circle cx="260" cy="310" r="3" /><circle cx="242" cy="370" r="3" />
+    <circle cx="250" cy="430" r="3" /><circle cx="280" cy="500" r="3" /><circle cx="300" cy="530" r="3" />
+  </g>
+
+  <!-- 3. Golgi Apparatus -->
+  <g transform="translate(680, 240)" fill="none" stroke="url(#s1_golgiGrad)" stroke-width="8" stroke-linecap="round">
+    <path d="M -60,0 C -20,-15 30,-15 70,5" />
+    <path d="M -70,18 C -25,2 35,2 80,24" />
+    <path d="M -65,36 C -20,20 30,20 75,42" />
+    <path d="M -50,54 C -15,40 25,40 60,60" />
+    <!-- Golgi Vesicles -->
+    <circle cx="95" cy="10" r="7" fill="#F4BA62" stroke="none" />
+    <circle cx="105" cy="35" r="8" fill="#D98A2B" stroke="none" />
+    <circle cx="-85" cy="20" r="6" fill="#F4BA62" stroke="none" />
+    <circle cx="80" cy="80" r="6.5" fill="#D98A2B" stroke="none" />
+  </g>
+
+  <!-- 4. Mitochondria (2 instances) -->
+  <!-- Mito 1: Upper Right -->
+  <g transform="translate(850, 320) rotate(-25)">
+    <rect x="-65" y="-32" width="130" height="64" rx="32" fill="url(#s1_mitoGrad)" stroke="#8C2C15" stroke-width="3" />
+    <!-- Inner Folded Cristae -->
+    <path d="M -45,-15 C -40,-15 -40,15 -35,15
+             M -25,-25 C -20,-25 -20,20 -15,20
+             M -5,-27 C 0,-27 0,22 5,22
+             M 15,-25 C 20,-25 20,20 25,20
+             M 35,-15 C 40,-15 40,15 45,15" 
+          fill="none" stroke="#FAF7F0" stroke-width="3.5" stroke-linecap="round" />
+  </g>
+  <!-- Mito 2: Lower Center-Right -->
+  <g transform="translate(730, 580) rotate(35)">
+    <rect x="-60" y="-30" width="120" height="60" rx="30" fill="url(#s1_mitoGrad)" stroke="#8C2C15" stroke-width="3" />
+    <path d="M -40,-12 C -35,-12 -35,12 -30,12
+             M -20,-22 C -15,-22 -15,18 -10,18
+             M 0,-24 C 5,-24 5,20 10,20
+             M 20,-22 C 25,-22 25,18 30,18
+             M 35,-12 C 40,-12 40,12 42,12" 
+          fill="none" stroke="#FAF7F0" stroke-width="3" stroke-linecap="round" />
+  </g>
+
+  <!-- 5. Lysosomes / Peroxisomes -->
+  <circle cx="340" cy="610" r="24" fill="#3CA57A" stroke="#1B5E48" stroke-width="3" />
+  <circle cx="335" cy="605" r="6" fill="#FAF7F0" opacity="0.4" />
+  <circle cx="890" cy="490" r="28" fill="#3CA57A" stroke="#1B5E48" stroke-width="3" />
+  <circle cx="882" cy="482" r="7" fill="#FAF7F0" opacity="0.4" />
+
+  <!-- 6. Centrosome (Near Nucleus, upper-left) -->
+  <g id="s1_centrosome" transform="translate(420, 240)">
+    <!-- Pericentriolar cloud -->
+    <ellipse cx="0" cy="0" rx="45" ry="35" fill="#E8A24A" opacity="0.25" />
+    <!-- Centriole 1: Vertical -->
+    <g transform="rotate(15)">
+      <rect x="-14" y="-22" width="28" height="44" rx="4" fill="#CE8A33" stroke="#8A551A" stroke-width="2.5" />
+      <line x1="-7" y1="-20" x2="-7" y2="20" stroke="#FAF7F0" stroke-width="1.5" />
+      <line x1="0" y1="-20" x2="0" y2="20" stroke="#FAF7F0" stroke-width="1.5" />
+      <line x1="7" y1="-20" x2="7" y2="20" stroke="#FAF7F0" stroke-width="1.5" />
+    </g>
+    <!-- Centriole 2: Horizontal (approx 90 deg) -->
+    <g transform="translate(20, 10) rotate(105)">
+      <rect x="-14" y="-22" width="28" height="44" rx="4" fill="#CE8A33" stroke="#8A551A" stroke-width="2.5" />
+      <line x1="-7" y1="-20" x2="-7" y2="20" stroke="#FAF7F0" stroke-width="1.5" />
+      <line x1="0" y1="-20" x2="0" y2="20" stroke="#FAF7F0" stroke-width="1.5" />
+      <line x1="7" y1="-20" x2="7" y2="20" stroke="#FAF7F0" stroke-width="1.5" />
+    </g>
+  </g>
+
+  <!-- ==================== CYTOSKELETON NETWORK (Mạng Khung Xương Tế Bào) ==================== -->
+  <!-- Layer 1: Vi ống (Microtubules) - Dày nhất, tỏa từ Trung thể ra toàn tế bào chất -->
+  <g id="s1_microtubules" fill="none" stroke="#13523B" stroke-width="4.5" stroke-linecap="round" opacity="0.88">
+    <!-- Radials from Centrosome -->
+    <path d="M 420,240 C 370,190 300,160 220,230 C 180,265 175,340 185,390" />
+    <path d="M 420,240 C 440,180 500,130 620,125 C 750,120 860,150 940,220" />
+    <path d="M 420,240 C 520,220 600,200 680,180 C 820,160 920,230 990,300" />
+    <path d="M 420,240 C 460,280 560,300 640,310 C 760,330 830,400 900,430 C 960,460 1020,440 1060,420" />
+    <path d="M 420,240 C 360,250 310,270 280,310 C 230,370 220,470 240,550 C 260,620 320,680 400,710" />
+    <path d="M 420,240 C 400,320 380,410 390,490 C 410,600 480,680 560,720" />
+    <path d="M 420,240 C 480,290 530,350 560,450 C 600,560 630,640 700,700 C 780,740 880,690 940,650" />
+    <path d="M 420,240 C 560,250 630,280 720,380 C 810,480 870,550 960,590" />
+  </g>
+
+  <!-- Layer 2: Sợi trung gian (Intermediate Filaments) - Độ dày trung bình, neo giữ nhân & bào quan -->
+  <g id="s1_intermediate-filaments" fill="none" stroke="#2D8B6F" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="8 3" opacity="0.8">
+    <!-- Basket around nucleus -->
+    <path d="M 330,350 C 320,450 340,530 420,550 C 520,565 620,540 640,430 C 650,330 610,250 500,240 C 400,240 340,280 330,350 Z" />
+    <!-- Radiating anchors -->
+    <path d="M 350,510 C 320,560 270,600 220,630" />
+    <path d="M 430,550 C 440,610 470,680 520,720" />
+    <path d="M 590,530 C 640,590 710,640 820,680" />
+    <path d="M 640,430 C 720,440 820,430 890,470" />
+    <path d="M 630,320 C 700,310 790,290 850,260" />
+    <path d="M 470,250 C 470,180 520,150 580,130" />
+    <path d="M 360,270 C 310,230 260,210 200,240" />
+    <path d="M 320,400 C 260,400 210,420 180,470" />
+  </g>
+
+  <!-- Layer 3: Vi sợi (Microfilaments / Actin) - Mảnh nhất, tập trung dày ở viền sát màng (cortex) -->
+  <g id="s1_microfilaments" fill="none" stroke="#CE8A33" stroke-width="1.6" stroke-linecap="round" opacity="0.85">
+    <!-- Sub-membrane actin cortex -->
+    <path d="M 210,380 C 190,270 290,150 470,135 C 650,120 860,160 980,270 C 1050,340 1040,480 990,580 C 930,680 780,720 590,710 C 410,700 280,650 220,560 Z" />
+    <path d="M 225,410 C 205,300 305,170 480,150 C 660,135 870,175 970,285 C 1035,355 1025,475 975,565 C 915,665 775,705 585,695 C 415,685 295,635 235,550 Z" stroke-dasharray="6 3" />
+    <!-- Cross web strands -->
+    <path d="M 210,280 L 260,330 M 270,180 L 320,230 M 420,130 L 440,190 M 560,125 L 570,180 M 740,140 L 730,200 M 890,180 L 860,230 M 980,260 L 920,290" />
+    <path d="M 1020,380 L 960,390 M 1010,480 L 950,470 M 960,600 L 910,570 M 850,680 L 820,630 M 690,720 L 680,660 M 510,715 L 520,655 M 340,680 L 360,620 M 240,610 L 280,560" />
+  </g>
+
+  <!-- ==================== CALLOUT LABELS & ANNOTATIONS ==================== -->
+  <g id="s1_annotations" font-family="'Be Vietnam Pro', system-ui, sans-serif">
+    <!-- Cytosol Tag -->
+    <g transform="translate(190, 680)">
+      <rect x="0" y="0" width="170" height="38" rx="8" fill="#FAF7F0" stroke="#7CA792" stroke-width="1.8" filter="url(#s1_shadow)" />
+      <circle cx="20" cy="19" r="6" fill="#BDD7A8" stroke="#2D8B6F" stroke-width="2" />
+      <text x="36" y="24" font-size="14" font-weight="700" fill="#1A1A1A">Bào tương (Cytosol)</text>
+    </g>
+
+    <!-- Cytoskeleton Network Tag -->
+    <g transform="translate(850, 710)">
+      <rect x="0" y="0" width="240" height="38" rx="8" fill="#FAF7F0" stroke="#13523B" stroke-width="2" filter="url(#s1_shadow)" />
+      <line x1="16" y1="19" x2="36" y2="19" stroke="#13523B" stroke-width="4.5" stroke-linecap="round" />
+      <text x="46" y="24" font-size="14" font-weight="700" fill="#13523B">Bộ khung xương tế bào</text>
+    </g>
+
+    <!-- Centrosome Tag -->
+    <g transform="translate(230, 150)">
+      <rect x="0" y="0" width="130" height="34" rx="8" fill="#FAF7F0" stroke="#CE8A33" stroke-width="1.8" filter="url(#s1_shadow)" />
+      <text x="16" y="22" font-size="13" font-weight="700" fill="#8A551A">Trung thể</text>
+      <line x1="130" y1="25" x2="410" y2="235" stroke="#CE8A33" stroke-width="1.5" stroke-dasharray="4 3" />
+    </g>
+
+    <!-- Nucleus Tag -->
+    <g transform="translate(480, 570)">
+      <line x1="0" y1="-50" x2="0" y2="0" stroke="#46337A" stroke-width="1.5" stroke-dasharray="4 3" />
+      <rect x="-55" y="0" width="110" height="32" rx="8" fill="#FAF7F0" stroke="#46337A" stroke-width="1.8" filter="url(#s1_shadow)" />
+      <text x="0" y="21" font-size="13" font-weight="700" fill="#46337A" text-anchor="middle">Nhân tế bào</text>
+    </g>
+  </g>
+</svg>
+          </div>
+          <div class="visual-toolbar">
+            <button class="action-btn" id="btnToggleCytoskeletonS01" onclick="toggleCytoskeletonHighlight()">
+              <i class="ti ti-sparkles"></i> Làm nổi bật Bộ khung xương
+            </button>
+            <button class="tab-btn" onclick="showCytosolInfo()">
+              <i class="ti ti-droplet"></i> Xem tính chất Bào tương
+            </button>
+          </div>
+        </div>
+
+        <!-- Pedagogy Panel -->
+        <div class="pedagogy-panel">
+          <div class="lecture-box">
+            <div class="lecture-box-title"><i class="ti ti-book-2"></i> Kiến thức khoa học</div>
+            <div class="lecture-box-content">
+              Tế bào chất là nơi diễn ra các hoạt động sống của tế bào, gồm <strong>bào tương</strong> (vật chất dạng keo chủ yếu là nước và các phân tử sinh học) và các <strong>bào quan</strong>. Trong bào tương có mạng lưới các protein liên kết với nhau hình thành nên bộ khung của tế bào.
+            </div>
+          </div>
+
+          <div class="guide-box">
+            <i class="ti ti-info-circle"></i>
+            <span>Quan sát mô hình bên trái, bấm làm nổi bật khung xương rồi chọn câu trả lời đúng.</span>
+          </div>
+
+          <div class="task-card">
+            <div class="question-prompt">
+              Bộ khung xương tế bào được ví như bộ phận nào của cơ thể người?
+            </div>
+            <div class="options-group" id="optionsGroupS01">
+              <div class="quiz-option" onclick="selectOption(1, 'A', this)">
+                <div class="option-indicator">A</div>
+                <span>Bộ xương</span>
+              </div>
+              <div class="quiz-option" onclick="selectOption(1, 'B', this)">
+                <div class="option-indicator">B</div>
+                <span>Hệ tuần hoàn</span>
+              </div>
+              <div class="quiz-option" onclick="selectOption(1, 'C', this)">
+                <div class="option-indicator">C</div>
+                <span>Hệ thần kinh</span>
+              </div>
+            </div>
+
+            <button class="btn btn-submit" id="btnSubmitS01" disabled onclick="submitStage(1)">
+              <i class="ti ti-check"></i> TRẢ LỜI
+            </button>
+            <button class="btn btn-retry" id="btnRetryS01" onclick="retryStage(1)">
+              <i class="ti ti-rotate-clockwise"></i> LÀM LẠI
+            </button>
+
+            <div class="feedback-box" id="feedbackS01"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage-actions">
+        <button class="btn btn-secondary" disabled><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+        <button class="btn btn-primary" id="btnNextS01" disabled onclick="goToStage(2)">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         STAGE 2 (S02): KHUNG XƯƠNG TẾ BÀO — 3 LOẠI SỢI & HỒNG CẦU
+         ==================================================================== -->
+    <section class="stage-section" id="stage2">
+      <div class="workspace-layout">
+        <div class="visual-panel">
+          <div class="visual-toolbar" style="padding-top:0; margin-bottom:8px;">
+            <button class="tab-btn active" id="tabS02Fibers" onclick="switchTabS02('fibers')">
+              <i class="ti ti-binary-tree"></i> Ba loại sợi khung xương
+            </button>
+            <button class="tab-btn" id="tabS02Rbc" onclick="switchTabS02('rbc')">
+              <i class="ti ti-heart-rate-monitor"></i> Liên hệ bệnh lý Hồng cầu
+            </button>
+          </div>
+          <div class="visual-media-box" id="mediaBoxS02">
+            <div id="viewS02Fibers" style="width:100%; height:100%; display:block;">
+              <svg xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; display:block;" viewBox="0 0 1000 600" width="100%" height="100%">
+  <defs>
+    <radialGradient id="s2f_bgGlow" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#FAF7F0" />
+      <stop offset="100%" stop-color="#F0EADD" />
+    </radialGradient>
+    
+    <!-- Microtubule Subunit Pattern (Tubulin dimers) -->
+    <linearGradient id="s2f_alphaTubulin" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3CA57A" />
+      <stop offset="100%" stop-color="#1B5E48" />
+    </linearGradient>
+    <linearGradient id="s2f_betaTubulin" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A9D0BE" />
+      <stop offset="100%" stop-color="#2D8B6F" />
+    </linearGradient>
+
+    <!-- Intermediate Filament Fiber Gradient -->
+    <linearGradient id="s2f_interFiber" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2D8B6F" />
+      <stop offset="50%" stop-color="#7CA792" />
+      <stop offset="100%" stop-color="#13523B" />
+    </linearGradient>
+
+    <!-- Actin Subunit Gradient -->
+    <radialGradient id="s2f_actinGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#F7E7CD" />
+      <stop offset="40%" stop-color="#E8A24A" />
+      <stop offset="100%" stop-color="#8A551A" />
+    </radialGradient>
+
+    <filter id="s2f_cardShadow" x="-5%" y="-5%" width="110%" height="112%">
+      <feDropShadow dx="2" dy="5" stdDeviation="6" flood-color="#1A1A1A" flood-opacity="0.07" />
+    </filter>
+  </defs>
+
+  <rect width="1000" height="600" fill="url(#s2f_bgGlow)" />
+
+  <!-- Title Heading -->
+  <text x="500" y="55" font-family="'Be Vietnam Pro', system-ui, sans-serif" font-size="22" font-weight="800" fill="#1A1A1A" text-anchor="middle">
+    BA LOẠI SỢI CẤU THÀNH BỘ KHUNG XƯƠNG TẾ BÀO
+  </text>
+  <text x="500" y="85" font-family="'Be Vietnam Pro', system-ui, sans-serif" font-size="14" font-weight="500" fill="#514C44" text-anchor="middle">
+    Tỷ lệ đường kính: Vi ống (~25 nm) &gt; Sợi trung gian (~8–12 nm) &gt; Vi sợi (~7 nm)
+  </text>
+
+  <!-- ==================== COLUMN 1: VI ỐNG (MICROTUBULES) ==================== -->
+  <g transform="translate(60, 120)">
+    <rect width="260" height="430" rx="14" fill="#FFFFFF" stroke="#DDE8E2" stroke-width="2" filter="url(#s2f_cardShadow)" />
+    
+    <!-- Badge -->
+    <rect x="20" y="20" width="100" height="26" rx="6" fill="#DCEAE1" />
+    <text x="70" y="38" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#1B5E48" text-anchor="middle">~25 nm</text>
+    <text x="130" y="38" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#7C756A">LỚN NHẤT</text>
+
+    <text x="20" y="75" font-family="'Be Vietnam Pro', sans-serif" font-size="19" font-weight="800" fill="#13523B">Vi ống</text>
+    <text x="20" y="96" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-style="italic" fill="#514C44">(Microtubules)</text>
+
+    <!-- Structural Drawing: Hollow Cylinder made of 13 protofilaments -->
+    <g transform="translate(130, 240)">
+      <!-- Top hollow opening (rim showing hollow lumen) -->
+      <ellipse cx="0" cy="-90" rx="65" ry="24" fill="#E2F0D9" stroke="#13523B" stroke-width="2.5" />
+      <ellipse cx="0" cy="-90" rx="36" ry="13" fill="#D5E8CC" stroke="#13523B" stroke-width="2" />
+      <text x="0" y="-86" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="700" fill="#1B5E48" text-anchor="middle">Lòng rỗng (~15nm)</text>
+
+      <!-- Cylinder Wall showing rows of alternating α and β tubulin subunits -->
+      <g>
+        <!-- Repeating columns of tubulin spheres -->
+        <!-- Row 1 -->
+        <g transform="translate(0, -65)">
+          <circle cx="-56" cy="0" r="9" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="-38" cy="4" r="9" fill="url(#s2f_betaTubulin)" />
+          <circle cx="-19" cy="6" r="9.5" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="0" cy="7" r="10" fill="url(#s2f_betaTubulin)" />
+          <circle cx="19" cy="6" r="9.5" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="38" cy="4" r="9" fill="url(#s2f_betaTubulin)" />
+          <circle cx="56" cy="0" r="9" fill="url(#s2f_alphaTubulin)" />
+        </g>
+        <!-- Row 2 -->
+        <g transform="translate(0, -45)">
+          <circle cx="-56" cy="0" r="9" fill="url(#s2f_betaTubulin)" />
+          <circle cx="-38" cy="4" r="9" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="-19" cy="6" r="9.5" fill="url(#s2f_betaTubulin)" />
+          <circle cx="0" cy="7" r="10" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="19" cy="6" r="9.5" fill="url(#s2f_betaTubulin)" />
+          <circle cx="38" cy="4" r="9" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="56" cy="0" r="9" fill="url(#s2f_betaTubulin)" />
+        </g>
+        <!-- Row 3 -->
+        <g transform="translate(0, -25)">
+          <circle cx="-56" cy="0" r="9" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="-38" cy="4" r="9" fill="url(#s2f_betaTubulin)" />
+          <circle cx="-19" cy="6" r="9.5" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="0" cy="7" r="10" fill="url(#s2f_betaTubulin)" />
+          <circle cx="19" cy="6" r="9.5" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="38" cy="4" r="9" fill="url(#s2f_betaTubulin)" />
+          <circle cx="56" cy="0" r="9" fill="url(#s2f_alphaTubulin)" />
+        </g>
+        <!-- Row 4 -->
+        <g transform="translate(0, -5)">
+          <circle cx="-56" cy="0" r="9" fill="url(#s2f_betaTubulin)" />
+          <circle cx="-38" cy="4" r="9" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="-19" cy="6" r="9.5" fill="url(#s2f_betaTubulin)" />
+          <circle cx="0" cy="7" r="10" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="19" cy="6" r="9.5" fill="url(#s2f_betaTubulin)" />
+          <circle cx="38" cy="4" r="9" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="56" cy="0" r="9" fill="url(#s2f_betaTubulin)" />
+        </g>
+        <!-- Row 5 -->
+        <g transform="translate(0, 15)">
+          <circle cx="-56" cy="0" r="9" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="-38" cy="4" r="9" fill="url(#s2f_betaTubulin)" />
+          <circle cx="-19" cy="6" r="9.5" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="0" cy="7" r="10" fill="url(#s2f_betaTubulin)" />
+          <circle cx="19" cy="6" r="9.5" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="38" cy="4" r="9" fill="url(#s2f_betaTubulin)" />
+          <circle cx="56" cy="0" r="9" fill="url(#s2f_alphaTubulin)" />
+        </g>
+        <!-- Row 6 -->
+        <g transform="translate(0, 35)">
+          <circle cx="-56" cy="0" r="9" fill="url(#s2f_betaTubulin)" />
+          <circle cx="-38" cy="4" r="9" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="-19" cy="6" r="9.5" fill="url(#s2f_betaTubulin)" />
+          <circle cx="0" cy="7" r="10" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="19" cy="6" r="9.5" fill="url(#s2f_betaTubulin)" />
+          <circle cx="38" cy="4" r="9" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="56" cy="0" r="9" fill="url(#s2f_betaTubulin)" />
+        </g>
+        <!-- Row 7 -->
+        <g transform="translate(0, 55)">
+          <circle cx="-56" cy="0" r="9" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="-38" cy="4" r="9" fill="url(#s2f_betaTubulin)" />
+          <circle cx="-19" cy="6" r="9.5" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="0" cy="7" r="10" fill="url(#s2f_betaTubulin)" />
+          <circle cx="19" cy="6" r="9.5" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="38" cy="4" r="9" fill="url(#s2f_betaTubulin)" />
+          <circle cx="56" cy="0" r="9" fill="url(#s2f_alphaTubulin)" />
+        </g>
+        <!-- Row 8 -->
+        <g transform="translate(0, 75)">
+          <circle cx="-56" cy="0" r="9" fill="url(#s2f_betaTubulin)" />
+          <circle cx="-38" cy="4" r="9" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="-19" cy="6" r="9.5" fill="url(#s2f_betaTubulin)" />
+          <circle cx="0" cy="7" r="10" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="19" cy="6" r="9.5" fill="url(#s2f_betaTubulin)" />
+          <circle cx="38" cy="4" r="9" fill="url(#s2f_alphaTubulin)" />
+          <circle cx="56" cy="0" r="9" fill="url(#s2f_betaTubulin)" />
+        </g>
+      </g>
+    </g>
+
+    <!-- Description -->
+    <text x="20" y="375" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#1A1A1A">• Cấu trúc ống rỗng hình trụ</text>
+    <text x="20" y="395" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#1A1A1A">• Protein: α và β Tubulin</text>
+    <text x="20" y="415" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="500" fill="#514C44">• Tạo thoi phân bào, ray dẫn đường</text>
+  </g>
+
+  <!-- ==================== COLUMN 2: SỢI TRUNG GIAN (INTERMEDIATE FILAMENTS) ==================== -->
+  <g transform="translate(370, 120)">
+    <rect width="260" height="430" rx="14" fill="#FFFFFF" stroke="#DDE8E2" stroke-width="2" filter="url(#s2f_cardShadow)" />
+    
+    <!-- Badge -->
+    <rect x="20" y="20" width="100" height="26" rx="6" fill="#DCEAE1" />
+    <text x="70" y="38" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#1B5E48" text-anchor="middle">~8–12 nm</text>
+    <text x="130" y="38" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#7C756A">TRUNG GIAN</text>
+
+    <text x="20" y="75" font-family="'Be Vietnam Pro', sans-serif" font-size="19" font-weight="800" fill="#13523B">Sợi trung gian</text>
+    <text x="20" y="96" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-style="italic" fill="#514C44">(Intermediate filaments)</text>
+
+    <!-- Structural Drawing: Braided Cable / Rope of fibrous subunits -->
+    <g transform="translate(130, 240)">
+      <!-- Twisted Rope bundle (~36px wide to match scale) -->
+      <g stroke="#13523B" stroke-width="1.2">
+        <!-- Strands interwoven -->
+        <path d="M -18,-90 C -6,-70 18,-60 12,-30 C 6,0 -18,10 -12,40 C -6,70 18,80 12,110" fill="none" stroke="url(#s2f_interFiber)" stroke-width="10" stroke-linecap="round" />
+        <path d="M 0,-90 C 12,-70 -6,-60 -12,-30 C -18,0 6,10 12,40 C 18,70 -6,80 -12,110" fill="none" stroke="#3CA57A" stroke-width="9" stroke-linecap="round" />
+        <path d="M 16,-90 C -12,-70 -18,-60 -6,-30 C 6,0 18,10 -6,40 C -18,70 -12,80 6,110" fill="none" stroke="#2D8B6F" stroke-width="8" stroke-linecap="round" />
+      </g>
+      <!-- Cable cut top view showing solid multi-fibril core -->
+      <ellipse cx="0" cy="-90" rx="22" ry="9" fill="#2D8B6F" stroke="#13523B" stroke-width="2" />
+      <circle cx="-8" cy="-90" r="3" fill="#A9D0BE" />
+      <circle cx="0" cy="-90" r="3.5" fill="#A9D0BE" />
+      <circle cx="8" cy="-90" r="3" fill="#A9D0BE" />
+    </g>
+
+    <!-- Description -->
+    <text x="20" y="375" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#1A1A1A">• Cấu trúc dạng dây cáp bện bền chắc</text>
+    <text x="20" y="395" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#1A1A1A">• Protein: Keratin, Lamin, Vimentin...</text>
+    <text x="20" y="415" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="500" fill="#514C44">• Cố định nhân &amp; neo giữ bào quan</text>
+  </g>
+
+  <!-- ==================== COLUMN 3: VI SỢI (MICROFILAMENTS / ACTIN) ==================== -->
+  <g transform="translate(680, 120)">
+    <rect width="260" height="430" rx="14" fill="#FFFFFF" stroke="#DDE8E2" stroke-width="2" filter="url(#s2f_cardShadow)" />
+    
+    <!-- Badge -->
+    <rect x="20" y="20" width="100" height="26" rx="6" fill="#F7E7CD" />
+    <text x="70" y="38" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#8A551A" text-anchor="middle">~7 nm</text>
+    <text x="130" y="38" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#7C756A">MẢNH NHẤT</text>
+
+    <text x="20" y="75" font-family="'Be Vietnam Pro', sans-serif" font-size="19" font-weight="800" fill="#8A551A">Vi sợi</text>
+    <text x="20" y="96" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-style="italic" fill="#514C44">(Microfilaments / Actin)</text>
+
+    <!-- Structural Drawing: Two intertwined chains of actin subunits -->
+    <g transform="translate(130, 240)">
+      <!-- Double helical chain of actin spheres (~18px total width) -->
+      <g>
+        <circle cx="-6" cy="-90" r="7" fill="url(#s2f_actinGrad)" />
+        <circle cx="6" cy="-80" r="7" fill="url(#s2f_actinGrad)" />
+        <circle cx="-5" cy="-68" r="7" fill="url(#s2f_actinGrad)" />
+        <circle cx="7" cy="-56" r="7" fill="url(#s2f_actinGrad)" />
+        <circle cx="-4" cy="-44" r="7" fill="url(#s2f_actinGrad)" />
+        <circle cx="6" cy="-32" r="7" fill="url(#s2f_actinGrad)" />
+        <circle cx="-6" cy="-20" r="7" fill="url(#s2f_actinGrad)" />
+        <circle cx="7" cy="-8" r="7" fill="url(#s2f_actinGrad)" />
+        <circle cx="-5" cy="4" r="7" fill="url(#s2f_actinGrad)" />
+        <circle cx="6" cy="16" r="7" fill="url(#s2f_actinGrad)" />
+        <circle cx="-6" cy="28" r="7" fill="url(#s2f_actinGrad)" />
+        <circle cx="7" cy="40" r="7" fill="url(#s2f_actinGrad)" />
+        <circle cx="-5" cy="52" r="7" fill="url(#s2f_actinGrad)" />
+        <circle cx="6" cy="64" r="7" fill="url(#s2f_actinGrad)" />
+        <circle cx="-6" cy="76" r="7" fill="url(#s2f_actinGrad)" />
+        <circle cx="7" cy="88" r="7" fill="url(#s2f_actinGrad)" />
+        <circle cx="-5" cy="100" r="7" fill="url(#s2f_actinGrad)" />
+      </g>
+    </g>
+
+    <!-- Description -->
+    <text x="20" y="375" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#1A1A1A">• Hai chuỗi xoắn hạt actin</text>
+    <text x="20" y="395" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#1A1A1A">• Protein: Actin</text>
+    <text x="20" y="415" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="500" fill="#514C44">• Vận động tế bào chất, nâng đỡ màng</text>
+  </g>
+</svg>
+            </div>
+            <div id="viewS02Rbc" style="width:100%; height:100%; display:none;">
+              <svg xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; display:block;" viewBox="0 0 1000 600" width="100%" height="100%">
+  <defs>
+    <radialGradient id="s2r_bgGlow" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#FAF7F0" />
+      <stop offset="100%" stop-color="#F0EADD" />
+    </radialGradient>
+
+    <!-- Normal RBC 3D Gradient (Biconcave disc) -->
+    <radialGradient id="s2r_rbcNormal" cx="38%" cy="36%" r="65%">
+      <stop offset="0%" stop-color="#FF7666" />
+      <stop offset="35%" stop-color="#E53935" />
+      <stop offset="70%" stop-color="#B71C1C" />
+      <stop offset="100%" stop-color="#7F0000" />
+    </radialGradient>
+    
+    <!-- Central Concavity Shadow -->
+    <radialGradient id="s2r_rbcConcave" cx="48%" cy="50%" r="48%">
+      <stop offset="0%" stop-color="#7F0000" stop-opacity="0.9" />
+      <stop offset="55%" stop-color="#B71C1C" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#E53935" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Damaged RBC Gradient -->
+    <radialGradient id="s2r_rbcDamaged" cx="42%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#E57373" />
+      <stop offset="45%" stop-color="#D32F2F" />
+      <stop offset="85%" stop-color="#880E4F" />
+      <stop offset="100%" stop-color="#4A0028" />
+    </radialGradient>
+
+    <filter id="s2r_shadow" x="-8%" y="-8%" width="120%" height="120%">
+      <feDropShadow dx="3" dy="8" stdDeviation="10" flood-color="#1A1A1A" flood-opacity="0.12" />
+    </filter>
+  </defs>
+
+  <rect width="1000" height="600" fill="url(#s2r_bgGlow)" />
+
+  <!-- Heading -->
+  <text x="500" y="52" font-family="'Be Vietnam Pro', system-ui, sans-serif" font-size="22" font-weight="800" fill="#1A1A1A" text-anchor="middle">
+    LIÊN HỆ BỆNH LÝ: KHUNG XƯƠNG TẾ BÀO HỒNG CẦU
+  </text>
+  <text x="500" y="80" font-family="'Be Vietnam Pro', system-ui, sans-serif" font-size="14" font-weight="500" fill="#514C44" text-anchor="middle">
+    Mạng lưới protein khung xương nâng đỡ màng duy trì hình dạng đĩa lõm hai mặt tối ưu cho trao đổi khí
+  </text>
+
+  <!-- ==================== LEFT PANEL: BÌNH THƯỜNG ==================== -->
+  <g transform="translate(60, 110)">
+    <rect width="410" height="440" rx="16" fill="#FFFFFF" stroke="#2D8B6F" stroke-width="2.5" filter="url(#s2r_shadow)" />
+    
+    <!-- State Badge -->
+    <rect x="24" y="24" width="160" height="30" rx="8" fill="#DCEAE1" />
+    <circle cx="40" cy="39" r="6" fill="#2D8B6F" />
+    <text x="54" y="45" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="700" fill="#1B5E48">BÌNH THƯỜNG</text>
+
+    <!-- Normal RBC Illustration (Isometric 3D view of Biconcave disc) -->
+    <g transform="translate(205, 210)" filter="url(#s2r_shadow)">
+      <!-- Main disc body -->
+      <ellipse cx="0" cy="0" rx="125" ry="92" fill="url(#s2r_rbcNormal)" stroke="#5B0000" stroke-width="2.5" />
+      <!-- Biconcave central dimple -->
+      <ellipse cx="-4" cy="-2" rx="65" ry="46" fill="url(#s2r_rbcConcave)" />
+      <!-- Highlight ring on the thick rim -->
+      <path d="M -85,-40 C -45,-75 45,-75 85,-40" fill="none" stroke="#FFCDD2" stroke-width="5" stroke-linecap="round" opacity="0.45" />
+    </g>
+
+    <!-- Scientific Characteristics -->
+    <g transform="translate(24, 335)" font-family="'Be Vietnam Pro', sans-serif">
+      <text x="0" y="0" font-size="15" font-weight="800" fill="#13523B">Hồng cầu bình thường</text>
+      <text x="0" y="24" font-size="13" font-weight="600" fill="#1A1A1A">• Hình đĩa lõm hai mặt, không có nhân</text>
+      <text x="0" y="46" font-size="13" font-weight="500" fill="#514C44">• Tối đa hóa tỷ lệ diện tích tiếp xúc S/V</text>
+      <text x="0" y="68" font-size="13" font-weight="500" fill="#514C44">• Khung xương đàn hồi cao, dễ uốn qua mao mạch hẹp</text>
+      <text x="0" y="90" font-size="13" font-weight="700" fill="#2D8B6F">✓ Khả năng vận chuyển Oxygen tối ưu</text>
+    </g>
+  </g>
+
+  <!-- ==================== RIGHT PANEL: TỔN THƯƠNG KHUNG XƯƠNG ==================== -->
+  <g transform="translate(530, 110)">
+    <rect width="410" height="440" rx="16" fill="#FFFFFF" stroke="#C15F3C" stroke-width="2.5" filter="url(#s2r_shadow)" />
+    
+    <!-- State Badge -->
+    <rect x="24" y="24" width="225" height="30" rx="8" fill="#F3E2D6" />
+    <circle cx="40" cy="39" r="6" fill="#C15F3C" />
+    <text x="54" y="45" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="700" fill="#8C2C15">TỔN THƯƠNG KHUNG XƯƠNG</text>
+
+    <!-- Damaged RBC Illustration (Deformed, irregular lumpy surface, lost biconcavity) -->
+    <g transform="translate(205, 210)" filter="url(#s2r_shadow)">
+      <!-- Deformed lumpy body -->
+      <path d="M -115,-30 
+               C -125,-75 -80,-95 -30,-88 
+               C 10,-82 40,-95 80,-75 
+               C 125,-55 130,-15 118,25 
+               C 105,70 65,95 10,88 
+               C -40,82 -90,95 -115,55 
+               C -130,20 -105,5 -115,-30 Z" 
+            fill="url(#s2r_rbcDamaged)" 
+            stroke="#4A0028" 
+            stroke-width="2.5" />
+      
+      <!-- Irregular surface folds / creases showing lost membrane tension -->
+      <path d="M -55,-25 C -30,-10 -20,20 -35,45" fill="none" stroke="#4A0028" stroke-width="3" stroke-linecap="round" opacity="0.6" />
+      <path d="M 25,-40 C 45,-20 35,30 15,50" fill="none" stroke="#4A0028" stroke-width="3" stroke-linecap="round" opacity="0.6" />
+      <path d="M -70,-60 C -40,-45 20,-50 60,-35" fill="none" stroke="#FFCDD2" stroke-width="4" stroke-linecap="round" opacity="0.3" />
+    </g>
+
+    <!-- Scientific Characteristics -->
+    <g transform="translate(24, 335)" font-family="'Be Vietnam Pro', sans-serif">
+      <text x="0" y="0" font-size="15" font-weight="800" fill="#8C2C15">Hồng cầu tổn thương khung xương</text>
+      <text x="0" y="24" font-size="13" font-weight="600" fill="#1A1A1A">• Thiếu protein neo giữ màng (Spectrin, Ankyrin...)</text>
+      <text x="0" y="46" font-size="13" font-weight="500" fill="#514C44">• Mất hình dạng đĩa lõm hai mặt, biến dạng méo mó</text>
+      <text x="0" y="68" font-size="13" font-weight="500" fill="#514C44">• Dễ bị giữ lại và thực bào phá hủy tại lách</text>
+      <text x="0" y="90" font-size="13" font-weight="700" fill="#C15F3C">✗ GIẢM KHẢ NĂNG VẬN CHUYỂN OXYGEN</text>
+    </g>
+  </g>
+</svg>
+            </div>
+          </div>
+          <div class="visual-toolbar" id="toolbarS02Rbc" style="display:none;">
+            <button class="action-btn" onclick="toggleRbcMorph()">
+              <i class="ti ti-arrows-shuffle"></i> Mô phỏng biến dạng khi mất khung xương
+            </button>
+          </div>
+        </div>
+
+        <div class="pedagogy-panel">
+          <div class="lecture-box">
+            <div class="lecture-box-title"><i class="ti ti-book-2"></i> Kiến thức khoa học</div>
+            <div class="lecture-box-content">
+              Khung xương tế bào gồm <strong>vi sợi</strong>, <strong>sợi trung gian</strong> và <strong>vi ống</strong>. Chúng nâng đỡ tế bào, neo giữ bào quan và hỗ trợ di chuyển. Tế bào hồng cầu nếu bị tổn thương khung xương sẽ mất hình dạng đĩa lõm tối ưu, dẫn đến giảm khả năng vận chuyển oxygen.
+            </div>
+          </div>
+
+          <div class="guide-box">
+            <i class="ti ti-info-circle"></i>
+            <span>Xem 3 loại sợi và bấm tab Hồng cầu để quan sát hoạt cảnh biến dạng trước khi trả lời.</span>
+          </div>
+
+          <div class="task-card">
+            <div class="question-prompt">
+              Hồng cầu tổn thương khung xương tế bào ảnh hưởng đến chức năng gì?
+            </div>
+            <div class="options-group" id="optionsGroupS02">
+              <div class="quiz-option" onclick="selectOption(2, 'A', this)">
+                <div class="option-indicator">A</div>
+                <span>Giảm khả năng vận chuyển oxygen</span>
+              </div>
+              <div class="quiz-option" onclick="selectOption(2, 'B', this)">
+                <div class="option-indicator">B</div>
+                <span>Mất khả năng tổng hợp protein</span>
+              </div>
+              <div class="quiz-option" onclick="selectOption(2, 'C', this)">
+                <div class="option-indicator">C</div>
+                <span>Mất khả năng quang hợp</span>
+              </div>
+            </div>
+
+            <button class="btn btn-submit" id="btnSubmitS02" disabled onclick="submitStage(2)">
+              <i class="ti ti-check"></i> TRẢ LỜI
+            </button>
+            <button class="btn btn-retry" id="btnRetryS02" onclick="retryStage(2)">
+              <i class="ti ti-rotate-clockwise"></i> LÀM LẠI
+            </button>
+
+            <div class="feedback-box" id="feedbackS02"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage-actions">
+        <button class="btn btn-secondary" onclick="goToStage(1)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+        <button class="btn btn-primary" id="btnNextS02" disabled onclick="goToStage(3)">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         STAGE 3 (S03): TRUNG THỂ — TỔ CHỨC VI ỐNG CHO PHÂN BÀO
+         ==================================================================== -->
+    <section class="stage-section" id="stage3">
+      <div class="workspace-layout">
+        <div class="visual-panel">
+          <div class="visual-media-box" id="mediaBoxS03">
+            <svg xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; display:block;" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <radialGradient id="s3_bgGlow" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#FAF7F0" />
+      <stop offset="100%" stop-color="#F0EADD" />
+    </radialGradient>
+
+    <!-- Cloud around centrosome (PCM: Pericentriolar Material) -->
+    <radialGradient id="s3_pcmCloud" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#E8A24A" stop-opacity="0.35" />
+      <stop offset="65%" stop-color="#CE8A33" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#8A551A" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Microtubule Subunit Shading for Cross-section -->
+    <radialGradient id="s3_tubuleA" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#A9D0BE" />
+      <stop offset="60%" stop-color="#3CA57A" />
+      <stop offset="100%" stop-color="#1B5E48" />
+    </radialGradient>
+    <radialGradient id="s3_tubuleB" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#81C784" />
+      <stop offset="60%" stop-color="#2D8B6F" />
+      <stop offset="100%" stop-color="#13523B" />
+    </radialGradient>
+    <radialGradient id="s3_tubuleC" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#A5D6A7" />
+      <stop offset="60%" stop-color="#388E3C" />
+      <stop offset="100%" stop-color="#1B5E20" />
+    </radialGradient>
+
+    <!-- 3D Centriole Cylinder Shading -->
+    <linearGradient id="s3_cylinderGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#CE8A33" />
+      <stop offset="25%" stop-color="#F7E7CD" />
+      <stop offset="60%" stop-color="#E8A24A" />
+      <stop offset="100%" stop-color="#8A551A" />
+    </linearGradient>
+
+    <filter id="s3_shadow" x="-5%" y="-5%" width="110%" height="112%">
+      <feDropShadow dx="2" dy="5" stdDeviation="6" flood-color="#1A1A1A" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#s3_bgGlow)" />
+
+  <!-- Heading -->
+  <text x="600" y="50" font-family="'Be Vietnam Pro', system-ui, sans-serif" font-size="24" font-weight="800" fill="#1A1A1A" text-anchor="middle">
+    CẤU TRÚC TRUNG THỂ VÀ CẶP TRUNG TỬ (CENTROSOME &amp; CENTRIOLES)
+  </text>
+  <text x="600" y="78" font-family="'Be Vietnam Pro', system-ui, sans-serif" font-size="14" font-weight="500" fill="#514C44" text-anchor="middle">
+    Hai trung tử xếp vuông góc ~90° — Mỗi trung tử cấu tạo từ 9 bộ ba vi ống (9×3) xếp hình nan quạt
+  </text>
+
+  <!-- ==================== LEFT PANEL: CẶP TRUNG TỬ VUÔNG GÓC 90° TRONG KHÔNG GIAN ==================== -->
+  <g transform="translate(50, 110)">
+    <rect width="520" height="640" rx="16" fill="#FFFFFF" stroke="#DDE8E2" stroke-width="2" filter="url(#s3_shadow)" />
+    
+    <!-- Title Badge -->
+    <rect x="24" y="20" width="280" height="30" rx="8" fill="#DCEAE1" />
+    <text x="164" y="40" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="700" fill="#1B5E48" text-anchor="middle">HÌNH THỂ: 2 TRUNG TỬ VUÔNG GÓC</text>
+
+    <!-- Pericentriolar Material (PCM Cloud) -->
+    <ellipse cx="260" cy="290" rx="200" ry="160" fill="url(#s3_pcmCloud)" />
+
+    <!-- Centrosome Aster Microtubules radiating out -->
+    <g stroke="#2D8B6F" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="6 4" opacity="0.6">
+      <line x1="260" y1="290" x2="60" y2="120" />
+      <line x1="260" y1="290" x2="110" y2="440" />
+      <line x1="260" y1="290" x2="200" y2="500" />
+      <line x1="260" y1="290" x2="380" y2="480" />
+      <line x1="260" y1="290" x2="450" y2="390" />
+      <line x1="260" y1="290" x2="460" y2="150" />
+      <line x1="260" y1="290" x2="340" y2="90" />
+      <line x1="260" y1="290" x2="160" y2="100" />
+    </g>
+
+    <!-- Centriole 1: Vertical Cylinder (Trung tử 1) -->
+    <g transform="translate(220, 240) rotate(-10)">
+      <!-- 9 triplets outer longitudinal lines -->
+      <g stroke="#8A551A" stroke-width="1.2">
+        <rect x="-35" y="-70" width="70" height="140" rx="10" fill="url(#s3_cylinderGrad)" stroke="#8A551A" stroke-width="2" />
+        <!-- Triplets longitudinal fluting / grooves -->
+        <line x1="-25" y1="-68" x2="-25" y2="68" stroke="#FAF7F0" stroke-width="2" opacity="0.7" />
+        <line x1="-15" y1="-69" x2="-15" y2="69" stroke="#8A551A" stroke-width="1.5" />
+        <line x1="-5" y1="-70" x2="-5" y2="70" stroke="#FAF7F0" stroke-width="2.5" opacity="0.8" />
+        <line x1="8" y1="-70" x2="8" y2="70" stroke="#8A551A" stroke-width="1.5" />
+        <line x1="18" y1="-69" x2="18" y2="69" stroke="#FAF7F0" stroke-width="2" opacity="0.7" />
+        <line x1="28" y1="-68" x2="28" y2="68" stroke="#8A551A" stroke-width="1.5" />
+      </g>
+      <!-- Top rim showing hollow tubular end -->
+      <ellipse cx="0" cy="-70" rx="35" ry="14" fill="#A9D0BE" stroke="#13523B" stroke-width="2.5" />
+      <ellipse cx="0" cy="-70" rx="20" ry="8" fill="#1B5E48" />
+      <text x="0" y="-85" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#13523B" text-anchor="middle">Trung tử 1 (Đứng)</text>
+    </g>
+
+    <!-- Centriole 2: Horizontal Cylinder (~90° Angle to Centriole 1) -->
+    <g transform="translate(310, 310) rotate(80)">
+      <g stroke="#8A551A" stroke-width="1.2">
+        <rect x="-35" y="-70" width="70" height="140" rx="10" fill="url(#s3_cylinderGrad)" stroke="#8A551A" stroke-width="2" />
+        <line x1="-25" y1="-68" x2="-25" y2="68" stroke="#FAF7F0" stroke-width="2" opacity="0.7" />
+        <line x1="-15" y1="-69" x2="-15" y2="69" stroke="#8A551A" stroke-width="1.5" />
+        <line x1="-5" y1="-70" x2="-5" y2="70" stroke="#FAF7F0" stroke-width="2.5" opacity="0.8" />
+        <line x1="8" y1="-70" x2="8" y2="70" stroke="#8A551A" stroke-width="1.5" />
+        <line x1="18" y1="-69" x2="18" y2="69" stroke="#FAF7F0" stroke-width="2" opacity="0.7" />
+        <line x1="28" y1="-68" x2="28" y2="68" stroke="#8A551A" stroke-width="1.5" />
+      </g>
+      <ellipse cx="0" cy="-70" rx="35" ry="14" fill="#A9D0BE" stroke="#13523B" stroke-width="2.5" />
+      <ellipse cx="0" cy="-70" rx="20" ry="8" fill="#1B5E48" />
+      <text x="0" y="-85" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#13523B" text-anchor="middle">Trung tử 2 (Nằm ngang)</text>
+    </g>
+
+    <!-- 90 Degree Angle Indicator Arc -->
+    <g transform="translate(230, 290)">
+      <path d="M 0,-30 L 0,-10 L 20,-10" fill="none" stroke="#C15F3C" stroke-width="2.5" />
+      <text x="28" y="-18" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="800" fill="#C15F3C">~90°</text>
+    </g>
+
+    <!-- Annotation Box -->
+    <g transform="translate(24, 480)" font-family="'Be Vietnam Pro', sans-serif">
+      <rect width="472" height="135" rx="10" fill="#FAF7F0" stroke="#E5DECF" stroke-width="1.5" />
+      <text x="16" y="26" font-size="13" font-weight="800" fill="#13523B">• Vị trí:</text>
+      <text x="80" y="26" font-size="13" font-weight="500" fill="#1A1A1A">Nằm gần nhân trong tế bào động vật.</text>
+      <text x="16" y="52" font-size="13" font-weight="800" fill="#13523B">• Thành phần:</text>
+      <text x="110" y="52" font-size="13" font-weight="500" fill="#1A1A1A">Gồm 2 trung tử nằm vuông góc nhau.</text>
+      <text x="16" y="78" font-size="13" font-weight="800" fill="#13523B">• Chức năng:</text>
+      <text x="105" y="78" font-size="13" font-weight="500" fill="#1A1A1A">Lắp ráp thoi phân bào giúp NST di chuyển.</text>
+      <text x="16" y="106" font-size="12" font-weight="700" fill="#8C2C15">★ Lưu ý: Thực vật bậc cao KHÔNG có cặp trung tử nhưng vẫn có trung tâm tổ chức vi ống.</text>
+    </g>
+  </g>
+
+  <!-- ==================== RIGHT PANEL: MẶT CẮT NGANG ĐÚNG 9 BỘ BA (9×3 TRIPLETS) ==================== -->
+  <g transform="translate(610, 110)">
+    <rect width="540" height="640" rx="16" fill="#FFFFFF" stroke="#2D8B6F" stroke-width="2.5" filter="url(#s3_shadow)" />
+    
+    <!-- Title Badge -->
+    <rect x="24" y="20" width="350" height="30" rx="8" fill="#DCEAE1" />
+    <text x="199" y="40" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="700" fill="#1B5E48" text-anchor="middle">MẶT CẮT NGANG TRUNG TỬ: CẤU TRÚC 9×3</text>
+
+    <!-- Cross Section 9 Triplets Pinwheel (Center cx=270, cy=250, radius R=130) -->
+    <g transform="translate(270, 245)">
+      <!-- Outer reference circle (faint) -->
+      <circle cx="0" cy="0" r="130" fill="none" stroke="#DDE8E2" stroke-width="1.5" stroke-dasharray="4 4" />
+      <!-- Central Hub / Cartwheel center (hollow, no central pair!) -->
+      <circle cx="0" cy="0" r="32" fill="#FAF7F0" stroke="#7CA792" stroke-width="2" />
+      <circle cx="0" cy="0" r="6" fill="#13523B" />
+      <text x="0" y="48" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#8A551A" text-anchor="middle">Tâm rỗng (Không có cặp vi ống 9+2)</text>
+
+      <!-- Spokes from hub to each triplet (Cartwheel model) -->
+      <g stroke="#A8C9B8" stroke-width="1.5">
+        <line x1="0" y1="0" x2="0" y2="-95" />
+        <line x1="0" y1="0" x2="61" y2="-73" />
+        <line x1="0" y1="0" x2="94" y2="-16" />
+        <line x1="0" y1="0" x2="82" y2="48" />
+        <line x1="0" y1="0" x2="33" y2="89" />
+        <line x1="0" y1="0" x2="-33" y2="89" />
+        <line x1="0" y1="0" x2="-82" y2="48" />
+        <line x1="0" y1="0" x2="-94" y2="-16" />
+        <line x1="0" y1="0" x2="-61" y2="-73" />
+      </g>
+
+      <!-- 9 Triplets placed at 40 degree increments (k = 0 to 8) -->
+      <!-- Triplet Macro Definition applied at rotation angles -->
+      <!-- Triplet 1 (0 deg - Top) -->
+      <g transform="rotate(0) translate(0, -125)">
+        <g transform="rotate(-35)" stroke="#0E3D2B" stroke-width="1.5">
+          <circle cx="-16" cy="0" r="11" fill="url(#s3_tubuleA)" />
+          <circle cx="0" cy="0" r="11" fill="url(#s3_tubuleB)" />
+          <circle cx="16" cy="0" r="11" fill="url(#s3_tubuleC)" />
+        </g>
+        <text x="0" y="-22" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#13523B" text-anchor="middle">1</text>
+      </g>
+
+      <!-- Triplet 2 (40 deg) -->
+      <g transform="rotate(40) translate(0, -125)">
+        <g transform="rotate(-35)" stroke="#0E3D2B" stroke-width="1.5">
+          <circle cx="-16" cy="0" r="11" fill="url(#s3_tubuleA)" />
+          <circle cx="0" cy="0" r="11" fill="url(#s3_tubuleB)" />
+          <circle cx="16" cy="0" r="11" fill="url(#s3_tubuleC)" />
+        </g>
+        <text x="0" y="-22" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#13523B" text-anchor="middle">2</text>
+      </g>
+
+      <!-- Triplet 3 (80 deg) -->
+      <g transform="rotate(80) translate(0, -125)">
+        <g transform="rotate(-35)" stroke="#0E3D2B" stroke-width="1.5">
+          <circle cx="-16" cy="0" r="11" fill="url(#s3_tubuleA)" />
+          <circle cx="0" cy="0" r="11" fill="url(#s3_tubuleB)" />
+          <circle cx="16" cy="0" r="11" fill="url(#s3_tubuleC)" />
+        </g>
+        <text x="0" y="-22" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#13523B" text-anchor="middle">3</text>
+      </g>
+
+      <!-- Triplet 4 (120 deg) -->
+      <g transform="rotate(120) translate(0, -125)">
+        <g transform="rotate(-35)" stroke="#0E3D2B" stroke-width="1.5">
+          <circle cx="-16" cy="0" r="11" fill="url(#s3_tubuleA)" />
+          <circle cx="0" cy="0" r="11" fill="url(#s3_tubuleB)" />
+          <circle cx="16" cy="0" r="11" fill="url(#s3_tubuleC)" />
+        </g>
+        <text x="0" y="-22" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#13523B" text-anchor="middle">4</text>
+      </g>
+
+      <!-- Triplet 5 (160 deg) -->
+      <g transform="rotate(160) translate(0, -125)">
+        <g transform="rotate(-35)" stroke="#0E3D2B" stroke-width="1.5">
+          <circle cx="-16" cy="0" r="11" fill="url(#s3_tubuleA)" />
+          <circle cx="0" cy="0" r="11" fill="url(#s3_tubuleB)" />
+          <circle cx="16" cy="0" r="11" fill="url(#s3_tubuleC)" />
+        </g>
+        <text x="0" y="-22" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#13523B" text-anchor="middle">5</text>
+      </g>
+
+      <!-- Triplet 6 (200 deg) -->
+      <g transform="rotate(200) translate(0, -125)">
+        <g transform="rotate(-35)" stroke="#0E3D2B" stroke-width="1.5">
+          <circle cx="-16" cy="0" r="11" fill="url(#s3_tubuleA)" />
+          <circle cx="0" cy="0" r="11" fill="url(#s3_tubuleB)" />
+          <circle cx="16" cy="0" r="11" fill="url(#s3_tubuleC)" />
+        </g>
+        <text x="0" y="-22" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#13523B" text-anchor="middle">6</text>
+      </g>
+
+      <!-- Triplet 7 (240 deg) -->
+      <g transform="rotate(240) translate(0, -125)">
+        <g transform="rotate(-35)" stroke="#0E3D2B" stroke-width="1.5">
+          <circle cx="-16" cy="0" r="11" fill="url(#s3_tubuleA)" />
+          <circle cx="0" cy="0" r="11" fill="url(#s3_tubuleB)" />
+          <circle cx="16" cy="0" r="11" fill="url(#s3_tubuleC)" />
+        </g>
+        <text x="0" y="-22" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#13523B" text-anchor="middle">7</text>
+      </g>
+
+      <!-- Triplet 8 (280 deg) -->
+      <g transform="rotate(280) translate(0, -125)">
+        <g transform="rotate(-35)" stroke="#0E3D2B" stroke-width="1.5">
+          <circle cx="-16" cy="0" r="11" fill="url(#s3_tubuleA)" />
+          <circle cx="0" cy="0" r="11" fill="url(#s3_tubuleB)" />
+          <circle cx="16" cy="0" r="11" fill="url(#s3_tubuleC)" />
+        </g>
+        <text x="0" y="-22" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#13523B" text-anchor="middle">8</text>
+      </g>
+
+      <!-- Triplet 9 (320 deg) -->
+      <g transform="rotate(320) translate(0, -125)">
+        <g transform="rotate(-35)" stroke="#0E3D2B" stroke-width="1.5">
+          <circle cx="-16" cy="0" r="11" fill="url(#s3_tubuleA)" />
+          <circle cx="0" cy="0" r="11" fill="url(#s3_tubuleB)" />
+          <circle cx="16" cy="0" r="11" fill="url(#s3_tubuleC)" />
+        </g>
+        <text x="0" y="-22" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#13523B" text-anchor="middle">9</text>
+      </g>
+    </g>
+
+    <!-- Subunit Detail Callout (A, B, C vi ống) -->
+    <g transform="translate(24, 460)">
+      <rect width="492" height="155" rx="10" fill="#FAF7F0" stroke="#7CA792" stroke-width="1.5" />
+      <text x="16" y="26" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="800" fill="#13523B">Chi tiết 1 Bộ ba vi ống (Triplet):</text>
+      
+      <!-- Triplet legend graphic -->
+      <g transform="translate(90, 70)" stroke="#0E3D2B" stroke-width="1.5">
+        <circle cx="-32" cy="0" r="18" fill="url(#s3_tubuleA)" />
+        <text x="-32" y="5" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#FFFFFF" text-anchor="middle">A</text>
+        <circle cx="4" cy="0" r="18" fill="url(#s3_tubuleB)" />
+        <text x="4" y="5" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#FFFFFF" text-anchor="middle">B</text>
+        <circle cx="40" cy="0" r="18" fill="url(#s3_tubuleC)" />
+        <text x="40" y="5" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#FFFFFF" text-anchor="middle">C</text>
+      </g>
+
+      <g transform="translate(190, 60)" font-family="'Be Vietnam Pro', sans-serif">
+        <text x="0" y="0" font-size="12" font-weight="600" fill="#1B5E48">• Vi ống A: nằm trong cùng (hoàn chỉnh 13 protofilament)</text>
+        <text x="0" y="20" font-size="12" font-weight="600" fill="#2D8B6F">• Vi ống B: nằm ở giữa (chung thành với A)</text>
+        <text x="0" y="40" font-size="12" font-weight="600" fill="#388E3C">• Vi ống C: nằm ngoài cùng (chung thành với B)</text>
+      </g>
+
+      <text x="16" y="135" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#C15F3C">✓ Khóa topo: Đủ 9 bộ ba vi ống (9×3 = 27 vi ống) — Tâm rỗng (khác lông/roi 9+2).</text>
+    </g>
+  </g>
+</svg>
+          </div>
+          <div class="visual-toolbar">
+            <button class="action-btn" id="btnSpindleS03" onclick="simulateSpindleApparatus()">
+              <i class="ti ti-vector-triangle"></i> Mô phỏng thoi phân bào từ trung thể
+            </button>
+            <button class="tab-btn" onclick="highlightCentrioleAngle()">
+              <i class="ti ti-angle"></i> Kiểm tra góc vuông 90° giữa 2 trung tử
+            </button>
+          </div>
+        </div>
+
+        <div class="pedagogy-panel">
+          <div class="lecture-box">
+            <div class="lecture-box-title"><i class="ti ti-book-2"></i> Kiến thức khoa học</div>
+            <div class="lecture-box-content">
+              Trung thể gồm hai <strong>trung tử nằm vuông góc (~90°)</strong>. Mỗi trung tử gồm <strong>9 bộ ba vi ống (9×3)</strong> xếp thành vòng. Trung thể là nơi tổ chức vi ống hình thành thoi phân bào. Tế bào thực vật bậc cao không có trung thể kiểu chứa cặp trung tử nhưng vẫn có trung tâm tổ chức vi ống để tạo thoi phân bào.
+            </div>
+          </div>
+
+          <div class="guide-box">
+            <i class="ti ti-info-circle"></i>
+            <span>Xem cấu trúc 9 bộ ba vi ống và hoạt cảnh thoi phân bào, sau đó chọn câu trả lời đúng.</span>
+          </div>
+
+          <div class="task-card">
+            <div class="question-prompt">
+              Tế bào thực vật có trung thể không?
+            </div>
+            <div class="options-group" id="optionsGroupS03">
+              <div class="quiz-option" onclick="selectOption(3, 'A', this)">
+                <div class="option-indicator">A</div>
+                <span>Không — nhưng vẫn có tổ chức vi ống tạo thoi phân bào</span>
+              </div>
+              <div class="quiz-option" onclick="selectOption(3, 'B', this)">
+                <div class="option-indicator">B</div>
+                <span>Có, giống hệt tế bào động vật</span>
+              </div>
+              <div class="quiz-option" onclick="selectOption(3, 'C', this)">
+                <div class="option-indicator">C</div>
+                <span>Không, và cũng không có thoi phân bào</span>
+              </div>
+            </div>
+
+            <button class="btn btn-submit" id="btnSubmitS03" disabled onclick="submitStage(3)">
+              <i class="ti ti-check"></i> TRẢ LỜI
+            </button>
+            <button class="btn btn-retry" id="btnRetryS03" onclick="retryStage(3)">
+              <i class="ti ti-rotate-clockwise"></i> LÀM LẠI
+            </button>
+
+            <div class="feedback-box" id="feedbackS03"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage-actions">
+        <button class="btn btn-secondary" onclick="goToStage(2)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+        <button class="btn btn-primary" id="btnNextS03" disabled onclick="goToStage(4)">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         STAGE 4 (S04): MÀNG TẾ BÀO — MÔ HÌNH KHẢM ĐỘNG (1972)
+         ==================================================================== -->
+    <section class="stage-section" id="stage4">
+      <div class="workspace-layout">
+        <div class="visual-panel">
+          <div class="visual-media-box" id="mediaBoxS04">
+            <svg xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; display:block;" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <radialGradient id="s4_bgGlow" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#FAF7F0" />
+      <stop offset="100%" stop-color="#F0EADD" />
+    </radialGradient>
+
+    <!-- Phospholipid Head Gradients -->
+    <!-- Outer leaflet heads (facing extracellular space) -->
+    <radialGradient id="s4_headOuter" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#A9D0BE" />
+      <stop offset="60%" stop-color="#3CA57A" />
+      <stop offset="100%" stop-color="#1B5E48" />
+    </radialGradient>
+    <!-- Inner leaflet heads (facing cytosol) -->
+    <radialGradient id="s4_headInner" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#A8C9B8" />
+      <stop offset="60%" stop-color="#2D8B6F" />
+      <stop offset="100%" stop-color="#13523B" />
+    </radialGradient>
+
+    <!-- Transmembrane Protein Gradient (Channel / Globular) -->
+    <linearGradient id="s4_transProtein" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6A5AA8" />
+      <stop offset="50%" stop-color="#51428C" />
+      <stop offset="100%" stop-color="#37276B" />
+    </linearGradient>
+
+    <!-- Alpha Helix Protein Cylinder Gradient -->
+    <linearGradient id="s4_helixGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7B68B8" />
+      <stop offset="50%" stop-color="#A594D1" />
+      <stop offset="100%" stop-color="#51428C" />
+    </linearGradient>
+
+    <!-- Peripheral Protein Gradient -->
+    <linearGradient id="s4_periphProtein" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4E7F92" />
+      <stop offset="100%" stop-color="#294B59" />
+    </linearGradient>
+
+    <!-- Cholesterol Gradient -->
+    <linearGradient id="s4_cholestGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4BA62" />
+      <stop offset="100%" stop-color="#CE8A33" />
+    </linearGradient>
+
+    <!-- Carbohydrate Hexagon Gradient -->
+    <radialGradient id="s4_carbGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FFE0B2" />
+      <stop offset="60%" stop-color="#FFB74D" />
+      <stop offset="100%" stop-color="#F57C00" />
+    </radialGradient>
+
+    <filter id="s4_shadowBox" x="-5%" y="-5%" width="110%" height="112%">
+      <feDropShadow dx="2" dy="5" stdDeviation="6" flood-color="#1A1A1A" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#s4_bgGlow)" />
+
+  <!-- Heading -->
+  <text x="600" y="48" font-family="'Be Vietnam Pro', system-ui, sans-serif" font-size="24" font-weight="800" fill="#1A1A1A" text-anchor="middle">
+    MÔ HÌNH KHẢM ĐỘNG CỦA MÀNG TẾ BÀO (FLUID MOSAIC MODEL - 1972)
+  </text>
+  <text x="600" y="74" font-family="'Be Vietnam Pro', system-ui, sans-serif" font-size="14" font-weight="500" fill="#514C44" text-anchor="middle">
+    S. J. Singer &amp; G. L. Nicolson: Lớp kép phospholipid lỏng lẻo đính kèm các protein màng "khảm" linh hoạt
+  </text>
+
+  <!-- ==================== MAIN MEMBRANE ARTBOARD ==================== -->
+  <g transform="translate(50, 100)">
+    <rect width="1100" height="540" rx="16" fill="#FFFFFF" stroke="#DDE8E2" stroke-width="2" filter="url(#s4_shadowBox)" />
+    
+    <!-- Environment Bands -->
+    <!-- Extracellular Fluid (Môi trường ngoài tế bào) -->
+    <rect x="0" y="0" width="1100" height="150" rx="16" fill="#EBF3F5" opacity="0.6" />
+    <text x="35" y="40" font-family="'Be Vietnam Pro', sans-serif" font-size="14" font-weight="800" fill="#294B59">
+      MÔI TRƯỜNG NGOẠI BÀO (EXTRACELLULAR FLUID)
+    </text>
+
+    <!-- Cytoplasm / Cytosol (Môi trường bên trong tế bào / Tế bào chất) -->
+    <rect x="0" y="390" width="1100" height="150" rx="16" fill="#EAF3E8" opacity="0.6" />
+    <text x="35" y="510" font-family="'Be Vietnam Pro', sans-serif" font-size="14" font-weight="800" fill="#1B5E48">
+      TẾ BÀO CHẤT (CYTOSOL)
+    </text>
+
+    <!-- Hydrophobic Core Indicator (Vùng kị nước ở giữa) -->
+    <rect x="0" y="215" width="1100" height="120" fill="#FDFBF7" opacity="0.9" />
+    <line x1="20" y1="275" x2="1080" y2="275" stroke="#E5DECF" stroke-width="1.5" stroke-dasharray="6 6" />
+
+    <!-- ==================== PHOSPHOLIPID BILAYER REPEATING ARRAY ==================== -->
+    <!-- Bilayer spans Y: 160 to 390. Center line is Y=275 -->
+    <!-- Outer Leaflet: Heads at Y=180, Tails extend down to Y=265 -->
+    <!-- Inner Leaflet: Heads at Y=370, Tails extend up to Y=285 -->
+
+    <!-- Phospholipid Tails and Heads rendered across X positions, skipping where proteins sit -->
+    <!-- Protein A (Transmembrane channel): X = 280 to 400 -->
+    <!-- Protein B (Single helix transmembrane): X = 620 to 680 -->
+    <!-- Peripheral Protein on inside: X = 780 to 880 -->
+
+    <g id="s4_phospholipid-layer">
+      <!-- Outer Leaflet Heads & Tails -->
+      <!-- Macro script simulation for outer leaflet -->
+      <!-- Left segment: X = 50 to 260 -->
+      <!-- Phospholipid helper groups -->
+      <!-- Tails: Stroke curves -->
+      <g stroke="#D6CCB6" stroke-width="2.5" fill="none" stroke-linecap="round">
+        <!-- X = 60 -->
+        <path d="M 57,192 Q 53,230 56,265" /><path d="M 63,192 Q 68,230 63,265" />
+        <!-- X = 85 -->
+        <path d="M 82,192 Q 78,230 83,265" /><path d="M 88,192 Q 93,230 87,265" />
+        <!-- X = 110 -->
+        <path d="M 107,192 Q 102,230 106,265" /><path d="M 113,192 Q 118,220 125,255" /> <!-- kinked tail -->
+        <!-- X = 135 -->
+        <path d="M 132,192 Q 128,230 133,265" /><path d="M 138,192 Q 143,230 138,265" />
+        <!-- X = 160 -->
+        <path d="M 157,192 Q 153,230 156,265" /><path d="M 163,192 Q 170,225 178,255" /> <!-- kinked tail -->
+        <!-- X = 185 -->
+        <path d="M 182,192 Q 178,230 183,265" /><path d="M 188,192 Q 193,230 188,265" />
+        <!-- X = 210 -->
+        <path d="M 207,192 Q 203,230 206,265" /><path d="M 213,192 Q 218,230 213,265" />
+        <!-- X = 235 -->
+        <path d="M 232,192 Q 228,230 233,265" /><path d="M 238,192 Q 245,225 252,255" />
+        <!-- X = 260 -->
+        <path d="M 257,192 Q 254,230 258,265" /><path d="M 263,192 Q 268,230 263,265" />
+
+        <!-- Mid Segment: X = 420 to 600 -->
+        <path d="M 422,192 Q 418,230 423,265" /><path d="M 428,192 Q 433,230 428,265" />
+        <path d="M 447,192 Q 443,230 446,265" /><path d="M 453,192 Q 460,225 468,255" />
+        <path d="M 472,192 Q 468,230 473,265" /><path d="M 478,192 Q 483,230 478,265" />
+        <path d="M 497,192 Q 493,230 496,265" /><path d="M 503,192 Q 508,230 503,265" />
+        <path d="M 522,192 Q 518,230 523,265" /><path d="M 528,192 Q 535,225 542,255" />
+        <path d="M 547,192 Q 543,230 546,265" /><path d="M 553,192 Q 558,230 553,265" />
+        <path d="M 572,192 Q 568,230 573,265" /><path d="M 578,192 Q 583,230 578,265" />
+        <path d="M 597,192 Q 593,230 596,265" /><path d="M 603,192 Q 608,230 603,265" />
+
+        <!-- Right Segment: X = 700 to 1050 -->
+        <path d="M 702,192 Q 698,230 703,265" /><path d="M 708,192 Q 715,225 722,255" />
+        <path d="M 727,192 Q 723,230 726,265" /><path d="M 733,192 Q 738,230 733,265" />
+        <path d="M 752,192 Q 748,230 753,265" /><path d="M 758,192 Q 763,230 758,265" />
+        <path d="M 777,192 Q 773,230 776,265" /><path d="M 783,192 Q 790,225 798,255" />
+        <path d="M 802,192 Q 798,230 803,265" /><path d="M 808,192 Q 813,230 808,265" />
+        <path d="M 827,192 Q 823,230 826,265" /><path d="M 833,192 Q 838,230 833,265" />
+        <path d="M 852,192 Q 848,230 853,265" /><path d="M 858,192 Q 865,225 872,255" />
+        <path d="M 877,192 Q 873,230 876,265" /><path d="M 883,192 Q 888,230 883,265" />
+        <path d="M 902,192 Q 898,230 903,265" /><path d="M 908,192 Q 913,230 908,265" />
+        <path d="M 927,192 Q 923,230 926,265" /><path d="M 933,192 Q 940,225 948,255" />
+        <path d="M 952,192 Q 948,230 953,265" /><path d="M 958,192 Q 963,230 958,265" />
+        <path d="M 977,192 Q 973,230 976,265" /><path d="M 983,192 Q 988,230 983,265" />
+        <path d="M 1002,192 Q 998,230 1003,265" /><path d="M 1008,192 Q 1015,225 1022,255" />
+        <path d="M 1027,192 Q 1023,230 1026,265" /><path d="M 1033,192 Q 1038,230 1033,265" />
+      </g>
+
+      <!-- Inner Leaflet Tails (extending UP to Y=285) -->
+      <g stroke="#D6CCB6" stroke-width="2.5" fill="none" stroke-linecap="round">
+        <path d="M 57,358 Q 53,320 56,285" /><path d="M 63,358 Q 68,320 63,285" />
+        <path d="M 82,358 Q 78,320 83,285" /><path d="M 88,358 Q 93,320 87,285" />
+        <path d="M 107,358 Q 102,320 106,285" /><path d="M 113,358 Q 120,325 128,295" />
+        <path d="M 132,358 Q 128,320 133,285" /><path d="M 138,358 Q 143,320 138,285" />
+        <path d="M 157,358 Q 153,320 156,285" /><path d="M 163,358 Q 168,320 163,285" />
+        <path d="M 182,358 Q 178,320 183,285" /><path d="M 188,358 Q 195,325 202,295" />
+        <path d="M 207,358 Q 203,320 206,285" /><path d="M 213,358 Q 218,320 213,285" />
+        <path d="M 232,358 Q 228,320 233,285" /><path d="M 238,358 Q 243,320 238,285" />
+        <path d="M 257,358 Q 254,320 258,285" /><path d="M 263,358 Q 270,325 277,295" />
+
+        <path d="M 422,358 Q 418,320 423,285" /><path d="M 428,358 Q 433,320 428,285" />
+        <path d="M 447,358 Q 443,320 446,285" /><path d="M 453,358 Q 458,320 453,285" />
+        <path d="M 472,358 Q 468,320 473,285" /><path d="M 478,358 Q 485,325 492,295" />
+        <path d="M 497,358 Q 493,320 496,285" /><path d="M 503,358 Q 508,320 503,285" />
+        <path d="M 522,358 Q 518,320 523,285" /><path d="M 528,358 Q 533,320 528,285" />
+        <path d="M 547,358 Q 543,320 546,285" /><path d="M 553,358 Q 560,325 568,295" />
+        <path d="M 572,358 Q 568,320 573,285" /><path d="M 578,358 Q 583,320 578,285" />
+        <path d="M 597,358 Q 593,320 596,285" /><path d="M 603,358 Q 608,320 603,285" />
+
+        <path d="M 702,358 Q 698,320 703,285" /><path d="M 708,358 Q 713,320 708,285" />
+        <path d="M 727,358 Q 723,320 726,285" /><path d="M 733,358 Q 740,325 748,295" />
+        <path d="M 752,358 Q 748,320 753,285" /><path d="M 758,358 Q 763,320 758,285" />
+        <path d="M 892,358 Q 888,320 893,285" /><path d="M 898,358 Q 903,320 898,285" />
+        <path d="M 917,358 Q 913,320 916,285" /><path d="M 923,358 Q 930,325 938,295" />
+        <path d="M 942,358 Q 938,320 943,285" /><path d="M 948,358 Q 953,320 948,285" />
+        <path d="M 967,358 Q 963,320 966,285" /><path d="M 973,358 Q 978,320 973,285" />
+        <path d="M 992,358 Q 988,320 993,285" /><path d="M 998,358 Q 1005,325 1012,295" />
+        <path d="M 1017,358 Q 1013,320 1016,285" /><path d="M 1023,358 Q 1028,320 1023,285" />
+      </g>
+
+      <!-- ==================== CHOLESTEROL MOLECULES (Inserted in hydrophobic core) ==================== -->
+      <g stroke="#8A551A" stroke-width="1.5">
+        <!-- Choles 1 at X=95 -->
+        <g transform="translate(95, 235)">
+          <rect x="-6" y="-18" width="12" height="36" rx="4" fill="url(#s4_cholestGrad)" />
+          <line x1="-3" y1="-8" x2="3" y2="-8" stroke="#FFFFFF" />
+          <line x1="-3" y1="4" x2="3" y2="4" stroke="#FFFFFF" />
+        </g>
+        <!-- Choles 2 at X=220 -->
+        <g transform="translate(220, 240)">
+          <rect x="-6" y="-18" width="12" height="36" rx="4" fill="url(#s4_cholestGrad)" />
+          <line x1="-3" y1="-8" x2="3" y2="-8" stroke="#FFFFFF" />
+        </g>
+        <!-- Choles 3 at X=485 -->
+        <g transform="translate(485, 242)">
+          <rect x="-6" y="-18" width="12" height="36" rx="4" fill="url(#s4_cholestGrad)" />
+          <line x1="-3" y1="-8" x2="3" y2="-8" stroke="#FFFFFF" />
+        </g>
+        <!-- Choles 4 at X=740 -->
+        <g transform="translate(740, 236)">
+          <rect x="-6" y="-18" width="12" height="36" rx="4" fill="url(#s4_cholestGrad)" />
+          <line x1="-3" y1="-8" x2="3" y2="-8" stroke="#FFFFFF" />
+        </g>
+        <!-- Choles 5 at X=985 -->
+        <g transform="translate(985, 240)">
+          <rect x="-6" y="-18" width="12" height="36" rx="4" fill="url(#s4_cholestGrad)" />
+          <line x1="-3" y1="-8" x2="3" y2="-8" stroke="#FFFFFF" />
+        </g>
+      </g>
+
+      <!-- Heads Outer Leaflet (Circle spheres at Y=180) -->
+      <g stroke="#13523B" stroke-width="1.5">
+        <circle cx="60" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="85" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="110" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="135" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="160" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="185" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="210" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="235" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="260" cy="180" r="11" fill="url(#s4_headOuter)" />
+
+        <circle cx="425" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="450" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="475" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="500" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="525" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="550" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="575" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="600" cy="180" r="11" fill="url(#s4_headOuter)" />
+
+        <circle cx="705" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="730" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="755" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="780" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="805" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="830" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="855" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="880" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="905" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="930" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="955" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="980" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="1005" cy="180" r="11" fill="url(#s4_headOuter)" />
+        <circle cx="1030" cy="180" r="11" fill="url(#s4_headOuter)" />
+      </g>
+
+      <!-- Heads Inner Leaflet (Circle spheres at Y=370) -->
+      <g stroke="#0E3D2B" stroke-width="1.5">
+        <circle cx="60" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="85" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="110" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="135" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="160" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="185" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="210" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="235" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="260" cy="370" r="11" fill="url(#s4_headInner)" />
+
+        <circle cx="425" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="450" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="475" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="500" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="525" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="550" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="575" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="600" cy="370" r="11" fill="url(#s4_headInner)" />
+
+        <circle cx="705" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="730" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="755" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="895" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="920" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="945" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="970" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="995" cy="370" r="11" fill="url(#s4_headInner)" />
+        <circle cx="1020" cy="370" r="11" fill="url(#s4_headInner)" />
+      </g>
+    </g>
+
+    <!-- ==================== MEMBRANE PROTEINS ==================== -->
+    <!-- 1. Large Transmembrane Transport Channel Protein (X=340) -->
+    <g transform="translate(340, 275)" filter="url(#s4_shadowBox)">
+      <!-- Left subunit -->
+      <path d="M -48,-135 C -55,-90 -65,-20 -58,30 C -50,70 -42,120 -38,135 
+               C -25,138 -15,130 -12,110 C -18,60 -22,-30 -18,-95 C -15,-120 -28,-138 -48,-135 Z" 
+            fill="url(#s4_transProtein)" stroke="#37276B" stroke-width="2.5" />
+      <!-- Right subunit -->
+      <path d="M 48,-135 C 55,-90 65,-20 58,30 C 50,70 42,120 38,135 
+               C 25,138 15,130 12,110 C 18,60 22,-30 18,-95 C 15,-120 28,-138 48,-135 Z" 
+            fill="url(#s4_transProtein)" stroke="#37276B" stroke-width="2.5" />
+      <!-- Central hydrophilic pore opening indicator -->
+      <ellipse cx="0" cy="-125" rx="16" ry="6" fill="#B39DDB" stroke="#51428C" stroke-width="1.5" />
+      <ellipse cx="0" cy="125" rx="14" ry="5" fill="#B39DDB" stroke="#51428C" stroke-width="1.5" />
+      <text x="0" y="5" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#FAF7F0" text-anchor="middle">Kênh vận chuyển</text>
+    </g>
+
+    <!-- 2. Single Alpha-Helix Transmembrane Receptor / Glycoprotein (X=650) -->
+    <g transform="translate(650, 275)" filter="url(#s4_shadowBox)">
+      <!-- Globular outer domain -->
+      <ellipse cx="0" cy="-120" rx="35" ry="25" fill="url(#s4_helixGrad)" stroke="#37276B" stroke-width="2" />
+      <!-- Transmembrane helical rod -->
+      <rect x="-14" y="-95" width="28" height="190" rx="10" fill="url(#s4_transProtein)" stroke="#37276B" stroke-width="2" />
+      <!-- Globular intracellular domain -->
+      <ellipse cx="0" cy="115" rx="28" ry="20" fill="url(#s4_helixGrad)" stroke="#37276B" stroke-width="2" />
+    </g>
+
+    <!-- 3. Carbohydrate Chain (Glycoprotein Sugar Trees) ONLY ON EXTRACELLULAR SIDE -->
+    <g transform="translate(650, 155)">
+      <!-- Branched oligosaccharide chain -->
+      <line x1="0" y1="0" x2="-20" y2="-30" stroke="#E65100" stroke-width="2.5" />
+      <line x1="-20" y1="-30" x2="-45" y2="-55" stroke="#E65100" stroke-width="2.5" />
+      <line x1="-20" y1="-30" x2="-5" y2="-65" stroke="#E65100" stroke-width="2.5" />
+      <line x1="0" y1="0" x2="25" y2="-35" stroke="#E65100" stroke-width="2.5" />
+      <line x1="25" y1="-35" x2="45" y2="-60" stroke="#E65100" stroke-width="2.5" />
+      
+      <!-- Sugar Hexagons -->
+      <polygon points="0,-6 -6,-3 -6,3 0,6 6,3 6,-3" fill="url(#s4_carbGrad)" stroke="#E65100" stroke-width="1.5" />
+      <polygon points="-20,-36 -26,-33 -26,-27 -20,-24 -14,-27 -14,-33" fill="url(#s4_carbGrad)" stroke="#E65100" stroke-width="1.5" />
+      <polygon points="-45,-61 -51,-58 -51,-52 -45,-49 -39,-52 -39,-58" fill="url(#s4_carbGrad)" stroke="#E65100" stroke-width="1.5" />
+      <polygon points="-5,-71 -11,-68 -11,-62 -5,-59 1,-62 1,-68" fill="url(#s4_carbGrad)" stroke="#E65100" stroke-width="1.5" />
+      <polygon points="25,-41 19,-38 19,-32 25,-29 31,-32 31,-38" fill="url(#s4_carbGrad)" stroke="#E65100" stroke-width="1.5" />
+      <polygon points="45,-66 39,-63 39,-57 45,-54 51,-57 51,-63" fill="url(#s4_carbGrad)" stroke="#E65100" stroke-width="1.5" />
+    </g>
+
+    <!-- Glycolipid Chain (Carbohydrate attached directly to a lipid head at X=160) -->
+    <g transform="translate(160, 169)">
+      <line x1="0" y1="0" x2="-15" y2="-25" stroke="#E65100" stroke-width="2" />
+      <line x1="-15" y1="-25" x2="-25" y2="-50" stroke="#E65100" stroke-width="2" />
+      <polygon points="0,-4 -4,-2 -4,2 0,4 4,2 4,-2" fill="url(#s4_carbGrad)" stroke="#E65100" stroke-width="1.2" />
+      <polygon points="-15,-29 -19,-27 -19,-23 -15,-21 -11,-23 -11,-27" fill="url(#s4_carbGrad)" stroke="#E65100" stroke-width="1.2" />
+      <polygon points="-25,-54 -29,-52 -29,-48 -25,-46 -21,-48 -21,-52" fill="url(#s4_carbGrad)" stroke="#E65100" stroke-width="1.2" />
+    </g>
+
+    <!-- 4. Peripheral Membrane Protein (Attached only to inner surface at X=825) -->
+    <g transform="translate(825, 410)" filter="url(#s4_shadowBox)">
+      <ellipse cx="0" cy="0" rx="48" ry="28" fill="url(#s4_periphProtein)" stroke="#19333E" stroke-width="2.5" />
+      <text x="0" y="5" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#FAF7F0" text-anchor="middle">Protein ngoại vi</text>
+    </g>
+
+    <!-- Microfilament cytoskeleton anchor to peripheral protein -->
+    <g stroke="#CE8A33" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 3">
+      <path d="M 800,438 C 780,470 750,490 710,510" />
+      <path d="M 830,438 C 840,475 870,495 910,515" />
+    </g>
+    <text x="830" y="510" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="600" fill="#8A551A">Sợi vi thể khung xương tế bào</text>
+  </g>
+
+  <!-- ==================== CALLOUT LABELS & GUIDELINES ==================== -->
+  <g id="s4_legend" font-family="'Be Vietnam Pro', system-ui, sans-serif">
+    <!-- Phospholipid Head -->
+    <g transform="translate(70, 660)">
+      <circle cx="15" cy="15" r="10" fill="url(#s4_headOuter)" stroke="#13523B" stroke-width="1.5" />
+      <text x="35" y="20" font-size="13" font-weight="700" fill="#13523B">Đầu ưa nước (Hydrophilic head)</text>
+    </g>
+
+    <!-- Fatty acid tails -->
+    <g transform="translate(360, 660)">
+      <line x1="10" y1="5" x2="10" y2="25" stroke="#D6CCB6" stroke-width="3" stroke-linecap="round" />
+      <line x1="18" y1="5" x2="24" y2="25" stroke="#D6CCB6" stroke-width="3" stroke-linecap="round" />
+      <text x="35" y="20" font-size="13" font-weight="700" fill="#7C756A">Đuôi kị nước (Hydrophobic tails)</text>
+    </g>
+
+    <!-- Cholesterol -->
+    <g transform="translate(670, 660)">
+      <rect x="10" y="5" width="12" height="22" rx="3" fill="url(#s4_cholestGrad)" stroke="#8A551A" stroke-width="1.5" />
+      <text x="32" y="20" font-size="13" font-weight="700" fill="#8A551A">Cholesterol (Đệm nhiệt độ)</text>
+    </g>
+
+    <!-- Transmembrane protein -->
+    <g transform="translate(930, 660)">
+      <rect x="8" y="5" width="16" height="22" rx="4" fill="url(#s4_transProtein)" />
+      <text x="32" y="20" font-size="13" font-weight="700" fill="#37276B">Protein xuyên màng</text>
+    </g>
+
+    <!-- Glycoprotein & Glycolipid -->
+    <g transform="translate(70, 715)">
+      <polygon points="15,6 9,9 9,15 15,18 21,15 21,9" fill="url(#s4_carbGrad)" stroke="#E65100" stroke-width="1.2" />
+      <text x="35" y="16" font-size="13" font-weight="700" fill="#E65100">Chuỗi carbohydrate (Chỉ ở mặt NGOẠI BÀO: nhận diện tế bào)</text>
+    </g>
+
+    <!-- Protein ngoại vi -->
+    <g transform="translate(670, 715)">
+      <ellipse cx="18" cy="13" rx="12" ry="8" fill="url(#s4_periphProtein)" />
+      <text x="38" y="17" font-size="13" font-weight="700" fill="#294B59">Protein ngoại vi (Chỉ bám một mặt màng)</text>
+    </g>
+  </g>
+</svg>
+          </div>
+          <div class="visual-toolbar">
+            <button class="action-btn" id="btnMotionS04" onclick="toggleFluidMotion()">
+              <i class="ti ti-wave-sine"></i> Kích hoạt chuyển động khảm động
+            </button>
+            <button class="tab-btn" onclick="inspectCarbohydrates()">
+              <i class="ti ti-antenna"></i> Xem chuỗi carbohydrate ngoại bào
+            </button>
+          </div>
+        </div>
+
+        <div class="pedagogy-panel">
+          <div class="lecture-box">
+            <div class="lecture-box-title"><i class="ti ti-book-2"></i> Kiến thức khoa học</div>
+            <div class="lecture-box-content">
+              Năm 1972, Singer và Nicolson đưa ra <strong>mô hình khảm động</strong>. Lớp màng cấu tạo chính từ lớp kép phospholipid và protein. Phân tử phospholipid trong cùng lớp không cố định mà luôn di chuyển ngang (~1 giây/tế bào), giúp protein dễ di chuyển và tế bào dễ biến đổi hình dạng.
+            </div>
+          </div>
+
+          <div class="guide-box">
+            <i class="ti ti-info-circle"></i>
+            <span>Bấm kích hoạt chuyển động để quan sát tính chất của màng khảm động trước khi trả lời.</span>
+          </div>
+
+          <div class="task-card">
+            <div class="question-prompt">
+              Phân tử phospholipid trong màng có cố định vị trí không?
+            </div>
+            <div class="options-group" id="optionsGroupS04">
+              <div class="quiz-option" onclick="selectOption(4, 'A', this)">
+                <div class="option-indicator">A</div>
+                <span>Không — luôn di chuyển</span>
+              </div>
+              <div class="quiz-option" onclick="selectOption(4, 'B', this)">
+                <div class="option-indicator">B</div>
+                <span>Có, cố định hoàn toàn tại 1 vị trí</span>
+              </div>
+            </div>
+
+            <button class="btn btn-submit" id="btnSubmitS04" disabled onclick="submitStage(4)">
+              <i class="ti ti-check"></i> TRẢ LỜI
+            </button>
+            <button class="btn btn-retry" id="btnRetryS04" onclick="retryStage(4)">
+              <i class="ti ti-rotate-clockwise"></i> LÀM LẠI
+            </button>
+
+            <div class="feedback-box" id="feedbackS04"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage-actions">
+        <button class="btn btn-secondary" onclick="goToStage(3)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+        <button class="btn btn-primary" id="btnNextS04" disabled onclick="goToStage(5)">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         STAGE 5 (S05): ĐIỀU CHỈNH ĐỘ LINH HOẠT CỦA MÀNG THEO NHIỆT ĐỘ
+         ==================================================================== -->
+    <section class="stage-section" id="stage5">
+      <div class="workspace-layout">
+        <div class="visual-panel">
+          <div class="visual-media-box" id="mediaBoxS05">
+            <svg xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; display:block;" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <radialGradient id="s5_bgGlow" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#FAF7F0" />
+      <stop offset="100%" stop-color="#F0EADD" />
+    </radialGradient>
+
+    <!-- Head Cold Leaflet Gradient (Ice/Cyan hint) -->
+    <radialGradient id="s5_headCold" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#DCE7EB" />
+      <stop offset="60%" stop-color="#4E7F92" />
+      <stop offset="100%" stop-color="#244B5C" />
+    </radialGradient>
+
+    <!-- Head Warm Leaflet Gradient (Warm Emerald/Jade hint) -->
+    <radialGradient id="s5_headWarm" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#A9D0BE" />
+      <stop offset="60%" stop-color="#3CA57A" />
+      <stop offset="100%" stop-color="#1B5E48" />
+    </radialGradient>
+
+    <!-- Cholesterol Gradient -->
+    <linearGradient id="s5_cholesWarm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4BA62" />
+      <stop offset="100%" stop-color="#CE8A33" />
+    </linearGradient>
+
+    <filter id="s5_shadowBox" x="-5%" y="-5%" width="110%" height="112%">
+      <feDropShadow dx="2" dy="5" stdDeviation="6" flood-color="#1A1A1A" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#s5_bgGlow)" />
+
+  <!-- Master Title -->
+  <text x="600" y="48" font-family="'Be Vietnam Pro', system-ui, sans-serif" font-size="24" font-weight="800" fill="#1A1A1A" text-anchor="middle">
+    ĐIỀU CHỈNH ĐỘ LINH HOẠT CỦA MÀNG TẾ BÀO THEO NHIỆT ĐỘ
+  </text>
+  <text x="600" y="76" font-family="'Be Vietnam Pro', system-ui, sans-serif" font-size="14" font-weight="500" fill="#514C44" text-anchor="middle">
+    So sánh thành phần lipid màng: Sinh vật vùng cực (lạnh) vs Sinh vật vùng nhiệt đới (ấm)
+  </text>
+
+  <!-- ==================== LEFT PANEL: MÔI TRƯỜNG LẠNH (CÁ NAM CỰC) ==================== -->
+  <g transform="translate(45, 105)">
+    <rect width="535" height="640" rx="16" fill="#FFFFFF" stroke="#4E7F92" stroke-width="2.5" filter="url(#s5_shadowBox)" />
+    
+    <!-- Header Badge -->
+    <rect x="24" y="20" width="310" height="32" rx="8" fill="#DCE7EB" />
+    <circle cx="42" cy="36" r="7" fill="#4E7F92" />
+    <text x="56" y="42" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="700" fill="#244B5C">
+      MÔI TRƯỜNG LẠNH (CÁ NAM CỰC)
+    </text>
+
+    <!-- Subtitle Banner -->
+    <text x="24" y="78" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="800" fill="#13523B">
+      Giàu Acid béo KHÔNG NO (đuôi có nếp gấp kink)
+    </text>
+    <text x="24" y="98" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="500" fill="#514C44">
+      Ngăn các phân tử nén chặt khi hạ nhiệt độ → Màng giữ được tính lỏng
+    </text>
+
+    <!-- Bilayer Graphic (X=35 to 500, Center Y=240) -->
+    <g transform="translate(0, 40)">
+      <!-- Outer Extracellular Space -->
+      <rect x="15" y="90" width="505" height="40" rx="6" fill="#EBF3F5" />
+      <text x="25" y="115" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#4E7F92">Ngoại bào (Lạnh ~ -1.8°C)</text>
+
+      <!-- Inner Cytosol Space -->
+      <rect x="15" y="310" width="505" height="40" rx="6" fill="#EAF3E8" />
+      <text x="25" y="335" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#1B5E48">Tế bào chất</text>
+
+      <!-- Phospholipids with BENT / KINKED TAILS (Loose packing) -->
+      <!-- Repeating 8 units with clear bent tails creating spaces -->
+      <!-- Outer Leaflet: Heads at Y=150 -->
+      <g stroke="#94A3B8" stroke-width="2.5" fill="none" stroke-linecap="round">
+        <!-- Lipid 1 -->
+        <path d="M 60,162 Q 55,190 40,215 L 28,230" /><path d="M 68,162 Q 72,190 70,225" />
+        <!-- Lipid 2 -->
+        <path d="M 120,162 Q 125,185 145,210 L 160,225" /><path d="M 114,162 Q 105,190 108,225" />
+        <!-- Lipid 3 -->
+        <path d="M 175,162 Q 170,190 155,215 L 142,230" /><path d="M 183,162 Q 192,190 190,225" />
+        <!-- Lipid 4 -->
+        <path d="M 235,162 Q 240,185 260,210 L 275,225" /><path d="M 228,162 Q 220,190 224,225" />
+        <!-- Lipid 5 -->
+        <path d="M 295,162 Q 290,190 275,215 L 262,230" /><path d="M 303,162 Q 312,190 310,225" />
+        <!-- Lipid 6 -->
+        <path d="M 355,162 Q 360,185 380,210 L 395,225" /><path d="M 348,162 Q 340,190 344,225" />
+        <!-- Lipid 7 -->
+        <path d="M 415,162 Q 410,190 395,215 L 382,230" /><path d="M 423,162 Q 432,190 430,225" />
+        <!-- Lipid 8 -->
+        <path d="M 475,162 Q 480,185 500,210 L 512,225" /><path d="M 468,162 Q 460,190 464,225" />
+      </g>
+
+      <!-- Inner Leaflet: Heads at Y=290, Tails up to Y=210 -->
+      <g stroke="#94A3B8" stroke-width="2.5" fill="none" stroke-linecap="round">
+        <path d="M 60,278 Q 55,250 38,230 L 25,215" /><path d="M 68,278 Q 72,250 70,215" />
+        <path d="M 120,278 Q 125,255 145,230 L 160,215" /><path d="M 114,278 Q 105,250 108,215" />
+        <path d="M 175,278 Q 170,250 155,230 L 140,215" /><path d="M 183,278 Q 192,250 190,215" />
+        <path d="M 235,278 Q 240,255 260,230 L 275,215" /><path d="M 228,278 Q 220,250 224,215" />
+        <path d="M 295,278 Q 290,250 275,230 L 260,215" /><path d="M 303,278 Q 312,250 310,215" />
+        <path d="M 355,278 Q 360,255 380,230 L 395,215" /><path d="M 348,278 Q 340,250 344,215" />
+        <path d="M 415,278 Q 410,250 395,230 L 380,215" /><path d="M 423,278 Q 432,250 430,215" />
+        <path d="M 475,278 Q 480,255 500,230 L 512,215" /><path d="M 468,278 Q 460,250 464,215" />
+      </g>
+
+      <!-- Heads Outer & Inner -->
+      <g stroke="#244B5C" stroke-width="1.5">
+        <circle cx="64" cy="150" r="12" fill="url(#s5_headCold)" />
+        <circle cx="117" cy="150" r="12" fill="url(#s5_headCold)" />
+        <circle cx="179" cy="150" r="12" fill="url(#s5_headCold)" />
+        <circle cx="232" cy="150" r="12" fill="url(#s5_headCold)" />
+        <circle cx="299" cy="150" r="12" fill="url(#s5_headCold)" />
+        <circle cx="352" cy="150" r="12" fill="url(#s5_headCold)" />
+        <circle cx="419" cy="150" r="12" fill="url(#s5_headCold)" />
+        <circle cx="472" cy="150" r="12" fill="url(#s5_headCold)" />
+
+        <circle cx="64" cy="290" r="12" fill="url(#s5_headCold)" />
+        <circle cx="117" cy="290" r="12" fill="url(#s5_headCold)" />
+        <circle cx="179" cy="290" r="12" fill="url(#s5_headCold)" />
+        <circle cx="232" cy="290" r="12" fill="url(#s5_headCold)" />
+        <circle cx="299" cy="290" r="12" fill="url(#s5_headCold)" />
+        <circle cx="352" cy="290" r="12" fill="url(#s5_headCold)" />
+        <circle cx="419" cy="290" r="12" fill="url(#s5_headCold)" />
+        <circle cx="472" cy="290" r="12" fill="url(#s5_headCold)" />
+      </g>
+
+      <!-- Kink Indicator Arrow Callout -->
+      <g transform="translate(195, 215)">
+        <circle cx="0" cy="0" r="16" fill="none" stroke="#C15F3C" stroke-width="2" stroke-dasharray="3 3" />
+        <text x="22" y="5" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#C15F3C">Nếp gấp kink</text>
+      </g>
+    </g>
+
+    <!-- Scientific Summary Box -->
+    <g transform="translate(24, 460)" font-family="'Be Vietnam Pro', sans-serif">
+      <rect width="487" height="150" rx="10" fill="#F6FAF8" stroke="#DDE8E2" stroke-width="1.5" />
+      <text x="16" y="26" font-size="13" font-weight="800" fill="#13523B">Đặc tính cơ chế thích nghi lạnh:</text>
+      <text x="16" y="50" font-size="12" font-weight="600" fill="#1A1A1A">• Tỷ lệ acid béo không no cao (nhiều liên kết đôi C=C).</text>
+      <text x="16" y="72" font-size="12" font-weight="500" fill="#514C44">• Đuôi hydrocarbon bị gấp khúc (kink) tạo khoảng trống lớn.</text>
+      <text x="16" y="94" font-size="12" font-weight="500" fill="#514C44">• Ngăn cản sự đông tụ và đóng băng của màng khi nhiệt độ cực thấp.</text>
+      <text x="16" y="122" font-size="12" font-weight="800" fill="#2D8B6F">✓ KẾT QUẢ: Màng tế bào vẫn giữ được ĐỘ LINH ĐỘNG (Fluidity).</text>
+    </g>
+  </g>
+
+  <!-- ==================== RIGHT PANEL: MÔI TRƯỜNG ẤM (CÁ NHIỆT ĐỚI) ==================== -->
+  <g transform="translate(620, 105)">
+    <rect width="535" height="640" rx="16" fill="#FFFFFF" stroke="#3CA57A" stroke-width="2.5" filter="url(#s5_shadowBox)" />
+    
+    <!-- Header Badge -->
+    <rect x="24" y="20" width="310" height="32" rx="8" fill="#DCEAE1" />
+    <circle cx="42" cy="36" r="7" fill="#3CA57A" />
+    <text x="56" y="42" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="700" fill="#1B5E48">
+      MÔI TRƯỜNG ẤM (CÁ NHIỆT ĐỚI)
+    </text>
+
+    <!-- Subtitle Banner -->
+    <text x="24" y="78" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="800" fill="#8A551A">
+      Giàu Acid béo NO (đuôi thẳng) + CHOLESTEROL
+    </text>
+    <text x="24" y="98" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="500" fill="#514C44">
+      Xếp khít nhau + cholesterol hạn chế dịch chuyển quá mức → Màng ổn định
+    </text>
+
+    <!-- Bilayer Graphic (Tight packing) -->
+    <g transform="translate(0, 40)">
+      <!-- Outer Extracellular Space -->
+      <rect x="15" y="90" width="505" height="40" rx="6" fill="#FDF7F5" />
+      <text x="25" y="115" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#8C2C15">Ngoại bào (Ấm ~ 28–32°C)</text>
+
+      <!-- Inner Cytosol Space -->
+      <rect x="15" y="310" width="505" height="40" rx="6" fill="#EAF3E8" />
+      <text x="25" y="335" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#1B5E48">Tế bào chất</text>
+
+      <!-- Phospholipids with STRAIGHT TAILS (Tight Viscous packing) -->
+      <!-- Outer Leaflet: Heads at Y=150, Straight tails down to Y=220 -->
+      <g stroke="#94A3B8" stroke-width="2.5" fill="none" stroke-linecap="round">
+        <path d="M 60,162 L 60,225" /><path d="M 68,162 L 68,225" />
+        <path d="M 105,162 L 105,225" /><path d="M 113,162 L 113,225" />
+        <path d="M 150,162 L 150,225" /><path d="M 158,162 L 158,225" />
+        <path d="M 195,162 L 195,225" /><path d="M 203,162 L 203,225" />
+        <path d="M 265,162 L 265,225" /><path d="M 273,162 L 273,225" />
+        <path d="M 310,162 L 310,225" /><path d="M 318,162 L 318,225" />
+        <path d="M 380,162 L 380,225" /><path d="M 388,162 L 388,225" />
+        <path d="M 425,162 L 425,225" /><path d="M 433,162 L 433,225" />
+        <path d="M 470,162 L 470,225" /><path d="M 478,162 L 478,225" />
+      </g>
+
+      <!-- Inner Leaflet: Heads at Y=290, Straight tails up to Y=220 -->
+      <g stroke="#94A3B8" stroke-width="2.5" fill="none" stroke-linecap="round">
+        <path d="M 60,278 L 60,215" /><path d="M 68,278 L 68,215" />
+        <path d="M 105,278 L 105,215" /><path d="M 113,278 L 113,215" />
+        <path d="M 150,278 L 150,215" /><path d="M 158,278 L 158,215" />
+        <path d="M 195,278 L 195,215" /><path d="M 203,278 L 203,215" />
+        <path d="M 265,278 L 265,215" /><path d="M 273,278 L 273,215" />
+        <path d="M 310,278 L 310,215" /><path d="M 318,278 L 318,215" />
+        <path d="M 380,278 L 380,215" /><path d="M 388,278 L 388,215" />
+        <path d="M 425,278 L 425,215" /><path d="M 433,278 L 433,215" />
+        <path d="M 470,278 L 470,215" /><path d="M 478,278 L 478,215" />
+      </g>
+
+      <!-- Cholesterol Molecules wedged tightly between straight tails -->
+      <g stroke="#8A551A" stroke-width="1.5">
+        <g transform="translate(234, 220)">
+          <rect x="-6" y="-22" width="12" height="44" rx="4" fill="url(#s5_cholesWarm)" />
+          <line x1="-3" y1="-10" x2="3" y2="-10" stroke="#FFFFFF" />
+          <line x1="-3" y1="6" x2="3" y2="6" stroke="#FFFFFF" />
+        </g>
+        <g transform="translate(349, 220)">
+          <rect x="-6" y="-22" width="12" height="44" rx="4" fill="url(#s5_cholesWarm)" />
+          <line x1="-3" y1="-10" x2="3" y2="-10" stroke="#FFFFFF" />
+          <line x1="-3" y1="6" x2="3" y2="6" stroke="#FFFFFF" />
+        </g>
+      </g>
+
+      <!-- Heads Outer & Inner (More tightly spaced) -->
+      <g stroke="#13523B" stroke-width="1.5">
+        <circle cx="64" cy="150" r="11" fill="url(#s5_headWarm)" />
+        <circle cx="109" cy="150" r="11" fill="url(#s5_headWarm)" />
+        <circle cx="154" cy="150" r="11" fill="url(#s5_headWarm)" />
+        <circle cx="199" cy="150" r="11" fill="url(#s5_headWarm)" />
+        <circle cx="269" cy="150" r="11" fill="url(#s5_headWarm)" />
+        <circle cx="314" cy="150" r="11" fill="url(#s5_headWarm)" />
+        <circle cx="384" cy="150" r="11" fill="url(#s5_headWarm)" />
+        <circle cx="429" cy="150" r="11" fill="url(#s5_headWarm)" />
+        <circle cx="474" cy="150" r="11" fill="url(#s5_headWarm)" />
+
+        <circle cx="64" cy="290" r="11" fill="url(#s5_headWarm)" />
+        <circle cx="109" cy="290" r="11" fill="url(#s5_headWarm)" />
+        <circle cx="154" cy="290" r="11" fill="url(#s5_headWarm)" />
+        <circle cx="199" cy="290" r="11" fill="url(#s5_headWarm)" />
+        <circle cx="269" cy="290" r="11" fill="url(#s5_headWarm)" />
+        <circle cx="314" cy="290" r="11" fill="url(#s5_headWarm)" />
+        <circle cx="384" cy="290" r="11" fill="url(#s5_headWarm)" />
+        <circle cx="429" cy="290" r="11" fill="url(#s5_headWarm)" />
+        <circle cx="474" cy="290" r="11" fill="url(#s5_headWarm)" />
+      </g>
+
+      <!-- Cholesterol callout -->
+      <g transform="translate(234, 275)">
+        <text x="0" y="20" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#8A551A" text-anchor="middle">Cholesterol đệm</text>
+      </g>
+    </g>
+
+    <!-- Scientific Summary Box -->
+    <g transform="translate(24, 460)" font-family="'Be Vietnam Pro', sans-serif">
+      <rect width="487" height="150" rx="10" fill="#F6FAF8" stroke="#DDE8E2" stroke-width="1.5" />
+      <text x="16" y="26" font-size="13" font-weight="800" fill="#13523B">Đặc tính cơ chế thích nghi nhiệt độ cao:</text>
+      <text x="16" y="50" font-size="12" font-weight="600" fill="#1A1A1A">• Tỷ lệ acid béo no cao (chỉ có liên kết đơn C-C, đuôi thẳng).</text>
+      <text x="16" y="72" font-size="12" font-weight="500" fill="#514C44">• Các phân tử xếp khít sít nhau, tăng lực tương tác Van der Waals.</text>
+      <text x="16" y="94" font-size="12" font-weight="500" fill="#514C44">• Cholesterol chèn vào làm giảm sự dịch chuyển quá mức của phospholipid.</text>
+      <text x="16" y="122" font-size="12" font-weight="800" fill="#2D8B6F">✓ KẾT QUẢ: Màng giữ vững CẤU TRÚC VÀ ĐỘ BỀN ỔN ĐỊNH.</text>
+    </g>
+  </g>
+</svg>
+          </div>
+          <div class="visual-toolbar">
+            <button class="action-btn" onclick="highlightKinkFattyAcids()">
+              <i class="ti ti-zoom-in"></i> Phóng to nếp gấp kink của Acid béo không no
+            </button>
+            <button class="tab-btn" onclick="highlightCholesterolBuffer()">
+              <i class="ti ti-shield-check"></i> Xem vai trò đệm nhiệt độ của Cholesterol
+            </button>
+          </div>
+        </div>
+
+        <div class="pedagogy-panel">
+          <div class="lecture-box">
+            <div class="lecture-box-title"><i class="ti ti-book-2"></i> Kiến thức khoa học</div>
+            <div class="lecture-box-content">
+              Tế bào điều chỉnh độ linh hoạt màng bằng cách chèn thêm <strong>cholesterol/sterol</strong> và thay đổi thành phần <strong>acid béo</strong>. Nhiệt độ ảnh hưởng tới độ ổn định màng, vì vậy sinh vật vùng lạnh tăng acid béo không no để tránh màng bị đông cứng.
+            </div>
+          </div>
+
+          <div class="guide-box">
+            <i class="ti ti-info-circle"></i>
+            <span>Đối chiếu màng sinh vật vùng lạnh và vùng ấm bên trái, sau đó chọn câu trả lời đúng.</span>
+          </div>
+
+          <div class="task-card">
+            <div class="question-prompt">
+              Cá Nam Cực có xu hướng dùng loại acid béo nào nhiều hơn để màng không bị "đông cứng" trong nước lạnh?
+            </div>
+            <div class="options-group" id="optionsGroupS05">
+              <div class="quiz-option" onclick="selectOption(5, 'A', this)">
+                <div class="option-indicator">A</div>
+                <span>Acid béo không no (không bão hòa) — giúp màng giữ độ linh hoạt ở nhiệt độ thấp</span>
+              </div>
+              <div class="quiz-option" onclick="selectOption(5, 'B', this)">
+                <div class="option-indicator">B</div>
+                <span>Acid béo no (bão hòa) — vì cứng hơn nên chịu lạnh tốt hơn</span>
+              </div>
+            </div>
+
+            <button class="btn btn-submit" id="btnSubmitS05" disabled onclick="submitStage(5)">
+              <i class="ti ti-check"></i> TRẢ LỜI
+            </button>
+            <button class="btn btn-retry" id="btnRetryS05" onclick="retryStage(5)">
+              <i class="ti ti-rotate-clockwise"></i> LÀM LẠI
+            </button>
+
+            <div class="feedback-box" id="feedbackS05"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage-actions">
+        <button class="btn btn-secondary" onclick="goToStage(4)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+        <button class="btn btn-primary" id="btnNextS05" disabled onclick="goToStage(6)">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         STAGE 6 (S06): PROTEIN MÀNG — 2 LOẠI VÀ CÁC CHỨC NĂNG
+         ==================================================================== -->
+    <section class="stage-section" id="stage6">
+      <div class="workspace-layout">
+        <div class="visual-panel">
+          <div class="visual-media-box" id="mediaBoxS06">
+            <svg xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; display:block;" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <radialGradient id="s6_bgGlow" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#FAF7F0" />
+      <stop offset="100%" stop-color="#F0EADD" />
+    </radialGradient>
+
+    <!-- Transmembrane Protein Gradient -->
+    <linearGradient id="s6_transGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7B68B8" />
+      <stop offset="50%" stop-color="#51428C" />
+      <stop offset="100%" stop-color="#37276B" />
+    </linearGradient>
+
+    <!-- Peripheral Protein Gradient -->
+    <linearGradient id="s6_periphGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4E7F92" />
+      <stop offset="100%" stop-color="#244B5C" />
+    </linearGradient>
+
+    <!-- Lipid Head Gradient -->
+    <radialGradient id="s6_headGrad" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#A9D0BE" />
+      <stop offset="60%" stop-color="#3CA57A" />
+      <stop offset="100%" stop-color="#1B5E48" />
+    </radialGradient>
+
+    <filter id="s6_shadowBox" x="-5%" y="-5%" width="110%" height="112%">
+      <feDropShadow dx="2" dy="5" stdDeviation="6" flood-color="#1A1A1A" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#s6_bgGlow)" />
+
+  <!-- Master Title -->
+  <text x="600" y="48" font-family="'Be Vietnam Pro', system-ui, sans-serif" font-size="24" font-weight="800" fill="#1A1A1A" text-anchor="middle">
+    PROTEIN MÀNG: PHÂN LOẠI VÀ BỐN CHỨC NĂNG CỐT LÕI
+  </text>
+  <text x="600" y="76" font-family="'Be Vietnam Pro', system-ui, sans-serif" font-size="14" font-weight="500" fill="#514C44" text-anchor="middle">
+    Gồm Protein xuyên màng và Protein ngoại vi — Đảm nhận các hoạt động sống quan trọng của tế bào
+  </text>
+
+  <!-- ==================== TOP SECTION: PHÂN LOẠI (XUYÊN MÀNG VS NGOẠI VI) ==================== -->
+  <g transform="translate(45, 105)">
+    <rect width="1110" height="240" rx="14" fill="#FFFFFF" stroke="#DDE8E2" stroke-width="2" filter="url(#s6_shadowBox)" />
+    
+    <!-- Section Title -->
+    <rect x="24" y="16" width="310" height="28" rx="6" fill="#DCEAE1" />
+    <text x="179" y="35" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#1B5E48" text-anchor="middle">
+      PHÂN LOẠI THEO VỊ TRÍ GẮN VỚI LỚP KÉP LIPID
+    </text>
+
+    <!-- Bilayer Background snippet -->
+    <g transform="translate(40, 60)">
+      <!-- Extracellular tag -->
+      <text x="0" y="25" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#4E7F92">Phía ngoại bào</text>
+      <text x="0" y="145" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#1B5E48">Phía tế bào chất</text>
+
+      <!-- Lipid Bilayer Heads and Tails Background (faint) -->
+      <g stroke="#D6CCB6" stroke-width="2" fill="none" opacity="0.75">
+        <!-- Tails -->
+        <line x1="140" y1="50" x2="140" y2="105" /><line x1="165" y1="50" x2="165" y2="105" />
+        <line x1="190" y1="50" x2="190" y2="105" /><line x1="215" y1="50" x2="215" y2="105" />
+        <line x1="380" y1="50" x2="380" y2="105" /><line x1="405" y1="50" x2="405" y2="105" />
+        <line x1="430" y1="50" x2="430" y2="105" /><line x1="455" y1="50" x2="455" y2="105" />
+        <line x1="480" y1="50" x2="480" y2="105" /><line x1="505" y1="50" x2="505" y2="105" />
+        <line x1="530" y1="50" x2="530" y2="105" /><line x1="555" y1="50" x2="555" y2="105" />
+        <line x1="720" y1="50" x2="720" y2="105" /><line x1="745" y1="50" x2="745" y2="105" />
+        <line x1="770" y1="50" x2="770" y2="105" /><line x1="795" y1="50" x2="795" y2="105" />
+        <line x1="820" y1="50" x2="820" y2="105" /><line x1="845" y1="50" x2="845" y2="105" />
+        <line x1="980" y1="50" x2="980" y2="105" /><line x1="1005" y1="50" x2="1005" y2="105" />
+      </g>
+      <!-- Heads -->
+      <g stroke="#13523B" stroke-width="1.2">
+        <circle cx="140" cy="45" r="9" fill="url(#s6_headGrad)" /><circle cx="165" cy="45" r="9" fill="url(#s6_headGrad)" />
+        <circle cx="190" cy="45" r="9" fill="url(#s6_headGrad)" /><circle cx="215" cy="45" r="9" fill="url(#s6_headGrad)" />
+        <circle cx="380" cy="45" r="9" fill="url(#s6_headGrad)" /><circle cx="405" cy="45" r="9" fill="url(#s6_headGrad)" />
+        <circle cx="430" cy="45" r="9" fill="url(#s6_headGrad)" /><circle cx="455" cy="45" r="9" fill="url(#s6_headGrad)" />
+        <circle cx="480" cy="45" r="9" fill="url(#s6_headGrad)" /><circle cx="505" cy="45" r="9" fill="url(#s6_headGrad)" />
+        <circle cx="530" cy="45" r="9" fill="url(#s6_headGrad)" /><circle cx="555" cy="45" r="9" fill="url(#s6_headGrad)" />
+        <circle cx="720" cy="45" r="9" fill="url(#s6_headGrad)" /><circle cx="745" cy="45" r="9" fill="url(#s6_headGrad)" />
+        <circle cx="770" cy="45" r="9" fill="url(#s6_headGrad)" /><circle cx="795" cy="45" r="9" fill="url(#s6_headGrad)" />
+        <circle cx="820" cy="45" r="9" fill="url(#s6_headGrad)" /><circle cx="845" cy="45" r="9" fill="url(#s6_headGrad)" />
+        <circle cx="980" cy="45" r="9" fill="url(#s6_headGrad)" /><circle cx="1005" cy="45" r="9" fill="url(#s6_headGrad)" />
+
+        <circle cx="140" cy="110" r="9" fill="url(#s6_headGrad)" /><circle cx="165" cy="110" r="9" fill="url(#s6_headGrad)" />
+        <circle cx="190" cy="110" r="9" fill="url(#s6_headGrad)" /><circle cx="215" cy="110" r="9" fill="url(#s6_headGrad)" />
+        <circle cx="380" cy="110" r="9" fill="url(#s6_headGrad)" /><circle cx="405" cy="110" r="9" fill="url(#s6_headGrad)" />
+        <circle cx="430" cy="110" r="9" fill="url(#s6_headGrad)" /><circle cx="455" cy="110" r="9" fill="url(#s6_headGrad)" />
+        <circle cx="480" cy="110" r="9" fill="url(#s6_headGrad)" /><circle cx="505" cy="110" r="9" fill="url(#s6_headGrad)" />
+        <circle cx="530" cy="110" r="9" fill="url(#s6_headGrad)" /><circle cx="555" cy="110" r="9" fill="url(#s6_headGrad)" />
+        <circle cx="720" cy="110" r="9" fill="url(#s6_headGrad)" /><circle cx="745" cy="110" r="9" fill="url(#s6_headGrad)" />
+        <circle cx="770" cy="110" r="9" fill="url(#s6_headGrad)" /><circle cx="795" cy="110" r="9" fill="url(#s6_headGrad)" />
+        <circle cx="820" cy="110" r="9" fill="url(#s6_headGrad)" /><circle cx="845" cy="110" r="9" fill="url(#s6_headGrad)" />
+        <circle cx="980" cy="110" r="9" fill="url(#s6_headGrad)" /><circle cx="1005" cy="110" r="9" fill="url(#s6_headGrad)" />
+      </g>
+
+      <!-- 1. Protein Xuyên Màng (Transmembrane Protein) at X=300 -->
+      <g transform="translate(300, 78)">
+        <rect x="-40" y="-60" width="80" height="120" rx="20" fill="url(#s6_transGrad)" stroke="#37276B" stroke-width="2.5" />
+        <text x="0" y="5" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#FAF7F0" text-anchor="middle">Xuyên màng</text>
+      </g>
+      <text x="300" y="165" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#37276B" text-anchor="middle">
+        1. Protein xuyên màng (Transmembrane)
+      </text>
+      <text x="300" y="182" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="500" fill="#514C44" text-anchor="middle">
+        Xuyên qua cả hai lớp lipid, lộ ra 2 phía
+      </text>
+
+      <!-- 2. Protein Ngoại Vi (Peripheral Protein) at X=640 (Extracellular surface) -->
+      <g transform="translate(640, 20)">
+        <ellipse cx="0" cy="0" rx="40" ry="18" fill="url(#s6_periphGrad)" stroke="#244B5C" stroke-width="2" />
+        <text x="0" y="4" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#FAF7F0" text-anchor="middle">Ngoại vi</text>
+      </g>
+      <!-- 3. Protein Ngoại Vi at X=915 (Cytoplasmic surface) -->
+      <g transform="translate(915, 135)">
+        <ellipse cx="0" cy="0" rx="42" ry="19" fill="url(#s6_periphGrad)" stroke="#244B5C" stroke-width="2" />
+        <text x="0" y="4" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#FAF7F0" text-anchor="middle">Ngoại vi</text>
+      </g>
+      <text x="780" y="165" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#244B5C" text-anchor="middle">
+        2. Protein bám màng / ngoại vi (Peripheral)
+      </text>
+      <text x="780" y="182" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="500" fill="#514C44" text-anchor="middle">
+        Liên kết lỏng lẻo ở một bề mặt của màng, không xuyên qua lõi kị nước
+      </text>
+    </g>
+  </g>
+
+  <!-- ==================== BOTTOM SECTION: 4 CHỨC NĂNG CỐT LÕI (4 CARDS) ==================== -->
+  <g transform="translate(45, 365)">
+    <!-- Card 1: Vận chuyển -->
+    <g transform="translate(0, 0)">
+      <rect width="260" height="390" rx="14" fill="#FFFFFF" stroke="#DDE8E2" stroke-width="2" filter="url(#s6_shadowBox)" />
+      <rect x="18" y="18" width="130" height="26" rx="6" fill="#DCEAE1" />
+      <text x="83" y="36" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#1B5E48" text-anchor="middle">CHỨC NĂNG 1</text>
+      
+      <text x="18" y="72" font-family="'Be Vietnam Pro', sans-serif" font-size="17" font-weight="800" fill="#13523B">Vận chuyển</text>
+      <text x="18" y="92" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-style="italic" fill="#514C44">Transport Channel / Carrier</text>
+
+      <!-- Graphic: Channel with arrow -->
+      <g transform="translate(130, 195)">
+        <!-- Channel walls -->
+        <path d="M -35,-65 C -40,-30 -40,30 -35,65 C -20,65 -20,30 -22,0 C -20,-30 -20,-65 -35,-65 Z" fill="url(#s6_transGrad)" stroke="#37276B" stroke-width="1.8" />
+        <path d="M 35,-65 C 40,-30 40,30 35,65 C 20,65 20,30 22,0 C 20,-30 20,-65 35,-65 Z" fill="url(#s6_transGrad)" stroke="#37276B" stroke-width="1.8" />
+        <!-- Arrow passing through channel -->
+        <path d="M 0,-75 L 0,65" fill="none" stroke="#2D8B6F" stroke-width="3.5" stroke-linecap="round" />
+        <polygon points="0,75 -6,62 6,62" fill="#2D8B6F" />
+        <!-- Solute particles -->
+        <circle cx="0" cy="-45" r="5" fill="#E8A24A" />
+        <circle cx="0" cy="-10" r="5" fill="#E8A24A" />
+        <circle cx="0" cy="25" r="5" fill="#E8A24A" />
+      </g>
+      <text x="18" y="325" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#1A1A1A">• Tạo kênh/chất tải cho các</text>
+      <text x="18" y="345" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#1A1A1A">  chất tan đi qua màng.</text>
+      <text x="18" y="368" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#2D8B6F">✓ Chọn lọc theo kích thước/điện tích</text>
+    </g>
+
+    <!-- Card 2: Xúc tác Enzyme -->
+    <g transform="translate(283, 0)">
+      <rect width="260" height="390" rx="14" fill="#FFFFFF" stroke="#DDE8E2" stroke-width="2" filter="url(#s6_shadowBox)" />
+      <rect x="18" y="18" width="130" height="26" rx="6" fill="#DCEAE1" />
+      <text x="83" y="36" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#1B5E48" text-anchor="middle">CHỨC NĂNG 2</text>
+      
+      <text x="18" y="72" font-family="'Be Vietnam Pro', sans-serif" font-size="17" font-weight="800" fill="#13523B">Xúc tác (Enzyme)</text>
+      <text x="18" y="92" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-style="italic" fill="#514C44">Enzymatic Activity</text>
+
+      <!-- Graphic: Enzyme active site with substrate -->
+      <g transform="translate(130, 195)">
+        <path d="M -45,-40 C -45,-10 -25,-10 -25,10 C -25,30 25,30 25,10 C 25,-10 45,-10 45,-40 C 45,50 -45,50 -45,-40 Z" fill="url(#s6_transGrad)" stroke="#37276B" stroke-width="2" />
+        <!-- Substrate fitting in pocket -->
+        <path d="M -18,-5 L -18,18 L 18,18 L 18,-5 Z" fill="#E8A24A" stroke="#8A551A" stroke-width="1.8" />
+        <!-- Reaction arrow -->
+        <path d="M 0,-30 L 0,-15" fill="none" stroke="#CE8A33" stroke-width="2.5" stroke-linecap="round" />
+        <polygon points="0,-10 -4,-18 4,-18" fill="#CE8A33" />
+      </g>
+      <text x="18" y="325" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#1A1A1A">• Trung tâm hoạt động tiếp xúc</text>
+      <text x="18" y="345" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#1A1A1A">  cơ chất trong/ngoài màng.</text>
+      <text x="18" y="368" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#2D8B6F">✓ Chuỗi chuyền điện tử, tổng hợp ATP</text>
+    </g>
+
+    <!-- Card 3: Thụ thể & Truyền tin -->
+    <g transform="translate(566, 0)">
+      <rect width="260" height="390" rx="14" fill="#FFFFFF" stroke="#DDE8E2" stroke-width="2" filter="url(#s6_shadowBox)" />
+      <rect x="18" y="18" width="130" height="26" rx="6" fill="#DCEAE1" />
+      <text x="83" y="36" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#1B5E48" text-anchor="middle">CHỨC NĂNG 3</text>
+      
+      <text x="18" y="72" font-family="'Be Vietnam Pro', sans-serif" font-size="17" font-weight="800" fill="#13523B">Thụ thể (Receptor)</text>
+      <text x="18" y="92" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-style="italic" fill="#514C44">Signal Transduction</text>
+
+      <!-- Graphic: Receptor binding specific ligand -->
+      <g transform="translate(130, 195)">
+        <!-- Receptor with notch on top -->
+        <path d="M -30,-60 L -12,-60 L 0,-40 L 12,-60 L 30,-60 C 35,0 35,30 20,55 C 0,60 -20,55 -30,-60 Z" fill="url(#s6_transGrad)" stroke="#37276B" stroke-width="2" />
+        <!-- Ligand / Signal molecule -->
+        <polygon points="0,-48 -9,-65 9,-65" fill="#E53935" stroke="#7F0000" stroke-width="1.8" />
+        <!-- Signal relay wave inside cell -->
+        <path d="M -12,65 Q 0,75 12,65" fill="none" stroke="#F57C00" stroke-width="3" />
+        <path d="M -18,73 Q 0,85 18,73" fill="none" stroke="#F57C00" stroke-width="3" />
+      </g>
+      <text x="18" y="325" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#1A1A1A">• Nhận diện phối tử (hormone,</text>
+      <text x="18" y="345" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#1A1A1A">  tín hiệu hóa học) đặc hiệu.</text>
+      <text x="18" y="368" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#2D8B6F">✓ Truyền tín hiệu điều hòa nội bào</text>
+    </g>
+
+    <!-- Card 4: Neo giữ khung xương -->
+    <g transform="translate(850, 0)">
+      <rect width="260" height="390" rx="14" fill="#FFFFFF" stroke="#DDE8E2" stroke-width="2" filter="url(#s6_shadowBox)" />
+      <rect x="18" y="18" width="130" height="26" rx="6" fill="#DCEAE1" />
+      <text x="83" y="36" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#1B5E48" text-anchor="middle">CHỨC NĂNG 4</text>
+      
+      <text x="18" y="72" font-family="'Be Vietnam Pro', sans-serif" font-size="17" font-weight="800" fill="#13523B">Neo giữ (Anchor)</text>
+      <text x="18" y="92" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-style="italic" fill="#514C44">Cytoskeleton &amp; ECM Attachment</text>
+
+      <!-- Graphic: Anchor protein connecting ECM to Cytoskeleton -->
+      <g transform="translate(130, 195)">
+        <!-- ECM fiber on top -->
+        <path d="M -50,-65 C -20,-75 20,-55 50,-70" fill="none" stroke="#2D8B6F" stroke-width="4" stroke-linecap="round" />
+        <!-- Protein link -->
+        <rect x="-24" y="-55" width="48" height="110" rx="14" fill="url(#s6_transGrad)" stroke="#37276B" stroke-width="2" />
+        <!-- Cytoskeleton microfilament inside -->
+        <path d="M -50,65 C -20,55 20,75 50,60" fill="none" stroke="#CE8A33" stroke-width="3.5" stroke-dasharray="5 3" />
+      </g>
+      <text x="18" y="325" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#1A1A1A">• Liên kết chất nền ngoại bào</text>
+      <text x="18" y="345" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#1A1A1A">  với khung xương tế bào.</text>
+      <text x="18" y="368" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#2D8B6F">✓ Ổn định hình dạng &amp; liên kết mô</text>
+    </g>
+  </g>
+</svg>
+          </div>
+          <div class="visual-toolbar">
+            <button class="tab-btn" onclick="highlightProteinType('trans')">
+              <i class="ti ti-arrows-vertical"></i> Protein xuyên màng
+            </button>
+            <button class="tab-btn" onclick="highlightProteinType('periph')">
+              <i class="ti ti-point"></i> Protein ngoại vi
+            </button>
+          </div>
+        </div>
+
+        <div class="pedagogy-panel">
+          <div class="lecture-box">
+            <div class="lecture-box-title"><i class="ti ti-book-2"></i> Kiến thức khoa học</div>
+            <div class="lecture-box-content">
+              Protein màng gồm <strong>protein xuyên màng</strong> và <strong>protein bám màng (ngoại vi)</strong>. Chúng đảm nhận các chức năng: vận chuyển, xúc tác (enzyme), thụ thể tiếp nhận tín hiệu, neo giữ khung xương và nhận diện tế bào.
+            </div>
+          </div>
+
+          <div class="guide-box">
+            <i class="ti ti-info-circle"></i>
+            <span>Chạm chọn 1 thẻ chức năng rồi chạm ô mô tả tương ứng để ghép đôi hoàn chỉnh 4/4 cặp.</span>
+          </div>
+
+          <div class="task-card">
+            <div class="question-prompt">
+              Ghép đôi chức năng với cơ chế của Protein màng:
+            </div>
+            
+            <div class="match-container">
+              <div class="match-row">
+                <div class="match-card" id="source1" onclick="handleMatchSelect(1, 'transport')">
+                  <i class="ti ti-arrows-exchange"></i> 1. Vận chuyển chất
+                </div>
+                <div class="match-card" id="target-transport" onclick="handleMatchTarget('transport')">
+                  <i class="ti ti-door-enter"></i> Kênh / Chất tải
+                </div>
+              </div>
+              <div class="match-row">
+                <div class="match-card" id="source2" onclick="handleMatchSelect(2, 'catalysis')">
+                  <i class="ti ti-flame"></i> 2. Xúc tác sinh hóa
+                </div>
+                <div class="match-card" id="target-catalysis" onclick="handleMatchTarget('catalysis')">
+                  <i class="ti ti-sparkles"></i> Trung tâm hoạt động enzyme
+                </div>
+              </div>
+              <div class="match-row">
+                <div class="match-card" id="source3" onclick="handleMatchSelect(3, 'receptor')">
+                  <i class="ti ti-antenna"></i> 3. Thụ thể tế bào
+                </div>
+                <div class="match-card" id="target-receptor" onclick="handleMatchTarget('receptor')">
+                  <i class="ti ti-bell-ringing"></i> Tiếp nhận phối tử &amp; truyền tin
+                </div>
+              </div>
+              <div class="match-row">
+                <div class="match-card" id="source4" onclick="handleMatchSelect(4, 'anchor')">
+                  <i class="ti ti-anchor"></i> 4. Neo giữ cấu trúc
+                </div>
+                <div class="match-card" id="target-anchor" onclick="handleMatchTarget('anchor')">
+                  <i class="ti ti-link"></i> Kết nối khung xương &amp; ECM
+                </div>
+              </div>
+            </div>
+
+            <button class="btn btn-submit" id="btnSubmitS06" disabled onclick="submitStage(6)">
+              <i class="ti ti-check"></i> TRẢ LỜI
+            </button>
+            <button class="btn btn-retry" id="btnRetryS06" onclick="retryStage(6)">
+              <i class="ti ti-rotate-clockwise"></i> LÀM LẠI
+            </button>
+
+            <div class="feedback-box" id="feedbackS06"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage-actions">
+        <button class="btn btn-secondary" onclick="goToStage(5)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+        <button class="btn btn-primary" id="btnNextS06" disabled onclick="goToStage(7)">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         STAGE 7 (S07): CHỨC NĂNG TỔNG THỂ & TÍNH THẤM CHỌN LỌC
+         ==================================================================== -->
+    <section class="stage-section" id="stage7">
+      <div class="workspace-layout">
+        <div class="visual-panel">
+          <div class="visual-media-box" id="mediaBoxS07">
+            <svg xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; display:block;" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <radialGradient id="s7_bgGlow" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#FAF7F0" />
+      <stop offset="100%" stop-color="#F0EADD" />
+    </radialGradient>
+
+    <!-- Transmembrane Protein Gradient -->
+    <linearGradient id="s7_channelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7B68B8" />
+      <stop offset="50%" stop-color="#51428C" />
+      <stop offset="100%" stop-color="#37276B" />
+    </linearGradient>
+
+    <!-- Aquaporin (Water Channel) Gradient -->
+    <linearGradient id="s7_aquaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4E7F92" />
+      <stop offset="50%" stop-color="#2D6B82" />
+      <stop offset="100%" stop-color="#194152" />
+    </linearGradient>
+
+    <!-- Lipid Head Gradient -->
+    <radialGradient id="s7_headGrad" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#A9D0BE" />
+      <stop offset="60%" stop-color="#3CA57A" />
+      <stop offset="100%" stop-color="#1B5E48" />
+    </radialGradient>
+
+    <filter id="s7_shadowBox" x="-5%" y="-5%" width="110%" height="112%">
+      <feDropShadow dx="2" dy="5" stdDeviation="6" flood-color="#1A1A1A" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#s7_bgGlow)" />
+
+  <!-- Master Title -->
+  <text x="600" y="48" font-family="'Be Vietnam Pro', system-ui, sans-serif" font-size="24" font-weight="800" fill="#1A1A1A" text-anchor="middle">
+    TÍNH THẤM CHỌN LỌC CỦA MÀNG SINH CHẤT (SELECTIVE PERMEABILITY)
+  </text>
+  <text x="600" y="76" font-family="'Be Vietnam Pro', system-ui, sans-serif" font-size="14" font-weight="500" fill="#514C44" text-anchor="middle">
+    Màng kiểm soát chặt chẽ các chất ra vào: phân tử kị nước nhỏ tự do qua màng, chất phân cực/ion cần kênh protein
+  </text>
+
+  <!-- ==================== MAIN CANVAS ARTBOARD ==================== -->
+  <g transform="translate(50, 105)">
+    <rect width="1100" height="640" rx="16" fill="#FFFFFF" stroke="#DDE8E2" stroke-width="2" filter="url(#s7_shadowBox)" />
+
+    <!-- Environment Bands -->
+    <!-- Extracellular Space (Top) -->
+    <rect x="0" y="0" width="1100" height="180" rx="16" fill="#EBF3F5" opacity="0.6" />
+    <text x="35" y="40" font-family="'Be Vietnam Pro', sans-serif" font-size="14" font-weight="800" fill="#294B59">
+      MÔI TRƯỜNG NGOẠI BÀO (BÊN NGOÀI TẾ BÀO)
+    </text>
+
+    <!-- Intracellular Space / Cytosol (Bottom) -->
+    <rect x="0" y="460" width="1100" height="180" rx="16" fill="#EAF3E8" opacity="0.6" />
+    <text x="35" y="605" font-family="'Be Vietnam Pro', sans-serif" font-size="14" font-weight="800" fill="#1B5E48">
+      TẾ BÀO CHẤT (BÊN TRONG TẾ BÀO)
+    </text>
+
+    <!-- Hydrophobic Core Indicator (Middle) -->
+    <rect x="0" y="240" width="1100" height="160" fill="#FAF7F0" opacity="0.8" />
+    <text x="35" y="325" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#7C756A">
+      LÕI KỊ NƯỚC (HYDROPHOBIC CORE)
+    </text>
+
+    <!-- ==================== MEMBRANE BILAYER & SPECIALIZED CHANNELS ==================== -->
+    <!-- Lane 1: O2 / CO2 (X = 50 to 280) - Pure Lipid Diffusion -->
+    <!-- Lane 2: H2O (X = 290 to 540) - Aquaporin Channel -->
+    <!-- Lane 3: Ions Na+, K+, Cl- (X = 550 to 820) - Ion Channel -->
+    <!-- Lane 4: Large Polar (Glucose) (X = 830 to 1080) - Blocked / Carrier required -->
+
+    <!-- Continuous Bilayer Lipids (Heads Outer at Y=205, Heads Inner at Y=435) -->
+    <g id="s7_bilayer-array">
+      <!-- Tails (Y=215 to 425) -->
+      <g stroke="#D6CCB6" stroke-width="2.5" fill="none" stroke-linecap="round">
+        <!-- Lane 1 Lipids -->
+        <path d="M 70,215 L 70,310" /><path d="M 78,215 L 78,310" /><path d="M 70,425 L 70,330" /><path d="M 78,425 L 78,330" />
+        <path d="M 110,215 L 110,310" /><path d="M 118,215 L 118,310" /><path d="M 110,425 L 110,330" /><path d="M 118,425 L 118,330" />
+        <path d="M 210,215 L 210,310" /><path d="M 218,215 L 218,310" /><path d="M 210,425 L 210,330" /><path d="M 218,425 L 218,330" />
+        <path d="M 250,215 L 250,310" /><path d="M 258,215 L 258,310" /><path d="M 250,425 L 250,330" /><path d="M 258,425 L 258,330" />
+
+        <!-- Lane 2 Lipids (around Aquaporin) -->
+        <path d="M 320,215 L 320,310" /><path d="M 328,215 L 328,310" /><path d="M 320,425 L 320,330" /><path d="M 328,425 L 328,330" />
+        <path d="M 500,215 L 500,310" /><path d="M 508,215 L 508,310" /><path d="M 500,425 L 500,330" /><path d="M 508,425 L 508,330" />
+
+        <!-- Lane 3 Lipids (around Ion Channel) -->
+        <path d="M 580,215 L 580,310" /><path d="M 588,215 L 588,310" /><path d="M 580,425 L 580,330" /><path d="M 588,425 L 588,330" />
+        <path d="M 770,215 L 770,310" /><path d="M 778,215 L 778,310" /><path d="M 770,425 L 770,330" /><path d="M 778,425 L 778,330" />
+
+        <!-- Lane 4 Lipids (Tight layer blocking Glucose) -->
+        <path d="M 850,215 L 850,310" /><path d="M 858,215 L 858,310" /><path d="M 850,425 L 850,330" /><path d="M 858,425 L 858,330" />
+        <path d="M 890,215 L 890,310" /><path d="M 898,215 L 898,310" /><path d="M 890,425 L 890,330" /><path d="M 898,425 L 898,330" />
+        <path d="M 980,215 L 980,310" /><path d="M 988,215 L 988,310" /><path d="M 980,425 L 980,330" /><path d="M 988,425 L 988,330" />
+        <path d="M 1020,215 L 1020,310" /><path d="M 1028,215 L 1028,310" /><path d="M 1020,425 L 1020,330" /><path d="M 1028,425 L 1028,330" />
+      </g>
+
+      <!-- Heads Outer (Y=205) and Inner (Y=435) -->
+      <g stroke="#13523B" stroke-width="1.5">
+        <circle cx="74" cy="205" r="10" fill="url(#s7_headGrad)" /><circle cx="114" cy="205" r="10" fill="url(#s7_headGrad)" />
+        <circle cx="214" cy="205" r="10" fill="url(#s7_headGrad)" /><circle cx="254" cy="205" r="10" fill="url(#s7_headGrad)" />
+        <circle cx="324" cy="205" r="10" fill="url(#s7_headGrad)" /><circle cx="504" cy="205" r="10" fill="url(#s7_headGrad)" />
+        <circle cx="584" cy="205" r="10" fill="url(#s7_headGrad)" /><circle cx="774" cy="205" r="10" fill="url(#s7_headGrad)" />
+        <circle cx="854" cy="205" r="10" fill="url(#s7_headGrad)" /><circle cx="894" cy="205" r="10" fill="url(#s7_headGrad)" />
+        <circle cx="984" cy="205" r="10" fill="url(#s7_headGrad)" /><circle cx="1024" cy="205" r="10" fill="url(#s7_headGrad)" />
+
+        <circle cx="74" cy="435" r="10" fill="url(#s7_headGrad)" /><circle cx="114" cy="435" r="10" fill="url(#s7_headGrad)" />
+        <circle cx="214" cy="435" r="10" fill="url(#s7_headGrad)" /><circle cx="254" cy="435" r="10" fill="url(#s7_headGrad)" />
+        <circle cx="324" cy="435" r="10" fill="url(#s7_headGrad)" /><circle cx="504" cy="435" r="10" fill="url(#s7_headGrad)" />
+        <circle cx="584" cy="435" r="10" fill="url(#s7_headGrad)" /><circle cx="774" cy="435" r="10" fill="url(#s7_headGrad)" />
+        <circle cx="854" cy="435" r="10" fill="url(#s7_headGrad)" /><circle cx="894" cy="435" r="10" fill="url(#s7_headGrad)" />
+        <circle cx="984" cy="435" r="10" fill="url(#s7_headGrad)" /><circle cx="1024" cy="435" r="10" fill="url(#s7_headGrad)" />
+      </g>
+    </g>
+
+    <!-- ==================== LANE 1: O2 & CO2 (DIFFUSION DIRECTE) ==================== -->
+    <g transform="translate(160, 0)">
+      <!-- Label Banner -->
+      <rect x="-80" y="50" width="160" height="32" rx="8" fill="#DCEAE1" />
+      <text x="0" y="71" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#1B5E48" text-anchor="middle">
+        O₂, CO₂ (Kị nước nhỏ)
+      </text>
+
+      <!-- Particle Path: Direct Crossing Through Bilayer -->
+      <path d="M 0,95 L 0,520" fill="none" stroke="#2D8B6F" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 4" />
+      <polygon points="0,535 -6,515 6,515" fill="#2D8B6F" />
+
+      <!-- Particles O2 (diatomic red pair) -->
+      <g transform="translate(0, 120)">
+        <circle cx="-5" cy="0" r="7" fill="#E53935" /><circle cx="5" cy="0" r="7" fill="#E53935" />
+      </g>
+      <g transform="translate(0, 270)">
+        <circle cx="-5" cy="0" r="7" fill="#E53935" /><circle cx="5" cy="0" r="7" fill="#E53935" />
+      </g>
+      <g transform="translate(0, 480)">
+        <circle cx="-5" cy="0" r="7" fill="#E53935" /><circle cx="5" cy="0" r="7" fill="#E53935" />
+      </g>
+
+      <text x="0" y="570" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#1B5E48" text-anchor="middle">
+        ✓ TỰ DO KHUẾCH TÁN
+      </text>
+      <text x="0" y="590" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="500" fill="#514C44" text-anchor="middle">
+        Trực tiếp qua lớp lipid
+      </text>
+    </g>
+
+    <!-- ==================== LANE 2: H2O (AQUAPORIN CHANNEL) ==================== -->
+    <g transform="translate(415, 0)">
+      <rect x="-85" y="50" width="170" height="32" rx="8" fill="#DCE7EB" />
+      <text x="0" y="71" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#244B5C" text-anchor="middle">
+        H₂O (Phân tử nước)
+      </text>
+
+      <!-- Aquaporin Transmembrane Channel Graphic -->
+      <g transform="translate(0, 320)" filter="url(#s7_shadowBox)">
+        <!-- Left half -->
+        <path d="M -45,-125 C -50,-60 -50,60 -45,125 C -25,125 -20,60 -22,0 C -20,-60 -25,-125 -45,-125 Z" fill="url(#s7_aquaGrad)" stroke="#194152" stroke-width="2" />
+        <!-- Right half -->
+        <path d="M 45,-125 C 50,-60 50,60 45,125 C 25,125 20,60 22,0 C 20,-60 25,-125 45,-125 Z" fill="url(#s7_aquaGrad)" stroke="#194152" stroke-width="2" />
+        <!-- Channel Label -->
+        <text x="0" y="4" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#FFFFFF" text-anchor="middle">Aquaporin</text>
+      </g>
+
+      <!-- Water particle stream passing through channel -->
+      <path d="M 0,95 L 0,520" fill="none" stroke="#244B5C" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 4" />
+      <polygon points="0,535 -6,515 6,515" fill="#244B5C" />
+
+      <!-- Water molecules (Oxygen red + 2 Hydrogens white) -->
+      <g transform="translate(0, 130)">
+        <circle cx="0" cy="0" r="7" fill="#E53935" /><circle cx="-6" cy="-6" r="4" fill="#FAF7F0" stroke="#7F0000" stroke-width="1" /><circle cx="6" cy="-6" r="4" fill="#FAF7F0" stroke="#7F0000" stroke-width="1" />
+      </g>
+      <g transform="translate(0, 320)">
+        <circle cx="0" cy="0" r="6" fill="#E53935" /><circle cx="-5" cy="-5" r="3.5" fill="#FAF7F0" /><circle cx="5" cy="-5" r="3.5" fill="#FAF7F0" />
+      </g>
+      <g transform="translate(0, 480)">
+        <circle cx="0" cy="0" r="7" fill="#E53935" /><circle cx="-6" cy="-6" r="4" fill="#FAF7F0" /><circle cx="6" cy="-6" r="4" fill="#FAF7F0" />
+      </g>
+
+      <text x="0" y="570" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#244B5C" text-anchor="middle">
+        ✓ QUA KÊNH AQUAPORIN
+      </text>
+      <text x="0" y="590" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="500" fill="#514C44" text-anchor="middle">
+        Tốc độ nhanh, chọn lọc
+      </text>
+    </g>
+
+    <!-- ==================== LANE 3: ION (Na+, K+, Cl-) (ION CHANNEL) ==================== -->
+    <g transform="translate(675, 0)">
+      <rect x="-85" y="50" width="170" height="32" rx="8" fill="#F7E7CD" />
+      <text x="0" y="71" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#8A551A" text-anchor="middle">
+        Ion (Na⁺, K⁺, Cl⁻)
+      </text>
+
+      <!-- Ion Channel Graphic -->
+      <g transform="translate(0, 320)" filter="url(#s7_shadowBox)">
+        <path d="M -42,-125 C -48,-60 -48,60 -42,125 C -24,125 -18,60 -20,0 C -18,-60 -24,-125 -42,-125 Z" fill="url(#s7_channelGrad)" stroke="#37276B" stroke-width="2" />
+        <path d="M 42,-125 C 48,-60 48,60 42,125 C 24,125 18,60 20,0 C 18,-60 24,-125 42,-125 Z" fill="url(#s7_channelGrad)" stroke="#37276B" stroke-width="2" />
+        <text x="0" y="4" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#FFFFFF" text-anchor="middle">Kênh Ion</text>
+      </g>
+
+      <!-- Ion path passing through channel -->
+      <path d="M 0,95 L 0,520" fill="none" stroke="#7B68B8" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 4" />
+      <polygon points="0,535 -6,515 6,515" fill="#7B68B8" />
+
+      <!-- Sodium Ion Na+ -->
+      <g transform="translate(0, 130)">
+        <circle cx="0" cy="0" r="10" fill="#F57C00" stroke="#E65100" stroke-width="1.5" />
+        <text x="0" y="4" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#FFFFFF" text-anchor="middle">Na⁺</text>
+      </g>
+      <g transform="translate(0, 320)">
+        <circle cx="0" cy="0" r="9" fill="#F57C00" stroke="#E65100" stroke-width="1.5" />
+        <text x="0" y="3" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="800" fill="#FFFFFF" text-anchor="middle">Na⁺</text>
+      </g>
+      <g transform="translate(0, 480)">
+        <circle cx="0" cy="0" r="10" fill="#F57C00" stroke="#E65100" stroke-width="1.5" />
+        <text x="0" y="4" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#FFFFFF" text-anchor="middle">Na⁺</text>
+      </g>
+
+      <text x="0" y="570" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#7B68B8" text-anchor="middle">
+        ✓ QUA KÊNH ION RIÊNG
+      </text>
+      <text x="0" y="590" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="500" fill="#514C44" text-anchor="middle">
+        Không tự qua lõi kị nước
+      </text>
+    </g>
+
+    <!-- ==================== LANE 4: LARGE POLAR (GLUCOSE) (BLOCKED DIRECTLY) ==================== -->
+    <g transform="translate(935, 0)">
+      <rect x="-85" y="50" width="170" height="32" rx="8" fill="#F3E2D6" />
+      <text x="0" y="71" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#8C2C15" text-anchor="middle">
+        Glucose (Phân tử lớn)
+      </text>
+
+      <!-- Path showing BLOCKED bounce off -->
+      <path d="M 0,95 L 0,195 Q 0,225 35,210" fill="none" stroke="#C15F3C" stroke-width="3" stroke-linecap="round" />
+      <polygon points="45,205 32,200 36,215" fill="#C15F3C" />
+
+      <!-- Big Glucose Ring Molecule -->
+      <g transform="translate(0, 140)">
+        <!-- Hexagon -->
+        <polygon points="0,-15 -14,-7 -14,10 0,18 14,10 14,-7" fill="#E8A24A" stroke="#8A551A" stroke-width="2" />
+        <text x="0" y="4" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="800" fill="#FFFFFF" text-anchor="middle">Glu</text>
+      </g>
+
+      <!-- Blocked X Icon -->
+      <g transform="translate(0, 240)">
+        <circle cx="0" cy="0" r="16" fill="#C15F3C" />
+        <path d="M -6,-6 L 6,6 M 6,-6 L -6,6" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" />
+      </g>
+
+      <text x="0" y="570" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#C15F3C" text-anchor="middle">
+        ✗ BỊ CHẶN LẠI
+      </text>
+      <text x="0" y="590" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="500" fill="#514C44" text-anchor="middle">
+        Cần protein mang đặc hiệu
+      </text>
+    </g>
+  </g>
+</svg>
+          </div>
+          <div class="visual-toolbar">
+            <span style="font-size:0.86rem; font-weight:700; color:var(--ink-2);"><i class="ti ti-flask"></i> Thử nghiệm chất qua màng:</span>
+            <button class="tab-btn" id="btnTestO2" onclick="testParticleTransport('o2')">
+              <i class="ti ti-wind"></i> O₂ / CO₂
+            </button>
+            <button class="tab-btn" id="btnTestH2O" onclick="testParticleTransport('h2o')">
+              <i class="ti ti-droplet"></i> Nước (H₂O)
+            </button>
+            <button class="tab-btn" id="btnTestIon" onclick="testParticleTransport('ion')">
+              <i class="ti ti-bolt"></i> Ion Na⁺
+            </button>
+            <button class="tab-btn" id="btnTestGlu" onclick="testParticleTransport('glu')">
+              <i class="ti ti-cube"></i> Glucose
+            </button>
+          </div>
+        </div>
+
+        <div class="pedagogy-panel">
+          <div class="lecture-box">
+            <div class="lecture-box-title"><i class="ti ti-book-2"></i> Kiến thức khoa học</div>
+            <div class="lecture-box-content">
+              Màng có 4 chức năng lớn: ngăn cách tế bào chất, <strong>kiểm soát các chất ra vào (tính thấm chọn lọc)</strong>, tiếp nhận thông tin và quy định hình dạng tế bào. Màng chỉ cho các chất nhất định đi qua theo nhu cầu sinh học.
+            </div>
+          </div>
+
+          <div class="guide-box">
+            <i class="ti ti-info-circle"></i>
+            <span>Thử nghiệm 4 loại chất bên trái, sau đó chọn câu trả lời đúng để hoàn thành bài học.</span>
+          </div>
+
+          <div class="task-card">
+            <div class="question-prompt">
+              Màng tế bào có "thấm chọn lọc" nghĩa là gì?
+            </div>
+            <div class="options-group" id="optionsGroupS07">
+              <div class="quiz-option" onclick="selectOption(7, 'A', this)">
+                <div class="option-indicator">A</div>
+                <span>Cho một số chất nhất định đi qua, không cho mọi chất đi qua tự do</span>
+              </div>
+              <div class="quiz-option" onclick="selectOption(7, 'B', this)">
+                <div class="option-indicator">B</div>
+                <span>Hoàn toàn không cho bất kỳ chất nào đi qua</span>
+              </div>
+              <div class="quiz-option" onclick="selectOption(7, 'C', this)">
+                <div class="option-indicator">C</div>
+                <span>Cho mọi chất tự do đi qua bất kể kích thước</span>
+              </div>
+            </div>
+
+            <button class="btn btn-submit" id="btnSubmitS07" disabled onclick="submitStage(7)">
+              <i class="ti ti-check"></i> TRẢ LỜI
+            </button>
+            <button class="btn btn-retry" id="btnRetryS07" onclick="retryStage(7)">
+              <i class="ti ti-rotate-clockwise"></i> LÀM LẠI
+            </button>
+
+            <div class="feedback-box" id="feedbackS07"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage-actions">
+        <button class="btn btn-secondary" onclick="goToStage(6)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+        <button class="btn btn-primary" id="btnNextS07" disabled onclick="openCompletionModal()">
+          <i class="ti ti-award"></i> HOÀN THÀNH BÀI HỌC
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       V10 COMPLETION MODAL & CANVAS CONFETTI (CHỐNG LỖI TỰ MỞ BAN ĐẦU)
+       ==================================================================== -->
+  <div class="congrats-overlay hidden" id="completionModal" role="dialog" aria-modal="true">
+    <div class="congrats-card">
+      <div class="trophy-badge">
+        <i class="ti ti-trophy"></i>
+      </div>
+      <h2 class="congrats-title">Xuất Sắc! Hoàn Thành Bài Học</h2>
+      <p class="congrats-desc">
+        Bạn đã nắm vững toàn bộ cấu trúc và chức năng của <strong>Tế bào chất</strong>, <strong>Bộ khung xương tế bào</strong>, <strong>Trung thể</strong> và <strong>Màng sinh chất khảm động</strong> theo chương trình Sinh học 10.
+      </p>
+      <div style="display:flex; gap:12px; width:100%; justify-content:center; margin-top:8px;">
+        <button class="btn btn-secondary" onclick="reviewLesson()">
+          <i class="ti ti-reload"></i> Xem lại bài
+        </button>
+        <button class="btn btn-primary" onclick="closeCompletionModal()">
+          <i class="ti ti-check"></i> Đóng thông báo
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="confettiCanvas" class="hidden"></canvas>
+
+  <!-- ====================================================================
+     JAVASCRIPT RUNTIME LOGIC & LMS INTEGRATION
+     ==================================================================== -->
+  <script>
+  /* LMS State Tracker */
+  window.lmsState = {
+    moduleId: "SH10_B08_M04",
+    currentStage: 1,
+    stagesCompleted: {
+      s1: false,
+      s2: false,
+      s3: false,
+      s4: false,
+      s5: false,
+      s6: false,
+      s7: false
+    },
+    selectedAnswers: {},
+    stageExplored: {
+      s1: false,
+      s2: false,
+      s3: false,
+      s4: false,
+      s5: false,
+      s6: false,
+      s7: false
+    },
+    attempts: { s1:0, s2:0, s3:0, s4:0, s5:0, s6:0, s7:0 }
+  };
+
+  /* Auto-height reporting for parent iframe */
+  function reportHeight() {
+    try {
+      const height = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight,
+        document.body.offsetHeight
+      );
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ type: 'SET_HEIGHT', height: height }, '*');
+      }
+    } catch (e) {
+      // Cross-origin safety fallback
+    }
+  }
+
+  window.addEventListener('load', () => {
+    reportHeight();
+  });
+  window.addEventListener('resize', reportHeight);
+
+  /* Navigation between stages */
+  function goToStage(stageNumber) {
+    if (stageNumber < 1 || stageNumber > 7) return;
+    
+    document.querySelectorAll('.stage-section').forEach(sec => {
+      sec.classList.remove('active');
+    });
+
+    const targetSec = document.getElementById(`stage${stageNumber}`);
+    if (targetSec) {
+      targetSec.classList.add('active');
+      window.lmsState.currentStage = stageNumber;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      reportHeight();
+    }
+  }
+
+  /* Single Choice Selection Logic */
+  function selectOption(stage, choice, el) {
+    const group = document.getElementById(`optionsGroupS0${stage}`);
+    if (!group) return;
+
+    // Remove selected state from siblings
+    group.querySelectorAll('.quiz-option').forEach(opt => {
+      opt.classList.remove('selected');
+    });
+
+    el.classList.add('selected');
+    window.lmsState.selectedAnswers[`s${stage}`] = choice;
+
+    // Enable Submit button
+    const submitBtn = document.getElementById(`btnSubmitS0${stage}`);
+    if (submitBtn) {
+      submitBtn.disabled = false;
+    }
+  }
+
+  /* Evaluation & Feedback Logic for all Stages */
+  function submitStage(stage) {
+    const selected = window.lmsState.selectedAnswers[`s${stage}`];
+    const submitBtn = document.getElementById(`btnSubmitS0${stage}`);
+    const retryBtn = document.getElementById(`btnRetryS0${stage}`);
+    const nextBtn = document.getElementById(`btnNextS0${stage}`);
+    const feedbackBox = document.getElementById(`feedbackS0${stage}`);
+    const group = document.getElementById(`optionsGroupS0${stage}`);
+
+    window.lmsState.attempts[`s${stage}`] = (window.lmsState.attempts[`s${stage}`] || 0) + 1;
+
+    let isCorrect = false;
+    let feedbackHtml = '';
+
+    if (stage === 1) {
+      isCorrect = (selected === 'A');
+      if (isCorrect) {
+        feedbackHtml = '<i class="ti ti-circle-check"></i><span><strong>Chính xác!</strong> Bộ khung xương tế bào được ví giống như <strong>bộ xương</strong> của cơ thể người vì vai trò nâng đỡ, định hình và bảo vệ các bào quan.</span>';
+      } else {
+        feedbackHtml = '<i class="ti ti-alert-triangle"></i><span><strong>Không đúng:</strong> SGK ví bộ khung xương tế bào giống <strong>BỘ XƯƠNG</strong> của cơ thể người vì vai trò nâng đỡ và duy trì hình dạng, không phải hệ tuần hoàn hay thần kinh.</span>';
+      }
+    } else if (stage === 2) {
+      isCorrect = (selected === 'A');
+      if (isCorrect) {
+        feedbackHtml = '<i class="ti ti-circle-check"></i><span><strong>Chính xác!</strong> Tổn thương khung xương làm hồng cầu mất hình dạng đĩa lõm hai mặt tối ưu, dẫn đến <strong>giảm khả năng vận chuyển oxygen</strong>.</span>';
+      } else {
+        feedbackHtml = '<i class="ti ti-alert-triangle"></i><span><strong>Không đúng:</strong> Khung xương neo giữ màng giúp duy trì hình đĩa lõm. Tổn thương khung xương làm biến dạng hồng cầu và <strong>giảm vận chuyển oxygen</strong>, không liên quan trực tiếp đến tổng hợp protein.</span>';
+      }
+    } else if (stage === 3) {
+      isCorrect = (selected === 'A');
+      if (isCorrect) {
+        feedbackHtml = '<i class="ti ti-circle-check"></i><span><strong>Chính xác!</strong> Tế bào thực vật bậc cao không có trung thể chứa cặp trung tử, nhưng vẫn có trung tâm tổ chức vi ống để tạo thoi phân bào.</span>';
+      } else {
+        feedbackHtml = '<i class="ti ti-alert-triangle"></i><span><strong>Không đúng:</strong> Trung thể chứa cặp trung tử là cấu trúc đặc trưng ở tế bào động vật; thực vật bậc cao không có trung tử nhưng <strong>vẫn có tổ chức vi ống</strong> tạo thoi phân bào.</span>';
+      }
+    } else if (stage === 4) {
+      isCorrect = (selected === 'A');
+      if (isCorrect) {
+        feedbackHtml = '<i class="ti ti-circle-check"></i><span><strong>Chính xác!</strong> Bản chất của mô hình khảm động là phospholipid và protein luôn di chuyển ngang trong cùng một lớp, không cố định tuyệt đối.</span>';
+      } else {
+        feedbackHtml = '<i class="ti ti-alert-triangle"></i><span><strong>Không đúng:</strong> Mô hình có tên là "khảm ĐỘNG" chính vì phospholipid và protein liên tục dịch chuyển ngang trong lớp màng, giúp tế bào mềm dẻo và dễ biến dạng.</span>';
+      }
+    } else if (stage === 5) {
+      isCorrect = (selected === 'A');
+      if (isCorrect) {
+        feedbackHtml = '<i class="ti ti-circle-check"></i><span><strong>Chính xác!</strong> Acid béo không no có các nếp gấp kink ngăn các phân tử nén chặt lại, giúp màng duy trì tính linh hoạt trong nước lạnh.</span>';
+      } else {
+        feedbackHtml = '<i class="ti ti-alert-triangle"></i><span><strong>Không đúng:</strong> Ở nhiệt độ thấp, acid béo no dễ khiến màng bị đông cứng và mất tính linh hoạt. Sinh vật vùng lạnh tăng acid béo <strong>không no</strong> để chống đông.</span>';
+      }
+    } else if (stage === 6) {
+      isCorrect = (matchedCount === 4);
+      if (isCorrect) {
+        feedbackHtml = '<i class="ti ti-circle-check"></i><span><strong>Chính xác!</strong> Bạn đã ghép đúng cả 4 chức năng cốt lõi của protein màng: Vận chuyển, Xúc tác enzyme, Thụ thể và Neo giữ khung xương.</span>';
+      } else {
+        feedbackHtml = '<i class="ti ti-alert-triangle"></i><span><strong>Chưa đúng:</strong> Vui lòng xem lại mô tả và ghép hoàn chỉnh cả 4 cặp chức năng.</span>';
+      }
+    } else if (stage === 7) {
+      isCorrect = (selected === 'A');
+      if (isCorrect) {
+        feedbackHtml = '<i class="ti ti-circle-check"></i><span><strong>Chính xác!</strong> "Thấm chọn lọc" nghĩa là màng cho một số chất nhất định đi qua theo nhu cầu và kiểm soát chặt chẽ, không phải màng kín hoàn toàn.</span>';
+      } else {
+        feedbackHtml = '<i class="ti ti-alert-triangle"></i><span><strong>Không đúng:</strong> "Thấm chọn lọc" là màng có cho chất đi qua (phân tử kị nước nhỏ, nước qua aquaporin, ion qua kênh) nhưng có kiểm soát chọn lọc chặt chẽ.</span>';
+      }
+    }
+
+    // Render feedback
+    if (feedbackBox) {
+      feedbackBox.innerHTML = feedbackHtml;
+      feedbackBox.className = `feedback-box active-feedback ${isCorrect ? 'feedback-correct' : 'feedback-wrong'}`;
+    }
+
+    if (isCorrect) {
+      window.lmsState.stagesCompleted[`s${stage}`] = true;
+      if (submitBtn) submitBtn.disabled = true;
+      if (nextBtn) nextBtn.disabled = false;
+      if (retryBtn) retryBtn.classList.remove('active-retry');
+      
+      // Lock options
+      if (group) {
+        group.querySelectorAll('.quiz-option').forEach(opt => {
+          opt.classList.add('locked');
+          if (opt.classList.contains('selected')) {
+            opt.classList.add('correct-choice');
+          }
+        });
+      }
+    } else {
+      if (submitBtn) submitBtn.disabled = true;
+      if (retryBtn) retryBtn.classList.add('active-retry');
+      
+      if (group) {
+        group.querySelectorAll('.quiz-option').forEach(opt => {
+          if (opt.classList.contains('selected')) {
+            opt.classList.add('wrong-choice');
+          }
+        });
+      }
+    }
+
+    reportHeight();
+  }
+
+  function retryStage(stage) {
+    const retryBtn = document.getElementById(`btnRetryS0${stage}`);
+    const submitBtn = document.getElementById(`btnSubmitS0${stage}`);
+    const feedbackBox = document.getElementById(`feedbackS0${stage}`);
+    const group = document.getElementById(`optionsGroupS0${stage}`);
+
+    if (retryBtn) retryBtn.classList.remove('active-retry');
+    if (submitBtn) submitBtn.disabled = true;
+    if (feedbackBox) feedbackBox.className = 'feedback-box';
+
+    if (group) {
+      group.querySelectorAll('.quiz-option').forEach(opt => {
+        opt.classList.remove('selected', 'wrong-choice', 'correct-choice', 'locked');
+      });
+    }
+
+    if (stage === 6) {
+      resetMatchGame();
+    }
+
+    delete window.lmsState.selectedAnswers[`s${stage}`];
+    reportHeight();
+  }
+
+  /* Stage 1: Cytoskeleton Interactive Toggles */
+  let cytoskeletonHighlighted = false;
+  function toggleCytoskeletonHighlight() {
+    const mt = document.getElementById('s1_microtubules');
+    const ifil = document.getElementById('s1_intermediate-filaments');
+    const mf = document.getElementById('s1_microfilaments');
+    const btn = document.getElementById('btnToggleCytoskeletonS01');
+    cytoskeletonHighlighted = !cytoskeletonHighlighted;
+
+    if (cytoskeletonHighlighted) {
+      if (mt) { mt.style.stroke = '#10B981'; mt.style.strokeWidth = '6.5px'; mt.style.filter = 'drop-shadow(0 0 8px #10B981)'; }
+      if (ifil) { ifil.style.stroke = '#34D399'; ifil.style.strokeWidth = '4px'; ifil.style.filter = 'drop-shadow(0 0 6px #34D399)'; }
+      if (mf) { mf.style.stroke = '#F59E0B'; mf.style.strokeWidth = '3px'; mf.style.filter = 'drop-shadow(0 0 6px #F59E0B)'; }
+      btn.classList.add('active-action');
+      btn.innerHTML = '<i class="ti ti-check"></i> Đang làm nổi bật Mạng khung xương';
+    } else {
+      if (mt) { mt.style.stroke = '#13523B'; mt.style.strokeWidth = '4.5px'; mt.style.filter = 'none'; }
+      if (ifil) { ifil.style.stroke = '#2D8B6F'; ifil.style.strokeWidth = '2.6px'; ifil.style.filter = 'none'; }
+      if (mf) { mf.style.stroke = '#CE8A33'; mf.style.strokeWidth = '1.6px'; mf.style.filter = 'none'; }
+      btn.classList.remove('active-action');
+      btn.innerHTML = '<i class="ti ti-sparkles"></i> Làm nổi bật Bộ khung xương';
+    }
+  }
+
+  function showCytosolInfo() {
+    alert('Bào tương (Cytosol) là chất keo bán trong suốt, thành phần gồm 70-85% nước, protein hòa tan, đường, ion khoáng và các enzyme xúc tác hoạt động sống.');
+  }
+
+  /* Stage 2: Tab switcher & RBC morph */
+  function switchTabS02(tab) {
+    const tabFibers = document.getElementById('tabS02Fibers');
+    const tabRbc = document.getElementById('tabS02Rbc');
+    const viewFibers = document.getElementById('viewS02Fibers');
+    const viewRbc = document.getElementById('viewS02Rbc');
+
+    if (tab === 'fibers') {
+      tabFibers.classList.add('active');
+      tabRbc.classList.remove('active');
+      if (viewFibers) viewFibers.style.display = 'block';
+      if (viewRbc) viewRbc.style.display = 'none';
+    } else {
+      tabRbc.classList.add('active');
+      tabFibers.classList.remove('active');
+      if (viewFibers) viewFibers.style.display = 'none';
+      if (viewRbc) viewRbc.style.display = 'block';
+    }
+    reportHeight();
+  }
+
+  function toggleRbcMorph() {
+    const viewRbc = document.getElementById('viewS02Rbc');
+    if (viewRbc) {
+      viewRbc.style.filter = 'drop-shadow(0 0 16px rgba(193, 95, 60, 0.7))';
+      setTimeout(() => { viewRbc.style.filter = 'none'; }, 1500);
+    }
+  }
+
+  /* Stage 3: Centriole & Spindle Simulation */
+  function simulateSpindleApparatus() {
+    const btn = document.getElementById('btnSpindleS03');
+    const box = document.getElementById('mediaBoxS03');
+    box.style.filter = 'drop-shadow(0 0 18px rgba(232, 162, 74, 0.8))';
+    btn.innerHTML = '<i class="ti ti-check"></i> Đang tổ chức thoi phân bào...';
+    setTimeout(() => {
+      box.style.filter = 'none';
+      btn.innerHTML = '<i class="ti ti-vector-triangle"></i> Mô phỏng thoi phân bào từ trung thể';
+    }, 2000);
+  }
+
+  function highlightCentrioleAngle() {
+    alert('Hai trung tử luôn đặt vuông góc đúng ~90° để khi nhân đôi và di chuyển về hai cực tế bào sẽ định hướng phân cực thoi phân bào chính xác.');
+  }
+
+  /* Stage 4: Fluid Motion Simulation */
+  let isFluidMotionActive = false;
+  function toggleFluidMotion() {
+    const layer = document.getElementById('s4_phospholipid-layer');
+    const btn = document.getElementById('btnMotionS04');
+    isFluidMotionActive = !isFluidMotionActive;
+
+    if (isFluidMotionActive) {
+      btn.classList.add('active-action');
+      btn.innerHTML = '<i class="ti ti-player-pause"></i> Dừng dao động khảm động';
+      if (layer) {
+        layer.style.transition = 'transform 1.2s ease-in-out';
+        layer.style.transform = 'scaleX(1.01) translateX(-4px)';
+      }
+    } else {
+      btn.classList.remove('active-action');
+      btn.innerHTML = '<i class="ti ti-wave-sine"></i> Kích hoạt chuyển động khảm động';
+      if (layer) {
+        layer.style.transform = 'none';
+      }
+    }
+  }
+
+  function inspectCarbohydrates() {
+    alert('Các chuỗi carbohydrate (glycoprotein, glycolipid) CHỈ nằm ở mặt ngoài màng, đóng vai trò như các "ăng-ten" nhận diện tế bào cùng loài hoặc nhận biết tế bào lạ.');
+  }
+
+  /* Stage 5: Fatty acid & Cholesterol highlights */
+  function highlightKinkFattyAcids() {
+    alert('Liên kết đôi dạng cis (C=C) trong acid béo không no tạo nếp gấp cong (kink), ngăn cách các phân tử phospholipid không cho xếp sít nhau khi lạnh.');
+  }
+  function highlightCholesterolBuffer() {
+    alert('Cholesterol hoạt động như một "chất đệm nhiệt độ": Ở nhiệt độ cao nó hạn chế sự di động của phospholipid; ở nhiệt độ thấp nó ngăn phospholipid đóng băng sít nhau.');
+  }
+
+  /* Stage 6: Matching Game Logic */
+  let selectedSourceType = null;
+  let selectedSourceEl = null;
+  let matchedCount = 0;
+
+  function handleMatchSelect(index, type) {
+    if (document.getElementById(`source${index}`).classList.contains('matched')) return;
+
+    document.querySelectorAll('.match-card').forEach(c => c.classList.remove('selected-source'));
+    const sourceEl = document.getElementById(`source${index}`);
+    sourceEl.classList.add('selected-source');
+    selectedSourceType = type;
+    selectedSourceEl = sourceEl;
+  }
+
+  function handleMatchTarget(targetType) {
+    if (!selectedSourceType) return;
+    const targetEl = document.getElementById(`target-${targetType}`);
+    if (targetEl.classList.contains('matched')) return;
+
+    if (selectedSourceType === targetType) {
+      // Match correct
+      selectedSourceEl.classList.add('matched');
+      selectedSourceEl.classList.remove('selected-source');
+      targetEl.classList.add('matched');
+      matchedCount++;
+
+      selectedSourceType = null;
+      selectedSourceEl = null;
+
+      if (matchedCount === 4) {
+        const submitBtn = document.getElementById('btnSubmitS06');
+        if (submitBtn) submitBtn.disabled = false;
+      }
+    } else {
+      // Shake mismatch
+      targetEl.style.borderColor = 'var(--wrong)';
+      setTimeout(() => {
+        targetEl.style.borderColor = 'var(--paper-line-2)';
+      }, 400);
+    }
+  }
+
+  function resetMatchGame() {
+    selectedSourceType = null;
+    selectedSourceEl = null;
+    matchedCount = 0;
+    document.querySelectorAll('.match-card').forEach(c => {
+      c.classList.remove('matched', 'selected-source');
+      c.style.borderColor = 'var(--paper-line-2)';
+    });
+  }
+
+  function highlightProteinType(type) {
+    const img = document.getElementById('imgS06');
+    if (type === 'trans') {
+      alert('Protein xuyên màng: Xuyên qua cả hai lớp lipid, thò ra hai phía màng, chủ yếu làm kênh vận chuyển hoặc thụ thể.');
+    } else {
+      alert('Protein ngoại vi: Chỉ bám vào một phía bề mặt của màng (ngoài hoặc trong), thường liên kết với khung xương hoặc enzyme xúc tác.');
+    }
+  }
+
+  /* Stage 7: Particle Transport Test Simulation */
+  const testedParticles = new Set();
+  function testParticleTransport(substance) {
+    testedParticles.add(substance);
+    const btn = document.getElementById(`btnTest${substance.toUpperCase()}`);
+    if (btn) btn.classList.add('active');
+
+    if (substance === 'o2') {
+      alert('O2 và CO2 là các phân tử nhỏ không phân cực → Tự do khuếch tán trực tiếp xuyên qua lớp lipid kép.');
+    } else if (substance === 'h2o') {
+      alert('Phân tử nước (H2O) có cực → Một lượng nhỏ khuếch tán chậm qua lipid, nhưng phần lớn đi qua KÊNH AQUAPORIN chuyên dụng với tốc độ rất nhanh.');
+    } else if (substance === 'ion') {
+      alert('Ion Na+, K+, Cl- mang điện tích → Bị vùng kị nước của lớp lipid chặn lại hoàn toàn, bắt buộc phải đi qua KÊNH ION protein riêng.');
+    } else if (substance === 'glu') {
+      alert('Glucose là phân tử hữu cơ phân cực kích thước lớn → BỊ CHẶN LẠI ở màng, cần protein vận chuyển (carrier) đặc hiệu.');
+    }
+  }
+
+  /* Completion Modal & Confetti Engine */
+  function openCompletionModal() {
+    const modal = document.getElementById('completionModal');
+    if (modal) {
+      modal.classList.remove('hidden');
+      launchConfetti();
+    }
+  }
+
+  function closeCompletionModal() {
+    const modal = document.getElementById('completionModal');
+    if (modal) modal.classList.add('hidden');
+  }
+
+  function reviewLesson() {
+    closeCompletionModal();
+    goToStage(1);
+  }
+
+  /* Canvas Confetti Fireworks Engine */
+  function launchConfetti() {
+    const canvas = document.getElementById('confettiCanvas');
+    if (!canvas) return;
+    canvas.classList.remove('hidden');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const pieces = [];
+    const colors = ['#2D8B6F', '#3CA57A', '#E8A24A', '#CE8A33', '#7B68B8', '#0284C7', '#C15F3C'];
+
+    for (let i = 0; i < 90; i++) {
+      pieces.push({
+        x: canvas.width / 2,
+        y: canvas.height / 2,
+        vx: (Math.random() - 0.5) * 16,
+        vy: (Math.random() - 0.7) * 18,
+        size: Math.random() * 8 + 6,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rotation: Math.random() * 360,
+        rSpeed: (Math.random() - 0.5) * 8
+      });
+    }
+
+    let frames = 0;
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pieces.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.45; // gravity
+        p.rotation += p.rSpeed;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+        ctx.restore();
+      });
+
+      frames++;
+      if (frames < 140) {
+        requestAnimationFrame(animate);
+      } else {
+        canvas.classList.add('hidden');
+      }
+    }
+    animate();
+  }
+  </script>
+</body>
+</html>
