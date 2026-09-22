@@ -1,0 +1,2698 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SH10_B09_M01 - Thực hành: Quan sát tế bào nhân sơ (vi khuẩn)</title>
+
+  <!-- Athena LMS Manifest -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": "Thực hành: Quan sát tế bào nhân sơ (vi khuẩn)",
+    "description": "Virtual Lab thực hành làm tiêu bản nhuộm đơn và quan sát hình dạng, kích thước tế bào vi khuẩn dưới kính hiển vi quang học.",
+    "learningResourceType": "Interactive Simulation",
+    "educationalLevel": "Lớp 10",
+    "inLanguage": "vi",
+    "isPartOf": {
+      "@type": "Course",
+      "name": "Sinh học 10 - Kết nối tri thức"
+    }
+  }
+  </script>
+
+  <!-- Fonts: Be Vietnam Pro & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Tabler Icons Webfont -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css">
+
+  <style>
+    /* ==========================================================================
+       DESIGN TOKENS & CHUẨN THIẾT KẾ V10 - TOM HAUGOMAT FLAT
+       ========================================================================== */
+    :root {
+      /* Bảng màu Neutrals */
+      --cream: #FAF7F0;
+      --cream-2: #F0EADD;
+      --cream-3: #E7DECC;
+      --paper-line: #E5DECF;
+      --paper-line-2: #D6CCB6;
+      --ink: #1A1A1A;
+      --ink-2: #514C44;
+      --ink-3: #7C756A;
+      --ink-faint: #ABA396;
+
+      /* Bảng màu Jade chính */
+      --jade: #3CA57A;
+      --jade-deep: #2D8B6F;
+      --jade-dark: #14432F;
+      --jade-text: #1B5E48;
+      --jade-soft: #A9D0BE;
+      --jade-pale: #DCEAE1;
+
+      /* Bảng màu Sage */
+      --sage: #A8C9B8;
+      --sage-deep: #7CA792;
+      --sage-text: #46685A;
+      --sage-pale: #E1ECE4;
+
+      /* Điểm nhấn & Khoa học */
+      --accent: #E8A24A;
+      --accent-deep: #CE8A33;
+      --accent-pale: #F7E7CD;
+      --methylene-blue: #1D4ED8;
+      --methylene-pale: #DBEAFE;
+
+      /* Phản hồi trạng thái */
+      --correct: #2D8B6F;
+      --correct-bg: #DCEAE1;
+      --wrong: #C15F3C;
+      --wrong-bg: #F3E2D6;
+      --warning: #C58A2E;
+      --warning-bg: #F5E7CB;
+      --info: #4E7F92;
+      --info-bg: #DCE7EB;
+
+      /* Bo góc & Bóng đổ */
+      --radius: 12px;
+      --radius-lg: 16px;
+      --radius-sm: 8px;
+      --shadow: 0 4px 14px rgba(45, 139, 111, 0.10);
+      --shadow-sm: 0 2px 6px rgba(26, 26, 26, 0.05);
+      --lesson-width: 1200px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.65;
+      padding: 20px clamp(12px, 2.5vw, 32px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      overflow-x: hidden;
+    }
+
+    button { font: inherit; cursor: pointer; border: none; }
+    button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    /* ẨN TUYỆT ĐỐI HEADER BANNER & STEPPER THEO CHUẨN V10 */
+    header,
+    .header-banner,
+    .progress-nav-container,
+    .progress-nav,
+    .stepper-nav,
+    .stepper-bar,
+    .step-nav-bar {
+      display: none !important;
+    }
+
+    /* ẨN MODAL HOÀN THÀNH BAN ĐẦU - CHỐNG TỰ MỞ KHI VỪA TẢI TRANG */
+    .hidden { display: none !important; }
+    .congrats-overlay.hidden,
+    .modal-backdrop.hidden,
+    #completionModal.hidden {
+      display: none !important;
+    }
+
+    .app {
+      width: 100%;
+      max-width: var(--lesson-width);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* STAGE CARD CHUẨN */
+    .stage-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--paper-line);
+      box-shadow: var(--shadow);
+      padding: clamp(20px, 3vw, 32px);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      animation: fadeIn 0.35s ease-out;
+    }
+
+    .stage-card.hidden-stage {
+      display: none !important;
+    }
+
+    .stage-title {
+      font-size: clamp(1.35rem, 2.5vw, 1.7rem);
+      font-weight: 800;
+      color: var(--jade-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .stage-title i { color: var(--jade-deep); font-size: 1.6rem; }
+
+    /* COLLAPSIBLE LEAD BOX (BỐI CẢNH KHOA HỌC) */
+    .lead-box {
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-left: 4px solid var(--jade);
+      border-radius: var(--radius);
+      margin-bottom: 8px;
+      box-shadow: 0 2px 8px rgba(26, 26, 26, 0.04);
+      overflow: hidden;
+      transition: box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .lead-box:hover {
+      box-shadow: 0 4px 14px rgba(26, 26, 26, 0.08);
+      border-color: var(--paper-line-2);
+    }
+    .lead-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      background: #FAFAF7;
+      cursor: pointer;
+      user-select: none;
+      border-bottom: 1px solid var(--paper-line);
+      transition: background-color 0.2s ease;
+    }
+    .lead-header:hover { background: #F0F4F1; }
+    .lead-title-wrapper { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--jade-dark); font-size: 0.95rem; }
+    .lead-title-wrapper i { color: var(--jade); }
+    .lead-toggle { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 600; color: var(--ink-2); }
+    .lead-toggle-icon { transition: transform 0.3s ease; color: var(--jade); font-size: 1rem; }
+    .lead-content {
+      max-height: 1000px;
+      opacity: 1;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, padding 0.35s ease;
+    }
+    .lead-box.collapsed .lead-header { border-bottom-color: transparent; }
+    .lead-box.collapsed .lead-toggle-icon { transform: rotate(180deg); }
+    .lead-box.collapsed .lead-content { max-height: 0 !important; opacity: 0; padding-top: 0; padding-bottom: 0; }
+    .lead-text {
+      padding: 14px 18px !important;
+      font-size: 1.02rem;
+      line-height: 1.68;
+      color: var(--ink-2);
+    }
+
+    /* SINGLE POINT OF INSTRUCTION (.guide-box) */
+    .guide-box {
+      background: var(--cream);
+      border: 1.5px solid var(--paper-line-2);
+      border-left: 4px solid var(--jade-deep);
+      border-radius: var(--radius);
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: var(--ink-2);
+      line-height: 1.55;
+    }
+    .guide-box i {
+      color: var(--jade-deep);
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+        /* SPLIT WORKSPACE */
+    .split-workspace {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+    @media (max-width: 960px) {
+      .split-workspace { grid-template-columns: 1fr; }
+    }
+    .visual-card,
+    .task-card {
+      min-width: 0;
+      width: 100%;
+    }
+
+    /* VISUAL CARD */
+    .visual-card {
+      background: var(--cream);
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+    }
+    .visual-media-box {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #FAF7F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .visual-media-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* OVERLAY 6 Ô HÌNH AN TOÀN CHỈ RÕ H1 - H6 TRÊN HÌNH ẢNH */
+    .safety-tiles-overlay {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 10px;
+      padding: 10px;
+      box-sizing: border-box;
+      pointer-events: none;
+      z-index: 5;
+    }
+    @media (max-width: 600px) {
+      .safety-tiles-overlay {
+        gap: 6px;
+        padding: 6px;
+      }
+    }
+    .safety-tile-hotspot {
+      position: relative;
+      border-radius: var(--radius-sm);
+      border: 2px solid transparent;
+      cursor: pointer;
+      pointer-events: auto;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 8px 10px;
+      box-sizing: border-box;
+    }
+    .safety-tile-hotspot:hover,
+    .safety-tile-hotspot.hovered {
+      border-color: rgba(60, 165, 122, 0.85);
+      background: rgba(60, 165, 122, 0.14);
+      box-shadow: 0 0 14px rgba(60, 165, 122, 0.25);
+    }
+    .safety-tile-hotspot.selected {
+      border-color: var(--jade);
+      background: rgba(60, 165, 122, 0.22);
+      box-shadow: 0 0 0 2px var(--jade), inset 0 0 14px rgba(60, 165, 122, 0.3);
+    }
+    .tile-badge {
+      background: #14432F;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 3px 9px;
+      border-radius: 6px;
+      border: 1.5px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+      letter-spacing: 0.5px;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+    .safety-tile-hotspot:hover .tile-badge,
+    .safety-tile-hotspot.hovered .tile-badge {
+      background: var(--jade);
+      transform: scale(1.08);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+    }
+    .safety-tile-hotspot.selected .tile-badge {
+      background: var(--jade);
+      color: #ffffff;
+      border-color: #ffffff;
+      box-shadow: 0 0 8px rgba(60, 165, 122, 0.6);
+    }
+    .tile-check-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--jade);
+      color: #ffffff;
+      border: 2px solid #ffffff;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+      user-select: none;
+    }
+    .safety-tile-hotspot.selected .tile-check-icon {
+      display: flex;
+    }
+    @media (max-width: 600px) {
+      .tile-badge {
+        font-size: 0.75rem;
+        padding: 2px 6px;
+      }
+      .tile-check-icon {
+        width: 20px;
+        height: 20px;
+        font-size: 0.75rem;
+      }
+    }
+
+    /* TASK CARD */
+    .task-card {
+      background: #fff;
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .task-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--jade-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* HÀNG NÚT ĐIỀU HƯỚNG (.controls-row) */
+    .controls-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--paper-line);
+    }
+    .btn-group-left, .btn-group-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      padding: 10px 22px;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    .btn-primary {
+      background: var(--jade);
+      color: #fff;
+    }
+    .btn-primary:hover:not(:disabled) {
+      background: var(--jade-deep);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 1.5px solid var(--paper-line-2);
+      color: var(--ink-2);
+    }
+    .btn-secondary:hover:not(:disabled) {
+      background: var(--cream-2);
+      border-color: var(--jade);
+    }
+
+    /* FEEDBACK BOX */
+    .feedback-box {
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.93rem;
+      line-height: 1.55;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      animation: fadeIn 0.2s ease-out;
+    }
+    .feedback-box i { font-size: 1.25rem; flex-shrink: 0; }
+    .feedback-box.ok {
+      background: var(--correct-bg);
+      border-left: 4px solid var(--correct);
+      color: var(--jade-text);
+    }
+    .feedback-box.ok i { color: var(--correct); }
+    .feedback-box.bad {
+      background: var(--wrong-bg);
+      border-left: 4px solid var(--wrong);
+      color: var(--ink-2);
+    }
+    .feedback-box.bad i { color: var(--wrong); }
+    .feedback-box.info {
+      background: var(--info-bg);
+      border-left: 4px solid var(--info);
+      color: var(--ink-2);
+    }
+    .feedback-box.info i { color: var(--info); }
+
+    /* ==========================================================================
+       STAGE 1: 6 THẺ AN TOÀN
+       ========================================================================== */
+    .safety-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .safety-item {
+      background: var(--cream);
+      border: 1.5px solid var(--paper-line-2);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .safety-item:hover {
+      border-color: var(--jade-soft);
+      background: #FAF9F5;
+    }
+    .safety-item.selected {
+      border-color: var(--jade);
+      background: var(--jade-pale);
+    }
+    .safety-item-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: var(--ink);
+    }
+    .safety-badge {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1.5px solid var(--paper-line-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--ink-2);
+      flex-shrink: 0;
+    }
+    .safety-item.selected .safety-badge {
+      background: var(--jade);
+      color: #fff;
+      border-color: var(--jade);
+    }
+    .safety-check-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      border: 1.5px solid var(--paper-line-2);
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: transparent;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+    .safety-item.selected .safety-check-icon {
+      background: var(--jade);
+      border-color: var(--jade);
+      color: #fff;
+    }
+
+    /* ==========================================================================
+       STAGE 2: KÉO THẢ PHÂN LOẠI 4 NHÓM
+       ========================================================================== */
+    .classification-overview-img {
+      width: 100%;
+      max-height: 220px;
+      object-fit: contain;
+      border-radius: var(--radius);
+      border: 1px solid var(--paper-line);
+      background: #FAF7F0;
+    }
+    .prep-drop-zones {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 700px) {
+      .prep-drop-zones { grid-template-columns: 1fr; }
+    }
+    .drop-zone {
+      background: #fff;
+      border: 2px dashed var(--paper-line-2);
+      border-radius: var(--radius);
+      padding: 12px;
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .drop-zone.drag-over {
+      border-color: var(--jade);
+      background: var(--jade-pale);
+    }
+    .drop-zone-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--jade-dark);
+      padding-bottom: 6px;
+      border-bottom: 1.5px solid var(--paper-line);
+    }
+    .drop-zone-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      flex: 1;
+    }
+    .prep-tray-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--ink-2);
+      margin-top: 8px;
+    }
+    .prep-tray {
+      background: var(--cream);
+      border: 1.5px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      min-height: 80px;
+    }
+    .drag-chip {
+      background: #fff;
+      border: 1.5px solid var(--paper-line-2);
+      border-radius: 99px;
+      padding: 6px 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ink-2);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: grab;
+      user-select: none;
+      transition: all 0.2s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .drag-chip:hover {
+      border-color: var(--jade);
+      color: var(--jade-dark);
+    }
+    .drag-chip.selected-source {
+      border-color: var(--jade);
+      background: var(--jade-pale);
+      box-shadow: 0 0 0 3px rgba(60, 165, 122, 0.25);
+    }
+    .drag-chip.locked-chip {
+      background: var(--jade-pale);
+      border-color: var(--jade);
+      color: var(--jade-text);
+      cursor: default;
+    }
+    .drag-chip.shake {
+      animation: shake 0.4s ease-in-out;
+    }
+
+    /* ==========================================================================
+       STAGE 3 & 4: MÔ PHỎNG CANVAS TẠO VẾT BÔI & NHUỘM
+       ========================================================================== */
+    .lab-interactive-view {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #FAF7F0;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--paper-line);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lab-canvas-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: auto;
+    }
+    .step-actions-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 10px;
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--paper-line);
+    }
+    .btn-step-action {
+      flex: 1;
+      min-width: 130px;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--paper-line-2);
+      background: var(--cream);
+      color: var(--ink-2);
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-step-action:hover:not(:disabled) {
+      border-color: var(--jade);
+      background: #fff;
+    }
+    .btn-step-action.active-step {
+      background: var(--jade);
+      border-color: var(--jade);
+      color: #fff;
+    }
+    .btn-step-action:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    .status-indicator-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      background: var(--cream-2);
+      color: var(--ink-2);
+      border: 1px solid var(--paper-line-2);
+    }
+    .status-indicator-badge.done {
+      background: var(--correct-bg);
+      color: var(--jade-text);
+      border-color: var(--jade);
+    }
+
+    /* ==========================================================================
+       STAGE 5: MÔ PHỎNG KÍNH HIỂN VI
+       ========================================================================== */
+    .microscope-workspace {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+    @media (max-width: 860px) {
+      .microscope-workspace { grid-template-columns: 1fr; }
+    }
+    .eyepiece-fov-container {
+      width: 100%;
+      max-width: 380px;
+      aspect-ratio: 1/1;
+      margin: 0 auto;
+      border-radius: 50%;
+      background: #1A1A1A;
+      box-shadow: inset 0 0 24px rgba(0,0,0,0.8), 0 8px 24px rgba(0,0,0,0.25);
+      position: relative;
+      overflow: hidden;
+      border: 8px solid #333;
+    }
+    .eyepiece-fov-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease, filter 0.25s ease;
+    }
+    .eyepiece-reticle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70px;
+      height: 70px;
+      border: 2px dashed rgba(255,255,255,0.7);
+      border-radius: 50%;
+      pointer-events: none;
+      transition: all 0.3s;
+    }
+    .eyepiece-reticle.locked-roi {
+      border-color: var(--jade);
+      background: rgba(60, 165, 122, 0.25);
+      border-style: solid;
+    }
+    .microscope-controls-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .objective-turret-selector {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .btn-objective {
+      padding: 12px;
+      border-radius: var(--radius);
+      border: 2px solid var(--paper-line-2);
+      background: var(--cream);
+      font-weight: 700;
+      color: var(--ink-2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+    .btn-objective.active {
+      border-color: var(--jade);
+      background: var(--jade-pale);
+      color: var(--jade-dark);
+    }
+    .d-pad-controls {
+      display: grid;
+      grid-template-columns: repeat(3, 46px);
+      grid-template-rows: repeat(3, 46px);
+      gap: 6px;
+      justify-content: center;
+      margin: 10px auto;
+    }
+    .d-btn {
+      background: var(--cream);
+      border: 1.5px solid var(--paper-line-2);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink-2);
+      font-size: 1.2rem;
+      transition: all 0.15s;
+    }
+    .d-btn:hover { background: #fff; border-color: var(--jade); color: var(--jade-dark); }
+    .focus-slider-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .focus-slider-row input[type="range"] {
+      accent-color: var(--jade);
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+       STAGE 6: ĐỐI CHIẾU HÌNH DẠNG VECTOR
+       ========================================================================== */
+    .morph-cards-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 700px) {
+      .morph-cards-row { grid-template-columns: 1fr; }
+    }
+    .morph-card {
+      background: var(--cream);
+      border: 2px solid var(--paper-line-2);
+      border-radius: var(--radius);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .morph-card:hover { border-color: var(--jade-soft); background: #fff; }
+    .morph-card.active-morph {
+      border-color: var(--jade);
+      background: var(--jade-pale);
+    }
+    .morph-card-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--jade-dark);
+    }
+    .quiz-options-col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .quiz-opt-btn {
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--paper-line-2);
+      background: #fff;
+      color: var(--ink);
+      font-size: 0.92rem;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
+    }
+    .quiz-opt-btn:hover { background: var(--cream); border-color: var(--jade-soft); }
+    .quiz-opt-btn.selected {
+      border-color: var(--jade);
+      background: var(--jade-pale);
+      color: var(--jade-text);
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       STAGE 7: PHIẾU THỰC HÀNH TỔNG HỢP & CANVAS VẼ
+       ========================================================================== */
+    .report-sheet-card {
+      background: #FFFFFF;
+      border: 2px solid var(--paper-line);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    }
+    .report-head-banner {
+      text-align: center;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--paper-line);
+    }
+    .report-main-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--jade-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .report-sub-title {
+      font-size: 0.95rem;
+      color: var(--ink-3);
+    }
+    .report-section {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .report-section-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--jade-deep);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .report-autofill-box {
+      background: var(--cream);
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 0.92rem;
+      color: var(--ink-2);
+      line-height: 1.6;
+    }
+    .report-obs-previews {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .obs-thumb-card {
+      background: var(--cream);
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      text-align: center;
+    }
+    .obs-thumb-img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 3px solid #333;
+      object-fit: cover;
+    }
+    .drawing-board-wrapper {
+      background: #FAFAF7;
+      border: 1.5px solid var(--paper-line-2);
+      border-radius: var(--radius);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .drawing-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .draw-canvas {
+      background: #fff;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-sm);
+      cursor: crosshair;
+      width: 100%;
+      height: 220px;
+      touch-action: none;
+    }
+    .cleanup-columns-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 760px) {
+      .cleanup-columns-grid { grid-template-columns: 1fr; }
+    }
+    .cleanup-box {
+      border: 2px dashed var(--paper-line-2);
+      border-radius: var(--radius);
+      padding: 12px;
+      min-height: 130px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .cleanup-box.danger-zone {
+      border-color: #F87171;
+      background: #FEF2F2;
+    }
+    .cleanup-box.danger-zone .cleanup-box-header {
+      color: #991B1B;
+    }
+
+    /* ==========================================================================
+       MODAL CHÚC MỪNG HOÀN THÀNH V10
+       ========================================================================== */
+    .congrats-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(5px);
+      z-index: 99999;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      animation: fadeIn 0.25s ease-out;
+    }
+    .congrats-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--jade);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.2);
+      padding: 36px 28px;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      animation: modalPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .congrats-icon-box {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--jade-pale);
+      color: var(--jade-deep);
+      font-size: 2.8rem;
+      display: grid;
+      place-items: center;
+      margin-bottom: 6px;
+    }
+    .congrats-title { font-size: 1.6rem; font-weight: 800; color: var(--jade-dark); }
+    .congrats-desc { font-size: 1rem; color: var(--ink-2); line-height: 1.6; }
+    .congrats-actions { display: flex; gap: 12px; margin-top: 10px; }
+
+    #confettiCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 100000;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes modalPop { from { opacity: 0; transform: scale(0.85); } to { opacity: 1; transform: scale(1); } }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ========================================================================
+       STAGE 1: AN TOÀN TRƯỚC THỰC HÀNH
+       ======================================================================== -->
+  <section class="stage-card" id="stage1">
+    <div class="stage-title">
+      <i class="ti ti-shield-check"></i>
+      <span>Màn 1: An toàn trước khi bắt đầu</span>
+    </div>
+
+    <!-- Bối cảnh khoa học Collapsible -->
+    <div class="lead-box" id="leadBoxS01">
+      <div class="lead-header" onclick="toggleLead('leadBoxS01')">
+        <div class="lead-title-wrapper">
+          <i class="ti ti-flask-2"></i>
+          <span>Bối cảnh khoa học</span>
+        </div>
+        <div class="lead-toggle">
+          <span class="lead-toggle-label">Thu gọn</span>
+          <i class="ti ti-chevron-up lead-toggle-icon"></i>
+        </div>
+      </div>
+      <div class="lead-content">
+        <p class="lead-text">Trong bài thực hành này, bạn sẽ thao tác với lam kính, thuốc nhuộm và đèn cồn. Trước khi bắt đầu, hãy xác định những cách làm giúp bảo đảm an toàn cho người thực hiện và giữ mẫu không bị hỏng.</p>
+      </div>
+    </div>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Quan sát 6 hình (H1 – H6). Chạm trực tiếp vào từng ô hình hoặc các thẻ bên phải để chọn cách làm an toàn, sau đó nhấn "KIỂM TRA".</span>
+    </div>
+
+    <div class="split-workspace">
+      <!-- Cột trái: Hình 6 tình huống -->
+      <div class="visual-card">
+        <div class="visual-media-box" id="s01MediaBox">
+          <img src="images/SH10-B09-M01-A01.jpg" alt="Bộ sáu tình huống an toàn phòng thí nghiệm">
+          <div class="safety-tiles-overlay">
+            <div class="safety-tile-hotspot" id="tileH1" onclick="toggleSafety(1)" onmouseenter="hoverSafety(1, true)" onmouseleave="hoverSafety(1, false)" title="Hình H1: Hơ lam nhanh trên ngọn lửa">
+              <span class="tile-badge">H1</span>
+              <span class="tile-check-icon"><i class="ti ti-check"></i></span>
+            </div>
+            <div class="safety-tile-hotspot" id="tileH2" onclick="toggleSafety(2)" onmouseenter="hoverSafety(2, true)" onmouseleave="hoverSafety(2, false)" title="Hình H2: Giữ lam sát ngọn lửa">
+              <span class="tile-badge">H2</span>
+              <span class="tile-check-icon"><i class="ti ti-check"></i></span>
+            </div>
+            <div class="safety-tile-hotspot" id="tileH3" onclick="toggleSafety(3)" onmouseenter="hoverSafety(3, true)" onmouseleave="hoverSafety(3, false)" title="Hình H3: Đặt chai thuốc nhuộm xa lửa và đậy nắp">
+              <span class="tile-badge">H3</span>
+              <span class="tile-check-icon"><i class="ti ti-check"></i></span>
+            </div>
+            <div class="safety-tile-hotspot" id="tileH4" onclick="toggleSafety(4)" onmouseenter="hoverSafety(4, true)" onmouseleave="hoverSafety(4, false)" title="Hình H4: Chạm tay trần vào lam nóng">
+              <span class="tile-badge">H4</span>
+              <span class="tile-check-icon"><i class="ti ti-check"></i></span>
+            </div>
+            <div class="safety-tile-hotspot" id="tileH5" onclick="toggleSafety(5)" onmouseenter="hoverSafety(5, true)" onmouseleave="hoverSafety(5, false)" title="Hình H5: Báo người phụ trách khi đổ thuốc nhuộm">
+              <span class="tile-badge">H5</span>
+              <span class="tile-check-icon"><i class="ti ti-check"></i></span>
+            </div>
+            <div class="safety-tile-hotspot" id="tileH6" onclick="toggleSafety(6)" onmouseenter="hoverSafety(6, true)" onmouseleave="hoverSafety(6, false)" title="Hình H6: Thu dọn và rửa tay bằng xà phòng">
+              <span class="tile-badge">H6</span>
+              <span class="tile-check-icon"><i class="ti ti-check"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cột phải: 6 thẻ lựa chọn H1..H6 -->
+      <div class="task-card">
+        <div class="task-title"><i class="ti ti-checkbox"></i> Chọn các thao tác bảo đảm an toàn:</div>
+        <div class="safety-cards-grid" id="safetyGridS01">
+          <div class="safety-item" onclick="toggleSafety(1)" onmouseenter="hoverSafety(1, true)" onmouseleave="hoverSafety(1, false)" data-idx="1">
+            <div class="safety-item-left">
+              <span class="safety-badge">H1</span>
+              <span>Dùng kẹp hơ lam nhanh 2–3 lượt trên cao ngọn lửa, mặt có mẫu hướng lên</span>
+            </div>
+            <div class="safety-check-icon"><i class="ti ti-check"></i></div>
+          </div>
+          <div class="safety-item" onclick="toggleSafety(2)" onmouseenter="hoverSafety(2, true)" onmouseleave="hoverSafety(2, false)" data-idx="2">
+            <div class="safety-item-left">
+              <span class="safety-badge">H2</span>
+              <span>Giữ lam kính đứng yên rất gần/sát ngọn lửa đèn cồn</span>
+            </div>
+            <div class="safety-check-icon"><i class="ti ti-check"></i></div>
+          </div>
+          <div class="safety-item" onclick="toggleSafety(3)" onmouseenter="hoverSafety(3, true)" onmouseleave="hoverSafety(3, false)" data-idx="3">
+            <div class="safety-item-left">
+              <span class="safety-badge">H3</span>
+              <span>Đặt chai xanh methylene xa nguồn lửa và đóng nắp sau khi dùng</span>
+            </div>
+            <div class="safety-check-icon"><i class="ti ti-check"></i></div>
+          </div>
+          <div class="safety-item" onclick="toggleSafety(4)" onmouseenter="hoverSafety(4, true)" onmouseleave="hoverSafety(4, false)" data-idx="4">
+            <div class="safety-item-left">
+              <span class="safety-badge">H4</span>
+              <span>Chạm tay trần trực tiếp vào phần lam kính vừa hơ nóng</span>
+            </div>
+            <div class="safety-check-icon"><i class="ti ti-check"></i></div>
+          </div>
+          <div class="safety-item" onclick="toggleSafety(5)" onmouseenter="hoverSafety(5, true)" onmouseleave="hoverSafety(5, false)" data-idx="5">
+            <div class="safety-item-left">
+              <span class="safety-badge">H5</span>
+              <span>Báo người phụ trách/giáo viên khi thuốc nhuộm bị đổ ra bàn</span>
+            </div>
+            <div class="safety-check-icon"><i class="ti ti-check"></i></div>
+          </div>
+          <div class="safety-item" onclick="toggleSafety(6)" onmouseenter="hoverSafety(6, true)" onmouseleave="hoverSafety(6, false)" data-idx="6">
+            <div class="safety-item-left">
+              <span class="safety-badge">H6</span>
+              <span>Thu dọn dụng cụ ngăn nắp và rửa tay sạch bằng xà phòng</span>
+            </div>
+            <div class="safety-check-icon"><i class="ti ti-check"></i></div>
+          </div>
+        </div>
+
+        <div class="feedback-box hidden" id="fbS01"></div>
+
+        <div class="controls-row">
+          <div class="btn-group-left"></div>
+          <div class="btn-group-right">
+            <button class="btn btn-primary" id="btnCheckS01" onclick="checkSafetyS01()"><i class="ti ti-check"></i> KIỂM TRA</button>
+            <button class="btn btn-secondary hidden" id="btnRetryS01" onclick="retrySafetyS01()"><i class="ti ti-rotate"></i> LÀM LẠI</button>
+            <button class="btn btn-primary hidden" id="btnNextS01" onclick="goToStage(2)">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       STAGE 2: MỤC TIÊU VÀ CHUẨN BỊ THÍ NGHIỆM
+       ======================================================================== -->
+  <section class="stage-card hidden-stage" id="stage2">
+    <div class="stage-title">
+      <i class="ti ti-clipboard-list"></i>
+      <span>Màn 2: Mục tiêu và chuẩn bị thí nghiệm</span>
+    </div>
+
+    <div class="lead-box" id="leadBoxS02">
+      <div class="lead-header" onclick="toggleLead('leadBoxS02')">
+        <div class="lead-title-wrapper">
+          <i class="ti ti-flask-2"></i>
+          <span>Bối cảnh khoa học</span>
+        </div>
+        <div class="lead-toggle">
+          <span class="lead-toggle-label">Thu gọn</span>
+          <i class="ti ti-chevron-up lead-toggle-icon"></i>
+        </div>
+      </div>
+      <div class="lead-content">
+        <p class="lead-text">Tế bào vi khuẩn rất nhỏ nên không thể quan sát bằng mắt thường. Trong bài thực hành này, bạn sẽ làm tiêu bản từ nước dưa muối, nhuộm mẫu và quan sát dưới kính hiển vi để nhận xét hình dạng, kích thước tương đối của tế bào vi khuẩn.</p>
+      </div>
+    </div>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Kéo từng thẻ hoặc chạm chọn thẻ trong khay rồi chạm vào đúng nhóm: Mẫu vật, Dụng cụ, Thiết bị hoặc Hóa chất.</span>
+    </div>
+
+    <img src="images/SH10-B09-M01-A02.jpg" alt="Bàn chuẩn bị dụng cụ thí nghiệm" class="classification-overview-img">
+
+    <!-- 4 nhóm đích -->
+    <div class="prep-drop-zones">
+      <div class="drop-zone" id="zone_sample" data-group="sample" onclick="handleZoneClick('sample')">
+        <div class="drop-zone-header">
+          <span><i class="ti ti-cup"></i> 1. Mẫu vật</span>
+          <span class="count-badge" id="count_sample">0/1</span>
+        </div>
+        <div class="drop-zone-items" id="items_sample"></div>
+      </div>
+      <div class="drop-zone" id="zone_tool" data-group="tool" onclick="handleZoneClick('tool')">
+        <div class="drop-zone-header">
+          <span><i class="ti ti-tools"></i> 2. Dụng cụ</span>
+          <span class="count-badge" id="count_tool">0/6</span>
+        </div>
+        <div class="drop-zone-items" id="items_tool"></div>
+      </div>
+      <div class="drop-zone" id="zone_device" data-group="device" onclick="handleZoneClick('device')">
+        <div class="drop-zone-header">
+          <span><i class="ti ti-microscope"></i> 3. Thiết bị</span>
+          <span class="count-badge" id="count_device">0/2</span>
+        </div>
+        <div class="drop-zone-items" id="items_device"></div>
+      </div>
+      <div class="drop-zone" id="zone_chem" data-group="chem" onclick="handleZoneClick('chem')">
+        <div class="drop-zone-header">
+          <span><i class="ti ti-flask"></i> 4. Hóa chất</span>
+          <span class="count-badge" id="count_chem">0/2</span>
+        </div>
+        <div class="drop-zone-items" id="items_chem"></div>
+      </div>
+    </div>
+
+    <!-- Khay thẻ nguồn -->
+    <div class="prep-tray-title"><i class="ti ti-box"></i> Khay thẻ chuẩn bị (chọn hoặc kéo vào 4 nhóm trên):</div>
+    <div class="prep-tray" id="prepTray"></div>
+
+    <div class="feedback-box hidden" id="fbS02"></div>
+
+    <div class="controls-row">
+      <div class="btn-group-left">
+        <button class="btn btn-secondary" onclick="goToStage(1)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      </div>
+      <div class="btn-group-right">
+        <button class="btn btn-primary" id="btnNextS02" disabled onclick="goToStage(3)">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       STAGE 3: TẠO VẾT BÔI VÀ CỐ ĐỊNH MẪU
+       ======================================================================== -->
+  <section class="stage-card hidden-stage" id="stage3">
+    <div class="stage-title">
+      <i class="ti ti-droplet"></i>
+      <span>Màn 3: Tạo vết bôi và cố định mẫu</span>
+    </div>
+
+    <div class="lead-box" id="leadBoxS03">
+      <div class="lead-header" onclick="toggleLead('leadBoxS03')">
+        <div class="lead-title-wrapper">
+          <i class="ti ti-flask-2"></i>
+          <span>Bối cảnh khoa học</span>
+        </div>
+        <div class="lead-toggle">
+          <span class="lead-toggle-label">Thu gọn</span>
+          <i class="ti ti-chevron-up lead-toggle-icon"></i>
+        </div>
+      </div>
+      <div class="lead-content">
+        <p class="lead-text">Vết bôi cần mỏng để các tế bào ít chồng lên nhau và dễ quan sát. Sau khi dàn mỏng, bạn có thể hong khô trong không khí hoặc hơ nhẹ 2–3 lượt nhanh phía trên cao của ngọn lửa. Không hơ quá nóng vì hình dạng vi sinh vật có thể bị biến đổi.</p>
+      </div>
+    </div>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Thực hiện lần lượt 4 bước: Nhỏ nước cất $ightarrow$ Nhỏ mẫu dưa $ightarrow$ Dàn mỏng vệt bôi $ightarrow$ Làm khô và cố định mẫu.</span>
+    </div>
+
+    <!-- Khung Canvas tương tác trực tiếp -->
+    <div class="lab-interactive-view" id="s03CanvasContainer">
+      <img src="images/SH10-B09-M01-A03.jpg" alt="Master phiến kính" id="bgSlideS03" style="width:100%;height:100%;object-fit:contain;">
+      <canvas class="lab-canvas-layer" id="canvasS03"></canvas>
+    </div>
+
+    <!-- Thanh công cụ các bước -->
+    <div class="step-actions-toolbar">
+      <button class="btn-step-action active-step" id="btnS03_Step1" onclick="execS03Step1()">
+        <i class="ti ti-droplet"></i> 1. Nhỏ nước cất
+      </button>
+      <button class="btn-step-action" id="btnS03_Step2" disabled onclick="execS03Step2()">
+        <i class="ti ti-droplet-filled"></i> 2. Nhỏ mẫu dưa
+      </button>
+      <button class="btn-step-action" id="btnS03_Step3" disabled onclick="execS03Step3()">
+        <i class="ti ti-pencil"></i> 3. Dàn mỏng vệt bôi
+      </button>
+      <button class="btn-step-action" id="btnS03_Step4A" disabled onclick="execS03Fixing('air')">
+        <i class="ti ti-wind"></i> 4A. Hong khô
+      </button>
+      <button class="btn-step-action" id="btnS03_Step4B" disabled onclick="execS03Fixing('flame')">
+        <i class="ti ti-flame"></i> 4B. Hơ ngọn lửa (3 lượt)
+      </button>
+    </div>
+
+    <div class="feedback-box hidden" id="fbS03"></div>
+
+    <div class="controls-row">
+      <div class="btn-group-left">
+        <button class="btn btn-secondary" onclick="goToStage(2)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      </div>
+      <div class="btn-group-right">
+        <button class="btn btn-primary" id="btnNextS03" disabled onclick="goToStage(4)">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       STAGE 4: NHUỘM XANH METHYLENE VÀ RỬA NHẸ
+       ======================================================================== -->
+  <section class="stage-card hidden-stage" id="stage4">
+    <div class="stage-title">
+      <i class="ti ti-color-swatch"></i>
+      <span>Màn 4: Nhuộm xanh methylene và rửa nhẹ</span>
+    </div>
+
+    <div class="lead-box" id="leadBoxS04">
+      <div class="lead-header" onclick="toggleLead('leadBoxS04')">
+        <div class="lead-title-wrapper">
+          <i class="ti ti-flask-2"></i>
+          <span>Bối cảnh khoa học</span>
+        </div>
+        <div class="lead-toggle">
+          <span class="lead-toggle-label">Thu gọn</span>
+          <i class="ti ti-chevron-up lead-toggle-icon"></i>
+        </div>
+      </div>
+      <div class="lead-content">
+        <p class="lead-text">Nhỏ 1–2 giọt xanh methylene lên vết bôi đã khô và để yên 1–2 phút. Sau đó nghiêng lam, rửa nhẹ từ một đầu để nước chảy qua vết bôi. Dừng khi nước rửa không còn màu thuốc nhuộm rồi thấm hoặc hong khô.</p>
+      </div>
+    </div>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Nhỏ xanh methylene $ightarrow$ Chờ ngấm 1–2 phút $ightarrow$ Nghiêng lam và bấm Rửa nhẹ $ightarrow$ Làm khô tiêu bản.</span>
+    </div>
+
+    <!-- Khung Canvas tương tác Stage 4 -->
+    <div class="lab-interactive-view" id="s04CanvasContainer">
+      <img src="images/SH10-B09-M01-A03.jpg" alt="Master phiến kính" id="bgSlideS04" style="width:100%;height:100%;object-fit:contain;">
+      <canvas class="lab-canvas-layer" id="canvasS04"></canvas>
+    </div>
+
+    <!-- Thanh công cụ Stage 4 -->
+    <div class="step-actions-toolbar">
+      <button class="btn-step-action active-step" id="btnS04_Dye" onclick="execS04Dye()">
+        <i class="ti ti-droplet"></i> 1. Nhỏ xanh methylene
+      </button>
+      <button class="btn-step-action" id="btnS04_Timer" disabled onclick="execS04Timer()">
+        <i class="ti ti-clock"></i> 2. Bắt đầu tính giờ (1–2 phút)
+      </button>
+      <button class="btn-step-action" id="btnS04_Wash" disabled onclick="execS04Wash()">
+        <i class="ti ti-wash"></i> 3. Giữ để rửa nhẹ bằng nước
+      </button>
+      <button class="btn-step-action" id="btnS04_Dry" disabled onclick="execS04Dry()">
+        <i class="ti ti-file-text"></i> 4. Thấm khô tiêu bản
+      </button>
+    </div>
+
+    <div class="feedback-box hidden" id="fbS04"></div>
+
+    <div class="controls-row">
+      <div class="btn-group-left">
+        <button class="btn btn-secondary" onclick="goToStage(3)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      </div>
+      <div class="btn-group-right">
+        <button class="btn btn-primary" id="btnNextS04" disabled onclick="goToStage(5)">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       STAGE 5: QUAN SÁT VẬT KÍNH 10X RỒI 40X
+       ======================================================================== -->
+  <section class="stage-card hidden-stage" id="stage5">
+    <div class="stage-title">
+      <i class="ti ti-microscope"></i>
+      <span>Màn 5: Quan sát bằng vật kính 10× rồi 40×</span>
+    </div>
+
+    <div class="lead-box" id="leadBoxS05">
+      <div class="lead-header" onclick="toggleLead('leadBoxS05')">
+        <div class="lead-title-wrapper">
+          <i class="ti ti-flask-2"></i>
+          <span>Bối cảnh khoa học</span>
+        </div>
+        <div class="lead-toggle">
+          <span class="lead-toggle-label">Thu gọn</span>
+          <i class="ti ti-chevron-up lead-toggle-icon"></i>
+        </div>
+      </div>
+      <div class="lead-content">
+        <p class="lead-text">Bắt đầu bằng vật kính 10× để có trường nhìn rộng và tìm vùng có mẫu. Sau đó đưa vùng mẫu vào giữa trường nhìn rồi chuyển sang vật kính 40× để quan sát rõ hơn.</p>
+      </div>
+    </div>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Dùng các nút điều hướng để đưa cụm mẫu vào giữa tâm vòng tròn $ightarrow$ Chuyển vật kính 40× $ightarrow$ Lấy nét và nhấn "LƯU KẾT QUẢ".</span>
+    </div>
+
+    <div class="microscope-workspace">
+      <!-- Thị kính tròn FOV -->
+      <div class="eyepiece-fov-container">
+        <img src="images/SH10-B09-M01-A08.jpg" alt="Vi trường kính hiển vi 10x" id="microscopeImg" class="eyepiece-fov-img">
+        <div class="eyepiece-reticle" id="eyepieceReticle"></div>
+      </div>
+
+      <!-- Bảng điều khiển kính hiển vi -->
+      <div class="microscope-controls-panel">
+        <div class="task-title"><i class="ti ti-settings"></i> Điều khiển mâm vật kính:</div>
+        <div class="objective-turret-selector">
+          <button class="btn-objective active" id="btnObj10x" onclick="setObjective(10)">
+            <span style="font-size:1.15rem;">10×</span>
+            <span style="font-size:0.75rem;font-weight:500;">Tìm vùng mẫu</span>
+          </button>
+          <button class="btn-objective" id="btnObj40x" disabled onclick="setObjective(40)">
+            <span style="font-size:1.15rem;">40×</span>
+            <span style="font-size:0.75rem;font-weight:500;">Phóng to chi tiết</span>
+          </button>
+        </div>
+
+        <div class="task-title" style="margin-top:6px;"><i class="ti ti-arrows-move"></i> Di chuyển bàn kính (căn giữa cụm mẫu):</div>
+        <div class="d-pad-controls">
+          <div></div>
+          <button class="d-btn" onclick="panStage(0, -15)"><i class="ti ti-chevron-up"></i></button>
+          <div></div>
+          <button class="d-btn" onclick="panStage(-15, 0)"><i class="ti ti-chevron-left"></i></button>
+          <button class="d-btn" onclick="panStage(0, 0)"><i class="ti ti-target"></i></button>
+          <button class="d-btn" onclick="panStage(15, 0)"><i class="ti ti-chevron-right"></i></button>
+          <div></div>
+          <button class="d-btn" onclick="panStage(0, 15)"><i class="ti ti-chevron-down"></i></button>
+          <div></div>
+        </div>
+
+        <div class="focus-slider-row">
+          <div style="display:flex;justify-content:space-between;font-size:0.88rem;font-weight:600;">
+            <span>Ốc vi cấp (Độ nét):</span>
+            <span id="focusLabel" style="color:var(--jade-deep);font-weight:700;">Hơi mờ</span>
+          </div>
+          <input type="range" id="focusSlider" min="0" max="10" value="4" oninput="adjustFocus(this.value)">
+        </div>
+
+        <button class="btn btn-primary" id="btnSaveObs" disabled onclick="saveObservationS05()" style="margin-top:6px;">
+          <i class="ti ti-device-floppy"></i> LƯU KẾT QUẢ QUAN SÁT
+        </button>
+      </div>
+    </div>
+
+    <div class="feedback-box hidden" id="fbS05"></div>
+
+    <div class="controls-row">
+      <div class="btn-group-left">
+        <button class="btn btn-secondary" onclick="goToStage(4)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      </div>
+      <div class="btn-group-right">
+        <button class="btn btn-primary" id="btnNextS05" disabled onclick="goToStage(6)">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       STAGE 6: ĐỐI CHIẾU HÌNH DẠNG VÀ GIẢI THÍCH
+       ======================================================================== -->
+  <section class="stage-card hidden-stage" id="stage6">
+    <div class="stage-title">
+      <i class="ti ti-scale"></i>
+      <span>Màn 6: Đối chiếu hình dạng và giải thích kết quả</span>
+    </div>
+
+    <div class="lead-box" id="leadBoxS06">
+      <div class="lead-header" onclick="toggleLead('leadBoxS06')">
+        <div class="lead-title-wrapper">
+          <i class="ti ti-flask-2"></i>
+          <span>Bối cảnh khoa học</span>
+        </div>
+        <div class="lead-toggle">
+          <span class="lead-toggle-label">Thu gọn</span>
+          <i class="ti ti-chevron-up lead-toggle-icon"></i>
+        </div>
+      </div>
+      <div class="lead-content">
+        <p class="lead-text">Một tiêu bản không nhất thiết xuất hiện đủ mọi dạng vi khuẩn. Bạn hãy đối chiếu hình ảnh vừa quan sát với ba dạng hình thái mẫu và chỉ chọn dạng thực sự giống với tế bào trong vi trường.</p>
+      </div>
+    </div>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Đối chiếu ảnh vi trường 40× bên trái với 3 mẫu đối chiếu vector bên phải và trả lời 3 câu hỏi bên dưới.</span>
+    </div>
+
+    <div class="split-workspace">
+      <!-- Cột trái: Ảnh vi trường 40x đã lưu -->
+      <div class="visual-card">
+        <div class="visual-media-box" style="aspect-ratio:1/1;">
+          <img src="images/SH10-B09-M01-A09.jpg" alt="Vi trường 40x thực tế" style="border-radius:50%;width:85%;height:85%;object-fit:cover;border:4px solid #333;">
+        </div>
+        <div style="padding:10px;text-align:center;font-weight:600;font-size:0.9rem;color:var(--jade-dark);">
+          Ảnh vi trường 40× tiêu bản nước dưa muối (Lactobacillus)
+        </div>
+      </div>
+
+      <!-- Cột phải: 3 thẻ hình thái vector SVG & trắc nghiệm -->
+      <div class="task-card">
+        <div class="task-title"><i class="ti ti-dna-2"></i> Ba dạng hình thái vi khuẩn cơ bản:</div>
+        
+        <div class="morph-cards-row">
+          <!-- Card 1: Cầu khuẩn SVG -->
+          <div class="morph-card" onclick="selectMorph('cocci', this)">
+            <svg width="60" height="60" viewBox="0 0 60 60">
+              <circle cx="20" cy="20" r="10" fill="#3B82F6" stroke="#1D4ED8" stroke-width="2"/>
+              <circle cx="40" cy="22" r="10" fill="#3B82F6" stroke="#1D4ED8" stroke-width="2"/>
+              <circle cx="30" cy="40" r="10" fill="#3B82F6" stroke="#1D4ED8" stroke-width="2"/>
+            </svg>
+            <span class="morph-card-title">Cầu khuẩn</span>
+            <span style="font-size:0.75rem;color:var(--ink-3);">Tế bào hình cầu</span>
+          </div>
+
+          <!-- Card 2: Trực khuẩn SVG -->
+          <div class="morph-card" onclick="selectMorph('bacilli', this)">
+            <svg width="60" height="60" viewBox="0 0 60 60">
+              <rect x="10" y="14" width="40" height="12" rx="6" fill="#3B82F6" stroke="#1D4ED8" stroke-width="2"/>
+              <rect x="14" y="34" width="34" height="12" rx="6" fill="#3B82F6" stroke="#1D4ED8" stroke-width="2"/>
+            </svg>
+            <span class="morph-card-title">Trực khuẩn</span>
+            <span style="font-size:0.75rem;color:var(--ink-3);">Tế bào hình que</span>
+          </div>
+
+          <!-- Card 3: Xoắn khuẩn SVG -->
+          <div class="morph-card" onclick="selectMorph('spirilla', this)">
+            <svg width="60" height="60" viewBox="0 0 60 60">
+              <path d="M 10,25 Q 20,10 30,25 T 50,25" fill="none" stroke="#1D4ED8" stroke-width="4" stroke-linecap="round"/>
+              <path d="M 10,42 Q 20,27 30,42 T 50,42" fill="none" stroke="#1D4ED8" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+            <span class="morph-card-title">Xoắn khuẩn</span>
+            <span style="font-size:0.75rem;color:var(--ink-3);">Dạng cong / xoắn</span>
+          </div>
+        </div>
+
+        <!-- Câu hỏi 1 -->
+        <div style="font-size:0.92rem;font-weight:700;color:var(--ink);margin-top:6px;">
+          1. Tế bào vi khuẩn bạn quan sát được giống dạng nào nhất?
+        </div>
+        <div class="quiz-options-col" id="quizColQ1">
+          <button class="quiz-opt-btn" onclick="answerQ(1, 'cocci', this)"><i class="ti ti-circle"></i> A. Cầu khuẩn (dạng hình cầu)</button>
+          <button class="quiz-opt-btn" onclick="answerQ(1, 'bacilli', this)"><i class="ti ti-circle"></i> B. Trực khuẩn (dạng hình que ngắn)</button>
+          <button class="quiz-opt-btn" onclick="answerQ(1, 'spirilla', this)"><i class="ti ti-circle"></i> C. Xoắn khuẩn (dạng xoắn lượn)</button>
+        </div>
+
+        <!-- Câu hỏi 2 -->
+        <div style="font-size:0.92rem;font-weight:700;color:var(--ink);margin-top:6px;">
+          2. Dấu hiệu khoa học nào giúp bạn đưa ra kết luận trên?
+        </div>
+        <div class="quiz-options-col" id="quizColQ2">
+          <button class="quiz-opt-btn" onclick="answerQ(2, 'color', this)"><i class="ti ti-circle"></i> A. Dựa vào màu xanh lam của thuốc nhuộm</button>
+          <button class="quiz-opt-btn" onclick="answerQ(2, 'shape', this)"><i class="ti ti-circle"></i> B. Dựa vào đường bao hình que trụ ngắn của tế bào</button>
+          <button class="quiz-opt-btn" onclick="answerQ(2, 'size', this)"><i class="ti ti-circle"></i> C. Dựa vào việc nhìn thấy bằng mắt thường</button>
+        </div>
+
+        <!-- Câu hỏi 3 -->
+        <div style="font-size:0.92rem;font-weight:700;color:var(--ink);margin-top:6px;">
+          3. Bạn nhận xét thế nào về kích thước tế bào vi khuẩn?
+        </div>
+        <div class="quiz-options-col" id="quizColQ3">
+          <button class="quiz-opt-btn" onclick="answerQ(3, 'tiny', this)"><i class="ti ti-circle"></i> A. Kích thước rất nhỏ (1–3 µm), không quan sát được bằng mắt thường</button>
+          <button class="quiz-opt-btn" onclick="answerQ(3, 'large', this)"><i class="ti ti-circle"></i> B. Kích thước lớn tương đương với tép tép tế bào hành tây</button>
+        </div>
+
+        <div class="feedback-box hidden" id="fbS06"></div>
+
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" onclick="goToStage(5)"><i class="ti ti-arrow-left"></i> QUAN SÁT LẠI</button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-primary" id="btnCheckS06" onclick="checkAnswersS06()"><i class="ti ti-check"></i> KIỂM TRA</button>
+            <button class="btn btn-primary hidden" id="btnNextS06" onclick="goToStage(7)">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       STAGE 7: PHIẾU THỰC HÀNH TỔNG HỢP & KẾT THÚC MODULE
+       ======================================================================== -->
+  <section class="stage-card hidden-stage" id="stage7">
+    <div class="stage-title">
+      <i class="ti ti-file-certificate"></i>
+      <span>Màn 7: Phiếu thực hành và kết thúc module</span>
+    </div>
+
+    <div class="lead-box" id="leadBoxS07">
+      <div class="lead-header" onclick="toggleLead('leadBoxS07')">
+        <div class="lead-title-wrapper">
+          <i class="ti ti-flask-2"></i>
+          <span>Bối cảnh khoa học</span>
+        </div>
+        <div class="lead-toggle">
+          <span class="lead-toggle-label">Thu gọn</span>
+          <i class="ti ti-chevron-up lead-toggle-icon"></i>
+        </div>
+      </div>
+      <div class="lead-content">
+        <p class="lead-text">Bạn đã hoàn thành việc làm tiêu bản và quan sát tế bào vi khuẩn. Hãy kiểm tra Phiếu thực hành, bổ sung hình vẽ và kết luận bằng đúng kết quả bạn đã thu được.</p>
+      </div>
+    </div>
+
+    <div class="guide-box">
+      <i class="ti ti-hand-click"></i>
+      <span>Kiểm tra dữ liệu tự điền, vẽ tế bào trực khuẩn vào khung vẽ, ghép câu kết luận và hoàn tất phân loại thu dọn an toàn.</span>
+    </div>
+
+    <!-- TỜ PHIẾU THỰC HÀNH TOÀN DIỆN -->
+    <div class="report-sheet-card">
+      <div class="report-head-banner">
+        <div class="report-main-title">BÁO CÁO KẾT QUẢ THỰC HÀNH</div>
+        <div class="report-sub-title">BÀI 9: THỰC HÀNH QUAN SÁT TẾ BÀO NHÂN SƠ (VI KHUẨN)</div>
+      </div>
+
+      <!-- I. Mục đích -->
+      <div class="report-section">
+        <div class="report-section-title"><i class="ti ti-target"></i> I. Mục đích thực hành</div>
+        <div class="report-autofill-box">
+          Làm được tiêu bản vi khuẩn (nhuộm đơn) từ nước dưa muối và quan sát được hình dạng, kích thước tế bào vi khuẩn dưới kính hiển vi quang học.
+        </div>
+      </div>
+
+      <!-- II. Mẫu vật -->
+      <div class="report-section">
+        <div class="report-section-title"><i class="ti ti-cup"></i> II. Mẫu vật</div>
+        <div class="report-autofill-box">
+          Nước dưa muối chua không bị khú (chứa vi khuẩn lên men lactic <em>Lactobacillus</em>).
+        </div>
+      </div>
+
+      <!-- III. Dụng cụ & Hóa chất -->
+      <div class="report-section">
+        <div class="report-section-title"><i class="ti ti-tools"></i> III. Dụng cụ, thiết bị và hóa chất</div>
+        <div class="report-autofill-box">
+          - <strong>Dụng cụ:</strong> Lam kính, lamen (lá kính), que cấy, chậu rửa, pipet, giấy thấm.<br>
+          - <strong>Thiết bị:</strong> Đèn cồn, kính hiển vi quang học (vật kính 10× và 40×).<br>
+          - <strong>Hóa chất:</strong> Nước cất, dung dịch thuốc nhuộm xanh methylene.
+        </div>
+      </div>
+
+      <!-- IV. Cách tiến hành -->
+      <div class="report-section">
+        <div class="report-section-title"><i class="ti ti-list-numbers"></i> IV. Cách tiến hành</div>
+        <div class="report-autofill-box">
+          1. <strong>Cố định mẫu:</strong> Nhỏ 1 giọt nước cất và 1 giọt nước dưa muối lên lam kính $ightarrow$ dàn mỏng $ightarrow$ hơ nhẹ 2–3 lượt trên cao ngọn lửa đèn cồn.<br>
+          2. <strong>Nhuộm mẫu:</strong> Nhỏ 1–2 giọt xanh methylene lên vết bôi trong 1–2 phút.<br>
+          3. <strong>Rửa mẫu:</strong> Nghiêng lam, rửa nhẹ từ một đầu bằng dòng nước chảy qua vết bôi đến khi nước rửa hết màu $ightarrow$ làm khô.<br>
+          4. <strong>Quan sát:</strong> Tìm mẫu ở vật kính 10× $ightarrow$ chuyển sang 40× để quan sát rõ hình dạng.
+        </div>
+      </div>
+
+      <!-- V. Kết quả quan sát -->
+      <div class="report-section">
+        <div class="report-section-title"><i class="ti ti-photo"></i> V. Kết quả quan sát thực tế (Đã ghi nhận)</div>
+        <div class="report-obs-previews">
+          <div class="obs-thumb-card">
+            <img src="images/SH10-B09-M01-A08.jpg" alt="10x" class="obs-thumb-img">
+            <span style="font-weight:700;font-size:0.85rem;color:var(--jade-dark);">Vi trường 10× (Độ phóng đại 100×)</span>
+            <span style="font-size:0.75rem;color:var(--ink-3);">Các chấm vi khuẩn nhỏ li ti</span>
+          </div>
+          <div class="obs-thumb-card">
+            <img src="images/SH10-B09-M01-A09.jpg" alt="40x" class="obs-thumb-img">
+            <span style="font-weight:700;font-size:0.85rem;color:var(--jade-dark);">Vi trường 40× (Độ phóng đại 400×)</span>
+            <span style="font-size:0.75rem;color:var(--ink-3);">Trực khuẩn hình que ngắn màu xanh</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- VI. Khung vẽ đại diện -->
+      <div class="report-section">
+        <div class="report-section-title"><i class="ti ti-brush"></i> VI. Hình vẽ tế bào đại diện quan sát được ở vật kính 40×</div>
+        <div class="drawing-board-wrapper">
+          <div class="drawing-toolbar">
+            <span style="font-size:0.85rem;color:var(--ink-2);font-weight:600;">Dùng chuột hoặc ngón tay vẽ các tế bào trực khuẩn hình que ngắn màu xanh:</span>
+            <div style="display:flex;gap:6px;">
+              <button class="btn btn-secondary" onclick="clearDrawingCanvas()" style="padding:4px 10px;font-size:0.8rem;">
+                <i class="ti ti-trash"></i> Xóa vẽ lại
+              </button>
+            </div>
+          </div>
+          <canvas id="drawCanvas" class="draw-canvas"></canvas>
+        </div>
+      </div>
+
+      <!-- VII. Nhận xét -->
+      <div class="report-section">
+        <div class="report-section-title"><i class="ti ti-notes"></i> VII. Nhận xét về hình dạng và kích thước</div>
+        <div class="report-autofill-box">
+          - <strong>Hình dạng:</strong> Tế bào vi khuẩn trong nước dưa muối có dạng hình que ngắn (trực khuẩn <em>Lactobacillus</em>), đứng đơn lẻ hoặc kết hợp thành chuỗi ngắn.<br>
+          - <strong>Kích thước:</strong> Kích thước tế bào rất nhỏ (khoảng 1–3 µm), không thể quan sát bằng mắt thường mà bắt buộc phải sử dụng kính hiển vi quang học.
+        </div>
+      </div>
+
+      <!-- VIII. Kết luận -->
+      <div class="report-section">
+        <div class="report-section-title"><i class="ti ti-bulb"></i> VIII. Kết luận khoa học</div>
+        <div class="report-autofill-box" style="line-height:1.8;">
+          Phương pháp <strong>nhuộm đơn</strong> bằng thuốc nhuộm xanh methylene giúp làm nổi bật đường bao tế bào vi khuẩn bắt màu xanh trên nền sáng. Tế bào nhân sơ vi khuẩn có cấu tạo đơn giản, kích thước hiển vi và hình thái đa dạng (trong mẫu nước dưa muối là trực khuẩn).
+        </div>
+      </div>
+
+      <!-- IX. Thu dọn sau thực hành -->
+      <div class="report-section">
+        <div class="report-section-title"><i class="ti ti-trash"></i> IX. Thu dọn sau thực hành & An toàn phòng lab</div>
+        <div class="cleanup-columns-grid">
+          <div class="cleanup-box" id="boxSafeActions">
+            <div class="drop-zone-header" style="color:var(--jade-dark);">
+              <span><i class="ti ti-circle-check"></i> Các thao tác an toàn đã thực hiện:</span>
+            </div>
+            <div style="font-size:0.88rem;color:var(--ink-2);line-height:1.6;padding-top:4px;">
+              ✓ Lấy tiêu bản khỏi bàn kính hiển vi<br>
+              ✓ Đưa kính về trạng thái ban đầu và tắt công tắc<br>
+              ✓ <strong>Tắt đèn cồn bằng NẮP CHỤP</strong> (không thổi bằng miệng)<br>
+              ✓ Thu gom lam kính, lamen vào đúng khay<br>
+              ✓ Đóng chặt nắp lọ thuốc nhuộm xanh methylene<br>
+              ✓ Lau sạch mặt bàn làm việc bằng khăn ẩm<br>
+              ✓ Rửa sạch tay bằng xà phòng dưới vòi nước
+            </div>
+          </div>
+
+          <div class="cleanup-box danger-zone">
+            <div class="drop-zone-header cleanup-box-header">
+              <span><i class="ti ti-alert-triangle"></i> Hành vi TUYỆT ĐỐI KHÔNG LÀM:</span>
+            </div>
+            <div style="font-size:0.88rem;color:#991B1B;line-height:1.6;padding-top:4px;">
+              ✗ Thổi trực tiếp vào ngọn lửa để tắt đèn cồn<br>
+              ✗ Dùng tay trần cầm vào đầu lam kính nóng<br>
+              ✗ Đổ thuốc nhuộm thừa trực tiếp ra bàn
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls-row">
+        <div class="btn-group-left">
+          <button class="btn btn-secondary" onclick="goToStage(6)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+        </div>
+        <div class="btn-group-right">
+          <button class="btn btn-primary" id="btnSubmitReport" onclick="submitFinalReport()">
+            <i class="ti ti-certificate"></i> LƯU VÀ HOÀN THÀNH MODULE
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- MODAL CHÚC MỪNG V10 -->
+<div class="congrats-overlay hidden" id="completionModal" role="dialog" aria-modal="true">
+  <div class="congrats-card">
+    <div class="congrats-icon-box">
+      <i class="ti ti-trophy"></i>
+    </div>
+    <div class="congrats-title">CHÚC MỪNG BẠN!</div>
+    <div class="congrats-desc">
+      Bạn đã hoàn thành xuất sắc module <strong>Thực hành: Quan sát tế bào nhân sơ (vi khuẩn)</strong>, nắm vững quy trình làm tiêu bản nhuộm đơn và nhận diện chính xác trực khuẩn dưới kính hiển vi.
+    </div>
+    <div class="congrats-actions">
+      <button class="btn btn-secondary" onclick="reviewLesson()">
+        <i class="ti ti-eye"></i> Xem lại bài
+      </button>
+      <button class="btn btn-primary" onclick="closeCongratsModal()">
+        <i class="ti ti-check"></i> Đóng thông báo
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Canvas Pháo Hoa Độc Lập -->
+<canvas id="confettiCanvas"></canvas>
+
+<!-- JAVASCRIPT ĐIỀU KHIỂN LOGIC TOÀN MODULE -->
+<script>
+/* ==========================================================================
+   LMS STATE & REPORT HEIGHT
+   ========================================================================== */
+window.lmsState = {
+  currentStage: 1,
+  safetyConfirmed: false,
+  prepConfirmed: false,
+  smearCompleted: false,
+  stainingCompleted: false,
+  observationSaved: false,
+  quizPassed: false,
+  reportSaved: false,
+  observedFieldId: 'lactobacillus_bacilli'
+};
+
+function reportHeight() {
+  const h = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+  if (window.parent && window.parent !== window) {
+    window.parent.postMessage({ type: 'setHeight', height: h, frameHeight: h }, '*');
+  }
+}
+window.addEventListener('resize', reportHeight);
+window.addEventListener('load', () => {
+  reportHeight();
+  initStage2Tray();
+  initCanvasS03();
+  initCanvasS04();
+  initDrawingBoard();
+});
+
+function toggleLead(id) {
+  const box = document.getElementById(id);
+  if (!box) return;
+  box.classList.toggle('collapsed');
+  const label = box.querySelector('.lead-toggle-label');
+  if (label) {
+    label.textContent = box.classList.contains('collapsed') ? 'Mở rộng' : 'Thu gọn';
+  }
+  setTimeout(reportHeight, 350);
+}
+
+function goToStage(stageNum) {
+  for (let i = 1; i <= 7; i++) {
+    const s = document.getElementById('stage' + i);
+    if (s) {
+      if (i === stageNum) {
+        s.classList.remove('hidden-stage');
+      } else {
+        s.classList.add('hidden-stage');
+      }
+    }
+  }
+  window.lmsState.currentStage = stageNum;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  setTimeout(() => {
+    reportHeight();
+    if (stageNum === 3) drawCanvasS03();
+    if (stageNum === 4) drawCanvasS04();
+    if (stageNum === 7) resizeDrawCanvas();
+  }, 100);
+}
+
+/* ==========================================================================
+   STAGE 1 LOGIC: 6 TÌNH HUỐNG AN TOÀN
+   ========================================================================== */
+const s01Selected = new Set();
+function toggleSafety(idx) {
+  const card = document.querySelector('.safety-item[data-idx="' + idx + '"]');
+  const tile = document.getElementById('tileH' + idx);
+  if (s01Selected.has(idx)) {
+    s01Selected.delete(idx);
+    if (card) card.classList.remove('selected');
+    if (tile) tile.classList.remove('selected');
+  } else {
+    s01Selected.add(idx);
+    if (card) card.classList.add('selected');
+    if (tile) tile.classList.add('selected');
+  }
+}
+
+function hoverSafety(idx, isHover) {
+  const card = document.querySelector('.safety-item[data-idx="' + idx + '"]');
+  const tile = document.getElementById('tileH' + idx);
+  if (isHover) {
+    if (card) card.style.borderColor = 'var(--jade)';
+    if (tile) tile.classList.add('hovered');
+  } else {
+    if (card) card.style.borderColor = '';
+    if (tile) tile.classList.remove('hovered');
+  }
+}
+
+function checkSafetyS01() {
+  const fb = document.getElementById('fbS01');
+  const correctSet = new Set([1, 3, 5, 6]);
+  let isAllCorrect = (s01Selected.size === 4);
+  for (let c of correctSet) {
+    if (!s01Selected.has(c)) isAllCorrect = false;
+  }
+  fb.classList.remove('hidden', 'ok', 'bad');
+
+  if (isAllCorrect) {
+    fb.classList.add('ok');
+    fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác!</strong> Hơ lam nhanh phía trên cao giúp hạn chế quá nhiệt; thuốc nhuộm phải để xa nguồn lửa và đậy nắp; sự cố cần báo ngay và khu vực lab phải được thu dọn sạch sẽ sau khi kết thúc.</span>';
+    document.getElementById('btnCheckS01').classList.add('hidden');
+    document.getElementById('btnNextS01').classList.remove('hidden');
+    window.lmsState.safetyConfirmed = true;
+  } else {
+    fb.classList.add('bad');
+    let msg = 'Chưa chính xác. ';
+    if (s01Selected.has(2)) msg += 'Hành động H2 (giữ lam sát ngọn lửa) rất nguy hiểm vì nhiệt độ cao có thể làm cháy mẫu và nứt vỡ lam kính. ';
+    if (s01Selected.has(4)) msg += 'Hành động H4 (chạm tay trần vào lam vừa hơ) có nguy cơ gây bỏng nhiệt. ';
+    if (s01Selected.size < 4) msg += 'Bạn chưa chọn đủ các hành động bảo đảm an toàn. Hãy xem lại nguy cơ nhiệt, hóa chất và vệ sinh phòng lab.';
+    fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span>' + msg + '</span>';
+  }
+  reportHeight();
+}
+
+function retrySafetyS01() {
+  s01Selected.clear();
+  document.querySelectorAll('#safetyGridS01 .safety-item').forEach(el => el.classList.remove('selected'));
+  document.querySelectorAll('.safety-tile-hotspot').forEach(el => el.classList.remove('selected'));
+  document.getElementById('fbS01').classList.add('hidden');
+  reportHeight();
+}
+
+/* ==========================================================================
+   STAGE 2 LOGIC: PHÂN LOẠI DỤNG CỤ
+   ========================================================================== */
+const prepItemsData = [
+  { id: 'p1', name: 'Nước dưa muối không khú', group: 'sample', icon: 'ti-cup' },
+  { id: 'p2', name: 'Lam kính', group: 'tool', icon: 'ti-rectangle' },
+  { id: 'p3', name: 'Lamen (lá kính)', group: 'tool', icon: 'ti-square' },
+  { id: 'p4', name: 'Que cấy vi sinh', group: 'tool', icon: 'ti-needle' },
+  { id: 'p5', name: 'Chậu nước rửa', group: 'tool', icon: 'ti-wash' },
+  { id: 'p6', name: 'Pipet nhỏ giọt', group: 'tool', icon: 'ti-droplet' },
+  { id: 'p7', name: 'Giấy thấm', group: 'tool', icon: 'ti-file' },
+  { id: 'p8', name: 'Đèn cồn', group: 'device', icon: 'ti-flame' },
+  { id: 'p9', name: 'Kính hiển vi quang học', group: 'device', icon: 'ti-microscope' },
+  { id: 'p10', name: 'Lọ nước cất', group: 'chem', icon: 'ti-droplet-filled' },
+  { id: 'p11', name: 'Thuốc nhuộm xanh methylene', group: 'chem', icon: 'ti-flask' },
+  // Distractors
+  { id: 'd1', name: 'Củ hành tây / Vảy hành', group: 'distractor', icon: 'ti-plant-2' },
+  { id: 'd2', name: 'Tế bào niêm mạc miệng', group: 'distractor', icon: 'ti-user' },
+  { id: 'd3', name: 'Dao nhỏ', group: 'distractor', icon: 'ti-cut' },
+  { id: 'd4', name: 'Kim mũi mác', group: 'distractor', icon: 'ti-pin' }
+];
+
+let selectedTrayChip = null;
+const groupCounts = { sample: 0, tool: 0, device: 0, chem: 0 };
+const groupTargets = { sample: 1, tool: 6, device: 2, chem: 2 };
+
+function initStage2Tray() {
+  const tray = document.getElementById('prepTray');
+  if (!tray) return;
+  tray.innerHTML = '';
+  // Shuffle items slightly
+  const items = [...prepItemsData].sort(() => Math.random() - 0.5);
+  items.forEach(it => {
+    const chip = document.createElement('div');
+    chip.className = 'drag-chip';
+    chip.id = 'chip_' + it.id;
+    chip.draggable = true;
+    chip.innerHTML = '<i class="ti ' + it.icon + '"></i><span>' + it.name + '</span>';
+    chip.onclick = () => selectTrayChip(it, chip);
+    chip.ondragstart = (e) => {
+      e.dataTransfer.setData('text/plain', it.id);
+      selectTrayChip(it, chip);
+    };
+    tray.appendChild(chip);
+  });
+
+  // Setup drop zones drag & drop
+  ['sample', 'tool', 'device', 'chem'].forEach(g => {
+    const zone = document.getElementById('zone_' + g);
+    if (!zone) return;
+    zone.ondragover = (e) => { e.preventDefault(); zone.classList.add('drag-over'); };
+    zone.ondragleave = () => { zone.classList.remove('drag-over'); };
+    zone.ondrop = (e) => {
+      e.preventDefault();
+      zone.classList.remove('drag-over');
+      const id = e.dataTransfer.getData('text/plain');
+      const it = prepItemsData.find(x => x.id === id);
+      if (it) placeItemInZone(it, g);
+    };
+  });
+}
+
+function selectTrayChip(item, el) {
+  document.querySelectorAll('.drag-chip').forEach(c => c.classList.remove('selected-source'));
+  if (selectedTrayChip && selectedTrayChip.item.id === item.id) {
+    selectedTrayChip = null;
+  } else {
+    selectedTrayChip = { item, el };
+    el.classList.add('selected-source');
+  }
+}
+
+function handleZoneClick(targetGroup) {
+  if (!selectedTrayChip) return;
+  placeItemInZone(selectedTrayChip.item, targetGroup);
+}
+
+function placeItemInZone(item, targetGroup) {
+  const fb = document.getElementById('fbS02');
+  fb.classList.remove('hidden', 'ok', 'bad');
+
+  if (item.group === 'distractor') {
+    fb.classList.add('bad');
+    let explain = 'Thẻ "' + item.name + '" không dùng trong bài thực hành quan sát vi khuẩn nước dưa. ';
+    if (item.id === 'd1' || item.id === 'd2') explain += '(Đây là mẫu vật của bài quan sát tế bào nhân thực).';
+    fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span>' + explain + '</span>';
+    shakeChip(item.id);
+    return;
+  }
+
+  if (item.group !== targetGroup) {
+    fb.classList.add('bad');
+    fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Thẻ "' + item.name + '" chưa đặt đúng nhóm. Hãy xác định đây là mẫu vật, dụng cụ, thiết bị hay hóa chất.</span>';
+    shakeChip(item.id);
+    return;
+  }
+
+  // Placed correctly
+  const chipEl = document.getElementById('chip_' + item.id);
+  const container = document.getElementById('items_' + targetGroup);
+  if (chipEl && container) {
+    chipEl.classList.remove('selected-source');
+    chipEl.classList.add('locked-chip');
+    chipEl.draggable = false;
+    chipEl.onclick = null;
+    chipEl.innerHTML = '<i class="ti ti-check" style="color:var(--jade);"></i><span>' + item.name + '</span>';
+    container.appendChild(chipEl);
+
+    groupCounts[targetGroup]++;
+    document.getElementById('count_' + targetGroup).textContent = groupCounts[targetGroup] + '/' + groupTargets[targetGroup];
+
+    fb.classList.add('ok');
+    if (item.id === 'p3') {
+      fb.innerHTML = '<i class="ti ti-circle-check"></i><span>Chính xác! Lamen (lá kính mỏng) trong bài này được dùng để dàn mỏng giọt mẫu trên lam kính.</span>';
+    } else {
+      fb.innerHTML = '<i class="ti ti-circle-check"></i><span>Đã xếp "' + item.name + '" vào đúng nhóm.</span>';
+    }
+    selectedTrayChip = null;
+
+    // Check completion
+    checkPrepCompletion();
+  }
+}
+
+function shakeChip(id) {
+  const el = document.getElementById('chip_' + id);
+  if (el) {
+    el.classList.add('shake');
+    setTimeout(() => el.classList.remove('shake'), 450);
+  }
+}
+
+function checkPrepCompletion() {
+  const isDone = (groupCounts.sample === 1 && groupCounts.tool === 6 && groupCounts.device === 2 && groupCounts.chem === 2);
+  if (isDone) {
+    const fb = document.getElementById('fbS02');
+    fb.classList.remove('bad');
+    fb.classList.add('ok');
+    fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Tuyệt vời!</strong> Bạn đã chuẩn bị đầy đủ và phân loại chính xác toàn bộ bộ mẫu vật, dụng cụ, thiết bị và hóa chất. Sẵn sàng bắt đầu tiến trình thực hành!</span>';
+    document.getElementById('btnNextS02').disabled = false;
+    window.lmsState.prepConfirmed = true;
+  }
+  reportHeight();
+}
+
+/* ==========================================================================
+   STAGE 3 CANVAS: TẠO VẾT BÔI VÀ CỐ ĐỊNH
+   ========================================================================== */
+let s03State = {
+  waterDropped: false,
+  sampleDropped: false,
+  smearSpread: false,
+  fixed: false,
+  flameCount: 0
+};
+
+function initCanvasS03() {
+  const canvas = document.getElementById('canvasS03');
+  if (!canvas) return;
+  canvas.width = 720;
+  canvas.height = 405;
+  drawCanvasS03();
+}
+
+function drawCanvasS03() {
+  const canvas = document.getElementById('canvasS03');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  const cx = canvas.width / 2;
+  const cy = canvas.height / 2;
+
+  // Step 1: Water drop
+  if (s03State.waterDropped && !s03State.smearSpread) {
+    ctx.beginPath();
+    ctx.arc(cx, cy, 14, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(186, 230, 253, 0.75)';
+    ctx.fill();
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = '#0284C7';
+    ctx.stroke();
+
+    // highlight
+    ctx.beginPath();
+    ctx.arc(cx - 4, cy - 4, 3, 0, Math.PI * 2);
+    ctx.fillStyle = '#fff';
+    ctx.fill();
+  }
+
+  // Step 2: Sample drop added
+  if (s03State.sampleDropped && !s03State.smearSpread) {
+    ctx.beginPath();
+    ctx.arc(cx, cy, 18, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(254, 240, 138, 0.65)';
+    ctx.fill();
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = '#CA8A04';
+    ctx.stroke();
+  }
+
+  // Step 3: Smear spread into oval
+  if (s03State.smearSpread) {
+    ctx.save();
+    ctx.beginPath();
+    ctx.ellipse(cx, cy, 80, 42, 0, 0, Math.PI * 2);
+    ctx.fillStyle = s03State.fixed ? 'rgba(253, 230, 138, 0.35)' : 'rgba(254, 240, 138, 0.55)';
+    ctx.fill();
+    ctx.lineWidth = 2;
+    ctx.setLineDash([4, 4]);
+    ctx.strokeStyle = s03State.fixed ? '#10B981' : '#EAB308';
+    ctx.stroke();
+    ctx.restore();
+
+    // Smear label
+    ctx.font = 'bold 13px "Be Vietnam Pro", sans-serif';
+    ctx.fillStyle = s03State.fixed ? '#065F46' : '#854D0E';
+    ctx.textAlign = 'center';
+    ctx.fillText(s03State.fixed ? '✓ Vết bôi đã khô & cố định' : 'Vết bôi mẫu mỏng đều', cx, cy + 4);
+  }
+}
+
+function execS03Step1() {
+  s03State.waterDropped = true;
+  drawCanvasS03();
+  document.getElementById('btnS03_Step1').disabled = true;
+  document.getElementById('btnS03_Step1').classList.remove('active-step');
+  document.getElementById('btnS03_Step2').disabled = false;
+  document.getElementById('btnS03_Step2').classList.add('active-step');
+
+  const fb = document.getElementById('fbS03');
+  fb.classList.remove('hidden', 'bad');
+  fb.classList.add('info');
+  fb.innerHTML = '<i class="ti ti-droplet"></i><span>Đã nhỏ 1 giọt nước cất vào tâm lam kính. Tiếp theo, hãy nhỏ 1 giọt nước dưa muối vào cùng vị trí.</span>';
+  reportHeight();
+}
+
+function execS03Step2() {
+  s03State.sampleDropped = true;
+  drawCanvasS03();
+  document.getElementById('btnS03_Step2').disabled = true;
+  document.getElementById('btnS03_Step2').classList.remove('active-step');
+  document.getElementById('btnS03_Step3').disabled = false;
+  document.getElementById('btnS03_Step3').classList.add('active-step');
+
+  const fb = document.getElementById('fbS03');
+  fb.innerHTML = '<i class="ti ti-droplet-filled"></i><span>Đã nhỏ 1 giọt mẫu nước dưa. Bây giờ, hãy dùng que cấy hoặc cạnh lamen để dàn mỏng mẫu.</span>';
+  reportHeight();
+}
+
+function execS03Step3() {
+  s03State.smearSpread = true;
+  drawCanvasS03();
+  document.getElementById('btnS03_Step3').disabled = true;
+  document.getElementById('btnS03_Step3').classList.remove('active-step');
+  document.getElementById('btnS03_Step4A').disabled = false;
+  document.getElementById('btnS03_Step4B').disabled = false;
+
+  const fb = document.getElementById('fbS03');
+  fb.innerHTML = '<i class="ti ti-check"></i><span>Vết bôi đã được dàn mỏng thành hình oval đều. Hãy chọn phương án cố định: Hong khô hoặc Hơ nhẹ qua ngọn lửa đèn cồn.</span>';
+  reportHeight();
+}
+
+function execS03Fixing(method) {
+  const fb = document.getElementById('fbS03');
+  if (method === 'air') {
+    fb.innerHTML = '<i class="ti ti-wind"></i><span>Đang hong khô trong không khí sạch...</span>';
+    setTimeout(() => {
+      s03State.fixed = true;
+      drawCanvasS03();
+      finishS03();
+    }, 1200);
+  } else if (method === 'flame') {
+    s03State.flameCount++;
+    if (s03State.flameCount < 3) {
+      fb.innerHTML = '<i class="ti ti-flame"></i><span>Hơ nhanh lượt ' + s03State.flameCount + '/3 phía trên cao ngọn lửa... Hãy tiếp tục bấm để hơ đủ 3 lượt.</span>';
+      document.getElementById('btnS03_Step4B').innerHTML = '<i class="ti ti-flame"></i> Hơ tiếp (lượt ' + (s03State.flameCount + 1) + '/3)';
+    } else {
+      s03State.fixed = true;
+      drawCanvasS03();
+      finishS03();
+    }
+  }
+  reportHeight();
+}
+
+function finishS03() {
+  document.getElementById('btnS03_Step4A').disabled = true;
+  document.getElementById('btnS03_Step4B').disabled = true;
+  const fb = document.getElementById('fbS03');
+  fb.classList.remove('info');
+  fb.classList.add('ok');
+  fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Thành công!</strong> Vết bôi đã mỏng, khô và được cố định đúng quy cách mà không bị quá nhiệt làm biến dạng vi khuẩn. Nhấn "TIẾP TỤC" để sang bước nhuộm.</span>';
+  document.getElementById('btnNextS03').disabled = false;
+  window.lmsState.smearCompleted = true;
+  reportHeight();
+}
+
+/* ==========================================================================
+   STAGE 4 CANVAS: NHUỘM XANH METHYLENE & RỬA NHẸ
+   ========================================================================== */
+let s04State = {
+  dyed: false,
+  timerDone: false,
+  washed: false,
+  dried: false
+};
+
+function initCanvasS04() {
+  const canvas = document.getElementById('canvasS04');
+  if (!canvas) return;
+  canvas.width = 720;
+  canvas.height = 405;
+  drawCanvasS04();
+}
+
+function drawCanvasS04() {
+  const canvas = document.getElementById('canvasS04');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  const cx = canvas.width / 2;
+  const cy = canvas.height / 2;
+
+  // Base fixed smear
+  ctx.save();
+  ctx.beginPath();
+  ctx.ellipse(cx, cy, 80, 42, 0, 0, Math.PI * 2);
+
+  if (s04State.dyed && !s04State.washed) {
+    // Fresh dye: dark blue puddle
+    ctx.fillStyle = 'rgba(29, 78, 216, 0.85)';
+    ctx.fill();
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = '#1E40AF';
+    ctx.stroke();
+
+    ctx.font = 'bold 13px "Be Vietnam Pro", sans-serif';
+    ctx.fillStyle = '#FFFFFF';
+    ctx.textAlign = 'center';
+    ctx.fillText('Đang ngấm thuốc nhuộm xanh...', cx, cy + 4);
+  } else if (s04State.washed) {
+    // Washed: clean slide, bacteria smear retains light blue
+    ctx.fillStyle = s04State.dried ? 'rgba(59, 130, 246, 0.45)' : 'rgba(96, 165, 250, 0.35)';
+    ctx.fill();
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = '#2563EB';
+    ctx.stroke();
+
+    ctx.font = 'bold 13px "Be Vietnam Pro", sans-serif';
+    ctx.fillStyle = '#1E3A8A';
+    ctx.textAlign = 'center';
+    ctx.fillText(s04State.dried ? '✓ Tiêu bản đã khô sẵn sàng' : 'Mẫu bắt màu xanh sau rửa', cx, cy + 4);
+  } else {
+    // Fixed smear before dyeing
+    ctx.fillStyle = 'rgba(253, 230, 138, 0.35)';
+    ctx.fill();
+    ctx.lineWidth = 2;
+    ctx.setLineDash([4, 4]);
+    ctx.strokeStyle = '#10B981';
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function execS04Dye() {
+  s04State.dyed = true;
+  drawCanvasS04();
+  document.getElementById('btnS04_Dye').disabled = true;
+  document.getElementById('btnS04_Dye').classList.remove('active-step');
+  document.getElementById('btnS04_Timer').disabled = false;
+  document.getElementById('btnS04_Timer').classList.add('active-step');
+
+  const fb = document.getElementById('fbS04');
+  fb.classList.remove('hidden', 'bad');
+  fb.classList.add('info');
+  fb.innerHTML = '<i class="ti ti-droplet"></i><span>Đã nhỏ 1–2 giọt xanh methylene phủ kín vệt bôi. Hãy bấm "Bắt đầu tính giờ" để thuốc ngấm trong 1–2 phút.</span>';
+  reportHeight();
+}
+
+function execS04Timer() {
+  const fb = document.getElementById('fbS04');
+  fb.innerHTML = '<i class="ti ti-clock"></i><span>Đang đếm thời gian ngấm màu (1–2 phút)...</span>';
+  let t = 2;
+  const timerBtn = document.getElementById('btnS04_Timer');
+  const interval = setInterval(() => {
+    t--;
+    if (t > 0) {
+      timerBtn.innerHTML = '<i class="ti ti-clock"></i> Đang ngấm màu (' + t + 's)...';
+    } else {
+      clearInterval(interval);
+      s04State.timerDone = true;
+      timerBtn.innerHTML = '<i class="ti ti-check"></i> Đã đủ 1–2 phút';
+      timerBtn.disabled = true;
+      timerBtn.classList.remove('active-step');
+      document.getElementById('btnS04_Wash').disabled = false;
+      document.getElementById('btnS04_Wash').classList.add('active-step');
+
+      fb.innerHTML = '<i class="ti ti-check"></i><span>Đã đủ thời gian nhuộm! Hãy xoay nghiêng lam kính trên chậu rửa và giữ nút "Rửa nhẹ bằng nước".</span>';
+      reportHeight();
+    }
+  }, 900);
+}
+
+function execS04Wash() {
+  const fb = document.getElementById('fbS04');
+  fb.innerHTML = '<i class="ti ti-wash"></i><span>Dòng nước nhẹ đang chảy từ đầu lam qua vết bôi, rửa trôi thuốc nhuộm thừa...</span>';
+
+  setTimeout(() => {
+    s04State.washed = true;
+    drawCanvasS04();
+    document.getElementById('btnS04_Wash').disabled = true;
+    document.getElementById('btnS04_Wash').classList.remove('active-step');
+    document.getElementById('btnS04_Dry').disabled = false;
+    document.getElementById('btnS04_Dry').classList.add('active-step');
+
+    fb.innerHTML = '<i class="ti ti-check"></i><span>Nước rửa đã trong hoàn toàn, màu thừa trôi hết và vệt vi khuẩn vẫn bám chắc trên lam. Hãy làm khô tiêu bản.</span>';
+    reportHeight();
+  }, 1200);
+}
+
+function execS04Dry() {
+  s04State.dried = true;
+  drawCanvasS04();
+  document.getElementById('btnS04_Dry').disabled = true;
+  document.getElementById('btnS04_Dry').classList.remove('active-step');
+
+  const fb = document.getElementById('fbS04');
+  fb.classList.remove('info');
+  fb.classList.add('ok');
+  fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Xuất sắc!</strong> Tiêu bản nhuộm đơn đã sạch màu thừa và khô hoàn toàn. Hãy nhấn "TIẾP TỤC" để đặt tiêu bản lên kính hiển vi!</span>';
+  document.getElementById('btnNextS04').disabled = false;
+  window.lmsState.stainingCompleted = true;
+  reportHeight();
+}
+
+/* ==========================================================================
+   STAGE 5: MÔ PHỎNG KÍNH HIỂN VI (10X -> 40X)
+   ========================================================================== */
+let currentObj = 10;
+let panOffset = { x: 30, y: 30 }; // starts slightly off-center
+let isRoiCentered = false;
+
+function setObjective(mag) {
+  currentObj = mag;
+  const img = document.getElementById('microscopeImg');
+  const btn10 = document.getElementById('btnObj10x');
+  const btn40 = document.getElementById('btnObj40x');
+
+  if (mag === 10) {
+    btn10.classList.add('active');
+    btn40.classList.remove('active');
+    img.src = 'images/SH10-B09-M01-A08.jpg';
+    updateMicroscopeView();
+  } else {
+    btn40.classList.add('active');
+    btn10.classList.remove('active');
+    img.src = 'images/SH10-B09-M01-A09.jpg';
+    panOffset = { x: 0, y: 0 };
+    updateMicroscopeView();
+
+    const fb = document.getElementById('fbS05');
+    fb.classList.remove('hidden', 'bad');
+    fb.classList.add('info');
+    fb.innerHTML = '<i class="ti ti-zoom-in"></i><span>Đã chuyển sang vật kính 40×! Vi trường thu hẹp và thấy rõ các trực khuẩn hình que ngắn màu xanh. Hãy chỉnh ốc vi cấp để lấy nét rồi Lưu kết quả.</span>';
+    document.getElementById('btnSaveObs').disabled = false;
+  }
+  reportHeight();
+}
+
+function panStage(dx, dy) {
+  if (currentObj === 40) return; // locked to ROI in 40x
+  panOffset.x += dx;
+  panOffset.y += dy;
+  updateMicroscopeView();
+
+  const dist = Math.sqrt(panOffset.x * panOffset.x + panOffset.y * panOffset.y);
+  const reticle = document.getElementById('eyepieceReticle');
+  const fb = document.getElementById('fbS05');
+
+  if (dist < 15) {
+    isRoiCentered = true;
+    reticle.classList.add('locked-roi');
+    document.getElementById('btnObj40x').disabled = false;
+
+    fb.classList.remove('hidden', 'bad');
+    fb.classList.add('ok');
+    fb.innerHTML = '<i class="ti ti-circle-check"></i><span>Cụm mẫu đã vào đúng giữa tâm vi trường! Nút <strong>Vật kính 40×</strong> đã mở khóa. Hãy chọn 40× để quan sát chi tiết.</span>';
+  } else {
+    isRoiCentered = false;
+    reticle.classList.remove('locked-roi');
+  }
+}
+
+function updateMicroscopeView() {
+  const img = document.getElementById('microscopeImg');
+  img.style.transform = 'translate(' + panOffset.x + 'px, ' + panOffset.y + 'px) scale(' + (currentObj === 10 ? '1.1' : '1.15') + ')';
+}
+
+function adjustFocus(val) {
+  const img = document.getElementById('microscopeImg');
+  const label = document.getElementById('focusLabel');
+  const blurVal = Math.abs(val - 7) * 0.8;
+  img.style.filter = 'blur(' + blurVal + 'px)';
+
+  if (blurVal < 0.5) {
+    label.textContent = 'Rõ nét 100%';
+    label.style.color = 'var(--jade-deep)';
+  } else if (blurVal < 1.5) {
+    label.textContent = 'Khá rõ';
+    label.style.color = '#CA8A04';
+  } else {
+    label.textContent = 'Hơi mờ';
+    label.style.color = '#DC2626';
+  }
+}
+
+function saveObservationS05() {
+  const fb = document.getElementById('fbS05');
+  fb.classList.remove('hidden', 'bad');
+  fb.classList.add('ok');
+  fb.innerHTML = '<i class="ti ti-device-floppy"></i><span><strong>Đã lưu kết quả quan sát!</strong> Hình ảnh vi trường 10× và 40× đã được lưu trữ vào Phiếu thực hành. Hãy nhấn "TIẾP TỤC" để đối chiếu hình thái vi khuẩn.</span>';
+  document.getElementById('btnNextS05').disabled = false;
+  window.lmsState.observationSaved = true;
+  reportHeight();
+}
+
+/* ==========================================================================
+   STAGE 6: ĐỐI CHIẾU HÌNH THÁI VÀ TRẮC NGHIỆM
+   ========================================================================== */
+let s06Answers = { q1: null, q2: null, q3: null };
+
+function selectMorph(type, el) {
+  document.querySelectorAll('.morph-card').forEach(c => c.classList.remove('active-morph'));
+  el.classList.add('active-morph');
+  // Auto select corresponding answer in Q1
+  const btns = document.querySelectorAll('#quizColQ1 .quiz-opt-btn');
+  if (type === 'cocci') answerQ(1, 'cocci', btns[0]);
+  if (type === 'bacilli') answerQ(1, 'bacilli', btns[1]);
+  if (type === 'spirilla') answerQ(1, 'spirilla', btns[2]);
+}
+
+function answerQ(qNum, val, btn) {
+  s06Answers['q' + qNum] = val;
+  const col = document.getElementById('quizColQ' + qNum);
+  if (col) {
+    col.querySelectorAll('.quiz-opt-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+  }
+}
+
+function checkAnswersS06() {
+  const fb = document.getElementById('fbS06');
+  fb.classList.remove('hidden', 'ok', 'bad');
+
+  if (!s06Answers.q1 || !s06Answers.q2 || !s06Answers.q3) {
+    fb.classList.add('bad');
+    fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Vui lòng trả lời đầy đủ cả 3 câu hỏi trước khi kiểm tra.</span>';
+    reportHeight();
+    return;
+  }
+
+  const isCorrect = (s06Answers.q1 === 'bacilli' && s06Answers.q2 === 'shape' && s06Answers.q3 === 'tiny');
+
+  if (isCorrect) {
+    fb.classList.add('ok');
+    fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác!</strong> Bạn đã dựa vào đường bao hình que trụ của tế bào để kết luận trực khuẩn, không bị nhầm lẫn bởi màu nhuộm xanh. Tế bào vi khuẩn có kích thước rất nhỏ nên cần kính hiển vi để quan sát.</span>';
+    document.getElementById('btnCheckS06').classList.add('hidden');
+    document.getElementById('btnNextS06').classList.remove('hidden');
+    window.lmsState.quizPassed = true;
+  } else {
+    fb.classList.add('bad');
+    let explain = 'Chưa chính xác: ';
+    if (s06Answers.q1 !== 'bacilli') explain += 'Vi khuẩn quan sát được có dạng hình que ngắn (trực khuẩn), không phải dạng cầu hay xoắn. ';
+    if (s06Answers.q2 === 'color') explain += 'Màu xanh là do thuốc nhuộm xanh methylene bắt màu, không phải dấu hiệu phân loại hình thái. ';
+    if (s06Answers.q3 !== 'tiny') explain += 'Tế bào vi khuẩn kích thước hiển vi (rất nhỏ), không thể thấy bằng mắt thường.';
+    fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span>' + explain + '</span>';
+  }
+  reportHeight();
+}
+
+/* ==========================================================================
+   STAGE 7: BẢNG VẼ CANVAS PHIẾU THỰC HÀNH & KẾT THÚC
+   ========================================================================== */
+let isDrawing = false;
+let drawCanvas, drawCtx;
+
+function initDrawingBoard() {
+  drawCanvas = document.getElementById('drawCanvas');
+  if (!drawCanvas) return;
+  drawCtx = drawCanvas.getContext('2d');
+  resizeDrawCanvas();
+
+  // Mouse events
+  drawCanvas.addEventListener('mousedown', startDraw);
+  drawCanvas.addEventListener('mousemove', doDraw);
+  drawCanvas.addEventListener('mouseup', stopDraw);
+  drawCanvas.addEventListener('mouseleave', stopDraw);
+
+  // Touch events
+  drawCanvas.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    const t = e.touches[0];
+    const rect = drawCanvas.getBoundingClientRect();
+    isDrawing = true;
+    drawCtx.beginPath();
+    drawCtx.moveTo(t.clientX - rect.left, t.clientY - rect.top);
+  });
+  drawCanvas.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    if (!isDrawing) return;
+    const t = e.touches[0];
+    const rect = drawCanvas.getBoundingClientRect();
+    drawCtx.lineTo(t.clientX - rect.left, t.clientY - rect.top);
+    drawCtx.strokeStyle = '#1D4ED8';
+    drawCtx.lineWidth = 4;
+    drawCtx.lineCap = 'round';
+    drawCtx.stroke();
+  });
+  drawCanvas.addEventListener('touchend', stopDraw);
+}
+
+function resizeDrawCanvas() {
+  if (!drawCanvas) return;
+  const rect = drawCanvas.getBoundingClientRect();
+  drawCanvas.width = rect.width || 600;
+  drawCanvas.height = 220;
+  drawCtx.lineCap = 'round';
+  drawCtx.lineJoin = 'round';
+}
+
+function startDraw(e) {
+  isDrawing = true;
+  drawCtx.beginPath();
+  drawCtx.moveTo(e.offsetX, e.offsetY);
+}
+
+function doDraw(e) {
+  if (!isDrawing) return;
+  drawCtx.lineTo(e.offsetX, e.offsetY);
+  drawCtx.strokeStyle = '#1D4ED8';
+  drawCtx.lineWidth = 4;
+  drawCtx.stroke();
+}
+
+function stopDraw() {
+  if (isDrawing) {
+    drawCtx.closePath();
+    isDrawing = false;
+  }
+}
+
+function clearDrawingCanvas() {
+  if (drawCtx && drawCanvas) {
+    drawCtx.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
+  }
+}
+
+function submitFinalReport() {
+  window.lmsState.reportSaved = true;
+  window.lmsState.completed = true;
+
+  // Show completion modal
+  const modal = document.getElementById('completionModal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    launchConfetti();
+  }
+}
+
+function closeCongratsModal() {
+  const modal = document.getElementById('completionModal');
+  if (modal) modal.classList.add('hidden');
+}
+
+function reviewLesson() {
+  closeCongratsModal();
+  goToStage(1);
+}
+
+/* ==========================================================================
+   CONFETTI FIREWORKS CANVAS
+   ========================================================================== */
+function launchConfetti() {
+  const canvas = document.getElementById('confettiCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const particles = [];
+  const colors = ['#3CA57A', '#10B981', '#3B82F6', '#F59E0B', '#EF4444', '#8B5CF6'];
+
+  for (let i = 0; i < 90; i++) {
+    particles.push({
+      x: canvas.width / 2,
+      y: canvas.height / 2 + 50,
+      vx: (Math.random() - 0.5) * 16,
+      vy: (Math.random() - 0.8) * 18,
+      size: Math.random() * 8 + 4,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      alpha: 1,
+      decay: Math.random() * 0.015 + 0.01
+    });
+  }
+
+  function render() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let active = false;
+
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.35; // gravity
+      p.alpha -= p.decay;
+
+      if (p.alpha > 0) {
+        active = true;
+        ctx.save();
+        ctx.globalAlpha = p.alpha;
+        ctx.fillStyle = p.color;
+        ctx.fillRect(p.x, p.y, p.size, p.size);
+        ctx.restore();
+      }
+    });
+
+    if (active) {
+      requestAnimationFrame(render);
+    } else {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+  }
+  render();
+}
+</script>
+
+</body>
+</html>

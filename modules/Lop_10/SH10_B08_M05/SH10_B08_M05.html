@@ -327,6 +327,46 @@ header,
   justify-content: center;
 }
 
+.visual-toolbar.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 10px 12px;
+}
+
+.visual-toolbar.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 10px 14px;
+}
+
+.visual-toolbar.grid-3 .btn-tool,
+.visual-toolbar.grid-2 .btn-tool {
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 8px 6px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  line-height: 1.25;
+  gap: 5px;
+}
+
+@media (max-width: 600px) {
+  .visual-toolbar.grid-3 {
+    gap: 4px;
+    padding: 8px 6px;
+  }
+  .visual-toolbar.grid-3 .btn-tool {
+    font-size: 0.74rem;
+    padding: 6px 3px;
+    gap: 3px;
+  }
+}
+
 .btn-tool {
   background: var(--cream);
   border: 1.5px solid var(--paper-line-2);
@@ -779,9 +819,9 @@ header,
       <!-- Cột trái: Khung hình học sinh khai thác -->
       <div class="visual-card">
         <div class="visual-media-box" id="s01MediaBox">
-          <img src="images/SH10-B08-M05-A01.jpg" alt="Đối chiếu thành tế bào thực vật, nấm và động vật" id="imgA01">
+          <img src="https://lh3.googleusercontent.com/d/1pcQVHAAyti8Y5zzMAhU7GnSYHTqHY6gF" alt="Đối chiếu thành tế bào thực vật, nấm và động vật" id="imgA01">
         </div>
-        <div class="visual-toolbar">
+        <div class="visual-toolbar grid-3">
           <button class="btn-tool active" onclick="selectCellS01('plant', this)"><i class="ti ti-leaf"></i> 1. Thực vật (Cellulose)</button>
           <button class="btn-tool" onclick="selectCellS01('fungi', this)"><i class="ti ti-seeding"></i> 2. Nấm (Chitin)</button>
           <button class="btn-tool" onclick="selectCellS01('animal', this)"><i class="ti ti-paw"></i> 3. Động vật (Không thành)</button>
@@ -871,9 +911,9 @@ header,
       <!-- Cột trái: Khung hình lông roi -->
       <div class="visual-card">
         <div class="visual-media-box">
-          <img src="images/SH10-B08-M05-A03.jpg" alt="Cấu trúc lông roi 9+2 và roi vi khuẩn đối chiếu">
+          <img src="https://lh3.googleusercontent.com/d/1sIfeaYRvtunxnf3W_iYmn7RQSQEipNV9" alt="Cấu trúc lông roi 9+2 và roi vi khuẩn đối chiếu">
         </div>
-        <div class="visual-toolbar">
+        <div class="visual-toolbar grid-3">
           <button class="btn-tool active" onclick="selectDetailS02('axoneme', this)"><i class="ti ti-circle-dot"></i> Mặt cắt Axoneme (9+2)</button>
           <button class="btn-tool" onclick="selectDetailS02('sperm_cilia', this)"><i class="ti ti-wind"></i> Tinh trùng & Biểu mô</button>
           <button class="btn-tool" onclick="selectDetailS02('bacteria', this)"><i class="ti ti-bug"></i> Roi vi khuẩn (Nhân sơ)</button>
@@ -885,24 +925,24 @@ header,
 
       <!-- Cột phải: Câu hỏi trắc nghiệm -->
       <div class="task-card">
-        <div class="task-title">Điểm khác biệt chính giữa lông/roi nhân thực và roi nhân sơ là gì?</div>
+        <div class="task-title">Vì sao cùng gọi là "lông" và "roi", nhưng lông/roi nhân thực lại KHÁC HOÀN TOÀN với roi của vi khuẩn?</div>
 
         <div class="quiz-options-group" id="quizOptsS02">
           <button class="quiz-opt-btn" onclick="selectQuizS02(0, this)">
             <i class="ti ti-circle"></i>
-            <span><strong>A.</strong> Nhân thực: vi ống + có màng bao; Nhân sơ: cấu trúc protein khác, không có màng bao.</span>
+            <span><strong>A.</strong> Lông/roi nhân thực cấu tạo từ vi ống (axoneme 9+2) và có màng sinh chất bao bọc; roi vi khuẩn từ protein flagellin và không có màng bao.</span>
           </button>
           <button class="quiz-opt-btn" onclick="selectQuizS02(1, this)">
             <i class="ti ti-circle"></i>
-            <span><strong>B.</strong> Không có khác biệt gì, cả hai cấu trúc đều cấu tạo từ vi ống và giống hệt nhau.</span>
+            <span><strong>B.</strong> Cả hai đều có vi ống 9+2 nhưng vi khuẩn có thêm màng bọc dày hơn tế bào nhân thực.</span>
           </button>
           <button class="quiz-opt-btn" onclick="selectQuizS02(2, this)">
             <i class="ti ti-circle"></i>
-            <span><strong>C.</strong> Nhân thực không có màng bao bọc, còn nhân sơ có màng bao bọc dày.</span>
+            <span><strong>C.</strong> Lông/roi nhân thực chỉ giúp hấp thu chất dinh dưỡng, không tham gia vào vận động hay di chuyển.</span>
           </button>
           <button class="quiz-opt-btn" onclick="selectQuizS02(3, this)">
             <i class="ti ti-circle"></i>
-            <span><strong>D.</strong> Lông/roi nhân thực cấu tạo từ protein flagellin, còn nhân sơ cấu tạo từ vi ống.</span>
+            <span><strong>D.</strong> Roi vi khuẩn cấu tạo từ sợi cellulose cứng chắc, khác với vi ống mềm dẻo của nhân thực.</span>
           </button>
         </div>
 
@@ -952,9 +992,9 @@ header,
       <!-- Cột trái: Khung hình chất nền ngoại bào -->
       <div class="visual-card">
         <div class="visual-media-box">
-          <img src="images/SH10-B08-M05-A05.jpg" alt="Chất nền ngoại bào ECM liên kết tế bào động vật" id="imgA05">
+          <img src="https://lh3.googleusercontent.com/d/1iZZF0YVzCLAEWgeobzEQm5riwIp4K_hP" alt="Chất nền ngoại bào ECM liên kết tế bào động vật" id="imgA05">
         </div>
-        <div class="visual-toolbar">
+        <div class="visual-toolbar grid-3">
           <button class="btn-tool active" id="btnSimulateECM" onclick="simulateECMS03()"><i class="ti ti-sparkles"></i> Mô phỏng liên kết mô</button>
           <button class="btn-tool" onclick="showECMPart('collagen')"><i class="ti ti-line"></i> Sợi Collagen</button>
           <button class="btn-tool" onclick="showECMPart('integrin')"><i class="ti ti-plug"></i> Protein Integrin</button>
@@ -966,7 +1006,7 @@ header,
 
       <!-- Cột phải: Câu hỏi trắc nghiệm -->
       <div class="task-card">
-        <div class="task-title">Chất nền ngoại bào của động vật có phải là thành tế bào thực vật không?</div>
+        <div class="task-title">Chất nền ngoại bào ở tế bào động vật có tương đương với thành tế bào thực vật không?</div>
 
         <div class="quiz-options-group" id="quizOptsS03">
           <button class="quiz-opt-btn" onclick="selectQuizS03(0, this)">
@@ -1033,9 +1073,9 @@ header,
       <!-- Cột trái: Khung hình mối nối -->
       <div class="visual-card">
         <div class="visual-media-box">
-          <img src="images/SH10-B08-M05-A06.jpg" alt="So sánh Mối nối kín và Mối nối hở">
+          <img src="https://lh3.googleusercontent.com/d/1U2FSdR_SZwQviMEJ9WXVArSv1UHNO-cV" alt="So sánh Mối nối kín và Mối nối hở">
         </div>
-        <div class="visual-toolbar">
+        <div class="visual-toolbar grid-2">
           <button class="btn-tool active" onclick="testJunctionS04('tight', this)"><i class="ti ti-lock"></i> 1. Thử qua Mối nối kín</button>
           <button class="btn-tool" onclick="testJunctionS04('gap', this)"><i class="ti ti-arrows-left-right"></i> 2. Thử qua Mối nối hở</button>
         </div>
@@ -1113,7 +1153,7 @@ header,
     <!-- Sơ đồ Master Map đối chiếu -->
     <div class="visual-card" style="margin-bottom: 6px;">
       <div class="visual-media-box" style="aspect-ratio: 21/9; max-height: 280px;">
-        <img src="images/SH10-B08-M01-A02.jpg" alt="Sơ đồ đối chiếu tế bào thực vật và động vật">
+        <img src="https://lh3.googleusercontent.com/d/1eKdf1OVQdK8s86mWzPFpH_9Gf2sejEk2" alt="Sơ đồ đối chiếu tế bào thực vật và động vật">
       </div>
     </div>
 
