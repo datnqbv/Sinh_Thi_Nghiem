@@ -197,6 +197,222 @@
       line-height: 1.2;
     }
 
+    /* 3. KHỐI LUYỆN TẬP */
+    .hidden { display: none !important; }
+
+    .flow-box.practice {
+      border-left: 6px solid #4E7F92;
+    }
+
+    .flow-box.practice .icon-box {
+      background: #DCE7EB;
+      border: 1px solid #BDD0D8;
+      color: #315F70;
+    }
+
+    .practice-intro {
+      margin: -2px 0 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .question-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .question-card {
+      position: relative;
+      padding: 18px;
+      padding-top: 86px;
+      background: var(--card-bg);
+      border: 1px solid var(--line-card);
+      border-radius: var(--radius-card);
+    }
+
+    .question-heading {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .question-number {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      flex: 0 0 32px;
+      border-radius: 50%;
+      background: #DCE7EB;
+      color: #315F70;
+      font-weight: 800;
+    }
+
+    .question-heading h3 {
+      font-size: 1rem;
+      line-height: 1.45;
+    }
+
+    .question-meta {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      left: 58px;
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 4px 8px;
+      opacity: 0.58;
+      font-style: italic;
+    }
+
+    .meta-item {
+      padding: 2px 5px;
+      background: transparent;
+      border: 0;
+      color: var(--muted);
+      font-size: 0.65rem;
+      line-height: 1.3;
+      text-align: right;
+    }
+
+    .meta-item strong {
+      display: inline;
+      color: var(--text);
+      font-size: inherit;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .meta-item strong::after { content: ': '; }
+
+    .question-text {
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      font-weight: 650;
+      line-height: 1.65;
+    }
+
+    .answer-options {
+      display: grid;
+      gap: 8px;
+    }
+
+    .answer-option {
+      display: flex;
+      align-items: flex-start;
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 12px;
+      border: 1px solid var(--line-card);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--text);
+      font: inherit;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      text-align: left;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .answer-option:hover,
+    .answer-option:focus-visible {
+      border-color: #4E7F92;
+      outline: 2px solid transparent;
+    }
+
+    .answer-option.correct {
+      border-color: var(--green2);
+      background: var(--mint);
+      color: var(--deep);
+    }
+
+    .answer-option.wrong {
+      border-color: #C15F3C;
+      background: #FDF0EA;
+      color: #8B321E;
+    }
+
+    .answer-option.selected:not(.correct):not(.wrong) {
+      border-color: #4E7F92;
+      background: #DCE7EB;
+    }
+
+    .answer-option:disabled {
+      cursor: default;
+      opacity: 1;
+    }
+
+    .option-key {
+      flex: 0 0 26px;
+      font-weight: 800;
+      color: #315F70;
+    }
+
+    .question-feedback {
+      min-height: 24px;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .question-feedback.ok { color: var(--green2); }
+    .question-feedback.bad { color: #A4472D; }
+
+    .practice-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .practice-button {
+      min-height: 44px;
+      padding: 10px 16px;
+      border: 1.5px solid #4E7F92;
+      border-radius: 8px;
+      background: #fff;
+      color: #315F70;
+      font: inherit;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .practice-button.primary {
+      border-color: var(--green2);
+      background: var(--green2);
+      color: #fff;
+    }
+
+    .practice-button:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    .practice-summary {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-left: 4px solid #4E7F92;
+      background: #DCE7EB;
+      color: var(--text);
+      font-size: 0.88rem;
+    }
+
+    .answer-reveal {
+      margin-top: 10px;
+      padding: 12px 14px;
+      border-left: 4px solid var(--green);
+      border-radius: 8px;
+      background: var(--mint);
+      color: var(--deep);
+      font-size: 0.86rem;
+      line-height: 1.6;
+    }
+
+
     /* Responsive cho màn hình di động */
     @media (max-width: 640px) {
       body {
@@ -223,6 +439,26 @@
       }
       .theory-item, .note-item {
         font-size: 0.88rem;
+      }
+      .question-card {
+        padding: 14px;
+        padding-top: 14px;
+      }
+      .question-meta {
+        position: static;
+        justify-content: flex-end;
+        margin: 0 0 10px 36px;
+      }
+      .practice-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
@@ -296,6 +532,116 @@
         </ul>
       </div>
     </section>
+
+    <section class="flow-box practice" aria-labelledby="practiceTitle">
+      <div class="flow-header">
+        <div class="icon-box" aria-hidden="true"><i class="ti ti-checklist"></i></div>
+        <div class="flow-title-group"><h2 id="practiceTitle">Luyện tập</h2></div>
+      </div>
+      <p class="practice-intro">Chọn một phương án cho mỗi câu, sau đó nhấn “Nộp bài” để xem kết quả.</p>
+
+      <div class="question-list">
+        <article class="question-card" data-correct="A">
+          <div class="question-heading"><span class="question-number">1</span><h3>Vai trò của tri thức Sinh học đối với sức khỏe</h3></div>
+          <div class="question-meta">
+            <div class="meta-item"><strong>Chủ đề</strong>Vai trò của Sinh học</div>
+            <div class="meta-item"><strong>Dạng bài</strong>Nhận diện ứng dụng</div>
+            <div class="meta-item"><strong>Cấp độ tư duy</strong>Thông hiểu</div>
+            <div class="meta-item"><strong>Năng lực Sinh học</strong>Nhận thức sinh học</div>
+          </div>
+          <p class="question-text">Trường hợp nào sau đây thể hiện rõ vai trò của tri thức Sinh học đối với sức khỏe con người?</p>
+          <div class="answer-options">
+            <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>Dựa vào hiểu biết về dinh dưỡng để xây dựng chế độ ăn phù hợp.</span></button>
+            <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>Tính khoảng cách giữa hai thành phố.</span></button>
+            <button class="answer-option" type="button" data-option="C"><span class="option-key">C.</span><span>Xác định tốc độ của một phương tiện.</span></button>
+            <button class="answer-option" type="button" data-option="D"><span class="option-key">D.</span><span>Dự đoán thời tiết bằng số liệu khí tượng.</span></button>
+          </div>
+          <div class="question-feedback" role="status" aria-live="polite"></div>
+          <div class="answer-reveal hidden"><div class="blur-content"><strong>Đáp án: A.</strong> Tình huống A sử dụng tri thức về cơ thể và dinh dưỡng để hỗ trợ sức khỏe, nên thể hiện trực tiếp vai trò của Sinh học.</div></div>
+        </article>
+
+        <article class="question-card" data-correct="B">
+          <div class="question-heading"><span class="question-number">2</span><h3>Ứng dụng Sinh học trong pháp y</h3></div>
+          <div class="question-meta">
+            <div class="meta-item"><strong>Chủ đề</strong>Ứng dụng Sinh học trong pháp y</div>
+            <div class="meta-item"><strong>Dạng bài</strong>Phân tích tình huống</div>
+            <div class="meta-item"><strong>Cấp độ tư duy</strong>Thông hiểu</div>
+            <div class="meta-item"><strong>Năng lực Sinh học</strong>Nhận thức sinh học</div>
+          </div>
+          <p class="question-text">Trong điều tra pháp y, việc phân tích DNA từ mẫu sinh học có thể giúp</p>
+          <div class="answer-options">
+            <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>xác định chắc chắn toàn bộ diễn biến của vụ việc.</span></button>
+            <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>hỗ trợ xác định hoặc loại trừ mối liên hệ giữa mẫu sinh học với một cá thể.</span></button>
+            <button class="answer-option" type="button" data-option="C"><span class="option-key">C.</span><span>xác định chính xác tính cách của một người.</span></button>
+            <button class="answer-option" type="button" data-option="D"><span class="option-key">D.</span><span>dự đoán mọi bệnh mà người đó sẽ mắc.</span></button>
+          </div>
+          <div class="question-feedback" role="status" aria-live="polite"></div>
+          <div class="answer-reveal hidden"><div class="blur-content"><strong>Đáp án: B.</strong> Phân tích DNA cung cấp bằng chứng về mối liên hệ sinh học, nhưng không tự quyết định toàn bộ diễn biến của vụ việc.</div></div>
+        </article>
+
+        <article class="question-card" data-correct="B">
+          <div class="question-heading"><span class="question-number">3</span><h3>Chuỗi tri thức – giải pháp – tác động</h3></div>
+          <div class="question-meta">
+            <div class="meta-item"><strong>Chủ đề</strong>Chuỗi tri thức – giải pháp – tác động</div>
+            <div class="meta-item"><strong>Dạng bài</strong>Xác định quan hệ nhân quả</div>
+            <div class="meta-item"><strong>Cấp độ tư duy</strong>Vận dụng</div>
+            <div class="meta-item"><strong>Năng lực Sinh học</strong>Vận dụng kiến thức, kĩ năng đã học</div>
+          </div>
+          <p class="question-text">Một nhóm nghiên cứu phát hiện một loài vi sinh vật có khả năng phân giải một chất ô nhiễm. Sau đó, họ phát triển quy trình sử dụng vi sinh vật này để hỗ trợ xử lí nước thải. Trình tự nào mô tả đúng nhất?</p>
+          <div class="answer-options">
+            <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>Tác động → tri thức → giải pháp.</span></button>
+            <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>Tri thức → giải pháp → tác động thực tiễn.</span></button>
+            <button class="answer-option" type="button" data-option="C"><span class="option-key">C.</span><span>Giải pháp → tác động → tri thức.</span></button>
+            <button class="answer-option" type="button" data-option="D"><span class="option-key">D.</span><span>Tri thức → tác động → giải pháp.</span></button>
+          </div>
+          <div class="question-feedback" role="status" aria-live="polite"></div>
+          <div class="answer-reveal hidden"><div class="blur-content"><strong>Đáp án: B.</strong> Phát hiện khả năng của vi sinh vật là tri thức; xây dựng quy trình là giải pháp; áp dụng để hỗ trợ xử lí nước thải tạo tác động thực tiễn.</div></div>
+        </article>
+
+        <article class="question-card" data-correct="C">
+          <div class="question-heading"><span class="question-number">4</span><h3>Lĩnh vực ứng dụng và nghề nghiệp</h3></div>
+          <div class="question-meta">
+            <div class="meta-item"><strong>Chủ đề</strong>Lĩnh vực ứng dụng và nghề nghiệp</div>
+            <div class="meta-item"><strong>Dạng bài</strong>Phân biệt khái niệm</div>
+            <div class="meta-item"><strong>Cấp độ tư duy</strong>Thông hiểu</div>
+            <div class="meta-item"><strong>Năng lực Sinh học</strong>Nhận thức sinh học</div>
+          </div>
+          <p class="question-text">Phát biểu nào đúng về mối quan hệ giữa lĩnh vực ứng dụng Sinh học và nghề nghiệp?</p>
+          <div class="answer-options">
+            <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>Mỗi lĩnh vực ứng dụng chỉ tương ứng với một nghề.</span></button>
+            <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>Mỗi nghề chỉ sử dụng kiến thức của một lĩnh vực Sinh học.</span></button>
+            <button class="answer-option" type="button" data-option="C"><span class="option-key">C.</span><span>Một lĩnh vực có thể liên quan đến nhiều nghề và một nghề có thể sử dụng kiến thức từ nhiều lĩnh vực.</span></button>
+            <button class="answer-option" type="button" data-option="D"><span class="option-key">D.</span><span>Lĩnh vực ứng dụng và nghề nghiệp là hai cách gọi của cùng một khái niệm.</span></button>
+          </div>
+          <div class="question-feedback" role="status" aria-live="polite"></div>
+          <div class="answer-reveal hidden"><div class="blur-content"><strong>Đáp án: C.</strong> Lĩnh vực ứng dụng và nghề nghiệp không đồng nhất. Một lĩnh vực có thể tạo ra nhiều vị trí nghề nghiệp và một nghề có thể huy động kiến thức từ nhiều lĩnh vực.</div></div>
+        </article>
+
+        <article class="question-card" data-correct="A">
+          <div class="question-heading"><span class="question-number">5</span><h3>Nghề nghiệp liên quan đến Sinh học</h3></div>
+          <div class="question-meta">
+            <div class="meta-item"><strong>Chủ đề</strong>Nghề nghiệp liên quan đến Sinh học</div>
+            <div class="meta-item"><strong>Dạng bài</strong>Ghép nghề với nhiệm vụ</div>
+            <div class="meta-item"><strong>Cấp độ tư duy</strong>Vận dụng</div>
+            <div class="meta-item"><strong>Năng lực Sinh học</strong>Vận dụng kiến thức, kĩ năng đã học</div>
+          </div>
+          <p class="question-text">Một học sinh yêu thích việc phân tích dữ liệu DNA bằng máy tính và muốn làm công việc liên quan đến xử lí dữ liệu sinh học. Nghề nào phù hợp nhất với định hướng này?</p>
+          <div class="answer-options">
+            <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>Chuyên gia tin sinh học.</span></button>
+            <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>Kĩ sư xây dựng.</span></button>
+            <button class="answer-option" type="button" data-option="C"><span class="option-key">C.</span><span>Kiến trúc sư.</span></button>
+            <button class="answer-option" type="button" data-option="D"><span class="option-key">D.</span><span>Kĩ sư cơ khí.</span></button>
+          </div>
+          <div class="question-feedback" role="status" aria-live="polite"></div>
+          <div class="answer-reveal hidden"><div class="blur-content"><strong>Đáp án: A.</strong> Phân tích dữ liệu DNA bằng công cụ tính toán là nhiệm vụ điển hình gắn với tin sinh học.</div></div>
+        </article>
+      </div>
+      <div class="practice-actions">
+        <button class="practice-button primary" id="submitPractice" type="button"><i class="ti ti-send"></i> Nộp bài</button>
+        <button class="practice-button" id="showSolutions" type="button" disabled aria-expanded="false"><i class="ti ti-eye"></i> Xem đáp án chi tiết</button>
+      </div>
+      <div class="practice-summary hidden" id="practiceSummary" role="status" aria-live="polite"></div>
+    </section>
   </main>
 
   <!-- Script hỗ trợ tự động tính chiều cao khi nhúng iframe LMS -->
@@ -309,6 +655,76 @@
 
     window.addEventListener('load', reportHeight);
     window.addEventListener('resize', reportHeight);
+
+    const questionCards = [...document.querySelectorAll('.question-card')];
+    const submitPractice = document.getElementById('submitPractice');
+    const showSolutions = document.getElementById('showSolutions');
+    const practiceSummary = document.getElementById('practiceSummary');
+    let practiceSubmitted = false;
+
+    questionCards.forEach((card) => {
+      card.querySelectorAll('.answer-option').forEach((option) => {
+        option.addEventListener('click', () => {
+          if (practiceSubmitted) return;
+          card.querySelectorAll('.answer-option').forEach((item) => item.classList.remove('selected'));
+          option.classList.add('selected');
+          card.dataset.selected = option.dataset.option;
+          card.querySelector('.question-feedback').textContent = '';
+        });
+      });
+    });
+
+    submitPractice.addEventListener('click', () => {
+      const unanswered = questionCards.filter((card) => !card.dataset.selected);
+      practiceSummary.classList.remove('hidden');
+
+      if (unanswered.length) {
+        practiceSummary.textContent = `Bạn còn ${unanswered.length} câu chưa chọn đáp án. Hãy hoàn thành trước khi nộp bài.`;
+        unanswered[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        reportHeight();
+        return;
+      }
+
+      practiceSubmitted = true;
+      let score = 0;
+
+      questionCards.forEach((card) => {
+        const correct = card.dataset.correct;
+        const selected = card.dataset.selected;
+        const feedback = card.querySelector('.question-feedback');
+
+        card.querySelectorAll('.answer-option').forEach((option) => {
+          option.disabled = true;
+          option.classList.remove('selected');
+          if (option.dataset.option === correct) option.classList.add('correct');
+          if (option.dataset.option === selected && selected !== correct) option.classList.add('wrong');
+        });
+
+        if (selected === correct) {
+          score += 1;
+          feedback.className = 'question-feedback ok';
+          feedback.textContent = `Bạn chọn ${selected}. Đây là đáp án đúng.`;
+        } else {
+          feedback.className = 'question-feedback bad';
+          feedback.textContent = `Bạn chọn ${selected} (màu đỏ). Đáp án đúng là ${correct} (màu xanh lá).`;
+        }
+      });
+
+      practiceSummary.textContent = `Kết quả: ${score}/${questionCards.length} câu đúng. Bạn có thể xem lời giải chi tiết bên dưới.`;
+      submitPractice.disabled = true;
+      showSolutions.disabled = false;
+      reportHeight();
+    });
+
+    showSolutions.addEventListener('click', () => {
+      const willShow = showSolutions.getAttribute('aria-expanded') !== 'true';
+      questionCards.forEach((card) => card.querySelector('.answer-reveal').classList.toggle('hidden', !willShow));
+      showSolutions.setAttribute('aria-expanded', String(willShow));
+      showSolutions.innerHTML = willShow
+        ? '<i class="ti ti-eye-off"></i> Ẩn đáp án chi tiết'
+        : '<i class="ti ti-eye"></i> Xem đáp án chi tiết';
+      reportHeight();
+    });
   </script>
 </body>
 </html>
