@@ -197,6 +197,41 @@
       line-height: 1.2;
     }
 
+    /* 3. KHỐI LUYỆN TẬP */
+    .hidden { display: none !important; }
+    .flow-box.practice { border-left: 6px solid #4E7F92; }
+    .flow-box.practice .icon-box { background:#DCE7EB; border:1px solid #BDD0D8; color:#315F70; }
+    .practice-intro { margin:-2px 0 18px; color:var(--muted); font-size:.92rem; }
+    .question-list { display:grid; gap:16px; }
+    .question-card { position:relative; padding:52px 18px 18px; background:var(--card-bg); border:1px solid var(--line-card); border-radius:var(--radius-card); }
+    .question-heading { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+    .question-number { display:grid; place-items:center; width:auto; height:32px; padding:0 10px; flex:0 0 auto; border-radius:8px; background:#DCE7EB; color:#315F70; font-weight:800; }
+    .question-heading h3 { font-size:1rem; line-height:1.45; }
+    .question-meta { position:absolute; top:14px; right:14px; left:14px; display:flex; justify-content:flex-end; flex-wrap:nowrap; gap:4px 8px; opacity:.58; font-style:italic; overflow-x:auto; white-space:nowrap; scrollbar-width:none; }
+    .question-meta::-webkit-scrollbar { display:none; }
+    .meta-item { padding:2px 5px; color:var(--muted); font-size:clamp(.56rem,.85vw,.65rem); line-height:1.3; text-align:right; }
+    .meta-item strong { display:inline; color:var(--text); font-size:inherit; }
+    .meta-item strong::after { content:': '; }
+    .question-text { margin-bottom:12px; font-size:.95rem; font-weight:650; line-height:1.65; }
+    .question-heading .question-text { margin:0; flex:1; }
+    .answer-options { display:grid; gap:8px; }
+    .answer-option { display:flex; align-items:flex-start; width:100%; min-height:44px; padding:10px 12px; border:1px solid var(--line-card); border-radius:8px; background:#fff; color:var(--text); font:inherit; font-size:.88rem; line-height:1.5; text-align:left; cursor:pointer; transition:border-color .2s ease,background-color .2s ease; }
+    .answer-option:hover, .answer-option:focus-visible { border-color:#4E7F92; outline:2px solid transparent; }
+    .answer-option.selected:not(.correct):not(.wrong) { border-color:#4E7F92; background:#DCE7EB; }
+    .answer-option.correct { border-color:var(--green2); background:var(--mint); color:var(--deep); }
+    .answer-option.wrong { border-color:#C15F3C; background:#FDF0EA; color:#8B321E; }
+    .answer-option:disabled { cursor:default; opacity:1; }
+    .option-key { flex:0 0 26px; font-weight:800; color:#315F70; }
+    .question-feedback { min-height:24px; margin-top:10px; color:var(--muted); font-size:.84rem; }
+    .question-feedback.ok { color:var(--green2); }
+    .question-feedback.bad { color:#A4472D; }
+    .answer-reveal { margin-top:10px; padding:12px 14px; border-left:4px solid var(--green); border-radius:8px; background:var(--mint); color:var(--deep); font-size:.86rem; line-height:1.6; }
+    .practice-actions { display:flex; justify-content:flex-end; gap:10px; margin-top:18px; }
+    .practice-button { min-height:44px; padding:10px 16px; border:1.5px solid #4E7F92; border-radius:8px; background:#fff; color:#315F70; font:inherit; font-size:.84rem; font-weight:700; cursor:pointer; }
+    .practice-button.primary { border-color:var(--green2); background:var(--green2); color:#fff; }
+    .practice-button:disabled { cursor:not-allowed; opacity:.5; }
+    .practice-summary { margin-top:12px; padding:10px 12px; border-left:4px solid #4E7F92; background:#DCE7EB; color:var(--text); font-size:.88rem; }
+
     /* Responsive cho màn hình di động */
     @media (max-width: 640px) {
       body {
@@ -224,6 +259,13 @@
       .theory-item, .note-item {
         font-size: 0.88rem;
       }
+      .question-card { padding:14px; }
+      .question-meta { position:static; justify-content:flex-end; margin:0 0 10px 36px; flex-wrap:nowrap; }
+      .practice-actions { align-items:stretch; flex-direction:column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior:auto !important; transition-duration:.01ms !important; }
     }
   </style>
 </head>
@@ -290,6 +332,112 @@
         </ul>
       </div>
     </section>
+
+    <section class="flow-box practice" aria-labelledby="practiceTitle">
+      <div class="flow-header">
+        <div class="icon-box" aria-hidden="true"><i class="ti ti-checklist"></i></div>
+        <div class="flow-title-group"><h2 id="practiceTitle">Luyện tập</h2></div>
+      </div>
+      <p class="practice-intro">Chọn một phương án cho mỗi câu, sau đó nhấn “Nộp bài” để xem kết quả.</p>
+
+      <div class="question-list">
+        <article class="question-card" data-correct="B">
+          <div class="question-heading"><span class="question-number">Câu 1</span><p class="question-text">Đối tượng nghiên cứu của Sinh học là</p></div>
+          <div class="question-meta">
+            <div class="meta-item"><strong>Chủ đề</strong>Đối tượng và lĩnh vực nghiên cứu của Sinh học</div>
+            <div class="meta-item"><strong>Dạng bài</strong>Nhận diện khái niệm</div>
+            <div class="meta-item"><strong>Cấp độ tư duy</strong>Nhận biết</div>
+            <div class="meta-item"><strong>Năng lực Sinh học</strong>Nhận thức sinh học</div>
+          </div>
+          <div class="answer-options">
+            <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>các chất và sự biến đổi của các chất.</span></button>
+            <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>thế giới sống và các quá trình sống.</span></button>
+            <button class="answer-option" type="button" data-option="C"><span class="option-key">C.</span><span>các dạng năng lượng trong tự nhiên.</span></button>
+            <button class="answer-option" type="button" data-option="D"><span class="option-key">D.</span><span>cấu trúc và sự vận động của Trái Đất.</span></button>
+          </div>
+          <div class="question-feedback" role="status" aria-live="polite"></div>
+          <div class="answer-reveal hidden"><strong>Đáp án: B.</strong> Sinh học nghiên cứu thế giới sống và các quá trình sống. Vì vậy chọn B.</div>
+        </article>
+
+        <article class="question-card" data-correct="A">
+          <div class="question-heading"><span class="question-number">Câu 2</span><p class="question-text">Một nhóm nhà khoa học nghiên cứu cấu trúc của tơ nhện và cơ chế tạo nên độ bền của tơ. Hoạt động này chủ yếu thuộc</p></div>
+          <div class="question-meta">
+            <div class="meta-item"><strong>Chủ đề</strong>Nghiên cứu cơ bản</div>
+            <div class="meta-item"><strong>Dạng bài</strong>Phân loại tình huống</div>
+            <div class="meta-item"><strong>Cấp độ tư duy</strong>Thông hiểu</div>
+            <div class="meta-item"><strong>Năng lực Sinh học</strong>Nhận thức sinh học</div>
+          </div>
+          <div class="answer-options">
+            <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>nghiên cứu cơ bản.</span></button>
+            <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>nghiên cứu ứng dụng.</span></button>
+            <button class="answer-option" type="button" data-option="C"><span class="option-key">C.</span><span>sản xuất công nghiệp.</span></button>
+            <button class="answer-option" type="button" data-option="D"><span class="option-key">D.</span><span>bảo vệ môi trường.</span></button>
+          </div>
+          <div class="question-feedback" role="status" aria-live="polite"></div>
+          <div class="answer-reveal hidden"><strong>Đáp án: A.</strong> Mục tiêu là tìm hiểu cấu trúc và cơ chế của đối tượng sống, tức làm rõ bản chất của hiện tượng. Đây là nghiên cứu cơ bản.</div>
+        </article>
+
+        <article class="question-card" data-correct="B">
+          <div class="question-heading"><span class="question-number">Câu 3</span><p class="question-text">Từ hiểu biết về cấu trúc và đặc tính của tơ nhện, các nhà khoa học phát triển vật liệu sinh học có độ bền cao dùng trong y học. Hoạt động này chủ yếu thuộc</p></div>
+          <div class="question-meta">
+            <div class="meta-item"><strong>Chủ đề</strong>Nghiên cứu ứng dụng</div>
+            <div class="meta-item"><strong>Dạng bài</strong>Phân loại tình huống</div>
+            <div class="meta-item"><strong>Cấp độ tư duy</strong>Thông hiểu</div>
+            <div class="meta-item"><strong>Năng lực Sinh học</strong>Nhận thức sinh học</div>
+          </div>
+          <div class="answer-options">
+            <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>nghiên cứu cơ bản.</span></button>
+            <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>nghiên cứu ứng dụng.</span></button>
+            <button class="answer-option" type="button" data-option="C"><span class="option-key">C.</span><span>phân loại sinh vật.</span></button>
+            <button class="answer-option" type="button" data-option="D"><span class="option-key">D.</span><span>quan sát tự nhiên.</span></button>
+          </div>
+          <div class="question-feedback" role="status" aria-live="polite"></div>
+          <div class="answer-reveal hidden"><strong>Đáp án: B.</strong> Kiến thức về tơ nhện được dùng để tạo sản phẩm phục vụ thực tiễn. Đó là dấu hiệu của nghiên cứu ứng dụng.</div>
+        </article>
+
+        <article class="question-card" data-correct="C">
+          <div class="question-heading"><span class="question-number">Câu 4</span><p class="question-text">Phát biểu nào mô tả đúng mối quan hệ giữa nghiên cứu cơ bản và nghiên cứu ứng dụng?</p></div>
+          <div class="question-meta">
+            <div class="meta-item"><strong>Chủ đề</strong>Quan hệ giữa nghiên cứu cơ bản và nghiên cứu ứng dụng</div>
+            <div class="meta-item"><strong>Dạng bài</strong>Phân tích mối quan hệ</div>
+            <div class="meta-item"><strong>Cấp độ tư duy</strong>Thông hiểu</div>
+            <div class="meta-item"><strong>Năng lực Sinh học</strong>Nhận thức sinh học</div>
+          </div>
+          <div class="answer-options">
+            <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>Hai loại nghiên cứu hoàn toàn độc lập.</span></button>
+            <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>Nghiên cứu cơ bản không có giá trị đối với thực tiễn.</span></button>
+            <button class="answer-option" type="button" data-option="C"><span class="option-key">C.</span><span>Tri thức từ nghiên cứu cơ bản có thể làm nền tảng cho nghiên cứu ứng dụng và vấn đề thực tiễn cũng có thể đặt ra câu hỏi cho nghiên cứu cơ bản.</span></button>
+            <button class="answer-option" type="button" data-option="D"><span class="option-key">D.</span><span>Nghiên cứu ứng dụng luôn phải được tiến hành trước nghiên cứu cơ bản.</span></button>
+          </div>
+          <div class="question-feedback" role="status" aria-live="polite"></div>
+          <div class="answer-reveal hidden"><strong>Đáp án: C.</strong> Hai loại nghiên cứu có quan hệ hai chiều: tri thức cơ bản có thể được ứng dụng, còn thực tiễn có thể đặt ra những vấn đề mới cần nghiên cứu.</div>
+        </article>
+
+        <article class="question-card" data-correct="B">
+          <div class="question-heading"><span class="question-number">Câu 5</span><p class="question-text">Phát biểu nào thể hiện phù hợp nhất mục tiêu của môn Sinh học?</p></div>
+          <div class="question-meta">
+            <div class="meta-item"><strong>Chủ đề</strong>Mục tiêu môn Sinh học</div>
+            <div class="meta-item"><strong>Dạng bài</strong>Chọn phát biểu phù hợp</div>
+            <div class="meta-item"><strong>Cấp độ tư duy</strong>Thông hiểu</div>
+            <div class="meta-item"><strong>Năng lực Sinh học</strong>Nhận thức sinh học</div>
+          </div>
+          <div class="answer-options">
+            <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>Ghi nhớ càng nhiều tên sinh vật càng tốt.</span></button>
+            <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>Hiểu thế giới sống, phát triển năng lực sinh học và vận dụng tri thức vào đời sống, góp phần phát triển bền vững.</span></button>
+            <button class="answer-option" type="button" data-option="C"><span class="option-key">C.</span><span>Tập trung khai thác tối đa tài nguyên sinh vật.</span></button>
+            <button class="answer-option" type="button" data-option="D"><span class="option-key">D.</span><span>Chỉ cung cấp kiến thức cho những người làm nghề Sinh học.</span></button>
+          </div>
+          <div class="question-feedback" role="status" aria-live="polite"></div>
+          <div class="answer-reveal hidden"><strong>Đáp án: B.</strong> Mục tiêu không dừng ở ghi nhớ kiến thức mà hướng tới hiểu sự sống, phát triển năng lực và vận dụng tri thức vào thực tiễn một cách có trách nhiệm.</div>
+        </article>
+      </div>
+
+      <div class="practice-actions">
+        <button class="practice-button primary" id="submitPractice" type="button"><i class="ti ti-send"></i> Nộp bài</button>
+        <button class="practice-button" id="showSolutions" type="button" disabled aria-expanded="false"><i class="ti ti-eye"></i> Xem đáp án chi tiết</button>
+      </div>
+      <div class="practice-summary hidden" id="practiceSummary" role="status" aria-live="polite"></div>
+    </section>
   </main>
 
   <!-- Script hỗ trợ tự động tính chiều cao khi nhúng iframe LMS -->
@@ -303,6 +451,75 @@
 
     window.addEventListener('load', reportHeight);
     window.addEventListener('resize', reportHeight);
+
+    const questionCards = [...document.querySelectorAll('.question-card')];
+    const submitPractice = document.getElementById('submitPractice');
+    const showSolutions = document.getElementById('showSolutions');
+    const practiceSummary = document.getElementById('practiceSummary');
+    let practiceSubmitted = false;
+
+    questionCards.forEach((card) => {
+      card.querySelectorAll('.answer-option').forEach((option) => {
+        option.addEventListener('click', () => {
+          if (practiceSubmitted) return;
+          card.querySelectorAll('.answer-option').forEach((item) => item.classList.remove('selected'));
+          option.classList.add('selected');
+          card.dataset.selected = option.dataset.option;
+          card.querySelector('.question-feedback').textContent = '';
+        });
+      });
+    });
+
+    submitPractice.addEventListener('click', () => {
+      const unanswered = questionCards.filter((card) => !card.dataset.selected);
+      practiceSummary.classList.remove('hidden');
+
+      if (unanswered.length) {
+        practiceSummary.textContent = `Bạn còn ${unanswered.length} câu chưa chọn đáp án. Hãy hoàn thành trước khi nộp bài.`;
+        unanswered[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        reportHeight();
+        return;
+      }
+
+      practiceSubmitted = true;
+      let score = 0;
+      questionCards.forEach((card) => {
+        const correct = card.dataset.correct;
+        const selected = card.dataset.selected;
+        const feedback = card.querySelector('.question-feedback');
+
+        card.querySelectorAll('.answer-option').forEach((option) => {
+          option.disabled = true;
+          option.classList.remove('selected');
+          if (option.dataset.option === correct) option.classList.add('correct');
+          if (option.dataset.option === selected && selected !== correct) option.classList.add('wrong');
+        });
+
+        if (selected === correct) {
+          score += 1;
+          feedback.className = 'question-feedback ok';
+          feedback.textContent = `Bạn chọn ${selected}. Đây là đáp án đúng.`;
+        } else {
+          feedback.className = 'question-feedback bad';
+          feedback.textContent = `Bạn chọn ${selected} (màu đỏ). Đáp án đúng là ${correct} (màu xanh lá).`;
+        }
+      });
+
+      practiceSummary.textContent = `Kết quả: ${score}/${questionCards.length} câu đúng. Bạn có thể xem lời giải chi tiết bên dưới.`;
+      submitPractice.disabled = true;
+      showSolutions.disabled = false;
+      reportHeight();
+    });
+
+    showSolutions.addEventListener('click', () => {
+      const willShow = showSolutions.getAttribute('aria-expanded') !== 'true';
+      questionCards.forEach((card) => card.querySelector('.answer-reveal').classList.toggle('hidden', !willShow));
+      showSolutions.setAttribute('aria-expanded', String(willShow));
+      showSolutions.innerHTML = willShow
+        ? '<i class="ti ti-eye-off"></i> Ẩn đáp án chi tiết'
+        : '<i class="ti ti-eye"></i> Xem đáp án chi tiết';
+      reportHeight();
+    });
   </script>
 </body>
 </html>
