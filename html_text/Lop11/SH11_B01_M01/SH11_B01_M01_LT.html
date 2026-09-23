@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SH10_B01_M01 — Trọng tâm kiến thức & Hiểu sai cần tránh</title>
+  
+  <!-- Google Fonts: Be Vietnam Pro -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Tabler Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      /* Palette theo chuẩn Aiducation Sinh học */
+      --deep: #064E3B;
+      --deep2: #083B32;
+      --green: #10B981;
+      --green2: #059669;
+      --mint: #ECFDF5;
+      --mint-border: #D1FAE5;
+      --gold: #F59E0B;
+      --gold-light: #FEF3C7;
+      --gold-border: #FDE68A;
+      --gold-text: #92400E;
+      --gold-bullet: #B45309;
+      
+      --bg: #F6FAF8;
+      --surface: #FFFFFF;
+      --card-bg: #F8FAFC;
+      --line: #DDE8E2;
+      --line-card: #E2E8F0;
+      --text: #10231C;
+      --muted: #64776F;
+      
+      --radius-box: 16px;
+      --radius-card: 12px;
+      --radius-icon: 12px;
+      --shadow-sm: 0 4px 14px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(0, 0, 0, 0.03);
+      --shadow-hover: 0 6px 18px rgba(15, 23, 42, 0.07);
+    }
+
+    body {
+      font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 960px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Khối giao diện chuẩn (Flow Box) */
+    .flow-box {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-box);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .flow-box:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* Tiêu đề & Icon đầu khối */
+    .flow-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-icon);
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      flex-shrink: 0;
+      color: var(--text);
+    }
+
+    .flow-title-group h2 {
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    /* 1. KHỐI YÊU CẦU CẦN ĐẠT (Border xanh ngọc) */
+    .flow-box.theory {
+      border-left: 6px solid var(--green);
+    }
+
+    .flow-box.theory .icon-box {
+      background: var(--mint);
+      border: 1px solid var(--mint-border);
+      color: var(--deep);
+    }
+
+    .theory-container {
+      background: #F0FDF4;
+      border: 1px solid #BBF7D0;
+      border-radius: 14px;
+      padding: 18px 22px;
+    }
+
+    .theory-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .theory-item {
+      position: relative;
+      padding-left: 20px;
+      font-size: 0.92rem;
+      font-weight: 550;
+      color: #064E3B;
+      line-height: 1.58;
+    }
+
+    .theory-item::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      top: -1px;
+      color: var(--green);
+      font-size: 1.3rem;
+      line-height: 1.2;
+    }
+
+    /* 2. KHỐI HIỂU SAI CẦN TRÁNH (Border vàng hổ phách) */
+    .flow-box.note {
+      border-left: 6px solid var(--gold);
+    }
+
+    .flow-box.note .icon-box {
+      background: var(--gold-light);
+      border: 1px solid var(--gold-border);
+      color: #78350F;
+    }
+
+    .note-container {
+      background: #FFFBEB;
+      border: 1px solid var(--gold-border);
+      border-radius: 14px;
+      padding: 18px 22px;
+    }
+
+    .note-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .note-item {
+      position: relative;
+      padding-left: 20px;
+      font-size: 0.92rem;
+      font-weight: 550;
+      color: var(--gold-text);
+      line-height: 1.58;
+    }
+
+    .note-item::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      top: -1px;
+      color: var(--gold-bullet);
+      font-size: 1.3rem;
+      line-height: 1.2;
+    }
+
+    /* 3. KHỐI LUYỆN TẬP */
+    .hidden { display:none !important; }
+    .flow-box.practice { border-left:6px solid #4E7F92; }
+    .flow-box.practice .icon-box { background:#DCE7EB; border:1px solid #BDD0D8; color:#315F70; }
+    .practice-intro { margin:-2px 0 18px; color:var(--muted); font-size:.92rem; }
+    .question-list { display:grid; gap:16px; }
+    .question-card { position:relative; padding:52px 18px 18px; background:var(--card-bg); border:1px solid var(--line-card); border-radius:var(--radius-card); }
+    .question-heading { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+    .question-number { display:grid; place-items:center; width:auto; height:32px; padding:0 10px; flex:0 0 auto; border-radius:8px; background:#DCE7EB; color:#315F70; font-weight:800; }
+    .question-meta { position:absolute; top:14px; right:14px; left:14px; display:flex; justify-content:flex-end; flex-wrap:nowrap; gap:4px 8px; opacity:.58; font-style:italic; overflow-x:auto; white-space:nowrap; scrollbar-width:none; }
+    .question-meta::-webkit-scrollbar { display:none; }
+    .meta-item { padding:2px 5px; color:var(--muted); font-size:clamp(.56rem,.85vw,.65rem); line-height:1.3; text-align:right; }
+    .meta-item strong { display:inline; color:var(--text); font-size:inherit; }
+    .meta-item strong::after { content:': '; }
+    .question-text { margin:0; flex:1; font-size:.95rem; font-weight:650; line-height:1.65; }
+    .answer-options { display:grid; gap:8px; }
+    .answer-option { display:flex; align-items:flex-start; width:100%; min-height:44px; padding:10px 12px; border:1px solid var(--line-card); border-radius:8px; background:#fff; color:var(--text); font:inherit; font-size:.88rem; line-height:1.5; text-align:left; cursor:pointer; transition:border-color .2s ease,background-color .2s ease; }
+    .answer-option:hover,.answer-option:focus-visible { border-color:#4E7F92; outline:2px solid transparent; }
+    .answer-option.selected:not(.correct):not(.wrong) { border-color:#4E7F92; background:#DCE7EB; }
+    .answer-option.correct { border-color:var(--green2); background:var(--mint); color:var(--deep); }
+    .answer-option.wrong { border-color:#C15F3C; background:#FDF0EA; color:#8B321E; }
+    .answer-option:disabled { cursor:default; opacity:1; }
+    .option-key { flex:0 0 26px; font-weight:800; color:#315F70; }
+    .question-feedback { min-height:24px; margin-top:10px; color:var(--muted); font-size:.84rem; }
+    .question-feedback.ok { color:var(--green2); }
+    .question-feedback.bad { color:#A4472D; }
+    .answer-reveal { margin-top:10px; padding:12px 14px; border-left:4px solid var(--green); border-radius:8px; background:var(--mint); color:var(--deep); font-size:.86rem; line-height:1.6; }
+    .practice-actions { display:flex; justify-content:flex-end; gap:10px; margin-top:18px; }
+    .practice-button { min-height:44px; padding:10px 16px; border:1.5px solid #4E7F92; border-radius:8px; background:#fff; color:#315F70; font:inherit; font-size:.84rem; font-weight:700; cursor:pointer; }
+    .practice-button.primary { border-color:var(--green2); background:var(--green2); color:#fff; }
+    .practice-button:disabled { cursor:not-allowed; opacity:.5; }
+    .practice-summary { margin-top:12px; padding:10px 12px; border-left:4px solid #4E7F92; background:#DCE7EB; color:var(--text); font-size:.88rem; }
+
+    /* Responsive cho màn hình di động */
+    @media (max-width: 640px) {
+      body {
+        padding: 16px 12px;
+      }
+      .flow-box {
+        padding: 18px 14px;
+        border-radius: 14px;
+      }
+      .flow-header {
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+      .icon-box {
+        width: 38px;
+        height: 38px;
+        font-size: 20px;
+      }
+      .flow-title-group h2 {
+        font-size: 1.08rem;
+      }
+      .theory-container, .note-container {
+        padding: 14px 16px;
+      }
+      .theory-item, .note-item {
+        font-size: 0.88rem;
+      }
+      .question-card { padding:14px; }
+      .question-meta { position:static; justify-content:flex-end; margin:0 0 10px 36px; flex-wrap:nowrap; }
+      .practice-actions { align-items:stretch; flex-direction:column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,*::before,*::after { scroll-behavior:auto !important; transition-duration:.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+    <!-- KHỐI 1: TRỌNG TÂM KIẾN THỨC CẦN GHI NHỚ -->
+    <section class="flow-box theory" aria-labelledby="theoryTitle">
+      <div class="flow-header">
+        <div class="icon-box" aria-hidden="true">
+          <i class="ti ti-book-2"></i>
+        </div>
+        <div class="flow-title-group">
+          <h2 id="theoryTitle">Trọng tâm kiến thức cần ghi nhớ</h2>
+        </div>
+      </div>
+
+      <div class="theory-container">
+        <ul class="theory-list">
+          <li class="theory-item">
+           Trao đổi chất cung cấp vật chất để xây dựng, duy trì và đổi mới cơ thể
+          </li>
+          <li class="theory-item">
+            Chuyển hoá năng lượng cung cấp năng lượng cho hoạt động sống
+          </li>
+          <li class="theory-item">
+            Trao đổi chất giúp loại bỏ những chất dư thừa hoặc cần thải ra ngoài
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- KHỐI 2: HIỂU SAI CẦN TRÁNH -->
+    <section class="flow-box note" aria-labelledby="noteTitle">
+      <div class="flow-header">
+        <div class="icon-box" aria-hidden="true">
+          <i class="ti ti-bulb"></i>
+        </div>
+        <div class="flow-title-group">
+          <h2 id="noteTitle">Hiểu sai cần tránh</h2>
+        </div>
+      </div>
+
+      <div class="note-container">
+        <ul class="note-list">
+          <li class="note-item">
+            HS chỉ hiểu trao đổi chất là “ăn vào – thải ra”
+          </li>
+          <li class="note-item">
+            Nghĩ mọi sinh vật thu nhận cùng một loại chất/năng lượng
+          </li>
+          <li class="note-item">
+           Nghĩ cơ thể không cần liên tục trao đổi với môi trường.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="flow-box practice" aria-labelledby="practiceTitle">
+      <div class="flow-header">
+        <div class="icon-box" aria-hidden="true"><i class="ti ti-checklist"></i></div>
+        <div class="flow-title-group"><h2 id="practiceTitle">Luyện tập</h2></div>
+      </div>
+      <p class="practice-intro">Chọn một phương án cho mỗi câu, sau đó nhấn “Nộp bài” để xem kết quả.</p>
+      <div class="question-list">
+        <article class="question-card" data-correct="B">
+          <div class="question-heading"><span class="question-number">Câu 1</span><p class="question-text">Phát triển bền vững được hiểu phù hợp nhất là</p></div>
+          <div class="question-meta"><div class="meta-item"><strong>Chủ đề</strong>Phát triển bền vững</div><div class="meta-item"><strong>Dạng bài</strong>Nhận diện khái niệm</div><div class="meta-item"><strong>Cấp độ tư duy</strong>Nhận biết</div><div class="meta-item"><strong>Năng lực Sinh học</strong>Nhận thức sinh học</div></div>
+          <div class="answer-options">
+            <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>đáp ứng tối đa nhu cầu hiện tại bất kể hậu quả lâu dài.</span></button>
+            <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>đáp ứng nhu cầu hiện tại nhưng không làm tổn hại khả năng đáp ứng nhu cầu của các thế hệ tương lai.</span></button>
+            <button class="answer-option" type="button" data-option="C"><span class="option-key">C.</span><span>ngừng mọi hoạt động khai thác tài nguyên thiên nhiên.</span></button>
+            <button class="answer-option" type="button" data-option="D"><span class="option-key">D.</span><span>chỉ tập trung vào bảo vệ môi trường.</span></button>
+          </div>
+          <div class="question-feedback" role="status" aria-live="polite"></div>
+          <div class="answer-reveal hidden"><strong>Đáp án: B.</strong> Điểm cốt lõi của phát triển bền vững là đáp ứng nhu cầu hiện tại đồng thời bảo đảm cơ hội cho các thế hệ tương lai.</div>
+        </article>
+
+        <article class="question-card" data-correct="A">
+          <div class="question-heading"><span class="question-number">Câu 2</span><p class="question-text">Một chính sách được xem xét theo hướng phát triển bền vững cần quan tâm đồng thời đến</p></div>
+          <div class="question-meta"><div class="meta-item"><strong>Chủ đề</strong>Ba mặt của phát triển bền vững</div><div class="meta-item"><strong>Dạng bài</strong>Phân tích mối quan hệ</div><div class="meta-item"><strong>Cấp độ tư duy</strong>Thông hiểu</div><div class="meta-item"><strong>Năng lực Sinh học</strong>Nhận thức sinh học</div></div>
+          <div class="answer-options">
+            <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>kinh tế, xã hội và môi trường.</span></button>
+            <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>sản lượng, tốc độ và lợi nhuận.</span></button>
+            <button class="answer-option" type="button" data-option="C"><span class="option-key">C.</span><span>công nghệ, máy móc và vốn.</span></button>
+            <button class="answer-option" type="button" data-option="D"><span class="option-key">D.</span><span>dân số, diện tích và khí hậu.</span></button>
+          </div>
+          <div class="question-feedback" role="status" aria-live="polite"></div>
+          <div class="answer-reveal hidden"><strong>Đáp án: A.</strong> Phát triển bền vững đòi hỏi hài hòa phát triển kinh tế, tiến bộ xã hội và bảo vệ môi trường.</div>
+        </article>
+
+        <article class="question-card" data-correct="A">
+          <div class="question-heading"><span class="question-number">Câu 3</span><p class="question-text">Một địa phương muốn phục hồi khu vực có đa dạng sinh học suy giảm. Hoạt động nào thể hiện rõ nhất việc sử dụng tri thức Sinh học?</p></div>
+          <div class="question-meta"><div class="meta-item"><strong>Chủ đề</strong>Sinh học và bảo vệ môi trường</div><div class="meta-item"><strong>Dạng bài</strong>Phân tích tình huống</div><div class="meta-item"><strong>Cấp độ tư duy</strong>Vận dụng</div><div class="meta-item"><strong>Năng lực Sinh học</strong>Vận dụng kiến thức, kĩ năng đã học</div></div>
+          <div class="answer-options">
+            <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>Khảo sát các loài và điều kiện sống trước khi đề xuất biện pháp phục hồi.</span></button>
+            <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>Chỉ tăng số lượng khách du lịch đến khu vực.</span></button>
+            <button class="answer-option" type="button" data-option="C"><span class="option-key">C.</span><span>Xây thêm công trình mà không khảo sát hệ sinh thái.</span></button>
+            <button class="answer-option" type="button" data-option="D"><span class="option-key">D.</span><span>Thay toàn bộ sinh vật bản địa bằng một loài có giá trị kinh tế.</span></button>
+          </div>
+          <div class="question-feedback" role="status" aria-live="polite"></div>
+          <div class="answer-reveal hidden"><strong>Đáp án: A.</strong> Muốn phục hồi hệ sinh thái cần trước hết có bằng chứng về loài và điều kiện sống. Việc khảo sát tạo cơ sở khoa học để lựa chọn giải pháp phù hợp.</div>
+        </article>
+
+        <article class="question-card" data-correct="C">
+          <div class="question-heading"><span class="question-number">Câu 4</span><p class="question-text">Một cơ sở nghiên cứu thu thập thông tin di truyền của nhiều người. Cách xử lí nào phù hợp nhất với yêu cầu đạo đức sinh học?</p></div>
+          <div class="question-meta"><div class="meta-item"><strong>Chủ đề</strong>Đạo đức sinh học</div><div class="meta-item"><strong>Dạng bài</strong>Đánh giá tình huống</div><div class="meta-item"><strong>Cấp độ tư duy</strong>Vận dụng</div><div class="meta-item"><strong>Năng lực Sinh học</strong>Vận dụng kiến thức, kĩ năng đã học</div></div>
+          <div class="answer-options">
+            <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>Công khai toàn bộ dữ liệu để bất kì ai cũng có thể sử dụng.</span></button>
+            <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>Sử dụng và chia sẻ dữ liệu mà không cần quan tâm đến người cung cấp mẫu.</span></button>
+            <button class="answer-option" type="button" data-option="C"><span class="option-key">C.</span><span>Bảo vệ quyền riêng tư và kiểm soát việc tiếp cận, sử dụng thông tin di truyền.</span></button>
+            <button class="answer-option" type="button" data-option="D"><span class="option-key">D.</span><span>Cho rằng thông tin di truyền không phải dữ liệu cá nhân.</span></button>
+          </div>
+          <div class="question-feedback" role="status" aria-live="polite"></div>
+          <div class="answer-reveal hidden"><strong>Đáp án: C.</strong> Thông tin di truyền có thể liên quan trực tiếp đến cá nhân và người thân. Vì vậy cần bảo vệ quyền riêng tư và kiểm soát việc sử dụng dữ liệu.</div>
+        </article>
+
+        <article class="question-card" data-correct="C">
+          <div class="question-heading"><span class="question-number">Câu 5</span><p class="question-text">Khi đánh giá một ứng dụng mới của Sinh học, cách tiếp cận nào phù hợp nhất?</p></div>
+          <div class="question-meta"><div class="meta-item"><strong>Chủ đề</strong>Đánh giá ứng dụng Sinh học</div><div class="meta-item"><strong>Dạng bài</strong>Ra quyết định dựa trên nhiều tiêu chí</div><div class="meta-item"><strong>Cấp độ tư duy</strong>Vận dụng</div><div class="meta-item"><strong>Năng lực Sinh học</strong>Vận dụng kiến thức, kĩ năng đã học</div></div>
+          <div class="answer-options">
+            <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>Chỉ xem ứng dụng tạo ra bao nhiêu lợi nhuận.</span></button>
+            <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>Chỉ xem ứng dụng có sử dụng công nghệ hiện đại hay không.</span></button>
+            <button class="answer-option" type="button" data-option="C"><span class="option-key">C.</span><span>Xem xét lợi ích, nguy cơ, đối tượng chịu tác động và hậu quả lâu dài.</span></button>
+            <button class="answer-option" type="button" data-option="D"><span class="option-key">D.</span><span>Chỉ xem ứng dụng có tạo ra kết quả nhanh hay không.</span></button>
+          </div>
+          <div class="question-feedback" role="status" aria-live="polite"></div>
+          <div class="answer-reveal hidden"><strong>Đáp án: C.</strong> Một ứng dụng Sinh học có thể tạo cả lợi ích và rủi ro. Vì vậy cần đánh giá nhiều mặt, gồm lợi ích, nguy cơ, đối tượng bị tác động và hậu quả lâu dài.</div>
+        </article>
+      </div>
+      <div class="practice-actions">
+        <button class="practice-button primary" id="submitPractice" type="button"><i class="ti ti-send"></i> Nộp bài</button>
+        <button class="practice-button" id="showSolutions" type="button" disabled aria-expanded="false"><i class="ti ti-eye"></i> Xem đáp án chi tiết</button>
+      </div>
+      <div class="practice-summary hidden" id="practiceSummary" role="status" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <!-- Script hỗ trợ tự động tính chiều cao khi nhúng iframe LMS -->
+  <script>
+    function reportHeight() {
+      if (window.parent && window.parent !== window) {
+        const height = document.documentElement.scrollHeight || document.body.scrollHeight;
+        window.parent.postMessage({ type: 'setHeight', height: height }, '*');
+      }
+    }
+
+    window.addEventListener('load', reportHeight);
+    window.addEventListener('resize', reportHeight);
+
+    const questionCards = [...document.querySelectorAll('.question-card')];
+    const submitPractice = document.getElementById('submitPractice');
+    const showSolutions = document.getElementById('showSolutions');
+    const practiceSummary = document.getElementById('practiceSummary');
+    let practiceSubmitted = false;
+
+    questionCards.forEach((card) => {
+      card.querySelectorAll('.answer-option').forEach((option) => {
+        option.addEventListener('click', () => {
+          if (practiceSubmitted) return;
+          card.querySelectorAll('.answer-option').forEach((item) => item.classList.remove('selected'));
+          option.classList.add('selected');
+          card.dataset.selected = option.dataset.option;
+          card.querySelector('.question-feedback').textContent = '';
+        });
+      });
+    });
+
+    submitPractice.addEventListener('click', () => {
+      const unanswered = questionCards.filter((card) => !card.dataset.selected);
+      practiceSummary.classList.remove('hidden');
+      if (unanswered.length) {
+        practiceSummary.textContent = `Bạn còn ${unanswered.length} câu chưa chọn đáp án. Hãy hoàn thành trước khi nộp bài.`;
+        unanswered[0].scrollIntoView({ behavior:'smooth', block:'center' });
+        reportHeight();
+        return;
+      }
+
+      practiceSubmitted = true;
+      let score = 0;
+      questionCards.forEach((card) => {
+        const correct = card.dataset.correct;
+        const selected = card.dataset.selected;
+        const feedback = card.querySelector('.question-feedback');
+        card.querySelectorAll('.answer-option').forEach((option) => {
+          option.disabled = true;
+          option.classList.remove('selected');
+          if (option.dataset.option === correct) option.classList.add('correct');
+          if (option.dataset.option === selected && selected !== correct) option.classList.add('wrong');
+        });
+        if (selected === correct) {
+          score += 1;
+          feedback.className = 'question-feedback ok';
+          feedback.textContent = `Bạn chọn ${selected}. Đây là đáp án đúng.`;
+        } else {
+          feedback.className = 'question-feedback bad';
+          feedback.textContent = `Bạn chọn ${selected} (màu đỏ). Đáp án đúng là ${correct} (màu xanh lá).`;
+        }
+      });
+
+      practiceSummary.textContent = `Kết quả: ${score}/${questionCards.length} câu đúng. Bạn có thể xem lời giải chi tiết bên dưới.`;
+      submitPractice.disabled = true;
+      showSolutions.disabled = false;
+      reportHeight();
+    });
+
+    showSolutions.addEventListener('click', () => {
+      const willShow = showSolutions.getAttribute('aria-expanded') !== 'true';
+      questionCards.forEach((card) => card.querySelector('.answer-reveal').classList.toggle('hidden', !willShow));
+      showSolutions.setAttribute('aria-expanded', String(willShow));
+      showSolutions.innerHTML = willShow
+        ? '<i class="ti ti-eye-off"></i> Ẩn đáp án chi tiết'
+        : '<i class="ti ti-eye"></i> Xem đáp án chi tiết';
+      reportHeight();
+    });
+  </script>
+</body>
+</html>
