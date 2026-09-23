@@ -211,6 +211,26 @@
     .meta-item strong { display:block; margin-bottom:2px; color:#315F70; font-size:.65rem; font-style:normal; font-weight:800; letter-spacing:.035em; line-height:1.3; text-transform:uppercase; }
     .meta-item strong::after { content:''; }
     .question-text { margin:0; flex:1; font-size:.95rem; font-weight:650; line-height:1.65; }
+    .question-card { padding:18px; }
+    .question-classification { order:-1; margin-bottom:12px; border:1px solid var(--line-card); border-radius:9px; background:var(--surface); opacity:.72; overflow:hidden; transition:opacity .2s ease,border-color .2s ease; }
+    .question-classification:hover, .question-classification[open] { opacity:1; border-color:#BDD0D8; }
+    .classification-toggle { display:flex; align-items:center; gap:10px; min-height:40px; padding:9px 12px; color:#315F70; font-size:.76rem; font-weight:700; cursor:pointer; list-style:none; user-select:none; }
+    .classification-toggle::-webkit-details-marker { display:none; }
+    .classification-toggle::after { content:'›'; margin-left:auto; font-size:1.15rem; line-height:1; transform:rotate(90deg); transition:transform .2s ease; }
+    .question-classification[open] .classification-toggle::after { transform:rotate(-90deg); }
+    .classification-hint { margin-left:auto; color:var(--muted); font-size:.68rem; font-style:italic; font-weight:500; }
+    .classification-hint.open { display:none; }
+    .question-classification[open] .classification-hint.closed { display:none; }
+    .question-classification[open] .classification-hint.open { display:inline; }
+    .question-classification .question-meta { position:static; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px 18px; margin:0; padding:12px 14px; border:0; border-top:1px solid var(--line-card); border-radius:0; background:transparent; opacity:1; overflow:visible; white-space:normal; }
+    .question-classification .meta-item { min-width:0; padding:0; color:var(--muted); font-size:.72rem; font-style:italic; line-height:1.45; text-align:left; }
+    .question-classification .meta-item strong { display:block; margin-bottom:2px; color:#315F70; font-size:.65rem; font-style:normal; font-weight:800; letter-spacing:.035em; line-height:1.3; text-transform:uppercase; }
+    .question-classification .meta-item strong::after { content:''; }
+    @media (max-width:640px) {
+      .question-classification .question-meta { grid-template-columns:1fr; gap:8px; padding:10px 12px; }
+      .classification-toggle { align-items:flex-start; flex-wrap:wrap; }
+      .classification-hint { width:100%; margin-left:0; }
+    }
     .answer-options { display:grid; gap:8px; }
     .answer-option { display:flex; align-items:flex-start; width:100%; min-height:44px; padding:10px 12px; border:1px solid var(--line-card); border-radius:8px; background:#fff; color:var(--text); font:inherit; font-size:.88rem; line-height:1.5; text-align:left; cursor:pointer; transition:border-color .2s ease,background-color .2s ease; }
     .answer-option:hover,.answer-option:focus-visible { border-color:#4E7F92; outline:2px solid transparent; }
@@ -333,12 +353,19 @@
       <div class="question-list">
         <article class="question-card" data-correct="B">
           <div class="question-heading"><span class="question-number">Câu 1</span><p class="question-text">Đặc điểm nào của DNA trực tiếp làm cho các phân tử DNA khác nhau có thể mang thông tin di truyền khác nhau?</p></div>
-          <div class="question-meta">
+<details class="question-classification">
+            <summary class="classification-toggle">
+              <span>Phân loại câu hỏi</span>
+              <span class="classification-hint closed">Bấm để xem đầy đủ thông tin</span>
+              <span class="classification-hint open">Bấm để thu gọn</span>
+            </summary>
+            <div class="question-meta">
             <div class="meta-item"><strong>Chủ đề</strong>DNA: cấu trúc và chức năng</div>
             <div class="meta-item"><strong>Dạng bài</strong>A1 – Nhận biết/xác định khái niệm, thuật ngữ, đặc điểm, đối tượng</div>
             <div class="meta-item"><strong>Cấp độ tư duy</strong>Nhận biết</div>
             <div class="meta-item"><strong>Năng lực Sinh học</strong>Nhận thức sinh học</div>
-          </div>
+            </div>
+          </details>
           <div class="answer-options">
             <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>Số lượng liên kết hydrogen giữa hai mạch.</span></button>
             <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>Trình tự các nucleotide trên phân tử DNA.</span></button>
@@ -351,12 +378,19 @@
 
         <article class="question-card" data-correct="C">
           <div class="question-heading"><span class="question-number">Câu 2</span><p class="question-text">Trong phân tử DNA mạch kép, adenine (A) liên kết bổ sung với</p></div>
-          <div class="question-meta">
+<details class="question-classification">
+            <summary class="classification-toggle">
+              <span>Phân loại câu hỏi</span>
+              <span class="classification-hint closed">Bấm để xem đầy đủ thông tin</span>
+              <span class="classification-hint open">Bấm để thu gọn</span>
+            </summary>
+            <div class="question-meta">
             <div class="meta-item"><strong>Chủ đề</strong>DNA: cấu trúc và chức năng</div>
             <div class="meta-item"><strong>Dạng bài</strong>A1 – Nhận biết/xác định khái niệm, thuật ngữ, đặc điểm, đối tượng</div>
             <div class="meta-item"><strong>Cấp độ tư duy</strong>Nhận biết</div>
             <div class="meta-item"><strong>Năng lực Sinh học</strong>Nhận thức sinh học</div>
-          </div>
+            </div>
+          </details>
           <div class="answer-options">
             <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>cytosine (C) bằng 3 liên kết hydrogen.</span></button>
             <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>guanine (G) bằng 2 liên kết hydrogen.</span></button>
@@ -369,12 +403,19 @@
 
         <article class="question-card" data-correct="B">
           <div class="question-heading"><span class="question-number">Câu 3</span><p class="question-text">Một đoạn của một mạch DNA có trình tự 5′–A G T C C A–3′. Trình tự của mạch bổ sung với đoạn trên là</p></div>
-          <div class="question-meta">
+<details class="question-classification">
+            <summary class="classification-toggle">
+              <span>Phân loại câu hỏi</span>
+              <span class="classification-hint closed">Bấm để xem đầy đủ thông tin</span>
+              <span class="classification-hint open">Bấm để thu gọn</span>
+            </summary>
+            <div class="question-meta">
             <div class="meta-item"><strong>Chủ đề</strong>DNA: cấu trúc và chức năng</div>
             <div class="meta-item"><strong>Dạng bài</strong>A3 – So sánh – phân biệt – phân loại</div>
             <div class="meta-item"><strong>Cấp độ tư duy</strong>Thông hiểu</div>
             <div class="meta-item"><strong>Năng lực Sinh học</strong>Nhận thức sinh học</div>
-          </div>
+            </div>
+          </details>
           <div class="answer-options">
             <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>5′–T C A G G T–3′.</span></button>
             <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>3′–T C A G G T–5′.</span></button>
@@ -387,12 +428,19 @@
 
         <article class="question-card" data-correct="A">
           <div class="question-heading"><span class="question-number">Câu 4</span><p class="question-text">Nguyên tắc bổ sung giữa hai mạch DNA có ý nghĩa quan trọng đối với việc bảo quản và truyền đạt thông tin di truyền vì</p></div>
-          <div class="question-meta">
+<details class="question-classification">
+            <summary class="classification-toggle">
+              <span>Phân loại câu hỏi</span>
+              <span class="classification-hint closed">Bấm để xem đầy đủ thông tin</span>
+              <span class="classification-hint open">Bấm để thu gọn</span>
+            </summary>
+            <div class="question-meta">
             <div class="meta-item"><strong>Chủ đề</strong>DNA: cấu trúc và chức năng</div>
             <div class="meta-item"><strong>Dạng bài</strong>A2 – Trình bày – giải thích cơ chế, quá trình và quan hệ sinh học</div>
             <div class="meta-item"><strong>Cấp độ tư duy</strong>Thông hiểu</div>
             <div class="meta-item"><strong>Năng lực Sinh học</strong>Nhận thức sinh học</div>
-          </div>
+            </div>
+          </details>
           <div class="answer-options">
             <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>trình tự của một mạch có thể xác định được trình tự bổ sung của mạch còn lại.</span></button>
             <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>hai mạch DNA luôn có trình tự nucleotide giống hệt nhau.</span></button>
@@ -405,12 +453,19 @@
 
         <article class="question-card" data-correct="C">
           <div class="question-heading"><span class="question-number">Câu 5</span><p class="question-text">Phát biểu nào sau đây mô tả đúng nhất chức năng của DNA?</p></div>
-          <div class="question-meta">
+<details class="question-classification">
+            <summary class="classification-toggle">
+              <span>Phân loại câu hỏi</span>
+              <span class="classification-hint closed">Bấm để xem đầy đủ thông tin</span>
+              <span class="classification-hint open">Bấm để thu gọn</span>
+            </summary>
+            <div class="question-meta">
             <div class="meta-item"><strong>Chủ đề</strong>DNA: cấu trúc và chức năng</div>
             <div class="meta-item"><strong>Dạng bài</strong>A2 – Trình bày – giải thích cơ chế, quá trình và quan hệ sinh học</div>
             <div class="meta-item"><strong>Cấp độ tư duy</strong>Thông hiểu</div>
             <div class="meta-item"><strong>Năng lực Sinh học</strong>Nhận thức sinh học</div>
-          </div>
+            </div>
+          </details>
           <div class="answer-options">
             <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>DNA trực tiếp tổng hợp mọi protein của tế bào.</span></button>
             <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>DNA chỉ có chức năng lưu giữ thông tin di truyền.</span></button>
@@ -440,6 +495,9 @@
 
     window.addEventListener('load', reportHeight);
     window.addEventListener('resize', reportHeight);
+    document.querySelectorAll('.question-classification').forEach((details) => {
+      details.addEventListener('toggle', () => requestAnimationFrame(reportHeight));
+    });
 
     const questionCards = [...document.querySelectorAll('.question-card')];
     const submitPractice = document.getElementById('submitPractice');

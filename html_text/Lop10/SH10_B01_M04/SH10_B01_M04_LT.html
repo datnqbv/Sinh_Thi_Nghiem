@@ -300,6 +300,26 @@
       line-height: 1.65;
     }
 
+    .question-card { padding:18px; }
+    .question-classification { order:-1; margin-bottom:12px; border:1px solid var(--line-card); border-radius:9px; background:var(--surface); opacity:.72; overflow:hidden; transition:opacity .2s ease,border-color .2s ease; }
+    .question-classification:hover, .question-classification[open] { opacity:1; border-color:#BDD0D8; }
+    .classification-toggle { display:flex; align-items:center; gap:10px; min-height:40px; padding:9px 12px; color:#315F70; font-size:.76rem; font-weight:700; cursor:pointer; list-style:none; user-select:none; }
+    .classification-toggle::-webkit-details-marker { display:none; }
+    .classification-toggle::after { content:'›'; margin-left:auto; font-size:1.15rem; line-height:1; transform:rotate(90deg); transition:transform .2s ease; }
+    .question-classification[open] .classification-toggle::after { transform:rotate(-90deg); }
+    .classification-hint { margin-left:auto; color:var(--muted); font-size:.68rem; font-style:italic; font-weight:500; }
+    .classification-hint.open { display:none; }
+    .question-classification[open] .classification-hint.closed { display:none; }
+    .question-classification[open] .classification-hint.open { display:inline; }
+    .question-classification .question-meta { position:static; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px 18px; margin:0; padding:12px 14px; border:0; border-top:1px solid var(--line-card); border-radius:0; background:transparent; opacity:1; overflow:visible; white-space:normal; }
+    .question-classification .meta-item { min-width:0; padding:0; color:var(--muted); font-size:.72rem; font-style:italic; line-height:1.45; text-align:left; }
+    .question-classification .meta-item strong { display:block; margin-bottom:2px; color:#315F70; font-size:.65rem; font-style:normal; font-weight:800; letter-spacing:.035em; line-height:1.3; text-transform:uppercase; }
+    .question-classification .meta-item strong::after { content:''; }
+    @media (max-width:640px) {
+      .question-classification .question-meta { grid-template-columns:1fr; gap:8px; padding:10px 12px; }
+      .classification-toggle { align-items:flex-start; flex-wrap:wrap; }
+      .classification-hint { width:100%; margin-left:0; }
+    }
     .answer-options {
       display: grid;
       gap: 8px;
@@ -550,12 +570,19 @@
       <div class="question-list">
         <article class="question-card" data-correct="A">
           <div class="question-heading"><span class="question-number">Câu 1</span><p class="question-text">Nhóm nào gồm bốn công nghệ chủ chốt được giới thiệu trong module?</p></div>
-          <div class="question-meta">
+<details class="question-classification">
+            <summary class="classification-toggle">
+              <span>Phân loại câu hỏi</span>
+              <span class="classification-hint closed">Bấm để xem đầy đủ thông tin</span>
+              <span class="classification-hint open">Bấm để thu gọn</span>
+            </summary>
+            <div class="question-meta">
             <div class="meta-item"><strong>Chủ đề</strong>Công nghệ sinh học hiện đại</div>
             <div class="meta-item"><strong>Dạng bài</strong>Nhận diện nhóm công nghệ</div>
             <div class="meta-item"><strong>Cấp độ tư duy</strong>Nhận biết</div>
             <div class="meta-item"><strong>Năng lực Sinh học</strong>Nhận thức sinh học</div>
-          </div>
+            </div>
+          </details>
           <div class="answer-options">
             <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>Công nghệ gene, công nghệ tế bào, công nghệ protein và tin sinh học.</span></button>
             <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>Công nghệ cơ khí, công nghệ nhiệt, công nghệ điện và tin sinh học.</span></button>
@@ -568,12 +595,19 @@
 
         <article class="question-card" data-correct="A">
           <div class="question-heading"><span class="question-number">Câu 2</span><p class="question-text">CRISPR-Cas9 được nhắc đến trong module như một ví dụ tiêu biểu liên quan đến</p></div>
-          <div class="question-meta">
+<details class="question-classification">
+            <summary class="classification-toggle">
+              <span>Phân loại câu hỏi</span>
+              <span class="classification-hint closed">Bấm để xem đầy đủ thông tin</span>
+              <span class="classification-hint open">Bấm để thu gọn</span>
+            </summary>
+            <div class="question-meta">
             <div class="meta-item"><strong>Chủ đề</strong>Công nghệ gene</div>
             <div class="meta-item"><strong>Dạng bài</strong>Nhận diện ví dụ</div>
             <div class="meta-item"><strong>Cấp độ tư duy</strong>Thông hiểu</div>
             <div class="meta-item"><strong>Năng lực Sinh học</strong>Nhận thức sinh học</div>
-          </div>
+            </div>
+          </details>
           <div class="answer-options">
             <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>công nghệ gene.</span></button>
             <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>công nghệ tế bào.</span></button>
@@ -586,12 +620,19 @@
 
         <article class="question-card" data-correct="A">
           <div class="question-heading"><span class="question-number">Câu 3</span><p class="question-text">Việc sử dụng AI để hỗ trợ dự đoán cấu trúc protein từ trình tự amino acid thể hiện rõ nhất sự phát triển của</p></div>
-          <div class="question-meta">
+<details class="question-classification">
+            <summary class="classification-toggle">
+              <span>Phân loại câu hỏi</span>
+              <span class="classification-hint closed">Bấm để xem đầy đủ thông tin</span>
+              <span class="classification-hint open">Bấm để thu gọn</span>
+            </summary>
+            <div class="question-meta">
             <div class="meta-item"><strong>Chủ đề</strong>Tin sinh học</div>
             <div class="meta-item"><strong>Dạng bài</strong>Phân loại ứng dụng</div>
             <div class="meta-item"><strong>Cấp độ tư duy</strong>Thông hiểu</div>
             <div class="meta-item"><strong>Năng lực Sinh học</strong>Nhận thức sinh học</div>
-          </div>
+            </div>
+          </details>
           <div class="answer-options">
             <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>tin sinh học.</span></button>
             <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>công nghệ cơ khí.</span></button>
@@ -604,12 +645,19 @@
 
         <article class="question-card" data-correct="A">
           <div class="question-heading"><span class="question-number">Câu 4</span><p class="question-text">Nội dung nào sau đây là một hướng phát triển đáng chú ý của Sinh học trong tương lai?</p></div>
-          <div class="question-meta">
+<details class="question-classification">
+            <summary class="classification-toggle">
+              <span>Phân loại câu hỏi</span>
+              <span class="classification-hint closed">Bấm để xem đầy đủ thông tin</span>
+              <span class="classification-hint open">Bấm để thu gọn</span>
+            </summary>
+            <div class="question-meta">
             <div class="meta-item"><strong>Chủ đề</strong>Triển vọng phát triển của Sinh học</div>
             <div class="meta-item"><strong>Dạng bài</strong>Nhận diện triển vọng</div>
             <div class="meta-item"><strong>Cấp độ tư duy</strong>Thông hiểu</div>
             <div class="meta-item"><strong>Năng lực Sinh học</strong>Nhận thức sinh học</div>
-          </div>
+            </div>
+          </details>
           <div class="answer-options">
             <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>Y học cá thể hóa.</span></button>
             <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>Loại bỏ hoàn toàn việc sử dụng dữ liệu trong y học.</span></button>
@@ -622,12 +670,19 @@
 
         <article class="question-card" data-correct="A">
           <div class="question-heading"><span class="question-number">Câu 5</span><p class="question-text">Một người muốn làm việc chủ yếu với dữ liệu trình tự gene, sử dụng máy tính để lưu trữ, so sánh và phân tích dữ liệu sinh học. Nghề nào phù hợp nhất?</p></div>
-          <div class="question-meta">
+<details class="question-classification">
+            <summary class="classification-toggle">
+              <span>Phân loại câu hỏi</span>
+              <span class="classification-hint closed">Bấm để xem đầy đủ thông tin</span>
+              <span class="classification-hint open">Bấm để thu gọn</span>
+            </summary>
+            <div class="question-meta">
             <div class="meta-item"><strong>Chủ đề</strong>Nghề nghiệp và công nghệ Sinh học</div>
             <div class="meta-item"><strong>Dạng bài</strong>Ghép nghề với nhiệm vụ</div>
             <div class="meta-item"><strong>Cấp độ tư duy</strong>Vận dụng</div>
             <div class="meta-item"><strong>Năng lực Sinh học</strong>Vận dụng kiến thức, kĩ năng đã học</div>
-          </div>
+            </div>
+          </details>
           <div class="answer-options">
             <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>Chuyên gia tin sinh học.</span></button>
             <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>Kĩ sư cơ khí.</span></button>
@@ -657,6 +712,9 @@
 
     window.addEventListener('load', reportHeight);
     window.addEventListener('resize', reportHeight);
+    document.querySelectorAll('.question-classification').forEach((details) => {
+      details.addEventListener('toggle', () => requestAnimationFrame(reportHeight));
+    });
 
     const questionCards = [...document.querySelectorAll('.question-card')];
     const submitPractice = document.getElementById('submitPractice');

@@ -211,6 +211,26 @@
     .meta-item strong { display:block; margin-bottom:2px; color:#315F70; font-size:.65rem; font-style:normal; font-weight:800; letter-spacing:.035em; line-height:1.3; text-transform:uppercase; }
     .meta-item strong::after { content:''; }
     .question-text { margin:0; flex:1; font-size:.95rem; font-weight:650; line-height:1.65; }
+    .question-card { padding:18px; }
+    .question-classification { order:-1; margin-bottom:12px; border:1px solid var(--line-card); border-radius:9px; background:var(--surface); opacity:.72; overflow:hidden; transition:opacity .2s ease,border-color .2s ease; }
+    .question-classification:hover, .question-classification[open] { opacity:1; border-color:#BDD0D8; }
+    .classification-toggle { display:flex; align-items:center; gap:10px; min-height:40px; padding:9px 12px; color:#315F70; font-size:.76rem; font-weight:700; cursor:pointer; list-style:none; user-select:none; }
+    .classification-toggle::-webkit-details-marker { display:none; }
+    .classification-toggle::after { content:'›'; margin-left:auto; font-size:1.15rem; line-height:1; transform:rotate(90deg); transition:transform .2s ease; }
+    .question-classification[open] .classification-toggle::after { transform:rotate(-90deg); }
+    .classification-hint { margin-left:auto; color:var(--muted); font-size:.68rem; font-style:italic; font-weight:500; }
+    .classification-hint.open { display:none; }
+    .question-classification[open] .classification-hint.closed { display:none; }
+    .question-classification[open] .classification-hint.open { display:inline; }
+    .question-classification .question-meta { position:static; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px 18px; margin:0; padding:12px 14px; border:0; border-top:1px solid var(--line-card); border-radius:0; background:transparent; opacity:1; overflow:visible; white-space:normal; }
+    .question-classification .meta-item { min-width:0; padding:0; color:var(--muted); font-size:.72rem; font-style:italic; line-height:1.45; text-align:left; }
+    .question-classification .meta-item strong { display:block; margin-bottom:2px; color:#315F70; font-size:.65rem; font-style:normal; font-weight:800; letter-spacing:.035em; line-height:1.3; text-transform:uppercase; }
+    .question-classification .meta-item strong::after { content:''; }
+    @media (max-width:640px) {
+      .question-classification .question-meta { grid-template-columns:1fr; gap:8px; padding:10px 12px; }
+      .classification-toggle { align-items:flex-start; flex-wrap:wrap; }
+      .classification-hint { width:100%; margin-left:0; }
+    }
     .answer-options { display:grid; gap:8px; }
     .answer-option { display:flex; align-items:flex-start; width:100%; min-height:44px; padding:10px 12px; border:1px solid var(--line-card); border-radius:8px; background:#fff; color:var(--text); font:inherit; font-size:.88rem; line-height:1.5; text-align:left; cursor:pointer; transition:border-color .2s ease,background-color .2s ease; }
     .answer-option:hover,.answer-option:focus-visible { border-color:#4E7F92; outline:2px solid transparent; }
@@ -333,12 +353,19 @@
       <div class="question-list">
         <article class="question-card" data-correct="B">
           <div class="question-heading"><span class="question-number">Câu 1</span><p class="question-text">Vì sao DNA cần được tái bản trước khi tế bào phân chia?</p></div>
-          <div class="question-meta">
+<details class="question-classification">
+            <summary class="classification-toggle">
+              <span>Phân loại câu hỏi</span>
+              <span class="classification-hint closed">Bấm để xem đầy đủ thông tin</span>
+              <span class="classification-hint open">Bấm để thu gọn</span>
+            </summary>
+            <div class="question-meta">
             <div class="meta-item"><strong>Chủ đề</strong>Tái bản DNA</div>
             <div class="meta-item"><strong>Dạng bài</strong>A2 – Trình bày – giải thích cơ chế, quá trình và quan hệ sinh học</div>
             <div class="meta-item"><strong>Cấp độ tư duy</strong>Thông hiểu</div>
             <div class="meta-item"><strong>Năng lực Sinh học</strong>Nhận thức sinh học</div>
-          </div>
+            </div>
+          </details>
           <div class="answer-options">
             <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>Để tế bào mẹ tạo thêm nhiều loại protein hơn.</span></button>
             <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>Để tạo bản sao thông tin di truyền có thể được truyền cho các tế bào con.</span></button>
@@ -351,12 +378,19 @@
 
         <article class="question-card" data-correct="A">
           <div class="question-heading"><span class="question-number">Câu 2</span><p class="question-text">Trong quá trình lớn lên của một cơ thể đa bào, số lượng tế bào tăng lên qua nhiều lần phân bào. Vai trò nào của tái bản DNA liên quan trực tiếp nhất đến quá trình này?</p></div>
-          <div class="question-meta">
+<details class="question-classification">
+            <summary class="classification-toggle">
+              <span>Phân loại câu hỏi</span>
+              <span class="classification-hint closed">Bấm để xem đầy đủ thông tin</span>
+              <span class="classification-hint open">Bấm để thu gọn</span>
+            </summary>
+            <div class="question-meta">
             <div class="meta-item"><strong>Chủ đề</strong>Tái bản DNA</div>
             <div class="meta-item"><strong>Dạng bài</strong>A2 – Trình bày – giải thích cơ chế, quá trình và quan hệ sinh học</div>
             <div class="meta-item"><strong>Cấp độ tư duy</strong>Vận dụng</div>
             <div class="meta-item"><strong>Năng lực Sinh học</strong>Vận dụng kiến thức, kĩ năng đã học</div>
-          </div>
+            </div>
+          </details>
           <div class="answer-options">
             <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>Bảo đảm DNA được sao chép trước mỗi lần phân bào để các tế bào con nhận thông tin di truyền.</span></button>
             <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>Trực tiếp làm cho từng tế bào tăng kích thước.</span></button>
@@ -369,12 +403,19 @@
 
         <article class="question-card" data-correct="A">
           <div class="question-heading"><span class="question-number">Câu 3</span><p class="question-text">Ý nghĩa của tái bản DNA đối với sự di truyền qua các thế hệ được thể hiện rõ nhất ở việc</p></div>
-          <div class="question-meta">
+<details class="question-classification">
+            <summary class="classification-toggle">
+              <span>Phân loại câu hỏi</span>
+              <span class="classification-hint closed">Bấm để xem đầy đủ thông tin</span>
+              <span class="classification-hint open">Bấm để thu gọn</span>
+            </summary>
+            <div class="question-meta">
             <div class="meta-item"><strong>Chủ đề</strong>Tái bản DNA</div>
             <div class="meta-item"><strong>Dạng bài</strong>A2 – Trình bày – giải thích cơ chế, quá trình và quan hệ sinh học</div>
             <div class="meta-item"><strong>Cấp độ tư duy</strong>Vận dụng</div>
             <div class="meta-item"><strong>Năng lực Sinh học</strong>Vận dụng kiến thức, kĩ năng đã học</div>
-          </div>
+            </div>
+          </details>
           <div class="answer-options">
             <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>thông tin di truyền có thể được sao chép và truyền tiếp khi tế bào hoặc cơ thể sinh sản.</span></button>
             <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>DNA trực tiếp tạo ra tất cả đặc điểm của cơ thể mà không cần các quá trình khác.</span></button>
@@ -387,12 +428,19 @@
 
         <article class="question-card" data-correct="B">
           <div class="question-heading"><span class="question-number">Câu 4</span><p class="question-text">Điểm nào sau đây phân biệt đúng PCR với quá trình tái bản DNA tự nhiên trong tế bào?</p></div>
-          <div class="question-meta">
+<details class="question-classification">
+            <summary class="classification-toggle">
+              <span>Phân loại câu hỏi</span>
+              <span class="classification-hint closed">Bấm để xem đầy đủ thông tin</span>
+              <span class="classification-hint open">Bấm để thu gọn</span>
+            </summary>
+            <div class="question-meta">
             <div class="meta-item"><strong>Chủ đề</strong>Tái bản DNA</div>
             <div class="meta-item"><strong>Dạng bài</strong>A3 – So sánh – phân biệt – phân loại</div>
             <div class="meta-item"><strong>Cấp độ tư duy</strong>Thông hiểu</div>
             <div class="meta-item"><strong>Năng lực Sinh học</strong>Nhận thức sinh học</div>
-          </div>
+            </div>
+          </details>
           <div class="answer-options">
             <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>PCR không tạo thêm bản sao DNA.</span></button>
             <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>PCR là kĩ thuật nhân tạo được thực hiện ngoài tế bào để tạo nhiều bản sao của một đoạn DNA.</span></button>
@@ -405,12 +453,19 @@
 
         <article class="question-card" data-correct="B">
           <div class="question-heading"><span class="question-number">Câu 5</span><p class="question-text">Tại hiện trường, một mẫu sinh học chỉ chứa một lượng DNA rất nhỏ, chưa đủ thuận lợi cho bước phân tích tiếp theo. Việc sử dụng PCR có thể hỗ trợ chủ yếu bằng cách nào?</p></div>
-          <div class="question-meta">
+<details class="question-classification">
+            <summary class="classification-toggle">
+              <span>Phân loại câu hỏi</span>
+              <span class="classification-hint closed">Bấm để xem đầy đủ thông tin</span>
+              <span class="classification-hint open">Bấm để thu gọn</span>
+            </summary>
+            <div class="question-meta">
             <div class="meta-item"><strong>Chủ đề</strong>Tái bản DNA</div>
             <div class="meta-item"><strong>Dạng bài</strong>E1 – Giải thích, đánh giá và giải quyết vấn đề thực tiễn</div>
             <div class="meta-item"><strong>Cấp độ tư duy</strong>Vận dụng</div>
             <div class="meta-item"><strong>Năng lực Sinh học</strong>Vận dụng kiến thức, kĩ năng đã học</div>
-          </div>
+            </div>
+          </details>
           <div class="answer-options">
             <button class="answer-option" type="button" data-option="A"><span class="option-key">A.</span><span>Làm thay đổi trình tự DNA để dễ nhận biết hơn.</span></button>
             <button class="answer-option" type="button" data-option="B"><span class="option-key">B.</span><span>Tạo nhiều bản sao của đoạn DNA cần phân tích.</span></button>
@@ -440,6 +495,9 @@
 
     window.addEventListener('load', reportHeight);
     window.addEventListener('resize', reportHeight);
+    document.querySelectorAll('.question-classification').forEach((details) => {
+      details.addEventListener('toggle', () => requestAnimationFrame(reportHeight));
+    });
 
     const questionCards = [...document.querySelectorAll('.question-card')];
     const submitPractice = document.getElementById('submitPractice');
