@@ -411,14 +411,10 @@ header,
 }
 
 .svg-controls-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-@media (max-width: 768px) {
-  .svg-controls-grid {
-    grid-template-columns: 1fr;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
 }
 
 .hotspot-toggle-btn {
@@ -432,10 +428,12 @@ header,
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 12px;
   transition: all 0.2s ease;
   cursor: pointer;
   text-align: left;
+  width: 100%;
+  box-sizing: border-box;
 }
 .hotspot-toggle-btn:hover {
   background: var(--cream-3);
@@ -732,7 +730,7 @@ header,
   z-index: 10000;
 }
 /* Đồng bộ trực tiếp theo SH10_B01_M02 */
-body{padding:0;font-size:17px}.app,.app-container{max-width:1200px;margin:0 auto;padding:18px clamp(12px,2.4vw,28px) 12px}.stage-section.two-block-ready,.stage-card.two-block-ready{padding:0;background:transparent;border:0;box-shadow:none}.split-workspace{display:grid!important;grid-template-columns:minmax(0,58fr) minmax(340px,42fr)!important;gap:20px!important;align-items:start!important}.visual-card,.workspace-card{min-width:0;border:1px solid var(--paper-line,#D6CCB6);border-radius:14px;overflow:hidden;box-shadow:0 2px 6px rgba(26,26,26,.05)}.visual-card{position:sticky;top:0;background:#fff}.visual-card__head{padding:14px 16px 12px;border-bottom:1px solid var(--paper-line,#D6CCB6);background:#fff}.visual-card__head h2{margin:0;font-size:clamp(1.25rem,2.2vw,1.75rem);line-height:1.28}.visual-body{padding:14px;background:#fff}.workspace-card{padding:18px;background:var(--cream-2,#FBF9F4)}.instruction{display:flex;align-items:flex-start;gap:10px;margin:0 0 16px;padding:12px 14px;border-left:4px solid var(--info,#4E7F92);border-radius:6px;background:var(--info-bg,#DCE7EB);font-size:.91rem;line-height:1.55}.inline-feedback{font-size:.92rem;line-height:1.55}.controls-row{display:flex;align-items:center;gap:10px;margin-top:16px;padding:14px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;flex-wrap:nowrap}.btn{min-height:44px;padding:9px 15px;font-size:.92rem}@media(max-width:980px){.split-workspace{grid-template-columns:1fr!important}.visual-card{position:static}.workspace-card{padding:16px}}@media(max-width:700px){body{font-size:16px}.app,.app-container{padding:12px 10px 10px}}@media(max-width:420px){.app,.app-container{padding:10px 8px 8px}.workspace-card{padding:13px}}
+body{padding:0;font-size:17px}.app,.app-container{max-width:1200px;margin:0 auto;padding:18px clamp(12px,2.4vw,28px) 12px}.stage-section.two-block-ready,.stage-card.two-block-ready{padding:0;background:transparent;border:0;box-shadow:none}.split-workspace{display:grid!important;grid-template-columns:minmax(0,58fr) minmax(340px,42fr)!important;gap:20px!important;align-items:start!important}.visual-card,.workspace-card{min-width:0;border:1px solid var(--paper-line,#D6CCB6);border-radius:14px;overflow:hidden;box-shadow:0 2px 6px rgba(26,26,26,.05)}.visual-card{position:sticky;top:0;background:#fff}.visual-card__head{padding:14px 16px 12px;border-bottom:1px solid var(--paper-line,#D6CCB6);background:#fff}.visual-card__head h2{margin:0;font-size:clamp(1.25rem,2.2vw,1.75rem);line-height:1.28}.visual-body{padding:14px;background:#fff}.workspace-card{padding:18px;background:var(--cream-2,#FBF9F4)}.instruction{display:flex;align-items:flex-start;gap:10px;margin:0 0 16px;padding:12px 14px;border-left:4px solid var(--info,#4E7F92);border-radius:6px;background:var(--info-bg,#DCE7EB);font-size:.91rem;line-height:1.55}.inline-feedback{font-size:.92rem;line-height:1.55}.controls-row{display:flex;align-items:center;gap:10px;margin-top:16px;padding:14px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;flex-wrap:nowrap}.btn{min-height:44px;padding:9px 15px;font-size:.92rem}.workspace-card .svg-controls-grid{display:flex!important;flex-direction:column!important;gap:10px!important;width:100%!important}.workspace-card .hotspot-toggle-btn{width:100%!important;box-sizing:border-box!important}@media(max-width:980px){.split-workspace{grid-template-columns:1fr!important}.visual-card{position:static}.workspace-card{padding:16px}}@media(max-width:700px){body{font-size:16px}.app,.app-container{padding:12px 10px 10px}}@media(max-width:420px){.app,.app-container{padding:10px 8px 8px}.workspace-card{padding:13px}}
 .three-button-nav{display:flex;align-items:center;gap:12px;width:100%;margin-top:16px;padding:16px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;scrollbar-width:none}.three-button-nav::-webkit-scrollbar{display:none}.three-button-nav .nav-spacer{flex:1}.three-button-nav .btn{flex:0 0 auto;white-space:nowrap}.three-button-nav .nav-back{order:1}.three-button-nav .nav-reset{order:2}.three-button-nav .nav-spacer{order:3}.three-button-nav .nav-next{order:4}.three-button-nav .btn:disabled{opacity:.45;cursor:not-allowed}
 section.stage .controls-row,section.stage .stage-actions,section.stage-section .controls-row,section.stage-section .stage-actions,section.stage-card .controls-row,section.stage-card .stage-actions{display:none!important}
 </style>
@@ -1032,8 +1030,8 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
 
     <!-- Explanatory Caption Box ST01 -->
     <div class="interactive-caption-box" id="st01CaptionBox">
-      <i class="ti ti-info-circle"></i>
-      <span id="st01CaptionText">Nhấn lần lượt vào 3 thành phần trên sơ đồ để quan sát đặc điểm cấu tạo của mạch gỗ.</span>
+      <i class="ti ti-notes"></i>
+      <span id="st01CaptionText">Chọn một thành phần trên để xem thông tin chi tiết.</span>
     </div>
 
     <!-- Quiz A/B Section ST01 (revealed after viewing all 3) -->
@@ -1280,8 +1278,8 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
 
     <!-- Explanatory Caption Box ST02 -->
     <div class="interactive-caption-box" id="st02CaptionBox">
-      <i class="ti ti-info-circle"></i>
-      <span id="st02CaptionText">Nhấn lần lượt vào RỄ – THÂN – LÁ để tìm hiểu 3 động lực duy trì dòng mạch gỗ.</span>
+      <i class="ti ti-notes"></i>
+      <span id="st02CaptionText">Chọn một vị trí trên để xem thông tin chi tiết.</span>
     </div>
 
     <!-- Quiz A/B Section ST02 (revealed after viewing all 3) -->
