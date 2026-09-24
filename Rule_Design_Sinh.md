@@ -9,6 +9,146 @@
 > **Khác biệt cốt lõi so với Hoá/Toán:** màu "khoa học" của Sinh (diệp lục, tinh bột–iốt, tế bào,
 > chỉ thị hô hấp...) và bộ dụng cụ, hiệu ứng đặc thù sinh học; nguyên tắc an toàn + kết luận có giới hạn.
 
+> **FILE CHUẨN THIẾT KẾ BẮT BUỘC:** [`modules/Lop_10/SH10_B01_M02/SH10_B01_M02.html`](modules/Lop_10/SH10_B01_M02/SH10_B01_M02.html).
+> Màu sắc, typography, chiều rộng, khoảng cách, card, nút và breakpoint trong file này là chuẩn hiện hành. Nếu ví dụ cũ ở phần dưới có giá trị khác, phải ưu tiên khối **0A** và file chuẩn này.
+
+---
+
+## 0A. KHÓA THIẾT KẾ THEO FILE SH10_B01_M02 (ƯU TIÊN CAO NHẤT)
+
+### Thông số nền và khung trang
+
+```css
+*, *::before, *::after { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:'Be Vietnam Pro',system-ui,sans-serif;
+  font-size:17px;
+  line-height:1.65;
+  overflow-x:hidden;
+}
+.app {
+  width:100%;
+  max-width:1200px;
+  margin:0 auto;
+  padding:18px clamp(12px,2.4vw,28px) 12px;
+}
+```
+
+Không đặt `min-height:100vh` hoặc `height:100vh` cho `body`/`.app` trong file con nhúng iframe.
+
+### Bố cục làm việc chuẩn
+
+```css
+.split-workspace {
+  display:grid;
+  grid-template-columns:minmax(0,58fr) minmax(340px,42fr);
+  gap:20px;
+  align-items:start;
+}
+.visual-card {
+  position:sticky;
+  top:0;
+  z-index:10;
+  border:1px solid var(--paper-line);
+  border-radius:var(--radius-lg);
+  background:#fff;
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+}
+.workspace-card {
+  min-width:0;
+  padding:18px;
+  border:1px solid var(--paper-line);
+  border-radius:var(--radius-lg);
+  background:var(--cream-2);
+  box-shadow:var(--shadow-sm);
+}
+```
+
+- Mặc định hai cột theo tỉ lệ `58/42`.
+- Màn nối ghép có nhiều nội dung có thể dùng `52/48` và cột phải tối thiểu `390px`.
+- Dưới `980px`, chuyển thành một cột và bỏ sticky ở card hình ảnh.
+- Không dùng sidebar cố định hai bên.
+
+### Thang cỡ chữ chuẩn
+
+| Thành phần | Cỡ chữ | Weight / line-height |
+|---|---:|---|
+| Body desktop | `17px` | `400 / 1.65` |
+| Body dưới 700px | `16px` | `400 / 1.65` |
+| Tiêu đề card/stage | `clamp(1.25rem,2.2vw,1.75rem)` | `700–800 / 1.28` |
+| Câu hỏi dẫn dắt | `1rem` | `700 / 1.55` |
+| Text giảng | `.96rem` | `400 / 1.65` |
+| Hướng dẫn thao tác | `.91rem` | `400 / 1.55` |
+| Phản hồi | `.92rem` | `400 / 1.55` |
+| Nhãn section in hoa | `.78rem` | `800`, letter-spacing `.6px` |
+| Eyebrow | `.76rem` | `800`, letter-spacing `.65px` |
+| Chú thích ảnh | `.75rem` | `400 / 1.45` |
+| Nút | kế thừa body | `700`, cao tối thiểu `44px` |
+
+Không tự giảm chữ để nhét thêm nội dung. Chữ giao diện nhìn thấy không nhỏ hơn `.75rem`.
+
+### Card, hướng dẫn, phản hồi và nút
+
+```css
+.visual-card__head { padding:14px 16px 12px; border-bottom:1px solid var(--paper-line); }
+.visual-body { padding:14px; }
+.instruction {
+  display:flex; align-items:flex-start; gap:10px;
+  margin:0 0 16px; padding:12px 14px;
+  border-left:4px solid var(--info);
+  border-radius:var(--radius-sm);
+  background:var(--info-bg);
+  color:var(--ink-2); font-size:.91rem; line-height:1.55;
+}
+.inline-feedback {
+  margin-top:14px; padding:13px 14px;
+  border-radius:var(--radius-sm);
+  color:var(--ink-2); font-size:.92rem; line-height:1.55;
+}
+.inline-feedback.info { border-left:4px solid var(--info); background:var(--info-bg); }
+.inline-feedback.bad { border-left:4px solid var(--wrong); background:var(--wrong-bg); }
+.inline-feedback.ok { border-left:4px solid var(--correct); background:var(--correct-bg); color:var(--jade-text); }
+.btn {
+  min-height:44px;
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:9px 15px;
+  border:1.5px solid var(--jade); border-radius:9px;
+  background:transparent; color:var(--jade-text);
+  font:inherit; font-weight:700; cursor:pointer;
+  transition:background .18s ease,border-color .18s ease,transform .18s ease;
+}
+.btn-primary { border-color:var(--jade); background:var(--jade); color:var(--cream); }
+.btn-primary:hover:not(:disabled) { background:var(--jade-deep); border-color:var(--jade-deep); }
+.btn:disabled { cursor:not-allowed; opacity:.48; transform:none; }
+```
+
+### Breakpoint bắt buộc
+
+```css
+@media (max-width:980px) {
+  .split-workspace { grid-template-columns:1fr; }
+  .visual-card { position:static; }
+  .workspace-card { padding:16px; }
+}
+@media (max-width:700px) {
+  body { font-size:16px; }
+  .app { padding:10px 10px 8px; }
+  .visual-card__head { padding:12px; }
+  .visual-body { padding:10px; }
+  .workspace-card { padding:13px; }
+}
+@media (max-width:420px) {
+  /* Chỉ tinh chỉnh thành phần rất hẹp; không bỏ nội dung học tập. */
+}
+```
+
+Ba breakpoint chuẩn là `980px`, `700px`, `420px`. Không tự thay bằng `768px`, `640px` nếu kịch bản không có lý do đặc biệt.
+
 ---
 
 ## 0. VAI TRÒ & TRIẾT LÝ THIẾT KẾ (đọc trước khi viết dòng code đầu tiên)
@@ -44,11 +184,10 @@ cỡ chữ + khoảng trắng (không bằng nhiều box màu). Cảm giác mụ
 font-family: 'Be Vietnam Pro', system-ui, sans-serif;
 ```
 - Phân cấp bằng **size + weight, KHÔNG đổi font**:
-  - Heading / số lớn: 700–800 · Nhấn mạnh / label: 600 · Body: 400, line-height 1.7, dòng tối đa ~64ch
-- **Body tối thiểu 17–18px** (tiếng Việt nhiều dấu, chữ nhỏ dễ bể). Không dùng weight < 400.
+  - Heading / số lớn: 700–800 · Nhấn mạnh / label: 600 · Body: 400, line-height 1.65, dòng tối đa ~64ch
+- **Body desktop đúng 17px; dưới 700px đúng 16px.** Không dùng weight < 400.
 - Label nhỏ/badge: **≥ 12px**, weight 600, uppercase, letter-spacing 0.6px.
-- Type scale responsive: display `clamp(2rem,5vw,3rem)` · h1 `clamp(1.7rem,4vw,2.4rem)` ·
-  h2 `clamp(1.4rem,3vw,1.9rem)` · h3 `1.25rem` · body `1.075rem` · small `0.9rem`.
+- Type scale của file con: tiêu đề stage/card `clamp(1.25rem,2.2vw,1.75rem)` · câu hỏi `1rem` · text giảng `.96rem` · hướng dẫn `.91rem` · phản hồi `.92rem` · nhãn `.78rem` · eyebrow `.76rem` · chú thích `.75rem`.
 - **Chữ trên canvas** (`ctx.font`): cũng dùng `"Be Vietnam Pro"` (ví dụ `ctx.font = 'bold 13px "Be Vietnam Pro", sans-serif'`).
   Ngoại lệ: số liệu động đổi liên tục trên canvas (nhiệt độ/pH trong bài enzyme, đếm ngược thời gian...) → dùng
   **`JetBrains Mono`** thay vì `Courier New` — `ctx.font = "bold 13px 'JetBrains Mono', monospace"`, kèm
@@ -165,31 +304,30 @@ chỉ thị, kết tủa, máu, tế bào... vẽ đúng màu sinh học. `ctx.f
 
 ---
 
-## 5. LAYOUT TỔNG THỂ — Single-Column / Bố cục 1 cột trung tâm (quan trọng)
+## 5. LAYOUT TỔNG THỂ — Khung trung tâm và workspace linh hoạt (quan trọng)
 
-- `body`: `display:flex; flex-direction:column; align-items:center; gap:16px; padding:20px clamp(14px,2.5vw,32px)`.
+- `body`: dùng đúng khai báo tại Mục 0A; nền `var(--cream)`, cỡ chữ `17px`, line-height `1.65`, không đặt padding trực tiếp.
+- `.app`: `width:100%; max-width:1200px; margin:0 auto; padding:18px clamp(12px,2.4vw,28px) 12px`.
   **KHÔNG** đặt `min-height:100vh`/`height:100vh` trên body (gây khoảng trắng khi nhúng LMS — xem MỤC 15).
 - Độ rộng tối đa khối chính (`.main`, `.split-workspace`, `.canvas-card`, `.workspace`): **1200px** — căn giữa màn hình, lấp đầy không gian PC/Laptop hiện đại, **không dùng 2 sidebar cố định hai bên**.
 - **Bố cục tinh gọn & Linh hoạt theo kịch bản (Pedagogical Flow)**:
   - **Không dùng `<header>` banner**: Không dùng banner nền gradient xanh đậm, không dùng `.header-badge`, tiêu đề `<h1>` hay `.header-goal` cồng kềnh ở đầu trang để ưu tiên tối đa không gian cho nội dung bài học.
   - **Luồng học tập bám sát kịch bản từng bài**: Cấu trúc các màn học (Stage), số lượng bước, dạng bài (ST00, ST01..., hoặc Phase 1, Phase 2...) và các nút điều hướng chuyển màn (như Tiếp tục, Quay lại, Kiểm tra, Làm lại, Hoàn thành...) **phải tuân thủ theo kịch bản nội dung cụ thể của bài đó**. Không gò ép cứng nhắc mọi bài học phải có chung một khuôn mẫu nút bấm hay chung một định dạng bước học.
   - **Thanh điều hướng bước học**: Khi bài học đã có luồng điều hướng chuyển màn tuần tự bằng các nút trong bài học, ưu tiên giữ giao diện tinh gọn, không hiển thị thanh tab bước học rườm rà ở đầu trang. Nếu bài học cần thanh tiến trình, bắt buộc giữ dạng thanh ngang tinh gọn, tuyệt đối không để rớt dòng thành cột dọc hay tạo sidebar 2 bên.
-- **Thứ tự thành phần trong màn học**: Lời dẫn/Nhiệm vụ → Khung Hướng dẫn thao tác duy nhất (`.guide-box`) → Khu vực tương tác/mô phỏng chính (`.workspace` / `.canvas-card`) → Hàng nút hành động của màn học → Modal hoàn thành (nếu là màn cuối).
+- **Cấu trúc ưu tiên của mỗi stage**: `.split-workspace` gồm hai khối song song → trái `.visual-card` chứa tiêu đề, câu hỏi, text giảng và dữ kiện trực quan → phải `.workspace-card` chứa hướng dẫn duy nhất, nhiệm vụ và phản hồi → `.controls-row` nằm dưới hai khối, trải toàn chiều rộng.
+- **Không hiển thị nhãn tiến trình kỹ thuật trong nội dung bài học:** không đưa các cụm `Stage`, `Giai đoạn`, `Màn x/y`, `Bước x/y`, `ST01`, `Phase 1` hoặc số thứ tự tương tự vào `.eyebrow`, `.stage-badge`, `.stage-step-indicator`, tiêu đề hay nhãn phía trên tiêu đề. Người học chỉ nhìn thấy tên nội dung tự nhiên của phần đang học. Tên stage/màn vẫn được phép tồn tại trong `id`, biến JavaScript, LMS state và chú thích mã để điều khiển kỹ thuật.
 
 ```css
 .app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 100%;
-  min-height: 100vh;
-  background: var(--bg);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 18px clamp(12px,2.4vw,28px) 12px;
 }
 .main {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 24px 20px 48px;
 }
 .progress-nav-container,
 .progress-nav,
@@ -202,28 +340,29 @@ chỉ thị, kết tủa, máu, tế bào... vẽ đúng màu sinh học. `ctx.f
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 14px 16px;
-  border-radius: 16px;
-  border: 1px solid var(--line);
+  min-height: 44px;
+  padding: 9px 15px;
+  border-radius: 9px;
+  border: 1.5px solid var(--jade);
   background: #fff;
-  color: var(--text);
+  color: var(--jade-text);
   font-family: inherit;
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
   transition: .2s;
   box-shadow: var(--shadow-sm);
 }
 .moduleMini:hover {
-  border-color: var(--green);
-  background: var(--mint);
+  border-color: var(--jade);
+  background: var(--jade-pale);
   transform: translateY(-1px);
 }
 .moduleMini.active {
-  background: var(--deep);
-  border-color: var(--deep);
-  color: #fff;
-  box-shadow: var(--shadow-md);
+  background: var(--jade);
+  border-color: var(--jade);
+  color: var(--cream);
+  box-shadow: var(--shadow-sm);
 }
 .canvas-card { width:100%; display:flex; flex-direction:column; gap:14px; }
 .canvas-glow-wrap {
@@ -253,11 +392,14 @@ Mọi file HTML con (Virtual Lab / Thí nghiệm tương tác) khi được tạ
 1. **Tuyệt đối KHÔNG CÓ Header riêng**: Các file con **BẮT BUỘC KHÔNG DÙNG** khối `<header>` banner (không có tiêu đề H1, không badge, không mục tiêu bài học) vì thông tin bài học và mục tiêu đã hiển thị sẵn ở Header của trang mẹ.
 2. **Tuyệt đối KHÔNG CÓ Thanh Tab Màn riêng (`.progress-nav`)**: Các file con **BẮT BUỘC KHÔNG DÙNG** thanh tab chuyển màn (`01 · Đời sống`, `02 · Lĩnh vực`,... vì thanh Module cuộn ngang ở trang mẹ đã đảm nhiệm điều hướng cấp bài học, còn tiến trình bên trong bài do 2 nút Quay lại / Tiếp tục điều khiển).
 3. **Tuyệt đối KHÔNG CÓ Banner Footer Link riêng (`.link-section`)**: Các file con **BẮT BUỘC KHÔNG DÙNG** khối banner liên kết chân trang (`aiducation.edu.vn`).
-4. **Bắt đầu trực tiếp từ Lưới 2 Cột (`.split-workspace`)**:
-   - Khung giao diện con bắt đầu ngay lập tức từ Lưới 2 cột song song (`display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;`):
-     - **Cột Bên Trái — CANVAS KHÓA ĐI THEO KHI CUỘN (`position: sticky; top: 0;` — BẮT BUỘC):** Cột chứa Canvas (`.canvas-card`) dùng `position: sticky; top: 0;` dính sát đỉnh iframe để luôn trượt theo người học khi họ cuộn xuống làm bài tập ở cột bên phải.
-     - **Cột Bên Phải (`.workspace-card` Minimal & Tối Giản):** Tập trung chứa tiêu đề bài tập `<h2>`, ghi chú nhiệm vụ gọn gàng `.workspace-note` và khung tương tác `#workspace`.
+4. **Bắt đầu trực tiếp từ Lưới 2 Khối (`.split-workspace`)**:
+   - Khung giao diện con bắt đầu ngay từ lưới `grid-template-columns:minmax(0,58fr) minmax(340px,42fr); gap:20px; align-items:start;`.
+   - Màn nối ghép cần workspace rộng được phép dùng `minmax(0,52fr) minmax(390px,48fr)`.
+   - **Khối trái `.visual-card` — hình và dữ kiện học tập:** dùng `position:sticky; top:0`; bắt đầu trực tiếp bằng tiêu đề nội dung tự nhiên và bắt buộc có ảnh, SVG, Canvas, sơ đồ hoặc bảng dữ kiện trực quan trong `.visual-body`. Không dùng cột trái chỉ để đặt đoạn văn. Không đặt nhãn `Stage`, `Giai đoạn`, `Màn`, `Bước` hoặc bộ đếm tiến trình phía trên tiêu đề.
+   - **Khối phải `.workspace-card` — toàn bộ thao tác:** nền `var(--cream-2)`; chứa đúng một `.instruction`, các nút, lựa chọn, kéo thả, trường nhập, trạng thái và `.inline-feedback`. Không đặt nút kiểm tra, lựa chọn hay phản hồi đúng/sai trong khối trái và không lặp tiêu đề ở cột phải.
+   - Dưới `980px`, lưới chuyển thành một cột và `.visual-card` chuyển sang `position:static`.
 5. **Thanh Điều Khiển Dưới (`.controls-row`)**:
+   - Nằm **ngoài** `.split-workspace`, ngay dưới hai khối và trải toàn chiều rộng stage.
    - Chứa nút Quay lại (`#btnPrev`), Nút Reset (`#btnReset`), Nút Nghe đọc (`#btnTTS`), và Nút Tiếp tục (`#btnNext`).
    - Nút "Tiếp tục" (`#btnNext`) duy trì `disabled` khi chưa đủ điều kiện hoàn thành màn.
 6. **Cảnh Báo Thông Báo khi Thao Tác Sai / Thiếu Bước Qua Màn**:

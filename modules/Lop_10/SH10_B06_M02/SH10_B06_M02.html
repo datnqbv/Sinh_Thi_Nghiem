@@ -1038,6 +1038,9 @@ body {
   .materials-grid { grid-template-columns: repeat(2, 1fr); }
   .report-components-grid { grid-template-columns: 1fr 1fr; }
 }
+/* Chuẩn hai khối, không hiển thị nhãn tiến trình kỹ thuật */
+body{padding:0;font-size:17px}.app{max-width:1200px;margin:0 auto;padding:18px clamp(12px,2.4vw,28px) 12px}.stage.two-block-ready{padding:0;background:transparent;border:0;box-shadow:none}.stage-badge,.stage-step-indicator{display:none!important}.split-workspace{display:grid;grid-template-columns:minmax(0,58fr) minmax(340px,42fr);gap:20px;align-items:start}.visual-card,.workspace-card{min-width:0;border:1px solid var(--paper-line,#D6CCB6);border-radius:14px;overflow:hidden;box-shadow:0 2px 6px rgba(26,26,26,.05)}.visual-card{position:sticky;top:0;background:#fff}.visual-card__head{padding:14px 16px 12px;border-bottom:1px solid var(--paper-line,#D6CCB6);background:#fff}.visual-card__head .stage-head{margin:0;padding:0;border:0;background:transparent}.visual-card__head .stage-title{font-size:clamp(1.25rem,2.2vw,1.75rem);line-height:1.28;letter-spacing:-.02em}.visual-body{padding:14px;background:#fff}.workspace-card{padding:18px;background:var(--cream-2,#FBF9F4)}.instruction{display:flex;align-items:flex-start;gap:10px;margin:0 0 16px;padding:12px 14px;border-left:4px solid var(--info,#4E7F92);border-radius:6px;background:var(--info-bg,#DCE7EB);color:var(--ink-2,#514C44);font-size:.91rem;line-height:1.55}.instruction i{flex:0 0 auto;margin-top:2px;font-size:1.2rem;color:var(--info,#4E7F92)}.inline-feedback{font-size:.92rem;line-height:1.55}.controls-row{display:flex;align-items:center;gap:10px;margin-top:16px;padding:14px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}.controls-row::-webkit-scrollbar{display:none}.btn{min-height:44px;padding:9px 15px;font-size:.92rem}@media(max-width:980px){.split-workspace{grid-template-columns:1fr}.visual-card{position:static}.workspace-card{padding:16px}}@media(max-width:700px){body{font-size:16px}.app{padding:12px 10px 10px}.workspace-card{padding:16px}}@media(max-width:420px){.app{padding:10px 8px 8px}.workspace-card{padding:13px}}
+.visual-reference{display:grid;place-items:center;min-height:280px}.visual-reference img,.visual-reference svg{display:block;width:100%;height:auto;max-height:520px;object-fit:contain;pointer-events:none}.visual-fallback{display:grid;place-items:center;min-height:280px;text-align:center;color:var(--jade-text,#1B5E48);font-weight:700}.visual-fallback i{font-size:4rem;color:var(--jade,#3CA57A)}
 </style>
 </head>
 <body>
@@ -3629,6 +3632,45 @@ function launchConfetti() {
   }
   render();
 }
+</script>
+<script>
+/* Chuyển cấu trúc cũ sang hai khối; giữ nguyên node và trình nghe sự kiện. */
+(() => {
+  document.querySelectorAll('section.stage').forEach((stage) => {
+    if (stage.classList.contains('two-block-ready')) return;
+    const nodes=[...stage.children];
+    const heading=nodes.find((node)=>node.matches('.stage-head'));
+    const controls=nodes.find((node)=>node.matches('.controls-row,.stage-actions'));
+    const guide=nodes.find((node)=>node.matches('.guide-box'));
+    const split=document.createElement('div'); split.className='split-workspace';
+    const visual=document.createElement('article'); visual.className='visual-card';
+    const visualHead=document.createElement('div'); visualHead.className='visual-card__head';
+    const visualBody=document.createElement('div'); visualBody.className='visual-body';
+    const workspace=document.createElement('article'); workspace.className='workspace-card';
+    if(heading) visualHead.appendChild(heading);
+    const candidates=nodes.filter((node)=>node!==heading&&node!==controls&&node!==guide&&!node.matches('.feedback-box,.feedback-bar'));
+    let visualNode=candidates.find((node)=>node.querySelector('svg,img,canvas')&&!node.querySelector('button,input,select,textarea,[tabindex]'));
+    if(!visualNode){const media=stage.querySelector('img,svg');if(media){visualNode=document.createElement('div');visualNode.className='visual-reference';const clone=media.cloneNode(true);clone.removeAttribute('id');clone.querySelectorAll('[id]').forEach((node)=>node.removeAttribute('id'));clone.setAttribute('aria-hidden','true');visualNode.appendChild(clone)}else{visualNode=document.createElement('div');visualNode.className='visual-fallback';visualNode.innerHTML='<div><i class="ti ti-flask-2"></i><div>Sơ đồ thí nghiệm</div></div>'}}
+    if(visualNode) visualBody.appendChild(visualNode);
+    visual.append(visualHead,visualBody); split.append(visual,workspace); stage.appendChild(split);
+    if(guide){guide.className='instruction';workspace.appendChild(guide)}
+    else{const note=document.createElement('div');note.className='instruction';note.innerHTML='<i class="ti ti-bulb"></i><span>Quan sát dữ kiện trực quan và hoàn thành lần lượt các nhiệm vụ thực hành.</span>';workspace.appendChild(note)}
+    candidates.forEach((node)=>{if(node!==visualNode)workspace.appendChild(node)});
+    stage.querySelectorAll('.feedback-box,.feedback-bar').forEach((node)=>node.classList.add('inline-feedback'));
+    if(controls){controls.classList.add('controls-row');stage.appendChild(controls)}
+    stage.classList.add('two-block-ready');
+  });
+  const clean=(root)=>{
+    const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let node;
+    while((node=walker.nextNode())){
+      if(node.parentElement&&node.parentElement.closest('script,style'))continue;
+      const next=node.nodeValue.replace(/Tiếp tục sang Giai đoạn\s*\d+/gi,'Tiếp tục').replace(/Hoàn thành Giai đoạn\s*\d+!?/gi,'Hoàn thành!').replace(/GIAI ĐOẠN\s*\d+\s*\/\s*\d+\s*[·—-]\s*/gi,'').replace(/Stage\s*\d+/gi,'').replace(/Màn\s*\d+\s*[·:]\s*/gi,'').replace(/Bước\s*\d+\s*\/\s*\d+/gi,'');
+      if(next!==node.nodeValue)node.nodeValue=next;
+    }
+  };
+  clean(document.body);
+  new MutationObserver((items)=>items.forEach((item)=>clean(item.target))).observe(document.body,{childList:true,subtree:true,characterData:true});
+})();
 </script>
 </body>
 </html>

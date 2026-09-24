@@ -1322,7 +1322,9 @@
         transform: translateX(6px);
       }
     }
-  </style>
+/* Đồng bộ trực tiếp theo SH10_B01_M02 */
+body{padding:0;font-size:17px}.app,.app-container{max-width:1200px;margin:0 auto;padding:18px clamp(12px,2.4vw,28px) 12px}.stage-card.two-block-ready{padding:0;background:transparent;border:0;box-shadow:none}.split-workspace{display:grid!important;grid-template-columns:minmax(0,58fr) minmax(340px,42fr)!important;gap:20px!important;align-items:start!important}.visual-card,.workspace-card{min-width:0;border:1px solid var(--paper-line,#D6CCB6);border-radius:14px;overflow:hidden;box-shadow:0 2px 6px rgba(26,26,26,.05)}.visual-card{position:sticky;top:0;background:#fff}.visual-card__head{padding:14px 16px 12px;border-bottom:1px solid var(--paper-line,#D6CCB6);background:#fff}.visual-card__head .stage-title{margin:0;font-size:clamp(1.25rem,2.2vw,1.75rem);line-height:1.28}.workspace-card{padding:18px;background:var(--cream-2,#FBF9F4)}.instruction{display:flex;align-items:flex-start;gap:10px;margin:0 0 16px;padding:12px 14px;border-left:4px solid var(--info,#4E7F92);border-radius:6px;background:var(--info-bg,#DCE7EB);font-size:.91rem;line-height:1.55}.inline-feedback{font-size:.92rem;line-height:1.55}.controls-row{display:flex;align-items:center;gap:10px;margin-top:16px;padding:14px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;flex-wrap:nowrap}.btn{min-height:44px;padding:9px 15px;font-size:.92rem}@media(max-width:980px){.split-workspace{grid-template-columns:1fr!important}.visual-card{position:static}.workspace-card{padding:16px}}@media(max-width:700px){body{font-size:16px}.app,.app-container{padding:12px 10px 10px}}@media(max-width:420px){.app,.app-container{padding:10px 8px 8px}.workspace-card{padding:13px}}
+</style>
 </head>
 
 <body>
@@ -1362,7 +1364,7 @@
         <!-- Cột trái: Hình 6 tình huống -->
         <div class="visual-card">
           <div class="visual-media-box" id="s01MediaBox">
-            <img src="images/SH10-B09-M01-A01.jpg" alt="Bộ sáu tình huống an toàn phòng thí nghiệm">
+            <img src="https://lh3.googleusercontent.com/d/1ghjfnZYVG0W7YjhPcbSn5bDxZcR4zgnj" alt="Bộ sáu tình huống an toàn phòng thí nghiệm">
             <div class="safety-tiles-overlay">
               <div class="safety-tile-hotspot" id="tileH1" onclick="toggleSafety(1)" onmouseenter="hoverSafety(1, true)"
                 onmouseleave="hoverSafety(1, false)" title="Hình H1: Hơ lam nhanh trên ngọn lửa">
@@ -1498,7 +1500,7 @@
           chất.</span>
       </div>
 
-      <img src="images/SH10-B09-M01-A02.jpg" alt="Bàn chuẩn bị dụng cụ thí nghiệm" class="classification-overview-img">
+      <img src="https://lh3.googleusercontent.com/d/1vnF42UYd1s11eYsRKLfckFm5aHGtfcWa" alt="Bàn chuẩn bị dụng cụ thí nghiệm" class="classification-overview-img">
 
       <!-- 4 nhóm đích -->
       <div class="prep-drop-zones">
@@ -1582,7 +1584,7 @@
 
       <!-- Khung Canvas tương tác trực tiếp -->
       <div class="lab-interactive-view" id="s03CanvasContainer">
-        <img src="images/SH10-B09-M01-A03.jpg" alt="Master phiến kính" id="bgSlideS03"
+        <img src="https://lh3.googleusercontent.com/d/1SsC1ZevXord-QCYUkX06SuUD9i4mGb_N" alt="Master phiến kính" id="bgSlideS03"
           style="width:100%;height:100%;object-fit:contain;">
         <canvas class="lab-canvas-layer" id="canvasS03"></canvas>
       </div>
@@ -1718,7 +1720,7 @@
       <div class="microscope-workspace">
         <!-- Thị kính tròn FOV -->
         <div class="eyepiece-fov-container">
-          <img src="images/SH10-B09-M01-A08.jpg" alt="Vi trường kính hiển vi 10x" id="microscopeImg"
+          <img src="https://lh3.googleusercontent.com/d/1V9SpOPQNNUtpgnYROpphJh-BIII-9z2J" alt="Vi trường kính hiển vi 10x" id="microscopeImg"
             class="eyepiece-fov-img">
           <div class="eyepiece-reticle" id="eyepieceReticle"></div>
         </div>
@@ -1812,7 +1814,7 @@
         <!-- Cột trái: Ảnh vi trường 40x đã lưu -->
         <div class="visual-card">
           <div class="visual-media-box" style="aspect-ratio:1/1;">
-            <img src="images/SH10-B09-M01-A09.jpg" alt="Vi trường 40x thực tế"
+            <img src="https://lh3.googleusercontent.com/d/1AHJHn7-rPB9gi4XXMKF1PXiZGg4lC9VKg" alt="Vi trường 40x thực tế"
               style="border-radius:50%;width:85%;height:85%;object-fit:cover;border:4px solid #333;">
           </div>
           <div style="padding:10px;text-align:center;font-weight:600;font-size:0.9rem;color:var(--jade-dark);">
@@ -2993,6 +2995,31 @@
     }
   </script>
 
+<script>
+/* Hoàn thiện cấu trúc SH10_B01_M02 trên các khối hai cột có sẵn. */
+(() => {
+  document.querySelectorAll('section.stage-card').forEach((stage)=>{
+    if(stage.classList.contains('two-block-ready'))return;
+    let split=[...stage.children].find((node)=>node.matches('.split-workspace,.classification-layout'));
+    if(!split)return;
+    split.classList.add('split-workspace');
+    const parts=[...split.children];
+    const visual=parts.find((node)=>node.matches('.visual-card')||node.querySelector('img,svg,canvas'))||parts[0];
+    visual.classList.add('visual-card');
+    let workspace=parts.find((node)=>node!==visual&&node.matches('.task-card,.workspace-card'));
+    if(!workspace){workspace=document.createElement('article');parts.filter((node)=>node!==visual).forEach((node)=>workspace.appendChild(node));split.appendChild(workspace)}
+    workspace.classList.add('workspace-card');
+    const title=[...stage.children].find((node)=>node.matches('.stage-title'));
+    const lead=[...stage.children].find((node)=>node.matches('.lead-box'));
+    if(title||lead){const head=document.createElement('div');head.className='visual-card__head';if(title)head.appendChild(title);if(lead)head.appendChild(lead);visual.prepend(head)}
+    const guide=[...stage.children].find((node)=>node.matches('.guide-box'));if(guide){guide.className='instruction';workspace.prepend(guide)}
+    stage.querySelectorAll('.feedback-box,.feedback-bar,.feedback-panel').forEach((node)=>node.classList.add('inline-feedback'));
+    const controls=workspace.querySelector(':scope > .controls-row')||split.querySelector('.controls-row');if(controls)stage.appendChild(controls);
+    stage.classList.add('two-block-ready');
+  });
+  const clean=(root)=>{const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.closest('script,style'))continue;const v=n.nodeValue.replace(/Tiếp tục sang Giai đoạn\s*\d+/gi,'Tiếp tục').replace(/Hoàn thành Giai đoạn\s*\d+!?/gi,'Hoàn thành!').replace(/GIAI ĐOẠN\s*\d+\s*\/\s*\d+\s*[·—-]\s*/gi,'').replace(/Stage\s*\d+/gi,'').replace(/Màn\s*\d+\s*[·:]\s*/gi,'').replace(/Bước\s*\d+\s*\/\s*\d+/gi,'');if(v!==n.nodeValue)n.nodeValue=v}};clean(document.body);new MutationObserver((a)=>a.forEach((m)=>clean(m.target))).observe(document.body,{childList:true,subtree:true,characterData:true});
+})();
+</script>
 </body>
 
 </html>

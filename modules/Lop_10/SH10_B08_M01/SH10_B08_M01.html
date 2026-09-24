@@ -849,6 +849,8 @@ button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent
     color: var(--ink-2, #514C44);
   }
 
+/* Đồng bộ trực tiếp theo SH10_B01_M02 */
+body{padding:0;font-size:17px}.app{max-width:1200px;margin:0 auto;padding:18px clamp(12px,2.4vw,28px) 12px}.stage.two-block-ready{padding:0;background:transparent;border:0;box-shadow:none}.stage-badge,.stage-step-indicator{display:none!important}.split-workspace{display:grid!important;grid-template-columns:minmax(0,58fr) minmax(340px,42fr)!important;gap:20px!important;align-items:start!important}.visual-card,.workspace-card{min-width:0;border:1px solid var(--paper-line,#D6CCB6);border-radius:14px;overflow:hidden;box-shadow:0 2px 6px rgba(26,26,26,.05)}.visual-card{position:sticky;top:0;background:#fff}.visual-card__head{padding:14px 16px 12px;border-bottom:1px solid var(--paper-line,#D6CCB6);background:#fff}.visual-card__head h2{margin:0;font-size:clamp(1.25rem,2.2vw,1.75rem);line-height:1.28;letter-spacing:-.02em}.visual-body{padding:14px;background:#fff}.workspace-card{padding:18px;background:var(--cream-2,#FBF9F4)}.instruction{display:flex;align-items:flex-start;gap:10px;margin:0 0 16px;padding:12px 14px;border-left:4px solid var(--info,#4E7F92);border-radius:6px;background:var(--info-bg,#DCE7EB);color:var(--ink-2,#514C44);font-size:.91rem;line-height:1.55}.inline-feedback{font-size:.92rem;line-height:1.55}.controls-row{display:flex;align-items:center;gap:10px;margin-top:16px;padding:14px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}.btn{min-height:44px;padding:9px 15px;font-size:.92rem}@media(max-width:980px){.split-workspace{grid-template-columns:1fr!important}.visual-card{position:static}.workspace-card{padding:16px}}@media(max-width:700px){body{font-size:16px}.app{padding:12px 10px 10px}.workspace-card{padding:16px}}@media(max-width:420px){.app{padding:10px 8px 8px}.workspace-card{padding:13px}}
 </style>
 </head>
 <body>
@@ -3028,5 +3030,40 @@ function launchConfetti() {
 
 </script>
 
+<script>
+/* Chuẩn hóa cấu trúc theo SH10_B01_M02: hình trái, nhiệm vụ phải, điều khiển dưới. */
+(() => {
+  document.querySelectorAll('section.stage').forEach((stage) => {
+    if(stage.classList.contains('two-block-ready')) return;
+    const direct=[...stage.children];
+    const guide=direct.find((node)=>node.matches('.guide-box'));
+    const lead=direct.find((node)=>node.matches('.lead-box'));
+    const actions=direct.find((node)=>node.matches('.stage-actions,.controls-row'));
+    let layout=direct.find((node)=>node.matches('.map-layout,.s01-layout,.stage-grid'));
+    if(!layout) layout=direct.find((node)=>[...node.children].some((child)=>child.querySelector('img,svg,canvas')));
+    if(layout){
+      layout.classList.add('split-workspace');
+      const parts=[...layout.children];
+      let visual=parts.find((node)=>node.querySelector('img,svg,canvas'));
+      if(!visual) visual=parts[0];
+      visual.classList.add('visual-card');
+      const head=document.createElement('div');head.className='visual-card__head';
+      const title=document.createElement('h2');title.textContent=(stage.getAttribute('aria-label')||'Nội dung bài học').replace(/^Màn\s*\d+\s*:\s*/i,'');
+      head.appendChild(title);visual.prepend(head);
+      if(lead) head.after(lead);
+      const workspace=document.createElement('article');workspace.className='workspace-card';
+      if(guide){guide.className='instruction';workspace.appendChild(guide)}
+      parts.forEach((node)=>{if(node!==visual)workspace.appendChild(node)});
+      layout.appendChild(workspace);
+      stage.querySelectorAll('.feedback-box,.feedback-bar,.feedback-panel').forEach((node)=>node.classList.add('inline-feedback'));
+      if(actions){actions.classList.add('controls-row');stage.appendChild(actions)}
+      stage.classList.add('two-block-ready');
+    }
+  });
+  const clean=(root)=>{const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let node;while((node=walker.nextNode())){if(node.parentElement&&node.parentElement.closest('script,style'))continue;const next=node.nodeValue.replace(/Tiếp tục sang Giai đoạn\s*\d+/gi,'Tiếp tục').replace(/Hoàn thành Giai đoạn\s*\d+!?/gi,'Hoàn thành!').replace(/GIAI ĐOẠN\s*\d+\s*\/\s*\d+\s*[·—-]\s*/gi,'').replace(/Stage\s*\d+/gi,'').replace(/Màn\s*\d+\s*[·:]\s*/gi,'').replace(/Bước\s*\d+\s*\/\s*\d+/gi,'');if(next!==node.nodeValue)node.nodeValue=next}};
+  clean(document.body);
+  new MutationObserver((items)=>items.forEach((item)=>clean(item.target))).observe(document.body,{childList:true,subtree:true,characterData:true});
+})();
+</script>
 </body>
 </html>

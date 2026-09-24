@@ -85,7 +85,7 @@
       width:100%;
       max-width:1200px;
       margin:0 auto;
-      padding:16px clamp(12px,2.4vw,24px) 14px;
+      padding:18px clamp(12px,2.4vw,28px) 12px;
     }
 
     /* Top Progress Stepper Navigation */
@@ -142,7 +142,7 @@
     /* 2-Column Split Workspace */
     .split-workspace {
       display:grid;
-      grid-template-columns:minmax(0,56fr) minmax(360px,44fr);
+      grid-template-columns:minmax(0,58fr) minmax(340px,42fr);
       gap:20px;
       align-items:start;
     }
@@ -150,7 +150,7 @@
     /* Left Column: Sticky Visual Card */
     .visual-card {
       position:sticky;
-      top:58px;
+      top:0;
       z-index:10;
       border:1px solid var(--paper-line);
       border-radius:var(--radius-lg);
@@ -161,10 +161,10 @@
     .visual-card__head {
       padding:14px 16px 12px;
       border-bottom:1px solid var(--paper-line);
-      background:var(--cream);
+      background:#fff;
     }
     .eyebrow {
-      display:inline-flex;
+      display:none !important;
       align-items:center;
       gap:7px;
       color:var(--jade-text);
@@ -175,13 +175,13 @@
     }
     .visual-card__head h2 {
       margin:6px 0 0;
-      font-size:clamp(1.15rem,2vw,1.45rem);
-      line-height:1.3;
-      letter-spacing:-.01em;
+      font-size:clamp(1.25rem,2.2vw,1.75rem);
+      line-height:1.28;
+      letter-spacing:-.02em;
       color:var(--ink);
     }
     .visual-body {
-      padding:16px;
+      padding:14px;
       background:#fff;
       position:relative;
       min-height:360px;
@@ -204,7 +204,7 @@
       border:1px solid var(--paper-line);
       border-radius:var(--radius-lg);
       background:var(--cream-2);
-      padding:18px 20px;
+      padding:18px;
       box-shadow:var(--shadow-sm);
     }
     .workspace-card h2 {
@@ -272,7 +272,8 @@
     }
 
     /* Instruction / Callout */
-    .instruction {
+    .instruction,
+    .knowledge-note {
       display:flex;
       align-items:flex-start;
       gap:10px;
@@ -282,18 +283,19 @@
       background:var(--info-bg);
       border-radius:var(--radius-sm);
       color:var(--ink-2);
-      font-size:.9rem;
-      line-height:1.5;
+      font-size:.91rem;
+      line-height:1.55;
     }
-    .instruction i { flex:0 0 auto; margin-top:2px; font-size:1.2rem; color:var(--info); }
+    .instruction i,
+    .knowledge-note i { flex:0 0 auto; margin-top:2px; font-size:1.2rem; color:var(--info); }
 
     /* Feedbacks */
     .inline-feedback {
       margin-top:14px;
-      padding:12px 14px;
+      padding:13px 14px;
       border-radius:var(--radius-sm);
       color:var(--ink-2);
-      font-size:.91rem;
+      font-size:.92rem;
       line-height:1.55;
       animation:stageFadeIn .2s ease;
     }
@@ -308,11 +310,13 @@
       align-items:center;
       gap:10px;
       width:100%;
-      margin-top:18px;
-      padding:14px 0 4px;
+      margin-top:16px;
+      padding:14px 0 2px;
       border-top:1px solid var(--paper-line);
-      flex-wrap:wrap;
+      overflow-x:auto;
+      scrollbar-width:none;
     }
+    .controls-row::-webkit-scrollbar { display:none; }
     .controls-row .spacer { flex:1; }
     .controls-row .btn { flex:0 0 auto; white-space:nowrap; }
 
@@ -325,8 +329,8 @@
       gap:8px;
       border:1.5px solid var(--jade);
       border-radius:9px;
-      padding:9px 16px;
-      background:#fff;
+      padding:9px 15px;
+      background:transparent;
       color:var(--jade-text);
       font-weight:700;
       font-size:.92rem;
@@ -1049,12 +1053,16 @@
       .stepper-nav::-webkit-scrollbar { display: none; }
       .stepper-tab { flex: 0 0 auto !important; min-width: 140px; }
     }
-    @media (max-width:680px) {
+    @media (max-width:700px) {
       body { font-size:16px; }
-      .app { padding:10px 8px; }
-      .workspace-card { padding:14px; }
+      .app { padding:12px 10px 10px; }
+      .workspace-card { padding:16px; }
       .matching-cols { grid-template-columns:1fr; }
       .food-drop-zones { grid-template-columns:1fr; }
+    }
+    @media (max-width:420px) {
+      .app { padding:10px 8px 8px; }
+      .workspace-card { padding:13px; }
     }
   
     /* Loại bỏ thanh tab điều hướng bước học theo chuẩn tuyến tính SH10_B02_M02 */
@@ -1130,7 +1138,7 @@
         <circle cx="270" cy="78" r="22" fill="#1B5E48"/><text x="270" y="86" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="24" font-weight="800" fill="#FFFFFF">O</text>
       </svg>
       <rect x="15" y="295" width="155" height="60" rx="8" fill="#E8F5E9"/>
-      <text x="92" y="322" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="14" font-weight="700" fill="#1B5E48">⚡ Năng lượng</text>
+      <text x="92" y="322" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="14" font-weight="700" fill="#1B5E48">Năng lượng</text>
       <text x="92" y="342" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="12" fill="#2E7D32">Trực tiếp cho tế bào</text>
     </g>
 
@@ -1143,7 +1151,7 @@
         <circle cx="64" cy="236" r="16" fill="#1B5E48"/><circle cx="208" cy="236" r="16" fill="#1B5E48"/><circle cx="352" cy="236" r="16" fill="#1B5E48"/><circle cx="496" cy="236" r="16" fill="#1B5E48"/><circle cx="640" cy="236" r="16" fill="#1B5E48"/>
       </svg>
       <rect x="15" y="295" width="155" height="60" rx="8" fill="#E0F2FE"/>
-      <text x="92" y="322" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="14" font-weight="700" fill="#0369A1">📦 Dự trữ</text>
+      <text x="92" y="322" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="14" font-weight="700" fill="#0369A1">Dự trữ</text>
       <text x="92" y="342" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="12" fill="#0284C7">Huy động nhanh</text>
     </g>
 
@@ -1158,7 +1166,7 @@
         <line x1="800" y1="320" x2="800" y2="400" stroke="#5E8C52" stroke-width="8" stroke-dasharray="10 8"/>
       </svg>
       <rect x="15" y="295" width="155" height="60" rx="8" fill="#FEF3C7"/>
-      <text x="92" y="322" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="14" font-weight="700" fill="#92400E">🛡️ Cấu trúc</text>
+      <text x="92" y="322" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="14" font-weight="700" fill="#92400E">Cấu trúc</text>
       <text x="92" y="342" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="12" fill="#B45309">Thành tế bào</text>
     </g>
 
@@ -1317,13 +1325,18 @@
           <button class="step-indicator" id="s01Step1D"><i class="ti ti-help-circle"></i><span>1D. Cốt lõi</span></button>
         </div>
 
+        <div class="instruction">
+          <i class="ti ti-bulb"></i>
+          <div>Quan sát các đại diện của lipid, thực hiện thí nghiệm dầu – nước và rút ra đặc điểm chung của nhóm chất.</div>
+        </div>
+
         <!-- Màn 1A -->
         <div id="s01Screen1A">
           <h2>Kết nối từ Carbohydrate sang Lipid</h2>
           <p class="workspace-note">
             Ở module trước, carbohydrate có thể cung cấp năng lượng, dự trữ năng lượng hoặc tạo cấu trúc.
           </p>
-          <div class="instruction">
+          <div class="knowledge-note">
             <i class="ti ti-bulb"></i>
             <div>Tế bào còn sử dụng một nhóm phân tử khác để <b>dự trữ năng lượng lâu dài</b> và <b>tạo nên hệ thống màng</b>.</div>
           </div>
@@ -1378,7 +1391,7 @@
         <!-- Màn 1D -->
         <div id="s01Screen1D" class="hidden">
           <h2>Khóa kiến thức và Câu hỏi trung tâm</h2>
-          <div class="instruction">
+          <div class="knowledge-note">
             <i class="ti ti-key"></i>
             <div>
               <b>Khóa khoa học:</b> Nhiều lipid có phần hydrocarbon không phân cực nên không tương tác thuận lợi với nước. Lipid nhìn chung <b>không được cấu tạo từ các đơn phân lặp lại theo nguyên tắc đa phân</b>.
@@ -1390,10 +1403,13 @@
         </div>
 
         <!-- Phản hồi Stage 1 -->
-        <div class="inline-feedback info" id="s01Feedback">
+        <div class="inline-feedback info hidden" id="s01Feedback" role="status" aria-live="polite">
           <div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn</div>
           <span>Bấm nút "KHÁM PHÁ LIPID" để mở rộng quan sát các đại diện của nhóm chất.</span>
         </div>
+
+      </div>
+    </div>
 
         <!-- Controls Stage 1 -->
         <div class="controls-row">
@@ -1401,8 +1417,6 @@
           <div class="spacer"></div>
           <button class="btn btn-primary" id="btnNext-s01" disabled>Tiếp tục sang Giai đoạn 2 <i class="ti ti-arrow-right"></i></button>
         </div>
-      </div>
-    </div>
   </section>
 
   <!-- ========================================== -->
@@ -1651,6 +1665,11 @@
           <button class="step-indicator" id="s02Step2D"><i class="ti ti-meat"></i><span>2D. Thực phẩm</span></button>
         </div>
 
+        <div class="instruction">
+          <i class="ti ti-bulb"></i>
+          <div>Lắp ghép triglyceride, phân biệt acid béo no và không no, sau đó liên hệ với dầu, mỡ và nguồn thực phẩm.</div>
+        </div>
+
         <!-- Màn 2A -->
         <div id="s02Screen2A">
           <h2>Lắp ghép cấu tạo Triglyceride</h2>
@@ -1713,7 +1732,7 @@
               <button class="quiz-opt" data-ans="B"><span class="opt-letter">B</span> Nhóm có nhiều mạch thẳng (acid béo no)</button>
             </div>
           </div>
-          <div class="instruction" style="margin-top:12px;">
+          <div class="knowledge-note" style="margin-top:12px;">
             <i class="ti ti-bulb"></i>
             <div>
               <b>Khóa khoa học:</b> Dầu thực vật thường có tỉ lệ acid béo không no cao nên thường ở trạng thái lỏng ở nhiệt độ phòng. Mỡ động vật thường có tỉ lệ acid béo no cao hơn nên thường ở trạng thái rắn. Đây là xu hướng thường gặp, không phải quy tắc tuyệt đối không có ngoại lệ.
@@ -1752,17 +1771,20 @@
               </div>
             </div>
           </div>
-          <div class="instruction" style="margin-top:12px;">
+          <div class="knowledge-note" style="margin-top:12px;">
             <i class="ti ti-info-circle"></i>
             <div><b>Lưu ý:</b> Một loại thực phẩm thường chứa nhiều nhóm chất khác nhau, không chỉ chứa riêng lipid.</div>
           </div>
         </div>
 
         <!-- Phản hồi Stage 2 -->
-        <div class="inline-feedback info" id="s02Feedback">
+        <div class="inline-feedback info hidden" id="s02Feedback" role="status" aria-live="polite">
           <div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn</div>
           <span>Bấm chọn một acid béo rồi bấm vào vị trí liên kết trên phân tử glycerol.</span>
         </div>
+
+      </div>
+    </div>
 
         <!-- Controls Stage 2 -->
         <div class="controls-row">
@@ -1771,8 +1793,6 @@
           <div class="spacer"></div>
           <button class="btn btn-primary" id="btnNext-s02" disabled>Tiếp tục sang Giai đoạn 3 <i class="ti ti-arrow-right"></i></button>
         </div>
-      </div>
-    </div>
   </section>
 
   <!-- ========================================== -->
@@ -1871,7 +1891,7 @@
     <path d="M830 425C940 395 1050 450 1160 423S1340 405 1425 430V520H830Z" fill="#FCA5A5" stroke="#DC2626" stroke-width="5"/>
     <text x="890" y="480" font-family="'Be Vietnam Pro',sans-serif" font-size="18" font-weight="700" fill="#991B1B">Mô cơ sâu & Cơ quan nội tạng</text>
     <path d="M1035 140V100M1205 138V90M1375 140V105" fill="none" stroke="#C15F3C" stroke-width="4" marker-end="url(#a10-heat)"/>
-    <text x="1125" y="560" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="16" font-weight="700" fill="#1B5E48">🛡️ Giữ nhiệt cơ thể, chống lạnh, đệm cơ học bảo vệ</text>
+    <text x="1125" y="560" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="16" font-weight="700" fill="#1B5E48">Giữ nhiệt cơ thể, chống lạnh, đệm cơ học bảo vệ</text>
   </g>
 </svg>
           </div>
@@ -1941,6 +1961,11 @@
           <button class="step-indicator" id="s03Step3B"><i class="ti ti-shield"></i><span>3B. Cách nhiệt</span></button>
           <button class="step-indicator" id="s03Step3C"><i class="ti ti-pill"></i><span>3C. Vitamin</span></button>
           <button class="step-indicator" id="s03Step3D"><i class="ti ti-help"></i><span>3D. Lạc đà</span></button>
+        </div>
+
+        <div class="instruction">
+          <i class="ti ti-bulb"></i>
+          <div>Hoàn thành từng nhiệm vụ để giải thích vai trò dự trữ năng lượng, cách nhiệt và hỗ trợ hấp thu vitamin của lipid.</div>
         </div>
 
         <!-- Màn 3A -->
@@ -2018,7 +2043,7 @@
               <button class="quiz-opt" data-ans="D"><span class="opt-letter">D</span> Glycogen</button>
             </div>
           </div>
-          <div class="instruction" style="margin-top:12px;">
+          <div class="knowledge-note" style="margin-top:12px;">
             <i class="ti ti-bulb"></i>
             <div>
               Bướu lạc đà chứa mỡ, không chứa nước dự trữ trực tiếp. Khi mỡ được chuyển hóa, cơ thể thu được năng lượng và tạo ra một phần nước chuyển hóa. Khả năng chịu hạn của lạc đà còn liên quan đến nhiều đặc điểm thích nghi khác.
@@ -2027,10 +2052,13 @@
         </div>
 
         <!-- Phản hồi Stage 3 -->
-        <div class="inline-feedback info" id="s03Feedback">
+        <div class="inline-feedback info hidden" id="s03Feedback" role="status" aria-live="polite">
           <div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn</div>
           <span>Trả lời câu hỏi trắc nghiệm về đặc điểm dự trữ năng lượng lâu dài của triglyceride.</span>
         </div>
+
+      </div>
+    </div>
 
         <!-- Controls Stage 3 -->
         <div class="controls-row">
@@ -2039,8 +2067,6 @@
           <div class="spacer"></div>
           <button class="btn btn-primary" id="btnNext-s03" disabled>Tiếp tục sang Giai đoạn 4 <i class="ti ti-arrow-right"></i></button>
         </div>
-      </div>
-    </div>
   </section>
 
   <!-- ========================================== -->
@@ -2352,6 +2378,11 @@
           <button class="step-indicator" id="s04Step4D"><i class="ti ti-plug"></i><span>4D. Cầu nối</span></button>
         </div>
 
+        <div class="instruction">
+          <i class="ti ti-bulb"></i>
+          <div>Khám phá cấu tạo lưỡng cực của phospholipid và dự đoán cách các phân tử tự sắp xếp trong môi trường nước.</div>
+        </div>
+
         <!-- Màn 4A -->
         <div id="s04Screen4A">
           <h2>Cấu tạo một Phospholipid</h2>
@@ -2409,7 +2440,7 @@
               <span style="font-weight:700;color:var(--jade-dark);">→ 3. Hình thành lớp kép phospholipid</span> ổn định.
             </div>
           </div>
-          <div class="instruction">
+          <div class="knowledge-note">
             <i class="ti ti-check"></i>
             <div>Cấu trúc lưỡng cực giúp phospholipid tự sắp xếp thành lớp kép trong môi trường nước. <b>Lớp kép phospholipid tạo nên nền tảng cấu trúc của màng tế bào.</b></div>
           </div>
@@ -2424,7 +2455,7 @@
           <p class="workspace-note">
             Quan sát màng sinh chất: xen giữa lớp kép phospholipid là các phân tử protein màng.
           </p>
-          <div class="instruction">
+          <div class="knowledge-note">
             <i class="ti ti-info-circle"></i>
             <div>
               Màng tế bào không chỉ có phospholipid. Protein màng tham gia vận chuyển chất, tiếp nhận tín hiệu và nhiều chức năng khác.
@@ -2436,10 +2467,13 @@
         </div>
 
         <!-- Phản hồi Stage 4 -->
-        <div class="inline-feedback info" id="s04Feedback">
+        <div class="inline-feedback info hidden" id="s04Feedback" role="status" aria-live="polite">
           <div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn</div>
           <span>Bấm chọn các thành phần (nhóm phosphate, acid béo) để lắp ráp phospholipid.</span>
         </div>
+
+      </div>
+    </div>
 
         <!-- Controls Stage 4 -->
         <div class="controls-row">
@@ -2448,8 +2482,6 @@
           <div class="spacer"></div>
           <button class="btn btn-primary" id="btnNext-s04" disabled>Tiếp tục sang Giai đoạn 5 <i class="ti ti-arrow-right"></i></button>
         </div>
-      </div>
-    </div>
   </section>
 
   <!-- ========================================== -->
@@ -2615,6 +2647,11 @@
           <button class="step-indicator" id="s05Step5D"><i class="ti ti-leaf"></i><span>5D. Sáp & Khác</span></button>
         </div>
 
+        <div class="instruction">
+          <i class="ti ti-bulb"></i>
+          <div>Nhận diện khung bốn vòng của steroid và liên hệ cấu trúc này với một số vai trò sinh học tiêu biểu.</div>
+        </div>
+
         <!-- Màn 5A -->
         <div id="s05Screen5A">
           <h2>Nhận diện khung Steroid</h2>
@@ -2650,7 +2687,7 @@
               <button class="quiz-opt" data-ans="D"><span class="opt-letter">D</span> Là enzyme tiêu hóa</button>
             </div>
           </div>
-          <div class="instruction" style="margin-top:10px;">
+          <div class="knowledge-note" style="margin-top:10px;">
             <i class="ti ti-alert-triangle"></i>
             <div><b>Khóa khoa học:</b> Không mô tả cholesterol biến trực tiếp thành hormone chỉ trong một bước. Quá trình này diễn ra qua nhiều bước chuyển hóa trung gian.</div>
           </div>
@@ -2690,7 +2727,7 @@
             <b>• Carotenoid:</b> Một số carotenoid, như beta-carotene, có thể được chuyển hóa thành <b>vitamin A</b> cần cho hoạt động thị giác.<br>
             <span style="color:var(--wrong);font-weight:600;">(Không sử dụng phát biểu "Mọi carotenoid đều chuyển hóa thành vitamin A").</span>
           </div>
-          <div class="instruction">
+          <div class="knowledge-note">
             <i class="ti ti-info-circle"></i>
             <div>
               <b>Ô mở rộng (HDL & LDL):</b> HDL và LDL là các <i>lipoprotein</i> vận chuyển cholesterol trong máu (LDL vận chuyển từ gan đến mô; HDL vận chuyển từ mô trở về gan). Không dùng "cholesterol tốt/xấu" như định nghĩa khoa học chính.
@@ -2699,10 +2736,13 @@
         </div>
 
         <!-- Phản hồi Stage 5 -->
-        <div class="inline-feedback info" id="s05Feedback">
+        <div class="inline-feedback info hidden" id="s05Feedback" role="status" aria-live="polite">
           <div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn</div>
           <span>Bấm nút "Làm sáng khung 4 vòng" để quan sát đặc điểm chung của steroid.</span>
         </div>
+
+      </div>
+    </div>
 
         <!-- Controls Stage 5 -->
         <div class="controls-row">
@@ -2711,8 +2751,6 @@
           <div class="spacer"></div>
           <button class="btn btn-primary" id="btnNext-s05" disabled>Tiếp tục sang Giai đoạn 6 <i class="ti ti-arrow-right"></i></button>
         </div>
-      </div>
-    </div>
   </section>
 
   <!-- ========================================== -->
@@ -2748,7 +2786,7 @@
       <path d="M340 550H500L600 470 700 550 800 470 900 550 1000 470 1100 550 1200 470 1300 550" fill="none" stroke="#1A1A1A" stroke-width="14" stroke-linecap="round"/>
     </svg>
     <rect x="45" y="520" width="410" height="85" rx="10" fill="#E8F5E9"/>
-    <text x="250" y="550" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="16" font-weight="700" fill="#1B5E48">📦 Dự trữ năng lượng chính</text>
+    <text x="250" y="550" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="16" font-weight="700" fill="#1B5E48">Dự trữ năng lượng chính</text>
     <text x="250" y="575" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="13" fill="#2E7D32">Cách nhiệt, đệm cơ học, hòa tan vitamin</text>
   </g>
 
@@ -2764,7 +2802,7 @@
       <path d="M240 300 290 370 240 440 310 510 360 560 350 650" fill="none" stroke="#1A1A1A" stroke-width="14" stroke-linecap="round"/>
     </svg>
     <rect x="545" y="520" width="410" height="85" rx="10" fill="#E0F2FE"/>
-    <text x="750" y="550" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="16" font-weight="700" fill="#0369A1">🛡️ Cấu trúc màng sinh chất</text>
+    <text x="750" y="550" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="16" font-weight="700" fill="#0369A1">Cấu trúc màng sinh chất</text>
     <text x="750" y="575" text-anchor="middle" font-family="'Be Vietnam Pro',sans-serif" font-size="13" fill="#0284C7">Tạo khung lớp kép phospholipid bền vững</text>
   </g>
 
@@ -2932,6 +2970,11 @@
           <button class="step-indicator" id="s06Step6D"><i class="ti ti-arrow-forward"></i><span>6D. Sang M03</span></button>
         </div>
 
+        <div class="instruction">
+          <i class="ti ti-bulb"></i>
+          <div>Ghép cấu trúc với vai trò, trả lời câu hỏi trung tâm và vận dụng kiến thức lipid vào lựa chọn dinh dưỡng.</div>
+        </div>
+
         <!-- Màn 6A: Ghép 3 cột -->
         <div id="s06Screen6A">
           <h2>Ghép cấu trúc với vai trò</h2>
@@ -3027,7 +3070,7 @@
         <!-- Màn 6D: Bàn giao sang M03 -->
         <div id="s06Screen6D" class="hidden">
           <h2>Kết nối sang M03: Protein</h2>
-          <div class="instruction">
+          <div class="knowledge-note">
             <i class="ti ti-circle-check"></i>
             <div>
               Lớp kép phospholipid tạo nền tảng của màng tế bào. Để vận chuyển chất, tiếp nhận tín hiệu và thực hiện nhiều hoạt động khác, màng còn cần các protein có cấu trúc và chức năng đặc hiệu.
@@ -3048,10 +3091,13 @@
         </div>
 
         <!-- Phản hồi Stage 6 -->
-        <div class="inline-feedback info" id="s06Feedback">
+        <div class="inline-feedback info hidden" id="s06Feedback" role="status" aria-live="polite">
           <div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn</div>
           <span>Ghép đúng 3 nhóm phân tử lipid với đặc điểm cấu trúc và vai trò tương ứng.</span>
         </div>
+
+      </div>
+    </div>
 
         <!-- Controls Stage 6 -->
         <div class="controls-row">
@@ -3060,8 +3106,6 @@
           <div class="spacer"></div>
           <button class="btn btn-primary" id="btnNext-s06" disabled>Tiếp tục <i class="ti ti-arrow-right"></i></button>
         </div>
-      </div>
-    </div>
   </section>
 
 </div>
@@ -3070,7 +3114,7 @@
 <div class="modal-overlay hidden" id="congratsModal" role="dialog" aria-modal="true" aria-labelledby="congratsTitle">
   <div class="congrats-card">
     <canvas id="congratsCanvas"></canvas>
-    <div style="font-size:3rem;margin-bottom:8px;">🧬✨</div>
+    <div style="font-size:3rem;margin-bottom:8px;color:var(--jade);" aria-hidden="true"><i class="ti ti-circle-check"></i></div>
     <h2 id="congratsTitle">Chúc mừng bạn đã hoàn thành!</h2>
     <p>Bạn đã hoàn thành xuất sắc module <b>Lipid – Kị nước, dự trữ năng lượng và cấu tạo màng</b> theo đúng chuẩn chương trình Sinh học 10.</p>
     <div class="congrats-badges">
@@ -3390,7 +3434,7 @@
     document.querySelector('.situation-card[data-sit="1"]').classList.add('active');
     s01StepBtns.forEach(p => p.classList.remove('done'));
     showS01Sub(0);
-    s01Feedback.className = 'inline-feedback info';
+    s01Feedback.className = 'inline-feedback info hidden';
     s01Feedback.innerHTML = '<div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn</div><span>Bấm nút "KHÁM PHÁ LIPID" để bắt đầu lại.</span>';
   });
 
@@ -3711,7 +3755,7 @@
 
     s02StepBtns.forEach(p => p.classList.remove('done'));
     showS02Sub(0);
-    s02Feedback.className = 'inline-feedback info';
+    s02Feedback.className = 'inline-feedback info hidden';
     s02Feedback.innerHTML = '<div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn</div><span>Bấm chọn một acid béo rồi bấm vào vị trí liên kết trên phân tử glycerol.</span>';
     reportHeight();
   });
@@ -3882,7 +3926,7 @@
     document.querySelectorAll('#stage-s03 .quiz-opt').forEach(b => b.classList.remove('selected', 'correct', 'wrong'));
     s03StepBtns.forEach(p => p.classList.remove('done'));
     showS03Sub(0);
-    s03Feedback.className = 'inline-feedback info';
+    s03Feedback.className = 'inline-feedback info hidden';
     s03Feedback.innerHTML = '<div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn</div><span>Trả lời câu hỏi trắc nghiệm về đặc điểm dự trữ năng lượng lâu dài của triglyceride.</span>';
     reportHeight();
   });
@@ -4103,7 +4147,7 @@
     document.querySelectorAll('#stage-s04 .quiz-opt').forEach(b => b.classList.remove('selected', 'correct', 'wrong'));
     s04StepBtns.forEach(p => p.classList.remove('done'));
     showS04Sub(0);
-    s04Feedback.className = 'inline-feedback info';
+    s04Feedback.className = 'inline-feedback info hidden';
     s04Feedback.innerHTML = '<div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn</div><span>Bấm chọn các thành phần (nhóm phosphate, acid béo) để lắp ráp phospholipid.</span>';
     reportHeight();
   });
@@ -4282,7 +4326,7 @@
     document.querySelectorAll('#stage-s05 .quiz-opt').forEach(b => b.classList.remove('selected', 'correct', 'wrong'));
     s05StepBtns.forEach(p => p.classList.remove('done'));
     showS05Sub(0);
-    s05Feedback.className = 'inline-feedback info';
+    s05Feedback.className = 'inline-feedback info hidden';
     s05Feedback.innerHTML = '<div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn</div><span>Bấm nút làm sáng khung bốn vòng carbon và trả lời câu hỏi nhận diện.</span>';
     reportHeight();
   });
@@ -4548,7 +4592,7 @@
     document.querySelectorAll('#stage-s06 .quiz-opt').forEach(b => b.classList.remove('selected', 'correct', 'wrong'));
     s06StepBtns.forEach(p => p.classList.remove('done'));
     showS06Sub(0);
-    s06Feedback.className = 'inline-feedback info';
+    s06Feedback.className = 'inline-feedback info hidden';
     s06Feedback.innerHTML = '<div class="feedback-head"><i class="ti ti-compass"></i> Hướng dẫn</div><span>Ghép đúng 3 nhóm phân tử lipid với đặc điểm cấu trúc và vai trò tương ứng.</span>';
     reportHeight();
   });
@@ -4671,6 +4715,30 @@
     });
     ro.observe(document.body);
   }
+</script>
+<script>
+/* Loại nhãn tiến trình kỹ thuật khỏi phần chữ hiển thị cho người học. */
+(() => {
+  const clean = (root) => {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let node;
+    while ((node = walker.nextNode())) {
+      if (node.parentElement && node.parentElement.closest('script,style')) continue;
+      const next = node.nodeValue
+        .replace(/Tiếp tục sang Giai đoạn\s*\d+/gi, 'Tiếp tục')
+        .replace(/Hoàn thành Giai đoạn\s*\d+!?/gi, 'Hoàn thành!')
+        .replace(/Text chốt Stage\s*\d+\s*:/gi, 'Kết luận:')
+        .replace(/GIAI ĐOẠN\s*\d+\s*\/\s*\d+\s*[·—-]\s*/gi, '')
+        .replace(/Stage\s*\d+/gi, '')
+        .replace(/Màn\s*\d+\s*[·:]\s*/gi, '')
+        .replace(/Bước\s*\d+\s*\/\s*\d+/gi, '');
+      if (next !== node.nodeValue) node.nodeValue = next;
+    }
+  };
+  clean(document.body);
+  new MutationObserver((items) => items.forEach((item) => clean(item.target)))
+    .observe(document.body, { childList:true, subtree:true, characterData:true });
+})();
 </script>
 </body>
 </html>
