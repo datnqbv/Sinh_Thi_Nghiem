@@ -525,7 +525,6 @@ header h1{
     <!-- CONTROLS ROW (ABOVE FOOTER) -->
     <div class="controls-row">
       <button class="btn" id="btnPrev" type="button" disabled><i class="ti ti-arrow-left"></i> Quay lại</button>
-      <button class="btn" id="btnTTS" type="button"><i class="ti ti-volume"></i> Nghe đọc</button>
       <button class="btn" id="btnReset" type="button"><i class="ti ti-refresh"></i> Làm lại màn</button>
       <span class="spacer"></span>
       <button class="btn btn-primary" id="btnNext" disabled type="button"><span>Tiếp tục</span><i class="ti ti-arrow-right"></i></button>
@@ -551,12 +550,12 @@ const assetFiles={
   A03:'https://lh3.googleusercontent.com/d/1kWl9fyAVpfR1lQF1qVpcVHaLBLC1NrhO',
   A04:'https://lh3.googleusercontent.com/d/1p9JZNAFWhF1vgT9QqsIkHq5UT2A7SfOT',
   A05:'https://lh3.googleusercontent.com/d/14DvWnNOIjDt9icEOX0SfssW7YpBsnwN-',
-  A06:'https://lh3.googleusercontent.com/d/1qQNg8C2IG8puJ6cHqMcXZdEhpPX4wxHM',
+  A06:'https://lh3.googleusercontent.com/d/1kIVnpHK0JuB5QjU2jSlOJJ9QdIstwky0',
   A07:'https://lh3.googleusercontent.com/d/1vsTc5VUP6yJKPTN93DEjz4VbKS2PBcIR',
-  A08:'https://lh3.googleusercontent.com/d/1IjLTJi4_px4Funzcm3WaGgomO6HhZzWD',
+  A08:'https://lh3.googleusercontent.com/d/1FC745gkthqGoL-DAH16x7ZFxBOT5PhQ1',
   A09:'https://lh3.googleusercontent.com/d/1bAGfkeG1lQWhC-J8YDL-jtJwjcuyzciI',
   A10:'https://lh3.googleusercontent.com/d/1pI7M8ONudHHEHV0ftkhPWz4_nL8kIN5q',
-  A11:'https://lh3.googleusercontent.com/d/1V7Pn7EOw7JIxO_Dq7tmtbbRS7P_ZRj37',
+  A11:'https://lh3.googleusercontent.com/d/1QlRDwih-0J8goOaMO9U9HuAAHUvtEaya',
   A12:'https://lh3.googleusercontent.com/d/1S2e12Is-0epFSJDm8iY1zM80D5nGdfyu'
 };
 const assets={},assetErrors={};
@@ -695,7 +694,7 @@ function optionList(options,choice,correct,group){
   return `<div class="option-list">${options.map((text,i)=>{const id=String.fromCharCode(65+i);return`<button class="option-btn ${choice===id?'selected':''} ${correct&&choice===id?'correct':''}" data-group="${group}" data-choice="${id}" ${correct?'disabled':''}><span class="option-letter">${id}</span><span>${text}</span></button>`}).join('')}</div>`;
 }
 function questionCard(index,title,options,choice,correct,group,inline){
-  return`<section class="question-card"><div class="question-head"><span class="question-index">${index}</span><div class="question-title">${title}</div></div>${optionList(options,choice,correct,group)}<div class="question-actions"><button class="btn btn-primary" data-check="${group}" ${!choice||correct?'disabled':''}><i class="ti ti-check"></i> Kiểm tra</button></div>${inline?`<div class="inline-feedback ${correct?'ok':''}">${inline}</div>`:''}</section>`;
+  return`<section class="question-card"><div class="question-head"><span class="question-index">${index}</span><div class="question-title">${title}</div></div>${optionList(options,choice,correct,group)}<div class="question-actions"><button class="btn btn-primary" data-check="${group}" ${!choice||correct?'disabled':''}><i class="ti ti-check"></i> Kiểm tra</button></div></section>`;
 }
 function snapshot(action){
   return{
@@ -793,7 +792,7 @@ function renderStage2(){
   const nodes=[['Giả thuyết',s.correct[0]?'Nếu tăng thời gian chiếu sáng… mức độ xanh sẽ tăng.':'Chưa xác định'],['Yếu tố được thay đổi',s.correct[1]?'Thời gian chiếu sáng mỗi ngày':'Chưa xác định'],['Kết quả cần đo',s.correct[2]?'Mức độ xanh của lá':'Chưa xác định'],['Yếu tố cần giữ ổn định',s.correct[3]?'7 điều kiện chính đã xác định':'Chưa hoàn thành'],['Thiết kế kiểm chứng',s.correct[4]?'Hai nhóm tương đồng, chỉ khác thời gian chiếu sáng':'Chưa hoàn thành']];
   let task;
   if(!all&&def.multi){
-    task=`<section class="question-card"><div class="question-head"><span class="question-index">4</span><div class="question-title">${def.title}</div></div><div class="control-grid">${controlDefs.map(([id,label])=>`<button class="control-chip ${s.controls.has(id)?'selected':''} ${s.correct[3]&&controlCorrect.includes(id)?'correct':''}" data-control="${id}" ${s.correct[3]?'disabled':''}>${label}</button>`).join('')}</div><div class="question-actions"><button class="btn btn-primary" id="s2CheckMulti" ${!s.controls.size?'disabled':''}><i class="ti ti-check"></i> Kiểm tra</button></div>${s.feedbacks[3]?`<div class="inline-feedback ${s.correct[3]?'ok':''}">${s.feedbacks[3]}</div>`:''}</section>`;
+    task=`<section class="question-card"><div class="question-head"><span class="question-index">4</span><div class="question-title">${def.title}</div></div><div class="control-grid">${controlDefs.map(([id,label])=>`<button class="control-chip ${s.controls.has(id)?'selected':''} ${s.correct[3]&&controlCorrect.includes(id)?'correct':''}" data-control="${id}" ${s.correct[3]?'disabled':''}>${label}</button>`).join('')}</div><div class="question-actions"><button class="btn btn-primary" id="s2CheckMulti" ${!s.controls.size?'disabled':''}><i class="ti ti-check"></i> Kiểm tra</button></div></section>`;
   }else if(!all){
     task=questionCard(i+1,def.title,def.options,s.choices[i],s.correct[i],'s2current',s.feedbacks[i]);
   }else task='<div class="stage-summary"><strong>Câu chốt Stage 2</strong><br>Một thiết kế kiểm chứng tốt phải nêu rõ giả thuyết, yếu tố thay đổi, kết quả cần đo, nhóm so sánh và các điều kiện cần giữ ổn định.</div>';
@@ -902,7 +901,7 @@ const sequenceSteps=['Quan sát và xác định vấn đề.','Đặt câu hỏ
 
 function renderSequence(s){
   const placed=new Set(s.sequence.filter(Boolean));
-  return`<div class="sequence-wrap"><div class="section-label">Nhiệm vụ tổng hợp</div><p class="workspace-note">Hãy sắp xếp các hoạt động sau theo trình tự hợp lí của một nghiên cứu khoa học.</p><div class="sequence-slots">${s.sequence.map((step,i)=>`<button class="sequence-slot ${s.locked.has(i)?'locked':''}" data-slot="${i}" ${s.locked.has(i)?'disabled':''}><span class="slot-label">Vị trí ${i+1}</span>${step?`<span class="step-card ${s.selectedStep===step?'selected':''}" draggable="${!s.locked.has(i)}" data-placed-step="${step}"><span class="step-num">${step}</span><span>${sequenceSteps[step-1]}</span></span>`:'<span class="workspace-note">Chọn thẻ rồi bấm vị trí này</span>'}</button>`).join('')}</div><div class="step-pool">${poolOrder.filter(step=>!placed.has(step)).map(step=>`<button class="step-card ${s.selectedStep===step?'selected':''}" draggable="true" data-step="${step}"><span class="step-num">${step}</span><span>${sequenceSteps[step-1]}</span></button>`).join('')||'<span class="workspace-note">Tất cả thẻ đã được đặt.</span>'}</div><div class="question-actions"><button class="btn btn-primary" id="s4CheckSequence" ${s.sequence.some(x=>!x)||s.sequenceCorrect?'disabled':''}><i class="ti ti-check"></i> Kiểm tra thứ tự</button></div>${s.sequenceFeedback?`<div class="inline-feedback ${s.sequenceCorrect?'ok':''}">${s.sequenceFeedback}</div>`:''}</div>`;
+  return`<div class="sequence-wrap"><div class="section-label">Nhiệm vụ tổng hợp</div><p class="workspace-note">Hãy sắp xếp các hoạt động sau theo trình tự hợp lí của một nghiên cứu khoa học.</p><div class="sequence-slots">${s.sequence.map((step,i)=>`<button class="sequence-slot ${s.locked.has(i)?'locked':''}" data-slot="${i}" ${s.locked.has(i)?'disabled':''}><span class="slot-label">Vị trí ${i+1}</span>${step?`<span class="step-card ${s.selectedStep===step?'selected':''}" draggable="${!s.locked.has(i)}" data-placed-step="${step}"><span class="step-num">${step}</span><span>${sequenceSteps[step-1]}</span></span>`:'<span class="workspace-note">Chọn thẻ rồi bấm vị trí này</span>'}</button>`).join('')}</div><div class="step-pool">${poolOrder.filter(step=>!placed.has(step)).map(step=>`<button class="step-card ${s.selectedStep===step?'selected':''}" draggable="true" data-step="${step}"><span class="step-num">${step}</span><span>${sequenceSteps[step-1]}</span></button>`).join('')||'<span class="workspace-note">Tất cả thẻ đã được đặt.</span>'}</div><div class="question-actions"><button class="btn btn-primary" id="s4CheckSequence" ${s.sequence.some(x=>!x)||s.sequenceCorrect?'disabled':''}><i class="ti ti-check"></i> Kiểm tra thứ tự</button></div></div>`;
 }
 function renderStage4(){
   const s=state.s4;
@@ -1009,13 +1008,6 @@ document.getElementById('btnNext').onclick=()=>{
   showCongratsModal();
   persist('Hoàn thành module');
 };
-document.getElementById('btnTTS').onclick=()=>{
-  if(!('speechSynthesis'in window)){feedback('Trình duyệt này chưa hỗ trợ đọc văn bản.','bad',false);return}
-  speechSynthesis.cancel();
-  const spoken=[currentTtsText||currentGuideText,currentQuestionText,currentFeedbackText].filter(Boolean).join(' ');
-  const u=new SpeechSynthesisUtterance(spoken);u.lang='vi-VN';u.rate=1;speechSynthesis.speak(u);
-};
-
 function restoreState(saved){
   if(!saved||typeof saved!=='object')return;
   if(saved.S01_STATE)Object.assign(state.s1,saved.S01_STATE);
