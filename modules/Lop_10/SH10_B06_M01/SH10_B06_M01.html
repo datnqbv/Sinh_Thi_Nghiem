@@ -1140,22 +1140,9 @@ header,
   border-radius: var(--radius-sm);
 }
 
-/* Chuẩn bố cục hai khối SH10_B01_M02 */
-body{padding:0;font-size:17px}.app{max-width:1200px;margin:0 auto;padding:18px clamp(12px,2.4vw,28px) 12px}.btn{min-height:44px;padding:9px 15px;font-size:.92rem}
-.stage-badge,.stage-step-indicator{display:none !important}
-.stage.two-block-ready{padding:0;background:transparent;border:0;box-shadow:none}
-.split-workspace{display:grid;grid-template-columns:minmax(0,58fr) minmax(340px,42fr);gap:20px;align-items:start}
-.visual-card,.workspace-card{min-width:0;border:1px solid var(--paper-line,#D6CCB6);border-radius:14px;overflow:hidden;box-shadow:0 2px 6px rgba(26,26,26,.05)}
-.visual-card{position:sticky;top:0;background:#fff}.visual-card__head{padding:14px 16px 12px;border-bottom:1px solid var(--paper-line,#D6CCB6);background:#fff}
-.visual-card__head .stage-head{margin:0;padding:0;border:0;background:transparent}.visual-card__head .stage-title{font-size:clamp(1.25rem,2.2vw,1.75rem);line-height:1.28;letter-spacing:-.02em}
-.visual-body{padding:14px;background:#fff}.workspace-card{padding:18px;background:var(--cream-2,#FBF9F4)}
-.instruction{display:flex;align-items:flex-start;gap:10px;margin:0 0 16px;padding:12px 14px;border-left:4px solid var(--info,#4E7F92);border-radius:6px;background:var(--info-bg,#DCE7EB);color:var(--ink-2,#514C44);font-size:.91rem;line-height:1.55}.instruction i{flex:0 0 auto;margin-top:2px;font-size:1.2rem;color:var(--info,#4E7F92)}
-.inline-feedback{font-size:.92rem;line-height:1.55}.controls-row{margin-top:16px;padding:14px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}.controls-row::-webkit-scrollbar{display:none}
-@media(max-width:980px){.split-workspace{grid-template-columns:1fr}.visual-card{position:static}.workspace-card{padding:16px}}
-@media(max-width:700px){body{font-size:16px}.app{padding:12px 10px 10px}.workspace-card{padding:16px}}
-@media(max-width:420px){.app{padding:10px 8px 8px}.workspace-card{padding:13px}}
-.three-button-nav{display:flex;align-items:center;gap:12px;width:100%;margin-top:16px;padding:16px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;scrollbar-width:none}.three-button-nav::-webkit-scrollbar{display:none}.three-button-nav .nav-spacer{flex:1}.three-button-nav .btn{flex:0 0 auto;white-space:nowrap}.three-button-nav .nav-back{order:1}.three-button-nav .nav-reset{order:2}.three-button-nav .nav-spacer{order:3}.three-button-nav .nav-next{order:4}.three-button-nav .btn:disabled{opacity:.45;cursor:not-allowed}
-section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.controls-row,section.stage-card>.stage-actions{display:none!important}
+/* Tối ưu giao diện V10 cho Virtual Lab */
+.stage-badge, .stage-step-indicator { display: none !important; }
+.btn { min-height: 44px; padding: 9px 15px; font-size: .92rem; }
 </style>
 </head>
 <body>
@@ -3668,36 +3655,7 @@ function launchConfetti() {
   updateConfetti();
 }
 </script>
-<script>
-/* Nâng cấp tương thích: chuyển cấu trúc cũ sang bố cục hai khối mà không sao chép node tương tác. */
-(() => {
-  document.querySelectorAll('section.stage').forEach((stage) => {
-    if (stage.classList.contains('two-block-ready')) return;
-    const nodes = [...stage.children];
-    const heading = nodes.find((node) => node.matches('.stage-head'));
-    const controls = nodes.find((node) => node.matches('.controls-row'));
-    const guide = nodes.find((node) => node.matches('.guide-box'));
-    const split = document.createElement('div'); split.className = 'split-workspace';
-    const visual = document.createElement('article'); visual.className = 'visual-card';
-    const visualHead = document.createElement('div'); visualHead.className = 'visual-card__head';
-    const visualBody = document.createElement('div'); visualBody.className = 'visual-body';
-    const workspace = document.createElement('article'); workspace.className = 'workspace-card';
-    if (heading) visualHead.appendChild(heading);
-    const candidates = nodes.filter((node) => node !== heading && node !== controls && node !== guide && !node.matches('.feedback-box'));
-    let visualNode = candidates.find((node) => node.matches('.experiment-visual,.apparatus-visual,.result-visual,.process-visual,.lead-text'));
-    if (!visualNode) visualNode = candidates.find((node) => node.querySelector('svg,img,canvas') && !node.querySelector('button,input,select,textarea,[tabindex]'));
-    if (!visualNode) visualNode = candidates.find((node) => node.matches('.lead-text,.info-box,.science-note'));
-    if (visualNode) visualBody.appendChild(visualNode);
-    visual.append(visualHead, visualBody); split.append(visual, workspace); stage.appendChild(split);
-    if (guide) { guide.className = 'instruction'; workspace.appendChild(guide); }
-    else { const note=document.createElement('div'); note.className='instruction'; note.innerHTML='<i class="ti ti-bulb"></i><span>Quan sát dữ kiện trực quan và hoàn thành lần lượt các nhiệm vụ thực hành.</span>'; workspace.appendChild(note); }
-    candidates.forEach((node) => { if (node !== visualNode) workspace.appendChild(node); });
-    stage.querySelectorAll('.feedback-box').forEach((node) => node.classList.add('inline-feedback'));
-    if (controls) stage.appendChild(controls);
-    stage.classList.add('two-block-ready');
-  });
-})();
-</script>
+
 <script>
 /* Loại nhãn tiến trình kỹ thuật khỏi phần chữ hiển thị cho người học. */
 (() => {
@@ -3721,10 +3679,6 @@ function launchConfetti() {
   new MutationObserver((items) => items.forEach((item) => clean(item.target)))
     .observe(document.body, { childList:true, subtree:true, characterData:true });
 })();
-</script>
-<script>
-/* Hàng điều hướng ba nút thống nhất. */
-(()=>{const stages=[...document.querySelectorAll('section.stage,section.stage-card')];const go=(idx)=>{const stage=stages[idx];if(!stage)return;if(typeof showStage==='function')showStage(idx);else if(typeof goStage==='function')goStage(stage.id);else if(typeof goToStage==='function'){const m=stage.id.match(/stage-(\d+)/);goToStage(m?Number(m[1]):idx)}};const hashMatch=location.hash.match(/^#retry-stage-(\d+)$/);stages.forEach((stage,idx)=>{if(stage.querySelector(':scope > .three-button-nav'))return;const sourceRow=stage.querySelector(':scope > .controls-row,:scope > .stage-actions');const buttons=[...stage.querySelectorAll('button')];const byText=(re)=>buttons.find(b=>re.test(b.textContent));const backSource=byText(/quay lại/i);const resetSource=byText(/làm lại màn|làm lại/i);const nextSource=byText(/tiếp tục/i)||buttons.find(b=>/complete|finish/i.test(b.id));const row=document.createElement('div');row.className='three-button-nav';const back=document.createElement('button');back.type='button';back.className='btn btn-outline nav-back';back.innerHTML='<i class="ti ti-arrow-left"></i> Quay lại';back.disabled=idx===0;back.addEventListener('click',()=>backSource?backSource.click():go(idx-1));const reset=document.createElement('button');reset.type='button';reset.className='btn btn-outline nav-reset';reset.innerHTML='<i class="ti ti-rotate-clockwise"></i> Làm lại màn';reset.addEventListener('click',()=>{if(resetSource)resetSource.click();else{location.hash='#retry-stage-'+idx;location.reload()}});const spacer=document.createElement('span');spacer.className='nav-spacer';const next=document.createElement('button');next.type='button';next.className='btn btn-primary nav-next';next.innerHTML='Tiếp tục <i class="ti ti-arrow-right"></i>';const sync=()=>{next.disabled=!nextSource||nextSource.disabled||nextSource.classList.contains('hidden')};next.addEventListener('click',()=>nextSource?nextSource.click():go(idx+1));sync();if(nextSource)new MutationObserver(sync).observe(nextSource,{attributes:true,attributeFilter:['class','disabled']});row.append(back,reset,spacer,next);stage.appendChild(row)});if(hashMatch){const idx=Number(hashMatch[1]);setTimeout(()=>{go(idx);history.replaceState(null,'',location.pathname+location.search)},80)}})();
 </script>
 </body>
 </html>
