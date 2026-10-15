@@ -64,6 +64,7 @@
     }
     img { display:block; max-width:100%; }
     .hidden { display:none !important; }
+    .congrats-overlay.hidden, #congratsModal.hidden { display:none !important; }
     .app { width:100%; max-width:1200px; margin:0 auto; padding:18px clamp(12px,2.4vw,28px) 12px; }
     .stage[hidden] { display:none; }
     .stage { animation:stageIn .28s ease; }
@@ -71,45 +72,71 @@
 
     .split-workspace {
       display:grid;
-      grid-template-columns:minmax(0,58fr) minmax(340px,42fr);
+      grid-template-columns:minmax(0,56fr) minmax(360px,44fr);
       gap:20px;
       align-items:start;
     }
     #stage-s02 .split-workspace,
     #stage-s04 .split-workspace {
-      grid-template-columns:minmax(0,52fr) minmax(390px,48fr);
+      grid-template-columns:minmax(0,50fr) minmax(420px,50fr);
     }
     .visual-card {
       position:sticky;
       top:0;
       z-index:10;
+      max-height:calc(100vh - 24px);
+      overflow-y:auto;
+      scrollbar-width:thin;
       border:1px solid var(--paper-line);
       border-radius:var(--radius-lg);
       background:#fff;
-      overflow:hidden;
       box-shadow:var(--shadow-sm);
     }
+    .visual-card::-webkit-scrollbar { width:4px; }
+    .visual-card::-webkit-scrollbar-thumb { background:var(--paper-line-2); border-radius:4px; }
     .visual-card__head { padding:14px 16px 12px; border-bottom:1px solid var(--paper-line); }
-    .eyebrow {
-      display:inline-flex; align-items:center; gap:7px;
-      color:var(--jade-text); font-size:.76rem; font-weight:800;
-      text-transform:uppercase; letter-spacing:.65px;
-    }
     .visual-card__head h2, .workspace-card h2 {
-      margin:6px 0 0;
+      margin:0;
       font-size:clamp(1.25rem,2.2vw,1.75rem);
       line-height:1.28;
       letter-spacing:-.02em;
     }
     .question {
-      margin:12px 0 0;
+      margin:10px 0 0;
       color:var(--jade-dark);
       font-size:1rem;
       font-weight:700;
       line-height:1.55;
     }
-    .lesson-copy { margin:12px 0 0; color:var(--ink-2); font-size:.96rem; }
-    .visual-body { padding:14px; }
+    .visual-card__content { padding:14px 16px; }
+    .theory-flow {
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-bottom:14px;
+    }
+    .theory-block {
+      padding:11px 13px;
+      border:1px solid var(--paper-line);
+      border-radius:var(--radius-sm);
+      background:var(--cream);
+      font-size:.92rem;
+      line-height:1.58;
+    }
+    .theory-block__title {
+      display:flex;
+      align-items:center;
+      gap:7px;
+      font-weight:700;
+      font-size:.94rem;
+      color:var(--jade-text);
+      margin-bottom:5px;
+    }
+    .theory-block__content {
+      margin:0;
+      color:var(--ink-2);
+    }
+    .visual-body { padding:0; margin-top:10px; }
     .workspace-card {
       min-width:0;
       border:1px solid var(--paper-line);
@@ -467,29 +494,51 @@
 </head>
 <body>
   <main class="app" id="app">
+    <!-- STAGE S01 -->
     <section class="stage" id="stage-s01" data-stage="0" aria-labelledby="s01-title">
       <div class="split-workspace">
+        <!-- BÊN TRÁI: LÝ THUYẾT & HƯỚNG DẪN -->
         <article class="visual-card">
           <div class="visual-card__head">
-            <span class="eyebrow"><i class="ti ti-heart-handshake"></i> Đời sống hằng ngày</span>
             <h2 id="s01-title">Sinh học trong đời sống hằng ngày</h2>
             <p class="question">Những hiểu biết về Sinh học đang giúp chúng ta sống khỏe hơn, ăn uống hợp lí hơn và học tập hiệu quả hơn như thế nào?</p>
-            <p class="lesson-copy">Tri thức Sinh học không chỉ được sử dụng trong phòng thí nghiệm. Hiểu biết về vi sinh vật, dinh dưỡng và hoạt động của hệ thần kinh được vận dụng trực tiếp trong nhiều quyết định hằng ngày.</p>
           </div>
-          <div class="visual-body">
-            <div class="life-image">
-              <img data-asset="A01" alt="Ba tình huống: rửa tay đúng cách, lựa chọn bữa ăn đa dạng và ôn tập theo từng khoảng thời gian">
-              <button class="hotspot" type="button" data-life="1" aria-pressed="false"><span class="num">1</span><span class="hotspot-label">Vị trí 1</span></button>
-              <button class="hotspot" type="button" data-life="2" aria-pressed="false"><span class="num">2</span><span class="hotspot-label">Vị trí 2</span></button>
-              <button class="hotspot" type="button" data-life="3" aria-pressed="false"><span class="num">3</span><span class="hotspot-label">Vị trí 3</span></button>
+
+          <div class="visual-card__content">
+            <!-- Khung Hướng dẫn thao tác duy nhất nằm ở bên trái -->
+            <div class="instruction">
+              <i class="ti ti-hand-click"></i>
+              <span><strong>HƯỚNG DẪN:</strong> Nhấn vào từng vị trí 1, 2 và 3 trên hình để tìm hiểu vai trò của Sinh học trong mỗi tình huống. Vị trí đã xem sẽ đổi trạng thái.</span>
+            </div>
+
+            <!-- Nội dung bài học: Thiết kế theo dạng KHỐI DỌC theo đúng thứ tự tuần tự -->
+            <div class="theory-flow">
+              <div class="theory-block">
+                
+                <p class="theory-block__content">Tri thức Sinh học không chỉ được sử dụng trong phòng thí nghiệm. Hiểu biết về vi sinh vật, dinh dưỡng và hoạt động của hệ thần kinh được vận dụng trực tiếp trong nhiều quyết định hằng ngày.</p>
+              </div>
+              <div class="theory-block">
+            
+                <p class="theory-block__content">Trong đời sống hằng ngày, tri thức Sinh học hỗ trợ: <strong>vệ sinh phòng bệnh</strong>, <strong>lựa chọn khẩu phần dinh dưỡng cân đối</strong> và <strong>tổ chức học tập, nghỉ ngơi khoa học</strong>.</p>
+              </div>
+            </div>
+
+            <!-- Hình ảnh dữ kiện trực quan -->
+            <div class="visual-body">
+              <div class="life-image">
+                <img data-asset="A01" alt="Ba tình huống: rửa tay đúng cách, lựa chọn bữa ăn đa dạng và ôn tập theo từng khoảng thời gian">
+                <button class="hotspot" type="button" data-life="1" aria-pressed="false"><span class="num">1</span><span class="hotspot-label">Vị trí 1</span></button>
+                <button class="hotspot" type="button" data-life="2" aria-pressed="false"><span class="num">2</span><span class="hotspot-label">Vị trí 2</span></button>
+                <button class="hotspot" type="button" data-life="3" aria-pressed="false"><span class="num">3</span><span class="hotspot-label">Vị trí 3</span></button>
+              </div>
             </div>
           </div>
         </article>
 
+        <!-- BÊN PHẢI: HOẠT ĐỘNG & BÀI TẬP (TUYỆT ĐỐI KHÔNG LẶP LẠI LÝ THUYẾT VÀ HƯỚNG DẪN) -->
         <article class="workspace-card">
-          <div class="instruction"><i class="ti ti-hand-click"></i><span>Nhấn vào từng vị trí 1, 2 và 3 để tìm hiểu vai trò của Sinh học trong mỗi tình huống. Vị trí đã xem sẽ đổi trạng thái.</span></div>
           <div class="life-detail" id="lifeDetail" aria-live="polite">
-            <i class="ti ti-biology life-detail__icon"></i>
+            <i class="ti ti-hand-click life-detail__icon"></i>
             <h3>Chọn một tình huống trong hình</h3>
             <p>Nội dung phân tích sẽ xuất hiện tại đây và được giữ cố định để bạn dễ đối chiếu với hình ảnh.</p>
           </div>
@@ -497,6 +546,7 @@
           <div id="s01Feedback" class="inline-feedback hidden" aria-live="polite"></div>
         </article>
       </div>
+
       <div class="controls-row">
         <button class="btn" type="button" data-prev disabled><i class="ti ti-arrow-left"></i> Quay lại</button>
         <button class="btn" type="button" data-reset><i class="ti ti-refresh"></i> Làm lại màn</button>
@@ -505,25 +555,39 @@
       </div>
     </section>
 
+    <!-- STAGE S02 -->
     <section class="stage" id="stage-s02" data-stage="1" aria-labelledby="s02-title" hidden>
       <div class="split-workspace">
+        <!-- BÊN TRÁI: LÝ THUYẾT & HƯỚNG DẪN -->
         <article class="visual-card">
           <div class="visual-card__head">
-            <span class="eyebrow"><i class="ti ti-microscope"></i> Lĩnh vực ứng dụng</span>
             <h2 id="s02-title">Từ tri thức Sinh học đến lĩnh vực ứng dụng</h2>
             <p class="question">Mỗi tình huống dưới đây thuộc lĩnh vực ứng dụng nào của Sinh học?</p>
-            <p class="lesson-copy">Tri thức Sinh học chỉ tạo ra tác động xã hội khi được chuyển thành phương pháp, công nghệ hoặc quy trình phù hợp. Cùng một lĩnh vực có thể sử dụng nhiều loại tri thức Sinh học khác nhau.</p>
           </div>
-          <div class="visual-body">
-            <div class="image-evidence">
-              <img data-asset="A02" alt="Phân tích thông tin gene phục vụ định hướng y khoa">
-              <p class="image-caption">Quan sát hoạt động phân tích mẫu và dữ liệu gene để xác định mục đích chính của ứng dụng.</p>
+
+          <div class="visual-card__content">
+            <!-- Khung Hướng dẫn thao tác duy nhất nằm ở bên trái -->
+            <div class="instruction">
+              <i class="ti ti-hand-click"></i>
+              <span><strong>HƯỚNG DẪN:</strong> Nối mỗi thẻ tình huống ở bên trái với lĩnh vực phù hợp ở bên phải. Mỗi cặp đã nối sẽ xuất hiện trong danh sách. Bạn có thể chọn lại trước khi nhấn KIỂM TRA.</span>
+            </div>
+
+            <!-- Nội dung bài học: Thiết kế theo dạng KHỐI DỌC theo đúng thứ tự tuần tự -->
+            <div class="theory-flow">
+              <div class="theory-block">
+                
+                <p class="theory-block__content">Tri thức Sinh học chỉ tạo ra tác động xã hội khi được chuyển thành phương pháp, công nghệ hoặc quy trình phù hợp. Cùng một lĩnh vực có thể sử dụng nhiều loại tri thức Sinh học khác nhau.</p>
+              </div>
+              <div class="theory-block">
+                
+                <p class="theory-block__content">Gồm 5 lĩnh vực thực tiễn: <strong>Y – dược học</strong>, <strong>Pháp y</strong>, <strong>Nông – lâm – ngư nghiệp</strong>, <strong>Công nghệ thực phẩm</strong> và <strong>Bảo vệ môi trường</strong>.</p>
+              </div>
             </div>
           </div>
         </article>
 
+        <!-- BÊN PHẢI: HOẠT ĐỘNG & BÀI TẬP (TUYỆT ĐỐI KHÔNG LẶP LẠI LÝ THUYẾT VÀ HƯỚNG DẪN) -->
         <article class="workspace-card">
-          <div class="instruction"><i class="ti ti-affiliate"></i><span>Nối mỗi thẻ tình huống ở bên trái với lĩnh vực phù hợp ở bên phải. Mỗi cặp đã nối sẽ xuất hiện trong danh sách bên dưới. Bạn có thể chọn lại trước khi nhấn KIỂM TRA.</span></div>
           <div id="matchingS02" class="matching" aria-label="Nối tình huống với lĩnh vực"></div>
           <div class="section-label"><i class="ti ti-list-check"></i> Các cặp đã nối</div>
           <div class="pair-summary" id="pairsS02" aria-live="polite"></div>
@@ -534,6 +598,7 @@
           <div id="feedbackS02" class="inline-feedback hidden" aria-live="polite"></div>
         </article>
       </div>
+
       <div class="controls-row">
         <button class="btn" type="button" data-prev><i class="ti ti-arrow-left"></i> Quay lại</button>
         <button class="btn" type="button" data-reset><i class="ti ti-refresh"></i> Làm lại màn</button>
@@ -542,26 +607,48 @@
       </div>
     </section>
 
+    <!-- STAGE S03 -->
     <section class="stage" id="stage-s03" data-stage="2" aria-labelledby="s03-title" hidden>
       <div class="split-workspace">
+        <!-- BÊN TRÁI: LÝ THUYẾT & HƯỚNG DẪN -->
         <article class="visual-card">
           <div class="visual-card__head">
-            <span class="eyebrow"><i class="ti ti-route"></i> Chuỗi tác động</span>
             <h2 id="s03-title">Tri thức → giải pháp → tác động</h2>
             <p class="question">Vì sao một kiến thức Sinh học chưa tự tạo ra tác động nếu chưa được chuyển thành giải pháp?</p>
-            <p class="lesson-copy">Tri thức Sinh học cung cấp cơ sở để con người thiết kế giải pháp. Tác động chỉ xuất hiện khi giải pháp được triển khai trong những điều kiện thực tiễn phù hợp.</p>
           </div>
-          <div class="visual-body">
-            <div class="image-evidence">
-              <img data-asset="A07" alt="Chuỗi vi sinh vật lên men, quy trình lên men và sản phẩm thực phẩm">
-              <img data-asset="A08" alt="Chuỗi mô thực vật, nuôi cấy mô và nhiều cây giống tương đối đồng đều">
-              <p class="image-caption">Hai hình là dữ kiện để phân biệt điều con người biết, việc con người thực hiện và kết quả xuất hiện.</p>
+
+          <div class="visual-card__content">
+            <!-- Khung Hướng dẫn thao tác duy nhất nằm ở bên trái -->
+            <div class="instruction">
+              <i class="ti ti-drag-drop"></i>
+              <span><strong>HƯỚNG DẪN:</strong> Kéo các thẻ vào ba vị trí Tri thức Sinh học, Giải pháp và Tác động. Sau khi đặt đủ ba thẻ trong một chuỗi, nhấn KIỂM TRA.</span>
+            </div>
+
+            <!-- Nội dung bài học: Thiết kế theo dạng KHỐI DỌC theo đúng thứ tự tuần tự -->
+            <div class="theory-flow">
+              <div class="theory-block">
+                
+                <p class="theory-block__content">Tri thức Sinh học cung cấp cơ sở để con người thiết kế giải pháp. Tác động chỉ xuất hiện khi giải pháp được triển khai trong những điều kiện thực tiễn phù hợp.</p>
+              </div>
+              <div class="theory-block">
+                
+                <p class="theory-block__content"><strong>Tri thức</strong> (điều con người biết) → <strong>Giải pháp</strong> (việc con người thực hiện) → <strong>Tác động</strong> (kết quả thực tiễn xuất hiện sau khi triển khai).</p>
+              </div>
+            </div>
+
+            <!-- Dữ kiện hình ảnh minh họa -->
+            <div class="visual-body">
+              <div class="image-evidence">
+                <img data-asset="A07" alt="Chuỗi vi sinh vật lên men, quy trình lên men và sản phẩm thực phẩm">
+                <img data-asset="A08" alt="Chuỗi mô thực vật, nuôi cấy mô và nhiều cây giống tương đối đồng đều">
+                <p class="image-caption">Hai hình là dữ kiện để phân biệt điều con người biết, việc con người thực hiện và kết quả xuất hiện.</p>
+              </div>
             </div>
           </div>
         </article>
 
+        <!-- BÊN PHẢI: HOẠT ĐỘNG & BÀI TẬP (TUYỆT ĐỐI KHÔNG LẶP LẠI LÝ THUYẾT VÀ HƯỚNG DẪN) -->
         <article class="workspace-card">
-          <div class="instruction"><i class="ti ti-drag-drop"></i><span>Kéo các thẻ vào ba vị trí Tri thức Sinh học, Giải pháp và Tác động. Sau khi đặt đủ ba thẻ trong một chuỗi, nhấn KIỂM TRA.</span></div>
           <p class="sr-only">Trên thiết bị cảm ứng, có thể nhấn một thẻ rồi nhấn vùng đích để đặt thẻ.</p>
           <div id="chainsWorkspace"></div>
           <div id="s03Final" class="condition-card hidden">
@@ -571,6 +658,7 @@
           </div>
         </article>
       </div>
+
       <div class="controls-row">
         <button class="btn" type="button" data-prev><i class="ti ti-arrow-left"></i> Quay lại</button>
         <button class="btn" type="button" data-reset><i class="ti ti-refresh"></i> Làm lại màn</button>
@@ -579,22 +667,44 @@
       </div>
     </section>
 
+    <!-- STAGE S04 -->
     <section class="stage" id="stage-s04" data-stage="3" aria-labelledby="s04-title" hidden>
       <div class="split-workspace">
+        <!-- BÊN TRÁI: LÝ THUYẾT & HƯỚNG DẪN -->
         <article class="visual-card">
           <div class="visual-card__head">
-            <span class="eyebrow"><i class="ti ti-users-group"></i> Nghề nghiệp liên quan</span>
             <h2 id="s04-title">Lĩnh vực và nghề nghiệp liên quan</h2>
             <p class="question">Lĩnh vực ứng dụng và nghề nghiệp có phải là một không?</p>
-            <p class="lesson-copy">Lĩnh vực ứng dụng là phạm vi hoạt động như y – dược học, pháp y hoặc bảo vệ môi trường. Nghề nghiệp là công việc cụ thể của con người trong các lĩnh vực đó. Một lĩnh vực có nhiều nghề, và một nghề có thể sử dụng kiến thức từ nhiều lĩnh vực.</p>
           </div>
-          <div class="visual-body">
-            <img class="profession-strip" data-asset="A10" alt="Năm hoạt động nghề nghiệp: bác sĩ, chuyên gia giám định, kĩ sư nông nghiệp, chuyên gia kiểm soát chất lượng thực phẩm và nhà sinh thái học">
+
+          <div class="visual-card__content">
+            <!-- Khung Hướng dẫn thao tác duy nhất nằm ở bên trái -->
+            <div class="instruction">
+              <i class="ti ti-hand-click"></i>
+              <span><strong>HƯỚNG DẪN:</strong> Nối mỗi thẻ nghề nghiệp với lĩnh vực phù hợp nhất trong tình huống đang xét. Mỗi cặp đã nối sẽ xuất hiện trong danh sách bên dưới.</span>
+            </div>
+
+            <!-- Nội dung bài học: Thiết kế theo dạng KHỐI DỌC theo đúng thứ tự tuần tự -->
+            <div class="theory-flow">
+              <div class="theory-block">
+              
+                <p class="theory-block__content"><strong>Lĩnh vực ứng dụng</strong> là phạm vi hoạt động như y – dược học, pháp y hoặc bảo vệ môi trường. <strong>Nghề nghiệp</strong> là công việc cụ thể của con người trong các lĩnh vực đó.</p>
+              </div>
+              <div class="theory-block">
+                
+                <p class="theory-block__content">Một lĩnh vực có thể bao gồm nhiều nghề nghiệp khác nhau, và một nghề nghiệp có thể sử dụng kiến thức từ nhiều lĩnh vực liên ngành.</p>
+              </div>
+            </div>
+
+            <!-- Dữ kiện hình ảnh minh họa -->
+            <div class="visual-body">
+              <img class="profession-strip" data-asset="A10" alt="Năm hoạt động nghề nghiệp: bác sĩ, chuyên gia giám định, kĩ sư nông nghiệp, chuyên gia kiểm soát chất lượng thực phẩm và nhà sinh thái học">
+            </div>
           </div>
         </article>
 
+        <!-- BÊN PHẢI: HOẠT ĐỘNG & BÀI TẬP (TUYỆT ĐỐI KHÔNG LẶP LẠI LÝ THUYẾT VÀ HƯỚNG DẪN) -->
         <article class="workspace-card">
-          <div class="instruction"><i class="ti ti-affiliate"></i><span>Nối mỗi thẻ nghề nghiệp với lĩnh vực phù hợp nhất trong tình huống đang xét. Mỗi cặp đã nối sẽ xuất hiện trong danh sách bên dưới.</span></div>
           <div id="matchingS04" class="matching" aria-label="Nối nghề nghiệp với lĩnh vực"></div>
           <div class="section-label"><i class="ti ti-list-check"></i> Các cặp đã nối</div>
           <div class="pair-summary" id="pairsS04" aria-live="polite"></div>
@@ -609,6 +719,7 @@
           </div>
         </article>
       </div>
+
       <div class="controls-row">
         <button class="btn" type="button" data-prev><i class="ti ti-arrow-left"></i> Quay lại</button>
         <button class="btn" type="button" data-reset><i class="ti ti-refresh"></i> Làm lại màn</button>
@@ -1006,7 +1117,6 @@
         const completed=state['s03_chain_'+chain.id+'_completed'];
         return '<section class="chain" data-chain="'+chain.id+'">'+
           '<h3><i class="ti ti-route"></i>'+chain.title+'</h3>'+
-          '<img class="chain-asset" src="'+assetFiles[chain.asset]+'" alt="Dữ kiện hình ảnh cho '+chain.title+'">'+
           '<div class="card-tray">'+chain.cards.map(card=>{
             const placed=Object.values(cs.placements).includes(card.id);
             return '<button type="button" draggable="'+(!completed)+'" class="drag-card '+(placed?'placed':'')+' '+(cs.selected===card.id?'selected':'')+'" data-chain-card="'+chain.id+'" data-card="'+card.id+'"><i class="ti '+card.icon+'"></i><span>'+card.text+'</span></button>';
@@ -1069,7 +1179,7 @@
     function resetStage(index){
       if(index===0){
         state.s01_viewed_1=state.s01_viewed_2=state.s01_viewed_3=state.s01_completed=false;
-        document.getElementById('lifeDetail').innerHTML='<i class="ti ti-biology life-detail__icon"></i><h3>Chọn một tình huống trong hình</h3><p>Nội dung phân tích sẽ xuất hiện tại đây và được giữ cố định để bạn dễ đối chiếu với hình ảnh.</p>';
+        document.getElementById('lifeDetail').innerHTML='<i class="ti ti-hand-click life-detail__icon"></i><h3>Chọn một tình huống trong hình</h3><p>Nội dung phân tích sẽ xuất hiện tại đây và được giữ cố định để bạn dễ đối chiếu với hình ảnh.</p>';
         renderLife(null);
       }
       if(index===1){

@@ -67,16 +67,16 @@ body {
 }
 .split-workspace {
   display:grid;
-  grid-template-columns:minmax(0,58fr) minmax(340px,42fr);
+  grid-template-columns:minmax(0,56fr) minmax(360px,44fr);
   gap:20px;
   align-items:start;
 }
 .visual-card {
-  position:sticky; top:0; z-index:10;
+  position:sticky; top:16px;
+  padding:18px;
   border:1px solid var(--paper-line);
   border-radius:var(--radius-lg);
   background:#fff;
-  overflow:hidden;
   box-shadow:var(--shadow-sm);
 }
 .workspace-card {
@@ -86,6 +86,35 @@ body {
   border-radius:var(--radius-lg);
   background:var(--cream-2);
   box-shadow:var(--shadow-sm);
+  position:sticky; top:16px;
+  max-height:calc(100vh - 32px);
+  overflow-y:auto;
+  scrollbar-width:thin;
+}
+.workspace-card::-webkit-scrollbar { width:4px; }
+.workspace-card::-webkit-scrollbar-thumb { background:var(--paper-line-2); border-radius:4px; }
+.theory-flow {
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-bottom:16px;
+}
+.theory-block {
+  padding:12px 14px;
+  border:1px solid var(--paper-line);
+  border-radius:var(--radius-sm);
+  background:var(--cream);
+  font-size:.95rem;
+  line-height:1.6;
+}
+.theory-block__title {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:700;
+  font-size:.96rem;
+  color:var(--jade-text);
+  margin-bottom:6px;
 }
 ```
 
@@ -127,7 +156,7 @@ body {
 ```css
 @media (max-width:980px) {
   .split-workspace { grid-template-columns:1fr; }
-  .visual-card { position:static; }
+  .visual-card, .workspace-card { position:static; max-height:none; overflow-y:visible; }
   .workspace-card { padding:16px; }
 }
 @media (max-width:700px) {
@@ -149,7 +178,7 @@ Ba breakpoint chuẩn: `980px`, `700px`, `420px`. Card dùng radius `14px`; thà
 ## 1. TỔNG QUAN KIẾN TRÚC GIAO DIỆN (Centered Two-Block Workspace)
 
 - **Phân loại nguồn học liệu:** `modules/` chỉ chứa bài học; `experiments/` chỉ chứa thí nghiệm Sinh học; `shells/` chứa file mẹ và được phép nhúng nội dung từ cả hai thư mục bằng đường dẫn tương đối.
-- **Cấu trúc ưu tiên:** Mỗi stage trong học liệu con dùng hai khối `.visual-card` và `.workspace-card`; chỉ chuyển thành một cột khi viewport dưới `980px`.
+- **Cấu trúc phân chia 2 bên (Two-Block Layout):** Mỗi stage chia thành 2 bên rõ rệt: **Bên Trái** (.visual-card) dành cho Lý thuyết, Hướng dẫn (nội dung bài học dạng khối dọc theo đúng thứ tự) và hình ảnh trực quan; **Bên Phải** (.workspace-card) dành cho Hoạt động tương tác, Bài tập và phản hồi kết quả. Tuyệt đối không lặp lại nội dung giữa 2 bên. Chuyển thành 1 cột khi viewport dưới `980px`.
 - **Loại bỏ Sidebar 2 bên**: Tuyệt đối không dùng 2 thanh cố định 2 bên. Toàn bộ không gian được ưu tiên lấp đầy cho trải nghiệm học tập mô phỏng tương tác.
 - **Bố cục tinh gọn & Linh hoạt theo kịch bản nội dung**:
   - Không dùng các khối header banner cồng kềnh với nền gradient xanh đậm; không dùng sidebar 2 bên chiếm diện tích.
@@ -178,41 +207,67 @@ Ba breakpoint chuẩn: `980px`, `700px`, `420px`. Card dùng radius `14px`; thà
 
 ---
 
-## 2. CẤU TRÚC ƯU TIÊN HAI KHỐI (TWO-BLOCK WORKSPACE)
+## 2. CẤU TRÚC PHÂN CHIA HAI BÊN (TWO-BLOCK WORKSPACE: TRÁI LÝ THUYẾT - PHẢI HOẠT ĐỘNG/BÀI TẬP)
 
-Cấu trúc mặc định không còn là sáu tầng giao diện xếp dọc. Mỗi stage phải bắt đầu trực tiếp bằng hai khối song song, đúng file chuẩn SH10_B01_M02.html:
+Cấu trúc mỗi stage phải chia thành 2 bên song song rõ ràng theo đúng chức năng sư phạm:
 
-    ┌─────────────────────────────────────┬──────────────────────────────┐
-    │ KHỐI TRÁI — .visual-card            │ KHỐI PHẢI — .workspace-card  │
-    │ Tiêu đề, câu hỏi dẫn dắt             │ Hướng dẫn thao tác duy nhất  │
-    │ Text giảng ngắn                     │ Nhiệm vụ tương tác            │
-    │ Hình ảnh hoặc dữ kiện trực quan     │ Trạng thái và phản hồi        │
-    ├─────────────────────────────────────┴──────────────────────────────┤
-    │ .controls-row: Quay lại · Làm lại · Tiếp tục/Hoàn thành            │
-    └────────────────────────────────────────────────────────────────────┘
+    ┌──────────────────────────────────────────────┬──────────────────────────────┐
+    │ BÊN TRÁI — LÝ THUYẾT & HƯỚNG DẪN             │ BÊN PHẢI — HOẠT ĐỘNG, BÀI TẬP│
+    │ (.visual-card / .theory-card)                │ (.workspace-card)            │
+    │ 1. Tiêu đề nội dung, câu hỏi dẫn dắt         │ 1. Hoạt động tương tác       │
+    │ 2. Khung Hướng dẫn thao tác (.instruction)    │    (mô phỏng, kéo thả, ghép, │
+    │ 3. Nội dung bài học dạng KHỐI DỌC            │     thao tác trực tiếp)      │
+    │    theo đúng thứ tự (.theory-block)          │ 2. Bài tập / Câu hỏi củng cố │
+    │ 4. Hình ảnh / Sơ đồ / Dữ kiện trực quan      │ 3. Trạng thái & Phản hồi     │
+    │    (TUYỆT ĐỐI KHÔNG LẶP Ở BÊN PHẢI)          │    kết quả (.inline-feedback)│
+    ├──────────────────────────────────────────────┴──────────────────────────────┤
+    │ .controls-row: Quay lại · Làm lại · Tiếp tục/Hoàn thành                     │
+    └─────────────────────────────────────────────────────────────────────────────┘
 
 ### 2.1. Cấu trúc HTML chuẩn của một stage
 
     <main class="app" id="app">
       <section class="stage" id="stage-s01" data-stage="0" aria-labelledby="s01-title">
         <div class="split-workspace">
+          <!-- BÊN TRÁI: LÝ THUYẾT & HƯỚNG DẪN -->
           <article class="visual-card">
             <div class="visual-card__head">
               <h2 id="s01-title">Tên nội dung đang học</h2>
               <p class="question">Câu hỏi dẫn dắt?</p>
-              <p class="lesson-copy">Nội dung giảng giải ngắn gọn theo kịch bản.</p>
             </div>
-            <div class="visual-body">
-              <!-- Hình ảnh, sơ đồ, canvas hoặc dữ kiện trực quan -->
-            </div>
-          </article>
 
-          <article class="workspace-card">
+            <!-- Khung Hướng dẫn thao tác duy nhất nằm ở bên trái -->
             <div class="instruction">
               <i class="ti ti-hand-click"></i>
               <span>Hướng dẫn thao tác duy nhất của stage.</span>
             </div>
-            <div class="workspace" id="workspaceS01"></div>
+
+            <!-- Nội dung bài học: Thiết kế theo dạng KHỐI DỌC theo đúng thứ tự -->
+            <div class="theory-flow">
+              <div class="theory-block">
+                <div class="theory-block__title"><i class="ti ti-bookmark"></i> Mục kiến thức 1</div>
+                <div class="theory-block__content">Nội dung lý thuyết cô đọng theo kịch bản...</div>
+              </div>
+              <div class="theory-block">
+                <div class="theory-block__title"><i class="ti ti-bookmark"></i> Mục kiến thức 2</div>
+                <div class="theory-block__content">Nội dung tiếp theo theo đúng thứ tự logic...</div>
+              </div>
+            </div>
+
+            <!-- Hình ảnh, sơ đồ, canvas hoặc dữ kiện trực quan -->
+            <div class="visual-body">
+              <!-- Hình ảnh hoặc sơ đồ dữ kiện trực quan hỗ trợ lý thuyết -->
+            </div>
+          </article>
+
+          <!-- BÊN PHẢI: HOẠT ĐỘNG & BÀI TẬP (TUYỆT ĐỐI KHÔNG LẶP LẠI LÝ THUYẾT & HƯỚNG DẪN) -->
+          <article class="workspace-card">
+            <div class="activity-workspace" id="workspaceS01">
+              <!-- Khu vực hoạt động tương tác: kéo thả, ghép đôi, canvas thực hành... -->
+            </div>
+            <div class="exercise-workspace" id="exerciseS01">
+              <!-- Khu vực bài tập củng cố, câu hỏi kiểm tra -->
+            </div>
             <div class="inline-feedback hidden" id="feedbackS01"
                  role="status" aria-live="polite"></div>
           </article>
@@ -227,46 +282,48 @@ Cấu trúc mặc định không còn là sáu tầng giao diện xếp dọc. M
       </section>
     </main>
 
-### 2.2. Khối trái — .visual-card
+### 2.2. Khối Trái — .visual-card (Lý thuyết & Hướng dẫn)
 
-Khối trái cung cấp bối cảnh và dữ kiện học tập, theo đúng thứ tự:
+Khối trái cung cấp toàn bộ tri thức học tập, hướng dẫn và dữ kiện theo đúng thứ tự:
 
-1. h2: tên nội dung tự nhiên của phần đang học.
-2. .question: câu hỏi dẫn dắt.
-3. .lesson-copy: nội dung giảng ngắn, không lặp hướng dẫn.
-4. .visual-body: ảnh, sơ đồ, canvas hoặc dữ kiện trực quan.
+1. `h2`: tên nội dung tự nhiên của phần đang học.
+2. `.question`: câu hỏi dẫn dắt (nếu có).
+3. `.instruction`: Khung hướng dẫn thao tác duy nhất của màn học — nêu rõ nhiệm vụ người học cần làm.
+4. **Nội dung bài học dạng KHỐI DỌC (`.theory-flow` & `.theory-block`) theo đúng thứ tự**:
+   - Mọi phần có nội dung bài học (khái niệm, đặc điểm, cơ chế, các giai đoạn/bước) **bắt buộc thiết kế theo dạng các khối dọc xếp chồng tuần tự theo đúng thứ tự trong kịch bản**.
+   - Mỗi khối là một đơn vị kiến thức cô đọng, có tiêu đề nhỏ (`.theory-block__title`) kèm icon nhận diện, nội dung mạch lạc. Tuyệt đối không dồn thành một khối văn bản dài khó theo dõi.
+5. `.visual-body`: Ảnh, sơ đồ, SVG, Canvas hoặc bảng dữ kiện trực quan hỗ trợ lý thuyết.
 
-Không hiển thị `.eyebrow`, `.stage-badge`, `.stage-step-indicator` hay bất kỳ nhãn nào có chữ `Stage`, `Giai đoạn`, `Màn x/y`, `Bước x/y`, `ST01`, `Phase 1`. Các tên này chỉ được dùng nội bộ trong mã, ID và LMS state.
+**Tuyệt đối KHÔNG DÙNG `.eyebrow`**: Không hiển thị `.eyebrow`, nhãn phụ trên tiêu đề, `.stage-badge`, `.stage-step-indicator` hay bất kỳ nhãn nào có chữ `Stage`, `Giai đoạn`, `Màn x/y`, `Bước x/y`, `ST01`, `Phase 1`. Tiêu đề `h2` bắt đầu ngay ở đầu `.visual-card__head` để giao diện thanh lịch, không bị vụn vặt và trùng lặp.
 
 Quy tắc:
 
-- Trên desktop, khối trái sticky tại top:0.
-- Khối trái bắt buộc có ảnh, SVG, Canvas, sơ đồ hoặc bảng dữ kiện trực quan; không dùng một đoạn văn đơn thuần để thay cho phần hình.
-- Hình ảnh phải là dữ kiện học tập, không chỉ trang trí.
+- **Cơ chế bám theo động (Mutual Sticky & Zero Nested Scroll):**
+  - Cả hai khối (`.visual-card` và `.workspace-card`) đều đặt trong lưới `align-items:start` và có `position:sticky; top:16px`.
+  - **Khối Trái (`.visual-card`):** Tuyệt đối **KHÔNG đặt `max-height` hay `overflow-y:auto`**. Toàn bộ nội dung lý thuyết mở rộng tự nhiên 100%, người học cuộn toàn trang tự nhiên mà không bị thanh cuộn con lồng nhau.
+  - **Khối Phải (`.workspace-card`):** Khi bên trái dài (chứa lý thuyết dọc, bảng số liệu, canvas), bên phải ngắn hơn sẽ tự động **bám dính trôi theo** trong suốt quá trình cuộn trang, giữ câu hỏi/bài tập luôn trong tầm mắt. Ngược lại, bên nào ngắn hơn sẽ tự động bám theo bên dài hơn.
+  - Khối phải có `max-height:calc(100vh - 32px); overflow-y:auto; scrollbar-width:thin;` để đảm bảo trên màn hình thấp vẫn luôn cuộn tới được các nút tác vụ.
+- Khối trái bắt buộc có ảnh, SVG, Canvas, sơ đồ hoặc bảng dữ kiện trực quan kết hợp các khối lý thuyết dọc.
 - Không đặt nút kiểm tra hoặc phản hồi đúng/sai trong khối trái.
-- Không lặp câu mệnh lệnh thao tác trong .lesson-copy.
-- Nếu kịch bản không có ảnh riêng, tạo sơ đồ hoặc bảng dữ kiện trực quan từ nội dung; không chuyển nhiệm vụ tương tác sang cột trái.
+- Không lặp câu mệnh lệnh thao tác trong nội dung lý thuyết.
 
-### 2.3. Khối phải — .workspace-card
+### 2.3. Khối Phải — .workspace-card (Hoạt động & Bài tập)
 
-Khối phải chứa:
+Khối phải dành riêng cho học sinh thực hành, tương tác và giải bài tập:
 
-1. Một khung .instruction duy nhất.
-2. Nhiệm vụ tương tác.
-3. Trạng thái trung gian hoặc danh sách kết quả.
+1. **Hoạt động tương tác**: khu vực thao tác trực tiếp (khay kéo thả thẻ, nối đôi cặp thẻ, tương tác mô phỏng, chọn điểm, thử nghiệm...).
+2. **Bài tập củng cố**: câu hỏi trắc nghiệm, bài tập tự kiểm tra hoặc nhiệm vụ cần hoàn thành.
+3. Trạng thái trung gian hoặc danh sách kết quả thực hiện.
 4. Nút Kiểm tra/Làm lại nếu kịch bản yêu cầu.
-5. Khung .inline-feedback đúng/sai.
+5. Khung `.inline-feedback` đúng/sai (chỉ giải thích căn cứ của câu trả lời).
 
-Toàn bộ nút, thẻ lựa chọn, vùng kéo thả, trường nhập và thao tác chấm bài phải nằm ở khối phải.
-
-Quy tắc:
-
-- Nền var(--cream-2); khối trái dùng nền trắng.
+**QUY TẮC CỐT LÕI CHO KHỐI PHẢI:**
+- Nền `var(--cream-2)`; khối trái dùng nền trắng.
+- **TUYỆT ĐỐI KHÔNG lặp lại khung hướng dẫn thao tác** (đã có ở khối trái).
+- **TUYỆT ĐỐI KHÔNG lặp lại các đoạn văn lý thuyết bài học** (đã có ở khối trái).
 - Không lặp lại tiêu đề stage ở khối phải.
-- Phản hồi mặc định ẩn.
-- Nút kiểm tra chỉ mở khi đủ dữ liệu đầu vào.
-- Khi sai, đưa gợi ý hoặc giải thích nguyên nhân.
-- Khi đúng, xác nhận và giải thích căn cứ.
+- Phản hồi mặc định ẩn, chỉ mở khi đủ dữ liệu đầu vào hoặc bấm Kiểm tra.
+- Khi sai, đưa gợi ý hoặc giải thích nguyên nhân ngắn gọn; khi đúng, xác nhận và giải thích căn cứ.
 
 ### 2.4. Hàng điều khiển — .controls-row
 
@@ -308,7 +365,7 @@ Nhiệm vụ nối ghép có thể dùng tỉ lệ 52/48, với cột phải t�
 Dưới 980px:
 
     .split-workspace { grid-template-columns:1fr; }
-    .visual-card { position:static; }
+    .visual-card, .workspace-card { position:static; max-height:none; overflow-y:visible; }
     .workspace-card { padding:16px; }
 
 Dưới 700px:
@@ -432,24 +489,42 @@ window.addEventListener('message', function(e) {
   - **TUYỆT ĐỐI CẤM** dùng `grid-template-columns: 1fr` hay `flex-direction: column` làm các tab rớt dòng xếp chồng thành cột dọc chiếm diện tích và gây vỡ layout.
 - Các tab bước `.step-tab` / `.step-tab-btn`: có trạng thái `.active` (đang học) và `.completed` (kèm biểu tượng check `✓`).
 
-### 5.3. QUY TẮC CHỐNG TRÙNG LẶP HƯỚNG DẪN & CHỐNG TỰ BỊA VĂN BẢN (Anti-Duplication & Zero-Hallucination — BẮT BUỘC)
-Để loại bỏ tình trạng lặp chữ hoặc xuất hiện 2–3 lần hướng dẫn gây rối mắt:
-1. **Nguyên tắc "Đơn điểm hướng dẫn" (Khung Hướng Dẫn `.guide-box` là duy nhất)**:
-   - **Vị trí bắt buộc:** Nằm **NGAY TRÊN** khu vực thao tác/làm bài (dưới tiêu đề hoặc dẫn dắt ngắn của màn, trước sơ đồ/ảnh/canvas).
+### 5.3. QUY TẮC PHÂN CHIA 2 BÊN, KHỐI DỌC BÀI HỌC & CHỐNG LẶP NỘI DUNG (Two-Column Division, Vertical Theory Blocks & Zero-Duplication — BẮT BUỘC)
+Để giao diện học liệu số đạt chuẩn sư phạm cao cấp, mạch lạc và không gây ức chế thị giác hay lặp thừa nội dung:
+
+1. **Phân định rõ ràng chức năng 2 bên:**
+   - **Bên Trái — Lý thuyết & Hướng dẫn:**
+     - Chứa toàn bộ nội dung bài học, lý thuyết cốt lõi, cơ chế, khái niệm.
+     - **Nếu có nội dung bài học:** Bắt buộc thiết kế theo **dạng các khối dọc (`.theory-block`) theo đúng thứ tự tuần tự** trong kịch bản.
+     - Chứa khung Hướng dẫn thao tác duy nhất (`.instruction` / `.guide-box`).
+     - Chứa hình ảnh, sơ đồ minh họa nếu có.
+   - **Bên Phải — Hoạt động & Bài tập:**
+     - Toàn bộ không gian dành riêng cho hoạt động thực hành, mô phỏng tương tác, kéo thả, ghép đôi, bài tập trắc nghiệm và chấm điểm.
+     - **TUYỆT ĐỐI KHÔNG lặp lại bất kỳ đoạn văn lý thuyết nào từ bên trái sang bên phải.**
+     - **TUYỆT ĐỐI KHÔNG chèn thêm khung hướng dẫn thao tác thứ hai ở bên phải.**
+
+2. **Quy tắc thiết kế khối dọc cho nội dung bài học (Vertical Theory Blocks in Exact Order):**
+   - Mọi đơn vị bài học (khái niệm, các giai đoạn, các bước quy trình, phân loại...) phải được chia thành các khối dọc trực quan (`.theory-block`), sắp xếp từ trên xuống dưới theo đúng thứ tự logic sư phạm trong kịch bản.
+   - Mỗi khối có tiêu đề nhỏ (`.theory-block__title`) kèm icon nhận diện (`ti ti-bookmark`, `ti ti-circle-number-1`...) và nội dung cô đọng.
+   - Tuyệt đối không dồn thành một đoạn văn dài miên man; cũng không chia ngang gây vỡ bố cục cột trái.
+
+3. **Nguyên tắc "Đơn điểm hướng dẫn" (Khung Hướng Dẫn `.instruction` là duy nhất nằm ở bên trái):**
+   - **Vị trí bắt buộc:** Nằm ở khối bên trái, ngay phía trên hoặc trước khối lý thuyết / visual.
+   - **Quy chuẩn icon thao tác nhấn:** Mọi khung hướng dẫn thao tác hoặc phần có thao tác nhấn / chạm / chọn tương tác (`.instruction`, prompt nhắc nhấn) bắt buộc dùng icon `<i class="ti ti-hand-click"></i>`.
    - **Cấu trúc:** Icon Tabler + nhãn in hoa:
      ```html
-     <div class="guide-box">
-       <i class="ti ti-info-circle"></i>
-       <span><strong>HƯỚNG DẪN:</strong> Nhấn vào từng điểm đánh dấu trên hình để xem thông tin chi tiết. Khi xem đủ các điểm, nút TIẾP TỤC sẽ xuất hiện.</span>
+     <div class="instruction">
+       <i class="ti ti-hand-click"></i>
+       <span><strong>HƯỚNG DẪN:</strong> Quan sát các khối kiến thức bên trái, sau đó hoàn thành nhiệm vụ tương tác ở cột bên phải.</span>
      </div>
      ```
-2. **Loại bỏ trùng lặp ở câu dẫn (`.lead-text`):**
-   - Câu dẫn chỉ mang tính định hướng bối cảnh khoa học (ví dụ: *"Quan sát hai hình đối chiếu dưới đây để tìm hiểu sự khác biệt..."*).
-   - **TUYỆT ĐỐI KHÔNG** viết câu mệnh lệnh thao tác (*"Nhấn vào từng hình để xem..."*, *"Hãy khám phá từng vị trí..."*) trong `.lead-text`. Nếu kịch bản gốc có lỡ viết vế này vào mục Lời dẫn, AI khi sinh HTML **BẮT BUỘC phải lọc bỏ vế mệnh lệnh** để tránh lặp với `.guide-box` bên dưới.
-3. **Tuyệt đối CẤM AI tự bịa huy hiệu và câu hướng dẫn phụ (Zero UI Hallucination):**
-   - **CẤM tự tạo huy hiệu chạm trên ảnh:** Tuyệt đối KHÔNG tự tạo các thẻ `.touch-hint-badge` như *"Chạm để khám phá"*, *"Nhấn để xem"*. Trên ảnh chỉ đặt các nút hotspot số tròn (1, 2, 3...) theo đúng kịch bản.
-   - **CẤM tự bịa câu lệnh ở khung chú thích bên dưới:** Tuyệt đối không tự viết thêm các câu như *"Chạm vào điểm trên tán lá để xem hoạt động"*, *"Chạm vào chú thỏ..."*, *"Nhấn vào hình để xem..."*. Khung chú thích trước khi click chỉ hiển thị placeholder trạng thái trung tính ngắn gọn (ví dụ: *“Chọn một điểm trên hình để xem thông tin chi tiết”* hoặc ẩn đi); sau khi click thì cập nhật kiến thức sinh học từ kịch bản, không lặp lại câu mệnh lệnh dài dòng.
-   - **CẤM tự nối thêm chữ vào hướng dẫn:** Giữ nguyên văn bản hướng dẫn từ kịch bản, không tự ý nối thêm các vế như *" (Trên thiết bị cảm ứng: chạm chọn thẻ rồi chạm nhóm đích)"*.
+
+4. **Tuyệt đối KHÔNG ĐƯỢC PHÉP LẶP LẠI NỘI DUNG (Strict Zero-Duplication):**
+   - **Không lặp lý thuyết:** Khối phải chỉ chứa đề bài tương tác và bài tập, tuyệt đối không nhắc lại các câu chữ giải thích lý thuyết đã có ở khối trái.
+   - **Loại bỏ trùng lặp ở câu dẫn (`.lead-text`):** Câu dẫn chỉ mang tính định hướng bối cảnh khoa học. **TUYỆT ĐỐI KHÔNG** viết câu mệnh lệnh thao tác (*"Nhấn vào từng hình để xem..."*, *"Hãy khám phá..."*) trong `.lead-text`.
+   - **CẤM tự tạo huy hiệu chạm trên ảnh:** Không tự tạo các thẻ `.touch-hint-badge` như *"Chạm để khám phá"*, *"Nhấn để xem"*. Trên ảnh chỉ đặt các nút hotspot số tròn theo kịch bản.
+   - **CẤM tự bịa câu lệnh ở khung chú thích bên dưới:** Khung chú thích trước khi click chỉ hiển thị placeholder trạng thái trung tính ngắn gọn; sau khi click chỉ cập nhật kiến thức sinh học từ kịch bản, không lặp lại câu mệnh lệnh dài dòng.
+   - **Khung phản hồi (`.inline-feedback`):** Chỉ giải thích trực tiếp vì sao đáp án đúng hay sai, không copy lại toàn bộ khối lý thuyết bên trái.
 
 ### 5.4. Hàng Nút Điều Hướng Stage (`.controls-row` / `.stage-actions`)
 Nằm ở cuối mỗi stage:

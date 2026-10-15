@@ -1,923 +1,955 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SH10_B08_M02 — Hệ thống nội màng: Ribosome, Lưới nội chất, Golgi, Lysosome, Không bào</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SH10_B08_M02 · Hệ thống nội màng: Ribosome, Lưới nội chất, Golgi, Lysosome, Không bào</title>
+<script type="application/json" id="athena-context">
+{
+  "title": "Hệ thống nội màng: Ribosome, Lưới nội chất, Golgi, Lysosome, Không bào",
+  "subject": "Sinh học",
+  "grade": "10",
+  "track": "SH10_B08_M02",
+  "centralQuestion": "Một phân tử protein được tổng hợp và 'xuất xưởng' ra khỏi tế bào phải đi qua những 'trạm' nào?",
+  "objectives": [
+    "Nhận biết cấu trúc và chức năng của ribosome (bào quan không màng gồm 2 tiểu đơn vị)",
+    "Mô tả cấu trúc và vai trò của lưới nội chất hạt (nối liền màng nhân, ribosome đính mặt ngoài)",
+    "Phân tích các chức năng đa dạng của lưới nội chất trơn và liên hệ y sinh với tế bào gan",
+    "Trình bày cấu tạo các túi dẹp song song tách rời của bộ máy Golgi và cơ chế chế biến, đóng gói",
+    "Giải thích chức năng tái chế, tiêu hóa nội bào của lysosome và phân biệt với thực vật",
+    "Phân tích vai trò điều hòa sức trương của không bào trung tâm và không bào ở trùng giày",
+    "Khái quát khái niệm Hệ thống nội màng qua chuỗi 6 trạm dòng chảy protein từ nhân đến xuất bào"
+  ],
+  "structure": [
+    {"id": "st01", "title": "Ribosome: Bào quan không màng bận rộn nhất"},
+    {"id": "st02", "title": "Lưới nội chất hạt: Nơi protein bắt đầu hành trình"},
+    {"id": "st03", "title": "Lưới nội chất trơn: Đa nhiệm và liên hệ giải độc ở gan"},
+    {"id": "st04", "title": "Bộ máy Golgi: Xưởng chế biến và đóng gói"},
+    {"id": "st05", "title": "Lysosome: Đội quân tái chế và tiêu hóa"},
+    {"id": "st06", "title": "Không bào: Túi bảo dưỡng đa năng"},
+    {"id": "st07", "title": "Hệ thống nội màng: Tất cả đều kết nối với nhau"}
+  ],
+  "athenaGuidance": "Module học tương tác V10 gồm 7 màn chuẩn mực: S01 Ghép hai tiểu đơn vị ribosome; S02 Trace đường màng và vector xuất túi protein ở ER hạt; S03 Khám phá 4 chức năng ER trơn và so sánh mật độ ER ở tế bào gan; S04 Mô phỏng chế biến glycosylation qua các túi dẹp Golgi; S05 Mô phỏng lysosome hòa màng phân giải bào quan hỏng; S06 Đối chiếu không bào trương/héo ở thực vật và không bào co bóp trùng giày; S07 Sắp xếp 6 trạm dòng chảy protein xuất bào và câu hỏi dự đoán ti thể/lục lạp."
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css">
+<style>
+:root {
+  --cream: #FAF7F0;
+  --cream-2: #F0EADD;
+  --cream-3: #E7DECC;
+  --paper-line: #E5DECF;
+  --paper-line-2: #D6CCB6;
+  --ink: #1A1A1A;
+  --ink-2: #514C44;
+  --ink-3: #7C756A;
+  --ink-faint: #ABA396;
+  --jade: #3CA57A;
+  --jade-deep: #2D8B6F;
+  --jade-dark: #14432F;
+  --jade-text: #1B5E48;
+  --jade-soft: #A9D0BE;
+  --jade-pale: #DCEAE1;
+  --sage: #A8C9B8;
+  --sage-deep: #7CA792;
+  --sage-text: #46685A;
+  --sage-pale: #E1ECE4;
+  --accent: #E8A24A;
+  --accent-deep: #CE8A33;
+  --accent-text: #8A551A;
+  --accent-pale: #F7E7CD;
+  --purple: #8B5CF6;
+  --purple-deep: #6D28D9;
+  --purple-pale: #F5F3FF;
+  --purple-text: #5B21B6;
+  --correct: #2D8B6F;
+  --correct-bg: #DCEAE1;
+  --wrong: #C15F3C;
+  --wrong-bg: #F3E2D6;
+  --warning: #C58A2E;
+  --warning-bg: #F5E7CB;
+  --info: #4E7F92;
+  --info-bg: #DCE7EB;
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 2px 6px rgba(26,26,26,.05);
+  --shadow: 0 4px 14px rgba(45,139,111,.08);
+  --shadow-hover: 0 6px 20px rgba(45,139,111,.14);
+}
 
-  <!-- Athena LMS Context Meta -->
-  <script type="application/json" id="athena-context">
-  {
-    "moduleId": "SH10_B08_M02",
-    "grade": 10,
-    "subject": "Sinh học",
-    "chapter": "Chương 2: Cấu trúc tế bào",
-    "lesson": "Bài 8: Cấu trúc tế bào nhân thực",
-    "title": "Hệ thống nội màng: Ribosome, Lưới nội chất, Bộ máy Golgi, Lysosome, Không bào",
-    "outcomes": [
-      "Phân tích được mối quan hệ giữa cấu tạo và chức năng của các bào quan trong tế bào."
-    ],
-    "researchQuestion": "Một phân tử protein được tổng hợp và 'xuất xưởng' ra khỏi tế bào phải đi qua những 'trạm' nào?",
-    "stages": 7,
-    "version": "v2 FINAL"
-  }
-  </script>
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
 
-  <!-- Google Fonts: Be Vietnam Pro & JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+body {
+  font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16.5px;
+  line-height: 1.65;
+  color: var(--ink);
+  background-color: var(--cream);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
 
-  <!-- Tabler Icons Webfont -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css">
+.app {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 16px clamp(10px, 2.5vw, 24px) 32px;
+  overflow-x: clip;
+}
 
-  <style>
-  /* ==========================================================================
-     1. DESIGN SYSTEM TOKENS (TOM HAUGOMAT EDITORIAL FLAT - AIDUCATION STANDARD)
-     ========================================================================== */
-  :root {
-    /* Neutrals */
-    --cream: #FAF7F0;
-    --cream-2: #F0EADD;
-    --cream-3: #E7DECC;
-    --paper-line: #E5DECF;
-    --paper-line-2: #D6CCB6;
-    --ink: #1A1A1A;
-    --ink-2: #514C44;
-    --ink-3: #7C756A;
-    --ink-faint: #ABA396;
+/* TOP PROGRESS BAR */
+.progress-bar-wrap {
+  width: 100%;
+  height: 6px;
+  background: var(--paper-line);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--jade), var(--jade-deep));
+  border-radius: 99px;
+  transition: width 0.35s ease;
+}
 
-    /* Jade (Main Action) */
-    --jade: #3CA57A;
-    --jade-deep: #2D8B6F;
-    --jade-dark: #14432F;
-    --jade-text: #1B5E48;
-    --jade-soft: #A9D0BE;
-    --jade-pale: #DCEAE1;
+/* STAGE SECTION */
+.stage {
+  display: block;
+  animation: fadeInStage 0.25s ease-out;
+}
+.stage.hidden {
+  display: none !important;
+}
+.congrats-overlay.hidden,
+.modal-backdrop.hidden,
+#completionModal.hidden {
+  display: none !important;
+}
+@keyframes fadeInStage {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    /* Sage */
-    --sage: #A8C9B8;
-    --sage-deep: #7CA792;
-    --sage-text: #46685A;
-    --sage-pale: #E1ECE4;
+/* TWO-BLOCK WORKSPACE */
+.split-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
 
-    /* Accent Amber */
-    --accent: #E8A24A;
-    --accent-deep: #CE8A33;
-    --accent-text: #8A551A;
-    --accent-pale: #F7E7CD;
+/* LEFT CARD: THEORY & VISUAL CANVAS */
+.visual-card {
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 16px;
+  align-self: start;
+  height: fit-content;
+  max-height: none;
+  overflow-y: visible;
+}
 
-    /* Semantic */
-    --correct: #2D8B6F;
-    --correct-bg: #DCEAE1;
-    --wrong: #C15F3C;
-    --wrong-bg: #F3E2D6;
-    --warning: #C58A2E;
-    --warning-bg: #F5E7CB;
-    --info: #4E7F92;
-    --info-bg: #DCE7EB;
+.stage-title {
+  font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.35;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
 
-    /* Layout & Elevation */
-    --radius-sm: 8px;
-    --radius-md: 14px;
-    --radius-lg: 20px;
-    --shadow-subtle: 0 4px 16px rgba(26, 26, 26, 0.05);
-    --shadow-card: 0 8px 24px rgba(26, 26, 26, 0.07);
-    --shadow-float: 0 16px 36px rgba(26, 26, 26, 0.12);
-  }
+.lead {
+  font-size: 0.96rem;
+  color: var(--ink-2);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
 
-  /* RESET & BASE */
-  *, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+/* SINGLE GUIDE BOX */
+.guide-box {
+  background: var(--cream);
+  border-left: 3.5px solid var(--jade);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  font-size: 0.91rem;
+  line-height: 1.55;
+  color: var(--jade-text);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.guide-box i {
+  color: var(--jade-deep);
+  font-size: 1.25rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
 
-  html {
-    font-size: 16px;
-    scroll-behavior: smooth;
-    background-color: var(--cream);
-    color: var(--ink);
-  }
+/* VERTICAL THEORY FLOW */
+.theory-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.theory-block {
+  background: var(--cream);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+.theory-block__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--jade-dark);
+  margin-bottom: 4px;
+}
+.theory-block__title i {
+  color: var(--jade-deep);
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+.theory-block__content {
+  font-size: 0.89rem;
+  color: var(--ink-2);
+  line-height: 1.58;
+}
 
-  body {
-    font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
-    font-size: 1.075rem;
-    line-height: 1.65;
-    background-color: var(--cream);
-    color: var(--ink);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-  }
+/* VISUAL CANVAS WRAP */
+.visual-canvas-wrap {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.visual-canvas-header {
+  padding: 10px 14px;
+  background: var(--cream);
+  border-bottom: 1px solid var(--paper-line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.visual-canvas-header i {
+  color: var(--jade-deep);
+}
+.status-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink-3);
+  background: var(--cream-2);
+  border: 1px solid var(--paper-line);
+  padding: 3px 9px;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+.visual-stage-canvas {
+  width: 100%;
+  height: auto;
+  position: relative;
+  background: #FAF7F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.visual-stage-canvas svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.visual-panel-toolbar {
+  padding: 10px 14px;
+  background: #FFFFFF;
+  border-top: 1px solid var(--paper-line);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.visual-caption {
+  padding: 9px 14px;
+  background: var(--cream);
+  border-top: 1px solid var(--paper-line);
+  font-size: 0.84rem;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+.visual-caption i {
+  color: var(--jade-deep);
+}
+.visual-status-tip {
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
 
-  /* HIDE HEADER BANNER & TOP NAV TABS (V10 STANDARD) */
-  header.banner,
-  .progress-nav-container,
-  .progress-nav,
-  .stepper-nav,
-  .stepper-bar,
-  .step-nav-bar,
-  .stage-header {
-    display: none !important;
-  }
+/* RIGHT CARD: WORKSPACE & EXERCISES */
+.workspace-card {
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 18px 16px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: 16px;
+  align-self: start;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  min-width: 0;
+}
 
-  /* HIGH SPECIFICITY MODAL HIDDEN RULE */
-  .hidden {
-    display: none !important;
-  }
-  .congrats-overlay.hidden,
-  .modal-backdrop.hidden,
-  #completionModal.hidden {
-    display: none !important;
-  }
+.task-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--paper-line);
+}
+.task-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.task-title i {
+  color: var(--jade-deep);
+}
+.task-badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--jade-text);
+  background: var(--jade-pale);
+  padding: 3px 10px;
+  border-radius: 99px;
+  white-space: nowrap;
+}
 
-  /* MAIN WRAPPER */
-  .module-wrapper {
-    max-width: 1320px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 24px 24px 48px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
+/* MCQ OPTIONS */
+.mcq-question-text {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.mcq-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+.option-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--cream);
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.91rem;
+  color: var(--ink);
+  font-weight: 500;
+  line-height: 1.45;
+  transition: all 0.2s ease;
+}
+.option-label:hover {
+  background: #FFFFFF;
+  border-color: var(--jade-soft);
+}
+.option-label.selected {
+  background: var(--jade-pale);
+  border-color: var(--jade);
+  color: var(--jade-dark);
+  font-weight: 700;
+}
+.option-label input[type="radio"] {
+  display: none;
+}
 
-  /* STAGE CONTAINER */
-  .stage {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    animation: fadeInStage 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  @keyframes fadeInStage {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+/* S03 CHIPS GRID 2x2 */
+.chips-grid-2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.feature-card {
+  background: var(--cream);
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.feature-card:hover {
+  background: #FFFFFF;
+  border-color: var(--jade-soft);
+  transform: translateY(-1px);
+}
+.feature-card.viewed {
+  border-color: var(--jade);
+  background: var(--jade-pale);
+}
+.feature-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.feature-card.viewed .feature-card-header {
+  color: var(--jade-dark);
+}
+.feature-card-header i {
+  color: var(--jade-deep);
+}
+.feature-card-desc {
+  font-size: 0.78rem;
+  color: var(--ink-2);
+  line-height: 1.4;
+}
 
-  /* STAGE HEADER AREA (COMPACT, NO GRADIENT BANNER) */
-  .stage-header {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .stage-meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  .stage-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.82rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    color: var(--jade-text);
-    background: var(--jade-pale);
-    padding: 4px 12px;
-    border-radius: 99px;
-  }
-  .stage-step-indicator {
-    font-size: 0.88rem;
-    font-weight: 700;
-    color: var(--ink-3);
-    background: var(--cream-2);
-    padding: 4px 14px;
-    border-radius: 99px;
-    border: 1px solid var(--paper-line);
-  }
-  .stage-title {
-    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
-    font-weight: 800;
-    color: var(--ink);
-    line-height: 1.3;
-  }
+/* S07 ORDER SEQUENCE TRAY & SLOTS */
+.order-sequence-tray {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.order-chip {
+  background: var(--cream);
+  border: 1.5px solid var(--paper-line);
+  border-radius: 99px;
+  padding: 6px 12px;
+  font-size: 0.83rem;
+  font-weight: 700;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.order-chip:hover:not(.placed) {
+  background: #FFFFFF;
+  border-color: var(--jade-soft);
+  transform: translateY(-1px);
+}
+.order-chip.placed {
+  opacity: 0.35;
+  pointer-events: none;
+  border-style: dashed;
+}
+.sequence-slots-display {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.slot-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--cream);
+  border: 1px solid var(--paper-line);
+  border-radius: 6px;
+  padding: 7px 12px;
+  font-size: 0.86rem;
+  color: var(--ink-2);
+  transition: all 0.2s ease;
+}
+.slot-row.filled {
+  background: var(--jade-pale);
+  border-color: var(--jade);
+  color: var(--jade-dark);
+  font-weight: 700;
+}
+.slot-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--cream-2);
+  font-weight: 800;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+.slot-row.filled .slot-number {
+  background: var(--jade-deep);
+  color: #FFFFFF;
+}
+.slot-name {
+  flex: 1;
+}
 
-  /* LEAD TEXT (PURE BIOLOGICAL CONTEXT, FREE OF ACTION PROMPTS) */
-  .lead-text {
-    font-size: 1.02rem;
-    color: var(--ink-2);
-    line-height: 1.68;
-    background: #FFFFFF;
-    padding: 14px 18px;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--paper-line);
-    border-left: 4px solid var(--jade);
-  }
+/* INLINE FEEDBACK */
+.inline-feedback {
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeIn 0.25s ease-out;
+}
+.inline-feedback.hidden {
+  display: none !important;
+}
+.inline-feedback.ok {
+  background: var(--jade-pale);
+  border-color: var(--jade-soft);
+}
+.inline-feedback.bad {
+  background: var(--wrong-bg);
+  border-color: var(--wrong);
+}
 
-  /* SINGLE POINT OF INSTRUCTION (GUIDE BOX) */
-  .guide-box {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 12px 18px;
-    background: var(--jade-pale);
-    border: 1px solid var(--jade-soft);
-    border-radius: var(--radius-md);
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--jade-text);
-    line-height: 1.5;
-  }
-  .guide-box i {
-    font-size: 1.25rem;
-    color: var(--jade-deep);
-    margin-top: 1px;
-    flex-shrink: 0;
-  }
+.feedback-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+.inline-feedback.ok .feedback-header {
+  color: var(--jade-dark);
+}
+.inline-feedback.bad .feedback-header {
+  color: var(--wrong);
+}
+.feedback-header i {
+  font-size: 1.25rem;
+}
 
-  /* STAGE BODY LAYOUT: 68% LEFT (VISUAL/INTERACTION) vs 32% RIGHT (MCQ/FEEDBACK) */
-  .stage-body {
-    display: grid;
-    grid-template-columns: 68% 32%;
-    gap: 24px;
-    align-items: start;
-  }
-  @media (max-width: 1080px) {
-    .stage-body {
-      grid-template-columns: 1fr;
-    }
-  }
+.correct-answer-box {
+  background: #FFFFFF;
+  border-left: 3.5px solid var(--jade);
+  border-radius: 4px;
+  padding: 9px 13px;
+  font-weight: 700;
+  color: var(--jade-text);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.explanation {
+  font-size: 0.88rem;
+  line-height: 1.58;
+  color: var(--ink-2);
+}
 
-  /* VISUAL CANVAS PANEL (LEFT 68%) */
-  .visual-panel {
-    background: #FFFFFF;
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--paper-line);
-    box-shadow: var(--shadow-card);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-  .visual-panel-header {
-    padding: 10px 18px;
-    background: var(--cream-2);
-    border-bottom: 1px solid var(--paper-line);
-    font-size: 0.88rem;
-    font-weight: 700;
-    color: var(--ink-2);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .visual-stage-canvas {
-    position: relative;
-    width: 100%;
-    min-height: 380px;
-    background: #FAF7F0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px;
-  }
-  .visual-stage-canvas svg {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
+/* PEDAGOGY META */
+.pedagogy-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  margin-top: 4px;
+}
+.pedagogy-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.8rem;
+}
+.pedagogy-item .label {
+  color: var(--ink-3);
+  font-weight: 500;
+  font-size: 0.76rem;
+}
+.pedagogy-item strong {
+  color: var(--ink);
+  font-weight: 700;
+}
 
-  /* VISUAL PANEL CONTROLS / TOOLBAR */
-  .visual-panel-toolbar {
-    padding: 12px 18px;
-    background: #FFFFFF;
-    border-top: 1px solid var(--paper-line);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
+/* CONTROLS ROW */
+.controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  margin-top: 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--paper-line);
+  flex-wrap: wrap;
+  row-gap: 10px;
+}
+.btn-group-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+}
+.btn-group-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  flex-wrap: nowrap;
+}
 
-  /* INTERACTION PANEL (RIGHT 32%) */
-  .interactive-panel {
-    background: #FFFFFF;
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--paper-line);
-    box-shadow: var(--shadow-card);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
-  .panel-title {
-    font-size: 1.05rem;
-    font-weight: 800;
-    color: var(--ink);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--paper-line);
-  }
-  .panel-title i {
-    color: var(--jade);
-  }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  min-height: 40px;
+  min-width: 0;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1.5px solid transparent;
+  white-space: nowrap;
+  user-select: none;
+}
+.btn i {
+  font-size: 1.15rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0 !important;
+  flex-shrink: 0;
+}
+.btn span {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  margin: 0 !important;
+}
 
-  /* FEATURE CHIPS & CARDS */
+@media (max-width: 1120px) {
+  .btn-group-left, .btn-group-right {
+    flex: 1 1 180px;
+  }
+  .btn-group-right {
+    justify-content: flex-end;
+  }
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.btn-primary {
+  background: var(--jade);
+  color: #FFFFFF;
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--jade-deep);
+  box-shadow: 0 4px 12px rgba(45,139,111,0.25);
+  transform: translateY(-1px);
+}
+.btn-secondary {
+  background: var(--cream-2);
+  color: var(--ink-2);
+  border-color: var(--paper-line);
+}
+.btn-secondary:hover:not(:disabled) {
+  background: var(--cream-3);
+  color: var(--ink);
+}
+.btn-action {
+  background: var(--accent);
+  color: #FFFFFF;
+}
+.btn-action:hover:not(:disabled) {
+  background: var(--accent-deep);
+  transform: translateY(-1px);
+}
+
+/* ANIMATIONS & SVG STYLES */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+.shake {
+  animation: shake 0.35s ease-in-out;
+}
+
+/* RIBOSOME S01 ANIMATION */
+#s01_largeSubunit, #s01_smallSubunit {
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.ribo-separated #s01_largeSubunit { transform: translateY(-45px); }
+.ribo-separated #s01_smallSubunit { transform: translateY(45px); }
+.ribo-assembled #s01_largeSubunit { transform: translateY(0); }
+.ribo-assembled #s01_smallSubunit { transform: translateY(0); }
+#s01_assembledTitleGroup {
+  opacity: 0;
+  transition: opacity 0.5s ease 0.6s, transform 0.5s ease 0.6s;
+  transform: scale(0.9);
+}
+.ribo-separated #s01_assembledTitleGroup { opacity: 0; transform: scale(0.9); pointer-events: none; }
+.ribo-assembled #s01_assembledTitleGroup { opacity: 1; transform: scale(1); }
+
+/* S02 ROUGH ER ACTIVE SYNTHESIS ANIMATION */
+.er-translating #s02_activeTranslatingRibosome {
+  animation: riboPulse 0.8s ease-in-out infinite alternate;
+}
+@keyframes riboPulse {
+  0% { transform: translate(510px, 350px) scale(1); }
+  100% { transform: translate(510px, 350px) scale(1.15); filter: drop-shadow(0 0 6px #7C3AED); }
+}
+.er-translating #s02_freeTransportVesicle {
+  animation: vesicleGlide 2.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes vesicleGlide {
+  0% { transform: translate(25px, 0); opacity: 0.3; }
+  30% { transform: translate(50px, 0); opacity: 1; }
+  85% { transform: translate(110px, 0); opacity: 1; }
+  100% { transform: translate(120px, 0); opacity: 0.9; }
+}
+
+/* S04 GOLGI ACTIVE ANIMATION */
+.golgi-active #s04_incomingVesicle {
+  animation: fuseCis 1.8s ease-in-out forwards;
+}
+@keyframes fuseCis {
+  0% { transform: translate(160px, 290px) scale(1); opacity: 1; }
+  60% { transform: translate(240px, 290px) scale(1.1); opacity: 0.8; }
+  100% { transform: translate(280px, 290px) scale(0); opacity: 0; }
+}
+.golgi-active #s04_secretoryVesicle1 {
+  animation: budTrans 2.4s ease-out forwards;
+}
+@keyframes budTrans {
+  0% { transform: translate(700px, 220px) scale(0); opacity: 0; }
+  40% { transform: translate(720px, 210px) scale(1); opacity: 0.9; }
+  100% { transform: translate(840px, 170px) scale(1.1); opacity: 1; }
+}
+
+/* S05 LYSOSOME ACTIVE DIGESTION */
+.lyso-active #s05_damagedMitochondrionVesicle {
+  animation: approachFusion 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes approachFusion {
+  0% { transform: translate(160px, 0); opacity: 1; }
+  70% { transform: translate(50px, 0); opacity: 0.8; }
+  100% { transform: translate(0, 0); opacity: 0; }
+}
+.lyso-active #s05_stage2FusionDigestion {
+  animation: digestionPulse 1.8s ease-in-out infinite alternate;
+}
+@keyframes digestionPulse {
+  0% { transform: translate(670px, 310px) scale(1); }
+  100% { transform: translate(670px, 310px) scale(1.04); filter: drop-shadow(0 0 10px #EF4444); }
+}
+
+/* S06 VACUOLE TURGID vs FLACCID */
+.vacuole-turgid #s06_centralVacuoleTurgid {
+  opacity: 1;
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: scale(1);
+}
+.vacuole-turgid #s06_vacuoleFlaccidOutline {
+  opacity: 0.2;
+  transition: opacity 0.8s ease;
+}
+.vacuole-flaccid #s06_centralVacuoleTurgid {
+  opacity: 0.15;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: scale(0.65);
+}
+.vacuole-flaccid #s06_vacuoleFlaccidOutline {
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+/* MODAL COMPLETION V10 */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 26, 26, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 16px;
+  animation: fadeIn 0.2s ease-out;
+}
+.modal-backdrop.hidden, .hidden {
+  display: none !important;
+}
+.modal-card {
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  max-width: 520px;
+  width: 100%;
+  padding: 28px 24px;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.2);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  z-index: 10001;
+}
+.modal-trophy {
+  font-size: 3.2rem;
+  color: var(--accent);
+  line-height: 1;
+}
+.modal-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.modal-desc {
+  font-size: 0.94rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+.modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin-top: 10px;
+}
+.modal-actions .btn {
+  flex: 1;
+}
+#confettiCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 980px) {
+  .split-workspace {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .visual-card, .workspace-card {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+@media (max-width: 600px) {
+  .pedagogy-meta {
+    grid-template-columns: 1fr;
+  }
   .chips-grid-2x2 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    grid-template-columns: 1fr;
   }
-  .feature-card {
-    padding: 12px 14px;
-    border: 1.5px solid var(--paper-line);
-    border-radius: var(--radius-md);
-    background: var(--cream);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    user-select: none;
-  }
-  .feature-card:hover {
-    border-color: var(--jade-soft);
-    background: #FFFFFF;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-subtle);
-  }
-  .feature-card.viewed {
-    border-color: var(--jade);
-    background: var(--jade-pale);
-  }
-  .feature-card.active {
-    border-color: var(--jade);
-    background: #D1FAE5;
-    box-shadow: 0 0 0 2px var(--jade), 0 4px 12px rgba(5, 150, 105, 0.25);
-  }
-  .feature-card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: 700;
-    font-size: 0.9rem;
-    color: var(--ink);
-  }
-  .feature-card-header i {
-    font-size: 1.15rem;
-    color: var(--jade-deep);
-  }
-  .feature-card-desc {
-    font-size: 0.8rem;
-    color: var(--ink-2);
-    line-height: 1.4;
-  }
-
-  /* MCQ OPTIONS */
-  .mcq-container {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .mcq-question-text {
-    font-size: 0.98rem;
-    font-weight: 700;
-    color: var(--ink);
-    line-height: 1.5;
-  }
-  .mcq-options-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .option-label {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 12px 14px;
-    border: 1.5px solid var(--paper-line);
-    border-radius: var(--radius-md);
-    background: #FFFFFF;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-size: 0.92rem;
-    color: var(--ink);
-    line-height: 1.45;
-    user-select: none;
-  }
-  .option-label:hover {
-    border-color: var(--jade-soft);
-    background: var(--cream);
-  }
-  .option-label.selected {
-    border-color: var(--jade);
-    background: var(--jade-pale);
-    color: var(--jade-text);
-    font-weight: 600;
-  }
-  .option-label input[type="radio"] {
-    margin-top: 3px;
-    accent-color: var(--jade);
-    flex-shrink: 0;
-  }
-
-  /* FEEDBACK BOX */
-  .feedback-box {
-    padding: 14px 16px;
-    border-radius: var(--radius-md);
-    font-size: 0.92rem;
-    line-height: 1.55;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    animation: fadeInFeedback 0.25s ease-out;
-  }
-  @keyframes fadeInFeedback {
-    from { opacity: 0; transform: translateY(-4px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .feedback-box.correct {
-    background: var(--correct-bg);
-    border: 1px solid var(--jade-soft);
-    color: var(--jade-dark);
-  }
-  .feedback-box.wrong {
-    background: var(--wrong-bg);
-    border: 1px solid #FCA5A5;
-    color: #991B1B;
-  }
-  .feedback-box i {
-    font-size: 1.25rem;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  /* BUTTON STYLES */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-family: inherit;
-    font-size: 0.95rem;
-    font-weight: 700;
-    padding: 10px 20px;
-    border-radius: var(--radius-md);
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    user-select: none;
-    text-decoration: none;
-  }
-  .btn:disabled {
-    opacity: 0.45;
-    cursor: not-allowed !important;
-    pointer-events: none;
-  }
-  .btn-primary {
-    background: var(--jade);
-    color: #FFFFFF;
-    box-shadow: 0 4px 12px rgba(60, 165, 122, 0.3);
-  }
-  .btn-primary:hover:not(:disabled) {
-    background: var(--jade-deep);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(60, 165, 122, 0.4);
-  }
-  .btn-secondary {
-    background: var(--cream-2);
-    color: var(--ink-2);
-    border: 1px solid var(--paper-line);
-  }
-  .btn-secondary:hover:not(:disabled) {
-    background: var(--cream-3);
-    color: var(--ink);
-  }
-  .btn-accent {
-    background: var(--accent);
-    color: #FFFFFF;
-  }
-  .btn-accent:hover:not(:disabled) {
-    background: var(--accent-deep);
-  }
-
-  /* STAGE CONTROLS ROW */
   .controls-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-    margin-top: 10px;
-    padding-top: 16px;
-    border-top: 1px solid var(--paper-line);
-  }
-
-  /* ANIMATION UTILITIES */
-  .shake {
-    animation: shakeAnim 0.4s ease-in-out;
-  }
-  @keyframes shakeAnim {
-    0%, 100% { transform: translateX(0); }
-    20%, 60% { transform: translateX(-6px); }
-    40%, 80% { transform: translateX(6px); }
-  }
-
-  /* RIBOSOME S01 ANIMATION CLASSES (SGK HÌNH 8.3) */
-  #s01_largeSubunit, #s01_smallSubunit {
-    transition: transform 1s cubic-bezier(0.34, 1.25, 0.64, 1);
-  }
-  .ribo-separated #s01_largeSubunit {
-    transform: translate(-35px, -65px);
-  }
-  .ribo-separated #s01_smallSubunit {
-    transform: translate(-25px, 65px);
-  }
-  .ribo-assembled #s01_largeSubunit {
-    transform: translate(0, 0);
-  }
-  .ribo-assembled #s01_smallSubunit {
-    transform: translate(0, 0);
-  }
-  #s01_assembledTitleGroup {
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .ribo-separated #s01_assembledTitleGroup {
-    opacity: 0;
-    transform: translate(450px, 525px) scale(0.9);
-    pointer-events: none;
-  }
-  .ribo-assembled #s01_assembledTitleGroup {
-    opacity: 1;
-    transform: translate(450px, 505px) scale(1);
-  }
-  .ribo-assembled {
-    filter: drop-shadow(0 0 16px rgba(147, 51, 234, 0.35));
-  }
-
-  /* S02 ROUGH ER ACTIVE SYNTHESIS ANIMATION */
-  .er-translating #s02_activeTranslatingRibosome {
-    animation: riboPulse 1.2s infinite alternate;
-  }
-  @keyframes riboPulse {
-    0% { filter: drop-shadow(0 0 4px #F59E0B); }
-    100% { filter: drop-shadow(0 0 14px #EF4444) scale(1.05); }
-  }
-  .er-translating #s02_freeTransportVesicle {
-    animation: vesicleGlide 2.2s infinite ease-in-out;
-  }
-  @keyframes vesicleGlide {
-    0% { transform: translate(10px, 0); opacity: 0.5; }
-    50% { transform: translate(75px, 0); opacity: 1; }
-    100% { transform: translate(110px, 0); opacity: 0.8; }
-  }
-
-  /* S04 GOLGI PROCESSING ANIMATION */
-  .golgi-active #s04_incomingVesicle {
-    animation: fuseCis 2s infinite ease-in-out;
-  }
-  @keyframes fuseCis {
-    0% { transform: translate(0, -40px); opacity: 0.4; }
-    50% { transform: translate(70, -40px); opacity: 1; }
-    100% { transform: translate(110px, -40px); opacity: 0; }
-  }
-  .golgi-active #s04_secretoryVesicle1 {
-    animation: budTrans 2s infinite ease-in-out 0.8s;
-  }
-  @keyframes budTrans {
-    0% { transform: translate(40px, -80px); opacity: 0; }
-    50% { transform: translate(100px, -80px); opacity: 1; }
-    100% { transform: translate(160px, -80px); opacity: 0.3; }
-  }
-
-  /* S05 LYSOSOME DIGESTION ANIMATION */
-  .lyso-active #s05_damagedMitochondrionVesicle {
-    animation: approachFusion 2s infinite ease-in-out;
-  }
-  @keyframes approachFusion {
-    0% { transform: translate(160px, 0); opacity: 1; }
-    70% { transform: translate(80px, 0); opacity: 0.8; }
-    100% { transform: translate(40px, 0); opacity: 0; }
-  }
-  .lyso-active #s05_stage2FusionDigestion {
-    animation: digestionPulse 1.4s infinite alternate;
-  }
-  @keyframes digestionPulse {
-    0% { filter: drop-shadow(0 0 6px #EF4444); }
-    100% { filter: drop-shadow(0 0 18px #DC2626) scale(1.02); }
-  }
-
-  /* S06 VACUOLE TURGID vs FLACCID */
-  .vacuole-turgid #s06_centralVacuoleTurgid {
-    display: block;
-    animation: turgidPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-  .vacuole-turgid #s06_vacuoleFlaccidOutline {
-    opacity: 0.3;
-  }
-  .vacuole-flaccid #s06_centralVacuoleTurgid {
-    display: none;
-  }
-  .vacuole-flaccid #s06_vacuoleFlaccidOutline {
-    opacity: 1;
-    stroke: #DC2626;
-    stroke-width: 3.5;
-  }
-  @keyframes turgidPop {
-    0% { transform: translate(230px, 260px) scale(0.7); opacity: 0.4; }
-    100% { transform: translate(230px, 260px) scale(1); opacity: 1; }
-  }
-
-  /* S07 ENDOMEMBRANE ORDER SLOTS */
-  .order-sequence-tray {
-    display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 12px;
-  }
-  .order-chip {
-    padding: 8px 12px;
-    background: var(--cream-2);
-    border: 1.5px solid var(--paper-line);
-    border-radius: var(--radius-sm);
-    font-size: 0.86rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    user-select: none;
-  }
-  .order-chip:hover {
-    border-color: var(--jade);
-    background: #FFFFFF;
-  }
-  .order-chip.placed {
-    background: var(--jade-pale);
-    border-color: var(--jade);
-    color: var(--jade-text);
-  }
-  .sequence-slots-display {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    background: var(--cream);
-    padding: 12px;
-    border-radius: var(--radius-md);
-    border: 1px dashed var(--paper-line-2);
-  }
-  .slot-row {
-    display: flex;
-    align-items: center;
     gap: 10px;
-    font-size: 0.88rem;
-    font-weight: 600;
   }
-  .slot-number {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--cream-3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    font-weight: 800;
-    color: var(--ink-2);
-  }
-  .slot-row.filled .slot-number {
-    background: var(--jade);
-    color: #FFFFFF;
-  }
-  .slot-name {
-    color: var(--ink-3);
-  }
-  .slot-row.filled .slot-name {
-    color: var(--jade-text);
-    font-weight: 700;
-  }
-
-  /* COMPLETION MODAL V10 */
-  .congrats-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(15, 23, 42, 0.7);
-    backdrop-filter: blur(8px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 99999;
-    padding: 20px;
-  }
-  .congrats-card {
-    background: #FFFFFF;
-    border-radius: var(--radius-lg);
-    border: 2px solid var(--paper-line);
-    box-shadow: var(--shadow-float);
-    max-width: 520px;
+  .btn-group-left, .btn-group-right {
     width: 100%;
-    padding: 36px 30px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 18px;
-    animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    position: relative;
-    z-index: 100000;
-  }
-  @keyframes modalPop {
-    from { transform: scale(0.85); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-  }
-  .trophy-icon-wrapper {
-    width: 84px;
-    height: 84px;
-    border-radius: 50%;
-    background: #FEF3C7;
-    border: 3px solid #F59E0B;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #D97706;
-    font-size: 2.8rem;
-    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.25);
-  }
-  .congrats-title {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--ink);
-  }
-  .congrats-text {
-    font-size: 0.98rem;
-    color: var(--ink-2);
-    line-height: 1.6;
-  }
-  .modal-actions {
-    display: flex;
-    gap: 12px;
-    width: 100%;
-    margin-top: 8px;
-  }
-  .modal-actions .btn {
-    flex: 1;
-  }
-  #confettiCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 99998;
-  }
-  
-  /* COLLAPSIBLE LEAD BOX (BỐI CẢNH KHOA HỌC) */
-  .lead-box {
-    background: #FFFFFF;
-    border: 1px solid var(--paper-line, #E5DECF);
-    border-left: 4px solid var(--jade, #3CA57A);
-    border-radius: var(--radius-md, 12px);
-    margin-bottom: 20px;
-    box-shadow: 0 2px 8px rgba(26, 26, 26, 0.04);
-    overflow: hidden;
-    transition: box-shadow 0.25s ease, border-color 0.25s ease;
-  }
-  .lead-box:hover {
-    box-shadow: 0 4px 14px rgba(26, 26, 26, 0.08);
-    border-color: var(--paper-line-2, #D6CCB6);
-  }
-  .lead-header {
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 10px 16px;
-    background: #FAFAF7;
-    cursor: pointer;
-    user-select: none;
-    border-bottom: 1px solid var(--paper-line, #E5DECF);
-    transition: background-color 0.2s ease, border-color 0.25s ease;
-  }
-  .lead-header:hover {
-    background: #F0F4F1;
-  }
-  .lead-header:focus-visible {
-    outline: 2px solid var(--jade, #3CA57A);
-    outline-offset: -2px;
-  }
-  .lead-title {
-    display: inline-flex;
-    align-items: center;
     gap: 8px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--jade-dark, #14432F);
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
   }
-  .lead-title i {
-    font-size: 1.15rem;
-    color: var(--jade, #3CA57A);
+  .btn {
+    flex: 1;
+    min-width: 0;
   }
-  .lead-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--ink-3, #7C756A);
-    background: #FFFFFF;
-    border: 1px solid var(--paper-line, #E5DECF);
-    padding: 4px 10px;
-    border-radius: 9999px;
-    transition: all 0.2s ease;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-  }
-  .lead-header:hover .lead-toggle {
-    color: var(--jade-text, #1B5E48);
-    border-color: var(--jade-soft, #A9D0BE);
-    background: var(--jade-pale, #DCEAE1);
-  }
-  .lead-toggle-icon {
-    font-size: 0.95rem;
-    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .lead-content {
-    max-height: 1000px;
-    opacity: 1;
-    overflow: hidden;
-    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.25s ease,
-                padding 0.35s ease;
-  }
-  .lead-box.collapsed {
-    box-shadow: none;
-  }
-  .lead-box.collapsed .lead-header {
-    border-bottom-color: transparent;
-    background: #FFFFFF;
-  }
-  .lead-box.collapsed .lead-toggle-icon {
-    transform: rotate(180deg);
-  }
-  .lead-box.collapsed .lead-content {
-    max-height: 0 !important;
-    opacity: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  .lead-box .lead-text {
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    padding: 14px 18px !important;
-    margin: 0 !important;
-    box-shadow: none !important;
-    font-size: 1.02rem;
-    line-height: 1.68;
-    color: var(--ink-2, #514C44);
-  }
-
-/* Đồng bộ trực tiếp theo SH10_B01_M02 */
-body{padding:0;font-size:17px}.app,.module-wrapper{max-width:1200px;margin:0 auto;padding:18px clamp(12px,2.4vw,28px) 12px}.stage.two-block-ready,.stage-section.two-block-ready{padding:0;background:transparent;border:0;box-shadow:none}.stage-badge,.stage-step-indicator{display:none!important}.split-workspace{display:grid!important;grid-template-columns:minmax(0,58fr) minmax(340px,42fr)!important;gap:20px!important;align-items:start!important}.visual-card,.workspace-card{min-width:0;border:1px solid var(--paper-line,#D6CCB6);border-radius:14px;overflow:hidden;box-shadow:0 2px 6px rgba(26,26,26,.05)}.visual-card{position:sticky;top:0;background:#fff}.visual-card__head{padding:14px 16px 12px;border-bottom:1px solid var(--paper-line,#D6CCB6);background:#fff}.visual-card__head h2{margin:0;font-size:clamp(1.25rem,2.2vw,1.75rem);line-height:1.28;letter-spacing:-.02em}.workspace-card{padding:18px;background:var(--cream-2,#FBF9F4)}.instruction{display:flex;align-items:flex-start;gap:10px;margin:0 0 16px;padding:12px 14px;border-left:4px solid var(--info,#4E7F92);border-radius:6px;background:var(--info-bg,#DCE7EB);font-size:.91rem;line-height:1.55}.inline-feedback{font-size:.92rem;line-height:1.55}.controls-row{display:flex;align-items:center;gap:10px;margin-top:16px;padding:14px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;flex-wrap:nowrap}.btn{min-height:44px;padding:9px 15px;font-size:.92rem}@media(max-width:980px){.split-workspace{grid-template-columns:1fr!important}.visual-card{position:static}.workspace-card{padding:16px}}@media(max-width:700px){body{font-size:16px}.app,.module-wrapper{padding:12px 10px 10px}}@media(max-width:420px){.app,.module-wrapper{padding:10px 8px 8px}.workspace-card{padding:13px}}
-.three-button-nav{display:flex;align-items:center;gap:12px;width:100%;margin-top:16px;padding:16px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;scrollbar-width:none}.three-button-nav::-webkit-scrollbar{display:none}.three-button-nav .nav-spacer{flex:1}.three-button-nav .btn{flex:0 0 auto;white-space:nowrap}.three-button-nav .nav-back{order:1}.three-button-nav .nav-reset{order:2}.three-button-nav .nav-spacer{order:3}.three-button-nav .nav-next{order:4}.three-button-nav .btn:disabled{opacity:.45;cursor:not-allowed}
-section.stage .controls-row,section.stage .stage-actions,section.stage-section .controls-row,section.stage-section .stage-actions,section.stage-card .controls-row,section.stage-card .stage-actions{display:none!important}
+}
 </style>
 </head>
 <body>
 
-  <div class="module-wrapper">
+<main class="app" id="app">
+  <!-- PROGRESS BAR (7 SEGMENTS) -->
+  <div class="progress-bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="14">
+    <div class="progress-bar-fill" id="progressBar" style="width: 14.3%;"></div>
+  </div>
 
-    <!-- =======================================================================
-         STAGE 1: RIBOSOME — "NHÀ MÁY" TỔNG HỢP PROTEIN
-         ======================================================================= -->
-    <section class="stage" id="stage-1" role="region" aria-label="Màn 1: Cấu tạo và chức năng Ribosome">
-      <div class="lead-box">
-        <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
-          <div class="lead-title">
-            <i class="ti ti-notes"></i>
-            <span>Bối cảnh khoa học</span>
+  <!-- =========================================================================
+       STAGE 1: RIBOSOME
+       ========================================================================= -->
+  <section class="stage" id="stage-1" role="region" aria-label="Màn 1: Ribosome: Nhà máy tổng hợp protein">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: LÝ THUYẾT & TRỰC QUAN -->
+      <article class="visual-card">
+        <h2 class="stage-title">Bào quan không màng nhưng bận rộn nhất</h2>
+        <p class="lead">
+          Ribosome là bào quan không có màng bao bọc, có dạng hình cầu. Thành phần hóa học của ribosome gồm rRNA và protein. Mỗi ribosome được tạo bởi hai tiểu đơn vị có kích thước khác nhau: tiểu đơn vị lớn và tiểu đơn vị nhỏ. Ribosome là nơi diễn ra quá trình tổng hợp protein. Ở các tế bào có tốc độ tổng hợp protein cao, số lượng ribosome trong một tế bào khá lớn, có thể lên tới vài triệu như tế bào tuyến tụy ở người.
+        </p>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Quan sát hai tiểu đơn vị của ribosome, bấm nút "Ghép tiểu đơn vị" để kết hợp thành ribosome hoàn chỉnh, sau đó trả lời câu hỏi bên phải.</span>
+        </div>
+
+        <div class="theory-flow">
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-circle-half-2"></i> Cấu trúc không màng đặc biệt</div>
+            <div class="theory-block__content">Khác với hầu hết các bào quan trong tế bào, ribosome hoàn toàn không có lớp màng phospholipid bao bọc. Cấu tạo hóa học gồm phân tử rRNA và chuỗi protein.</div>
           </div>
-          <div class="lead-toggle">
-            <span class="lead-toggle-label">Thu gọn</span>
-            <i class="ti ti-chevron-up lead-toggle-icon"></i>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-puzzle"></i> Hai tiểu đơn vị phối hợp nhịp nhàng</div>
+            <div class="theory-block__content">Gồm tiểu đơn vị lớn (nằm trên, chiếm ~65% thể tích) và tiểu đơn vị nhỏ (nằm dưới, chiếm ~35%). Bình thường hai tiểu đơn vị nằm tách rời nhau trong bào tương, chỉ kết hợp lại khi tiến hành dịch mã tổng hợp protein.</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-building-factory"></i> "Nhà máy" tổng hợp protein của tế bào</div>
+            <div class="theory-block__content">Dịch mã trình tự nucleotide trên mRNA thành chuỗi polypeptide. Tế bào tuyến tụy ở người có thể chứa hàng triệu ribosome để liên tục tổng hợp enzyme tiêu hóa và insulin.</div>
           </div>
         </div>
-        <div class="lead-content">
-          <div class="lead-text">
-        Ribosome là bào quan không có màng bao bọc, có dạng hình cầu. Thành phần hóa học của ribosome gồm rRNA và protein. Mỗi ribosome được tạo bởi hai tiểu đơn vị có kích thước khác nhau: tiểu đơn vị lớn và tiểu đơn vị nhỏ. Ribosome là nơi diễn ra quá trình tổng hợp protein. Ở các tế bào có tốc độ tổng hợp protein cao, số lượng ribosome trong một tế bào khá lớn, có thể lên tới vài triệu như tế bào tuyến tụy ở người.
-      </div>
-        </div>
-      </div>
 
-      <div class="guide-box">
-        <i class="ti ti-hand-click"></i>
-        <span>Quan sát hai tiểu đơn vị của ribosome, bấm nút "Ghép tiểu đơn vị" để kết hợp thành ribosome hoàn chỉnh, sau đó trả lời câu hỏi bên dưới.</span>
-      </div>
-
-      <div class="stage-body">
-        <!-- Visual 68% Left -->
-        <div class="visual-panel">
-          <div class="visual-panel-header">
-            <span><i class="ti ti-microscope"></i> Mô hình cấu trúc Ribosome </span>
-            <span id="s01StatusBadge" style="font-size:0.8rem; font-weight:700; color:var(--ink-3); background:var(--cream); padding:2px 8px; border-radius:99px;">Trạng thái: 2 tiểu đơn vị tách rời</span>
+        <div class="visual-canvas-wrap">
+          <div class="visual-canvas-header">
+            <span><i class="ti ti-atom"></i> Mô hình cấu tạo Ribosome</span>
+            <span class="status-badge" id="s01StatusBadge">Trạng thái: Hai tiểu đơn vị tách rời</span>
           </div>
           <div class="visual-stage-canvas ribo-separated" id="s01CanvasWrapper">
             <svg id="inlineSvgS01" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="100%" height="100%">
@@ -1126,7 +1158,7 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
   </g>
 
   <!-- =========================================================================
-       LABELS & POINTER LINES (Đúng Hình 8.3 SGK)
+       LABELS & POINTER LINES
        ========================================================================= -->
   <g id="s01_labelsGroup" font-family="'Be Vietnam Pro', sans-serif">
     
@@ -1159,84 +1191,98 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
     </g>
   </g>
 </svg>
-
           </div>
           <div class="visual-panel-toolbar">
-            <button class="btn btn-accent" id="btnAssembleS01" onclick="assembleRibosomeS01()">
-              <i class="ti ti-link"></i> Ghép tiểu đơn vị
+            <button class="btn btn-action" id="btnAssembleS01" onclick="assembleRibosomeS01()">
+              <i class="ti ti-link"></i><span>Ghép tiểu đơn vị</span>
             </button>
-            <span style="font-size:0.82rem; color:var(--ink-3);"><i class="ti ti-info-circle"></i> Tiểu đơn vị lớn nằm trên (65%), tiểu đơn vị nhỏ nằm dưới (35%)</span>
+            <span class="visual-status-tip"><i class="ti ti-info-circle"></i> Tiểu đơn vị lớn nằm trên (65%), tiểu đơn vị nhỏ nằm dưới (35%)</span>
+          </div>
+          <div class="visual-caption">
+            <i class="ti ti-info-circle"></i> Khi dịch mã bắt đầu, tiểu đơn vị nhỏ gắn vào mRNA trước, sau đó tiểu đơn vị lớn tiến vào ghép khít để hoàn thiện ribosome hoạt động.
           </div>
         </div>
+      </article>
 
-        <!-- Interactive 32% Right -->
-        <div class="interactive-panel">
-          <div class="panel-title">
-            <i class="ti ti-help-circle"></i> Câu hỏi khám phá
+      <!-- CỘT PHẢI: HOẠT ĐỘNG & BÀI TẬP -->
+      <article class="workspace-card">
+        <div class="task-header">
+          <div class="task-title"><i class="ti ti-help-circle"></i> Câu hỏi khám phá</div>
+          <span class="task-badge">Màn 1 / 7</span>
+        </div>
+
+        <p class="mcq-question-text">Câu hỏi: Ribosome có màng bao bọc không?</p>
+        <div class="mcq-options-list" id="s01OptionsList">
+          <label class="option-label" onclick="selectOptionS01(this, 'A')">
+            <input type="radio" name="mcq_s01" value="A">
+            <span>A. Không có màng bao bọc</span>
+          </label>
+          <label class="option-label" onclick="selectOptionS01(this, 'B')">
+            <input type="radio" name="mcq_s01" value="B">
+            <span>B. Có màng bao bọc giống các bào quan khác</span>
+          </label>
+        </div>
+
+        <div class="inline-feedback hidden" id="fbStage1"></div>
+
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage1" disabled>
+              <i class="ti ti-arrow-left"></i><span>Quay lại</span>
+            </button>
+            <button class="btn btn-secondary" id="btnRetryStage1" onclick="retryStage1()">
+              <i class="ti ti-rotate"></i><span>Làm lại</span>
+            </button>
           </div>
-
-          <div class="mcq-container">
-            <p class="mcq-question-text">Câu hỏi: Ribosome có màng bao bọc không?</p>
-            <div class="mcq-options-list" id="s01OptionsList">
-              <label class="option-label" onclick="selectOptionS01(this, 'A')">
-                <input type="radio" name="mcq_s01" value="A">
-                <span>A. Không có màng bao bọc</span>
-              </label>
-              <label class="option-label" onclick="selectOptionS01(this, 'B')">
-                <input type="radio" name="mcq_s01" value="B">
-                <span>B. Có màng bao bọc giống các bào quan khác</span>
-              </label>
-            </div>
-
+          <div class="btn-group-right">
             <button class="btn btn-primary" id="btnCheckS01" disabled onclick="submitStage1()">
-              <i class="ti ti-check"></i> TRẢ LỜI
+              <i class="ti ti-check"></i><span>Trả lời</span>
             </button>
-
-            <div class="feedback-box hidden" id="fbStage1"></div>
+            <button class="btn btn-primary" id="btnNextS01" disabled onclick="goToStage(2)">
+              <i class="ti ti-arrow-right"></i><span>Tiếp tục</span>
+            </button>
           </div>
         </div>
-      </div>
+      </article>
+    </div>
+  </section>
 
-      <div class="controls-row">
-        <button class="btn btn-secondary" disabled><i class="ti ti-chevron-left"></i> Quay lại</button>
-        <button class="btn btn-primary" id="btnNextS01" disabled onclick="goToStage(2)">Tiếp tục <i class="ti ti-chevron-right"></i></button>
-      </div>
-    </section>
+  <!-- =========================================================================
+       STAGE 2: LƯỚI NỘI CHẤT HẠT
+       ========================================================================= -->
+  <section class="stage hidden" id="stage-2" role="region" aria-label="Màn 2: Cấu trúc Lưới nội chất hạt">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: LÝ THUYẾT & TRỰC QUAN -->
+      <article class="visual-card">
+        <h2 class="stage-title">Ribosome gắn màng — Khởi đầu của protein tiết</h2>
+        <p class="lead">
+          Lưới nội chất là một hệ thống gồm các ống và các túi dẹp chứa dịch nối thông nhau thành một mạng lưới, gồm lưới nội chất hạt và lưới nội chất trơn. Lưới nội chất hạt gồm hệ thống các đường ống tạo nên bởi lớp kép phospholipid, một đầu liên kết với màng nhân, liên tục với lưới nội chất trơn. Trên màng lưới nội chất hạt có các hạt ribosome. Các protein tiết, protein màng và một số protein của hệ nội màng được tổng hợp trên ribosome bám lưới nội chất hạt, đi vào lòng hoặc gắn vào màng lưới nội chất, rồi được vận chuyển bằng túi đến bộ máy Golgi.
+        </p>
 
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Bấm nút "Theo dõi protein" để quan sát hành trình tổng hợp protein từ ribosome bám màng, đi vào lòng ER và nảy chồi thành túi vận chuyển.</span>
+        </div>
 
-    <!-- =======================================================================
-         STAGE 2: LƯỚI NỘI CHẤT HẠT
-         ======================================================================= -->
-    <section class="stage hidden" id="stage-2" role="region" aria-label="Màn 2: Cấu trúc Lưới nội chất hạt">
-      <div class="lead-box">
-        <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
-          <div class="lead-title">
-            <i class="ti ti-notes"></i>
-            <span>Bối cảnh khoa học</span>
+        <div class="theory-flow">
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-git-merge"></i> Hệ màng liên tục với màng nhân</div>
+            <div class="theory-block__content">Cấu tạo từ lớp kép phospholipid tạo thành các xoang túi dẹp nối thông với nhau. Màng ngoài của nhân tiếp nối liên tục với lưới nội chất hạt mà không hề bị đứt đoạn.</div>
           </div>
-          <div class="lead-toggle">
-            <span class="lead-toggle-label">Thu gọn</span>
-            <i class="ti ti-chevron-up lead-toggle-icon"></i>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-dots"></i> Ribosome bám mặt ngoài</div>
+            <div class="theory-block__content">Mặt tiếp xúc với tế bào chất được đính dày đặc các hạt ribosome, mang lại hình thái xù xì dạng "hạt". Đây là nơi tổng hợp các protein tiết và protein màng.</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-box-seam"></i> Đóng gói túi vận chuyển (Transport Vesicle)</div>
+            <div class="theory-block__content">Chuỗi polypeptide sau khi tổng hợp được đưa vào lòng xoang ER để cuộn xoắn và sửa đổi sơ bộ, sau đó màng ER nảy chồi thành túi vận chuyển đưa đến bộ máy Golgi.</div>
           </div>
         </div>
-        <div class="lead-content">
-          <div class="lead-text">
-        Lưới nội chất là một hệ thống gồm các ống và các túi dẹp chứa dịch nối thông nhau thành một mạng lưới, gồm lưới nội chất hạt và lưới nội chất trơn. Lưới nội chất hạt gồm hệ thống các đường ống tạo nên bởi lớp kép phospholipid, một đầu liên kết với màng nhân, liên tục với lưới nội chất trơn. Trên màng lưới nội chất hạt có các hạt ribosome. Các protein tiết, protein màng và một số protein của hệ nội màng được tổng hợp trên ribosome bám lưới nội chất hạt, đi vào lòng hoặc gắn vào màng lưới nội chất, rồi được vận chuyển bằng túi đến bộ máy Golgi.
-      </div>
-        </div>
-      </div>
 
-      <div class="guide-box">
-        <i class="ti ti-hand-click"></i>
-        <span>Bấm nút "Theo dõi protein" để quan sát hành trình tổng hợp protein từ ribosome bám màng, đi vào lòng ER và nảy chồi thành túi vận chuyển.</span>
-      </div>
-
-      <div class="stage-body">
-        <!-- Visual Left -->
-        <div class="visual-panel">
-          <div class="visual-panel-header">
-            <span><i class="ti ti-layers-intersect"></i> Cấu trúc Lưới nội chất nối liền màng nhân </span>
-            <span id="s02StatusBadge" style="font-size:0.8rem; font-weight:700; color:var(--ink-3); background:var(--cream); padding:2px 8px; border-radius:99px;">Chưa xem hoạt cảnh</span>
+        <div class="visual-canvas-wrap">
+          <div class="visual-canvas-header">
+            <span><i class="ti ti-layers-intersect"></i> Cấu trúc Lưới nội chất nối liền màng nhân</span>
+            <span class="status-badge" id="s02StatusBadge">Chưa xem hoạt cảnh</span>
           </div>
           <div class="visual-stage-canvas" id="s02CanvasWrapper">
             <svg id="inlineSvgS02" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" width="100%" height="100%">
@@ -1442,84 +1488,98 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
 
   </g>
 </svg>
-
           </div>
           <div class="visual-panel-toolbar">
-            <button class="btn btn-accent" id="btnTrackS02" onclick="playTrackingS02()">
-              <i class="ti ti-player-play"></i> Theo dõi protein
+            <button class="btn btn-action" id="btnTrackS02" onclick="playTrackingS02()">
+              <i class="ti ti-player-play"></i><span>Theo dõi protein</span>
             </button>
-            <span style="font-size:0.82rem; color:var(--ink-3);"><i class="ti ti-check"></i> Trace đường màng từ màng ngoài nhân $\rightarrow$ ER hạt $\rightarrow$ ER trơn liên tục</span>
+            <span class="visual-status-tip"><i class="ti ti-check"></i> Trace đường màng từ màng ngoài nhân → ER hạt → ER trơn liên tục</span>
+          </div>
+          <div class="visual-caption">
+            <i class="ti ti-info-circle"></i> Túi vận chuyển (Transport vesicle) nảy chồi mang protein vừa tổng hợp rời ER để tiến về mặt tiếp nhận (cis) của bộ máy Golgi.
           </div>
         </div>
+      </article>
 
-        <!-- Interactive Right -->
-        <div class="interactive-panel">
-          <div class="panel-title">
-            <i class="ti ti-help-circle"></i> Câu hỏi khám phá
+      <!-- CỘT PHẢI: HOẠT ĐỘNG & BÀI TẬP -->
+      <article class="workspace-card">
+        <div class="task-header">
+          <div class="task-title"><i class="ti ti-help-circle"></i> Câu hỏi khám phá</div>
+          <span class="task-badge">Màn 2 / 7</span>
+        </div>
+
+        <p class="mcq-question-text">Câu hỏi: ER hạt khác ER trơn ở điểm nào về cấu trúc?</p>
+        <div class="mcq-options-list" id="s02OptionsList">
+          <label class="option-label" onclick="selectOptionS02(this, 'A')">
+            <input type="radio" name="mcq_s02" value="A">
+            <span>A. ER hạt có ribosome gắn trên màng, ER trơn thì không (hoặc rất ít)</span>
+          </label>
+          <label class="option-label" onclick="selectOptionS02(this, 'B')">
+            <input type="radio" name="mcq_s02" value="B">
+            <span>B. ER hạt và ER trơn là hai bào quan hoàn toàn tách biệt, không nối thông</span>
+          </label>
+        </div>
+
+        <div class="inline-feedback hidden" id="fbStage2"></div>
+
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage2" onclick="goToStage(1)">
+              <i class="ti ti-arrow-left"></i><span>Quay lại</span>
+            </button>
+            <button class="btn btn-secondary" id="btnRetryStage2" onclick="retryStage2()">
+              <i class="ti ti-rotate"></i><span>Làm lại</span>
+            </button>
           </div>
-
-          <div class="mcq-container">
-            <p class="mcq-question-text">Câu hỏi: ER hạt khác ER trơn ở điểm nào về cấu trúc?</p>
-            <div class="mcq-options-list" id="s02OptionsList">
-              <label class="option-label" onclick="selectOptionS02(this, 'A')">
-                <input type="radio" name="mcq_s02" value="A">
-                <span>A. ER hạt có ribosome gắn trên màng, ER trơn thì không (hoặc rất ít)</span>
-              </label>
-              <label class="option-label" onclick="selectOptionS02(this, 'B')">
-                <input type="radio" name="mcq_s02" value="B">
-                <span>B. ER hạt và ER trơn là 2 bào quan hoàn toàn tách biệt, không liên quan nhau</span>
-              </label>
-            </div>
-
+          <div class="btn-group-right">
             <button class="btn btn-primary" id="btnCheckS02" disabled onclick="submitStage2()">
-              <i class="ti ti-check"></i> TRẢ LỜI
+              <i class="ti ti-check"></i><span>Trả lời</span>
             </button>
-
-            <div class="feedback-box hidden" id="fbStage2"></div>
+            <button class="btn btn-primary" id="btnNextS02" disabled onclick="goToStage(3)">
+              <i class="ti ti-arrow-right"></i><span>Tiếp tục</span>
+            </button>
           </div>
         </div>
-      </div>
+      </article>
+    </div>
+  </section>
 
-      <div class="controls-row">
-        <button class="btn btn-secondary" onclick="goToStage(1)"><i class="ti ti-chevron-left"></i> Quay lại</button>
-        <button class="btn btn-primary" id="btnNextS02" disabled onclick="goToStage(3)">Tiếp tục <i class="ti ti-chevron-right"></i></button>
-      </div>
-    </section>
+  <!-- =========================================================================
+       STAGE 3: LƯỚI NỘI CHẤT TRƠN
+       ========================================================================= -->
+  <section class="stage hidden" id="stage-3" role="region" aria-label="Màn 3: Lưới nội chất trơn và liên hệ tế bào gan">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: LÝ THUYẾT & TRỰC QUAN -->
+      <article class="visual-card">
+        <h2 class="stage-title">Không ribosome nhưng đa năng — ER trơn</h2>
+        <p class="lead">
+          Lưới nội chất trơn là hệ thống màng dạng ống dẹp thông với lưới nội chất hạt, có ít hoặc không có ribosome. Lưới nội chất trơn chứa các enzyme tham gia tổng hợp nhiều loại lipid, chuyển hóa đường, khử độc và là kho dự trữ canxi để thực hiện nhiều chức năng khác nhau như co cơ và truyền tin tế bào. Lưới nội chất trơn còn là nơi tổng hợp nên các sterol và phospholipid cấu tạo nên các loại màng của tế bào và các hormone sinh dục, tổng hợp và dự trữ triglyceride, tổng hợp và phân giải glycogen giúp điều hòa đường huyết. Các tế bào gan có lưới nội chất phát triển mạnh chứa các enzyme tham gia vào quá trình khử độc các chất như rượu và nhiều loại hóa chất độc hại khác.
+        </p>
 
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Nhấn vào đủ 4 thẻ chức năng bên phải để khám phá vai trò đa nhiệm của ER trơn, sau đó trả lời câu hỏi liên hệ thực tế.</span>
+        </div>
 
-    <!-- =======================================================================
-         STAGE 3: LƯỚI NỘI CHẤT TRƠN
-         ======================================================================= -->
-    <section class="stage hidden" id="stage-3" role="region" aria-label="Màn 3: Lưới nội chất trơn và liên hệ tế bào gan">
-      <div class="lead-box">
-        <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
-          <div class="lead-title">
-            <i class="ti ti-notes"></i>
-            <span>Bối cảnh khoa học</span>
+        <div class="theory-flow">
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-droplet"></i> Tổng hợp lipid & màng tế bào</div>
+            <div class="theory-block__content">Tổng hợp phospholipid, cholesterol và sterol cấu tạo màng sinh chất; sản xuất hormone sinh dục (estrogen, testosterone) và dự trữ triglyceride.</div>
           </div>
-          <div class="lead-toggle">
-            <span class="lead-toggle-label">Thu gọn</span>
-            <i class="ti ti-chevron-up lead-toggle-icon"></i>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-shield-check"></i> Khử độc rượu và hóa chất độc hại</div>
+            <div class="theory-block__content">Phát triển cực mạnh ở tế bào gan; hệ enzyme chuyển hóa các chất tan trong dầu (như thuốc, rượu) thành dạng dễ tan trong nước để bài xuất ra ngoài cơ thể.</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-activity"></i> Chuyển hóa đường & Kho dự trữ Canxi (Ca²⁺)</div>
+            <div class="theory-block__content">Chứa enzyme phân giải glycogen thành glucose giải phóng vào máu; đồng thời là kho bơm và giữ ion Ca²⁺ phục vụ cơ chế co cơ và dẫn truyền tín hiệu nội bào.</div>
           </div>
         </div>
-        <div class="lead-content">
-          <div class="lead-text">
-        Lưới nội chất trơn là hệ thống màng dạng ống dẹp thông với lưới nội chất hạt, có ít hoặc không có ribosome. Lưới nội chất trơn chứa các enzyme tham gia tổng hợp nhiều loại lipid, chuyển hóa đường, khử độc và là kho dự trữ canxi để thực hiện nhiều chức năng khác nhau như co cơ và truyền tin tế bào. Lưới nội chất trơn còn là nơi tổng hợp nên các sterol và phospholipid cấu tạo nên các loại màng của tế bào và các hormone sinh dục, tổng hợp và dự trữ triglyceride, tổng hợp và phân giải glycogen giúp điều hòa đường huyết. Các tế bào gan có lưới nội chất phát triển mạnh chứa các enzyme tham gia vào quá trình khử độc các chất như rượu và nhiều loại hóa chất độc hại khác.
-      </div>
-        </div>
-      </div>
 
-      <div class="guide-box">
-        <i class="ti ti-hand-click"></i>
-        <span>Nhấn vào đủ 4 thẻ chức năng bên phải để khám phá vai trò đa nhiệm của ER trơn, sau đó trả lời câu hỏi liên hệ thực tế.</span>
-      </div>
-
-      <div class="stage-body">
-        <!-- Visual Left: 2 Cell Panels -->
-        <div class="visual-panel">
-          <div class="visual-panel-header">
-            <span><i class="ti ti-columns"></i> So sánh mật độ ER trơn ở tế bào gan: Bình thường (Trái) & Đáp ứng khử độc (Phải)</span>
-            <span style="font-size:0.8rem; font-weight:700; color:var(--jade-text);"><i class="ti ti-shield-check"></i> Cùng hình học tế bào</span>
+        <div class="visual-canvas-wrap">
+          <div class="visual-canvas-header">
+            <span><i class="ti ti-shield"></i> Đối chiếu tế bào gan: Bình thường vs Thích nghi khử độc</span>
+            <span class="status-badge" style="color:var(--jade-text); background:var(--jade-pale);">So sánh hình thái ER trơn</span>
           </div>
           <div class="visual-stage-canvas" id="s03CanvasWrapper">
             <svg id="inlineSvgS03" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="100%" height="100%">
@@ -1655,113 +1715,126 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
     </g>
   </g>
 </svg>
-
           </div>
-          <div class="visual-panel-toolbar" style="font-size:0.86rem; color:var(--ink-2);">
-            <span><i class="ti ti-bulb"></i> <strong>Lưu ý:</strong> Tổn thương gan chủ yếu do sản phẩm chuyển hóa độc (như acetaldehyde) và stress oxy hóa, không phải do bản thân ER trơn phát triển.</span>
+          <div class="visual-panel-toolbar">
+            <span style="font-size:0.86rem; color:var(--ink-2);"><i class="ti ti-bulb"></i> <strong>Lưu ý:</strong> Tổn thương gan chủ yếu do sản phẩm chuyển hóa độc (như acetaldehyde) và stress oxy hóa, không phải do bản thân ER trơn phát triển.</span>
+          </div>
+          <div class="visual-caption">
+            <i class="ti ti-info-circle"></i> Tế bào gan thích nghi có mật độ ống màng ER trơn dày đặc gấp bội nhằm tăng diện tích gắn các enzyme chuyển hóa khử độc.
+          </div>
+        </div>
+      </article>
+
+      <!-- CỘT PHẢI: HOẠT ĐỘNG & BÀI TẬP -->
+      <article class="workspace-card">
+        <div class="task-header">
+          <div class="task-title"><i class="ti ti-category"></i> 4 Chức năng chính của ER trơn</div>
+          <span class="task-badge" id="s03Counter">Đã xem: 0 / 4</span>
+        </div>
+
+        <div class="chips-grid-2x2">
+          <div class="feature-card" onclick="viewFeatureS03(this, 0)">
+            <div class="feature-card-header">
+              <span>Tổng hợp lipid</span>
+              <i class="ti ti-droplet"></i>
+            </div>
+            <div class="feature-card-desc">Phospholipid màng, sterol, hormone sinh dục, triglyceride.</div>
+          </div>
+          <div class="feature-card" onclick="viewFeatureS03(this, 1)">
+            <div class="feature-card-header">
+              <span>Khử độc</span>
+              <i class="ti ti-shield"></i>
+            </div>
+            <div class="feature-card-desc">Tế bào gan khử độc rượu, thuốc và hóa chất lạ.</div>
+          </div>
+          <div class="feature-card" onclick="viewFeatureS03(this, 2)">
+            <div class="feature-card-header">
+              <span>Kho Ca²⁺</span>
+              <i class="ti ti-database"></i>
+            </div>
+            <div class="feature-card-desc">Dự trữ canxi phục vụ co cơ và truyền tin tế bào.</div>
+          </div>
+          <div class="feature-card" onclick="viewFeatureS03(this, 3)">
+            <div class="feature-card-header">
+              <span>Điều hòa đường huyết</span>
+              <i class="ti ti-chart-line"></i>
+            </div>
+            <div class="feature-card-desc">Tổng hợp & phân giải glycogen điều hòa glucose máu.</div>
           </div>
         </div>
 
-        <!-- Interactive Right: 4 Function Cards + MCQ -->
-        <div class="interactive-panel">
-          <div class="panel-title">
-            <i class="ti ti-category"></i> 4 Chức năng chính của ER trơn
-            <span style="margin-left:auto; font-size:0.8rem; font-weight:700; color:var(--jade-text);" id="s03Counter">Đã xem: 0 / 4</span>
-          </div>
+        <p class="mcq-question-text">Câu hỏi: Vì sao người uống rượu nhiều dễ mắc bệnh gan?</p>
+        <div class="mcq-options-list" id="s03OptionsList">
+          <label class="option-label" onclick="selectOptionS03(this, 'A')">
+            <input type="radio" name="mcq_s03" value="A">
+            <span>A. Vì ethanol và các sản phẩm chuyển hóa của nó gây độc, tạo stress oxy hóa; tế bào gan đồng thời tăng hệ enzyme và lưới nội chất trơn để đáp ứng khử độc</span>
+          </label>
+          <label class="option-label" onclick="selectOptionS03(this, 'B')">
+            <input type="radio" name="mcq_s03" value="B">
+            <span>B. Vì rượu trực tiếp phá hủy DNA trong nhân tế bào gan</span>
+          </label>
+        </div>
 
-          <div class="chips-grid-2x2">
-            <div class="feature-card" onclick="viewFeatureS03(this, 0)">
-              <div class="feature-card-header">
-                <span>Tổng hợp lipid</span>
-                <i class="ti ti-droplet"></i>
-              </div>
-              <div class="feature-card-desc">Phospholipid màng, sterol, hormone sinh dục, triglyceride.</div>
-            </div>
-            <div class="feature-card" onclick="viewFeatureS03(this, 1)">
-              <div class="feature-card-header">
-                <span>Khử độc</span>
-                <i class="ti ti-shield"></i>
-              </div>
-              <div class="feature-card-desc">Tế bào gan khử độc rượu, thuốc và hóa chất lạ.</div>
-            </div>
-            <div class="feature-card" onclick="viewFeatureS03(this, 2)">
-              <div class="feature-card-header">
-                <span>Kho Ca²⁺</span>
-                <i class="ti ti-database"></i>
-              </div>
-              <div class="feature-card-desc">Dự trữ canxi phục vụ co cơ và truyền tin tế bào.</div>
-            </div>
-            <div class="feature-card" onclick="viewFeatureS03(this, 3)">
-              <div class="feature-card-header">
-                <span>Điều hòa đường huyết</span>
-                <i class="ti ti-chart-line"></i>
-              </div>
-              <div class="feature-card-desc">Tổng hợp & phân giải glycogen điều hòa glucose máu.</div>
-            </div>
-          </div>
+        <div class="inline-feedback hidden" id="fbStage3"></div>
 
-          <div class="mcq-container">
-            <p class="mcq-question-text">Câu hỏi: Vì sao người uống rượu nhiều dễ mắc bệnh gan?</p>
-            <div class="mcq-options-list" id="s03OptionsList">
-              <label class="option-label" onclick="selectOptionS03(this, 'A')">
-                <input type="radio" name="mcq_s03" value="A">
-                <span>A. Vì ethanol và các sản phẩm chuyển hóa của nó gây độc, tạo stress oxy hóa; tế bào gan đồng thời tăng hệ enzyme và lưới nội chất trơn để đáp ứng khử độc</span>
-              </label>
-              <label class="option-label" onclick="selectOptionS03(this, 'B')">
-                <input type="radio" name="mcq_s03" value="B">
-                <span>B. Vì rượu trực tiếp phá hủy DNA trong nhân tế bào gan</span>
-              </label>
-            </div>
-
-            <button class="btn btn-primary" id="btnCheckS03" disabled onclick="submitStage3()">
-              <i class="ti ti-check"></i> TRẢ LỜI
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage3" onclick="goToStage(2)">
+              <i class="ti ti-arrow-left"></i><span>Quay lại</span>
             </button>
-
-            <div class="feedback-box hidden" id="fbStage3"></div>
+            <button class="btn btn-secondary" id="btnRetryStage3" onclick="retryStage3()">
+              <i class="ti ti-rotate"></i><span>Làm lại</span>
+            </button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-primary" id="btnCheckS03" disabled onclick="submitStage3()">
+              <i class="ti ti-check"></i><span>Trả lời</span>
+            </button>
+            <button class="btn btn-primary" id="btnNextS03" disabled onclick="goToStage(4)">
+              <i class="ti ti-arrow-right"></i><span>Tiếp tục</span>
+            </button>
           </div>
         </div>
-      </div>
+      </article>
+    </div>
+  </section>
 
-      <div class="controls-row">
-        <button class="btn btn-secondary" onclick="goToStage(2)"><i class="ti ti-chevron-left"></i> Quay lại</button>
-        <button class="btn btn-primary" id="btnNextS03" disabled onclick="goToStage(4)">Tiếp tục <i class="ti ti-chevron-right"></i></button>
-      </div>
-    </section>
+  <!-- =========================================================================
+       STAGE 4: BỘ MÁY GOLGI
+       ========================================================================= -->
+  <section class="stage hidden" id="stage-4" role="region" aria-label="Màn 4: Cấu trúc và chức năng bộ máy Golgi">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: LÝ THUYẾT & TRỰC QUAN -->
+      <article class="visual-card">
+        <h2 class="stage-title">Từ nguyên liệu thô đến sản phẩm hoàn chỉnh</h2>
+        <p class="lead">
+          Bộ máy Golgi gồm các túi dẹp nằm song song với nhau nhưng tách rời nhau. Bộ máy Golgi là nơi tập trung chế biến, lắp ráp, đóng gói các phân tử protein, lipid rồi phân phối chúng đến những nơi cần thiết. Ví dụ: protein được tổng hợp từ ribosome trên lưới nội chất hạt được gửi đến bộ máy Golgi bằng các túi vận chuyển. Tại đây, chúng được gắn thêm các chất khác, như chuỗi đường ngắn tạo nên glycoprotein, rồi bao gói vào trong các túi vận chuyển để chuyển đến các vị trí khác nhau trong tế bào hoặc xuất ra ngoài qua màng tế bào.
+        </p>
 
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Nhấn nút "Chế biến & Đóng gói" để xem túi vận chuyển từ ER hòa màng mặt cis, protein được gắn chuỗi đường và nảy chồi thành túi tiết ở mặt trans.</span>
+        </div>
 
-    <!-- =======================================================================
-         STAGE 4: BỘ MÁY GOLGI
-         ======================================================================= -->
-    <section class="stage hidden" id="stage-4" role="region" aria-label="Màn 4: Cấu trúc và chức năng bộ máy Golgi">
-      <div class="lead-box">
-        <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
-          <div class="lead-title">
-            <i class="ti ti-notes"></i>
-            <span>Bối cảnh khoa học</span>
+        <div class="theory-flow">
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-stack-2"></i> Chồng túi dẹp song song nhưng tách rời</div>
+            <div class="theory-block__content">Khác với lưới nội chất nối thông thành mạng lưới, bộ máy Golgi gồm các túi dẹp cong hình liềm (cisternae) xếp chồng song song nhưng tách biệt nhau bằng các khoảng gian màng rõ rệt.</div>
           </div>
-          <div class="lead-toggle">
-            <span class="lead-toggle-label">Thu gọn</span>
-            <i class="ti ti-chevron-up lead-toggle-icon"></i>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-arrows-left-right"></i> Phân cực chức năng: Mặt Cis & Mặt Trans</div>
+            <div class="theory-block__content">Mặt cis hướng về phía nhân/ER tiếp nhận túi vận chuyển; protein di chuyển qua các túi dẹp để được hoàn thiện; mặt trans hướng ra màng tế bào nảy chồi các túi tiết xuất bào.</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-package"></i> Chế biến, gắn chuỗi đường (Glycosyl hóa) & Giao hàng</div>
+            <div class="theory-block__content">Gắn thêm chuỗi đường ngắn (oligosaccharide) để tạo glycoprotein, gắn "tem địa chỉ" phân tử và đóng gói điều phối đến lysosome, không bào hoặc hòa màng xuất bào.</div>
           </div>
         </div>
-        <div class="lead-content">
-          <div class="lead-text">
-        Bộ máy Golgi gồm các túi dẹp nằm song song với nhau nhưng tách rời nhau. Bộ máy Golgi là nơi tập trung chế biến, lắp ráp, đóng gói các phân tử protein, lipid rồi phân phối chúng đến những nơi cần thiết. Ví dụ: protein được tổng hợp từ ribosome trên lưới nội chất hạt được gửi đến bộ máy Golgi bằng các túi vận chuyển. Tại đây, chúng được gắn thêm các chất khác, như chuỗi đường ngắn tạo nên glycoprotein, rồi bao gói vào trong các túi vận chuyển để chuyển đến các vị trí khác nhau trong tế bào hoặc xuất ra ngoài qua màng tế bào.
-      </div>
-        </div>
-      </div>
 
-      <div class="guide-box">
-        <i class="ti ti-hand-click"></i>
-        <span>Nhấn nút "Chế biến & Đóng gói" để xem túi vận chuyển từ ER hòa màng mặt cis, protein được gắn chuỗi đường và nảy chồi thành túi tiết ở mặt trans.</span>
-      </div>
-
-      <div class="stage-body">
-        <!-- Visual Left -->
-        <div class="visual-panel">
-          <div class="visual-panel-header">
-            <span><i class="ti ti-package"></i> Cấu trúc phân cực của Bộ máy Golgi</span>
-            <span id="s04StatusBadge" style="font-size:0.8rem; font-weight:700; color:var(--ink-3); background:var(--cream); padding:2px 8px; border-radius:99px;">Chưa xem hoạt cảnh</span>
+        <div class="visual-canvas-wrap">
+          <div class="visual-canvas-header">
+            <span><i class="ti ti-archive"></i> Cấu trúc Bộ máy Golgi và Dòng vận chuyển</span>
+            <span class="status-badge" id="s04StatusBadge">Chưa kích hoạt chế biến</span>
           </div>
           <div class="visual-stage-canvas" id="s04CanvasWrapper">
             <svg id="inlineSvgS04" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="100%" height="100%">
@@ -1949,84 +2022,98 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
 
   </g>
 </svg>
-
           </div>
           <div class="visual-panel-toolbar">
-            <button class="btn btn-accent" id="btnProcessS04" onclick="playProcessS04()">
-              <i class="ti ti-player-play"></i> Chế biến & Đóng gói
+            <button class="btn btn-action" id="btnProcessS04" onclick="playProcessS04()">
+              <i class="ti ti-player-play"></i><span>Chế biến & Đóng gói</span>
             </button>
-            <span style="font-size:0.82rem; color:var(--ink-3);"><i class="ti ti-check"></i> Các túi dẹp xếp song song nhưng TÁCH RỜI có khe hở rõ</span>
+            <span class="visual-status-tip"><i class="ti ti-check"></i> Các túi dẹp xếp song song nhưng TÁCH RỜI có khe hở rõ</span>
+          </div>
+          <div class="visual-caption">
+            <i class="ti ti-info-circle"></i> Túi tiết (Secretory vesicle) mang sản phẩm glycoprotein đã hoàn thiện nảy chồi từ mặt trans để tiến đến màng tế bào.
           </div>
         </div>
+      </article>
 
-        <!-- Interactive Right -->
-        <div class="interactive-panel">
-          <div class="panel-title">
-            <i class="ti ti-help-circle"></i> Câu hỏi khám phá
+      <!-- CỘT PHẢI: HOẠT ĐỘNG & BÀI TẬP -->
+      <article class="workspace-card">
+        <div class="task-header">
+          <div class="task-title"><i class="ti ti-help-circle"></i> Câu hỏi khám phá</div>
+          <span class="task-badge">Màn 4 / 7</span>
+        </div>
+
+        <p class="mcq-question-text">Câu hỏi: Cấu trúc Golgi có đặc điểm gì khác biệt so với lưới nội chất?</p>
+        <div class="mcq-options-list" id="s04OptionsList">
+          <label class="option-label" onclick="selectOptionS04(this, 'A')">
+            <input type="radio" name="mcq_s04" value="A">
+            <span>A. Các túi dẹp của Golgi tách rời nhau, không nối thông liên tục như lưới nội chất</span>
+          </label>
+          <label class="option-label" onclick="selectOptionS04(this, 'B')">
+            <input type="radio" name="mcq_s04" value="B">
+            <span>B. Golgi và lưới nội chất có cấu trúc hoàn toàn giống nhau, cùng nối liền màng nhân</span>
+          </label>
+        </div>
+
+        <div class="inline-feedback hidden" id="fbStage4"></div>
+
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage4" onclick="goToStage(3)">
+              <i class="ti ti-arrow-left"></i><span>Quay lại</span>
+            </button>
+            <button class="btn btn-secondary" id="btnRetryStage4" onclick="retryStage4()">
+              <i class="ti ti-rotate"></i><span>Làm lại</span>
+            </button>
           </div>
-
-          <div class="mcq-container">
-            <p class="mcq-question-text">Câu hỏi: Cấu trúc Golgi có đặc điểm gì khác biệt so với lưới nội chất?</p>
-            <div class="mcq-options-list" id="s04OptionsList">
-              <label class="option-label" onclick="selectOptionS04(this, 'A')">
-                <input type="radio" name="mcq_s04" value="A">
-                <span>A. Các túi dẹp của Golgi tách rời nhau, không nối thông liên tục như lưới nội chất</span>
-              </label>
-              <label class="option-label" onclick="selectOptionS04(this, 'B')">
-                <input type="radio" name="mcq_s04" value="B">
-                <span>B. Golgi và lưới nội chất có cấu trúc hoàn toàn giống nhau</span>
-              </label>
-            </div>
-
+          <div class="btn-group-right">
             <button class="btn btn-primary" id="btnCheckS04" disabled onclick="submitStage4()">
-              <i class="ti ti-check"></i> TRẢ LỜI
+              <i class="ti ti-check"></i><span>Trả lời</span>
             </button>
-
-            <div class="feedback-box hidden" id="fbStage4"></div>
+            <button class="btn btn-primary" id="btnNextS04" disabled onclick="goToStage(5)">
+              <i class="ti ti-arrow-right"></i><span>Tiếp tục</span>
+            </button>
           </div>
         </div>
-      </div>
+      </article>
+    </div>
+  </section>
 
-      <div class="controls-row">
-        <button class="btn btn-secondary" onclick="goToStage(3)"><i class="ti ti-chevron-left"></i> Quay lại</button>
-        <button class="btn btn-primary" id="btnNextS04" disabled onclick="goToStage(5)">Tiếp tục <i class="ti ti-chevron-right"></i></button>
-      </div>
-    </section>
+  <!-- =========================================================================
+       STAGE 5: LYSOSOME
+       ========================================================================= -->
+  <section class="stage hidden" id="stage-5" role="region" aria-label="Màn 5: Cấu trúc và chức năng Lysosome">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: LÝ THUYẾT & TRỰC QUAN -->
+      <article class="visual-card">
+        <h2 class="stage-title">Túi enzyme dọn dẹp tế bào</h2>
+        <p class="lead">
+          Lysosome là bào quan dạng túi có màng đơn, chứa các loại enzyme thủy phân protein, nucleic acid, carbohydrate, lipid, các bào quan và thậm chí cả các tế bào cần thay thế. Lysosome được hình thành từ bộ máy Golgi và có ở các tế bào động vật. Những tế bào bị tổn thương, các tế bào và bào quan quá hạn sử dụng được enzyme của lysosome phân giải, lấy những gì có thể tái sử dụng, còn chất thải được xuất ra ngoài tế bào. Lysosome không chỉ làm nhiệm vụ tái chế mà còn hỗ trợ tế bào tiêu hóa thức ăn theo con đường thực bào.
+        </p>
 
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Nhấn nút "Phân giải bào quan hỏng" để quan sát lysosome màng đơn hòa màng và enzyme thủy phân tiêu hóa ti thể già hỏng bên trong lòng túi.</span>
+        </div>
 
-    <!-- =======================================================================
-         STAGE 5: LYSOSOME
-         ======================================================================= -->
-    <section class="stage hidden" id="stage-5" role="region" aria-label="Màn 5: Cấu trúc và chức năng Lysosome">
-      <div class="lead-box">
-        <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
-          <div class="lead-title">
-            <i class="ti ti-notes"></i>
-            <span>Bối cảnh khoa học</span>
+        <div class="theory-flow">
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-circle-dot"></i> Bào quan dạng túi màng đơn</div>
+            <div class="theory-block__content">Có dạng hình cầu được bao bọc bởi một lớp màng đơn duy nhất, bắt nguồn từ nảy chồi ở bộ máy Golgi. Điển hình ở tế bào động vật.</div>
           </div>
-          <div class="lead-toggle">
-            <span class="lead-toggle-label">Thu gọn</span>
-            <i class="ti ti-chevron-up lead-toggle-icon"></i>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-flame"></i> Kho enzyme thủy phân acid</div>
+            <div class="theory-block__content">Chứa hơn 40 loại enzyme thủy phân khác nhau (protease, lipase, nuclease...). Các enzyme này hoạt động tối ưu ở pH acid (~4.5 - 5.0) nhờ bơm proton H⁺ trên màng túi.</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-recycle"></i> Tái chế nội bào & Dọn dẹp thực bào</div>
+            <div class="theory-block__content">Phân giải các bào quan già cỗi hoặc hư hỏng (tự thực bào - autophagy), giải phóng các đơn phân dinh dưỡng cho tế bào tái tạo và tiêu diệt tác nhân xâm nhập.</div>
           </div>
         </div>
-        <div class="lead-content">
-          <div class="lead-text">
-        Lysosome là bào quan dạng túi có màng đơn, chứa các loại enzyme thủy phân protein, nucleic acid, carbohydrate, lipid, các bào quan và thậm chí cả các tế bào cần thay thế. Lysosome được hình thành từ bộ máy Golgi và có ở các tế bào động vật. Những tế bào bị tổn thương, các tế bào và bào quan quá hạn sử dụng được enzyme của lysosome phân giải, lấy những gì có thể tái sử dụng, còn chất thải được xuất ra ngoài tế bào. Lysosome không chỉ làm nhiệm vụ tái chế mà còn hỗ trợ tế bào tiêu hóa thức ăn theo con đường thực bào.
-      </div>
-        </div>
-      </div>
 
-      <div class="guide-box">
-        <i class="ti ti-hand-click"></i>
-        <span>Nhấn nút "Phân giải" để quan sát lysosome màng đơn hòa màng và enzyme thủy phân tiêu hóa ti thể già hỏng bên trong lòng túi.</span>
-      </div>
-
-      <div class="stage-body">
-        <!-- Visual Left -->
-        <div class="visual-panel">
-          <div class="visual-panel-header">
-            <span><i class="ti ti-flame"></i> Cơ chế tự thực bào của Lysosome </span>
-            <span style="font-size:0.8rem; font-weight:700; color:#DC2626; background:#FEF2F2; padding:2px 8px; border-radius:99px;"><i class="ti ti-shield-lock"></i> Túi màng ĐƠN</span>
+        <div class="visual-canvas-wrap">
+          <div class="visual-canvas-header">
+            <span><i class="ti ti-trash"></i> Cơ chế Tự thực bào của Lysosome</span>
+            <span class="status-badge" style="color:#DC2626; background:#FEF2F2;">Màng đơn enzyme acid</span>
           </div>
           <div class="visual-stage-canvas" id="s05CanvasWrapper">
             <svg id="inlineSvgS05" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 600" width="100%" height="100%">
@@ -2180,84 +2267,98 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
     </g>
   </g>
 </svg>
-
           </div>
           <div class="visual-panel-toolbar">
-            <button class="btn btn-accent" id="btnDigestS05" onclick="playDigestS05()">
-              <i class="ti ti-player-play"></i> Phân giải bào quan hỏng
+            <button class="btn btn-action" id="btnDigestS05" onclick="playDigestS05()">
+              <i class="ti ti-player-play"></i><span>Phân giải bào quan hỏng</span>
             </button>
-            <span style="font-size:0.82rem; color:var(--ink-3);"><i class="ti ti-info-circle"></i> Enzyme thủy phân chỉ hoạt động bên trong lòng túi acid, không tràn ra ngoài</span>
+            <span class="visual-status-tip"><i class="ti ti-info-circle"></i> Enzyme thủy phân chỉ hoạt động bên trong lòng túi acid, không tràn ra ngoài</span>
+          </div>
+          <div class="visual-caption">
+            <i class="ti ti-info-circle"></i> Lysosome sơ cấp dung hợp màng với túi mang ti thể già hỏng tạo lysosome thứ cấp; enzyme phân cắt đại phân tử thành nguyên liệu dinh dưỡng hữu ích.
           </div>
         </div>
+      </article>
 
-        <!-- Interactive Right -->
-        <div class="interactive-panel">
-          <div class="panel-title">
-            <i class="ti ti-help-circle"></i> Câu hỏi khám phá
+      <!-- CỘT PHẢI: HOẠT ĐỘNG & BÀI TẬP -->
+      <article class="workspace-card">
+        <div class="task-header">
+          <div class="task-title"><i class="ti ti-help-circle"></i> Câu hỏi khám phá</div>
+          <span class="task-badge">Màn 5 / 7</span>
+        </div>
+
+        <p class="mcq-question-text">Câu hỏi: Lysosome có ở tế bào thực vật không?</p>
+        <div class="mcq-options-list" id="s05OptionsList">
+          <label class="option-label" onclick="selectOptionS05(this, 'A')">
+            <input type="radio" name="mcq_s05" value="A">
+            <span>A. Lysosome là bào quan điển hình ở tế bào động vật; tế bào thực vật thường dùng không bào tiêu hóa để thực hiện chức năng tương tự</span>
+          </label>
+          <label class="option-label" onclick="selectOptionS05(this, 'B')">
+            <input type="radio" name="mcq_s05" value="B">
+            <span>B. Có mặt đầy đủ và phát triển mạnh ở cả tế bào thực vật giống hệt tế bào động vật</span>
+          </label>
+        </div>
+
+        <div class="inline-feedback hidden" id="fbStage5"></div>
+
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage5" onclick="goToStage(4)">
+              <i class="ti ti-arrow-left"></i><span>Quay lại</span>
+            </button>
+            <button class="btn btn-secondary" id="btnRetryStage5" onclick="retryStage5()">
+              <i class="ti ti-rotate"></i><span>Làm lại</span>
+            </button>
           </div>
-
-          <div class="mcq-container">
-            <p class="mcq-question-text">Câu hỏi: Lysosome có ở tế bào thực vật không?</p>
-            <div class="mcq-options-list" id="s05OptionsList">
-              <label class="option-label" onclick="selectOptionS05(this, 'A')">
-                <input type="radio" name="mcq_s05" value="A">
-                <span>A. Lysosome là bào quan điển hình ở tế bào động vật; tế bào thực vật thường dùng không bào tiêu hóa để thực hiện chức năng tương tự</span>
-              </label>
-              <label class="option-label" onclick="selectOptionS05(this, 'B')">
-                <input type="radio" name="mcq_s05" value="B">
-                <span>B. Có, giống hệt tế bào động vật</span>
-              </label>
-            </div>
-
+          <div class="btn-group-right">
             <button class="btn btn-primary" id="btnCheckS05" disabled onclick="submitStage5()">
-              <i class="ti ti-check"></i> TRẢ LỜI
+              <i class="ti ti-check"></i><span>Trả lời</span>
             </button>
-
-            <div class="feedback-box hidden" id="fbStage5"></div>
+            <button class="btn btn-primary" id="btnNextS05" disabled onclick="goToStage(6)">
+              <i class="ti ti-arrow-right"></i><span>Tiếp tục</span>
+            </button>
           </div>
         </div>
-      </div>
+      </article>
+    </div>
+  </section>
 
-      <div class="controls-row">
-        <button class="btn btn-secondary" onclick="goToStage(4)"><i class="ti ti-chevron-left"></i> Quay lại</button>
-        <button class="btn btn-primary" id="btnNextS05" disabled onclick="goToStage(6)">Tiếp tục <i class="ti ti-chevron-right"></i></button>
-      </div>
-    </section>
+  <!-- =========================================================================
+       STAGE 6: KHÔNG BÀO
+       ========================================================================= -->
+  <section class="stage hidden" id="stage-6" role="region" aria-label="Màn 6: Cấu trúc và chức năng Không bào">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: LÝ THUYẾT & TRỰC QUAN -->
+      <article class="visual-card">
+        <h2 class="stage-title">Vì sao rau tươi lại héo, rồi tươi lại khi ngâm nước?</h2>
+        <p class="lead">
+          Ở tế bào thực vật, không bào là bào quan có một lớp màng bao bọc. Không bào lớn nằm giữa tế bào được gọi là không bào trung tâm, giúp điều hòa áp suất thẩm thấu trong tế bào. Các không bào thường được bắt nguồn từ lưới nội chất và bộ máy Golgi. Một số không bào ở tế bào của nhiều loại lá, hoa và quả có chứa các sắc tố thu hút côn trùng đến thụ phấn, các động vật đến ăn và phát tán hạt. Số khác được dùng làm kho chứa các chất như carbohydrate, ion, các loại muối, chất phế thải, các enzyme thủy phân các đại phân tử sinh học cũng như các enzyme khử các chất độc từ bên ngoài xâm nhập vào tế bào. Ví dụ: quả chanh có vị chua vì không bào của chúng chứa acid chanh. Một số loài động vật nguyên sinh như trùng giày có các không bào co bóp làm nhiệm vụ như những chiếc bơm, bơm nước ra khỏi tế bào khi tế bào bị hấp thụ quá nhiều nước; không bào tiêu hóa chứa các enzyme giúp chúng tiêu hóa thức ăn.
+        </p>
 
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Nhấn các nút để xem trạng thái "Mất nước (Rau héo)" và "Ngâm nước (Rau tươi lại)", đối chiếu 2 loại không bào ở trùng giày, sau đó trả lời câu hỏi.</span>
+        </div>
 
-    <!-- =======================================================================
-         STAGE 6: KHÔNG BÀO
-         ======================================================================= -->
-    <section class="stage hidden" id="stage-6" role="region" aria-label="Màn 6: Cấu trúc và chức năng Không bào">
-      <div class="lead-box">
-        <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
-          <div class="lead-title">
-            <i class="ti ti-notes"></i>
-            <span>Bối cảnh khoa học</span>
+        <div class="theory-flow">
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-droplet"></i> Không bào trung tâm lớn ở thực vật</div>
+            <div class="theory-block__content">Ở tế bào thực vật trưởng thành, không bào trung tâm hút nước trương phồng, chiếm tới 90% thể tích tế bào, ép tế bào chất sát vách tế bào tạo sức trương giúp thân lá cứng cáp.</div>
           </div>
-          <div class="lead-toggle">
-            <span class="lead-toggle-label">Thu gọn</span>
-            <i class="ti ti-chevron-up lead-toggle-icon"></i>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-box"></i> Kho chứa sắc tố, ion và chất bảo vệ</div>
+            <div class="theory-block__content">Chứa sắc tố anthocyanin tạo màu hoa quả thu hút côn trùng thụ phấn; dự trữ muối khoáng, acid hữu cơ (vị chua của chanh) và hợp chất xua đuổi động vật ăn thực vật.</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-sparkles"></i> Không bào ở động vật nguyên sinh (Trùng giày)</div>
+            <div class="theory-block__content">Gồm không bào co bóp hình hoa thị (đóng vai trò như bơm đẩy nước thừa tránh vỡ tế bào trong môi trường nhược trương) và các không bào tiêu hóa phân cắt thức ăn.</div>
           </div>
         </div>
-        <div class="lead-content">
-          <div class="lead-text">
-        Ở tế bào thực vật, không bào là bào quan có một lớp màng bao bọc. Không bào lớn nằm giữa tế bào được gọi là không bào trung tâm, giúp điều hòa áp suất thẩm thấu trong tế bào. Các không bào thường được bắt nguồn từ lưới nội chất và bộ máy Golgi. Một số không bào chứa sắc tố thu hút côn trùng thụ phấn, số khác dự trữ nước, ion, đường hoặc enzyme khử độc. Một số loài động vật nguyên sinh như trùng giày có các không bào co bóp làm nhiệm vụ như những chiếc bơm, bơm nước ra khỏi tế bào; không bào tiêu hóa chứa enzyme giúp tiêu hóa thức ăn.
-      </div>
-        </div>
-      </div>
 
-      <div class="guide-box">
-        <i class="ti ti-hand-click"></i>
-        <span>Nhấn các nút để xem trạng thái "Mất nước (Rau héo)" và "Ngâm nước (Rau tươi lại)", đối chiếu 2 loại không bào ở trùng giày, sau đó trả lời câu hỏi.</span>
-      </div>
-
-      <div class="stage-body">
-        <!-- Visual Left -->
-        <div class="visual-panel">
-          <div class="visual-panel-header">
-            <span><i class="ti ti-droplet"></i> Không bào trung tâm thực vật (Trái) & Không bào ở Trùng giày (Phải) - Hình 8.7 SGK</span>
-            <span id="s06StatusBadge" style="font-size:0.8rem; font-weight:700; color:var(--jade-text);"><i class="ti ti-droplet-filled"></i> Trạng thái: Trương nước</span>
+        <div class="visual-canvas-wrap">
+          <div class="visual-canvas-header">
+            <span><i class="ti ti-droplet-half-2"></i> Trương nước thực vật & Không bào trùng giày</span>
+            <span class="status-badge" id="s06StatusBadge">Trạng thái: Trương nước (Rau tươi)</span>
           </div>
           <div class="visual-stage-canvas vacuole-turgid" id="s06CanvasWrapper">
             <svg id="inlineSvgS06" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 580" width="100%" height="100%">
@@ -2473,93 +2574,105 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
 
   </g>
 </svg>
-
           </div>
           <div class="visual-panel-toolbar">
-            <div style="display:flex; gap:8px;">
-              <button class="btn btn-secondary" id="btnFlaccidS06" onclick="setVacuoleState(false)">
-                <i class="ti ti-droplet-off"></i> Mất nước (Rau héo)
-              </button>
-              <button class="btn btn-primary" id="btnTurgidS06" onclick="setVacuoleState(true)">
-                <i class="ti ti-droplet"></i> Ngâm nước (Tươi lại)
-              </button>
-            </div>
-            <span style="font-size:0.82rem; color:var(--ink-3);"><i class="ti ti-info-circle"></i> Trùng giày có riêng: Không bào co bóp (hoa thị) & Không bào tiêu hóa</span>
-          </div>
-        </div>
-
-        <!-- Interactive Right -->
-        <div class="interactive-panel">
-          <div class="panel-title">
-            <i class="ti ti-help-circle"></i> Câu hỏi khám phá
-          </div>
-
-          <div class="mcq-container">
-            <p class="mcq-question-text">Câu hỏi: Rau héo rồi tươi lại khi ngâm nước là do bào quan nào thay đổi kích thước?</p>
-            <div class="mcq-options-list" id="s06OptionsList">
-              <label class="option-label" onclick="selectOptionS06(this, 'A')">
-                <input type="radio" name="mcq_s06" value="A">
-                <span>A. Không bào (trung tâm)</span>
-              </label>
-              <label class="option-label" onclick="selectOptionS06(this, 'B')">
-                <input type="radio" name="mcq_s06" value="B">
-                <span>B. Nhân tế bào</span>
-              </label>
-              <label class="option-label" onclick="selectOptionS06(this, 'C')">
-                <input type="radio" name="mcq_s06" value="C">
-                <span>C. Ti thể</span>
-              </label>
-            </div>
-
-            <button class="btn btn-primary" id="btnCheckS06" disabled onclick="submitStage6()">
-              <i class="ti ti-check"></i> TRẢ LỜI
+            <button class="btn btn-secondary" id="btnFlaccidS06" onclick="setVacuoleState(false)">
+              <i class="ti ti-droplet-off"></i><span>Mất nước (Rau héo)</span>
             </button>
-
-            <div class="feedback-box hidden" id="fbStage6"></div>
+            <button class="btn btn-primary" id="btnTurgidS06" onclick="setVacuoleState(true)">
+              <i class="ti ti-droplet"></i><span>Ngâm nước (Tươi lại)</span>
+            </button>
+            <span class="visual-status-tip"><i class="ti ti-info-circle"></i> Trùng giày có riêng: Không bào co bóp (hoa thị) & Không bào tiêu hóa</span>
+          </div>
+          <div class="visual-caption">
+            <i class="ti ti-info-circle"></i> Khi mất nước, không bào trung tâm co rúm làm giảm áp suất trương nước, khiến tế bào mềm nhũn (rau bị héo); khi ngâm nước tế bào hút nước căng phồng trở lại.
           </div>
         </div>
-      </div>
+      </article>
 
-      <div class="controls-row">
-        <button class="btn btn-secondary" onclick="goToStage(5)"><i class="ti ti-chevron-left"></i> Quay lại</button>
-        <button class="btn btn-primary" id="btnNextS06" disabled onclick="goToStage(7)">Tiếp tục <i class="ti ti-chevron-right"></i></button>
-      </div>
-    </section>
+      <!-- CỘT PHẢI: HOẠT ĐỘNG & BÀI TẬP -->
+      <article class="workspace-card">
+        <div class="task-header">
+          <div class="task-title"><i class="ti ti-help-circle"></i> Câu hỏi khám phá</div>
+          <span class="task-badge">Màn 6 / 7</span>
+        </div>
 
+        <p class="mcq-question-text">Câu hỏi: Rau héo rồi tươi lại khi ngâm nước là do bào quan nào thay đổi kích thước?</p>
+        <div class="mcq-options-list" id="s06OptionsList">
+          <label class="option-label" onclick="selectOptionS06(this, 'A')">
+            <input type="radio" name="mcq_s06" value="A">
+            <span>A. Không bào (trung tâm)</span>
+          </label>
+          <label class="option-label" onclick="selectOptionS06(this, 'B')">
+            <input type="radio" name="mcq_s06" value="B">
+            <span>B. Nhân tế bào</span>
+          </label>
+          <label class="option-label" onclick="selectOptionS06(this, 'C')">
+            <input type="radio" name="mcq_s06" value="C">
+            <span>C. Ti thể</span>
+          </label>
+        </div>
 
-    <!-- =======================================================================
-         STAGE 7: TỔNG KẾT HỆ THỐNG NỘI MÀNG
-         ======================================================================= -->
-    <section class="stage hidden" id="stage-7" role="region" aria-label="Màn 7: Tổng kết Hệ thống nội màng">
-      <div class="lead-box">
-        <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
-          <div class="lead-title">
-            <i class="ti ti-notes"></i>
-            <span>Bối cảnh khoa học</span>
+        <div class="inline-feedback hidden" id="fbStage6"></div>
+
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage6" onclick="goToStage(5)">
+              <i class="ti ti-arrow-left"></i><span>Quay lại</span>
+            </button>
+            <button class="btn btn-secondary" id="btnRetryStage6" onclick="retryStage6()">
+              <i class="ti ti-rotate"></i><span>Làm lại</span>
+            </button>
           </div>
-          <div class="lead-toggle">
-            <span class="lead-toggle-label">Thu gọn</span>
-            <i class="ti ti-chevron-up lead-toggle-icon"></i>
+          <div class="btn-group-right">
+            <button class="btn btn-primary" id="btnCheckS06" disabled onclick="submitStage6()">
+              <i class="ti ti-check"></i><span>Trả lời</span>
+            </button>
+            <button class="btn btn-primary" id="btnNextS06" disabled onclick="goToStage(7)">
+              <i class="ti ti-arrow-right"></i><span>Tiếp tục</span>
+            </button>
           </div>
         </div>
-        <div class="lead-content">
-          <div class="lead-text">
-        Những bào quan như lưới nội chất, màng nhân, lysosome, bộ máy Golgi, không bào và màng tế bào đều được xếp vào hệ thống nội màng vì các bộ phận này có thể kết nối trực tiếp với nhau hoặc có thể chuyển đổi các đoạn màng cho nhau.
-      </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       STAGE 7: TỔNG KẾT HỆ THỐNG NỘI MÀNG
+       ========================================================================= -->
+  <section class="stage hidden" id="stage-7" role="region" aria-label="Màn 7: Tổng kết Hệ thống nội màng">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: LÝ THUYẾT & TRỰC QUAN -->
+      <article class="visual-card">
+        <h2 class="stage-title">Tất cả đều kết nối với nhau</h2>
+        <p class="lead">
+          Những bào quan như lưới nội chất, màng nhân, lysosome, bộ máy Golgi, không bào và màng tế bào đều được xếp vào hệ thống nội màng vì các bộ phận này có thể kết nối trực tiếp với nhau hoặc có thể chuyển đổi các đoạn màng cho nhau.
+        </p>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Nhấp chọn các thành phần theo đúng thứ tự dòng chảy protein từ điểm khởi đầu đến xuất bào, sau đó trả lời câu hỏi dự đoán.</span>
         </div>
-      </div>
 
-      <div class="guide-box">
-        <i class="ti ti-hand-click"></i>
-        <span>Nhấp chọn các thành phần theo đúng thứ tự dòng chảy protein từ điểm khởi đầu đến xuất bào, sau đó trả lời câu hỏi dự đoán.</span>
-      </div>
+        <div class="theory-flow">
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-network"></i> Tính liên kết động của màng sinh học</div>
+            <div class="theory-block__content">Hệ thống nội màng hoạt động như một thể thống nhất nhờ khả năng dung hợp và nảy chồi túi màng liên tục, vận chuyển các phân tử hữu cơ xuyên suốt tế bào.</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-route"></i> Tuyến xuất bào 6 trạm cốt lõi</div>
+            <div class="theory-block__content">Màng ngoài nhân → ER hạt (+ Ribosome) → Túi vận chuyển → Bộ máy Golgi → Túi tiết → Màng tế bào (Xuất bào). Lysosome và không bào là 2 nhánh phụ tách ra từ Golgi.</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-alert-circle"></i> Ti thể & Lục lạp KHÔNG thuộc hệ thống nội màng</div>
+            <div class="theory-block__content">Dù là các bào quan có màng bao bọc, nhưng ti thể và lục lạp có nguồn gốc cộng sinh nội bào, không kết nối hay trao đổi đoạn màng với hệ thống này.</div>
+          </div>
+        </div>
 
-      <div class="stage-body">
-        <!-- Visual Left -->
-        <div class="visual-panel">
-          <div class="visual-panel-header">
+        <div class="visual-canvas-wrap">
+          <div class="visual-canvas-header">
             <span><i class="ti ti-route"></i> Sơ đồ luồng dòng chảy hệ thống nội màng</span>
-            <span style="font-size:0.8rem; font-weight:700; color:var(--jade-text);"><i class="ti ti-check"></i> 6 trạm chính + 2 nhánh phụ</span>
+            <span class="status-badge" style="color:var(--jade-text); background:var(--jade-pale);"><i class="ti ti-check"></i> 6 trạm chính + 2 nhánh phụ</span>
           </div>
           <div class="visual-stage-canvas" id="s07CanvasWrapper">
             <svg id="inlineSvgS07" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" width="100%" height="100%">
@@ -2741,761 +2854,976 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
   </g>
 
 </svg>
-
           </div>
           <div class="visual-panel-toolbar">
             <button class="btn btn-secondary" onclick="resetSequenceS07()">
-              <i class="ti ti-rotate"></i> Đặt lại chuỗi
+              <i class="ti ti-rotate"></i><span>Đặt lại chuỗi</span>
             </button>
-            <span style="font-size:0.82rem; color:var(--ink-3);" id="s07OrderPrompt">Nhấn các ô bên phải theo đúng thứ tự 1 $\rightarrow$ 6</span>
+            <span class="visual-status-tip" id="s07OrderPrompt">Nhấn các ô bên phải theo đúng thứ tự 1 → 6</span>
+          </div>
+          <div class="visual-caption">
+            <i class="ti ti-info-circle"></i> Chuỗi dòng chảy protein mô tả hành trình từ nơi dịch mã trên ER hạt đến khi hoàn thiện và xuất bào qua màng sinh chất.
           </div>
         </div>
+      </article>
 
-        <!-- Interactive Right: Order Sequence + Prediction MCQ -->
-        <div class="interactive-panel">
-          <div class="panel-title">
-            <i class="ti ti-list-numbers"></i> Chuỗi dòng protein (Nhấp theo thứ tự)
+      <!-- CỘT PHẢI: HOẠT ĐỘNG & BÀI TẬP -->
+      <article class="workspace-card">
+        <div class="task-header">
+          <div class="task-title"><i class="ti ti-list-numbers"></i> Chuỗi dòng protein (Nhấp theo thứ tự)</div>
+          <span class="task-badge">Màn 7 / 7</span>
+        </div>
+
+        <div class="order-sequence-tray" id="s07Tray">
+          <div class="order-chip" onclick="placeOrderStep('Màng ngoài nhân')">Màng ngoài nhân</div>
+          <div class="order-chip" onclick="placeOrderStep('ER hạt + Ribosome')">ER hạt + Ribosome</div>
+          <div class="order-chip" onclick="placeOrderStep('Túi vận chuyển')">Túi vận chuyển</div>
+          <div class="order-chip" onclick="placeOrderStep('Bộ máy Golgi')">Bộ máy Golgi</div>
+          <div class="order-chip" onclick="placeOrderStep('Túi tiết')">Túi tiết</div>
+          <div class="order-chip" onclick="placeOrderStep('Màng tế bào (Xuất bào)')">Màng tế bào (Xuất bào)</div>
+        </div>
+
+        <div class="sequence-slots-display" id="s07SlotsDisplay">
+          <div class="slot-row" id="slot-1"><span class="slot-number">1</span><span class="slot-name">---</span></div>
+          <div class="slot-row" id="slot-2"><span class="slot-number">2</span><span class="slot-name">---</span></div>
+          <div class="slot-row" id="slot-3"><span class="slot-number">3</span><span class="slot-name">---</span></div>
+          <div class="slot-row" id="slot-4"><span class="slot-number">4</span><span class="slot-name">---</span></div>
+          <div class="slot-row" id="slot-5"><span class="slot-number">5</span><span class="slot-name">---</span></div>
+          <div class="slot-row" id="slot-6"><span class="slot-number">6</span><span class="slot-name">---</span></div>
+        </div>
+
+        <p class="mcq-question-text">Câu hỏi: Ti thể và lục lạp có thuộc hệ thống nội màng không?</p>
+        <div class="mcq-options-list" id="s07OptionsList">
+          <label class="option-label" onclick="selectOptionS07(this, 'A')">
+            <input type="radio" name="mcq_s07" value="A">
+            <span>A. Không — sẽ tìm hiểu ở module tiếp theo, vì chúng có nguồn gốc và đặc điểm khác biệt</span>
+          </label>
+          <label class="option-label" onclick="selectOptionS07(this, 'B')">
+            <input type="radio" name="mcq_s07" value="B">
+            <span>B. Có, vì đều là bào quan có màng</span>
+          </label>
+        </div>
+
+        <div class="inline-feedback hidden" id="fbStage7"></div>
+
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage7" onclick="goToStage(6)">
+              <i class="ti ti-arrow-left"></i><span>Quay lại</span>
+            </button>
+            <button class="btn btn-secondary" id="btnRetryStage7" onclick="retryStage7()">
+              <i class="ti ti-rotate"></i><span>Làm lại</span>
+            </button>
           </div>
-
-          <div class="order-sequence-tray" id="s07Tray">
-            <div class="order-chip" onclick="placeOrderStep('Màng ngoài nhân')">Màng ngoài nhân</div>
-            <div class="order-chip" onclick="placeOrderStep('ER hạt + Ribosome')">ER hạt + Ribosome</div>
-            <div class="order-chip" onclick="placeOrderStep('Túi vận chuyển')">Túi vận chuyển</div>
-            <div class="order-chip" onclick="placeOrderStep('Bộ máy Golgi')">Bộ máy Golgi</div>
-            <div class="order-chip" onclick="placeOrderStep('Túi tiết')">Túi tiết</div>
-            <div class="order-chip" onclick="placeOrderStep('Màng tế bào (Xuất bào)')">Màng tế bào (Xuất bào)</div>
-          </div>
-
-          <div class="sequence-slots-display" id="s07SlotsDisplay">
-            <div class="slot-row" id="slot-1"><span class="slot-number">1</span><span class="slot-name">---</span></div>
-            <div class="slot-row" id="slot-2"><span class="slot-number">2</span><span class="slot-name">---</span></div>
-            <div class="slot-row" id="slot-3"><span class="slot-number">3</span><span class="slot-name">---</span></div>
-            <div class="slot-row" id="slot-4"><span class="slot-number">4</span><span class="slot-name">---</span></div>
-            <div class="slot-row" id="slot-5"><span class="slot-number">5</span><span class="slot-name">---</span></div>
-            <div class="slot-row" id="slot-6"><span class="slot-number">6</span><span class="slot-name">---</span></div>
-          </div>
-
-          <div class="mcq-container" style="margin-top:10px;">
-            <p class="mcq-question-text">Câu hỏi: Ti thể và lục lạp có thuộc hệ thống nội màng không?</p>
-            <div class="mcq-options-list" id="s07OptionsList">
-              <label class="option-label" onclick="selectOptionS07(this, 'A')">
-                <input type="radio" name="mcq_s07" value="A">
-                <span>A. Không — sẽ tìm hiểu ở module tiếp theo, vì chúng có nguồn gốc và đặc điểm khác biệt</span>
-              </label>
-              <label class="option-label" onclick="selectOptionS07(this, 'B')">
-                <input type="radio" name="mcq_s07" value="B">
-                <span>B. Có, vì đều là bào quan có màng</span>
-              </label>
-            </div>
-
+          <div class="btn-group-right">
             <button class="btn btn-primary" id="btnCheckS07" disabled onclick="submitStage7()">
-              <i class="ti ti-check"></i> TRẢ LỜI
+              <i class="ti ti-check"></i><span>Trả lời</span>
             </button>
-
-            <div class="feedback-box hidden" id="fbStage7"></div>
+            <button class="btn btn-primary" id="btnCompleteModule" disabled onclick="openCompletionModal()">
+              <i class="ti ti-trophy"></i><span>Hoàn thành</span>
+            </button>
           </div>
         </div>
-      </div>
+      </article>
+    </div>
+  </section>
+</main>
 
-      <div class="controls-row">
-        <button class="btn btn-secondary" onclick="goToStage(6)"><i class="ti ti-chevron-left"></i> Quay lại</button>
-        <button class="btn btn-primary" id="btnNextS07" disabled onclick="openCompletionModal()">Hoàn thành Module <i class="ti ti-award"></i></button>
-      </div>
-    </section>
-
-  </div><!-- /.module-wrapper -->
-
-
-  <!-- =======================================================================
-       COMPLETION MODAL V10 + CONFETTI CANVAS
-       ======================================================================= -->
-  <div class="congrats-overlay hidden" id="completionModal" role="dialog" aria-modal="true">
-    <div class="congrats-card">
-      <div class="trophy-icon-wrapper">
-        <i class="ti ti-trophy"></i>
-      </div>
-      <h3 class="congrats-title">Xuất sắc hoàn thành Module 02!</h3>
-      <p class="congrats-text">
-        Bạn đã nắm vững toàn diện mối quan hệ cấu tạo — chức năng của các bào quan trong <strong>Hệ thống nội màng</strong> (Ribosome, Lưới nội chất, Golgi, Lysosome, Không bào) và lộ trình vận chuyển protein ra khỏi tế bào.
-      </p>
-      <div class="modal-actions">
-        <button class="btn btn-secondary" onclick="reviewLesson()">
-          <i class="ti ti-rotate"></i> Xem lại bài
-        </button>
-        <button class="btn btn-primary" onclick="closeCompletionModal()">
-          <i class="ti ti-check"></i> Đóng thông báo
-        </button>
-      </div>
+<!-- COMPLETION MODAL V10 -->
+<div class="modal-backdrop hidden" id="completionModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <canvas id="confettiCanvas"></canvas>
+  <div class="modal-card">
+    <i class="ti ti-trophy modal-trophy"></i>
+    <h3 class="modal-title" id="modalTitle">Xuất sắc hoàn thành Bài 8 - Màn 2!</h3>
+    <p class="modal-desc">
+      Bạn đã nắm vững toàn diện mối quan hệ cấu tạo — chức năng của các bào quan trong <strong>Hệ thống nội màng</strong> (Ribosome, Lưới nội chất, Golgi, Lysosome, Không bào) và lộ trình vận chuyển protein xuất bào.
+    </p>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" id="btnReviewAll" onclick="reviewLesson()">
+        <i class="ti ti-rotate"></i><span>Xem lại bài học</span>
+      </button>
+      <button class="btn btn-primary" id="btnCloseCongrats" onclick="closeCompletionModal()">
+        <i class="ti ti-check"></i><span>Đóng thông báo</span>
+      </button>
     </div>
   </div>
+</div>
 
-  <canvas id="confettiCanvas"></canvas>
+<script>
+/* LMS RUNTIME STATE (NO COOKIES/LOCALSTORAGE) */
+window.lmsState = {
+  score: 100,
+  progress: 14,
+  currentStage: 1,
+  completed: false,
+  s01: { assembled: false, selected: null, correct: false },
+  s02: { tracked: false, selected: null, correct: false },
+  s03: { viewed: [false, false, false, false], selected: null, correct: false },
+  s04: { processed: false, selected: null, correct: false },
+  s05: { digested: false, selected: null, correct: false },
+  s06: { viewedFlaccid: false, selected: null, correct: false },
+  s07: { sequence: [], selected: null, correct: false }
+};
 
-
-  <!-- =======================================================================
-     JAVASCRIPT LOGIC & LMS STATE MANAGEMENT
-     ======================================================================= -->
-  <script>
-  /* LMS RUNTIME STATE (NO COOKIES/LOCALSTORAGE) */
-  window.lmsState = {
-    score: 100,
-    progress: 14,
-    currentStage: 1,
-    completed: false,
-    s01: { assembled: false, selected: null, correct: false },
-    s02: { tracked: false, selected: null, correct: false },
-    s03: { viewed: [false, false, false, false], selected: null, correct: false },
-    s04: { processed: false, selected: null, correct: false },
-    s05: { digested: false, selected: null, correct: false },
-    s06: { turgid: true, viewedFlaccid: false, selected: null, correct: false },
-    s07: { currentStep: 0, sequence: [], selected: null, correct: false }
-  };
-
-  /* REPORT HEIGHT FOR LMS IFRAME INTEGRATION */
-  function reportHeight() {
-    try {
-      const height = Math.max(
-        document.body.scrollHeight,
-        document.documentElement.scrollHeight,
-        document.body.offsetHeight
-      );
-      if (window.parent && window.parent !== window) {
-        window.parent.postMessage({ type: 'setHeight', height: height + 24 }, '*');
-      }
-    } catch(e) {}
+/* REPORT HEIGHT VIA POSTMESSAGE */
+function reportHeight() {
+  if (window.parent && window.parent !== window) {
+    const height = document.documentElement.scrollHeight || document.body.scrollHeight;
+    window.parent.postMessage({ type: 'setHeight', height: height }, '*');
   }
-  window.addEventListener('resize', reportHeight);
-  window.addEventListener('load', reportHeight);
+}
+window.addEventListener('load', reportHeight);
+window.addEventListener('resize', reportHeight);
+if (typeof ResizeObserver !== 'undefined') {
+  new ResizeObserver(reportHeight).observe(document.body);
+}
 
-  /* NAVIGATION BETWEEN STAGES */
-  function goToStage(stageNum) {
-    for (let i = 1; i <= 7; i++) {
-      const stEl = document.getElementById('stage-' + i);
-      if (stEl) {
-        if (i === stageNum) {
-          stEl.classList.remove('hidden');
-        } else {
-          stEl.classList.add('hidden');
-        }
+/* NAVIGATION BETWEEN 7 STAGES */
+function goToStage(stageNum) {
+  for (let i = 1; i <= 7; i++) {
+    const stEl = document.getElementById('stage-' + i);
+    if (stEl) {
+      if (i === stageNum) {
+        stEl.classList.remove('hidden');
+      } else {
+        stEl.classList.add('hidden');
       }
     }
-    window.lmsState.currentStage = stageNum;
-    window.lmsState.progress = Math.max(window.lmsState.progress, Math.round((stageNum / 7) * 100));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setTimeout(reportHeight, 150);
+  }
+  window.lmsState.currentStage = stageNum;
+  window.lmsState.progress = Math.max(window.lmsState.progress, Math.round(stageNum * 14.28));
+  
+  const pBar = document.getElementById('progressBar');
+  if (pBar) {
+    const pct = Math.min(100, Math.round(stageNum * 14.28));
+    pBar.style.width = pct + '%';
+    pBar.parentElement.setAttribute('aria-valuenow', pct);
   }
 
-  /* --------------------------------------------------------------------------
-     STAGE 1 LOGIC: RIBOSOME
-     -------------------------------------------------------------------------- */
-  function assembleRibosomeS01() {
-    const canvasWrapper = document.getElementById('s01CanvasWrapper');
-    const statusBadge = document.getElementById('s01StatusBadge');
-    const btnAssemble = document.getElementById('btnAssembleS01');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  setTimeout(reportHeight, 150);
+}
 
-    if (!canvasWrapper) return;
+/* --------------------------------------------------------------------------
+   STAGE 1 LOGIC: RIBOSOME ASSEMBLE & MCQ
+   -------------------------------------------------------------------------- */
+function assembleRibosomeS01() {
+  const wrapper = document.getElementById('s01CanvasWrapper');
+  const statusBadge = document.getElementById('s01StatusBadge');
+  const btn = document.getElementById('btnAssembleS01');
 
-    if (canvasWrapper.classList.contains('ribo-assembled')) {
-      canvasWrapper.classList.remove('ribo-assembled');
-      canvasWrapper.classList.add('ribo-separated');
+  if (wrapper.classList.contains('ribo-assembled')) {
+    wrapper.classList.remove('ribo-assembled');
+    wrapper.classList.add('ribo-separated');
+    if (statusBadge) statusBadge.textContent = 'Trạng thái: Hai tiểu đơn vị tách rời';
+    if (btn) btn.innerHTML = '<i class="ti ti-link"></i><span>Ghép tiểu đơn vị</span>';
+    window.lmsState.s01.assembled = false;
+  } else {
+    wrapper.classList.remove('ribo-separated');
+    wrapper.classList.add('ribo-assembled');
+    if (statusBadge) statusBadge.textContent = 'Trạng thái: Ribosome hoàn chỉnh sẵn sàng dịch mã';
+    if (btn) btn.innerHTML = '<i class="ti ti-unlink"></i><span>Tách tiểu đơn vị</span>';
+    window.lmsState.s01.assembled = true;
+  }
+  checkStage1Readiness();
+}
+
+function selectOptionS01(labelEl, val) {
+  if (window.lmsState.s01.correct) return;
+  document.querySelectorAll('#s01OptionsList .option-label').forEach(el => el.classList.remove('selected'));
+  labelEl.classList.add('selected');
+  window.lmsState.s01.selected = val;
+  checkStage1Readiness();
+}
+
+function checkStage1Readiness() {
+  const btn = document.getElementById('btnCheckS01');
+  if (btn && window.lmsState.s01.assembled && window.lmsState.s01.selected && !window.lmsState.s01.correct) {
+    btn.disabled = false;
+  }
+}
+
+function submitStage1() {
+  const sel = window.lmsState.s01.selected;
+  const fb = document.getElementById('fbStage1');
+  const btnCheck = document.getElementById('btnCheckS01');
+  const btnNext = document.getElementById('btnNextS01');
+
+  if (sel === 'A') {
+    window.lmsState.s01.correct = true;
+    fb.className = 'inline-feedback ok';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-circle-check"></i>
+        <span>Chính xác! Lựa chọn hoàn toàn đúng.</span>
+      </div>
+      <div class="correct-answer-box">
+        ✓ Đáp án đúng: A. Không có màng bao bọc
+      </div>
+      <div class="explanation">
+        Ribosome là bào quan không có màng bao bọc đặc trưng trong tế bào, cấu tạo từ rRNA và protein, gồm 2 tiểu đơn vị lớn và nhỏ phối hợp tổng hợp protein.
+      </div>
+      <div class="pedagogy-meta">
+        <div class="pedagogy-item"><span class="label">Chủ đề:</span><strong>Cấu trúc & Chức năng Ribosome</strong></div>
+        <div class="pedagogy-item"><span class="label">Dạng bài:</span><strong>Nhận biết cấu trúc bào quan không màng</strong></div>
+        <div class="pedagogy-item"><span class="label">Cấp độ tư duy:</span><strong>Nhận biết</strong></div>
+        <div class="pedagogy-item"><span class="label">Năng lực sinh học:</span><strong>Nhận thức sinh học</strong></div>
+        <div class="pedagogy-item"><span class="label">Định dạng:</span><strong>Trắc nghiệm một lựa chọn</strong></div>
+      </div>
+    `;
+    fb.classList.remove('hidden');
+    if (btnCheck) btnCheck.disabled = true;
+    if (btnNext) btnNext.disabled = false;
+  } else {
+    fb.className = 'inline-feedback bad shake';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-alert-triangle"></i>
+        <span>Chưa chính xác!</span>
+      </div>
+      <div class="explanation">
+        Ribosome là bào quan KHÔNG CÓ MÀNG bao bọc, khác với đa số bào quan khác (ti thể, lục lạp, lysosome...) đều có màng. Hãy chọn lại!
+      </div>
+    `;
+    fb.classList.remove('hidden');
+    setTimeout(() => fb.classList.remove('shake'), 400);
+  }
+  reportHeight();
+}
+
+function retryStage1() {
+  window.lmsState.s01.selected = null;
+  window.lmsState.s01.correct = false;
+  document.querySelectorAll('#s01OptionsList .option-label').forEach(el => el.classList.remove('selected'));
+  const btnCheck = document.getElementById('btnCheckS01');
+  const btnNext = document.getElementById('btnNextS01');
+  if (btnCheck) btnCheck.disabled = true;
+  if (btnNext) btnNext.disabled = true;
+  const fb = document.getElementById('fbStage1');
+  if (fb) fb.classList.add('hidden');
+  reportHeight();
+}
+
+/* --------------------------------------------------------------------------
+   STAGE 2 LOGIC: ROUGH ER & PROTEIN TRACKING
+   -------------------------------------------------------------------------- */
+function playTrackingS02() {
+  const wrapper = document.getElementById('s02CanvasWrapper');
+  const statusBadge = document.getElementById('s02StatusBadge');
+  const btn = document.getElementById('btnTrackS02');
+
+  if (wrapper) wrapper.classList.add('er-translating');
+  if (statusBadge) {
+    statusBadge.innerHTML = '<i class="ti ti-loader ti-spin"></i> Đang theo dõi protein...';
+    statusBadge.style.background = '#FEF3C7';
+    statusBadge.style.color = '#B45309';
+  }
+  if (btn) btn.disabled = true;
+
+  setTimeout(() => {
+    if (statusBadge) {
+      statusBadge.innerHTML = '<i class="ti ti-circle-check"></i> Đã hoàn tất xuất túi vận chuyển!';
+      statusBadge.style.background = 'var(--correct-bg)';
+      statusBadge.style.color = 'var(--jade-dark)';
+    }
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="ti ti-rotate"></i><span>Xem lại hoạt cảnh</span>';
+    }
+    window.lmsState.s02.tracked = true;
+    checkStage2Readiness();
+  }, 2400);
+}
+
+function selectOptionS02(labelEl, val) {
+  if (window.lmsState.s02.correct) return;
+  document.querySelectorAll('#s02OptionsList .option-label').forEach(el => el.classList.remove('selected'));
+  labelEl.classList.add('selected');
+  window.lmsState.s02.selected = val;
+  checkStage2Readiness();
+}
+
+function checkStage2Readiness() {
+  const btn = document.getElementById('btnCheckS02');
+  if (btn && window.lmsState.s02.tracked && window.lmsState.s02.selected && !window.lmsState.s02.correct) {
+    btn.disabled = false;
+  }
+}
+
+function submitStage2() {
+  const sel = window.lmsState.s02.selected;
+  const fb = document.getElementById('fbStage2');
+  const btnCheck = document.getElementById('btnCheckS02');
+  const btnNext = document.getElementById('btnNextS02');
+
+  if (sel === 'A') {
+    window.lmsState.s02.correct = true;
+    fb.className = 'inline-feedback ok';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-circle-check"></i>
+        <span>Chính xác! Lựa chọn hoàn toàn đúng.</span>
+      </div>
+      <div class="correct-answer-box">
+        ✓ Đáp án đúng: A. ER hạt có ribosome gắn trên màng, ER trơn thì không (hoặc rất ít)
+      </div>
+      <div class="explanation">
+        ER hạt và ER trơn là hai vùng nối thông của cùng một hệ thống nội màng liên tục. Điểm khác biệt mấu chốt là mặt ngoài ER hạt đính nhiều hạt ribosome chuyên tổng hợp protein tiết.
+      </div>
+      <div class="pedagogy-meta">
+        <div class="pedagogy-item"><span class="label">Chủ đề:</span><strong>Cấu trúc Lưới nội chất hạt</strong></div>
+        <div class="pedagogy-item"><span class="label">Dạng bài:</span><strong>So sánh đặc điểm cấu trúc ER hạt và ER trơn</strong></div>
+        <div class="pedagogy-item"><span class="label">Cấp độ tư duy:</span><strong>Thông hiểu</strong></div>
+        <div class="pedagogy-item"><span class="label">Năng lực sinh học:</span><strong>Nhận thức sinh học</strong></div>
+        <div class="pedagogy-item"><span class="label">Định dạng:</span><strong>Trắc nghiệm một lựa chọn</strong></div>
+      </div>
+    `;
+    fb.classList.remove('hidden');
+    if (btnCheck) btnCheck.disabled = true;
+    if (btnNext) btnNext.disabled = false;
+  } else {
+    fb.className = 'inline-feedback bad shake';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-alert-triangle"></i>
+        <span>Chưa chính xác!</span>
+      </div>
+      <div class="explanation">
+        ER hạt và ER trơn là HAI VÙNG của CÙNG MỘT hệ thống lưới nội chất liên tục, nối thông với nhau, chỉ khác nhau ở việc có hoặc không có ribosome bám mặt ngoài.
+      </div>
+    `;
+    fb.classList.remove('hidden');
+    setTimeout(() => fb.classList.remove('shake'), 400);
+  }
+  reportHeight();
+}
+
+function retryStage2() {
+  window.lmsState.s02.selected = null;
+  window.lmsState.s02.correct = false;
+  document.querySelectorAll('#s02OptionsList .option-label').forEach(el => el.classList.remove('selected'));
+  const btnCheck = document.getElementById('btnCheckS02');
+  const btnNext = document.getElementById('btnNextS02');
+  if (btnCheck) btnCheck.disabled = true;
+  if (btnNext) btnNext.disabled = true;
+  const fb = document.getElementById('fbStage2');
+  if (fb) fb.classList.add('hidden');
+  reportHeight();
+}
+
+/* --------------------------------------------------------------------------
+   STAGE 3 LOGIC: SMOOTH ER & 4 FUNCTION CARDS
+   -------------------------------------------------------------------------- */
+function viewFeatureS03(cardEl, idx) {
+  cardEl.classList.add('viewed');
+  window.lmsState.s03.viewed[idx] = true;
+
+  const count = window.lmsState.s03.viewed.filter(Boolean).length;
+  const counterEl = document.getElementById('s03Counter');
+  if (counterEl) counterEl.textContent = 'Đã xem: ' + count + ' / 4';
+
+  checkStage3Readiness();
+}
+
+function selectOptionS03(labelEl, val) {
+  if (window.lmsState.s03.correct) return;
+  document.querySelectorAll('#s03OptionsList .option-label').forEach(el => el.classList.remove('selected'));
+  labelEl.classList.add('selected');
+  window.lmsState.s03.selected = val;
+  checkStage3Readiness();
+}
+
+function checkStage3Readiness() {
+  const btn = document.getElementById('btnCheckS03');
+  const allViewed = window.lmsState.s03.viewed.every(Boolean);
+  if (btn && allViewed && window.lmsState.s03.selected && !window.lmsState.s03.correct) {
+    btn.disabled = false;
+  }
+}
+
+function submitStage3() {
+  const sel = window.lmsState.s03.selected;
+  const fb = document.getElementById('fbStage3');
+  const btnCheck = document.getElementById('btnCheckS03');
+  const btnNext = document.getElementById('btnNextS03');
+
+  if (sel === 'A') {
+    window.lmsState.s03.correct = true;
+    fb.className = 'inline-feedback ok';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-circle-check"></i>
+        <span>Chính xác! Lựa chọn hoàn toàn đúng.</span>
+      </div>
+      <div class="correct-answer-box">
+        ✓ Đáp án đúng: A. Vì ethanol và các sản phẩm chuyển hóa của nó gây độc, tạo stress oxy hóa; tế bào gan đồng thời tăng hệ enzyme và lưới nội chất trơn để đáp ứng khử độc
+      </div>
+      <div class="explanation">
+        Lưới nội chất trơn ở tế bào gan phải tăng sinh dày đặc để đáp ứng nhu cầu khử độc rượu và hóa chất. Tuy nhiên, các chất chuyển hóa độc hại (như acetaldehyde) và các gốc tự do tích tụ sẽ dần gây stress oxy hóa và tổn thương mô gan.
+      </div>
+      <div class="pedagogy-meta">
+        <div class="pedagogy-item"><span class="label">Chủ đề:</span><strong>Chức năng ER trơn & Liên hệ y sinh</strong></div>
+        <div class="pedagogy-item"><span class="label">Dạng bài:</span><strong>Khám phá đa chức năng & Vận dụng y sinh</strong></div>
+        <div class="pedagogy-item"><span class="label">Cấp độ tư duy:</span><strong>Vận dụng</strong></div>
+        <div class="pedagogy-item"><span class="label">Năng lực sinh học:</span><strong>Vận dụng kiến thức, kĩ năng đã học</strong></div>
+        <div class="pedagogy-item"><span class="label">Định dạng:</span><strong>Tương tác mở thẻ + Trắc nghiệm một lựa chọn</strong></div>
+      </div>
+    `;
+    fb.classList.remove('hidden');
+    if (btnCheck) btnCheck.disabled = true;
+    if (btnNext) btnNext.disabled = false;
+  } else {
+    fb.className = 'inline-feedback bad shake';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-alert-triangle"></i>
+        <span>Chưa chính xác!</span>
+      </div>
+      <div class="explanation">
+        Cơ chế trọng tâm là lưới nội chất trơn trong tế bào gan phải hoạt động tăng cường để khử độc rượu, và quá trình chuyển hóa này tạo ra các chất độc hại gây tổn thương gan theo thời gian.
+      </div>
+    `;
+    fb.classList.remove('hidden');
+    setTimeout(() => fb.classList.remove('shake'), 400);
+  }
+  reportHeight();
+}
+
+function retryStage3() {
+  window.lmsState.s03.selected = null;
+  window.lmsState.s03.correct = false;
+  document.querySelectorAll('#s03OptionsList .option-label').forEach(el => el.classList.remove('selected'));
+  const btnCheck = document.getElementById('btnCheckS03');
+  const btnNext = document.getElementById('btnNextS03');
+  if (btnCheck) btnCheck.disabled = true;
+  if (btnNext) btnNext.disabled = true;
+  const fb = document.getElementById('fbStage3');
+  if (fb) fb.classList.add('hidden');
+  reportHeight();
+}
+
+/* --------------------------------------------------------------------------
+   STAGE 4 LOGIC: GOLGI APPARATUS
+   -------------------------------------------------------------------------- */
+function playProcessS04() {
+  const wrapper = document.getElementById('s04CanvasWrapper');
+  const statusBadge = document.getElementById('s04StatusBadge');
+  const btn = document.getElementById('btnProcessS04');
+
+  if (wrapper) wrapper.classList.add('golgi-active');
+  if (statusBadge) {
+    statusBadge.innerHTML = '<i class="ti ti-loader ti-spin"></i> Đang chế biến & đóng gói...';
+    statusBadge.style.background = '#FEF3C7';
+    statusBadge.style.color = '#B45309';
+  }
+  if (btn) btn.disabled = true;
+
+  setTimeout(() => {
+    if (statusBadge) {
+      statusBadge.innerHTML = '<i class="ti ti-circle-check"></i> Đã xuất túi tiết qua mặt trans!';
+      statusBadge.style.background = 'var(--correct-bg)';
+      statusBadge.style.color = 'var(--jade-dark)';
+    }
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="ti ti-rotate"></i><span>Xem lại hoạt cảnh</span>';
+    }
+    window.lmsState.s04.processed = true;
+    checkStage4Readiness();
+  }, 2600);
+}
+
+function selectOptionS04(labelEl, val) {
+  if (window.lmsState.s04.correct) return;
+  document.querySelectorAll('#s04OptionsList .option-label').forEach(el => el.classList.remove('selected'));
+  labelEl.classList.add('selected');
+  window.lmsState.s04.selected = val;
+  checkStage4Readiness();
+}
+
+function checkStage4Readiness() {
+  const btn = document.getElementById('btnCheckS04');
+  if (btn && window.lmsState.s04.processed && window.lmsState.s04.selected && !window.lmsState.s04.correct) {
+    btn.disabled = false;
+  }
+}
+
+function submitStage4() {
+  const sel = window.lmsState.s04.selected;
+  const fb = document.getElementById('fbStage4');
+  const btnCheck = document.getElementById('btnCheckS04');
+  const btnNext = document.getElementById('btnNextS04');
+
+  if (sel === 'A') {
+    window.lmsState.s04.correct = true;
+    fb.className = 'inline-feedback ok';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-circle-check"></i>
+        <span>Chính xác! Lựa chọn hoàn toàn đúng.</span>
+      </div>
+      <div class="correct-answer-box">
+        ✓ Đáp án đúng: A. Các túi dẹp của Golgi tách rời nhau, không nối thông liên tục như lưới nội chất
+      </div>
+      <div class="explanation">
+        Lưới nội chất là hệ thống ống/túi dẹp nối thông liên tục; trong khi bộ máy Golgi gồm một chồng các túi dẹp cong xếp song song nhưng hoàn toàn tách rời nhau bởi các khe hở màng.
+      </div>
+      <div class="pedagogy-meta">
+        <div class="pedagogy-item"><span class="label">Chủ đề:</span><strong>Cấu trúc & Chức năng Bộ máy Golgi</strong></div>
+        <div class="pedagogy-item"><span class="label">Dạng bài:</span><strong>Phân biệt tính liên tục của màng tế bào</strong></div>
+        <div class="pedagogy-item"><span class="label">Cấp độ tư duy:</span><strong>Thông hiểu</strong></div>
+        <div class="pedagogy-item"><span class="label">Năng lực sinh học:</span><strong>Nhận thức sinh học</strong></div>
+        <div class="pedagogy-item"><span class="label">Định dạng:</span><strong>Trắc nghiệm một lựa chọn</strong></div>
+      </div>
+    `;
+    fb.classList.remove('hidden');
+    if (btnCheck) btnCheck.disabled = true;
+    if (btnNext) btnNext.disabled = false;
+  } else {
+    fb.className = 'inline-feedback bad shake';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-alert-triangle"></i>
+        <span>Chưa chính xác!</span>
+      </div>
+      <div class="explanation">
+        Lưới nội chất nối thông trực tiếp với màng nhân; còn các túi dẹp của Golgi xếp song song nhưng TÁCH RỜI nhau, tiếp nhận và giải phóng vật chất qua các túi vận chuyển.
+      </div>
+    `;
+    fb.classList.remove('hidden');
+    setTimeout(() => fb.classList.remove('shake'), 400);
+  }
+  reportHeight();
+}
+
+function retryStage4() {
+  window.lmsState.s04.selected = null;
+  window.lmsState.s04.correct = false;
+  document.querySelectorAll('#s04OptionsList .option-label').forEach(el => el.classList.remove('selected'));
+  const btnCheck = document.getElementById('btnCheckS04');
+  const btnNext = document.getElementById('btnNextS04');
+  if (btnCheck) btnCheck.disabled = true;
+  if (btnNext) btnNext.disabled = true;
+  const fb = document.getElementById('fbStage4');
+  if (fb) fb.classList.add('hidden');
+  reportHeight();
+}
+
+/* --------------------------------------------------------------------------
+   STAGE 5 LOGIC: LYSOSOME DIGESTION
+   -------------------------------------------------------------------------- */
+function playDigestS05() {
+  const wrapper = document.getElementById('s05CanvasWrapper');
+  const btn = document.getElementById('btnDigestS05');
+
+  if (wrapper) wrapper.classList.add('lyso-active');
+  if (btn) btn.disabled = true;
+
+  setTimeout(() => {
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="ti ti-rotate"></i><span>Xem lại phân giải</span>';
+    }
+    window.lmsState.s05.digested = true;
+    checkStage5Readiness();
+  }, 2200);
+}
+
+function selectOptionS05(labelEl, val) {
+  if (window.lmsState.s05.correct) return;
+  document.querySelectorAll('#s05OptionsList .option-label').forEach(el => el.classList.remove('selected'));
+  labelEl.classList.add('selected');
+  window.lmsState.s05.selected = val;
+  checkStage5Readiness();
+}
+
+function checkStage5Readiness() {
+  const btn = document.getElementById('btnCheckS05');
+  if (btn && window.lmsState.s05.digested && window.lmsState.s05.selected && !window.lmsState.s05.correct) {
+    btn.disabled = false;
+  }
+}
+
+function submitStage5() {
+  const sel = window.lmsState.s05.selected;
+  const fb = document.getElementById('fbStage5');
+  const btnCheck = document.getElementById('btnCheckS05');
+  const btnNext = document.getElementById('btnNextS05');
+
+  if (sel === 'A') {
+    window.lmsState.s05.correct = true;
+    fb.className = 'inline-feedback ok';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-circle-check"></i>
+        <span>Chính xác! Lựa chọn hoàn toàn đúng.</span>
+      </div>
+      <div class="correct-answer-box">
+        ✓ Đáp án đúng: A. Lysosome là bào quan điển hình ở tế bào động vật; tế bào thực vật thường dùng không bào tiêu hóa để thực hiện chức năng tương tự
+      </div>
+      <div class="explanation">
+        Lysosome là bào quan túi màng đơn chứa enzyme thủy phân acid, đặc trưng ở tế bào động vật. Ở tế bào thực vật, chức năng phân giải và tái chế nội bào được đảm nhiệm bởi không bào trung tâm và không bào tiêu hóa.
+      </div>
+      <div class="pedagogy-meta">
+        <div class="pedagogy-item"><span class="label">Chủ đề:</span><strong>Cấu trúc & Chức năng Lysosome</strong></div>
+        <div class="pedagogy-item"><span class="label">Dạng bài:</span><strong>Nhận biết sự phân bố bào quan ở giới Sinh vật</strong></div>
+        <div class="pedagogy-item"><span class="label">Cấp độ tư duy:</span><strong>Thông hiểu</strong></div>
+        <div class="pedagogy-item"><span class="label">Năng lực sinh học:</span><strong>Nhận thức sinh học</strong></div>
+        <div class="pedagogy-item"><span class="label">Định dạng:</span><strong>Trắc nghiệm một lựa chọn</strong></div>
+      </div>
+    `;
+    fb.classList.remove('hidden');
+    if (btnCheck) btnCheck.disabled = true;
+    if (btnNext) btnNext.disabled = false;
+  } else {
+    fb.className = 'inline-feedback bad shake';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-alert-triangle"></i>
+        <span>Chưa chính xác!</span>
+      </div>
+      <div class="explanation">
+        Lysosome là bào quan điển hình ở tế bào động vật; ở tế bào thực vật, không bào tiêu hóa đảm nhiệm chức năng phân giải đại phân tử tương tự.
+      </div>
+    `;
+    fb.classList.remove('hidden');
+    setTimeout(() => fb.classList.remove('shake'), 400);
+  }
+  reportHeight();
+}
+
+function retryStage5() {
+  window.lmsState.s05.selected = null;
+  window.lmsState.s05.correct = false;
+  document.querySelectorAll('#s05OptionsList .option-label').forEach(el => el.classList.remove('selected'));
+  const btnCheck = document.getElementById('btnCheckS05');
+  const btnNext = document.getElementById('btnNextS05');
+  if (btnCheck) btnCheck.disabled = true;
+  if (btnNext) btnNext.disabled = true;
+  const fb = document.getElementById('fbStage5');
+  if (fb) fb.classList.add('hidden');
+  reportHeight();
+}
+
+/* --------------------------------------------------------------------------
+   STAGE 6 LOGIC: VACUOLES (TURGID vs FLACCID)
+   -------------------------------------------------------------------------- */
+function setVacuoleState(isTurgid) {
+  const wrapper = document.getElementById('s06CanvasWrapper');
+  const statusBadge = document.getElementById('s06StatusBadge');
+
+  if (wrapper) {
+    if (isTurgid) {
+      wrapper.classList.remove('vacuole-flaccid');
+      wrapper.classList.add('vacuole-turgid');
       if (statusBadge) {
-        statusBadge.innerHTML = 'Trạng thái: 2 tiểu đơn vị tách rời';
-        statusBadge.style.background = 'var(--cream)';
-        statusBadge.style.color = 'var(--ink-3)';
-      }
-      if (btnAssemble) {
-        btnAssemble.innerHTML = '<i class="ti ti-link"></i> Ghép tiểu đơn vị';
-      }
-    } else {
-      canvasWrapper.classList.remove('ribo-separated');
-      canvasWrapper.classList.add('ribo-assembled');
-      if (statusBadge) {
-        statusBadge.innerHTML = '<i class="ti ti-circle-check" style="color:var(--jade-deep)"></i> Đã ghép: Ribosome hoàn chỉnh';
-        statusBadge.style.background = 'var(--jade-pale)';
+        statusBadge.innerHTML = '<i class="ti ti-droplet-filled"></i> Trạng thái: Trương nước (Rau tươi lại)';
         statusBadge.style.color = 'var(--jade-text)';
       }
-      if (btnAssemble) {
-        btnAssemble.innerHTML = '<i class="ti ti-arrows-split"></i> Tách rời để xem lại';
-      }
-      window.lmsState.s01.assembled = true;
-      checkStage1Readiness();
-    }
-  }
-
-  function selectOptionS01(labelEl, val) {
-    if (window.lmsState.s01.correct) return;
-    document.querySelectorAll('#s01OptionsList .option-label').forEach(el => el.classList.remove('selected'));
-    labelEl.classList.add('selected');
-    window.lmsState.s01.selected = val;
-    checkStage1Readiness();
-  }
-
-  function checkStage1Readiness() {
-    const btnCheck = document.getElementById('btnCheckS01');
-    if (btnCheck && window.lmsState.s01.assembled && window.lmsState.s01.selected && !window.lmsState.s01.correct) {
-      btnCheck.disabled = false;
-    }
-  }
-
-  function submitStage1() {
-    const sel = window.lmsState.s01.selected;
-    const fb = document.getElementById('fbStage1');
-    const btnCheck = document.getElementById('btnCheckS01');
-    const btnNext = document.getElementById('btnNextS01');
-
-    if (sel === 'A') {
-      window.lmsState.s01.correct = true;
-      fb.className = 'feedback-box correct';
-      fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác.</strong> "Không có màng bao bọc" Tiếp tục sang nội dung kế tiếp.</span>';
-      fb.classList.remove('hidden');
-      if (btnCheck) btnCheck.disabled = true;
-      if (btnNext) btnNext.disabled = false;
     } else {
-      fb.className = 'feedback-box wrong shake';
-      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Không đúng —</strong> ribosome là bào quan KHÔNG CÓ MÀNG bao bọc, khác với đa số bào quan khác (ti thể, lục lạp, lysosome...) đều có màng.</span>';
-      fb.classList.remove('hidden');
-      setTimeout(() => fb.classList.remove('shake'), 400);
-    }
-    reportHeight();
-  }
-
-  /* --------------------------------------------------------------------------
-     STAGE 2 LOGIC: ROUGH ER & PROTEIN TRACKING
-     -------------------------------------------------------------------------- */
-  function playTrackingS02() {
-    const wrapper = document.getElementById('s02CanvasWrapper');
-    const statusBadge = document.getElementById('s02StatusBadge');
-    const btn = document.getElementById('btnTrackS02');
-
-    if (wrapper) wrapper.classList.add('er-translating');
-    if (statusBadge) {
-      statusBadge.innerHTML = '<i class="ti ti-loader ti-spin"></i> Đang theo dõi protein...';
-      statusBadge.style.background = '#FEF3C7';
-      statusBadge.style.color = '#B45309';
-    }
-    if (btn) btn.disabled = true;
-
-    setTimeout(() => {
+      wrapper.classList.remove('vacuole-turgid');
+      wrapper.classList.add('vacuole-flaccid');
+      window.lmsState.s06.viewedFlaccid = true;
       if (statusBadge) {
-        statusBadge.innerHTML = '<i class="ti ti-circle-check"></i> Đã hoàn tất xuất túi vận chuyển!';
-        statusBadge.style.background = 'var(--correct-bg)';
-        statusBadge.style.color = 'var(--jade-dark)';
-      }
-      if (btn) {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="ti ti-rotate"></i> Xem lại hoạt cảnh';
-      }
-      window.lmsState.s02.tracked = true;
-      checkStage2Readiness();
-    }, 2400);
-  }
-
-  function selectOptionS02(labelEl, val) {
-    if (window.lmsState.s02.correct) return;
-    document.querySelectorAll('#s02OptionsList .option-label').forEach(el => el.classList.remove('selected'));
-    labelEl.classList.add('selected');
-    window.lmsState.s02.selected = val;
-    checkStage2Readiness();
-  }
-
-  function checkStage2Readiness() {
-    const btn = document.getElementById('btnCheckS02');
-    if (btn && window.lmsState.s02.tracked && window.lmsState.s02.selected && !window.lmsState.s02.correct) {
-      btn.disabled = false;
-    }
-  }
-
-  function submitStage2() {
-    const sel = window.lmsState.s02.selected;
-    const fb = document.getElementById('fbStage2');
-    const btnCheck = document.getElementById('btnCheckS02');
-    const btnNext = document.getElementById('btnNextS02');
-
-    if (sel === 'A') {
-      window.lmsState.s02.correct = true;
-      fb.className = 'feedback-box correct';
-      fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác.</strong> "ER hạt có ribosome gắn trên màng, ER trơn thì không (hoặc rất ít)" Tiếp tục sang nội dung kế tiếp.</span>';
-      fb.classList.remove('hidden');
-      if (btnCheck) btnCheck.disabled = true;
-      if (btnNext) btnNext.disabled = false;
-    } else {
-      fb.className = 'feedback-box wrong shake';
-      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Không đúng —</strong> ER hạt và ER trơn là HAI VÙNG của CÙNG MỘT hệ thống lưới nội chất liên tục, nối thông với nhau, chỉ khác nhau ở có/không có ribosome.</span>';
-      fb.classList.remove('hidden');
-      setTimeout(() => fb.classList.remove('shake'), 400);
-    }
-    reportHeight();
-  }
-
-  /* --------------------------------------------------------------------------
-     STAGE 3 LOGIC: SMOOTH ER & 4 FUNCTION CARDS
-     -------------------------------------------------------------------------- */
-  function viewFeatureS03(cardEl, idx) {
-    cardEl.classList.add('viewed');
-    window.lmsState.s03.viewed[idx] = true;
-
-    const count = window.lmsState.s03.viewed.filter(Boolean).length;
-    const counterEl = document.getElementById('s03Counter');
-    if (counterEl) counterEl.textContent = 'Đã xem: ' + count + ' / 4';
-
-    checkStage3Readiness();
-  }
-
-  function selectOptionS03(labelEl, val) {
-    if (window.lmsState.s03.correct) return;
-    document.querySelectorAll('#s03OptionsList .option-label').forEach(el => el.classList.remove('selected'));
-    labelEl.classList.add('selected');
-    window.lmsState.s03.selected = val;
-    checkStage3Readiness();
-  }
-
-  function checkStage3Readiness() {
-    const btn = document.getElementById('btnCheckS03');
-    const count = window.lmsState.s03.viewed.filter(Boolean).length;
-    if (btn && count === 4 && window.lmsState.s03.selected && !window.lmsState.s03.correct) {
-      btn.disabled = false;
-    }
-  }
-
-  function submitStage3() {
-    const sel = window.lmsState.s03.selected;
-    const fb = document.getElementById('fbStage3');
-    const btnCheck = document.getElementById('btnCheckS03');
-    const btnNext = document.getElementById('btnNextS03');
-
-    if (sel === 'A') {
-      window.lmsState.s03.correct = true;
-      fb.className = 'feedback-box correct';
-      fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác.</strong> "Vì ethanol và các sản phẩm chuyển hóa của nó gây độc, tạo stress oxy hóa; tế bào gan đồng thời tăng hệ enzyme và lưới nội chất trơn để đáp ứng khử độc" Tiếp tục sang nội dung kế tiếp.</span>';
-      fb.classList.remove('hidden');
-      if (btnCheck) btnCheck.disabled = true;
-      if (btnNext) btnNext.disabled = false;
-    } else {
-      fb.className = 'feedback-box wrong shake';
-      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Không đúng theo nội dung vừa học —</strong> cơ chế liên quan ở đây là lưới nội chất trơn trong tế bào gan phải hoạt động mạnh hơn để khử độc rượu, và điều này làm tăng nguy cơ tổn thương gan theo thời gian.</span>';
-      fb.classList.remove('hidden');
-      setTimeout(() => fb.classList.remove('shake'), 400);
-    }
-    reportHeight();
-  }
-
-  /* --------------------------------------------------------------------------
-     STAGE 4 LOGIC: GOLGI APPARATUS
-     -------------------------------------------------------------------------- */
-  function playProcessS04() {
-    const wrapper = document.getElementById('s04CanvasWrapper');
-    const statusBadge = document.getElementById('s04StatusBadge');
-    const btn = document.getElementById('btnProcessS04');
-
-    if (wrapper) wrapper.classList.add('golgi-active');
-    if (statusBadge) {
-      statusBadge.innerHTML = '<i class="ti ti-loader ti-spin"></i> Đang chế biến & đóng gói...';
-      statusBadge.style.background = '#FEF3C7';
-      statusBadge.style.color = '#B45309';
-    }
-    if (btn) btn.disabled = true;
-
-    setTimeout(() => {
-      if (statusBadge) {
-        statusBadge.innerHTML = '<i class="ti ti-circle-check"></i> Đã xuất túi tiết qua mặt trans!';
-        statusBadge.style.background = 'var(--correct-bg)';
-        statusBadge.style.color = 'var(--jade-dark)';
-      }
-      if (btn) {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="ti ti-rotate"></i> Xem lại hoạt cảnh';
-      }
-      window.lmsState.s04.processed = true;
-      checkStage4Readiness();
-    }, 2200);
-  }
-
-  function selectOptionS04(labelEl, val) {
-    if (window.lmsState.s04.correct) return;
-    document.querySelectorAll('#s04OptionsList .option-label').forEach(el => el.classList.remove('selected'));
-    labelEl.classList.add('selected');
-    window.lmsState.s04.selected = val;
-    checkStage4Readiness();
-  }
-
-  function checkStage4Readiness() {
-    const btn = document.getElementById('btnCheckS04');
-    if (btn && window.lmsState.s04.processed && window.lmsState.s04.selected && !window.lmsState.s04.correct) {
-      btn.disabled = false;
-    }
-  }
-
-  function submitStage4() {
-    const sel = window.lmsState.s04.selected;
-    const fb = document.getElementById('fbStage4');
-    const btnCheck = document.getElementById('btnCheckS04');
-    const btnNext = document.getElementById('btnNextS04');
-
-    if (sel === 'A') {
-      window.lmsState.s04.correct = true;
-      fb.className = 'feedback-box correct';
-      fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác.</strong> "Các túi dẹp của Golgi tách rời nhau, không nối thông liên tục như lưới nội chất" Tiếp tục sang nội dung kế tiếp.</span>';
-      fb.classList.remove('hidden');
-      if (btnCheck) btnCheck.disabled = true;
-      if (btnNext) btnNext.disabled = false;
-    } else {
-      fb.className = 'feedback-box wrong shake';
-      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Không đúng —</strong> lưới nội chất là hệ thống ống/túi NỐI THÔNG liên tục; Golgi là các túi dẹp XẾP SONG SONG NHƯNG TÁCH RỜI nhau.</span>';
-      fb.classList.remove('hidden');
-      setTimeout(() => fb.classList.remove('shake'), 400);
-    }
-    reportHeight();
-  }
-
-  /* --------------------------------------------------------------------------
-     STAGE 5 LOGIC: LYSOSOME AUTOPHAGY
-     -------------------------------------------------------------------------- */
-  function playDigestS05() {
-    const wrapper = document.getElementById('s05CanvasWrapper');
-    const btn = document.getElementById('btnDigestS05');
-
-    if (wrapper) wrapper.classList.add('lyso-active');
-    if (btn) btn.disabled = true;
-
-    setTimeout(() => {
-      if (btn) {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="ti ti-rotate"></i> Xem lại phân giải';
-      }
-      window.lmsState.s05.digested = true;
-      checkStage5Readiness();
-    }, 2200);
-  }
-
-  function selectOptionS05(labelEl, val) {
-    if (window.lmsState.s05.correct) return;
-    document.querySelectorAll('#s05OptionsList .option-label').forEach(el => el.classList.remove('selected'));
-    labelEl.classList.add('selected');
-    window.lmsState.s05.selected = val;
-    checkStage5Readiness();
-  }
-
-  function checkStage5Readiness() {
-    const btn = document.getElementById('btnCheckS05');
-    if (btn && window.lmsState.s05.digested && window.lmsState.s05.selected && !window.lmsState.s05.correct) {
-      btn.disabled = false;
-    }
-  }
-
-  function submitStage5() {
-    const sel = window.lmsState.s05.selected;
-    const fb = document.getElementById('fbStage5');
-    const btnCheck = document.getElementById('btnCheckS05');
-    const btnNext = document.getElementById('btnNextS05');
-
-    if (sel === 'A') {
-      window.lmsState.s05.correct = true;
-      fb.className = 'feedback-box correct';
-      fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác.</strong> "Lysosome là bào quan điển hình ở tế bào động vật; tế bào thực vật thường dùng không bào tiêu hóa để thực hiện chức năng tương tự" Tiếp tục sang nội dung kế tiếp.</span>';
-      fb.classList.remove('hidden');
-      if (btnCheck) btnCheck.disabled = true;
-      if (btnNext) btnNext.disabled = false;
-    } else {
-      fb.className = 'feedback-box wrong shake';
-      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Không đúng —</strong> lysosome là bào quan điển hình ở tế bào động vật; ở tế bào thực vật, không bào tiêu hóa đảm nhiệm chức năng phân giải tương tự.</span>';
-      fb.classList.remove('hidden');
-      setTimeout(() => fb.classList.remove('shake'), 400);
-    }
-    reportHeight();
-  }
-
-  /* --------------------------------------------------------------------------
-     STAGE 6 LOGIC: VACUOLES (TURGID vs FLACCID)
-     -------------------------------------------------------------------------- */
-  function setVacuoleState(isTurgid) {
-    const wrapper = document.getElementById('s06CanvasWrapper');
-    const statusBadge = document.getElementById('s06StatusBadge');
-
-    if (wrapper) {
-      if (isTurgid) {
-        wrapper.classList.remove('vacuole-flaccid');
-        wrapper.classList.add('vacuole-turgid');
-        if (statusBadge) {
-          statusBadge.innerHTML = '<i class="ti ti-droplet-filled"></i> Trạng thái: Trương nước (Rau tươi lại)';
-          statusBadge.style.color = 'var(--jade-text)';
-        }
-      } else {
-        wrapper.classList.remove('vacuole-turgid');
-        wrapper.classList.add('vacuole-flaccid');
-        window.lmsState.s06.viewedFlaccid = true;
-        if (statusBadge) {
-          statusBadge.innerHTML = '<i class="ti ti-droplet-off"></i> Trạng thái: Mất nước (Rau héo, co không bào)';
-          statusBadge.style.color = '#DC2626';
-        }
+        statusBadge.innerHTML = '<i class="ti ti-droplet-off"></i> Trạng thái: Mất nước (Rau héo, co không bào)';
+        statusBadge.style.color = '#DC2626';
       }
     }
-    checkStage6Readiness();
   }
+  checkStage6Readiness();
+}
 
-  function selectOptionS06(labelEl, val) {
-    if (window.lmsState.s06.correct) return;
-    document.querySelectorAll('#s06OptionsList .option-label').forEach(el => el.classList.remove('selected'));
-    labelEl.classList.add('selected');
-    window.lmsState.s06.selected = val;
-    checkStage6Readiness();
+function selectOptionS06(labelEl, val) {
+  if (window.lmsState.s06.correct) return;
+  document.querySelectorAll('#s06OptionsList .option-label').forEach(el => el.classList.remove('selected'));
+  labelEl.classList.add('selected');
+  window.lmsState.s06.selected = val;
+  checkStage6Readiness();
+}
+
+function checkStage6Readiness() {
+  const btn = document.getElementById('btnCheckS06');
+  if (btn && window.lmsState.s06.viewedFlaccid && window.lmsState.s06.selected && !window.lmsState.s06.correct) {
+    btn.disabled = false;
   }
+}
 
-  function checkStage6Readiness() {
-    const btn = document.getElementById('btnCheckS06');
-    if (btn && window.lmsState.s06.viewedFlaccid && window.lmsState.s06.selected && !window.lmsState.s06.correct) {
-      btn.disabled = false;
+function submitStage6() {
+  const sel = window.lmsState.s06.selected;
+  const fb = document.getElementById('fbStage6');
+  const btnCheck = document.getElementById('btnCheckS06');
+  const btnNext = document.getElementById('btnNextS06');
+
+  if (sel === 'A') {
+    window.lmsState.s06.correct = true;
+    fb.className = 'inline-feedback ok';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-circle-check"></i>
+        <span>Chính xác! Lựa chọn hoàn toàn đúng.</span>
+      </div>
+      <div class="correct-answer-box">
+        ✓ Đáp án đúng: A. Không bào (trung tâm)
+      </div>
+      <div class="explanation">
+        Không bào trung tâm ở tế bào thực vật hút nước trương phồng tạo sức căng làm thân lá cứng cáp; khi mất nước không bào co lại làm tế bào mềm xẹp dẫn đến hiện tượng rau bị héo.
+      </div>
+      <div class="pedagogy-meta">
+        <div class="pedagogy-item"><span class="label">Chủ đề:</span><strong>Cấu trúc & Chức năng Không bào</strong></div>
+        <div class="pedagogy-item"><span class="label">Dạng bài:</span><strong>Giải thích hiện tượng sinh lý thực tiễn</strong></div>
+        <div class="pedagogy-item"><span class="label">Cấp độ tư duy:</span><strong>Vận dụng</strong></div>
+        <div class="pedagogy-item"><span class="label">Năng lực sinh học:</span><strong>Vận dụng kiến thức, kĩ năng đã học</strong></div>
+        <div class="pedagogy-item"><span class="label">Định dạng:</span><strong>Trắc nghiệm một lựa chọn</strong></div>
+      </div>
+    `;
+    fb.classList.remove('hidden');
+    if (btnCheck) btnCheck.disabled = true;
+    if (btnNext) btnNext.disabled = false;
+  } else {
+    fb.className = 'inline-feedback bad shake';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-alert-triangle"></i>
+        <span>Chưa chính xác!</span>
+      </div>
+      <div class="explanation">
+        Chính KHÔNG BÀO TRUNG TÂM co lại (khi mất nước) hoặc phồng lên (khi hút nước) làm thay đổi áp suất trương nước và độ tươi cứng của tế bào thực vật.
+      </div>
+    `;
+    fb.classList.remove('hidden');
+    setTimeout(() => fb.classList.remove('shake'), 400);
+  }
+  reportHeight();
+}
+
+function retryStage6() {
+  window.lmsState.s06.selected = null;
+  window.lmsState.s06.correct = false;
+  document.querySelectorAll('#s06OptionsList .option-label').forEach(el => el.classList.remove('selected'));
+  const btnCheck = document.getElementById('btnCheckS06');
+  const btnNext = document.getElementById('btnNextS06');
+  if (btnCheck) btnCheck.disabled = true;
+  if (btnNext) btnNext.disabled = true;
+  const fb = document.getElementById('fbStage6');
+  if (fb) fb.classList.add('hidden');
+  reportHeight();
+}
+
+/* --------------------------------------------------------------------------
+   STAGE 7 LOGIC: ENDOMEMBRANE ORDER & PREDICTION MCQ
+   -------------------------------------------------------------------------- */
+const correctOrder = [
+  'Màng ngoài nhân',
+  'ER hạt + Ribosome',
+  'Túi vận chuyển',
+  'Bộ máy Golgi',
+  'Túi tiết',
+  'Màng tế bào (Xuất bào)'
+];
+
+function placeOrderStep(item) {
+  if (window.lmsState.s07.sequence.includes(item)) return;
+  const currentIdx = window.lmsState.s07.sequence.length;
+  if (currentIdx >= 6) return;
+
+  if (item === correctOrder[currentIdx]) {
+    window.lmsState.s07.sequence.push(item);
+    const slotRow = document.getElementById('slot-' + (currentIdx + 1));
+    if (slotRow) {
+      slotRow.classList.add('filled');
+      slotRow.querySelector('.slot-name').textContent = item;
     }
-  }
+    document.querySelectorAll('#s07Tray .order-chip').forEach(chip => {
+      if (chip.textContent === item) chip.classList.add('placed');
+    });
 
-  function submitStage6() {
-    const sel = window.lmsState.s06.selected;
-    const fb = document.getElementById('fbStage6');
-    const btnCheck = document.getElementById('btnCheckS06');
-    const btnNext = document.getElementById('btnNextS06');
-
-    if (sel === 'A') {
-      window.lmsState.s06.correct = true;
-      fb.className = 'feedback-box correct';
-      fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác.</strong> "Không bào (trung tâm)" Tiếp tục sang nội dung kế tiếp.</span>';
-      fb.classList.remove('hidden');
-      if (btnCheck) btnCheck.disabled = true;
-      if (btnNext) btnNext.disabled = false;
-    } else {
-      fb.className = 'feedback-box wrong shake';
-      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Không đúng —</strong> chính KHÔNG BÀO TRUNG TÂM co lại (khi mất nước) hoặc phồng lên (khi hút nước) làm thay đổi độ cứng/tươi của tế bào thực vật.</span>';
-      fb.classList.remove('hidden');
-      setTimeout(() => fb.classList.remove('shake'), 400);
-    }
-    reportHeight();
-  }
-
-  /* --------------------------------------------------------------------------
-     STAGE 7 LOGIC: ENDOMEMBRANE ORDER & PREDICTION MCQ
-     -------------------------------------------------------------------------- */
-  const correctOrder = [
-    'Màng ngoài nhân',
-    'ER hạt + Ribosome',
-    'Túi vận chuyển',
-    'Bộ máy Golgi',
-    'Túi tiết',
-    'Màng tế bào (Xuất bào)'
-  ];
-
-  function placeOrderStep(item) {
-    if (window.lmsState.s07.sequence.includes(item)) return;
-    const currentIdx = window.lmsState.s07.sequence.length;
-    if (currentIdx >= 6) return;
-
-    // Check if item matches current step
-    if (item === correctOrder[currentIdx]) {
-      window.lmsState.s07.sequence.push(item);
-      const slotRow = document.getElementById('slot-' + (currentIdx + 1));
-      if (slotRow) {
-        slotRow.classList.add('filled');
-        slotRow.querySelector('.slot-name').textContent = item;
+    if (window.lmsState.s07.sequence.length === 6) {
+      const promptEl = document.getElementById('s07OrderPrompt');
+      if (promptEl) {
+        promptEl.innerHTML = '<i class="ti ti-circle-check" style="color:var(--jade-deep)"></i> Đã hoàn thành ghép đúng 6 trạm dòng protein!';
       }
-      // Highlight chip in tray
-      document.querySelectorAll('#s07Tray .order-chip').forEach(chip => {
-        if (chip.textContent === item) chip.classList.add('placed');
-      });
-
-      if (window.lmsState.s07.sequence.length === 6) {
-        const promptEl = document.getElementById('s07OrderPrompt');
-        if (promptEl) {
-          promptEl.innerHTML = '<i class="ti ti-circle-check" style="color:var(--jade-deep)"></i> Đã hoàn thành ghép đúng 6 trạm dòng protein!';
-        }
-      }
-    } else {
-      // Wrong sequence order alert
-      const slotRow = document.getElementById('slot-' + (currentIdx + 1));
-      if (slotRow) {
-        slotRow.classList.add('shake');
-        setTimeout(() => slotRow.classList.remove('shake'), 400);
-      }
     }
-    checkStage7Readiness();
-  }
-
-  function resetSequenceS07() {
-    window.lmsState.s07.sequence = [];
-    for (let i = 1; i <= 6; i++) {
-      const slotRow = document.getElementById('slot-' + i);
-      if (slotRow) {
-        slotRow.classList.remove('filled');
-        slotRow.querySelector('.slot-name').textContent = '---';
-      }
-    }
-    document.querySelectorAll('#s07Tray .order-chip').forEach(chip => chip.classList.remove('placed'));
-    const promptEl = document.getElementById('s07OrderPrompt');
-    if (promptEl) promptEl.textContent = 'Nhấn các ô bên phải theo đúng thứ tự 1 -> 6';
-    checkStage7Readiness();
-  }
-
-  function selectOptionS07(labelEl, val) {
-    if (window.lmsState.s07.correct) return;
-    document.querySelectorAll('#s07OptionsList .option-label').forEach(el => el.classList.remove('selected'));
-    labelEl.classList.add('selected');
-    window.lmsState.s07.selected = val;
-    checkStage7Readiness();
-  }
-
-  function checkStage7Readiness() {
-    const btn = document.getElementById('btnCheckS07');
-    if (btn && window.lmsState.s07.sequence.length === 6 && window.lmsState.s07.selected && !window.lmsState.s07.correct) {
-      btn.disabled = false;
+  } else {
+    const slotRow = document.getElementById('slot-' + (currentIdx + 1));
+    if (slotRow) {
+      slotRow.classList.add('shake');
+      setTimeout(() => slotRow.classList.remove('shake'), 400);
     }
   }
+  checkStage7Readiness();
+}
 
-  function submitStage7() {
-    const sel = window.lmsState.s07.selected;
-    const fb = document.getElementById('fbStage7');
-    const btnCheck = document.getElementById('btnCheckS07');
-    const btnNext = document.getElementById('btnNextS07');
-
-    if (sel === 'A') {
-      window.lmsState.s07.correct = true;
-      fb.className = 'feedback-box correct';
-      fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác.</strong> "Không — sẽ tìm hiểu ở module tiếp theo, vì chúng có nguồn gốc và đặc điểm khác biệt" Tiếp tục sang nội dung kế tiếp.</span>';
-      fb.classList.remove('hidden');
-      if (btnCheck) btnCheck.disabled = true;
-      if (btnNext) btnNext.disabled = false;
-    } else {
-      fb.className = 'feedback-box wrong shake';
-      fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Chưa chính xác —</strong> không phải MỌI bào quan có màng đều thuộc hệ thống nội màng. Ti thể và lục lạp có màng nhưng KHÔNG kết nối/chuyển đổi màng với hệ thống này — sẽ tìm hiểu lý do ở module tiếp theo.</span>';
-      fb.classList.remove('hidden');
-      setTimeout(() => fb.classList.remove('shake'), 400);
+function resetSequenceS07() {
+  window.lmsState.s07.sequence = [];
+  for (let i = 1; i <= 6; i++) {
+    const slotRow = document.getElementById('slot-' + i);
+    if (slotRow) {
+      slotRow.classList.remove('filled');
+      slotRow.querySelector('.slot-name').textContent = '---';
     }
-    reportHeight();
   }
+  document.querySelectorAll('#s07Tray .order-chip').forEach(chip => chip.classList.remove('placed'));
+  const promptEl = document.getElementById('s07OrderPrompt');
+  if (promptEl) promptEl.textContent = 'Nhấn các ô bên phải theo đúng thứ tự 1 → 6';
+  checkStage7Readiness();
+}
 
-  /* --------------------------------------------------------------------------
-     COMPLETION MODAL V10 & CONFETTI CANVAS ENGINE
-     -------------------------------------------------------------------------- */
-  function openCompletionModal() {
+function selectOptionS07(labelEl, val) {
+  if (window.lmsState.s07.correct) return;
+  document.querySelectorAll('#s07OptionsList .option-label').forEach(el => el.classList.remove('selected'));
+  labelEl.classList.add('selected');
+  window.lmsState.s07.selected = val;
+  checkStage7Readiness();
+}
+
+function checkStage7Readiness() {
+  const btn = document.getElementById('btnCheckS07');
+  if (btn && window.lmsState.s07.sequence.length === 6 && window.lmsState.s07.selected && !window.lmsState.s07.correct) {
+    btn.disabled = false;
+  }
+}
+
+function submitStage7() {
+  const sel = window.lmsState.s07.selected;
+  const fb = document.getElementById('fbStage7');
+  const btnCheck = document.getElementById('btnCheckS07');
+  const btnComplete = document.getElementById('btnCompleteModule');
+
+  if (sel === 'A') {
+    window.lmsState.s07.correct = true;
     window.lmsState.completed = true;
-    const modal = document.getElementById('completionModal');
-    if (modal) {
-      modal.classList.remove('hidden');
-      launchConfetti();
-    }
+    fb.className = 'inline-feedback ok';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-circle-check"></i>
+        <span>Chính xác! Lựa chọn hoàn toàn đúng.</span>
+      </div>
+      <div class="correct-answer-box">
+        ✓ Đáp án đúng: A. Không — sẽ tìm hiểu ở module tiếp theo, vì chúng có nguồn gốc và đặc điểm khác biệt
+      </div>
+      <div class="explanation">
+        Không phải mọi bào quan có màng đều thuộc hệ thống nội màng. Ti thể và lục lạp là các bào quan có màng kép nhưng có nguồn gốc cộng sinh nội bào, chứa hệ gen riêng và không trao đổi đoạn màng với các trạm của hệ thống nội màng.
+      </div>
+      <div class="pedagogy-meta">
+        <div class="pedagogy-item"><span class="label">Chủ đề:</span><strong>Khái niệm Hệ thống nội màng & Dòng protein</strong></div>
+        <div class="pedagogy-item"><span class="label">Dạng bài:</span><strong>Ghép chuỗi quy trình & Dự đoán khoa học</strong></div>
+        <div class="pedagogy-item"><span class="label">Cấp độ tư duy:</span><strong>Vận dụng & Đánh giá</strong></div>
+        <div class="pedagogy-item"><span class="label">Năng lực sinh học:</span><strong>Nhận thức sinh học</strong></div>
+        <div class="pedagogy-item"><span class="label">Định dạng:</span><strong>Tương tác sắp xếp chuỗi (6 trạm) + Trắc nghiệm dự đoán</strong></div>
+      </div>
+    `;
+    fb.classList.remove('hidden');
+    if (btnCheck) btnCheck.disabled = true;
+    if (btnComplete) btnComplete.disabled = false;
+  } else {
+    fb.className = 'inline-feedback bad shake';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-alert-triangle"></i>
+        <span>Chưa chính xác!</span>
+      </div>
+      <div class="explanation">
+        Không phải MỌI bào quan có màng đều thuộc hệ thống nội màng. Ti thể và lục lạp có màng nhưng KHÔNG kết nối/chuyển đổi màng với hệ thống này — chúng ta sẽ tìm hiểu chi tiết ở Module 03.
+      </div>
+    `;
+    fb.classList.remove('hidden');
+    setTimeout(() => fb.classList.remove('shake'), 400);
+  }
+  reportHeight();
+}
+
+function retryStage7() {
+  window.lmsState.s07.selected = null;
+  window.lmsState.s07.correct = false;
+  document.querySelectorAll('#s07OptionsList .option-label').forEach(el => el.classList.remove('selected'));
+  const btnCheck = document.getElementById('btnCheckS07');
+  const btnComplete = document.getElementById('btnCompleteModule');
+  if (btnCheck) btnCheck.disabled = true;
+  if (btnComplete) btnComplete.disabled = true;
+  const fb = document.getElementById('fbStage7');
+  if (fb) fb.classList.add('hidden');
+  reportHeight();
+}
+
+/* --------------------------------------------------------------------------
+   COMPLETION MODAL & CONFETTI ENGINE
+   -------------------------------------------------------------------------- */
+function openCompletionModal() {
+  const modal = document.getElementById('completionModal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    launchConfetti();
+  }
+}
+
+function closeCompletionModal() {
+  const modal = document.getElementById('completionModal');
+  if (modal) modal.classList.add('hidden');
+}
+
+function reviewLesson() {
+  closeCompletionModal();
+  goToStage(1);
+}
+
+function launchConfetti() {
+  const canvas = document.getElementById('confettiCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const particles = [];
+  const colors = ['#3CA57A', '#E8A24A', '#8B5CF6', '#2D8B6F', '#EF4444', '#38BDF8'];
+
+  for (let i = 0; i < 90; i++) {
+    particles.push({
+      x: canvas.width / 2,
+      y: canvas.height / 2,
+      vx: (Math.random() - 0.5) * 16,
+      vy: (Math.random() - 0.8) * 18,
+      size: Math.random() * 8 + 4,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      alpha: 1,
+      rotation: Math.random() * 360,
+      vRot: (Math.random() - 0.5) * 10
+    });
   }
 
-  function closeCompletionModal() {
-    const modal = document.getElementById('completionModal');
-    if (modal) modal.classList.add('hidden');
-  }
+  let frames = 0;
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let active = false;
 
-  function reviewLesson() {
-    closeCompletionModal();
-    goToStage(1);
-  }
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.35;
+      p.vx *= 0.98;
+      p.rotation += p.vRot;
+      p.alpha -= 0.009;
 
-  function launchConfetti() {
-    const canvas = document.getElementById('confettiCanvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const pieces = [];
-    const colors = ['#10B981', '#3B82F6', '#F59E0B', '#EF4444', '#8B5CF6', '#EC4899'];
-    for (let i = 0; i < 90; i++) {
-      pieces.push({
-        x: canvas.width / 2,
-        y: canvas.height / 2,
-        w: Math.random() * 8 + 4,
-        h: Math.random() * 6 + 4,
-        vx: (Math.random() - 0.5) * 16,
-        vy: (Math.random() - 0.5) * 16 - 3,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        rotation: Math.random() * 360,
-        rotSpeed: (Math.random() - 0.5) * 10
-      });
-    }
-
-    let frame = 0;
-    function render() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      pieces.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-        p.vy += 0.35; // Gravity
-        p.vx *= 0.98; // Air resistance
-        p.rotation += p.rotSpeed;
-
+      if (p.alpha > 0) {
+        active = true;
         ctx.save();
         ctx.translate(p.x, p.y);
         ctx.rotate((p.rotation * Math.PI) / 180);
         ctx.fillStyle = p.color;
-        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.globalAlpha = Math.max(0, p.alpha);
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
         ctx.restore();
-      });
-
-      frame++;
-      if (frame < 120) {
-        requestAnimationFrame(render);
-      } else {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
       }
-    }
-    render();
-  }
-  
-  /* COLLAPSIBLE LEAD BOX LOGIC */
-  function toggleLeadBox(headerEl) {
-    const box = headerEl.closest('.lead-box');
-    if (!box) return;
-    const isCollapsed = box.classList.toggle('collapsed');
-    const label = box.querySelector('.lead-toggle-label');
-    headerEl.setAttribute('aria-expanded', !isCollapsed);
-    if (label) {
-      label.textContent = isCollapsed ? 'Mở rộng' : 'Thu gọn';
-    }
-    if (typeof reportHeight === 'function') {
-      setTimeout(reportHeight, 360);
+    });
+
+    frames++;
+    if (active && frames < 140) {
+      requestAnimationFrame(animate);
+    } else {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
   }
-
-  document.addEventListener('keydown', function(e) {
-    if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.classList.contains('lead-header')) {
-      e.preventDefault();
-      toggleLeadBox(e.target);
-    }
-  });
-
-</script>
-<script>
-/* Chuẩn hóa trực tiếp theo SH10_B01_M02: hình trái, thao tác phải. */
-(() => {
-  document.querySelectorAll('section.stage,section.stage-section').forEach((stage)=>{
-    if(stage.classList.contains('two-block-ready'))return;
-    const direct=[...stage.children];
-    const layout=direct.find((node)=>node.matches('.stage-body,.workspace-layout'));
-    if(!layout)return;
-    layout.classList.add('split-workspace');
-    const parts=[...layout.children];
-    const visual=parts.find((node)=>node.querySelector('img,svg,canvas'))||parts[0];
-    visual.classList.add('visual-card');
-    const others=parts.filter((node)=>node!==visual);
-    let workspace=others.length===1?others[0]:null;
-    if(!workspace){workspace=document.createElement('article');others.forEach((node)=>workspace.appendChild(node))}
-    workspace.classList.add('workspace-card');
-    if(workspace.parentElement!==layout)layout.appendChild(workspace);
-    const guide=direct.find((node)=>node.matches('.guide-box'));
-    if(guide){guide.className='instruction';workspace.prepend(guide)}
-    else{const nested=workspace.querySelector('.guide-box');if(nested)nested.className='instruction'}
-    const lead=direct.find((node)=>node.matches('.lead-box'));
-    if(lead){const head=document.createElement('div');head.className='visual-card__head';const h=document.createElement('h2');h.textContent=(stage.getAttribute('aria-label')||'').replace(/^Màn\s*\d+\s*:\s*/i,'');if(h.textContent)head.appendChild(h);head.appendChild(lead);visual.prepend(head)}
-    stage.querySelectorAll('.feedback-box,.feedback-bar,.feedback-panel').forEach((node)=>node.classList.add('inline-feedback'));
-    const actions=direct.find((node)=>node.matches('.stage-actions,.controls-row'));if(actions){actions.classList.add('controls-row');stage.appendChild(actions)}
-    stage.classList.add('two-block-ready');
-  });
-  const clean=(root)=>{const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.closest('script,style'))continue;const v=n.nodeValue.replace(/Tiếp tục sang Giai đoạn\s*\d+/gi,'Tiếp tục').replace(/Hoàn thành Giai đoạn\s*\d+!?/gi,'Hoàn thành!').replace(/GIAI ĐOẠN\s*\d+\s*\/\s*\d+\s*[·—-]\s*/gi,'').replace(/Stage\s*\d+/gi,'').replace(/Màn\s*\d+\s*[·:]\s*/gi,'').replace(/Bước\s*\d+\s*\/\s*\d+/gi,'');if(v!==n.nodeValue)n.nodeValue=v}};clean(document.body);new MutationObserver((a)=>a.forEach((m)=>clean(m.target))).observe(document.body,{childList:true,subtree:true,characterData:true});
-})();
-</script>
-<script>
-/* Hàng điều hướng ba nút thống nhất, thay thế cụm điều hướng cũ. */
-(()=>{const stages=[...document.querySelectorAll('section.stage,section.stage-section,section.stage-card')];const go=(idx)=>{const stage=stages[idx];if(!stage)return;if(typeof showStage==='function')showStage(idx);else if(typeof goStage==='function')goStage(stage.id);else if(typeof goToStage==='function'){const m=stage.id.match(/stage-?(\d+)/);goToStage(m?Number(m[1]):idx+1)}else{stages.forEach((item,itemIdx)=>item.classList.toggle('hidden',itemIdx!==idx));window.scrollTo({top:0,behavior:'smooth'})}};const hashMatch=location.hash.match(/^#retry-stage-(\d+)$/);stages.forEach((stage,idx)=>{if(stage.querySelector(':scope > .three-button-nav'))return;const sourceRow=stage.querySelector(':scope > .controls-row,:scope > .stage-actions');const buttons=sourceRow?[...sourceRow.querySelectorAll('button')]:[];const byText=(re)=>buttons.find(b=>re.test(b.textContent));const backSource=byText(/quay lại/i);const resetSource=byText(/làm lại màn|làm lại/i);const nextSource=byText(/tiếp tục/i)||buttons.find(b=>/complete|finish|next/i.test(b.id));const row=document.createElement('div');row.className='three-button-nav';const back=document.createElement('button');back.type='button';back.className='btn btn-outline nav-back';back.innerHTML='<i class="ti ti-arrow-left"></i> Quay lại';back.disabled=idx===0;back.addEventListener('click',()=>backSource?backSource.click():go(idx-1));const reset=document.createElement('button');reset.type='button';reset.className='btn btn-outline nav-reset';reset.innerHTML='<i class="ti ti-rotate-clockwise"></i> Làm lại màn';reset.addEventListener('click',()=>{if(resetSource)resetSource.click();else{location.hash='#retry-stage-'+idx;location.reload()}});const spacer=document.createElement('span');spacer.className='nav-spacer';const next=document.createElement('button');next.type='button';next.className='btn btn-primary nav-next';next.innerHTML='Tiếp tục <i class="ti ti-arrow-right"></i>';const sync=()=>{next.disabled=!nextSource||nextSource.disabled||nextSource.classList.contains('hidden')};next.addEventListener('click',()=>nextSource?nextSource.click():go(idx+1));sync();if(nextSource)new MutationObserver(sync).observe(nextSource,{attributes:true,attributeFilter:['class','disabled']});row.append(back,reset,spacer,next);stage.appendChild(row)});if(hashMatch){const idx=Number(hashMatch[1]);setTimeout(()=>{go(idx);history.replaceState(null,'',location.pathname+location.search)},80)}})();
+  animate();
+}
 </script>
 </body>
 </html>

@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-  
+
   <script type="application/json" id="athena-context">
   {
     "title": "Vai trò của trao đổi chất và chuyển hoá năng lượng",
@@ -17,15 +17,15 @@
     "track": "Chương 1 · Trao đổi chất và chuyển hóa năng lượng ở sinh vật",
     "objectives": [
       "Nêu được khái niệm trao đổi chất và chuyển hóa năng lượng ở sinh vật.",
-      "Phân tích được 3 vai trò cốt lõi của trao đổi chất và chuyển hoá năng lượng đối với sinh vật: cung cấp vật chất xây dựng cơ thể, cung cấp năng lượng cho hoạt động sống và đào thải chất cần bài tiết.",
+      "Phân tích được 3 vai trò cốt lõi của trao đổi chất và chuyển hoá năng lượng: cung cấp vật chất xây dựng cơ thể, cung cấp năng lượng cho hoạt động sống và loại bỏ chất cần thải.",
       "Liên hệ được các hiện tượng thực tiễn với các vai trò tương ứng của trao đổi chất."
     ],
     "structure": [
-      {"id": "st00", "title": "ST00 — Hook mở đầu: Khái quát trao đổi chất và chuyển hoá năng lượng"},
-      {"id": "st01", "title": "ST01 — Khám phá: Ba vai trò của trao đổi chất và chuyển hoá năng lượng"},
+      {"id": "st00", "title": "ST00 — Khái quát trao đổi chất và chuyển hoá năng lượng"},
+      {"id": "st01", "title": "ST01 — Ba vai trò cốt lõi của trao đổi chất và chuyển hoá năng lượng"},
       {"id": "st02", "title": "ST02 — Ghi nhớ và kết nối sang Module 02"}
     ],
-    "athenaGuidance": "Module học lí thuyết tương tác Sinh học 11 gồm 3 Stage. ST00: Phân loại 3 tình huống (a) Cây héo và (b) Người mệt do mất nước thuộc nhóm 'Trao đổi bị gián đoạn'; (c) Cây và người khỏe mạnh thuộc nhóm 'Trao đổi diễn ra bình thường'. ST01: Khám phá sơ đồ 1 chiều Môi trường -> Sinh vật -> Môi trường qua 3 Hotspot, sau đó nối 3 cặp: 1-Cung cấp vật chất xây dựng cơ thể nối với A-Hình thành thêm tế bào khi sinh trưởng; 2-Cung cấp năng lượng nối với B-Cơ hoạt động khi chạy; 3-Loại bỏ chất thải nối với C-Thải nước tiểu và mồ hôi. ST02: Chốt 3 vai trò cốt lõi và đặt câu hỏi mở đầu về các dấu hiệu đặc trưng ở Module 02."
+    "athenaGuidance": "Module lý thuyết tương tác độc lập V10 gồm 3 stage: 1) ST00: Phân tích 3 tình huống ảnh thực tế A01 đối chứng giữa gián đoạn và bình thường; 2) ST01: Khám phá sơ đồ 1 chiều Môi trường -> Sinh vật -> Môi trường qua 3 hotspot và thực hiện nối 3 cặp Vai trò - Ví dụ; 3) ST02: Tổng kết 3 ý ghi nhớ then chốt, kết nối sang Module 02 và kích hoạt modal hoàn thành kèm Canvas Confetti."
   }
   </script>
 
@@ -76,1528 +76,2277 @@
       --radius: 10px;
       --radius-lg: 14px;
       --radius-sm: 6px;
-      --shadow: 0 4px 12px rgba(45, 139, 111, .10);
+      --shadow: 0 4px 14px rgba(45, 139, 111, .10);
       --shadow-sm: 0 2px 6px rgba(26, 26, 26, .05);
     }
 
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       background: var(--cream);
       color: var(--ink);
-      font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+      font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
       font-size: 17px;
       line-height: 1.65;
       overflow-x: hidden;
     }
 
-    button { font: inherit; }
-    button, [tabindex] { -webkit-tap-highlight-color: transparent; }
+    button {
+      font: inherit;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
     button:focus-visible, [tabindex]:focus-visible {
       outline: 3px solid var(--accent);
       outline-offset: 2px;
     }
-    img { display: block; max-width: 100%; }
-    .hidden { display: none !important; }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .congrats-overlay.hidden,
+    .modal-backdrop.hidden,
+    #completionModal.hidden {
+      display: none !important;
+    }
 
     /* Container ứng dụng */
     .app {
       width: 100%;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 16px clamp(12px, 2.4vw, 24px) 24px;
+      padding: 16px clamp(12px, 2.5vw, 24px) 32px;
     }
 
-    /* HEADER BANNER - FLAT GRADIENT WITH INTEGRATED GOAL (V10 STANDARD) */
-    header {
-      width: 100%;
-      border-radius: var(--radius-lg);
-      padding: 1.6rem 2rem;
-      overflow: hidden;
-      position: relative;
-      background: linear-gradient(135deg, var(--jade-dark), var(--jade-deep));
-      box-shadow: var(--shadow-sm);
-      color: #fff;
-      margin-bottom: 16px;
-    }
-    .header-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--sage-pale);
-      font-weight: 600;
-      font-size: 0.88rem;
-      letter-spacing: 0.5px;
-      margin-bottom: 6px;
-      text-transform: uppercase;
-    }
-    header h1 {
-      margin: 0;
-      color: #fff;
-      font-size: clamp(1.4rem, 3.2vw, 2rem);
-      font-weight: 800;
-      line-height: 1.25;
-    }
-    .header-goal {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 10px;
-      background: rgba(255, 255, 255, 0.14);
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      border-radius: var(--radius-sm);
-      padding: 8px 14px;
-    }
-    .header-goal .goal-label {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-shrink: 0;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: #fff;
-      white-space: nowrap;
-    }
-    .header-goal .goal-divider {
-      flex-shrink: 0;
-      width: 1px;
-      height: 14px;
-      background: rgba(255, 255, 255, 0.4);
-    }
-    .header-goal .goal-text {
-      font-size: 0.92rem;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.95);
-    }
-
-    /* PROGRESS STAGE TABS (STICKY TOP 0 - V10 STANDARD) */
-    .progress-nav {
+    /* ===================================================
+       BỐ CỤC HAI KHỐI CHUẨN (V10 TWO-BLOCK MODULE)
+       =================================================== */
+    .split-workspace {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      width: 100%;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--cream);
-      padding: 10px 0;
-      box-shadow: 0 4px 12px rgba(26, 26, 26, 0.06);
-      margin-bottom: 20px;
-    }
-    .stage-tab, .stepper-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 14px;
-      border-radius: var(--radius);
-      border: 1.5px solid var(--paper-line-2);
-      background: var(--cream-2);
-      color: var(--ink-2);
-      font-size: 0.9rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.18s ease;
-      text-align: center;
-    }
-    .stage-tab:hover:not(:disabled), .stepper-btn:hover:not(:disabled) {
-      border-color: var(--sage);
-      background: var(--cream-3);
-    }
-    .stage-tab.current, .stage-tab.active, .stepper-btn.active {
-      background: var(--jade) !important;
-      border-color: var(--jade) !important;
-      color: #fff !important;
-      box-shadow: 0 3px 10px rgba(60, 165, 122, 0.25);
-    }
-    .stage-tab.done, .stage-tab.completed, .stepper-btn.done {
-      background: var(--jade-pale);
-      border-color: var(--sage);
-      color: var(--jade-text);
-    }
-    @media (max-width: 900px) {
-      .progress-nav {
-        display: flex !important;
-        flex-wrap: nowrap !important;
-        overflow-x: auto !important;
-        overflow-y: hidden !important;
-        -webkit-overflow-scrolling: touch;
-        gap: 8px !important;
-        padding: 6px 4px !important;
-        scrollbar-width: none;
-      }
-      .progress-nav::-webkit-scrollbar { display: none; }
-      .stage-tab, .stepper-btn {
-        flex: 0 0 auto !important;
-        white-space: nowrap !important;
-        padding: 10px 14px !important;
-        font-size: 0.86rem !important;
-      }
-    }
-.stepper-btn.done::after {
-      content: ' ✓';
-      color: var(--jade-deep);
-      font-weight: 800;
-    }
-
-    /* Khung Stage */
-    .stage-section {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    /* Bố cục chia đôi (Split Workspace) */
-    .split-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(0, 1.16fr) minmax(340px, 0.84fr);
       gap: 20px;
       align-items: start;
     }
-    @media (max-width: 900px) {
-      .split-layout {
+
+    @media (max-width: 980px) {
+      .split-workspace {
         grid-template-columns: 1fr;
       }
     }
 
-    /* Card chuẩn */
-    .card-box {
+    /* Khối Trái: Lý thuyết & Đồ họa trực quan */
+    .visual-card {
+      position: sticky;
+      top: 16px;
+      background: #fff;
       border: 1px solid var(--paper-line);
       border-radius: var(--radius-lg);
-      background: #fff;
-      padding: 22px 24px;
+      overflow: hidden;
       box-shadow: var(--shadow-sm);
-      display: flex;
-      flex-direction: column;
-    }
-    .card-box__head {
-      margin-bottom: 16px;
-      border-bottom: 1px solid var(--paper-line);
-      padding-bottom: 12px;
-    }
-    .eyebrow {
-      font-size: .78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .6px;
-      color: var(--jade-text);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 4px;
-    }
-    .card-box h2 {
-      margin: 0;
-      font-size: clamp(1.2rem, 2.2vw, 1.55rem);
-      line-height: 1.35;
-      color: var(--ink);
-    }
-    .card-box h3 {
-      margin: 0 0 10px;
-      font-size: 1.15rem;
-      color: var(--ink);
-    }
-    .card-desc {
-      font-size: .92rem;
-      color: var(--ink-2);
-      line-height: 1.55;
-      margin: 0 0 14px;
     }
 
-    /* Hộp Callout / Hướng dẫn */
-    .guidance-box, .guide-box {
+    @media (max-width: 980px) {
+      .visual-card {
+        position: static;
+      }
+    }
+
+    .visual-card__head {
+      padding: 20px 22px 16px;
+      border-bottom: 1px solid var(--paper-line);
+      background: #fff;
+    }
+
+    .visual-card__head h2 {
+      margin: 0 0 8px;
+      font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.32;
+    }
+
+    .visual-card__head .question {
+      margin: 0;
+      color: var(--ink-2);
+      font-size: 0.96rem;
+      line-height: 1.6;
+    }
+
+    .visual-card__content {
+      padding: 20px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Khung Hướng dẫn duy nhất (.instruction) */
+    .instruction {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
       padding: 12px 16px;
       border-radius: var(--radius);
-      border-left: 4px solid var(--jade);
-      background: var(--jade-pale);
+      border-left: 4px solid var(--info);
+      background: var(--info-bg);
       color: var(--ink);
-      font-size: .92rem;
-      margin-bottom: 16px;
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
+      font-size: 0.91rem;
+      line-height: 1.55;
     }
-    .guidance-box i, .guide-box i {
-      font-size: 1.3rem;
-      color: var(--jade-dark);
+
+    .instruction i {
+      font-size: 1.25rem;
+      color: var(--info);
       flex-shrink: 0;
       margin-top: 1px;
     }
 
-    /* Phản hồi sư phạm (.inline-feedback) */
-    .inline-feedback {
-      padding: 12px 16px;
-      border-radius: var(--radius);
-      font-size: .92rem;
-      line-height: 1.55;
-      margin-top: 16px;
-      transition: all .25s ease;
-    }
-    .inline-feedback.info {
-      border-left: 4px solid var(--info);
+    .instruction.info {
+      border-left-color: var(--info);
       background: var(--info-bg);
-      color: var(--ink);
     }
-    .inline-feedback.ok {
-      border-left: 4px solid var(--correct);
-      background: var(--correct-bg);
+
+    /* Dòng chảy các khối lý thuyết dọc */
+    .theory-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .theory-block {
+      background: var(--cream);
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+    }
+
+    .theory-block__title {
+      font-size: 0.88rem;
+      font-weight: 700;
       color: var(--jade-dark);
-    }
-    .inline-feedback.bad {
-      border-left: 4px solid var(--wrong);
-      background: var(--wrong-bg);
-      color: var(--ink);
-    }
-    .feedback-head {
-      font-weight: 800;
-      margin-bottom: 4px;
       display: flex;
       align-items: center;
       gap: 6px;
+      margin-bottom: 4px;
     }
 
-    /* Nút bấm chuẩn */
-    .btn-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 18px;
-      flex-wrap: wrap;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: .92rem;
-      cursor: pointer;
-      transition: all .15s ease;
-      text-decoration: none;
-      border: 1.5px solid transparent;
-    }
-    .btn-primary {
-      background: var(--jade);
-      color: var(--cream);
-      border-color: var(--jade);
-    }
-    .btn-primary:hover:not(:disabled) {
-      background: var(--jade-deep);
-      border-color: var(--jade-deep);
-    }
-    .btn-primary:disabled {
-      opacity: .5;
-      cursor: not-allowed;
-      background: var(--ink-faint);
-      border-color: var(--ink-faint);
-      color: #fff;
-    }
-    .btn-outline {
-      background: transparent;
-      border-color: var(--paper-line-2);
+    .theory-block__content {
+      margin: 0;
+      font-size: 0.91rem;
       color: var(--ink-2);
+      line-height: 1.55;
     }
-    .btn-outline:hover {
-      border-color: var(--jade);
+
+    /* Khối Phải: Không gian làm việc, Hoạt động & Bài tập */
+    .workspace-card {
+      position: sticky;
+      top: 16px;
+      max-height: calc(100vh - 32px);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      background: #fff;
+      border: 1.5px solid var(--paper-line-2);
+      border-radius: var(--radius-lg);
+      padding: 22px 20px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (max-width: 980px) {
+      .workspace-card {
+        position: static;
+        max-height: none;
+        overflow-y: visible;
+      }
+    }
+
+    .workspace-card h3 {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .workspace-lead {
+      margin: 0;
+      font-size: 0.92rem;
+      color: var(--ink-2);
+      line-height: 1.55;
+    }
+
+    /* ===================================================
+       STAGE 00 SPECIFIC: HOOK ẢNH VÀ PHÂN LOẠI
+       =================================================== */
+    /* Gallery 3 ảnh tình huống bên trái */
+    .hook-preview-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hook-preview-card {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 12px;
+      align-items: center;
+      background: var(--cream);
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-sm);
+      padding: 8px 10px;
+      transition: all 0.2s ease;
+    }
+
+    .hook-preview-card img {
+      width: 100%;
+      height: 76px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--paper-line);
+    }
+
+    .hook-preview-info {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .hook-preview-info .hook-badge {
+      font-size: 0.76rem;
+      font-weight: 800;
       color: var(--jade-dark);
       background: var(--jade-pale);
+      padding: 1px 7px;
+      border-radius: 4px;
+      width: fit-content;
     }
-    .spacer { flex: 1; }
 
-    /* =======================================================
-       STAGE 0: ST00 — HOOK PHÂN LOẠI 3 THẺ TÌNH HUỐNG
-       ======================================================= */
-    .hook-tray-container {
-      margin-bottom: 14px;
+    .hook-preview-info p {
+      margin: 0;
+      font-size: 0.88rem;
+      color: var(--ink);
+      line-height: 1.45;
     }
-    .hook-tray-label {
-      font-size: .82rem;
+
+    /* Khay thẻ kéo thả bên phải */
+    .hook-tray-wrap {
+      background: var(--cream);
+      border: 1.5px dashed var(--paper-line-2);
+      border-radius: var(--radius);
+      padding: 12px;
+    }
+
+    .hook-tray-header {
+      font-size: 0.8rem;
       font-weight: 800;
-      color: var(--jade-dark);
-      margin-bottom: 6px;
+      color: var(--ink-2);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       display: flex;
       align-items: center;
       gap: 6px;
+      margin-bottom: 10px;
     }
+
     .hook-cards-tray {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      padding: 8px 10px;
-      background: var(--cream-2);
-      border: 2px dashed var(--paper-line-2);
-      border-radius: var(--radius);
-      align-items: stretch;
-      box-sizing: border-box;
-      max-width: 860px;
-      margin: 0 auto;
+      gap: 8px;
+      min-height: 110px;
     }
 
-    /* Thẻ tình huống Hook A01: Tinh gọn, không choán màn hình */
+    @media (max-width: 600px) {
+      .hook-cards-tray {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .hook-card {
-      position: relative;
       background: #fff;
-      border: 1.5px solid var(--paper-line);
+      border: 1.5px solid var(--paper-line-2);
       border-radius: var(--radius-sm);
-      padding: 6px 8px;
-      cursor: pointer;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation;
-      transition: all .2s ease;
+      padding: 8px;
       display: flex;
       flex-direction: column;
-      box-shadow: var(--shadow-sm);
-      min-height: auto;
-    }
-    .hook-card:active {
-      cursor: grabbing;
-    }
-    .hook-card.selected {
-      border-color: var(--accent) !important;
-      box-shadow: 0 0 0 3.5px rgba(232, 162, 74, .45), 0 6px 14px rgba(0, 0, 0, .1) !important;
-      transform: translateY(-3px);
-      background: #FFFDF8;
-    }
-    .hook-card__select-badge {
-      display: none;
-      position: absolute;
-      top: 6px;
-      right: 6px;
-      background: var(--accent);
-      color: #fff;
-      font-size: .65rem;
-      font-weight: 800;
-      padding: 1px 6px;
-      border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
-      animation: fadeIn .2s ease;
-      z-index: 2;
-    }
-    .hook-card.selected .hook-card__select-badge {
-      display: inline-flex;
       align-items: center;
-      gap: 2px;
+      gap: 6px;
+      text-align: center;
+      cursor: grab;
+      user-select: none;
+      touch-action: manipulation;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
     }
-    .hook-card.error-shake {
-      border-color: var(--wrong) !important;
-      animation: shake 0.6s ease;
+
+    .hook-card:hover {
+      border-color: var(--jade);
+      transform: translateY(-2px);
     }
+
+    .hook-card.selected {
+      border-color: var(--accent);
+      background: #FFFDF8;
+      box-shadow: 0 0 0 3px rgba(232, 162, 74, 0.35);
+      transform: translateY(-2px);
+    }
+
     .hook-card.correct-locked {
-      border-color: var(--correct) !important;
-      background: #FAFCFA;
-      cursor: default;
-    }
-    .hook-card__img {
-      width: 100%;
-      height: 95px;
-      max-height: 95px;
-      object-fit: cover;
-      aspect-ratio: 16 / 10;
-      border-radius: 4px;
-      margin-bottom: 5px;
-      background: var(--cream);
-      pointer-events: none;
-    }
-    .hook-card__caption {
-      font-size: .75rem;
-      font-weight: 600;
-      color: var(--ink);
-      line-height: 1.25;
-      margin: 0;
-      pointer-events: none;
-    }
-    .hook-card__tag {
-      display: inline-block;
-      font-size: .68rem;
-      font-weight: 800;
-      color: var(--jade-dark);
+      border-color: var(--jade-deep);
       background: var(--jade-pale);
-      padding: 1px 5px;
-      border-radius: 3px;
-      margin-bottom: 3px;
-      width: fit-content;
+      cursor: default;
+      box-shadow: none;
+    }
+
+    .hook-card__thumb {
+      width: 100%;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--paper-line);
       pointer-events: none;
     }
 
-    /* Nút trả về khay khi thẻ đã đặt vào ô */
+    .hook-card__name {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+      pointer-events: none;
+    }
+
     .btn-return-card {
       display: none;
       align-items: center;
-      justify-content: center;
-      gap: 3px;
-      margin-top: 5px;
-      padding: 3px 6px;
-      font-size: .70rem;
-      font-weight: 700;
-      color: var(--wrong);
-      background: var(--wrong-bg);
-      border: 1px solid rgba(193, 95, 60, .35);
+      gap: 4px;
+      margin-top: 4px;
+      padding: 3px 8px;
       border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--wrong-bg);
+      color: var(--wrong);
+      border: 1px solid rgba(193, 95, 60, 0.3);
       cursor: pointer;
-      transition: all .2s ease;
     }
+
     .btn-return-card:hover {
       background: var(--wrong);
       color: #fff;
     }
+
     .drop-zone .btn-return-card {
       display: inline-flex;
     }
 
-    /* Khay thẻ khi có thể trả về */
-    .hook-cards-tray.tray-selected {
-      border-color: var(--jade) !important;
-      background: var(--jade-pale) !important;
-      box-shadow: 0 0 0 3px rgba(60, 165, 122, .3) !important;
-      cursor: pointer;
-    }
-
-    /* 2 Vùng đích thả (Drop Zones) */
-    .drop-zones-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      max-width: 860px;
-      margin: 0 auto;
-    }
-    .drop-zone {
-      border: 2px dashed var(--paper-line-2);
-      border-radius: var(--radius);
-      background: #fff;
-      padding: 10px 12px;
-      min-height: 140px;
+    /* 2 Vùng đích thả */
+    .drop-zones-container {
       display: flex;
       flex-direction: column;
-      transition: all .2s ease;
-      cursor: default;
+      gap: 12px;
     }
+
+    .drop-zone {
+      background: #fff;
+      border: 2px dashed var(--paper-line-2);
+      border-radius: var(--radius);
+      padding: 12px;
+      min-height: 110px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
     .drop-zone.drag-over {
       border-color: var(--jade);
       background: var(--jade-pale);
     }
-    .drop-zone.zone-selected {
-      border-color: var(--accent) !important;
-      background: #FFFDF8 !important;
-      box-shadow: 0 0 0 3px rgba(232, 162, 74, .3) !important;
+
+    .drop-zone.target-ready {
+      border-color: var(--accent);
+      background: #FFFDF8;
       cursor: pointer;
     }
+
     .drop-zone__head {
-      font-size: .86rem;
+      font-size: 0.85rem;
       font-weight: 800;
-      margin-bottom: 8px;
       display: flex;
       align-items: center;
       gap: 6px;
-      padding-bottom: 4px;
+      padding-bottom: 6px;
       border-bottom: 1.5px solid var(--paper-line);
-      pointer-events: none;
     }
+
     .drop-zone--disrupted .drop-zone__head {
       color: #8A551A;
     }
+
     .drop-zone--normal .drop-zone__head {
       color: var(--jade-text);
     }
+
     .drop-zone__cards {
-      flex: 1;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 8px;
+      min-height: 60px;
       align-content: start;
     }
-    .drop-zone .hook-card {
-      padding: 5px 6px;
+
+    .drop-zone__cards .hook-card {
+      padding: 6px;
     }
-    .drop-zone .hook-card__img {
-      height: 72px;
-      max-height: 72px;
-      margin-bottom: 4px;
+
+    .drop-zone__cards .hook-card__thumb {
+      height: 48px;
     }
-    .drop-zone .hook-card__caption {
-      font-size: .70rem;
-      line-height: 1.2;
-    }
-    .zone-placeholder {
+
+    .drop-placeholder {
       grid-column: 1 / -1;
       text-align: center;
-      font-size: .78rem;
+      font-size: 0.82rem;
       color: var(--ink-faint);
-      padding: 16px 8px;
+      padding: 14px 8px;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 4px;
+      justify-content: center;
+      gap: 6px;
       pointer-events: none;
     }
 
-    @media (max-width: 650px) {
-      .hook-cards-tray {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 6px;
-        padding: 6px;
-      }
-      .hook-card {
-        padding: 5px 6px;
-      }
-      .hook-card__img {
-        height: 65px;
-        max-height: 65px;
-      }
-      .hook-card__caption {
-        font-size: .68rem;
-        line-height: 1.2;
-      }
-      .hook-card__tag {
-        font-size: .62rem;
-      }
-      .drop-zones-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-      }
-      .drop-zone {
-        min-height: 110px;
-        padding: 8px;
-      }
-      .drop-zone__head {
-        font-size: .78rem;
-        gap: 4px;
-        margin-bottom: 6px;
-        padding-bottom: 3px;
-      }
-    }
-
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-6px); }
-      40%, 80% { transform: translateX(6px); }
-    }
-
-    /* =======================================================
-       STAGE 1: ST01 — SƠ ĐỒ VECTOR 1 CHIỀU & 3 HOTSPOTS
-       ======================================================= */
+    /* ===================================================
+       STAGE 01 SPECIFIC: SƠ ĐỒ 3 HOTSPOTS & NHIỆM VỤ NỐI
+       =================================================== */
     .diagram-container {
       position: relative;
-      width: 100%;
-      background: #fff;
-      border: 1.5px solid var(--paper-line);
+      background: #FAF7F0;
+      border: 1.5px solid var(--paper-line-2);
       border-radius: var(--radius-lg);
-      padding: 12px;
-      overflow: hidden;
+      padding: 10px;
       box-shadow: var(--shadow-sm);
     }
+
     .diagram-svg {
       width: 100%;
       height: auto;
       display: block;
     }
 
-    /* Hotspot buttons đặt trên sơ đồ */
+    /* Hotspot HTML Buttons */
     .hotspot-btn {
       position: absolute;
-      width: 38px;
-      height: 38px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
-      background: var(--jade);
+      background: var(--jade-deep);
       color: #fff;
-      border: 3px solid #fff;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
       font-weight: 800;
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
       cursor: pointer;
-      transition: all .2s ease;
-      z-index: 10;
       transform: translate(-50%, -50%);
-    }
-    .hotspot-btn:hover {
-      transform: translate(-50%, -50%) scale(1.15);
-      background: var(--jade-deep);
-    }
-    .hotspot-btn.active {
-      background: var(--accent);
-      box-shadow: 0 0 0 5px rgba(232, 162, 74, .35);
-    }
-    .hotspot-btn.visited {
-      background: var(--jade-deep);
-    }
-    .hotspot-btn.pulse {
-      animation: pulseGlow 1.8s infinite;
-    }
-    @keyframes pulseGlow {
-      0% { box-shadow: 0 0 0 0 rgba(60, 165, 122, .6); }
-      70% { box-shadow: 0 0 0 12px rgba(60, 165, 122, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(60, 165, 122, 0); }
+      transition: all 0.2s ease;
+      z-index: 5;
     }
 
-    /* Hộp chi tiết Hotspot hiển thị bên dưới sơ đồ */
-    .hotspot-detail-box {
-      margin-top: 14px;
-      padding: 16px 20px;
-      border-radius: var(--radius);
-      background: var(--cream-2);
-      border: 1.5px solid var(--paper-line);
-      animation: fadeIn .3s ease;
+    .hotspot-btn:hover {
+      transform: translate(-50%, -50%) scale(1.15);
+      background: var(--jade);
     }
-    .hotspot-detail-box h4 {
-      margin: 0 0 8px;
-      font-size: 1.05rem;
-      color: var(--jade-dark);
+
+    .hotspot-btn.pulse::after {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2.5px solid var(--jade);
+      animation: pulseAnim 1.6s infinite;
+    }
+
+    @keyframes pulseAnim {
+      0% { transform: scale(0.9); opacity: 1; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+
+    .hotspot-btn.visited {
+      background: #2563EB;
+    }
+
+    .hotspot-btn.active {
+      box-shadow: 0 0 0 4px #93C5FD;
+    }
+
+    /* 3 Nút chọn vị trí bên dưới sơ đồ */
+    .svg-controls-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    @media (max-width: 680px) {
+      .svg-controls-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hotspot-toggle-btn {
+      padding: 11px 12px;
+      border-radius: var(--radius-sm);
+      background: var(--cream-2);
+      border: 1.5px solid var(--paper-line-2);
+      color: var(--ink);
+      font-size: 0.88rem;
+      font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: space-between;
+      gap: 6px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      text-align: left;
     }
-    .hotspot-detail-box p {
-      margin: 0;
-      font-size: .93rem;
+
+    .hotspot-toggle-btn:hover {
+      background: var(--cream-3);
+      border-color: var(--sage-deep);
+    }
+
+    .hotspot-toggle-btn.active {
+      background: var(--jade-pale);
+      border-color: var(--jade);
+      color: var(--jade-text);
+      box-shadow: 0 0 0 2px var(--jade-soft);
+    }
+
+    .status-pill {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.08);
+      color: var(--ink-2);
+    }
+
+    .hotspot-toggle-btn.viewed .status-pill {
+      background: var(--jade);
+      color: #fff;
+    }
+
+    .visual-caption-box {
+      background: var(--cream);
+      border: 1px solid var(--paper-line-2);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.92rem;
       color: var(--ink);
       line-height: 1.6;
     }
 
-    /* =======================================================
-       STAGE 1: NHIỆM VỤ NỐI VAI TRÒ ↔ VÍ DỤ (MATCHING)
-       ======================================================= */
+    .visual-caption-box i {
+      color: var(--jade-deep);
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .conclude-box {
+      background: var(--jade-pale);
+      border-left: 4px solid var(--jade-deep);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-size: 0.92rem;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    /* Bảng nối nhiệm vụ Vai trò ↔ Ví dụ */
     .matching-section {
-      margin-top: 24px;
-      border-top: 2px solid var(--paper-line);
-      padding-top: 20px;
-      animation: fadeIn .4s ease;
-    }
-    .matching-board {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(24px, 5vw, 64px);
-      margin-top: 16px;
-      user-select: none;
-    }
-    .matching-col {
       display: flex;
       flex-direction: column;
       gap: 14px;
     }
+
+    .matching-board {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      padding: 10px 0;
+    }
+
+    @media (max-width: 580px) {
+      .matching-board {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+    }
+
+    .matching-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
     .matching-col__title {
-      font-size: .88rem;
+      font-size: 0.8rem;
       font-weight: 800;
+      color: var(--ink-2);
       text-transform: uppercase;
-      letter-spacing: .5px;
-      color: var(--jade-text);
-      margin-bottom: 2px;
+      letter-spacing: 0.5px;
       display: flex;
       align-items: center;
       gap: 6px;
+      margin-bottom: 2px;
     }
+
     .match-card {
       position: relative;
       background: #fff;
-      border: 2px solid var(--paper-line);
-      border-radius: var(--radius);
-      padding: 14px 18px;
-      min-height: 80px;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      transition: all .2s ease;
-      font-size: .90rem;
-      font-weight: 600;
+      border: 1.5px solid var(--paper-line-2);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-size: 0.88rem;
       color: var(--ink);
       line-height: 1.45;
-      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 68px;
     }
+
     .match-card:hover {
       border-color: var(--jade);
-      transform: translateY(-2px);
+      background: var(--cream);
     }
+
     .match-card.selected {
       border-color: var(--accent);
-      background: var(--accent-pale);
-      box-shadow: 0 0 0 3px rgba(232, 162, 74, .35);
+      background: #FFFDF8;
+      box-shadow: 0 0 0 3px rgba(232, 162, 74, 0.35);
     }
+
     .match-card.paired {
       border-color: var(--jade-deep);
       background: var(--jade-pale);
-      color: var(--jade-dark);
     }
+
     .match-card.error-pair {
       border-color: var(--wrong) !important;
       background: var(--wrong-bg) !important;
+      animation: shake 0.4s ease;
     }
-    .match-card .card-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+
+    .card-badge {
       width: 24px;
       height: 24px;
       border-radius: 50%;
       background: var(--cream-2);
       border: 1px solid var(--paper-line-2);
-      font-size: .78rem;
+      color: var(--ink-2);
       font-weight: 800;
-      color: var(--ink);
-      margin-right: 12px;
+      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
     }
+
     .match-card.paired .card-badge {
       background: var(--jade-deep);
-      color: #fff;
       border-color: var(--jade-deep);
+      color: #fff;
     }
 
-    /* Anchor dot nối dây */
+    /* Anchor dot nối dây SVG */
     .anchor-dot {
       position: absolute;
       top: 50%;
-      width: 14px;
-      height: 14px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
       background: #fff;
-      border: 3px solid var(--paper-line-2);
+      border: 2.5px solid var(--paper-line-2);
       transform: translateY(-50%);
-      transition: all .2s ease;
+      transition: all 0.2s ease;
     }
+
     .matching-col--left .anchor-dot {
-      right: -7px;
+      right: -6px;
     }
+
     .matching-col--right .anchor-dot {
-      left: -7px;
+      left: -6px;
     }
+
     .match-card.selected .anchor-dot {
       border-color: var(--accent);
       background: var(--accent);
     }
+
     .match-card.paired .anchor-dot {
       border-color: var(--jade-deep);
       background: var(--jade-deep);
     }
 
-    /* Layer SVG vẽ dây nối */
+    /* Layer SVG vẽ đường nối */
     .svg-connections-layer {
       position: absolute;
-      top: 0;
-      left: 0;
+      inset: 0;
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 5;
+      z-index: 4;
     }
+
     .connection-line {
       fill: none;
       stroke-width: 3.5px;
       stroke-linecap: round;
-      stroke-dasharray: 6 0;
-      transition: stroke .2s ease;
+      transition: stroke 0.2s ease;
     }
+
     .connection-line.tentative {
       stroke: var(--accent);
       stroke-dasharray: 6 5;
     }
+
     .connection-line.correct {
-      stroke: var(--correct);
+      stroke: var(--jade-deep);
     }
+
     .connection-line.wrong {
       stroke: var(--wrong);
     }
 
     /* Danh sách giải thích từng cặp đúng */
     .paired-explanations {
-      margin-top: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .pair-expl-item {
-      padding: 10px 14px;
-      border-radius: var(--radius-sm);
-      background: var(--cream-2);
-      border-left: 3.5px solid var(--jade-deep);
-      font-size: .86rem;
-      color: var(--ink);
-      line-height: 1.45;
-      animation: fadeIn .3s ease;
-    }
-    .pair-expl-item b {
-      color: var(--jade-dark);
-    }
-
-    /* =======================================================
-       STAGE 2: ST02 — GHI NHỚ VÀ KẾT NỐI SANG M02
-       ======================================================= */
-    .summary-card-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin: 18px 0;
-    }
-    @media (max-width: 768px) {
-      .summary-card-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    .summary-item {
-      background: #fff;
-      border: 1.5px solid var(--paper-line);
-      border-radius: var(--radius);
-      padding: 18px;
       display: flex;
       flex-direction: column;
       gap: 8px;
+      margin-top: 6px;
+    }
+
+    .pair-expl-item {
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      background: var(--cream);
+      border-left: 3.5px solid var(--jade-deep);
+      font-size: 0.86rem;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    /* ===================================================
+       STAGE 02 SPECIFIC: SINGLE-BLOCK SUMMARY & BRIDGE
+       =================================================== */
+    .single-block-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .summary-card {
+      background: #fff;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .summary-card__head {
+      border-bottom: 1px solid var(--paper-line);
+      padding-bottom: 14px;
+    }
+
+    .summary-card__head h2 {
+      margin: 0;
+      font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .summary-card__head p {
+      margin: 6px 0 0;
+      color: var(--ink-2);
+      font-size: 0.95rem;
+    }
+
+    .takeaway-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 820px) {
+      .takeaway-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .takeaway-card {
+      background: var(--cream);
+      border-left: 4px solid var(--jade-deep);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
       box-shadow: var(--shadow-sm);
     }
-    .summary-item__icon {
+
+    .takeaway-card__icon {
       width: 42px;
       height: 42px;
-      border-radius: 10px;
+      border-radius: 50%;
       background: var(--jade-pale);
-      color: var(--jade-dark);
+      color: var(--jade-deep);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.4rem;
-    }
-    .summary-item__title {
-      font-size: .92rem;
-      font-weight: 800;
-      color: var(--jade-text);
-      margin: 0;
-    }
-    .summary-item__text {
-      font-size: .88rem;
-      color: var(--ink);
-      line-height: 1.5;
-      margin: 0;
+      flex-shrink: 0;
+      margin-top: 2px;
     }
 
-    .bridge-box {
-      background: var(--cream-2);
-      border: 1.5px solid var(--paper-line-2);
-      border-radius: var(--radius-lg);
-      padding: 20px 24px;
-      margin-top: 14px;
+    .takeaway-card__content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
-    .bridge-box h4 {
-      margin: 0 0 10px;
-      color: var(--jade-dark);
-      font-size: 1.05rem;
+
+    .takeaway-card__num {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--jade-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .takeaway-card__text {
+      font-size: 0.94rem;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    .connection-card {
+      background: #fff;
+      border: 1.5px solid var(--paper-line-2);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .connection-card__icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--accent-pale);
+      color: var(--accent-text);
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
     }
-    .bridge-box p {
-      margin: 0 0 8px;
-      font-size: .95rem;
-      line-height: 1.6;
+
+    .connection-card__text {
+      font-size: 0.98rem;
+      color: var(--ink-2);
+      line-height: 1.65;
+    }
+
+    /* ===================================================
+       PHẢN HỒI SƯ PHẠM & NÚT ĐIỀU HƯỚNG
+       =================================================== */
+    .inline-feedback {
+      padding: 14px 16px;
+      border-radius: var(--radius);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .inline-feedback i {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .inline-feedback.ok {
+      background: var(--correct-bg);
+      border-left: 4px solid var(--correct);
       color: var(--ink);
     }
 
-    /* Modal kết thúc trung tính (Neutral Completion Modal) */
-    /* CONGRATS MODAL (V10 STANDARD) */
-    .congrats-overlay, .modal-backdrop {
+    .inline-feedback.ok i {
+      color: var(--correct);
+    }
+
+    .inline-feedback.bad {
+      background: var(--wrong-bg);
+      border-left: 4px solid var(--wrong);
+      color: var(--ink);
+    }
+
+    .inline-feedback.bad i {
+      color: var(--wrong);
+    }
+
+    .inline-feedback.info {
+      background: var(--info-bg);
+      border-left: 4px solid var(--info);
+      color: var(--ink);
+    }
+
+    .inline-feedback.info i {
+      color: var(--info);
+    }
+
+    /* Thanh tác vụ điều hướng 3 nút */
+    .controls-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--paper-line);
+    }
+
+    .spacer {
+      flex: 1;
+    }
+
+    .btn {
+      min-height: 44px;
+      padding: 9px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 0.92rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-outline {
+      background: #fff;
+      border: 1.5px solid var(--paper-line-2);
+      color: var(--ink-2);
+    }
+
+    .btn-outline:hover:not(:disabled) {
+      background: var(--cream-2);
+      border-color: var(--sage-deep);
+      color: var(--ink);
+    }
+
+    .btn-primary {
+      background: var(--jade);
+      color: #fff;
+      border: 1.5px solid var(--jade-deep);
+      box-shadow: 0 2px 6px rgba(45, 139, 111, 0.2);
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: var(--jade-deep);
+      box-shadow: 0 4px 12px rgba(45, 139, 111, 0.3);
+    }
+
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    /* ===================================================
+       COMPLETION MODAL & CONFETTI
+       =================================================== */
+    .congrats-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(20, 67, 47, 0.65);
-      backdrop-filter: blur(4px);
-      display: grid;
-      place-items: center;
-      z-index: 9999;
+      background: rgba(20, 40, 30, 0.65);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 20px;
-    }
-    .congrats-overlay.hidden,
-    .modal-backdrop.hidden,
-    #completionModal.hidden,
-    #congratsModal.hidden {
-      display: none !important;
+      z-index: 9999;
+      animation: fadeIn 0.25s ease;
     }
 
-    .congrats-modal, .neutral-modal {
+    .congrats-card {
       background: #fff;
-      border-radius: 16px;
-      padding: 28px 24px;
+      border: 2px solid var(--jade-soft);
+      border-radius: var(--radius-lg);
       max-width: 480px;
       width: 100%;
+      padding: 32px 28px;
       text-align: center;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.2);
-      animation: modalPop 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+      animation: slideUp 0.3s ease;
     }
-    @keyframes modalPop {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    .congrats-icon {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 16px;
+
+    .congrats-icon-box {
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
-      background: var(--jade-pale);
-      color: var(--jade-text);
-      display: grid;
-      place-items: center;
-      font-size: 2.2rem;
+      background: var(--accent-pale);
+      color: var(--accent-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.6rem;
+      box-shadow: 0 4px 14px rgba(232, 162, 74, 0.25);
     }
-    .congrats-modal h2 {
-      margin: 0 0 10px 0;
-      font-size: 1.4rem;
-      color: var(--ink);
+
+    .congrats-title {
+      font-size: 1.45rem;
       font-weight: 800;
+      color: var(--ink);
     }
-    .congrats-modal p {
-      margin: 0 0 20px 0;
-      font-size: 0.96rem;
+
+    .congrats-message {
+      font-size: 0.98rem;
       color: var(--ink-2);
-      line-height: 1.6;
+      line-height: 1.65;
     }
+
+    .congrats-actions {
+      display: flex;
+      gap: 12px;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .congrats-actions button {
+      flex: 1;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
     }
-  
-    /* Loại bỏ thanh tab điều hướng bước học theo chuẩn tuyến tính SH10_B02_M02 */
-    .progress-nav-container,
-    .progress-nav,
-    .stepper-nav,
-    .stepper-bar,
-    .step-nav-bar {
-      display: none !important;
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-/* Đồng bộ trực tiếp theo SH10_B01_M02 */
-body{padding:0;font-size:17px}.app,.app-container{max-width:1200px;margin:0 auto;padding:18px clamp(12px,2.4vw,28px) 12px}.stage-section.two-block-ready,.stage-card.two-block-ready{padding:0;background:transparent;border:0;box-shadow:none}.split-workspace{display:grid!important;grid-template-columns:minmax(0,58fr) minmax(340px,42fr)!important;gap:20px!important;align-items:start!important}.visual-card,.workspace-card{min-width:0;border:1px solid var(--paper-line,#D6CCB6);border-radius:14px;overflow:hidden;box-shadow:0 2px 6px rgba(26,26,26,.05)}.visual-card{position:sticky;top:0;background:#fff}.visual-card__head{padding:14px 16px 12px;border-bottom:1px solid var(--paper-line,#D6CCB6);background:#fff}.visual-card__head h2{margin:0;font-size:clamp(1.25rem,2.2vw,1.75rem);line-height:1.28}.visual-body{padding:14px;background:#fff}.workspace-card{padding:18px;background:var(--cream-2,#FBF9F4)}.instruction{display:flex;align-items:flex-start;gap:10px;margin:0 0 16px;padding:12px 14px;border-left:4px solid var(--info,#4E7F92);border-radius:6px;background:var(--info-bg,#DCE7EB);font-size:.91rem;line-height:1.55}.inline-feedback{font-size:.92rem;line-height:1.55}.controls-row{display:flex;align-items:center;gap:10px;margin-top:16px;padding:14px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;flex-wrap:nowrap}.btn{min-height:44px;padding:9px 15px;font-size:.92rem}@media(max-width:980px){.split-workspace{grid-template-columns:1fr!important}.visual-card{position:static}.workspace-card{padding:16px}}@media(max-width:700px){body{font-size:16px}.app,.app-container{padding:12px 10px 10px}}@media(max-width:420px){.app,.app-container{padding:10px 8px 8px}.workspace-card{padding:13px}}
-.three-button-nav{display:flex;align-items:center;gap:12px;width:100%;margin-top:16px;padding:16px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;scrollbar-width:none}.three-button-nav::-webkit-scrollbar{display:none}.three-button-nav .nav-spacer{flex:1}.three-button-nav .btn{flex:0 0 auto;white-space:nowrap}.three-button-nav .nav-back{order:1}.three-button-nav .nav-reset{order:2}.three-button-nav .nav-spacer{order:3}.three-button-nav .nav-next{order:4}.three-button-nav .btn:disabled{opacity:.45;cursor:not-allowed}
-section.stage .controls-row,section.stage .stage-actions,section.stage-section .controls-row,section.stage-section .stage-actions,section.stage-card .controls-row,section.stage-card .stage-actions{display:none!important}
-</style>
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-5px); }
+      40%, 80% { transform: translateX(5px); }
+    }
+  </style>
 </head>
 <body>
 
+<canvas id="confettiCanvas" class="hidden"></canvas>
+
 <div class="app">
-  
-
-  <!-- Progress Nav Sticky Top 0 (V10 Standard) -->
-  <nav class="progress-nav" aria-label="Tiến trình học tập">
-    <button type="button" class="stage-tab stepper-btn active current" id="stepBtn-st00" onclick="showStage(0)">
-      <i class="ti ti-bulb"></i> S01. Khởi động
-    </button>
-    <button type="button" class="stage-tab stepper-btn" id="stepBtn-st01" onclick="showStage(1)">
-      <i class="ti ti-arrows-exchange"></i> S02. Khám phá
-    </button>
-    <button type="button" class="stage-tab stepper-btn" id="stepBtn-st02" onclick="showStage(2)">
-      <i class="ti ti-bookmark-check"></i> S03. Ghi nhớ
-    </button>
-  </nav>
 
   <!-- =======================================================
-       STAGE 0: ST00 — HOOK MỞ ĐẦU
+       STAGE ST00: KHÁI QUÁT TRAO ĐỔI CHẤT & HOOK 3 TÌNH HUỐNG
        ======================================================= -->
-  <section class="stage-section" id="stage-st00">
-    <div class="card-box">
-      <div class="card-box__head">
-        <div class="eyebrow"><i class="ti ti-sparkles"></i> STAGE 0 / 2 · HOOK MỞ ĐẦU</div>
-        <h2>Khái quát trao đổi chất và chuyển hoá năng lượng</h2>
-      </div>
-      
-      <div class="guidance-box">
-        <i class="ti ti-help"></i>
-        <div>
-          <b>Câu hỏi mở đầu:</b> “Điều gì xảy ra nếu sinh vật không nhận đủ các chất cần thiết từ môi trường hoặc không loại bỏ được những chất cần thải ra ngoài?”<br>
-          <span>Quan sát ba tình huống dưới đây. Tình huống nào cho thấy hoạt động sống của sinh vật đang bị ảnh hưởng do quá trình trao đổi với môi trường không diễn ra bình thường?</span>
+  <section class="stage" id="stage-0">
+    <div class="split-workspace">
+      <!-- TRÁI: ĐỐI CHỨNG TRỰC QUAN 3 TÌNH HUỐNG THỰC TẾ -->
+      <article class="visual-card">
+        <div class="visual-card__head">
+          <h2>Khái quát trao đổi chất và chuyển hoá năng lượng</h2>
+          <p class="question">“Điều gì xảy ra nếu sinh vật không nhận đủ các chất cần thiết từ môi trường hoặc không loại bỏ được những chất cần thải ra ngoài?”</p>
         </div>
-      </div>
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span><strong>HƯỚNG DẪN:</strong> Quan sát ba tình huống bên dưới, kéo từng thẻ hoặc chạm chọn thẻ rồi chạm vào nhóm đích phù hợp ở khối bên phải. Nhấn <strong>Kiểm tra</strong> khi đã xếp đủ 3 thẻ.</span>
+          </div>
 
-      <div class="guide-box">
-        <i class="ti ti-hand-finger"></i>
-        <span><strong>HƯỚNG DẪN:</strong> Kéo từng hình vào nhóm phù hợp hoặc chạm thẻ rồi chạm vùng đích. Nút KIỂM TRA sẽ mở khi bạn đã phân loại đủ cả 3 thẻ.</span>
-      </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-arrows-exchange"></i> Trao đổi thường xuyên với môi trường</div>
+              <p class="theory-block__content">Sinh vật luôn phải liên tục trao đổi chất và chuyển hoá năng lượng với môi trường xung quanh để duy trì sự sống. Khi quá trình này bị gián đoạn hay thiếu hụt, cơ thể sẽ lập tức xuất hiện các dấu hiệu suy yếu và rối loạn hoạt động sống.</p>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-eye"></i> Nhận diện các tình huống thực tiễn</div>
+              <p class="theory-block__content">Phân tích trạng thái của cây trồng và con người trong 3 bức ảnh thực tế: tình huống nào cho thấy hoạt động sống bị ảnh hưởng do quá trình trao đổi với môi trường không diễn ra bình thường?</p>
+            </div>
+          </div>
 
-      <!-- Khay 3 thẻ tình huống Hook A01 -->
-      <div class="hook-tray-container">
-        <div class="hook-tray-label">
-          <i class="ti ti-cards"></i> KHAY TÌNH HUỐNG
+          <!-- Gallery chi tiết 3 tình huống ảnh A01 -->
+          <div class="hook-preview-grid">
+            <div class="hook-preview-card">
+              <img src="images/SH11-B01-M01-A01a.png" onerror="this.onerror=null;this.src='https://lh3.googleusercontent.com/d/15monTSbAxL-hKlv-T8jxtKR8FxPElZ15'" alt="Cây trồng trong chậu bị héo do đất khô kéo dài">
+              <div class="hook-preview-info">
+                <span class="hook-badge">Tình huống (a)</span>
+                <p>Cây trồng trong chậu bị héo do đất khô kéo dài.</p>
+              </div>
+            </div>
+
+            <div class="hook-preview-card">
+              <img src="images/SH11-B01-M01-A01b.png" onerror="this.onerror=null;this.src='https://lh3.googleusercontent.com/d/1pcRNYA3Tw2mgpZACze2NsqcmPVkDF5rX'" alt="Người trẻ mệt mỏi do mất nước kéo dài">
+              <div class="hook-preview-info">
+                <span class="hook-badge">Tình huống (b)</span>
+                <p>Một người trẻ mệt mỏi rõ rệt do mất nước kéo dài.</p>
+              </div>
+            </div>
+
+            <div class="hook-preview-card">
+              <img src="images/SH11-B01-M01-A01c.png" onerror="this.onerror=null;this.src='https://lh3.googleusercontent.com/d/1hifg1H61a34Mq__0u__T-cpFiDhye4jU'" alt="Cây và người ở trạng thái khoẻ mạnh">
+              <div class="hook-preview-info">
+                <span class="hook-badge">Tình huống (c)</span>
+                <p>Cây và người ở trạng thái khoẻ mạnh, được cung cấp đủ nước.</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="hook-cards-tray" id="hookTray">
-          <!-- Thẻ a -->
-          <div class="hook-card" id="card-a" draggable="true" data-card="a" tabindex="0" role="button" aria-label="Tình huống a">
-            <span class="hook-card__select-badge"><i class="ti ti-check"></i> Đang chọn</span>
-            <span class="hook-card__tag">Tình huống (a)</span>
-            <img src="https://lh3.googleusercontent.com/d/15monTSbAxL-hKlv-T8jxtKR8FxPElZ15" alt="Cây trồng trong chậu bị héo do đất khô kéo dài" class="hook-card__img">
-            <p class="hook-card__caption">Cây trồng trong chậu bị héo do đất khô kéo dài.</p>
-            <button type="button" class="btn-return-card" title="Trả về khay" aria-label="Trả về khay"><i class="ti ti-arrow-back-up"></i> Trả về khay</button>
-          </div>
-          <!-- Thẻ b -->
-          <div class="hook-card" id="card-b" draggable="true" data-card="b" tabindex="0" role="button" aria-label="Tình huống b">
-            <span class="hook-card__select-badge"><i class="ti ti-check"></i> Đang chọn</span>
-            <span class="hook-card__tag">Tình huống (b)</span>
-            <img src="https://lh3.googleusercontent.com/d/1pcRNYA3Tw2mgpZACze2NsqcmPVkDF5rX" alt="Người trẻ mệt mỏi do mất nước kéo dài" class="hook-card__img">
-            <p class="hook-card__caption">Một người trẻ mệt mỏi rõ rệt do mất nước kéo dài.</p>
-            <button type="button" class="btn-return-card" title="Trả về khay" aria-label="Trả về khay"><i class="ti ti-arrow-back-up"></i> Trả về khay</button>
-          </div>
-          <!-- Thẻ c -->
-          <div class="hook-card" id="card-c" draggable="true" data-card="c" tabindex="0" role="button" aria-label="Tình huống c">
-            <span class="hook-card__select-badge"><i class="ti ti-check"></i> Đang chọn</span>
-            <span class="hook-card__tag">Tình huống (c)</span>
-            <img src="https://lh3.googleusercontent.com/d/1hifg1H61a34Mq__0u__T-cpFiDhye4jU" alt="Cây và người ở trạng thái khoẻ mạnh" class="hook-card__img">
-            <p class="hook-card__caption">Cây và người ở trạng thái khoẻ mạnh, được cung cấp đủ nước.</p>
-            <button type="button" class="btn-return-card" title="Trả về khay" aria-label="Trả về khay"><i class="ti ti-arrow-back-up"></i> Trả về khay</button>
-          </div>
-        </div>
-      </div>
+      </article>
 
-      <!-- 2 Vùng đích thả -->
-      <div class="drop-zones-grid">
-        <!-- Vùng 1: Gián đoạn -->
-        <div class="drop-zone drop-zone--disrupted" id="zone-disrupted" data-zone="disrupted">
-          <div class="drop-zone__head">
-            <i class="ti ti-alert-triangle"></i>
-            <span>Trao đổi với môi trường bị gián đoạn</span>
+      <!-- PHẢI: HOẠT ĐỘNG PHÂN LOẠI THẺ KÉO - THẢ -->
+      <article class="workspace-card">
+        <h3>Phân loại tình huống vào nhóm phù hợp</h3>
+        <p class="workspace-lead">Kéo thẻ từ khay hoặc chạm chọn thẻ rồi chạm vào vùng đích tương ứng bên dưới:</p>
+
+        <!-- Khay 3 thẻ kéo thả -->
+        <div class="hook-tray-wrap" id="hookTrayWrap">
+          <div class="hook-tray-header">
+            <i class="ti ti-cards"></i>
+            <span>Khay tình huống cần xếp</span>
           </div>
-          <div class="drop-zone__cards" id="cards-disrupted">
-            <div class="zone-placeholder" id="placeholder-disrupted">
-              <i class="ti ti-download"></i>
-              <span>Kéo hoặc chạm để đặt thẻ vào đây</span>
+          <div class="hook-cards-tray" id="hookCardsTray">
+            <!-- Thẻ a -->
+            <div class="hook-card" id="cardA" draggable="true" data-card="a" tabindex="0" role="button" aria-label="Tình huống a">
+              <img src="images/SH11-B01-M01-A01a.png" onerror="this.onerror=null;this.src='https://lh3.googleusercontent.com/d/15monTSbAxL-hKlv-T8jxtKR8FxPElZ15'" alt="Thẻ a" class="hook-card__thumb">
+              <span class="hook-card__name">Tình huống (a)</span>
+              <button type="button" class="btn-return-card" title="Trả về khay" aria-label="Trả về khay"><i class="ti ti-arrow-back-up"></i> Trả về khay</button>
+            </div>
+            <!-- Thẻ b -->
+            <div class="hook-card" id="cardB" draggable="true" data-card="b" tabindex="0" role="button" aria-label="Tình huống b">
+              <img src="images/SH11-B01-M01-A01b.png" onerror="this.onerror=null;this.src='https://lh3.googleusercontent.com/d/1pcRNYA3Tw2mgpZACze2NsqcmPVkDF5rX'" alt="Thẻ b" class="hook-card__thumb">
+              <span class="hook-card__name">Tình huống (b)</span>
+              <button type="button" class="btn-return-card" title="Trả về khay" aria-label="Trả về khay"><i class="ti ti-arrow-back-up"></i> Trả về khay</button>
+            </div>
+            <!-- Thẻ c -->
+            <div class="hook-card" id="cardC" draggable="true" data-card="c" tabindex="0" role="button" aria-label="Tình huống c">
+              <img src="images/SH11-B01-M01-A01c.png" onerror="this.onerror=null;this.src='https://lh3.googleusercontent.com/d/1hifg1H61a34Mq__0u__T-cpFiDhye4jU'" alt="Thẻ c" class="hook-card__thumb">
+              <span class="hook-card__name">Tình huống (c)</span>
+              <button type="button" class="btn-return-card" title="Trả về khay" aria-label="Trả về khay"><i class="ti ti-arrow-back-up"></i> Trả về khay</button>
             </div>
           </div>
         </div>
 
-        <!-- Vùng 2: Bình thường -->
-        <div class="drop-zone drop-zone--normal" id="zone-normal" data-zone="normal">
-          <div class="drop-zone__head">
-            <i class="ti ti-circle-check"></i>
-            <span>Trao đổi với môi trường diễn ra bình thường</span>
+        <!-- 2 Vùng đích phân loại -->
+        <div class="drop-zones-container">
+          <!-- Vùng 1: Gián đoạn -->
+          <div class="drop-zone drop-zone--disrupted" id="zoneDisrupted" data-zone="disrupted">
+            <div class="drop-zone__head">
+              <i class="ti ti-alert-triangle"></i>
+              <span>Trao đổi với môi trường bị gián đoạn</span>
+            </div>
+            <div class="drop-zone__cards" id="cardsDisrupted">
+              <div class="drop-placeholder" id="placeholderDisrupted">
+                <i class="ti ti-download"></i>
+                <span>Thả thẻ tình huống bị gián đoạn vào đây</span>
+              </div>
+            </div>
           </div>
-          <div class="drop-zone__cards" id="cards-normal">
-            <div class="zone-placeholder" id="placeholder-normal">
-              <i class="ti ti-download"></i>
-              <span>Kéo hoặc chạm để đặt thẻ vào đây</span>
+
+          <!-- Vùng 2: Bình thường -->
+          <div class="drop-zone drop-zone--normal" id="zoneNormal" data-zone="normal">
+            <div class="drop-zone__head">
+              <i class="ti ti-circle-check"></i>
+              <span>Trao đổi với môi trường diễn ra bình thường</span>
+            </div>
+            <div class="drop-zone__cards" id="cardsNormal">
+              <div class="drop-placeholder" id="placeholderNormal">
+                <i class="ti ti-download"></i>
+                <span>Thả thẻ tình huống bình thường vào đây</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Inline Feedback ST00 -->
-      <div class="inline-feedback hidden" id="st00Feedback"></div>
+        <div class="quiz-actions" style="margin-top: 4px;">
+          <button class="btn btn-primary" id="btnCheckST00" disabled onclick="checkST00Placement()">
+            <i class="ti ti-check"></i>
+            <span>Kiểm tra</span>
+          </button>
+        </div>
 
-      <!-- Nút điều khiển ST00 -->
-      <div class="btn-row">
-        <button class="btn btn-outline" id="btnReset-st00"><i class="ti ti-rotate-clockwise"></i> Đặt lại</button>
-        <div class="spacer"></div>
-        <button class="btn btn-primary" id="btnCheck-st00" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
-        <button class="btn btn-primary hidden" id="btnNext-st00">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
-      </div>
+        <!-- Phản hồi ST00 -->
+        <div class="inline-feedback info hidden" id="st00StatusFeedback"></div>
+      </article>
+    </div>
+
+    <!-- Thanh tác vụ điều hướng ST00 -->
+    <div class="controls-row">
+      <button class="btn btn-outline" type="button" disabled><i class="ti ti-arrow-left"></i> Quay lại</button>
+      <button class="btn btn-outline" type="button" onclick="resetStage(0)"><i class="ti ti-refresh"></i> Làm lại màn</button>
+      <span class="spacer"></span>
+      <button class="btn btn-primary" type="button" id="btnNextST00" disabled onclick="gotoStage(1)"><span>Tiếp tục</span> <i class="ti ti-arrow-right"></i></button>
     </div>
   </section>
 
   <!-- =======================================================
-       STAGE 1: ST01 — VAI TRÒ CỦA TRAO ĐỔI CHẤT VÀ CHUYỂN HOÁ NĂNG LƯỢNG
+       STAGE ST01: BA VAI TRÒ CỦA TRAO ĐỔI CHẤT & CHUYỂN HOÁ NL
        ======================================================= -->
-  <section class="stage-section hidden" id="stage-st01">
-    <div class="card-box">
-      <div class="card-box__head">
-        <div class="eyebrow"><i class="ti ti-arrows-exchange"></i> STAGE 1 / 2 · NỘI DUNG TRỌNG TÂM</div>
-        <h2>Vai trò của trao đổi chất và chuyển hoá năng lượng</h2>
-      </div>
-
-      <div class="guidance-box">
-        <i class="ti ti-bulb"></i>
-        <div>
-          <b>Khám phá dòng trao đổi:</b> “Từ những tình huống vừa quan sát, có thể thấy sinh vật luôn có sự trao đổi với môi trường. Hãy khám phá từng vị trí trên sơ đồ để tìm hiểu vì sao quá trình này cần thiết đối với sự sống.”<br>
-          <span style="font-weight:600;color:var(--jade-dark);">Hướng dẫn: Nhấn vào từng vị trí 1, 2, 3 trên sơ đồ. Khi xem đủ ba vị trí, nhiệm vụ nối vai trò sẽ xuất hiện.</span>
+  <section class="stage hidden" id="stage-1">
+    <div class="split-workspace">
+      <!-- TRÁI: SƠ ĐỒ SVG 3 VỊ TRÍ MÔI TRƯỜNG -> SINH VẬT -> MÔI TRƯỜNG -->
+      <article class="visual-card">
+        <div class="visual-card__head">
+          <h2>Ba vai trò cốt lõi của trao đổi chất và chuyển hoá năng lượng</h2>
+          <p class="question">“Từ những tình huống vừa quan sát, có thể thấy sinh vật luôn có sự trao đổi với môi trường. Hãy khám phá từng vị trí trên sơ đồ để tìm hiểu vì sao quá trình này cần thiết đối với sự sống.”</p>
         </div>
-      </div>
-
-      <!-- Sơ đồ tương tác 1 chiều (CODE/SVG + 3 Hotspots) -->
-      <div class="diagram-container" id="diagramContainer">
-        <svg class="diagram-svg" viewBox="0 0 920 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sơ đồ khái quát trao đổi chất và chuyển hoá năng lượng ở sinh vật">
-          <!-- Nền tổng thể -->
-          <rect width="920" height="380" rx="14" fill="#FAF7F0"/>
-
-          <!-- Khối 1: MÔI TRƯỜNG NGOÀI (Bên Trái - Cung cấp) -->
-          <g id="block-env-in">
-            <rect x="25" y="40" width="220" height="300" rx="16" fill="#EDF6F9" stroke="#4E7F92" stroke-width="2"/>
-            <rect x="25" y="40" width="220" height="42" rx="16" fill="#DCE7EB"/>
-            <text x="135" y="66" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="12" font-weight="800" fill="#1B5E48" letter-spacing=".5px">MÔI TRƯỜNG NGOÀI</text>
-            <text x="135" y="96" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="700" fill="#4E7F92">(Nguồn cung cấp)</text>
-
-            <!-- Minh họa các chất thu nhận -->
-            <g transform="translate(45, 115)">
-              <!-- Nước & Khoáng -->
-              <circle cx="20" cy="20" r="16" fill="#D9ECF2" stroke="#4E7F92" stroke-width="1.5"/>
-              <path d="M20 10 C16 16 12 20 12 24 A8 8 0 0 0 28 24 C28 20 24 16 20 10 Z" fill="#4E7F92"/>
-              <text x="46" y="24" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11.5" font-weight="700" fill="#1A1A1A">Nước & Chất khoáng</text>
-
-              <!-- Khí oxy / CO2 -->
-              <circle cx="20" cy="65" r="16" fill="#E1ECE4" stroke="#46685A" stroke-width="1.5"/>
-              <text x="20" y="70" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="800" fill="#245842">Khí</text>
-              <text x="46" y="69" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11.5" font-weight="700" fill="#1A1A1A">O₂, CO₂ (Chất khí)</text>
-
-              <!-- Chất hữu cơ / Thức ăn -->
-              <circle cx="20" cy="110" r="16" fill="#F7E7CD" stroke="#CE8A33" stroke-width="1.5"/>
-              <text x="20" y="115" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="12" font-weight="800" fill="#8A551A">C</text>
-              <text x="46" y="114" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11.5" font-weight="700" fill="#1A1A1A">Chất hữu cơ / dinh dưỡng</text>
-
-              <!-- Năng lượng -->
-              <circle cx="20" cy="155" r="16" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
-              <path d="M21 146 L15 156 L20 156 L19 166 L25 154 L20 154 Z" fill="#D97706"/>
-              <text x="46" y="159" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11.5" font-weight="700" fill="#1A1A1A">Năng lượng phù hợp</text>
-            </g>
-          </g>
-
-          <!-- Mũi tên 1: Môi trường -> Sinh vật -->
-          <g id="arrow-in">
-            <path d="M245 190 H345" stroke="#2D8B6F" stroke-width="7" stroke-linecap="round"/>
-            <polygon points="345,182 362,190 345,198" fill="#2D8B6F"/>
-            <rect x="252" y="206" width="102" height="24" rx="6" fill="#DCEAE1" stroke="#2D8B6F" stroke-width="1"/>
-            <text x="303" y="222" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="10.5" font-weight="800" fill="#14432F">THU NHẬN</text>
-          </g>
-
-          <!-- Khối 2: CƠ THỂ SINH VẬT (Ở Giữa - Sử dụng & Biến đổi) -->
-          <g id="block-organism">
-            <rect x="365" y="30" width="270" height="320" rx="18" fill="#FFFFFF" stroke="#1B5E48" stroke-width="3"/>
-            <rect x="365" y="30" width="270" height="44" rx="18" fill="#DCEAE1"/>
-            <text x="500" y="58" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="13" font-weight="800" fill="#14432F" letter-spacing=".5px">CƠ THỂ SINH VẬT</text>
-            <text x="500" y="92" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="700" fill="#1B5E48">(Biến đổi · Sử dụng · Duy trì)</text>
-
-            <!-- Phân khu 1: Xây dựng & Đổi mới cơ thể -->
-            <rect x="382" y="105" width="236" height="100" rx="12" fill="#FAF7F0" stroke="#E5DECF" stroke-width="1.5"/>
-            <text x="395" y="126" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="800" fill="#1B5E48">① Xây dựng & Đổi mới cơ thể:</text>
-            <!-- Hình tế bào mô mới -->
-            <g transform="translate(395, 136)">
-              <rect x="0" y="0" width="46" height="46" rx="8" fill="#DCEAE1" stroke="#3CA57A" stroke-width="1.8"/>
-              <circle cx="23" cy="23" r="8" fill="#2D8B6F"/>
-              <text x="54" y="18" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="700" fill="#1A1A1A">• Hình thành tế bào & mô mới</text>
-              <text x="54" y="38" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="600" fill="#514C44">• Sinh trưởng và phát triển</text>
-            </g>
-
-            <!-- Phân khu 2: Cung cấp năng lượng cho hoạt động sống -->
-            <rect x="382" y="215" width="236" height="115" rx="12" fill="#FAF7F0" stroke="#E5DECF" stroke-width="1.5"/>
-            <text x="395" y="236" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="800" fill="#CE8A33">② Cung cấp năng lượng:</text>
-            <!-- Hình vận động -->
-            <g transform="translate(395, 246)">
-              <circle cx="23" cy="28" r="18" fill="#F7E7CD" stroke="#E8A24A" stroke-width="1.8"/>
-              <!-- Icon chạy vận động đơn giản -->
-              <path d="M23 18 A4 4 0 1 1 23 26 A4 4 0 1 1 23 18 M23 26 V34 M16 28 L23 30 L30 28 M18 42 L23 34 L28 42" stroke="#8A551A" stroke-width="2" stroke-linecap="round" fill="none"/>
-              <text x="54" y="18" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="700" fill="#1A1A1A">• Năng lượng vận động, cảm ứng</text>
-              <text x="54" y="38" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="600" fill="#514C44">• Sinh sản & duy trì sự sống</text>
-            </g>
-          </g>
-
-          <!-- Mũi tên 2: Sinh vật -> Môi trường -->
-          <g id="arrow-out">
-            <path d="M635 190 H735" stroke="#C15F3C" stroke-width="7" stroke-linecap="round"/>
-            <polygon points="735,182 752,190 735,198" fill="#C15F3C"/>
-            <rect x="642" y="206" width="102" height="24" rx="6" fill="#F3E2D6" stroke="#C15F3C" stroke-width="1"/>
-            <text x="693" y="222" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="10.5" font-weight="800" fill="#8A551A">ĐÀO THẢI</text>
-          </g>
-
-          <!-- Khối 3: MÔI TRƯỜNG NGOÀI (Bên Phải - Thải ra) -->
-          <g id="block-env-out">
-            <rect x="755" y="40" width="140" height="300" rx="16" fill="#F5EFE6" stroke="#CE8A33" stroke-width="2"/>
-            <rect x="755" y="40" width="140" height="42" rx="16" fill="#EBDDCB"/>
-            <text x="825" y="66" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="800" fill="#8A551A" letter-spacing=".5px">MÔI TRƯỜNG</text>
-            <text x="825" y="96" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="10.5" font-weight="700" fill="#CE8A33">(Tiếp nhận thải)</text>
-
-            <g transform="translate(768, 125)">
-              <!-- Chất cặn bã, dư thừa -->
-              <rect x="0" y="0" width="114" height="48" rx="8" fill="#FFF" stroke="#E5DECF" stroke-width="1.5"/>
-              <text x="57" y="22" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="10" font-weight="800" fill="#8A551A">Chất dư thừa</text>
-              <text x="57" y="38" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="9" font-weight="600" fill="#514C44">Chất không sử dụng</text>
-
-              <!-- Chất độc hại -->
-              <rect x="0" y="60" width="114" height="48" rx="8" fill="#FFF" stroke="#E5DECF" stroke-width="1.5"/>
-              <text x="57" y="82" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="10" font-weight="800" fill="#C15F3C">Chất có hại</text>
-              <text x="57" y="98" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="9" font-weight="600" fill="#514C44">Nước tiểu, mồ hôi, khí</text>
-
-              <!-- Nhiệt lượng -->
-              <rect x="0" y="120" width="114" height="44" rx="8" fill="#FFF" stroke="#E5DECF" stroke-width="1.5"/>
-              <text x="57" y="146" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="10" font-weight="800" fill="#D97706">Nhiệt năng</text>
-            </g>
-          </g>
-        </svg>
-
-        <!-- 3 Nút Hotspots HTML tương tác -->
-        <button class="hotspot-btn pulse" id="btnHotspot1" style="left: 32.5%; top: 44%;" title="Hotspot 1: Thu nhận từ môi trường" aria-label="Khám phá vị trí 1">
-          1
-        </button>
-        <button class="hotspot-btn" id="btnHotspot2" style="left: 54.5%; top: 22%;" title="Hotspot 2: Sử dụng trong cơ thể" aria-label="Khám phá vị trí 2">
-          2
-        </button>
-        <button class="hotspot-btn" id="btnHotspot3" style="left: 75%; top: 44%;" title="Hotspot 3: Thải ra môi trường" aria-label="Khám phá vị trí 3">
-          3
-        </button>
-      </div>
-
-      <!-- Khung diễn giải Hotspot -->
-      <div class="hotspot-detail-box" id="hotspotDetailBox">
-        <h4 id="hotspotTitle"><i class="ti ti-info-circle"></i> Chi tiết vai trò theo từng vị trí</h4>
-        <p id="hotspotContent">Chạm vào điểm tròn số 1, 2, 3 trên sơ đồ để xem thông tin chi tiết.</p>
-      </div>
-
-      <!-- Nhiệm vụ Nối 3 cặp Vai trò ↔ Ví dụ -->
-      <div class="matching-section hidden" id="matchingSection">
-        <div class="guidance-box" style="margin-bottom: 8px;">
-          <i class="ti ti-link"></i>
-          <div>
-            <b>Lời giảng:</b> “Như vậy, trao đổi chất và chuyển hoá năng lượng vừa cung cấp vật chất để xây dựng cơ thể, vừa cung cấp năng lượng cho hoạt động sống, đồng thời giúp loại bỏ những chất cần thải. Bây giờ, hãy nối mỗi vai trò với ví dụ phù hợp.”<br>
-            <span style="font-weight:600;color:var(--jade-dark);">Hướng dẫn: Chọn một vai trò ở bên trái, sau đó chọn ví dụ phù hợp ở bên phải để tạo cặp nối. Nhấn KIỂM TRA khi đã nối đủ ba cặp.</span>
-          </div>
-        </div>
-
-        <div class="matching-board" id="matchingBoard">
-          <!-- Layer SVG vẽ dây nối -->
-          <svg class="svg-connections-layer" id="matchingSvgLayer"></svg>
-
-          <!-- Cột Trái: 3 Vai trò -->
-          <div class="matching-col matching-col--left">
-            <div class="matching-col__title"><i class="ti ti-shield-check"></i> CỘT VAI TRÒ (Bên trái)</div>
-            <div class="match-card" data-role="1" id="role-card-1" tabindex="0">
-              <span class="card-badge">1</span>
-              <span>Cung cấp vật chất để xây dựng và duy trì cơ thể</span>
-              <span class="anchor-dot"></span>
-            </div>
-            <div class="match-card" data-role="2" id="role-card-2" tabindex="0">
-              <span class="card-badge">2</span>
-              <span>Cung cấp năng lượng cho hoạt động sống</span>
-              <span class="anchor-dot"></span>
-            </div>
-            <div class="match-card" data-role="3" id="role-card-3" tabindex="0">
-              <span class="card-badge">3</span>
-              <span>Loại bỏ những chất cần thải ra ngoài</span>
-              <span class="anchor-dot"></span>
-            </div>
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span><strong>HƯỚNG DẪN:</strong> Nhấn vào từng vị trí 1, 2, 3 trên sơ đồ hoặc danh sách bên dưới để khám phá 3 giai đoạn. Khi xem đủ cả ba vị trí, hoạt động nối vai trò sẽ xuất hiện ở khối bên phải.</span>
           </div>
 
-          <!-- Cột Phải: 3 Ví dụ -->
-          <div class="matching-col matching-col--right" id="examplesColumn">
-            <div class="matching-col__title"><i class="ti ti-list-check"></i> CỘT VÍ DỤ (Bên phải)</div>
-            <!-- Các thẻ ví dụ được xáo ngẫu nhiên bằng JS -->
+          <!-- Sơ đồ tương tác SVG 1 chiều -->
+          <div class="diagram-container" id="diagramContainer">
+            <svg class="diagram-svg" viewBox="0 0 920 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sơ đồ khái quát trao đổi chất và chuyển hoá năng lượng ở sinh vật">
+              <!-- Nền tổng thể -->
+              <rect width="920" height="380" rx="14" fill="#FAF7F0"/>
+
+              <!-- Khối 1: MÔI TRƯỜNG NGOÀI (Bên Trái - Cung cấp) -->
+              <g id="blockEnvIn" opacity="0.75" style="transition: opacity 0.3s ease;">
+                <rect x="25" y="40" width="220" height="300" rx="16" fill="#EDF6F9" stroke="#4E7F92" stroke-width="2"/>
+                <rect x="25" y="40" width="220" height="42" rx="16" fill="#DCE7EB"/>
+                <text x="135" y="66" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="12" font-weight="800" fill="#1B5E48" letter-spacing=".5px">MÔI TRƯỜNG NGOÀI</text>
+                <text x="135" y="96" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="700" fill="#4E7F92">(Nguồn cung cấp)</text>
+
+                <!-- Minh họa các chất thu nhận -->
+                <g transform="translate(45, 115)">
+                  <!-- Nước & Khoáng -->
+                  <circle cx="20" cy="20" r="16" fill="#D9ECF2" stroke="#4E7F92" stroke-width="1.5"/>
+                  <path d="M20 10 C16 16 12 20 12 24 A8 8 0 0 0 28 24 C28 20 24 16 20 10 Z" fill="#4E7F92"/>
+                  <text x="46" y="24" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11.5" font-weight="700" fill="#1A1A1A">Nước & Chất khoáng</text>
+
+                  <!-- Khí oxy / CO2 -->
+                  <circle cx="20" cy="65" r="16" fill="#E1ECE4" stroke="#46685A" stroke-width="1.5"/>
+                  <text x="20" y="70" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="800" fill="#245842">Khí</text>
+                  <text x="46" y="69" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11.5" font-weight="700" fill="#1A1A1A">O₂, CO₂ (Chất khí)</text>
+
+                  <!-- Chất hữu cơ / dinh dưỡng -->
+                  <circle cx="20" cy="110" r="16" fill="#F7E7CD" stroke="#CE8A33" stroke-width="1.5"/>
+                  <text x="20" y="115" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="12" font-weight="800" fill="#8A551A">C</text>
+                  <text x="46" y="114" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11.5" font-weight="700" fill="#1A1A1A">Chất hữu cơ / dinh dưỡng</text>
+
+                  <!-- Năng lượng -->
+                  <circle cx="20" cy="155" r="16" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
+                  <path d="M21 146 L15 156 L20 156 L19 166 L25 154 L20 154 Z" fill="#D97706"/>
+                  <text x="46" y="159" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11.5" font-weight="700" fill="#1A1A1A">Năng lượng phù hợp</text>
+                </g>
+              </g>
+
+              <!-- Mũi tên 1: Môi trường -> Sinh vật -->
+              <g id="arrowIn">
+                <path d="M245 190 H345" stroke="#2D8B6F" stroke-width="7" stroke-linecap="round"/>
+                <polygon points="345,182 362,190 345,198" fill="#2D8B6F"/>
+                <rect x="252" y="206" width="102" height="24" rx="6" fill="#DCEAE1" stroke="#2D8B6F" stroke-width="1"/>
+                <text x="303" y="222" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="10.5" font-weight="800" fill="#14432F">THU NHẬN</text>
+              </g>
+
+              <!-- Khối 2: CƠ THỂ SINH VẬT (Ở Giữa - Sử dụng & Biến đổi) -->
+              <g id="blockOrganism" opacity="0.75" style="transition: opacity 0.3s ease;">
+                <rect x="365" y="30" width="270" height="320" rx="18" fill="#FFFFFF" stroke="#1B5E48" stroke-width="3"/>
+                <rect x="365" y="30" width="270" height="44" rx="18" fill="#DCEAE1"/>
+                <text x="500" y="58" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="13" font-weight="800" fill="#14432F" letter-spacing=".5px">CƠ THỂ SINH VẬT</text>
+                <text x="500" y="92" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="700" fill="#1B5E48">(Biến đổi · Sử dụng · Duy trì)</text>
+
+                <!-- Phân khu 1: Xây dựng & Đổi mới cơ thể -->
+                <rect x="382" y="105" width="236" height="100" rx="12" fill="#FAF7F0" stroke="#E5DECF" stroke-width="1.5"/>
+                <text x="395" y="126" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="800" fill="#1B5E48">① Xây dựng & Đổi mới cơ thể:</text>
+                <g transform="translate(395, 136)">
+                  <rect x="0" y="0" width="46" height="46" rx="8" fill="#DCEAE1" stroke="#3CA57A" stroke-width="1.8"/>
+                  <circle cx="23" cy="23" r="8" fill="#2D8B6F"/>
+                  <text x="54" y="18" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="700" fill="#1A1A1A">• Hình thành tế bào & mô mới</text>
+                  <text x="54" y="38" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="600" fill="#514C44">• Sinh trưởng và phát triển</text>
+                </g>
+
+                <!-- Phân khu 2: Cung cấp năng lượng cho hoạt động sống -->
+                <rect x="382" y="215" width="236" height="115" rx="12" fill="#FAF7F0" stroke="#E5DECF" stroke-width="1.5"/>
+                <text x="395" y="236" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="800" fill="#CE8A33">② Cung cấp năng lượng:</text>
+                <g transform="translate(395, 246)">
+                  <circle cx="23" cy="28" r="18" fill="#F7E7CD" stroke="#E8A24A" stroke-width="1.8"/>
+                  <path d="M23 18 A4 4 0 1 1 23 26 A4 4 0 1 1 23 18 M23 26 V34 M16 28 L23 30 L30 28 M18 42 L23 34 L28 42" stroke="#8A551A" stroke-width="2" stroke-linecap="round" fill="none"/>
+                  <text x="54" y="18" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="700" fill="#1A1A1A">• Năng lượng vận động, cảm ứng</text>
+                  <text x="54" y="38" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="600" fill="#514C44">• Sinh sản & duy trì sự sống</text>
+                </g>
+              </g>
+
+              <!-- Mũi tên 2: Sinh vật -> Môi trường -->
+              <g id="arrowOut">
+                <path d="M635 190 H735" stroke="#C15F3C" stroke-width="7" stroke-linecap="round"/>
+                <polygon points="735,182 752,190 735,198" fill="#C15F3C"/>
+                <rect x="642" y="206" width="102" height="24" rx="6" fill="#F3E2D6" stroke="#C15F3C" stroke-width="1"/>
+                <text x="693" y="222" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="10.5" font-weight="800" fill="#8A551A">ĐÀO THẢI</text>
+              </g>
+
+              <!-- Khối 3: MÔI TRƯỜNG NGOÀI (Bên Phải - Thải ra) -->
+              <g id="blockEnvOut" opacity="0.75" style="transition: opacity 0.3s ease;">
+                <rect x="755" y="40" width="140" height="300" rx="16" fill="#F5EFE6" stroke="#CE8A33" stroke-width="2"/>
+                <rect x="755" y="40" width="140" height="42" rx="16" fill="#EBDDCB"/>
+                <text x="825" y="66" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="11" font-weight="800" fill="#8A551A" letter-spacing=".5px">MÔI TRƯỜNG</text>
+                <text x="825" y="96" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="10.5" font-weight="700" fill="#CE8A33">(Tiếp nhận thải)</text>
+
+                <g transform="translate(768, 125)">
+                  <!-- Chất dư thừa -->
+                  <rect x="0" y="0" width="114" height="48" rx="8" fill="#FFF" stroke="#E5DECF" stroke-width="1.5"/>
+                  <text x="57" y="22" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="10" font-weight="800" fill="#8A551A">Chất dư thừa</text>
+                  <text x="57" y="38" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="9" font-weight="600" fill="#514C44">Chất không sử dụng</text>
+
+                  <!-- Chất có hại -->
+                  <rect x="0" y="60" width="114" height="48" rx="8" fill="#FFF" stroke="#E5DECF" stroke-width="1.5"/>
+                  <text x="57" y="82" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="10" font-weight="800" fill="#C15F3C">Chất có hại</text>
+                  <text x="57" y="98" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="9" font-weight="600" fill="#514C44">Nước tiểu, mồ hôi</text>
+
+                  <!-- Nhiệt lượng -->
+                  <rect x="0" y="120" width="114" height="44" rx="8" fill="#FFF" stroke="#E5DECF" stroke-width="1.5"/>
+                  <text x="57" y="146" text-anchor="middle" font-family="'Be Vietnam Pro',system-ui,sans-serif" font-size="10" font-weight="800" fill="#D97706">Nhiệt năng</text>
+                </g>
+              </g>
+            </svg>
+
+            <!-- 3 Nút Hotspot trên sơ đồ -->
+            <button class="hotspot-btn pulse" id="btnHotspot1" style="left: 32.5%; top: 44%;" onclick="triggerHotspot(1)" title="Hotspot 1: Thu nhận từ môi trường" aria-label="Khám phá vị trí 1">1</button>
+            <button class="hotspot-btn pulse" id="btnHotspot2" style="left: 54.5%; top: 22%;" onclick="triggerHotspot(2)" title="Hotspot 2: Sử dụng trong cơ thể" aria-label="Khám phá vị trí 2">2</button>
+            <button class="hotspot-btn pulse" id="btnHotspot3" style="left: 75%; top: 44%;" onclick="triggerHotspot(3)" title="Hotspot 3: Thải ra môi trường" aria-label="Khám phá vị trí 3">3</button>
+          </div>
+
+          <!-- 3 Nút toggle trạng thái -->
+          <div class="svg-controls-grid">
+            <button class="hotspot-toggle-btn" id="btnToggle1" onclick="triggerHotspot(1)">
+              <span style="display:flex;align-items:center;gap:6px;">
+                <i class="ti ti-arrow-down-right" style="color:#2563EB;font-size:1.15rem;"></i>
+                <span>1. Thu nhận</span>
+              </span>
+              <span class="status-pill" id="badgeHotspot1">Chưa xem</span>
+            </button>
+
+            <button class="hotspot-toggle-btn" id="btnToggle2" onclick="triggerHotspot(2)">
+              <span style="display:flex;align-items:center;gap:6px;">
+                <i class="ti ti-dna" style="color:#16A34A;font-size:1.15rem;"></i>
+                <span>2. Sử dụng</span>
+              </span>
+              <span class="status-pill" id="badgeHotspot2">Chưa xem</span>
+            </button>
+
+            <button class="hotspot-toggle-btn" id="btnToggle3" onclick="triggerHotspot(3)">
+              <span style="display:flex;align-items:center;gap:6px;">
+                <i class="ti ti-arrow-up-right" style="color:#EA580C;font-size:1.15rem;"></i>
+                <span>3. Thải ra</span>
+              </span>
+              <span class="status-pill" id="badgeHotspot3">Chưa xem</span>
+            </button>
+          </div>
+
+          <!-- Khung diễn giải Hotspot -->
+          <div class="visual-caption-box" id="hotspotCaptionBox">
+            <i class="ti ti-info-circle"></i>
+            <span id="hotspotCaptionText">Nhấn vào điểm tròn số 1, 2, 3 trên sơ đồ hoặc danh sách trên để khám phá thông tin chi tiết.</span>
+          </div>
+
+          <!-- Tổng kết khi xem đủ 3 vị trí -->
+          <div class="conclude-box hidden" id="st01TheorySummary">
+            <strong>Tổng kết 3 vai trò:</strong> Trao đổi chất và chuyển hoá năng lượng vừa cung cấp vật chất để xây dựng cơ thể, vừa cung cấp năng lượng cho hoạt động sống, đồng thời giúp loại bỏ những chất cần thải ra môi trường.
           </div>
         </div>
+      </article>
 
-        <!-- Khung giải thích từng cặp sau khi kiểm tra -->
-        <div class="paired-explanations hidden" id="pairedExplanations"></div>
+      <!-- PHẢI: HOẠT ĐỘNG NỐI VAI TRÒ ↔ VÍ DỤ -->
+      <article class="workspace-card">
+        <h3>Bài tập nối: Vai trò ↔ Hiện tượng thực tiễn</h3>
+        <p class="workspace-lead">Nối mỗi vai trò của trao đổi chất ở cột trái với ví dụ thực tiễn phù hợp ở cột phải:</p>
 
-        <!-- Inline feedback ST01 -->
-        <div class="inline-feedback hidden" id="st01Feedback"></div>
-
-        <!-- Nút điều khiển ST01 Matching -->
-        <div class="btn-row">
-          <button class="btn btn-outline" id="btnResetMatching"><i class="ti ti-rotate-clockwise"></i> Nối lại</button>
-          <div class="spacer"></div>
-          <button class="btn btn-primary" id="btnCheckMatching" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
-          <button class="btn btn-primary hidden" id="btnNext-st01">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+        <!-- Thông báo nhắc nhở khi chưa xem đủ 3 hotspot -->
+        <div class="instruction info" id="matchingLockNotice">
+          <i class="ti ti-lock"></i>
+          <span>Hãy khám phá đủ 3 vị trí (1, 2, 3) trên sơ đồ bên trái để mở khoá bài tập nối!</span>
         </div>
-      </div>
+
+        <!-- Vùng ghép đôi 2 cột -->
+        <div class="matching-section hidden" id="matchingSection">
+          <div class="matching-board" id="matchingBoard">
+            <!-- Layer SVG vẽ dây nối -->
+            <svg class="svg-connections-layer" id="matchingSvgLayer"></svg>
+
+            <!-- Cột Trái: 3 Vai trò -->
+            <div class="matching-col matching-col--left">
+              <div class="matching-col__title"><i class="ti ti-shield-check"></i> CỘT VAI TRÒ (Bên trái)</div>
+              <div class="match-card" data-role="1" id="roleCard1" onclick="handleRoleClick('1')">
+                <span class="card-badge">1</span>
+                <span>Cung cấp vật chất để xây dựng và duy trì cơ thể</span>
+                <span class="anchor-dot"></span>
+              </div>
+              <div class="match-card" data-role="2" id="roleCard2" onclick="handleRoleClick('2')">
+                <span class="card-badge">2</span>
+                <span>Cung cấp năng lượng cho hoạt động sống</span>
+                <span class="anchor-dot"></span>
+              </div>
+              <div class="match-card" data-role="3" id="roleCard3" onclick="handleRoleClick('3')">
+                <span class="card-badge">3</span>
+                <span>Loại bỏ những chất cần thải ra ngoài</span>
+                <span class="anchor-dot"></span>
+              </div>
+            </div>
+
+            <!-- Cột Phải: 3 Ví dụ -->
+            <div class="matching-col matching-col--right" id="examplesColumn">
+              <div class="matching-col__title"><i class="ti ti-list-check"></i> CỘT VÍ DỤ (Bên phải)</div>
+              <!-- Tạo ngẫu nhiên bằng JS -->
+            </div>
+          </div>
+
+          <div class="quiz-actions">
+            <button class="btn btn-primary" id="btnCheckMatching" disabled onclick="checkMatchingPairs()">
+              <i class="ti ti-check"></i>
+              <span>Kiểm tra</span>
+            </button>
+          </div>
+
+          <!-- Danh sách giải thích từng cặp đúng -->
+          <div class="paired-explanations hidden" id="pairedExplanations"></div>
+
+          <!-- Phản hồi ST01 -->
+          <div class="inline-feedback ok hidden" id="st01StatusFeedback"></div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Thanh tác vụ điều hướng ST01 -->
+    <div class="controls-row">
+      <button class="btn btn-outline" type="button" onclick="gotoStage(0)"><i class="ti ti-arrow-left"></i> Quay lại</button>
+      <button class="btn btn-outline" type="button" onclick="resetStage(1)"><i class="ti ti-refresh"></i> Làm lại màn</button>
+      <span class="spacer"></span>
+      <button class="btn btn-primary" type="button" id="btnNextST01" disabled onclick="gotoStage(2)"><span>Tiếp tục</span> <i class="ti ti-arrow-right"></i></button>
     </div>
   </section>
 
   <!-- =======================================================
-       STAGE 2: ST02 — GHI NHỚ VÀ KẾT NỐI SANG M02
+       STAGE ST02: GHI NHỚ VÀ KẾT NỐI SANG MODULE 02
        ======================================================= -->
-  <section class="stage-section hidden" id="stage-st02">
-    <div class="card-box">
-      <div class="card-box__head">
-        <div class="eyebrow"><i class="ti ti-bookmark"></i> STAGE 2 / 2 · TỔNG KẾT & GHI NHỚ</div>
-        <h2>Ghi nhớ và kết nối bài học</h2>
-      </div>
-
-      <div class="guidance-box">
-        <i class="ti ti-quote"></i>
-        <div>
-          <b>Lời chốt bài học:</b> “Sinh vật không thể tồn tại tách rời môi trường. Nếu không nhận đủ các chất cần thiết hoặc không loại bỏ được những chất cần thải, hoạt động sống sẽ bị rối loạn. Vì vậy, trao đổi chất và chuyển hoá năng lượng là điều kiện để sinh vật tồn tại, sinh trưởng và phát triển.”
-        </div>
-      </div>
-
-      <!-- Khối 3 ý Ghi nhớ then chốt -->
-      <h3 style="margin-top: 6px;"><i class="ti ti-star"></i> Ba vai trò cốt lõi cần ghi nhớ:</h3>
-      <div class="summary-card-grid">
-        <div class="summary-item">
-          <div class="summary-item__icon"><i class="ti ti-dna"></i></div>
-          <div class="summary-item__title">1. Xây dựng & Duy trì</div>
-          <p class="summary-item__text">Trao đổi chất cung cấp vật chất để <b>xây dựng, duy trì và đổi mới</b> cơ thể sinh vật.</p>
+  <section class="stage hidden" id="stage-2">
+    <div class="single-block-container">
+      <article class="summary-card">
+        <div class="summary-card__head">
+          <h2>Ghi nhớ và kết nối bài học</h2>
+          <p>Khái quát và khắc sâu 3 vai trò trọng tâm của trao đổi chất và chuyển hoá năng lượng ở sinh vật.</p>
         </div>
 
-        <div class="summary-item">
-          <div class="summary-item__icon"><i class="ti ti-bolt"></i></div>
-          <div class="summary-item__title">2. Cung cấp năng lượng</div>
-          <p class="summary-item__text">Chuyển hoá năng lượng cung cấp năng lượng cho các <b>hoạt động sống</b> như vận động, cảm ứng, sinh sản.</p>
+        <!-- Lời chốt sư phạm -->
+        <div class="theory-block" style="border-left: 4px solid var(--jade-deep); background: var(--jade-pale);">
+          <div class="theory-block__title" style="color: var(--jade-dark);"><i class="ti ti-quote"></i> Lời chốt bài học</div>
+          <p class="theory-block__content" style="color: var(--ink);">“Sinh vật không thể tồn tại tách rời môi trường. Nếu không nhận đủ các chất cần thiết hoặc không loại bỏ được những chất cần thải, hoạt động sống sẽ bị rối loạn. Vì vậy, trao đổi chất và chuyển hoá năng lượng là điều kiện để sinh vật tồn tại, sinh trưởng và phát triển.”</p>
         </div>
 
-        <div class="summary-item">
-          <div class="summary-item__icon"><i class="ti ti-trash"></i></div>
-          <div class="summary-item__title">3. Đào thải chất cặn bã</div>
-          <p class="summary-item__text">Trao đổi chất giúp cơ thể <b>loại bỏ những chất dư thừa hoặc cần thải</b> ra ngoài môi trường.</p>
+        <!-- Lưới 3 thẻ ghi nhớ cốt lõi -->
+        <div class="takeaway-grid">
+          <div class="takeaway-card">
+            <div class="takeaway-card__icon"><i class="ti ti-dna"></i></div>
+            <div class="takeaway-card__content">
+              <span class="takeaway-card__num">1. Xây dựng & Duy trì</span>
+              <span class="takeaway-card__text">Trao đổi chất cung cấp vật chất để <strong>xây dựng, duy trì và đổi mới</strong> cơ thể sinh vật.</span>
+            </div>
+          </div>
+
+          <div class="takeaway-card">
+            <div class="takeaway-card__icon"><i class="ti ti-bolt"></i></div>
+            <div class="takeaway-card__content">
+              <span class="takeaway-card__num">2. Cung cấp năng lượng</span>
+              <span class="takeaway-card__text">Chuyển hoá năng lượng cung cấp năng lượng cho các <strong>hoạt động sống</strong> như vận động, cảm ứng, sinh sản.</span>
+            </div>
+          </div>
+
+          <div class="takeaway-card">
+            <div class="takeaway-card__icon"><i class="ti ti-recycle"></i></div>
+            <div class="takeaway-card__content">
+              <span class="takeaway-card__num">3. Đào thải chất cặn bã</span>
+              <span class="takeaway-card__text">Trao đổi chất giúp cơ thể <strong>loại bỏ những chất dư thừa hoặc cần thải</strong> ra ngoài môi trường.</span>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Cầu nối sang Module 02 -->
-      <div class="bridge-box">
-        <h4><i class="ti ti-compass"></i> Cầu nối sang Module tiếp theo (Module 02)</h4>
-        <p>“Những quá trình này diễn ra liên tục trong cơ thể sinh vật. Vậy chúng ta có thể nhận biết hoạt động trao đổi chất và chuyển hoá năng lượng qua những dấu hiệu nào?”</p>
-        <p style="font-weight: 600; color: var(--jade-dark);">Ở module tiếp theo, bạn sẽ tìm hiểu các <b>dấu hiệu đặc trưng</b> của trao đổi chất và chuyển hoá năng lượng.</p>
-      </div>
+        <!-- Thẻ cầu nối sang Module 02 -->
+        <div class="connection-card">
+          <div class="connection-card__icon"><i class="ti ti-compass"></i></div>
+          <div class="connection-card__text">
+            <strong>Cầu nối sang Module tiếp theo (Module 02):</strong><br>
+            “Những quá trình này diễn ra liên tục trong cơ thể sinh vật. Vậy chúng ta có thể nhận biết hoạt động trao đổi chất và chuyển hoá năng lượng qua những dấu hiệu nào? Ở module tiếp theo, bạn sẽ tìm hiểu các <strong>dấu hiệu đặc trưng</strong> của trao đổi chất và chuyển hoá năng lượng.”
+          </div>
+        </div>
 
-      <!-- Thông báo hoàn thành tại chỗ (Inline Completion Feedback) -->
-      <div class="inline-feedback ok hidden" id="st02Feedback" style="margin-top: 18px;">
-        <div class="feedback-head"><i class="ti ti-circle-check"></i> Chúc mừng bạn đã hoàn thành Module 01!</div>
-        <span>Bạn đã nắm vững <b>3 vai trò của trao đổi chất và chuyển hoá năng lượng</b>. Bài học đã sẵn sàng để chuyển sang Module 02.</span>
-      </div>
+        <!-- Thông báo hoàn thành tại chỗ -->
+        <div class="inline-feedback ok hidden" id="st02CompletionFeedback">
+          <i class="ti ti-circle-check"></i>
+          <span><strong>Hoàn thành bài học!</strong> Bạn đã nắm vững toàn bộ 3 vai trò của trao đổi chất và chuyển hoá năng lượng. Sẵn sàng tiếp tục sang Module 02.</span>
+        </div>
+      </article>
 
-      <!-- Nút Hoàn thành Module -->
-      <div class="btn-row" style="margin-top: 20px;">
-        <button class="btn btn-outline" id="btnBackToST01"><i class="ti ti-arrow-left"></i> Xem lại Sơ đồ</button>
-        <div class="spacer"></div>
-        <button class="btn btn-primary" id="btnCompleteModule"><i class="ti ti-circle-check"></i> HOÀN THÀNH MODULE</button>
+      <!-- Thanh tác vụ điều hướng ST02 -->
+      <div class="controls-row">
+        <button class="btn btn-outline" type="button" onclick="gotoStage(1)"><i class="ti ti-arrow-left"></i> Quay lại</button>
+        <button class="btn btn-outline" type="button" onclick="resetStage(2)"><i class="ti ti-refresh"></i> Làm lại màn</button>
+        <span class="spacer"></span>
+        <button class="btn btn-primary" type="button" id="btnCompleteModule" onclick="handleCompleteModule()">
+          <i class="ti ti-trophy"></i>
+          <span>Hoàn thành bài học</span>
+        </button>
       </div>
     </div>
   </section>
+
 </div>
 
-<!-- Modal Chúc mừng Hoàn thành (V10 Standard) -->
-<div class="congrats-overlay hidden" id="completionModal" role="dialog" aria-modal="true">
-  <div class="congrats-modal">
-    <div class="congrats-icon"><i class="ti ti-trophy"></i></div>
-    <h2>Chúc mừng bạn đã hoàn thành!</h2>
-    <p>Bạn đã xuất sắc hoàn thành tất cả 3 màn học thuộc Module: <strong>Vai trò của trao đổi chất và chuyển hoá năng lượng</strong>.</p>
-    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-      <button type="button" class="btn btn-outline" id="btnReviewLesson"><i class="ti ti-refresh"></i> Xem lại từ đầu</button>
-      <button type="button" class="btn btn-primary" id="btnCloseModal"><i class="ti ti-check"></i> Đóng thông báo</button>
+<!-- Modal chúc mừng hoàn thành Module V10 -->
+<div class="congrats-overlay hidden" id="completionModal" role="dialog" aria-modal="true" aria-labelledby="congratsTitle">
+  <div class="congrats-card">
+    <div class="congrats-icon-box">
+      <i class="ti ti-trophy"></i>
+    </div>
+    <h3 class="congrats-title" id="congratsTitle">Chúc mừng bạn đã hoàn thành!</h3>
+    <p class="congrats-message">
+      Bạn đã hoàn thành xuất sắc module <strong>Vai trò của trao đổi chất và chuyển hoá năng lượng</strong>. Toàn bộ 3 vai trò cốt lõi và ví dụ thực tiễn đã được củng cố vững chắc.
+    </p>
+    <div class="congrats-actions">
+      <button class="btn btn-outline" type="button" onclick="reviewLesson()">
+        <i class="ti ti-rotate-clockwise"></i>
+        <span>Xem lại bài</span>
+      </button>
+      <button class="btn btn-primary" type="button" onclick="closeModal()">
+        <span>Đóng thông báo</span>
+      </button>
     </div>
   </div>
 </div>
 
 <script>
-
-    function closeCompletionModal() {
-      const modal = document.getElementById('completionModal') || document.getElementById('congratsModal');
-      if (modal) {
-        modal.classList.add('hidden');
-        modal.classList.remove('show');
-      }
-      if (typeof reportHeight === 'function') reportHeight();
-    }
-
-  /* =======================================================
-     LMS & ATHENA PROTOCOL
-     ======================================================= */
-  const LMS = () => {
-    const sendMessage = (type, payload) => {
-      try {
-        if (window.parent && window.parent !== window) {
-          window.parent.postMessage({ type, payload, source: 'SH11_M01_B01' }, '*');
-        }
-      } catch (e) {
-        console.warn('LMS postMessage failed:', e);
-      }
-    };
-    return {
-      ready: (data) => sendMessage('antigravity:ready', data),
-      progress: (data) => sendMessage('antigravity:progress', data),
-      complete: (data) => sendMessage('antigravity:complete', data)
-    };
+  /* ==========================================================================
+     LMS RUNTIME STATE & HEIGHT REPORTING
+     ========================================================================== */
+  window.lmsState = {
+    currentStage: 0,
+    st00Placed: { a: 'tray', b: 'tray', c: 'tray' },
+    st00Passed: false,
+    st01Hotspots: { 1: false, 2: false, 3: false },
+    st01Pairs: {},
+    st01Passed: false,
+    moduleComplete: false
   };
+
+  const LMS = () => ({
+    ready: (data) => {
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ type: 'ready', ...data }, '*');
+      }
+    },
+    progress: (data) => {
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ type: 'progress', state: window.lmsState, ...data }, '*');
+      }
+    },
+    complete: (data) => {
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({
+          type: 'moduleCompleted',
+          moduleCode: 'SH11-B01-M01',
+          state: window.lmsState,
+          ...data
+        }, '*');
+      }
+    }
+  });
 
   function reportHeight() {
     try {
       if (window.parent && window.parent !== window) {
-        const h = Math.max(
+        const height = Math.max(
           document.documentElement.scrollHeight,
           document.body.scrollHeight,
           document.documentElement.offsetHeight
         );
-        window.parent.postMessage({
-          type: 'antigravity:resize',
-          height: h + 24,
-          frameId: 'moduleIframe'
-        }, '*');
+        window.parent.postMessage({ type: 'setHeight', height: height + 20 }, '*');
+        window.parent.postMessage({ type: 'antigravity:resize', height: height + 20 }, '*');
       }
     } catch (e) {}
   }
 
-  /* =======================================================
-     TRẠNG THÁI TOÀN CỤC (GLOBAL STATE)
-     ======================================================= */
-  const state = {
-    currentStage: 0,
-    stagesCompleted: [false, false, false],
+  /* ==========================================================================
+     STAGE NAVIGATION & RESETS
+     ========================================================================== */
+  function gotoStage(stageIdx) {
+    window.lmsState.currentStage = stageIdx;
 
-    // ST00 state
-    st00_cards: {
-      a: 'tray', // 'tray' | 'disrupted' | 'normal'
-      b: 'tray',
-      c: 'tray'
+    for (let i = 0; i <= 2; i++) {
+      const stageEl = document.getElementById(`stage-${i}`);
+      if (stageEl) {
+        stageEl.classList.toggle('hidden', i !== stageIdx);
+      }
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if (stageIdx === 1 && window.lmsState.st01Hotspots[1] && window.lmsState.st01Hotspots[2] && window.lmsState.st01Hotspots[3]) {
+      setTimeout(renderConnections, 120);
+    }
+
+    reportHeight();
+  }
+
+  function resetStage(stageIdx) {
+    if (stageIdx === 0) {
+      window.lmsState.st00Placed = { a: 'tray', b: 'tray', c: 'tray' };
+      window.lmsState.st00Passed = false;
+      selectedCardId = null;
+
+      const tray = document.getElementById('hookCardsTray');
+      ['cardA', 'cardB', 'cardC'].forEach(id => {
+        const card = document.getElementById(id);
+        if (card) {
+          card.className = 'hook-card';
+          card.setAttribute('draggable', 'true');
+          const retBtn = card.querySelector('.btn-return-card');
+          if (retBtn) retBtn.style.display = 'none';
+          tray.appendChild(card);
+        }
+      });
+
+      document.getElementById('btnCheckST00').disabled = true;
+      document.getElementById('btnNextST00').disabled = true;
+      document.getElementById('st00StatusFeedback').className = 'inline-feedback info hidden';
+      document.getElementById('st00StatusFeedback').innerHTML = '';
+      updateZonePlaceholders();
+    } else if (stageIdx === 1) {
+      window.lmsState.st01Hotspots = { 1: false, 2: false, 3: false };
+      window.lmsState.st01Pairs = {};
+      window.lmsState.st01Passed = false;
+      selectedRoleId = null;
+      selectedExampleKey = null;
+
+      [1, 2, 3].forEach(num => {
+        const hBtn = document.getElementById(`btnHotspot${num}`);
+        const tBtn = document.getElementById(`btnToggle${num}`);
+        const badge = document.getElementById(`badgeHotspot${num}`);
+        if (hBtn) { hBtn.className = 'hotspot-btn pulse'; }
+        if (tBtn) { tBtn.className = 'hotspot-toggle-btn'; }
+        if (badge) { badge.textContent = 'Chưa xem'; }
+      });
+
+      document.getElementById('blockEnvIn').setAttribute('opacity', '0.75');
+      document.getElementById('blockOrganism').setAttribute('opacity', '0.75');
+      document.getElementById('blockEnvOut').setAttribute('opacity', '0.75');
+
+      document.getElementById('hotspotCaptionText').innerHTML = 'Nhấn vào điểm tròn số 1, 2, 3 trên sơ đồ hoặc danh sách trên để khám phá thông tin chi tiết.';
+      document.getElementById('st01TheorySummary').classList.add('hidden');
+      document.getElementById('matchingLockNotice').classList.remove('hidden');
+      document.getElementById('matchingSection').classList.add('hidden');
+      document.getElementById('btnCheckMatching').disabled = true;
+      document.getElementById('btnNextST01').disabled = true;
+      document.getElementById('pairedExplanations').classList.add('hidden');
+      document.getElementById('st01StatusFeedback').className = 'inline-feedback ok hidden';
+      document.getElementById('st01StatusFeedback').innerHTML = '';
+
+      initMatchingCards();
+    } else if (stageIdx === 2) {
+      closeModal();
+      document.getElementById('st02CompletionFeedback').classList.add('hidden');
+    }
+
+    reportHeight();
+  }
+
+  /* ==========================================================================
+     STAGE 00: HOOK PHÂN LOẠI 3 TÌNH HUỐNG THỰC TẾ
+     ========================================================================== */
+  let selectedCardId = null;
+
+  function updateZonePlaceholders() {
+    const cardsDisrupted = document.getElementById('cardsDisrupted');
+    const cardsNormal = document.getElementById('cardsNormal');
+    const placeholderDisrupted = document.getElementById('placeholderDisrupted');
+    const placeholderNormal = document.getElementById('placeholderNormal');
+
+    const hasDisrupted = cardsDisrupted.querySelectorAll('.hook-card').length > 0;
+    const hasNormal = cardsNormal.querySelectorAll('.hook-card').length > 0;
+
+    placeholderDisrupted.style.display = hasDisrupted ? 'none' : 'flex';
+    placeholderNormal.style.display = hasNormal ? 'none' : 'flex';
+
+    const placedCount = Object.values(window.lmsState.st00Placed).filter(p => p !== 'tray').length;
+    document.getElementById('btnCheckST00').disabled = placedCount < 3 || window.lmsState.st00Passed;
+    reportHeight();
+  }
+
+  function selectCard(cardKey) {
+    if (window.lmsState.st00Passed) return;
+    selectedCardId = cardKey;
+
+    document.querySelectorAll('.hook-card').forEach(c => {
+      c.classList.toggle('selected', c.getAttribute('data-card') === cardKey);
+    });
+
+    const isCardInTray = window.lmsState.st00Placed[cardKey] === 'tray';
+    document.querySelectorAll('.drop-zone').forEach(z => z.classList.add('target-ready'));
+
+    const fb = document.getElementById('st00StatusFeedback');
+    fb.className = 'inline-feedback info';
+    const cardName = cardKey === 'a' ? 'Tình huống (a)' : cardKey === 'b' ? 'Tình huống (b)' : 'Tình huống (c)';
+    fb.innerHTML = `<i class="ti ti-hand-click"></i> <span>Đang chọn: <strong>${cardName}</strong>. Hãy chạm vào 1 trong 2 nhóm bên dưới để xếp thẻ${!isCardInTray ? ', hoặc bấm "Trả về khay"' : ''}.</span>`;
+    fb.classList.remove('hidden');
+
+    reportHeight();
+  }
+
+  function deselectAllCards() {
+    selectedCardId = null;
+    document.querySelectorAll('.hook-card').forEach(c => c.classList.remove('selected'));
+    document.querySelectorAll('.drop-zone').forEach(z => z.classList.remove('target-ready', 'drag-over'));
+  }
+
+  function placeCardInZone(cardKey, zoneKey) {
+    const cardEl = document.getElementById(cardKey === 'a' ? 'cardA' : cardKey === 'b' ? 'cardB' : 'cardC');
+    const targetCardsContainer = zoneKey === 'disrupted' ? document.getElementById('cardsDisrupted') : document.getElementById('cardsNormal');
+
+    if (cardEl && targetCardsContainer) {
+      targetCardsContainer.appendChild(cardEl);
+      window.lmsState.st00Placed[cardKey] = zoneKey;
+      deselectAllCards();
+      updateZonePlaceholders();
+
+      const fb = document.getElementById('st00StatusFeedback');
+      fb.className = 'inline-feedback info';
+      const zoneLabel = zoneKey === 'disrupted' ? 'Trao đổi bị gián đoạn' : 'Trao đổi bình thường';
+      fb.innerHTML = `<i class="ti ti-check"></i> <span>Đã đưa vào nhóm "<strong>${zoneLabel}</strong>". Bạn có thể tiếp tục xếp thẻ khác.</span>`;
+      fb.classList.remove('hidden');
+    }
+  }
+
+  function returnCardToTray(cardKey) {
+    const cardEl = document.getElementById(cardKey === 'a' ? 'cardA' : cardKey === 'b' ? 'cardB' : 'cardC');
+    const tray = document.getElementById('hookCardsTray');
+    if (cardEl && tray) {
+      tray.appendChild(cardEl);
+      window.lmsState.st00Placed[cardKey] = 'tray';
+      deselectAllCards();
+      updateZonePlaceholders();
+
+      const fb = document.getElementById('st00StatusFeedback');
+      fb.className = 'inline-feedback info';
+      fb.innerHTML = `<i class="ti ti-arrow-back-up"></i> <span>Đã trả thẻ về khay. Hãy chọn nhóm phù hợp cho thẻ.</span>`;
+      fb.classList.remove('hidden');
+    }
+  }
+
+  // Gắn sự kiện kéo thả & chạm cho thẻ
+  document.querySelectorAll('.hook-card').forEach(card => {
+    const key = card.getAttribute('data-card');
+
+    card.addEventListener('dragstart', (e) => {
+      if (window.lmsState.st00Passed) return e.preventDefault();
+      e.dataTransfer.setData('text/plain', key);
+      selectCard(key);
+    });
+
+    card.addEventListener('dragend', () => {
+      deselectAllCards();
+    });
+
+    card.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (window.lmsState.st00Passed) return;
+      if (selectedCardId === key) {
+        deselectAllCards();
+        document.getElementById('st00StatusFeedback').classList.add('hidden');
+      } else {
+        selectCard(key);
+      }
+    });
+
+    const returnBtn = card.querySelector('.btn-return-card');
+    if (returnBtn) {
+      returnBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (window.lmsState.st00Passed) return;
+        returnCardToTray(key);
+      });
+    }
+  });
+
+  // Vùng thả
+  document.querySelectorAll('.drop-zone').forEach(zone => {
+    const zoneKey = zone.getAttribute('data-zone');
+
+    zone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      if (!window.lmsState.st00Passed) zone.classList.add('drag-over');
+    });
+
+    zone.addEventListener('dragleave', () => {
+      zone.classList.remove('drag-over');
+    });
+
+    zone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      zone.classList.remove('drag-over');
+      if (window.lmsState.st00Passed) return;
+      const cardKey = e.dataTransfer.getData('text/plain') || selectedCardId;
+      if (cardKey) placeCardInZone(cardKey, zoneKey);
+    });
+
+    zone.addEventListener('click', (e) => {
+      if (window.lmsState.st00Passed) return;
+      if (selectedCardId) {
+        e.stopPropagation();
+        placeCardInZone(selectedCardId, zoneKey);
+      }
+    });
+  });
+
+  function checkST00Placement() {
+    // Đáp án chuẩn: a, b -> disrupted; c -> normal
+    const isOkA = window.lmsState.st00Placed.a === 'disrupted';
+    const isOkB = window.lmsState.st00Placed.b === 'disrupted';
+    const isOkC = window.lmsState.st00Placed.c === 'normal';
+
+    const fb = document.getElementById('st00StatusFeedback');
+    fb.classList.remove('hidden');
+
+    if (isOkA && isOkB && isOkC) {
+      window.lmsState.st00Passed = true;
+      document.getElementById('btnCheckST00').disabled = true;
+      document.getElementById('btnNextST00').disabled = false;
+
+      ['cardA', 'cardB', 'cardC'].forEach(id => {
+        const c = document.getElementById(id);
+        if (c) {
+          c.classList.add('correct-locked');
+          c.setAttribute('draggable', 'false');
+          const ret = c.querySelector('.btn-return-card');
+          if (ret) ret.style.display = 'none';
+        }
+      });
+
+      fb.className = 'inline-feedback ok';
+      fb.innerHTML = `<i class="ti ti-circle-check"></i> <span><strong>Chính xác!</strong> Khi sinh vật không nhận đủ các chất cần thiết hoặc không loại bỏ được những chất cần thải, hoạt động sống có thể bị rối loạn và cơ thể dần suy yếu. Vậy trao đổi chất và chuyển hoá năng lượng có vai trò gì đối với sự sống? Bấm <strong>Tiếp tục</strong> để khám phá.</span>`;
+
+      LMS().progress({ done: 1, total: 3 });
+    } else {
+      fb.className = 'inline-feedback bad';
+      fb.innerHTML = `<i class="ti ti-alert-triangle"></i> <span><strong>Chưa chính xác!</strong> Hãy quan sát lại trạng thái của sinh vật trong từng hình: sinh vật đang được cung cấp đủ điều kiện cần thiết hay hoạt động sống đã có dấu hiệu bị ảnh hưởng? Những thẻ chưa đúng sẽ tự động trở về khay.</span>`;
+
+      const checkAndShake = (id, key, isOk) => {
+        if (!isOk) {
+          const card = document.getElementById(id);
+          if (card) {
+            card.classList.add('error-shake');
+            setTimeout(() => {
+              card.classList.remove('error-shake');
+              returnCardToTray(key);
+            }, 800);
+          }
+        }
+      };
+
+      checkAndShake('cardA', 'a', isOkA);
+      checkAndShake('cardB', 'b', isOkB);
+      checkAndShake('cardC', 'c', isOkC);
+    }
+
+    reportHeight();
+  }
+
+  /* ==========================================================================
+     STAGE 01: SƠ ĐỒ 3 HOTSPOTS & HOẠT ĐỘNG NỐI VAI TRÒ
+     ========================================================================== */
+  const HOTSPOT_DATA = {
+    1: {
+      title: "1. Thu nhận từ môi trường",
+      content: "Sinh vật tiếp nhận các chất cần thiết từ môi trường. Tùy từng nhóm sinh vật, đó có thể là nước, chất khoáng, khí hoặc chất hữu cơ. Sinh vật cũng tiếp nhận nguồn năng lượng phù hợp với phương thức sống của mình."
     },
-    st00_selected_card: null,
-    st00_done: false,
-
-    // ST01 Hotspots state
-    st01_hotspots_visited: { 1: false, 2: false, 3: false },
-    st01_all_hotspots_seen: false,
-
-    // ST01 Matching state
-    st01_selected_role: null,
-    st01_selected_example: null,
-    st01_pairs: {}, // { "1": "A", "2": "B", ... }
-    M01_vaitro_hoanthanh: false,
-
-    // ST02 state
-    module_completed: false
+    2: {
+      title: "2. Sử dụng trong cơ thể",
+      content: "Các chất được tiếp nhận và biến đổi để hình thành, duy trì và đổi mới cơ thể. Năng lượng được chuyển hoá để cung cấp cho các hoạt động sống như vận động, cảm ứng, sinh trưởng, phát triển và sinh sản."
+    },
+    3: {
+      title: "3. Thải ra môi trường",
+      content: "Những chất cơ thể không sử dụng được, chất dư thừa hoặc có hại cần được loại bỏ ra môi trường. Nếu tích tụ, chúng có thể làm rối loạn hoạt động sống."
+    }
   };
 
-  /* =======================================================
-     CHUYỂN ĐỔI STAGE (STAGE NAVIGATION)
-     ======================================================= */
-  const stageSections = [
-    document.getElementById('stage-st00'),
-    document.getElementById('stage-st01'),
-    document.getElementById('stage-st02')
-  ];
-  const stepBtns = [
-    document.getElementById('stepBtn-st00'),
-    document.getElementById('stepBtn-st01'),
-    document.getElementById('stepBtn-st02')
+  function triggerHotspot(num) {
+    window.lmsState.st01Hotspots[num] = true;
+
+    // Cập nhật nút hotspot trên SVG
+    [1, 2, 3].forEach(n => {
+      const hBtn = document.getElementById(`btnHotspot${n}`);
+      const tBtn = document.getElementById(`btnToggle${n}`);
+      if (hBtn) hBtn.classList.remove('active');
+      if (tBtn) tBtn.classList.remove('active');
+    });
+
+    const activeHBtn = document.getElementById(`btnHotspot${num}`);
+    const activeTBtn = document.getElementById(`btnToggle${num}`);
+    const badge = document.getElementById(`badgeHotspot${num}`);
+
+    if (activeHBtn) {
+      activeHBtn.classList.remove('pulse');
+      activeHBtn.classList.add('visited', 'active');
+    }
+    if (activeTBtn) {
+      activeTBtn.classList.add('active', 'viewed');
+    }
+    if (badge) {
+      badge.textContent = 'Đã xem';
+    }
+
+    // Làm nổi bật khối SVG tương ứng
+    const gIn = document.getElementById('blockEnvIn');
+    const gOrg = document.getElementById('blockOrganism');
+    const gOut = document.getElementById('blockEnvOut');
+
+    if (num === 1) {
+      gIn.setAttribute('opacity', '1');
+      gOrg.setAttribute('opacity', '0.45');
+      gOut.setAttribute('opacity', '0.45');
+    } else if (num === 2) {
+      gIn.setAttribute('opacity', '0.45');
+      gOrg.setAttribute('opacity', '1');
+      gOut.setAttribute('opacity', '0.45');
+    } else if (num === 3) {
+      gIn.setAttribute('opacity', '0.45');
+      gOrg.setAttribute('opacity', '0.45');
+      gOut.setAttribute('opacity', '1');
+    }
+
+    // Cập nhật caption box
+    const data = HOTSPOT_DATA[num];
+    document.getElementById('hotspotCaptionText').innerHTML = `<strong>${data.title}:</strong> ${data.content}`;
+
+    // Kiểm tra đã xem đủ 3 hotspot chưa
+    if (window.lmsState.st01Hotspots[1] && window.lmsState.st01Hotspots[2] && window.lmsState.st01Hotspots[3]) {
+      document.getElementById('st01TheorySummary').classList.remove('hidden');
+      document.getElementById('matchingLockNotice').classList.add('hidden');
+      const matchingSec = document.getElementById('matchingSection');
+      if (matchingSec.classList.contains('hidden')) {
+        matchingSec.classList.remove('hidden');
+        initMatchingCards();
+        setTimeout(renderConnections, 200);
+      }
+    }
+
+    reportHeight();
+  }
+
+  /* Nhiệm vụ nối 3 cặp Vai trò ↔ Ví dụ */
+  const EXAMPLES_DATA = [
+    { key: 'A', role: '1', text: 'Hình thành thêm tế bào khi cơ thể sinh trưởng', expl: 'Hình thành thêm tế bào khi cơ thể sinh trưởng cho thấy các chất được sử dụng để xây dựng và đổi mới cơ thể.' },
+    { key: 'B', role: '2', text: 'Cơ hoạt động khi chạy', expl: 'Cơ hoạt động khi chạy cần năng lượng đã được cơ thể chuyển hoá thành dạng có thể sử dụng.' },
+    { key: 'C', role: '3', text: 'Cơ thể thải nước tiểu và mồ hôi', expl: 'Thải nước tiểu và mồ hôi là những con đường giúp cơ thể loại bỏ một số chất dư thừa hoặc cần thải ra ngoài.' }
   ];
 
-  
-  const stageGoals = {
-    0: 'Khái quát trao đổi chất và chuyển hoá năng lượng thông qua các tình huống thực tiễn.',
-    1: 'Khám phá 3 vai trò cốt lõi của trao đổi chất và chuyển hoá năng lượng qua sơ đồ và các hiện tượng thực tiễn.',
-    2: 'Hệ thống hóa 3 vai trò đặc trưng và kết nối sang dấu hiệu ở Module 02.'
-  };
+  let selectedRoleId = null;
+  let selectedExampleKey = null;
+
+  function initMatchingCards() {
+    const col = document.getElementById('examplesColumn');
+    col.innerHTML = '<div class="matching-col__title"><i class="ti ti-list-check"></i> CỘT VÍ DỤ (Bên phải)</div>';
+
+    // Xáo trộn ngẫu nhiên cột ví dụ
+    const shuffled = [...EXAMPLES_DATA].sort(() => Math.random() - 0.5);
+    shuffled.forEach(ex => {
+      const card = document.createElement('div');
+      card.className = 'match-card';
+      card.setAttribute('data-example', ex.key);
+      card.setAttribute('id', `exampleCard${ex.key}`);
+      card.onclick = () => handleExampleClick(ex.key);
+      card.innerHTML = `
+        <span class="anchor-dot"></span>
+        <span class="card-badge">${ex.key}</span>
+        <span>${ex.text}</span>
+      `;
+      col.appendChild(card);
+    });
+
+    reportHeight();
+  }
+
+  function handleRoleClick(roleId) {
+    if (window.lmsState.st01Passed) return;
+
+    if (selectedExampleKey) {
+      // Ghép đôi
+      const exKey = selectedExampleKey;
+      for (const [r, e] of Object.entries(window.lmsState.st01Pairs)) {
+        if (r === roleId || e === exKey) delete window.lmsState.st01Pairs[r];
+      }
+      window.lmsState.st01Pairs[roleId] = exKey;
+      selectedRoleId = null;
+      selectedExampleKey = null;
+      clearMatchingSelections();
+      updateMatchingUI();
+      return;
+    }
+
+    if (selectedRoleId === roleId) {
+      selectedRoleId = null;
+      clearMatchingSelections();
+      return;
+    }
+
+    selectedRoleId = roleId;
+    clearMatchingSelections();
+    document.getElementById(`roleCard${roleId}`).classList.add('selected');
+    reportHeight();
+  }
+
+  function handleExampleClick(exKey) {
+    if (window.lmsState.st01Passed) return;
+
+    if (selectedRoleId) {
+      // Ghép đôi
+      const roleId = selectedRoleId;
+      for (const [r, e] of Object.entries(window.lmsState.st01Pairs)) {
+        if (r === roleId || e === exKey) delete window.lmsState.st01Pairs[r];
+      }
+      window.lmsState.st01Pairs[roleId] = exKey;
+      selectedRoleId = null;
+      selectedExampleKey = null;
+      clearMatchingSelections();
+      updateMatchingUI();
+      return;
+    }
+
+    if (selectedExampleKey === exKey) {
+      selectedExampleKey = null;
+      clearMatchingSelections();
+      return;
+    }
+
+    selectedExampleKey = exKey;
+    clearMatchingSelections();
+    document.getElementById(`exampleCard${exKey}`).classList.add('selected');
+    reportHeight();
+  }
+
+  function clearMatchingSelections() {
+    document.querySelectorAll('.match-card').forEach(c => c.classList.remove('selected'));
+  }
+
+  function updateMatchingUI() {
+    // Cập nhật trạng thái thẻ trái
+    [1, 2, 3].forEach(r => {
+      const card = document.getElementById(`roleCard${r}`);
+      if (card) {
+        card.classList.toggle('paired', !!window.lmsState.st01Pairs[r]);
+        card.classList.remove('error-pair');
+      }
+    });
+
+    // Cập nhật trạng thái thẻ phải
+    ['A', 'B', 'C'].forEach(e => {
+      const card = document.getElementById(`exampleCard${e}`);
+      if (card) {
+        const isPaired = Object.values(window.lmsState.st01Pairs).includes(e);
+        card.classList.toggle('paired', isPaired);
+        card.classList.remove('error-pair');
+      }
+    });
+
+    renderConnections();
+
+    const pairedCount = Object.keys(window.lmsState.st01Pairs).length;
+    document.getElementById('btnCheckMatching').disabled = pairedCount < 3 || window.lmsState.st01Passed;
+    reportHeight();
+  }
+
+  function renderConnections() {
+    const board = document.getElementById('matchingBoard');
+    const svgLayer = document.getElementById('matchingSvgLayer');
+    if (!board || !svgLayer || document.getElementById('matchingSection').classList.contains('hidden')) return;
+
+    const boardRect = board.getBoundingClientRect();
+    let paths = '';
+
+    for (const [roleId, exKey] of Object.entries(window.lmsState.st01Pairs)) {
+      const roleCard = document.getElementById(`roleCard${roleId}`);
+      const exCard = document.getElementById(`exampleCard${exKey}`);
+
+      if (roleCard && exCard) {
+        const dotL = roleCard.querySelector('.anchor-dot');
+        const dotR = exCard.querySelector('.anchor-dot');
+
+        if (dotL && dotR) {
+          const rectL = dotL.getBoundingClientRect();
+          const rectR = dotR.getBoundingClientRect();
+
+          const x1 = rectL.left + rectL.width / 2 - boardRect.left;
+          const y1 = rectL.top + rectL.height / 2 - boardRect.top;
+          const x2 = rectR.left + rectR.width / 2 - boardRect.left;
+          const y2 = rectR.top + rectR.height / 2 - boardRect.top;
+
+          const cx1 = x1 + (x2 - x1) * 0.5;
+          const cy1 = y1;
+          const cx2 = x1 + (x2 - x1) * 0.5;
+          const cy2 = y2;
+
+          const strokeClass = window.lmsState.st01Passed ? 'correct' : 'tentative';
+          paths += `<path d="M ${x1} ${y1} C ${cx1} ${cy1}, ${cx2} ${cy2}, ${x2} ${y2}" class="connection-line ${strokeClass}" />`;
+        }
+      }
+    }
+
+    svgLayer.innerHTML = paths;
+  }
+
+  function checkMatchingPairs() {
+    const correctMap = { '1': 'A', '2': 'B', '3': 'C' };
+    let allOk = true;
+    const expls = [];
+
+    for (const [roleId, exKey] of Object.entries(window.lmsState.st01Pairs)) {
+      const isOk = correctMap[roleId] === exKey;
+      const roleCard = document.getElementById(`roleCard${roleId}`);
+      const exCard = document.getElementById(`exampleCard${exKey}`);
+
+      if (isOk) {
+        const item = EXAMPLES_DATA.find(e => e.role === roleId);
+        if (item) {
+          expls.push(`<div class="pair-expl-item"><strong>• Cặp ${roleId} — ${exKey}:</strong> ${item.expl}</div>`);
+        }
+      } else {
+        allOk = false;
+        if (roleCard) roleCard.classList.add('error-pair');
+        if (exCard) exCard.classList.add('error-pair');
+
+        setTimeout(() => {
+          delete window.lmsState.st01Pairs[roleId];
+          updateMatchingUI();
+        }, 850);
+      }
+    }
+
+    const fb = document.getElementById('st01StatusFeedback');
+    fb.classList.remove('hidden');
+
+    if (allOk) {
+      window.lmsState.st01Passed = true;
+      document.getElementById('btnCheckMatching').disabled = true;
+      document.getElementById('btnNextST01').disabled = false;
+
+      fb.className = 'inline-feedback ok';
+      fb.innerHTML = `<i class="ti ti-circle-check"></i> <span><strong>Chính xác!</strong> Trao đổi chất và chuyển hoá năng lượng có ba vai trò quan trọng: cung cấp vật chất để xây dựng cơ thể, cung cấp năng lượng cho hoạt động sống và đào thải chất cần bài tiết. Bấm <strong>Tiếp tục</strong> để chuyển sang phần ghi nhớ bài học.</span>`;
+
+      const explContainer = document.getElementById('pairedExplanations');
+      explContainer.innerHTML = expls.join('');
+      explContainer.classList.remove('hidden');
+
+      LMS().progress({ done: 2, total: 3 });
+    } else {
+      fb.className = 'inline-feedback bad';
+      fb.innerHTML = `<i class="ti ti-alert-triangle"></i> <span><strong>Cặp nối chưa chính xác!</strong> Hãy xác định ví dụ đang nói đến xây dựng cơ thể, sử dụng năng lượng hay loại bỏ chất, rồi nối lại các cặp chưa đúng.</span>`;
+    }
+
+    renderConnections();
+    reportHeight();
+  }
+
+  /* ==========================================================================
+     STAGE 02: GHI NHỚ, KẾT NỐI VÀ CONFETTI
+     ========================================================================== */
+  function handleCompleteModule() {
+    window.lmsState.moduleComplete = true;
+
+    document.getElementById('st02CompletionFeedback').classList.remove('hidden');
+    document.getElementById('completionModal').classList.remove('hidden');
+    launchConfetti();
+
+    LMS().complete({ done: 3, total: 3 });
+    reportHeight();
+  }
+
+  function closeModal() {
+    document.getElementById('completionModal').classList.add('hidden');
+    reportHeight();
+  }
+
+  function reviewLesson() {
+    closeModal();
+    gotoStage(0);
+  }
 
   function launchConfetti() {
-    const canvas = document.createElement('canvas');
-    canvas.id = 'confettiCanvas';
-    canvas.style.position = 'fixed';
-    canvas.style.inset = '0';
-    canvas.style.width = '100vw';
-    canvas.style.height = '100vh';
-    canvas.style.pointerEvents = 'none';
-    canvas.style.zIndex = '9998';
-    document.body.appendChild(canvas);
-    const cctx = canvas.getContext('2d');
+    const canvas = document.getElementById('confettiCanvas');
+    if (!canvas) return;
+    canvas.classList.remove('hidden');
+    const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+
     const particles = [];
-    const colors = ['#3CA57A', '#2D8B6F', '#E8A24A', '#4E7F92', '#C15F3C'];
-    for (let i = 0; i < 120; i++) {
+    const colors = ['#3CA57A', '#2D8B6F', '#E8A24A', '#CE8A33', '#A8C9B8'];
+
+    for (let i = 0; i < 90; i++) {
       particles.push({
         x: canvas.width / 2,
         y: canvas.height / 2,
-        vx: (Math.random() - 0.5) * 18,
-        vy: (Math.random() - 0.7) * 18,
+        vx: (Math.random() - 0.5) * 16,
+        vy: (Math.random() - 0.7) * 16,
         size: Math.random() * 8 + 4,
         color: colors[Math.floor(Math.random() * colors.length)],
         rotation: Math.random() * 360,
-        rSpeed: (Math.random() - 0.5) * 10,
+        rSpeed: (Math.random() - 0.5) * 8,
         life: 1,
         decay: Math.random() * 0.015 + 0.008
       });
     }
+
     function animate() {
-      cctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       let active = false;
+
       particles.forEach(p => {
         if (p.life > 0) {
           active = true;
@@ -1606,762 +2355,31 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
           p.vy += 0.3;
           p.life -= p.decay;
           p.rotation += p.rSpeed;
-          cctx.save();
-          cctx.translate(p.x, p.y);
-          cctx.rotate((p.rotation * Math.PI) / 180);
-          cctx.globalAlpha = Math.max(0, p.life);
-          cctx.fillStyle = p.color;
-          cctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
-          cctx.restore();
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rotation * Math.PI) / 180);
+          ctx.globalAlpha = Math.max(0, p.life);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+          ctx.restore();
         }
       });
-      if (active) requestAnimationFrame(animate);
-      else canvas.remove();
+
+      if (active) {
+        requestAnimationFrame(animate);
+      } else {
+        canvas.classList.add('hidden');
+      }
     }
+
     animate();
   }
 
-  function showStage(idx) {
-    if (idx < 0 || idx >= stageSections.length) return;
-    state.currentStage = idx;
-
-    stageSections.forEach((sec, i) => {
-      sec.classList.toggle('hidden', i !== idx);
-    });
-    stepBtns.forEach((btn, i) => {
-      btn.classList.toggle('active', i === idx);
-      btn.classList.toggle('current', i === idx);
-      if (state.stagesCompleted[i]) btn.classList.add('done');
-    });
-
-    const goalEl = document.getElementById('goalText');
-    if (goalEl && stageGoals[idx]) {
-      goalEl.textContent = stageGoals[idx];
-    }
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    reportHeight();
-
-    if (idx === 1 && state.st01_all_hotspots_seen) {
-      setTimeout(renderConnections, 150);
-    }
-  }
-
-  stepBtns.forEach((btn, idx) => {
-    btn.addEventListener('click', () => {
-      // Chỉ cho phép nhảy sang stage kế tiếp nếu đã hoàn thành stage trước
-      if (idx === 0 || state.stagesCompleted[idx - 1] || state.stagesCompleted[idx]) {
-        showStage(idx);
-      }
-    });
-  });
-
-  /* =======================================================
-     LOGIC STAGE 0: ST00 — HOOK PHÂN LOẠI 3 THẺ TÌNH HUỐNG
-     ======================================================= */
-  const hookTray = document.getElementById('hookTray');
-  const cardsDisrupted = document.getElementById('cards-disrupted');
-  const cardsNormal = document.getElementById('cards-normal');
-  const placeholderDisrupted = document.getElementById('placeholder-disrupted');
-  const placeholderNormal = document.getElementById('placeholder-normal');
-  const btnCheckST00 = document.getElementById('btnCheck-st00');
-  const btnNextST00 = document.getElementById('btnNext-st00');
-  const btnResetST00 = document.getElementById('btnReset-st00');
-  const st00Feedback = document.getElementById('st00Feedback');
-  const hookCards = document.querySelectorAll('.hook-card');
-  const dropZones = document.querySelectorAll('.drop-zone');
-
-  function updateZonePlaceholders() {
-    const hasDisrupted = cardsDisrupted.querySelectorAll('.hook-card').length > 0;
-    const hasNormal = cardsNormal.querySelectorAll('.hook-card').length > 0;
-    placeholderDisrupted.style.display = hasDisrupted ? 'none' : 'flex';
-    placeholderNormal.style.display = hasNormal ? 'none' : 'flex';
-
-    // Đếm số thẻ đã xếp
-    const totalPlaced = Object.values(state.st00_cards).filter(loc => loc !== 'tray').length;
-    btnCheckST00.disabled = totalPlaced < 3 || state.st00_done;
-    reportHeight();
-  }
-
-  // Chọn thẻ khi chạm/click
-  function selectCard(cardKey) {
-    state.st00_selected_card = cardKey;
-    hookCards.forEach(c => {
-      c.classList.toggle('selected', c.getAttribute('data-card') === cardKey);
-    });
-
-    const isCardInTray = state.st00_cards[cardKey] === 'tray';
-    
-    // Highlight drop zones
-    dropZones.forEach(z => z.classList.add('zone-selected'));
-
-    // Nếu thẻ đang trong zone thì khay cũng có thể bấm để trả về
-    if (!isCardInTray) {
-      hookTray.classList.add('tray-selected');
-    } else {
-      hookTray.classList.remove('tray-selected');
-    }
-
-    const cardTitle = cardKey === 'a' ? 'Tình huống (a)' : cardKey === 'b' ? 'Tình huống (b)' : 'Tình huống (c)';
-    st00Feedback.className = 'inline-feedback info';
-    st00Feedback.innerHTML = `
-      <div class="feedback-head"><i class="ti ti-hand-click"></i> Đang chọn: ${cardTitle}</div>
-      <span>Chạm vào 1 trong 2 nhóm bên dưới để xếp thẻ${!isCardInTray ? ', hoặc chạm Khay để trả về' : ''}.</span>
-    `;
-    reportHeight();
-  }
-
-  // Bỏ chọn thẻ
-  function deselectAllCards() {
-    state.st00_selected_card = null;
-    hookCards.forEach(c => c.classList.remove('selected'));
-    dropZones.forEach(z => z.classList.remove('zone-selected', 'drag-over'));
-    hookTray.classList.remove('tray-selected');
-  }
-
-  // Di chuyển thẻ vào zone
-  function moveCardToZone(cardKey, zoneKey) {
-    const cardEl = document.getElementById('card-' + cardKey);
-    const targetContainer = zoneKey === 'disrupted' ? cardsDisrupted : cardsNormal;
-    if (cardEl && targetContainer) {
-      targetContainer.appendChild(cardEl);
-      state.st00_cards[cardKey] = zoneKey;
-      deselectAllCards();
-      updateZonePlaceholders();
-
-      st00Feedback.className = 'inline-feedback info';
-      const zoneName = zoneKey === 'disrupted' ? 'Trao đổi bị gián đoạn' : 'Trao đổi diễn ra bình thường';
-      st00Feedback.innerHTML = `
-        <div class="feedback-head"><i class="ti ti-check"></i> Đã xếp thẻ</div>
-        <span>Đã đưa vào nhóm "<b>${zoneName}</b>". Bạn có thể tiếp tục xếp thẻ khác hoặc đổi lại nếu muốn.</span>
-      `;
-    }
-  }
-
-  // Trả thẻ về khay
-  function moveCardToTray(cardKey) {
-    const cardEl = document.getElementById('card-' + cardKey);
-    if (cardEl) {
-      hookTray.appendChild(cardEl);
-      state.st00_cards[cardKey] = 'tray';
-      deselectAllCards();
-      updateZonePlaceholders();
-
-      st00Feedback.className = 'inline-feedback info';
-      st00Feedback.innerHTML = `
-        <div class="feedback-head"><i class="ti ti-arrow-back-up"></i> Đã trả thẻ về khay</div>
-        <span>Hãy chạm hoặc kéo thẻ để xếp lại vào nhóm phù hợp.</span>
-      `;
-    }
-  }
-
-  // 1. Kéo thả HTML5 Drag & Drop
-  hookCards.forEach(card => {
-    card.addEventListener('dragstart', (e) => {
-      if (state.st00_done) return e.preventDefault();
-      const key = card.getAttribute('data-card');
-      e.dataTransfer.setData('text/plain', key);
-      selectCard(key);
-    });
-    card.addEventListener('dragend', () => {
-      deselectAllCards();
-    });
-
-    // 2. Chạm chọn cho Mobile / Click-to-place
-    card.addEventListener('click', (e) => {
-      e.stopPropagation(); // CỰC KỲ QUAN TRỌNG: Ngăn chặn click lan lên hookTray hoặc dropZone
-      if (state.st00_done) return;
-      const cardKey = card.getAttribute('data-card');
-
-      if (state.st00_selected_card === cardKey) {
-        // Chạm lại thẻ đang chọn -> Bỏ chọn
-        deselectAllCards();
-        st00Feedback.classList.add('hidden');
-        st00Feedback.innerHTML = '';
-      } else {
-        selectCard(cardKey);
-      }
-    });
-
-    // Bàn phím hỗ trợ accessibility (Enter / Space)
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        card.click();
-      }
-    });
-  });
-
-  // Nút trả về khay trực tiếp trên từng thẻ
-  document.querySelectorAll('.btn-return-card').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation(); // Không kích hoạt click trên card
-      if (state.st00_done) return;
-      const cardEl = btn.closest('.hook-card');
-      if (cardEl) {
-        const cardKey = cardEl.getAttribute('data-card');
-        moveCardToTray(cardKey);
-      }
-    });
-  });
-
-  // Vùng thả / Vùng đích
-  dropZones.forEach(zone => {
-    const zoneKey = zone.getAttribute('data-zone'); // 'disrupted' | 'normal'
-
-    zone.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      if (!state.st00_done) zone.classList.add('drag-over');
-    });
-    zone.addEventListener('dragleave', () => {
-      zone.classList.remove('drag-over');
-    });
-    zone.addEventListener('drop', (e) => {
-      e.preventDefault();
-      zone.classList.remove('drag-over');
-      if (state.st00_done) return;
-      const cardKey = e.dataTransfer.getData('text/plain');
-      if (cardKey) {
-        moveCardToZone(cardKey, zoneKey);
-      }
-    });
-
-    // Chạm vùng đích sau khi đã chọn thẻ
-    zone.addEventListener('click', (e) => {
-      if (state.st00_done) return;
-      if (state.st00_selected_card) {
-        e.stopPropagation();
-        moveCardToZone(state.st00_selected_card, zoneKey);
-      }
-    });
-  });
-
-  // Chạm khay để trả thẻ về khay khi đang chọn thẻ
-  hookTray.addEventListener('click', (e) => {
-    if (state.st00_done) return;
-    if (state.st00_selected_card) {
-      moveCardToTray(state.st00_selected_card);
-    }
-  });
-
-  // Kiểm tra đáp án ST00
-  btnCheckST00.addEventListener('click', () => {
-    // Đáp án chuẩn: a, b -> disrupted; c -> normal
-    const isCorrectA = state.st00_cards.a === 'disrupted';
-    const isCorrectB = state.st00_cards.b === 'disrupted';
-    const isCorrectC = state.st00_cards.c === 'normal';
-
-    const cardA = document.getElementById('card-a');
-    const cardB = document.getElementById('card-b');
-    const cardC = document.getElementById('card-c');
-
-    if (isCorrectA && isCorrectB && isCorrectC) {
-      // ĐÚNG TOÀN BỘ
-      state.st00_done = true;
-      state.stagesCompleted[0] = true;
-      stepBtns[0].classList.add('done');
-
-      [cardA, cardB, cardC].forEach(c => {
-        c.classList.add('correct-locked');
-        c.setAttribute('draggable', 'false');
-        const retBtn = c.querySelector('.btn-return-card');
-        if (retBtn) retBtn.style.display = 'none';
-      });
-
-      st00Feedback.className = 'inline-feedback ok';
-      st00Feedback.innerHTML = `
-        <div class="feedback-head"><i class="ti ti-circle-check"></i> Chính xác!</div>
-        <span>Khi sinh vật không nhận đủ các chất cần thiết hoặc không loại bỏ được những chất cần thải, hoạt động sống có thể bị rối loạn và cơ thể dần suy yếu. Vậy trao đổi chất và chuyển hoá năng lượng có vai trò gì đối với sự sống? Bấm <b>TIẾP TỤC</b> để khám phá.</span>
-      `;
-      btnCheckST00.classList.add('hidden');
-      btnNextST00.classList.remove('hidden');
-      LMS().progress({ done: 1, total: 3 });
-    } else {
-      // CÓ THẺ SAI: Sai đâu sửa đó (chỉ thẻ sai rung lắc viền đỏ rồi trở về khay)
-      st00Feedback.className = 'inline-feedback bad';
-      st00Feedback.innerHTML = `
-        <div class="feedback-head"><i class="ti ti-alert-triangle"></i> Chưa chính xác</div>
-        <span>Hãy quan sát lại trạng thái của sinh vật trong từng hình: sinh vật đang được cung cấp đủ điều kiện cần thiết hay hoạt động sống đã có dấu hiệu bị ảnh hưởng? Sau đó, hãy sửa lại những hình chưa đúng.</span>
-      `;
-
-      // Xử lý từng thẻ
-      const handleCardError = (cardEl, key, isOk) => {
-        if (!isOk) {
-          cardEl.classList.add('error-shake');
-          setTimeout(() => {
-            cardEl.classList.remove('error-shake');
-            hookTray.appendChild(cardEl);
-            state.st00_cards[key] = 'tray';
-            updateZonePlaceholders();
-          }, 900);
-        }
-      };
-
-      handleCardError(cardA, 'a', isCorrectA);
-      handleCardError(cardB, 'b', isCorrectB);
-      handleCardError(cardC, 'c', isCorrectC);
-    }
-    reportHeight();
-  });
-
-  btnNextST00.addEventListener('click', () => {
-    showStage(1);
-  });
-
-  // Đặt lại ST00
-  btnResetST00.addEventListener('click', () => {
-    state.st00_done = false;
-    state.st00_selected_card = null;
-    state.st00_cards = { a: 'tray', b: 'tray', c: 'tray' };
-
-    [document.getElementById('card-a'), document.getElementById('card-b'), document.getElementById('card-c')].forEach(c => {
-      c.className = 'hook-card';
-      c.setAttribute('draggable', 'true');
-      const retBtn = c.querySelector('.btn-return-card');
-      if (retBtn) retBtn.style.display = '';
-      hookTray.appendChild(c);
-    });
-
-    btnCheckST00.classList.remove('hidden');
-    btnCheckST00.disabled = true;
-    btnNextST00.classList.add('hidden');
-    dropZones.forEach(z => z.classList.remove('zone-selected', 'drag-over'));
-    hookTray.classList.remove('tray-selected');
-    st00Feedback.classList.add('hidden');
-    st00Feedback.innerHTML = '';
-    updateZonePlaceholders();
-  });
-
-  /* =======================================================
-     LOGIC STAGE 1: ST01 — KHÁM PHÁ SƠ ĐỒ 3 HOTSPOTS
-     ======================================================= */
-  const hotspotData = {
-    1: {
-      title: "Hotspot 1 — Thu nhận từ môi trường",
-      icon: "ti-arrow-down-right",
-      content: "Sinh vật tiếp nhận các chất cần thiết từ môi trường. Tùy từng nhóm sinh vật, đó có thể là nước, chất khoáng, khí hoặc chất hữu cơ. Sinh vật cũng tiếp nhận nguồn năng lượng phù hợp với phương thức sống của mình."
-    },
-    2: {
-      title: "Hotspot 2 — Sử dụng trong cơ thể",
-      icon: "ti-dna",
-      content: "Các chất được tiếp nhận và biến đổi để hình thành, duy trì và đổi mới cơ thể. Năng lượng được chuyển hoá để cung cấp cho các hoạt động sống như vận động, cảm ứng, sinh trưởng, phát triển và sinh sản."
-    },
-    3: {
-      title: "Hotspot 3 — Thải ra môi trường",
-      icon: "ti-arrow-up-right",
-      content: "Những chất cơ thể không sử dụng được, chất dư thừa hoặc có hại cần được loại bỏ ra môi trường. Nếu tích tụ, chúng có thể làm rối loạn hoạt động sống."
-    }
-  };
-
-  const hotspotBtns = [
-    document.getElementById('btnHotspot1'),
-    document.getElementById('btnHotspot2'),
-    document.getElementById('btnHotspot3')
-  ];
-  const hotspotTitle = document.getElementById('hotspotTitle');
-  const hotspotContent = document.getElementById('hotspotContent');
-  const matchingSection = document.getElementById('matchingSection');
-
-  hotspotBtns.forEach((btn, idx) => {
-    const num = idx + 1;
-    btn.addEventListener('click', () => {
-      // Đánh dấu đã xem
-      state.st01_hotspots_visited[num] = true;
-      btn.classList.remove('pulse');
-      btn.classList.add('visited');
-
-      hotspotBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      // Hiển thị nội dung
-      const data = hotspotData[num];
-      hotspotTitle.innerHTML = `<i class="ti ${data.icon}"></i> ${data.title}`;
-      hotspotContent.textContent = data.content;
-
-      // Kiểm tra đã xem đủ 3 hotspot chưa
-      if (state.st01_hotspots_visited[1] && state.st01_hotspots_visited[2] && state.st01_hotspots_visited[3]) {
-        if (!state.st01_all_hotspots_seen) {
-          state.st01_all_hotspots_seen = true;
-          matchingSection.classList.remove('hidden');
-          initMatchingCards();
-          setTimeout(renderConnections, 200);
-        }
-      }
-      reportHeight();
-    });
-  });
-
-  /* =======================================================
-     LOGIC STAGE 1: NHIỆM VỤ NỐI VAI TRÒ ↔ VÍ DỤ (MATCHING)
-     ======================================================= */
-  const examplesData = [
-    { key: 'A', role: '1', text: 'Hình thành thêm tế bào khi cơ thể sinh trưởng', expl: 'Hình thành thêm tế bào khi cơ thể sinh trưởng cho thấy các chất được sử dụng để xây dựng và đổi mới cơ thể.' },
-    { key: 'B', role: '2', text: 'Cơ hoạt động khi chạy', expl: 'Cơ hoạt động khi chạy cần năng lượng đã được cơ thể chuyển hoá thành dạng có thể sử dụng.' },
-    { key: 'C', role: '3', text: 'Cơ thể thải nước tiểu và mồ hôi', expl: 'Thải nước tiểu và mồ hôi là những con đường giúp cơ thể loại bỏ một số chất dư thừa hoặc cần thải ra ngoài.' }
-  ];
-
-  const examplesColumn = document.getElementById('examplesColumn');
-  const matchingSvgLayer = document.getElementById('matchingSvgLayer');
-  const btnCheckMatching = document.getElementById('btnCheckMatching');
-  const btnResetMatching = document.getElementById('btnResetMatching');
-  const btnNextST01 = document.getElementById('btnNext-st01');
-  const st01Feedback = document.getElementById('st01Feedback');
-  const pairedExplanations = document.getElementById('pairedExplanations');
-
-  function initMatchingCards() {
-    examplesColumn.innerHTML = '<div class="matching-col__title"><i class="ti ti-list-check"></i> CỘT VÍ DỤ (Bên phải)</div>';
-    
-    // Xáo trộn ngẫu nhiên thứ tự các ví dụ
-    const shuffled = [...examplesData].sort(() => Math.random() - 0.5);
-    shuffled.forEach(ex => {
-      const card = document.createElement('div');
-      card.className = 'match-card';
-      card.setAttribute('data-example', ex.key);
-      card.setAttribute('id', 'example-card-' + ex.key);
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('role', 'button');
-      card.setAttribute('aria-label', 'Ví dụ ' + ex.key);
-      card.innerHTML = `
-        <span class="anchor-dot"></span>
-        <span class="card-badge">${ex.key}</span>
-        <span>${ex.text}</span>
-      `;
-      examplesColumn.appendChild(card);
-    });
-
-    bindMatchingEvents();
-    reportHeight();
-  }
-
-  function bindMatchingEvents() {
-    const roleCards = document.querySelectorAll('.matching-col--left .match-card');
-    const exampleCards = document.querySelectorAll('.matching-col--right .match-card');
-
-    roleCards.forEach(card => {
-      card.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (state.M01_vaitro_hoanthanh) return;
-        const roleId = card.getAttribute('data-role');
-
-        // Nếu đã chọn một example trước đó -> Ghép cặp!
-        if (state.st01_selected_example) {
-          const exKey = state.st01_selected_example;
-          for (const [r, ex] of Object.entries(state.st01_pairs)) {
-            if (r === roleId || ex === exKey) {
-              delete state.st01_pairs[r];
-            }
-          }
-          state.st01_pairs[roleId] = exKey;
-          state.st01_selected_role = null;
-          state.st01_selected_example = null;
-          clearMatchingSelections();
-          updateMatchingUI();
-          return;
-        }
-
-        // Nếu chạm lại chính role này -> Bỏ chọn
-        if (state.st01_selected_role === roleId) {
-          state.st01_selected_role = null;
-          clearMatchingSelections();
-          st01Feedback.classList.add('hidden');
-          st01Feedback.innerHTML = '';
-          return;
-        }
-
-        // Chọn role này
-        state.st01_selected_role = roleId;
-        state.st01_selected_example = null;
-        clearMatchingSelections();
-        card.classList.add('selected');
-
-        st01Feedback.className = 'inline-feedback info';
-        st01Feedback.innerHTML = `
-          <div class="feedback-head"><i class="ti ti-hand-click"></i> Đã chọn: Vai trò ${roleId}</div>
-          <span>Bây giờ hãy chạm vào một <b>Ví dụ phù hợp ở cột bên phải</b> để tạo đường nối.</span>
-        `;
-        reportHeight();
-      });
-    });
-
-    exampleCards.forEach(card => {
-      card.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (state.M01_vaitro_hoanthanh) return;
-        const exKey = card.getAttribute('data-example');
-
-        // Nếu đã chọn một role trước đó -> Ghép cặp!
-        if (state.st01_selected_role) {
-          const roleId = state.st01_selected_role;
-          for (const [r, ex] of Object.entries(state.st01_pairs)) {
-            if (r === roleId || ex === exKey) {
-              delete state.st01_pairs[r];
-            }
-          }
-          state.st01_pairs[roleId] = exKey;
-          state.st01_selected_role = null;
-          state.st01_selected_example = null;
-          clearMatchingSelections();
-          updateMatchingUI();
-          return;
-        }
-
-        // Nếu chạm lại chính ví dụ này -> Bỏ chọn
-        if (state.st01_selected_example === exKey) {
-          state.st01_selected_example = null;
-          clearMatchingSelections();
-          st01Feedback.classList.add('hidden');
-          st01Feedback.innerHTML = '';
-          return;
-        }
-
-        // Chọn ví dụ này trước
-        state.st01_selected_example = exKey;
-        state.st01_selected_role = null;
-        clearMatchingSelections();
-        card.classList.add('selected');
-
-        st01Feedback.className = 'inline-feedback info';
-        st01Feedback.innerHTML = `
-          <div class="feedback-head"><i class="ti ti-hand-click"></i> Đã chọn: Ví dụ ${exKey}</div>
-          <span>Bây giờ hãy chạm vào <b>Vai trò phù hợp ở cột bên trái</b> để tạo đường nối.</span>
-        `;
-        reportHeight();
-      });
-    });
-  }
-
-  function clearMatchingSelections() {
-    document.querySelectorAll('.match-card').forEach(c => c.classList.remove('selected'));
-  }
-
-  function updateMatchingUI() {
-    const roleCards = document.querySelectorAll('.matching-col--left .match-card');
-    const exampleCards = document.querySelectorAll('.matching-col--right .match-card');
-
-    // Cập nhật class paired
-    roleCards.forEach(c => {
-      const r = c.getAttribute('data-role');
-      c.classList.toggle('paired', !!state.st01_pairs[r]);
-      c.classList.remove('error-pair');
-    });
-
-    exampleCards.forEach(c => {
-      const e = c.getAttribute('data-example');
-      const isPaired = Object.values(state.st01_pairs).includes(e);
-      c.classList.toggle('paired', isPaired);
-      c.classList.remove('error-pair');
-    });
-
-    renderConnections();
-
-    // Mở nút Kiểm tra khi đã nối đủ 3 cặp
-    const pairedCount = Object.keys(state.st01_pairs).length;
-    btnCheckMatching.disabled = pairedCount < 3 || state.M01_vaitro_hoanthanh;
-
-    if (pairedCount === 3 && !state.M01_vaitro_hoanthanh) {
-      st01Feedback.className = 'inline-feedback ok';
-      st01Feedback.innerHTML = '<div class="feedback-head"><i class="ti ti-check"></i> Đã nối đủ 3 cặp</div><span>Nhấn nút <b>KIỂM TRA</b> bên dưới để xem kết quả.</span>';
-    }
-    reportHeight();
-  }
-
-  function renderConnections() {
-    const board = document.getElementById('matchingBoard');
-    if (!board || matchingSection.classList.contains('hidden')) return;
-
-    const boardRect = board.getBoundingClientRect();
-    let svgContent = '';
-
-    for (const [roleId, exKey] of Object.entries(state.st01_pairs)) {
-      const roleCard = document.getElementById('role-card-' + roleId);
-      const exCard = document.getElementById('example-card-' + exKey);
-
-      if (roleCard && exCard) {
-        const dotLeft = roleCard.querySelector('.anchor-dot');
-        const dotRight = exCard.querySelector('.anchor-dot');
-
-        const rectL = dotLeft.getBoundingClientRect();
-        const rectR = dotRight.getBoundingClientRect();
-
-        const x1 = rectL.left + rectL.width / 2 - boardRect.left;
-        const y1 = rectL.top + rectL.height / 2 - boardRect.top;
-        const x2 = rectR.left + rectR.width / 2 - boardRect.left;
-        const y2 = rectR.top + rectR.height / 2 - boardRect.top;
-
-        const cx1 = x1 + (x2 - x1) * 0.5;
-        const cy1 = y1;
-        const cx2 = x1 + (x2 - x1) * 0.5;
-        const cy2 = y2;
-
-        const pathData = `M ${x1} ${y1} C ${cx1} ${cy1}, ${cx2} ${cy2}, ${x2} ${y2}`;
-        const isCompleted = state.M01_vaitro_hoanthanh;
-        const strokeClass = isCompleted ? 'correct' : 'tentative';
-
-        svgContent += `<path d="${pathData}" class="connection-line ${strokeClass}" />`;
-      }
-    }
-
-    matchingSvgLayer.innerHTML = svgContent;
-  }
-
-  // Click ra ngoài để hủy chọn
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.hook-card') && !e.target.closest('.drop-zone') && !e.target.closest('#hookTray')) {
-      if (state.st00_selected_card) {
-        deselectAllCards();
-      }
-    }
-    if (!e.target.closest('.match-card')) {
-      if (state.st01_selected_role || state.st01_selected_example) {
-        state.st01_selected_role = null;
-        state.st01_selected_example = null;
-        clearMatchingSelections();
-      }
-    }
-  });
-
-  // Kiểm tra đáp án nối
-  btnCheckMatching.addEventListener('click', () => {
-    // Đáp án chuẩn: 1 -> A, 2 -> B, 3 -> C
-    const correctAnswers = { '1': 'A', '2': 'B', '3': 'C' };
-    let allCorrect = true;
-    const explanations = [];
-
-    for (const [roleId, exKey] of Object.entries(state.st01_pairs)) {
-      const isOk = correctAnswers[roleId] === exKey;
-      const roleCard = document.getElementById('role-card-' + roleId);
-      const exCard = document.getElementById('example-card-' + exKey);
-
-      if (isOk) {
-        const explData = examplesData.find(e => e.role === roleId);
-        if (explData) {
-          explanations.push(`<div><b>• Cặp ${roleId} — ${exKey}:</b> ${explData.expl}</div>`);
-        }
-      } else {
-        allCorrect = false;
-        // Đánh dấu đỏ cho cặp sai và xóa liên kết sai
-        if (roleCard) roleCard.classList.add('error-pair');
-        if (exCard) exCard.classList.add('error-pair');
-
-        setTimeout(() => {
-          delete state.st01_pairs[roleId];
-          updateMatchingUI();
-        }, 900);
-      }
-    }
-
-    if (allCorrect) {
-      state.M01_vaitro_hoanthanh = true;
-      state.stagesCompleted[1] = true;
-      stepBtns[1].classList.add('done');
-
-      st01Feedback.className = 'inline-feedback ok';
-      st01Feedback.innerHTML = `
-        <div class="feedback-head"><i class="ti ti-circle-check"></i> Hoàn thành xuất sắc!</div>
-        <span>Trao đổi chất và chuyển hoá năng lượng có ba vai trò quan trọng: <b>cung cấp vật chất</b> để xây dựng và duy trì cơ thể, <b>cung cấp năng lượng</b> cho các hoạt động sống và giúp <b>loại bỏ những chất cần thải</b> ra ngoài. Bấm <b>TIẾP TỤC</b> để tổng kết bài học.</span>
-      `;
-
-      pairedExplanations.innerHTML = explanations.join('');
-      pairedExplanations.classList.remove('hidden');
-
-      btnCheckMatching.classList.add('hidden');
-      btnNextST01.classList.remove('hidden');
-      LMS().progress({ done: 2, total: 3 });
-    } else {
-      st01Feedback.className = 'inline-feedback bad';
-      st01Feedback.innerHTML = `
-        <div class="feedback-head"><i class="ti ti-alert-triangle"></i> Cặp nối chưa chính xác</div>
-        <span>Hãy xác định ví dụ đang nói đến xây dựng cơ thể, sử dụng năng lượng hay loại bỏ chất, rồi nối lại cặp chưa đúng.</span>
-      `;
-    }
-    renderConnections();
-    reportHeight();
-  });
-
-  btnNextST01.addEventListener('click', () => {
-    showStage(2);
-  });
-
-  btnResetMatching.addEventListener('click', () => {
-    state.M01_vaitro_hoanthanh = false;
-    state.st01_selected_role = null;
-    state.st01_selected_example = null;
-    state.st01_pairs = {};
-    clearMatchingSelections();
-    btnCheckMatching.classList.remove('hidden');
-    btnCheckMatching.disabled = true;
-    btnNextST01.classList.add('hidden');
-    pairedExplanations.classList.add('hidden');
-    st01Feedback.classList.add('hidden');
-    st01Feedback.innerHTML = '';
-    updateMatchingUI();
-  });
-
-  /* =======================================================
-     LOGIC STAGE 2: ST02 — GHI NHỚ VÀ HOÀN THÀNH MODULE
-     ======================================================= */
-  const btnBackToST01 = document.getElementById('btnBackToST01');
-  const btnCompleteModule = document.getElementById('btnCompleteModule');
-  const completionModal = document.getElementById('completionModal');
-  const btnCloseModal = document.getElementById('btnCloseModal');
-  const btnReviewLesson = document.getElementById('btnReviewLesson');
-  const st02Feedback = document.getElementById('st02Feedback');
-
-  if (btnBackToST01) {
-    btnBackToST01.addEventListener('click', () => {
-      showStage(1);
-    });
-  }
-
-  if (btnCompleteModule) {
-    btnCompleteModule.addEventListener('click', () => {
-      state.module_completed = true;
-      state.stagesCompleted[2] = true;
-      if (stepBtns[2]) stepBtns[2].classList.add('done');
-
-      LMS().complete({ done: 3, total: 3 });
-
-      if (st02Feedback) {
-        st02Feedback.classList.remove('hidden');
-      }
-
-      if (completionModal) {
-        completionModal.classList.remove('hidden'); launchConfetti();
-      }
-      reportHeight();
-    });
-  }
-
-  if (btnCloseModal && completionModal) {
-    btnCloseModal.addEventListener('click', () => {
-      completionModal.classList.add('hidden');
-      reportHeight();
-    });
-  }
-
-  if (btnReviewLesson && completionModal) {
-    btnReviewLesson.addEventListener('click', () => {
-      completionModal.classList.add('hidden');
-      showStage(0);
-    });
-  }
-
-  if (completionModal) {
-    completionModal.addEventListener('click', (e) => {
-      if (e.target === completionModal) {
-        completionModal.classList.add('hidden');
-        reportHeight();
-      }
-    });
-  }
-
-  /* =======================================================
-     KHỞI TẠO & SỰ KIỆN CO GIÃN CỬA SỔ
-     ======================================================= */
-  LMS().ready({ id: 'SH11_M01_B01', title: 'Vai trò của trao đổi chất và chuyển hoá năng lượng' });
-  
+  /* Khởi tạo trang ban đầu */
   window.addEventListener('load', () => {
     updateZonePlaceholders();
+    LMS().ready({ id: 'SH11_M01_B01', title: 'Vai trò của trao đổi chất và chuyển hoá năng lượng' });
     reportHeight();
   });
 
@@ -2383,14 +2401,6 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
     });
     ro.observe(document.body);
   }
-</script>
-<script>
-/* Chuẩn hóa theo SH10_B01_M02: trực quan trái, nhiệm vụ phải, nút dưới. */
-(()=>{document.querySelectorAll('section.stage-section,section.stage-card').forEach(stage=>{if(stage.classList.contains('two-block-ready'))return;const nodes=[...stage.children],controls=nodes.find(n=>n.matches('.controls-row,.stage-actions')),lead=nodes.find(n=>n.matches('.lead-box')),title=nodes.find(n=>n.matches('.stage-title'));const candidates=nodes.filter(n=>n!==controls&&n!==lead&&n!==title&&!n.matches('.guide-box,.feedback-box,.feedback-bar,.conclude-card'));let visualNode=candidates.find(n=>n.querySelector('img,svg,canvas'))||candidates.find(n=>/viewer|grid|diagram|visual|comparison|summary/.test(n.className))||candidates[0];const split=document.createElement('div');split.className='split-workspace';const visual=document.createElement('article');visual.className='visual-card';const head=document.createElement('div');head.className='visual-card__head';const h=title||document.createElement('h2');if(!title){const q=lead&&lead.querySelector('.lead-question,.lead-text');h.textContent=q?q.textContent.trim().replace(/^“|”$/g,''):'Nội dung bài học'}head.appendChild(h);const body=document.createElement('div');body.className='visual-body';if(visualNode)body.appendChild(visualNode);visual.append(head,body);const work=document.createElement('article');work.className='workspace-card';let guide=nodes.find(n=>n.matches('.guide-box'))||(lead&&lead.querySelector('.guide-box'));if(guide){guide.className='instruction';work.appendChild(guide)}else{const g=document.createElement('div');g.className='instruction';g.innerHTML='<i class="ti ti-bulb"></i><span>Quan sát dữ kiện trực quan và hoàn thành nhiệm vụ.</span>';work.appendChild(g)}if(lead)work.appendChild(lead);candidates.forEach(n=>{if(n!==visualNode)work.appendChild(n)});stage.querySelectorAll(':scope > .feedback-box,:scope > .feedback-bar,:scope > .conclude-card').forEach(n=>work.appendChild(n));split.append(visual,work);stage.prepend(split);stage.querySelectorAll('.feedback-box,.feedback-bar,.feedback-panel').forEach(n=>n.classList.add('inline-feedback'));if(controls){controls.classList.add('controls-row');stage.appendChild(controls)}stage.classList.add('two-block-ready')});const clean=root=>{const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.closest('script,style'))continue;const v=n.nodeValue.replace(/Tiếp tục sang Giai đoạn\s*\d+/gi,'Tiếp tục').replace(/Hoàn thành Giai đoạn\s*\d+!?/gi,'Hoàn thành!').replace(/GIAI ĐOẠN\s*\d+\s*\/\s*\d+\s*[·—-]\s*/gi,'').replace(/Stage\s*\d+/gi,'').replace(/Màn\s*\d+\s*[·:]\s*/gi,'').replace(/Bước\s*\d+\s*\/\s*\d+/gi,'');if(v!==n.nodeValue)n.nodeValue=v}};clean(document.body);new MutationObserver(a=>a.forEach(m=>clean(m.target))).observe(document.body,{childList:true,subtree:true,characterData:true})})();
-</script>
-<script>
-/* Hàng điều hướng ba nút thống nhất, thay thế cụm điều hướng cũ. */
-(()=>{const stages=[...document.querySelectorAll('section.stage,section.stage-section,section.stage-card')];const go=(idx)=>{const stage=stages[idx];if(!stage)return;if(typeof showStage==='function')showStage(idx);else if(typeof goStage==='function')goStage(stage.id);else if(typeof goToStage==='function'){const m=stage.id.match(/(?:stage-?|stage)(\d+)/);goToStage(m?Number(m[1]):idx)}else{stages.forEach((item,itemIdx)=>{item.classList.toggle('hidden',itemIdx!==idx);item.classList.toggle('hidden-stage',itemIdx!==idx);item.classList.toggle('active',itemIdx===idx)});window.scrollTo({top:0,behavior:'smooth'})}};const hashMatch=location.hash.match(/^#retry-stage-(\d+)$/);stages.forEach((stage,idx)=>{if(stage.querySelector(':scope > .three-button-nav'))return;const sourceRow=stage.querySelector(':scope > .controls-row,:scope > .stage-actions')||stage.querySelector('.btn-row');const buttons=sourceRow?[...sourceRow.querySelectorAll('button')]:[];const byText=(re)=>buttons.find(b=>re.test(b.textContent));const backSource=byText(/quay lại|xem lại/i);const resetSource=byText(/làm lại màn|làm lại|đặt lại|nối lại/i);const nextSource=byText(/tiếp tục/i)||buttons.find(b=>/complete|finish|next/i.test(b.id));if(sourceRow&&sourceRow.classList.contains('btn-row'))[backSource,resetSource,nextSource].forEach(b=>{if(b)b.style.display='none'});const row=document.createElement('div');row.className='three-button-nav';const back=document.createElement('button');back.type='button';back.className='btn btn-outline nav-back';back.innerHTML='<i class="ti ti-arrow-left"></i> Quay lại';back.disabled=idx===0;back.addEventListener('click',()=>backSource?backSource.click():go(idx-1));const reset=document.createElement('button');reset.type='button';reset.className='btn btn-outline nav-reset';reset.innerHTML='<i class="ti ti-rotate-clockwise"></i> Làm lại màn';reset.addEventListener('click',()=>{if(resetSource)resetSource.click();else{location.hash='#retry-stage-'+idx;location.reload()}});const spacer=document.createElement('span');spacer.className='nav-spacer';const next=document.createElement('button');next.type='button';next.className='btn btn-primary nav-next';next.innerHTML='Tiếp tục <i class="ti ti-arrow-right"></i>';const sync=()=>{next.disabled=!nextSource||nextSource.disabled||nextSource.classList.contains('hidden')};next.addEventListener('click',()=>nextSource?nextSource.click():go(idx+1));sync();if(nextSource)new MutationObserver(sync).observe(nextSource,{attributes:true,attributeFilter:['class','disabled']});row.append(back,reset,spacer,next);stage.appendChild(row)});if(hashMatch){const idx=Number(hashMatch[1]);setTimeout(()=>{go(idx);history.replaceState(null,'',location.pathname+location.search)},80)}})();
 </script>
 </body>
 </html>

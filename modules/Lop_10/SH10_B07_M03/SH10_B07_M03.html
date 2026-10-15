@@ -75,374 +75,358 @@
   --amber: #D97706;
   --amber-bg: #FEF3C7;
   --amber-text: #92400E;
-  --radius: 12px;
-  --radius-lg: 16px;
-  --radius-sm: 8px;
-  --shadow-sm: 0 2px 8px rgba(26, 26, 26, 0.06);
-  --shadow-md: 0 6px 18px rgba(26, 26, 26, 0.08);
+  --radius: 10px;
+  --radius-lg: 14px;
+  --radius-sm: 6px;
+  --shadow: 0 4px 14px rgba(45, 139, 111, 0.10);
+  --shadow-sm: 0 2px 6px rgba(26, 26, 26, 0.05);
 }
 
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  min-width: 0;
 }
 
 body {
   font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
   background-color: var(--cream);
   color: var(--ink);
-  line-height: 1.6;
-  font-size: 16px;
+  line-height: 1.65;
+  font-size: 16.5px;
   -webkit-font-smoothing: antialiased;
-  padding: 16px;
-  display: flex;
-  justify-content: center;
-  overflow-x: hidden;
 }
 
-/* Modal Hide Override (Anti-Auto-Popup Rule) */
-.hidden {
-  display: none !important;
-}
-.congrats-overlay.hidden,
-.modal-backdrop.hidden,
-#completionModal.hidden {
-  display: none !important;
-}
-
-.step-nav-bar,
-.stepper-nav,
-.progress-nav-container,
-.stepper-bar,
-.stage-head {
-  display: none !important;
-}
-
-.module-wrapper {
+.app {
   width: 100%;
-  max-width: 1060px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px clamp(10px, 2.5vw, 24px) 32px;
+  overflow-x: clip;
 }
 
-/* Stage Box */
 .stage {
-  background: #FFFFFF;
-  border: 1.5px solid var(--paper-line);
-  border-radius: var(--radius-lg);
-  padding: 24px;
-  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
   gap: 20px;
-  animation: fadeIn 0.35s ease-out;
+  animation: fadeIn 0.3s ease;
+}
+.stage.hidden {
+  display: none !important;
 }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  20%, 60% { transform: translateX(-6px); }
-  40%, 80% { transform: translateX(6px); }
+
+/* TWO-BLOCK LAYOUT (V10 MUTUAL STICKY) */
+.split-workspace {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(360px, 1.25fr);
+  gap: 24px;
+  align-items: start;
+  width: 100%;
 }
 
-/* Stage Header */
-.stage-head {
+.visual-card {
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: sticky;
+  top: 16px;
+  height: fit-content;
+}
+
+.workspace-card {
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 16px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+/* LEFT COLUMN: THEORY & SINGLE INSTRUCTION */
+.theory-title {
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-weight: 800;
+  color: var(--jade-dark);
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+
+.lead-text {
+  font-size: 0.95rem;
+  color: var(--ink-2);
+  line-height: 1.65;
+}
+
+.guide-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--cream-2);
+  border-left: 3px solid var(--jade);
+  border-radius: 4px;
+  padding: 12px 14px;
+  font-size: 0.91rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.guide-box i {
+  color: var(--jade-deep);
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.theory-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.theory-block {
+  background: var(--cream);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.theory-block__title {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--jade-text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.theory-block__title i {
+  color: var(--jade-deep);
+  font-size: 1rem;
+}
+.theory-block__desc {
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+
+/* CONTROLS ROW */
+.controls-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1.5px solid var(--paper-line);
-  padding-bottom: 14px;
   gap: 12px;
-  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--paper-line);
+  flex-wrap: nowrap;
 }
-.stage-title-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.stage-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--jade-text);
-  background: var(--jade-pale);
-  padding: 4px 10px;
-  border-radius: 999px;
-  width: fit-content;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-.stage-title {
-  font-size: 1.45rem;
-  font-weight: 800;
-  color: var(--ink);
-  letter-spacing: -0.02em;
-  line-height: 1.3;
-}
-.stage-step-indicator {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--ink-3);
-  background: var(--cream-2);
-  padding: 4px 10px;
-  border-radius: var(--radius-sm);
-}
-
-/* Lead text */
-.lead-text {
-  font-size: 1rem;
-  color: var(--ink-2);
-  line-height: 1.65;
-  background: var(--cream);
-  padding: 14px 18px;
-  border-left: 4px solid var(--jade);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-}
-
-/* Guide box (Single Point of Instruction) */
-.guide-box {
-  background: var(--sage-pale);
-  border: 1.5px solid var(--sage);
-  border-radius: var(--radius);
-  padding: 12px 18px;
+.btn-group-left {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--sage-text);
+  gap: 8px;
 }
-.guide-box i {
-  font-size: 1.35rem;
-  color: var(--jade-deep);
-  flex-shrink: 0;
+.btn-group-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
 }
 
-/* Buttons System */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 10px 20px;
-  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+  gap: 7px;
+  padding: 9px 18px;
+  font-family: inherit;
   font-size: 0.92rem;
   font-weight: 700;
-  border-radius: var(--radius);
-  border: 1.5px solid transparent;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all 0.2s ease;
   min-height: 44px;
-  text-decoration: none;
-  user-select: none;
+  border: 1.5px solid transparent;
 }
-.btn:active {
-  transform: scale(0.98);
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 .btn-primary {
   background: var(--jade);
   color: #FFFFFF;
-  border-color: var(--jade-deep);
-  box-shadow: 0 2px 6px rgba(60, 165, 122, 0.3);
+  border-color: var(--jade);
 }
 .btn-primary:hover:not(:disabled) {
   background: var(--jade-deep);
-}
-.btn-primary:disabled {
-  background: var(--ink-faint);
-  border-color: var(--paper-line-2);
-  color: #FFFFFF;
-  cursor: not-allowed;
-  box-shadow: none;
-  opacity: 0.65;
+  border-color: var(--jade-deep);
 }
 .btn-secondary {
   background: var(--cream-2);
   color: var(--ink-2);
-  border-color: var(--paper-line-2);
+  border-color: var(--paper-line);
 }
 .btn-secondary:hover:not(:disabled) {
   background: var(--cream-3);
   color: var(--ink);
+  border-color: var(--paper-line-2);
 }
 .btn-outline {
-  background: #FFFFFF;
+  background: transparent;
   color: var(--jade-text);
   border-color: var(--jade);
 }
 .btn-outline:hover:not(:disabled) {
   background: var(--jade-pale);
 }
-.btn-outline:disabled {
-  border-color: var(--paper-line-2);
-  color: var(--ink-faint);
-  cursor: not-allowed;
-  opacity: 0.65;
-}
 
-.stage-actions {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-  padding-top: 16px;
-  border-top: 1.5px solid var(--paper-line);
-  margin-top: 8px;
-  flex-wrap: wrap;
-}
-.stage-actions > button[id^="btnPrev"] {
-  margin-right: auto;
-}
-
-/* Inline Feedback */
+/* FEEDBACK & PEDAGOGY META */
 .inline-feedback {
-  border-radius: var(--radius);
-  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  font-size: 0.92rem;
+  line-height: 1.55;
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  font-size: 0.95rem;
-  line-height: 1.55;
-  animation: slideUp 0.3s ease;
+  animation: fadeIn 0.25s ease;
 }
-.inline-feedback i {
-  font-size: 1.3rem;
-  flex-shrink: 0;
-  margin-top: 2px;
+.inline-feedback.hidden {
+  display: none !important;
 }
-.inline-feedback.correct {
+.inline-feedback.correct, .inline-feedback.ok {
   background: var(--correct-bg);
-  border: 1.5px solid var(--correct);
   color: var(--jade-text);
+  border: 1px solid var(--jade-soft);
 }
-.inline-feedback.wrong {
+.inline-feedback.wrong, .inline-feedback.bad {
   background: var(--wrong-bg);
-  border: 1.5px solid var(--wrong);
-  color: #991B1B;
+  color: var(--wrong);
+  border: 1px solid rgba(193, 95, 60, 0.3);
 }
 
-/* Question Option Box */
-.qa-box {
-  background: var(--cream);
-  border: 1.5px solid var(--paper-line);
-  border-radius: var(--radius);
-  padding: 18px;
+.feedback-content {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  animation: slideUp 0.3s ease;
+  gap: 8px;
+  width: 100%;
 }
-.qa-title {
-  font-size: 0.96rem;
-  font-weight: 700;
-  color: var(--ink);
-}
-.qa-options-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.qa-option-label {
+.feedback-title {
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: #FFFFFF;
-  border: 1.5px solid var(--paper-line);
-  border-radius: var(--radius);
-  padding: 12px 16px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 0.92rem;
-  font-weight: 500;
-  color: var(--ink);
-  user-select: none;
+  gap: 6px;
+  font-size: 0.95rem;
+  font-weight: 800;
 }
-.qa-option-label:hover {
-  border-color: var(--jade);
-  background: var(--jade-pale);
-}
-.qa-option-label.selected {
-  border-color: var(--jade);
-  background: #F2FBF6;
-  font-weight: 700;
-  color: var(--jade-text);
-}
-.qa-option-radio {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 2px solid var(--paper-line-2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: all 0.2s ease;
-}
-.qa-option-label.selected .qa-option-radio {
-  border-color: var(--jade);
-  background: var(--jade);
-}
-.qa-option-label.selected .qa-option-radio::after {
-  content: '';
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #FFFFFF;
-}
-
-/* Multi-select checkbox label */
-.qa-option-label.multiselect .qa-option-radio {
+.correct-answer-box {
+  background: rgba(45, 139, 111, 0.12);
+  border-left: 3px solid var(--correct);
+  padding: 8px 12px;
   border-radius: 4px;
+  font-weight: 700;
+  color: var(--jade-dark);
+  font-size: 0.88rem;
 }
-.qa-option-label.multiselect.selected .qa-option-radio::after {
-  content: '✓';
-  color: #FFFFFF;
-  font-size: 13px;
-  font-weight: 900;
-  line-height: 1;
-  background: transparent;
+.explanation {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--ink-2);
 }
 
-/* ==========================================================================
-   STAGE 1: TẾ BÀO CHẤT & RIBOSOME STYLES
-   ========================================================================== */
-.s01-layout {
+.pedagogy-meta {
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  margin-top: 10px;
+  box-shadow: 0 1px 4px rgba(26,26,26,0.04);
+}
+.pedagogy-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--jade-deep);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--paper-line);
+  margin-bottom: 10px;
+}
+.pedagogy-grid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr;
-  gap: 18px;
-  align-items: start;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 24px;
+  font-size: 0.86rem;
 }
-@media (max-width: 860px) {
-  .s01-layout {
-    grid-template-columns: 1fr;
-  }
+.pedagogy-item {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  line-height: 1.45;
+}
+.pedagogy-label {
+  color: var(--ink-2);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.pedagogy-label i {
+  color: var(--jade-deep);
+  font-size: 0.92rem;
+}
+.pedagogy-val {
+  color: var(--ink);
+  font-weight: 700;
 }
 
+/* STAGE 1: TẾ BÀO CHẤT & RIBOSOME */
+.s01-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 .s01-view-card {
-  background: var(--cream);
+  background: #FFFFFF;
   border: 1.5px solid var(--paper-line);
   border-radius: var(--radius);
   overflow: hidden;
-  position: relative;
   box-shadow: var(--shadow-sm);
 }
 .s01-img-wrap {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: #EAE5D8;
+  background: #F4EEDB;
 }
 .s01-img-wrap img {
   width: 100%;
@@ -452,77 +436,80 @@ body {
 }
 .s01-svg-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
 }
-
-/* Clickable Hotspot on particles */
 .particle-hotspot {
   position: absolute;
-  width: 38px;
-  height: 38px;
-  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  cursor: pointer;
-  pointer-events: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.85rem;
-  font-weight: 800;
-  transition: all 0.2s ease;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: all 0.25s ease;
   z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.particle-hotspot::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  animation: pulseAnim 1.8s infinite;
+}
+@keyframes pulseAnim {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  70% { transform: scale(1.5); opacity: 0; }
+  100% { transform: scale(1.5); opacity: 0; }
 }
 .particle-hotspot.ribosome-spot {
-  background: rgba(124, 58, 237, 0.85);
-  color: #FFFFFF;
-  border: 2px solid #FFFFFF;
-  box-shadow: 0 0 12px rgba(124, 58, 237, 0.6);
+  background: #FFFFFF;
+  border: 2px solid var(--purple);
+  color: var(--purple);
+}
+.particle-hotspot.ribosome-spot::after {
+  border: 2px solid var(--purple);
 }
 .particle-hotspot.inclusion-spot {
-  background: rgba(217, 119, 6, 0.85);
-  color: #FFFFFF;
-  border: 2px solid #FFFFFF;
-  box-shadow: 0 0 12px rgba(217, 119, 6, 0.6);
+  background: #FFFFFF;
+  border: 2px solid var(--amber);
+  color: var(--amber);
 }
-.particle-hotspot:hover {
-  transform: translate(-50%, -50%) scale(1.15);
+.particle-hotspot.inclusion-spot::after {
+  border: 2px solid var(--amber);
 }
 .particle-hotspot.viewed {
-  border-color: #10B981;
-  box-shadow: 0 0 0 3px #10B981, 0 0 12px rgba(16, 185, 129, 0.5);
+  background: var(--correct) !important;
+  border-color: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+.particle-hotspot.viewed::after {
+  display: none;
 }
 
 .s01-side-panel {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 .component-card {
-  background: #FFFFFF;
+  background: var(--cream);
   border: 1.5px solid var(--paper-line);
-  border-radius: var(--radius);
-  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  transition: all 0.25s ease;
-  cursor: pointer;
-}
-.component-card:hover {
-  border-color: var(--jade-soft);
-  background: #FBFDFB;
-}
-.component-card.active {
-  border-color: var(--jade);
-  background: #F4FBF7;
-  box-shadow: 0 0 0 2px rgba(60, 165, 122, 0.25);
+  gap: 6px;
+  transition: all 0.2s ease;
 }
 .component-card.viewed {
-  border-color: var(--correct);
+  border-color: var(--jade);
+  background: var(--jade-pale);
 }
 .comp-card-head {
   display: flex;
@@ -530,195 +517,239 @@ body {
   justify-content: space-between;
 }
 .comp-name {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 800;
   color: var(--ink);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 .comp-status-tag {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   padding: 2px 8px;
-  border-radius: 999px;
+  border-radius: 4px;
   background: var(--cream-2);
   color: var(--ink-3);
 }
-.comp-card.viewed .comp-status-tag {
-  background: var(--correct-bg);
-  color: var(--jade-text);
+.component-card.viewed .comp-status-tag {
+  background: var(--jade);
+  color: #FFFFFF;
 }
 .comp-desc {
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   color: var(--ink-2);
   line-height: 1.5;
-  display: none;
-}
-.component-card.active .comp-desc,
-.component-card.viewed .comp-desc {
-  display: block;
 }
 
-/* ==========================================================================
-   STAGE 2: VÙNG NHÂN STYLES (MAGNIFIER SNAP INTERACTION)
-   ========================================================================== */
+/* QA BOX COMMON */
+.qa-box {
+  background: var(--cream);
+  border: 1.5px solid var(--paper-line-2);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: fadeIn 0.3s ease;
+}
+.qa-box.hidden {
+  display: none !important;
+}
+.qa-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--jade-text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.qa-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.qa-option-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: #FFFFFF;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.88rem;
+  color: var(--ink);
+  transition: all 0.2s ease;
+}
+.qa-option-label:hover {
+  background: var(--cream-2);
+  border-color: var(--jade-soft);
+}
+.qa-option-label.selected {
+  border-color: var(--jade);
+  background: var(--jade-pale);
+  font-weight: 700;
+  color: var(--jade-dark);
+}
+.qa-option-radio {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--paper-line-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+.qa-option-label.multiselect .qa-option-radio {
+  border-radius: 4px;
+}
+.qa-option-label.selected .qa-option-radio {
+  border-color: var(--jade);
+  background: var(--jade);
+}
+.qa-option-label.selected .qa-option-radio::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #FFFFFF;
+}
+.qa-option-label.multiselect.selected .qa-option-radio::after {
+  border-radius: 1px;
+}
+
+/* STAGE 2: VÙNG NHÂN */
 .s02-layout {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 20px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
-@media (max-width: 860px) {
-  .s02-layout {
-    grid-template-columns: 1fr;
-  }
-}
-
 .s02-cell-view {
   background: #FFFFFF;
   border: 1.5px solid var(--paper-line);
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
 }
 .cell-dna-stage-svg-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
-  background: #FDFBF7;
-  overflow: hidden;
-  cursor: crosshair;
+  background: #FBF9F2;
 }
 .cell-dna-stage-svg-wrap svg {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: block;
 }
-
-/* Magnifier Lens UI Tool */
 .magnifier-lens {
   position: absolute;
-  width: 90px;
-  height: 90px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  border: 3px solid var(--jade);
-  background: rgba(60, 165, 122, 0.12);
-  box-shadow: 0 0 0 2px #FFFFFF, 0 4px 16px rgba(0,0,0,0.18);
-  pointer-events: auto;
-  cursor: grab;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s ease, border-color 0.2s ease;
+  background: rgba(255, 255, 255, 0.9);
+  border: 3px solid var(--purple);
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: grab;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 14px rgba(109, 40, 217, 0.35);
   z-index: 20;
+  transition: transform 0.15s ease;
 }
 .magnifier-lens:active {
   cursor: grabbing;
 }
-.magnifier-lens.snapped {
-  border-color: #10B981;
-  background: rgba(16, 185, 129, 0.2);
-  box-shadow: 0 0 0 3px #10B981, 0 0 20px rgba(16, 185, 129, 0.4);
-}
 .lens-icon {
-  font-size: 1.5rem;
-  color: var(--jade-dark);
+  font-size: 1.4rem;
+  color: var(--purple);
 }
-
+.magnifier-lens.snapped {
+  border-color: var(--correct);
+  background: rgba(220, 234, 225, 0.95);
+}
+.magnifier-lens.snapped .lens-icon {
+  color: var(--correct);
+}
 .s02-contrast-panel {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 .magnified-result-card {
-  background: #FFFFFF;
+  background: var(--cream);
   border: 1.5px solid var(--paper-line);
-  border-radius: var(--radius);
-  padding: 16px;
+  border-radius: var(--radius-sm);
+  padding: 14px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 .card-header-tag {
-  font-size: 0.75rem;
+  font-size: 0.88rem;
   font-weight: 800;
-  text-transform: uppercase;
-  color: var(--purple-text);
+  color: var(--jade-dark);
   display: flex;
   align-items: center;
   gap: 6px;
 }
 .thumb-contrast-wrap {
-  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
   border-radius: var(--radius-sm);
   overflow: hidden;
-  border: 1px solid var(--paper-line-2);
-  background: #FAF7F0;
-}
-.thumb-contrast-wrap img,
-.thumb-contrast-wrap svg {
-  width: 100%;
-  height: auto;
-  display: block;
+  margin-top: 6px;
 }
 
-/* ==========================================================================
-   STAGE 3: PLASMID STYLES (DRAG & DROP)
-   ========================================================================== */
+/* STAGE 3: PLASMID */
 .s03-layout {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 .plasmid-view-banner {
-  background: #FDFBF7;
+  background: #FFFFFF;
   border: 1.5px solid var(--paper-line);
   border-radius: var(--radius);
-  padding: 12px;
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
 }
 .two-cols-classification {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
-@media (max-width: 680px) {
-  .two-cols-classification {
-    grid-template-columns: 1fr;
-  }
-}
 .classification-col {
   background: var(--cream);
   border: 1.5px solid var(--paper-line);
-  border-radius: var(--radius);
-  padding: 16px;
+  border-radius: var(--radius-sm);
+  padding: 12px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 .col-header-box {
+  font-size: 0.9rem;
+  font-weight: 800;
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--ink);
-  border-bottom: 1.5px solid var(--paper-line);
-  padding-bottom: 8px;
+  gap: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--paper-line);
 }
 .col-slot {
-  min-height: 58px;
-  background: #FFFFFF;
+  min-height: 54px;
   border: 2px dashed var(--paper-line-2);
   border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 8px;
+  text-align: center;
   transition: all 0.2s ease;
 }
 .col-slot.drag-over {
@@ -727,7 +758,7 @@ body {
 }
 .col-slot.filled {
   border-style: solid;
-  border-color: var(--paper-line);
+  border-color: var(--jade-soft);
   background: #FFFFFF;
 }
 .col-slot.locked-correct {
@@ -735,101 +766,87 @@ body {
   background: var(--correct-bg);
 }
 .slot-placeholder {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--ink-faint);
-  font-style: italic;
-  pointer-events: none;
 }
 
-/* Cards Tray */
 .cards-pool-tray {
-  background: #FFFFFF;
-  border: 1.5px solid var(--paper-line);
-  border-radius: var(--radius);
-  padding: 16px;
+  background: var(--cream-2);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 .tray-label {
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--ink-2);
 }
 .cards-row {
   display: flex;
-  gap: 10px;
   flex-wrap: wrap;
+  gap: 8px;
 }
 .drag-card {
   background: #FFFFFF;
   border: 1.5px solid var(--paper-line-2);
   border-radius: var(--radius-sm);
-  padding: 10px 14px;
-  font-size: 0.88rem;
+  padding: 8px 12px;
+  font-size: 0.84rem;
   font-weight: 600;
   color: var(--ink);
   cursor: grab;
   user-select: none;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   transition: all 0.2s ease;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 .drag-card:active {
   cursor: grabbing;
 }
-.drag-card:hover {
-  border-color: var(--jade);
-  transform: translateY(-2px);
-}
 .drag-card.selected {
   border-color: var(--jade);
-  box-shadow: 0 0 0 2px rgba(60, 165, 122, 0.4);
   background: var(--jade-pale);
+  color: var(--jade-dark);
 }
 .drag-card.placed {
-  cursor: pointer;
-  box-shadow: none;
-  background: #FDFBF7;
-  border-color: var(--paper-line);
+  opacity: 0.45;
+  cursor: default;
+  pointer-events: none;
 }
-
-/* Vector Application Note Box */
 .vector-extension-box {
-  background: var(--amber-bg);
-  border: 1.5px solid var(--amber);
-  border-radius: var(--radius);
-  padding: 14px 18px;
+  background: var(--jade-pale);
+  border: 1.5px solid var(--jade-soft);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
   display: flex;
   align-items: flex-start;
-  gap: 12px;
-  font-size: 0.9rem;
-  color: var(--amber-text);
+  gap: 10px;
+  font-size: 0.86rem;
+  color: var(--jade-dark);
   line-height: 1.5;
-  animation: slideUp 0.3s ease;
+  animation: fadeIn 0.3s ease;
+}
+.vector-extension-box.hidden {
+  display: none !important;
 }
 .vector-extension-box i {
-  font-size: 1.25rem;
-  color: var(--amber);
+  color: var(--jade);
+  font-size: 1.3rem;
+  flex-shrink: 0;
   margin-top: 2px;
 }
 
-/* ==========================================================================
-   STAGE 4 & 5: CƠ CHẾ KHÁNG KHÁNG SINH STYLES (SIMULATION PANELS)
-   ========================================================================== */
+/* STAGE 4 & 5: CÁC CƠ CHẾ KHÁNG THUỐC */
 .mech-sim-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
-@media (max-width: 780px) {
-  .mech-sim-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 .sim-panel {
   background: #FFFFFF;
   border: 1.5px solid var(--paper-line);
@@ -846,34 +863,30 @@ body {
   justify-content: space-between;
 }
 .sim-panel-title {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 800;
-  color: var(--ink);
   display: flex;
   align-items: center;
   gap: 6px;
 }
 .sim-canvas-box {
   width: 100%;
-  aspect-ratio: 16 / 9;
-  background: #F8FAFC;
   border: 1px solid var(--paper-line);
   border-radius: var(--radius-sm);
   overflow: hidden;
-  position: relative;
+  background: #FAF7F0;
 }
 .sim-canvas-box svg {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: block;
 }
 .sim-desc-text {
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   color: var(--ink-2);
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
-/* Summary Diagram Box */
 .summary-infographic-box {
   background: #FFFFFF;
   border: 1.5px solid var(--paper-line);
@@ -882,129 +895,162 @@ body {
   overflow: hidden;
   box-shadow: var(--shadow-sm);
 }
-.summary-infographic-box img,
-.summary-infographic-box svg {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: var(--radius-sm);
+.summary-infographic-box.hidden {
+  display: none !important;
 }
 
-/* ==========================================================================
-   MODAL CHÚC MỪNG HOÀN THÀNH V10 & CONFETTI
-   ========================================================================== */
+/* MODAL CHÚC MỪNG HOÀN THÀNH */
 .congrats-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(20, 67, 47, 0.7);
+  background: rgba(20, 67, 47, 0.6);
   backdrop-filter: blur(4px);
-  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1000;
   padding: 16px;
-  animation: fadeIn 0.25s ease-out;
+  animation: fadeIn 0.3s ease;
+}
+.congrats-overlay.hidden,
+#completionModal.hidden {
+  display: none !important;
 }
 .congrats-modal {
   background: #FFFFFF;
-  border: 2px solid var(--jade);
+  border: 1px solid var(--paper-line);
   border-radius: var(--radius-lg);
-  max-width: 520px;
+  max-width: 480px;
   width: 100%;
   padding: 32px 28px;
   text-align: center;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  animation: modalPop 0.35s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-}
-@keyframes modalPop {
-  from { transform: scale(0.85); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
 }
 .congrats-icon-wrap {
-  width: 72px;
-  height: 72px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
-  background: #FEF3C7;
-  color: #D97706;
-  font-size: 2.4rem;
+  background: var(--accent-pale);
+  color: var(--accent-deep);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.25);
+  font-size: 2rem;
 }
 .congrats-title {
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   font-weight: 800;
-  color: var(--ink);
-  line-height: 1.25;
+  color: var(--jade-dark);
 }
 .congrats-text {
-  font-size: 0.96rem;
+  font-size: 0.92rem;
   color: var(--ink-2);
   line-height: 1.6;
 }
 .congrats-actions {
   display: flex;
   gap: 12px;
-  margin-top: 8px;
   width: 100%;
   justify-content: center;
 }
+
 #confettiCanvas {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 10000;
+  z-index: 999;
 }
-/* Đồng bộ trực tiếp theo SH10_B01_M02 */
-body{padding:0;font-size:17px}.app{max-width:1200px;margin:0 auto;padding:18px clamp(12px,2.4vw,28px) 12px}.stage.two-block-ready{padding:0;background:transparent;border:0;box-shadow:none}.stage-badge,.stage-step-indicator{display:none!important}.split-workspace{display:grid!important;grid-template-columns:minmax(0,58fr) minmax(340px,42fr)!important;gap:20px!important;align-items:start!important}.visual-card,.workspace-card{min-width:0;border:1px solid var(--paper-line,#D6CCB6);border-radius:14px;overflow:hidden;box-shadow:0 2px 6px rgba(26,26,26,.05)}.visual-card{position:sticky;top:0;background:#fff}.visual-card__head{padding:14px 16px 12px;border-bottom:1px solid var(--paper-line,#D6CCB6);background:#fff}.visual-card__head h2{margin:0;font-size:clamp(1.25rem,2.2vw,1.75rem);line-height:1.28;letter-spacing:-.02em}.visual-body{padding:14px;background:#fff}.workspace-card{padding:18px;background:var(--cream-2,#FBF9F4)}.instruction{display:flex;align-items:flex-start;gap:10px;margin:0 0 16px;padding:12px 14px;border-left:4px solid var(--info,#4E7F92);border-radius:6px;background:var(--info-bg,#DCE7EB);color:var(--ink-2,#514C44);font-size:.91rem;line-height:1.55}.inline-feedback{font-size:.92rem;line-height:1.55}.controls-row{display:flex;align-items:center;gap:10px;margin-top:16px;padding:14px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}.btn{min-height:44px;padding:9px 15px;font-size:.92rem}@media(max-width:980px){.split-workspace{grid-template-columns:1fr!important}.visual-card{position:static}.workspace-card{padding:16px}}@media(max-width:700px){body{font-size:16px}.app{padding:12px 10px 10px}.workspace-card{padding:16px}}@media(max-width:420px){.app{padding:10px 8px 8px}.workspace-card{padding:13px}}
-.three-button-nav{display:flex;align-items:center;gap:12px;width:100%;margin-top:16px;padding:16px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;scrollbar-width:none}.three-button-nav::-webkit-scrollbar{display:none}.three-button-nav .nav-spacer{flex:1}.three-button-nav .btn{flex:0 0 auto;white-space:nowrap}.three-button-nav .nav-back{order:1}.three-button-nav .nav-reset{order:2}.three-button-nav .nav-spacer{order:3}.three-button-nav .nav-next{order:4}.three-button-nav .btn:disabled{opacity:.45;cursor:not-allowed}
-section.stage .controls-row,section.stage .stage-actions,section.stage-card .controls-row,section.stage-card .stage-actions{display:none!important}
+
+/* RESPONSIVE BREAKPOINTS (V10 STANDARD) */
+@media (max-width: 980px) {
+  .split-workspace {
+    grid-template-columns: 1fr;
+  }
+  .visual-card, .workspace-card {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+@media (max-width: 700px) {
+  body {
+    font-size: 16px;
+  }
+  .app {
+    padding: 12px 10px 24px;
+  }
+  .two-cols-classification,
+  .mech-sim-grid {
+    grid-template-columns: 1fr;
+  }
+  .pedagogy-grid {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+  .controls-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .btn-group-left, .btn-group-right {
+    width: 100%;
+  }
+  .btn-group-left .btn, .btn-group-right .btn {
+    flex: 1;
+  }
+}
 </style>
 </head>
 <body>
 
 <canvas id="confettiCanvas"></canvas>
 
-<div class="module-wrapper">
+<main class="app" id="app">
 
   <!-- =====================================================================
-       MÀN S01: TẾ BÀO CHẤT VÀ RIBOSOME (SH10_B07_M03_S01)
+       MÀN S01: TẾ BÀO CHẤT VÀ RIBOSOME
        ===================================================================== -->
   <section class="stage" id="stage-1" role="region" aria-label="Màn 1: Bên trong màng tế bào có gì?">
-    <div class="lead-box">
-      <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
-        <div class="lead-title">
-          <i class="ti ti-notes"></i>
-          <span>Bối cảnh khoa học</span>
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: LÝ THUYẾT & HƯỚNG DẪN DUY NHẤT -->
+      <article class="visual-card">
+        <div class="theory-block" style="background:transparent; border:none; padding:0;">
+          <h2 class="theory-title">Bên trong màng tế bào có gì?</h2>
+          <p class="lead-text">Tế bào chất gồm bào tương và các cấu trúc nằm trong đó. Ở vi khuẩn, bào tương chứa nhiều ribosome – nơi tổng hợp protein – cùng các hạt dự trữ ở một số tế bào. Nhiều phản ứng chuyển hóa diễn ra trong tế bào chất.</p>
         </div>
-        <div class="lead-toggle">
-          <span class="lead-toggle-label">Thu gọn</span>
-          <i class="ti ti-chevron-up lead-toggle-icon"></i>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Nhấn vào từng loại hạt trên sơ đồ. Thành phần đã xem có viền xanh và chức năng xuất hiện trong bảng đối chiếu. Sau khi khám phá cả hai, trả lời câu hỏi nhận thức.</span>
         </div>
-      </div>
-      <div class="lead-content">
-        <p class="lead-text">Tế bào chất gồm bào tương và các cấu trúc nằm trong đó. Ở vi khuẩn, bào tương chứa nhiều ribosome – nơi tổng hợp protein – cùng các hạt dự trữ ở một số tế bào. Nhiều phản ứng chuyển hóa diễn ra trong tế bào chất.</p>
-      </div>
-    </div>
 
-    <div class="guide-box">
-      <i class="ti ti-hand-click"></i>
-      <span>Nhấn vào từng loại hạt. Thành phần đã xem có viền xanh và chức năng xuất hiện trong bảng.</span>
-    </div>
+        <div class="theory-flow">
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-droplet-filled"></i> Tế bào chất và Bào tương</div>
+            <div class="theory-block__desc">Chiếm phần lớn thể tích tế bào, là môi trường bán lỏng chứa nước, các hợp chất hữu cơ và vô cơ; nơi diễn ra hầu hết các phản ứng sinh hóa chuyển hóa vật chất và năng lượng.</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-atom"></i> Ribosome vi khuẩn (~70S)</div>
+            <div class="theory-block__desc">Cấu tạo từ rARN và protein, kích thước nhỏ hơn ribosome nhân thực, không có màng bao bọc; là “nhà máy” trực tiếp diễn ra quá trình tổng hợp protein.</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-database"></i> Hạt dự trữ thể vùi</div>
+            <div class="theory-block__desc">Các thể vùi kích thước lớn hơn rõ rệt so với ribosome, chứa glycogen, lipid, polyphosphate... cung cấp nguyên liệu và năng lượng dự trữ, không tham gia tổng hợp protein.</div>
+          </div>
+        </div>
+      </article>
 
-    <div class="s01-layout">
-      <!-- Left: Cell Cytoplasm Visual with Particle Hotspots -->
-      <div class="s01-view-card">
-        <div class="s01-img-wrap" id="s01ImgWrap">
-          <img src="https://lh3.googleusercontent.com/d/1TOrC2Hb3Gp-GlxkClkfage0SlYHY5T0A" alt="Lát cắt tế bào vi khuẩn thể hiện bào tương và ribosome">
-          
-          <!-- Interactive Vector Layer: Ribosome Dots & Inclusion Bodies -->
-          <svg class="s01-svg-overlay" viewBox="0 0 800 450" preserveAspectRatio="none">
+      <!-- CỘT PHẢI: HOẠT ĐỘNG & BÀI TẬP -->
+      <article class="workspace-card">
+        <div class="s01-layout">
+          <!-- Cytoplasm Visual with Particle Hotspots -->
+          <div class="s01-view-card">
+            <div class="s01-img-wrap" id="s01ImgWrap">
+              <img src="https://lh3.googleusercontent.com/d/1TOrC2Hb3Gp-GlxkClkfage0SlYHY5T0A" alt="Lát cắt tế bào vi khuẩn thể hiện bào tương và ribosome">
+              <svg class="s01-svg-overlay" viewBox="0 0 800 450" preserveAspectRatio="none">
             <!-- Densely scattered small ribosomes (purple dots, 5-6px) -->
             <g id="ribosomeScatterGroup" fill="#7C3AED" opacity="0.85">
               <!-- Cluster Left -->
@@ -1032,104 +1078,116 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-card .con
             </g>
           </svg>
 
-          <!-- Hotspot 1: Ribosome -->
-          <div class="particle-hotspot ribosome-spot" id="spotRibosome" style="top:36%; left:45%;" title="Nhấn để khám phá Ribosome">
-            <i class="ti ti-atom"></i>
+              <!-- Hotspot 1: Ribosome -->
+              <div class="particle-hotspot ribosome-spot" id="spotRibosome" style="top:36%; left:45%;" title="Nhấn để khám phá Ribosome">
+                <i class="ti ti-atom"></i>
+              </div>
+
+              <!-- Hotspot 2: Hạt dự trữ -->
+              <div class="particle-hotspot inclusion-spot" id="spotInclusion" style="top:55%; left:40%;" title="Nhấn để khám phá Hạt dự trữ">
+                <i class="ti ti-droplet"></i>
+              </div>
+            </div>
+            <div style="padding:10px 14px; font-size:0.82rem; color:var(--ink-3); background:#FFFFFF; border-top:1px solid var(--paper-line);">
+              <i class="ti ti-info-circle"></i> Quan sát sự khác biệt về mật độ và kích thước giữa ribosome (chấm tím li ti phân bố rộng) và hạt dự trữ (hình cầu lớn màu hổ phách).
+            </div>
           </div>
 
-          <!-- Hotspot 2: Hạt dự trữ -->
-          <div class="particle-hotspot inclusion-spot" id="spotInclusion" style="top:55%; left:40%;" title="Nhấn để khám phá Hạt dự trữ">
-            <i class="ti ti-droplet"></i>
+          <!-- Side Components Panel -->
+          <div class="s01-side-panel">
+            <div class="component-card" id="cardRibosome" data-comp="ribosome">
+              <div class="comp-card-head">
+                <span class="comp-name"><i class="ti ti-atom" style="color:var(--purple);"></i> 1. Hạt Ribosome</span>
+                <span class="comp-status-tag" id="tagRibosome">Chưa xem</span>
+              </div>
+              <div class="comp-desc">
+                <strong>Đặc điểm:</strong> Hạt cấu tạo từ rARN và protein, kích thước nhỏ (~70S), không có màng bao bọc, phân bố dày đặc trong bào tương.<br>
+                <strong>Chức năng:</strong> Là “nhà máy” trực tiếp diễn ra quá trình tổng hợp protein của tế bào vi khuẩn.
+              </div>
+            </div>
+
+            <div class="component-card" id="cardInclusion" data-comp="inclusion">
+              <div class="comp-card-head">
+                <span class="comp-name"><i class="ti ti-droplet" style="color:var(--amber);"></i> 2. Hạt Dự Trữ</span>
+                <span class="comp-status-tag" id="tagInclusion">Chưa xem</span>
+              </div>
+              <div class="comp-desc">
+                <strong>Đặc điểm:</strong> Các thể vùi kích thước lớn hơn rõ rệt so với ribosome, số lượng ít, phân bố rải rác.<br>
+                <strong>Chức năng:</strong> Tích lũy các chất dinh dưỡng dự trữ (glycogen, lipid, polyphosphate...) để cung cấp năng lượng khi môi trường thiếu thốn; không tham gia tổng hợp protein.
+              </div>
+            </div>
+
+            <!-- Multiple Choice Question (Unlocks when both seen) -->
+            <div class="qa-box hidden" id="boxQuestionStage1">
+              <p class="qa-title"><i class="ti ti-help"></i> CÂU HỎI NHẬN THỨC:</p>
+              <p style="font-weight:700; color:var(--ink);">Cấu trúc nào trực tiếp tổng hợp protein?</p>
+              <div class="qa-options-list" id="optsStage1">
+                <label class="qa-option-label" data-value="A">
+                  <div class="qa-option-radio"></div>
+                  <span>A. Ribosome</span>
+                </label>
+                <label class="qa-option-label" data-value="B">
+                  <div class="qa-option-radio"></div>
+                  <span>B. Hạt dự trữ</span>
+                </label>
+                <label class="qa-option-label" data-value="C">
+                  <div class="qa-option-radio"></div>
+                  <span>C. Vùng nhân</span>
+                </label>
+              </div>
+            </div>
           </div>
         </div>
-        <div style="padding:10px 14px; font-size:0.82rem; color:var(--ink-3); background:#FFFFFF; border-top:1px solid var(--paper-line);">
-          <i class="ti ti-info-circle"></i> Quan sát sự khác biệt về mật độ và kích thước giữa ribosome (chấm tím li ti phân bố rộng) và hạt dự trữ (hình cầu lớn màu hổ phách).
-        </div>
-      </div>
 
-      <!-- Right: Side Components Panel -->
-      <div class="s01-side-panel">
-        <div class="component-card" id="cardRibosome" data-comp="ribosome">
-          <div class="comp-card-head">
-            <span class="comp-name"><i class="ti ti-atom" style="color:var(--purple);"></i> 1. Hạt Ribosome</span>
-            <span class="comp-status-tag" id="tagRibosome">Chưa xem</span>
-          </div>
-          <div class="comp-desc">
-            <strong>Đặc điểm:</strong> Hạt cấu tạo từ rARN và protein, kích thước nhỏ (~70S), không có màng bao bọc, phân bố dày đặc trong bào tương.<br>
-            <strong>Chức năng:</strong> Là “nhà máy” trực tiếp diễn ra quá trình tổng hợp protein của tế bào vi khuẩn.
+        <div class="inline-feedback hidden" id="fbStage1"></div>
+
+        <div class="controls-row">
+          <div class="btn-group-left"></div>
+          <div class="btn-group-right">
+            <button class="btn btn-outline" id="btnCheckStage1" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
+            <button class="btn btn-secondary hidden" id="btnRetryStage1"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+            <button class="btn btn-primary hidden" id="btnNextStage1">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
           </div>
         </div>
-
-        <div class="component-card" id="cardInclusion" data-comp="inclusion">
-          <div class="comp-card-head">
-            <span class="comp-name"><i class="ti ti-droplet" style="color:var(--amber);"></i> 2. Hạt Dự Trữ</span>
-            <span class="comp-status-tag" id="tagInclusion">Chưa xem</span>
-          </div>
-          <div class="comp-desc">
-            <strong>Đặc điểm:</strong> Các thể vùi kích thước lớn hơn rõ rệt so với ribosome, số lượng ít, phân bố rải rác.<br>
-            <strong>Chức năng:</strong> Tích lũy các chất dinh dưỡng dự trữ (glycogen, lipid, polyphosphate...) để cung cấp năng lượng khi môi trường thiếu thốn; không tham gia tổng hợp protein.
-          </div>
-        </div>
-
-        <!-- Multiple Choice Question (Unlocks when both seen) -->
-        <div class="qa-box hidden" id="boxQuestionStage1">
-          <p class="qa-title">Cấu trúc nào trực tiếp tổng hợp protein?</p>
-          <div class="qa-options-list" id="optsStage1">
-            <label class="qa-option-label" data-value="A">
-              <div class="qa-option-radio"></div>
-              <span>A. Ribosome</span>
-            </label>
-            <label class="qa-option-label" data-value="B">
-              <div class="qa-option-radio"></div>
-              <span>B. Hạt dự trữ</span>
-            </label>
-            <label class="qa-option-label" data-value="C">
-              <div class="qa-option-radio"></div>
-              <span>C. Vùng nhân</span>
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="inline-feedback hidden" id="fbStage1"></div>
-
-    <div class="stage-actions">
-      <button class="btn btn-outline" id="btnCheckStage1" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
-      <button class="btn btn-secondary hidden" id="btnRetryStage1"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
-      <button class="btn btn-primary hidden" id="btnNextStage1"><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+      </article>
     </div>
   </section>
 
   <!-- =====================================================================
-       MÀN S02: VÙNG NHÂN (SH10_B07_M03_S02)
+       MÀN S02: VÙNG NHÂN
        ===================================================================== -->
   <section class="stage hidden" id="stage-2" role="region" aria-label="Màn 2: Vùng nhân không phải là nhân có màng">
-    <div class="lead-box">
-      <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
-        <div class="lead-title">
-          <i class="ti ti-notes"></i>
-          <span>Bối cảnh khoa học</span>
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: LÝ THUYẾT & HƯỚNG DẪN DUY NHẤT -->
+      <article class="visual-card">
+        <div class="theory-block" style="background:transparent; border:none; padding:0;">
+          <h2 class="theory-title">Vùng nhân không phải là nhân có màng</h2>
+          <p class="lead-text">DNA nhiễm sắc thể của phần lớn vi khuẩn tập trung ở vùng nhân. Vùng này không có màng bao; nhiều vi khuẩn có một nhiễm sắc thể DNA mạch kép dạng vòng, nhưng vẫn có những ngoại lệ.</p>
         </div>
-        <div class="lead-toggle">
-          <span class="lead-toggle-label">Thu gọn</span>
-          <i class="ti ti-chevron-up lead-toggle-icon"></i>
+
+        <div class="guide-box">
+          <i class="ti ti-zoom-in"></i>
+          <span>Kéo kính lúp vào khối DNA ở trung tâm tế bào. Khi kính lúp đúng vị trí, phần phóng đại hiện ra; hãy đối chiếu và chọn mô tả phù hợp.</span>
         </div>
-      </div>
-      <div class="lead-content">
-        <p class="lead-text">DNA nhiễm sắc thể của phần lớn vi khuẩn tập trung ở vùng nhân. Vùng này không có màng bao; nhiều vi khuẩn có một nhiễm sắc thể DNA mạch kép dạng vòng, nhưng vẫn có những ngoại lệ.</p>
-      </div>
-    </div>
 
-    <div class="guide-box">
-      <i class="ti ti-zoom-in"></i>
-      <span>Kéo kính lúp qua vùng DNA. Khi kính lúp đúng vị trí, phần phóng đại hiện bên phải; hãy chọn mô tả phù hợp.</span>
-    </div>
+        <div class="theory-flow">
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-dna"></i> Đặc điểm Vùng nhân (Nucleoid)</div>
+            <div class="theory-block__desc">Không có màng nhân bao bọc (nhân trần); DNA tiếp xúc trực tiếp với bào tương; thường gồm một phân tử DNA kép dạng vòng cuộn xoắn (siêu xoắn).</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-layers-intersect"></i> Đối chiếu với Tế bào nhân thực</div>
+            <div class="theory-block__desc">Nhân của tế bào nhân thực có màng kép bao bọc kín, có lỗ màng nhân điều hòa trao đổi chất và chứa hạch nhân (nhân con).</div>
+          </div>
+        </div>
+      </article>
 
-    <div class="s02-layout">
-      <!-- Left: Cell with Naked Supercoiled Nucleoid DNA & Magnifier -->
-      <div class="s02-cell-view">
-        <div class="cell-dna-stage-svg-wrap" id="cellDnaStageWrap">
+      <!-- CỘT PHẢI: HOẠT ĐỘNG & BÀI TẬP -->
+      <article class="workspace-card">
+        <div class="s02-layout">
+          <!-- Cell View with Supercoiled DNA & Magnifier -->
+          <div class="s02-cell-view">
+            <div class="cell-dna-stage-svg-wrap" id="cellDnaStageWrap">
           <svg viewBox="0 0 600 450">
             <!-- Cell Cytoplasm Area -->
             <rect width="600" height="450" fill="#FBF9F2"/>
@@ -1165,22 +1223,21 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-card .con
         </div>
       </div>
 
-      <!-- Right: Magnified Detail + Eukaryotic Nucleus Comparison Thumbnail -->
-      <div class="s02-contrast-panel">
-        <div class="magnified-result-card" id="cardMagnifiedResult">
-          <span class="card-header-tag"><i class="ti ti-microscope"></i> Kết quả soi kính lúp</span>
-          
-          <div id="magnifierPlaceholderText" style="font-size:0.88rem; color:var(--ink-faint); font-style:italic; padding:8px 0;">
-            Kính lúp chưa đặt đúng vị trí vùng DNA. Hãy kéo kính lúp vào giữa tế bào để quan sát ranh giới.
-          </div>
+          <!-- Magnified Detail & Eukaryotic Comparison -->
+          <div class="s02-contrast-panel">
+            <div class="magnified-result-card" id="cardMagnifiedResult">
+              <span class="card-header-tag"><i class="ti ti-microscope"></i> Kết quả soi kính lúp</span>
+              
+              <div id="magnifierPlaceholderText" style="font-size:0.88rem; color:var(--ink-faint); font-style:italic; padding:8px 0;">
+                Kính lúp chưa đặt đúng vị trí vùng DNA. Hãy kéo kính lúp vào giữa tế bào để quan sát ranh giới.
+              </div>
 
-          <div class="hidden" id="magnifierActiveContent">
-            <p style="font-size:0.88rem; color:var(--ink-2); line-height:1.5; margin-bottom:8px;">
-              <strong style="color:var(--jade-text);">Quan sát chi tiết:</strong> Các sợi DNA kép dạng vòng cuộn xoắn tự do trong bào tương. <strong>Hoàn toàn không có màng nhân hay màng sinh học nào ngăn cách</strong> với tế bào chất xung quanh!
-            </p>
-            
-            <!-- Eukaryote Thumbnail Card per kịch bản line 35 -->
-            <div class="thumb-contrast-wrap">
+              <div class="hidden" id="magnifierActiveContent">
+                <p style="font-size:0.88rem; color:var(--ink-2); line-height:1.5; margin-bottom:8px;">
+                  <strong style="color:var(--jade-text);">Quan sát chi tiết:</strong> Các sợi DNA kép dạng vòng cuộn xoắn tự do trong bào tương. <strong>Hoàn toàn không có màng nhân hay màng sinh học nào ngăn cách</strong> với tế bào chất xung quanh!
+                </p>
+                
+                <div class="thumb-contrast-wrap">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
   <defs>
     <!-- Background & Gradients -->
@@ -1290,64 +1347,81 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-card .con
   </g>
 </svg>
             </div>
+              </div>
+            </div>
+
+            <!-- Question Box -->
+            <div class="qa-box hidden" id="boxQuestionStage2">
+              <p class="qa-title"><i class="ti ti-help"></i> CÂU HỎI NHẬN THỨC:</p>
+              <p style="font-weight:700; color:var(--ink);">Dựa vào quan sát, hãy chọn mô tả phù hợp về vùng chứa DNA của vi khuẩn:</p>
+              <div class="qa-options-list" id="optsStage2">
+                <label class="qa-option-label" data-value="A">
+                  <div class="qa-option-radio"></div>
+                  <span>A. DNA được màng nhân bao kín</span>
+                </label>
+                <label class="qa-option-label" data-value="B">
+                  <div class="qa-option-radio"></div>
+                  <span>B. DNA tập trung trong vùng không có màng bao</span>
+                </label>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Question Box -->
-        <div class="qa-box hidden" id="boxQuestionStage2">
-          <p class="qa-title">Dựa vào quan sát, hãy chọn mô tả phù hợp về vùng chứa DNA của vi khuẩn:</p>
-          <div class="qa-options-list" id="optsStage2">
-            <label class="qa-option-label" data-value="A">
-              <div class="qa-option-radio"></div>
-              <span>A. DNA được màng nhân bao kín</span>
-            </label>
-            <label class="qa-option-label" data-value="B">
-              <div class="qa-option-radio"></div>
-              <span>B. DNA tập trung trong vùng không có màng bao</span>
-            </label>
+        <div class="inline-feedback hidden" id="fbStage2"></div>
+
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage2"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-outline" id="btnCheckStage2" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
+            <button class="btn btn-secondary hidden" id="btnRetryStage2"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+            <button class="btn btn-primary hidden" id="btnNextStage2">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
           </div>
         </div>
-      </div>
-    </div>
-
-    <div class="inline-feedback hidden" id="fbStage2"></div>
-
-    <div class="stage-actions">
-      <button class="btn btn-secondary" id="btnPrevStage2"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
-      <button class="btn btn-outline" id="btnCheckStage2" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
-      <button class="btn btn-secondary hidden" id="btnRetryStage2"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
-      <button class="btn btn-primary hidden" id="btnNextStage2"><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+      </article>
     </div>
   </section>
 
   <!-- =====================================================================
-       MÀN S03: PLASMID (SH10_B07_M03_S03)
+       MÀN S03: PLASMID
        ===================================================================== -->
   <section class="stage hidden" id="stage-3" role="region" aria-label="Màn 3: Plasmid khác DNA nhiễm sắc thể như thế nào?">
-    <div class="lead-box">
-      <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
-        <div class="lead-title">
-          <i class="ti ti-notes"></i>
-          <span>Bối cảnh khoa học</span>
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: LÝ THUYẾT & HƯỚNG DẪN DUY NHẤT -->
+      <article class="visual-card">
+        <div class="theory-block" style="background:transparent; border:none; padding:0;">
+          <h2 class="theory-title">Plasmid khác DNA nhiễm sắc thể như thế nào?</h2>
+          <p class="lead-text">Plasmid là phân tử DNA ngoài nhiễm sắc thể, thường nhỏ và có khả năng tự nhân đôi. Một số plasmid mang gene tạo lợi thế, chẳng hạn gene kháng kháng sinh, và có thể được truyền giữa vi khuẩn. Plasmid được dùng làm vector trong kĩ thuật gene. Không phải plasmid nào cũng mang gene kháng thuốc, và việc mất plasmid có thể làm mất đặc tính do plasmid quy định.</p>
         </div>
-        <div class="lead-toggle">
-          <span class="lead-toggle-label">Thu gọn</span>
-          <i class="ti ti-chevron-up lead-toggle-icon"></i>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-grab"></i>
+          <span>Kéo thả hoặc chạm chọn từng thẻ đặc điểm vào cột phù hợp (DNA nhiễm sắc thể hoặc Plasmid). Khi xếp đủ bốn thẻ, nhấn KIỂM TRA.</span>
         </div>
-      </div>
-      <div class="lead-content">
-        <p class="lead-text">Plasmid là phân tử DNA ngoài nhiễm sắc thể, thường nhỏ và có khả năng tự nhân đôi. Một số plasmid mang gene tạo lợi thế, chẳng hạn gene kháng kháng sinh, và có thể được truyền giữa vi khuẩn. Plasmid được dùng làm vector trong kĩ thuật gene. Không phải plasmid nào cũng mang gene kháng thuốc, và việc mất plasmid có thể làm mất đặc tính do plasmid quy định.</p>
-      </div>
-    </div>
 
-    <div class="guide-box">
-      <i class="ti ti-drag-drop"></i>
-      <span>Kéo bốn thẻ vào hai cột DNA nhiễm sắc thể hoặc Plasmid. Thẻ sai trở về khay.</span>
-    </div>
+        <div class="theory-flow">
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-dna-2"></i> DNA nhiễm sắc thể</div>
+            <div class="theory-block__desc">Kích thước lớn, mang hầu hết thông tin di truyền thiết yếu quy định các hoạt động sống cơ bản của tế bào vi khuẩn.</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-circles"></i> Phân tử Plasmid ngoài nhiễm sắc thể</div>
+            <div class="theory-block__desc">Kích thước nhỏ, dạng vòng kép, tự nhân đôi độc lập; có thể mang các gene bổ sung như gene kháng kháng sinh; ứng dụng làm vector chuyển gene.</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-bulb"></i> Ứng dụng làm Vector chuyển gene</div>
+            <div class="theory-block__desc">Plasmid được ứng dụng rộng rãi trong công nghệ di truyền để chuyển gene mong muốn vào vi khuẩn nhân dòng.</div>
+          </div>
+        </div>
+      </article>
 
-    <div class="s03-layout">
-      <!-- Visual Banner: Chromosome DNA vs Plasmids -->
-      <div class="plasmid-view-banner">
+      <!-- CỘT PHẢI: HOẠT ĐỘNG & BÀI TẬP -->
+      <article class="workspace-card">
+        <div class="s03-layout">
+          <!-- Visual Banner: Chromosome DNA vs Plasmids -->
+          <div class="plasmid-view-banner">
         <svg viewBox="0 0 800 230" style="width:100%; height:auto; display:block;" xmlns="http://www.w3.org/2000/svg">
           <!-- Background Base -->
           <rect width="800" height="230" rx="10" fill="#FBF9F2" stroke="#E5DECF" stroke-width="1.5"/>
@@ -1472,111 +1546,123 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-card .con
         </svg>
       </div>
 
-      <!-- Two Classification Columns -->
-      <div class="two-cols-classification">
-        <!-- Col 1: Chromosome DNA -->
-        <div class="classification-col" id="colChromosome">
-          <div class="col-header-box" style="color:var(--purple-text);">
-            <i class="ti ti-dna"></i> <span>DNA nhiễm sắc thể</span>
+          <!-- Two Classification Columns -->
+          <div class="two-cols-classification">
+            <!-- Col 1: Chromosome DNA -->
+            <div class="classification-col" id="colChromosome">
+              <div class="col-header-box" style="color:var(--purple-text);">
+                <i class="ti ti-dna"></i> <span>DNA nhiễm sắc thể</span>
+              </div>
+              <div class="col-slot" id="slotChrom1" data-expect="chromosome">
+                <span class="slot-placeholder">Thả thẻ đặc điểm 1 vào đây</span>
+              </div>
+              <div class="col-slot" id="slotChrom2" data-expect="chromosome">
+                <span class="slot-placeholder">Thả thẻ đặc điểm 2 vào đây</span>
+              </div>
+            </div>
+
+            <!-- Col 2: Plasmid -->
+            <div class="classification-col" id="colPlasmid">
+              <div class="col-header-box" style="color:var(--jade-text);">
+                <i class="ti ti-circles"></i> <span>Plasmid</span>
+              </div>
+              <div class="col-slot" id="slotPlasmid1" data-expect="plasmid">
+                <span class="slot-placeholder">Thả thẻ đặc điểm 1 vào đây</span>
+              </div>
+              <div class="col-slot" id="slotPlasmid2" data-expect="plasmid">
+                <span class="slot-placeholder">Thả thẻ đặc điểm 2 vào đây</span>
+              </div>
+            </div>
           </div>
-          <div class="col-slot" id="slotChrom1" data-expect="chromosome">
-            <span class="slot-placeholder">Thả thẻ đặc điểm 1 vào đây</span>
+
+          <!-- Drag Cards Tray -->
+          <div class="cards-pool-tray" id="trayStage3">
+            <span class="tray-label">Khay 4 thẻ đặc điểm (Kéo thả hoặc chạm chọn thẻ rồi chạm ô đích):</span>
+            <div class="cards-row" id="cardsPoolStage3">
+              <div class="drag-card" id="cardC1" draggable="true" data-type="chromosome">
+                <i class="ti ti-bookmark"></i> <span>Mang phần lớn thông tin di truyền thiết yếu</span>
+              </div>
+              <div class="drag-card" id="cardP1" draggable="true" data-type="plasmid">
+                <i class="ti ti-circle-dot"></i> <span>DNA ngoài nhiễm sắc thể</span>
+              </div>
+              <div class="drag-card" id="cardC2" draggable="true" data-type="chromosome">
+                <i class="ti ti-maximize"></i> <span>Kích thước lớn hơn</span>
+              </div>
+              <div class="drag-card" id="cardP2" draggable="true" data-type="plasmid">
+                <i class="ti ti-shield-plus"></i> <span>Có thể mang gene kháng kháng sinh</span>
+              </div>
+            </div>
           </div>
-          <div class="col-slot" id="slotChrom2" data-expect="chromosome">
-            <span class="slot-placeholder">Thả thẻ đặc điểm 2 vào đây</span>
+
+          <!-- Vector Extension Note Card (Reveals after correct) -->
+          <div class="vector-extension-box hidden" id="boxVectorExtension">
+            <i class="ti ti-bulb"></i>
+            <div>
+              <strong>Ứng dụng thực tiễn của Plasmid:</strong> Trong công nghệ di truyền và kĩ thuật gene, plasmid thường được các nhà khoa học tách chiết và sử dụng làm <em>vector chuyển gene</em> (thể truyền) để đưa các gene mong muốn (như gene sản xuất insulin nhân tạo, vaccine) vào vi khuẩn nhân dòng.
+            </div>
           </div>
         </div>
 
-        <!-- Col 2: Plasmid -->
-        <div class="classification-col" id="colPlasmid">
-          <div class="col-header-box" style="color:var(--jade-text);">
-            <i class="ti ti-circles"></i> <span>Plasmid</span>
+        <div class="inline-feedback hidden" id="fbStage3"></div>
+
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage3"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
           </div>
-          <div class="col-slot" id="slotPlasmid1" data-expect="plasmid">
-            <span class="slot-placeholder">Thả thẻ đặc điểm 1 vào đây</span>
-          </div>
-          <div class="col-slot" id="slotPlasmid2" data-expect="plasmid">
-            <span class="slot-placeholder">Thả thẻ đặc điểm 2 vào đây</span>
+          <div class="btn-group-right">
+            <button class="btn btn-outline" id="btnCheckStage3" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
+            <button class="btn btn-secondary hidden" id="btnRetryStage3"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+            <button class="btn btn-primary hidden" id="btnNextStage3">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
           </div>
         </div>
-      </div>
-
-      <!-- Drag Cards Tray -->
-      <div class="cards-pool-tray" id="trayStage3">
-        <span class="tray-label">Khay 4 thẻ đặc điểm (Kéo thả hoặc chạm chọn thẻ rồi chạm ô đích):</span>
-        <div class="cards-row" id="cardsPoolStage3">
-          <div class="drag-card" id="cardC1" draggable="true" data-type="chromosome">
-            <i class="ti ti-bookmark"></i> <span>Mang phần lớn thông tin di truyền thiết yếu</span>
-          </div>
-          <div class="drag-card" id="cardP1" draggable="true" data-type="plasmid">
-            <i class="ti ti-circle-dot"></i> <span>DNA ngoài nhiễm sắc thể</span>
-          </div>
-          <div class="drag-card" id="cardC2" draggable="true" data-type="chromosome">
-            <i class="ti ti-maximize"></i> <span>Kích thước lớn hơn</span>
-          </div>
-          <div class="drag-card" id="cardP2" draggable="true" data-type="plasmid">
-            <i class="ti ti-shield-plus"></i> <span>Có thể mang gene kháng kháng sinh</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Vector Extension Note Card (Reveals after correct) -->
-      <div class="vector-extension-box hidden" id="boxVectorExtension">
-        <i class="ti ti-bulb"></i>
-        <div>
-          <strong>Ứng dụng thực tiễn của Plasmid:</strong> Trong công nghệ di truyền và kĩ thuật gene, plasmid thường được các nhà khoa học tách chiết và sử dụng làm <em>vector chuyển gene</em> (thể truyền) để đưa các gene mong muốn (như gene sản xuất insulin nhân tạo, vaccine) vào vi khuẩn nhân dòng.
-        </div>
-      </div>
-    </div>
-
-    <div class="inline-feedback hidden" id="fbStage3"></div>
-
-    <div class="stage-actions">
-      <button class="btn btn-secondary" id="btnPrevStage3"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
-      <button class="btn btn-outline" id="btnCheckStage3" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
-      <button class="btn btn-secondary hidden" id="btnRetryStage3"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
-      <button class="btn btn-primary hidden" id="btnNextStage3"><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+      </article>
     </div>
   </section>
 
   <!-- =====================================================================
-       MÀN S04: HAI CƠ CHẾ LIÊN QUAN SỰ ĐI QUA MÀNG (SH10_B07_M03_S04)
+       MÀN S04: HAI CƠ CHẾ LIÊN QUAN SỰ ĐI QUA MÀNG
        ===================================================================== -->
   <section class="stage hidden" id="stage-4" role="region" aria-label="Màn 4: Kháng sinh vào ít hơn hoặc bị bơm ra">
-    <div class="lead-box">
-      <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
-        <div class="lead-title">
-          <i class="ti ti-notes"></i>
-          <span>Bối cảnh khoa học</span>
-        </div>
-        <div class="lead-toggle">
-          <span class="lead-toggle-label">Thu gọn</span>
-          <i class="ti ti-chevron-up lead-toggle-icon"></i>
-        </div>
-      </div>
-      <div class="lead-content">
-        <p class="lead-text">Vi khuẩn có thể giảm lượng kháng sinh tích lũy bên trong bằng hai cách tiêu biểu: làm giảm thuốc đi vào, thường liên quan biến đổi kênh hoặc hàng rào màng; hoặc dùng bơm tống thuốc đã vào ra ngoài. Hai cơ chế có thể cùng xuất hiện.</p>
-      </div>
-    </div>
-
-    <div class="guide-box">
-      <i class="ti ti-player-play"></i>
-      <span>Nhấn CHẠY MÔ PHỎNG ở từng ô. Sau khi xem cả hai, nối mô tả với cơ chế đúng.</span>
-    </div>
-
-    <!-- 2 Dynamic Simulation Panels -->
-    <div class="mech-sim-grid">
-      <!-- Sim 1: Giảm thu nhận (Reduced Uptake) -->
-      <div class="sim-panel" id="panelSimUptake">
-        <div class="sim-panel-head">
-          <span class="sim-panel-title" style="color:var(--blue-text);"><i class="ti ti-arrow-down-right"></i> 1. Giảm thu nhận</span>
-          <button class="btn btn-outline" id="btnRunSimUptake" style="padding:6px 14px; min-height:36px; font-size:0.82rem;">
-            <i class="ti ti-player-play"></i> CHẠY MÔ PHỎNG
-          </button>
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: LÝ THUYẾT & HƯỚNG DẪN DUY NHẤT -->
+      <article class="visual-card">
+        <div class="theory-block" style="background:transparent; border:none; padding:0;">
+          <h2 class="theory-title">Kháng sinh vào ít hơn hoặc bị bơm ra</h2>
+          <p class="lead-text">Vi khuẩn có thể giảm lượng kháng sinh tích lũy bên trong bằng hai cách tiêu biểu: làm giảm thuốc đi vào, thường liên quan biến đổi kênh hoặc hàng rào màng; hoặc dùng bơm tống thuốc đã vào ra ngoài. Hai cơ chế có thể cùng xuất hiện.</p>
         </div>
 
-        <div class="sim-canvas-box">
-          <svg viewBox="0 0 400 225" id="svgSimUptake">
+        <div class="guide-box">
+          <i class="ti ti-player-play"></i>
+          <span>Nhấn CHẠY MÔ PHỎNG ở từng ô để theo dõi chiều di chuyển của phân tử thuốc. Sau khi xem cả hai, ghép nối mô tả với cơ chế phù hợp.</span>
+        </div>
+
+        <div class="theory-flow">
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-arrow-down-right"></i> Cơ chế Giảm thu nhận</div>
+            <div class="theory-block__desc">Hạn chế dòng kháng sinh đi từ ngoài vào trong, thường do vi khuẩn giảm số lượng hoặc co hẹp kênh porin ở màng ngoài.</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-arrow-up-right"></i> Cơ chế Bơm tống thuốc (Efflux pump)</div>
+            <div class="theory-block__desc">Sử dụng các protein bơm màng chuyên biệt chủ động đẩy kháng sinh từ trong bào tương ra ngoài môi trường, ngược chiều nồng độ.</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CỘT PHẢI: HOẠT ĐỘNG & BÀI TẬP -->
+      <article class="workspace-card">
+        <!-- 2 Dynamic Simulation Panels -->
+        <div class="mech-sim-grid">
+          <!-- Sim 1: Giảm thu nhận (Reduced Uptake) -->
+          <div class="sim-panel" id="panelSimUptake">
+            <div class="sim-panel-head">
+              <span class="sim-panel-title" style="color:var(--blue-text);"><i class="ti ti-arrow-down-right"></i> 1. Giảm thu nhận</span>
+              <button class="btn btn-outline" id="btnRunSimUptake" style="padding:6px 14px; min-height:36px; font-size:0.82rem;">
+                <i class="ti ti-player-play"></i> CHẠY MÔ PHỎNG
+              </button>
+            </div>
+
+            <div class="sim-canvas-box">
+              <svg viewBox="0 0 400 225" id="svgSimUptake">
             <!-- Outside environment -->
             <rect width="400" height="90" fill="#EFF6FF"/>
             <text x="12" y="24" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="700" fill="#1E40AF">NGOÀI TẾ BÀO</text>
@@ -1613,24 +1699,24 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-card .con
               <polygon points="200,165 194,153 206,153" fill="#2563EB" id="arrowUptakeHead"/>
             </g>
           </svg>
-        </div>
+            </div>
 
-        <p class="sim-desc-text" id="descUptake">
-          Trạng thái ban đầu: Kênh porin mở bình thường, các phân tử thuốc kháng sinh dễ dàng đi từ ngoài vào trong. Nhấn nút để xem biến đổi giảm thấm.
-        </p>
-      </div>
+            <p class="sim-desc-text" id="descUptake">
+              Trạng thái ban đầu: Kênh porin mở bình thường, các phân tử thuốc kháng sinh dễ dàng đi từ ngoài vào trong. Nhấn nút để xem biến đổi giảm thấm.
+            </p>
+          </div>
 
-      <!-- Sim 2: Bơm tống thuốc (Efflux Pump) -->
-      <div class="sim-panel" id="panelSimEfflux">
-        <div class="sim-panel-head">
-          <span class="sim-panel-title" style="color:var(--jade-text);"><i class="ti ti-arrow-up-right"></i> 2. Bơm tống thuốc</span>
-          <button class="btn btn-outline" id="btnRunSimEfflux" style="padding:6px 14px; min-height:36px; font-size:0.82rem;">
-            <i class="ti ti-player-play"></i> CHẠY MÔ PHỎNG
-          </button>
-        </div>
+          <!-- Sim 2: Bơm tống thuốc (Efflux Pump) -->
+          <div class="sim-panel" id="panelSimEfflux">
+            <div class="sim-panel-head">
+              <span class="sim-panel-title" style="color:var(--jade-text);"><i class="ti ti-arrow-up-right"></i> 2. Bơm tống thuốc</span>
+              <button class="btn btn-outline" id="btnRunSimEfflux" style="padding:6px 14px; min-height:36px; font-size:0.82rem;">
+                <i class="ti ti-player-play"></i> CHẠY MÔ PHỎNG
+              </button>
+            </div>
 
-        <div class="sim-canvas-box">
-          <svg viewBox="0 0 400 225" id="svgSimEfflux">
+            <div class="sim-canvas-box">
+              <svg viewBox="0 0 400 225" id="svgSimEfflux">
             <!-- Outside environment -->
             <rect width="400" height="90" fill="#F0FDF4"/>
             <text x="12" y="24" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="700" fill="#166534">NGOÀI TẾ BÀO</text>
@@ -1665,89 +1751,105 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-card .con
               <polygon points="200,35 194,48 206,48" fill="#059669"/>
             </g>
           </svg>
-        </div>
+            </div>
 
-        <p class="sim-desc-text" id="descEfflux">
-          Trạng thái ban đầu: Phân tử kháng sinh đã xâm nhập vào bên trong bào tương. Nhấn nút để xem hoạt động của bơm tống thuốc chủ động.
-        </p>
-      </div>
-    </div>
-
-    <!-- Match Mechanism Section (Unlocks after both watched) -->
-    <div class="qa-box hidden" id="boxMatchStage4">
-      <p class="qa-title"><i class="ti ti-arrows-exchange"></i> NỐI MÔ TẢ VỚI CƠ CHẾ KHÁNG THUỐC PHÙ HỢP:</p>
-      
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-        <!-- Description Cards -->
-        <div style="display:flex; flex-direction:column; gap:10px;">
-          <div class="drag-card" id="matchDesc1" data-desc="desc_uptake">
-            <i class="ti ti-arrow-down-right"></i> <span>Thuốc bị hạn chế ngay khi đi vào</span>
-          </div>
-          <div class="drag-card" id="matchDesc2" data-desc="desc_efflux">
-            <i class="ti ti-arrow-up-right"></i> <span>Thuốc đã vào rồi bị vận chuyển ra</span>
+            <p class="sim-desc-text" id="descEfflux">
+              Trạng thái ban đầu: Phân tử kháng sinh đã xâm nhập vào bên trong bào tương. Nhấn nút để xem hoạt động của bơm tống thuốc chủ động.
+            </p>
           </div>
         </div>
 
-        <!-- Target Mechanism Drop Slots -->
-        <div style="display:flex; flex-direction:column; gap:10px;">
-          <div class="col-slot" id="targetSlotUptake" data-target="desc_uptake" style="min-height:48px;">
-            <span class="slot-placeholder">Ghép vào cơ chế: <strong>Giảm thu nhận</strong></span>
-          </div>
-          <div class="col-slot" id="targetSlotEfflux" data-target="desc_efflux" style="min-height:48px;">
-            <span class="slot-placeholder">Ghép vào cơ chế: <strong>Bơm tống thuốc</strong></span>
+        <!-- Match Mechanism Section (Unlocks after both watched) -->
+        <div class="qa-box hidden" id="boxMatchStage4">
+          <p class="qa-title"><i class="ti ti-arrows-exchange"></i> NỐI MÔ TẢ VỚI CƠ CHẾ KHÁNG THUỐC PHÙ HỢP:</p>
+          
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+            <!-- Description Cards -->
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <div class="drag-card" id="matchDesc1" data-desc="desc_uptake">
+                <i class="ti ti-arrow-down-right"></i> <span>Thuốc bị hạn chế ngay khi đi vào</span>
+              </div>
+              <div class="drag-card" id="matchDesc2" data-desc="desc_efflux">
+                <i class="ti ti-arrow-up-right"></i> <span>Thuốc đã vào rồi bị vận chuyển ra</span>
+              </div>
+            </div>
+
+            <!-- Target Mechanism Drop Slots -->
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <div class="col-slot" id="targetSlotUptake" data-target="desc_uptake" style="min-height:48px;">
+                <span class="slot-placeholder">Ghép vào cơ chế: <strong>Giảm thu nhận</strong></span>
+              </div>
+              <div class="col-slot" id="targetSlotEfflux" data-target="desc_efflux" style="min-height:48px;">
+                <span class="slot-placeholder">Ghép vào cơ chế: <strong>Bơm tống thuốc</strong></span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <div class="inline-feedback hidden" id="fbStage4"></div>
+        <div class="inline-feedback hidden" id="fbStage4"></div>
 
-    <div class="stage-actions">
-      <button class="btn btn-secondary" id="btnPrevStage4"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
-      <button class="btn btn-outline" id="btnCheckStage4" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
-      <button class="btn btn-secondary hidden" id="btnRetryStage4"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
-      <button class="btn btn-primary hidden" id="btnNextStage4"><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage4"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-outline" id="btnCheckStage4" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
+            <button class="btn btn-secondary hidden" id="btnRetryStage4"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+            <button class="btn btn-primary hidden" id="btnNextStage4">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 
   <!-- =====================================================================
-       MÀN S05: BIẾN ĐỔI ĐÍCH, BẤT HOẠT THUỐC VÀ CHỐT BÀI (SH10_B07_M03_S05)
+       MÀN S05: BIẾN ĐỔI ĐÍCH, BẤT HOẠT THUỐC VÀ CHỐT BÀI
        ===================================================================== -->
   <section class="stage hidden" id="stage-5" role="region" aria-label="Màn 5: Khi đích thay đổi hoặc thuốc bị bất hoạt">
-    <div class="lead-box">
-      <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
-        <div class="lead-title">
-          <i class="ti ti-notes"></i>
-          <span>Bối cảnh khoa học</span>
-        </div>
-        <div class="lead-toggle">
-          <span class="lead-toggle-label">Thu gọn</span>
-          <i class="ti ti-chevron-up lead-toggle-icon"></i>
-        </div>
-      </div>
-      <div class="lead-content">
-        <p class="lead-text">Một cơ chế khác là biến đổi đích tác động khiến thuốc gắn kém hoặc không còn gắn được. Vi khuẩn cũng có thể tạo enzyme phân hủy hoặc biến đổi hóa học làm thuốc mất hoạt tính. Đây là bốn cơ chế tiêu biểu vừa học, không phải toàn bộ các cơ chế kháng kháng sinh.</p>
-      </div>
-    </div>
-
-    <div class="guide-box">
-      <i class="ti ti-checkbox"></i>
-      <span>Nhấn vào từng ô để xem diễn biến. Sau đó chọn tất cả nhận định đúng. Mục đã chọn có viền xanh; nhấn lại để bỏ chọn.</span>
-    </div>
-
-    <!-- 2 Dynamic Simulations for Stage 5 -->
-    <div class="mech-sim-grid">
-      <!-- Sim 3: Biến đổi đích tác động -->
-      <div class="sim-panel" id="panelSimTarget">
-        <div class="sim-panel-head">
-          <span class="sim-panel-title" style="color:var(--purple-text);"><i class="ti ti-puzzle"></i> 3. Biến đổi đích tác động</span>
-          <button class="btn btn-outline" id="btnRunSimTarget" style="padding:6px 14px; min-height:36px; font-size:0.82rem;">
-            <i class="ti ti-player-play"></i> CHẠY MÔ PHỎNG
-          </button>
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: LÝ THUYẾT & HƯỚNG DẪN DUY NHẤT -->
+      <article class="visual-card">
+        <div class="theory-block" style="background:transparent; border:none; padding:0;">
+          <h2 class="theory-title">Khi đích thay đổi hoặc thuốc bị bất hoạt</h2>
+          <p class="lead-text">Một cơ chế khác là biến đổi đích tác động khiến thuốc gắn kém hoặc không còn gắn được. Vi khuẩn cũng có thể tạo enzyme phân hủy hoặc biến đổi hóa học làm thuốc mất hoạt tính. Đây là bốn cơ chế tiêu biểu vừa học, không phải toàn bộ các cơ chế kháng kháng sinh.</p>
         </div>
 
-        <div class="sim-canvas-box">
-          <svg viewBox="0 0 400 200" id="svgSimTarget">
+        <div class="guide-box">
+          <i class="ti ti-checkbox"></i>
+          <span>Nhấn CHẠY MÔ PHỎNG ở từng ô để xem diễn biến phân tử. Sau khi xem đủ, đối chiếu bảng tổng hợp 4 cơ chế và chọn tất cả nhận định đúng.</span>
+        </div>
+
+        <div class="theory-flow">
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-puzzle"></i> Biến đổi đích tác động</div>
+            <div class="theory-block__desc">Đột biến làm thay đổi cấu trúc không gian của đích phân tử (như ribosome, enzyme đích) khiến kháng sinh không thể gắn kết, trong khi đích vẫn duy trì chức năng.</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-cut"></i> Enzyme bất hoạt thuốc</div>
+            <div class="theory-block__desc">Vi khuẩn tiết ra enzyme (như beta-lactamase) phân hủy hoặc biến đổi nhóm chức hóa học của thuốc, làm mất hoạt tính diệt khuẩn.</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-shield-check"></i> Tổng kết 4 cơ chế tiêu biểu</div>
+            <div class="theory-block__desc">Vi khuẩn có thể phối hợp nhiều cơ chế kháng thuốc cùng lúc để bảo vệ tế bào trước tác động của kháng sinh.</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CỘT PHẢI: HOẠT ĐỘNG & BÀI TẬP -->
+      <article class="workspace-card">
+        <!-- 2 Dynamic Simulations for Stage 5 -->
+        <div class="mech-sim-grid">
+          <!-- Sim 3: Biến đổi đích tác động -->
+          <div class="sim-panel" id="panelSimTarget">
+            <div class="sim-panel-head">
+              <span class="sim-panel-title" style="color:var(--purple-text);"><i class="ti ti-puzzle"></i> 3. Biến đổi đích tác động</span>
+              <button class="btn btn-outline" id="btnRunSimTarget" style="padding:6px 14px; min-height:36px; font-size:0.82rem;">
+                <i class="ti ti-player-play"></i> CHẠY MÔ PHỎNG
+              </button>
+            </div>
+
+            <div class="sim-canvas-box">
+              <svg viewBox="0 0 400 200" id="svgSimTarget">
             <rect width="400" height="200" fill="#FBF9FE"/>
             
             <!-- Molecular Target (e.g. Ribosome binding pocket) -->
@@ -1763,24 +1865,24 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-card .con
               <text x="0" y="-16" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="800" fill="#B45309" text-anchor="middle">KHÁNG SINH</text>
             </g>
           </svg>
-        </div>
+            </div>
 
-        <p class="sim-desc-text" id="descTarget">
-          Trạng thái ban đầu: Đích sinh học (ribosome/enzyme) có hình học khớp với phân tử thuốc. Nhấn nút để xem diễn biến đột biến đổi đích.
-        </p>
-      </div>
+            <p class="sim-desc-text" id="descTarget">
+              Trạng thái ban đầu: Đích sinh học (ribosome/enzyme) có hình học khớp với phân tử thuốc. Nhấn nút để xem diễn biến đột biến đổi đích.
+            </p>
+          </div>
 
-      <!-- Sim 4: Enzyme bất hoạt thuốc -->
-      <div class="sim-panel" id="panelSimEnzyme">
-        <div class="sim-panel-head">
-          <span class="sim-panel-title" style="color:var(--amber-text);"><i class="ti ti-cut"></i> 4. Enzyme bất hoạt thuốc</span>
-          <button class="btn btn-outline" id="btnRunSimEnzyme" style="padding:6px 14px; min-height:36px; font-size:0.82rem;">
-            <i class="ti ti-player-play"></i> CHẠY MÔ PHỎNG
-          </button>
-        </div>
+          <!-- Sim 4: Enzyme bất hoạt thuốc -->
+          <div class="sim-panel" id="panelSimEnzyme">
+            <div class="sim-panel-head">
+              <span class="sim-panel-title" style="color:var(--amber-text);"><i class="ti ti-cut"></i> 4. Enzyme bất hoạt thuốc</span>
+              <button class="btn btn-outline" id="btnRunSimEnzyme" style="padding:6px 14px; min-height:36px; font-size:0.82rem;">
+                <i class="ti ti-player-play"></i> CHẠY MÔ PHỎNG
+              </button>
+            </div>
 
-        <div class="sim-canvas-box">
-          <svg viewBox="0 0 400 200" id="svgSimEnzyme">
+            <div class="sim-canvas-box">
+              <svg viewBox="0 0 400 200" id="svgSimEnzyme">
             <rect width="400" height="200" fill="#FFFBEB"/>
             
             <!-- Antibiotic Drug Molecule (Center) -->
@@ -1796,20 +1898,20 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-card .con
               <text x="0" y="-34" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="800" fill="#C2410C" text-anchor="middle">ENZYME VI KHUẨN</text>
             </g>
           </svg>
+            </div>
+
+            <p class="sim-desc-text" id="descEnzyme">
+              Trạng thái ban đầu: Phân tử kháng sinh còn nguyên vẹn hoạt tính diệt khuẩn. Nhấn nút để xem enzyme vi khuẩn tác động làm bất hoạt thuốc.
+            </p>
+          </div>
         </div>
 
-        <p class="sim-desc-text" id="descEnzyme">
-          Trạng thái ban đầu: Phân tử kháng sinh còn nguyên vẹn hoạt tính diệt khuẩn. Nhấn nút để xem enzyme vi khuẩn tác động làm bất hoạt thuốc.
-        </p>
-      </div>
-    </div>
-
-    <!-- Summary 4 Mechanisms Infographic & Synthesis (Reveals after viewing both) -->
-    <div class="summary-infographic-box hidden" id="boxSummaryInfographic">
-      <div style="font-size:0.92rem; font-weight:800; color:var(--jade-text); margin-bottom:10px; display:flex; align-items:center; gap:8px;">
-        <i class="ti ti-layout-grid"></i> BẢNG TỔNG HỢP 4 CƠ CHẾ KHÁNG KHÁNG SINH TIÊU BIỂU (DỮ LIỆU TỔNG KẾT TỪ S04 – S05):
-      </div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+        <!-- Summary 4 Mechanisms Infographic & Synthesis (Reveals after viewing both) -->
+        <div class="summary-infographic-box hidden" id="boxSummaryInfographic">
+          <div style="font-size:0.92rem; font-weight:800; color:var(--jade-text); margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+            <i class="ti ti-layout-grid"></i> BẢNG TỔNG HỢP 4 CƠ CHẾ KHÁNG KHÁNG SINH TIÊU BIỂU (DỮ LIỆU TỔNG KẾT TỪ S04 – S05):
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
   <defs>
     <style>
       .card-title { font-family: 'Be Vietnam Pro', system-ui, sans-serif; font-size: 13px; font-weight: 800; }
@@ -1817,113 +1919,7 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-card .con
       .tag-num { font-family: 'Be Vietnam Pro', system-ui, sans-serif; font-size: 11px; font-weight: 800; fill: #FFFFFF; }
       .dir-label { font-family: 'Be Vietnam Pro', system-ui, sans-serif; font-size: 10px; font-weight: 700; }
     
-  /* COLLAPSIBLE LEAD BOX (BỐI CẢNH KHOA HỌC) */
-  .lead-box {
-    background: #FFFFFF;
-    border: 1px solid var(--paper-line, #E5DECF);
-    border-left: 4px solid var(--jade, #3CA57A);
-    border-radius: var(--radius-md, 12px);
-    margin-bottom: 20px;
-    box-shadow: 0 2px 8px rgba(26, 26, 26, 0.04);
-    overflow: hidden;
-    transition: box-shadow 0.25s ease, border-color 0.25s ease;
-  }
-  .lead-box:hover {
-    box-shadow: 0 4px 14px rgba(26, 26, 26, 0.08);
-    border-color: var(--paper-line-2, #D6CCB6);
-  }
-  .lead-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 16px;
-    background: #FAFAF7;
-    cursor: pointer;
-    user-select: none;
-    border-bottom: 1px solid var(--paper-line, #E5DECF);
-    transition: background-color 0.2s ease, border-color 0.25s ease;
-  }
-  .lead-header:hover {
-    background: #F0F4F1;
-  }
-  .lead-header:focus-visible {
-    outline: 2px solid var(--jade, #3CA57A);
-    outline-offset: -2px;
-  }
-  .lead-title {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--jade-dark, #14432F);
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-  }
-  .lead-title i {
-    font-size: 1.15rem;
-    color: var(--jade, #3CA57A);
-  }
-  .lead-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--ink-3, #7C756A);
-    background: #FFFFFF;
-    border: 1px solid var(--paper-line, #E5DECF);
-    padding: 4px 10px;
-    border-radius: 9999px;
-    transition: all 0.2s ease;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-  }
-  .lead-header:hover .lead-toggle {
-    color: var(--jade-text, #1B5E48);
-    border-color: var(--jade-soft, #A9D0BE);
-    background: var(--jade-pale, #DCEAE1);
-  }
-  .lead-toggle-icon {
-    font-size: 0.95rem;
-    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .lead-content {
-    max-height: 1000px;
-    opacity: 1;
-    overflow: hidden;
-    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.25s ease,
-                padding 0.35s ease;
-  }
-  .lead-box.collapsed {
-    box-shadow: none;
-  }
-  .lead-box.collapsed .lead-header {
-    border-bottom-color: transparent;
-    background: #FFFFFF;
-  }
-  .lead-box.collapsed .lead-toggle-icon {
-    transform: rotate(180deg);
-  }
-  .lead-box.collapsed .lead-content {
-    max-height: 0 !important;
-    opacity: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  .lead-box .lead-text {
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    padding: 14px 18px !important;
-    margin: 0 !important;
-    box-shadow: none !important;
-    font-size: 1.02rem;
-    line-height: 1.68;
-    color: var(--ink-2, #514C44);
-  }
-
-</style>
+  </style>
     <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="110%">
       <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.08"/>
     </filter>
@@ -2051,43 +2047,49 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-card .con
     <text x="20" y="148" class="card-desc">• Thuốc mất hoàn toàn hoạt tính diệt khuẩn trước khi tới đích.</text>
   </g>
 </svg>
-    </div>
+        </div>
 
-    <!-- Multi-Select Checklist Question -->
-    <div class="qa-box hidden" id="boxQuestionStage5">
-      <p class="qa-title"><i class="ti ti-checkbox"></i> Hãy chọn tất cả nhận định đúng:</p>
-      
-      <div class="qa-options-list" id="optsMultiStage5">
-        <label class="qa-option-label multiselect" data-stmt="1">
-          <div class="qa-option-radio"></div>
-          <span>1. Vi khuẩn có thể phối hợp nhiều cơ chế</span>
-        </label>
-        <label class="qa-option-label multiselect" data-stmt="2">
-          <div class="qa-option-radio"></div>
-          <span>2. Mọi plasmid đều mang gene kháng thuốc</span>
-        </label>
-        <label class="qa-option-label multiselect" data-stmt="3">
-          <div class="qa-option-radio"></div>
-          <span>3. Bốn cơ chế trên là các ví dụ tiêu biểu</span>
-        </label>
-        <label class="qa-option-label multiselect" data-stmt="4">
-          <div class="qa-option-radio"></div>
-          <span>4. Kháng thuốc chỉ xảy ra do thuốc không vào được tế bào</span>
-        </label>
-      </div>
-    </div>
+        <!-- Multi-Select Checklist Question -->
+        <div class="qa-box hidden" id="boxQuestionStage5">
+          <p class="qa-title"><i class="ti ti-checkbox"></i> HÃY CHỌN TẤT CẢ NHẬN ĐỊNH ĐÚNG:</p>
+          
+          <div class="qa-options-list" id="optsMultiStage5">
+            <label class="qa-option-label multiselect" data-stmt="1">
+              <div class="qa-option-radio"></div>
+              <span>1. Vi khuẩn có thể phối hợp nhiều cơ chế</span>
+            </label>
+            <label class="qa-option-label multiselect" data-stmt="2">
+              <div class="qa-option-radio"></div>
+              <span>2. Mọi plasmid đều mang gene kháng thuốc</span>
+            </label>
+            <label class="qa-option-label multiselect" data-stmt="3">
+              <div class="qa-option-radio"></div>
+              <span>3. Bốn cơ chế trên là các ví dụ tiêu biểu</span>
+            </label>
+            <label class="qa-option-label multiselect" data-stmt="4">
+              <div class="qa-option-radio"></div>
+              <span>4. Kháng thuốc chỉ xảy ra do thuốc không vào được tế bào</span>
+            </label>
+          </div>
+        </div>
 
-    <div class="inline-feedback hidden" id="fbStage5"></div>
+        <div class="inline-feedback hidden" id="fbStage5"></div>
 
-    <div class="stage-actions">
-      <button class="btn btn-secondary" id="btnPrevStage5"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
-      <button class="btn btn-outline" id="btnCheckStage5" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
-      <button class="btn btn-secondary hidden" id="btnRetryStage5"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
-      <button class="btn btn-primary hidden" id="btnFinishStage5"><i class="ti ti-trophy"></i> HOÀN THÀNH</button>
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage5"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-outline" id="btnCheckStage5" disabled><i class="ti ti-check"></i> KIỂM TRA</button>
+            <button class="btn btn-secondary hidden" id="btnRetryStage5"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+            <button class="btn btn-primary hidden" id="btnFinishStage5"><i class="ti ti-trophy"></i> HOÀN THÀNH</button>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 
-</div>
+</main>
 
 <!-- =======================================================================
      MODAL CHÚC MỪNG HOÀN THÀNH V10 & CONFETTI
@@ -2195,6 +2197,9 @@ function viewComponent(type) {
 
   if (window.lmsState.stage1.viewed.size >= 2) {
     boxQuestionStage1.classList.remove('hidden');
+    setTimeout(() => {
+      boxQuestionStage1.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 120);
   }
   reportHeight();
 }
@@ -2216,20 +2221,63 @@ document.querySelectorAll('#optsStage1 .qa-option-label').forEach(lbl => {
 
 btnCheckStage1.addEventListener('click', () => {
   const ans = window.lmsState.stage1.answer;
+  if (!ans) {
+    boxQuestionStage1.classList.add('shake');
+    setTimeout(() => boxQuestionStage1.classList.remove('shake'), 400);
+    return;
+  }
   if (ans === 'A') {
     window.lmsState.stage1.correct = true;
     window.lmsState.ribosome_function = true;
     btnCheckStage1.classList.add('hidden');
     btnRetryStage1.classList.add('hidden');
     btnNextStage1.classList.remove('hidden');
+    btnNextStage1.removeAttribute('disabled');
     fbStage1.className = 'inline-feedback correct';
-    fbStage1.innerHTML = '<i class="ti ti-circle-check"></i><span>Đúng. Ribosome tổng hợp protein; hạt dự trữ không đảm nhiệm chức năng này. Tiếp theo, hãy quan sát vùng chứa DNA chính.</span>';
+    fbStage1.innerHTML = `
+      <div class="feedback-content">
+        <div class="feedback-title"><i class="ti ti-circle-check"></i> <strong>Chính xác!</strong></div>
+        <div class="correct-answer-box">✓ Đáp án đúng: A. Ribosome</div>
+        <div class="explanation">Đúng. Ribosome tổng hợp protein; hạt dự trữ không đảm nhiệm chức năng này. Tiếp theo, hãy quan sát vùng chứa DNA chính.</div>
+        <div class="pedagogy-meta">
+          <div class="pedagogy-title"><i class="ti ti-certificate"></i> Khung năng lực &amp; Thông tin sư phạm</div>
+          <div class="pedagogy-grid">
+            <div class="pedagogy-item">
+              <span class="pedagogy-label"><i class="ti ti-bookmark"></i> Chủ đề:</span>
+              <span class="pedagogy-val">Tế bào chất &amp; Ribosome</span>
+            </div>
+            <div class="pedagogy-item">
+              <span class="pedagogy-label"><i class="ti ti-bulb"></i> Cấp độ tư duy:</span>
+              <span class="pedagogy-val">Nhận biết</span>
+            </div>
+            <div class="pedagogy-item">
+              <span class="pedagogy-label"><i class="ti ti-layout-grid"></i> Dạng bài:</span>
+              <span class="pedagogy-val">Nhận thức cấu trúc &amp; chức năng</span>
+            </div>
+            <div class="pedagogy-item">
+              <span class="pedagogy-label"><i class="ti ti-forms"></i> Định dạng:</span>
+              <span class="pedagogy-val">Trắc nghiệm một lựa chọn</span>
+            </div>
+            <div class="pedagogy-item" style="grid-column: 1 / -1;">
+              <span class="pedagogy-label"><i class="ti ti-dna"></i> Năng lực sinh học:</span>
+              <span class="pedagogy-val">Nhận thức sinh học</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
     fbStage1.classList.remove('hidden');
   } else {
     btnCheckStage1.classList.add('hidden');
     btnRetryStage1.classList.remove('hidden');
+    btnNextStage1.classList.add('hidden');
     fbStage1.className = 'inline-feedback wrong';
-    fbStage1.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Hãy tìm các hạt rất nhỏ phân bố trong tế bào chất; đó là ribosome.</span>';
+    fbStage1.innerHTML = `
+      <div class="feedback-content">
+        <div class="feedback-title"><i class="ti ti-alert-triangle"></i> <strong>Chưa chính xác!</strong></div>
+        <div class="explanation">Hãy tìm các hạt rất nhỏ phân bố dày đặc trong bào tương; đó là ribosome - nơi diễn ra tổng hợp protein. Hạt dự trữ chỉ tích lũy chất dinh dưỡng.</div>
+      </div>
+    `;
     fbStage1.classList.remove('hidden');
   }
   reportHeight();
@@ -2241,6 +2289,7 @@ btnRetryStage1.addEventListener('click', () => {
   btnRetryStage1.classList.add('hidden');
   btnCheckStage1.classList.remove('hidden');
   btnCheckStage1.setAttribute('disabled', 'true');
+  btnNextStage1.classList.add('hidden');
   fbStage1.classList.add('hidden');
   reportHeight();
 });
@@ -2248,7 +2297,7 @@ btnRetryStage1.addEventListener('click', () => {
 btnNextStage1.addEventListener('click', () => switchStage(2));
 
 /* ==========================================================================
-   STAGE 2 LOGIC: VÙNG NHÂN (MAGNIFIER SNAP)
+   STAGE 2 LOGIC: VÙNG NHÂN & KÍNH LÚP
    ========================================================================== */
 const magnifierLens = document.getElementById('magnifierLens');
 const cellDnaStageWrap = document.getElementById('cellDnaStageWrap');
@@ -2262,36 +2311,65 @@ const fbStage2 = document.getElementById('fbStage2');
 
 let isDraggingLens = false;
 
-function snapMagnifierToDna() {
-  magnifierLens.style.left = '50%';
-  magnifierLens.style.top = '50%';
-  magnifierLens.classList.add('snapped');
+function snapMagnifier() {
   window.lmsState.stage2.magnified = true;
   window.lmsState.nucleoid_examined = true;
-
+  magnifierLens.classList.add('snapped');
+  magnifierLens.style.top = '50%';
+  magnifierLens.style.left = '50%';
   magnifierPlaceholderText.classList.add('hidden');
   magnifierActiveContent.classList.remove('hidden');
   boxQuestionStage2.classList.remove('hidden');
   reportHeight();
 }
 
-magnifierLens.addEventListener('click', () => {
-  snapMagnifierToDna();
-});
+// Drag & Touch support for Magnifier Lens
+function startLensDrag(e) {
+  isDraggingLens = true;
+  e.preventDefault();
+}
 
-// Touch/drag handling for magnifier
-cellDnaStageWrap.addEventListener('click', (e) => {
+function moveLensDrag(e) {
+  if (!isDraggingLens) return;
   const rect = cellDnaStageWrap.getBoundingClientRect();
-  const clickX = ((e.clientX - rect.left) / rect.width) * 100;
-  const clickY = ((e.clientY - rect.top) / rect.height) * 100;
+  const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+  const clientY = e.clientY || (e.touches && e.touches[0].clientY);
 
-  // If click near center (35% - 65%), snap to DNA
-  if (clickX >= 35 && clickX <= 65 && clickY >= 35 && clickY <= 65) {
-    snapMagnifierToDna();
-  } else {
-    magnifierLens.style.left = clickX + '%';
-    magnifierLens.style.top = clickY + '%';
+  let x = clientX - rect.left;
+  let y = clientY - rect.top;
+
+  x = Math.max(25, Math.min(rect.width - 25, x));
+  y = Math.max(25, Math.min(rect.height - 25, y));
+
+  const pctX = (x / rect.width) * 100;
+  const pctY = (y / rect.height) * 100;
+
+  magnifierLens.style.left = pctX + '%';
+  magnifierLens.style.top = pctY + '%';
+
+  // Distance to center (50%, 50%)
+  const dist = Math.hypot(pctX - 50, pctY - 50);
+  if (dist < 20) {
+    snapMagnifier();
+    isDraggingLens = false;
   }
+}
+
+function stopLensDrag() {
+  isDraggingLens = false;
+}
+
+magnifierLens.addEventListener('mousedown', startLensDrag);
+window.addEventListener('mousemove', moveLensDrag);
+window.addEventListener('mouseup', stopLensDrag);
+
+magnifierLens.addEventListener('touchstart', startLensDrag, { passive: false });
+window.addEventListener('touchmove', moveLensDrag, { passive: false });
+window.addEventListener('touchend', stopLensDrag);
+
+// Also tap lens to auto-snap (touch accessibility)
+magnifierLens.addEventListener('click', () => {
+  if (!window.lmsState.stage2.magnified) snapMagnifier();
 });
 
 document.querySelectorAll('#optsStage2 .qa-option-label').forEach(lbl => {
@@ -2300,27 +2378,66 @@ document.querySelectorAll('#optsStage2 .qa-option-label').forEach(lbl => {
     document.querySelectorAll('#optsStage2 .qa-option-label').forEach(l => l.classList.remove('selected'));
     lbl.classList.add('selected');
     window.lmsState.stage2.answer = lbl.dataset.value;
-    window.lmsState.s02_answer = lbl.dataset.value;
     btnCheckStage2.removeAttribute('disabled');
   });
 });
 
 btnCheckStage2.addEventListener('click', () => {
-  window.lmsState.attempts_s02++;
   const ans = window.lmsState.stage2.answer;
+  window.lmsState.attempts_s02++;
+  window.lmsState.s02_answer = ans;
+
   if (ans === 'B') {
     window.lmsState.stage2.correct = true;
     btnCheckStage2.classList.add('hidden');
     btnRetryStage2.classList.add('hidden');
     btnNextStage2.classList.remove('hidden');
+    btnNextStage2.removeAttribute('disabled');
     fbStage2.className = 'inline-feedback correct';
-    fbStage2.innerHTML = '<i class="ti ti-circle-check"></i><span>Chính xác. Vì không có màng bao nên gọi là vùng nhân, không gọi là nhân tế bào. Bên cạnh DNA nhiễm sắc thể, một số vi khuẩn còn có plasmid.</span>';
+    fbStage2.innerHTML = `
+      <div class="feedback-content">
+        <div class="feedback-title"><i class="ti ti-circle-check"></i> <strong>Chính xác!</strong></div>
+        <div class="correct-answer-box">✓ Đáp án đúng: B. DNA tập trung trong vùng không có màng bao</div>
+        <div class="explanation">Chính xác. Vì không có màng bao nên gọi là vùng nhân, không gọi là nhân tế bào. Bên cạnh DNA nhiễm sắc thể, một số vi khuẩn còn có plasmid.</div>
+        <div class="pedagogy-meta">
+          <div class="pedagogy-title"><i class="ti ti-certificate"></i> Khung năng lực &amp; Thông tin sư phạm</div>
+          <div class="pedagogy-grid">
+            <div class="pedagogy-item">
+              <span class="pedagogy-label"><i class="ti ti-bookmark"></i> Chủ đề:</span>
+              <span class="pedagogy-val">Vùng nhân tế bào nhân sơ</span>
+            </div>
+            <div class="pedagogy-item">
+              <span class="pedagogy-label"><i class="ti ti-bulb"></i> Cấp độ tư duy:</span>
+              <span class="pedagogy-val">Thông hiểu</span>
+            </div>
+            <div class="pedagogy-item">
+              <span class="pedagogy-label"><i class="ti ti-layout-grid"></i> Dạng bài:</span>
+              <span class="pedagogy-val">So sánh &amp; phân biệt cấu trúc</span>
+            </div>
+            <div class="pedagogy-item">
+              <span class="pedagogy-label"><i class="ti ti-forms"></i> Định dạng:</span>
+              <span class="pedagogy-val">Trắc nghiệm một lựa chọn</span>
+            </div>
+            <div class="pedagogy-item" style="grid-column: 1 / -1;">
+              <span class="pedagogy-label"><i class="ti ti-dna"></i> Năng lực sinh học:</span>
+              <span class="pedagogy-val">Tìm hiểu thế giới sống</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
     fbStage2.classList.remove('hidden');
   } else {
     btnCheckStage2.classList.add('hidden');
     btnRetryStage2.classList.remove('hidden');
+    btnNextStage2.classList.add('hidden');
     fbStage2.className = 'inline-feedback wrong';
-    fbStage2.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Quan sát lại ranh giới: không có lớp màng nào bao quanh vùng DNA của vi khuẩn.</span>';
+    fbStage2.innerHTML = `
+      <div class="feedback-content">
+        <div class="feedback-title"><i class="ti ti-alert-triangle"></i> <strong>Chưa chính xác!</strong></div>
+        <div class="explanation">Quan sát lại ranh giới: không có lớp màng nào bao quanh vùng DNA của vi khuẩn. DNA nằm tự do tiếp xúc trực tiếp với bào tương.</div>
+      </div>
+    `;
     fbStage2.classList.remove('hidden');
   }
   reportHeight();
@@ -2332,6 +2449,7 @@ btnRetryStage2.addEventListener('click', () => {
   btnRetryStage2.classList.add('hidden');
   btnCheckStage2.classList.remove('hidden');
   btnCheckStage2.setAttribute('disabled', 'true');
+  btnNextStage2.classList.add('hidden');
   fbStage2.classList.add('hidden');
   reportHeight();
 });
@@ -2340,9 +2458,8 @@ document.getElementById('btnPrevStage2').addEventListener('click', () => switchS
 btnNextStage2.addEventListener('click', () => switchStage(3));
 
 /* ==========================================================================
-   STAGE 3 LOGIC: PLASMID PHÂN BIỆT
+   STAGE 3 LOGIC: PLASMID & KÉO THẢ PHÂN LOẠI
    ========================================================================== */
-let selectedStage3Card = null;
 const cardsPoolStage3 = document.getElementById('cardsPoolStage3');
 const slotsStage3 = [
   document.getElementById('slotChrom1'),
@@ -2356,25 +2473,24 @@ const btnRetryStage3 = document.getElementById('btnRetryStage3');
 const btnNextStage3 = document.getElementById('btnNextStage3');
 const fbStage3 = document.getElementById('fbStage3');
 
+let selectedCardStage3 = null;
+
 function initStage3Drag() {
-  document.querySelectorAll('#trayStage3 .drag-card').forEach(card => {
+  document.querySelectorAll('#cardsPoolStage3 .drag-card').forEach(card => {
     card.addEventListener('dragstart', (e) => {
-      e.dataTransfer.setData('text/plain', card.dataset.type);
-      selectedStage3Card = card;
+      e.dataTransfer.setData('text/plain', card.id);
     });
 
-    // Touch click selection fallback
+    // Touch click-to-select
     card.addEventListener('click', () => {
-      if (card.parentElement.classList.contains('col-slot')) {
-        cardsPoolStage3.appendChild(card);
-        card.classList.remove('placed', 'selected');
-        card.parentElement.classList.remove('filled');
-        checkStage3Ready();
-        return;
+      if (card.classList.contains('placed')) return;
+      document.querySelectorAll('#cardsPoolStage3 .drag-card').forEach(c => c.classList.remove('selected'));
+      if (selectedCardStage3 === card) {
+        selectedCardStage3 = null;
+      } else {
+        selectedCardStage3 = card;
+        card.classList.add('selected');
       }
-      document.querySelectorAll('#trayStage3 .drag-card').forEach(c => c.classList.remove('selected'));
-      selectedStage3Card = card;
-      card.classList.add('selected');
     });
   });
 
@@ -2383,104 +2499,147 @@ function initStage3Drag() {
       e.preventDefault();
       slot.classList.add('drag-over');
     });
+
     slot.addEventListener('dragleave', () => {
       slot.classList.remove('drag-over');
     });
+
     slot.addEventListener('drop', (e) => {
       e.preventDefault();
       slot.classList.remove('drag-over');
-      if (selectedStage3Card) {
-        placeStage3Card(slot, selectedStage3Card);
-      }
+      const cardId = e.dataTransfer.getData('text/plain');
+      const card = document.getElementById(cardId);
+      if (card) placeCardInSlot(card, slot);
     });
+
+    // Touch click-to-place
     slot.addEventListener('click', () => {
-      if (selectedStage3Card && !slot.querySelector('.drag-card')) {
-        placeStage3Card(slot, selectedStage3Card);
+      if (selectedCardStage3) {
+        placeCardInSlot(selectedCardStage3, slot);
+        selectedCardStage3.classList.remove('selected');
+        selectedCardStage3 = null;
+      } else {
+        // Return card if slot occupied
+        const existing = slot.querySelector('.drag-card');
+        if (existing && !slot.classList.contains('locked-correct')) {
+          cardsPoolStage3.appendChild(existing);
+          existing.classList.remove('placed');
+          slot.classList.remove('filled');
+          checkStage3Filled();
+        }
       }
     });
   });
 }
 
-function placeStage3Card(slot, card) {
+function placeCardInSlot(card, slot) {
+  if (slot.classList.contains('locked-correct')) return;
   const existing = slot.querySelector('.drag-card');
   if (existing) {
     cardsPoolStage3.appendChild(existing);
-    existing.classList.remove('placed', 'selected');
+    existing.classList.remove('placed');
   }
+
   slot.appendChild(card);
-  slot.classList.add('filled');
   card.classList.add('placed');
-  card.classList.remove('selected');
-  selectedStage3Card = null;
-  checkStage3Ready();
-  reportHeight();
+  slot.classList.add('filled');
+  checkStage3Filled();
 }
 
-function checkStage3Ready() {
-  let filledCount = 0;
-  slotsStage3.forEach(slot => {
-    if (slot.querySelector('.drag-card')) filledCount++;
-  });
+function checkStage3Filled() {
+  const filledCount = slotsStage3.filter(s => s.querySelector('.drag-card')).length;
   if (filledCount === 4) {
     btnCheckStage3.removeAttribute('disabled');
   } else {
     btnCheckStage3.setAttribute('disabled', 'true');
   }
+  reportHeight();
 }
 
 btnCheckStage3.addEventListener('click', () => {
   window.lmsState.attempts_s03++;
-  let correct = true;
+  let allCorrect = true;
+
   slotsStage3.forEach(slot => {
     const card = slot.querySelector('.drag-card');
-    if (!card || card.dataset.type !== slot.dataset.expect) {
-      correct = false;
+    const expect = slot.dataset.expect;
+    if (card && card.dataset.type === expect) {
+      slot.classList.add('locked-correct');
+    } else {
+      allCorrect = false;
+      slot.classList.remove('locked-correct');
+      if (card) {
+        // Bounce back incorrect cards
+        setTimeout(() => {
+          cardsPoolStage3.appendChild(card);
+          card.classList.remove('placed', 'selected');
+          slot.classList.remove('filled');
+          checkStage3Filled();
+        }, 250);
+      }
     }
   });
 
-  // Record state
-  const c1 = document.getElementById('slotChrom1').querySelector('.drag-card');
-  const c2 = document.getElementById('slotChrom2').querySelector('.drag-card');
-  const p1 = document.getElementById('slotPlasmid1').querySelector('.drag-card');
-  const p2 = document.getElementById('slotPlasmid2').querySelector('.drag-card');
-  window.lmsState.plasmid_sort = {
-    chromosome: [c1 ? c1.id : null, c2 ? c2.id : null],
-    plasmid: [p1 ? p1.id : null, p2 ? p2.id : null]
-  };
-
-  if (correct) {
+  if (allCorrect) {
     window.lmsState.stage3.correct = true;
-    slotsStage3.forEach(slot => {
-      slot.classList.add('locked-correct');
-      const card = slot.querySelector('.drag-card');
-      if (card) card.setAttribute('draggable', 'false');
-    });
+    window.lmsState.plasmid_sort = {
+      chromosome: ['cardC1', 'cardC2'],
+      plasmid: ['cardP1', 'cardP2']
+    };
+
     btnCheckStage3.classList.add('hidden');
     btnRetryStage3.classList.add('hidden');
     btnNextStage3.classList.remove('hidden');
+    btnNextStage3.removeAttribute('disabled');
     boxVectorExtension.classList.remove('hidden');
+
     fbStage3.className = 'inline-feedback correct';
-    fbStage3.innerHTML = '<i class="ti ti-circle-check"></i><span>Đúng. Plasmid không đồng nhất với DNA nhiễm sắc thể và không phải plasmid nào cũng mang gene kháng thuốc. Tiếp theo, hãy xem gene kháng thuốc có thể biểu hiện thành những cơ chế nào.</span>';
+    fbStage3.innerHTML = `
+      <div class="feedback-content">
+        <div class="feedback-title"><i class="ti ti-circle-check"></i> <strong>Chính xác!</strong></div>
+        <div class="correct-answer-box">✓ Phân loại chuẩn: DNA NST (Mang hầu hết TT di truyền thiết yếu, kích thước lớn) • Plasmid (DNA ngoài NST, có thể mang gene kháng thuốc)</div>
+        <div class="explanation">Đúng. Plasmid không đồng nhất với DNA nhiễm sắc thể và không phải plasmid nào cũng mang gene kháng thuốc. Tiếp theo, hãy xem gene kháng thuốc có thể biểu hiện thành những cơ chế nào.</div>
+        <div class="pedagogy-meta">
+          <div class="pedagogy-title"><i class="ti ti-certificate"></i> Khung năng lực &amp; Thông tin sư phạm</div>
+          <div class="pedagogy-grid">
+            <div class="pedagogy-item">
+              <span class="pedagogy-label"><i class="ti ti-bookmark"></i> Chủ đề:</span>
+              <span class="pedagogy-val">Plasmid &amp; DNA nhiễm sắc thể</span>
+            </div>
+            <div class="pedagogy-item">
+              <span class="pedagogy-label"><i class="ti ti-bulb"></i> Cấp độ tư duy:</span>
+              <span class="pedagogy-val">Thông hiểu</span>
+            </div>
+            <div class="pedagogy-item">
+              <span class="pedagogy-label"><i class="ti ti-layout-grid"></i> Dạng bài:</span>
+              <span class="pedagogy-val">Kéo thả phân loại đặc điểm</span>
+            </div>
+            <div class="pedagogy-item">
+              <span class="pedagogy-label"><i class="ti ti-forms"></i> Định dạng:</span>
+              <span class="pedagogy-val">Xếp thẻ phân loại (4 thẻ)</span>
+            </div>
+            <div class="pedagogy-item" style="grid-column: 1 / -1;">
+              <span class="pedagogy-label"><i class="ti ti-dna"></i> Năng lực sinh học:</span>
+              <span class="pedagogy-val">Nhận thức sinh học</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
     fbStage3.classList.remove('hidden');
   } else {
     btnCheckStage3.classList.add('hidden');
     btnRetryStage3.classList.remove('hidden');
+    btnNextStage3.classList.add('hidden');
+
     fbStage3.className = 'inline-feedback wrong';
-    fbStage3.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Hãy phân biệt vai trò cốt lõi của nhiễm sắc thể với các đặc tính bổ sung có thể nằm trên plasmid.</span>';
+    fbStage3.innerHTML = `
+      <div class="feedback-content">
+        <div class="feedback-title"><i class="ti ti-alert-triangle"></i> <strong>Chưa chính xác!</strong></div>
+        <div class="explanation">Hãy phân biệt vai trò cốt lõi của nhiễm sắc thể với các đặc tính bổ sung có thể nằm trên plasmid. Thẻ đặt sai đã tự động trở về khay.</div>
+      </div>
+    `;
     fbStage3.classList.remove('hidden');
-    
-    // Auto return wrong cards after 250ms per kịch bản
-    setTimeout(() => {
-      slotsStage3.forEach(slot => {
-        const card = slot.querySelector('.drag-card');
-        if (card && card.dataset.type !== slot.dataset.expect) {
-          cardsPoolStage3.appendChild(card);
-          card.classList.remove('placed', 'selected');
-          slot.classList.remove('filled');
-        }
-      });
-      checkStage3Ready();
-    }, 250);
   }
   reportHeight();
 });
@@ -2497,6 +2656,7 @@ btnRetryStage3.addEventListener('click', () => {
   btnRetryStage3.classList.add('hidden');
   btnCheckStage3.classList.remove('hidden');
   btnCheckStage3.setAttribute('disabled', 'true');
+  btnNextStage3.classList.add('hidden');
   fbStage3.classList.add('hidden');
   reportHeight();
 });
@@ -2505,14 +2665,13 @@ document.getElementById('btnPrevStage3').addEventListener('click', () => switchS
 btnNextStage3.addEventListener('click', () => switchStage(4));
 
 /* ==========================================================================
-   STAGE 4 LOGIC: HAI CƠ CHẾ QUA MÀNG (SIMULATION & MATCHING)
+   STAGE 4 LOGIC: 2 CƠ CHẾ LIÊN QUAN ĐẾN MÀNG
    ========================================================================== */
 const btnRunSimUptake = document.getElementById('btnRunSimUptake');
 const btnRunSimEfflux = document.getElementById('btnRunSimEfflux');
 const porinLeftBar = document.getElementById('porinLeftBar');
 const porinRightBar = document.getElementById('porinRightBar');
 const porinBadgeBg = document.getElementById('porinBadgeBg');
-const porinLeaderLine = document.getElementById('porinLeaderLine');
 const porinStatusText = document.getElementById('porinStatusText');
 const drugDotEntry1 = document.getElementById('drugDotEntry1');
 const arrowUptakeDir = document.getElementById('arrowUptakeDir');
@@ -2531,160 +2690,181 @@ const btnRetryStage4 = document.getElementById('btnRetryStage4');
 const btnNextStage4 = document.getElementById('btnNextStage4');
 const fbStage4 = document.getElementById('fbStage4');
 
-let selectedStage4Match = null;
+let uptakeSimRan = false;
+let effluxSimRan = false;
 
-// Sim 1: Reduced Uptake
 btnRunSimUptake.addEventListener('click', () => {
-  if (porinLeftBar) {
-    porinLeftBar.setAttribute('x', '186');
-    porinLeftBar.setAttribute('fill', '#DC2626');
-    porinLeftBar.setAttribute('stroke', '#B91C1C');
-  }
-  if (porinRightBar) {
-    porinRightBar.setAttribute('x', '196');
-    porinRightBar.setAttribute('fill', '#DC2626');
-    porinRightBar.setAttribute('stroke', '#B91C1C');
-  }
-  if (porinBadgeBg) {
-    porinBadgeBg.setAttribute('fill', '#DC2626');
-    porinBadgeBg.setAttribute('stroke', '#FCA5A5');
-  }
-  if (porinLeaderLine) {
-    porinLeaderLine.setAttribute('stroke', '#DC2626');
-  }
-  if (porinStatusText) {
-    porinStatusText.textContent = 'PORIN CO HẸP';
-  }
-  if (arrowUptakeDir) {
-    arrowUptakeDir.setAttribute('d', 'M 200 55 L 200 80');
-    arrowUptakeDir.setAttribute('stroke', '#DC2626');
-    arrowUptakeDir.setAttribute('stroke-dasharray', 'none');
-  }
-  if (arrowUptakeHead) {
-    arrowUptakeHead.setAttribute('fill', '#DC2626');
-    arrowUptakeHead.setAttribute('points', '200,86 195,78 205,78');
-  }
-  descUptake.innerHTML = '<strong style="color:#DC2626;">Cơ chế kích hoạt:</strong> Đột biến làm hẹp/giảm kênh porin màng ngoài, ngăn cản dòng kháng sinh đi từ <strong>NGOÀI → TRONG</strong>!';
-
-  window.lmsState.stage4.watched.add('reduced_uptake');
+  uptakeSimRan = true;
+  window.lmsState.stage4.watched.add('uptake');
   if (!window.lmsState.mechanisms_seen.includes('reduced_uptake')) {
     window.lmsState.mechanisms_seen.push('reduced_uptake');
   }
-  checkStage4SimsReady();
+
+  // Animate: porin narrows, arrow turns red/blocks
+  porinLeftBar.setAttribute('x', '186');
+  porinRightBar.setAttribute('x', '196');
+  porinBadgeBg.setAttribute('fill', '#DC2626');
+  porinStatusText.textContent = 'KÊNH CO HẸP';
+
+  drugDotEntry1.setAttribute('cy', '78');
+  drugDotEntry1.setAttribute('fill', '#EF4444');
+  arrowUptakeDir.setAttribute('stroke', '#EF4444');
+  arrowUptakeHead.setAttribute('fill', '#EF4444');
+
+  descUptake.innerHTML = '<strong style="color:var(--wrong);">Diễn biến mô phỏng:</strong> Kênh porin co hẹp lại, các phân tử thuốc kháng sinh bị chặn lại ngay từ bên ngoài màng, không thể lọt vào tế bào chất!';
+  checkStage4SimsDone();
 });
 
-// Sim 2: Efflux Pump
 btnRunSimEfflux.addEventListener('click', () => {
-  if (drugDotPump) {
-    drugDotPump.style.transition = 'transform 1s cubic-bezier(0.25, 1, 0.5, 1)';
-    drugDotPump.style.transform = 'translateY(-145px)';
-  }
-  if (arrowEffluxDir) {
-    arrowEffluxDir.setAttribute('stroke-width', '4.5');
-  }
-  if (effluxBadgeBg) {
-    effluxBadgeBg.setAttribute('fill', '#047857');
-  }
-  if (effluxStatusText) {
-    effluxStatusText.textContent = 'BƠM HOẠT ĐỘNG';
-  }
-  descEfflux.innerHTML = '<strong style="color:#059669;">Cơ chế kích hoạt:</strong> Protein bơm xuyên màng chủ động tống ngược các hạt thuốc từ <strong>TRONG → NGOÀI</strong>, giữ nồng độ thuốc luôn dưới ngưỡng gây hại!';
-
+  effluxSimRan = true;
   window.lmsState.stage4.watched.add('efflux');
   if (!window.lmsState.mechanisms_seen.includes('efflux')) {
     window.lmsState.mechanisms_seen.push('efflux');
   }
-  checkStage4SimsReady();
+
+  // Animate: drug captured in cytoplasm and expelled outside
+  drugDotPump.style.transition = 'all 0.6s ease';
+  drugDotPump.setAttribute('cy', '110');
+  setTimeout(() => {
+    drugDotPump.setAttribute('cy', '25');
+    drugDotPump.setAttribute('fill', '#10B981');
+    effluxBadgeBg.setAttribute('fill', '#15803D');
+    effluxStatusText.textContent = 'ĐÃ TỐNG RA';
+  }, 400);
+
+  descEfflux.innerHTML = '<strong style="color:var(--jade-text);">Diễn biến mô phỏng:</strong> Bơm efflux nhận diện kháng sinh đã lọt vào bào tương và chủ động tống ngược ra ngoài môi trường, giữ nồng độ thuốc bên trong ở mức thấp!';
+  checkStage4SimsDone();
 });
 
-function checkStage4SimsReady() {
-  if (window.lmsState.stage4.watched.size >= 2) {
+function checkStage4SimsDone() {
+  if (uptakeSimRan && effluxSimRan) {
     boxMatchStage4.classList.remove('hidden');
-    reportHeight();
+    setTimeout(() => {
+      boxMatchStage4.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 120);
   }
+  reportHeight();
 }
 
-// Stage 4 Matching logic
+// Stage 4 Matching Logic
+let selectedMatchDesc = null;
+const matchDescs = [document.getElementById('matchDesc1'), document.getElementById('matchDesc2')];
+const targetSlots = [document.getElementById('targetSlotUptake'), document.getElementById('targetSlotEfflux')];
+
 function initStage4Matching() {
-  const descs = [document.getElementById('matchDesc1'), document.getElementById('matchDesc2')];
-  const slots = [document.getElementById('targetSlotUptake'), document.getElementById('targetSlotEfflux')];
-
-  descs.forEach(card => {
+  matchDescs.forEach(card => {
     card.addEventListener('click', () => {
-      descs.forEach(c => c.classList.remove('selected'));
-      selectedStage4Match = card;
-      card.classList.add('selected');
+      if (card.classList.contains('placed')) return;
+      matchDescs.forEach(c => c.classList.remove('selected'));
+      if (selectedMatchDesc === card) {
+        selectedMatchDesc = null;
+      } else {
+        selectedMatchDesc = card;
+        card.classList.add('selected');
+      }
     });
   });
 
-  slots.forEach(slot => {
+  targetSlots.forEach(slot => {
     slot.addEventListener('click', () => {
-      if (!selectedStage4Match) return;
-      slot.appendChild(selectedStage4Match);
-      selectedStage4Match.classList.remove('selected');
-      slot.classList.add('filled');
-      selectedStage4Match = null;
-      checkStage4MatchReady();
+      if (selectedMatchDesc) {
+        slot.appendChild(selectedMatchDesc);
+        selectedMatchDesc.classList.add('placed');
+        selectedMatchDesc.classList.remove('selected');
+        slot.classList.add('filled');
+        selectedMatchDesc = null;
+        checkStage4MatchingFilled();
+      }
     });
   });
 }
 
-function checkStage4MatchReady() {
-  const s1 = document.getElementById('targetSlotUptake').querySelector('.drag-card');
-  const s2 = document.getElementById('targetSlotEfflux').querySelector('.drag-card');
-  if (s1 && s2) {
+function checkStage4MatchingFilled() {
+  const filled = targetSlots.filter(s => s.querySelector('.drag-card')).length;
+  if (filled === 2) {
     btnCheckStage4.removeAttribute('disabled');
   } else {
     btnCheckStage4.setAttribute('disabled', 'true');
   }
+  reportHeight();
 }
 
 btnCheckStage4.addEventListener('click', () => {
-  const sUptake = document.getElementById('targetSlotUptake').querySelector('.drag-card');
-  const sEfflux = document.getElementById('targetSlotEfflux').querySelector('.drag-card');
+  const slotUp = document.getElementById('targetSlotUptake').querySelector('.drag-card');
+  const slotEff = document.getElementById('targetSlotEfflux').querySelector('.drag-card');
 
-  const correct = (sUptake && sUptake.dataset.desc === 'desc_uptake') &&
-                  (sEfflux && sEfflux.dataset.desc === 'desc_efflux');
+  const isUpCorrect = slotUp && slotUp.dataset.desc === 'desc_uptake';
+  const isEffCorrect = slotEff && slotEff.dataset.desc === 'desc_efflux';
 
-  window.lmsState.s04_pairing = {
-    uptake: sUptake ? sUptake.dataset.desc : null,
-    efflux: sEfflux ? sEfflux.dataset.desc : null
-  };
-
-  if (correct) {
+  if (isUpCorrect && isEffCorrect) {
     window.lmsState.stage4.correct = true;
-    document.getElementById('targetSlotUptake').classList.add('locked-correct');
-    document.getElementById('targetSlotEfflux').classList.add('locked-correct');
     btnCheckStage4.classList.add('hidden');
     btnRetryStage4.classList.add('hidden');
     btnNextStage4.classList.remove('hidden');
+    btnNextStage4.removeAttribute('disabled');
+
     fbStage4.className = 'inline-feedback correct';
-    fbStage4.innerHTML = '<i class="ti ti-circle-check"></i><span>Đúng. Một cơ chế hạn chế dòng vào; cơ chế kia chủ động đẩy thuốc ra. Màn sau sẽ xét biến đổi đích tác động và bất hoạt thuốc.</span>';
+    fbStage4.innerHTML = `
+      <div class="feedback-content">
+        <div class="feedback-title"><i class="ti ti-circle-check"></i> <strong>Chính xác!</strong></div>
+        <div class="correct-answer-box">✓ Ghép nối đúng: Giảm thu nhận (Thuốc bị hạn chế ngay khi đi vào) • Bơm tống thuốc (Thuốc đã vào rồi bị vận chuyển ra)</div>
+        <div class="explanation">Đúng. Một cơ chế hạn chế dòng vào; cơ chế kia chủ động đẩy thuốc ra. Màn sau sẽ xét biến đổi đích tác động và bất hoạt thuốc.</div>
+        <div class="pedagogy-meta">
+          <div class="pedagogy-title"><i class="ti ti-certificate"></i> Khung năng lực &amp; Thông tin sư phạm</div>
+          <div class="pedagogy-grid">
+            <div class="pedagogy-item">
+              <span class="pedagogy-label"><i class="ti ti-bookmark"></i> Chủ đề:</span>
+              <span class="pedagogy-val">Cơ chế kháng thuốc qua màng</span>
+            </div>
+            <div class="pedagogy-item">
+              <span class="pedagogy-label"><i class="ti ti-bulb"></i> Cấp độ tư duy:</span>
+              <span class="pedagogy-val">Thông hiểu &amp; Phân tích</span>
+            </div>
+            <div class="pedagogy-item">
+              <span class="pedagogy-label"><i class="ti ti-layout-grid"></i> Dạng bài:</span>
+              <span class="pedagogy-val">Mô phỏng động &amp; ghép cặp</span>
+            </div>
+            <div class="pedagogy-item">
+              <span class="pedagogy-label"><i class="ti ti-forms"></i> Định dạng:</span>
+              <span class="pedagogy-val">Ghép nối mô tả cơ chế (2 cặp)</span>
+            </div>
+            <div class="pedagogy-item" style="grid-column: 1 / -1;">
+              <span class="pedagogy-label"><i class="ti ti-dna"></i> Năng lực sinh học:</span>
+              <span class="pedagogy-val">Nhận thức sinh học</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
     fbStage4.classList.remove('hidden');
   } else {
     btnCheckStage4.classList.add('hidden');
     btnRetryStage4.classList.remove('hidden');
+    btnNextStage4.classList.add('hidden');
+
     fbStage4.className = 'inline-feedback wrong';
-    fbStage4.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Theo dõi hướng mũi tên: giảm thấm làm ít thuốc đi vào; bơm tống hướng thuốc từ trong ra ngoài.</span>';
+    fbStage4.innerHTML = `
+      <div class="feedback-content">
+        <div class="feedback-title"><i class="ti ti-alert-triangle"></i> <strong>Chưa chính xác!</strong></div>
+        <div class="explanation">Theo dõi hướng mũi tên: giảm thấm làm ít thuốc đi vào; bơm tống hướng thuốc từ trong ra ngoài. Hãy bấm "Làm lại" để ghép lại.</div>
+      </div>
+    `;
     fbStage4.classList.remove('hidden');
   }
   reportHeight();
 });
 
 btnRetryStage4.addEventListener('click', () => {
-  const s1 = document.getElementById('targetSlotUptake');
-  const s2 = document.getElementById('targetSlotEfflux');
-  const pool = document.querySelector('#boxMatchStage4 > div > div:first-child');
-  
-  [s1, s2].forEach(slot => {
-    const card = slot.querySelector('.drag-card');
-    if (card) pool.appendChild(card);
-    slot.classList.remove('filled', 'locked-correct');
+  const container = document.querySelector('#boxMatchStage4 > div > div:first-child');
+  matchDescs.forEach(c => {
+    container.appendChild(c);
+    c.classList.remove('placed', 'selected');
   });
-
+  targetSlots.forEach(s => s.classList.remove('filled'));
   btnRetryStage4.classList.add('hidden');
   btnCheckStage4.classList.remove('hidden');
   btnCheckStage4.setAttribute('disabled', 'true');
+  btnNextStage4.classList.add('hidden');
   fbStage4.classList.add('hidden');
   reportHeight();
 });
@@ -2693,12 +2873,13 @@ document.getElementById('btnPrevStage4').addEventListener('click', () => switchS
 btnNextStage4.addEventListener('click', () => switchStage(5));
 
 /* ==========================================================================
-   STAGE 5 LOGIC: BIẾN ĐỔI ĐÍCH, ENZYME & CHỐT BÀI
+   STAGE 5 LOGIC: BIẾN ĐỔI ĐÍCH, BẤT HOẠT THUỐC VÀ CHỐT BÀI
    ========================================================================== */
 const btnRunSimTarget = document.getElementById('btnRunSimTarget');
 const btnRunSimEnzyme = document.getElementById('btnRunSimEnzyme');
 const targetBindingPocket = document.getElementById('targetBindingPocket');
 const drugKeyMolecule = document.getElementById('drugKeyMolecule');
+const targetLabel = document.getElementById('targetLabel');
 const descTarget = document.getElementById('descTarget');
 
 const enzymePacman = document.getElementById('enzymePacman');
@@ -2713,71 +2894,74 @@ const btnRetryStage5 = document.getElementById('btnRetryStage5');
 const btnFinishStage5 = document.getElementById('btnFinishStage5');
 const fbStage5 = document.getElementById('fbStage5');
 
-// Sim 3: Target alteration
+let simTargetRan = false;
+let simEnzymeRan = false;
+
 btnRunSimTarget.addEventListener('click', () => {
-  // Alter target shape (narrow/distort binding cleft)
-  targetBindingPocket.setAttribute('d', 'M -60 40 L -60 0 C -60 -5 -40 10 -20 15 L 20 15 C 40 10 60 -5 60 0 L 60 40 Z');
-  targetBindingPocket.setAttribute('stroke', '#DC2626');
+  simTargetRan = true;
+  window.lmsState.stage5.watched.add('target');
+  if (!window.lmsState.mechanisms_seen.includes('target_modification')) {
+    window.lmsState.mechanisms_seen.push('target_modification');
+  }
+
+  // Mutate pocket shape, drug approaches but cannot fit
+  targetBindingPocket.setAttribute('d', 'M -60 40 L -60 10 C -60 25 -30 25 -20 10 L 20 10 C 30 25 60 25 60 10 L 60 40 Z');
   targetBindingPocket.setAttribute('fill', '#FEE2E2');
-  
-  // Drug tries to dock but bounces away
-  drugKeyMolecule.style.transform = 'translate(200px, 90px)';
+  targetBindingPocket.setAttribute('stroke', '#DC2626');
+  targetLabel.textContent = 'ĐÍCH ĐÃ ĐỘT BIẾN';
+
+  drugKeyMolecule.style.transform = 'translate(200px, 105px)';
   setTimeout(() => {
-    drugKeyMolecule.style.transform = 'translate(250px, 30px) rotate(25deg)';
-    if (descTarget) {
-      descTarget.innerHTML = '<strong style="color:#DC2626;">Cơ chế kích hoạt:</strong> Đích đột biến thay đổi cấu hình không gian, thuốc không thể gắn kết khớp và bị đẩy bật ra ngoài!';
-    }
+    drugKeyMolecule.style.transform = 'translate(200px, 60px)';
   }, 500);
 
-  window.lmsState.stage5.watched.add('target_mod');
-  if (!window.lmsState.mechanisms_seen.includes('target_mod')) {
-    window.lmsState.mechanisms_seen.push('target_mod');
-  }
-  checkStage5SimsReady();
+  descTarget.innerHTML = '<strong style="color:var(--wrong);">Diễn biến mô phỏng:</strong> Cấu trúc không gian vị trí gắn của đích phân tử bị biến đổi. Kháng sinh không thể liên kết khớp bổ sung nên mất hoàn toàn tác dụng ức chế!';
+  checkStage5SimsDone();
 });
 
-// Sim 4: Drug Inactivation by Enzyme
 btnRunSimEnzyme.addEventListener('click', () => {
-  enzymePacman.style.transform = 'translate(195px, 105px)';
+  simEnzymeRan = true;
+  window.lmsState.stage5.watched.add('enzyme');
+  if (!window.lmsState.mechanisms_seen.includes('drug_inactivation')) {
+    window.lmsState.mechanisms_seen.push('drug_inactivation');
+  }
+
+  // Enzyme attacks drug and drug changes structure/inactivates
+  enzymePacman.style.transform = 'translate(200px, 105px)';
   setTimeout(() => {
     drugBodyShape.setAttribute('fill', '#94A3B8');
     drugBodyShape.setAttribute('stroke', '#475569');
-    drugBodyShape.setAttribute('stroke-dasharray', '3 2');
-    if (drugActiveStatus) {
-      drugActiveStatus.textContent = 'MẤT HOẠT TÍNH';
-      drugActiveStatus.setAttribute('fill', '#DC2626');
-    }
-    if (descEnzyme) {
-      descEnzyme.innerHTML = '<strong style="color:#EA580C;">Cơ chế kích hoạt:</strong> Enzyme vi khuẩn phân cắt hoặc gắn nhóm hóa học làm biến tính thuốc, thuốc mất hoàn toàn khả năng diệt khuẩn!';
-    }
-  }, 700);
+    drugActiveStatus.textContent = 'THUỐC BỊ BẤT HOẠT';
+    drugActiveStatus.setAttribute('fill', '#DC2626');
+    enzymePacman.style.transform = 'translate(285px, 105px)';
+  }, 600);
 
-  window.lmsState.stage5.watched.add('inactivation');
-  if (!window.lmsState.mechanisms_seen.includes('inactivation')) {
-    window.lmsState.mechanisms_seen.push('inactivation');
-  }
-  checkStage5SimsReady();
+  descEnzyme.innerHTML = '<strong style="color:var(--amber-text);">Diễn biến mô phỏng:</strong> Enzyme vi khuẩn (ví dụ: beta-lactamase) phân cắt hoặc gắn nhóm chức làm biến đổi phân tử kháng sinh, khiến thuốc mất hoàn toàn hoạt tính diệt khuẩn!';
+  checkStage5SimsDone();
 });
 
-function checkStage5SimsReady() {
-  if (window.lmsState.stage5.watched.size >= 2) {
+function checkStage5SimsDone() {
+  if (simTargetRan && simEnzymeRan) {
     boxSummaryInfographic.classList.remove('hidden');
     boxQuestionStage5.classList.remove('hidden');
-    reportHeight();
+    setTimeout(() => {
+      boxSummaryInfographic.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 120);
   }
+  reportHeight();
 }
 
-// Multi-select statement logic
+// Checklist multi-select question
 document.querySelectorAll('#optsMultiStage5 .qa-option-label').forEach(lbl => {
   lbl.addEventListener('click', () => {
     if (window.lmsState.stage5.correct) return;
-    const stmt = lbl.dataset.stmt;
-    if (lbl.classList.contains('selected')) {
-      lbl.classList.remove('selected');
+    const stmt = parseInt(lbl.dataset.stmt, 10);
+    if (window.lmsState.stage5.selected.has(stmt)) {
       window.lmsState.stage5.selected.delete(stmt);
+      lbl.classList.remove('selected');
     } else {
-      lbl.classList.add('selected');
       window.lmsState.stage5.selected.add(stmt);
+      lbl.classList.add('selected');
     }
 
     if (window.lmsState.stage5.selected.size > 0) {
@@ -2791,10 +2975,10 @@ document.querySelectorAll('#optsMultiStage5 .qa-option-label').forEach(lbl => {
 btnCheckStage5.addEventListener('click', () => {
   window.lmsState.attempts_s05++;
   const sel = Array.from(window.lmsState.stage5.selected).sort();
-  // Exact set {1, 3} per kịch bản
-  const isExactCorrect = (sel.length === 2 && sel[0] === '1' && sel[1] === '3');
+  // Correct answers: {1, 3} per script
+  const isCorrect = sel.length === 2 && sel[0] === 1 && sel[1] === 3;
 
-  if (isExactCorrect) {
+  if (isCorrect) {
     window.lmsState.stage5.correct = true;
     window.lmsState.final_correct_statements = [1, 3];
     window.lmsState.m03_completed = true;
@@ -2804,14 +2988,52 @@ btnCheckStage5.addEventListener('click', () => {
     btnCheckStage5.classList.add('hidden');
     btnRetryStage5.classList.add('hidden');
     btnFinishStage5.classList.remove('hidden');
+
     fbStage5.className = 'inline-feedback correct';
-    fbStage5.innerHTML = '<i class="ti ti-circle-check"></i><span>Chính xác. Tế bào nhân sơ có tế bào chất, ribosome, vùng nhân và có thể có plasmid; vi khuẩn kháng thuốc bằng nhiều cơ chế. Bạn đã hoàn thành Bài 7.</span>';
+    fbStage5.innerHTML = `
+      <div class="feedback-content">
+        <div class="feedback-title"><i class="ti ti-circle-check"></i> <strong>Chính xác!</strong></div>
+        <div class="correct-answer-box">✓ Đáp án đúng: Nhận định 1 và 3 (1. Vi khuẩn có thể phối hợp nhiều cơ chế • 3. Bốn cơ chế trên là các ví dụ tiêu biểu)</div>
+        <div class="explanation">Chính xác. Tế bào nhân sơ có tế bào chất, ribosome, vùng nhân và có thể có plasmid; vi khuẩn kháng thuốc bằng nhiều cơ chế. Bạn đã hoàn thành Bài 7!</div>
+        <div class="pedagogy-meta">
+          <div class="pedagogy-title"><i class="ti ti-certificate"></i> Khung năng lực &amp; Thông tin sư phạm</div>
+          <div class="pedagogy-grid">
+            <div class="pedagogy-item">
+              <span class="pedagogy-label"><i class="ti ti-bookmark"></i> Chủ đề:</span>
+              <span class="pedagogy-val">Cơ chế kháng thuốc &amp; Tổng kết Bài 7</span>
+            </div>
+            <div class="pedagogy-item">
+              <span class="pedagogy-label"><i class="ti ti-bulb"></i> Cấp độ tư duy:</span>
+              <span class="pedagogy-val">Vận dụng &amp; Đánh giá</span>
+            </div>
+            <div class="pedagogy-item">
+              <span class="pedagogy-label"><i class="ti ti-layout-grid"></i> Dạng bài:</span>
+              <span class="pedagogy-val">Tổng hợp &amp; lựa chọn nhận định đúng</span>
+            </div>
+            <div class="pedagogy-item">
+              <span class="pedagogy-label"><i class="ti ti-forms"></i> Định dạng:</span>
+              <span class="pedagogy-val">Trắc nghiệm nhiều lựa chọn</span>
+            </div>
+            <div class="pedagogy-item" style="grid-column: 1 / -1;">
+              <span class="pedagogy-label"><i class="ti ti-dna"></i> Năng lực sinh học:</span>
+              <span class="pedagogy-val">Vận dụng kiến thức vào thực tiễn</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
     fbStage5.classList.remove('hidden');
   } else {
     btnCheckStage5.classList.add('hidden');
     btnRetryStage5.classList.remove('hidden');
+
     fbStage5.className = 'inline-feedback wrong';
-    fbStage5.innerHTML = '<i class="ti ti-alert-triangle"></i><span>Xem lại phạm vi: plasmid chỉ có thể mang gene kháng thuốc; và vi khuẩn không chỉ kháng thuốc bằng một cơ chế liên quan màng.</span>';
+    fbStage5.innerHTML = `
+      <div class="feedback-content">
+        <div class="feedback-title"><i class="ti ti-alert-triangle"></i> <strong>Chưa chính xác!</strong></div>
+        <div class="explanation">Xem lại phạm vi: plasmid chỉ có thể mang gene kháng thuốc (không phải mọi plasmid đều mang); và vi khuẩn không chỉ kháng thuốc bằng một cơ chế liên quan màng. Hãy nhấn "Làm lại" để chọn lại.</div>
+      </div>
+    `;
     fbStage5.classList.remove('hidden');
   }
   reportHeight();
@@ -2844,7 +3066,7 @@ document.getElementById('btnReviewAll').addEventListener('click', () => {
 });
 
 /* ==========================================================================
-   CONFETTI CANVAS ENGINE (Self-contained, no external library)
+   CONFETTI CANVAS ENGINE
    ========================================================================== */
 function launchConfetti() {
   const canvas = document.getElementById('confettiCanvas');
@@ -2878,7 +3100,7 @@ function launchConfetti() {
     particles.forEach(p => {
       p.x += p.vx;
       p.y += p.vy;
-      p.vy += 0.35; // gravity
+      p.vy += 0.35;
       p.rot += p.vrot;
       p.alpha -= 0.012;
 
@@ -2904,74 +3126,11 @@ function launchConfetti() {
   update();
 }
 
-// Global initialization
 window.addEventListener('DOMContentLoaded', () => {
   initStage3Drag();
   initStage4Matching();
   reportHeight();
 });
-
-  /* COLLAPSIBLE LEAD BOX LOGIC */
-  function toggleLeadBox(headerEl) {
-    const box = headerEl.closest('.lead-box');
-    if (!box) return;
-    const isCollapsed = box.classList.toggle('collapsed');
-    const label = box.querySelector('.lead-toggle-label');
-    headerEl.setAttribute('aria-expanded', !isCollapsed);
-    if (label) {
-      label.textContent = isCollapsed ? 'Mở rộng' : 'Thu gọn';
-    }
-    if (typeof reportHeight === 'function') {
-      setTimeout(reportHeight, 360);
-    }
-  }
-
-  document.addEventListener('keydown', function(e) {
-    if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.classList.contains('lead-header')) {
-      e.preventDefault();
-      toggleLeadBox(e.target);
-    }
-  });
-
-</script>
-<script>
-/* Chuẩn hóa cấu trúc theo SH10_B01_M02: hình trái, nhiệm vụ phải, điều khiển dưới. */
-(() => {
-  document.querySelectorAll('section.stage').forEach((stage) => {
-    if(stage.classList.contains('two-block-ready')) return;
-    const direct=[...stage.children];
-    const guide=direct.find((node)=>node.matches('.guide-box'));
-    const lead=direct.find((node)=>node.matches('.lead-box'));
-    const actions=direct.find((node)=>node.matches('.stage-actions,.controls-row'));
-    let layout=direct.find((node)=>node.matches('.map-layout,.s01-layout,.stage-grid'));
-    if(!layout) layout=direct.find((node)=>[...node.children].some((child)=>child.querySelector('img,svg,canvas')));
-    if(layout){
-      layout.classList.add('split-workspace');
-      const parts=[...layout.children];
-      let visual=parts.find((node)=>node.querySelector('img,svg,canvas'));
-      if(!visual) visual=parts[0];
-      visual.classList.add('visual-card');
-      const head=document.createElement('div');head.className='visual-card__head';
-      const title=document.createElement('h2');title.textContent=(stage.getAttribute('aria-label')||'Nội dung bài học').replace(/^Màn\s*\d+\s*:\s*/i,'');
-      head.appendChild(title);visual.prepend(head);
-      if(lead) head.after(lead);
-      const workspace=document.createElement('article');workspace.className='workspace-card';
-      if(guide){guide.className='instruction';workspace.appendChild(guide)}
-      parts.forEach((node)=>{if(node!==visual)workspace.appendChild(node)});
-      layout.appendChild(workspace);
-      stage.querySelectorAll('.feedback-box,.feedback-bar,.feedback-panel').forEach((node)=>node.classList.add('inline-feedback'));
-      if(actions){actions.classList.add('controls-row');stage.appendChild(actions)}
-      stage.classList.add('two-block-ready');
-    }
-  });
-  const clean=(root)=>{const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let node;while((node=walker.nextNode())){if(node.parentElement&&node.parentElement.closest('script,style'))continue;const next=node.nodeValue.replace(/Tiếp tục sang Giai đoạn\s*\d+/gi,'Tiếp tục').replace(/Hoàn thành Giai đoạn\s*\d+!?/gi,'Hoàn thành!').replace(/GIAI ĐOẠN\s*\d+\s*\/\s*\d+\s*[·—-]\s*/gi,'').replace(/Stage\s*\d+/gi,'').replace(/Màn\s*\d+\s*[·:]\s*/gi,'').replace(/Bước\s*\d+\s*\/\s*\d+/gi,'');if(next!==node.nodeValue)node.nodeValue=next}};
-  clean(document.body);
-  new MutationObserver((items)=>items.forEach((item)=>clean(item.target))).observe(document.body,{childList:true,subtree:true,characterData:true});
-})();
-</script>
-<script>
-/* Hàng điều hướng ba nút thống nhất, thay thế cụm điều hướng cũ. */
-(()=>{const stages=[...document.querySelectorAll('section.stage,section.stage-card')];const go=(idx)=>{const stage=stages[idx];if(!stage)return;if(typeof showStage==='function')showStage(idx);else if(typeof goStage==='function')goStage(stage.id);else if(typeof goToStage==='function'){const m=stage.id.match(/stage-(\d+)/);goToStage(m?Number(m[1]):idx+1)}else{stages.forEach((item,itemIdx)=>item.classList.toggle('hidden',itemIdx!==idx));window.scrollTo({top:0,behavior:'smooth'})}};const hashMatch=location.hash.match(/^#retry-stage-(\d+)$/);stages.forEach((stage,idx)=>{if(stage.querySelector(':scope > .three-button-nav'))return;const sourceRow=stage.querySelector(':scope > .controls-row,:scope > .stage-actions');const buttons=sourceRow?[...sourceRow.querySelectorAll('button')]:[];const byText=(re)=>buttons.find(b=>re.test(b.textContent));const backSource=byText(/quay lại/i);const resetSource=byText(/làm lại màn|làm lại/i);const nextSource=byText(/tiếp tục/i)||buttons.find(b=>/complete|finish/i.test(b.id));const row=document.createElement('div');row.className='three-button-nav';const back=document.createElement('button');back.type='button';back.className='btn btn-outline nav-back';back.innerHTML='<i class="ti ti-arrow-left"></i> Quay lại';back.disabled=idx===0;back.addEventListener('click',()=>backSource?backSource.click():go(idx-1));const reset=document.createElement('button');reset.type='button';reset.className='btn btn-outline nav-reset';reset.innerHTML='<i class="ti ti-rotate-clockwise"></i> Làm lại màn';reset.addEventListener('click',()=>{if(resetSource)resetSource.click();else{location.hash='#retry-stage-'+idx;location.reload()}});const spacer=document.createElement('span');spacer.className='nav-spacer';const next=document.createElement('button');next.type='button';next.className='btn btn-primary nav-next';next.innerHTML='Tiếp tục <i class="ti ti-arrow-right"></i>';const sync=()=>{next.disabled=!nextSource||nextSource.disabled||nextSource.classList.contains('hidden')};next.addEventListener('click',()=>nextSource?nextSource.click():go(idx+1));sync();if(nextSource)new MutationObserver(sync).observe(nextSource,{attributes:true,attributeFilter:['class','disabled']});row.append(back,reset,spacer,next);stage.appendChild(row)});if(hashMatch){const idx=Number(hashMatch[1]);setTimeout(()=>{go(idx);history.replaceState(null,'',location.pathname+location.search)},80)}})();
 </script>
 </body>
 </html>

@@ -92,64 +92,145 @@
     .stage { animation:stageFadeIn .28s ease; }
     @keyframes stageFadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
 
-    /* 2-Column Split Workspace */
+    /* 2-Column Split Workspace (Mutual Sticky & Zero Nested Scroll) */
     .split-workspace {
       display:grid;
-      grid-template-columns:minmax(0,58fr) minmax(340px,42fr);
+      grid-template-columns:minmax(0,56fr) minmax(360px,44fr);
       gap:20px;
       align-items:start;
     }
 
-    /* Left Column: Sticky Visual Card */
+    /* Left Column: Natural Height & Sticky Visual Card */
     .visual-card {
       position:sticky;
-      top:0;
+      top:16px;
       z-index:10;
       border:1px solid var(--paper-line);
       border-radius:var(--radius-lg);
       background:#fff;
-      overflow:hidden;
       box-shadow:var(--shadow-sm);
+      display:flex;
+      flex-direction:column;
+      gap:0;
+      /* Zero Nested Scroll: mở rộng 100% tự nhiên */
+      max-height:none;
+      overflow-y:visible;
     }
     .visual-card__head {
-      padding:14px 16px 12px;
+      padding:16px 20px 14px;
       border-bottom:1px solid var(--paper-line);
       background:#fff;
     }
     .eyebrow {
       display:none !important;
-      align-items:center;
-      gap:7px;
-      color:var(--jade-text);
-      font-size:.76rem;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:.65px;
     }
     .visual-card__head h2 {
-      margin:6px 0 0;
-      font-size:clamp(1.25rem,2.2vw,1.75rem);
-      line-height:1.28;
+      margin:0;
+      font-size:clamp(1.2rem,2.2vw,1.45rem);
+      line-height:1.32;
+      font-weight:800;
       letter-spacing:-.02em;
       color:var(--ink);
     }
-    .visual-body {
-      padding:14px;
+    .visual-card__head .question {
+      margin:8px 0 0;
+      color:var(--jade-dark);
+      font-size:0.94rem;
+      font-weight:700;
+      line-height:1.55;
+    }
+    .visual-card__content {
+      padding:16px 18px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .theory-flow {
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .theory-block {
+      padding:12px 14px;
+      border:1px solid var(--paper-line);
+      border-radius:var(--radius-sm);
+      background:var(--cream);
+      font-size:.9rem;
+      line-height:1.55;
+    }
+    .theory-block__title {
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-weight:700;
+      font-size:.92rem;
+      color:var(--jade-text);
+      margin-bottom:6px;
+    }
+    .theory-block__content {
+      margin:0;
+      color:var(--ink-2);
+    }
+    .theory-table {
+      width:100%;
+      border-collapse:collapse;
+      margin-top:8px;
+      font-size:0.84rem;
+    }
+    .theory-table th, .theory-table td {
+      padding:8px 10px;
+      border:1px solid var(--paper-line);
+      text-align:left;
+      vertical-align:top;
+    }
+    .theory-table th {
+      background:var(--cream-2);
+      color:var(--jade-text);
+      font-weight:700;
+    }
+    .theory-table td {
       background:#fff;
+      color:var(--ink-2);
+    }
+    .visual-body {
+      padding:0;
+      background:transparent;
+      margin-top:4px;
     }
 
-    /* Right Column: Workspace Card */
+    /* Right Column: Sticky Workspace Card */
     .workspace-card {
       min-width:0;
       border:1px solid var(--paper-line);
       border-radius:var(--radius-lg);
       background:var(--cream-2);
-      padding:18px;
+      padding:18px 20px;
       box-shadow:var(--shadow-sm);
+      position:sticky;
+      top:16px;
+      max-height:calc(100vh - 32px);
+      overflow-y:auto;
+      scrollbar-width:thin;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .workspace-card::-webkit-scrollbar { width:4px; }
+    .workspace-card::-webkit-scrollbar-thumb { background:var(--paper-line-2); border-radius:4px; }
+    .workspace-section-label {
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size:0.84rem;
+      text-transform:uppercase;
+      letter-spacing:0.6px;
+      color:var(--jade-text);
+      font-weight:700;
+      margin-bottom:2px;
     }
     .workspace-card h2 {
-      margin:0 0 12px;
-      font-size:clamp(1.15rem,2vw,1.45rem);
+      margin:0 0 10px;
+      font-size:clamp(1.15rem,2vw,1.4rem);
       line-height:1.3;
       color:var(--ink);
     }
@@ -884,7 +965,11 @@
     /* Responsive */
     @media (max-width:980px) {
       .split-workspace { grid-template-columns:1fr; }
-      .visual-card { position:static; }
+      .visual-card, .workspace-card {
+        position:static;
+        max-height:none;
+        overflow-y:visible;
+      }
       .structures-grid, .poly-grid { grid-template-columns:repeat(3,1fr); }
     }
     @media (max-width:700px) {
@@ -961,10 +1046,35 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
       <!-- Cột trái: Visual Card -->
       <div class="visual-card">
         <div class="visual-card__head">
-          <div class="eyebrow"><i class="ti ti-target"></i> GIAI ĐOẠN 1 / 6 · MỞ ĐẦU</div>
           <h2>Một nhóm chất, nhiều vai trò</h2>
+          <p class="question">Tinh bột, đường, cellulose và chitin có điểm chung nào và thực hiện những vai trò gì?</p>
         </div>
-        <div class="visual-body">
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span><strong>HƯỚNG DẪN:</strong> Quan sát 4 tình huống thực tế và đọc các thẻ phân tử ở bên trái, sau đó chọn phương án đúng về nhóm phân tử sinh học chung ở bên phải.</span>
+          </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-bookmarks"></i> Phân tử sinh học trong tế bào</div>
+              <div class="theory-block__content">
+                Phân tử sinh học là các hợp chất hữu cơ được tạo ra bởi tế bào và cơ thể sống. Có bốn nhóm phân tử sinh học chính đóng vai trò cốt lõi trong cấu tạo và hoạt động sống của mọi sinh vật: <strong>Carbohydrate</strong>, <strong>Lipid</strong>, <strong>Protein</strong> và <strong>Nucleic acid</strong>.
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-grid-dots"></i> Bốn tình huống thực tiễn</div>
+              <div class="theory-block__content">
+                Nhấp hoặc rê chuột vào từng ô ảnh bên dưới để quan sát vai trò đa dạng của carbohydrate:
+                <ul style="margin:6px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px;">
+                  <li><strong>Ô 1:</strong> Vận động viên ăn tinh bột (cơm, mì) cung cấp nguồn năng lượng dồi dào.</li>
+                  <li><strong>Ô 2:</strong> Kiểm soát lượng đường trong khẩu phần ăn hàng ngày.</li>
+                  <li><strong>Ô 3:</strong> Thành tế bào thực vật cấu tạo từ cellulose bền chắc.</li>
+                  <li><strong>Ô 4:</strong> Bộ xương ngoài côn trùng, giáp xác tạo bởi chitin vững chãi.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="visual-body">
           <div id="s01Visual1A">
             <div class="a01-container" id="a01Container">
               <img src="https://lh3.googleusercontent.com/d/1fxLUNN1i8oe1xsmvNf7YKyuWLSYIkZpd" alt="Bốn tình huống mở đầu về carbohydrate" class="a01-img" id="a01Img">
@@ -1009,13 +1119,12 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
             </div>
           </div>
         </div>
+        </div>
       </div>
 
       <!-- Cột phải: Workspace Card -->
       <div class="workspace-card">
-        <div class="instruction"><i class="ti ti-hand-click"></i><span>Chọn phương án đúng về nhóm phân tử sinh học chung của bốn chất trong hình.</span></div>
-        <p class="workspace-note">Bốn tình huống thực tế cho thấy các chất: <b>Tinh bột</b> (trong cơm/mì), <b>Đường</b> (trong khẩu phần), <b>Cellulose</b> (thành tế bào thực vật) và <b>Chitin</b> (vỏ động vật chân khớp).</p>
-        
+        <div class="workspace-section-label"><i class="ti ti-help-circle"></i> Câu hỏi nhận diện nhóm chất</div>
         <div class="quiz-box">
           <div class="quiz-question">Tinh bột, đường, cellulose và chitin có điểm chung nào dưới đây?</div>
           <div class="quiz-options" id="s01QuizOpts">
@@ -1063,10 +1172,39 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
       <!-- Cột trái: Visual Card -->
       <div class="visual-card">
         <div class="visual-card__head">
-          <div class="eyebrow"><i class="ti ti-microscope"></i> GIAI ĐOẠN 2 / 6 · ĐƯỜNG ĐƠN</div>
-          <h2>Cấu trúc Haworth và Nguồn thực phẩm</h2>
+          <h2>Đường đơn: Cấu trúc & Nguồn thực phẩm</h2>
+          <p class="question">Ba đường đơn glucose, galactose và fructose giống và khác nhau ở điểm nào?</p>
         </div>
-        <div class="visual-body">
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span><strong>HƯỚNG DẪN:</strong> Nhấp vào từng cấu trúc Haworth bên dưới để so sánh sự sắp xếp các nhóm chức, sau đó trả lời hai câu hỏi củng cố ở bên phải.</span>
+          </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-atom"></i> Khái niệm và đặc điểm của Đường đơn</div>
+              <div class="theory-block__content">
+                Đường đơn (monosaccharide) là loại carbohydrate đơn giản nhất gồm một đơn vị đường, không bị thủy phân thành đường nhỏ hơn. Đây là đơn vị cấu trúc tạo nên đường đôi và đường đa.
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-layers-difference"></i> Đồng phân cấu trúc C₆H₁₂O₆</div>
+              <div class="theory-block__content">
+                Cả ba đường đơn đều có cùng công thức phân tử C₆H₁₂O₆ nhưng khác nhau về cấu trúc:
+                <ul style="margin:4px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px;">
+                  <li><strong>Glucose & Galactose:</strong> Đều là vòng 6 cạnh, nhưng nhóm –OH tại C4 của glucose hướng xuống, còn ở galactose hướng lên.</li>
+                  <li><strong>Fructose:</strong> Tạo vòng 5 cạnh furanose mang hai nhóm –CH₂OH.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-bolt"></i> Vai trò sinh học & Nguồn thực phẩm</div>
+              <div class="theory-block__content">
+                Glucose là nguyên liệu trực tiếp cho hô hấp tế bào tạo năng lượng ATP. Các nguồn thực phẩm dồi dào carbohydrate: gạo, ngô, khoai, sắn, quả chín, mía và các loại hạt.
+              </div>
+            </div>
+          </div>
+          <div class="visual-body">
           <div style="font-size:.84rem;color:var(--ink-2);margin-bottom:8px;">
             <i class="ti ti-zoom-in"></i> Bấm vào từng cấu trúc để phóng to quan sát vị trí các nhóm chức:
           </div>
@@ -1194,13 +1332,12 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
             </div>
           </div>
         </div>
+        </div>
       </div>
 
       <!-- Cột phải: Workspace Card -->
       <div class="workspace-card">
-        <div class="instruction"><i class="ti ti-hand-click"></i><span>Bấm xem đủ ba cấu trúc bên trái, sau đó hoàn thành hai câu hỏi để mở khóa giai đoạn tiếp theo.</span></div>
-        <p class="workspace-note">Đường đơn (monosaccharide) là phân tử đường đơn giản nhất, không bị phân giải thành các đường nhỏ hơn trong điều kiện tiêu hóa bình thường.</p>
-
+        <div class="workspace-section-label"><i class="ti ti-target"></i> Nhiệm vụ 1: Nhận diện cấu trúc đồng phân</div>
         <!-- Nhiệm vụ 1: Trắc nghiệm cấu trúc -->
         <div class="quiz-box">
           <div class="quiz-question">1. Ba đường đơn (glucose, galactose, fructose) giống và khác nhau ở điểm nào?</div>
@@ -1228,8 +1365,9 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
           </div>
         </div>
 
+        <div class="workspace-section-label" style="margin-top:8px;"><i class="ti ti-tools-kitchen-2"></i> Nhiệm vụ 2: Nhận biết nguồn thực phẩm</div>
         <!-- Nhiệm vụ 2: Trắc nghiệm thực phẩm -->
-        <div class="quiz-box" style="margin-top:12px;">
+        <div class="quiz-box">
           <div class="quiz-question">2. Nhóm thực phẩm nào thường cung cấp nhiều carbohydrate cho cơ thể?</div>
           <div class="quiz-options" id="s02Quiz2Opts">
             <button class="quiz-opt" data-opt="A">
@@ -1276,10 +1414,33 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
       <!-- Cột trái: Visual Card -->
       <div class="visual-card">
         <div class="visual-card__head">
-          <div class="eyebrow"><i class="ti ti-link"></i> GIAI ĐOẠN 3 / 6 · ĐƯỜNG ĐÔI</div>
-          <h2>Hình thành liên kết Glycosidic</h2>
+          <h2>Đường đôi: Hình thành liên kết Glycosidic</h2>
+          <p class="question">Hai đường đơn liên kết với nhau như thế nào để tạo thành đường đôi và giải phóng phân tử nước?</p>
         </div>
-        <div class="visual-body">
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span><strong>HƯỚNG DẪN:</strong> Chạy hoạt cảnh tạo liên kết glycosidic ở bên dưới để theo dõi sự ngưng tụ tách nước, sau đó ghép nối các cặp đường đơn tạo thành đường đôi ở bên phải.</span>
+          </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-link"></i> Cơ chế tạo liên kết Glycosidic</div>
+              <div class="theory-block__content">
+                Đường đôi (disaccharide) được tạo thành từ hai đường đơn qua phản ứng ngưng tụ: nhóm –OH của đường thứ nhất kết hợp với nguyên tử –H của đường thứ hai để tách ra 1 phân tử nước (H₂O) và hình thành cầu liên kết glycosidic (–O–).
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-box"></i> Ba loại đường đôi phổ biến</div>
+              <div class="theory-block__content">
+                <ul style="margin:4px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px;">
+                  <li><strong>Maltose (đường mạch nha):</strong> Glucose + Glucose (tạo ra khi tinh bột bị thủy phân).</li>
+                  <li><strong>Lactose (đường sữa):</strong> Glucose + Galactose (có nhiều trong sữa động vật có vú).</li>
+                  <li><strong>Sucrose (đường mía):</strong> Glucose + Fructose (dạng đường vận chuyển chủ yếu ở thực vật).</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="visual-body">
           <div class="anim-display">
             <!-- Header bar of anim-display with view switch tabs -->
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding:0 4px;">
@@ -1506,12 +1667,12 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
             <button class="btn btn-primary" id="btnRunReaction" style="flex:1;"><i class="ti ti-player-play"></i> Tạo liên kết (Chạy hoạt cảnh)</button>
           </div>
         </div>
+        </div>
       </div>
 
       <!-- Cột phải: Workspace Card -->
       <div class="workspace-card">
-        <div class="instruction"><i class="ti ti-hand-click"></i><span>Chạy hoạt cảnh tạo liên kết, sau đó nối đúng ba loại đường đôi với các đường đơn cấu tạo nên chúng.</span></div>
-        <p class="workspace-note">Đường đôi (disaccharide) được hình thành từ hai phân tử đường đơn liên kết với nhau bằng <b>liên kết glycosidic</b> và đồng thời giải phóng <b>một phân tử nước</b>.</p>
+        <div class="workspace-section-label"><i class="ti ti-git-fork"></i> Hoạt động ghép nối đường đôi</div>
 
         <div class="matching-box">
           <div style="font-size:.92rem;font-weight:700;margin-bottom:10px;color:var(--ink);">
@@ -1575,9 +1736,38 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
       <!-- Cột trái: Visual Card -->
       <div class="visual-card">
         <div class="visual-card__head">
-          <div class="eyebrow"><i class="ti ti-layers-linked"></i> GIAI ĐOẠN 4 / 6 · ĐƯỜNG ĐA DỰ TRỮ</div>
-          <h2>Tinh bột và Glycogen</h2>
+          <h2>Đường đa dự trữ: Tinh bột và Glycogen</h2>
+          <p class="question">Tinh bột và glycogen khác nhau như thế nào về cấu trúc phân nhánh và vai trò dự trữ năng lượng ở sinh vật?</p>
         </div>
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span><strong>HƯỚNG DẪN:</strong> Quan sát và so sánh 3 cấu trúc polymer (Amylose, Amylopectin, Glycogen) ở bên dưới, sau đó hoàn thành các nhiệm vụ đối chiếu ở bên phải.</span>
+          </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-plant-2"></i> Tinh bột (Starch) ở Thực vật</div>
+              <div class="theory-block__content">
+                Là dạng carbohydrate dự trữ chủ yếu ở thực vật (hạt, củ, thân rễ), gồm hai loại polymer:
+                <ul style="margin:4px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px;">
+                  <li><strong>Amylose:</strong> Mạch không phân nhánh, gồm các gốc α-glucose liên kết bởi liên kết α-1,4-glycosidic, xoắn thành hình lò xo.</li>
+                  <li><strong>Amylopectin:</strong> Mạch phân nhánh, ngoài liên kết α-1,4-glycosidic còn có liên kết α-1,6-glycosidic tại các điểm phân nhánh (cứ khoảng 24–30 gốc glucose có một nhánh).</li>
+                </ul>
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-dna-2"></i> Glycogen ở Động vật và Nấm</div>
+              <div class="theory-block__content">
+                Là dạng polysaccharide dự trữ chính ở động vật (tập trung nhiều ở gan và cơ) và nấm. Cấu trúc tương tự amylopectin nhưng <strong>phân nhánh dày đặc hơn nhiều</strong> (cứ 8–12 gốc glucose lại có một nhánh).
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-flame"></i> Ý nghĩa sinh học của cấu trúc phân nhánh</div>
+              <div class="theory-block__content">
+                Cấu trúc phân nhánh tạo ra rất nhiều đầu mạch tự do, cho phép nhiều phân tử enzyme cùng lúc tiếp cận và thủy phân, giúp giải phóng glucose cực nhanh khi tế bào cần năng lượng gấp.
+              </div>
+            </div>
+          </div>
         <div class="visual-body">
           <div style="font-size:.84rem;color:var(--ink-2);margin-bottom:8px;">
             Quan sát 3 cấu trúc polymer dưới đây và so sánh mức độ phân nhánh:
@@ -1659,13 +1849,12 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
             </div>
           </div>
         </div>
+        </div>
       </div>
 
       <!-- Cột phải: Workspace Card -->
       <div class="workspace-card">
-        <div class="instruction"><i class="ti ti-hand-click"></i><span>Hoàn thành hai câu hỏi cấu trúc và nối đúng chất dự trữ với nhóm sinh vật tương ứng.</span></div>
-        <p class="workspace-note">Đường đa dự trữ có cấu trúc mạch dài phân nhánh hoặc cuộn xoắn, giúp tích trữ lượng lớn năng lượng gọn gàng trong tế bào mà không làm tăng áp suất thẩm thấu.</p>
-
+        <div class="workspace-section-label"><i class="ti ti-target"></i> Nhiệm vụ 1: Nhận diện cấu trúc phân nhánh</div>
         <!-- Nhiệm vụ 1: Nhận diện cấu trúc -->
         <div class="quiz-box">
           <div class="quiz-question">1. Cấu trúc nào chủ yếu không phân nhánh và cuộn xoắn? Cấu trúc nào phân nhánh mạnh nhất?</div>
@@ -1688,8 +1877,9 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
           </div>
         </div>
 
+        <div class="workspace-section-label" style="margin-top:8px;"><i class="ti ti-bulb"></i> Nhiệm vụ 2: Quan hệ cấu trúc và vai trò</div>
         <!-- Nhiệm vụ 2: Quan hệ cấu trúc và vai trò -->
-        <div class="quiz-box" style="margin-top:12px;">
+        <div class="quiz-box">
           <div class="quiz-question">2. Vì sao cấu trúc phân nhánh mạnh giúp glycogen được tế bào động vật huy động thuận lợi khi cần năng lượng gấp?</div>
           <div class="quiz-options" id="s04Quiz2Opts">
             <button class="quiz-opt" data-opt="A">
@@ -1715,8 +1905,9 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
           </div>
         </div>
 
+        <div class="workspace-section-label" style="margin-top:8px;"><i class="ti ti-arrows-join"></i> Nhiệm vụ 3: Nơi dự trữ trong cơ thể</div>
         <!-- Nhiệm vụ 3: Nơi dự trữ -->
-        <div class="matching-box" style="margin-top:12px;">
+        <div class="matching-box">
           <div style="font-size:.92rem;font-weight:700;margin-bottom:8px;color:var(--ink);">
             3. Ghép chất dự trữ với nhóm sinh vật tương ứng:
           </div>
@@ -1768,10 +1959,36 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
       <!-- Cột trái: Visual Card -->
       <div class="visual-card">
         <div class="visual-card__head">
-          <div class="eyebrow"><i class="ti ti-shield-check"></i> GIAI ĐOẠN 5 / 6 · ĐƯỜNG ĐA CẤU TRÚC</div>
-          <h2>Cellulose và Chitin</h2>
+          <h2>Đường đa cấu trúc: Cellulose và Chitin</h2>
+          <p class="question">Đặc điểm cấu tạo nào giúp cellulose và chitin tạo nên những cấu trúc bảo vệ cơ học vững chắc?</p>
         </div>
-        <div class="visual-body">
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span><strong>HƯỚNG DẪN:</strong> Chuyển xem ba cấp độ tổ chức của cellulose và tìm hiểu chitin ở bên dưới, sau đó trả lời hai câu hỏi cấu trúc và phân loại vai trò ở bên phải.</span>
+          </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-shield"></i> Cấu trúc bó sợi siêu bền của Cellulose</div>
+              <div class="theory-block__content">
+                Cellulose là chuỗi dài không phân nhánh. Các chuỗi xếp song song và liên kết với nhau bằng vô số liên kết hydrogen tạo thành các bó sợi vi thể (microfibril) cực kỳ bền chắc, tạo nên bộ khung thành tế bào thực vật chịu được áp suất trương nước.
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-bug"></i> Đặc điểm và vai trò của Chitin</div>
+              <div class="theory-block__content">
+                Chitin là polysaccharide cấu tạo chủ yếu từ các đơn vị <em>N-acetylglucosamine</em>. Chitin tạo nên bộ xương ngoài bền dai của động vật chân khớp (côn trùng, tôm, cua) và thành tế bào của nhiều loài nấm.
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-arrows-split"></i> Phân loại hai nhóm chức năng của Polysaccharide</div>
+              <div class="theory-block__content">
+                • <strong>Dự trữ năng lượng:</strong> Tinh bột (thực vật) và Glycogen (động vật, nấm).<br>
+                • <strong>Tạo cấu trúc bền chắc:</strong> Cellulose (thành tế bào thực vật) và Chitin (vỏ chân khớp, thành tế bào nấm).
+              </div>
+            </div>
+          </div>
+          <div class="visual-body">
           <div class="cellulose-levels-nav">
             <button class="c-level-btn active" data-clevel="1">Cấp 1: Chuỗi thẳng</button>
             <button class="c-level-btn" data-clevel="2">Cấp 2: Các chuỗi song song</button>
@@ -1835,13 +2052,12 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
             </div>
           </div>
         </div>
+        </div>
       </div>
 
       <!-- Cột phải: Workspace Card -->
       <div class="workspace-card">
-        <div class="instruction"><i class="ti ti-hand-click"></i><span>Trả lời hai câu hỏi, sau đó phân loại đúng vai trò chính của các đường đa.</span></div>
-        <p class="workspace-note">Khác với tinh bột và glycogen cuộn xoắn hoặc phân nhánh để dự trữ, cellulose và chitin có cách sắp xếp đặc biệt để tạo nên cấu trúc bảo vệ vững chắc.</p>
-
+        <div class="workspace-section-label"><i class="ti ti-target"></i> Nhiệm vụ 1: Cấu tạo và độ bền của Cellulose</div>
         <!-- Câu hỏi Cellulose -->
         <div class="quiz-box">
           <div class="quiz-question">1. Đặc điểm cấu tạo nào giúp cellulose phù hợp với chức năng tạo độ bền cho thành tế bào thực vật?</div>
@@ -1869,8 +2085,9 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
           </div>
         </div>
 
+        <div class="workspace-section-label" style="margin-top:8px;"><i class="ti ti-bug"></i> Nhiệm vụ 2: Vị trí phân bố của Chitin</div>
         <!-- Câu hỏi Chitin -->
-        <div class="quiz-box" style="margin-top:12px;">
+        <div class="quiz-box">
           <div class="quiz-question">2. Chitin là thành phần cấu tạo chính của cấu trúc nào dưới đây?</div>
           <div class="quiz-options" id="s05Quiz2Opts">
             <button class="quiz-opt" data-opt="A">
@@ -1896,8 +2113,9 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
           </div>
         </div>
 
+        <div class="workspace-section-label" style="margin-top:8px;"><i class="ti ti-arrows-join"></i> Nhiệm vụ 3: Phân loại vai trò sinh học</div>
         <!-- Phân loại vai trò -->
-        <div class="matching-box" style="margin-top:12px;">
+        <div class="matching-box">
           <div style="font-size:.92rem;font-weight:700;margin-bottom:8px;color:var(--ink);">
             3. Phân loại các polysaccharide theo vai trò sinh học chính:
           </div>
@@ -1949,10 +2167,35 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
       <!-- Cột trái: Visual Card -->
       <div class="visual-card">
         <div class="visual-card__head">
-          <div class="eyebrow"><i class="ti ti-bulb"></i> GIAI ĐOẠN 6 / 6 · VẬN DỤNG & KẾT NỐI</div>
-          <h2>Chất xơ, Dinh dưỡng và Cầu nối Lipid</h2>
+          <h2>Vận dụng, Tổng kết & Cầu nối Lipid</h2>
+          <p class="question">Vì sao con người không tiêu hóa được cellulose nhưng chất xơ vẫn rất cần thiết? Điểm khác biệt mấu chốt giữa Carbohydrate và Lipid là gì?</p>
         </div>
-        <div class="visual-body">
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span><strong>HƯỚNG DẪN:</strong> Quan sát cơ chế chất xơ và sơ đồ đối chiếu Lipid ở bên dưới, sau đó hoàn thành hai câu hỏi vận dụng và ghép ba quan hệ cấu trúc – vai trò ở bên phải.</span>
+          </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-heartbeat"></i> Vai trò của Cellulose (Chất xơ) với hệ tiêu hóa</div>
+              <div class="theory-block__content">
+                Con người không có enzyme cellulase nên không phân giải được cellulose thành glucose để hấp thu. Tuy nhiên, cellulose là thành phần chất xơ không thể thiếu: giữ nước, tăng thể tích khối thức ăn, kích thích nhu động ruột, giúp thức ăn di chuyển dễ dàng và phòng ngừa táo bón.
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-salad"></i> Nguyên tắc dinh dưỡng cân đối</div>
+              <div class="theory-block__content">
+                Carbohydrate cung cấp năng lượng chính cho cơ thể, không nên loại bỏ hoàn toàn. Cần sử dụng lượng phù hợp, ưu tiên carbohydrate phức (ngũ cốc nguyên cám, rau xanh) và hạn chế đường tinh luyện để phòng ngừa đái tháo đường type 2 và béo phì.
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-arrow-right-circle"></i> Cầu nối sang phân tử sinh học tiếp theo: Lipid</div>
+              <div class="theory-block__content">
+                Khác với carbohydrate (đa phần tan trong nước, cấu tạo đa phân từ đường đơn), <strong>Lipid</strong> là nhóm phân tử kị nước, không tan trong nước, không cấu tạo theo nguyên tắc đa phân, dự trữ năng lượng vượt trội và cấu tạo nên màng sinh học.
+              </div>
+            </div>
+          </div>
+          <div class="visual-body">
           <!-- Màn 6B: Sơ đồ chất xơ A12 -->
           <div style="border:1px solid var(--paper-line);border-radius:10px;padding:10px;background:#fff;margin-bottom:12px;">
             <div style="font-size:.82rem;font-weight:700;color:var(--jade-dark);margin-bottom:6px;">
@@ -2131,13 +2374,12 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
             </div>
           </div>
         </div>
+        </div>
       </div>
 
       <!-- Cột phải: Workspace Card -->
       <div class="workspace-card">
-        <div class="instruction"><i class="ti ti-hand-click"></i><span>Hoàn thành hai câu hỏi vận dụng và nối đúng ba quan hệ cấu trúc – vai trò.</span></div>
-        <p class="workspace-note">Vận dụng các kiến thức đã học để giải thích hiện tượng dinh dưỡng thực tế và trả lời trọn vẹn câu hỏi trung tâm của bài.</p>
-
+        <div class="workspace-section-label"><i class="ti ti-activity"></i> Nhiệm vụ 1: Vấn đề sinh học thực tiễn về chất xơ</div>
         <!-- Nhiệm vụ 1: Cellulose & Tiêu hóa -->
         <div class="quiz-box">
           <div class="quiz-question">1. Con người không có enzyme cellulase nên không phân giải được cellulose thành glucose. Vậy cellulose có hoàn toàn vô ích đối với cơ thể không?</div>
@@ -2155,8 +2397,9 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
           </div>
         </div>
 
+        <div class="workspace-section-label" style="margin-top:8px;"><i class="ti ti-salad"></i> Nhiệm vụ 2: Quan điểm dinh dưỡng khoa học</div>
         <!-- Nhiệm vụ 2: Dinh dưỡng cân đối -->
-        <div class="quiz-box" style="margin-top:12px;">
+        <div class="quiz-box">
           <div class="quiz-question">2. Về mặt dinh dưỡng khoa học, nhận định nào dưới đây là phù hợp nhất?</div>
           <div class="quiz-options" id="s06Quiz2Opts">
             <button class="quiz-opt" data-opt="A">
@@ -2182,6 +2425,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
           </div>
         </div>
 
+        <div class="workspace-section-label" style="margin-top:8px;"><i class="ti ti-git-fork"></i> Nhiệm vụ 3: Quan hệ cấu trúc - Vai trò cốt lõi</div>
         <!-- Nhiệm vụ 3: Trả lời câu hỏi trung tâm -->
         <div class="matching-box" style="margin-top:12px;">
           <div style="font-size:.92rem;font-weight:700;margin-bottom:8px;color:var(--ink);">

@@ -70,15 +70,17 @@
   --warning-bg: #F5E7CB;
   --info: #4E7F92;
   --info-bg: #DCE7EB;
-  --radius: 12px;
-  --radius-lg: 16px;
-  --radius-sm: 8px;
-  --shadow-sm: 0 2px 8px rgba(26, 26, 26, 0.06);
-  --shadow-md: 0 6px 18px rgba(26, 26, 26, 0.08);
+  --radius: 10px;
+  --radius-lg: 14px;
+  --radius-sm: 6px;
+  --shadow: 0 4px 14px rgba(45, 139, 111, 0.10);
+  --shadow-sm: 0 2px 6px rgba(26, 26, 26, 0.05);
+  --shadow-md: 0 8px 24px rgba(26, 26, 26, 0.12);
 }
 
 *, *::before, *::after {
   box-sizing: border-box;
+  min-width: 0;
   margin: 0;
   padding: 0;
 }
@@ -87,13 +89,21 @@ body {
   font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
   background-color: var(--cream);
   color: var(--ink);
-  line-height: 1.6;
-  font-size: 16px;
+  line-height: 1.65;
+  font-size: 16.5px;
   -webkit-font-smoothing: antialiased;
-  padding: 16px;
+  padding: 16px clamp(10px, 2.5vw, 24px) 32px;
   display: flex;
   justify-content: center;
-  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+.app {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 /* Modal Hide Override (Anti-Auto-Popup Rule) */
@@ -107,269 +117,267 @@ body {
   display: none !important;
 }
 
-.app {
-  width: 100%;
-  max-width: 1060px;
-  background: transparent;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+/* TIÊU ĐỀ BÀI TINH GỌN TRÊN NỀN KEM */
+.module-header {
+  padding: 4px 0 12px;
+  border-bottom: 1px solid var(--paper-line);
+}
+.module-title {
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-weight: 800;
+  color: var(--jade-dark);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
 }
 
-/* Stage Card Layout */
+/* BỐ CỤC HAI KHỐI CHUẨN V10 (TWO-BLOCK MODULE) */
 .stage {
-  background: #FFFFFF;
-  border: 1px solid var(--paper-line);
-  border-radius: var(--radius-lg);
-  padding: 28px 32px;
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  width: 100%;
   animation: fadeIn 0.3s ease;
 }
-
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.stage-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-  border-bottom: 1px solid var(--paper-line);
-  padding-bottom: 16px;
+.split-workspace {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 20px;
+  align-items: start;
+  width: 100%;
 }
 
-.stage-title-wrap {
+/* CỘT TRÁI: Lý thuyết & Hướng dẫn (Mở rộng tự nhiên, Zero nested scroll) */
+.visual-card {
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 16px;
+  position: sticky;
+  top: 16px;
 }
 
-.stage-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--jade-text);
-  background: var(--jade-pale);
-  padding: 4px 10px;
-  border-radius: 99px;
-  width: fit-content;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+/* CỘT PHẢI: Không gian tương tác & Thao tác */
+.workspace-card {
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 24px 22px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: sticky;
+  top: 16px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
-.stage-title {
-  font-size: 1.5rem;
+/* KHỐI LÝ THUYẾT & HƯỚNG DẪN DUY NHẤT */
+.theory-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.theory-title {
+  font-size: 1.35rem;
   font-weight: 800;
   color: var(--ink);
   line-height: 1.3;
 }
-
-.stage-step-indicator {
-  font-size: 0.85rem;
+.theory-block__title {
+  font-size: 0.96rem;
   font-weight: 700;
-  color: var(--ink-3);
-  background: var(--cream-2);
-  padding: 6px 14px;
-  border-radius: 99px;
-  border: 1px solid var(--paper-line-2);
-}
-
-.lead-text {
-  font-size: 1.05rem;
-  color: var(--ink-2);
-  line-height: 1.65;
-}
-
-/* Single Point of Instruction */
-.guide-box {
+  color: var(--jade-dark);
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: var(--jade-pale);
-  border-left: 4px solid var(--jade);
-  padding: 12px 18px;
-  border-radius: var(--radius-sm);
-  color: var(--jade-text);
-  font-size: 0.95rem;
-  font-weight: 600;
+  gap: 6px;
 }
-.guide-box i {
-  font-size: 1.3rem;
-  color: var(--jade-deep);
-  flex-shrink: 0;
+.theory-block__desc, .lead-text {
+  font-size: 0.93rem;
+  color: var(--ink-2);
+  line-height: 1.6;
 }
 
-/* Feedback Box */
-.inline-feedback {
-  padding: 14px 18px;
-  border-radius: var(--radius-sm);
-  font-size: 0.95rem;
-  font-weight: 500;
+.guide-box {
   display: flex;
   align-items: flex-start;
   gap: 10px;
+  background: var(--cream);
+  border-left: 3px solid var(--jade);
+  padding: 12px 14px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.91rem;
+  color: var(--jade-text);
   line-height: 1.55;
-  animation: slideUp 0.25s ease;
+  font-weight: 500;
 }
-.inline-feedback i {
-  font-size: 1.25rem;
-  margin-top: 1px;
+.guide-box i {
+  font-size: 1.15rem;
+  color: var(--jade-deep);
+  margin-top: 2px;
   flex-shrink: 0;
+}
+
+/* KHUNG PHẢN HỒI KẾT QUẢ INLINE */
+.inline-feedback {
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--cream-2);
+  border: 1px solid var(--paper-line-2);
+  color: var(--ink-2);
 }
 .inline-feedback.correct {
   background: var(--correct-bg);
-  border-left: 4px solid var(--correct);
+  border-color: var(--correct);
   color: var(--jade-text);
 }
 .inline-feedback.wrong {
   background: var(--wrong-bg);
-  border-left: 4px solid var(--wrong);
-  color: #782613;
+  border-color: var(--wrong);
+  color: #9C2A10;
 }
 .inline-feedback.info {
   background: var(--info-bg);
-  border-left: 4px solid var(--info);
-  color: #1E3A47;
+  border-color: var(--info);
+  color: #164E63;
+}
+.inline-feedback.warning {
+  background: var(--warning-bg);
+  border-color: var(--warning);
+  color: #78350F;
+}
+.inline-feedback i {
+  font-size: 1.15rem;
+  margin-top: 1px;
+  flex-shrink: 0;
 }
 
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Action Controls Row */
-.stage-actions {
+/* NÚT THAO TÁC & THANH ĐIỀU KHIỂN */
+.controls-row, .stage-actions {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 10px;
-  padding-top: 18px;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: nowrap;
+  margin-top: auto;
+  padding-top: 14px;
   border-top: 1px solid var(--paper-line);
-  flex-wrap: wrap;
 }
-
-@media (min-width: 641px) {
-  .stage-actions > button[id^="btnPrev"],
-  .stage-actions > #btnBackToStructure {
-    margin-right: auto;
-  }
+.btn-group-left, .btn-group-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
 }
-
+.controls-row .btn {
+  padding: 8px 14px;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 10px 20px;
-  border-radius: var(--radius-sm);
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: var(--radius);
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 700;
   cursor: pointer;
+  border: none;
   transition: all 0.2s ease;
   text-decoration: none;
-  border: none;
-  white-space: nowrap;
-  box-sizing: border-box;
 }
-
 .btn-primary {
   background: var(--jade);
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .btn-primary:hover:not(:disabled) {
   background: var(--jade-deep);
-  box-shadow: 0 4px 12px rgba(45, 139, 111, 0.25);
   transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(60, 165, 122, 0.25);
 }
-.btn-primary:disabled {
-  background: var(--cream-3);
-  color: var(--ink-faint);
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-}
-
 .btn-secondary {
-  background: #FFFFFF;
-  border: 1.5px solid var(--paper-line-2);
+  background: var(--cream-2);
   color: var(--ink-2);
+  border: 1px solid var(--paper-line);
 }
 .btn-secondary:hover:not(:disabled) {
-  background: var(--cream-2);
-  border-color: var(--ink-3);
+  background: var(--cream-3);
+  color: var(--ink);
 }
-
 .btn-outline {
-  background: #FFFFFF;
-  border: 1.5px solid var(--jade);
-  color: var(--jade-text);
+  background: transparent;
+  border: 1.5px solid var(--jade-deep);
+  color: var(--jade-deep);
 }
 .btn-outline:hover:not(:disabled) {
   background: var(--jade-pale);
 }
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
 
 /* ==========================================================================
-   STAGE 1 & 7: PHOTO TILE GRIDS (4:3 RATIO)
+   CSS TỪNG MÀN THỰC HÀNH (STAGES)
    ========================================================================== */
-.safety-grid, .cleanup-grid {
+
+/* LƯỚI THẺ AN TOÀN (MÀN 1) & THU DỌN (MÀN 7) */
+.safety-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  gap: 14px;
 }
-@media (max-width: 820px) {
-  .safety-grid, .cleanup-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.cleanup-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
 }
-@media (max-width: 520px) {
-  .safety-grid, .cleanup-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 .select-card {
   background: var(--cream);
   border: 2px solid var(--paper-line);
   border-radius: var(--radius);
-  overflow: hidden;
-  cursor: pointer;
+  padding: 10px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
   transition: all 0.2s ease;
   position: relative;
   user-select: none;
 }
 .select-card:hover {
+  border-color: var(--sage);
   transform: translateY(-2px);
-  border-color: var(--jade-soft);
   box-shadow: var(--shadow-sm);
 }
 .select-card.selected {
-  border-color: var(--jade-deep);
-  background: #FFFFFF;
-  box-shadow: 0 0 0 3px rgba(45, 139, 111, 0.2);
+  border-color: #E53E3E !important;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.25);
+  background: #FFF5F5;
 }
-.select-card.selected .select-indicator {
-  opacity: 1;
-  background: var(--jade);
-  color: #FFFFFF;
-}
-
 .select-card-img-wrap {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  background: #E2E8F0;
+  aspect-ratio: 4/3;
+  border-radius: var(--radius-sm);
   overflow: hidden;
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -380,54 +388,52 @@ body {
   object-fit: cover;
   display: block;
 }
-
+.select-card-img-wrap svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 .select-card-desc {
-  padding: 12px 14px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.88rem;
   color: var(--ink-2);
   line-height: 1.45;
-  flex-grow: 1;
+  font-weight: 500;
 }
-
 .select-indicator {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 26px;
-  height: 26px;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.9);
   border: 1.5px solid var(--paper-line-2);
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.4;
+  color: transparent;
+  font-size: 0.9rem;
   transition: all 0.2s;
-  font-size: 14px;
+}
+.select-card.selected .select-indicator {
+  background: #E53E3E;
+  border-color: #E53E3E;
+  color: #fff;
 }
 
-/* ==========================================================================
-   STAGE 2: STEP SORTING (PROCEDURE DRAG & DROP)
-   ========================================================================== */
+/* MÀN 2: SẮP XẾP QUY TRÌNH THÍ NGHIỆM */
 .procedure-slots {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
   margin-bottom: 14px;
 }
-@media (max-width: 768px) {
-  .procedure-slots {
-    grid-template-columns: 1fr;
-  }
-}
-
 .slot-box {
   background: var(--cream);
   border: 2px dashed var(--paper-line-2);
   border-radius: var(--radius);
-  padding: 16px;
-  min-height: 160px;
+  padding: 14px;
+  min-height: 110px;
   display: flex;
   flex-direction: column;
   transition: all 0.2s;
@@ -442,7 +448,7 @@ body {
   color: var(--jade-text);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -459,12 +465,11 @@ body {
   text-align: center;
   font-style: italic;
 }
-
 .procedure-tray {
   background: var(--cream-2);
   border: 1px solid var(--paper-line);
   border-radius: var(--radius);
-  padding: 16px;
+  padding: 14px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -479,19 +484,13 @@ body {
 .procedure-cards-pool {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  gap: 10px;
 }
-@media (max-width: 640px) {
-  .procedure-cards-pool {
-    grid-template-columns: 1fr;
-  }
-}
-
 .proc-card {
   background: #FFFFFF;
   border: 1.5px solid var(--paper-line);
   border-radius: var(--radius-sm);
-  padding: 14px 16px;
+  padding: 12px 14px;
   cursor: grab;
   user-select: none;
   display: flex;
@@ -509,49 +508,36 @@ body {
   background: #F4FDF8;
 }
 .proc-card-badge {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: var(--cream-2);
   color: var(--ink-2);
   font-weight: 800;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 .proc-card-text {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--ink);
   line-height: 1.45;
 }
 
-/* ==========================================================================
-   STAGE 3: MATERIALS SELECTION (14 OBJECTS)
-   ========================================================================== */
+/* MÀN 3: LỰA CHỌN VẬT TƯ (14 MỤC) */
 .materials-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
 }
-@media (max-width: 990px) {
-  .materials-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-@media (max-width: 600px) {
-  .materials-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 .mat-card {
   background: var(--cream);
   border: 2px solid var(--paper-line);
   border-radius: var(--radius);
-  padding: 10px;
+  padding: 10px 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -571,8 +557,8 @@ body {
   box-shadow: 0 0 0 3px rgba(60, 165, 122, 0.2);
 }
 .mat-card-svg-wrap {
-  width: 80px;
-  height: 90px;
+  width: 76px;
+  height: 86px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -582,7 +568,7 @@ body {
   max-height: 100%;
 }
 .mat-card-name {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   color: var(--ink);
   text-align: center;
@@ -609,20 +595,19 @@ body {
   border-color: var(--jade);
   color: #FFFFFF;
 }
-
 .selected-tray {
   background: var(--cream-2);
   border: 1px solid var(--paper-line);
   border-radius: var(--radius);
-  padding: 14px 18px;
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 .selected-tray-title {
   font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--ink-2);
+  font-weight: 800;
+  color: var(--ink-3);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -630,173 +615,134 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  min-height: 38px;
+  min-height: 32px;
   align-items: center;
 }
 .mat-chip {
+  background: #FFFFFF;
+  border: 1px solid var(--jade-soft);
+  color: var(--jade-text);
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-size: 0.8rem;
+  font-weight: 700;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #FFFFFF;
-  border: 1px solid var(--paper-line-2);
-  padding: 6px 12px;
-  border-radius: 99px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--ink);
-  box-shadow: var(--shadow-sm);
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.mat-chip:hover {
-  background: var(--wrong-bg);
-  border-color: var(--wrong);
-  color: var(--wrong);
 }
 
-/* ==========================================================================
-   STAGE 4, 5, 6: SIMULATION WORKBENCH (VIRTUAL LAB ARENA)
-   ========================================================================== */
+/* MÀN 4, 5, 6: KHÔNG GIAN THỰC HÀNH & MÔ PHỎNG SVG */
 .sim-arena {
-  background: var(--cream);
-  border: 1px solid var(--paper-line);
-  border-radius: var(--radius-lg);
-  padding: 24px;
+  background: #FFFFFF;
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 18px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
 }
-
 .sim-status-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #FFFFFF;
-  border: 1px solid var(--paper-line);
-  padding: 10px 18px;
-  border-radius: var(--radius-sm);
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--ink-2);
+  gap: 14px;
   flex-wrap: wrap;
-  gap: 10px;
+  background: var(--cream);
+  border: 1px solid var(--paper-line);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
 }
-
 .sim-dosing-metrics {
   display: flex;
+  gap: 10px;
   align-items: center;
-  gap: 14px;
 }
-
 .metric-pill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 14px;
-  border-radius: 99px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 99px;
   background: var(--cream-2);
+  color: var(--ink-3);
   border: 1px solid var(--paper-line-2);
-  color: var(--ink);
 }
 .metric-pill.target-ok {
-  background: var(--correct-bg);
-  border-color: var(--correct);
+  background: var(--jade-pale);
   color: var(--jade-text);
+  border-color: var(--jade);
 }
 .metric-pill.error {
   background: var(--wrong-bg);
-  border-color: var(--wrong);
   color: var(--wrong);
+  border-color: var(--wrong);
 }
-
 .sim-workbench {
-  min-height: 360px;
-  background: #FFFFFF;
-  border: 1px solid var(--paper-line);
-  border-radius: var(--radius);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-around;
-  padding: 24px 20px;
+  gap: 16px;
+  padding: 16px 10px 10px;
+  min-height: 280px;
+  background: linear-gradient(180deg, #FAF7F0 0%, #F0EADD 75%, #D6CCB6 75%, #D6CCB6 78%, #CBD5E1 78%, #E2E8F0 100%);
+  border-radius: var(--radius-sm);
   position: relative;
   overflow: hidden;
-  gap: 20px;
-  flex-wrap: wrap;
 }
-
 .bench-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  user-select: none;
-  transition: transform 0.2s ease;
-  position: relative;
-}
-
-.bench-item.interactive-action {
+  gap: 8px;
   cursor: pointer;
+  transition: transform 0.2s ease;
+  user-select: none;
+  z-index: 2;
 }
-.bench-item.interactive-action:hover {
+.bench-item:hover {
   transform: translateY(-4px);
 }
-.bench-item.interactive-action:active {
-  transform: scale(0.97);
-}
-
 .bench-item-label {
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-weight: 700;
   color: var(--ink-2);
-  background: var(--cream-2);
-  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 3px 8px;
   border-radius: 99px;
-  border: 1px solid var(--paper-line-2);
-  text-align: center;
+  border: 1px solid var(--paper-line);
+  box-shadow: var(--shadow-sm);
 }
-
 .test-tube-rig {
-  width: 140px;
-  height: 250px;
+  width: 100px;
+  height: 220px;
   position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: flex-end;
 }
-
 .test-tube-svg {
-  width: 100%;
-  height: 100%;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.06));
+  width: 76px;
+  height: 220px;
 }
 
-/* Shake Animation for Stage 5 */
+/* ANIMATION LẮC ỐNG NGHIỆM MÀN 5 */
 @keyframes shakeTubeAnim {
   0% { transform: translate(0, 0) rotate(0deg); }
-  15% { transform: translate(-8px, -4px) rotate(-6deg); }
-  30% { transform: translate(8px, 4px) rotate(6deg); }
-  45% { transform: translate(-8px, 4px) rotate(-5deg); }
-  60% { transform: translate(8px, -4px) rotate(5deg); }
-  75% { transform: translate(-4px, -2px) rotate(-3deg); }
-  90% { transform: translate(4px, 2px) rotate(3deg); }
+  20% { transform: translate(-4px, -2px) rotate(-3deg); }
+  40% { transform: translate(4px, 1px) rotate(3deg); }
+  60% { transform: translate(-3px, 2px) rotate(-2deg); }
+  80% { transform: translate(4px, 2px) rotate(3deg); }
   100% { transform: translate(0, 0) rotate(0deg); }
 }
-
 .shaking {
   animation: shakeTubeAnim 0.35s infinite ease-in-out;
 }
 
-/* Pouring Animation for Stage 6 */
-@keyframes pourStreamAnim {
-  0% { opacity: 0; stroke-dashoffset: 40; }
-  50% { opacity: 1; stroke-dashoffset: 0; }
-  100% { opacity: 0; }
-}
-
-/* Emulsion Scattering Optics Box */
+/* QUAN SÁT KÍNH LÚP & BẢNG SO SÁNH (MÀN 5 & 6) */
 .emulsion-zoom-card {
   display: flex;
   flex-direction: column;
@@ -830,8 +776,6 @@ body {
   letter-spacing: 0.5px;
   text-align: center;
 }
-
-/* Stage 6 Observation Table */
 .observation-table {
   width: 100%;
   border-collapse: collapse;
@@ -859,165 +803,115 @@ body {
   border-bottom: none;
 }
 
-/* ==========================================================================
-   STAGE 8: QA & REPORT DATA ACCUMULATION
-   ========================================================================== */
+/* MÀN 8: DỮ LIỆU BÁO CÁO & 4 CÂU HỎI TRẮC NGHIỆM */
 .qa-layout {
-  display: grid;
-  grid-template-columns: 340px 1fr;
-  gap: 24px;
-}
-@media (max-width: 860px) {
-  .qa-layout {
-    grid-template-columns: 1fr;
-  }
-}
-
-.report-summary-box {
-  background: #FFFFFF;
-  border: 1.5px solid var(--paper-line-2);
-  border-radius: var(--radius);
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  box-shadow: var(--shadow-sm);
-}
-
-.report-summary-title {
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: var(--jade-text);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  border-bottom: 1px solid var(--paper-line);
-  padding-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.report-field-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.report-field-label {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--ink-3);
-  text-transform: uppercase;
-}
-.report-field-value {
-  font-size: 0.88rem;
-  color: var(--ink);
-  background: var(--cream);
-  border: 1px solid var(--paper-line);
-  border-radius: var(--radius-sm);
-  padding: 8px 12px;
-  min-height: 38px;
-  line-height: 1.45;
-  font-weight: 500;
-}
-.report-field-value.filled {
-  background: var(--correct-bg);
-  border-color: var(--correct);
-  color: var(--jade-text);
-  font-weight: 600;
-}
-
-.qa-card {
-  background: var(--cream);
-  border: 1px solid var(--paper-line);
-  border-radius: var(--radius);
-  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
-
-.qa-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--ink);
-  line-height: 1.45;
-}
-
-.qa-options {
+.report-summary-box {
+  background: #FFFFFF;
+  border: 1.5px solid var(--jade-soft);
+  border-radius: var(--radius);
+  padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-
-.qa-opt {
+.report-summary-title {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--jade-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  gap: 6px;
+}
+.report-field-item {
+  background: var(--cream);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-size: 0.84rem;
+}
+.report-field-label {
+  font-weight: 700;
+  color: var(--ink-3);
+  margin-bottom: 2px;
+}
+.report-field-value {
+  font-weight: 600;
+  color: var(--ink);
+}
+.report-field-value.filled {
+  color: var(--jade-deep);
+  font-weight: 700;
+}
+.qa-card {
+  background: var(--cream);
+  border: 1.5px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
   gap: 12px;
+}
+.qa-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.qa-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.qa-opt {
   background: #FFFFFF;
   border: 1.5px solid var(--paper-line);
   border-radius: var(--radius-sm);
-  padding: 12px 14px;
+  padding: 10px 14px;
+  text-align: left;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink);
   cursor: pointer;
-  transition: all 0.2s;
-  font-size: 0.92rem;
-  line-height: 1.4;
-  color: var(--ink-2);
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-.qa-opt:hover:not(.locked) {
+.qa-opt:hover {
+  background: var(--cream-2);
   border-color: var(--jade-soft);
-  background: #FDFEFE;
 }
 .qa-opt.selected {
   border-color: var(--jade);
-  background: #F4FDF8;
-  color: var(--ink);
-  font-weight: 600;
-}
-.qa-opt.locked {
-  cursor: default;
+  background: var(--jade-pale);
+  color: var(--jade-text);
+  font-weight: 700;
 }
 .qa-opt-radio {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   border: 2px solid var(--paper-line-2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-shrink: 0;
-  margin-top: 1px;
+  transition: all 0.15s;
 }
 .qa-opt.selected .qa-opt-radio {
   border-color: var(--jade);
   background: var(--jade);
 }
-.qa-opt.selected .qa-opt-radio::after {
-  content: '';
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #FFFFFF;
-}
 
-/* ==========================================================================
-   STAGE 9: REPORT CREATION & MULTI-MODULE OVERVIEW
-   ========================================================================== */
+/* MÀN 9: XUẤT BÁO CÁO & KHỐI TỔNG HỢP BÀI 6 */
 .report-structure-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
-@media (max-width: 768px) {
-  .report-structure-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 480px) {
-  .report-structure-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 .structure-card {
   background: #FFFFFF;
   border: 1.5px solid var(--paper-line);
@@ -1029,7 +923,7 @@ body {
   gap: 10px;
   transition: all 0.2s;
   user-select: none;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--ink-2);
 }
@@ -1042,90 +936,73 @@ body {
   color: var(--jade-text);
   font-weight: 700;
 }
-
 .full-report-sheet {
   background: #FFFFFF;
   border: 1.5px solid var(--paper-line-2);
   border-radius: var(--radius);
-  padding: 28px 32px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   box-shadow: var(--shadow-sm);
-  animation: slideUp 0.3s ease;
 }
-
 .report-header-banner {
   text-align: center;
   border-bottom: 2px solid var(--paper-line);
-  padding-bottom: 16px;
+  padding-bottom: 12px;
 }
 .report-school-title {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--ink-3);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 .report-main-heading {
-  font-size: 1.35rem;
+  font-size: 1.15rem;
   font-weight: 800;
   color: var(--ink);
-  margin-top: 6px;
+  margin-top: 4px;
 }
-
 .report-section-block {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 .report-sec-title {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 800;
   color: var(--jade-text);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 .report-sec-content {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--ink);
   line-height: 1.6;
   background: var(--cream);
-  padding: 12px 16px;
+  padding: 10px 14px;
   border-radius: var(--radius-sm);
   border-left: 3px solid var(--jade-soft);
 }
-
-/* Four-Module Cards for Lesson 6 */
 .lesson6-modules-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
+  gap: 12px;
   margin-top: 10px;
 }
-@media (max-width: 900px) {
-  .lesson6-modules-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 500px) {
-  .lesson6-modules-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 .mod-summary-card {
   background: #FFFFFF;
   border: 1.5px solid var(--paper-line);
   border-radius: var(--radius-sm);
-  padding: 14px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   box-shadow: var(--shadow-sm);
 }
 .mod-summary-badge {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 800;
   color: var(--jade-text);
   background: var(--jade-pale);
@@ -1134,18 +1011,16 @@ body {
   width: fit-content;
 }
 .mod-summary-title {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--ink);
 }
 .mod-summary-reagent {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--ink-3);
 }
 
-/* ==========================================================================
-   CONGRATULATIONS MODAL & CONFETTI CANVAS
-   ========================================================================== */
+/* MODAL CHÚC MỪNG HOÀN THÀNH & TỔNG HỢP BÀI 6 */
 .congrats-overlay {
   position: fixed;
   inset: 0;
@@ -1156,55 +1031,53 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  animation: fadeIn 0.25s ease;
 }
-
 .congrats-modal {
   background: #FFFFFF;
   border-radius: var(--radius-lg);
   max-width: 520px;
   width: 100%;
-  padding: 36px 28px;
+  padding: 32px 28px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 18px;
+  gap: 16px;
   box-shadow: var(--shadow-md);
   position: relative;
-  animation: slideUp 0.3s ease;
+  animation: modalPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
+@keyframes modalPop {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
 .congrats-icon-wrap {
-  width: 76px;
-  height: 76px;
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
   background: #FEF3C7;
   color: #D97706;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 40px;
+  font-size: 36px;
   box-shadow: 0 4px 14px rgba(217, 119, 6, 0.25);
 }
-
 .congrats-title {
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   font-weight: 800;
   color: var(--ink);
 }
-
 .congrats-text {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: var(--ink-2);
   line-height: 1.6;
 }
-
 .congrats-actions {
   display: flex;
   gap: 12px;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 .congrats-actions .btn {
   flex: 1;
@@ -1217,195 +1090,83 @@ body {
   z-index: 10000;
 }
 
-/* ==========================================================================
-   RESPONSIVE MOBILE DESIGN SYSTEM (< 640px & < 420px)
-   ========================================================================== */
-@media (max-width: 640px) {
-  body {
-    padding: 8px 6px;
-  }
-  .app {
-    gap: 14px;
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-  .stage {
-    padding: 18px 12px;
-    gap: 16px;
-    border-radius: var(--radius);
-  }
-  .stage-head {
-    gap: 8px;
-    padding-bottom: 12px;
-  }
-  .stage-title {
-    font-size: 1.2rem;
-    line-height: 1.35;
-  }
-  .stage-step-indicator {
-    font-size: 0.78rem;
-    padding: 4px 10px;
-  }
-  .lead-text {
-    font-size: 0.92rem;
-    line-height: 1.55;
-  }
-  .guide-box {
-    padding: 10px 12px;
-    font-size: 0.88rem;
-    gap: 8px;
-  }
-  .guide-box i {
-    font-size: 1.15rem;
-  }
-
-  /* Stage Actions Mobile Layout: perfectly distributed, zero overflow, single line text */
-  .stage-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: stretch;
-    padding-top: 14px;
-    margin-top: 8px;
-  }
-  .stage-actions > button[id^="btnPrev"],
-  .stage-actions > #btnBackToStructure {
-    margin-right: 0;
-  }
-  .stage-actions .btn {
-    flex: 1 1 auto;
-    min-width: fit-content;
-    padding: 9px 8px;
-    font-size: 0.82rem;
-    gap: 5px;
-    white-space: nowrap;
-    justify-content: center;
-    text-align: center;
-  }
-  .stage-actions .btn i {
-    font-size: 0.95rem;
-  }
-
-  /* Procedure slots in Stage 2 */
-  .slot-box {
-    min-height: 90px;
-    padding: 10px;
-  }
-  .proc-card {
-    padding: 10px 12px;
-    gap: 8px;
-  }
-  .proc-card-text {
-    font-size: 0.85rem;
-  }
-
-  /* Workbench in Stages 4, 5, 6 */
-  .sim-arena {
-    padding: 14px 10px;
-    gap: 14px;
-  }
-  .sim-status-bar {
-    padding: 8px 12px;
-    font-size: 0.82rem;
-  }
-  .sim-dosing-metrics {
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .metric-pill {
-    padding: 4px 10px;
-    font-size: 0.78rem;
-  }
-  .sim-workbench {
-    padding: 16px 8px;
-    min-height: 280px;
-    gap: 14px;
-  }
-
-  /* Observation Table scroll on narrow screen */
-  .observation-table {
-    display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    width: 100%;
-  }
-  .observation-table th, .observation-table td {
-    padding: 8px 10px;
-    font-size: 0.82rem;
-    white-space: nowrap;
-  }
-
-  /* Report sheet in Stage 9 */
-  .full-report-sheet {
-    padding: 18px 14px;
+/* RESPONSIVE LAYOUT */
+@media (max-width: 980px) {
+  .split-workspace {
+    grid-template-columns: 1fr;
     gap: 16px;
   }
-  .report-main-heading {
-    font-size: 1.15rem;
+  .visual-card, .workspace-card {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
   }
+  .materials-grid { grid-template-columns: repeat(4, 1fr); }
+  .safety-grid { grid-template-columns: repeat(2, 1fr); }
+  .report-structure-grid { grid-template-columns: repeat(2, 1fr); }
+  .lesson6-modules-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 420px) {
-  body {
-    padding: 6px 4px;
+@media (max-width: 600px) {
+  .safety-grid, .cleanup-grid { grid-template-columns: 1fr; }
+  .procedure-slots, .procedure-cards-pool { grid-template-columns: 1fr; }
+  .materials-grid { grid-template-columns: repeat(2, 1fr); }
+  .report-structure-grid, .lesson6-modules-grid { grid-template-columns: 1fr; }
+  .controls-row, .stage-actions {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
   }
-  .stage {
-    padding: 14px 10px;
-  }
-  .stage-actions .btn {
-    padding: 8px 6px;
-    font-size: 0.78rem;
-    gap: 4px;
-  }
-  .stage-actions .btn i {
-    font-size: 0.9rem;
-  }
-  .materials-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .btn-group-left, .btn-group-right {
+    display: flex;
+    align-items: center;
     gap: 6px;
   }
-  .mat-card {
-    padding: 6px 4px;
-  }
-  .mat-card-svg-wrap {
-    width: 60px;
-    height: 70px;
-  }
-  .mat-card-name {
-    font-size: 0.72rem;
+  .controls-row .btn {
+    padding: 7px 11px;
+    font-size: 0.82rem;
   }
 }
-/* Tối ưu giao diện V10 cho Virtual Lab */
-.stage-badge, .stage-step-indicator { display: none !important; }
 </style>
 </head>
 <body>
 
-<canvas id="confettiCanvas"></canvas>
-
 <div class="app">
+
+  <!-- TIÊU ĐỀ BÀI TINH GỌN TRÊN NỀN KEM -->
+  <header class="module-header">
+    <h1 class="module-title">Nhận biết lipid bằng phép thử nhũ tương</h1>
+  </header>
 
   <!-- =====================================================================
        MÀN 1: AN TOÀN TRƯỚC THỰC HÀNH (SH10_B06_M04_C01)
        ===================================================================== -->
-  <section class="stage" id="stage-1" role="region" aria-label="Màn 1: An toàn khi sử dụng cồn và dụng cụ thủy tinh">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-shield-check"></i> Màn 1 · An toàn</span>
-        <h2 class="stage-title">An toàn khi sử dụng cồn và dụng cụ thủy tinh</h2>
+  <section class="stage" id="stage-1" role="region" aria-label="An toàn khi sử dụng cồn và dụng cụ thủy tinh">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết & Hướng dẫn duy nhất -->
+      <div class="visual-card">
+        <div class="theory-block">
+          <h2 class="theory-title">An toàn trước thực hành</h2>
+          <p class="lead-text">Cồn dễ bắt cháy và có thể gây kích ứng khi tiếp xúc trực tiếp. Trước khi thao tác, bạn cần nhận biết những hành động giúp hạn chế nguy cơ cháy, đổ vỡ và hóa chất tiếp xúc với cơ thể.</p>
+        </div>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Nhấn vào các hình thể hiện hành động an toàn. Hình đã chọn xuất hiện khung nổi bật. Bạn có thể nhấn lại để bỏ chọn.</span>
+        </div>
+
+        <div class="theory-block">
+          <div class="theory-block__title"><i class="ti ti-shield-check"></i> Nguyên tắc phòng thí nghiệm</div>
+          <div class="theory-block__desc">
+            Khi sử dụng cồn tuyệt đối, cần tránh hoàn toàn nguồn lửa, đọc kỹ nhãn hóa chất, bảo vệ mắt và luôn đặt dụng cụ thủy tinh ở vị trí chắc chắn.
+          </div>
+        </div>
       </div>
-      <span class="stage-step-indicator">Bước 1 / 9</span>
-    </div>
 
-    <p class="lead-text">Cồn dễ bắt cháy và có thể gây kích ứng khi tiếp xúc trực tiếp. Trước khi thao tác, bạn cần nhận biết những hành động giúp hạn chế nguy cơ cháy, đổ vỡ và hóa chất tiếp xúc với cơ thể.</p>
-
-    <div class="guide-box">
-      <i class="ti ti-hand-click"></i>
-      <span>Nhấn vào các hình thể hiện hành động an toàn. Hình đã chọn xuất hiện khung nổi bật. Bạn có thể nhấn lại để bỏ chọn.</span>
-    </div>
-
-    <div class="safety-grid" id="safetyGrid">
+      <!-- CỘT PHẢI: Vùng tương tác 6 hình & Điều khiển -->
+      <div class="workspace-card">
+        <div class="safety-grid" id="safetyGrid">
       <div class="select-card" data-id="1" data-correct="true" tabindex="0">
         <div class="select-card-img-wrap">
           <img src="https://lh3.googleusercontent.com/d/1OIf1iQ_3phyVSYsne0Oi4f-TsQp4s8np" alt="Trang phục và tóc gọn gàng, đeo kính bảo hộ">
@@ -1455,35 +1216,48 @@ body {
       </div>
     </div>
 
-    <div class="inline-feedback hidden" id="fbStage1"></div>
+        <div class="inline-feedback hidden" id="fbStage1"></div>
 
-    <div class="stage-actions">
-      <button class="btn btn-outline" id="btnCheckStage1"><i class="ti ti-check"></i> KIỂM TRA</button>
-      <button class="btn btn-secondary hidden" id="btnRetryStage1"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
-      <button class="btn btn-primary" id="btnNextStage1" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+        <div class="controls-row">
+          <div class="btn-group-left"></div>
+          <div class="btn-group-right">
+            <button class="btn btn-outline" id="btnCheckStage1"><i class="ti ti-check"></i> KIỂM TRA</button>
+            <button class="btn btn-secondary hidden" id="btnRetryStage1"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+            <button class="btn btn-primary hidden" id="btnNextStage1"><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- =====================================================================
-       MÀN 2: MỤC ĐÍCH VÀ QUY TRÌNH (SH10_B06_M04_C02)
+       MÀN 2: MỤC ĐÍCH VÀ QUY TRÌNH THÍ NGHIỆM (SH10_B06_M04_C02)
        ===================================================================== -->
-  <section class="stage hidden" id="stage-2" role="region" aria-label="Màn 2: Mục đích và quy trình thí nghiệm">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-list-numbers"></i> Màn 2 · Quy trình</span>
-        <h2 class="stage-title">Mục đích và quy trình thí nghiệm</h2>
+  <section class="stage hidden" id="stage-2" role="region" aria-label="Mục đích và quy trình thí nghiệm">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết & Hướng dẫn duy nhất -->
+      <div class="visual-card">
+        <div class="theory-block">
+          <h2 class="theory-title">Mục đích và quy trình thí nghiệm</h2>
+          <p class="lead-text">Dầu và nước không tạo thành dung dịch đồng nhất. Phép thử nhũ tương khai thác sự khác nhau về tính tan của lipid trong cồn và trong nước để tạo dấu hiệu quan sát được.</p>
+        </div>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Kéo hoặc chạm chọn bốn thẻ vào các ô BƯỚC 1 đến BƯỚC 4 theo đúng thứ tự. Thẻ đã đặt có thể kéo sang vị trí khác.</span>
+        </div>
+
+        <div class="theory-block">
+          <div class="theory-block__title"><i class="ti ti-bulb"></i> Nguyên lí quy trình</div>
+          <div class="theory-block__desc">
+            Trước hết hòa tan dầu trong cồn tuyệt đối để tạo dung dịch đồng nhất, sau đó mới rót hỗn hợp vào nước cất để quan sát sự tạo nhũ tương.
+          </div>
+        </div>
       </div>
-      <span class="stage-step-indicator">Bước 2 / 9</span>
-    </div>
 
-    <p class="lead-text">Dầu và nước không tạo thành dung dịch đồng nhất. Phép thử nhũ tương khai thác sự khác nhau về tính tan của lipid trong cồn và trong nước để tạo dấu hiệu quan sát được.</p>
-
-    <div class="guide-box">
-      <i class="ti ti-drag-drop"></i>
-      <span>Kéo bốn thẻ vào các ô BƯỚC 1 đến BƯỚC 4 theo đúng thứ tự. Thẻ đã đặt có thể kéo sang vị trí khác.</span>
-    </div>
-
-    <div class="procedure-slots" id="procedureSlots">
+      <!-- CỘT PHẢI: Khay thẻ sắp xếp & Điều khiển -->
+      <div class="workspace-card">
+        <div class="procedure-slots" id="procedureSlots">
       <div class="slot-box" data-step="1">
         <div class="slot-header"><i class="ti ti-circle-number-1"></i> BƯỚC 1</div>
         <div class="slot-content"><span class="slot-empty-text">Thả thẻ bước 1 vào đây</span></div>
@@ -1503,7 +1277,7 @@ body {
     </div>
 
     <div class="procedure-tray">
-      <div class="procedure-tray-label">Các bước quy trình cần sắp xếp:</div>
+      <div class="procedure-tray-label">Khay thẻ quy trình:</div>
       <div class="procedure-cards-pool" id="procedurePool">
         <div class="proc-card" draggable="true" data-code="C" id="cardC" tabindex="0">
           <div class="proc-card-badge">C</div>
@@ -1524,36 +1298,50 @@ body {
       </div>
     </div>
 
-    <div class="inline-feedback hidden" id="fbStage2"></div>
+        <div class="inline-feedback hidden" id="fbStage2"></div>
 
-    <div class="stage-actions">
-      <button class="btn btn-secondary" id="btnPrevStage2"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
-      <button class="btn btn-outline" id="btnCheckStage2"><i class="ti ti-check"></i> KIỂM TRA</button>
-      <button class="btn btn-secondary hidden" id="btnRetryStage2"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
-      <button class="btn btn-primary" id="btnNextStage2" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage2"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-outline" id="btnCheckStage2"><i class="ti ti-check"></i> KIỂM TRA</button>
+            <button class="btn btn-secondary hidden" id="btnRetryStage2"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+            <button class="btn btn-primary hidden" id="btnNextStage2"><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- =====================================================================
-       MÀN 3: LỰA CHỌN VẬT TƯ VÀ HÓA CHẤT (SH10_B06_M04_C03)
+       MÀN 3: LỰA CHỌN MẪU, DỤNG CỤ VÀ HÓA CHẤT (SH10_B06_M04_C03)
        ===================================================================== -->
-  <section class="stage hidden" id="stage-3" role="region" aria-label="Màn 3: Lựa chọn mẫu, dụng cụ và hóa chất">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-box"></i> Màn 3 · Chuẩn bị</span>
-        <h2 class="stage-title">Chuẩn bị thí nghiệm</h2>
+  <section class="stage hidden" id="stage-3" role="region" aria-label="Chuẩn bị thí nghiệm">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết & Hướng dẫn duy nhất -->
+      <div class="visual-card">
+        <div class="theory-block">
+          <h2 class="theory-title">Chuẩn bị thí nghiệm</h2>
+          <p class="lead-text">Dựa vào quy trình, bạn hãy lựa chọn mẫu, dụng cụ và hóa chất cần dùng để thực hiện phép thử nhũ tương.</p>
+        </div>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Nhấn vào từng vật cần dùng. Vật đã chọn sẽ chuyển vào khay chuẩn bị bên phải. Bạn có thể nhấn lại để bỏ chọn.</span>
+        </div>
+
+        <div class="theory-block">
+          <div class="theory-block__title"><i class="ti ti-list-check"></i> Danh mục yêu cầu (7 vật tư)</div>
+          <div class="theory-block__desc">
+            Gồm: Dầu ăn, Hai ống nghiệm, Giá ống nghiệm, Dụng cụ lấy giọt, Dụng cụ đong 5 mL, Cồn tuyệt đối, Nước cất. Không sử dụng nguồn lửa.
+          </div>
+        </div>
       </div>
-      <span class="stage-step-indicator">Bước 3 / 9</span>
-    </div>
 
-    <p class="lead-text">Dựa vào quy trình, bạn hãy lựa chọn mẫu, dụng cụ và hóa chất cần dùng để thực hiện phép thử nhũ tương.</p>
-
-    <div class="guide-box">
-      <i class="ti ti-hand-click"></i>
-      <span>Nhấn vào từng vật cần dùng. Vật đã chọn chuyển vào khay chuẩn bị. Bạn có thể nhấn lại để bỏ chọn.</span>
-    </div>
-
-    <div class="materials-grid" id="materialsGrid">
+      <!-- CỘT PHẢI: Kho vật tư & Khay chuẩn bị -->
+      <div class="workspace-card">
+        <div class="materials-grid" id="materialsGrid">
       <!-- 7 VẬT TƯ ĐÚNG -->
       <div class="mat-card" data-mat="oil" data-correct="true" tabindex="0">
         <div class="mat-card-svg-wrap">
@@ -1751,43 +1539,57 @@ body {
       </div>
     </div>
 
-    <div class="selected-tray">
+      <div class="selected-tray">
       <div class="selected-tray-title">Khay chuẩn bị thí nghiệm:</div>
       <div class="selected-tray-chips" id="selectedTrayChips">
         <span class="slot-empty-text">Chưa chọn vật tư nào</span>
       </div>
     </div>
 
-    <div class="inline-feedback hidden" id="fbStage3"></div>
+        <div class="inline-feedback hidden" id="fbStage3"></div>
 
-    <div class="stage-actions">
-      <button class="btn btn-secondary" id="btnPrevStage3"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
-      <button class="btn btn-outline" id="btnCheckStage3"><i class="ti ti-check"></i> KIỂM TRA</button>
-      <button class="btn btn-secondary hidden" id="btnRetryStage3"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
-      <button class="btn btn-primary" id="btnNextStage3" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage3"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-outline" id="btnCheckStage3"><i class="ti ti-check"></i> KIỂM TRA</button>
+            <button class="btn btn-secondary hidden" id="btnRetryStage3"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+            <button class="btn btn-primary hidden" id="btnNextStage3"><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- =====================================================================
        MÀN 4: CHUẨN BỊ DUNG DỊCH DẦU TRONG CỒN (SH10_B06_M04_C04)
        ===================================================================== -->
-  <section class="stage hidden" id="stage-4" role="region" aria-label="Màn 4: Chuẩn bị dung dịch dầu trong cồn">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-flask"></i> Màn 4 · Định lượng</span>
-        <h2 class="stage-title">Chuẩn bị dung dịch dầu trong cồn</h2>
+  <section class="stage hidden" id="stage-4" role="region" aria-label="Chuẩn bị dung dịch dầu trong cồn">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết & Hướng dẫn duy nhất -->
+      <div class="visual-card">
+        <div class="theory-block">
+          <h2 class="theory-title">Chuẩn bị dung dịch dầu trong cồn</h2>
+          <p class="lead-text">Cho đúng 2 giọt dầu ăn và 5 mL cồn tuyệt đối vào ống nghiệm thứ nhất (Ống 1) đặt trên giá.</p>
+        </div>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Lấy đúng 2 giọt dầu cho vào ống 1. Sau đó đong cồn tuyệt đối đến vạch 5 mL và chuyển toàn bộ lượng đã đong vào cùng ống.</span>
+        </div>
+
+        <div class="theory-block">
+          <div class="theory-block__title"><i class="ti ti-info-circle"></i> Lưu ý định lượng</div>
+          <div class="theory-block__desc">
+            Nếu lấy thừa lượng dầu hoặc đong sai thể tích cồn, hãy nhấn ĐẶT LẠI MÀN 4 để thực hiện lại từ đầu nhằm đảm bảo tỉ lệ chính xác.
+          </div>
+        </div>
       </div>
-      <span class="stage-step-indicator">Bước 4 / 9</span>
-    </div>
 
-    <p class="lead-text">Cho 2 giọt dầu ăn và 5 mL cồn tuyệt đối vào ống nghiệm thứ nhất.</p>
-
-    <div class="guide-box">
-      <i class="ti ti-hand-click"></i>
-      <span>Lấy đúng 2 giọt dầu cho vào ống 1. Sau đó đong cồn tuyệt đối đến vạch 5 mL và chuyển toàn bộ lượng đã đong vào cùng ống.</span>
-    </div>
-
-    <div class="sim-arena">
+      <!-- CỘT PHẢI: Bàn thực hành định lượng -->
+      <div class="workspace-card">
+        <div class="sim-arena">
       <div class="sim-status-bar">
         <span>Bàn thực hành định lượng mẫu</span>
         <div class="sim-dosing-metrics">
@@ -1855,36 +1657,50 @@ body {
       </div>
     </div>
 
-    <div class="inline-feedback hidden" id="fbStage4"></div>
+        <div class="inline-feedback hidden" id="fbStage4"></div>
 
-    <div class="stage-actions">
-      <button class="btn btn-secondary" id="btnPrevStage4"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
-      <button class="btn btn-outline hidden" id="btnResetStage4"><i class="ti ti-rotate-clockwise"></i> ĐẶT LẠI MÀN 4</button>
-      <button class="btn btn-primary" id="btnFinishStage4" disabled><i class="ti ti-check"></i> HOÀN THÀNH</button>
-      <button class="btn btn-primary hidden" id="btnNextStage4"><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage4"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-outline hidden" id="btnResetStage4"><i class="ti ti-rotate-clockwise"></i> ĐẶT LẠI MÀN 4</button>
+            <button class="btn btn-primary" id="btnFinishStage4" disabled><i class="ti ti-check"></i> HOÀN THÀNH</button>
+            <button class="btn btn-primary hidden" id="btnNextStage4"><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- =====================================================================
        MÀN 5: HÒA TAN DẦU TRONG CỒN (SH10_B06_M04_C05)
        ===================================================================== -->
-  <section class="stage hidden" id="stage-5" role="region" aria-label="Màn 5: Hòa tan dầu trong cồn">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-rotate-clockwise-2"></i> Màn 5 · Hòa tan</span>
-        <h2 class="stage-title">Hòa tan dầu trong cồn</h2>
+  <section class="stage hidden" id="stage-5" role="region" aria-label="Hòa tan dầu trong cồn">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết & Hướng dẫn duy nhất -->
+      <div class="visual-card">
+        <div class="theory-block">
+          <h2 class="theory-title">Hòa tan dầu trong cồn</h2>
+          <p class="lead-text">Lắc mạnh ống nghiệm cho đến khi không còn thấy giọt hoặc lớp dầu tách riêng trong cồn tuyệt đối.</p>
+        </div>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Nhấn LẮC ỐNG NGHIỆM. Hệ thống sẽ mô phỏng một chu kì lắc hoàn chỉnh. Quan sát vùng phóng đại để nhận biết khi dầu đã tan hết.</span>
+        </div>
+
+        <div class="theory-block">
+          <div class="theory-block__title"><i class="ti ti-flask"></i> Tính tan của lipid</div>
+          <div class="theory-block__desc">
+            Lipid là hợp chất kị nước nhưng tan tốt trong các dung môi hữu cơ không phân cực hoặc phân cực yếu như ethanol tuyệt đối.
+          </div>
+        </div>
       </div>
-      <span class="stage-step-indicator">Bước 5 / 9</span>
-    </div>
 
-    <p class="lead-text">Lắc mạnh ống nghiệm cho đến khi không còn thấy giọt hoặc lớp dầu tách riêng.</p>
-
-    <div class="guide-box">
-      <i class="ti ti-hand-click"></i>
-      <span>Nhấn LẮC ỐNG NGHIỆM. Hệ thống sẽ mô phỏng một chu kì lắc hoàn chỉnh. Quan sát vùng phóng đại để nhận biết khi dầu đã tan hết.</span>
-    </div>
-
-    <div class="sim-arena">
+      <!-- CỘT PHẢI: Bàn thực hành lắc ống nghiệm -->
+      <div class="workspace-card">
+        <div class="sim-arena">
       <div class="sim-status-bar">
         <span>Quan sát quá trình hòa tan của lipid trong cồn tuyệt đối</span>
         <div id="st5DissolveStatus" style="font-size:0.85rem; font-weight:700; color:var(--ink-3);">Trạng thái: Chưa lắc</div>
@@ -1947,36 +1763,50 @@ body {
       </div>
     </div>
 
-    <div class="inline-feedback hidden" id="fbStage5"></div>
+        <div class="inline-feedback hidden" id="fbStage5"></div>
 
-    <div class="stage-actions">
-      <button class="btn btn-secondary" id="btnPrevStage5"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
-      <button class="btn btn-outline" id="btnActionShake"><i class="ti ti-rotate-clockwise-2"></i> LẮC ỐNG NGHIỆM</button>
-      <button class="btn btn-primary" id="btnFinishStage5" disabled><i class="ti ti-check"></i> HOÀN THÀNH</button>
-      <button class="btn btn-primary hidden" id="btnNextStage5"><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage5"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-outline" id="btnActionShake"><i class="ti ti-rotate-clockwise-2"></i> LẮC ỐNG NGHIỆM</button>
+            <button class="btn btn-primary" id="btnFinishStage5" disabled><i class="ti ti-check"></i> HOÀN THÀNH</button>
+            <button class="btn btn-primary hidden" id="btnNextStage5"><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- =====================================================================
        MÀN 6: QUAN SÁT PHÉP THỬ NHŨ TƯƠNG (SH10_B06_M04_C06)
        ===================================================================== -->
-  <section class="stage hidden" id="stage-6" role="region" aria-label="Màn 6: Quan sát phép thử nhũ tương">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-eye"></i> Màn 6 · Kết quả</span>
-        <h2 class="stage-title">Quan sát phép thử nhũ tương</h2>
+  <section class="stage hidden" id="stage-6" role="region" aria-label="Quan sát phép thử nhũ tương">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết & Hướng dẫn duy nhất -->
+      <div class="visual-card">
+        <div class="theory-block">
+          <h2 class="theory-title">Quan sát phép thử nhũ tương</h2>
+          <p class="lead-text">Rót dung dịch dầu trong cồn sang ống nghiệm thứ hai chứa vài mL nước cất và quan sát sự thay đổi trạng thái và độ trong của hỗn hợp.</p>
+        </div>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Nhấn BẮT ĐẦU RÓT. Hệ thống sẽ mô phỏng trọn vẹn thao tác rót. Theo dõi vùng phóng đại và sự thay đổi độ trong của hỗn hợp.</span>
+        </div>
+
+        <div class="theory-block">
+          <div class="theory-block__title"><i class="ti ti-eye"></i> Hiện tượng nhũ tương</div>
+          <div class="theory-block__desc">
+            Khi cồn hòa vào nước, độ tan của lipid giảm đột ngột; lipid phân tán thành vô số giọt siêu nhỏ lơ lửng làm tán xạ ánh sáng, tạo màu trắng đục như sữa.
+          </div>
+        </div>
       </div>
-      <span class="stage-step-indicator">Bước 6 / 9</span>
-    </div>
 
-    <p class="lead-text">Rót dung dịch dầu trong cồn sang ống nghiệm thứ hai chứa vài mL nước cất và quan sát sự thay đổi.</p>
-
-    <div class="guide-box">
-      <i class="ti ti-hand-click"></i>
-      <span>Nhấn BẮT ĐẦU RÓT. Hệ thống sẽ mô phỏng trọn vẹn thao tác rót. Theo dõi vùng phóng đại và sự thay đổi độ trong của hỗn hợp.</span>
-    </div>
-
-    <div class="sim-arena">
+      <!-- CỘT PHẢI: Bàn thực hành rót & Kính phóng đại -->
+      <div class="workspace-card">
+        <div class="sim-arena">
       <div class="sim-workbench" id="benchStage6" style="min-height:380px;">
         <!-- Tube 1 (Pouring Tube) -->
         <div class="bench-item" id="tube1ContainerSt6" style="transition: transform 0.8s ease; transform-origin: top right;">
@@ -2081,36 +1911,50 @@ body {
       </table>
     </div>
 
-    <div class="inline-feedback hidden" id="fbStage6"></div>
+        <div class="inline-feedback hidden" id="fbStage6"></div>
 
-    <div class="stage-actions">
-      <button class="btn btn-secondary" id="btnPrevStage6"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
-      <button class="btn btn-outline" id="btnActionPour"><i class="ti ti-rotate-clockwise"></i> BẮT ĐẦU RÓT</button>
-      <button class="btn btn-primary" id="btnFinishStage6" disabled><i class="ti ti-check"></i> HOÀN THÀNH</button>
-      <button class="btn btn-primary hidden" id="btnNextStage6"><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage6"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-outline" id="btnActionPour"><i class="ti ti-rotate-clockwise"></i> BẮT ĐẦU RÓT</button>
+            <button class="btn btn-primary" id="btnFinishStage6" disabled><i class="ti ti-check"></i> HOÀN THÀNH</button>
+            <button class="btn btn-primary hidden" id="btnNextStage6"><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- =====================================================================
        MÀN 7: THU DỌN SAU THỰC HÀNH (SH10_B06_M04_C07)
        ===================================================================== -->
-  <section class="stage hidden" id="stage-7" role="region" aria-label="Màn 7: Thu dọn sau thực hành">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-trash"></i> Màn 7 · Thu dọn</span>
-        <h2 class="stage-title">Thu dọn sau thực hành</h2>
+  <section class="stage hidden" id="stage-7" role="region" aria-label="Thu dọn sau thực hành">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết & Hướng dẫn duy nhất -->
+      <div class="visual-card">
+        <div class="theory-block">
+          <h2 class="theory-title">Thu dọn sau thực hành</h2>
+          <p class="lead-text">Sau khi quan sát, cần xử lí hỗn hợp theo hướng dẫn, đậy nắp lọ cồn, vệ sinh dụng cụ và sắp xếp khu vực làm việc gọn gàng.</p>
+        </div>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Nhấn vào các hành động đúng để hoàn tất việc thu dọn. Hình đã chọn xuất hiện khung nổi bật.</span>
+        </div>
+
+        <div class="theory-block">
+          <div class="theory-block__title"><i class="ti ti-trash"></i> Xử lý chất thải</div>
+          <div class="theory-block__desc">
+            Hỗn hợp cồn và lipid phải chuyển vào bình thu gom chất thải hữu cơ có dán nhãn theo quy định, tuyệt đối không đổ trực tiếp vào bồn rửa thông thường.
+          </div>
+        </div>
       </div>
-      <span class="stage-step-indicator">Bước 7 / 9</span>
-    </div>
 
-    <p class="lead-text">Sau khi quan sát, cần xử lí hỗn hợp theo hướng dẫn, đậy nắp lọ cồn, vệ sinh dụng cụ và sắp xếp khu vực làm việc.</p>
-
-    <div class="guide-box">
-      <i class="ti ti-hand-click"></i>
-      <span>Nhấn vào các hành động đúng để hoàn tất việc thu dọn. Hình đã chọn xuất hiện khung nổi bật.</span>
-    </div>
-
-    <div class="cleanup-grid" id="cleanupGrid">
+      <!-- CỘT PHẢI: Lưới chọn thu dọn 8 hình -->
+      <div class="workspace-card">
+        <div class="cleanup-grid" id="cleanupGrid">
       <div class="select-card" data-id="1" data-correct="true" tabindex="0">
         <div class="select-card-img-wrap">
           <img src="https://lh3.googleusercontent.com/d/1W8R1TUp1bBgvXnUrZe8CPA5PANQ4I4Hh" alt="Đặt ống nghiệm vào giá">
@@ -2176,38 +2020,39 @@ body {
       </div>
     </div>
 
-    <div class="inline-feedback hidden" id="fbStage7"></div>
+        <div class="inline-feedback hidden" id="fbStage7"></div>
 
-    <div class="stage-actions">
-      <button class="btn btn-secondary" id="btnPrevStage7"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
-      <button class="btn btn-outline" id="btnCheckStage7"><i class="ti ti-check"></i> KIỂM TRA</button>
-      <button class="btn btn-secondary hidden" id="btnRetryStage7"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
-      <button class="btn btn-primary" id="btnNextStage7" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage7"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-outline" id="btnCheckStage7"><i class="ti ti-check"></i> KIỂM TRA</button>
+            <button class="btn btn-secondary hidden" id="btnRetryStage7"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+            <button class="btn btn-primary hidden" id="btnNextStage7"><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- =====================================================================
        MÀN 8: GIẢI THÍCH KẾT QUẢ VÀ TRẢ LỜI CÂU HỎI THU HOẠCH (SH10_B06_M04_C08)
        ===================================================================== -->
-  <section class="stage hidden" id="stage-8" role="region" aria-label="Màn 8: Giải thích kết quả">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-file-text"></i> Màn 8 · Dữ liệu báo cáo</span>
-        <h2 class="stage-title">Giải thích kết quả</h2>
-      </div>
-      <span class="stage-step-indicator">Bước 8 / 9</span>
-    </div>
+  <section class="stage hidden" id="stage-8" role="region" aria-label="Giải thích kết quả">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết, Ống nghiệm kết quả & Bảng dữ liệu tích lũy -->
+      <div class="visual-card">
+        <div class="theory-block">
+          <h2 class="theory-title">Giải thích kết quả</h2>
+          <p class="lead-text">Quan sát lại kết quả của chính thí nghiệm để xác định hiện tượng, giải thích nguyên lí và so sánh cách chuẩn bị các mẫu trong Bài 6.</p>
+        </div>
 
-    <p class="lead-text">Quan sát lại kết quả của chính thí nghiệm để xác định hiện tượng, giải thích nguyên lí và so sánh cách chuẩn bị các mẫu trong Bài 6.</p>
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Lần lượt chọn phương án đúng cho 4 câu hỏi dưới đây để điền tự động dữ liệu vào khung Báo cáo thực hành.</span>
+        </div>
 
-    <div class="guide-box">
-      <i class="ti ti-help"></i>
-      <span>Lần lượt chọn phương án đúng cho 4 câu hỏi dưới đây để điền tự động dữ liệu vào khung Báo cáo thực hành.</span>
-    </div>
-
-    <div class="qa-layout">
-      <!-- Left Column: Tube Visual & Accumulated Report Data -->
-      <div style="display:flex; flex-direction:column; gap:16px;">
         <div style="display:flex; flex-direction:column; align-items:center; background:#FFFFFF; border:1px solid var(--paper-line); border-radius:var(--radius); padding:16px;">
           <svg viewBox="0 0 90 220" style="width:100px; height:180px;">
             <rect x="10" y="150" width="70" height="60" rx="4" fill="#D97706" opacity="0.6"/>
@@ -2242,9 +2087,8 @@ body {
         </div>
       </div>
 
-      <!-- Right Column: 4 Progressive Questions -->
-      <div style="display:flex; flex-direction:column; gap:16px;">
-        <!-- Question 1 -->
+      <!-- CỘT PHẢI: 4 Câu hỏi tương tác tuần tự & Chốt kiến thức -->
+      <div class="workspace-card">
         <div class="qa-card" id="cardQ1">
           <div class="qa-title">Câu 1: Sau khi rót dung dịch dầu trong cồn vào nước cất, hỗn hợp thay đổi như thế nào?</div>
           <div class="qa-options">
@@ -2309,37 +2153,49 @@ body {
           <i class="ti ti-bulb"></i>
           <span>Phép thử nhũ tương nhận biết lipid dựa trên sự khác nhau về tính tan. Câu hỏi trung tâm được trả lời: khi cồn hòa vào nước, lipid giảm độ tan, tạo các giọt rất nhỏ phân tán và làm hỗn hợp trắng đục.</span>
         </div>
-      </div>
-    </div>
 
-    <div class="stage-actions">
-      <button class="btn btn-secondary" id="btnPrevStage8"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
-      <button class="btn btn-primary" id="btnNextStage8" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage8"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-primary" id="btnNextStage8" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- =====================================================================
        MÀN 9: HOÀN THÀNH BÁO CÁO THỰC HÀNH (SH10_B06_M04_C09)
        ===================================================================== -->
-  <section class="stage hidden" id="stage-9" role="region" aria-label="Màn 9: Hoàn thành báo cáo thực hành">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-certificate"></i> Màn 9 · Báo cáo</span>
-        <h2 class="stage-title">Hoàn thành báo cáo thực hành</h2>
+  <section class="stage hidden" id="stage-9" role="region" aria-label="Hoàn thành báo cáo thực hành">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết cấu trúc chuẩn & Hướng dẫn duy nhất -->
+      <div class="visual-card">
+        <div class="theory-block">
+          <h2 class="theory-title">Hoàn thành báo cáo thực hành</h2>
+          <p class="lead-text">Báo cáo cần phản ánh đúng mục đích, cách tiến hành, kết quả, giải thích, kết luận và câu hỏi thu hoạch. Dữ liệu bạn đã tạo ở các màn trước sẽ được dùng để lập báo cáo.</p>
+        </div>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Nhấn chọn những thành phần cần có của báo cáo theo SGK (5 mục), sau đó nhấn KIỂM TRA.</span>
+        </div>
+
+        <div class="theory-block">
+          <div class="theory-block__title"><i class="ti ti-file-text"></i> Cấu trúc chuẩn theo SGK</div>
+          <div class="theory-block__desc">
+            Gồm 5 phần: 1. Mục đích; 2. Cách tiến hành; 3. Kết quả; 4. Giải thích và kết luận; 5. Trả lời câu hỏi thu hoạch.
+          </div>
+        </div>
       </div>
-      <span class="stage-step-indicator">Bước 9 / 9</span>
-    </div>
 
-    <p class="lead-text">Báo cáo cần phản ánh đúng mục đích, cách tiến hành, kết quả, giải thích, kết luận và câu hỏi thu hoạch. Dữ liệu bạn đã tạo ở các màn trước sẽ được dùng để lập báo cáo.</p>
-
-    <!-- Part 1: Select 5 Standard Report Components -->
-    <div id="part1Report">
-      <div class="guide-box">
-        <i class="ti ti-checkbox"></i>
-        <span>Nhấn chọn những thành phần cần có của báo cáo, sau đó nhấn KIỂM TRA.</span>
-      </div>
-
-      <div class="report-structure-grid" id="structureGrid" style="margin-top:16px;">
+      <!-- CỘT PHẢI: Chọn 5 thành phần chuẩn & Xem báo cáo hoàn chỉnh Bài 6 -->
+      <div class="workspace-card">
+        <!-- Part 1: Select 5 Standard Report Components -->
+        <div id="part1Report">
+          <div class="report-structure-grid" id="structureGrid" style="margin-top:16px;">
         <div class="structure-card" data-key="purpose" data-correct="true" tabindex="0"><i class="ti ti-target"></i> Mục đích</div>
         <div class="structure-card" data-key="distractor1" data-correct="false" tabindex="0"><i class="ti ti-award"></i> Thành tích cá nhân</div>
         <div class="structure-card" data-key="procedure" data-correct="true" tabindex="0"><i class="ti ti-list-check"></i> Cách tiến hành</div>
@@ -2360,9 +2216,10 @@ body {
         <button class="btn btn-primary hidden" id="btnViewFinalReport"><i class="ti ti-file-text"></i> XEM BÁO CÁO</button>
       </div>
     </div>
+        </div>
 
-    <!-- Part 2: Render Completed Report & Four-Module Lesson 6 Hub -->
-    <div class="hidden" id="part2Report" style="display:flex; flex-direction:column; gap:24px;">
+        <!-- Part 2: Render Completed Report & Four-Module Lesson 6 Hub -->
+        <div class="hidden" id="part2Report" style="display:flex; flex-direction:column; gap:24px;">
       <!-- Generated Report Sheet -->
       <div class="full-report-sheet">
         <div class="report-header-banner">
@@ -2431,9 +2288,14 @@ body {
         </p>
       </div>
 
-      <div class="stage-actions">
-        <button class="btn btn-secondary" id="btnBackToStructure"><i class="ti ti-arrow-left"></i> CHỌN LẠI CẤU TRÚC</button>
-        <button class="btn btn-primary" id="btnFinishLesson6"><i class="ti ti-trophy"></i> HOÀN THÀNH BÀI 6</button>
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnBackToStructure"><i class="ti ti-arrow-left"></i> CHỌN LẠI CẤU TRÚC</button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-primary" id="btnFinishLesson6"><i class="ti ti-trophy"></i> HOÀN THÀNH BÀI 6</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -2471,14 +2333,8 @@ body {
       </div>
     </div>
 
-    <div style="display:flex; justify-content:flex-end; margin-top:12px;">
-      <button class="btn btn-primary" id="btnOkAllReports">Đã hiểu</button>
-    </div>
-  </div>
-</div>
-
 <!-- =======================================================================
-     MODAL CHÚC MỪNG HOÀN THÀNH V10 (#completionModal)
+     MODAL CHÚC MỪNG HOÀN THÀNH BÀI HỌC (#completionModal)
      ======================================================================= -->
 <div class="congrats-overlay hidden" id="completionModal" role="dialog" aria-modal="true" aria-label="Chúc mừng hoàn thành bài học">
   <div class="congrats-modal">
@@ -2494,7 +2350,8 @@ body {
       <button class="btn btn-primary" id="btnCloseModal"><i class="ti ti-check"></i> Đóng thông báo</button>
     </div>
   </div>
-</div>
+
+<canvas id="confettiCanvas"></canvas>
 
 <script>
 /* ==========================================================================
@@ -2585,6 +2442,7 @@ btnCheckStage1.addEventListener('click', () => {
     fbStage1.classList.remove('hidden');
     btnCheckStage1.classList.add('hidden');
     btnRetryStage1.classList.add('hidden');
+    btnNextStage1.classList.remove('hidden');
     btnNextStage1.disabled = false;
   } else {
     fbStage1.className = 'inline-feedback wrong';
@@ -2599,6 +2457,7 @@ btnRetryStage1.addEventListener('click', () => {
   safetyGrid.querySelectorAll('.select-card').forEach(c => c.classList.remove('selected'));
   fbStage1.classList.add('hidden');
   btnRetryStage1.classList.add('hidden');
+  btnCheckStage1.classList.remove('hidden');
   reportHeight();
 });
 
@@ -2707,6 +2566,7 @@ btnCheckStage2.addEventListener('click', () => {
     fbStage2.classList.remove('hidden');
     btnCheckStage2.classList.add('hidden');
     btnRetryStage2.classList.add('hidden');
+    btnNextStage2.classList.remove('hidden');
     btnNextStage2.disabled = false;
   } else {
     fbStage2.className = 'inline-feedback wrong';
@@ -2718,6 +2578,8 @@ btnCheckStage2.addEventListener('click', () => {
 });
 
 btnRetryStage2.addEventListener('click', () => {
+  btnRetryStage2.classList.add('hidden');
+  btnCheckStage2.classList.remove('hidden');
   procedureSlots.querySelectorAll('.slot-content').forEach((c, idx) => {
     const card = c.querySelector('.proc-card');
     if (card) procedurePool.appendChild(card);
@@ -2795,6 +2657,7 @@ btnCheckStage3.addEventListener('click', () => {
     fbStage3.classList.remove('hidden');
     btnCheckStage3.classList.add('hidden');
     btnRetryStage3.classList.add('hidden');
+    btnNextStage3.classList.remove('hidden');
     btnNextStage3.disabled = false;
   } else {
     fbStage3.className = 'inline-feedback wrong';
@@ -2806,6 +2669,8 @@ btnCheckStage3.addEventListener('click', () => {
 });
 
 btnRetryStage3.addEventListener('click', () => {
+  btnRetryStage3.classList.add('hidden');
+  btnCheckStage3.classList.remove('hidden');
   materialsGrid.querySelectorAll('.mat-card').forEach(c => c.classList.remove('selected'));
   updateTrayChips();
   fbStage3.classList.add('hidden');
@@ -3099,6 +2964,7 @@ btnCheckStage7.addEventListener('click', () => {
     fbStage7.classList.remove('hidden');
     btnCheckStage7.classList.add('hidden');
     btnRetryStage7.classList.add('hidden');
+    btnNextStage7.classList.remove('hidden');
     btnNextStage7.disabled = false;
   } else {
     fbStage7.className = 'inline-feedback wrong';
@@ -3110,6 +2976,8 @@ btnCheckStage7.addEventListener('click', () => {
 });
 
 btnRetryStage7.addEventListener('click', () => {
+  btnRetryStage7.classList.add('hidden');
+  btnCheckStage7.classList.remove('hidden');
   cleanupGrid.querySelectorAll('.select-card').forEach(c => c.classList.remove('selected'));
   fbStage7.classList.add('hidden');
   btnRetryStage7.classList.add('hidden');
@@ -3393,30 +3261,6 @@ function launchConfetti() {
   }
   animationFrame = requestAnimationFrame(render);
 }
-</script>
-<script>
-/* Loại nhãn tiến trình kỹ thuật khỏi phần chữ hiển thị cho người học. */
-(() => {
-  const clean = (root) => {
-    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
-    let node;
-    while ((node = walker.nextNode())) {
-      if (node.parentElement && node.parentElement.closest('script,style')) continue;
-      const next = node.nodeValue
-        .replace(/Tiếp tục sang Giai đoạn\s*\d+/gi, 'Tiếp tục')
-        .replace(/Hoàn thành Giai đoạn\s*\d+!?/gi, 'Hoàn thành!')
-        .replace(/Text chốt Stage\s*\d+\s*:/gi, 'Kết luận:')
-        .replace(/GIAI ĐOẠN\s*\d+\s*\/\s*\d+\s*[·—-漂-]*\s*/gi, '')
-        .replace(/Stage\s*\d+/gi, '')
-        .replace(/Màn\s*\d+\s*[·:]\s*/gi, '')
-        .replace(/Bước\s*\d+\s*\/\s*\d+/gi, '');
-      if (next !== node.nodeValue) node.nodeValue = next;
-    }
-  };
-  clean(document.body);
-  new MutationObserver((items) => items.forEach((item) => clean(item.target)))
-    .observe(document.body, { childList: true, subtree: true, characterData: true });
-})();
 </script>
 </body>
 </html>

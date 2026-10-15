@@ -69,15 +69,17 @@
   --warning-bg: #F5E7CB;
   --info: #4E7F92;
   --info-bg: #DCE7EB;
-  --radius: 12px;
-  --radius-lg: 16px;
-  --radius-sm: 8px;
-  --shadow-sm: 0 2px 8px rgba(26, 26, 26, 0.06);
-  --shadow-md: 0 6px 18px rgba(26, 26, 26, 0.08);
+  --radius: 10px;
+  --radius-lg: 14px;
+  --radius-sm: 6px;
+  --shadow: 0 4px 14px rgba(45, 139, 111, 0.10);
+  --shadow-sm: 0 2px 6px rgba(26, 26, 26, 0.05);
+  --shadow-md: 0 8px 24px rgba(26, 26, 26, 0.12);
 }
 
 *, *::before, *::after {
   box-sizing: border-box;
+  min-width: 0;
   margin: 0;
   padding: 0;
 }
@@ -86,12 +88,21 @@ body {
   font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
   background-color: var(--cream);
   color: var(--ink);
-  line-height: 1.6;
-  font-size: 16px;
+  line-height: 1.65;
+  font-size: 16.5px;
   -webkit-font-smoothing: antialiased;
-  padding: 16px;
+  padding: 16px clamp(10px, 2.5vw, 24px) 32px;
   display: flex;
   justify-content: center;
+  overflow-x: clip;
+}
+
+.app {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 /* Modal Hide Override (Anti-Auto-Popup Rule) */
@@ -104,270 +115,267 @@ body {
   display: none !important;
 }
 
-.app {
-  width: 100%;
-  max-width: 1060px;
-  background: transparent;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+/* TIÊU ĐỀ BÀI TINH GỌN TRÊN NỀN KEM */
+.module-header {
+  padding: 4px 0 12px;
+  border-bottom: 1px solid var(--paper-line);
+}
+.module-title {
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-weight: 800;
+  color: var(--jade-dark);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
 }
 
-/* Stage Card Layout */
+/* BỐ CỤC HAI KHỐI CHUẨN V10 (TWO-BLOCK MODULE) */
 .stage {
-  background: #FFFFFF;
-  border: 1px solid var(--paper-line);
-  border-radius: var(--radius-lg);
-  padding: 28px 32px;
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  width: 100%;
   animation: fadeIn 0.3s ease;
 }
-
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.stage-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-  border-bottom: 1px solid var(--paper-line);
-  padding-bottom: 16px;
+.split-workspace {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 20px;
+  align-items: start;
+  width: 100%;
 }
 
-.stage-title-wrap {
+/* CỘT TRÁI: Lý thuyết & Hướng dẫn (Mở rộng tự nhiên, Zero nested scroll) */
+.visual-card {
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 16px;
+  position: sticky;
+  top: 16px;
 }
 
-.stage-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--jade-text);
-  background: var(--jade-pale);
-  padding: 4px 10px;
-  border-radius: 99px;
-  width: fit-content;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+/* CỘT PHẢI: Không gian tương tác & Thao tác */
+.workspace-card {
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 24px 22px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: sticky;
+  top: 16px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
-.stage-title {
-  font-size: 1.5rem;
+/* KHỐI LÝ THUYẾT & HƯỚNG DẪN DUY NHẤT */
+.theory-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.theory-title {
+  font-size: 1.35rem;
   font-weight: 800;
   color: var(--ink);
   line-height: 1.3;
 }
-
-.stage-step-indicator {
-  font-size: 0.85rem;
+.theory-block__title {
+  font-size: 0.96rem;
   font-weight: 700;
-  color: var(--ink-3);
-  background: var(--cream-2);
-  padding: 6px 14px;
-  border-radius: 99px;
-  border: 1px solid var(--paper-line-2);
-}
-
-.lead-text {
-  font-size: 1.05rem;
-  color: var(--ink-2);
-  line-height: 1.65;
-}
-
-/* Single Point of Instruction */
-.guide-box {
+  color: var(--jade-dark);
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: var(--jade-pale);
-  border-left: 4px solid var(--jade);
-  padding: 12px 18px;
-  border-radius: var(--radius-sm);
-  color: var(--jade-text);
-  font-size: 0.95rem;
-  font-weight: 600;
+  gap: 6px;
 }
-.guide-box i {
-  font-size: 1.3rem;
-  color: var(--jade-deep);
-  flex-shrink: 0;
+.theory-block__desc, .lead-text {
+  font-size: 0.93rem;
+  color: var(--ink-2);
+  line-height: 1.6;
 }
 
-/* Feedback Box */
-.inline-feedback {
-  padding: 14px 18px;
-  border-radius: var(--radius-sm);
-  font-size: 0.95rem;
-  font-weight: 500;
+.guide-box {
   display: flex;
   align-items: flex-start;
   gap: 10px;
+  background: var(--cream);
+  border-left: 3px solid var(--jade);
+  padding: 12px 14px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.91rem;
+  color: var(--jade-text);
   line-height: 1.55;
-  animation: slideUp 0.25s ease;
+  font-weight: 500;
 }
-.inline-feedback i {
-  font-size: 1.25rem;
-  margin-top: 1px;
+.guide-box i {
+  font-size: 1.15rem;
+  color: var(--jade-deep);
+  margin-top: 2px;
   flex-shrink: 0;
+}
+
+/* KHUNG PHẢN HỒI KẾT QUẢ INLINE */
+.inline-feedback {
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--cream-2);
+  border: 1px solid var(--paper-line-2);
+  color: var(--ink-2);
 }
 .inline-feedback.correct {
   background: var(--correct-bg);
-  border-left: 4px solid var(--correct);
+  border-color: var(--correct);
   color: var(--jade-text);
 }
 .inline-feedback.wrong {
   background: var(--wrong-bg);
-  border-left: 4px solid var(--wrong);
-  color: #782613;
+  border-color: var(--wrong);
+  color: #9C2A10;
 }
 .inline-feedback.info {
   background: var(--info-bg);
-  border-left: 4px solid var(--info);
-  color: #1E3A47;
+  border-color: var(--info);
+  color: #164E63;
+}
+.inline-feedback.warning {
+  background: var(--warning-bg);
+  border-color: var(--warning);
+  color: #78350F;
+}
+.inline-feedback i {
+  font-size: 1.15rem;
+  margin-top: 1px;
+  flex-shrink: 0;
 }
 
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Action and Stage Controls Rows (strictly matching SH10_B01_M02) */
-.action-row {
+/* NÚT THAO TÁC & THANH ĐIỀU KHIỂN */
+.controls-row, .stage-actions {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 10px;
-  margin-top: 16px;
+  flex-wrap: nowrap;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--paper-line);
 }
-.action-row .btn {
-  flex: 0 0 auto;
-  min-width: 140px;
+.btn-group-left, .btn-group-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
 }
-.controls-row, .stage-actions {
-  display: flex !important;
-  align-items: center !important;
-  gap: 10px !important;
-  width: 100% !important;
-  margin-top: 20px !important;
-  padding: 14px 0 2px !important;
-  border-top: 1px solid var(--paper-line, #D6CCB6) !important;
-  overflow-x: auto !important;
-  scrollbar-width: none !important;
+.controls-row .btn {
+  padding: 8px 14px;
+  font-size: 0.88rem;
+  white-space: nowrap;
 }
-.controls-row::-webkit-scrollbar, .stage-actions::-webkit-scrollbar { display: none !important; }
-.controls-row .spacer, .stage-actions .spacer { flex: 1 !important; }
-.controls-row .btn, .stage-actions .btn { flex: 0 0 auto !important; white-space: nowrap !important; }
-
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 10px 22px;
-  border-radius: var(--radius-sm);
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: var(--radius);
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s ease;
   border: none;
-  outline: none;
+  transition: all 0.2s ease;
+  text-decoration: none;
 }
-
 .btn-primary {
   background: var(--jade);
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .btn-primary:hover:not(:disabled) {
   background: var(--jade-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(60, 165, 122, 0.25);
 }
-.btn-primary:disabled {
-  background: var(--cream-3);
-  color: var(--ink-faint);
-  cursor: not-allowed;
-}
-
 .btn-secondary {
-  background: transparent;
+  background: var(--cream-2);
   color: var(--ink-2);
-  border: 1.5px solid var(--paper-line-2);
+  border: 1px solid var(--paper-line);
 }
 .btn-secondary:hover:not(:disabled) {
-  background: var(--cream-2);
+  background: var(--cream-3);
   color: var(--ink);
 }
-
 .btn-outline {
   background: transparent;
-  color: var(--jade-text);
-  border: 1.5px solid var(--jade);
+  border: 1.5px solid var(--jade-deep);
+  color: var(--jade-deep);
 }
 .btn-outline:hover:not(:disabled) {
   background: var(--jade-pale);
 }
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
 
 /* ==========================================================================
-   STAGE 1 & 7: PHOTO TILE GRIDS (4:3 RATIO)
+   CSS TỪNG MÀN THỰC HÀNH (STAGES)
    ========================================================================== */
-.safety-grid, .cleanup-grid {
+
+/* LƯỚI THẺ AN TOÀN (MÀN 1) & THU DỌN (MÀN 7) */
+.safety-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  gap: 14px;
 }
-@media (max-width: 820px) {
-  .safety-grid, .cleanup-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.cleanup-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
 }
-@media (max-width: 520px) {
-  .safety-grid, .cleanup-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 .select-card {
   background: var(--cream);
   border: 2px solid var(--paper-line);
   border-radius: var(--radius);
-  overflow: hidden;
-  cursor: pointer;
+  padding: 10px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
   transition: all 0.2s ease;
   position: relative;
   user-select: none;
 }
 .select-card:hover {
+  border-color: var(--sage);
   transform: translateY(-2px);
-  border-color: var(--jade-soft);
   box-shadow: var(--shadow-sm);
 }
 .select-card.selected {
-  border-color: var(--jade-deep);
-  background: #FFFFFF;
-  box-shadow: 0 0 0 3px rgba(45, 139, 111, 0.2);
+  border-color: #E53E3E !important;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.25);
+  background: #FFF5F5;
 }
-.select-card.selected .select-indicator {
-  opacity: 1;
-  background: var(--jade);
-  color: #FFFFFF;
-}
-
 .select-card-img-wrap {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  background: #E2E8F0;
+  aspect-ratio: 4/3;
+  border-radius: var(--radius-sm);
   overflow: hidden;
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -383,54 +391,47 @@ body {
   height: 100%;
   display: block;
 }
-
 .select-card-desc {
-  padding: 12px 14px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.88rem;
   color: var(--ink-2);
   line-height: 1.45;
-  flex-grow: 1;
+  font-weight: 500;
 }
-
 .select-indicator {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 26px;
-  height: 26px;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.9);
   border: 1.5px solid var(--paper-line-2);
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.4;
+  color: transparent;
+  font-size: 0.9rem;
   transition: all 0.2s;
-  font-size: 14px;
+}
+.select-card.selected .select-indicator {
+  background: #E53E3E;
+  border-color: #E53E3E;
+  color: #fff;
 }
 
-/* ==========================================================================
-   STAGE 2: STEP SORTING (PROCEDURE DRAG & DROP)
-   ========================================================================== */
+/* MÀN 2: SẮP XẾP QUY TRÌNH THÍ NGHIỆM */
 .procedure-slots {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
   margin-bottom: 14px;
 }
-@media (max-width: 768px) {
-  .procedure-slots {
-    grid-template-columns: 1fr;
-  }
-}
-
 .slot-box {
   background: var(--cream);
   border: 2px dashed var(--paper-line-2);
   border-radius: var(--radius);
-  padding: 16px;
-  min-height: 160px;
+  padding: 14px;
+  min-height: 110px;
   display: flex;
   flex-direction: column;
   transition: all 0.2s;
@@ -445,7 +446,7 @@ body {
   color: var(--jade-text);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -462,12 +463,11 @@ body {
   text-align: center;
   font-style: italic;
 }
-
 .procedure-tray {
   background: var(--cream-2);
   border: 1px solid var(--paper-line);
   border-radius: var(--radius);
-  padding: 16px;
+  padding: 14px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -482,19 +482,13 @@ body {
 .procedure-cards-pool {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  gap: 10px;
 }
-@media (max-width: 640px) {
-  .procedure-cards-pool {
-    grid-template-columns: 1fr;
-  }
-}
-
 .proc-card {
   background: #FFFFFF;
   border: 1.5px solid var(--paper-line);
   border-radius: var(--radius-sm);
-  padding: 14px 16px;
+  padding: 12px 14px;
   cursor: grab;
   user-select: none;
   display: flex;
@@ -512,49 +506,36 @@ body {
   background: #F4FDF8;
 }
 .proc-card-badge {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: var(--cream-2);
   color: var(--ink-2);
   font-weight: 800;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 .proc-card-text {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--ink);
   line-height: 1.45;
 }
 
-/* ==========================================================================
-   STAGE 3: MATERIALS SELECTION (14 OBJECTS)
-   ========================================================================== */
+/* MÀN 3: LỰA CHỌN VẬT TƯ (14 MỤC) */
 .materials-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
 }
-@media (max-width: 990px) {
-  .materials-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-@media (max-width: 600px) {
-  .materials-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 .mat-card {
   background: var(--cream);
   border: 2px solid var(--paper-line);
   border-radius: var(--radius);
-  padding: 10px;
+  padding: 10px 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -574,8 +555,8 @@ body {
   box-shadow: 0 0 0 3px rgba(60, 165, 122, 0.2);
 }
 .mat-card-svg-wrap {
-  width: 80px;
-  height: 90px;
+  width: 76px;
+  height: 86px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -585,7 +566,7 @@ body {
   max-height: 100%;
 }
 .mat-card-name {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   color: var(--ink);
   text-align: center;
@@ -612,12 +593,11 @@ body {
   border-color: var(--jade);
   color: #FFFFFF;
 }
-
 .selected-tray {
   background: var(--cream-2);
   border: 1px solid var(--paper-line);
   border-radius: var(--radius);
-  padding: 14px 18px;
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -649,38 +629,36 @@ body {
   gap: 6px;
 }
 
-/* ==========================================================================
-   STAGE 4, 5, 6: BENCH SIMULATION ARENAS
-   ========================================================================== */
+/* MÀN 4, 5, 6: KHÔNG GIAN THỰC HÀNH & MÔ PHỎNG SVG */
 .sim-arena {
   background: #FFFFFF;
   border: 1.5px solid var(--paper-line);
   border-radius: var(--radius);
-  padding: 24px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   box-shadow: var(--shadow-sm);
 }
-
 .sim-status-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
   background: var(--cream);
   border: 1px solid var(--paper-line);
-  padding: 10px 16px;
+  padding: 8px 14px;
   border-radius: var(--radius-sm);
+  font-size: 0.88rem;
 }
 .sim-status-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.85rem;
+  gap: 6px;
+  font-size: 0.82rem;
   font-weight: 700;
-  padding: 6px 14px;
+  padding: 4px 12px;
   border-radius: 99px;
   background: var(--cream-2);
   color: var(--ink-3);
@@ -691,25 +669,23 @@ body {
   color: var(--jade-text);
   border-color: var(--jade);
 }
-
 .sim-workbench {
   display: flex;
   align-items: flex-end;
   justify-content: space-around;
-  gap: 20px;
-  padding: 20px 10px 10px;
-  min-height: 300px;
+  gap: 16px;
+  padding: 16px 10px 10px;
+  min-height: 280px;
   background: linear-gradient(180deg, #FAF7F0 0%, #F0EADD 75%, #D6CCB6 75%, #D6CCB6 78%, #CBD5E1 78%, #E2E8F0 100%);
   border-radius: var(--radius-sm);
   position: relative;
   overflow: hidden;
 }
-
 .bench-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   cursor: pointer;
   transition: transform 0.2s ease;
   user-select: none;
@@ -719,17 +695,15 @@ body {
   transform: translateY(-4px);
 }
 .bench-item-label {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   color: var(--ink-2);
   background: rgba(255, 255, 255, 0.9);
-  padding: 3px 10px;
+  padding: 3px 8px;
   border-radius: 99px;
   border: 1px solid var(--paper-line);
   box-shadow: var(--shadow-sm);
 }
-
-/* Interactive SVG Elements inside Workbench */
 .pipette-tool {
   width: 50px;
   height: 180px;
@@ -738,50 +712,43 @@ body {
 .pipette-tool.animated-pour {
   transform: translate(140px, -40px) rotate(-35deg);
 }
-
-/* Test Tube & Liquid SVG dynamic styles */
 .test-tube-rig {
-  width: 120px;
-  height: 240px;
+  width: 110px;
+  height: 230px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: flex-end;
 }
 .test-tube-svg {
-  width: 80px;
-  height: 230px;
+  width: 76px;
+  height: 220px;
 }
 
-/* Magnifier / Observation window in Stage 6 */
+/* QUAN SÁT & KÍNH LÚP (MÀN 6) */
 .obs-panel {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 16px;
   align-items: center;
-}
-@media (max-width: 680px) {
-  .obs-panel {
-    grid-template-columns: 1fr;
-  }
 }
 .magnifier-box {
   background: #FFFFFF;
-  border: 2px solid var(--paper-line);
+  border: 1.5px solid var(--paper-line);
   border-radius: var(--radius);
-  padding: 16px;
+  padding: 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   box-shadow: var(--shadow-sm);
 }
 .magnifier-circle {
-  width: 160px;
-  height: 160px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   border: 4px solid var(--jade-deep);
-  box-shadow: inset 0 0 16px rgba(0,0,0,0.1), 0 4px 12px rgba(45,139,111,0.2);
+  box-shadow: inset 0 0 14px rgba(0,0,0,0.1), 0 4px 10px rgba(45,139,111,0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -791,11 +758,10 @@ body {
   transition: background-color 1.5s ease;
 }
 .magnifier-label {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--ink-2);
 }
-
 .obs-table {
   width: 100%;
   border-collapse: collapse;
@@ -805,10 +771,10 @@ body {
   border: 1px solid var(--paper-line);
 }
 .obs-table th, .obs-table td {
-  padding: 12px 16px;
+  padding: 8px 12px;
   text-align: left;
   border-bottom: 1px solid var(--paper-line);
-  font-size: 0.9rem;
+  font-size: 0.84rem;
 }
 .obs-table th {
   background: var(--cream-2);
@@ -821,47 +787,33 @@ body {
   color: var(--ink);
 }
 
-/* ==========================================================================
-   STAGE 8: REPORT DATA ACCUMULATION (3 QUESTIONS)
-   ========================================================================== */
-.qa-grid {
-  display: grid;
-  grid-template-columns: 340px 1fr;
-  gap: 24px;
-}
-@media (max-width: 820px) {
-  .qa-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
+/* MÀN 8: DỮ LIỆU BÁO CÁO & 3 CÂU HỎI */
 .tube-focus-box {
   background: var(--cream);
   border: 1.5px solid var(--paper-line);
   border-radius: var(--radius);
-  padding: 20px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
 }
 .tube-focus-svg {
-  width: 140px;
-  height: 280px;
+  width: 80px;
+  height: 190px;
 }
-
 .report-summary-box {
   background: #FFFFFF;
   border: 1.5px solid var(--jade-soft);
   border-radius: var(--radius);
-  padding: 18px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 .report-summary-title {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 800;
   color: var(--jade-text);
   text-transform: uppercase;
@@ -874,13 +826,13 @@ body {
   background: var(--cream);
   border: 1px solid var(--paper-line);
   border-radius: var(--radius-sm);
-  padding: 10px 14px;
-  font-size: 0.85rem;
+  padding: 8px 12px;
+  font-size: 0.84rem;
 }
 .report-cell-label {
   font-weight: 700;
   color: var(--ink-3);
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 .report-cell-val {
   font-weight: 600;
@@ -890,18 +842,17 @@ body {
   color: var(--jade-deep);
   font-weight: 700;
 }
-
 .qa-card {
   background: var(--cream);
   border: 1.5px solid var(--paper-line);
   border-radius: var(--radius);
-  padding: 18px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 .qa-question {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--ink);
 }
@@ -917,7 +868,7 @@ body {
   padding: 10px 14px;
   text-align: left;
   font-family: inherit;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 500;
   color: var(--ink);
   cursor: pointer;
@@ -937,12 +888,12 @@ body {
   font-weight: 700;
 }
 .qa-option-letter {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: var(--cream-2);
   font-weight: 800;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -953,34 +904,31 @@ body {
   color: #FFFFFF;
 }
 
-/* ==========================================================================
-   STAGE 9: REPORT DISPLAY & MODAL
-   ========================================================================== */
+/* MÀN 9: XUẤT BÁO CÁO THỰC HÀNH HOÀN CHỈNH */
 .report-doc {
   background: #FFFFFF;
-  border: 2px solid var(--paper-line-2);
+  border: 1.5px solid var(--paper-line-2);
   border-radius: var(--radius);
-  padding: 32px 36px;
+  padding: 24px;
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  font-family: 'Be Vietnam Pro', serif;
+  gap: 16px;
 }
 .report-doc-head {
   text-align: center;
   border-bottom: 2px solid var(--paper-line);
-  padding-bottom: 16px;
+  padding-bottom: 12px;
 }
 .report-doc-title {
-  font-size: 1.35rem;
+  font-size: 1.15rem;
   font-weight: 800;
   color: var(--ink);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 .report-doc-sub {
-  font-size: 0.9rem;
+  font-size: 0.84rem;
   font-weight: 600;
   color: var(--ink-3);
   margin-top: 4px;
@@ -991,21 +939,21 @@ body {
   gap: 6px;
 }
 .report-sec-title {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 800;
   color: var(--jade-dark);
 }
 .report-sec-content {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--ink-2);
-  line-height: 1.65;
+  line-height: 1.6;
   background: var(--cream);
-  padding: 12px 16px;
+  padding: 10px 14px;
   border-radius: var(--radius-sm);
   border-left: 3px solid var(--jade);
 }
 
-/* Celebration Modal V10 */
+/* MODAL CHÚC MỪNG HOÀN THÀNH V10 */
 .congrats-overlay {
   position: fixed;
   inset: 0;
@@ -1020,8 +968,8 @@ body {
   background: #FFFFFF;
   border: 2px solid var(--jade);
   border-radius: var(--radius-lg);
-  padding: 36px 32px;
-  max-width: 520px;
+  padding: 32px 28px;
+  max-width: 500px;
   width: 100%;
   text-align: center;
   box-shadow: var(--shadow-md);
@@ -1036,30 +984,30 @@ body {
   to { opacity: 1; transform: scale(1); }
 }
 .congrats-icon-wrap {
-  width: 72px;
-  height: 72px;
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
   background: var(--accent-pale);
   color: var(--accent-deep);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 38px;
+  font-size: 34px;
 }
 .congrats-title {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   font-weight: 800;
   color: var(--ink);
 }
 .congrats-desc {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: var(--ink-2);
   line-height: 1.6;
 }
 .congrats-actions {
   display: flex;
   gap: 12px;
-  margin-top: 10px;
+  margin-top: 8px;
   width: 100%;
 }
 .congrats-actions .btn {
@@ -1072,36 +1020,82 @@ body {
   pointer-events: none;
   z-index: 10000;
 }
-/* Tối ưu giao diện V10 cho Virtual Lab */
-.stage-badge, .stage-step-indicator { display: none !important; }
+
+/* RESPONSIVE LAYOUT */
+@media (max-width: 980px) {
+  .split-workspace {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .visual-card, .workspace-card {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+  }
+  .materials-grid { grid-template-columns: repeat(4, 1fr); }
+  .safety-grid { grid-template-columns: repeat(2, 1fr); }
+  .obs-panel { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .safety-grid, .cleanup-grid { grid-template-columns: 1fr; }
+  .procedure-slots, .procedure-cards-pool { grid-template-columns: 1fr; }
+  .materials-grid { grid-template-columns: repeat(2, 1fr); }
+  .controls-row, .stage-actions {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-group-left, .btn-group-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .controls-row .btn {
+    padding: 7px 11px;
+    font-size: 0.82rem;
+  }
+}
 </style>
 </head>
 <body>
 
-<canvas id="confettiCanvas"></canvas>
-
 <div class="app">
+
+  <!-- TIÊU ĐỀ BÀI TINH GỌN TRÊN NỀN KEM -->
+  <header class="module-header">
+    <h1 class="module-title">Nhận biết protein bằng phản ứng Biuret</h1>
+  </header>
 
   <!-- =====================================================================
        MÀN 1: AN TOÀN TRƯỚC THỰC HÀNH (SH10_B06_M03_C01)
        ===================================================================== -->
-  <section class="stage" id="stage-1" role="region" aria-label="Màn 1: An toàn khi thực hiện phản ứng Biuret">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-shield-check"></i> Màn 1 · An toàn</span>
-        <h2 class="stage-title">An toàn khi thực hiện phản ứng Biuret</h2>
+  <section class="stage" id="stage-1" role="region" aria-label="An toàn trước khi thực hành">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết & Hướng dẫn duy nhất -->
+      <div class="visual-card">
+        <div class="theory-block">
+          <h2 class="theory-title">An toàn trước khi thực hành</h2>
+          <p class="lead-text">Quy tắc an toàn trong phòng thí nghiệm là điều kiện bắt buộc trước khi tiến hành mọi hoạt động thực hành.</p>
+        </div>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Nhấn vào từng hình ảnh để chọn các hành vi bảo đảm an toàn. Hình đã chọn xuất hiện khung đỏ. Bạn có thể nhấn lại để bỏ chọn.</span>
+        </div>
+
+        <div class="theory-block">
+          <div class="theory-block__title"><i class="ti ti-shield-check"></i> Nguyên tắc phòng thí nghiệm</div>
+          <div class="theory-block__desc">
+            Bảo đảm trang phục gọn gàng, đeo kính bảo hộ, đọc kỹ nhãn hóa chất và giữ bàn thực hành sạch sẽ. Tuyệt đối không ngửi trực tiếp hoặc nếm bất kỳ hóa chất nào.
+          </div>
+        </div>
       </div>
-      <span class="stage-step-indicator">Bước 1 / 9</span>
-    </div>
 
-    <p class="lead-text">Thí nghiệm sử dụng dung dịch NaOH và CuSO₄. Trước khi thao tác, bạn cần nhận biết những hành động giúp hạn chế hóa chất tiếp xúc với da, mắt và khu vực làm việc.</p>
-
-    <div class="guide-box">
-      <i class="ti ti-hand-click"></i>
-      <span>Nhấn vào các hình thể hiện hành động an toàn. Hình đã chọn xuất hiện khung nổi bật. Bạn có thể nhấn lại để bỏ chọn.</span>
-    </div>
-
-    <div class="safety-grid" id="safetyGrid">
+      <!-- CỘT PHẢI: Vùng tương tác 6 hình & Điều khiển -->
+      <div class="workspace-card">
+        <div class="safety-grid" id="safetyGrid">
       <div class="select-card" data-id="1" data-correct="true" tabindex="0">
         <div class="select-card-img-wrap">
           <img src="https://lh3.googleusercontent.com/d/1cI7zxd3s3MuBGJfyv6Y7AAGDeK54-NRC" alt="Trang phục và tóc gọn gàng, đeo kính bảo hộ">
@@ -1112,68 +1106,7 @@ body {
 
       <div class="select-card" data-id="2" data-correct="false" tabindex="0">
         <div class="select-card-img-wrap">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
-  <defs>
-    <linearGradient id="wallA01_2_a01_2" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#E2E8F0"/>
-      <stop offset="60%" stop-color="#CBD5E1"/>
-      <stop offset="100%" stop-color="#94A3B8"/>
-    </linearGradient>
-    <linearGradient id="benchA01_2_a01_2" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="30%" stop-color="#F8FAFC"/>
-      <stop offset="100%" stop-color="#E2E8F0"/>
-    </linearGradient>
-    <linearGradient id="spillNaoh_a01_2" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#F1F5F9" stop-opacity="0.9"/>
-      <stop offset="50%" stop-color="#CBD5E1" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#94A3B8" stop-opacity="0.8"/>
-    </linearGradient>
-  </defs>
-
-  <!-- Lab Background -->
-  <rect width="800" height="600" fill="url(#wallA01_2_a01_2)"/>
-  <line x1="0" y1="200" x2="800" y2="200" stroke="#CBD5E1" stroke-width="2"/>
-
-  <!-- Lab Bench -->
-  <rect x="0" y="320" width="800" height="280" fill="url(#benchA01_2_a01_2)"/>
-  <line x1="0" y1="320" x2="800" y2="320" stroke="#64748B" stroke-width="3"/>
-  <rect x="0" y="323" width="800" height="12" fill="#E2E8F0"/>
-
-  <!-- Tilted / Fallen Chemical Bottle (Lọ NaOH bị đổ) -->
-  <g transform="translate(180, 390) rotate(-65)">
-    <rect x="0" y="0" width="60" height="100" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="2.5"/>
-    <rect x="2" y="25" width="56" height="72" rx="6" fill="#E2E8F0" opacity="0.6"/>
-    <rect x="15" y="-14" width="30" height="16" fill="#CBD5E1" stroke="#475569" stroke-width="2"/>
-    <rect x="10" y="-24" width="40" height="12" rx="3" fill="#334155"/>
-    <!-- Blank label -->
-    <rect x="8" y="35" width="44" height="40" rx="3" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
-  </g>
-
-  <!-- Spilled pool of alkaline liquid (NaOH đổ loang trên mặt bàn) -->
-  <ellipse cx="380" cy="430" rx="140" ry="45" fill="url(#spillNaoh_a01_2)" stroke="#94A3B8" stroke-width="2"/>
-  <ellipse cx="420" cy="438" rx="70" ry="22" fill="#FFFFFF" opacity="0.4"/>
-  <ellipse cx="280" cy="425" rx="35" ry="14" fill="url(#spillNaoh_a01_2)"/>
-
-  <!-- Bare Hand (Tay trần không găng) reaching down to wipe/touch spilled caustic soda -->
-  <!-- Arm without sleeve / bare forearm -->
-  <path d="M 680 180 Q 560 290 440 370" stroke="#FBCFE8" stroke-width="50" stroke-linecap="round" fill="none" opacity="0.4"/>
-  <path d="M 680 180 Q 560 290 440 370" stroke="#F5D0C5" stroke-width="46" stroke-linecap="round" fill="none"/>
-  <!-- Bare hand & fingers touching liquid directly (CẤM TAY TRẦN CHẠM KIỀM) -->
-  <ellipse cx="430" cy="385" rx="28" ry="22" fill="#F5D0C5" stroke="#E2A696" stroke-width="2"/>
-  <!-- Fingers in puddle -->
-  <path d="M 420 395 L 390 422" stroke="#F5D0C5" stroke-width="14" stroke-linecap="round"/>
-  <path d="M 432 400 L 415 432" stroke="#F5D0C5" stroke-width="13" stroke-linecap="round"/>
-  <path d="M 445 398 L 440 435" stroke="#F5D0C5" stroke-width="12" stroke-linecap="round"/>
-  <path d="M 456 392 L 462 425" stroke="#F5D0C5" stroke-width="11" stroke-linecap="round"/>
-
-  <!-- Splash ripples around bare fingers -->
-  <path d="M 375 425 Q 410 438 450 428" stroke="#38BDF8" stroke-width="2" fill="none" opacity="0.7"/>
-  <path d="M 365 432 Q 410 448 465 435" stroke="#38BDF8" stroke-width="1.5" fill="none" opacity="0.5"/>
-
-  <!-- Reagent rack in safe background -->
-  <rect x="40" y="240" width="100" height="80" rx="4" fill="#D97706" opacity="0.5"/>
-</svg>
+          <img src="images/SH10-B06-M03-A01-02.jpg" alt="Dùng tay trần lau ngay dung dịch NaOH bị đổ">
         </div>
         <div class="select-card-desc">2. Dùng tay trần lau ngay dung dịch NaOH bị đổ.</div>
         <div class="select-indicator"><i class="ti ti-check"></i></div>
@@ -1197,67 +1130,7 @@ body {
 
       <div class="select-card" data-id="5" data-correct="true" tabindex="0">
         <div class="select-card-img-wrap">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
-  <defs>
-    <linearGradient id="wallA01_5_a01_5" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#E2E8F0"/>
-      <stop offset="60%" stop-color="#CBD5E1"/>
-      <stop offset="100%" stop-color="#94A3B8"/>
-    </linearGradient>
-    <linearGradient id="benchA01_5_a01_5" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="30%" stop-color="#F8FAFC"/>
-      <stop offset="100%" stop-color="#E2E8F0"/>
-    </linearGradient>
-  </defs>
-
-  <!-- Lab Background -->
-  <rect width="800" height="600" fill="url(#wallA01_5_a01_5)"/>
-  <line x1="0" y1="200" x2="800" y2="200" stroke="#CBD5E1" stroke-width="2"/>
-
-  <!-- Lab Bench -->
-  <rect x="0" y="320" width="800" height="280" fill="url(#benchA01_5_a01_5)"/>
-  <line x1="0" y1="320" x2="800" y2="320" stroke="#64748B" stroke-width="3"/>
-  <rect x="0" y="323" width="800" height="12" fill="#E2E8F0"/>
-
-  <!-- Test tube in rack on bench -->
-  <rect x="180" y="360" width="90" height="70" rx="3" fill="#D97706" stroke="#92400E" stroke-width="2"/>
-  <rect x="215" y="270" width="22" height="100" rx="8" fill="rgba(241, 245, 249, 0.8)" stroke="#64748B" stroke-width="2"/>
-
-  <!-- Chemical Bottle resting on bench safely -->
-  <rect x="480" y="310" width="70" height="110" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="2.5"/>
-  <rect x="485" y="340" width="60" height="75" rx="5" fill="#E2E8F0" opacity="0.5"/>
-  <rect x="500" y="294" width="30" height="18" fill="#CBD5E1" stroke="#475569" stroke-width="2"/>
-  <rect x="495" y="280" width="40" height="16" rx="3" fill="#334155"/>
-  <!-- Label -->
-  <rect x="488" y="350" width="54" height="42" rx="3" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
-
-  <!-- Student Gloved Arms holding measuring cylinder / pipette transferring chemical -->
-  <!-- Left arm holding measuring cylinder -->
-  <path d="M 120 540 Q 220 450 320 410" stroke="#FFFFFF" stroke-width="48" stroke-linecap="round" fill="none"/>
-  <path d="M 120 540 Q 220 450 320 410" stroke="#CBD5E1" stroke-width="52" stroke-linecap="round" fill="none" opacity="0.4"/>
-  <!-- Gloved hand holding cylinder body -->
-  <ellipse cx="325" cy="405" rx="22" ry="18" fill="#38BDF8" stroke="#0284C7" stroke-width="2"/>
-
-  <!-- Measuring Cylinder held upright at eye level -->
-  <polygon points="305,470 345,470 350,465 340,460 310,460 300,465" fill="#E2E8F0" stroke="#64748B" stroke-width="1.5"/>
-  <rect x="314" y="280" width="22" height="180" fill="rgba(248, 250, 252, 0.85)" stroke="#64748B" stroke-width="2"/>
-  <!-- 5 mL level indicated -->
-  <line x1="314" y1="360" x2="336" y2="360" stroke="#0284C7" stroke-width="2"/>
-  <!-- Liquid in cylinder -->
-  <rect x="316" y="360" width="18" height="98" fill="#BAE6FD" opacity="0.6"/>
-
-  <!-- Right arm holding pipette transferring liquid with control -->
-  <path d="M 640 540 Q 520 410 410 320" stroke="#FFFFFF" stroke-width="48" stroke-linecap="round" fill="none"/>
-  <path d="M 640 540 Q 520 410 410 320" stroke="#CBD5E1" stroke-width="52" stroke-linecap="round" fill="none" opacity="0.4"/>
-  <!-- Gloved hand squeezing pipette bulb -->
-  <ellipse cx="405" cy="315" rx="22" ry="18" fill="#38BDF8" stroke="#0284C7" stroke-width="2"/>
-  <ellipse cx="405" cy="275" rx="14" ry="18" fill="#EF4444" stroke="#B91C1C" stroke-width="2"/>
-  <!-- Pipette stem aiming into cylinder without touching edges -->
-  <rect x="400" y="290" width="10" height="75" fill="#F8FAFC" stroke="#64748B" stroke-width="1.5"/>
-  <path d="M 400 365 L 403 385 L 407 385 L 410 365 Z" fill="#F8FAFC" stroke="#64748B" stroke-width="1.5"/>
-  <circle cx="405" cy="392" r="3" fill="#38BDF8"/>
-</svg>
+          <img src="images/SH10-B06-M03-A01-05.jpg" alt="Dùng dụng cụ lấy hóa chất, không chạm trực tiếp">
         </div>
         <div class="select-card-desc">5. Dùng dụng cụ lấy hóa chất, không chạm trực tiếp.</div>
         <div class="select-indicator"><i class="ti ti-check"></i></div>
@@ -1272,35 +1145,48 @@ body {
       </div>
     </div>
 
-    <div class="inline-feedback hidden" id="fbStage1"></div>
+        <div class="inline-feedback hidden" id="fbStage1"></div>
 
-    <div class="stage-actions">
-      <button class="btn btn-outline" id="btnCheckStage1"><i class="ti ti-check"></i> KIỂM TRA</button>
-      <button class="btn btn-secondary hidden" id="btnRetryStage1"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
-      <button class="btn btn-primary" id="btnNextStage1" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+        <div class="controls-row">
+          <div class="btn-group-left"></div>
+          <div class="btn-group-right">
+            <button class="btn btn-outline" id="btnCheckStage1"><i class="ti ti-check"></i> KIỂM TRA</button>
+            <button class="btn btn-secondary hidden" id="btnRetryStage1"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+            <button class="btn btn-primary hidden" id="btnNextStage1"><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- =====================================================================
-       MÀN 2: MỤC ĐÍCH VÀ QUY TRÌNH (SH10_B06_M03_C02)
+       MÀN 2: MỤC ĐÍCH VÀ QUY TRÌNH THÍ NGHIỆM (SH10_B06_M03_C02)
        ===================================================================== -->
-  <section class="stage hidden" id="stage-2" role="region" aria-label="Màn 2: Mục đích và quy trình thí nghiệm">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-list-numbers"></i> Màn 2 · Quy trình</span>
-        <h2 class="stage-title">Mục đích và quy trình thí nghiệm</h2>
+  <section class="stage hidden" id="stage-2" role="region" aria-label="Mục đích và quy trình thí nghiệm">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết & Hướng dẫn duy nhất -->
+      <div class="visual-card">
+        <div class="theory-block">
+          <h2 class="theory-title">Mục đích và quy trình thí nghiệm</h2>
+          <p class="lead-text">Protein trong mẫu không thể nhận biết chỉ bằng mắt thường qua màu sắc ban đầu. Phản ứng Biuret sử dụng thuốc thử kiềm hóa và muối đồng để tạo phức chất có màu đặc trưng.</p>
+        </div>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Kéo hoặc chạm chọn bốn thẻ vào các ô BƯỚC 1 đến BƯỚC 4 theo đúng thứ tự. Thẻ đã đặt có thể chọn lại để chuyển vị trí.</span>
+        </div>
+
+        <div class="theory-block">
+          <div class="theory-block__title"><i class="ti ti-bulb"></i> Quy tắc tiến hành</div>
+          <div class="theory-block__desc">
+            Luôn kiềm hóa mẫu trước bằng dung dịch NaOH loãng, sau đó mới cho lượng nhỏ CuSO₄ 1% để tránh kết tủa đồng hydroxide không mong muốn.
+          </div>
+        </div>
       </div>
-      <span class="stage-step-indicator">Bước 2 / 9</span>
-    </div>
 
-    <p class="lead-text">Protein trong mẫu không thể được nhận biết chỉ bằng màu sắc ban đầu. Trong thí nghiệm này, phản ứng Biuret làm xuất hiện dấu hiệu màu để nhận biết protein.</p>
-
-    <div class="guide-box">
-      <i class="ti ti-arrows-sort"></i>
-      <span>Kéo hoặc chạm chọn bốn thẻ vào các ô BƯỚC 1 đến BƯỚC 4 theo đúng thứ tự. Thẻ đã đặt có thể chọn lại để chuyển vị trí.</span>
-    </div>
-
-    <div class="procedure-slots" id="procSlots">
+      <!-- CỘT PHẢI: Khay thẻ sắp xếp & Điều khiển -->
+      <div class="workspace-card">
+        <div class="procedure-slots" id="procSlots">
       <div class="slot-box" data-step="1">
         <div class="slot-header"><i class="ti ti-circle-number-1"></i> BƯỚC 1</div>
         <div class="slot-content"><span class="slot-empty-text">Thả thẻ bước 1 vào đây</span></div>
@@ -1341,36 +1227,50 @@ body {
       </div>
     </div>
 
-    <div class="inline-feedback hidden" id="fbStage2"></div>
+        <div class="inline-feedback hidden" id="fbStage2"></div>
 
-    <div class="stage-actions">
-      <button class="btn btn-secondary" id="btnPrevStage2"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
-      <button class="btn btn-outline" id="btnCheckStage2"><i class="ti ti-check"></i> KIỂM TRA</button>
-      <button class="btn btn-secondary hidden" id="btnRetryStage2"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
-      <button class="btn btn-primary" id="btnNextStage2" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage2"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-outline" id="btnCheckStage2"><i class="ti ti-check"></i> KIỂM TRA</button>
+            <button class="btn btn-secondary hidden" id="btnRetryStage2"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+            <button class="btn btn-primary hidden" id="btnNextStage2"><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- =====================================================================
        MÀN 3: LỰA CHỌN MẪU, DỤNG CỤ VÀ HÓA CHẤT (SH10_B06_M03_C03)
        ===================================================================== -->
-  <section class="stage hidden" id="stage-3" role="region" aria-label="Màn 3: Lựa chọn mẫu, dụng cụ và hóa chất">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-box-seam"></i> Màn 3 · Chuẩn bị</span>
-        <h2 class="stage-title">Chuẩn bị thí nghiệm</h2>
+  <section class="stage hidden" id="stage-3" role="region" aria-label="Chuẩn bị thí nghiệm">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết & Hướng dẫn duy nhất -->
+      <div class="visual-card">
+        <div class="theory-block">
+          <h2 class="theory-title">Chuẩn bị thí nghiệm</h2>
+          <p class="lead-text">Dựa vào quy trình đã xác lập, lựa chọn đúng các mẫu vật, dụng cụ đo lường và hóa chất cần dùng cho phản ứng Biuret.</p>
+        </div>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Nhấn vào từng vật cần dùng. Vật đã chọn sẽ chuyển vào khay chuẩn bị bên phải. Bạn có thể nhấn lại để bỏ chọn.</span>
+        </div>
+
+        <div class="theory-block">
+          <div class="theory-block__title"><i class="ti ti-list-check"></i> Danh mục yêu cầu (7 vật tư)</div>
+          <div class="theory-block__desc">
+            Gồm: Ống nghiệm, Giá ống nghiệm, Pipet lấy mẫu, Cốc chứa mẫu Albumin 1%, Ống đong 5 mL, Lọ NaOH loãng, Lọ CuSO₄ 1%.
+          </div>
+        </div>
       </div>
-      <span class="stage-step-indicator">Bước 3 / 9</span>
-    </div>
 
-    <p class="lead-text">Dựa vào quy trình, bạn hãy lựa chọn mẫu, dụng cụ và hóa chất cần dùng để thực hiện phản ứng Biuret.</p>
-
-    <div class="guide-box">
-      <i class="ti ti-hand-click"></i>
-      <span>Nhấn vào từng vật cần dùng. Vật đã chọn chuyển vào khay chuẩn bị. Bạn có thể nhấn lại để bỏ chọn.</span>
-    </div>
-
-    <div class="materials-grid" id="materialsGrid">
+      <!-- CỘT PHẢI: Kho vật tư & Khay chuẩn bị -->
+      <div class="workspace-card">
+        <div class="materials-grid" id="materialsGrid">
       <div class="mat-card" data-mat="albumin" data-correct="true" tabindex="0">
         <div class="mat-card-svg-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
   <defs>
@@ -1709,36 +1609,50 @@ body {
       </div>
     </div>
 
-    <div class="inline-feedback hidden" id="fbStage3"></div>
+        <div class="inline-feedback hidden" id="fbStage3"></div>
 
-    <div class="stage-actions">
-      <button class="btn btn-secondary" id="btnPrevStage3"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
-      <button class="btn btn-outline" id="btnCheckStage3"><i class="ti ti-check"></i> KIỂM TRA</button>
-      <button class="btn btn-secondary hidden" id="btnRetryStage3"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
-      <button class="btn btn-primary" id="btnNextStage3" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage3"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-outline" id="btnCheckStage3"><i class="ti ti-check"></i> KIỂM TRA</button>
+            <button class="btn btn-secondary hidden" id="btnRetryStage3"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+            <button class="btn btn-primary hidden" id="btnNextStage3"><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- =====================================================================
        MÀN 4: CHO MẪU VÀO ỐNG NGHIỆM (SH10_B06_M03_C04)
        ===================================================================== -->
-  <section class="stage hidden" id="stage-4" role="region" aria-label="Màn 4: Cho mẫu vào ống nghiệm">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-flask"></i> Màn 4 · Thao tác mẫu</span>
-        <h2 class="stage-title">Cho mẫu vào ống nghiệm</h2>
+  <section class="stage hidden" id="stage-4" role="region" aria-label="Cho mẫu vào ống nghiệm">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết & Hướng dẫn duy nhất -->
+      <div class="visual-card">
+        <div class="theory-block">
+          <h2 class="theory-title">Cho mẫu vào ống nghiệm</h2>
+          <p class="lead-text">Trước tiên, cho một ít dung dịch albumin 1% hoặc một lượng nhỏ lòng trắng trứng vào ống nghiệm sạch đặt trên giá.</p>
+        </div>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Nhấn vào pipet lấy mẫu để hút một lượng albumin từ cốc, sau đó nhỏ mẫu vào đáy ống nghiệm.</span>
+        </div>
+
+        <div class="theory-block">
+          <div class="theory-block__title"><i class="ti ti-info-circle"></i> Mẫu thí nghiệm</div>
+          <div class="theory-block__desc">
+            Dung dịch albumin 1% chứa chuỗi polypeptide dài giàu liên kết peptide, là mẫu chuẩn thích hợp để thực hiện phép thử Biuret.
+          </div>
+        </div>
       </div>
-      <span class="stage-step-indicator">Bước 4 / 9</span>
-    </div>
 
-    <p class="lead-text">Trước tiên, cho một ít dung dịch albumin 1% hoặc một lượng nhỏ lòng trắng trứng vào ống nghiệm.</p>
-
-    <div class="guide-box">
-      <i class="ti ti-hand-click"></i>
-      <span>Nhấn vào dụng cụ lấy mẫu (pipet) để lấy một lượng nhỏ mẫu từ cốc rồi đưa vào ống nghiệm. Khi mẫu đã vào ống, ô trạng thái sẽ được đánh dấu.</span>
-    </div>
-
-    <div class="sim-arena">
+      <!-- CỘT PHẢI: Bàn thực hành mô phỏng -->
+      <div class="workspace-card">
+        <div class="sim-arena">
       <div class="sim-status-bar">
         <span>Khu vực thao tác phòng thực hành</span>
         <div class="sim-status-badge" id="statusBadgeStage4">
@@ -1818,35 +1732,49 @@ body {
       </div>
     </div>
 
-    <div class="inline-feedback hidden" id="fbStage4"></div>
+        <div class="inline-feedback hidden" id="fbStage4"></div>
 
-    <div class="stage-actions">
-      <button class="btn btn-secondary" id="btnPrevStage4"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
-      <button class="btn btn-outline" id="btnDoneStage4" disabled><i class="ti ti-check"></i> HOÀN THÀNH</button>
-      <button class="btn btn-primary" id="btnNextStage4" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage4"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-outline" id="btnDoneStage4" disabled><i class="ti ti-check"></i> HOÀN THÀNH</button>
+            <button class="btn btn-primary" id="btnNextStage4" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- =====================================================================
-       MÀN 5: THÊM 5 mL NaOH LOÃNG (SH10_B06_M03_C05)
+       MÀN 5: THÊM 5 ML DUNG DỊCH NAOH LOÃNG (SH10_B06_M03_C05)
        ===================================================================== -->
-  <section class="stage hidden" id="stage-5" role="region" aria-label="Màn 5: Thêm 5 mL dung dịch NaOH loãng">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-droplet"></i> Màn 5 · Kiềm hóa</span>
-        <h2 class="stage-title">Thêm dung dịch NaOH loãng</h2>
+  <section class="stage hidden" id="stage-5" role="region" aria-label="Thêm dung dịch NaOH loãng">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết & Hướng dẫn duy nhất -->
+      <div class="visual-card">
+        <div class="theory-block">
+          <h2 class="theory-title">Thêm dung dịch NaOH loãng</h2>
+          <p class="lead-text">NaOH đóng vai trò cung cấp môi trường kiềm mạnh giúp khử proton nhóm amide trên chuỗi polypeptide, tạo điều kiện thuận lợi cho phản ứng phức màu Biuret.</p>
+        </div>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Nhấn vào lọ NaOH để đong đúng 5 mL vào ống đong, sau đó chuyển toàn bộ 5 mL vào ống nghiệm chứa mẫu.</span>
+        </div>
+
+        <div class="theory-block">
+          <div class="theory-block__title"><i class="ti ti-flask"></i> Định lượng hóa chất</div>
+          <div class="theory-block__desc">
+            Sử dụng ống đong chia độ 5 mL giúp định lượng chính xác thể tích dung dịch kiềm cần thiết cho phản ứng.
+          </div>
+        </div>
       </div>
-      <span class="stage-step-indicator">Bước 5 / 9</span>
-    </div>
 
-    <p class="lead-text">NaOH tạo môi trường kiềm cần thiết cho phản ứng Biuret. Theo quy trình, bạn cần thêm 5 mL dung dịch NaOH loãng vào ống nghiệm.</p>
-
-    <div class="guide-box">
-      <i class="ti ti-hand-click"></i>
-      <span>Nhấn vào lọ NaOH để đong đúng 5 mL vào ống đong, sau đó chuyển toàn bộ 5 mL vào ống nghiệm chứa mẫu.</span>
-    </div>
-
-    <div class="sim-arena">
+      <!-- CỘT PHẢI: Bàn thực hành kiềm hóa -->
+      <div class="workspace-card">
+        <div class="sim-arena">
       <div class="sim-status-bar">
         <span>Ống nghiệm kế thừa từ Màn 4</span>
         <div class="sim-status-badge" id="statusBadgeStage5">
@@ -1936,35 +1864,49 @@ body {
       </div>
     </div>
 
-    <div class="inline-feedback hidden" id="fbStage5"></div>
+        <div class="inline-feedback hidden" id="fbStage5"></div>
 
-    <div class="stage-actions">
-      <button class="btn btn-secondary" id="btnPrevStage5"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
-      <button class="btn btn-outline" id="btnDoneStage5" disabled><i class="ti ti-check"></i> HOÀN THÀNH</button>
-      <button class="btn btn-primary" id="btnNextStage5" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage5"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-outline" id="btnDoneStage5" disabled><i class="ti ti-check"></i> HOÀN THÀNH</button>
+            <button class="btn btn-primary" id="btnNextStage5" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- =====================================================================
-       MÀN 6: THÊM 5 mL CuSO₄ 1%, CHỜ VÀ QUAN SÁT (SH10_B06_M03_C06)
+       MÀN 6: THÊM 5 ML CUSO4 1%, CHỜ VÀ QUAN SÁT (SH10_B06_M03_C06)
        ===================================================================== -->
-  <section class="stage hidden" id="stage-6" role="region" aria-label="Màn 6: Thêm 5 mL CuSO₄ 1%, chờ và quan sát">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-eye"></i> Màn 6 · Phản ứng Biuret</span>
-        <h2 class="stage-title">Quan sát phản ứng Biuret</h2>
+  <section class="stage hidden" id="stage-6" role="region" aria-label="Quan sát phản ứng Biuret">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết & Hướng dẫn duy nhất -->
+      <div class="visual-card">
+        <div class="theory-block">
+          <h2 class="theory-title">Quan sát phản ứng Biuret</h2>
+          <p class="lead-text">Sau khi tạo môi trường kiềm, thêm 5 mL dung dịch CuSO₄ 1%. Các ion Cu²⁺ sẽ tạo phức với các liên kết peptide trong mẫu protein, tạo màu xanh tím đặc trưng.</p>
+        </div>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Lấy 5 mL CuSO₄ 1% cho vào ống nghiệm, sau đó nhấn BẮT ĐẦU QUAN SÁT để theo dõi sự chuyển đổi màu sắc theo thời gian.</span>
+        </div>
+
+        <div class="theory-block">
+          <div class="theory-block__title"><i class="ti ti-color-filter"></i> Dấu hiệu phản ứng</div>
+          <div class="theory-block__desc">
+            Dung dịch ban đầu có màu xanh lam nhạt của ion Cu²⁺, sau vài phút chuyển dần sang màu tím hoặc xanh tím mà không xuất hiện kết tủa đỏ gạch.
+          </div>
+        </div>
       </div>
-      <span class="stage-step-indicator">Bước 6 / 9</span>
-    </div>
 
-    <p class="lead-text">Sau khi đã tạo môi trường kiềm, thêm 5 mL dung dịch CuSO₄ 1%. Dung dịch ban đầu có màu xanh và sẽ chuyển dần nếu mẫu có các liên kết peptide.</p>
-
-    <div class="guide-box">
-      <i class="ti ti-hand-click"></i>
-      <span>Lấy 5 mL dung dịch CuSO₄ 1% và cho vào ống nghiệm. Sau đó đặt ống vào giá, nhấn BẮT ĐẦU QUAN SÁT và theo dõi sự thay đổi màu.</span>
-    </div>
-
-    <div class="sim-arena">
+      <!-- CỘT PHẢI: Bàn phản ứng & Kính lúp phóng đại -->
+      <div class="workspace-card">
+        <div class="sim-arena">
       <div class="sim-status-bar">
         <span id="simTimerLabel"><i class="ti ti-clock"></i> THỜI GIAN MÔ PHỎNG: <strong id="simTimerText">00:00 (Bắt đầu)</strong></span>
         <div class="sim-status-badge" id="statusBadgeStage6">
@@ -2077,35 +2019,49 @@ body {
       </div>
     </div>
 
-    <div class="inline-feedback hidden" id="fbStage6"></div>
+        <div class="inline-feedback hidden" id="fbStage6"></div>
 
-    <div class="stage-actions">
-      <button class="btn btn-secondary" id="btnPrevStage6"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
-      <button class="btn btn-outline" id="btnDoneStage6" disabled><i class="ti ti-check"></i> HOÀN THÀNH</button>
-      <button class="btn btn-primary" id="btnNextStage6" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage6"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-outline" id="btnDoneStage6" disabled><i class="ti ti-check"></i> HOÀN THÀNH</button>
+            <button class="btn btn-primary" id="btnNextStage6" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- =====================================================================
        MÀN 7: THU DỌN SAU THỰC HÀNH (SH10_B06_M03_C07)
        ===================================================================== -->
-  <section class="stage hidden" id="stage-7" role="region" aria-label="Màn 7: Thu dọn sau thực hành">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-trash"></i> Màn 7 · Thu dọn</span>
-        <h2 class="stage-title">Thu dọn sau thực hành</h2>
+  <section class="stage hidden" id="stage-7" role="region" aria-label="Thu dọn sau thực hành">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết & Hướng dẫn duy nhất -->
+      <div class="visual-card">
+        <div class="theory-block">
+          <h2 class="theory-title">Thu dọn sau thực hành</h2>
+          <p class="lead-text">Sau khi quan sát, cần thu gom và xử lý dung dịch hóa chất theo đúng quy định, rửa sạch dụng cụ và lau dọn bàn làm việc.</p>
+        </div>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Nhấn vào các hành động đúng để hoàn tất việc thu dọn an toàn. Hình đã chọn xuất hiện khung đỏ.</span>
+        </div>
+
+        <div class="theory-block">
+          <div class="theory-block__title"><i class="ti ti-trash"></i> Xử lý chất thải chứa đồng</div>
+          <div class="theory-block__desc">
+            Dung dịch chứa muối đồng (Cu²⁺) và kiềm dư phải đổ vào bình thu gom chất thải vô cơ, không được đổ trực tiếp vào bồn rửa thông thường để bảo vệ môi trường.
+          </div>
+        </div>
       </div>
-      <span class="stage-step-indicator">Bước 7 / 9</span>
-    </div>
 
-    <p class="lead-text">Sau khi quan sát, cần xử lí dung dịch và dụng cụ theo hướng dẫn, đậy nắp hóa chất và vệ sinh khu vực làm việc.</p>
-
-    <div class="guide-box">
-      <i class="ti ti-hand-click"></i>
-      <span>Nhấn vào các hành động đúng để hoàn tất việc thu dọn. Hình đã chọn xuất hiện khung nổi bật.</span>
-    </div>
-
-    <div class="cleanup-grid" id="cleanupGrid">
+      <!-- CỘT PHẢI: Lưới chọn thu dọn 8 hình -->
+      <div class="workspace-card">
+        <div class="cleanup-grid" id="cleanupGrid">
       <div class="select-card" data-id="1" data-correct="true" tabindex="0">
         <div class="select-card-img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
   <defs>
@@ -2366,38 +2322,39 @@ body {
       </div>
     </div>
 
-    <div class="inline-feedback hidden" id="fbStage7"></div>
+        <div class="inline-feedback hidden" id="fbStage7"></div>
 
-    <div class="stage-actions">
-      <button class="btn btn-secondary" id="btnPrevStage7"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
-      <button class="btn btn-outline" id="btnCheckStage7"><i class="ti ti-check"></i> KIỂM TRA</button>
-      <button class="btn btn-secondary hidden" id="btnRetryStage7"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
-      <button class="btn btn-primary" id="btnNextStage7" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage7"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-outline" id="btnCheckStage7"><i class="ti ti-check"></i> KIỂM TRA</button>
+            <button class="btn btn-secondary hidden" id="btnRetryStage7"><i class="ti ti-rotate-clockwise"></i> LÀM LẠI</button>
+            <button class="btn btn-primary hidden" id="btnNextStage7"><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- =====================================================================
-       MÀN 8: KHAI THÁC KẾT QUẢ VÀ TẠO DỮ LIỆU BÁO CÁO (SH10_B06_M03_C08)
+       MÀN 8: GIẢI THÍCH KẾT QUẢ VÀ TẠO DỮ LIỆU BÁO CÁO (SH10_B06_M03_C08)
        ===================================================================== -->
-  <section class="stage hidden" id="stage-8" role="region" aria-label="Màn 8: Khai thác kết quả và tạo dữ liệu báo cáo">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-file-text"></i> Màn 8 · Dữ liệu báo cáo</span>
-        <h2 class="stage-title">Giải thích kết quả</h2>
-      </div>
-      <span class="stage-step-indicator">Bước 8 / 9</span>
-    </div>
+  <section class="stage hidden" id="stage-8" role="region" aria-label="Giải thích kết quả">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết, Ống nghiệm kết quả & Bảng dữ liệu tích lũy -->
+      <div class="visual-card">
+        <div class="theory-block">
+          <h2 class="theory-title">Giải thích kết quả</h2>
+          <p class="lead-text">Quan sát lại kết quả của chính thí nghiệm vừa thực hiện để xác định hiện tượng, giải thích nguyên lí và rút ra kết luận.</p>
+        </div>
 
-    <p class="lead-text">Quan sát lại kết quả của chính thí nghiệm vừa thực hiện để xác định hiện tượng, giải thích nguyên lí và rút ra kết luận.</p>
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Lần lượt chọn phương án đúng cho 3 câu hỏi dưới đây để điền tự động dữ liệu vào khung Báo cáo thực hành.</span>
+        </div>
 
-    <div class="guide-box">
-      <i class="ti ti-help"></i>
-      <span>Lần lượt chọn phương án đúng cho 3 câu hỏi dưới đây để điền tự động dữ liệu vào khung Báo cáo thực hành.</span>
-    </div>
-
-    <div class="qa-grid">
-      <!-- Left Column: Tube Visual & Accumulated Report Data -->
-      <div style="display:flex; flex-direction:column; gap:16px;">
         <div class="tube-focus-box">
           <svg class="tube-focus-svg" viewBox="0 0 80 230">
             <rect x="5" y="160" width="70" height="70" rx="4" fill="#D97706" opacity="0.6"/>
@@ -2411,7 +2368,7 @@ body {
           <span style="font-size:0.85rem; font-weight:700; color:var(--ink-2);">Ống nghiệm phản ứng Biuret (Xanh tím)</span>
         </div>
 
-        <div class="report-summary-box">
+<div class="report-summary-box">
           <div class="report-summary-title"><i class="ti ti-clipboard-data"></i> DỮ LIỆU BÁO CÁO</div>
           <div class="report-cell">
             <div class="report-cell-label">1. Kết quả:</div>
@@ -2428,9 +2385,8 @@ body {
         </div>
       </div>
 
-      <!-- Right Column: 3 Sequential Interactive Questions -->
-      <div style="display:flex; flex-direction:column; gap:16px;">
-        <!-- Question 1 -->
+      <!-- CỘT PHẢI: 3 Câu hỏi tương tác tuần tự & Chốt kiến thức -->
+      <div class="workspace-card">
         <div class="qa-card" id="cardQ1">
           <div class="qa-question">Câu 1: Dung dịch đã thay đổi như thế nào sau vài phút?</div>
           <div class="qa-options">
@@ -2480,36 +2436,47 @@ body {
           <i class="ti ti-bulb"></i>
           <span><strong>Chốt kiến thức:</strong> Phản ứng Biuret nhận biết protein qua dấu hiệu màu liên quan đến các liên kết peptide. Đây là phản ứng khác biệt hoàn toàn với phép thử Benedict (đường khử) và Lugol (tinh bột).</span>
         </div>
-      </div>
-    </div>
 
-    <div class="stage-actions">
-      <button class="btn btn-secondary" id="btnPrevStage8"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
-      <button class="btn btn-primary" id="btnNextStage8" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage8"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-primary" id="btnNextStage8" disabled><i class="ti ti-arrow-right"></i> TIẾP TỤC</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- =====================================================================
-       MÀN 9: CHỌN CẤU TRÚC VÀ XEM BÁO CÁO HOÀN CHỈNH (SH10_B06_M03_C09)
+       MÀN 9: HOÀN THÀNH BÁO CÁO THỰC HÀNH (SH10_B06_M03_C09)
        ===================================================================== -->
-  <section class="stage hidden" id="stage-9" role="region" aria-label="Màn 9: Hoàn thành báo cáo thực hành">
-    <div class="stage-head">
-      <div class="stage-title-wrap">
-        <span class="stage-badge"><i class="ti ti-award"></i> Màn 9 · Báo cáo</span>
-        <h2 class="stage-title">Hoàn thành báo cáo thực hành</h2>
+  <section class="stage hidden" id="stage-9" role="region" aria-label="Hoàn thành báo cáo thực hành">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết cấu trúc chuẩn & Hướng dẫn duy nhất -->
+      <div class="visual-card">
+        <div class="theory-block">
+          <h2 class="theory-title">Hoàn thành báo cáo thực hành</h2>
+          <p class="lead-text">Báo cáo cần phản ánh đúng mục đích, cách tiến hành, kết quả, giải thích và kết luận của thí nghiệm. Dữ liệu bạn đã tạo ở các màn trước sẽ được dùng để lập báo cáo.</p>
+        </div>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Nhấn chọn những thành phần cần có của báo cáo theo SGK (5 mục), sau đó nhấn KIỂM TRA THÀNH PHẦN.</span>
+        </div>
+
+        <div class="theory-block">
+          <div class="theory-block__title"><i class="ti ti-file-text"></i> Cấu trúc chuẩn theo SGK</div>
+          <div class="theory-block__desc">
+            Báo cáo thực hành nhận biết protein gồm 5 phần chuẩn: 1. Mục đích; 2. Cách tiến hành; 3. Kết quả; 4. Giải thích và kết luận; 5. Trả lời câu hỏi.
+          </div>
+        </div>
       </div>
-      <span class="stage-step-indicator">Bước 9 / 9</span>
-    </div>
 
-    <p class="lead-text">Báo cáo cần phản ánh đúng mục đích, cách tiến hành, kết quả, giải thích và kết luận của thí nghiệm. Dữ liệu bạn đã tạo ở các màn trước sẽ được dùng để lập báo cáo.</p>
-
-    <div class="guide-box">
-      <i class="ti ti-checkbox"></i>
-      <span>Nhấn chọn những thành phần cần có của báo cáo theo SGK (5 mục), sau đó nhấn KIỂM TRA.</span>
-    </div>
-
-    <!-- 9 Structure Cards -->
-    <div class="procedure-cards-pool" id="reportSecCards" style="grid-template-columns: repeat(3, 1fr);">
+      <!-- CỘT PHẢI: Chọn 5 thành phần chuẩn & Xem văn bản hoàn chỉnh -->
+      <div class="workspace-card">
+        <div class="procedure-cards-pool" id="reportSecCards" style="grid-template-columns: repeat(3, 1fr);">
       <div class="proc-card" data-sec="1" data-correct="true" tabindex="0">
         <div class="proc-card-badge">1</div>
         <div class="proc-card-text">Mục đích</div>
@@ -2605,9 +2572,15 @@ body {
       </div>
     </div>
 
-    <div class="stage-actions">
-      <button class="btn btn-secondary" id="btnPrevStage9"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
-      <button class="btn btn-primary" id="btnFinishModule" disabled><i class="ti ti-trophy"></i> HOÀN THÀNH MODULE</button>
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage9"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-primary" id="btnFinishModule" disabled><i class="ti ti-trophy"></i> HOÀN THÀNH MODULE</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -2631,6 +2604,7 @@ body {
     </div>
   </div>
 </div>
+<canvas id="confettiCanvas"></canvas>
 
 <script>
 /* ==========================================================================
@@ -3450,76 +3424,5 @@ function launchConfetti() {
   render();
 }
 </script>
-<script>
-/* Loại nhãn tiến trình kỹ thuật khỏi phần chữ hiển thị cho người học. */
-(() => {
-  const clean = (root) => {
-    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
-    let node;
-    while ((node = walker.nextNode())) {
-      if (node.parentElement && node.parentElement.closest('script,style')) continue;
-      const next = node.nodeValue
-        .replace(/Tiếp tục sang Giai đoạn\s*\d+/gi, 'Tiếp tục')
-        .replace(/Hoàn thành Giai đoạn\s*\d+!?/gi, 'Hoàn thành!')
-        .replace(/Text chốt Stage\s*\d+\s*:/gi, 'Kết luận:')
-        .replace(/GIAI ĐOẠN\s*\d+\s*\/\s*\d+\s*[·—-漂-]*\s*/gi, '')
-        .replace(/Stage\s*\d+/gi, '')
-        .replace(/Màn\s*\d+\s*[·:]\s*/gi, '')
-        .replace(/Bước\s*\d+\s*\/\s*\d+/gi, '');
-      if (next !== node.nodeValue) node.nodeValue = next;
-    }
-  };
-  clean(document.body);
-  new MutationObserver((items) => items.forEach((item) => clean(item.target)))
-    .observe(document.body, { childList: true, subtree: true, characterData: true });
-})();
-</script>
-
-<script>
-/* Bổ sung sự kiện Quay lại & Làm lại màn chuẩn SH10_B01_M02 */
-(() => {
-  // Stage 1
-  const r1 = document.getElementById('btnResetStage1');
-  if (r1) {
-    r1.addEventListener('click', () => {
-      document.querySelectorAll('#safetyGrid .select-card').forEach(c => c.classList.remove('selected'));
-      const fb = document.getElementById('fbStage1');
-      if (fb) fb.classList.add('hidden');
-      const chk = document.getElementById('btnCheckStage1');
-      if (chk) chk.classList.remove('hidden');
-      const ret = document.getElementById('btnRetryStage1');
-      if (ret) ret.classList.add('hidden');
-      const nxt = document.getElementById('btnNextStage1');
-      if (nxt) nxt.disabled = true;
-      if (typeof reportHeight === 'function') reportHeight();
-    });
-  }
-
-  // Stages 2 to 9
-  for (let s = 2; s <= 9; s++) {
-    const prev = document.getElementById('btnPrevStage' + s);
-    if (prev && !prev.__hasPrev) {
-      prev.__hasPrev = true;
-      prev.addEventListener('click', () => { if (typeof goToStage === 'function') goToStage(s - 1); });
-    }
-    const reset = document.getElementById('btnResetStage' + s);
-    if (reset && !reset.__hasReset) {
-      reset.__hasReset = true;
-      reset.addEventListener('click', () => {
-        // Find existing retry or reset button in that stage and click it
-        const stageEl = document.getElementById('stage-' + s);
-        if (stageEl) {
-          const ret = stageEl.querySelector('button[id*="Retry"], button[id*="Reset"]:not(#btnResetStage' + s + ')');
-          if (ret && !ret.classList.contains('hidden')) ret.click();
-          else if (typeof goToStage === 'function') {
-            goToStage(s);
-          }
-        }
-      });
-    }
-  }
-})();
-</script>
-
 </body>
 </html>

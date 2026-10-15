@@ -1295,7 +1295,7 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
 
   <div class="app">
     
-
+  
     <!-- Progress Nav Sticky Top 0 (V10 Standard) -->
     <nav class="progress-nav" aria-label="Tiến trình học tập">
       <button type="button" class="stage-tab current" id="stepTab-0" onclick="goToStage(0)">
@@ -1315,7 +1315,7 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
     <!-- ST00: Nhận biết biểu hiện trao đổi chất (Hook) -->
     <section class="stage-section" id="stage-0">
       <div class="lead-box">
-        <p class="lead-question">“Chúng ta không nhìn thấy trực tiếp mọi quá trình diễn ra bên trong cơ thể. Vậy dựa vào những biểu hiện nào, chúng ta có thể nhận biết sinh vật đang trao đổi chất và chuyển hoá năng lượng?”</p>
+        <h2 class="lead-question">Chúng ta không nhìn thấy trực tiếp mọi quá trình diễn ra bên trong cơ thể. Vậy dựa vào những biểu hiện nào, chúng ta có thể nhận biết sinh vật đang trao đổi chất và chuyển hoá năng lượng?</h2>
         <p class="lead-text">Quan sát người và cây trong hai hình dưới đây. Hãy khám phá từng vị trí để xem những hoạt động nào đang diễn ra.</p>
         <div class="guide-box">
           <i class="ti ti-hand-finger"></i>
@@ -1326,24 +1326,24 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
       <div class="st00-grid">
         <!-- Hình 1: Người ăn & thở -->
         <div class="hook-card" id="cardST00-1">
-          <div class="hook-card__title"><i class="ti ti-user"></i> Biểu hiện ở người</div>
+          <div class="hook-card__title"><i class="ti ti-user-circle"></i> Biểu hiện ở người</div>
           <div class="hook-card__img-wrap">
             <img src="https://lh3.googleusercontent.com/d/1_NCwHNv8JA9mrWG7fNRjsr1yF9NfTJ23" alt="Người đang ăn và thở" class="hook-card__img">
             
             <!-- Điểm 1: Miệng -->
-            <button type="button" class="hook-hotspot" id="hotspot-0-1" style="top: 38%; left: 47%;" onclick="viewST00Hotspot(1)" title="Vị trí 1: Miệng" aria-label="Vị trí 1: Miệng">
+            <button type="button" class="hook-hotspot" id="hotspot-0-1" style="top: 30%; left: 48%;" onclick="viewST00Hotspot(1)" title="Vị trí 1: Miệng" aria-label="Vị trí 1: Miệng">
               <span>1</span>
               <div class="pulse-ring"></div>
             </button>
 
-            <!-- Điểm 2: Mũi / Ngực -->
-            <button type="button" class="hook-hotspot" id="hotspot-0-2" style="top: 56%; left: 51%;" onclick="viewST00Hotspot(2)" title="Vị trí 2: Mũi và ngực" aria-label="Vị trí 2: Mũi và ngực">
+            <!-- Điểm 2: Mũi -->
+            <button type="button" class="hook-hotspot" id="hotspot-0-2" style="top: 22%; left: 48%;" onclick="viewST00Hotspot(2)" title="Vị trí 2: Mũi" aria-label="Vị trí 2: Mũi">
               <span>2</span>
               <div class="pulse-ring"></div>
             </button>
           </div>
           <div class="hotspot-caption-box" id="captionST00-1">
-            <span><i class="ti ti-info-circle"></i> Chạm vào điểm trên hình người để xem hoạt động.</span>
+            <span>Chọn một điểm để xem thông tin.</span>
           </div>
         </div>
 
@@ -1364,9 +1364,9 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
               <span>4</span>
               <div class="pulse-ring"></div>
             </button>
-          </div>
+          </div>  
           <div class="hotspot-caption-box" id="captionST00-2">
-            <span><i class="ti ti-info-circle"></i> Chạm vào điểm trên hình cây để xem hoạt động.</span>
+            <span>Chọn một điểm để xem thông tin.</span>
           </div>
         </div>
       </div>
@@ -1521,12 +1521,6 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
         </div>
       </div>
 
-      <!-- Panel chú thích vị trí đã chọn trên sơ đồ -->
-      <div class="st01-info-panel" id="st01InfoPanel">
-        <div class="st01-info-icon"><i class="ti ti-info-circle"></i></div>
-        <p class="st01-info-text" id="st01InfoText">Chạm vào một vị trí trên sơ đồ để xem chi tiết cách các chất được tiếp nhận và vận chuyển.</p>
-      </div>
-
       <!-- Lời giảng chuyển tiếp khi xem đủ 4 vị trí -->
       <div class="conclude-card hidden" id="concludeST01-Lecture">
         <div class="conclude-card__title"><i class="ti ti-transfer-in"></i> Chuyển hóa chất trong tế bào</div>
@@ -1598,6 +1592,7 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
 
     <!-- ST02: Thải chất và điều hoà (Dấu hiệu 3 & 4) -->
     <section class="stage-section hidden" id="stage-2">
+      <h2>Nội dung bài học</h2>
       <div class="lead-box">
         <p class="lead-text">Trao đổi chất không dừng lại sau khi các chất được biến đổi trong tế bào. Cơ thể còn phải loại bỏ những chất cần thải và điều chỉnh các quá trình này phù hợp với trạng thái hoạt động.</p>
         <div class="guide-box">
@@ -1708,7 +1703,6 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
     <section class="stage-section hidden" id="stage-3">
       <!-- Khối Lời chốt -->
       <div class="conclude-card" style="margin-top: 0;">
-        <div class="conclude-card__title"><i class="ti ti-star"></i> Lời chốt toàn diện</div>
         <p class="conclude-card__text">Bốn dấu hiệu này không diễn ra tách rời mà liên hệ với nhau trong toàn bộ quá trình trao đổi chất và chuyển hoá năng lượng của sinh vật.</p>
       </div>
 
@@ -1725,7 +1719,6 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
 
       <!-- Cầu nối sang Module 03 -->
       <div class="bridge-card">
-        <h3 class="bridge-title"><i class="ti ti-link"></i> Kết nối sang bài tiếp theo</h3>
         <p class="bridge-text">Trong đó, sự biến đổi chất ở tế bào luôn đi kèm với chuyển hoá năng lượng. Vậy năng lượng được chuyển hoá qua những giai đoạn nào trong sinh giới? Ở bài học tiếp theo, bạn sẽ tìm hiểu ba giai đoạn chuyển hoá năng lượng.</p>
       </div>
 
@@ -1922,7 +1915,7 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
       },
       2: {
         targetCaption: 'captionST00-1',
-        html: '<strong>Vị trí 2 (Mũi & Ngực):</strong> Cơ thể trao đổi khí với môi trường thông qua hoạt động hô hấp.'
+        html: '<strong>Vị trí 2 (Mũi):</strong> Cơ thể trao đổi khí với môi trường thông qua hoạt động hô hấp.'
       },
       3: {
         targetCaption: 'captionST00-2',
@@ -2434,6 +2427,7 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
 (() => {
  document.querySelectorAll('section.stage-section').forEach((stage)=>{
   if(stage.classList.contains('two-block-ready'))return;
+  if(stage.id==='stage-0'||stage.id==='stage-1'||stage.id==='stage-2'||stage.id==='stage-3')return;
   const nodes=[...stage.children],lead=nodes.find(n=>n.matches('.lead-box')),actions=nodes.find(n=>n.matches('.stage-actions'));
   const candidates=nodes.filter(n=>n!==lead&&n!==actions&&!n.matches('.conclude-card,.feedback-box,.feedback-bar'));
   let visualNode=candidates.find(n=>n.querySelector('img,svg,canvas'));
@@ -2441,12 +2435,14 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
   const split=document.createElement('div');split.className='split-workspace';
   const visual=document.createElement('article');visual.className='visual-card';
   const head=document.createElement('div');head.className='visual-card__head';
-  const h=document.createElement('h2');const q=lead&&lead.querySelector('.lead-question,.lead-text');h.textContent=q?q.textContent.trim().replace(/^“|”$/g,''):'Nội dung bài học';head.appendChild(h);
+  const h=document.createElement('h2');const q=lead&&lead.querySelector('.lead-question,.lead-text');h.textContent=q?q.textContent.trim().replace(/^“|”$/g,''):'Nội dung bài học';if(stage.id==='stage-1')h.style.fontWeight='400';head.appendChild(h);if(stage.id==='stage-0'&&q&&q.classList.contains('lead-question'))q.remove();
   const body=document.createElement('div');body.className='visual-body';if(visualNode)body.appendChild(visualNode);visual.append(head,body);
   const workspace=document.createElement('article');workspace.className='workspace-card';
-  const guide=lead&&lead.querySelector('.guide-box');if(guide){guide.className='instruction';workspace.appendChild(guide)}
-  else{const g=stage.querySelector(':scope > .guide-box');if(g){g.className='instruction';workspace.appendChild(g)}}
-  if(lead)workspace.appendChild(lead);
+  const guide=lead&&lead.querySelector('.guide-box');
+  if((stage.id==='stage-1'||stage.id==='stage-2')&&guide){guide.className='instruction';head.appendChild(guide)}
+  const appendGuide=()=>{if(stage.id==='stage-1'||stage.id==='stage-2')return;if(guide){guide.className='instruction';workspace.appendChild(guide)}else{const g=stage.querySelector(':scope > .guide-box');if(g){g.className='instruction';workspace.appendChild(g)}}};
+  if(stage.id==='stage-0'){if(lead)workspace.appendChild(lead);appendGuide()}
+  else{appendGuide();if(lead)workspace.appendChild(lead)}
   candidates.forEach(n=>{if(n!==visualNode)workspace.appendChild(n)});
   stage.querySelectorAll(':scope > .conclude-card,:scope > .feedback-box,:scope > .feedback-bar').forEach(n=>workspace.appendChild(n));
   split.append(visual,workspace);stage.prepend(split);

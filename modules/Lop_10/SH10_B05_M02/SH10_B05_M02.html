@@ -139,50 +139,109 @@
     .stage { animation:stageFadeIn .28s ease; }
     @keyframes stageFadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
 
-    /* 2-Column Split Workspace */
+    /* 2-Column Split Workspace (Mutual Sticky & Zero Nested Scroll) */
     .split-workspace {
       display:grid;
-      grid-template-columns:minmax(0,58fr) minmax(340px,42fr);
+      grid-template-columns:minmax(0,56fr) minmax(360px,44fr);
       gap:20px;
       align-items:start;
     }
 
-    /* Left Column: Sticky Visual Card */
+    /* Left Column: Natural Height & Sticky Visual Card */
     .visual-card {
       position:sticky;
-      top:0;
+      top:16px;
       z-index:10;
       border:1px solid var(--paper-line);
       border-radius:var(--radius-lg);
       background:#fff;
-      overflow:hidden;
       box-shadow:var(--shadow-sm);
+      display:flex;
+      flex-direction:column;
+      gap:0;
+      max-height:none;
+      overflow-y:visible;
     }
     .visual-card__head {
-      padding:14px 16px 12px;
+      padding:16px 20px 14px;
       border-bottom:1px solid var(--paper-line);
       background:#fff;
     }
     .eyebrow {
       display:none !important;
-      align-items:center;
-      gap:7px;
-      color:var(--jade-text);
-      font-size:.76rem;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:.65px;
     }
     .visual-card__head h2 {
-      margin:6px 0 0;
-      font-size:clamp(1.25rem,2.2vw,1.75rem);
-      line-height:1.28;
+      margin:0;
+      font-size:clamp(1.2rem,2.2vw,1.45rem);
+      line-height:1.32;
+      font-weight:800;
       letter-spacing:-.02em;
       color:var(--ink);
     }
-    .visual-body {
-      padding:14px;
+    .visual-card__head .question {
+      margin:8px 0 0;
+      color:var(--jade-dark);
+      font-size:0.94rem;
+      font-weight:700;
+      line-height:1.55;
+    }
+    .visual-card__content {
+      padding:16px 18px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .theory-flow {
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .theory-block {
+      padding:12px 14px;
+      border:1px solid var(--paper-line);
+      border-radius:var(--radius-sm);
+      background:var(--cream);
+      font-size:.9rem;
+      line-height:1.55;
+    }
+    .theory-block__title {
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-weight:700;
+      font-size:.92rem;
+      color:var(--jade-text);
+      margin-bottom:6px;
+    }
+    .theory-block__content {
+      margin:0;
+      color:var(--ink-2);
+    }
+    .theory-table {
+      width:100%;
+      border-collapse:collapse;
+      margin-top:8px;
+      font-size:0.84rem;
+    }
+    .theory-table th, .theory-table td {
+      padding:8px 10px;
+      border:1px solid var(--paper-line);
+      text-align:left;
+      vertical-align:top;
+    }
+    .theory-table th {
+      background:var(--cream-2);
+      color:var(--jade-text);
+      font-weight:700;
+    }
+    .theory-table td {
       background:#fff;
+      color:var(--ink-2);
+    }
+    .visual-body {
+      padding:0;
+      background:transparent;
+      margin-top:4px;
       position:relative;
       min-height:360px;
       display:flex;
@@ -198,14 +257,35 @@
       border-radius:8px;
     }
 
-    /* Right Column: Workspace Card */
+    /* Right Column: Sticky Workspace Card */
     .workspace-card {
       min-width:0;
       border:1px solid var(--paper-line);
       border-radius:var(--radius-lg);
       background:var(--cream-2);
-      padding:18px;
+      padding:18px 20px;
       box-shadow:var(--shadow-sm);
+      position:sticky;
+      top:16px;
+      max-height:calc(100vh - 32px);
+      overflow-y:auto;
+      scrollbar-width:thin;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .workspace-card::-webkit-scrollbar { width:4px; }
+    .workspace-card::-webkit-scrollbar-thumb { background:var(--paper-line-2); border-radius:4px; }
+    .workspace-section-label {
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size:0.84rem;
+      text-transform:uppercase;
+      letter-spacing:0.6px;
+      color:var(--jade-text);
+      font-weight:700;
+      margin-bottom:2px;
     }
     .workspace-card h2 {
       margin:0 0 12px;
@@ -1041,7 +1121,11 @@
     /* Responsive */
     @media (max-width:980px) {
       .split-workspace { grid-template-columns:1fr; }
-      .visual-card { position:static; }
+      .visual-card, .workspace-card {
+        position:static;
+        max-height:none;
+        overflow-y:visible;
+      }
       .stepper-nav {
         display: flex !important;
         flex-wrap: nowrap !important;
@@ -1111,10 +1195,40 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
       <!-- Cột trái: Visual Card -->
       <div class="visual-card">
         <div class="visual-card__head">
-          <div class="eyebrow"><i class="ti ti-target"></i> GIAI ĐOẠN 1 / 6 · MỞ ĐẦU</div>
-          <h2 id="s01VisualTitle">Kết nối từ Carbohydrate sang Lipid</h2>
+          <h2 id="s01VisualTitle">Lipid: Khái niệm & Đặc điểm chung</h2>
+          <p class="question">Dầu, mỡ, phospholipid và steroid có đặc điểm cấu tạo chung nào và vì sao phần lớn lipid không tan trong nước?</p>
         </div>
-        <div class="visual-body">
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span><strong>HƯỚNG DẪN:</strong> Quan sát 4 tình huống đại diện và chạy thử nghiệm nhỏ dầu vào nước ở bên dưới, sau đó hoàn thành các câu hỏi nhận thức ở bên phải.</span>
+          </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-dna"></i> Khái niệm và tính tan của Lipid</div>
+              <div class="theory-block__content">
+                Lipid là nhóm hợp chất hữu cơ đa dạng (cấu tạo chủ yếu từ C, H, O; một số có thêm P, N). Điểm chung quan trọng nhất: <strong>phần lớn lipid không tan hoặc rất ít tan trong nước</strong> nhưng tan nhiều trong dung môi hữu cơ không phân cực. (Lưu ý: Không phát biểu tuyệt đối “mọi lipid đều kị nước” vì có những phân tử lưỡng cực như phospholipid).
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-molecule"></i> Nguyên nhân không tan trong nước</div>
+              <div class="theory-block__content">
+                Nhiều lipid chứa các mạch hydrocarbon dài không phân cực, không tạo được liên kết hydrogen thuận lợi với các phân tử nước phân cực. Đặc biệt, lipid nhìn chung <strong>không cấu tạo theo nguyên tắc đa phân</strong> (không hình thành từ các đơn phân lặp lại như carbohydrate hay protein).
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-grid-dots"></i> Bốn nhóm đại diện thường gặp</div>
+              <div class="theory-block__content">
+                <ul style="margin:4px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px;">
+                  <li><strong>Dầu & Mỡ (Triglyceride):</strong> Dự trữ năng lượng lâu dài cho tế bào và cơ thể.</li>
+                  <li><strong>Phospholipid:</strong> Phân tử lưỡng cực, tạo nền tảng lớp kép của mọi màng sinh học.</li>
+                  <li><strong>Steroid:</strong> Mang khung 4 vòng carbon (cholesterol, hormone sinh dục).</li>
+                  <li><strong>Các lipid khác:</strong> Sáp (bảo vệ), carotenoid (sắc tố tiền vitamin A).</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="visual-body">
           <!-- Visual 1A: Kế thừa từ M01 sang Lipid -->
           <div id="s01Visual1A" class="visual-pane" style="width:100%;">
             <svg id="a01SvgObj" viewBox="0 0 1500 650" class="visual-media" role="img" aria-label="Khung nối từ carbohydrate sang lipid">
@@ -1316,6 +1430,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
             </div>
           </div>
         </div>
+        </div>
       </div>
 
       <!-- Cột phải: Workspace Card -->
@@ -1327,17 +1442,9 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
           <button class="step-indicator" id="s01Step1D"><i class="ti ti-help-circle"></i><span>1D. Cốt lõi</span></button>
         </div>
 
-        <div class="instruction">
-          <i class="ti ti-bulb"></i>
-          <div>Quan sát các đại diện của lipid, thực hiện thí nghiệm dầu – nước và rút ra đặc điểm chung của nhóm chất.</div>
-        </div>
-
         <!-- Màn 1A -->
         <div id="s01Screen1A">
-          <h2>Kết nối từ Carbohydrate sang Lipid</h2>
-          <p class="workspace-note">
-            Ở module trước, carbohydrate có thể cung cấp năng lượng, dự trữ năng lượng hoặc tạo cấu trúc.
-          </p>
+          <div class="workspace-section-label"><i class="ti ti-link"></i> Bước 1A: Kết nối Carbohydrate sang Lipid</div>
           <div class="knowledge-note">
             <i class="ti ti-bulb"></i>
             <div>Tế bào còn sử dụng một nhóm phân tử khác để <b>dự trữ năng lượng lâu dài</b> và <b>tạo nên hệ thống màng</b>.</div>
@@ -1349,10 +1456,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
 
         <!-- Màn 1B -->
         <div id="s01Screen1B" class="hidden">
-          <h2>Quan sát bốn tình huống đại diện</h2>
-          <p class="workspace-note">
-            Bấm vào từng ô ở cột bên trái để quan sát kĩ từng tình huống, sau đó trả lời câu hỏi:
-          </p>
+          <div class="workspace-section-label"><i class="ti ti-eye"></i> Bước 1B: Bốn tình huống đại diện</div>
           <div class="quiz-box">
             <div class="quiz-question">Dầu, mỡ, phospholipid và steroid có điểm chung nào?</div>
             <div class="quiz-options">
@@ -1369,10 +1473,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
 
         <!-- Màn 1C -->
         <div id="s01Screen1C" class="hidden">
-          <h2>Thí nghiệm: Dầu và Nước</h2>
-          <p class="workspace-note">
-            Bấm nút <b>"Nhỏ dầu"</b> để quan sát phản ứng phân tách pha giữa dầu và nước trong cốc thủy tinh.
-          </p>
+          <div class="workspace-section-label"><i class="ti ti-flask-2"></i> Bước 1C: Thí nghiệm Dầu và Nước</div>
           <button class="btn btn-outline" id="btnDropOil" style="width:100%;margin-bottom:12px;">
             <i class="ti ti-droplet"></i> NHỎ DẦU
           </button>
@@ -1392,16 +1493,14 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
 
         <!-- Màn 1D -->
         <div id="s01Screen1D" class="hidden">
-          <h2>Khóa kiến thức và Câu hỏi trung tâm</h2>
+          <div class="workspace-section-label"><i class="ti ti-help-circle"></i> Bước 1D: Khóa kiến thức và Câu hỏi trung tâm</div>
           <div class="knowledge-note">
             <i class="ti ti-key"></i>
             <div>
               <b>Khóa khoa học:</b> Nhiều lipid có phần hydrocarbon không phân cực nên không tương tác thuận lợi với nước. Lipid nhìn chung <b>không được cấu tạo từ các đơn phân lặp lại theo nguyên tắc đa phân</b>.
             </div>
           </div>
-          <p class="workspace-note">
-            Trước hết, hãy tìm hiểu cấu tạo của loại lipid thường gặp trong dầu và mỡ: <b>Triglyceride</b>.
-          </p>
+
         </div>
 
         <!-- Phản hồi Stage 1 -->
@@ -1429,10 +1528,38 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
       <!-- Cột trái: Visual Card -->
       <div class="visual-card">
         <div class="visual-card__head">
-          <div class="eyebrow"><i class="ti ti-droplet"></i> GIAI ĐOẠN 2 / 6 · TRIGLYCERIDE</div>
-          <h2 id="s02VisualTitle">Lắp ghép cấu tạo Triglyceride</h2>
+          <h2 id="s02VisualTitle">Triglyceride: Cấu tạo của Mỡ và Dầu</h2>
+          <p class="question">Triglyceride được cấu tạo từ những thành phần nào và vì sao dầu thường ở trạng thái lỏng còn mỡ thường ở trạng thái rắn ở nhiệt độ phòng?</p>
         </div>
-        <div class="visual-body">
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span><strong>HƯỚNG DẪN:</strong> Lắp ghép 3 acid béo vào glycerol, so sánh mức độ uốn cong của mạch acid béo và phân loại nguồn thực phẩm ở bên phải.</span>
+          </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-puzzle"></i> Cấu tạo phân tử Triglyceride</div>
+              <div class="theory-block__content">
+                Một phân tử triglyceride (chất béo trung tính) gồm <strong>1 phân tử glycerol</strong> liên kết với <strong>3 phân tử acid béo</strong> thông qua 3 liên kết ester. Ba acid béo trong cùng một triglyceride có thể giống nhau hoặc khác nhau.
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-arrows-split"></i> Acid béo no và Acid béo không no</div>
+              <div class="theory-block__content">
+                <ul style="margin:4px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px;">
+                  <li><strong>Acid béo no:</strong> Mạch hydrocarbon chỉ có liên kết đơn C–C, mạch thẳng, dễ xếp sít nhau &rarr; nhiệt độ nóng chảy cao hơn &rarr; thường ở trạng thái <em>rắn</em> ở nhiệt độ phòng (mỡ động vật).</li>
+                  <li><strong>Acid béo không no:</strong> Mạch có một hoặc nhiều liên kết đôi C=C (thường dạng <em>cis</em> tạo khúc gập), khó xếp sít nhau &rarr; nhiệt độ nóng chảy thấp hơn &rarr; thường ở trạng thái <em>lỏng</em> ở nhiệt độ phòng (dầu thực vật).</li>
+                </ul>
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-meat"></i> Nguồn thực phẩm cung cấp Lipid</div>
+              <div class="theory-block__content">
+                Lipid có trong cả thực vật (lạc, vừng, đậu tương, quả bơ, hạt có dầu) và động vật (mỡ, thịt, sữa, lòng đỏ trứng). Lưu ý: một loại thực phẩm tự nhiên luôn chứa nhiều nhóm chất khác nhau.
+              </div>
+            </div>
+          </div>
+          <div class="visual-body">
           <!-- Visual 2A: Ghép trực tiếp Glycerol & 3 Acid béo -->
           <div id="s02Visual2A" class="visual-pane" style="width:100%;">
             <div class="interactive-canvas-zone">
@@ -1656,6 +1783,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
             <img src="https://lh3.googleusercontent.com/d/1qOzvb6sLxCJWd1JFYAkecewldHFa3qC6" alt="Thực phẩm giàu lipid" class="visual-media" style="max-height:360px;">
           </div>
         </div>
+        </div>
       </div>
 
       <!-- Cột phải: Workspace Card -->
@@ -1667,17 +1795,9 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
           <button class="step-indicator" id="s02Step2D"><i class="ti ti-meat"></i><span>2D. Thực phẩm</span></button>
         </div>
 
-        <div class="instruction">
-          <i class="ti ti-bulb"></i>
-          <div>Lắp ghép triglyceride, phân biệt acid béo no và không no, sau đó liên hệ với dầu, mỡ và nguồn thực phẩm.</div>
-        </div>
-
         <!-- Màn 2A -->
         <div id="s02Screen2A">
-          <h2>Lắp ghép cấu tạo Triglyceride</h2>
-          <p class="workspace-note">
-            Kéo hoặc bấm chọn để ghép <b>ba acid béo</b> vào ba vị trí của glycerol ở hình bên trái.
-          </p>
+          <div class="workspace-section-label"><i class="ti ti-puzzle"></i> Bước 2A: Ghép cấu tạo Triglyceride</div>
           <div class="quiz-box hidden" id="s02Q1Box">
             <div class="quiz-question">Triglyceride có bao nhiêu acid béo?</div>
             <div class="quiz-options">
@@ -1694,10 +1814,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
 
         <!-- Màn 2B -->
         <div id="s02Screen2B" class="hidden">
-          <h2>So sánh Acid béo no và không no</h2>
-          <p class="workspace-note">
-            Quan sát hai mạch carbon ở cột trực quan bên trái và chọn cấu trúc có liên kết đôi C=C:
-          </p>
+          <div class="workspace-section-label"><i class="ti ti-dna"></i> Bước 2B: So sánh Acid béo no và không no</div>
           <div class="quiz-box" id="s02PickChainBox">
             <div class="quiz-question">Mạch nào có liên kết đôi C=C dạng cis?</div>
             <div class="quiz-options">
@@ -1723,10 +1840,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
 
         <!-- Màn 2C -->
         <div id="s02Screen2C" class="hidden">
-          <h2>Liên hệ trạng thái Dầu và Mỡ</h2>
-          <p class="workspace-note">
-            Quan sát cụm mạch thẳng (Nhóm 1) và cụm mạch gấp khúc (Nhóm 2) trên hình trực quan:
-          </p>
+          <div class="workspace-section-label"><i class="ti ti-temperature"></i> Bước 2C: Trạng thái Dầu và Mỡ</div>
           <div class="quiz-box">
             <div class="quiz-question">Nhóm nào thường có nhiệt độ nóng chảy thấp hơn?</div>
             <div class="quiz-options">
@@ -1747,10 +1861,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
 
         <!-- Màn 2D -->
         <div id="s02Screen2D" class="hidden">
-          <h2>Nguồn thực phẩm cung cấp Lipid</h2>
-          <p class="workspace-note">
-            Bấm chọn thực phẩm rồi bấm vào khay thích hợp (Động vật hoặc Thực vật) để phân loại:
-          </p>
+          <div class="workspace-section-label"><i class="ti ti-meat"></i> Bước 2D: Phân loại Nguồn thực phẩm</div>
           <div class="food-sorting-container">
             <div class="food-items-pool" id="foodPool">
               <span class="food-chip" data-food="mo-lon" data-group="animal"><i class="ti ti-meat"></i> Mỡ động vật</span>
@@ -1805,10 +1916,41 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
       <!-- Cột trái: Visual Card -->
       <div class="visual-card">
         <div class="visual-card__head">
-          <div class="eyebrow"><i class="ti ti-battery-charging"></i> GIAI ĐOẠN 3 / 6 · VAI TRÒ SINH HỌC</div>
-          <h2 id="s03VisualTitle">Dự trữ năng lượng lâu dài</h2>
+          <h2 id="s03VisualTitle">Vai trò sinh học của Triglyceride</h2>
+          <p class="question">Tại sao triglyceride là dạng phân tử tối ưu cho dự trữ năng lượng lâu dài và cơ thể sử dụng lipid như thế nào trong cách nhiệt, hấp thu vitamin?</p>
         </div>
-        <div class="visual-body">
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span><strong>HƯỚNG DẪN:</strong> Quan sát các sơ đồ đối chiếu giọt mỡ tế bào, lớp mỡ dưới da và cơ chế hấp thu vitamin ở bên dưới, sau đó hoàn thành các câu hỏi tương tác ở bên phải.</span>
+          </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-battery-charging"></i> Dự trữ năng lượng lâu dài tối ưu</div>
+              <div class="theory-block__content">
+                Triglyceride chứa rất nhiều liên kết C–H không phân cực giàu năng lượng (tạo ra gấp đôi năng lượng so với carbohydrate cùng khối lượng). Đặc biệt, do tính kị nước, triglyceride được tích trữ ở dạng giọt mỡ <strong>gần như không ngậm nước</strong>, giúp cơ thể dự trữ được lượng lớn năng lượng với khối lượng nhẹ nhất.
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-shield"></i> Cách nhiệt và giữ nhiệt độ cơ thể</div>
+              <div class="theory-block__content">
+                Lớp mỡ dưới da có độ dẫn nhiệt kém, đóng vai trò như một lớp đệm cách nhiệt sinh học giúp ngăn thất thoát nhiệt cơ thể ra môi trường lạnh, đồng thời bảo vệ cơ học các cơ quan nội tạng.
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-pill"></i> Hòa tan và hấp thu Vitamin tan trong dầu</div>
+              <div class="theory-block__content">
+                Chất béo trong khẩu phần ăn là dung môi hòa tan bắt buộc giúp cơ thể hấp thu các vitamin tan trong dầu gồm <strong>A, D, E và K</strong>. Nếu khẩu phần hoàn toàn thiếu lipid, cơ thể sẽ bị thiếu hụt các vitamin này.
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-help"></i> Hiểu đúng về bướu lạc đà (Mở rộng)</div>
+              <div class="theory-block__content">
+                Bướu lạc đà chứa <strong>mô mỡ (triglyceride)</strong>, không phải chứa nước trực tiếp. Khi mỡ được oxy hóa chuyển hóa để lấy năng lượng, cơ thể thu được một phần "nước chuyển hóa" giúp hỗ trợ sinh tồn.
+              </div>
+            </div>
+          </div>
+          <div class="visual-body">
           <!-- Visual 3A: Glycogen ngậm nước vs Giọt mỡ khan -->
           <div id="s03Visual3A" class="visual-pane" style="width:100%;">
             <svg viewBox="0 0 1500 680" class="visual-media" role="img" aria-label="Đối chiếu dự trữ glycogen và triglyceride">
@@ -1954,6 +2096,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
             <img src="https://lh3.googleusercontent.com/d/18JoqUQpgwFTRSTNTehVtgSjhFlyF4w8-" alt="Bướu lạc đà chứa mô mỡ" class="visual-media" style="max-height:360px;">
           </div>
         </div>
+        </div>
       </div>
 
       <!-- Cột phải: Workspace Card -->
@@ -1965,17 +2108,9 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
           <button class="step-indicator" id="s03Step3D"><i class="ti ti-help"></i><span>3D. Lạc đà</span></button>
         </div>
 
-        <div class="instruction">
-          <i class="ti ti-bulb"></i>
-          <div>Hoàn thành từng nhiệm vụ để giải thích vai trò dự trữ năng lượng, cách nhiệt và hỗ trợ hấp thu vitamin của lipid.</div>
-        </div>
-
         <!-- Màn 3A -->
         <div id="s03Screen3A">
-          <h2>Dự trữ năng lượng lâu dài</h2>
-          <p class="workspace-note">
-            Cùng dự trữ năng lượng, nhưng cách dự trữ không giống nhau. So sánh hạt glycogen kèm nhiều phân tử nước (trái) với giọt triglyceride trong tế bào mỡ gần như không kèm nước (phải):
-          </p>
+          <div class="workspace-section-label"><i class="ti ti-battery-charging"></i> Bước 3A: Dự trữ năng lượng lâu dài</div>
           <div class="quiz-box">
             <div class="quiz-question">Đặc điểm nào giúp triglyceride phù hợp với dự trữ năng lượng lâu dài?</div>
             <div class="quiz-options">
@@ -1992,10 +2127,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
 
         <!-- Màn 3B -->
         <div id="s03Screen3B" class="hidden">
-          <h2>Vai trò cách nhiệt và giữ ổn định nhiệt độ</h2>
-          <p class="workspace-note">
-            Quan sát lát cắt đơn giản qua da: da ở ngoài, lớp mỡ dưới da ở giữa, mô sâu bên dưới.
-          </p>
+          <div class="workspace-section-label"><i class="ti ti-shield"></i> Bước 3B: Cách nhiệt và ổn định nhiệt độ</div>
           <div class="quiz-box">
             <div class="quiz-question">Lớp mỡ dưới da có vai trò gì?</div>
             <div class="quiz-options">
@@ -2012,10 +2144,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
 
         <!-- Màn 3C -->
         <div id="s03Screen3C" class="hidden">
-          <h2>Hòa tan và hấp thu Vitamin tan trong dầu</h2>
-          <p class="workspace-note">
-            Một số vitamin không tan tốt trong nước mà tan trong dầu mỡ.
-          </p>
+          <div class="workspace-section-label"><i class="ti ti-pill"></i> Bước 3C: Hòa tan và hấp thu Vitamin</div>
           <div class="quiz-box">
             <div class="quiz-question">Lipid trong khẩu phần hỗ trợ cơ thể như thế nào?</div>
             <div class="quiz-options">
@@ -2032,10 +2161,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
 
         <!-- Màn 3D -->
         <div id="s03Screen3D" class="hidden">
-          <h2>Mở rộng – Bướu lạc đà có chứa nước không?</h2>
-          <p class="workspace-note">
-            Quan sát hình ảnh lạc đà và bướu được phóng đại thành cấu trúc mô:
-          </p>
+          <div class="workspace-section-label"><i class="ti ti-help"></i> Bước 3D: Mở rộng – Bướu lạc đà</div>
           <div class="quiz-box">
             <div class="quiz-question">Bướu lạc đà chủ yếu chứa gì?</div>
             <div class="quiz-options">
@@ -2079,10 +2205,44 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
       <!-- Cột trái: Visual Card -->
       <div class="visual-card">
         <div class="visual-card__head">
-          <div class="eyebrow"><i class="ti ti-layers-subtract"></i> GIAI ĐOẠN 4 / 6 · PHOSPHOLIPID</div>
-          <h2 id="s04VisualTitle">Cấu tạo một Phospholipid</h2>
+          <h2 id="s04VisualTitle">Phospholipid: Cấu trúc Lưỡng cực tạo Màng</h2>
+          <p class="question">Đặc tính lưỡng cực của phospholipid khiến chúng tự sắp xếp như thế nào trong môi trường nước để tạo nên nền tảng của mọi màng sinh học?</p>
         </div>
-        <div class="visual-body">
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span><strong>HƯỚNG DẪN:</strong> Lắp ghép thành phần phospholipid, dự đoán hướng quay của đầu ưa nước/đuôi kị nước và theo dõi quá trình khép kín lớp kép ở bên dưới.</span>
+          </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-molecule"></i> Cấu tạo phân tử Phospholipid</div>
+              <div class="theory-block__content">
+                Gồm <strong>1 glycerol</strong> liên kết với <strong>2 acid béo</strong> (đuôi) và <strong>1 nhóm phosphate</strong> (đầu, thường liên kết thêm một nhóm ưa nước nhỏ như choline). Khác với triglyceride có 3 acid béo.
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-arrows-split-2"></i> Tính chất Lưỡng cực (Amphipathic)</div>
+              <div class="theory-block__content">
+                <ul style="margin:4px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px;">
+                  <li><strong>Đầu chứa phosphate:</strong> Tích điện và phân cực &rarr; <em>ưa nước</em> (hydrophilic), tương tác thuận lợi với nước.</li>
+                  <li><strong>Hai đuôi acid béo:</strong> Chuỗi hydrocarbon không phân cực &rarr; <em>kị nước</em> (hydrophobic), tránh tiếp xúc với nước.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-layers-subtract"></i> Tự sắp xếp thành Lớp kép (Lipid Bilayer)</div>
+              <div class="theory-block__content">
+                Trong môi trường nước của tế bào, các đầu ưa nước quay ra ngoài và vào trong (tiếp xúc dịch ngoại bào và tế bào chất), còn các đuôi kị nước quay vào nhau giấu ở giữa. Cấu trúc này tạo thành <strong>lớp kép phospholipid</strong> — nền tảng vững chắc của màng sinh học.
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-plug"></i> Khung nối: Protein màng</div>
+              <div class="theory-block__content">
+                Xen kẽ trên lớp kép phospholipid là các phân tử protein màng (kênh vận chuyển, thụ thể, protein bám màng) thực hiện các chức năng sống chuyên biệt.
+              </div>
+            </div>
+          </div>
+          <div class="visual-body">
           <!-- Visual 4A: Ghép Phospholipid trực tiếp -->
           <div id="s04Visual4A" class="visual-pane" style="width:100%;">
             <div class="pl-assembly-board">
@@ -2369,6 +2529,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
 </svg>
           </div>
         </div>
+        </div>
       </div>
 
       <!-- Cột phải: Workspace Card -->
@@ -2380,17 +2541,9 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
           <button class="step-indicator" id="s04Step4D"><i class="ti ti-plug"></i><span>4D. Cầu nối</span></button>
         </div>
 
-        <div class="instruction">
-          <i class="ti ti-bulb"></i>
-          <div>Khám phá cấu tạo lưỡng cực của phospholipid và dự đoán cách các phân tử tự sắp xếp trong môi trường nước.</div>
-        </div>
-
         <!-- Màn 4A -->
         <div id="s04Screen4A">
-          <h2>Cấu tạo một Phospholipid</h2>
-          <p class="workspace-note">
-            Ghép các thành phần tách rời (1 nhóm phosphate, 2 acid béo) vào khung glycerol ở hình bên trái:
-          </p>
+          <div class="workspace-section-label"><i class="ti ti-puzzle"></i> Bước 4A: Cấu tạo Phospholipid</div>
           <div id="plLabelsInfo" class="hidden" style="background:#fff;border:1px solid var(--paper-line);border-radius:8px;padding:10px;margin-bottom:12px;">
             <div style="font-weight:700;color:var(--jade-dark);margin-bottom:4px;">Phân tử Lưỡng cực:</div>
             <div style="font-size:.86rem;color:var(--ink);"><span style="color:var(--info);font-weight:700;">• Đầu chứa phosphate:</span> Ưa nước</div>
@@ -2412,10 +2565,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
 
         <!-- Màn 4B -->
         <div id="s04Screen4B" class="hidden">
-          <h2>Dự đoán cách sắp xếp trong nước</h2>
-          <p class="workspace-note">
-            Để đầu ưa nước tiếp xúc với nước và đuôi kị nước tránh nước trong môi trường tế bào:
-          </p>
+          <div class="workspace-section-label"><i class="ti ti-arrows-shuffle"></i> Bước 4B: Dự đoán cách sắp xếp trong nước</div>
           <div class="quiz-box">
             <div class="quiz-question">Phương án sắp xếp nào là bền vững nhất trong môi trường nước?</div>
             <div class="quiz-options">
@@ -2431,7 +2581,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
 
         <!-- Màn 4C -->
         <div id="s04Screen4C" class="hidden">
-          <h2>Hình thành lớp kép Phospholipid</h2>
+          <div class="workspace-section-label"><i class="ti ti-layers-subtract"></i> Bước 4C: Hình thành Lớp kép Phospholipid</div>
           <div style="background:#fff;border:1px solid var(--paper-line);border-radius:8px;padding:12px;margin-bottom:12px;">
             <div style="display:flex;align-items:center;gap:6px;font-weight:700;color:var(--jade-dark);margin-bottom:6px;">
               <i class="ti ti-timeline"></i> Tiến trình tự sắp xếp:
@@ -2453,10 +2603,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
 
         <!-- Màn 4D -->
         <div id="s04Screen4D" class="hidden">
-          <h2>Giới hạn kiến thức và cầu nối</h2>
-          <p class="workspace-note">
-            Quan sát màng sinh chất: xen giữa lớp kép phospholipid là các phân tử protein màng.
-          </p>
+          <div class="workspace-section-label"><i class="ti ti-plug"></i> Bước 4D: Cầu nối Protein màng</div>
           <div class="knowledge-note">
             <i class="ti ti-info-circle"></i>
             <div>
@@ -2494,10 +2641,44 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
       <!-- Cột trái: Visual Card -->
       <div class="visual-card">
         <div class="visual-card__head">
-          <div class="eyebrow"><i class="ti ti-dna-2"></i> GIAI ĐOẠN 5 / 6 · STEROID</div>
-          <h2 id="s05VisualTitle">Khung bốn vòng của Steroid</h2>
+          <h2 id="s05VisualTitle">Steroid: Khung 4 vòng & Các Lipid khác</h2>
+          <p class="question">Steroid có đặc điểm cấu trúc nhận diện nào và cholesterol cùng các hormone steroid đóng vai trò gì trong cơ thể?</p>
         </div>
-        <div class="visual-body">
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span><strong>HƯỚNG DẪN:</strong> Nhận diện khung 4 vòng chung của steroid, theo dõi chuỗi chuyển hóa từ cholesterol sang hormone và tìm hiểu sáp, carotenoid ở bên dưới.</span>
+          </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-hexagon"></i> Cấu trúc khung 4 vòng của Steroid</div>
+              <div class="theory-block__content">
+                Steroid là nhóm lipid không chứa acid béo, có đặc trưng cấu trúc là <strong>khung 4 vòng carbon liên kết với nhau</strong> (3 vòng 6 cạnh và 1 vòng 5 cạnh). Các chất steroid khác nhau ở các nhóm chức gắn vào khung này.
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-route"></i> Vai trò của Cholesterol</div>
+              <div class="theory-block__content">
+                Cholesterol là thành phần cấu trúc thiết yếu xen giữa lớp phospholipid trong màng tế bào động vật (giúp điều hòa tính lỏng và độ ổn định của màng), đồng thời là chất tiền thân để cơ thể qua nhiều bước chuyển hóa tổng hợp nên acid mật, vitamin D và các hormone steroid.
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-gender-intergender"></i> Hormone Steroid: Testosterone & Estrogen</div>
+              <div class="theory-block__content">
+                Là các hormone sinh dục điều hòa sinh sản, phát triển và đặc điểm sinh lí. <em>Lưu ý khoa học:</em> Cả nam và nữ đều có cả testosterone và estrogen, chỉ khác nhau về hàm lượng và vai trò sinh lí cụ thể.
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-leaf"></i> Sáp & Carotenoid</div>
+              <div class="theory-block__content">
+                <ul style="margin:4px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px;">
+                  <li><strong>Sáp:</strong> Không thấm nước, phủ trên bề mặt lá cây, quả hoặc lông động vật giúp chống mất nước và bảo vệ.</li>
+                  <li><strong>Carotenoid:</strong> Sắc tố quang hợp màu vàng/cam; một số loại như beta-carotene là tiền chất được cơ thể chuyển hóa thành vitamin A.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="visual-body">
           <!-- Visual 5A & 5C: Bộ ba steroid -->
           <div id="s05Visual5A" class="visual-pane" style="width:100%;text-align:center;">
             <div style="display:flex;gap:10px;justify-content:center;margin-bottom:8px;">
@@ -2638,6 +2819,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
             <img src="https://lh3.googleusercontent.com/d/1QsHmulc_Bbdbri8fb2U0t4y-BQOp9BJL" alt="Sáp, carotenoid thực phẩm" class="visual-media" style="max-height:360px;">
           </div>
         </div>
+        </div>
       </div>
 
       <!-- Cột phải: Workspace Card -->
@@ -2649,17 +2831,9 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
           <button class="step-indicator" id="s05Step5D"><i class="ti ti-leaf"></i><span>5D. Sáp & Khác</span></button>
         </div>
 
-        <div class="instruction">
-          <i class="ti ti-bulb"></i>
-          <div>Nhận diện khung bốn vòng của steroid và liên hệ cấu trúc này với một số vai trò sinh học tiêu biểu.</div>
-        </div>
-
         <!-- Màn 5A -->
         <div id="s05Screen5A">
-          <h2>Nhận diện khung Steroid</h2>
-          <p class="workspace-note">
-            Quan sát ba cấu trúc chưa gắn tên bên trái: cholesterol, testosterone, estrogen:
-          </p>
+          <div class="workspace-section-label"><i class="ti ti-hexagon"></i> Bước 5A: Nhận diện khung Steroid 4 vòng</div>
           <div class="quiz-box">
             <div class="quiz-question">Ba phân tử có đặc điểm cấu trúc chung nào?</div>
             <div class="quiz-options">
@@ -2676,10 +2850,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
 
         <!-- Màn 5B -->
         <div id="s05Screen5B" class="hidden">
-          <h2>Vai trò của Cholesterol</h2>
-          <p class="workspace-note">
-            Quan sát sơ đồ hai nhánh xuất phát từ cholesterol trên hình trực quan:
-          </p>
+          <div class="workspace-section-label"><i class="ti ti-route"></i> Bước 5B: Vai trò và tiền chất Cholesterol</div>
           <div class="quiz-box">
             <div class="quiz-question">Vai trò nào đúng với cholesterol?</div>
             <div class="quiz-options">
@@ -2700,10 +2871,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
 
         <!-- Màn 5C -->
         <div id="s05Screen5C" class="hidden">
-          <h2>Hormone Steroid</h2>
-          <p class="workspace-note">
-            Testosterone và estrogen là các hormone steroid tham gia điều hòa sự phát triển, sinh sản và nhiều đặc điểm sinh lí.
-          </p>
+          <div class="workspace-section-label"><i class="ti ti-gender-intergender"></i> Bước 5C: Hormone Steroid</div>
           <div class="quiz-box">
             <div class="quiz-question">Nhận định nào đúng?</div>
             <div class="quiz-options">
@@ -2720,10 +2888,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
 
         <!-- Màn 5D -->
         <div id="s05Screen5D" class="hidden">
-          <h2>Một số lipid khác</h2>
-          <p class="workspace-note">
-            Lipid còn gồm sáp, một số sắc tố và một số vitamin:
-          </p>
+          <div class="workspace-section-label"><i class="ti ti-leaf"></i> Bước 5D: Sáp, Carotenoid & Lipoprotein</div>
           <div style="background:#fff;border:1px solid var(--paper-line);border-radius:8px;padding:12px;margin-bottom:12px;font-size:.86rem;">
             <b>• Sáp:</b> Phủ bề mặt lá, quả giúp chống thấm và hạn chế thoát hơi nước.<br>
             <b>• Carotenoid:</b> Một số carotenoid, như beta-carotene, có thể được chuyển hóa thành <b>vitamin A</b> cần cho hoạt động thị giác.<br>
@@ -2763,10 +2928,42 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
       <!-- Cột trái: Visual Card -->
       <div class="visual-card">
         <div class="visual-card__head">
-          <div class="eyebrow"><i class="ti ti-trophy"></i> GIAI ĐOẠN 6 / 6 · TỔNG KẾT & VẬN DỤNG</div>
           <h2 id="s06VisualTitle">Tổng hợp Cấu trúc & Vai trò của Lipid</h2>
+          <p class="question">Cấu trúc riêng của từng nhóm lipid quyết định vai trò sinh học của chúng ra sao và chế độ ăn uống khoa học đối với chất béo cần như thế nào?</p>
         </div>
-        <div class="visual-body">
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span><strong>HƯỚNG DẪN:</strong> Nối 3 nhóm lipid với cấu trúc và vai trò tương ứng, trả lời câu hỏi cốt lõi và hoàn thành vận dụng dinh dưỡng ở bên phải.</span>
+          </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-clipboard-list"></i> Cốt lõi: Mối quan hệ Cấu trúc – Vai trò</div>
+              <div class="theory-block__content">
+                <table class="theory-table">
+                  <thead><tr><th>Nhóm Lipid</th><th>Đặc điểm cấu trúc</th><th>Vai trò cốt lõi</th></tr></thead>
+                  <tbody>
+                    <tr><td><strong>Triglyceride</strong></td><td>1 glycerol + 3 acid béo</td><td>Dự trữ năng lượng lâu dài (giàu liên kết C–H, không ngậm nước), cách nhiệt.</td></tr>
+                    <tr><td><strong>Phospholipid</strong></td><td>1 glycerol + 2 acid béo + 1 phosphate</td><td>Cấu trúc lưỡng cực tự xếp thành lớp kép tạo nền tảng màng tế bào.</td></tr>
+                    <tr><td><strong>Steroid</strong></td><td>Khung 4 vòng carbon</td><td>Cấu tạo màng (cholesterol) và điều hòa sinh lí (hormone steroid).</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-salad"></i> Nguyên tắc Dinh dưỡng Khoa học về Lipid</div>
+              <div class="theory-block__content">
+                Lipid là nhóm chất thiết yếu đối với cơ thể, <strong>không nên loại bỏ hoàn toàn</strong> khỏi khẩu phần ăn. Cần sử dụng lượng phù hợp với nhu cầu cơ thể, kết hợp cân đối giữa mỡ động vật và dầu thực vật, ưu tiên các acid béo không no có lợi.
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-arrow-forward"></i> Cầu nối sang Module M03: Protein</div>
+              <div class="theory-block__content">
+                Lớp kép phospholipid tạo nên bộ khung cơ bản của màng sinh chất. Tuy nhiên, để màng thực hiện các chức năng vận chuyển chọn lọc, thụ thể truyền tín hiệu, xúc tác phản ứng..., màng cần có sự tham gia của <strong>các phân tử protein màng</strong>. Protein được cấu tạo như thế nào để có thể thực hiện nhiều chức năng chuyên biệt như vậy? Chúng ta sẽ tìm hiểu ở Module M03.
+              </div>
+            </div>
+          </div>
+          <div class="visual-body">
           <!-- Visual 6A-6C: Tổng hợp 3 nhóm lipid -->
           <div id="s06Visual6A" class="visual-pane" style="width:100%;">
             <svg viewBox="0 0 1500 650" class="visual-media" role="img" aria-label="Tổng hợp cấu trúc ba nhóm lipid">
@@ -2961,6 +3158,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
 </svg>
           </div>
         </div>
+        </div>
       </div>
 
       <!-- Cột phải: Workspace Card -->
@@ -2972,17 +3170,9 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
           <button class="step-indicator" id="s06Step6D"><i class="ti ti-arrow-forward"></i><span>6D. Sang M03</span></button>
         </div>
 
-        <div class="instruction">
-          <i class="ti ti-bulb"></i>
-          <div>Ghép cấu trúc với vai trò, trả lời câu hỏi trung tâm và vận dụng kiến thức lipid vào lựa chọn dinh dưỡng.</div>
-        </div>
-
         <!-- Màn 6A: Ghép 3 cột -->
         <div id="s06Screen6A">
-          <h2>Ghép cấu trúc với vai trò</h2>
-          <p class="workspace-note">
-            Bấm chọn <b>Phân tử</b> ở cột 1, chọn <b>Đặc điểm cấu trúc</b> ở cột 2, rồi chọn <b>Vai trò</b> ở cột 3 để tạo liên kết bộ ba:
-          </p>
+          <div class="workspace-section-label"><i class="ti ti-vector-bezier-2"></i> Bước 6A: Ghép Cấu trúc với Vai trò</div>
           <div class="matching-container" id="matchContainer">
             <svg class="match-svg-layer" id="matchSvgLayer"></svg>
             <div class="matching-cols">
@@ -3018,10 +3208,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
 
         <!-- Màn 6B: Trả lời câu hỏi trung tâm -->
         <div id="s06Screen6B" class="hidden">
-          <h2>Trả lời câu hỏi trung tâm</h2>
-          <p class="workspace-note">
-            Đặc tính không tan trong nước và cấu trúc riêng của từng loại lipid tạo nên những vai trò nào? <b>(Chọn đúng 3 ý)</b>:
-          </p>
+          <div class="workspace-section-label"><i class="ti ti-checkbox"></i> Bước 6B: Trả lời Câu hỏi trung tâm (Chọn 3 ý đúng)</div>
           <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px;" id="s06CentralChecklist">
             <div class="checkbox-opt" data-correct="true">
               <div class="check-box-indicator"><i class="ti ti-check hidden"></i></div>
@@ -3051,10 +3238,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
 
         <!-- Màn 6C: Vận dụng dinh dưỡng -->
         <div id="s06Screen6C" class="hidden">
-          <h2>Vận dụng dinh dưỡng</h2>
-          <p class="workspace-note">
-            Dựa trên kiến thức về lipid, hãy chọn nhận định phù hợp nhất về chế độ ăn uống:
-          </p>
+          <div class="workspace-section-label"><i class="ti ti-salad"></i> Bước 6C: Vận dụng Dinh dưỡng khoa học</div>
           <div class="quiz-box">
             <div class="quiz-question">Nhận định nào phù hợp nhất?</div>
             <div class="quiz-options">

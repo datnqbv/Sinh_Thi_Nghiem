@@ -10,6 +10,7 @@
   "subject": "Sinh học",
   "grade": "10",
   "track": "SH10_B08_M05",
+  "centralQuestion": "Điều gì quy định hình dạng cứng cáp của tế bào thực vật? Các tế bào trong cùng một mô liên kết và giao tiếp với nhau bằng cách nào?",
   "objectives": [
     "Dựa vào sơ đồ, hình ảnh, phân biệt được cấu tạo tế bào động vật và tế bào thực vật",
     "Trình bày được cấu tạo và chức năng của thành tế bào ở thực vật (cellulose) và nấm (chitin)",
@@ -19,772 +20,930 @@
     "Tổng kết toàn diện cấu trúc tế bào nhân thực qua toàn bộ Bài 8"
   ],
   "structure": [
-    {"id": "s01", "title": "Thành tế bào: cellulose và chitin"},
-    {"id": "s02", "title": "Lông và roi ở tế bào nhân thực"},
-    {"id": "s03", "title": "Chất nền ngoại bào"},
-    {"id": "s04", "title": "Mối nối tế bào: kín và hở"},
-    {"id": "s05", "title": "Tổng kết toàn Bài 8: tế bào động vật và thực vật"}
-  ],
-  "athenaGuidance": "Module học liệu số độc lập chuẩn V10 gồm 5 màn học bám sát kịch bản: S01) Khám phá 3 loại tế bào trên ảnh SH10-B08-M05-A01.jpg và ghép cặp đúng thành phần thành tế bào (Thực vật-Cellulose, Nấm-Chitin, Động vật-Không có thành). S02) Khám phá cấu trúc lông/roi nhân thực với axoneme 9+2 có màng bọc và đối chiếu roi vi khuẩn trần trên ảnh SH10-B08-M05-A03.jpg. S03) Tương tác mô phỏng hình thành mô với mạng lưới collagen ECM trên ảnh SH10-B08-M05-A05.jpg. S04) Thử nghiệm lưu thông chất qua mối nối kín và mối nối hở trên ảnh SH10-B08-M05-A06.jpg, ghép đúng chức năng sinh học. S05) Tương tác kéo thả/chạm chọn phân loại 14 cấu trúc/bào quan vào 3 nhóm (Đặc trưng thực vật, Điển hình động vật, Cả hai) trên nền Master Map SH10-B08-M01-A02.jpg, khép lại trọn vẹn Bài 8 với pháo hoa chúc mừng."
+    {"id": "st01", "title": "Thành tế bào: cellulose và chitin"},
+    {"id": "st02", "title": "Lông và roi ở tế bào nhân thực"},
+    {"id": "st03", "title": "Chất nền ngoại bào"},
+    {"id": "st04", "title": "Mối nối tế bào: kín và hở"},
+    {"id": "st05", "title": "Tổng kết toàn Bài 8: tế bào động vật và thực vật"}
+  ]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
-:root {
-  --cream: #FAF7F0;
-  --cream-2: #F0EADD;
-  --cream-3: #E7DECC;
-  --paper-line: #E5DECF;
-  --paper-line-2: #D6CCB6;
-  --ink: #1A1A1A;
-  --ink-2: #514C44;
-  --ink-3: #7C756A;
-  --ink-faint: #ABA396;
-  --jade: #3CA57A;
-  --jade-deep: #2D8B6F;
-  --jade-dark: #14432F;
-  --jade-text: #1B5E48;
-  --jade-soft: #A9D0BE;
-  --jade-pale: #DCEAE1;
-  --sage: #A8C9B8;
-  --sage-deep: #7CA792;
-  --sage-text: #46685A;
-  --sage-pale: #E1ECE4;
-  --accent: #E8A24A;
-  --accent-deep: #CE8A33;
-  --accent-text: #8A551A;
-  --accent-pale: #F7E7CD;
-  --correct: #2D8B6F;
-  --correct-bg: #DCEAE1;
-  --wrong: #C15F3C;
-  --wrong-bg: #F3E2D6;
-  --warning: #C58A2E;
-  --warning-bg: #F5E7CB;
-  --info: #4E7F92;
-  --info-bg: #DCE7EB;
-  --blue: #2563EB;
-  --blue-pale: #EFF6FF;
-  --blue-text: #1D4ED8;
-  --radius: 12px;
-  --radius-lg: 16px;
-  --radius-sm: 8px;
-  --shadow: 0 4px 14px rgba(45, 139, 111, 0.10);
-  --shadow-sm: 0 2px 6px rgba(26, 26, 26, 0.05);
-  --shadow-card: 0 4px 12px rgba(15, 23, 42, 0.06);
-  --lesson-width: 1200px;
-}
+  /* ==========================================================================
+     1. DESIGN SYSTEM TOKENS (TOM HAUGOMAT EDITORIAL FLAT - AIDUCATION STANDARD)
+     ========================================================================== */
+  :root {
+    --cream: #FAF7F0;
+    --cream-2: #F0EADD;
+    --cream-3: #E7DECC;
+    --paper-line: #E5DECF;
+    --paper-line-2: #D6CCB6;
+    --ink: #1A1A1A;
+    --ink-2: #514C44;
+    --ink-3: #7C756A;
+    --ink-faint: #ABA396;
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+    --jade: #3CA57A;
+    --jade-deep: #2D8B6F;
+    --jade-dark: #14432F;
+    --jade-text: #1B5E48;
+    --jade-soft: #A9D0BE;
+    --jade-pale: #DCEAE1;
 
-body {
-  font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
-  background: var(--cream);
-  color: var(--ink);
-  line-height: 1.65;
-  padding: 20px clamp(12px, 2.5vw, 32px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  overflow-x: hidden;
-}
+    --accent: #E8A24A;
+    --accent-deep: #CE8A33;
+    --accent-text: #8A551A;
+    --accent-pale: #F7E7CD;
 
-button { font: inherit; cursor: pointer; border: none; }
-button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    --sky: #4E7F92;
+    --sky-deep: #2E5A6B;
+    --sky-pale: #DCE7EB;
+    --sky-text: #1F4554;
 
-/* ẨN TUYỆT ĐỐI HEADER VÀ PROGRESS NAV CỒNG KỀNH THEO CHUẨN V10 */
-header,
-.header-banner,
-.progress-nav-container,
-.progress-nav,
-.stepper-nav,
-.stepper-bar,
-.step-nav-bar {
-  display: none !important;
-}
+    --purple: #7B68B8;
+    --purple-deep: #51428C;
+    --purple-pale: #F3EFFB;
 
-/* ẨN MODAL BAN ĐẦU - BẢO VỆ CHỐNG LỖI TỰ MỞ TRÊN TOÀN TRANG */
-.hidden { display: none !important; }
-.congrats-overlay.hidden,
-.modal-backdrop.hidden,
-#completionModal.hidden {
-  display: none !important;
-}
+    --correct: #2D8B6F;
+    --correct-bg: #DCEAE1;
+    --wrong: #C15F3C;
+    --wrong-bg: #F3E2D6;
+    --warning: #C58A2E;
+    --warning-bg: #F5E7CB;
+    --info: #4E7F92;
+    --info-bg: #DCE7EB;
 
-.app {
-  width: 100%;
-  max-width: var(--lesson-width);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+    --radius-sm: 6px;
+    --radius: 10px;
+    --radius-lg: 14px;
+    --shadow-sm: 0 2px 6px rgba(26, 26, 26, 0.05);
+    --shadow: 0 4px 14px rgba(45, 139, 111, 0.10);
+  }
 
-/* KHỐI MÀN HỌC (STAGE CARD) */
-.stage-card {
-  background: #fff;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--paper-line);
-  box-shadow: var(--shadow);
-  padding: clamp(20px, 3vw, 32px);
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  animation: fadeIn 0.35s ease-out;
-}
+  *, *::before, *::after {
+    box-sizing: border-box;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+  }
 
-.stage-title {
-  font-size: clamp(1.35rem, 2.5vw, 1.7rem);
-  font-weight: 800;
-  color: var(--jade-dark);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    background: var(--cream);
+    color: var(--ink);
+  }
 
-.stage-title i {
-  color: var(--jade-deep);
-}
+  body {
+    font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
 
-  /* COLLAPSIBLE LEAD BOX (BỐI CẢNH KHOA HỌC) CHUẨN THỐNG NHẤT */
-  .lead-box {
-    background: #FFFFFF;
-    border: 1px solid var(--paper-line);
-    border-left: 4px solid var(--jade);
-    border-radius: var(--radius);
-    margin-bottom: 20px;
-    box-shadow: 0 2px 8px rgba(26, 26, 26, 0.04);
+  /* CONTAINER CHÍNH CHUẨN V10 */
+  .app {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px clamp(10px, 2.5vw, 24px) 32px;
+  }
+
+  /* THANH TIẾN ĐỘ TINH GỌN TRÊN NỀN KEM */
+  .progress-bar-wrap {
+    width: 100%;
+    height: 6px;
+    background: var(--paper-line);
+    border-radius: 999px;
     overflow: hidden;
-    transition: box-shadow 0.25s ease, border-color 0.25s ease;
+    margin-bottom: 16px;
   }
-  .lead-box:hover {
-    box-shadow: 0 4px 14px rgba(26, 26, 26, 0.08);
-    border-color: var(--paper-line-2);
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--jade), var(--accent));
+    transition: width 0.35s ease;
   }
-  .lead-header {
+
+  /* BỐ CỤC HAI KHỐI CHUẨN V10 */
+  .stage-section {
+    display: none;
+    animation: fadeIn 0.3s ease-out;
+  }
+  .stage-section.active {
+    display: block;
+  }
+
+  .split-workspace {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+    width: 100%;
+  }
+
+  @media (max-width: 980px) {
+    .split-workspace {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+
+  /* KHỐI TRÁI: LÝ THUYẾT & MINH HỌA (VISUAL CARD) */
+  .visual-card {
+    background: var(--cream);
+    border: 1px solid var(--paper-line);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .visual-card__head h2 {
+    font-size: clamp(1.2rem, 2vw, 1.45rem);
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+
+  /* ĐƠN ĐIỂM HƯỚNG DẪN (SINGLE POINT OF INSTRUCTION) */
+  .guide-box {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px 16px;
-    background: #FAFAF7;
-    cursor: pointer;
-    user-select: none;
-    border-bottom: 1px solid var(--paper-line);
-    transition: background-color 0.2s ease, border-color 0.25s ease;
+    gap: 10px;
+    padding: 11px 14px;
+    background: var(--jade-pale);
+    border: 1px solid var(--jade-soft);
+    border-radius: var(--radius);
+    color: var(--jade-text);
+    font-size: 0.91rem;
+    line-height: 1.5;
+    font-weight: 500;
   }
-  .lead-header:hover {
-    background: #F0F4F1;
+  .guide-box i {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    color: var(--jade-deep);
   }
-  .lead-header:focus-visible {
-    outline: 2px solid var(--jade);
-    outline-offset: -2px;
+
+  /* KHỐI NỘI DUNG DỌC TUẦN TỰ (VERTICAL THEORY BLOCKS) */
+  .theory-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
-  .lead-title {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--jade-dark);
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-  }
-  .lead-title i {
-    font-size: 1.15rem;
-    color: var(--jade);
-  }
-  .lead-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--ink-3);
+  .theory-block {
     background: #FFFFFF;
     border: 1px solid var(--paper-line);
-    padding: 4px 10px;
-    border-radius: 9999px;
-    transition: all 0.2s ease;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    border-left: 3.5px solid var(--jade);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    box-shadow: var(--shadow-sm);
   }
-  .lead-header:hover .lead-toggle {
-    color: var(--jade-text);
-    border-color: var(--jade-soft);
-    background: var(--jade-pale);
+  .theory-block.amber {
+    border-left-color: var(--accent);
   }
-  .lead-toggle-icon {
-    font-size: 0.95rem;
-    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  .theory-block.sky {
+    border-left-color: var(--sky);
   }
-  .lead-content {
-    max-height: 1000px;
-    opacity: 1;
-    overflow: hidden;
-    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.25s ease,
-                padding 0.35s ease;
+  .theory-block__title {
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--ink);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
-  .lead-box.collapsed {
-    box-shadow: none;
-  }
-  .lead-box.collapsed .lead-header {
-    border-bottom-color: transparent;
-    background: #FFFFFF;
-  }
-  .lead-box.collapsed .lead-toggle-icon {
-    transform: rotate(180deg);
-  }
-  .lead-box.collapsed .lead-content {
-    max-height: 0 !important;
-    opacity: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  .lead-box .lead-text {
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    padding: 14px 18px !important;
-    margin: 0 !important;
-    box-shadow: none !important;
-    font-size: 1.02rem;
-    line-height: 1.68;
+  .theory-block__content {
+    font-size: 0.88rem;
+    line-height: 1.55;
     color: var(--ink-2);
   }
 
-/* QUY TẮC ĐƠN ĐIỂM HƯỚNG DẪN (SINGLE POINT OF INSTRUCTION) */
-.guide-box {
-  background: var(--cream);
-  border: 1.5px solid var(--paper-line-2);
-  border-left: 5px solid var(--jade);
-  border-radius: var(--radius-sm);
-  padding: 12px 18px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--ink-2);
-  font-size: 0.95rem;
-  font-weight: 500;
-}
-.guide-box i {
-  color: var(--jade-deep);
-  font-size: 1.3rem;
-  flex-shrink: 0;
-}
-
-/* BỐ CỤC SPLIT WORKSPACE (68% TRÁI / 32% PHẢI) */
-.split-workspace {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 24px;
-  align-items: start;
-}
-@media (max-width: 960px) {
-  .split-workspace {
-    grid-template-columns: 1fr;
+  /* KHUNG HÌNH ẢNH TRỰC QUAN */
+  .visual-media-wrap {
+    background: #FFFFFF;
+    border: 1px solid var(--paper-line);
+    border-radius: var(--radius);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
-}
-
-/* KHUNG HIỂN THỊ HÌNH ẢNH & TƯƠNG TÁC BÊN TRÁI */
-.visual-card {
-  background: var(--cream);
-  border: 1.5px solid var(--paper-line);
-  border-radius: var(--radius);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: var(--shadow-sm);
-}
-
-.visual-media-box {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16/9;
-  background: #FAF7F0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.visual-media-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-.visual-toolbar {
-  padding: 10px 14px;
-  background: #fff;
-  border-top: 1px solid var(--paper-line);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
-}
-
-.visual-toolbar.grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  padding: 10px 12px;
-}
-
-.visual-toolbar.grid-2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  padding: 10px 14px;
-}
-
-.visual-toolbar.grid-3 .btn-tool,
-.visual-toolbar.grid-2 .btn-tool {
-  width: 100%;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 8px 6px;
-  font-size: 0.83rem;
-  font-weight: 600;
-  line-height: 1.25;
-  gap: 5px;
-}
-
-@media (max-width: 600px) {
-  .visual-toolbar.grid-3 {
-    gap: 4px;
-    padding: 8px 6px;
+  .visual-media-box {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    max-height: min(440px, calc(100vh - 180px));
+    background: var(--cream);
+    border: 1px solid var(--paper-line);
+    border-radius: var(--radius-sm);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .visual-toolbar.grid-3 .btn-tool {
+  .visual-media-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .visual-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-tool {
+    background: var(--cream);
+    border: 1.5px solid var(--paper-line-2);
+    color: var(--ink-2);
+    padding: 7px 12px;
+    border-radius: 99px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .btn-tool:hover {
+    background: var(--sage-pale);
+    border-color: var(--jade);
+    color: var(--jade-dark);
+  }
+  .btn-tool.active {
+    background: var(--jade-deep);
+    border-color: var(--jade-dark);
+    color: #FFFFFF;
+    box-shadow: 0 2px 6px rgba(45, 139, 111, 0.25);
+  }
+
+  .caption-box {
+    background: var(--cream-2);
+    border: 1px solid var(--paper-line);
+    border-left: 3px solid var(--jade-deep);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 0.88rem;
+    color: var(--ink-2);
+    line-height: 1.5;
+    animation: fadeIn 0.25s ease-out;
+  }
+
+  /* KHỐI PHẢI: HOẠT ĐỘNG & BÀI TẬP (WORKSPACE CARD - MUTUAL STICKY) */
+  .workspace-card {
+    background: var(--cream);
+    border: 1px solid var(--paper-line);
+    border-radius: var(--radius-lg);
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 16px;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    min-width: 0;
+  }
+
+  @media (max-width: 980px) {
+    .workspace-card {
+      position: static;
+      max-height: none;
+      overflow-y: visible;
+      overflow-x: visible;
+      padding: 18px 16px;
+    }
+  }
+
+  .task-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--paper-line);
+  }
+  .task-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .task-badge {
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: var(--jade-pale);
+    color: var(--jade-text);
+  }
+
+  /* CÂU HỎI TRẮC NGHIỆM */
+  .mcq-question-text {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  .mcq-options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .option-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 11px 13px;
+    background: #FFFFFF;
+    border: 1.5px solid var(--paper-line);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.89rem;
+    line-height: 1.5;
+    color: var(--ink);
+    user-select: none;
+  }
+  .option-label:hover {
+    border-color: var(--jade);
+    background: var(--cream);
+  }
+  .option-label.selected {
+    border-color: var(--jade-deep);
+    background: var(--jade-pale);
+    color: var(--jade-text);
+    font-weight: 700;
+  }
+  .option-label input[type="radio"] {
+    margin-top: 3px;
+    accent-color: var(--jade);
+    flex-shrink: 0;
+  }
+
+  /* GIAO DIỆN GHÉP ĐÔI TƯƠNG TÁC KÈM ĐƯỜNG NỐI SVG */
+  .match-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 6px;
+  }
+  .match-svg-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    overflow: visible;
+  }
+  .matching-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    position: relative;
+    z-index: 2;
+  }
+  .match-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .match-card {
+    position: relative;
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 12px;
+    border: 1.5px solid var(--paper-line-2);
+    border-radius: var(--radius-sm);
+    background: #FFFFFF;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+    transition: border-color .2s ease, background .2s ease, transform .15s ease, box-shadow .2s ease;
+  }
+  .match-card.source-card {
+    justify-content: space-between;
+  }
+  .match-card.target-card {
+    justify-content: flex-start;
+    gap: 8px;
+  }
+  .match-card-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+  }
+  .match-card-content i {
+    font-size: 1.1rem;
+    color: var(--ink-2);
+    flex-shrink: 0;
+  }
+  .match-card-content span {
+    font-size: 0.84rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  .match-card:hover:not(.matched) {
+    border-color: var(--jade);
+    background: var(--cream);
+    transform: translateY(-1px);
+  }
+  .match-card.selected-source {
+    border-color: var(--accent-deep);
+    background: var(--accent-pale);
+    color: var(--accent-text);
+    box-shadow: 0 0 0 3px rgba(232, 162, 74, 0.35);
+  }
+  .match-card.selected-source .match-card-content span {
+    font-weight: 700;
+    color: var(--accent-text);
+  }
+  .match-card.selected-source .match-card-content i {
+    color: var(--accent-text);
+  }
+  .match-card.matched {
+    border-color: var(--jade-deep);
+    background: var(--jade-pale);
+    color: var(--jade-dark);
+    cursor: default;
+    transform: none;
+  }
+  .match-card.matched .match-card-content span {
+    font-weight: 700;
+    color: var(--jade-dark);
+  }
+  .match-card.matched .match-card-content i {
+    color: var(--jade-dark);
+  }
+  .match-card.wrong {
+    border-color: var(--wrong) !important;
+    background: var(--wrong-bg) !important;
+    color: var(--wrong) !important;
+    animation: shakeMatch .4s ease;
+  }
+  .match-card.wrong .match-pin {
+    border-color: var(--wrong) !important;
+    background: var(--wrong) !important;
+  }
+  .match-card.wrong .match-pin::after {
+    background: #FFFFFF !important;
+  }
+  @keyframes shakeMatch {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-4px); }
+    40%, 80% { transform: translateX(4px); }
+  }
+
+  .match-pin {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid var(--paper-line-2);
+    background: #FFFFFF;
+    transition: all .25s ease;
+    flex-shrink: 0;
+  }
+  .match-pin::after {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--paper-line-2);
+    transition: all .25s ease;
+  }
+  .match-card:hover .match-pin,
+  .match-card.selected-source .match-pin {
+    border-color: var(--accent);
+    background: #FFFFFF;
+    transform: scale(1.15);
+  }
+  .match-card:hover .match-pin::after,
+  .match-card.selected-source .match-pin::after {
+    background: var(--accent);
+    transform: scale(1.3);
+  }
+  .match-card.matched .match-pin {
+    border-color: var(--jade);
+    background: var(--jade);
+    transform: scale(1.15);
+    box-shadow: 0 0 8px rgba(45, 139, 111, .45);
+  }
+  .match-card.matched .match-pin::after {
+    background: #FFFFFF;
+    transform: scale(1.2);
+  }
+
+  .match-connect-line {
+    fill: none;
+    stroke: var(--jade);
+    stroke-width: 3.5px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 2px 5px rgba(45, 139, 111, .4));
+    transition: stroke 0.3s ease;
+  }
+  .match-connect-line.wrong-line {
+    stroke: var(--wrong) !important;
+    filter: drop-shadow(0 2px 6px rgba(193, 95, 60, .45)) !important;
+  }
+
+  /* GIAO DIỆN PHÂN LOẠI 3 CỘT CHO STAGE 5 */
+  .classification-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .pool-box {
+    background: var(--cream);
+    border: 1.5px dashed var(--paper-line-2);
+    border-radius: var(--radius);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .pool-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .chips-tray {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    min-height: 40px;
+  }
+  .organelle-chip {
+    background: #FFFFFF;
+    border: 1.5px solid var(--paper-line-2);
+    padding: 5px 11px;
+    border-radius: 99px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink);
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .organelle-chip:hover {
+    border-color: var(--jade);
+    transform: translateY(-1px);
+  }
+  .organelle-chip.selected {
+    background: var(--jade-pale);
+    border-color: var(--jade-deep);
+    color: var(--jade-dark);
+    box-shadow: 0 0 0 2px var(--jade-soft);
+  }
+
+  .cols-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  @media (max-width: 640px) {
+    .cols-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .class-col {
+    background: #FFFFFF;
+    border: 1.5px solid var(--paper-line);
+    border-radius: var(--radius);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 180px;
+    transition: all 0.2s;
+  }
+  .class-col:hover {
+    border-color: var(--sage);
+  }
+  .class-col.hover-active {
+    border-color: var(--jade);
+    background: var(--jade-pale);
+  }
+  .class-col-head {
+    padding-bottom: 6px;
+    border-bottom: 1.5px solid var(--paper-line);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--jade-dark);
+  }
+  .class-col-head i {
+    color: var(--jade);
+  }
+  .col-drop-zone {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 2px;
+    min-height: 100px;
+  }
+  .col-chip-item {
+    background: var(--cream);
+    border: 1px solid var(--paper-line);
+    border-radius: var(--radius-sm);
+    padding: 5px 9px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .col-chip-item:hover {
+    background: var(--wrong-bg);
+    border-color: var(--wrong);
+    color: var(--wrong);
+  }
+  .col-chip-item i {
+    font-size: 0.85rem;
+    opacity: 0.6;
+  }
+
+  /* KHUNG PHẢN HỒI (INLINE FEEDBACK) CHUẨN V10 */
+  .inline-feedback {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px 16px;
+    border-radius: var(--radius);
+    font-size: 0.92rem;
+    line-height: 1.55;
+    animation: fadeIn 0.25s ease-out;
+  }
+  .inline-feedback.hidden {
+    display: none !important;
+  }
+  .inline-feedback.ok {
+    background: var(--correct-bg);
+    border: 1px solid var(--jade-soft);
+    color: var(--jade-dark);
+  }
+  .inline-feedback.bad {
+    background: var(--wrong-bg);
+    border: 1px solid var(--wrong);
+    color: #8C2B10;
+  }
+  .feedback-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 800;
+    font-size: 1rem;
+  }
+  .correct-answer-box {
+    background: #FFFFFF;
+    border-left: 3.5px solid var(--jade);
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-weight: 700;
+    color: var(--jade-text);
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+  .explanation {
+    color: var(--ink-2);
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  /* KHỐI THÔNG TIN SƯ PHẠM (PEDAGOGY META) ĐỦ 5 TRƯỜNG */
+  .pedagogy-meta {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    background: #FFFFFF;
+    border: 1px solid var(--paper-line);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    margin-top: 4px;
+  }
+  @media (max-width: 600px) {
+    .pedagogy-meta {
+      grid-template-columns: 1fr;
+    }
+  }
+  .pedagogy-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .pedagogy-label {
     font-size: 0.74rem;
-    padding: 6px 3px;
-    gap: 3px;
+    font-weight: 500;
+    color: var(--ink-3);
   }
-}
-
-.btn-tool {
-  background: var(--cream);
-  border: 1.5px solid var(--paper-line-2);
-  color: var(--ink-2);
-  padding: 7px 13px;
-  border-radius: 99px;
-  font-size: 0.86rem;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.2s ease;
-}
-.btn-tool:hover {
-  background: var(--sage-pale);
-  border-color: var(--jade);
-  color: var(--jade-dark);
-}
-.btn-tool.active {
-  background: var(--jade-deep);
-  border-color: var(--jade-dark);
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(45, 139, 111, 0.25);
-}
-
-.visual-info-caption {
-  padding: 14px 18px;
-  background: #fff;
-  border-top: 1px dashed var(--paper-line);
-  font-size: 0.92rem;
-  color: var(--ink-2);
-  line-height: 1.6;
-  min-height: 54px;
-  display: block;
-}
-.visual-info-caption strong {
-  color: var(--jade-dark);
-}
-
-/* KHUNG NHIỆM VỤ & CÂU HỎI BÊN PHẢI */
-.task-card {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  background: #fff;
-  border: 1.5px solid var(--paper-line);
-  border-radius: var(--radius);
-  padding: 20px;
-}
-
-.task-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--ink);
-  line-height: 1.45;
-}
-
-/* TƯƠNG TÁC GHÉP ĐÔI (MATCHING LIST) */
-.match-pairs-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.match-pair-row {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  background: var(--cream);
-  border: 1px solid var(--paper-line);
-  padding: 10px 14px;
-  border-radius: var(--radius-sm);
-}
-.match-pair-label {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--jade-dark);
-}
-.match-select {
-  width: 100%;
-  padding: 8px 12px;
-  border-radius: var(--radius-sm);
-  border: 1.5px solid var(--paper-line-2);
-  background: #fff;
-  font-family: inherit;
-  font-size: 0.9rem;
-  color: var(--ink);
-  cursor: pointer;
-  transition: border-color 0.2s;
-}
-.match-select:focus {
-  border-color: var(--jade);
-  outline: none;
-}
-
-/* TƯƠNG TÁC TRẮC NGHIỆM (QUIZ OPTIONS) */
-.quiz-options-group {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.quiz-opt-btn {
-  width: 100%;
-  text-align: left;
-  padding: 12px 16px;
-  border-radius: var(--radius-sm);
-  background: var(--cream);
-  border: 1.5px solid var(--paper-line-2);
-  color: var(--ink);
-  font-size: 0.92rem;
-  line-height: 1.45;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-.quiz-opt-btn i {
-  font-size: 1.1rem;
-  color: var(--ink-faint);
-  margin-top: 2px;
-  flex-shrink: 0;
-}
-.quiz-opt-btn:hover {
-  background: #fff;
-  border-color: var(--jade);
-  transform: translateY(-1px);
-}
-.quiz-opt-btn.selected {
-  background: #fff;
-  border-color: var(--jade-deep);
-  box-shadow: 0 0 0 2px var(--jade-soft);
-}
-.quiz-opt-btn.selected i {
-  color: var(--jade-deep);
-}
-
-/* PHÂN LOẠI 3 CỘT CHO STAGE 5 (DRAG & DROP / TAP TO SELECT) */
-.classification-layout {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.items-pool-box {
-  background: var(--cream);
-  border: 1.5px dashed var(--paper-line-2);
-  border-radius: var(--radius);
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.pool-header {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--ink-3);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.chips-tray {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  min-height: 48px;
-}
-
-.organelle-chip {
-  background: #fff;
-  border: 1.5px solid var(--paper-line-2);
-  padding: 6px 12px;
-  border-radius: 99px;
-  font-size: 0.86rem;
-  font-weight: 600;
-  color: var(--ink);
-  cursor: pointer;
-  user-select: none;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-.organelle-chip:hover {
-  border-color: var(--jade);
-  transform: translateY(-1px);
-}
-.organelle-chip.selected {
-  background: var(--jade-pale);
-  border-color: var(--jade-deep);
-  color: var(--jade-dark);
-  box-shadow: 0 0 0 2px var(--jade-soft);
-}
-
-.classification-columns-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-}
-@media (max-width: 820px) {
-  .classification-columns-grid {
-    grid-template-columns: 1fr;
+  .pedagogy-value {
+    font-size: 0.82rem;
+    color: var(--ink);
   }
-}
+  .pedagogy-value strong {
+    color: var(--ink);
+    font-weight: 800;
+  }
 
-.class-col {
-  background: #fff;
-  border: 1.5px solid var(--paper-line);
-  border-radius: var(--radius);
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  min-height: 220px;
-  transition: all 0.2s;
-}
-.class-col:hover {
-  border-color: var(--sage);
-}
-.class-col-head {
-  padding-bottom: 8px;
-  border-bottom: 1.5px solid var(--paper-line);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: var(--jade-dark);
-}
-.class-col-head i {
-  color: var(--jade);
-}
-.col-drop-zone {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 4px;
-  min-height: 120px;
-}
-.col-chip-item {
-  background: var(--cream);
-  border: 1px solid var(--paper-line);
-  border-radius: var(--radius-sm);
-  padding: 6px 10px;
-  font-size: 0.84rem;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-}
-.col-chip-item:hover {
-  background: var(--wrong-bg);
-  border-color: var(--wrong);
-  color: var(--wrong);
-}
-.col-chip-item i {
-  font-size: 0.9rem;
-  opacity: 0.6;
-}
+  /* THANH ĐIỀU KHIỂN & NÚT BẤM (CONTROLS ROW) */
+  .controls-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    margin-top: 8px;
+    padding-top: 14px;
+    border-top: 1px solid var(--paper-line);
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+  .btn-group-left, .btn-group-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: nowrap;
+  }
 
-/* KHUNG PHẢN HỒI (FEEDBACK BOX) */
-.feedback-box {
-  padding: 14px 18px;
-  border-radius: var(--radius-sm);
-  font-size: 0.95rem;
-  line-height: 1.55;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-.feedback-box.correct {
-  background: var(--correct-bg);
-  border: 1.5px solid var(--correct);
-  color: var(--jade-dark);
-}
-.feedback-box.wrong {
-  background: var(--wrong-bg);
-  border: 1.5px solid var(--wrong);
-  color: #991b1b;
-}
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 14px;
+    min-height: 40px;
+    min-width: 0;
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1.5px solid transparent;
+    white-space: nowrap;
+    user-select: none;
+  }
+  .btn i {
+    font-size: 1.15rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+  }
+  .btn-primary {
+    background: var(--jade);
+    color: #FFFFFF;
+    border-color: var(--jade-deep);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--jade-deep);
+    border-color: var(--jade-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(45, 139, 111, 0.25);
+  }
+  .btn-primary:disabled {
+    background: var(--paper-line);
+    border-color: var(--paper-line-2);
+    color: var(--ink-faint);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
+  .btn-secondary {
+    background: #FFFFFF;
+    color: var(--ink-2);
+    border-color: var(--paper-line-2);
+  }
+  .btn-secondary:hover:not(:disabled) {
+    background: var(--cream);
+    color: var(--ink);
+    border-color: var(--ink-3);
+  }
+  .btn.hidden {
+    display: none !important;
+  }
 
-/* HÀNG NÚT ĐIỀU HƯỚNG (CONTROLS ROW) */
-.controls-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  padding-top: 14px;
-  border-top: 1px solid var(--paper-line);
-  margin-top: 8px;
-}
-.btn-group-left, .btn-group-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+  /* MODAL CHÚC MỪNG HOÀN THÀNH V10 */
+  .hidden {
+    display: none !important;
+  }
+  .congrats-overlay.hidden,
+  .modal-backdrop.hidden,
+  #completionModal.hidden {
+    display: none !important;
+  }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  border-radius: var(--radius-sm);
-  font-size: 0.95rem;
-  font-weight: 700;
-  transition: all 0.2s ease;
-}
-.btn-primary {
-  background: var(--jade-deep);
-  color: #fff;
-  border: 1.5px solid var(--jade-dark);
-  box-shadow: 0 2px 6px rgba(45, 139, 111, 0.2);
-}
-.btn-primary:hover:not(:disabled) {
-  background: var(--jade);
-  transform: translateY(-1px);
-}
-.btn-primary:disabled {
-  background: var(--cream-3);
-  border-color: var(--paper-line-2);
-  color: var(--ink-faint);
-  cursor: not-allowed;
-  box-shadow: none;
-}
-.btn-secondary {
-  background: #fff;
-  color: var(--ink-2);
-  border: 1.5px solid var(--paper-line-2);
-}
-.btn-secondary:hover {
-  background: var(--cream);
-  border-color: var(--ink-3);
-}
+  .congrats-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+  }
+  .congrats-card {
+    background: #FFFFFF;
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--jade);
+    max-width: 520px;
+    width: 100%;
+    padding: 36px 28px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .congrats-icon-wrap {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--jade-pale);
+    color: var(--jade-deep);
+    font-size: 2.8rem;
+    display: grid;
+    place-items: center;
+    margin-bottom: 4px;
+  }
+  .congrats-title {
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: var(--jade-dark);
+  }
+  .congrats-desc {
+    font-size: 0.96rem;
+    color: var(--ink-2);
+    line-height: 1.6;
+  }
+  .congrats-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+  }
 
-/* MODAL CHÚC MỪNG HOÀN THÀNH V10 */
-.congrats-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(4px);
-  z-index: 9999;
-  display: grid;
-  place-items: center;
-  padding: 20px;
-}
-.congrats-card {
-  background: #fff;
-  border-radius: var(--radius-lg);
-  border: 2px solid var(--jade);
-  max-width: 520px;
-  width: 100%;
-  padding: 36px 28px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-  animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-.congrats-icon-wrap {
-  width: 84px;
-  height: 84px;
-  border-radius: 50%;
-  background: var(--mint-strong);
-  color: var(--jade-deep);
-  font-size: 3rem;
-  display: grid;
-  place-items: center;
-  margin-bottom: 6px;
-}
-.congrats-title {
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--jade-dark);
-}
-.congrats-desc {
-  font-size: 1rem;
-  color: var(--ink-2);
-  line-height: 1.6;
-}
-.congrats-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 10px;
-}
+  #confettiCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 10000;
+  }
 
-#confettiCanvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 10000;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes modalPop {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  75% { transform: translateX(5px); }
-}
-/* Đồng bộ trực tiếp theo SH10_B01_M02 */
-body{padding:0;font-size:17px}.app,.app-container{max-width:1200px;margin:0 auto;padding:18px clamp(12px,2.4vw,28px) 12px}.stage-card.two-block-ready{padding:0;background:transparent;border:0;box-shadow:none}.split-workspace{display:grid!important;grid-template-columns:minmax(0,58fr) minmax(340px,42fr)!important;gap:20px!important;align-items:start!important}.visual-card,.workspace-card{min-width:0;border:1px solid var(--paper-line,#D6CCB6);border-radius:14px;overflow:hidden;box-shadow:0 2px 6px rgba(26,26,26,.05)}.visual-card{position:sticky;top:0;background:#fff}.visual-card__head{padding:14px 16px 12px;border-bottom:1px solid var(--paper-line,#D6CCB6);background:#fff}.visual-card__head .stage-title{margin:0;font-size:clamp(1.25rem,2.2vw,1.75rem);line-height:1.28}.workspace-card{padding:18px;background:var(--cream-2,#FBF9F4)}.instruction{display:flex;align-items:flex-start;gap:10px;margin:0 0 16px;padding:12px 14px;border-left:4px solid var(--info,#4E7F92);border-radius:6px;background:var(--info-bg,#DCE7EB);font-size:.91rem;line-height:1.55}.inline-feedback{font-size:.92rem;line-height:1.55}.controls-row{display:flex;align-items:center;gap:10px;margin-top:16px;padding:14px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;flex-wrap:nowrap}.btn{min-height:44px;padding:9px 15px;font-size:.92rem}@media(max-width:980px){.split-workspace{grid-template-columns:1fr!important}.visual-card{position:static}.workspace-card{padding:16px}}@media(max-width:700px){body{font-size:16px}.app,.app-container{padding:12px 10px 10px}}@media(max-width:420px){.app,.app-container{padding:10px 8px 8px}.workspace-card{padding:13px}}
-.three-button-nav{display:flex;align-items:center;gap:12px;width:100%;margin-top:16px;padding:16px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;scrollbar-width:none}.three-button-nav::-webkit-scrollbar{display:none}.three-button-nav .nav-spacer{flex:1}.three-button-nav .btn{flex:0 0 auto;white-space:nowrap}.three-button-nav .nav-back{order:1}.three-button-nav .nav-reset{order:2}.three-button-nav .nav-spacer{order:3}.three-button-nav .nav-next{order:4}.three-button-nav .btn:disabled{opacity:.45;cursor:not-allowed}
-section.stage .controls-row,section.stage .stage-actions,section.stage-section .controls-row,section.stage-section .stage-actions,section.stage-card .controls-row,section.stage-card .stage-actions{display:none!important}
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes modalPop {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
 </style>
 </head>
 <body>
@@ -793,92 +952,126 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
 
 <div class="app">
 
+  <!-- THANH TIẾN ĐỘ -->
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-fill" id="progressBar" style="width: 20%;"></div>
+  </div>
+
   <!-- =====================================================================
        STAGE S01: THÀNH TẾ BÀO: CELLULOSE VÀ CHITIN
        ===================================================================== -->
-  <section class="stage-card" id="stage1">
-    <h2 class="stage-title"><i class="ti ti-polygon"></i> Vì sao cây đứng vững mà không cần xương?</h2>
-    <div class="lead-box">
-      <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
-        <div class="lead-title">
-          <i class="ti ti-notes"></i>
-          <span>Bối cảnh khoa học</span>
-        </div>
-        <div class="lead-toggle">
-          <span class="lead-toggle-label">Thu gọn</span>
-          <i class="ti ti-chevron-up lead-toggle-icon"></i>
-        </div>
-      </div>
-      <div class="lead-content">
-        <p class="lead-text">Thành tế bào có ở tế bào thực vật và nấm, không có ở tế bào động vật. Ở thực vật, thành tế bào cấu tạo chủ yếu từ cellulose. Ở nấm, thành tế bào cấu tạo chủ yếu từ chitin. Thành tế bào có vai trò quy định hình dạng tế bào và bảo vệ tế bào.</p>
-      </div>
-    </div>
-
-    <div class="guide-box">
-      <i class="ti ti-hand-click"></i>
-      <span>Nhấn vào các nút bên dưới hình để quan sát chi tiết 3 loại tế bào, sau đó ghép đúng chất cấu tạo thành tế bào tương ứng.</span>
-    </div>
-
+  <section class="stage-section active" id="stage1">
     <div class="split-workspace">
-      <!-- Cột trái: Khung hình học sinh khai thác -->
+      <!-- Cột trái: Lý thuyết & Minh họa -->
       <div class="visual-card">
-        <div class="visual-media-box" id="s01MediaBox">
-          <img src="https://lh3.googleusercontent.com/d/1pcQVHAAyti8Y5zzMAhU7GnSYHTqHY6gF" alt="Đối chiếu thành tế bào thực vật, nấm và động vật" id="imgA01">
+        <div class="visual-card__head">
+          <h2>Vì sao cây đứng vững mà không cần xương?</h2>
         </div>
-        <div class="visual-toolbar grid-3">
-          <button class="btn-tool active" onclick="selectCellS01('plant', this)"><i class="ti ti-leaf"></i> 1. Thực vật (Cellulose)</button>
-          <button class="btn-tool" onclick="selectCellS01('fungi', this)"><i class="ti ti-seeding"></i> 2. Nấm (Chitin)</button>
-          <button class="btn-tool" onclick="selectCellS01('animal', this)"><i class="ti ti-paw"></i> 3. Động vật (Không thành)</button>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Quan sát 3 loại tế bào trên sơ đồ, sau đó chạm cặp thẻ để ghép đúng thành phần thành tế bào ở cột bên phải.</span>
         </div>
-        <div class="visual-info-caption" id="s01Caption">
-          <span><strong>Tế bào thực vật:</strong> Có màng sinh chất phía trong và lớp THÀNH TẾ BÀO dày, cứng cáp phía ngoài cấu tạo từ sợi <strong>cellulose</strong>, quy định hình dạng đa giác cố định.</span>
+
+        <div class="theory-flow">
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-leaf"></i> Thực vật — Cellulose vững chắc</div>
+            <div class="theory-block__content">Thành tế bào thực vật cấu tạo chủ yếu từ các bó sợi <strong>cellulose</strong> đan dệt bền chắc, giúp quy định hình dạng đa giác cố định và bảo vệ tế bào khỏi áp lực thẩm thấu khi hút no nước.</div>
+          </div>
+          <div class="theory-block amber">
+            <div class="theory-block__title"><i class="ti ti-seeding"></i> Nấm — Chitin đàn hồi</div>
+            <div class="theory-block__content">Ở nấm, thành tế bào cấu tạo chủ yếu từ polymer <strong>chitin</strong> (chứa nitơ), mang độ bền dẻo cao giúp thành tế bào chịu được sức căng và áp lực thẩm thấu nội bào lớn.</div>
+          </div>
+          <div class="theory-block sky">
+            <div class="theory-block__title"><i class="ti ti-paw"></i> Động vật — Không có thành tế bào</div>
+            <div class="theory-block__content">Tế bào động vật <strong>hoàn toàn KHÔNG có thành tế bào</strong>, chỉ được bao bọc bởi màng sinh chất mềm dẻo, linh hoạt cho phép tế bào dễ dàng biến đổi hình dạng và vận động.</div>
+          </div>
+        </div>
+
+        <div class="visual-media-wrap">
+          <div class="visual-media-box">
+            <img src="https://lh3.googleusercontent.com/d/1pcQVHAAyti8Y5zzMAhU7GnSYHTqHY6gF" onerror="this.onerror=null;this.src='images/SH10-B08-M05-A01.jpg';" alt="Đối chiếu thành tế bào thực vật, nấm và động vật" id="imgA01">
+          </div>
+          <div class="visual-toolbar">
+            <button class="btn-tool active" onclick="selectCellS01('plant', this)"><i class="ti ti-leaf"></i> Thực vật (Cellulose)</button>
+            <button class="btn-tool" onclick="selectCellS01('fungi', this)"><i class="ti ti-seeding"></i> Nấm (Chitin)</button>
+            <button class="btn-tool" onclick="selectCellS01('animal', this)"><i class="ti ti-paw"></i> Động vật (Không thành)</button>
+          </div>
+          <div class="caption-box" id="s01Caption">
+            <strong>Tế bào thực vật:</strong> Có màng sinh chất phía trong và lớp thành tế bào dày, cứng cáp phía ngoài cấu tạo từ sợi <strong>cellulose</strong>, quy định hình dạng đa giác cố định.
+          </div>
         </div>
       </div>
 
-      <!-- Cột phải: Nhiệm vụ ghép đôi -->
-      <div class="task-card">
-        <div class="task-title"><i class="ti ti-link"></i> Ghép chất cấu tạo tương ứng cho từng nhóm:</div>
-        
-        <div class="match-pairs-list">
-          <div class="match-pair-row">
-            <span class="match-pair-label">1. Tế bào thực vật:</span>
-            <select class="match-select" id="matchS01_Plant" onchange="checkInputsS01()">
-              <option value="">-- Chọn thành phần lớp vỏ ngoài --</option>
-              <option value="cellulose">Thành tế bào cấu tạo từ Cellulose</option>
-              <option value="chitin">Thành tế bào cấu tạo từ Chitin</option>
-              <option value="none">Không có thành tế bào</option>
-            </select>
-          </div>
+      <!-- Cột phải: Ghép đôi tương tác -->
+      <div class="workspace-card">
+        <div class="task-header">
+          <div class="task-title"><i class="ti ti-link"></i> Ghép nối thành phần vỏ ngoài</div>
+          <span class="task-badge">Câu hỏi 1 / 5</span>
+        </div>
 
-          <div class="match-pair-row">
-            <span class="match-pair-label">2. Tế bào nấm:</span>
-            <select class="match-select" id="matchS01_Fungi" onchange="checkInputsS01()">
-              <option value="">-- Chọn thành phần lớp vỏ ngoài --</option>
-              <option value="cellulose">Thành tế bào cấu tạo từ Cellulose</option>
-              <option value="chitin">Thành tế bào cấu tạo từ Chitin</option>
-              <option value="none">Không có thành tế bào</option>
-            </select>
-          </div>
+        <div class="match-container" id="matchContainerS01">
+          <svg class="match-svg-canvas" id="matchSvgS01"></svg>
+          <div class="matching-cols">
+            <!-- Cột nguồn -->
+            <div class="match-col" id="colSourceS01">
+              <div class="match-card source-card" data-key="plant" onclick="handleSourceClickS01(this)">
+                <div class="match-card-content">
+                  <i class="ti ti-leaf"></i>
+                  <span>1. Tế bào thực vật</span>
+                </div>
+                <span class="match-pin"></span>
+              </div>
+              <div class="match-card source-card" data-key="fungi" onclick="handleSourceClickS01(this)">
+                <div class="match-card-content">
+                  <i class="ti ti-seeding"></i>
+                  <span>2. Tế bào nấm</span>
+                </div>
+                <span class="match-pin"></span>
+              </div>
+              <div class="match-card source-card" data-key="animal" onclick="handleSourceClickS01(this)">
+                <div class="match-card-content">
+                  <i class="ti ti-paw"></i>
+                  <span>3. Tế bào động vật</span>
+                </div>
+                <span class="match-pin"></span>
+              </div>
+            </div>
 
-          <div class="match-pair-row">
-            <span class="match-pair-label">3. Tế bào động vật:</span>
-            <select class="match-select" id="matchS01_Animal" onchange="checkInputsS01()">
-              <option value="">-- Chọn thành phần lớp vỏ ngoài --</option>
-              <option value="cellulose">Thành tế bào cấu tạo từ Cellulose</option>
-              <option value="chitin">Thành tế bào cấu tạo từ Chitin</option>
-              <option value="none">Không có thành tế bào (chỉ có màng sinh chất)</option>
-            </select>
+            <!-- Cột đích -->
+            <div class="match-col" id="colTargetS01">
+              <div class="match-card target-card" data-key="chitin" onclick="handleTargetClickS01(this)">
+                <span class="match-pin"></span>
+                <div class="match-card-content">
+                  <span>Thành tế bào cấu tạo từ Chitin</span>
+                </div>
+              </div>
+              <div class="match-card target-card" data-key="cellulose" onclick="handleTargetClickS01(this)">
+                <span class="match-pin"></span>
+                <div class="match-card-content">
+                  <span>Thành tế bào cấu tạo từ Cellulose</span>
+                </div>
+              </div>
+              <div class="match-card target-card" data-key="none" onclick="handleTargetClickS01(this)">
+                <span class="match-pin"></span>
+                <div class="match-card-content">
+                  <span>Không có thành tế bào</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="feedback-box hidden" id="fbS01"></div>
+        <!-- Phản hồi -->
+        <div class="inline-feedback hidden" id="fbS01"></div>
 
+        <!-- Hàng nút điều khiển -->
         <div class="controls-row">
           <div class="btn-group-left"></div>
           <div class="btn-group-right">
-            <button class="btn btn-primary" id="btnCheckS01" disabled onclick="submitS01()"><i class="ti ti-check"></i> TRẢ LỜI</button>
-            <button class="btn btn-secondary hidden" id="btnRetryS01" onclick="resetS01()"><i class="ti ti-rotate"></i> LÀM LẠI</button>
-            <button class="btn btn-primary hidden" id="btnNextS01" onclick="goToStage(2)">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+            <button class="btn btn-secondary hidden" id="btnRetryS01" onclick="resetS01()"><i class="ti ti-rotate-clockwise"></i> Làm lại</button>
+            <button class="btn btn-primary" id="btnCheckS01" disabled onclick="submitS01()"><i class="ti ti-check"></i> Kiểm tra</button>
+            <button class="btn btn-primary hidden" id="btnNextS01" onclick="goToStage(2)">Tiếp tục <i class="ti ti-arrow-right"></i></button>
           </div>
         </div>
       </div>
@@ -888,78 +1081,91 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
   <!-- =====================================================================
        STAGE S02: LÔNG VÀ ROI Ở TẾ BÀO NHÂN THỰC
        ===================================================================== -->
-  <section class="stage-card hidden" id="stage2">
-    <h2 class="stage-title"><i class="ti ti-dna-2"></i> Cùng tên gọi, khác bản chất — lông/roi nhân thực và nhân sơ</h2>
-    <div class="lead-box">
-      <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
-        <div class="lead-title">
-          <i class="ti ti-notes"></i>
-          <span>Bối cảnh khoa học</span>
-        </div>
-        <div class="lead-toggle">
-          <span class="lead-toggle-label">Thu gọn</span>
-          <i class="ti ti-chevron-up lead-toggle-icon"></i>
-        </div>
-      </div>
-      <div class="lead-content">
-        <p class="lead-text">Lông và roi ở tế bào nhân thực được cấu tạo từ vi ống và có màng bao bọc — khác với roi vi khuẩn cấu tạo chủ yếu từ protein flagellin và không được màng sinh chất bao bọc; các cấu trúc bề mặt của vi khuẩn khác về nguồn gốc và cấu trúc so với lông, roi nhân thực. Ví dụ: tinh trùng có một roi giúp di chuyển; tế bào biểu mô đường hô hấp có nhiều lông giúp đẩy chất nhầy và bụi bẩn ra ngoài.</p>
-      </div>
-    </div>
-
-    <div class="guide-box">
-      <i class="ti ti-eye"></i>
-      <span>Khám phá cấu trúc lông, roi nhân thực và mặt cắt vi ống 9+2 so với roi vi khuẩn, sau đó chọn nhận định chính xác.</span>
-    </div>
-
+  <section class="stage-section" id="stage2">
     <div class="split-workspace">
-      <!-- Cột trái: Khung hình lông roi -->
+      <!-- Cột trái: Lý thuyết & Minh họa -->
       <div class="visual-card">
-        <div class="visual-media-box">
-          <img src="https://lh3.googleusercontent.com/d/1sIfeaYRvtunxnf3W_iYmn7RQSQEipNV9" alt="Cấu trúc lông roi 9+2 và roi vi khuẩn đối chiếu">
+        <div class="visual-card__head">
+          <h2>Cùng tên gọi, khác bản chất — lông/roi nhân thực và nhân sơ</h2>
         </div>
-        <div class="visual-toolbar grid-3">
-          <button class="btn-tool active" onclick="selectDetailS02('axoneme', this)"><i class="ti ti-circle-dot"></i> Mặt cắt Axoneme (9+2)</button>
-          <button class="btn-tool" onclick="selectDetailS02('sperm_cilia', this)"><i class="ti ti-wind"></i> Tinh trùng & Biểu mô</button>
-          <button class="btn-tool" onclick="selectDetailS02('bacteria', this)"><i class="ti ti-bug"></i> Roi vi khuẩn (Nhân sơ)</button>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Quan sát cấu trúc vi ống và màng bọc của lông/roi trên hình, sau đó chọn nhận định chính xác ở cột bên phải.</span>
         </div>
-        <div class="visual-info-caption" id="s02Caption">
-          <span><strong>Mặt cắt ngang Axoneme nhân thực:</strong> Bố trí vi ống theo kiểu <strong>9 + 2</strong> điển hình (9 cặp vi ống ngoại vi và 2 vi ống đơn trung tâm), toàn bộ được bao bọc bên trong màng sinh chất.</span>
+
+        <div class="theory-flow">
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-circle-dot"></i> Trục Axoneme 9+2 có màng bọc</div>
+            <div class="theory-block__content">Lông và roi ở tế bào nhân thực được cấu tạo từ các <strong>vi ống xếp theo kiểu 9 + 2</strong> (9 đôi vi ống ngoại vi bao quanh 2 vi ống đơn trung tâm), toàn bộ được <strong>màng sinh chất bao bọc</strong>.</div>
+          </div>
+          <div class="theory-block amber">
+            <div class="theory-block__title"><i class="ti ti-wind"></i> Ví dụ chức năng sinh học</div>
+            <div class="theory-block__content"><strong>Tinh trùng</strong> có một roi dài chuyển động lượn sóng giúp bơi lội; <strong>Tế bào biểu mô đường hô hấp</strong> có nhiều lông rung đập đồng bộ giúp quét chất nhầy và bụi bẩn ra ngoài khí quản.</div>
+          </div>
+          <div class="theory-block sky">
+            <div class="theory-block__title"><i class="ti ti-bug"></i> Đối chiếu với roi vi khuẩn</div>
+            <div class="theory-block__content">Roi vi khuẩn (nhân sơ) cấu tạo chủ yếu từ các chuỗi protein <strong>flagellin</strong> trần xoắn lại, quay quanh trục cố định và <strong>hoàn toàn KHÔNG có màng sinh chất bao bọc</strong>.</div>
+          </div>
+        </div>
+
+        <div class="visual-media-wrap">
+          <div class="visual-media-box">
+            <img src="https://lh3.googleusercontent.com/d/1sIfeaYRvtunxnf3W_iYmn7RQSQEipNV9" onerror="this.onerror=null;this.src='images/SH10-B08-M05-A03.jpg';" alt="Cấu trúc lông roi 9+2 và roi vi khuẩn đối chiếu">
+          </div>
+          <div class="visual-toolbar">
+            <button class="btn-tool active" onclick="selectDetailS02('axoneme', this)"><i class="ti ti-circle-dot"></i> Mặt cắt Axoneme (9+2)</button>
+            <button class="btn-tool" onclick="selectDetailS02('sperm_cilia', this)"><i class="ti ti-wind"></i> Tinh trùng & Biểu mô</button>
+            <button class="btn-tool" onclick="selectDetailS02('bacteria', this)"><i class="ti ti-bug"></i> Roi vi khuẩn (Nhân sơ)</button>
+          </div>
+          <div class="caption-box" id="s02Caption">
+            <strong>Mặt cắt ngang Axoneme nhân thực:</strong> Bố trí vi ống theo kiểu <strong>9 + 2</strong> điển hình (9 cặp vi ống ngoại vi và 2 vi ống đơn trung tâm), toàn bộ được bao bọc bên trong màng sinh chất.
+          </div>
         </div>
       </div>
 
-      <!-- Cột phải: Câu hỏi trắc nghiệm -->
-      <div class="task-card">
-        <div class="task-title">Vì sao cùng gọi là "lông" và "roi", nhưng lông/roi nhân thực lại KHÁC HOÀN TOÀN với roi của vi khuẩn?</div>
-
-        <div class="quiz-options-group" id="quizOptsS02">
-          <button class="quiz-opt-btn" onclick="selectQuizS02(0, this)">
-            <i class="ti ti-circle"></i>
-            <span><strong>A.</strong> Lông/roi nhân thực cấu tạo từ vi ống (axoneme 9+2) và có màng sinh chất bao bọc; roi vi khuẩn từ protein flagellin và không có màng bao.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="selectQuizS02(1, this)">
-            <i class="ti ti-circle"></i>
-            <span><strong>B.</strong> Cả hai đều có vi ống 9+2 nhưng vi khuẩn có thêm màng bọc dày hơn tế bào nhân thực.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="selectQuizS02(2, this)">
-            <i class="ti ti-circle"></i>
-            <span><strong>C.</strong> Lông/roi nhân thực chỉ giúp hấp thu chất dinh dưỡng, không tham gia vào vận động hay di chuyển.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="selectQuizS02(3, this)">
-            <i class="ti ti-circle"></i>
-            <span><strong>D.</strong> Roi vi khuẩn cấu tạo từ sợi cellulose cứng chắc, khác với vi ống mềm dẻo của nhân thực.</span>
-          </button>
+      <!-- Cột phải: Trắc nghiệm -->
+      <div class="workspace-card">
+        <div class="task-header">
+          <div class="task-title"><i class="ti ti-help-circle"></i> Trắc nghiệm phân biệt cấu trúc</div>
+          <span class="task-badge">Câu hỏi 2 / 5</span>
         </div>
 
-        <div class="feedback-box hidden" id="fbS02"></div>
+        <div class="mcq-question-text">
+          Điểm khác biệt chính giữa lông/roi ở tế bào nhân thực và roi ở tế bào nhân sơ là gì?
+        </div>
 
+        <div class="mcq-options-list" id="quizOptsS02">
+          <label class="option-label" onclick="selectQuizS02(0, this)">
+            <input type="radio" name="optS02" value="0">
+            <span><strong>A.</strong> Lông/roi nhân thực cấu tạo từ vi ống (axoneme 9+2) và có màng sinh chất bao bọc; roi vi khuẩn từ protein flagellin và không có màng bao.</span>
+          </label>
+          <label class="option-label" onclick="selectQuizS02(1, this)">
+            <input type="radio" name="optS02" value="1">
+            <span><strong>B.</strong> Cả hai đều có vi ống 9+2 nhưng vi khuẩn có thêm màng bọc dày hơn tế bào nhân thực.</span>
+          </label>
+          <label class="option-label" onclick="selectQuizS02(2, this)">
+            <input type="radio" name="optS02" value="2">
+            <span><strong>C.</strong> Lông/roi nhân thực chỉ giúp hấp thu chất dinh dưỡng, không tham gia vào vận động hay di chuyển.</span>
+          </label>
+          <label class="option-label" onclick="selectQuizS02(3, this)">
+            <input type="radio" name="optS02" value="3">
+            <span><strong>D.</strong> Roi vi khuẩn cấu tạo từ sợi cellulose cứng chắc, khác với vi ống mềm dẻo của nhân thực.</span>
+          </label>
+        </div>
+
+        <!-- Phản hồi -->
+        <div class="inline-feedback hidden" id="fbS02"></div>
+
+        <!-- Hàng nút điều khiển -->
         <div class="controls-row">
           <div class="btn-group-left">
-            <button class="btn btn-secondary" onclick="goToStage(1)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+            <button class="btn btn-secondary" onclick="goToStage(1)"><i class="ti ti-arrow-left"></i> Câu trước</button>
           </div>
           <div class="btn-group-right">
-            <button class="btn btn-primary" id="btnCheckS02" disabled onclick="submitS02()"><i class="ti ti-check"></i> TRẢ LỜI</button>
-            <button class="btn btn-secondary hidden" id="btnRetryS02" onclick="resetS02()"><i class="ti ti-rotate"></i> LÀM LẠI</button>
-            <button class="btn btn-primary hidden" id="btnNextS02" onclick="goToStage(3)">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+            <button class="btn btn-secondary hidden" id="btnRetryS02" onclick="resetS02()"><i class="ti ti-rotate-clockwise"></i> Làm lại</button>
+            <button class="btn btn-primary" id="btnCheckS02" disabled onclick="submitS02()"><i class="ti ti-check"></i> Kiểm tra</button>
+            <button class="btn btn-primary hidden" id="btnNextS02" onclick="goToStage(3)">Tiếp tục <i class="ti ti-arrow-right"></i></button>
           </div>
         </div>
       </div>
@@ -969,78 +1175,91 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
   <!-- =====================================================================
        STAGE S03: CHẤT NỀN NGOẠI BÀO (ECM)
        ===================================================================== -->
-  <section class="stage-card hidden" id="stage3">
-    <h2 class="stage-title"><i class="ti ti-network"></i> "Chất keo" gắn kết các tế bào động vật thành mô</h2>
-    <div class="lead-box">
-      <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
-        <div class="lead-title">
-          <i class="ti ti-notes"></i>
-          <span>Bối cảnh khoa học</span>
-        </div>
-        <div class="lead-toggle">
-          <span class="lead-toggle-label">Thu gọn</span>
-          <i class="ti ti-chevron-up lead-toggle-icon"></i>
-        </div>
-      </div>
-      <div class="lead-content">
-        <p class="lead-text">Chất nền ngoại bào nằm bên ngoài màng tế bào của tế bào động vật, cấu tạo chủ yếu từ glycoprotein — chủ yếu là collagen — kết hợp với các chất vô cơ và hữu cơ khác. Chất nền ngoại bào giúp các tế bào liên kết với nhau tạo nên các mô nhất định, đồng thời thu nhận thông tin để truyền vào bên trong tế bào.</p>
-      </div>
-    </div>
-
-    <div class="guide-box">
-      <i class="ti ti-hand-click"></i>
-      <span>Quan sát mạng lưới chất nền ngoại bào (ECM) bao quanh tế bào động vật và nhấn nút mô phỏng liên kết mô, sau đó trả lời câu hỏi.</span>
-    </div>
-
+  <section class="stage-section" id="stage3">
     <div class="split-workspace">
-      <!-- Cột trái: Khung hình chất nền ngoại bào -->
+      <!-- Cột trái: Lý thuyết & Minh họa -->
       <div class="visual-card">
-        <div class="visual-media-box">
-          <img src="https://lh3.googleusercontent.com/d/1iZZF0YVzCLAEWgeobzEQm5riwIp4K_hP" alt="Chất nền ngoại bào ECM liên kết tế bào động vật" id="imgA05">
+        <div class="visual-card__head">
+          <h2>"Chất keo" gắn kết các tế bào động vật thành mô</h2>
         </div>
-        <div class="visual-toolbar grid-3">
-          <button class="btn-tool active" id="btnSimulateECM" onclick="simulateECMS03()"><i class="ti ti-sparkles"></i> Mô phỏng liên kết mô</button>
-          <button class="btn-tool" onclick="showECMPart('collagen')"><i class="ti ti-line"></i> Sợi Collagen</button>
-          <button class="btn-tool" onclick="showECMPart('integrin')"><i class="ti ti-plug"></i> Protein Integrin</button>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Quan sát mạng lưới collagen ngoại bào và kích hoạt liên kết mô, sau đó trả lời câu hỏi ở cột bên phải.</span>
         </div>
-        <div class="visual-info-caption" id="s03Caption">
-          <span><strong>Chất nền ngoại bào (ECM):</strong> Mạng lưới dày đặc các sợi collagen dài đan xen nhau trong khoảng gian bào, neo giữ qua màng tế bào nhờ protein integrin.</span>
+
+        <div class="theory-flow">
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-network"></i> Vị trí & Bản chất hóa học</div>
+            <div class="theory-block__content">Chất nền ngoại bào nằm ở <strong>bên ngoài màng sinh chất</strong> của tế bào động vật, cấu tạo chủ yếu từ các phân tử <strong>glycoprotein</strong> (chủ yếu là sợi <strong>collagen</strong>) kết hợp với các chất vô cơ và hữu cơ khác.</div>
+          </div>
+          <div class="theory-block amber">
+            <div class="theory-block__title"><i class="ti ti-plug"></i> Gắn kết các tế bào thành mô</div>
+            <div class="theory-block__content">Các sợi collagen ngoại bào neo giữ với protein màng <strong>integrin</strong>, tạo thành mạng lưới nâng đỡ cơ học giúp các tế bào liên kết chặt chẽ với nhau hình thành nên các mô nhất định trong cơ thể động vật.</div>
+          </div>
+          <div class="theory-block sky">
+            <div class="theory-block__title"><i class="ti ti-broadcast"></i> Thu nhận và truyền thông tin</div>
+            <div class="theory-block__content">Ngoài vai trò nâng đỡ, chất nền ngoại bào còn giúp tế bào tiếp nhận các tín hiệu hóa học và vật lý từ môi trường bên ngoài để truyền vào bên trong tế bào chất, điều hòa sự phát triển và phản ứng của tế bào.</div>
+          </div>
+        </div>
+
+        <div class="visual-media-wrap">
+          <div class="visual-media-box">
+            <img src="https://lh3.googleusercontent.com/d/1iZZF0YVzCLAEWgeobzEQm5riwIp4K_hP" onerror="this.onerror=null;this.src='images/SH10-B08-M05-A05.jpg';" alt="Chất nền ngoại bào ECM liên kết tế bào động vật" id="imgA05">
+          </div>
+          <div class="visual-toolbar">
+            <button class="btn-tool active" id="btnSimulateECM" onclick="simulateECMS03()"><i class="ti ti-sparkles"></i> Mô phỏng liên kết mô</button>
+            <button class="btn-tool" onclick="showECMPart('collagen', this)"><i class="ti ti-line"></i> Sợi Collagen</button>
+            <button class="btn-tool" onclick="showECMPart('integrin', this)"><i class="ti ti-plug"></i> Protein Integrin</button>
+          </div>
+          <div class="caption-box" id="s03Caption">
+            <strong>Chất nền ngoại bào (ECM):</strong> Mạng lưới dày đặc các sợi collagen dài đan xen nhau trong khoảng gian bào, neo giữ qua màng tế bào nhờ protein integrin.
+          </div>
         </div>
       </div>
 
-      <!-- Cột phải: Câu hỏi trắc nghiệm -->
-      <div class="task-card">
-        <div class="task-title">Chất nền ngoại bào ở tế bào động vật có tương đương với thành tế bào thực vật không?</div>
-
-        <div class="quiz-options-group" id="quizOptsS03">
-          <button class="quiz-opt-btn" onclick="selectQuizS03(0, this)">
-            <i class="ti ti-circle"></i>
-            <span><strong>A.</strong> Không — chất nền ngoại bào của động vật khác về cấu trúc và chức năng với thành tế bào thực vật.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="selectQuizS03(1, this)">
-            <i class="ti ti-circle"></i>
-            <span><strong>B.</strong> Có — chất nền ngoại bào chính là thành tế bào nhưng mang tên gọi khác ở động vật.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="selectQuizS03(2, this)">
-            <i class="ti ti-circle"></i>
-            <span><strong>C.</strong> Có — cả hai cấu trúc đều được cấu tạo chủ yếu từ polymer cellulose.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="selectQuizS03(3, this)">
-            <i class="ti ti-circle"></i>
-            <span><strong>D.</strong> Không — chất nền ngoại bào nằm hoàn toàn bên trong tế bào chất của tế bào động vật.</span>
-          </button>
+      <!-- Cột phải: Trắc nghiệm -->
+      <div class="workspace-card">
+        <div class="task-header">
+          <div class="task-title"><i class="ti ti-help-circle"></i> Trắc nghiệm bản chất sinh học</div>
+          <span class="task-badge">Câu hỏi 3 / 5</span>
         </div>
 
-        <div class="feedback-box hidden" id="fbS03"></div>
+        <div class="mcq-question-text">
+          Chất nền ngoại bào ở tế bào động vật có tương đương với thành tế bào thực vật không?
+        </div>
 
+        <div class="mcq-options-list" id="quizOptsS03">
+          <label class="option-label" onclick="selectQuizS03(0, this)">
+            <input type="radio" name="optS03" value="0">
+            <span><strong>A.</strong> Không — chất nền ngoại bào của động vật khác về cấu trúc (collagen/glycoprotein) và chức năng với thành tế bào thực vật (cellulose).</span>
+          </label>
+          <label class="option-label" onclick="selectQuizS03(1, this)">
+            <input type="radio" name="optS03" value="1">
+            <span><strong>B.</strong> Có — chất nền ngoại bào chính là thành tế bào nhưng mang tên gọi khác ở động vật.</span>
+          </label>
+          <label class="option-label" onclick="selectQuizS03(2, this)">
+            <input type="radio" name="optS03" value="2">
+            <span><strong>C.</strong> Có — cả hai cấu trúc đều được cấu tạo chủ yếu từ polymer cellulose.</span>
+          </label>
+          <label class="option-label" onclick="selectQuizS03(3, this)">
+            <input type="radio" name="optS03" value="3">
+            <span><strong>D.</strong> Không — chất nền ngoại bào nằm hoàn toàn bên trong tế bào chất của tế bào động vật.</span>
+          </label>
+        </div>
+
+        <!-- Phản hồi -->
+        <div class="inline-feedback hidden" id="fbS03"></div>
+
+        <!-- Hàng nút điều khiển -->
         <div class="controls-row">
           <div class="btn-group-left">
-            <button class="btn btn-secondary" onclick="goToStage(2)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+            <button class="btn btn-secondary" onclick="goToStage(2)"><i class="ti ti-arrow-left"></i> Câu trước</button>
           </div>
           <div class="btn-group-right">
-            <button class="btn btn-primary" id="btnCheckS03" disabled onclick="submitS03()"><i class="ti ti-check"></i> TRẢ LỜI</button>
-            <button class="btn btn-secondary hidden" id="btnRetryS03" onclick="resetS03()"><i class="ti ti-rotate"></i> LÀM LẠI</button>
-            <button class="btn btn-primary hidden" id="btnNextS03" onclick="goToStage(4)">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+            <button class="btn btn-secondary hidden" id="btnRetryS03" onclick="resetS03()"><i class="ti ti-rotate-clockwise"></i> Làm lại</button>
+            <button class="btn btn-primary" id="btnCheckS03" disabled onclick="submitS03()"><i class="ti ti-check"></i> Kiểm tra</button>
+            <button class="btn btn-primary hidden" id="btnNextS03" onclick="goToStage(4)">Tiếp tục <i class="ti ti-arrow-right"></i></button>
           </div>
         </div>
       </div>
@@ -1050,78 +1269,102 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
   <!-- =====================================================================
        STAGE S04: MỐI NỐI TẾ BÀO: KÍN VÀ HỞ
        ===================================================================== -->
-  <section class="stage-card hidden" id="stage4">
-    <h2 class="stage-title"><i class="ti ti-door"></i> Hai kiểu "cửa khẩu" giữa các tế bào láng giềng</h2>
-    <div class="lead-box">
-      <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
-        <div class="lead-title">
-          <i class="ti ti-notes"></i>
-          <span>Bối cảnh khoa học</span>
-        </div>
-        <div class="lead-toggle">
-          <span class="lead-toggle-label">Thu gọn</span>
-          <i class="ti ti-chevron-up lead-toggle-icon"></i>
-        </div>
-      </div>
-      <div class="lead-content">
-        <p class="lead-text">Giữa các tế bào có các kiểu mối nối khác nhau. Mối nối kín là kiểu các tế bào liên kết chặt chẽ với nhau, ngăn cách dịch mô — ví dụ, các tế bào ruột non liên kết với nhau bằng mối nối kín để ngăn không cho các chất trong lòng ruột lọt qua khoảng gian bào. Mối nối hở tạo ra cầu nối trực tiếp giữa bào tương của hai tế bào liền kề, cho phép các ion và phân tử nhỏ di chuyển trực tiếp giữa các tế bào mà không cần đi qua dịch mô.</p>
-      </div>
-    </div>
-
-    <div class="guide-box">
-      <i class="ti ti-arrows-exchange"></i>
-      <span>Bấm nút thử nghiệm để quan sát cơ chế chặn hoặc lưu thông chất ở từng loại mối nối, sau đó ghép đúng đặc điểm chức năng.</span>
-    </div>
-
+  <section class="stage-section" id="stage4">
     <div class="split-workspace">
-      <!-- Cột trái: Khung hình mối nối -->
+      <!-- Cột trái: Lý thuyết & Minh họa -->
       <div class="visual-card">
-        <div class="visual-media-box">
-          <img src="https://lh3.googleusercontent.com/d/1U2FSdR_SZwQviMEJ9WXVArSv1UHNO-cV" alt="So sánh Mối nối kín và Mối nối hở">
+        <div class="visual-card__head">
+          <h2>Hai kiểu "cửa khẩu" giữa các tế bào láng giềng</h2>
         </div>
-        <div class="visual-toolbar grid-2">
-          <button class="btn-tool active" onclick="testJunctionS04('tight', this)"><i class="ti ti-lock"></i> 1. Thử qua Mối nối kín</button>
-          <button class="btn-tool" onclick="testJunctionS04('gap', this)"><i class="ti ti-arrows-left-right"></i> 2. Thử qua Mối nối hở</button>
+
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Thử nghiệm cơ chế chặn hoặc lưu thông chất ở từng kiểu mối nối, sau đó ghép đúng đặc điểm chức năng ở cột bên phải.</span>
         </div>
-        <div class="visual-info-caption" id="s04Caption">
-          <span><strong>Mối nối kín (Tight junction):</strong> Các dải protein xuyên màng của hai tế bào áp sát hàn chặt liên tục như đường may, chặn hoàn toàn không cho dịch mô lọt qua.</span>
+
+        <div class="theory-flow">
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-lock"></i> Mối nối kín (Tight junction) — Ngăn cách dịch mô</div>
+            <div class="theory-block__content">Các dải protein màng của hai tế bào kề sát nhau đan cài khít chặt liên tục như đường may, <strong>ngăn không cho dịch mô và các chất trong lòng ruột lọt qua khoảng gian bào</strong> (ví dụ: ở lớp biểu mô ruột non).</div>
+          </div>
+          <div class="theory-block sky">
+            <div class="theory-block__title"><i class="ti ti-arrows-left-right"></i> Mối nối hở (Gap junction) — Kênh liên lạc trực tiếp</div>
+            <div class="theory-block__content">Tạo ra cầu nối rỗng thông suốt giữa hai tế bào liền kề, <strong>cho phép các ion và phân tử nhỏ di chuyển trực tiếp giữa bào tương hai tế bào</strong> mà không cần đi qua dịch mô (ví dụ: tế bào cơ tim).</div>
+          </div>
+        </div>
+
+        <div class="visual-media-wrap">
+          <div class="visual-media-box">
+            <img src="https://lh3.googleusercontent.com/d/1U2FSdR_SZwQviMEJ9WXVArSv1UHNO-cV" onerror="this.onerror=null;this.src='images/SH10-B08-M05-A06.jpg';" alt="So sánh Mối nối kín và Mối nối hở">
+          </div>
+          <div class="visual-toolbar">
+            <button class="btn-tool active" onclick="testJunctionS04('tight', this)"><i class="ti ti-lock"></i> Thử qua Mối nối kín</button>
+            <button class="btn-tool" onclick="testJunctionS04('gap', this)"><i class="ti ti-arrows-left-right"></i> Thử qua Mối nối hở</button>
+          </div>
+          <div class="caption-box" id="s04Caption">
+            <strong>Mối nối kín (Tight junction):</strong> Các dải protein xuyên màng của hai tế bào áp sát hàn chặt liên tục như đường may, chặn hoàn toàn không cho dịch mô lọt qua.
+          </div>
         </div>
       </div>
 
-      <!-- Cột phải: Nhiệm vụ ghép đôi chức năng -->
-      <div class="task-card">
-        <div class="task-title">Ghép đúng vai trò chức năng cho từng loại mối nối:</div>
+      <!-- Cột phải: Ghép đôi tương tác -->
+      <div class="workspace-card">
+        <div class="task-header">
+          <div class="task-title"><i class="ti ti-link"></i> Ghép nối chức năng mối nối</div>
+          <span class="task-badge">Câu hỏi 4 / 5</span>
+        </div>
 
-        <div class="match-pairs-list">
-          <div class="match-pair-row">
-            <span class="match-pair-label">1. Mối nối kín:</span>
-            <select class="match-select" id="matchS04_Tight" onchange="checkInputsS04()">
-              <option value="">-- Chọn chức năng sinh học --</option>
-              <option value="tight_correct">Tế bào ruột non, ngăn chất lọt qua khoảng gian bào</option>
-              <option value="gap_wrong">Cho ion/phân tử nhỏ di chuyển trực tiếp giữa 2 tế bào</option>
-            </select>
-          </div>
+        <div class="match-container" id="matchContainerS04">
+          <svg class="match-svg-canvas" id="matchSvgS04"></svg>
+          <div class="matching-cols">
+            <!-- Cột nguồn -->
+            <div class="match-col" id="colSourceS04">
+              <div class="match-card source-card" data-key="tight" onclick="handleSourceClickS04(this)">
+                <div class="match-card-content">
+                  <i class="ti ti-lock"></i>
+                  <span>1. Mối nối kín</span>
+                </div>
+                <span class="match-pin"></span>
+              </div>
+              <div class="match-card source-card" data-key="gap" onclick="handleSourceClickS04(this)">
+                <div class="match-card-content">
+                  <i class="ti ti-arrows-left-right"></i>
+                  <span>2. Mối nối hở</span>
+                </div>
+                <span class="match-pin"></span>
+              </div>
+            </div>
 
-          <div class="match-pair-row">
-            <span class="match-pair-label">2. Mối nối hở:</span>
-            <select class="match-select" id="matchS04_Gap" onchange="checkInputsS04()">
-              <option value="">-- Chọn chức năng sinh học --</option>
-              <option value="tight_wrong">Tế bào ruột non, ngăn chất lọt qua khoảng gian bào</option>
-              <option value="gap_correct">Cho ion/phân tử nhỏ di chuyển trực tiếp giữa 2 tế bào</option>
-            </select>
+            <!-- Cột đích -->
+            <div class="match-col" id="colTargetS04">
+              <div class="match-card target-card" data-key="gap_func" onclick="handleTargetClickS04(this)">
+                <span class="match-pin"></span>
+                <div class="match-card-content">
+                  <span>Cho ion/phân tử nhỏ di chuyển trực tiếp giữa 2 tế bào</span>
+                </div>
+              </div>
+              <div class="match-card target-card" data-key="tight_func" onclick="handleTargetClickS04(this)">
+                <span class="match-pin"></span>
+                <div class="match-card-content">
+                  <span>Tế bào ruột non, ngăn chất lọt qua khoảng gian bào</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="feedback-box hidden" id="fbS04"></div>
+        <!-- Phản hồi -->
+        <div class="inline-feedback hidden" id="fbS04"></div>
 
+        <!-- Hàng nút điều khiển -->
         <div class="controls-row">
           <div class="btn-group-left">
-            <button class="btn btn-secondary" onclick="goToStage(3)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+            <button class="btn btn-secondary" onclick="goToStage(3)"><i class="ti ti-arrow-left"></i> Câu trước</button>
           </div>
           <div class="btn-group-right">
-            <button class="btn btn-primary" id="btnCheckS04" disabled onclick="submitS04()"><i class="ti ti-check"></i> TRẢ LỜI</button>
-            <button class="btn btn-secondary hidden" id="btnRetryS04" onclick="resetS04()"><i class="ti ti-rotate"></i> LÀM LẠI</button>
-            <button class="btn btn-primary hidden" id="btnNextS04" onclick="goToStage(5)">TIẾP TỤC <i class="ti ti-arrow-right"></i></button>
+            <button class="btn btn-secondary hidden" id="btnRetryS04" onclick="resetS04()"><i class="ti ti-rotate-clockwise"></i> Làm lại</button>
+            <button class="btn btn-primary" id="btnCheckS04" disabled onclick="submitS04()"><i class="ti ti-check"></i> Kiểm tra</button>
+            <button class="btn btn-primary hidden" id="btnNextS04" onclick="goToStage(5)">Tiếp tục <i class="ti ti-arrow-right"></i></button>
           </div>
         </div>
       </div>
@@ -1131,71 +1374,89 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
   <!-- =====================================================================
        STAGE S05: TỔNG KẾT TOÀN BÀI 8: TẾ BÀO ĐỘNG VẬT VÀ THỰC VẬT
        ===================================================================== -->
-  <section class="stage-card hidden" id="stage5">
-    <h2 class="stage-title"><i class="ti ti-layout-grid"></i> Bức tranh hoàn chỉnh: tế bào động vật và tế bào thực vật</h2>
-    <div class="lead-box">
-      <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
-        <div class="lead-title">
-          <i class="ti ti-notes"></i>
-          <span>Bối cảnh khoa học</span>
-        </div>
-        <div class="lead-toggle">
-          <span class="lead-toggle-label">Thu gọn</span>
-          <i class="ti ti-chevron-up lead-toggle-icon"></i>
-        </div>
-      </div>
-      <div class="lead-content">
-        <p class="lead-text">Chúng ta đã hoàn thành hành trình khám phá tế bào nhân thực qua toàn bộ Bài 8 — từ nhân, hệ thống nội màng, ti thể và lục lạp, khung xương tế bào, màng tế bào, đến thành tế bào, chất nền ngoại bào và mối nối giữa các tế bào. Hãy cùng tổng kết lại: đâu là những đặc điểm đặc trưng ở tế bào thực vật, đâu là những cấu trúc điển hình ở tế bào động vật, và đâu là những thành phần chung của cả hai.</p>
-      </div>
-    </div>
-
-    <div class="guide-box">
-      <i class="ti ti-grid-dots"></i>
-      <span>Chạm chọn một thẻ cấu trúc ở khay bên dưới rồi chạm vào cột đích để phân loại; chạm thẻ trong cột đích để trả về khay.</span>
-    </div>
-
-    <!-- Sơ đồ Master Map đối chiếu -->
-    <div class="visual-card" style="margin-bottom: 6px;">
-      <div class="visual-media-box" style="aspect-ratio: 21/9; max-height: 280px;">
-        <img src="https://lh3.googleusercontent.com/d/1eKdf1OVQdK8s86mWzPFpH_9Gf2sejEk2" alt="Sơ đồ đối chiếu tế bào thực vật và động vật">
-      </div>
-    </div>
-
-    <!-- Khu vực phân loại 3 cột -->
-    <div class="classification-layout">
-      <!-- Khay thẻ chờ phân loại -->
-      <div class="items-pool-box">
-        <div class="pool-header"><i class="ti ti-box"></i> Khay bào quan & cấu trúc (Chạm chọn thẻ để xếp):</div>
-        <div class="chips-tray" id="chipsTray"></div>
-      </div>
-
-      <!-- 3 cột phân loại -->
-      <div class="classification-columns-grid">
-        <div class="class-col" id="colPlant" onclick="placeSelectedChip('plant')">
-          <div class="class-col-head"><i class="ti ti-leaf"></i> 1. Đặc trưng ở tế bào thực vật (3)</div>
-          <div class="col-drop-zone" id="zonePlant"></div>
+  <section class="stage-section" id="stage5">
+    <div class="split-workspace">
+      <!-- Cột trái: Lý thuyết & Minh họa Master Map -->
+      <div class="visual-card">
+        <div class="visual-card__head">
+          <h2>Bức tranh hoàn chỉnh: tế bào động vật và tế bào thực vật</h2>
         </div>
 
-        <div class="class-col" id="colAnimal" onclick="placeSelectedChip('animal')">
-          <div class="class-col-head"><i class="ti ti-paw"></i> 2. Điển hình ở tế bào động vật (3)</div>
-          <div class="col-drop-zone" id="zoneAnimal"></div>
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Chạm chọn một thẻ cấu trúc ở khay chờ, sau đó chạm vào cột đích để phân loại; chạm thẻ trong cột để trả về khay.</span>
         </div>
 
-        <div class="class-col" id="colCommon" onclick="placeSelectedChip('common')">
-          <div class="class-col-head"><i class="ti ti-circles"></i> 3. Cả hai (Thành phần chung) (8)</div>
-          <div class="col-drop-zone" id="zoneCommon"></div>
+        <div class="theory-flow">
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-leaf"></i> Đặc trưng ở tế bào thực vật (3)</div>
+            <div class="theory-block__content">Có <strong>thành tế bào cellulose</strong> vững chắc, <strong>lục lạp</strong> chứa diệp lục quang hợp, và <strong>không bào trung tâm lớn</strong> chứa dịch tạo áp suất trương nước.</div>
+          </div>
+          <div class="theory-block amber">
+            <div class="theory-block__title"><i class="ti ti-paw"></i> Điển hình ở tế bào động vật (3)</div>
+            <div class="theory-block__content">Có <strong>trung thể chứa cặp trung tử</strong> hình thành thoi phân bào, <strong>lysosome</strong> tiêu hóa nội bào phong phú, và mạng lưới <strong>chất nền ngoại bào</strong> nâng đỡ mô.</div>
+          </div>
+          <div class="theory-block sky">
+            <div class="theory-block__title"><i class="ti ti-circles"></i> Thành phần chung của cả hai (8)</div>
+            <div class="theory-block__content">Cả hai đều có <strong>nhân tế bào, ti thể, lưới nội chất (hạt/trơn), bộ máy Golgi, ribosome, khung xương tế bào, màng sinh chất và peroxysome</strong>.</div>
+          </div>
+        </div>
+
+        <div class="visual-media-wrap">
+          <div class="visual-media-box">
+            <img src="https://lh3.googleusercontent.com/d/1eKdf1OVQdK8s86mWzPFpH_9Gf2sejEk2" onerror="this.onerror=null;this.src='images/SH10-B08-M01-A02.jpg';" alt="Sơ đồ đối chiếu tế bào thực vật và động vật">
+          </div>
+          <div class="caption-box">
+            <strong>Master Map Bài 8:</strong> Tổng kết toàn bộ bào quan và cấu trúc siêu vi của tế bào nhân thực qua hành trình 5 module học tập.
+          </div>
         </div>
       </div>
 
-      <div class="feedback-box hidden" id="fbS05"></div>
-
-      <div class="controls-row">
-        <div class="btn-group-left">
-          <button class="btn btn-secondary" onclick="goToStage(4)"><i class="ti ti-arrow-left"></i> QUAY LẠI</button>
+      <!-- Cột phải: Phân loại 3 nhóm -->
+      <div class="workspace-card">
+        <div class="task-header">
+          <div class="task-title"><i class="ti ti-layout-grid"></i> Phân loại tổng kết Bài 8</div>
+          <span class="task-badge">Câu hỏi 5 / 5</span>
         </div>
-        <div class="btn-group-right">
-          <button class="btn btn-primary" id="btnCheckS05" disabled onclick="submitS05()"><i class="ti ti-check"></i> TRẢ LỜI</button>
-          <button class="btn btn-secondary hidden" id="btnRetryS05" onclick="resetS05()"><i class="ti ti-rotate"></i> LÀM LẠI</button>
+
+        <div class="classification-wrap">
+          <!-- Khay thẻ chờ -->
+          <div class="pool-box">
+            <div class="pool-title"><i class="ti ti-box"></i> Khay cấu trúc (Chạm chọn để xếp):</div>
+            <div class="chips-tray" id="chipsTray"></div>
+          </div>
+
+          <!-- 3 cột phân loại -->
+          <div class="cols-grid">
+            <div class="class-col" id="colPlant" onclick="placeSelectedChip('plant')">
+              <div class="class-col-head"><i class="ti ti-leaf"></i> 1. Thực vật (3)</div>
+              <div class="col-drop-zone" id="zonePlant"></div>
+            </div>
+
+            <div class="class-col" id="colAnimal" onclick="placeSelectedChip('animal')">
+              <div class="class-col-head"><i class="ti ti-paw"></i> 2. Động vật (3)</div>
+              <div class="col-drop-zone" id="zoneAnimal"></div>
+            </div>
+
+            <div class="class-col" id="colCommon" onclick="placeSelectedChip('common')">
+              <div class="class-col-head"><i class="ti ti-circles"></i> 3. Cả hai (8)</div>
+              <div class="col-drop-zone" id="zoneCommon"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phản hồi -->
+        <div class="inline-feedback hidden" id="fbS05"></div>
+
+        <!-- Hàng nút điều khiển -->
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" onclick="goToStage(4)"><i class="ti ti-arrow-left"></i> Câu trước</button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-secondary hidden" id="btnRetryS05" onclick="resetS05()"><i class="ti ti-rotate-clockwise"></i> Làm lại</button>
+            <button class="btn btn-primary" id="btnCheckS05" disabled onclick="submitS05()"><i class="ti ti-check"></i> Hoàn thành</button>
+          </div>
         </div>
       </div>
     </div>
@@ -1213,10 +1474,10 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
     </div>
     <h3 class="congrats-title">Xuất Sắc Hoàn Thành!</h3>
     <p class="congrats-desc">
-      Chúc mừng bạn đã hoàn thành bài học <strong>SH10_B08_M05: Thành tế bào, Lông và roi, Chất nền ngoại bào, Mối nối giữa các tế bào</strong> và khép lại trọn vẹn toàn bộ <strong>Bài 8: Cấu trúc tế bào nhân thực</strong>!
+      Chúc mừng bạn đã hoàn thành xuất sắc <strong>SH10_B08_M05: Thành tế bào, Lông và roi, Chất nền ngoại bào, Mối nối giữa các tế bào</strong> và khép lại trọn vẹn toàn bộ <strong>Bài 8: Cấu trúc tế bào nhân thực</strong>!
     </p>
     <div class="congrats-actions">
-      <button class="btn btn-secondary" onclick="restartLesson()"><i class="ti ti-rotate"></i> Xem lại bài</button>
+      <button class="btn btn-secondary" onclick="restartLesson()"><i class="ti ti-rotate-clockwise"></i> Xem lại bài</button>
       <button class="btn btn-primary" onclick="closeModal()"><i class="ti ti-check"></i> Đóng thông báo</button>
     </div>
   </div>
@@ -1246,26 +1507,38 @@ function reportHeight() {
   } catch (e) {}
 }
 window.addEventListener('load', reportHeight);
-window.addEventListener('resize', reportHeight);
+window.addEventListener('resize', () => {
+  reportHeight();
+  drawMatchLinesS01();
+  drawMatchLinesS04();
+});
 
 function goToStage(stageNum) {
   for (let i = 1; i <= 5; i++) {
     const el = document.getElementById('stage' + i);
     if (el) {
       if (i === stageNum) {
-        el.classList.remove('hidden');
+        el.classList.add('active');
       } else {
-        el.classList.add('hidden');
+        el.classList.remove('active');
       }
     }
   }
   window.lmsState.currentStage = stageNum;
+  const pb = document.getElementById('progressBar');
+  if (pb) {
+    pb.style.width = ((stageNum / 5) * 100) + '%';
+  }
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  setTimeout(reportHeight, 150);
+  setTimeout(() => {
+    reportHeight();
+    if (stageNum === 1) drawMatchLinesS01();
+    if (stageNum === 4) drawMatchLinesS04();
+  }, 100);
 }
 
 /* =====================================================================
-   STAGE S01 LOGIC: THÀNH TẾ BÀO
+   STAGE S01 LOGIC: THÀNH TẾ BÀO (MATCHING WITH SVG LINES)
    ===================================================================== */
 const s01Captions = {
   plant: "<strong>Tế bào thực vật:</strong> Có màng sinh chất phía trong và lớp THÀNH TẾ BÀO dày, cứng cáp phía ngoài cấu tạo từ sợi <strong>cellulose</strong>, quy định hình dạng đa giác cố định.",
@@ -1278,47 +1551,184 @@ function selectCellS01(type, btn) {
   btn.classList.add('active');
   document.getElementById('s01Caption').innerHTML = s01Captions[type];
   window.lmsState.viewedItems.s01[type] = true;
-  checkInputsS01();
   reportHeight();
 }
 
-function checkInputsS01() {
-  const p = document.getElementById('matchS01_Plant').value;
-  const f = document.getElementById('matchS01_Fungi').value;
-  const a = document.getElementById('matchS01_Animal').value;
-  const allViewed = window.lmsState.viewedItems.s01.plant &&
-                    window.lmsState.viewedItems.s01.fungi &&
-                    window.lmsState.viewedItems.s01.animal;
-  const btnCheck = document.getElementById('btnCheckS01');
-  if (p && f && a && allViewed) {
-    btnCheck.disabled = false;
-  } else {
-    btnCheck.disabled = true;
+const s01CorrectMap = {
+  plant: 'cellulose',
+  fungi: 'chitin',
+  animal: 'none'
+};
+
+let selectedSourceS01 = null;
+let currentMatchesS01 = {}; // { plant: 'cellulose', fungi: 'chitin', ... }
+
+function handleSourceClickS01(card) {
+  if (card.classList.contains('matched')) {
+    const sourceKey = card.dataset.key;
+    delete currentMatchesS01[sourceKey];
+    card.classList.remove('matched', 'selected-source');
+    updateMatchedCardsS01();
+    drawMatchLinesS01();
+    checkCompletionS01();
+    return;
+  }
+  document.querySelectorAll('#colSourceS01 .source-card').forEach(c => c.classList.remove('selected-source'));
+  selectedSourceS01 = card.dataset.key;
+  card.classList.add('selected-source');
+}
+
+function handleTargetClickS01(card) {
+  const targetKey = card.dataset.key;
+  if (!selectedSourceS01) {
+    if (card.classList.contains('matched')) {
+      for (const [sKey, tKey] of Object.entries(currentMatchesS01)) {
+        if (tKey === targetKey) {
+          delete currentMatchesS01[sKey];
+        }
+      }
+      updateMatchedCardsS01();
+      drawMatchLinesS01();
+      checkCompletionS01();
+    }
+    return;
+  }
+  
+  for (const [sKey, tKey] of Object.entries(currentMatchesS01)) {
+    if (tKey === targetKey) {
+      delete currentMatchesS01[sKey];
+    }
+  }
+
+  currentMatchesS01[selectedSourceS01] = targetKey;
+  selectedSourceS01 = null;
+  document.querySelectorAll('#colSourceS01 .source-card').forEach(c => c.classList.remove('selected-source'));
+  updateMatchedCardsS01();
+  drawMatchLinesS01();
+  checkCompletionS01();
+}
+
+function updateMatchedCardsS01() {
+  document.querySelectorAll('#colSourceS01 .source-card').forEach(c => {
+    c.classList.toggle('matched', !!currentMatchesS01[c.dataset.key]);
+  });
+  const matchedTargets = Object.values(currentMatchesS01);
+  document.querySelectorAll('#colTargetS01 .target-card').forEach(c => {
+    c.classList.toggle('matched', matchedTargets.includes(c.dataset.key));
+  });
+}
+
+function drawMatchLinesS01(wrongSources = []) {
+  const container = document.getElementById('matchContainerS01');
+  const svg = document.getElementById('matchSvgS01');
+  if (!container || !svg) return;
+  svg.innerHTML = '';
+  const cRect = container.getBoundingClientRect();
+
+  for (const [sKey, tKey] of Object.entries(currentMatchesS01)) {
+    const sEl = container.querySelector('#colSourceS01 [data-key="' + sKey + '"] .match-pin');
+    const tEl = container.querySelector('#colTargetS01 [data-key="' + tKey + '"] .match-pin');
+    if (sEl && tEl) {
+      const sRect = sEl.getBoundingClientRect();
+      const tRect = tEl.getBoundingClientRect();
+
+      const x1 = sRect.left + sRect.width / 2 - cRect.left;
+      const y1 = sRect.top + sRect.height / 2 - cRect.top;
+      const x2 = tRect.left + tRect.width / 2 - cRect.left;
+      const y2 = tRect.top + tRect.height / 2 - cRect.top;
+
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      const dx = (x2 - x1) * 0.45;
+      const d = 'M ' + x1 + ' ' + y1 + ' C ' + (x1 + dx) + ' ' + y1 + ', ' + (x2 - dx) + ' ' + y2 + ', ' + x2 + ' ' + y2;
+      path.setAttribute('d', d);
+      const isWrong = wrongSources.includes(sKey);
+      path.setAttribute('class', 'match-connect-line' + (isWrong ? ' wrong-line' : ''));
+      svg.appendChild(path);
+    }
   }
 }
 
+function checkCompletionS01() {
+  const count = Object.keys(currentMatchesS01).length;
+  document.getElementById('btnCheckS01').disabled = (count < 3);
+}
+
 function submitS01() {
-  const p = document.getElementById('matchS01_Plant').value;
-  const f = document.getElementById('matchS01_Fungi').value;
-  const a = document.getElementById('matchS01_Animal').value;
+  const wrongSources = [];
+  const wrongTargets = [];
+  let isAllCorrect = true;
+
+  for (const [sKey, tKey] of Object.entries(currentMatchesS01)) {
+    if (s01CorrectMap[sKey] !== tKey) {
+      isAllCorrect = false;
+      wrongSources.push(sKey);
+      wrongTargets.push(tKey);
+    }
+  }
+
   const fb = document.getElementById('fbS01');
   const btnCheck = document.getElementById('btnCheckS01');
   const btnRetry = document.getElementById('btnRetryS01');
   const btnNext = document.getElementById('btnNextS01');
 
-  if (p === 'cellulose' && f === 'chitin' && a === 'none') {
-    fb.className = 'feedback-box correct';
-    fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác!</strong> Ở thực vật, thành tế bào cấu tạo từ cellulose; ở nấm cấu tạo từ chitin; còn tế bào động vật hoàn toàn không có thành tế bào. Hãy tiếp tục tìm hiểu cấu trúc lông và roi!</span>';
+  if (isAllCorrect && Object.keys(currentMatchesS01).length === 3) {
+    fb.className = 'inline-feedback ok';
+    fb.innerHTML = `
+      <div class="feedback-header"><i class="ti ti-circle-check"></i> Chính xác!</div>
+      <div class="correct-answer-box">✓ Đáp án đúng: Thực vật ↔ Thành cellulose • Nấm ↔ Thành chitin • Động vật ↔ Không có thành tế bào</div>
+      <div class="explanation">Ở thực vật, thành tế bào cấu tạo từ cellulose; ở nấm cấu tạo từ chitin; còn tế bào động vật hoàn toàn không có thành tế bào mà chỉ có màng sinh chất mềm dẻo.</div>
+      <div class="pedagogy-meta">
+        <div class="pedagogy-item"><span class="pedagogy-label">Chủ đề:</span><span class="pedagogy-value">Cấu trúc tế bào nhân thực</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Dạng bài:</span><span class="pedagogy-value">Ghép nối tương ứng</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Cấp độ tư duy:</span><span class="pedagogy-value"><strong>Nhận biết</strong></span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Năng lực sinh học:</span><span class="pedagogy-value">Nhận thức sinh học</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Định dạng:</span><span class="pedagogy-value">Ghép đôi tương tác</span></div>
+      </div>
+    `;
     btnCheck.classList.add('hidden');
     btnRetry.classList.add('hidden');
     btnNext.classList.remove('hidden');
     window.lmsState.scores.s01 = 100;
   } else {
-    fb.className = 'feedback-box wrong';
-    fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Chưa đúng:</strong> Thực vật dùng CELLULOSE, nấm dùng CHITIN, còn động vật KHÔNG CÓ thành tế bào. Hãy nhấn LÀM LẠI để chỉnh sửa.</span>';
-    btnCheck.classList.add('hidden');
-    btnRetry.classList.remove('hidden');
-    btnNext.classList.add('hidden');
+    wrongSources.forEach(sKey => {
+      const el = document.querySelector('#colSourceS01 [data-key="' + sKey + '"]');
+      if (el) el.classList.add('wrong');
+    });
+    wrongTargets.forEach(tKey => {
+      const el = document.querySelector('#colTargetS01 [data-key="' + tKey + '"]');
+      if (el) el.classList.add('wrong');
+    });
+    drawMatchLinesS01(wrongSources);
+
+    fb.className = 'inline-feedback bad';
+    fb.innerHTML = `
+      <div class="feedback-header"><i class="ti ti-alert-triangle"></i> Chưa chính xác!</div>
+      <div class="correct-answer-box">⚠ Các cặp nối đúng đã được giữ nguyên; các đường nối chưa đúng đã tự động được hủy để bạn ghép lại.</div>
+      <div class="explanation">Gợi ý: Thực vật dùng CELLULOSE, nấm dùng CHITIN, còn động vật KHÔNG CÓ thành tế bào. Hãy nối lại các cặp còn thiếu.</div>
+      <div class="pedagogy-meta">
+        <div class="pedagogy-item"><span class="pedagogy-label">Chủ đề:</span><span class="pedagogy-value">Cấu trúc tế bào nhân thực</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Dạng bài:</span><span class="pedagogy-value">Ghép nối tương ứng</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Cấp độ tư duy:</span><span class="pedagogy-value"><strong>Nhận biết</strong></span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Năng lực sinh học:</span><span class="pedagogy-value">Nhận thức sinh học</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Định dạng:</span><span class="pedagogy-value">Ghép đôi tương tác</span></div>
+      </div>
+    `;
+
+    setTimeout(() => {
+      wrongSources.forEach(sKey => {
+        delete currentMatchesS01[sKey];
+        const el = document.querySelector('#colSourceS01 [data-key="' + sKey + '"]');
+        if (el) el.classList.remove('wrong');
+      });
+      wrongTargets.forEach(tKey => {
+        const el = document.querySelector('#colTargetS01 [data-key="' + tKey + '"]');
+        if (el) el.classList.remove('wrong');
+      });
+
+      updateMatchedCardsS01();
+      drawMatchLinesS01();
+      checkCompletionS01();
+    }, 600);
   }
   fb.classList.remove('hidden');
   reportHeight();
@@ -1328,11 +1738,12 @@ function resetS01() {
   document.getElementById('fbS01').classList.add('hidden');
   document.getElementById('btnCheckS01').classList.remove('hidden');
   document.getElementById('btnRetryS01').classList.add('hidden');
+  checkCompletionS01();
   reportHeight();
 }
 
 /* =====================================================================
-   STAGE S02 LOGIC: LÔNG VÀ ROI
+   STAGE S02 LOGIC: LÔNG VÀ ROI NHÂN THỰC
    ===================================================================== */
 const s02Captions = {
   axoneme: "<strong>Mặt cắt ngang Axoneme nhân thực:</strong> Bố trí vi ống theo kiểu <strong>9 + 2</strong> điển hình (9 cặp vi ống ngoại vi và 2 vi ống đơn trung tâm), toàn bộ được bao bọc bên trong màng sinh chất.",
@@ -1349,16 +1760,10 @@ function selectDetailS02(type, btn) {
 }
 
 let selectedQuizS02 = -1;
-function selectQuizS02(idx, btn) {
+function selectQuizS02(idx, labelEl) {
   selectedQuizS02 = idx;
-  document.querySelectorAll('#quizOptsS02 .quiz-opt-btn').forEach((b, i) => {
-    if (i === idx) {
-      b.classList.add('selected');
-      b.querySelector('i').className = 'ti ti-circle-dot';
-    } else {
-      b.classList.remove('selected');
-      b.querySelector('i').className = 'ti ti-circle';
-    }
+  document.querySelectorAll('#quizOptsS02 .option-label').forEach((el, i) => {
+    el.classList.toggle('selected', i === idx);
   });
   document.getElementById('btnCheckS02').disabled = false;
 }
@@ -1370,15 +1775,37 @@ function submitS02() {
   const btnNext = document.getElementById('btnNextS02');
 
   if (selectedQuizS02 === 0) {
-    fb.className = 'feedback-box correct';
-    fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác!</strong> Lông/roi nhân thực cấu tạo từ vi ống (axoneme 9+2) và có màng sinh chất bao bọc; còn roi nhân sơ cấu tạo từ protein flagellin và không có màng bao.</span>';
+    fb.className = 'inline-feedback ok';
+    fb.innerHTML = `
+      <div class="feedback-header"><i class="ti ti-circle-check"></i> Chính xác!</div>
+      <div class="correct-answer-box">✓ Đáp án đúng: A. Lông/roi nhân thực cấu tạo từ vi ống (axoneme 9+2) và có màng sinh chất bao bọc; roi vi khuẩn từ protein flagellin và không có màng bao.</div>
+      <div class="explanation">Lông và roi nhân thực được cấu tạo từ vi ống xếp theo kiểu 9+2 và có màng sinh chất bao bọc bên ngoài. Ngược lại, roi vi khuẩn cấu tạo từ protein flagellin, dạng sợi xoắn trần không có màng bọc.</div>
+      <div class="pedagogy-meta">
+        <div class="pedagogy-item"><span class="pedagogy-label">Chủ đề:</span><span class="pedagogy-value">Cấu trúc tế bào nhân thực</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Dạng bài:</span><span class="pedagogy-value">Trắc nghiệm phân tích đối chiếu</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Cấp độ tư duy:</span><span class="pedagogy-value"><strong>Thông hiểu</strong></span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Năng lực sinh học:</span><span class="pedagogy-value">Nhận thức sinh học</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Định dạng:</span><span class="pedagogy-value">Trắc nghiệm nhiều lựa chọn</span></div>
+      </div>
+    `;
     btnCheck.classList.add('hidden');
     btnRetry.classList.add('hidden');
     btnNext.classList.remove('hidden');
     window.lmsState.scores.s02 = 100;
   } else {
-    fb.className = 'feedback-box wrong';
-    fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Chưa đúng:</strong> Đây là 2 cấu trúc khác nhau về thành phần (vi ống vs protein) và có/không có màng bao bọc dù cùng tên gọi là lông/roi.</span>';
+    fb.className = 'inline-feedback bad';
+    fb.innerHTML = `
+      <div class="feedback-header"><i class="ti ti-alert-triangle"></i> Chưa chính xác!</div>
+      <div class="correct-answer-box">⚠ Gợi ý: Đây là 2 cấu trúc khác nhau về thành phần (vi ống vs protein) và có/không có màng bao bọc dù cùng tên gọi.</div>
+      <div class="explanation">Roi vi khuẩn không có cấu trúc vi ống và không có màng bọc. Hãy nhấn "Làm lại" để chọn lại phương án chính xác.</div>
+      <div class="pedagogy-meta">
+        <div class="pedagogy-item"><span class="pedagogy-label">Chủ đề:</span><span class="pedagogy-value">Cấu trúc tế bào nhân thực</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Dạng bài:</span><span class="pedagogy-value">Trắc nghiệm phân tích đối chiếu</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Cấp độ tư duy:</span><span class="pedagogy-value"><strong>Thông hiểu</strong></span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Năng lực sinh học:</span><span class="pedagogy-value">Nhận thức sinh học</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Định dạng:</span><span class="pedagogy-value">Trắc nghiệm nhiều lựa chọn</span></div>
+      </div>
+    `;
     btnCheck.classList.add('hidden');
     btnRetry.classList.remove('hidden');
     btnNext.classList.add('hidden');
@@ -1388,8 +1815,14 @@ function submitS02() {
 }
 
 function resetS02() {
+  selectedQuizS02 = -1;
+  document.querySelectorAll('#quizOptsS02 .option-label').forEach(el => {
+    el.classList.remove('selected');
+    el.querySelector('input').checked = false;
+  });
   document.getElementById('fbS02').classList.add('hidden');
   document.getElementById('btnCheckS02').classList.remove('hidden');
+  document.getElementById('btnCheckS02').disabled = true;
   document.getElementById('btnRetryS02').classList.add('hidden');
   reportHeight();
 }
@@ -1406,7 +1839,9 @@ function simulateECMS03() {
   reportHeight();
 }
 
-function showECMPart(part) {
+function showECMPart(part, btn) {
+  document.querySelectorAll('#stage3 .visual-toolbar .btn-tool').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
   if (part === 'collagen') {
     document.getElementById('s03Caption').innerHTML = "<strong>Bó sợi Collagen:</strong> Chiếm tỷ lệ lớn trong chất nền ngoại bào, dạng sợi chịu lực bền chắc, giữ các tế bào liên kết chặt chẽ thành mô.";
   } else if (part === 'integrin') {
@@ -1416,16 +1851,10 @@ function showECMPart(part) {
 }
 
 let selectedQuizS03 = -1;
-function selectQuizS03(idx, btn) {
+function selectQuizS03(idx, labelEl) {
   selectedQuizS03 = idx;
-  document.querySelectorAll('#quizOptsS03 .quiz-opt-btn').forEach((b, i) => {
-    if (i === idx) {
-      b.classList.add('selected');
-      b.querySelector('i').className = 'ti ti-circle-dot';
-    } else {
-      b.classList.remove('selected');
-      b.querySelector('i').className = 'ti ti-circle';
-    }
+  document.querySelectorAll('#quizOptsS03 .option-label').forEach((el, i) => {
+    el.classList.toggle('selected', i === idx);
   });
   document.getElementById('btnCheckS03').disabled = false;
 }
@@ -1437,15 +1866,37 @@ function submitS03() {
   const btnNext = document.getElementById('btnNextS03');
 
   if (selectedQuizS03 === 0) {
-    fb.className = 'feedback-box correct';
-    fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác!</strong> Chất nền ngoại bào ở động vật khác hoàn toàn về bản chất (glycoprotein/collagen) và chức năng với thành tế bào cellulose/chitin ở thực vật và nấm.</span>';
+    fb.className = 'inline-feedback ok';
+    fb.innerHTML = `
+      <div class="feedback-header"><i class="ti ti-circle-check"></i> Chính xác!</div>
+      <div class="correct-answer-box">✓ Đáp án đúng: A. Không — chất nền ngoại bào của động vật khác về cấu trúc (collagen/glycoprotein) và chức năng với thành tế bào thực vật (cellulose).</div>
+      <div class="explanation">Chất nền ngoại bào và thành tế bào là 2 cấu trúc hoàn toàn khác nhau: chất nền ngoại bào ở động vật có cấu tạo từ glycoprotein (collagen), tạo sự gắn kết mô mềm dẻo; thành tế bào ở thực vật cấu tạo từ cellulose giúp duy trì khung thành cứng rắn.</div>
+      <div class="pedagogy-meta">
+        <div class="pedagogy-item"><span class="pedagogy-label">Chủ đề:</span><span class="pedagogy-value">Cấu trúc tế bào nhân thực</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Dạng bài:</span><span class="pedagogy-value">Trắc nghiệm phân biệt bản chất</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Cấp độ tư duy:</span><span class="pedagogy-value"><strong>Thông hiểu</strong></span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Năng lực sinh học:</span><span class="pedagogy-value">Nhận thức sinh học</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Định dạng:</span><span class="pedagogy-value">Trắc nghiệm nhiều lựa chọn</span></div>
+      </div>
+    `;
     btnCheck.classList.add('hidden');
     btnRetry.classList.add('hidden');
     btnNext.classList.remove('hidden');
     window.lmsState.scores.s03 = 100;
   } else {
-    fb.className = 'feedback-box wrong';
-    fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Chưa đúng:</strong> Chất nền ngoại bào và thành tế bào là hai cấu trúc hoàn toàn khác nhau: chất nền ngoại bào ở động vật, còn thành tế bào ở thực vật và nấm.</span>';
+    fb.className = 'inline-feedback bad';
+    fb.innerHTML = `
+      <div class="feedback-header"><i class="ti ti-alert-triangle"></i> Chưa chính xác!</div>
+      <div class="correct-answer-box">⚠ Gợi ý: Chất nền ngoại bào và thành tế bào thuộc hai nhóm sinh vật khác nhau (động vật vs thực vật/nấm).</div>
+      <div class="explanation">Tế bào động vật hoàn toàn không có thành tế bào. Hãy nhấn "Làm lại" để chọn lại đáp án đúng.</div>
+      <div class="pedagogy-meta">
+        <div class="pedagogy-item"><span class="pedagogy-label">Chủ đề:</span><span class="pedagogy-value">Cấu trúc tế bào nhân thực</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Dạng bài:</span><span class="pedagogy-value">Trắc nghiệm phân biệt bản chất</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Cấp độ tư duy:</span><span class="pedagogy-value"><strong>Thông hiểu</strong></span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Năng lực sinh học:</span><span class="pedagogy-value">Nhận thức sinh học</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Định dạng:</span><span class="pedagogy-value">Trắc nghiệm nhiều lựa chọn</span></div>
+      </div>
+    `;
     btnCheck.classList.add('hidden');
     btnRetry.classList.remove('hidden');
     btnNext.classList.add('hidden');
@@ -1455,14 +1906,20 @@ function submitS03() {
 }
 
 function resetS03() {
+  selectedQuizS03 = -1;
+  document.querySelectorAll('#quizOptsS03 .option-label').forEach(el => {
+    el.classList.remove('selected');
+    el.querySelector('input').checked = false;
+  });
   document.getElementById('fbS03').classList.add('hidden');
   document.getElementById('btnCheckS03').classList.remove('hidden');
+  document.getElementById('btnCheckS03').disabled = true;
   document.getElementById('btnRetryS03').classList.add('hidden');
   reportHeight();
 }
 
 /* =====================================================================
-   STAGE S04 LOGIC: MỐI NỐI TẾ BÀO
+   STAGE S04 LOGIC: MỐI NỐI TẾ BÀO (MATCHING WITH SVG LINES)
    ===================================================================== */
 function testJunctionS04(type, btn) {
   document.querySelectorAll('#stage4 .visual-toolbar .btn-tool').forEach(b => b.classList.remove('active'));
@@ -1476,33 +1933,180 @@ function testJunctionS04(type, btn) {
   reportHeight();
 }
 
-function checkInputsS04() {
-  const t = document.getElementById('matchS04_Tight').value;
-  const g = document.getElementById('matchS04_Gap').value;
-  document.getElementById('btnCheckS04').disabled = !(t && g);
+const s04CorrectMap = {
+  tight: 'tight_func',
+  gap: 'gap_func'
+};
+
+let selectedSourceS04 = null;
+let currentMatchesS04 = {}; // { tight: 'tight_func', gap: 'gap_func' }
+
+function handleSourceClickS04(card) {
+  if (card.classList.contains('matched')) {
+    const sourceKey = card.dataset.key;
+    delete currentMatchesS04[sourceKey];
+    card.classList.remove('matched', 'selected-source');
+    updateMatchedCardsS04();
+    drawMatchLinesS04();
+    checkCompletionS04();
+    return;
+  }
+  document.querySelectorAll('#colSourceS04 .source-card').forEach(c => c.classList.remove('selected-source'));
+  selectedSourceS04 = card.dataset.key;
+  card.classList.add('selected-source');
+}
+
+function handleTargetClickS04(card) {
+  const targetKey = card.dataset.key;
+  if (!selectedSourceS04) {
+    if (card.classList.contains('matched')) {
+      for (const [sKey, tKey] of Object.entries(currentMatchesS04)) {
+        if (tKey === targetKey) {
+          delete currentMatchesS04[sKey];
+        }
+      }
+      updateMatchedCardsS04();
+      drawMatchLinesS04();
+      checkCompletionS04();
+    }
+    return;
+  }
+  
+  for (const [sKey, tKey] of Object.entries(currentMatchesS04)) {
+    if (tKey === targetKey) {
+      delete currentMatchesS04[sKey];
+    }
+  }
+
+  currentMatchesS04[selectedSourceS04] = targetKey;
+  selectedSourceS04 = null;
+  document.querySelectorAll('#colSourceS04 .source-card').forEach(c => c.classList.remove('selected-source'));
+  updateMatchedCardsS04();
+  drawMatchLinesS04();
+  checkCompletionS04();
+}
+
+function updateMatchedCardsS04() {
+  document.querySelectorAll('#colSourceS04 .source-card').forEach(c => {
+    c.classList.toggle('matched', !!currentMatchesS04[c.dataset.key]);
+  });
+  const matchedTargets = Object.values(currentMatchesS04);
+  document.querySelectorAll('#colTargetS04 .target-card').forEach(c => {
+    c.classList.toggle('matched', matchedTargets.includes(c.dataset.key));
+  });
+}
+
+function drawMatchLinesS04(wrongSources = []) {
+  const container = document.getElementById('matchContainerS04');
+  const svg = document.getElementById('matchSvgS04');
+  if (!container || !svg) return;
+  svg.innerHTML = '';
+  const cRect = container.getBoundingClientRect();
+
+  for (const [sKey, tKey] of Object.entries(currentMatchesS04)) {
+    const sEl = container.querySelector('#colSourceS04 [data-key="' + sKey + '"] .match-pin');
+    const tEl = container.querySelector('#colTargetS04 [data-key="' + tKey + '"] .match-pin');
+    if (sEl && tEl) {
+      const sRect = sEl.getBoundingClientRect();
+      const tRect = tEl.getBoundingClientRect();
+
+      const x1 = sRect.left + sRect.width / 2 - cRect.left;
+      const y1 = sRect.top + sRect.height / 2 - cRect.top;
+      const x2 = tRect.left + tRect.width / 2 - cRect.left;
+      const y2 = tRect.top + tRect.height / 2 - cRect.top;
+
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      const dx = (x2 - x1) * 0.45;
+      const d = 'M ' + x1 + ' ' + y1 + ' C ' + (x1 + dx) + ' ' + y1 + ', ' + (x2 - dx) + ' ' + y2 + ', ' + x2 + ' ' + y2;
+      path.setAttribute('d', d);
+      const isWrong = wrongSources.includes(sKey);
+      path.setAttribute('class', 'match-connect-line' + (isWrong ? ' wrong-line' : ''));
+      svg.appendChild(path);
+    }
+  }
+}
+
+function checkCompletionS04() {
+  const count = Object.keys(currentMatchesS04).length;
+  document.getElementById('btnCheckS04').disabled = (count < 2);
 }
 
 function submitS04() {
-  const t = document.getElementById('matchS04_Tight').value;
-  const g = document.getElementById('matchS04_Gap').value;
+  const wrongSources = [];
+  const wrongTargets = [];
+  let isAllCorrect = true;
+
+  for (const [sKey, tKey] of Object.entries(currentMatchesS04)) {
+    if (s04CorrectMap[sKey] !== tKey) {
+      isAllCorrect = false;
+      wrongSources.push(sKey);
+      wrongTargets.push(tKey);
+    }
+  }
+
   const fb = document.getElementById('fbS04');
   const btnCheck = document.getElementById('btnCheckS04');
   const btnRetry = document.getElementById('btnRetryS04');
   const btnNext = document.getElementById('btnNextS04');
 
-  if (t === 'tight_correct' && g === 'gap_correct') {
-    fb.className = 'feedback-box correct';
-    fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác!</strong> Mối nối kín có chức năng ngăn cách triệt để dịch ngoại bào; còn mối nối hở tạo kênh lưu thông trao đổi chất trực tiếp giữa 2 tế bào láng giềng!</span>';
+  if (isAllCorrect && Object.keys(currentMatchesS04).length === 2) {
+    fb.className = 'inline-feedback ok';
+    fb.innerHTML = `
+      <div class="feedback-header"><i class="ti ti-circle-check"></i> Chính xác!</div>
+      <div class="correct-answer-box">✓ Đáp án đúng: Mối nối kín ↔ Tế bào ruột non, ngăn chất lọt qua khoảng gian bào • Mối nối hở ↔ Cho ion/phân tử nhỏ di chuyển trực tiếp giữa 2 tế bào</div>
+      <div class="explanation">Mối nối kín có chức năng ngăn cách triệt để dịch ngoại bào; còn mối nối hở tạo kênh thông suốt lưu thông trao đổi chất và thông tin trực tiếp giữa 2 tế bào láng giềng.</div>
+      <div class="pedagogy-meta">
+        <div class="pedagogy-item"><span class="pedagogy-label">Chủ đề:</span><span class="pedagogy-value">Cấu trúc tế bào nhân thực</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Dạng bài:</span><span class="pedagogy-value">Ghép nối chức năng sinh học</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Cấp độ tư duy:</span><span class="pedagogy-value"><strong>Thông hiểu</strong></span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Năng lực sinh học:</span><span class="pedagogy-value">Nhận thức sinh học</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Định dạng:</span><span class="pedagogy-value">Ghép đôi tương tác</span></div>
+      </div>
+    `;
     btnCheck.classList.add('hidden');
     btnRetry.classList.add('hidden');
     btnNext.classList.remove('hidden');
     window.lmsState.scores.s04 = 100;
   } else {
-    fb.className = 'feedback-box wrong';
-    fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Chưa đúng:</strong> Hãy nhớ: mối nối KÍN đóng vai trò NGĂN CÁCH (như ở biểu mô ruột); mối nối HỞ cho phép chất LƯU THÔNG trực tiếp qua kênh liên bào.</span>';
-    btnCheck.classList.add('hidden');
-    btnRetry.classList.remove('hidden');
-    btnNext.classList.add('hidden');
+    wrongSources.forEach(sKey => {
+      const el = document.querySelector('#colSourceS04 [data-key="' + sKey + '"]');
+      if (el) el.classList.add('wrong');
+    });
+    wrongTargets.forEach(tKey => {
+      const el = document.querySelector('#colTargetS04 [data-key="' + tKey + '"]');
+      if (el) el.classList.add('wrong');
+    });
+    drawMatchLinesS04(wrongSources);
+
+    fb.className = 'inline-feedback bad';
+    fb.innerHTML = `
+      <div class="feedback-header"><i class="ti ti-alert-triangle"></i> Chưa chính xác!</div>
+      <div class="correct-answer-box">⚠ Các cặp nối đúng đã được giữ nguyên; các đường nối chưa đúng đã tự động được hủy để bạn ghép lại.</div>
+      <div class="explanation">Gợi ý: Mối nối KÍN có chức năng NGĂN CÁCH (như ở biểu mô ruột); mối nối HỞ có chức năng CHO PHÉP chất đi qua trực tiếp. Hãy nối lại cho đúng.</div>
+      <div class="pedagogy-meta">
+        <div class="pedagogy-item"><span class="pedagogy-label">Chủ đề:</span><span class="pedagogy-value">Cấu trúc tế bào nhân thực</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Dạng bài:</span><span class="pedagogy-value">Ghép nối chức năng sinh học</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Cấp độ tư duy:</span><span class="pedagogy-value"><strong>Thông hiểu</strong></span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Năng lực sinh học:</span><span class="pedagogy-value">Nhận thức sinh học</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Định dạng:</span><span class="pedagogy-value">Ghép đôi tương tác</span></div>
+      </div>
+    `;
+
+    setTimeout(() => {
+      wrongSources.forEach(sKey => {
+        delete currentMatchesS04[sKey];
+        const el = document.querySelector('#colSourceS04 [data-key="' + sKey + '"]');
+        if (el) el.classList.remove('wrong');
+      });
+      wrongTargets.forEach(tKey => {
+        const el = document.querySelector('#colTargetS04 [data-key="' + tKey + '"]');
+        if (el) el.classList.remove('wrong');
+      });
+
+      updateMatchedCardsS04();
+      drawMatchLinesS04();
+      checkCompletionS04();
+    }, 600);
   }
   fb.classList.remove('hidden');
   reportHeight();
@@ -1512,11 +2116,12 @@ function resetS04() {
   document.getElementById('fbS04').classList.add('hidden');
   document.getElementById('btnCheckS04').classList.remove('hidden');
   document.getElementById('btnRetryS04').classList.add('hidden');
+  checkCompletionS04();
   reportHeight();
 }
 
 /* =====================================================================
-   STAGE S05 LOGIC: PHÂN LOẠI TỔNG KẾT TOÀN BÀI 8
+   STAGE S05 LOGIC: PHÂN LOẠI TỔNG KẾT TOÀN BÀI 8 (3 CỘT)
    ===================================================================== */
 const allOrganellesData = [
   { id: 'item1', label: 'Thành tế bào cellulose', target: 'plant' },
@@ -1549,12 +2154,13 @@ function initStage5() {
 
 function renderChipsPool() {
   const tray = document.getElementById('chipsTray');
+  if (!tray) return;
   tray.innerHTML = '';
   allOrganellesData.forEach(item => {
     if (!classificationState[item.id]) {
       const chip = document.createElement('div');
       chip.className = 'organelle-chip' + (selectedChipId === item.id ? ' selected' : '');
-      chip.innerHTML = `<i class="ti ti-tag"></i><span>${item.label}</span>`;
+      chip.innerHTML = '<i class="ti ti-tag"></i><span>' + item.label + '</span>';
       chip.onclick = (e) => {
         e.stopPropagation();
         selectChip(item.id);
@@ -1568,12 +2174,13 @@ function renderChipsPool() {
 function renderColumns() {
   ['plant', 'animal', 'common'].forEach(group => {
     const zone = document.getElementById('zone' + group.charAt(0).toUpperCase() + group.slice(1));
+    if (!zone) return;
     zone.innerHTML = '';
     allOrganellesData.forEach(item => {
       if (classificationState[item.id] === group) {
         const itemDiv = document.createElement('div');
         itemDiv.className = 'col-chip-item';
-        itemDiv.innerHTML = `<span>${item.label}</span><i class="ti ti-x"></i>`;
+        itemDiv.innerHTML = '<span>' + item.label + '</span><i class="ti ti-x"></i>';
         itemDiv.onclick = (e) => {
           e.stopPropagation();
           returnChipToPool(item.id);
@@ -1612,15 +2219,20 @@ function returnChipToPool(id) {
 }
 
 function checkCompletionS05() {
+  const btn = document.getElementById('btnCheckS05');
+  if (!btn) return;
   const unplacedCount = Object.values(classificationState).filter(val => val === null).length;
-  document.getElementById('btnCheckS05').disabled = (unplacedCount > 0);
+  btn.disabled = (unplacedCount > 0);
 }
 
 function submitS05() {
   let isAllCorrect = true;
+  const wrongIds = [];
+
   allOrganellesData.forEach(item => {
     if (classificationState[item.id] !== item.target) {
       isAllCorrect = false;
+      wrongIds.push(item.id);
     }
   });
 
@@ -1629,8 +2241,19 @@ function submitS05() {
   const btnRetry = document.getElementById('btnRetryS05');
 
   if (isAllCorrect) {
-    fb.className = 'feedback-box correct';
-    fb.innerHTML = '<i class="ti ti-trophy"></i><span><strong>Tuyệt vời!</strong> Bạn đã phân loại hoàn toàn chính xác toàn bộ 14 bào quan và cấu trúc của tế bào thực vật và động vật, xuất sắc khép lại toàn bộ Bài 8!</span>';
+    fb.className = 'inline-feedback ok';
+    fb.innerHTML = `
+      <div class="feedback-header"><i class="ti ti-trophy"></i> Xuất sắc! Toàn bộ 14 cấu trúc đã xếp đúng!</div>
+      <div class="correct-answer-box">✓ Đáp án đúng: Thực vật (Thành cellulose, Lục lạp, Không bào lớn) • Động vật (Trung thể có trung tử, Lysosome, Chất nền ngoại bào) • Cả hai (Nhân, Ti thể, ER, Golgi, Ribosome, Khung xương, Màng sinh chất, Peroxysome)</div>
+      <div class="explanation">Bạn đã nắm vững toàn diện và đối chiếu xuất sắc sự khác biệt cũng như điểm tương đồng trong cấu trúc siêu vi của tế bào thực vật và động vật qua toàn bộ 5 module của Bài 8!</div>
+      <div class="pedagogy-meta">
+        <div class="pedagogy-item"><span class="pedagogy-label">Chủ đề:</span><span class="pedagogy-value">Tổng kết toàn Bài 8: Tế bào nhân thực</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Dạng bài:</span><span class="pedagogy-value">Phân loại tổng hợp đa nhóm</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Cấp độ tư duy:</span><span class="pedagogy-value"><strong>Vận dụng</strong></span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Năng lực sinh học:</span><span class="pedagogy-value">Vận dụng kiến thức, kĩ năng đã học</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Định dạng:</span><span class="pedagogy-value">Kéo thả / Phân nhóm tương tác</span></div>
+      </div>
+    `;
     btnCheck.classList.add('hidden');
     btnRetry.classList.add('hidden');
     window.lmsState.scores.s05 = 100;
@@ -1638,12 +2261,30 @@ function submitS05() {
     setTimeout(() => {
       launchConfetti();
       document.getElementById('completionModal').classList.remove('hidden');
-    }, 600);
+    }, 500);
   } else {
-    fb.className = 'feedback-box wrong';
-    fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Chưa đúng:</strong> Có bào quan bị xếp nhầm nhóm. Hãy nhớ lại: Thành cellulose, lục lạp, không bào lớn đặc trưng ở thực vật; Trung thể, lysosome, chất nền ngoại bào điển hình ở động vật. Bấm LÀM LẠI để thử lại.</span>';
-    btnCheck.classList.add('hidden');
-    btnRetry.classList.remove('hidden');
+    fb.className = 'inline-feedback bad';
+    fb.innerHTML = `
+      <div class="feedback-header"><i class="ti ti-alert-triangle"></i> Chưa chính xác!</div>
+      <div class="correct-answer-box">⚠ Các thẻ xếp đúng đã được giữ nguyên; các thẻ xếp sai đã được tự động trả về khay chờ để bạn chọn lại.</div>
+      <div class="explanation">Gợi ý: Thành cellulose, lục lạp, không bào lớn là của thực vật; Trung tử, lysosome, chất nền ngoại bào là của động vật. Các bào quan còn lại là thành phần chung. Hãy xếp lại các thẻ còn trong khay.</div>
+      <div class="pedagogy-meta">
+        <div class="pedagogy-item"><span class="pedagogy-label">Chủ đề:</span><span class="pedagogy-value">Tổng kết toàn Bài 8: Tế bào nhân thực</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Dạng bài:</span><span class="pedagogy-value">Phân loại tổng hợp đa nhóm</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Cấp độ tư duy:</span><span class="pedagogy-value"><strong>Vận dụng</strong></span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Năng lực sinh học:</span><span class="pedagogy-value">Vận dụng kiến thức, kĩ năng đã học</span></div>
+        <div class="pedagogy-item"><span class="pedagogy-label">Định dạng:</span><span class="pedagogy-value">Kéo thả / Phân nhóm tương tác</span></div>
+      </div>
+    `;
+
+    // Hủy phân loại các thẻ sai (trả về khay), giữ nguyên các thẻ đúng
+    wrongIds.forEach(id => {
+      classificationState[id] = null;
+    });
+
+    renderChipsPool();
+    renderColumns();
+    checkCompletionS05();
   }
   fb.classList.remove('hidden');
   reportHeight();
@@ -1653,7 +2294,7 @@ function resetS05() {
   document.getElementById('fbS05').classList.add('hidden');
   document.getElementById('btnCheckS05').classList.remove('hidden');
   document.getElementById('btnRetryS05').classList.add('hidden');
-  initStage5();
+  checkCompletionS05();
   reportHeight();
 }
 
@@ -1662,6 +2303,7 @@ function resetS05() {
    ===================================================================== */
 function launchConfetti() {
   const canvas = document.getElementById('confettiCanvas');
+  if (!canvas) return;
   const ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -1690,7 +2332,7 @@ function launchConfetti() {
     particles.forEach(p => {
       p.x += p.vx;
       p.y += p.vy;
-      p.vy += 0.35; // gravity
+      p.vy += 0.35;
       p.alpha -= 0.012;
       p.rotation += p.vRot;
 
@@ -1725,65 +2367,14 @@ function restartLesson() {
   goToStage(1);
 }
 
-/* =====================================================================
-   COLLAPSIBLE LEAD BOX LOGIC (BỐI CẢNH KHOA HỌC)
-   ===================================================================== */
-function toggleLeadBox(headerEl) {
-  const box = headerEl.closest('.lead-box');
-  if (!box) return;
-  const isCollapsed = box.classList.toggle('collapsed');
-  const label = box.querySelector('.lead-toggle-label');
-  headerEl.setAttribute('aria-expanded', !isCollapsed);
-  if (label) {
-    label.textContent = isCollapsed ? 'Mở rộng' : 'Thu gọn';
-  }
-  if (typeof reportHeight === 'function') {
-    setTimeout(reportHeight, 360);
-  }
-}
-
-document.addEventListener('keydown', function(e) {
-  if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.classList.contains('lead-header')) {
-    e.preventDefault();
-    toggleLeadBox(e.target);
-  }
-});
-
 // Khởi chạy khi tải trang
 window.addEventListener('DOMContentLoaded', () => {
   initStage5();
   reportHeight();
+  setTimeout(() => {
+    drawMatchLinesS01();
+  }, 150);
 });
-</script>
-
-<script>
-/* Hoàn thiện cấu trúc SH10_B01_M02 trên các khối hai cột có sẵn. */
-(() => {
-  document.querySelectorAll('section.stage-card').forEach((stage)=>{
-    if(stage.classList.contains('two-block-ready'))return;
-    let split=[...stage.children].find((node)=>node.matches('.split-workspace,.classification-layout'));
-    if(!split)return;
-    split.classList.add('split-workspace');
-    const parts=[...split.children];
-    const visual=parts.find((node)=>node.matches('.visual-card')||node.querySelector('img,svg,canvas'))||parts[0];
-    visual.classList.add('visual-card');
-    let workspace=parts.find((node)=>node!==visual&&node.matches('.task-card,.workspace-card'));
-    if(!workspace){workspace=document.createElement('article');parts.filter((node)=>node!==visual).forEach((node)=>workspace.appendChild(node));split.appendChild(workspace)}
-    workspace.classList.add('workspace-card');
-    const title=[...stage.children].find((node)=>node.matches('.stage-title'));
-    const lead=[...stage.children].find((node)=>node.matches('.lead-box'));
-    if(title||lead){const head=document.createElement('div');head.className='visual-card__head';if(title)head.appendChild(title);if(lead)head.appendChild(lead);visual.prepend(head)}
-    const guide=[...stage.children].find((node)=>node.matches('.guide-box'));if(guide){guide.className='instruction';workspace.prepend(guide)}
-    stage.querySelectorAll('.feedback-box,.feedback-bar,.feedback-panel').forEach((node)=>node.classList.add('inline-feedback'));
-    const controls=workspace.querySelector(':scope > .controls-row')||split.querySelector('.controls-row');if(controls)stage.appendChild(controls);
-    stage.classList.add('two-block-ready');
-  });
-  const clean=(root)=>{const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.closest('script,style'))continue;const v=n.nodeValue.replace(/Tiếp tục sang Giai đoạn\s*\d+/gi,'Tiếp tục').replace(/Hoàn thành Giai đoạn\s*\d+!?/gi,'Hoàn thành!').replace(/GIAI ĐOẠN\s*\d+\s*\/\s*\d+\s*[·—-]\s*/gi,'').replace(/Stage\s*\d+/gi,'').replace(/Màn\s*\d+\s*[·:]\s*/gi,'').replace(/Bước\s*\d+\s*\/\s*\d+/gi,'');if(v!==n.nodeValue)n.nodeValue=v}};clean(document.body);new MutationObserver((a)=>a.forEach((m)=>clean(m.target))).observe(document.body,{childList:true,subtree:true,characterData:true});
-})();
-</script>
-<script>
-/* Hàng điều hướng ba nút thống nhất, thay thế cụm điều hướng cũ. */
-(()=>{const stages=[...document.querySelectorAll('section.stage,section.stage-section,section.stage-card')];const go=(idx)=>{const stage=stages[idx];if(!stage)return;if(typeof showStage==='function')showStage(idx);else if(typeof goStage==='function')goStage(stage.id);else if(typeof goToStage==='function'){const m=stage.id.match(/stage-?(\d+)/);goToStage(m?Number(m[1]):idx+1)}else{stages.forEach((item,itemIdx)=>item.classList.toggle('hidden',itemIdx!==idx));window.scrollTo({top:0,behavior:'smooth'})}};const hashMatch=location.hash.match(/^#retry-stage-(\d+)$/);stages.forEach((stage,idx)=>{if(stage.querySelector(':scope > .three-button-nav'))return;const sourceRow=stage.querySelector(':scope > .controls-row,:scope > .stage-actions');const buttons=sourceRow?[...sourceRow.querySelectorAll('button')]:[];const byText=(re)=>buttons.find(b=>re.test(b.textContent));const backSource=byText(/quay lại/i);const resetSource=byText(/làm lại màn|làm lại/i);const nextSource=byText(/tiếp tục/i)||buttons.find(b=>/complete|finish|next/i.test(b.id));const row=document.createElement('div');row.className='three-button-nav';const back=document.createElement('button');back.type='button';back.className='btn btn-outline nav-back';back.innerHTML='<i class="ti ti-arrow-left"></i> Quay lại';back.disabled=idx===0;back.addEventListener('click',()=>backSource?backSource.click():go(idx-1));const reset=document.createElement('button');reset.type='button';reset.className='btn btn-outline nav-reset';reset.innerHTML='<i class="ti ti-rotate-clockwise"></i> Làm lại màn';reset.addEventListener('click',()=>{if(resetSource)resetSource.click();else{location.hash='#retry-stage-'+idx;location.reload()}});const spacer=document.createElement('span');spacer.className='nav-spacer';const next=document.createElement('button');next.type='button';next.className='btn btn-primary nav-next';next.innerHTML='Tiếp tục <i class="ti ti-arrow-right"></i>';const sync=()=>{next.disabled=!nextSource||nextSource.disabled||nextSource.classList.contains('hidden')};next.addEventListener('click',()=>nextSource?nextSource.click():go(idx+1));sync();if(nextSource)new MutationObserver(sync).observe(nextSource,{attributes:true,attributeFilter:['class','disabled']});row.append(back,reset,spacer,next);stage.appendChild(row)});if(hashMatch){const idx=Number(hashMatch[1]);setTimeout(()=>{go(idx);history.replaceState(null,'',location.pathname+location.search)},80)}})();
 </script>
 </body>
 </html>

@@ -12,21 +12,20 @@
   "track": "SH10_B08_M01",
   "centralQuestion": "Tế bào nhân thực có đặc điểm chung gì? Nhân tế bào có cấu trúc ra sao để trở thành 'trung tâm điều khiển'?",
   "objectives": [
-    "Trình bày được cấu trúc của nhân tế bào và chức năng quan trọng của nhân.",
-    "Trình bày được 4 đặc điểm chung của tế bào nhân thực: kích thước lớn, cấu tạo phức tạp, có nhân chính thức, khung xương tế bào, hệ thống nội màng và các bào quan có màng",
-    "Nhận biết tổng thể vị trí tương đối của 14 thành phần/bào quan trên bản đồ đối chiếu tế bào thực vật và động vật",
-    "Mô tả được cấu trúc màng nhân gồm hai lớp màng phospholipid gắn protein, khoảng quanh nhân và nhiều phức hợp lỗ màng nhân",
-    "Giải thích được vai trò trung tâm điều khiển của nhân qua dòng thông tin di truyền DNA -> RNA -> protein và chức năng tổng hợp rRNA của hạch nhân",
-    "Phân biệt được bản chất 'nhân thực' là có màng nhân thật sự bao bọc DNA, phản bác ngộ nhận nhân thực xuất phát từ kích thước nhân"
+    "Trình bày được 4 đặc điểm chung cốt lõi của tế bào nhân thực",
+    "Nhận biết được tổng thể các thành phần cấu tạo tế bào thực vật và động vật trên sơ đồ hệ thống",
+    "Mô tả được cấu trúc màng nhân (hai lớp màng phospholipid, phức hợp lỗ màng nhân)",
+    "Giải thích được vì sao nhân là trung tâm điều khiển hoạt động sống thông qua dòng thông tin phiên mã",
+    "Phân tích bản chất khái niệm 'nhân thực' dựa trên sự hiện diện của màng nhân chứ không dựa vào kích thước"
   ],
   "structure": [
-    {"id": "s01", "title": "Tế bào nhân thực: kích thước lớn, cấu tạo phức tạp"},
-    {"id": "s02", "title": "Bản đồ tổng quan: tế bào thực vật và động vật"},
-    {"id": "s03", "title": "Cấu trúc màng nhân"},
-    {"id": "s04", "title": "Chất nhiễm sắc, hạch nhân và trung tâm điều khiển"},
-    {"id": "s05", "title": "Sửa hiểu sai và liên kết chương trình"}
+    {"id": "st01", "title": "Tế bào nhân thực: Kích thước lớn, cấu tạo phức tạp"},
+    {"id": "st02", "title": "Bản đồ tổng quan tế bào thực vật và động vật"},
+    {"id": "st03", "title": "Cấu trúc màng nhân và phức hợp lỗ nhân"},
+    {"id": "st04", "title": "Chất nhiễm sắc, hạch nhân và trung tâm điều khiển"},
+    {"id": "st05", "title": "Bản chất khái niệm 'Nhân thực' và đối chiếu nhân sơ"}
   ],
-  "athenaGuidance": "Module lý thuyết tương tác chuẩn V10 gồm 5 màn học: 1) Khám phá đối chiếu hai tế bào biểu mô ruột và mở đủ 4 thẻ đặc điểm chung của tế bào nhân thực; 2) Khám phá 14 bào quan trên bản đồ hệ thống tế bào thực vật và động vật, trả lời câu hỏi nhận diện cấu trúc không có ở tế bào động vật; 3) Quan sát cắt lớp 3D màng nhân kép và phức hợp lỗ màng nhân, kiểm tra cấu tạo hóa học; 4) Chạy hoạt cảnh mô phỏng phiên mã xuất mRNA qua lỗ nhân và tìm hiểu hạch nhân; 5) Đối chiếu tế bào nhân thực với nhân sơ, trả lời câu hỏi Đúng/Sai chốt bản chất màng nhân."
+  "athenaGuidance": "Module học tương tác V10 gồm 5 màn: 1) Khám phá 4 đặc điểm chung qua hình ảnh đối chiếu tế bào niêm mạc ruột; 2) Bản đồ hệ thống 14 bào quan và câu hỏi phân biệt tế bào động vật - thực vật; 3) Khám phá cấu trúc màng kép và lỗ màng nhân; 4) Chạy mô phỏng phiên mã DNA thành RNA qua lỗ nhân và tìm hiểu hạch nhân; 5) Phân tích bản chất khái niệm nhân thực qua câu hỏi Đúng/Sai chốt bài."
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,289 +75,360 @@
   --shadow-sm: 0 2px 6px rgba(26,26,26,.05);
   --shadow: 0 4px 14px rgba(45,139,111,.08);
   --shadow-hover: 0 6px 20px rgba(45,139,111,.14);
-  --lesson-width: 1240px;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
 body {
-  font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
-  background: var(--cream);
-  color: var(--ink);
+  font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16.5px;
   line-height: 1.65;
-  padding: 16px clamp(12px, 2.5vw, 28px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-}
-button { font: inherit; cursor: pointer; }
-button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-
-/* HIGH PRIORITY HIDDEN MODAL RULE (ANTI AUTO-SHOW) */
-.hidden { display: none !important; }
-.congrats-overlay.hidden,
-.modal-backdrop.hidden,
-#completionModal.hidden {
-  display: none !important;
+  color: var(--ink);
+  background-color: var(--cream);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* TOP APP CONTAINER */
 .app {
   width: 100%;
-  max-width: var(--lesson-width);
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 16px clamp(12px, 2.5vw, 24px) 40px;
+  overflow-x: clip;
 }
 
-/* CLEAN HEADER BANNER REMOVAL: HIDDEN STEPPER PER RULES */
-.progress-nav-container,
-.progress-nav,
-.stepper-nav,
-.stepper-bar,
-.step-nav-bar,
-.stage-head {
-  display: none !important;
+/* PROGRESS BAR */
+.progress-bar-wrap {
+  width: 100%;
+  height: 6px;
+  background: var(--paper-line);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+.progress-bar-fill {
+  height: 100%;
+  width: 20%;
+  background: linear-gradient(90deg, var(--jade), var(--jade-deep));
+  border-radius: 999px;
+  transition: width 0.35s ease;
 }
 
-/* MAIN STAGES WRAPPER */
-.stage {
-  background: #FFFFFF;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--paper-line);
-  box-shadow: var(--shadow);
-  padding: 24px clamp(16px, 3vw, 32px);
+/* STAGE HEADER CLEAN */
+.stage-header-clean {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  animation: fadeIn 0.25s ease-out;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+  gap: 8px;
+  margin-bottom: 14px;
 }
 
-/* STAGE HEADER */
-.stage-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--paper-line);
-}
-.stage-title-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.stage-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  color: var(--jade-text);
-  background: var(--jade-pale);
-  padding: 4px 10px;
-  border-radius: 99px;
-  width: fit-content;
-}
 .stage-title {
-  font-size: clamp(1.25rem, 2.8vw, 1.65rem);
+  font-size: clamp(1.25rem, 2.2vw, 1.65rem);
   font-weight: 800;
-  color: var(--ink);
-  line-height: 1.3;
-}
-.stage-step-indicator {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--ink-3);
-  background: var(--cream-2);
-  padding: 5px 12px;
-  border-radius: 99px;
-  border: 1px solid var(--paper-line);
+  color: var(--jade-dark);
+  line-height: 1.35;
 }
 
-/* LEAD TEXT (PURE CONTEXT, CLEANED OF ACTION COMMANDS) */
 .lead-text {
-  font-size: 1.02rem;
+  font-size: 0.95rem;
   color: var(--ink-2);
   line-height: 1.65;
 }
 
-/* SINGLE POINT OF INSTRUCTION (GUIDE BOX) */
+/* GUIDE BOX */
 .guide-box {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  background: var(--cream);
-  border: 1px solid var(--paper-line-2);
-  border-left: 4px solid var(--jade);
-  padding: 12px 16px;
-  border-radius: var(--radius-sm);
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--jade-dark);
+  background: var(--cream-2);
+  border-left: 3px solid var(--jade);
+  border-radius: 4px;
+  padding: 12px 14px;
+  font-size: 0.91rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin-bottom: 14px;
 }
 .guide-box i {
-  font-size: 1.25rem;
   color: var(--jade-deep);
+  font-size: 1.25rem;
   flex-shrink: 0;
   margin-top: 1px;
 }
 
-/* 2-COLUMN LAYOUT: 68% VISUAL / 32% INTERACTION */
-.stage-grid {
+/* THEORY FLOW */
+.theory-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.theory-block {
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.theory-block__title {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--jade-text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.theory-block__title i {
+  color: var(--jade-deep);
+  font-size: 1rem;
+}
+.theory-block__desc {
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+
+/* TWO-BLOCK WORKSPACE */
+.split-workspace {
   display: grid;
-  grid-template-columns: 68fr 32fr;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
   gap: 20px;
   align-items: start;
 }
-@media (max-width: 960px) {
-  .stage-grid {
-    grid-template-columns: 1fr;
-  }
-}
 
-/* INLINE SVG RESPONSIVE */
-
-/* HIGH VISIBILITY ORGANELLE CHIP ACTIVE & SVG HIGHLIGHT */
-.organelle-chip {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  user-select: none;
-}
-.organelle-chip.active {
-  background: #D1FAE5 !important;
-  border-color: #059669 !important;
-  color: #065F46 !important;
-  font-weight: 700 !important;
-  box-shadow: 0 0 0 2px #059669, 0 4px 12px rgba(5, 150, 105, 0.35) !important;
-  transform: translateY(-2px);
-}
-.organelle-chip.active i {
-  color: #059669 !important;
-  transform: scale(1.2);
-}
-
-.svg-organelle-highlight {
-  filter: drop-shadow(0 0 12px #10B981) drop-shadow(0 0 6px #047857) !important;
-  opacity: 1 !important;
-  animation: organelleGlowAnim 1.2s infinite alternate ease-in-out;
-}
-@keyframes organelleGlowAnim {
-  0% { filter: drop-shadow(0 0 6px #10B981); transform: scale(1); }
-  100% { filter: drop-shadow(0 0 16px #059669) brightness(1.25); transform: scale(1.02); }
-}
-
-.clickable-organelle {
-  cursor: pointer !important;
-  pointer-events: all !important;
-}
-.clickable-organelle:hover {
-  filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.75));
-  opacity: 0.95;
-}
-.stage-inline-svg {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  display: block;
-  border-radius: var(--radius-sm);
-}
-
-/* VISUAL WORKSPACE (LEFT COLUMN) */
 .visual-card {
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 16px;
+  align-self: start;
+  height: fit-content;
+  max-height: none;
+  overflow-y: visible;
+}
+
+.workspace-card {
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 18px 16px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: 16px;
+  align-self: start;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  min-width: 0;
+}
+
+/* CANVAS & SVG WRAP */
+.visual-canvas-wrap {
+  width: 100%;
   background: #FFFFFF;
   border: 1px solid var(--paper-line);
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
 }
-.visual-header {
+.stage-inline-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.visual-caption {
+  padding: 10px 14px;
+  background: var(--cream);
+  border-top: 1px solid var(--paper-line);
+  font-size: 0.84rem;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+.visual-caption i {
+  color: var(--jade-deep);
+}
+
+/* CONTROLS ROW */
+.controls-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 16px;
-  background: var(--cream-2);
-  border-bottom: 1px solid var(--paper-line);
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--ink-2);
+  gap: 8px;
+  width: 100%;
+  margin-top: 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--paper-line);
+  flex-wrap: wrap;
+  row-gap: 10px;
 }
-.visual-content {
-  padding: 14px;
+.btn-group-left {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background: #FAF7F0;
-  min-height: 380px;
-  position: relative;
+  gap: 6px;
+  flex-wrap: nowrap;
 }
-.visual-content svg,
-.visual-content img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  display: block;
+.btn-group-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  flex-wrap: nowrap;
 }
 
-/* INTERACTIVE PANEL (RIGHT COLUMN) */
-.panel-card {
-  background: #FFFFFF;
-  border: 1px solid var(--paper-line);
-  border-radius: var(--radius);
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  box-shadow: var(--shadow-sm);
-}
-.panel-card-title {
-  font-size: 1.05rem;
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  min-height: 40px;
+  min-width: 0;
+  font-family: inherit;
+  font-size: 0.88rem;
   font-weight: 700;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1.5px solid transparent;
+  white-space: nowrap;
+  user-select: none;
+}
+.btn i {
+  font-size: 1.15rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0 !important;
+  flex-shrink: 0;
+}
+.btn span {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  margin: 0 !important;
+}
+
+@media (max-width: 1120px) {
+  .btn-group-left, .btn-group-right {
+    flex: 1 1 180px;
+  }
+  .btn-group-right {
+    justify-content: flex-end;
+  }
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.btn-primary {
+  background: var(--jade);
+  color: #FFFFFF;
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--jade-deep);
+  box-shadow: 0 4px 12px rgba(45,139,111,0.25);
+  transform: translateY(-1px);
+}
+.btn-secondary {
+  background: var(--cream-2);
+  color: var(--ink-2);
+  border-color: var(--paper-line);
+}
+.btn-secondary:hover:not(:disabled) {
+  background: var(--cream-3);
   color: var(--ink);
+}
+.btn-action {
+  background: var(--accent);
+  color: #FFFFFF;
+}
+.btn-action:hover:not(:disabled) {
+  background: var(--accent-deep);
+  transform: translateY(-1px);
+}
+
+/* TASK HEADER */
+.task-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--paper-line);
+}
+.task-title {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--jade-dark);
   display: flex;
   align-items: center;
   gap: 8px;
-  border-bottom: 1px solid var(--paper-line);
-  padding-bottom: 8px;
 }
-.panel-card-title i {
+.task-title i {
   color: var(--jade);
+  font-size: 1.15rem;
+}
+.task-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  background: var(--jade-pale);
+  color: var(--jade-text);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
 }
 
-/* CARDS LIST IN S01 */
-.features-list {
+/* STAGE 1: FEATURE CARDS GRID */
+.features-grid {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 .feature-card {
   background: var(--cream);
-  border: 1px solid var(--paper-line-2);
+  border: 1px solid var(--paper-line);
   border-radius: var(--radius-sm);
-  padding: 12px;
+  padding: 12px 14px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  transition: all 0.22s ease;
+  user-select: none;
 }
 .feature-card:hover {
+  background: #FFFFFF;
   border-color: var(--jade);
-  background: var(--cream-2);
+  box-shadow: var(--shadow-sm);
   transform: translateY(-1px);
 }
 .feature-card.viewed {
-  border-color: var(--jade-soft);
+  border-color: var(--jade);
   background: #FFFFFF;
+}
+.feature-card.expanded {
+  border-color: var(--jade-deep);
+  background: var(--jade-pale);
 }
 .feature-card-header {
   display: flex;
@@ -366,44 +436,61 @@ button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent
   justify-content: space-between;
   gap: 8px;
   font-weight: 700;
-  font-size: 0.94rem;
-  color: var(--ink);
-}
-.feature-card.viewed .feature-card-header {
-  color: var(--jade-text);
+  font-size: 0.92rem;
+  color: var(--jade-dark);
 }
 .feature-status-icon {
   font-size: 1.1rem;
-  color: var(--ink-faint);
+  color: var(--paper-line-2);
+  transition: color 0.2s ease;
 }
 .feature-card.viewed .feature-status-icon {
   color: var(--jade);
 }
+.feature-card.viewed .feature-status-icon::before {
+  content: "\ea5e"; /* ti-circle-check */
+}
 .feature-body {
-  font-size: 0.88rem;
-  color: var(--ink-2);
-  line-height: 1.5;
   display: none;
-  padding-top: 6px;
-  border-top: 1px dashed var(--paper-line);
-  animation: fadeIn 0.2s ease-out;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--jade-soft);
+  font-size: 0.86rem;
+  color: var(--ink-2);
+  line-height: 1.55;
 }
 .feature-card.expanded .feature-body {
   display: block;
 }
 
-/* QUESTION & OPTIONS */
-.qa-box {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding-top: 8px;
+/* STAGE 2: ORGANELLE CAPTION & HOTSPOTS */
+.organelle-hotspot {
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
+.organelle-hotspot:hover {
+  opacity: 0.85;
+  filter: drop-shadow(0 0 6px rgba(60,165,122,0.8));
+}
+.caption-box {
+  background: var(--cream-2);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.86rem;
+  color: var(--ink-2);
+  line-height: 1.5;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+/* MCQ OPTIONS LIST */
 .qa-prompt {
-  font-size: 0.98rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--ink);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 .options-list {
   display: flex;
@@ -414,18 +501,19 @@ button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  padding: 10px 14px;
   background: var(--cream);
   border: 1px solid var(--paper-line);
   border-radius: var(--radius-sm);
+  padding: 11px 14px;
   cursor: pointer;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: var(--ink-2);
-  transition: all 0.2s ease;
-  line-height: 1.45;
+  line-height: 1.5;
+  transition: all 0.18s ease;
+  user-select: none;
 }
 .option-label:hover {
-  background: var(--cream-2);
+  background: #FFFFFF;
   border-color: var(--jade-soft);
 }
 .option-label.selected {
@@ -437,15 +525,14 @@ button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent
 .option-radio {
   width: 18px;
   height: 18px;
+  border: 2px solid var(--paper-line-2);
   border-radius: 50%;
-  border: 2px solid var(--ink-faint);
-  flex-shrink: 0;
   margin-top: 2px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #FFFFFF;
-  transition: all 0.2s;
+  transition: all 0.18s ease;
 }
 .option-label.selected .option-radio {
   border-color: var(--jade);
@@ -455,453 +542,355 @@ button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent
   content: '';
   width: 6px;
   height: 6px;
-  border-radius: 50%;
   background: #FFFFFF;
+  border-radius: 50%;
 }
 
-/* S05 TRUE/FALSE BUTTONS */
+/* STAGE 4 ANIMATION ELEMENTS */
+.anim-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  background: var(--cream-2);
+  color: var(--ink-2);
+}
+@keyframes mrnaTravel {
+  0% { transform: translate(0, 0) scale(0.6); opacity: 0; }
+  25% { transform: translate(40px, -20px) scale(1); opacity: 1; }
+  60% { transform: translate(140px, -45px); opacity: 1; }
+  85% { transform: translate(240px, -45px); opacity: 1; }
+  100% { transform: translate(320px, -20px) scale(0.9); opacity: 0.8; }
+}
+.mrna-moving {
+  animation: mrnaTravel 2.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes genePulse {
+  0%, 100% { filter: drop-shadow(0 0 2px #E8A24A); }
+  50% { filter: drop-shadow(0 0 10px #CE8A33); }
+}
+.gene-active {
+  animation: genePulse 0.8s ease infinite;
+}
+
+/* STAGE 5 TRUE/FALSE BUTTONS */
 .tf-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  margin-top: 8px;
 }
 .btn-tf {
-  padding: 14px;
-  border-radius: var(--radius-sm);
-  border: 2px solid var(--paper-line-2);
-  background: var(--cream);
-  font-weight: 800;
-  font-size: 1.05rem;
-  color: var(--ink-2);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  transition: all 0.2s;
-}
-.btn-tf:hover {
-  background: var(--cream-2);
-  border-color: var(--jade-soft);
-}
-.btn-tf.selected-true {
-  background: #EFF6FF;
-  border-color: #3B82F6;
-  color: #1D4ED8;
-}
-.btn-tf.selected-false {
-  background: #FEF2F2;
-  border-color: #EF4444;
-  color: #B91C1C;
-}
-
-/* FEEDBACK BOX */
-.feedback-box {
-  padding: 12px 16px;
+  padding: 14px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
   border-radius: var(--radius-sm);
-  font-size: 0.92rem;
-  line-height: 1.55;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  animation: fadeIn 0.2s ease-out;
+  background: var(--cream);
+  border: 2px solid var(--paper-line);
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
-.feedback-box.correct {
-  background: var(--correct-bg);
-  border: 1px solid var(--jade-soft);
-  color: var(--jade-dark);
-}
-.feedback-box.wrong {
-  background: var(--wrong-bg);
-  border: 1px solid #ECA68E;
-  color: #782C17;
-}
-.feedback-box i {
-  font-size: 1.25rem;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-/* CONTROLS ROW */
-.stage-actions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 10px;
-  padding-top: 16px;
-  border-top: 1px solid var(--paper-line);
-}
-.btn {
+.btn-tf i {
+  font-size: 1.2rem;
+  line-height: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 10px 22px;
-  border-radius: var(--radius-sm);
-  font-weight: 700;
-  font-size: 0.95rem;
-  transition: all 0.2s ease;
-  border: none;
+  width: 1.3rem;
+  height: 1.3rem;
+  margin: 0 !important;
+  flex-shrink: 0;
 }
-.btn-primary {
-  background: var(--jade);
-  color: #FFFFFF;
-}
-.btn-primary:hover:not(:disabled) {
-  background: var(--jade-deep);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(45,139,111,0.25);
-}
-.btn-primary:disabled {
-  background: var(--paper-line-2);
-  color: var(--ink-faint);
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-}
-.btn-secondary {
-  background: var(--cream-2);
-  color: var(--ink-2);
-  border: 1px solid var(--paper-line);
-}
-.btn-secondary:hover:not(:disabled) {
-  background: var(--cream-3);
-  color: var(--ink);
-}
-.btn-action {
-  background: var(--accent);
-  color: #FFFFFF;
-  padding: 8px 16px;
-  font-size: 0.9rem;
-}
-.btn-action:hover {
-  background: var(--accent-deep);
-}
-
-/* S02 ORGANELLES CHIPS GRID */
-.organelles-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px;
-  max-height: 240px;
-  overflow-y: auto;
-  padding-right: 4px;
-}
-.organelle-chip {
-  padding: 6px 10px;
-  background: var(--cream);
-  border: 1px solid var(--paper-line);
-  border-radius: 6px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--ink-2);
-  display: flex;
+.btn-tf span {
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  transition: all 0.15s;
+  line-height: 1;
+  margin: 0 !important;
 }
-.organelle-chip:hover {
-  background: var(--cream-2);
-  border-color: var(--jade);
+.btn-tf:hover {
+  background: #FFFFFF;
+  border-color: var(--jade-soft);
 }
-.organelle-chip.active {
+.btn-tf.selected-true {
   background: var(--jade-pale);
   border-color: var(--jade);
   color: var(--jade-dark);
 }
-.organelle-chip.plant-only {
-  border-left: 3px solid #16A34A;
-}
-.organelle-chip.animal-only {
-  border-left: 3px solid #E11D48;
-}
-
-/* S04 ANIMATION CONTROLS */
-.anim-controls-wrap {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
-  width: 100%;
-}
-.anim-status-badge {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--purple-text);
-  background: var(--purple-pale);
-  padding: 4px 10px;
-  border-radius: 99px;
-  border: 1px solid #DDD6FE;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+.btn-tf.selected-false {
+  background: var(--wrong-bg);
+  border-color: var(--wrong);
+  color: var(--wrong);
 }
 
-/* MODAL CHÚC MỪNG HOÀN THÀNH V10 */
-.congrats-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(26, 26, 26, 0.65);
-  backdrop-filter: blur(5px);
-  z-index: 1000;
-  display: grid;
-  place-items: center;
-  padding: 20px;
-  animation: fadeIn 0.25s ease-out;
-}
-.congrats-modal {
-  background: #FFFFFF;
-  border-radius: var(--radius-lg);
+/* INLINE FEEDBACK */
+.inline-feedback {
+  background: var(--cream);
   border: 1px solid var(--paper-line);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-  max-width: 540px;
-  width: 100%;
-  padding: 32px 28px;
-  text-align: center;
+  border-radius: var(--radius);
+  padding: 14px;
+  font-size: 0.91rem;
+  line-height: 1.55;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  position: relative;
-  overflow: hidden;
+  gap: 10px;
 }
-.trophy-icon {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: var(--accent-pale);
-  color: var(--accent-deep);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2.4rem;
-  box-shadow: 0 4px 12px rgba(232,162,74,0.3);
-}
-.congrats-title {
-  font-size: 1.6rem;
-  font-weight: 800;
+.inline-feedback.ok {
+  background: var(--correct-bg);
+  border-color: var(--jade);
   color: var(--jade-dark);
 }
-.congrats-text {
-  font-size: 0.98rem;
-  color: var(--ink-2);
-  line-height: 1.6;
+.inline-feedback.bad {
+  background: var(--wrong-bg);
+  border-color: var(--wrong);
+  color: var(--wrong);
 }
-.congrats-stats-bar {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.feedback-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+.correct-answer-box {
+  background: #FFFFFF;
+  border-left: 3px solid var(--jade);
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-weight: 700;
+  color: var(--jade-text);
+  font-size: 0.9rem;
+}
+.correct-answer-box.feature-summary-box {
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
-  width: 100%;
-  background: var(--cream);
-  padding: 12px;
-  border-radius: var(--radius);
-  border: 1px solid var(--paper-line);
 }
-.stat-box {
+.summary-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 800;
+  font-size: 0.92rem;
+  color: var(--jade-text);
+}
+.summary-title i {
+  font-size: 1.2rem;
+  color: var(--jade-deep);
+}
+.summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--cream);
+  border: 1px solid var(--paper-line);
+  border-radius: 6px;
+  padding: 7px 11px;
+  font-size: 0.88rem;
+  color: var(--ink);
+  font-weight: 500;
+  line-height: 1.45;
+}
+.summary-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--jade-pale);
+  color: var(--jade-dark);
+  font-weight: 800;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+.summary-text {
+  flex: 1;
+}
+.summary-text strong {
+  color: var(--jade-dark);
+  font-weight: 700;
+}
+.explanation {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+/* PEDAGOGY META */
+.pedagogy-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 0.82rem;
+  margin-top: 4px;
+}
+.pedagogy-item {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
-.stat-val {
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: var(--jade-text);
-  font-family: 'JetBrains Mono', monospace;
-}
-.stat-lbl {
-  font-size: 0.75rem;
+.pedagogy-item .label {
   color: var(--ink-3);
-  font-weight: 600;
-  text-transform: uppercase;
+  font-size: 0.76rem;
 }
-.congrats-actions {
+.pedagogy-item strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* COMPLETION MODAL */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 67, 47, 0.65);
+  backdrop-filter: blur(4px);
   display: flex;
-  gap: 12px;
-  width: 100%;
-  margin-top: 8px;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
 }
-.congrats-actions .btn {
-  flex: 1;
-  padding: 12px;
+.modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  background: #FFFFFF;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.modal-trophy {
+  font-size: 3rem;
+  color: var(--accent);
+}
+.modal-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--jade-dark);
+}
+.modal-desc {
+  font-size: 0.92rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+  margin-top: 6px;
 }
 #confettiCanvas {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
-  z-index: 1;
+  z-index: 1001;
 }
 
-/* SHAKE ANIMATION FOR WRONG ANSWERS */
+/* STRICT HIDDEN */
+.hidden {
+  display: none !important;
+}
+#completionModal.hidden,
+.modal-backdrop.hidden {
+  display: none !important;
+}
+
+/* SHAKE ANIMATION */
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
-  20%, 60% { transform: translateX(-6px); }
-  40%, 80% { transform: translateX(6px); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
 }
 .shake {
-  animation: shake 0.4s ease-in-out;
+  animation: shake 0.35s ease-in-out;
 }
 
-  /* COLLAPSIBLE LEAD BOX (BỐI CẢNH KHOA HỌC) */
-  .lead-box {
-    background: #FFFFFF;
-    border: 1px solid var(--paper-line, #E5DECF);
-    border-left: 4px solid var(--jade, #3CA57A);
-    border-radius: var(--radius-md, 12px);
-    margin-bottom: 20px;
-    box-shadow: 0 2px 8px rgba(26, 26, 26, 0.04);
-    overflow: hidden;
-    transition: box-shadow 0.25s ease, border-color 0.25s ease;
+/* RESPONSIVE */
+@media (max-width: 980px) {
+  .split-workspace {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
-  .lead-box:hover {
-    box-shadow: 0 4px 14px rgba(26, 26, 26, 0.08);
-    border-color: var(--paper-line-2, #D6CCB6);
+  .visual-card, .workspace-card {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
   }
-  .lead-header {
-    display: flex;
-    align-items: center;
+}
+@media (max-width: 600px) {
+  .pedagogy-meta {
+    grid-template-columns: 1fr;
+  }
+  .controls-row {
+    flex-wrap: wrap;
+  }
+  .btn-group-left, .btn-group-right {
+    width: 100%;
     justify-content: space-between;
-    padding: 10px 16px;
-    background: #FAFAF7;
-    cursor: pointer;
-    user-select: none;
-    border-bottom: 1px solid var(--paper-line, #E5DECF);
-    transition: background-color 0.2s ease, border-color 0.25s ease;
   }
-  .lead-header:hover {
-    background: #F0F4F1;
+  .btn {
+    flex: 1;
   }
-  .lead-header:focus-visible {
-    outline: 2px solid var(--jade, #3CA57A);
-    outline-offset: -2px;
-  }
-  .lead-title {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--jade-dark, #14432F);
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-  }
-  .lead-title i {
-    font-size: 1.15rem;
-    color: var(--jade, #3CA57A);
-  }
-  .lead-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--ink-3, #7C756A);
-    background: #FFFFFF;
-    border: 1px solid var(--paper-line, #E5DECF);
-    padding: 4px 10px;
-    border-radius: 9999px;
-    transition: all 0.2s ease;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-  }
-  .lead-header:hover .lead-toggle {
-    color: var(--jade-text, #1B5E48);
-    border-color: var(--jade-soft, #A9D0BE);
-    background: var(--jade-pale, #DCEAE1);
-  }
-  .lead-toggle-icon {
-    font-size: 0.95rem;
-    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .lead-content {
-    max-height: 1000px;
-    opacity: 1;
-    overflow: hidden;
-    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.25s ease,
-                padding 0.35s ease;
-  }
-  .lead-box.collapsed {
-    box-shadow: none;
-  }
-  .lead-box.collapsed .lead-header {
-    border-bottom-color: transparent;
-    background: #FFFFFF;
-  }
-  .lead-box.collapsed .lead-toggle-icon {
-    transform: rotate(180deg);
-  }
-  .lead-box.collapsed .lead-content {
-    max-height: 0 !important;
-    opacity: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  .lead-box .lead-text {
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    padding: 14px 18px !important;
-    margin: 0 !important;
-    box-shadow: none !important;
-    font-size: 1.02rem;
-    line-height: 1.68;
-    color: var(--ink-2, #514C44);
-  }
-
-/* Đồng bộ trực tiếp theo SH10_B01_M02 */
-body{padding:0;font-size:17px}.app{max-width:1200px;margin:0 auto;padding:18px clamp(12px,2.4vw,28px) 12px}.stage.two-block-ready{padding:0;background:transparent;border:0;box-shadow:none}.stage-badge,.stage-step-indicator{display:none!important}.split-workspace{display:grid!important;grid-template-columns:minmax(0,58fr) minmax(340px,42fr)!important;gap:20px!important;align-items:start!important}.visual-card,.workspace-card{min-width:0;border:1px solid var(--paper-line,#D6CCB6);border-radius:14px;overflow:hidden;box-shadow:0 2px 6px rgba(26,26,26,.05)}.visual-card{position:sticky;top:0;background:#fff}.visual-card__head{padding:14px 16px 12px;border-bottom:1px solid var(--paper-line,#D6CCB6);background:#fff}.visual-card__head h2{margin:0;font-size:clamp(1.25rem,2.2vw,1.75rem);line-height:1.28;letter-spacing:-.02em}.visual-body{padding:14px;background:#fff}.workspace-card{padding:18px;background:var(--cream-2,#FBF9F4)}.instruction{display:flex;align-items:flex-start;gap:10px;margin:0 0 16px;padding:12px 14px;border-left:4px solid var(--info,#4E7F92);border-radius:6px;background:var(--info-bg,#DCE7EB);color:var(--ink-2,#514C44);font-size:.91rem;line-height:1.55}.inline-feedback{font-size:.92rem;line-height:1.55}.controls-row{display:flex;align-items:center;gap:10px;margin-top:16px;padding:14px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}.btn{min-height:44px;padding:9px 15px;font-size:.92rem}@media(max-width:980px){.split-workspace{grid-template-columns:1fr!important}.visual-card{position:static}.workspace-card{padding:16px}}@media(max-width:700px){body{font-size:16px}.app{padding:12px 10px 10px}.workspace-card{padding:16px}}@media(max-width:420px){.app{padding:10px 8px 8px}.workspace-card{padding:13px}}
-.three-button-nav{display:flex;align-items:center;gap:12px;width:100%;margin-top:16px;padding:16px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;scrollbar-width:none}.three-button-nav::-webkit-scrollbar{display:none}.three-button-nav .nav-spacer{flex:1}.three-button-nav .btn{flex:0 0 auto;white-space:nowrap}.three-button-nav .nav-back{order:1}.three-button-nav .nav-reset{order:2}.three-button-nav .nav-spacer{order:3}.three-button-nav .nav-next{order:4}.three-button-nav .btn:disabled{opacity:.45;cursor:not-allowed}
-section.stage .controls-row,section.stage .stage-actions,section.stage-section .controls-row,section.stage-section .stage-actions,section.stage-card .controls-row,section.stage-card .stage-actions{display:none!important}
+}
 </style>
 </head>
 <body>
 
-<div class="app">
+<main class="app" id="app">
+  <!-- PROGRESS BAR -->
+  <div class="progress-bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="20">
+    <div class="progress-bar-fill" id="progressBar" style="width: 20%;"></div>
+  </div>
 
   <!-- =========================================================================
-       STAGE S01 — TẾ BÀO NHÂN THỰC: KÍCH THƯỚC LỚN, CẤU TẠO PHỨC TẠP
+       STAGE 1: TẾ BÀO NHÂN THỰC: KÍCH THƯỚC LỚN, CẤU TẠO PHỨC TẠP
        ========================================================================= -->
-  <section class="stage" id="stage-1" role="region" aria-label="Màn 1: Vì sao ăn nhiều mà vẫn khó béo?">
-    <div class="lead-box">
-      <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
-        <div class="lead-title">
-          <i class="ti ti-notes"></i>
-          <span>Bối cảnh khoa học</span>
+  <section class="stage" id="stage-1" role="region" aria-label="Màn 1: Tế bào nhân thực: Kích thước lớn, cấu tạo phức tạp">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: LÝ THUYẾT & MINH HỌA -->
+      <article class="visual-card">
+        <div class="stage-header-clean">
+          <h2 class="stage-title">Màn 1: Vì sao ăn nhiều mà vẫn khó béo?</h2>
+          <p class="lead-text">Tế bào nhân thực có kích thước lớn và cấu tạo phức tạp. Tế bào đã có nhân chính thức với màng nhân ngăn cách chất nhân và tế bào chất, có bộ khung xương tế bào cùng hệ thống nội màng và hàng loạt các bào quan có màng bao bọc.</p>
         </div>
-        <div class="lead-toggle">
-          <span class="lead-toggle-label">Thu gọn</span>
-          <i class="ti ti-chevron-up lead-toggle-icon"></i>
-        </div>
-      </div>
-      <div class="lead-content">
-        <p class="lead-text">
-      Tế bào nhân thực có kích thước lớn và cấu tạo phức tạp. Tế bào nhân thực đã có nhân chính thức với màng nhân ngăn cách chất nhân và tế bào chất, có bộ khung xương tế bào cùng với hệ thống nội màng và hàng loạt các bào quan có màng bao bọc. Ngoài các đặc điểm chung, các loài sinh vật nhân thực khác nhau cũng có tế bào với các đặc điểm cấu trúc thích nghi riêng như tế bào thực vật và tế bào động vật.
-    </p>
-      </div>
-    </div>
 
-    <div class="guide-box">
-      <i class="ti ti-hand-click"></i>
-      <span>Khám phá hình ảnh đối chiếu hai tế bào ruột và bấm mở đủ 4 thẻ đặc điểm chung của tế bào nhân thực để hoàn thành.</span>
-    </div>
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Quan sát hình ảnh đối chiếu hai tế bào ruột bên dưới và bấm mở đủ 4 thẻ đặc điểm chung ở cột bên phải để hoàn thành màn học.</span>
+        </div>
 
-    <div class="stage-grid">
-      <!-- Left: Visual Comparison -->
-      <div class="visual-card">
-        <div class="visual-header">
-          <span><i class="ti ti-microscope"></i> Đối chiếu tế bào biểu mô ruột (SGK trang 48)</span>
-          <span style="font-size:0.8rem; color:var(--ink-3);">Tỷ lệ diện tích màng vi nhung mao</span>
-        </div>
-        <div class="cells-comparison-labels" style="display:grid; grid-template-columns:1fr 1fr; gap:16px; padding:10px 16px; background:#FFFFFF; border-bottom:1px solid var(--paper-line); text-align:center;">
-          <div style="font-weight:700; color:var(--jade-text); font-size:0.92rem; display:flex; align-items:center; justify-content:center; gap:6px;">
-            <i class="ti ti-circle-check"></i> Tế bào bình thường
-          </div>
-          <div style="font-weight:700; color:var(--wrong); font-size:0.92rem; display:flex; align-items:center; justify-content:center; gap:6px;">
-            <i class="ti ti-alert-triangle"></i> Tế bào bị bệnh
-          </div>
-        </div>
-        <div class="visual-content">
+        <div class="visual-canvas-wrap">
           <svg id="inlineSvgS01" class="stage-inline-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 562.5" width="100%" height="100%">
   <defs>
     <!-- Gradients & Shadows -->
@@ -1101,125 +1090,115 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
     <circle cx="289" cy="95" r="3" fill="#EA580C"/>
   </g>
 </svg>
-
+          <div class="visual-caption">
+            <i class="ti ti-info-circle"></i> <strong>Đối chiếu tế bào niêm mạc ruột:</strong> Tế bào bình thường (trái) có dải vi nhung mao dày đặc làm tăng tối đa diện tích tiếp xúc hấp thu dinh dưỡng; tế bào bị tổn thương/bệnh (phải) có mật độ vi nhung mao giảm rõ rệt và thấp cùn khiến khả năng hấp thu giảm sút.
+          </div>
         </div>
-        <div style="padding:10px 16px; background:#FFFFFF; border-top:1px solid var(--paper-line); font-size:0.85rem; color:var(--ink-3); line-height:1.5;">
-          <strong style="color:var(--jade-text);">Gợi ý mở đầu:</strong> Người mắc hội chứng kém hấp thu ăn nhiều vẫn khó tăng cân do dải vi nhung mao trên màng tế bào biểu mô ruột bị teo cụt, làm suy giảm diện tích tiếp xúc với chất dinh dưỡng.
-        </div>
-      </div>
+      </article>
 
-      <!-- Right: Interactive 4 Features Panel -->
-      <div class="panel-card">
-        <div class="panel-card-title">
-          <i class="ti ti-checklist"></i> 4 Đặc điểm chung của tế bào nhân thực
+      <!-- CỘT PHẢI: HOẠT ĐỘNG & BÀI TẬP -->
+      <article class="workspace-card">
+        <div class="task-header">
+          <div class="task-title"><i class="ti ti-checkbox"></i> Khám phá 4 đặc điểm chung</div>
+          <span class="task-badge"><span id="s01ViewCount">0</span>/4 đặc điểm</span>
         </div>
-        <p style="font-size:0.86rem; color:var(--ink-3);">
-          Bấm vào từng thẻ để tìm hiểu chi tiết (<span id="s01ViewCount" style="font-weight:700; color:var(--jade-text);">0</span>/4 đã xem):
-        </p>
 
-        <div class="features-list" id="s01FeaturesList">
-          <!-- Card 1 -->
+        <div class="features-grid">
           <div class="feature-card" data-idx="0" onclick="toggleFeatureCard(this, 0)">
             <div class="feature-card-header">
-              <span>1. Kích thước lớn &amp; Cấu tạo phức tạp</span>
+              <span>1. Kích thước lớn & Cấu tạo phức tạp</span>
               <i class="ti ti-circle feature-status-icon"></i>
             </div>
             <div class="feature-body">
-              Thể tích lớn gấp hàng nghìn lần tế bào nhân sơ; tế bào chất chia thành nhiều khoang riêng biệt bởi hệ thống nội màng, giúp diễn ra đồng thời nhiều phản ứng sinh hóa độc lập.
+              Đường kính từ 10 - 100 µm (lớn hơn gấp 10 lần vi khuẩn nhân sơ). Cấu tạo phân hóa sâu sắc với nhiều ngăn chức năng riêng biệt, hỗ trợ quá trình trao đổi chất phức tạp.
             </div>
           </div>
 
-          <!-- Card 2 -->
           <div class="feature-card" data-idx="1" onclick="toggleFeatureCard(this, 1)">
             <div class="feature-card-header">
               <span>2. Đã có nhân chính thức</span>
               <i class="ti ti-circle feature-status-icon"></i>
             </div>
             <div class="feature-body">
-              Vật chất di truyền (DNA) được bao bọc bởi màng nhân kép có các lỗ màng nhân, phân cách chất nhân với tế bào chất; bên trong có hạch nhân.
+              Vật chất di truyền (DNA) được bao bọc bởi màng nhân kép có các phức hợp lỗ màng nhân, bảo vệ thông tin di truyền tối ưu và ngăn cách hoàn toàn với tế bào chất.
             </div>
           </div>
 
-          <!-- Card 3 -->
           <div class="feature-card" data-idx="2" onclick="toggleFeatureCard(this, 2)">
             <div class="feature-card-header">
               <span>3. Hệ thống khung xương tế bào</span>
               <i class="ti ti-circle feature-status-icon"></i>
             </div>
             <div class="feature-body">
-              Mạng lưới vi sợi, sợi trung gian và vi ống phức tạp giúp neo giữ bào quan, duy trì hình dạng ổn định và tham gia vào vận động nội bào.
+              Khung xương gồm các vi ống, vi sợi và sợi trung gian đan xen, giữ chức năng nâng đỡ, tạo hình dạng ổn định cho tế bào và là đường ray vận chuyển các bào quan.
             </div>
           </div>
 
-          <!-- Card 4 -->
           <div class="feature-card" data-idx="3" onclick="toggleFeatureCard(this, 3)">
             <div class="feature-card-header">
               <span>4. Nhiều bào quan có màng bao bọc</span>
               <i class="ti ti-circle feature-status-icon"></i>
             </div>
             <div class="feature-body">
-              Sở hữu hàng loạt bào quan chuyên hóa: ti thể (màng kép), lục lạp (thực vật), lưới nội chất, bộ máy Golgi, peroxysome, lysosome (động vật)...
+              Hệ thống nội màng chia tế bào chất thành các xoang biệt lập cùng hàng loạt bào quan: ti thể, lục lạp, lưới nội chất, thể Golgi, lysosome, peroxisome...
             </div>
           </div>
         </div>
 
-        <!-- Answer / Confirmation Area -->
-        <button class="btn btn-primary" id="btnS01Check" disabled onclick="submitStage1()" style="margin-top:6px;">
-          <i class="ti ti-check"></i> TRẢ LỜI
-        </button>
+        <div class="inline-feedback hidden" id="fbStage1"></div>
 
-        <div class="feedback-box correct hidden" id="fbStage1">
-          <i class="ti ti-circle-check"></i>
-          <span>Chính xác. Đủ 4/4 đặc điểm đã xem. Hãy nhấn TIẾP TỤC sang nội dung kế tiếp.</span>
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnRetryStage1" onclick="retryStage1()" title="Làm lại thao tác khám phá">
+              <i class="ti ti-rotate"></i><span>Làm lại</span>
+            </button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-primary" id="btnS01Check" disabled onclick="submitStage1()">
+              <i class="ti ti-check"></i><span>Trả lời</span>
+            </button>
+            <button class="btn btn-primary" id="btnNextS01" disabled onclick="goToStage(2)">
+              <i class="ti ti-arrow-right"></i><span>Tiếp tục</span>
+            </button>
+          </div>
         </div>
-      </div>
-    </div>
-
-    <!-- Actions -->
-    <div class="stage-actions">
-      <div></div>
-      <button class="btn btn-primary" id="btnNextS01" disabled onclick="goToStage(2)">
-        TIẾP TỤC <i class="ti ti-arrow-right"></i>
-      </button>
+      </article>
     </div>
   </section>
 
-
   <!-- =========================================================================
-       STAGE S02 — BẢN ĐỒ TỔNG QUAN: TẾ BÀO THỰC VẬT VÀ ĐỘNG VẬT
+       STAGE 2: BẢN ĐỒ TỔNG QUAN TẾ BÀO THỰC VẬT VÀ ĐỘNG VẬT
        ========================================================================= -->
-  <section class="stage hidden" id="stage-2" role="region" aria-label="Màn 2: Bản đồ chung cho cả hành trình khám phá Bài 8">
-    <div class="lead-box">
-      <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
-        <div class="lead-title">
-          <i class="ti ti-notes"></i>
-          <span>Bối cảnh khoa học</span>
+  <section class="stage hidden" id="stage-2" role="region" aria-label="Màn 2: Bản đồ tổng quan tế bào thực vật và động vật">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: LÝ THUYẾT & MINH HỌA -->
+      <article class="visual-card">
+        <div class="stage-header-clean">
+          <h2 class="stage-title">Màn 2: Bản đồ chung cho cả hành trình khám phá Bài 8</h2>
+          <p class="lead-text">Sơ đồ tổng quan cấu trúc tế bào thực vật và tế bào động vật là bản đồ hệ thống giúp chúng ta định vị từng bào quan trong suốt hành trình khám phá Bài 8.</p>
         </div>
-        <div class="lead-toggle">
-          <span class="lead-toggle-label">Thu gọn</span>
-          <i class="ti ti-chevron-up lead-toggle-icon"></i>
-        </div>
-      </div>
-      <div class="lead-content">
-        <p class="lead-text">
-      Sơ đồ tổng quan cấu trúc tế bào thực vật và tế bào động vật là bản đồ hệ thống giúp chúng ta định vị từng bào quan trong suốt hành trình khám phá Bài 8.
-    </p>
-      </div>
-    </div>
 
-    <div class="guide-box">
-      <i class="ti ti-zoom-in"></i>
-      <span>Bấm vào các bộ phận trên sơ đồ để nhận diện 14 thành phần cấu trúc, sau đó trả lời câu hỏi trắc nghiệm bên dưới.</span>
-    </div>
-
-    <div class="stage-grid">
-      <!-- Left: Master System Map SVG -->
-      <div class="visual-card">
-        <div class="visual-header">
-          <span><i class="ti ti-layout-grid"></i> Bản đồ tổng quan (Hình 8.1 SGK trang 48)</span>
-          <span style="font-size:0.8rem; color:var(--ink-3);">Tế bào thực vật (Trái) &amp; Tế bào động vật (Phải)</span>
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Bấm vào các bộ phận trên sơ đồ để nhận diện 14 thành phần cấu trúc, sau đó trả lời câu hỏi trắc nghiệm ở cột bên phải.</span>
         </div>
-        <div class="visual-content" style="padding:10px;">
+
+        <div class="theory-flow">
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-plant"></i> Đặc trưng Tế bào Thực vật</div>
+            <div class="theory-block__desc">Có thành tế bào bằng cellulose cứng cáp, lục lạp chứa diệp lục để quang hợp và không bào trung tâm lớn chứa dịch tế bào, điều hòa áp suất thẩm thấu.</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-paw"></i> Đặc trưng Tế bào Động vật</div>
+            <div class="theory-block__desc">Không có thành tế bào và lục lạp; có trung thể (chứa cặp trung tử vuông góc) tham gia phân chia tế bào và lysosome chứa enzyme thủy phân nội bào.</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-layers-intersect"></i> Bào quan chung ở cả hai loại tế bào</div>
+            <div class="theory-block__desc">Đều có nhân có màng kép bao bọc, ti thể (nhà máy năng lượng), mạng lưới nội chất (ER), thể Golgi, ribosome, peroxysome và màng sinh chất.</div>
+          </div>
+        </div>
+
+        <div class="visual-canvas-wrap">
           <svg id="inlineSvgS02" class="stage-inline-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="100%" height="100%">
   <defs>
     <!-- Plant Cell Gradients -->
@@ -1491,143 +1470,98 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
     </g>
   </g>
 </svg>
-
-        </div>
-        <!-- Active organelle caption box -->
-        <div id="organelleCaptionBox" style="padding:10px 16px; background:#FFFFFF; border-top:1px solid var(--paper-line); font-size:0.88rem; color:var(--ink-2); min-height:48px; display:flex; align-items:center;">
-          <span style="color:var(--ink-faint); font-style:italic;">Chọn một bộ phận ở danh sách bên phải hoặc trên sơ đồ để xem thông tin vị trí...</span>
-        </div>
-      </div>
-
-      <!-- Right: Organelle Navigator & MCQ -->
-      <div class="panel-card">
-        <div class="panel-card-title">
-          <i class="ti ti-category"></i> 14 Thành phần cấu trúc tế bào
-        </div>
-        
-                <div class="organelles-grid" id="organellesGrid">
-          <div class="organelle-chip plant-only" data-organelle="thanh-te-bao" onclick="selectOrganelle('thanh-te-bao')">
-            <i class="ti ti-shield"></i> Thành tế bào
-          </div>
-          <div class="organelle-chip plant-only" data-organelle="luc-lap" onclick="selectOrganelle('luc-lap')">
-            <i class="ti ti-sun"></i> Lục lạp
-          </div>
-          <div class="organelle-chip plant-only" data-organelle="khong-bao" onclick="selectOrganelle('khong-bao')">
-            <i class="ti ti-droplet"></i> Không bào lớn
-          </div>
-          <div class="organelle-chip animal-only" data-organelle="trung-the" onclick="selectOrganelle('trung-the')">
-            <i class="ti ti-target"></i> Trung thể
-          </div>
-          <div class="organelle-chip animal-only" data-organelle="lysosome" onclick="selectOrganelle('lysosome')">
-            <i class="ti ti-flame"></i> Lysosome
-          </div>
-          <div class="organelle-chip" data-organelle="nhan" onclick="selectOrganelle('nhan')">
-            <i class="ti ti-circle-dot"></i> Nhân tế bào
-          </div>
-          <div class="organelle-chip" data-organelle="ribosome" onclick="selectOrganelle('ribosome')">
-            <i class="ti ti-dots"></i> Ribosome
-          </div>
-          <div class="organelle-chip" data-organelle="luoi-noi-chat" onclick="selectOrganelle('luoi-noi-chat')">
-            <i class="ti ti-layers-subtract"></i> Lưới nội chất
-          </div>
-          <div class="organelle-chip" data-organelle="ti-the" onclick="selectOrganelle('ti-the')">
-            <i class="ti ti-bolt"></i> Ti thể
-          </div>
-          <div class="organelle-chip" data-organelle="golgi" onclick="selectOrganelle('golgi')">
-            <i class="ti ti-package"></i> Thể Golgi
-          </div>
-          <div class="organelle-chip" data-organelle="peroxysome" onclick="selectOrganelle('peroxysome')">
-            <i class="ti ti-sparkles"></i> Peroxysome
-          </div>
-          <div class="organelle-chip" data-organelle="mang-te-bao" onclick="selectOrganelle('mang-te-bao')">
-            <i class="ti ti-circle"></i> Màng tế bào
-          </div>
-          <div class="organelle-chip" data-organelle="te-bao-chat" onclick="selectOrganelle('te-bao-chat')">
-            <i class="ti ti-wave-sine"></i> Tế bào chất
-          </div>
-          <div class="organelle-chip" data-organelle="khung-xuong" onclick="selectOrganelle('khung-xuong')">
-            <i class="ti ti-grid-dots"></i> Khung xương tế bào
+          <div class="visual-caption">
+            <div class="caption-box" id="organelleCaptionBox">
+              <i class="ti ti-hand-finger"></i>&nbsp;<em>Chạm hoặc bấm vào từng bộ phận trên sơ đồ tế bào (thành tế bào, nhân, lục lạp, trung thể...) để đọc thông tin cấu trúc.</em>
+            </div>
           </div>
         </div>
+      </article>
 
-        <!-- Question S02 -->
-        <div class="qa-box" style="border-top:1px solid var(--paper-line); padding-top:12px;">
-          <p class="qa-prompt">Câu hỏi: Nhóm thành phần/bào quan nào dưới đây KHÔNG có ở tế bào động vật?</p>
-          <div class="options-list" id="s02OptionsList">
-            <label class="option-label" onclick="selectOptionS02(this, 'A')">
-              <div class="option-radio"></div>
-              <span>A. Thành tế bào, lục lạp và không bào trung tâm lớn</span>
-            </label>
-            <label class="option-label" onclick="selectOptionS02(this, 'B')">
-              <div class="option-radio"></div>
-              <span>B. Ti thể, ribosome và thể Golgi</span>
-            </label>
-            <label class="option-label" onclick="selectOptionS02(this, 'C')">
-              <div class="option-radio"></div>
-              <span>C. Nhân tế bào, lưới nội chất và màng tế bào</span>
-            </label>
-            <label class="option-label" onclick="selectOptionS02(this, 'D')">
-              <div class="option-radio"></div>
-              <span>D. Trung thể và lysosome</span>
-            </label>
-          </div>
-
-          <button class="btn btn-primary" id="btnS02Check" disabled onclick="submitStage2()">
-            <i class="ti ti-check"></i> KIỂM TRA ĐÁP ÁN
-          </button>
-
-          <div class="feedback-box hidden" id="fbStage2"></div>
+      <!-- CỘT PHẢI: HOẠT ĐỘNG & BÀI TẬP -->
+      <article class="workspace-card">
+        <div class="task-header">
+          <div class="task-title"><i class="ti ti-help-circle"></i> Câu hỏi củng cố: Phân biệt tế bào</div>
         </div>
-      </div>
-    </div>
 
-    <!-- Actions -->
-    <div class="stage-actions">
-      <button class="btn btn-secondary" onclick="goToStage(1)">
-        <i class="ti ti-arrow-left"></i> QUAY LẠI
-      </button>
-      <button class="btn btn-primary" id="btnNextS02" disabled onclick="goToStage(3)">
-        TIẾP TỤC <i class="ti ti-arrow-right"></i>
-      </button>
+        <p class="qa-prompt">Câu hỏi: Nhóm thành phần/bào quan nào dưới đây KHÔNG có ở tế bào động vật?</p>
+
+        <div class="options-list" id="s02OptionsList">
+          <label class="option-label" onclick="selectOptionS02(this, 'A')">
+            <div class="option-radio"></div>
+            <span>A. Thành tế bào, lục lạp và không bào trung tâm lớn</span>
+          </label>
+          <label class="option-label" onclick="selectOptionS02(this, 'B')">
+            <div class="option-radio"></div>
+            <span>B. Ti thể, ribosome và thể Golgi</span>
+          </label>
+          <label class="option-label" onclick="selectOptionS02(this, 'C')">
+            <div class="option-radio"></div>
+            <span>C. Nhân tế bào, lưới nội chất và màng tế bào</span>
+          </label>
+          <label class="option-label" onclick="selectOptionS02(this, 'D')">
+            <div class="option-radio"></div>
+            <span>D. Trung thể và lysosome</span>
+          </label>
+        </div>
+
+        <div class="inline-feedback hidden" id="fbStage2"></div>
+
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage2" onclick="goToStage(1)">
+              <i class="ti ti-arrow-left"></i><span>Quay lại</span>
+            </button>
+            <button class="btn btn-secondary" id="btnRetryStage2" onclick="retryStage2()" title="Chọn lại câu hỏi">
+              <i class="ti ti-rotate"></i><span>Làm lại</span>
+            </button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-primary" id="btnS02Check" disabled onclick="submitStage2()">
+              <i class="ti ti-check"></i><span>Trả lời</span>
+            </button>
+            <button class="btn btn-primary" id="btnNextS02" disabled onclick="goToStage(3)">
+              <i class="ti ti-arrow-right"></i><span>Tiếp tục</span>
+            </button>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 
-
   <!-- =========================================================================
-       STAGE S03 — CẤU TRÚC MÀNG NHÂN
+       STAGE 3: CẤU TRÚC MÀNG NHÂN VÀ PHỨC HỢP LỖ NHÂN
        ========================================================================= -->
-  <section class="stage hidden" id="stage-3" role="region" aria-label="Màn 3: Hai lớp màng và vô số cánh cửa nhỏ">
-    <div class="lead-box">
-      <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
-        <div class="lead-title">
-          <i class="ti ti-notes"></i>
-          <span>Bối cảnh khoa học</span>
+  <section class="stage hidden" id="stage-3" role="region" aria-label="Màn 3: Cấu trúc màng nhân">
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: LÝ THUYẾT & MINH HỌA -->
+      <article class="visual-card">
+        <div class="stage-header-clean">
+          <h2 class="stage-title">Màn 3: Hai lớp màng và vô số cánh cửa nhỏ</h2>
+          <p class="lead-text">Nhân tế bào là cấu trúc lớn nhất có màng bao bọc trong tế bào, phần lớn có dạng hình cầu với đường kính khoảng 5 micromet và được bao bọc bởi lớp màng kép phospholipid và protein. Trên màng nhân có rất nhiều lỗ nhỏ đảm bảo cho các chất ra vào.</p>
         </div>
-        <div class="lead-toggle">
-          <span class="lead-toggle-label">Thu gọn</span>
-          <i class="ti ti-chevron-up lead-toggle-icon"></i>
-        </div>
-      </div>
-      <div class="lead-content">
-        <p class="lead-text">
-      Nhân tế bào là cấu trúc lớn nhất có màng bao bọc. Mỗi tế bào nhân thực thường chỉ có một nhân. Tuy nhiên, ở một số tế bào nấm và sinh vật khác, mỗi tế bào có thể có một vài nhân. Phần lớn nhân tế bào có dạng hình cầu, với đường kính khoảng 5 micromet và được bao bọc bởi lớp kép phospholipid và protein. Trên màng nhân có rất nhiều lỗ nhỏ đảm bảo cho các chất có thể ra vào nhân.
-    </p>
-      </div>
-    </div>
 
-    <div class="guide-box">
-      <i class="ti ti-scan"></i>
-      <span>Khám phá cấu trúc cắt lớp 3D của màng nhân và trả lời câu hỏi về số lượng màng cùng thành phần cấu tạo.</span>
-    </div>
-
-    <div class="stage-grid">
-      <!-- Left: 3D Nuclear Envelope Cutaway SVG -->
-      <div class="visual-card">
-        <div class="visual-header">
-          <span><i class="ti ti-layers"></i> Cắt lớp nhân tế bào (Hình 8.2 SGK trang 49)</span>
-          <span style="font-size:0.8rem; color:var(--ink-3);">Đường kính ~5 µm · Màng kép phospholipid</span>
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Quan sát mô hình cắt lớp 3D của màng nhân và trả lời câu hỏi về số lượng màng cùng thành phần hóa học chính ở cột bên phải.</span>
         </div>
-        <div class="visual-content" style="padding:10px;">
+
+        <div class="theory-flow">
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-layers-union"></i> Màng kép phospholipid (Nuclear Envelope)</div>
+            <div class="theory-block__desc">Gồm hai màng riêng biệt: màng ngoài và màng trong, ngăn cách bởi khoảng quanh nhân. Màng ngoài thường nối liền với màng lưới nội chất hạt và có ribosome bám.</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-door"></i> Phức hợp lỗ màng nhân (Nuclear Pores)</div>
+            <div class="theory-block__desc">Các phức hợp protein hình hoa thị xuyên qua cả 2 lớp màng, đóng vai trò cánh cửa kiểm soát chọn lọc sự xuất nhập các đại phân tử (RNA, protein, enzyme).</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-droplet"></i> Dịch nhân (Nucleoplasm)</div>
+            <div class="theory-block__desc">Khối chất dịch keo bên trong nhân chứa chất nhiễm sắc mang phân tử DNA và một hoặc một vài hạch nhân.</div>
+          </div>
+        </div>
+
+        <div class="visual-canvas-wrap">
           <svg id="inlineSvgS03" class="stage-inline-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" width="100%" height="100%">
   <defs>
     <!-- Radial and Linear Gradients -->
@@ -1851,111 +1785,96 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
     </g>
   </g>
 </svg>
-
-        </div>
-        <div style="padding:10px 16px; background:#FFFFFF; border-top:1px solid var(--paper-line); font-size:0.86rem; color:var(--ink-2); line-height:1.5;">
-          <strong style="color:var(--purple-text);">Điểm mấu chốt:</strong> Màng nhân gồm <strong>2 màng riêng biệt</strong> (màng ngoài đính ribosome, màng trong trơn nhẵn) kẹp giữa là <strong>khoảng quanh nhân</strong>. Các <strong>lỗ màng nhân</strong> xuyên liên tục qua cả hai màng.
-        </div>
-      </div>
-
-      <!-- Right: Structure Detail & Question -->
-      <div class="panel-card">
-        <div class="panel-card-title">
-          <i class="ti ti-microscope"></i> Chi tiết giải phẫu màng nhân
-        </div>
-
-        <div style="font-size:0.88rem; color:var(--ink-2); display:flex; flex-direction:column; gap:8px;">
-          <div style="padding:8px 12px; background:var(--cream); border-radius:6px; border-left:3px solid var(--purple-deep);">
-            <strong>• Màng ngoài:</strong> Tiếp xúc với bào tương, có các ribosome đính ở mặt ngoài và liên tục với màng lưới nội chất hạt.
-          </div>
-          <div style="padding:8px 12px; background:var(--cream); border-radius:6px; border-left:3px solid var(--purple);">
-            <strong>• Màng trong:</strong> Tiếp xúc với chất nhân, trơn nhẵn, hoàn toàn KHÔNG gắn hạt ribosome.
-          </div>
-          <div style="padding:8px 12px; background:var(--cream); border-radius:6px; border-left:3px solid #F59E0B;">
-            <strong>• Lỗ màng nhân:</strong> Các phức hợp lỗ protein hình hoa thị xuyên thủng cả 2 lớp màng, đảm bảo cho các phân tử RNA và protein có thể ra vào nhân.
+          <div class="visual-caption">
+            <i class="ti ti-info-circle"></i> <strong>Cấu trúc nhân tế bào:</strong> Màng ngoài và màng trong đều có bản chất là lớp kép phospholipid gắn protein; phức hợp lỗ nhân phân bố dày đặc liên kết màng ngoài và màng trong.
           </div>
         </div>
+      </article>
 
-        <!-- Question S03 -->
-        <div class="qa-box" style="border-top:1px solid var(--paper-line); padding-top:12px;">
-          <p class="qa-prompt">Câu hỏi: Màng nhân có cấu tạo từ mấy lớp màng và thành phần hóa học chính là gì?</p>
-          <div class="options-list" id="s03OptionsList">
-            <label class="option-label" onclick="selectOptionS03(this, 'A')">
-              <div class="option-radio"></div>
-              <span>A. Hai màng; mỗi màng là một lớp kép phospholipid gắn protein</span>
-            </label>
-            <label class="option-label" onclick="selectOptionS03(this, 'B')">
-              <div class="option-radio"></div>
-              <span>B. Một màng đơn gồm lớp kép phospholipid và protein</span>
-            </label>
-            <label class="option-label" onclick="selectOptionS03(this, 'C')">
-              <div class="option-radio"></div>
-              <span>C. Hai màng nhưng chỉ cấu tạo từ protein, không có lipid</span>
-            </label>
-            <label class="option-label" onclick="selectOptionS03(this, 'D')">
-              <div class="option-radio"></div>
-              <span>D. Ba lớp màng xếp chồng lên nhau tạo hàng rào tuyệt đối</span>
-            </label>
-          </div>
-
-          <button class="btn btn-primary" id="btnS03Check" disabled onclick="submitStage3()">
-            <i class="ti ti-check"></i> KIỂM TRA ĐÁP ÁN
-          </button>
-
-          <div class="feedback-box hidden" id="fbStage3"></div>
+      <!-- CỘT PHẢI: HOẠT ĐỘNG & BÀI TẬP -->
+      <article class="workspace-card">
+        <div class="task-header">
+          <div class="task-title"><i class="ti ti-help-circle"></i> Câu hỏi củng cố: Cấu tạo màng nhân</div>
         </div>
-      </div>
-    </div>
 
-    <!-- Actions -->
-    <div class="stage-actions">
-      <button class="btn btn-secondary" onclick="goToStage(2)">
-        <i class="ti ti-arrow-left"></i> QUAY LẠI
-      </button>
-      <button class="btn btn-primary" id="btnNextS03" disabled onclick="goToStage(4)">
-        TIẾP TỤC <i class="ti ti-arrow-right"></i>
-      </button>
+        <p class="qa-prompt">Câu hỏi: Màng nhân có cấu tạo từ mấy lớp màng và thành phần hóa học chính là gì?</p>
+
+        <div class="options-list" id="s03OptionsList">
+          <label class="option-label" onclick="selectOptionS03(this, 'A')">
+            <div class="option-radio"></div>
+            <span>A. Hai màng; mỗi màng là một lớp kép phospholipid gắn protein</span>
+          </label>
+          <label class="option-label" onclick="selectOptionS03(this, 'B')">
+            <div class="option-radio"></div>
+            <span>B. Một màng đơn gồm lớp kép phospholipid và protein</span>
+          </label>
+          <label class="option-label" onclick="selectOptionS03(this, 'C')">
+            <div class="option-radio"></div>
+            <span>C. Hai màng nhưng chỉ cấu tạo từ protein, không có lipid</span>
+          </label>
+          <label class="option-label" onclick="selectOptionS03(this, 'D')">
+            <div class="option-radio"></div>
+            <span>D. Ba lớp màng xếp chồng lên nhau tạo hàng rào tuyệt đối</span>
+          </label>
+        </div>
+
+        <div class="inline-feedback hidden" id="fbStage3"></div>
+
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage3" onclick="goToStage(2)">
+              <i class="ti ti-arrow-left"></i><span>Quay lại</span>
+            </button>
+            <button class="btn btn-secondary" id="btnRetryStage3" onclick="retryStage3()" title="Chọn lại câu hỏi">
+              <i class="ti ti-rotate"></i><span>Làm lại</span>
+            </button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-primary" id="btnS03Check" disabled onclick="submitStage3()">
+              <i class="ti ti-check"></i><span>Trả lời</span>
+            </button>
+            <button class="btn btn-primary" id="btnNextS03" disabled onclick="goToStage(4)">
+              <i class="ti ti-arrow-right"></i><span>Tiếp tục</span>
+            </button>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 
-
   <!-- =========================================================================
-       STAGE S04 — CHẤT NHIỄM SẮC, HẠCH NHÂN VÀ TRUNG TÂM ĐIỀU KHIỂN
+       STAGE 4: CHẤT NHIỄM SẮC, HẠCH NHÂN VÀ TRUNG TÂM ĐIỀU KHIỂN
        ========================================================================= -->
   <section class="stage hidden" id="stage-4" role="region" aria-label="Màn 4: Vì sao nhân được gọi là trung tâm điều khiển?">
-    <div class="lead-box">
-      <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
-        <div class="lead-title">
-          <i class="ti ti-notes"></i>
-          <span>Bối cảnh khoa học</span>
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: LÝ THUYẾT & MINH HỌA -->
+      <article class="visual-card">
+        <div class="stage-header-clean">
+          <h2 class="stage-title">Màn 4: Vì sao nhân được gọi là trung tâm điều khiển?</h2>
+          <p class="lead-text">Trong nhân có chất nhiễm sắc chứa DNA. Thông tin trên DNA sẽ được phiên mã thành các phân tử RNA và được đưa ra khỏi nhân để tham gia tổng hợp protein — phân tử giữ chức năng cấu trúc và vận hành các hoạt động sống của tế bào.</p>
         </div>
-        <div class="lead-toggle">
-          <span class="lead-toggle-label">Thu gọn</span>
-          <i class="ti ti-chevron-up lead-toggle-icon"></i>
-        </div>
-      </div>
-      <div class="lead-content">
-        <p class="lead-text">
-      Trong nhân có chất nhiễm sắc chứa DNA. Những thông tin trên DNA sẽ được phiên mã thành các phân tử RNA và được đưa ra khỏi nhân để tham gia tổng hợp protein — phân tử giữ chức năng cấu trúc và vận hành các hoạt động sống của tế bào. Vì vậy, nhân là trung tâm điều khiển các hoạt động sống của tế bào. Trong nhân còn có một hoặc một vài hạch nhân, là nơi diễn ra quá trình tổng hợp các phân tử rRNA.
-    </p>
-      </div>
-    </div>
 
-    <div class="guide-box">
-      <i class="ti ti-player-play"></i>
-      <span>Bấm nút 'Chạy hoạt cảnh phiên mã' để theo dõi phân tử mRNA di chuyển từ chất nhiễm sắc qua lỗ nhân ra tế bào chất, sau đó trả lời câu hỏi.</span>
-    </div>
-
-    <div class="stage-grid">
-      <!-- Left: Transcription Animation & A04 SVG -->
-      <div class="visual-card">
-        <div class="visual-header">
-          <span><i class="ti ti-movie"></i> Hoạt cảnh phiên mã và vận chuyển RNA qua lỗ nhân</span>
-          <span class="anim-status-badge" id="animStatusBadge">
-            <i class="ti ti-info-circle"></i> Sẵn sàng chạy
-          </span>
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Bấm nút "Chạy hoạt cảnh phiên mã" bên dưới để theo dõi phân tử mRNA di chuyển từ chất nhiễm sắc qua lỗ nhân ra tế bào chất, sau đó trả lời câu hỏi ở cột bên phải.</span>
         </div>
-        <div class="visual-content" style="padding:10px; position:relative;">
+
+        <div class="theory-flow">
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-dna"></i> Chất nhiễm sắc (Chromatin)</div>
+            <div class="theory-block__desc">Chứa phân tử DNA liên kết với protein histone, lưu trữ toàn bộ mật mã di truyền chỉ đạo tổng hợp protein và điều hòa hoạt động sống của tế bào.</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-arrow-narrow-right"></i> Dòng thông tin di truyền</div>
+            <div class="theory-block__desc">DNA trong nhân được phiên mã thành phân tử mRNA $\rightarrow$ mRNA đi qua phức hợp lỗ nhân ra bào tương $\rightarrow$ gắn vào ribosome để dịch mã tổng hợp chuỗi polypeptide.</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-circle-dot"></i> Hạch nhân (Nucleolus / Nhân con)</div>
+            <div class="theory-block__desc">Thể sẫm màu bên trong chất nhân, <strong>hoàn toàn KHÔNG có màng bao bọc riêng</strong>, chuyên trách phiên mã tổng hợp rRNA và lắp ráp tiểu đơn vị ribosome.</div>
+          </div>
+        </div>
+
+        <div class="visual-canvas-wrap">
           <svg id="inlineSvgS04" class="stage-inline-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" width="100%" height="100%">
   <defs>
     <!-- Radial & Linear Gradients identical to A03 -->
@@ -2112,7 +2031,7 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
       <path d="M 324 76 L 342 80" stroke="#DC2626" stroke-width="3" fill="none"/>
       <polygon points="350,82 338,75 340,87" fill="#DC2626"/>
 
-      <!-- Cytoplasmic Ribosome awaiting mRNA translation in cytoplasm (SGK Hình 8.3) -->
+      <!-- Cytoplasmic Ribosome awaiting mRNA translation in cytoplasm -->
       <g id="s04_cytoplasmicRibosomeReceiver" transform="translate(365, 88)">
         <!-- Large Subunit (Tiểu phần lớn - Đỉnh vòm tím đậm) -->
         <ellipse cx="0" cy="-6" rx="15" ry="10" fill="#7E22CE" stroke="#4C1D95" stroke-width="1.5"/>
@@ -2125,111 +2044,103 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
     </g>
   </g>
 </svg>
-
-        </div>
-        <div style="padding:10px 16px; background:#FFFFFF; border-top:1px solid var(--paper-line); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
-          <div style="font-size:0.86rem; color:var(--ink-2);">
-            <strong>Dòng thông tin:</strong> DNA (Chất nhiễm sắc) <i class="ti ti-arrow-right" style="color:var(--purple);"></i> Phiên mã tạo mRNA <i class="ti ti-arrow-right" style="color:var(--accent);"></i> Xuyên qua lỗ nhân <i class="ti ti-arrow-right" style="color:var(--jade);"></i> Ribosome dịch mã.
-          </div>
-          <button class="btn btn-action" id="btnPlayAnim" onclick="playTranscriptionAnimation()">
-            <i class="ti ti-player-play"></i> Chạy hoạt cảnh phiên mã
-          </button>
-        </div>
-      </div>
-
-      <!-- Right: Nucleolus Question & Explanations -->
-      <div class="panel-card">
-        <div class="panel-card-title">
-          <i class="ti ti-brain"></i> Trung tâm chỉ huy tế bào
-        </div>
-
-        <div style="font-size:0.88rem; color:var(--ink-2); display:flex; flex-direction:column; gap:8px;">
-          <div style="padding:8px 12px; background:var(--cream); border-radius:6px; border-left:3px solid var(--purple-text);">
-            <strong>• Chất nhiễm sắc (Chromatin):</strong> Chứa phân tử DNA liên kết với protein histone, lưu trữ toàn bộ mật mã di truyền chỉ đạo hoạt động sống.
-          </div>
-          <div style="padding:8px 12px; background:var(--cream); border-radius:6px; border-left:3px solid #2E1065;">
-            <strong>• Hạch nhân (Nucleolus):</strong> Một hoặc vài vùng sẫm màu bên trong chất nhân, <strong>KHÔNG có màng bao bọc riêng</strong>, chuyên trách tổng hợp các phân tử rRNA để lắp ráp ribosome.
+          <div class="visual-caption" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+            <div style="font-size:0.84rem; color:var(--ink-2);">
+              <span class="anim-status-badge" id="animStatusBadge">
+                <i class="ti ti-info-circle"></i> Sẵn sàng chạy mô phỏng
+              </span>
+            </div>
+            <button class="btn btn-action" id="btnPlayAnim" onclick="playTranscriptionAnimation()">
+              <i class="ti ti-player-play"></i><span>Chạy hoạt cảnh phiên mã</span>
+            </button>
           </div>
         </div>
+      </article>
 
-        <!-- Question S04 -->
-        <div class="qa-box" style="border-top:1px solid var(--paper-line); padding-top:12px;">
-          <p class="qa-prompt">Câu hỏi: Hạch nhân có màng bao bọc riêng không, và chức năng chính của hạch nhân là gì?</p>
-          <div class="options-list" id="s04OptionsList">
-            <label class="option-label" onclick="selectOptionS04(this, 'A')">
-              <div class="option-radio"></div>
-              <span>A. Không có màng bao bọc riêng; chức năng chính là tổng hợp rRNA</span>
-            </label>
-            <label class="option-label" onclick="selectOptionS04(this, 'B')">
-              <div class="option-radio"></div>
-              <span>B. Có màng bao bọc riêng; chức năng chính là tổng hợp rRNA</span>
-            </label>
-            <label class="option-label" onclick="selectOptionS04(this, 'C')">
-              <div class="option-radio"></div>
-              <span>C. Không có màng bao bọc riêng; chức năng chính là chứa toàn bộ DNA di truyền</span>
-            </label>
-            <label class="option-label" onclick="selectOptionS04(this, 'D')">
-              <div class="option-radio"></div>
-              <span>D. Có màng bao bọc riêng; chức năng chính là tổng hợp protein trực tiếp</span>
-            </label>
-          </div>
-
-          <button class="btn btn-primary" id="btnS04Check" disabled onclick="submitStage4()">
-            <i class="ti ti-check"></i> KIỂM TRA ĐÁP ÁN
-          </button>
-
-          <div class="feedback-box hidden" id="fbStage4"></div>
+      <!-- CỘT PHẢI: HOẠT ĐỘNG & BÀI TẬP -->
+      <article class="workspace-card">
+        <div class="task-header">
+          <div class="task-title"><i class="ti ti-help-circle"></i> Câu hỏi củng cố: Bản chất hạch nhân</div>
         </div>
-      </div>
-    </div>
 
-    <!-- Actions -->
-    <div class="stage-actions">
-      <button class="btn btn-secondary" onclick="goToStage(3)">
-        <i class="ti ti-arrow-left"></i> QUAY LẠI
-      </button>
-      <button class="btn btn-primary" id="btnNextS04" disabled onclick="goToStage(5)">
-        TIẾP TỤC <i class="ti ti-arrow-right"></i>
-      </button>
+        <p class="qa-prompt">Câu hỏi: Hạch nhân có màng bao bọc riêng không, và chức năng chính của hạch nhân là gì?</p>
+
+        <div class="options-list" id="s04OptionsList">
+          <label class="option-label" onclick="selectOptionS04(this, 'A')">
+            <div class="option-radio"></div>
+            <span>A. Không có màng bao bọc riêng; chức năng chính là tổng hợp rRNA</span>
+          </label>
+          <label class="option-label" onclick="selectOptionS04(this, 'B')">
+            <div class="option-radio"></div>
+            <span>B. Có màng bao bọc riêng; chức năng chính là tổng hợp rRNA</span>
+          </label>
+          <label class="option-label" onclick="selectOptionS04(this, 'C')">
+            <div class="option-radio"></div>
+            <span>C. Không có màng bao bọc riêng; chức năng chính là chứa toàn bộ DNA di truyền</span>
+          </label>
+          <label class="option-label" onclick="selectOptionS04(this, 'D')">
+            <div class="option-radio"></div>
+            <span>D. Có màng bao bọc riêng; chức năng chính là tổng hợp protein trực tiếp</span>
+          </label>
+        </div>
+
+        <div class="inline-feedback hidden" id="fbStage4"></div>
+
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage4" onclick="goToStage(3)">
+              <i class="ti ti-arrow-left"></i><span>Quay lại</span>
+            </button>
+            <button class="btn btn-secondary" id="btnRetryStage4" onclick="retryStage4()" title="Chọn lại câu hỏi">
+              <i class="ti ti-rotate"></i><span>Làm lại</span>
+            </button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn btn-primary" id="btnS04Check" disabled onclick="submitStage4()">
+              <i class="ti ti-check"></i><span>Trả lời</span>
+            </button>
+            <button class="btn btn-primary" id="btnNextS04" disabled onclick="goToStage(5)">
+              <i class="ti ti-arrow-right"></i><span>Tiếp tục</span>
+            </button>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 
-
   <!-- =========================================================================
-       STAGE S05 — SỬA HIỂU SAI VÀ LIÊN KẾT CHƯƠNG TRÌNH
+       STAGE 5: BẢN CHẤT KHÁI NIỆM 'NHÂN THỰC' VÀ ĐỐI CHIẾU NHÂN SƠ
        ========================================================================= -->
   <section class="stage hidden" id="stage-5" role="region" aria-label="Màn 5: 'Nhân thực' nghĩa là gì thực sự?">
-    <div class="lead-box">
-      <div class="lead-header" onclick="toggleLeadBox(this)" role="button" tabindex="0" aria-expanded="true" title="Nhấn để thu gọn hoặc mở rộng">
-        <div class="lead-title">
-          <i class="ti ti-notes"></i>
-          <span>Bối cảnh khoa học</span>
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: LÝ THUYẾT & MINH HỌA -->
+      <article class="visual-card">
+        <div class="stage-header-clean">
+          <h2 class="stage-title">Màn 5: "Nhân thực" nghĩa là gì thực sự?</h2>
+          <p class="lead-text">Chúng ta vừa tìm hiểu đặc điểm chung của tế bào nhân thực và cấu trúc nhân — trung tâm điều khiển hoạt động sống. Ở Bài 7, chúng ta đã biết tế bào nhân sơ chưa có màng nhân bao bọc DNA. Ranh giới có màng nhân thật sự là điểm cốt lõi nhất phân biệt hai loại tế bào.</p>
         </div>
-        <div class="lead-toggle">
-          <span class="lead-toggle-label">Thu gọn</span>
-          <i class="ti ti-chevron-up lead-toggle-icon"></i>
-        </div>
-      </div>
-      <div class="lead-content">
-        <p class="lead-text">
-      Chúng ta vừa tìm hiểu đặc điểm chung của tế bào nhân thực và cấu trúc nhân — trung tâm điều khiển hoạt động sống. Ở Bài 7, chúng ta đã biết tế bào nhân sơ chưa có màng nhân bao bọc DNA. Ranh giới có màng nhân thật sự là điểm cốt lõi nhất phân biệt hai loại tế bào.
-    </p>
-      </div>
-    </div>
 
-    <div class="guide-box">
-      <i class="ti ti-arrows-diff"></i>
-      <span>Quan sát sơ đồ đối chiếu trực quan giữa tế bào nhân thực và tế bào nhân sơ, sau đó trả lời nhận định Đúng/Sai dưới đây.</span>
-    </div>
-
-    <div class="stage-grid">
-      <!-- Left: Dual Comparison SVG A05 -->
-      <div class="visual-card">
-        <div class="visual-header">
-          <span><i class="ti ti-columns"></i> Đối chiếu bản chất: Nhân thực vs Nhân sơ</span>
-          <span style="font-size:0.8rem; color:var(--ink-3);">Tiêu chí: Sự hiện diện vs vắng mặt của màng nhân</span>
+        <div class="guide-box">
+          <i class="ti ti-hand-click"></i>
+          <span>Quan sát sơ đồ đối chiếu trực quan giữa tế bào nhân thực và tế bào nhân sơ, sau đó chọn đánh giá Đúng hoặc Sai ở cột bên phải.</span>
         </div>
-        <div class="visual-content" style="padding:10px;">
+
+        <div class="theory-flow">
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-vocabulary"></i> Bản chất chữ "Nhân thực" (Eukaryote)</div>
+            <div class="theory-block__desc">Gốc từ Hy Lạp <em>eu</em> (thật sự) + <em>karyon</em> (nhân). Tế bào có <strong>nhân chính thức với màng nhân bao bọc hoàn chỉnh</strong> ngăn cách DNA với bào tương.</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-scale"></i> Không phụ thuộc kích thước nhân</div>
+            <div class="theory-block__desc">Khái niệm nhân thực hoàn toàn không liên quan đến kích thước to hay nhỏ của nhân; ngay cả sinh vật nhân thực đơn bào hiển vi (trùng roi, amip) vẫn là nhân thực vì có màng nhân.</div>
+          </div>
+          <div class="theory-block">
+            <div class="theory-block__title"><i class="ti ti-arrows-diff"></i> Đối chiếu với Tế bào nhân sơ (Bài 7)</div>
+            <div class="theory-block__desc">Tế bào nhân sơ chỉ có "vùng nhân" (nucleoid) với phân tử DNA trần tiếp xúc trực tiếp với bào tương, không có bất kỳ màng bao bọc nào.</div>
+          </div>
+        </div>
+
+        <div class="visual-canvas-wrap">
           <svg id="inlineSvgS05" class="stage-inline-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580" width="100%" height="100%">
   <defs>
     <!-- Gradients for Eukaryotic Card -->
@@ -2520,130 +2431,115 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
     <text x="0" y="6" font-family="'Be Vietnam Pro', system-ui, sans-serif" font-size="13" font-weight="900" fill="#4B5563" text-anchor="middle">VS</text>
   </g>
 </svg>
-
+          <div class="visual-caption">
+            <i class="ti ti-info-circle"></i> <strong>Bản chất khoa học:</strong> Khi che nhãn chữ, sự khác biệt căn bản duy nhất giúp nhận diện tế bào nhân thực chính là <strong>sự hiện diện của màng bao bọc hoàn chỉnh quanh DNA</strong>, hoàn toàn không dựa vào kích thước nhân to hay nhỏ.
+          </div>
         </div>
-        <div style="padding:10px 16px; background:#FFFFFF; border-top:1px solid var(--paper-line); font-size:0.86rem; color:var(--ink-2); line-height:1.5;">
-          <strong style="color:var(--jade-text);">Bản chất khoa học:</strong> Khi tắt toàn bộ nhãn chữ, sự khác biệt căn bản duy nhất giúp nhận diện tế bào nhân thực chính là <strong>sự hiện diện của lớp màng bao bọc hoàn chỉnh quanh DNA</strong>, hoàn toàn không dựa vào kích thước nhân to hay nhỏ.
-        </div>
-      </div>
+      </article>
 
-      <!-- Right: True/False Question & Synthesis -->
-      <div class="panel-card">
-        <div class="panel-card-title">
-          <i class="ti ti-help"></i> Câu hỏi Đúng / Sai chốt bài
+      <!-- CỘT PHẢI: HOẠT ĐỘNG & BÀI TẬP -->
+      <article class="workspace-card">
+        <div class="task-header">
+          <div class="task-title"><i class="ti ti-help-circle"></i> Câu hỏi Đúng / Sai chốt bài</div>
         </div>
 
-        <div class="qa-box">
-          <p class="qa-prompt">
-            Nhận định: "Sinh vật được gọi là 'nhân thực' (eukaryote) chủ yếu vì tế bào của chúng có một cấu trúc nhân với kích thước rất to so với thể tích của tế bào."
-          </p>
+        <p class="qa-prompt">
+          Nhận định: "Sinh vật được gọi là 'nhân thực' (eukaryote) chủ yếu vì tế bào của chúng có một cấu trúc nhân với kích thước rất to so với thể tích của tế bào."
+        </p>
 
-          <p style="font-size:0.88rem; color:var(--ink-3);">Hãy chọn đánh giá của bạn về nhận định trên:</p>
+        <p style="font-size:0.88rem; color:var(--ink-3);">Hãy chọn đánh giá của bạn về nhận định trên:</p>
 
-          <div class="tf-container">
-            <button class="btn-tf" id="btnTfTrue" onclick="selectTf('ĐÚNG')">
-              <i class="ti ti-check"></i> ĐÚNG
+        <div class="tf-container">
+          <button class="btn-tf" id="btnTfTrue" onclick="selectTf('ĐÚNG')">
+            <i class="ti ti-check"></i><span>ĐÚNG</span>
+          </button>
+          <button class="btn-tf" id="btnTfFalse" onclick="selectTf('SAI')">
+            <i class="ti ti-x"></i><span>SAI</span>
+          </button>
+        </div>
+
+        <div class="inline-feedback hidden" id="fbStage5"></div>
+
+        <div class="controls-row">
+          <div class="btn-group-left">
+            <button class="btn btn-secondary" id="btnPrevStage5" onclick="goToStage(4)">
+              <i class="ti ti-arrow-left"></i><span>Quay lại</span>
             </button>
-            <button class="btn-tf" id="btnTfFalse" onclick="selectTf('SAI')">
-              <i class="ti ti-x"></i> SAI
+            <button class="btn btn-secondary" id="btnRetryStage5" onclick="retryStage5()" title="Chọn lại nhận định">
+              <i class="ti ti-rotate"></i><span>Làm lại</span>
             </button>
           </div>
-
-          <button class="btn btn-primary" id="btnS05Check" disabled onclick="submitStage5()" style="margin-top:6px;">
-            <i class="ti ti-send"></i> XÁC NHẬN CÂU TRẢ LỜI
-          </button>
-
-          <div class="feedback-box hidden" id="fbStage5"></div>
+          <div class="btn-group-right">
+            <button class="btn btn-primary" id="btnS05Check" disabled onclick="submitStage5()">
+              <i class="ti ti-check"></i><span>Trả lời</span>
+            </button>
+            <button class="btn btn-primary" id="btnCompleteModule" disabled onclick="showCompletionModal()">
+              <i class="ti ti-trophy"></i><span>Hoàn thành</span>
+            </button>
+          </div>
         </div>
-      </div>
-    </div>
-
-    <!-- Actions -->
-    <div class="stage-actions">
-      <button class="btn btn-secondary" onclick="goToStage(4)">
-        <i class="ti ti-arrow-left"></i> QUAY LẠI
-      </button>
-      <button class="btn btn-primary" id="btnCompleteModule" disabled onclick="showCompletionModal()">
-        <i class="ti ti-trophy"></i> HOÀN THÀNH BÀI HỌC
-      </button>
+      </article>
     </div>
   </section>
+</main>
 
-</div>
-
-
-<!-- =========================================================================
-     MODAL CHÚC MỪNG HOÀN THÀNH V10 (HIGH PRIORITY HIDDEN WITH CONFETTI)
-     ========================================================================= -->
-<div class="congrats-overlay hidden" id="completionModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+<!-- COMPLETION MODAL -->
+<div class="modal-backdrop hidden" id="completionModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <canvas id="confettiCanvas"></canvas>
-  <div class="congrats-modal" style="z-index: 2;">
-    <div class="trophy-icon">
-      <i class="ti ti-trophy"></i>
-    </div>
-    <h3 class="congrats-title" id="modalTitle">Xuất Sắc! Hoàn Thành Bài 8 - M01</h3>
-    <p class="congrats-text">
-      Bạn đã nắm vững 4 đặc điểm chung của tế bào nhân thực, định vị 14 thành phần trên bản đồ hệ thống, hiểu rõ cấu trúc màng nhân kép và vai trò trung tâm điều khiển sự sống của nhân tế bào.
+  <div class="modal-card">
+    <i class="ti ti-trophy modal-trophy"></i>
+    <h3 class="modal-title" id="modalTitle">Xuất sắc hoàn thành Bài 8 - Màn 1!</h3>
+    <p class="modal-desc">
+      Bạn đã nắm vững 4 đặc điểm chung của tế bào nhân thực, định vị bản đồ 14 bào quan, hiểu rõ cấu tạo màng kép phospholipid & phức hợp lỗ nhân, cơ chế phiên mã RNA và bản chất khoa học của khái niệm 'Nhân thực'.
     </p>
-
-    <div class="congrats-stats-bar">
-      <div class="stat-box">
-        <span class="stat-val" id="statScore">100%</span>
-        <span class="stat-lbl">Điểm số</span>
-      </div>
-      <div class="stat-box">
-        <span class="stat-val" id="statStages">5 / 5</span>
-        <span class="stat-lbl">Màn học</span>
-      </div>
-      <div class="stat-box">
-        <span class="stat-val">ĐẠT</span>
-        <span class="stat-lbl">Mục tiêu</span>
-      </div>
-    </div>
-
-    <div class="congrats-actions">
-      <button class="btn btn-secondary" onclick="restartLesson()">
-        <i class="ti ti-rotate-clockwise"></i> Xem lại bài học
+    <div class="modal-actions">
+      <button class="btn btn-secondary" id="btnReviewAll" onclick="restartLesson()">
+        <i class="ti ti-rotate"></i><span>Xem lại bài học</span>
       </button>
-      <button class="btn btn-primary" onclick="closeModal()">
-        <i class="ti ti-check"></i> Đóng thông báo
+      <button class="btn btn-primary" id="btnCloseCongrats" onclick="closeModal()">
+        <i class="ti ti-check"></i><span>Đóng thông báo</span>
       </button>
     </div>
   </div>
 </div>
 
-
-<!-- =========================================================================
-     RUNTIME JAVASCRIPT LOGIC
-     ========================================================================= -->
 <script>
-
 /* ATTACH DIRECT CLICK LISTENERS TO SVG ELEMENTS ON DOM READY */
 window.addEventListener('DOMContentLoaded', () => {
   const organelleMap = [
-    { id: 's02_plantCellWall', name: 'Thành tế bào', desc: 'Chỉ có ở tế bào thực vật; cấu tạo từ sợi xenlulose giúp bảo vệ và tạo hình dạng cứng cáp.' },
-    { id: 's02_plantVacuole', name: 'Không bào trung tâm lớn', desc: 'Chiếm phần lớn thể tích tế bào thực vật trưởng thành; chứa dịch tế bào, dự trữ nước và ion.' },
-    { id: 's02_plantChloroplasts', name: 'Lục lạp', desc: 'Chỉ có ở thực vật và sinh vật quang dưỡng; chứa chất diệp lục hấp thu ánh sáng để quang hợp.' },
-    { id: 's02_animalCentrosome', name: 'Trung thể', desc: 'Cấu trúc điển hình ở tế bào động vật; gồm cặp trung tử xếp vuông góc tham gia phân chia tế bào.' },
-    { id: 's02_animalLysosomes', name: 'Lysosome', desc: 'Bào quan dạng túi chứa enzyme thủy phân ở tế bào động vật; phân giải bào quan già và dị vật.' },
+    { id: 's02_plantCellWall', name: 'Thành tế bào', desc: 'Chỉ có ở tế bào thực vật; cấu tạo từ sợi cellulose giúp bảo vệ và tạo hình dạng cứng cáp.' },
+    { id: 's02_plantCentralVacuole', name: 'Không bào trung tâm lớn', desc: 'Chiếm phần lớn thể tích tế bào thực vật trưởng thành; chứa dịch tế bào, dự trữ nước và ion khoáng.' },
+    { id: 's02_plantVacuole', name: 'Không bào trung tâm lớn', desc: 'Chiếm phần lớn thể tích tế bào thực vật trưởng thành; chứa dịch tế bào, dự trữ nước và ion khoáng.' },
+    { id: 's02_plantChloroplasts', name: 'Lục lạp', desc: 'Chỉ có ở thực vật và sinh vật quang dưỡng; chứa chất diệp lục hấp thu ánh sáng để quang hợp tạo chất hữu cơ.' },
+    { id: 's02_animalCentrosome', name: 'Trung thể', desc: 'Cấu trúc điển hình ở tế bào động vật; gồm cặp trung tử xếp vuông góc tham gia hình thành thoi phân bào.' },
+    { id: 's02_animalLysosomes', name: 'Lysosome', desc: 'Bào quan dạng túi chứa enzyme thủy phân ở tế bào động vật; phân giải bào quan già cỗi và vi sinh vật xâm nhập.' },
     { id: 's02_plantNucleus', name: 'Nhân tế bào', desc: 'Có ở cả 2 loại tế bào; chứa chất nhiễm sắc mang DNA và là trung tâm điều khiển hoạt động sống.' },
     { id: 's02_animalNucleus', name: 'Nhân tế bào', desc: 'Có ở cả 2 loại tế bào; chứa chất nhiễm sắc mang DNA và là trung tâm điều khiển hoạt động sống.' },
-    { id: 's02_plantMito', name: 'Ti thể', desc: 'Có ở cả 2 tế bào; được ví là nhà máy năng lượng của tế bào, tạo ATP qua hô hấp tế bào.' },
-    { id: 's02_animalMito', name: 'Ti thể', desc: 'Có ở cả 2 tế bào; được ví là nhà máy năng lượng của tế bào, tạo ATP qua hô hấp tế bào.' },
-    { id: 's02_plantGolgi', name: 'Thể Golgi', desc: 'Hệ thống túi dẹp xếp chồng; tiếp nhận, chế biến, đóng gói và phân phối các sản phẩm sinh học.' },
-    { id: 's02_animalGolgi', name: 'Thể Golgi', desc: 'Hệ thống túi dẹp xếp chồng; tiếp nhận, chế biến, đóng gói và phân phối các sản phẩm sinh học.' },
-    { id: 's02_plantER', name: 'Lưới nội chất (ER)', desc: 'Hệ thống xoang màng gồm ER hạt (tổng hợp protein) và ER trơn (tổng hợp lipid, khử độc).' },
-    { id: 's02_animalER', name: 'Lưới nội chất (ER)', desc: 'Hệ thống xoang màng gồm ER hạt (tổng hợp protein) và ER trơn (tổng hợp lipid, khử độc).' }
+    { id: 's02_plantMitochondria', name: 'Ti thể', desc: 'Có ở cả 2 loại tế bào; được ví là nhà máy năng lượng của tế bào, chuyển hóa glucose tạo ATP qua hô hấp tế bào.' },
+    { id: 's02_animalMitochondria', name: 'Ti thể', desc: 'Có ở cả 2 loại tế bào; được ví là nhà máy năng lượng của tế bào, chuyển hóa glucose tạo ATP qua hô hấp tế bào.' },
+    { id: 's02_plantMito', name: 'Ti thể', desc: 'Có ở cả 2 loại tế bào; được ví là nhà máy năng lượng của tế bào, chuyển hóa glucose tạo ATP qua hô hấp tế bào.' },
+    { id: 's02_animalMito', name: 'Ti thể', desc: 'Có ở cả 2 loại tế bào; được ví là nhà máy năng lượng của tế bào, chuyển hóa glucose tạo ATP qua hô hấp tế bào.' },
+    { id: 's02_plantGolgi', name: 'Thể Golgi', desc: 'Hệ thống túi dẹp xếp chồng; tiếp nhận, chế biến, đóng gói và phân phối các sản phẩm sinh học (protein, lipid).' },
+    { id: 's02_animalGolgi', name: 'Thể Golgi', desc: 'Hệ thống túi dẹp xếp chồng; tiếp nhận, chế biến, đóng gói và phân phối các sản phẩm sinh học (protein, lipid).' },
+    { id: 's02_plantER', name: 'Lưới nội chất (ER)', desc: 'Hệ thống xoang màng gồm ER hạt (gắn ribosome, tổng hợp protein) và ER trơn (tổng hợp lipid, chuyển hóa đường, khử độc).' },
+    { id: 's02_animalER', name: 'Lưới nội chất (ER)', desc: 'Hệ thống xoang màng gồm ER hạt (gắn ribosome, tổng hợp protein) và ER trơn (tổng hợp lipid, chuyển hóa đường, khử độc).' },
+    { id: 's02_plantPlasmaMembrane', name: 'Màng sinh chất (Màng tế bào)', desc: 'Lớp kép phospholipid kiểm soát có chọn lọc các chất đi vào và đi ra khỏi tế bào.' },
+    { id: 's02_animalPlasmaMembrane', name: 'Màng sinh chất (Màng tế bào)', desc: 'Lớp kép phospholipid kiểm soát có chọn lọc các chất đi vào và đi ra khỏi tế bào.' },
+    { id: 's02_plantPeroxisomes', name: 'Peroxisome', desc: 'Bào quan dạng túi chứa enzyme khử độc peroxide (H2O2) và chuyển hóa acid béo.' },
+    { id: 's02_animalPeroxisomes', name: 'Peroxisome', desc: 'Bào quan dạng túi chứa enzyme khử độc peroxide (H2O2) và chuyển hóa acid béo.' }
   ];
 
   organelleMap.forEach(item => {
     const el = document.getElementById(item.id);
     if (el) {
+      el.classList.add('organelle-hotspot');
       el.addEventListener('click', () => {
         inspectOrganelle(item.name, item.desc);
       });
     }
   });
+
+  reportHeight();
 });
 
 /* LMS RUNTIME STATE (NO LOCALSTORAGE/COOKIES) */
@@ -2691,6 +2587,13 @@ function goToStage(stageNum) {
   }
   window.lmsState.currentStage = stageNum;
   window.lmsState.progress = Math.max(window.lmsState.progress, stageNum * 20);
+  
+  const pBar = document.getElementById('progressBar');
+  if (pBar) {
+    pBar.style.width = (stageNum * 20) + '%';
+    pBar.parentElement.setAttribute('aria-valuenow', stageNum * 20);
+  }
+
   window.scrollTo({ top: 0, behavior: 'smooth' });
   setTimeout(reportHeight, 150);
 }
@@ -2725,8 +2628,68 @@ function submitStage1() {
   const btnNext = document.getElementById('btnNextS01');
 
   if (btnCheck) btnCheck.disabled = true;
-  if (fbBox) fbBox.classList.remove('hidden');
+  if (fbBox) {
+    fbBox.className = 'inline-feedback ok';
+    fbBox.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-circle-check"></i>
+        <span>Chính xác! Đã khám phá trọn vẹn 4 đặc điểm chung.</span>
+      </div>
+      <div class="correct-answer-box feature-summary-box">
+        <div class="summary-title">
+          <i class="ti ti-checks"></i> 4 đặc điểm cốt lõi của tế bào nhân thực:
+        </div>
+        <ul class="summary-list">
+          <li class="summary-item">
+            <span class="summary-num">1</span>
+            <div class="summary-text"><strong>Kích thước lớn</strong>, cấu tạo phức tạp</div>
+          </li>
+          <li class="summary-item">
+            <span class="summary-num">2</span>
+            <div class="summary-text"><strong>Nhân chính thức</strong> có màng bao bọc</div>
+          </li>
+          <li class="summary-item">
+            <span class="summary-num">3</span>
+            <div class="summary-text"><strong>Khung xương tế bào</strong> phát triển</div>
+          </li>
+          <li class="summary-item">
+            <span class="summary-num">4</span>
+            <div class="summary-text"><strong>Hệ thống nội màng</strong> &amp; nhiều bào quan có màng</div>
+          </li>
+        </ul>
+      </div>
+      <div class="explanation">
+        Tế bào nhân thực phân hóa sâu sắc với nhiều ngăn chức năng riêng biệt, hỗ trợ quá trình trao đổi chất diễn ra hiệu quả và phối hợp nhịp nhàng. Hãy nhấn "Tiếp tục" để sang bản đồ 14 bào quan!
+      </div>
+      <div class="pedagogy-meta">
+        <div class="pedagogy-item"><span class="label">Chủ đề:</span><strong>Đặc điểm chung của tế bào nhân thực</strong></div>
+        <div class="pedagogy-item"><span class="label">Dạng bài:</span><strong>Khám phá & Nhận biết đặc điểm</strong></div>
+        <div class="pedagogy-item"><span class="label">Cấp độ tư duy:</span><strong>Nhận biết</strong></div>
+        <div class="pedagogy-item"><span class="label">Năng lực sinh học:</span><strong>Nhận thức sinh học</strong></div>
+        <div class="pedagogy-item"><span class="label">Định dạng:</span><strong>Tương tác mở thẻ đa đối tượng (4/4 thẻ)</strong></div>
+      </div>
+    `;
+    fbBox.classList.remove('hidden');
+  }
   if (btnNext) btnNext.disabled = false;
+  reportHeight();
+}
+
+function retryStage1() {
+  window.lmsState.s01 = { viewed: [false, false, false, false], submitted: false };
+  const cards = document.querySelectorAll('.feature-card');
+  cards.forEach(c => {
+    c.classList.remove('viewed');
+    c.classList.remove('expanded');
+  });
+  const countEl = document.getElementById('s01ViewCount');
+  if (countEl) countEl.textContent = '0';
+  const btnCheck = document.getElementById('btnS01Check');
+  if (btnCheck) btnCheck.disabled = true;
+  const btnNext = document.getElementById('btnNextS01');
+  if (btnNext) btnNext.disabled = true;
+  const fbBox = document.getElementById('fbStage1');
+  if (fbBox) fbBox.classList.add('hidden');
   reportHeight();
 }
 
@@ -2736,7 +2699,7 @@ function submitStage1() {
 function inspectOrganelle(name, desc) {
   const caption = document.getElementById('organelleCaptionBox');
   if (caption) {
-    caption.innerHTML = '<span style="font-weight:700; color:var(--jade-text);">' + name + ':</span>&nbsp;' + desc;
+    caption.innerHTML = '<span style="font-weight:700; color:var(--jade-text);"><i class="ti ti-check"></i> ' + name + ':</span>&nbsp;' + desc;
   }
 }
 
@@ -2759,16 +2722,59 @@ function submitStage2() {
 
   if (sel === 'A') {
     window.lmsState.s02.correct = true;
-    fb.className = 'feedback-box correct';
-    fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác.</strong> Thành tế bào, lục lạp và không bào trung tâm lớn không có ở tế bào động vật. Tiếp tục sang nội dung kế tiếp.</span>';
+    fb.className = 'inline-feedback ok';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-circle-check"></i>
+        <span>Chính xác! Lựa chọn hoàn toàn đúng.</span>
+      </div>
+      <div class="correct-answer-box">
+        ✓ Đáp án đúng: A. Thành tế bào, lục lạp và không bào trung tâm lớn
+      </div>
+      <div class="explanation">
+        Thành tế bào cellulose, lục lạp quang hợp và không bào trung tâm lớn là các cấu trúc đặc trưng của tế bào thực vật, không có ở tế bào động vật. Tế bào động vật điển hình có trung thể (chứa cặp trung tử) và lysosome.
+      </div>
+      <div class="pedagogy-meta">
+        <div class="pedagogy-item"><span class="label">Chủ đề:</span><strong>Cấu trúc tế bào thực vật và động vật</strong></div>
+        <div class="pedagogy-item"><span class="label">Dạng bài:</span><strong>Phân biệt bào quan đặc trưng</strong></div>
+        <div class="pedagogy-item"><span class="label">Cấp độ tư duy:</span><strong>Thông hiểu</strong></div>
+        <div class="pedagogy-item"><span class="label">Năng lực sinh học:</span><strong>Nhận thức sinh học</strong></div>
+        <div class="pedagogy-item"><span class="label">Định dạng:</span><strong>Trắc nghiệm một lựa chọn</strong></div>
+      </div>
+    `;
     fb.classList.remove('hidden');
     if (btnCheck) btnCheck.disabled = true;
     if (btnNext) btnNext.disabled = false;
   } else {
-    fb.className = 'feedback-box wrong shake';
-    fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Chưa chính xác.</strong> Lựa chọn của bạn chứa các bào quan có ở CẢ HAI loại tế bào (như ti thể, ribosome, nhân...). Hãy quan sát kỹ lại các bộ phận đặc trưng và thử lại.</span>';
+    fb.className = 'inline-feedback bad shake';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-alert-triangle"></i>
+        <span>Chưa chính xác!</span>
+      </div>
+      <div class="explanation">
+        Phương án bạn chọn chứa các bào quan có ở CẢ HAI loại tế bào (như ti thể, ribosome, nhân, lưới nội chất...). Hãy quan sát kỹ sơ đồ đối chiếu và chọn lại!
+      </div>
+    `;
     fb.classList.remove('hidden');
-    setTimeout(() => fb.classList.remove('shake'), 500);
+    setTimeout(() => fb.classList.remove('shake'), 400);
+  }
+  reportHeight();
+}
+
+function retryStage2() {
+  window.lmsState.s02 = { selected: null, correct: false };
+  const opts = document.querySelectorAll('#s02OptionsList .option-label');
+  opts.forEach(el => el.classList.remove('selected'));
+  const btnCheck = document.getElementById('btnS02Check');
+  if (btnCheck) btnCheck.disabled = true;
+  const btnNext = document.getElementById('btnNextS02');
+  if (btnNext) btnNext.disabled = true;
+  const fb = document.getElementById('fbStage2');
+  if (fb) fb.classList.add('hidden');
+  const caption = document.getElementById('organelleCaptionBox');
+  if (caption) {
+    caption.innerHTML = '<i class="ti ti-hand-finger"></i>&nbsp;<em>Chạm hoặc bấm vào từng bộ phận trên sơ đồ tế bào (thành tế bào, nhân, lục lạp, trung thể...) để đọc thông tin cấu trúc.</em>';
   }
   reportHeight();
 }
@@ -2795,17 +2801,56 @@ function submitStage3() {
 
   if (sel === 'A') {
     window.lmsState.s03.correct = true;
-    fb.className = 'feedback-box correct';
-    fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác.</strong> Hai màng; mỗi màng là một lớp kép phospholipid gắn protein. Tiếp tục sang nội dung kế tiếp.</span>';
+    fb.className = 'inline-feedback ok';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-circle-check"></i>
+        <span>Chính xác! Lựa chọn hoàn toàn đúng.</span>
+      </div>
+      <div class="correct-answer-box">
+        ✓ Đáp án đúng: A. Hai màng; mỗi màng là một lớp kép phospholipid gắn protein
+      </div>
+      <div class="explanation">
+        Màng nhân là màng kép gồm màng ngoài và màng trong ngăn cách bởi khoảng quanh nhân. Mỗi màng đều có cấu trúc lớp kép phospholipid xen kẽ các phân tử protein. Trên màng có hàng ngàn phức hợp lỗ nhân điều hòa sự trao đổi chất.
+      </div>
+      <div class="pedagogy-meta">
+        <div class="pedagogy-item"><span class="label">Chủ đề:</span><strong>Cấu trúc nhân tế bào</strong></div>
+        <div class="pedagogy-item"><span class="label">Dạng bài:</span><strong>Cấu tạo màng kép và lỗ màng nhân</strong></div>
+        <div class="pedagogy-item"><span class="label">Cấp độ tư duy:</span><strong>Nhận biết</strong></div>
+        <div class="pedagogy-item"><span class="label">Năng lực sinh học:</span><strong>Nhận thức sinh học</strong></div>
+        <div class="pedagogy-item"><span class="label">Định dạng:</span><strong>Trắc nghiệm một lựa chọn</strong></div>
+      </div>
+    `;
     fb.classList.remove('hidden');
     if (btnCheck) btnCheck.disabled = true;
     if (btnNext) btnNext.disabled = false;
   } else {
-    fb.className = 'feedback-box wrong shake';
-    fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Không đúng —</strong> màng nhân gồm HAI MÀNG; mỗi màng có cấu trúc lớp kép phospholipid gắn protein. Hãy chọn lại.</span>';
+    fb.className = 'inline-feedback bad shake';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-alert-triangle"></i>
+        <span>Không đúng!</span>
+      </div>
+      <div class="explanation">
+        Màng nhân gồm HAI LỚP MÀNG (màng kép); mỗi màng là một lớp kép phospholipid gắn protein. Hãy chọn lại phương án chính xác!
+      </div>
+    `;
     fb.classList.remove('hidden');
-    setTimeout(() => fb.classList.remove('shake'), 500);
+    setTimeout(() => fb.classList.remove('shake'), 400);
   }
+  reportHeight();
+}
+
+function retryStage3() {
+  window.lmsState.s03 = { selected: null, correct: false };
+  const opts = document.querySelectorAll('#s03OptionsList .option-label');
+  opts.forEach(el => el.classList.remove('selected'));
+  const btnCheck = document.getElementById('btnS03Check');
+  if (btnCheck) btnCheck.disabled = true;
+  const btnNext = document.getElementById('btnNextS03');
+  if (btnNext) btnNext.disabled = true;
+  const fb = document.getElementById('fbStage3');
+  if (fb) fb.classList.add('hidden');
   reportHeight();
 }
 
@@ -2819,7 +2864,7 @@ function playTranscriptionAnimation() {
   const mrnaChain = document.getElementById('s04_mrnaMoleculeChain');
 
   if (badge) {
-    badge.innerHTML = '<i class="ti ti-loader ti-spin" style="animation: spin 1s infinite linear;"></i> Đang phiên mã & xuất mRNA...';
+    badge.innerHTML = '<i class="ti ti-loader ti-spin"></i> Đang phiên mã & xuất mRNA...';
     badge.style.background = '#FEF3C7';
     badge.style.color = '#B45309';
   }
@@ -2829,16 +2874,15 @@ function playTranscriptionAnimation() {
 
   window.lmsState.s04.animated = true;
 
-  // Simulate 2.5s transcription and transport process
   setTimeout(() => {
     if (badge) {
-      badge.innerHTML = '<i class="ti ti-circle-check"></i> Hoàn tất xuất mRNA ra ribosome!';
+      badge.innerHTML = '<i class="ti ti-circle-check"></i> Hoàn tất xuất mRNA ra bào tương!';
       badge.style.background = 'var(--correct-bg)';
       badge.style.color = 'var(--jade-dark)';
     }
     if (btn) {
       btn.disabled = false;
-      btn.innerHTML = '<i class="ti ti-rotate"></i> Xem lại hoạt cảnh';
+      btn.innerHTML = '<i class="ti ti-rotate"></i><span>Xem lại hoạt cảnh</span>';
     }
     if (geneSite) geneSite.classList.remove('gene-active');
     if (mrnaChain) mrnaChain.classList.remove('mrna-moving');
@@ -2871,20 +2915,63 @@ function submitStage4() {
 
   if (sel === 'A') {
     window.lmsState.s04.correct = true;
-    fb.className = 'feedback-box correct';
-    fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác.</strong> Không có màng bao bọc riêng; chức năng chính là tổng hợp rRNA. Tiếp tục sang nội dung kế tiếp.</span>';
+    fb.className = 'inline-feedback ok';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-circle-check"></i>
+        <span>Chính xác! Lựa chọn hoàn toàn đúng.</span>
+      </div>
+      <div class="correct-answer-box">
+        ✓ Đáp án đúng: A. Không có màng bao bọc riêng; chức năng chính là tổng hợp rRNA
+      </div>
+      <div class="explanation">
+        Hạch nhân (nhân con) chỉ là một vùng thể đậm bên trong dịch nhân, hoàn toàn KHÔNG có màng bao bọc riêng. Chức năng chính của hạch nhân là nơi phiên mã tổng hợp các phân tử rRNA và lắp ráp tiểu đơn vị ribosome trước khi đưa ra bào tương.
+      </div>
+      <div class="pedagogy-meta">
+        <div class="pedagogy-item"><span class="label">Chủ đề:</span><strong>Nhân tế bào & Hạch nhân</strong></div>
+        <div class="pedagogy-item"><span class="label">Dạng bài:</span><strong>Chức năng hạch nhân & Trung tâm điều khiển</strong></div>
+        <div class="pedagogy-item"><span class="label">Cấp độ tư duy:</span><strong>Thông hiểu</strong></div>
+        <div class="pedagogy-item"><span class="label">Năng lực sinh học:</span><strong>Nhận thức sinh học</strong></div>
+        <div class="pedagogy-item"><span class="label">Định dạng:</span><strong>Trắc nghiệm một lựa chọn</strong></div>
+      </div>
+    `;
     fb.classList.remove('hidden');
     if (btnCheck) btnCheck.disabled = true;
     if (btnNext) btnNext.disabled = false;
   } else {
-    fb.className = 'feedback-box wrong shake';
-    let hint = 'Hạch nhân KHÔNG có màng bao bọc riêng biệt; chức năng của nó là tổng hợp rRNA chứ không chứa toàn bộ DNA của tế bào.';
+    fb.className = 'inline-feedback bad shake';
+    let hint = 'Hạch nhân KHÔNG có màng bao bọc riêng; chức năng chính của nó là tổng hợp rRNA chứ không chứa toàn bộ DNA tế bào.';
     if (sel === 'B' || sel === 'D') {
       hint = 'Hạch nhân KHÔNG có màng bao bọc riêng như các bào quan khác. Chức năng chính là tổng hợp rRNA.';
     }
-    fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Chưa chính xác.</strong> ' + hint + ' Hãy chọn lại.</span>';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-alert-triangle"></i>
+        <span>Chưa chính xác!</span>
+      </div>
+      <div class="explanation">${hint} Hãy chọn lại phương án đúng!</div>
+    `;
     fb.classList.remove('hidden');
-    setTimeout(() => fb.classList.remove('shake'), 500);
+    setTimeout(() => fb.classList.remove('shake'), 400);
+  }
+  reportHeight();
+}
+
+function retryStage4() {
+  window.lmsState.s04 = { animated: false, selected: null, correct: false };
+  const opts = document.querySelectorAll('#s04OptionsList .option-label');
+  opts.forEach(el => el.classList.remove('selected'));
+  const btnCheck = document.getElementById('btnS04Check');
+  if (btnCheck) btnCheck.disabled = true;
+  const btnNext = document.getElementById('btnNextS04');
+  if (btnNext) btnNext.disabled = true;
+  const fb = document.getElementById('fbStage4');
+  if (fb) fb.classList.add('hidden');
+  const badge = document.getElementById('animStatusBadge');
+  if (badge) {
+    badge.innerHTML = '<i class="ti ti-info-circle"></i> Sẵn sàng chạy mô phỏng';
+    badge.style.background = 'var(--cream-2)';
+    badge.style.color = 'var(--ink-2)';
   }
   reportHeight();
 }
@@ -2919,17 +3006,58 @@ function submitStage5() {
   if (sel === 'SAI') {
     window.lmsState.s05.correct = true;
     window.lmsState.completed = true;
-    fb.className = 'feedback-box correct';
-    fb.innerHTML = '<i class="ti ti-circle-check"></i><span><strong>Chính xác.</strong> "Sai" là nhận định đúng! "Nhân thực" không liên quan đến KÍCH THƯỚC nhân, mà là có <strong>MÀNG NHÂN THẬT SỰ</strong> bao bọc DNA. Ngay cả sinh vật nhân thực đơn bào rất nhỏ (như trùng roi, amip) vẫn có màng nhân. Hãy nhấn hoàn thành bài học!</span>';
+    fb.className = 'inline-feedback ok';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-circle-check"></i>
+        <span>Chính xác! "Sai" là đánh giá chuẩn xác.</span>
+      </div>
+      <div class="correct-answer-box">
+        ✓ Đáp án đúng: SAI (Nhận định trên là sai lệch)
+      </div>
+      <div class="explanation">
+        Thuật ngữ "nhân thực" (eukaryote) bắt nguồn từ tiếng Hy Lạp: <em>eu</em> (thật sự) + <em>karyon</em> (nhân). Tế bào được gọi là nhân thực vì có <strong>MÀNG NHÂN THẬT SỰ</strong> bao bọc vật chất di truyền DNA, hoàn toàn không phụ thuộc vào kích thước nhân to hay nhỏ. Ngay cả những sinh vật nhân thực đơn bào kích thước hiển vi (trùng roi, amip) vẫn là nhân thực vì có màng nhân chính thức.
+      </div>
+      <div class="pedagogy-meta">
+        <div class="pedagogy-item"><span class="label">Chủ đề:</span><strong>Khái niệm tế bào nhân thực & đối chiếu nhân sơ</strong></div>
+        <div class="pedagogy-item"><span class="label">Dạng bài:</span><strong>Phân tích nhận định Đúng / Sai</strong></div>
+        <div class="pedagogy-item"><span class="label">Cấp độ tư duy:</span><strong>Vận dụng</strong></div>
+        <div class="pedagogy-item"><span class="label">Năng lực sinh học:</span><strong>Tư duy phản biện khoa học</strong></div>
+        <div class="pedagogy-item"><span class="label">Định dạng:</span><strong>Trắc nghiệm Đúng / Sai</strong></div>
+      </div>
+    `;
     fb.classList.remove('hidden');
     if (btnCheck) btnCheck.disabled = true;
     if (btnComplete) btnComplete.disabled = false;
   } else {
-    fb.className = 'feedback-box wrong shake';
-    fb.innerHTML = '<i class="ti ti-alert-triangle"></i><span><strong>Không đúng —</strong> "nhân thực" không liên quan đến KÍCH THƯỚC nhân, mà là có MÀNG NHÂN THẬT SỰ bao bọc DNA. Ngay cả sinh vật nhân thực đơn bào rất nhỏ (như trùng roi, amip) vẫn có màng nhân. Hãy chọn lại!</span>';
+    fb.className = 'inline-feedback bad shake';
+    fb.innerHTML = `
+      <div class="feedback-header">
+        <i class="ti ti-alert-triangle"></i>
+        <span>Chưa chính xác!</span>
+      </div>
+      <div class="explanation">
+        "Nhân thực" không liên quan đến KÍCH THƯỚC nhân, mà là có <strong>MÀNG NHÂN THẬT SỰ</strong> bao bọc DNA. Ngay cả sinh vật đơn bào hiển vi vẫn có màng nhân. Hãy chọn lại đánh giá chuẩn!
+      </div>
+    `;
     fb.classList.remove('hidden');
-    setTimeout(() => fb.classList.remove('shake'), 500);
+    setTimeout(() => fb.classList.remove('shake'), 400);
   }
+  reportHeight();
+}
+
+function retryStage5() {
+  window.lmsState.s05 = { selected: null, correct: false };
+  const btnT = document.getElementById('btnTfTrue');
+  const btnF = document.getElementById('btnTfFalse');
+  if (btnT) btnT.classList.remove('selected-true');
+  if (btnF) btnF.classList.remove('selected-false');
+  const btnCheck = document.getElementById('btnS05Check');
+  if (btnCheck) btnCheck.disabled = true;
+  const btnComplete = document.getElementById('btnCompleteModule');
+  if (btnComplete) btnComplete.disabled = true;
+  const fb = document.getElementById('fbStage5');
+  if (fb) fb.classList.add('hidden');
   reportHeight();
 }
 
@@ -2962,7 +3090,7 @@ function launchConfetti() {
   canvas.height = canvas.parentElement.clientHeight;
 
   const pieces = [];
-  const colors = ['#10B981', '#3B82F6', '#F59E0B', '#8B5CF6', '#EC4899', '#14B8A6'];
+  const colors = ['#3CA57A', '#2D8B6F', '#E8A24A', '#8B5CF6', '#10B981', '#3B82F6'];
   for (let i = 0; i < 70; i++) {
     pieces.push({
       x: Math.random() * canvas.width,
@@ -3007,69 +3135,6 @@ function launchConfetti() {
   }
   draw();
 }
-
-  /* COLLAPSIBLE LEAD BOX LOGIC */
-  function toggleLeadBox(headerEl) {
-    const box = headerEl.closest('.lead-box');
-    if (!box) return;
-    const isCollapsed = box.classList.toggle('collapsed');
-    const label = box.querySelector('.lead-toggle-label');
-    headerEl.setAttribute('aria-expanded', !isCollapsed);
-    if (label) {
-      label.textContent = isCollapsed ? 'Mở rộng' : 'Thu gọn';
-    }
-    if (typeof reportHeight === 'function') {
-      setTimeout(reportHeight, 360);
-    }
-  }
-
-  document.addEventListener('keydown', function(e) {
-    if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.classList.contains('lead-header')) {
-      e.preventDefault();
-      toggleLeadBox(e.target);
-    }
-  });
-
-</script>
-
-<script>
-/* Chuẩn hóa cấu trúc theo SH10_B01_M02: hình trái, nhiệm vụ phải, điều khiển dưới. */
-(() => {
-  document.querySelectorAll('section.stage').forEach((stage) => {
-    if(stage.classList.contains('two-block-ready')) return;
-    const direct=[...stage.children];
-    const guide=direct.find((node)=>node.matches('.guide-box'));
-    const lead=direct.find((node)=>node.matches('.lead-box'));
-    const actions=direct.find((node)=>node.matches('.stage-actions,.controls-row'));
-    let layout=direct.find((node)=>node.matches('.map-layout,.s01-layout,.stage-grid'));
-    if(!layout) layout=direct.find((node)=>[...node.children].some((child)=>child.querySelector('img,svg,canvas')));
-    if(layout){
-      layout.classList.add('split-workspace');
-      const parts=[...layout.children];
-      let visual=parts.find((node)=>node.querySelector('img,svg,canvas'));
-      if(!visual) visual=parts[0];
-      visual.classList.add('visual-card');
-      const head=document.createElement('div');head.className='visual-card__head';
-      const title=document.createElement('h2');title.textContent=(stage.getAttribute('aria-label')||'Nội dung bài học').replace(/^Màn\s*\d+\s*:\s*/i,'');
-      head.appendChild(title);visual.prepend(head);
-      if(lead) head.after(lead);
-      const workspace=document.createElement('article');workspace.className='workspace-card';
-      if(guide){guide.className='instruction';workspace.appendChild(guide)}
-      parts.forEach((node)=>{if(node!==visual)workspace.appendChild(node)});
-      layout.appendChild(workspace);
-      stage.querySelectorAll('.feedback-box,.feedback-bar,.feedback-panel').forEach((node)=>node.classList.add('inline-feedback'));
-      if(actions){actions.classList.add('controls-row');stage.appendChild(actions)}
-      stage.classList.add('two-block-ready');
-    }
-  });
-  const clean=(root)=>{const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let node;while((node=walker.nextNode())){if(node.parentElement&&node.parentElement.closest('script,style'))continue;const next=node.nodeValue.replace(/Tiếp tục sang Giai đoạn\s*\d+/gi,'Tiếp tục').replace(/Hoàn thành Giai đoạn\s*\d+!?/gi,'Hoàn thành!').replace(/GIAI ĐOẠN\s*\d+\s*\/\s*\d+\s*[·—-]\s*/gi,'').replace(/Stage\s*\d+/gi,'').replace(/Màn\s*\d+\s*[·:]\s*/gi,'').replace(/Bước\s*\d+\s*\/\s*\d+/gi,'');if(next!==node.nodeValue)node.nodeValue=next}};
-  clean(document.body);
-  new MutationObserver((items)=>items.forEach((item)=>clean(item.target))).observe(document.body,{childList:true,subtree:true,characterData:true});
-})();
-</script>
-<script>
-/* Hàng điều hướng ba nút thống nhất, thay thế cụm điều hướng cũ. */
-(()=>{const stages=[...document.querySelectorAll('section.stage,section.stage-section,section.stage-card')];const go=(idx)=>{const stage=stages[idx];if(!stage)return;if(typeof showStage==='function')showStage(idx);else if(typeof goStage==='function')goStage(stage.id);else if(typeof goToStage==='function'){const m=stage.id.match(/stage-?(\d+)/);goToStage(m?Number(m[1]):idx+1)}else{stages.forEach((item,itemIdx)=>item.classList.toggle('hidden',itemIdx!==idx));window.scrollTo({top:0,behavior:'smooth'})}};const hashMatch=location.hash.match(/^#retry-stage-(\d+)$/);stages.forEach((stage,idx)=>{if(stage.querySelector(':scope > .three-button-nav'))return;const sourceRow=stage.querySelector(':scope > .controls-row,:scope > .stage-actions');const buttons=sourceRow?[...sourceRow.querySelectorAll('button')]:[];const byText=(re)=>buttons.find(b=>re.test(b.textContent));const backSource=byText(/quay lại/i);const resetSource=byText(/làm lại màn|làm lại/i);const nextSource=byText(/tiếp tục/i)||buttons.find(b=>/complete|finish|next/i.test(b.id));const row=document.createElement('div');row.className='three-button-nav';const back=document.createElement('button');back.type='button';back.className='btn btn-outline nav-back';back.innerHTML='<i class="ti ti-arrow-left"></i> Quay lại';back.disabled=idx===0;back.addEventListener('click',()=>backSource?backSource.click():go(idx-1));const reset=document.createElement('button');reset.type='button';reset.className='btn btn-outline nav-reset';reset.innerHTML='<i class="ti ti-rotate-clockwise"></i> Làm lại màn';reset.addEventListener('click',()=>{if(resetSource)resetSource.click();else{location.hash='#retry-stage-'+idx;location.reload()}});const spacer=document.createElement('span');spacer.className='nav-spacer';const next=document.createElement('button');next.type='button';next.className='btn btn-primary nav-next';next.innerHTML='Tiếp tục <i class="ti ti-arrow-right"></i>';const sync=()=>{next.disabled=!nextSource||nextSource.disabled||nextSource.classList.contains('hidden')};next.addEventListener('click',()=>nextSource?nextSource.click():go(idx+1));sync();if(nextSource)new MutationObserver(sync).observe(nextSource,{attributes:true,attributeFilter:['class','disabled']});row.append(back,reset,spacer,next);stage.appendChild(row)});if(hashMatch){const idx=Number(hashMatch[1]);setTimeout(()=>{go(idx);history.replaceState(null,'',location.pathname+location.search)},80)}})();
 </script>
 </body>
 </html>

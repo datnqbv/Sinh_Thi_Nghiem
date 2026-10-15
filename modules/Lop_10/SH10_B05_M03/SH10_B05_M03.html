@@ -85,15 +85,13 @@
 }
 
 body {
+  margin: 0;
   font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
   background: var(--cream);
   color: var(--ink);
+  font-size: 17px;
   line-height: 1.65;
-  padding: 24px clamp(14px, 3vw, 32px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 button {
@@ -121,7 +119,9 @@ button:focus-visible, [tabindex]:focus-visible {
 /* App layout */
 .app-container {
   width: 100%;
-  max-width: var(--lesson-width);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 18px clamp(12px, 2.4vw, 28px) 12px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -138,17 +138,172 @@ aside,
 }
 
 /* Main card container */
-.stage-card {
-  background: #FFF;
-  border: 1px solid var(--paper-line);
-  border-radius: var(--radius-lg);
-  padding: clamp(20px, 3.5vw, 32px);
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  animation: fadeIn 0.3s ease;
-}
+
+    /* Stage Card as Clean Wrapper */
+    .stage-card {
+      background: transparent;
+      border: none;
+      padding: 0;
+      box-shadow: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      animation: fadeIn 0.3s ease;
+    }
+
+    /* 2-Column Split Workspace (Mutual Sticky & Zero Nested Scroll) */
+    .split-workspace {
+      display: grid;
+      grid-template-columns: minmax(0, 56fr) minmax(360px, 44fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* Left Column: Natural Height & Sticky Visual Card */
+    .visual-card {
+      position: sticky;
+      top: 16px;
+      z-index: 10;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-lg);
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-height: none;
+      overflow-y: visible;
+    }
+    .visual-card__head {
+      padding: 16px 20px 14px;
+      border-bottom: 1px solid var(--paper-line);
+      background: #fff;
+    }
+    .eyebrow {
+      display: none !important;
+    }
+    .visual-card__head h2 {
+      margin: 0;
+      font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+      line-height: 1.32;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .visual-card__head .question {
+      margin: 8px 0 0;
+      color: var(--jade-dark);
+      font-size: 0.94rem;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+    .visual-card__content {
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .theory-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .theory-block {
+      padding: 12px 14px;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-sm);
+      background: var(--cream);
+      font-size: .9rem;
+      line-height: 1.55;
+    }
+    .theory-block__title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: .92rem;
+      color: var(--jade-text);
+      margin-bottom: 6px;
+    }
+    .theory-block__content {
+      margin: 0;
+      color: var(--ink-2);
+    }
+    .theory-block ul {
+      margin: 4px 0 0;
+      padding-left: 20px;
+    }
+    .theory-block li {
+      margin-bottom: 4px;
+    }
+    .visual-body {
+      padding: 0;
+      background: transparent;
+      margin-top: 4px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Right Column: Sticky Workspace Card */
+    .workspace-card {
+      min-width: 0;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-lg);
+      background: var(--cream-2);
+      padding: 18px 16px;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 16px;
+      max-height: calc(100vh - 32px);
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: thin;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-sizing: border-box;
+    }
+    .workspace-card::-webkit-scrollbar { width: 4px; }
+    .workspace-card::-webkit-scrollbar-thumb { background: var(--paper-line-2); border-radius: 4px; }
+    .workspace-section-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--jade-text);
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .instruction {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 0;
+      padding: 12px 14px;
+      border-left: 4px solid var(--jade-deep);
+      border-radius: var(--radius-sm);
+      background: var(--jade-pale);
+      color: var(--jade-dark);
+      font-size: .91rem;
+      line-height: 1.55;
+      font-weight: 500;
+    }
+    .instruction i {
+      flex: 0 0 auto;
+      margin-top: 2px;
+      font-size: 1.25rem;
+      color: var(--jade-deep);
+    }
+
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
@@ -459,40 +614,68 @@ aside,
 /* Matching 7 functions interaction */
 .match-columns-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
-@media (max-width: 720px) {
+@media (max-width: 480px) {
   .match-columns-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
 }
 .match-col {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 .match-col-title {
-  font-size: 0.95rem;
+  font-size: 0.86rem;
   font-weight: 700;
   color: var(--ink-2);
   padding-bottom: 6px;
   border-bottom: 1.5px solid var(--paper-line);
+  line-height: 1.35;
+  min-width: 0;
+  word-break: break-word;
 }
 .match-item-btn {
   background: #FFF;
   border: 1.5px solid var(--paper-line-2);
   border-radius: var(--radius-sm);
-  padding: 12px 16px;
-  font-size: 0.92rem;
+  padding: 9px 10px;
+  font-size: 0.84rem;
+  line-height: 1.38;
   font-weight: 600;
   color: var(--ink);
   text-align: left;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: space-between;
+  align-items: flex-start;
+  min-height: 64px;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
   transition: all 0.2s ease;
   cursor: pointer;
+  position: relative;
+}
+.match-item-btn > span:first-child {
+  width: 100%;
+  min-width: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+.match-item-btn .ti-chevron-right {
+  align-self: flex-end;
+  color: var(--ink-faint);
+  font-size: 0.9rem;
+  margin-top: 4px;
 }
 .match-item-btn:hover:not(:disabled) {
   border-color: var(--jade);
@@ -522,18 +705,20 @@ aside,
 .match-pair-badge {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 3px 9px;
+  gap: 3px;
+  padding: 2px 7px;
   border-radius: 999px;
-  font-size: 0.78rem;
+  font-size: 0.73rem;
   font-weight: 700;
   letter-spacing: 0.2px;
   white-space: nowrap;
   flex-shrink: 0;
-  margin-left: 8px;
+  align-self: flex-end;
+  margin-top: 5px;
+  margin-left: 0;
 }
 .match-pair-badge i {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
 }
 
 /* 7 MÀU ĐẶC TRƯNG ĐỒNG BỘ CHO 7 CẶP GHÉP */
@@ -633,8 +818,11 @@ aside,
 .amino-builder-area {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  gap: 24px;
+  gap: 16px;
   align-items: start;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 @media (max-width: 820px) {
   .amino-builder-area {
@@ -700,22 +888,27 @@ aside,
    ========================================================================== */
 .two-chains-compare {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
-@media (max-width: 720px) {
+@media (max-width: 600px) {
   .two-chains-compare {
     grid-template-columns: 1fr;
   }
 }
 .chain-box {
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
   background: #FFF;
   border: 1.5px solid var(--paper-line-2);
   border-radius: var(--radius);
-  padding: 16px;
+  padding: 14px 12px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 .chain-title {
   font-weight: 700;
@@ -766,33 +959,41 @@ aside,
 /* Food sorting zone */
 .food-sort-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
-@media (max-width: 700px) {
+@media (max-width: 480px) {
   .food-sort-grid {
     grid-template-columns: 1fr;
   }
 }
 .sort-basket {
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
   background: #FFF;
   border: 2px dashed var(--paper-line-2);
   border-radius: var(--radius);
-  padding: 16px;
-  min-height: 140px;
+  padding: 12px 10px;
+  min-height: 120px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 .sort-basket-header {
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.86rem;
   color: var(--ink);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   padding-bottom: 6px;
   border-bottom: 1px solid var(--paper-line);
+  line-height: 1.35;
+  min-width: 0;
+  word-break: break-word;
 }
 .sort-items-tray {
   display: flex;
@@ -969,26 +1170,27 @@ aside,
   pointer-events: none;
   z-index: 10000;
 }
-/* Chuẩn bố cục hai khối SH10_B01_M02 */
-body{padding:0;font-size:17px}.app-container{max-width:1200px;margin:0 auto;padding:18px clamp(12px,2.4vw,28px) 12px}.btn{min-height:44px;padding:9px 15px;font-size:.92rem}
-.stage-card.two-block-ready{padding:0;background:transparent;border:0;box-shadow:none}
-.split-workspace{display:grid;grid-template-columns:minmax(0,58fr) minmax(340px,42fr);gap:20px;align-items:start}
-.visual-card,.workspace-card{min-width:0;border:1px solid var(--paper-line,#D6CCB6);border-radius:14px;overflow:hidden;box-shadow:0 2px 6px rgba(26,26,26,.05)}
-.visual-card{position:sticky;top:0;background:#fff}
-.visual-card__head{padding:14px 16px 12px;border-bottom:1px solid var(--paper-line,#D6CCB6);background:#fff}
-.visual-card__head .stage-title{margin:0;font-size:clamp(1.25rem,2.2vw,1.75rem);line-height:1.28;letter-spacing:-.02em}
-.visual-body{padding:14px;background:#fff}
-.workspace-card{padding:18px;background:var(--cream-2,#FBF9F4)}
-.instruction{display:flex;align-items:flex-start;gap:10px;margin:0 0 16px;padding:12px 14px;border-left:4px solid var(--info,#4E7F92);border-radius:6px;background:var(--info-bg,#DCE7EB);color:var(--ink-2,#514C44);font-size:.91rem;line-height:1.55}
-.instruction i{flex:0 0 auto;margin-top:2px;font-size:1.2rem;color:var(--info,#4E7F92)}
-.inline-feedback{font-size:.92rem;line-height:1.55}
-.controls-row{margin-top:16px;padding:14px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}
-.controls-row::-webkit-scrollbar{display:none}
-@media(max-width:980px){.split-workspace{grid-template-columns:1fr}.visual-card{position:static}.workspace-card{padding:16px}}
-@media(max-width:700px){body{font-size:16px}.app-container{padding:12px 10px 10px}.workspace-card{padding:16px}}
-@media(max-width:420px){.app-container{padding:10px 8px 8px}.workspace-card{padding:13px}}
+
+    @media (max-width: 980px) {
+      .split-workspace { grid-template-columns: 1fr; }
+      .visual-card, .workspace-card {
+        position: static;
+        max-height: none;
+        overflow-y: visible;
+      }
+      .workspace-card { padding: 16px; }
+    }
+    @media (max-width: 700px) {
+      body { font-size: 16px; }
+      .app-container { padding: 12px 10px 10px; }
+      .workspace-card { padding: 16px; }
+    }
+    @media (max-width: 420px) {
+      .app-container { padding: 10px 8px 8px; }
+      .workspace-card { padding: 13px; }
+    }
 .three-button-nav{display:flex;align-items:center;gap:12px;width:100%;margin-top:16px;padding:16px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;scrollbar-width:none}.three-button-nav::-webkit-scrollbar{display:none}.three-button-nav .nav-spacer{flex:1}.three-button-nav .btn{flex:0 0 auto;white-space:nowrap}.three-button-nav .nav-back{order:1}.three-button-nav .nav-reset{order:2}.three-button-nav .nav-spacer{order:3}.three-button-nav .nav-next{order:4}.three-button-nav .btn:disabled{opacity:.45;cursor:not-allowed}
-section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.controls-row,section.stage-card>.stage-actions{display:none!important}
+section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.controls-row,section.stage-card>.stage-actions,.workspace-card .controls-row{display:none!important}
 </style>
 </head>
 <body>
@@ -1000,23 +1202,55 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
   <!-- ==========================================================================
        STAGE 1 (ST00): MỘT NHÓM PHÂN TỬ, NHIỀU CHỨC NĂNG
        ========================================================================== -->
+    <!-- ==============================================================
+       STAGE 0: KHỞI ĐỘNG - 7 CHỨC NĂNG CỐT LÕI CỦA PROTEIN
+       ============================================================== -->
   <section class="stage-card" id="stage00" role="region" aria-labelledby="st00Heading">
-    <h2 class="stage-title" id="st00Heading">
-      <i class="ti ti-dna"></i>
-      Một nhóm phân tử, nhiều chức năng
-    </h2>
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết & Thị giác -->
+      <div class="visual-card">
+        <div class="visual-card__head">
+          <h2 id="st00Heading">
+            <i class="ti ti-dna"></i>
+            Một nhóm phân tử, nhiều chức năng
+          </h2>
+          <div class="question">Protein được cấu tạo như thế nào và có những vai trò sống còn nào trong tế bào?</div>
+        </div>
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span>Quan sát mô hình màng sinh chất và các phân tử protein tiêu biểu, sau đó trả lời câu hỏi và ghép nối 7 chức năng sinh học tương ứng ở bảng bên phải.</span>
+          </div>
 
-    <p class="lead-text">
-      Ở bài trước về lipid, chúng ta đã biết lớp kép phospholipid tạo nên cấu trúc nền tảng của màng tế bào. Nhưng để vận chuyển chất, tiếp nhận tín hiệu và điều hòa các hoạt động sống, màng và toàn bộ cơ thể sinh vật cần đến sự tham gia của một đại phân tử đặc biệt: <strong>Protein</strong>.
-    </p>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-layers-subtract"></i> Protein và nền tảng sự sống</div>
+              <p class="theory-block__content">
+                Lớp kép phospholipid tạo nên cấu trúc nền tảng của màng tế bào. Nhưng để vận chuyển các chất, tiếp nhận tín hiệu từ môi trường và xúc tác các phản ứng sinh hóa, tế bào và cơ thể sinh vật cần đến sự tham gia của một đại phân tử đặc biệt: <strong>Protein</strong>.
+              </p>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-list-details"></i> 7 nhóm chức năng chính của protein</div>
+              <ul class="theory-block__content">
+                <li><strong>Cấu trúc:</strong> Tạo khung nâng đỡ tế bào và mô (ví dụ: collagen, keratin).</li>
+                <li><strong>Xúc tác:</strong> Đóng vai trò enzyme tăng tốc phản ứng hóa sinh (ví dụ: amylase).</li>
+                <li><strong>Vận chuyển:</strong> Chở các chất trong máu và qua màng (ví dụ: hemoglobin, protein kênh).</li>
+                <li><strong>Bảo vệ:</strong> Chống lại kháng nguyên và mầm bệnh (ví dụ: kháng thể immunoglobulin).</li>
+                <li><strong>Điều hòa:</strong> Kiểm soát các quá trình trao đổi chất (ví dụ: hormone insulin).</li>
+                <li><strong>Vận động:</strong> Co dãn cơ vân, chuyển động tế bào (ví dụ: actin, myosin).</li>
+                <li><strong>Tiếp nhận thông tin:</strong> Thu nhận và truyền tin tế bào (ví dụ: thụ thể màng).</li>
+              </ul>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-help"></i> Câu hỏi trung tâm của bài học</div>
+              <p class="theory-block__content">
+                <em>Protein được cấu tạo như thế nào? Vì sao chỉ từ khoảng 20 loại amino acid lại có thể tạo nên vô số protein với cấu trúc và chức năng kỳ diệu như vậy?</em>
+              </p>
+            </div>
+          </div>
 
-    <div class="guide-box">
-      <i class="ti ti-info-circle"></i>
-      <span>Quan sát các phân tử protein tiêu biểu và ghép nối từng protein với chức năng sinh học tương ứng.</span>
-    </div>
-
-    <!-- Màn 1A: Kế thừa lớp kép phospholipid từ M02 -->
-    <div class="membrane-viewer" id="st00MembraneWrap">
+          <div class="visual-body">
+            <div class="membrane-viewer" id="st00MembraneWrap">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 720" role="img" aria-label="Lớp kép phospholipid và protein màng kế thừa từ M02" style="width: 100%; height: auto; display: block;">
   <title>Cầu nối từ lớp kép phospholipid sang protein</title>
   <desc>Tái sử dụng nguyên A15; các lớp làm nổi protein kênh, protein xuyên màng và protein bám màng.</desc>
@@ -1149,7 +1383,18 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
     </div>
 
     <!-- Màn 1B: Câu hỏi trắc nghiệm nhận diện 7 ví dụ -->
-    <div class="quiz-section" id="st00Quiz01">
+          </div>
+        </div>
+      </div>
+
+      <!-- CỘT PHẢI: Hoạt động & Bài tập củng cố -->
+      <div class="workspace-card">
+        <div class="workspace-section-label">
+          <i class="ti ti-checkup-list"></i>
+          <span>HOẠT ĐỘNG VÀ BÀI TẬP CỦNG CỐ</span>
+        </div>
+
+        <div class="quiz-section" id="st00Quiz01">
       <div class="quiz-question-title">
         <i class="ti ti-help-circle"></i>
         <span>Các phân tử như Collagen, Amylase, Hemoglobin, Kháng thể, Insulin, Actin-myosin có điểm chung cốt lõi nào?</span>
@@ -1257,6 +1502,9 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
     </div>
 
     <!-- Stage Actions -->
+      </div>
+    </div>
+
     <div class="controls-row">
       <div></div>
       <button class="btn btn-primary" id="btnNextST00" onclick="goToStage(1)" disabled>
@@ -1269,24 +1517,50 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
   <!-- ==========================================================================
        STAGE 2 (ST01): TỪ AMINO ACID ĐẾN CHUỖI POLYPEPTIDE
        ========================================================================== -->
+    <!-- ==============================================================
+       STAGE 1: TỪ AMINO ACID ĐẾN CHUỖI POLYPEPTIDE
+       ============================================================== -->
   <section class="stage-card hidden" id="stage01" role="region" aria-labelledby="st01Heading">
-    <h2 class="stage-title" id="st01Heading">
-      <i class="ti ti-molecule"></i>
-      Từ amino acid đến chuỗi polypeptide
-    </h2>
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết & Thị giác -->
+      <div class="visual-card">
+        <div class="visual-card__head">
+          <h2 id="st01Heading">
+            <i class="ti ti-molecule"></i>
+            Từ amino acid đến chuỗi polypeptide
+          </h2>
+          <div class="question">Cấu trúc chung của đơn phân amino acid là gì và liên kết peptide được hình thành ra sao?</div>
+        </div>
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span>Nhấn vào 4 nhóm hóa học ở khay bên phải để lắp vào Carbon α trung tâm, sau đó bấm 'TẠO LIÊN KẾT PEPTIDE' và hoàn thành câu hỏi trắc nghiệm.</span>
+          </div>
 
-    <p class="lead-text">
-      Tất cả các protein đều là những đại phân tử sinh học được cấu tạo theo nguyên tắc đa phân, trong đó các đơn phân là <strong>amino acid</strong>. Các amino acid tham gia cấu tạo protein đều có chung một cấu trúc cơ bản.
-    </p>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-atom"></i> Cấu trúc chung của amino acid</div>
+              <p class="theory-block__content">
+                Protein là đại phân tử sinh học cấu tạo theo nguyên tắc đa phân từ đơn phân là <strong>amino acid</strong>. Mỗi amino acid đều có 1 nguyên tử Carbon trung tâm (Cα) liên kết với 4 thành phần: nhóm amino (–NH₂), nhóm carboxyl (–COOH), một nguyên tử hydrogen (–H) và một gốc bên (–R). Nhóm R tạo nên đặc tính hóa sinh riêng biệt của từng amino acid.
+              </p>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-link"></i> Sự hình thành liên kết peptide</div>
+              <p class="theory-block__content">
+                Liên kết peptide (–CO–NH–) hình thành giữa nhóm carboxyl của amino acid này với nhóm amino của amino acid tiếp theo qua phản ứng trùng ngưng, đồng thời giải phóng một phân tử nước (H₂O).
+              </p>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-git-commit"></i> Từ dipeptide đến chuỗi polypeptide</div>
+              <p class="theory-block__content">
+                Nhiều amino acid nối dài với nhau bằng các liên kết peptide tạo thành <strong>chuỗi polypeptide</strong>. Một phân tử protein hoàn chỉnh có thể cấu tạo từ một hoặc nhiều chuỗi polypeptide.
+              </p>
+            </div>
+          </div>
 
-    <div class="guide-box">
-      <i class="ti ti-info-circle"></i>
-      <span>Lắp ghép 4 thành phần vào đúng vị trí quanh Carbon α trung tâm, sau đó quan sát cách hình thành liên kết peptide.</span>
-    </div>
-
-    <!-- Màn 2A: Ghép 4 thành phần quanh Carbon Alpha -->
-    <div class="amino-builder-area">
-      <div class="svg-diagram-card">
+          <div class="visual-body">
+            <div class="amino-builder-area" style="grid-template-columns: 1fr; width: 100%;">
+              <div class="svg-diagram-card">
         <!-- SVG Amino acid cấu trúc chuẩn -->
         <svg viewBox="0 0 420 320" width="380" height="290" xmlns="http://www.w3.org/2000/svg">
           <!-- Carbon alpha trung tâm -->
@@ -1324,8 +1598,22 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
           </g>
         </svg>
       </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <div class="parts-pallet">
+      <!-- CỘT PHẢI: Hoạt động & Bài tập củng cố -->
+      <div class="workspace-card">
+        <div class="workspace-section-label">
+          <i class="ti ti-checkup-list"></i>
+          <span>HOẠT ĐỘNG VÀ BÀI TẬP CỦNG CỐ</span>
+        </div>
+
+        <div style="font-weight: 700; font-size: 0.9rem; color: var(--ink-2); margin-bottom: 4px;">
+          Khay 4 thành phần quanh Carbon α:
+        </div>
+        <div class="parts-pallet">
         <div class="part-tile" id="tileAmino" onclick="placeAminoPart('amino')">
           <div>
             <div class="part-name">Nhóm Amino</div>
@@ -1358,10 +1646,8 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
           <span class="part-chem" style="color:#D97706;">–R</span>
         </div>
       </div>
-    </div>
 
-    <!-- Màn 2B: Hình thành liên kết peptide -->
-    <div class="quiz-section hidden" id="st01PeptideSection">
+        <div class="quiz-section hidden" id="st01PeptideSection">
       <div class="quiz-question-title">
         <i class="ti ti-link"></i>
         <span>Hình thành liên kết peptide và phân tử Dipeptide</span>
@@ -1447,6 +1733,9 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
     </div>
 
     <!-- Stage Actions -->
+      </div>
+    </div>
+
     <div class="controls-row">
       <button class="btn btn-secondary" onclick="goToStage(0)">
         <i class="ti ti-arrow-left"></i>
@@ -1462,23 +1751,45 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
   <!-- ==========================================================================
        STAGE 3 (ST02): TRÌNH TỰ AMINO ACID TẠO NÊN SỰ ĐA DẠNG
        ========================================================================== -->
+    <!-- ==============================================================
+       STAGE 2: TRÌNH TỰ AMINO ACID VÀ SỰ ĐA DẠNG CỦA PROTEIN
+       ============================================================== -->
   <section class="stage-card hidden" id="stage02" role="region" aria-labelledby="st02Heading">
-    <h2 class="stage-title" id="st02Heading">
-      <i class="ti ti-arrows-shuffle"></i>
-      Trình tự amino acid tạo nên sự đa dạng
-    </h2>
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết & Thị giác -->
+      <div class="visual-card">
+        <div class="visual-card__head">
+          <h2 id="st02Heading">
+            <i class="ti ti-arrows-shuffle"></i>
+            Trình tự amino acid tạo nên sự đa dạng
+          </h2>
+          <div class="question">Tại sao chỉ từ 20 loại amino acid lại có thể tạo ra vô số phân tử protein đa dạng khác nhau?</div>
+        </div>
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span>So sánh 2 chuỗi polypeptide cùng thành phần nhưng khác trình tự, sau đó phân loại các thực phẩm vào nhóm đạm động vật hoặc đạm thực vật.</span>
+          </div>
 
-    <p class="lead-text">
-      Trong tự nhiên có hàng trăm loại amino acid, nhưng chỉ có khoảng <strong>20 loại amino acid</strong> thường xuyên tham gia cấu tạo nên protein của sinh vật. Các amino acid này giống nhau ở phần cấu trúc chung và chỉ khác nhau ở nhóm R.
-    </p>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-dimensions"></i> 3 yếu tố quyết định sự đa dạng của protein</div>
+              <ul class="theory-block__content">
+                <li><strong>Số lượng amino acid:</strong> Chiều dài chuỗi polypeptide (từ vài chục đến hàng nghìn đơn phân).</li>
+                <li><strong>Thành phần amino acid:</strong> Tỉ lệ và loại trong khoảng 20 amino acid tham gia cấu trúc.</li>
+                <li><strong>Trình tự amino acid:</strong> Thứ tự sắp xếp các mắt xích. Chỉ cần thay đổi vị trí một amino acid sẽ tạo ra một chuỗi polypeptide hoàn toàn mới với tính chất khác biệt.</li>
+              </ul>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-salad"></i> Nguồn thực phẩm và amino acid không thay thế</div>
+              <p class="theory-block__content">
+                Trong 20 loại amino acid, có những loại cơ thể người không thể tự tổng hợp được (gọi là <strong>amino acid không thay thế / thiết yếu</strong>), bắt buộc phải hấp thu từ thức ăn. Đạm động vật và đạm thực vật có tỉ lệ amino acid khác nhau; chế độ ăn đa dạng giúp cung cấp đầy đủ dưỡng chất.
+              </p>
+            </div>
+          </div>
 
-    <div class="guide-box">
-      <i class="ti ti-info-circle"></i>
-      <span>So sánh 2 chuỗi polypeptide cùng thành phần nhưng khác trình tự, sau đó phân loại các nguồn thực phẩm cung cấp protein cho cơ thể.</span>
-    </div>
-
-    <!-- Màn 3B: So sánh 2 chuỗi cùng thành phần, khác trình tự -->
-    <div class="two-chains-compare">
+          <div class="visual-body" style="gap: 14px; width: 100%;">
+            <div class="two-chains-compare">
       <div class="chain-box">
         <div class="chain-title">
           <i class="ti ti-git-commit"></i>
@@ -1519,7 +1830,23 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
     </div>
 
     <!-- Quiz 3: So sánh 2 chuỗi -->
-    <div class="quiz-section" id="st02Quiz01">
+            <div class="food-image-wrap">
+        <img src="images/SH10-B05-M03-A08.png" alt="Các nguồn thực phẩm giàu protein động vật và thực vật">
+      </div>
+
+      <!-- Phân loại thực phẩm -->
+          </div>
+        </div>
+      </div>
+
+      <!-- CỘT PHẢI: Hoạt động & Bài tập củng cố -->
+      <div class="workspace-card">
+        <div class="workspace-section-label">
+          <i class="ti ti-checkup-list"></i>
+          <span>HOẠT ĐỘNG VÀ BÀI TẬP CỦNG CỐ</span>
+        </div>
+
+        <div class="quiz-section" id="st02Quiz01">
       <div class="quiz-question-title">
         <i class="ti ti-help-circle"></i>
         <span>Hai chuỗi polypeptide trên có giống hệt nhau về đặc tính sinh học không?</span>
@@ -1536,9 +1863,10 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
       </div>
       <div class="feedback-bar hidden" id="st02Quiz01Feedback"></div>
     </div>
-
+ 
     <!-- Màn 3D: Nguồn thực phẩm giàu protein -->
-    <div class="quiz-section hidden" id="st02FoodSection">
+
+        <div class="quiz-section hidden" id="st02FoodSection">
       <div class="quiz-question-title">
         <i class="ti ti-meat"></i>
         <span>Nguồn thực phẩm cung cấp protein cho cơ thể</span>
@@ -1549,12 +1877,7 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
       </p>
 
       <!-- Hình ảnh AI A08 -->
-      <div class="food-image-wrap">
-        <img src="images/SH10-B05-M03-A08.png" alt="Các nguồn thực phẩm giàu protein động vật và thực vật">
-      </div>
-
-      <!-- Phân loại thực phẩm -->
-      <div class="food-sort-grid" style="margin-top: 14px;">
+          <div class="food-sort-grid" style="margin-top: 14px;">
         <div class="sort-basket" id="basketAnimal">
           <div class="sort-basket-header">
             <i class="ti ti-fish" style="color:var(--wrong);"></i>
@@ -1589,6 +1912,9 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
     </div>
 
     <!-- Stage Actions -->
+      </div>
+    </div>
+
     <div class="controls-row">
       <button class="btn btn-secondary" onclick="goToStage(1)">
         <i class="ti ti-arrow-left"></i>
@@ -1604,23 +1930,45 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
   <!-- ==========================================================================
        STAGE 4 (ST03): BỐN BẬC CẤU TRÚC PROTEIN
        ========================================================================== -->
+    <!-- ==============================================================
+       STAGE 3: BỐN BẬC CẤU TRÚC CỦA PROTEIN
+       ============================================================== -->
   <section class="stage-card hidden" id="stage03" role="region" aria-labelledby="st03Heading">
-    <h2 class="stage-title" id="st03Heading">
-      <i class="ti ti-hierarchy-2"></i>
-      Bốn bậc cấu trúc của protein
-    </h2>
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết & Thị giác -->
+      <div class="visual-card">
+        <div class="visual-card__head">
+          <h2 id="st03Heading">
+            <i class="ti ti-hierarchy-2"></i>
+            Bốn bậc cấu trúc của protein
+          </h2>
+          <div class="question">Bốn bậc cấu trúc của protein được hình thành và giữ ổn định bởi những liên kết nào?</div>
+        </div>
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span>Nhấn vào các tab bậc cấu trúc (Bậc 1, 2, 3, 4) để quan sát hình dạng và đặc điểm liên kết, sau đó trả lời câu hỏi củng cố.</span>
+          </div>
 
-    <p class="lead-text">
-      Protein không chỉ là một chuỗi amino acid duỗi thẳng, mà trải qua các bậc cuộn gấp phức tạp trong không gian 3 chiều. Mỗi bậc cấu trúc kế thừa và được hình thành dựa trên bậc cấu trúc phía trước.
-    </p>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-line"></i> Cấu trúc bậc 1 và bậc 2</div>
+              <ul class="theory-block__content">
+                <li><strong>Bậc 1:</strong> Trình tự sắp xếp tuyến tính của các amino acid trong chuỗi polypeptide, nối nhau bằng liên kết peptide. Đây là cấu trúc cơ sở quy định tất cả các bậc cấu trúc tiếp theo.</li>
+                <li><strong>Bậc 2:</strong> Chuỗi polypeptide cuộn lại thành <strong>xoắn α</strong> hoặc gấp nếp thành <strong>phiến gấp β</strong>, được giữ ổn định chủ yếu nhờ <strong>liên kết hydrogen</strong> giữa các liên kết peptide trong khung polypeptide.</li>
+              </ul>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-box-model"></i> Cấu trúc bậc 3 và bậc 4</div>
+              <ul class="theory-block__content">
+                <li><strong>Bậc 3:</strong> Hình dạng không gian ba chiều hoàn chỉnh của <strong>duy nhất 1 chuỗi polypeptide</strong>, hình thành do tương tác giữa các nhóm R (liên kết hydrogen, tương tác kị nước, tương tác ion, lực Van der Waals và <strong>cầu disulfide – liên kết cộng hóa trị</strong>).</li>
+                <li><strong>Bậc 4:</strong> Hình thành khi <strong>từ 2 chuỗi polypeptide trở lên</strong> liên kết với nhau tạo thành phức hợp (ví dụ: hemoglobin gồm 4 chuỗi). <em>Lưu ý: Không phải mọi protein đều có cấu trúc bậc 4!</em></li>
+              </ul>
+            </div>
+          </div>
 
-    <div class="guide-box">
-      <i class="ti ti-info-circle"></i>
-      <span>Nhấn vào từng bậc cấu trúc (Bậc 1, Bậc 2, Bậc 3, Bậc 4) để quan sát đặc điểm và các liên kết duy trì.</span>
-    </div>
-
-    <!-- Tabs chọn 4 bậc -->
-    <div class="structures-tabs-row">
+          <div class="visual-body" style="width: 100%;">
+            <div class="structures-tabs-row">
       <button class="structure-tab-btn active" id="tabL1" onclick="switchStructureLevel(1)">Bậc 1 (Trình tự amino acid)</button>
       <button class="structure-tab-btn" id="tabL2" onclick="switchStructureLevel(2)">Bậc 2 (Xoắn α & Gấp nếp β)</button>
       <button class="structure-tab-btn" id="tabL3" onclick="switchStructureLevel(3)">Bậc 3 (Gấp cuộn 3D của 1 chuỗi)</button>
@@ -1633,7 +1981,18 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
     </div>
 
     <!-- Quiz củng cố cấu trúc bậc 4 và bậc 3 -->
-    <div class="quiz-section" id="st03Quiz">
+          </div>
+        </div>
+      </div>
+
+      <!-- CỘT PHẢI: Hoạt động & Bài tập củng cố -->
+      <div class="workspace-card">
+        <div class="workspace-section-label">
+          <i class="ti ti-checkup-list"></i>
+          <span>HOẠT ĐỘNG VÀ BÀI TẬP CỦNG CỐ</span>
+        </div>
+
+        <div class="quiz-section" id="st03Quiz">
       <div class="quiz-question-title">
         <i class="ti ti-help-circle"></i>
         <span>Điểm khác biệt cốt lõi nhất giữa cấu trúc bậc 4 và cấu trúc bậc 3 của protein là gì?</span>
@@ -1656,6 +2015,9 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
     </div>
 
     <!-- Stage Actions -->
+      </div>
+    </div>
+
     <div class="controls-row">
       <button class="btn btn-secondary" onclick="goToStage(2)">
         <i class="ti ti-arrow-left"></i>
@@ -1671,57 +2033,57 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
   <!-- ==========================================================================
        STAGE 5 (ST04): CẤU TRÚC KHÔNG GIAN TẠO NÊN CHỨC NĂNG
        ========================================================================== -->
+    <!-- ==============================================================
+       STAGE 4: CẤU TRÚC KHÔNG GIAN TẠO NÊN CHỨC NĂNG
+       ============================================================== -->
   <section class="stage-card hidden" id="stage04" role="region" aria-labelledby="st04Heading">
-    <h2 class="stage-title" id="st04Heading">
-      <i class="ti ti-key"></i>
-      Cấu trúc không gian tạo nên chức năng
-    </h2>
-
-    <p class="lead-text">
-      Tại sao protein lại có thể đảm nhiệm những vai trò cực kỳ đa dạng và chính xác đến vậy? Bí mật nằm ở mối quan hệ chặt chẽ giữa <strong>cấu trúc không gian 3 chiều</strong> và <strong>tính đặc hiệu</strong> trong hoạt động sinh học.
-    </p>
-
-    <div class="guide-box">
-      <i class="ti ti-info-circle"></i>
-      <span>Khám phá chuỗi nguyên nhân cấu trúc quy định chức năng và mô hình tương thích ổ khóa – chìa khóa của Enzyme.</span>
-    </div>
-
-    <!-- Màn 5A: Chuỗi nguyên nhân -->
-    <div class="summary-box">
-      <div class="summary-title">
-        <i class="ti ti-route"></i> Chuỗi nguyên nhân cốt lõi trong Sinh học phân tử
-      </div>
-      <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
-        <div style="background:#FFF; padding:10px 14px; border-radius:8px; border:1.5px solid var(--paper-line-2); font-weight:700; color:var(--blue-text);">
-          1. Trình tự amino acid
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết & Thị giác -->
+      <div class="visual-card">
+        <div class="visual-card__head">
+          <h2 id="st04Heading">
+            <i class="ti ti-key"></i>
+            Cấu trúc không gian tạo nên chức năng
+          </h2>
+          <div class="question">Vì sao cấu trúc không gian 3 chiều lại quyết định tính đặc hiệu trong hoạt động sinh học của protein?</div>
         </div>
-        <i class="ti ti-arrow-right" style="color:var(--jade); font-size:1.4rem;"></i>
-        <div style="background:#FFF; padding:10px 14px; border-radius:8px; border:1.5px solid var(--paper-line-2); font-weight:700; color:var(--accent-text);">
-          2. Cách chuỗi gấp cuộn
-        </div>
-        <i class="ti ti-arrow-right" style="color:var(--jade); font-size:1.4rem;"></i>
-        <div style="background:#FFF; padding:10px 14px; border-radius:8px; border:1.5px solid var(--paper-line-2); font-weight:700; color:var(--jade-text);">
-          3. Hình dạng không gian 3D
-        </div>
-        <i class="ti ti-arrow-right" style="color:var(--jade); font-size:1.4rem;"></i>
-        <div style="background:#FFF; padding:10px 14px; border-radius:8px; border:1.5px solid var(--correct); background:var(--correct-bg); font-weight:800; color:var(--jade-dark);">
-          4. Chức năng đặc hiệu
-        </div>
-      </div>
-    </div>
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span>Quan sát chuỗi nguyên nhân ở trên và nhấp thử 2 loại cơ chất ở mô hình enzyme để kiểm tra tính tương thích không gian.</span>
+          </div>
 
-    <!-- Màn 5B: Minh họa Enzyme và Trung tâm hoạt động -->
-    <div class="quiz-section">
-      <div class="quiz-question-title">
-        <i class="ti ti-lock"></i>
-        <span>Mô hình Enzyme và Cơ chất (Tính đặc hiệu không gian)</span>
-      </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-route"></i> Chuỗi nguyên nhân cốt lõi trong Sinh học phân tử</div>
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px; flex-wrap: wrap; margin-top: 8px;">
+                <div style="background:#FFF; padding:8px 12px; border-radius:6px; border:1px solid var(--paper-line-2); font-weight:700; color:var(--blue-text); font-size:0.85rem;">
+                  1. Trình tự amino acid
+                </div>
+                <i class="ti ti-arrow-right" style="color:var(--jade); font-size:1.2rem;"></i>
+                <div style="background:#FFF; padding:8px 12px; border-radius:6px; border:1px solid var(--paper-line-2); font-weight:700; color:var(--accent-text); font-size:0.85rem;">
+                  2. Cách chuỗi gấp cuộn
+                </div>
+                <i class="ti ti-arrow-right" style="color:var(--jade); font-size:1.2rem;"></i>
+                <div style="background:#FFF; padding:8px 12px; border-radius:6px; border:1px solid var(--paper-line-2); font-weight:700; color:var(--jade-text); font-size:0.85rem;">
+                  3. Hình dạng không gian 3D
+                </div>
+                <i class="ti ti-arrow-right" style="color:var(--jade); font-size:1.2rem;"></i>
+                <div style="background:#FFF; padding:8px 12px; border-radius:6px; border:1.5px solid var(--correct); background:var(--correct-bg); font-weight:800; color:var(--jade-dark); font-size:0.85rem;">
+                  4. Chức năng đặc hiệu
+                </div>
+              </div>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-lock"></i> Mô hình tương thích Enzyme & Trung tâm hoạt động</div>
+              <p class="theory-block__content">
+                Enzyme có vùng không gian đặc thù gọi là <strong>Trung tâm hoạt động</strong>. Chỉ phân tử cơ chất có hình dạng và tính chất tương thích bổ sung (như ổ khóa – chìa khóa) mới liên kết được vào enzyme để tạo phức hợp và xúc tác phản ứng.
+              </p>
+            </div>
+          </div>
 
-      <p style="font-size: 0.95rem; color: var(--ink-2);">
-        Enzyme có một vùng không gian đặc biệt gọi là <strong>Trung tâm hoạt động</strong>. Hãy thử đưa 2 loại cơ chất khác nhau vào trung tâm hoạt động để quan sát sự tương thích:
-      </p>
-
-      <div class="svg-diagram-card">
+          <div class="visual-body" style="width: 100%;">
+            <div class="svg-diagram-card">
         <svg viewBox="0 0 540 220" width="500" height="200" xmlns="http://www.w3.org/2000/svg">
           <!-- Enzyme Body -->
           <g transform="translate(60, 30)">
@@ -1745,11 +2107,25 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
           </g>
         </svg>
       </div>
+          </div>
+        </div>
+      </div>
 
-      <div class="feedback-bar hidden" id="enzymeFeedback"></div>
+      <!-- CỘT PHẢI: Hoạt động & Bài tập củng cố -->
+      <div class="workspace-card">
+        <div class="workspace-section-label">
+          <i class="ti ti-checkup-list"></i>
+          <span>HOẠT ĐỘNG THỰC HÀNH TƯƠNG THÍCH</span>
+        </div>
+
+        <p style="font-size: 0.94rem; color: var(--ink-2); line-height: 1.6; margin-bottom: 8px;">
+          Hãy nhấp vào <strong>Cơ chất A</strong> hoặc <strong>Cơ chất B</strong> trong mô hình enzyme ở bên trái để kiểm tra sự gắn kết khớp bổ sung vào trung tâm hoạt động.
+        </p>
+
+        <div class="feedback-bar hidden" id="enzymeFeedback"></div>
+      </div>
     </div>
 
-    <!-- Stage Actions -->
     <div class="controls-row">
       <button class="btn btn-secondary" onclick="goToStage(3)">
         <i class="ti ti-arrow-left"></i>
@@ -1765,28 +2141,65 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
   <!-- ==========================================================================
        STAGE 6 (ST05): BIẾN TÍNH – KHI PROTEIN MẤT HÌNH DẠNG ĐẶC TRƯNG
        ========================================================================== -->
+    <!-- ==============================================================
+       STAGE 5: BIẾN TÍNH – KHI PROTEIN MẤT HÌNH DẠNG ĐẶC TRƯNG
+       ============================================================== -->
   <section class="stage-card hidden" id="stage05" role="region" aria-labelledby="st05Heading">
-    <h2 class="stage-title" id="st05Heading">
-      <i class="ti ti-flame"></i>
-      Biến tính – khi protein mất hình dạng đặc trưng
-    </h2>
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết & Thị giác -->
+      <div class="visual-card">
+        <div class="visual-card__head">
+          <h2 id="st05Heading">
+            <i class="ti ti-flame"></i>
+            Biến tính – khi protein mất hình dạng đặc trưng
+          </h2>
+          <div class="question">Biến tính protein là gì và vì sao khi bị biến tính protein lại mất chức năng sinh học?</div>
+        </div>
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span>Quan sát hiện tượng lòng trắng trứng bị đông tụ khi gia nhiệt, sau đó trả lời câu hỏi và khám phá cơ chế phân tử ở bảng bên phải.</span>
+          </div>
 
-    <p class="lead-text">
-      Cấu trúc không gian 3 chiều của protein được giữ ổn định bởi các liên kết yếu (liên kết hydrogen, tương tác kị nước, tương tác ion). Khi chịu tác động của các yếu tố môi trường bất lợi như <strong>nhiệt độ cao</strong>, <strong>độ pH khắc nghiệt</strong> hay <strong>hóa chất</strong>, các liên kết này bị phá vỡ, làm protein bị biến tính.
-    </p>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-temperature"></i> Khái niệm biến tính protein</div>
+              <p class="theory-block__content">
+                Cấu trúc không gian 3 chiều của protein được giữ ổn định bởi các liên kết yếu (hydrogen, tương tác kị nước, tương tác ion). Khi gặp các yếu tố môi trường bất lợi như nhiệt độ cao, pH khắc nghiệt hay hóa chất, các liên kết này bị bẻ gãy làm protein mất hình dạng đặc trưng → gọi là <strong>hiện tượng biến tính</strong>.
+              </p>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-circle-off"></i> Biến tính không làm đứt gãy bậc 1</div>
+              <p class="theory-block__content">
+                Biến tính thông thường <strong>không làm thay đổi trình tự amino acid bậc 1</strong> (các liên kết peptide vẫn nguyên vẹn). Tuy nhiên, khi hình dạng 3D bị biến đổi, vị trí hoạt động chức năng biến mất, khiến protein mất hoạt tính sinh học.
+              </p>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-refresh"></i> Hồi tính và ứng dụng trong thực tế</div>
+              <p class="theory-block__content">
+                Một số protein có khả năng <strong>hồi tính</strong> (tự gấp cuộn lại cấu trúc ban đầu) khi đưa về điều kiện sinh lý. Tuy nhiên, biến tính mạnh (như luộc trứng chín) sẽ làm protein kết tụ và không thể tự phục hồi. Ứng dụng: dùng cồn 70% hoặc nhiệt độ cao để diệt khuẩn bằng cách làm biến tính protein màng và enzyme của vi sinh vật.
+              </p>
+            </div>
+          </div>
 
-    <div class="guide-box">
-      <i class="ti ti-info-circle"></i>
-      <span>Quan sát hiện tượng lòng trắng trứng khi đun nóng và tìm hiểu cơ chế biến tính ở cấp độ phân tử.</span>
-    </div>
-
-    <!-- Hình ảnh AI A17: Trứng luộc -->
-    <div class="egg-image-wrap">
+          <div class="visual-body">
+            <div class="egg-image-wrap">
       <img src="images/SH10-B05-M03-A17.png" alt="Lòng trắng trứng trước và sau khi đun nóng">
     </div>
 
     <!-- Quiz lòng trắng trứng -->
-    <div class="quiz-section" id="st05Quiz01">
+          </div>
+        </div>
+      </div>
+
+      <!-- CỘT PHẢI: Hoạt động & Bài tập củng cố -->
+      <div class="workspace-card">
+        <div class="workspace-section-label">
+          <i class="ti ti-checkup-list"></i>
+          <span>HOẠT ĐỘNG VÀ BÀI TẬP CỦNG CỐ</span>
+        </div>
+
+        <div class="quiz-section" id="st05Quiz01">
       <div class="quiz-question-title">
         <i class="ti ti-help-circle"></i>
         <span>Điều gì đã xảy ra với phân tử protein (Albumin) trong lòng trắng trứng khi bị đun nóng?</span>
@@ -1821,6 +2234,9 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
     </div>
 
     <!-- Stage Actions -->
+      </div>
+    </div>
+
     <div class="controls-row">
       <button class="btn btn-secondary" onclick="goToStage(4)">
         <i class="ti ti-arrow-left"></i>
@@ -1836,23 +2252,68 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
   <!-- ==========================================================================
        STAGE 7 (ST06): VẬN DỤNG – TỔNG KẾT – KẾT NỐI M04
        ========================================================================== -->
+    <!-- ==============================================================
+       STAGE 6: VẬN DỤNG – TỔNG KẾT – KẾT NỐI SANG DNA/RNA
+       ============================================================== -->
   <section class="stage-card hidden" id="stage06" role="region" aria-labelledby="st06Heading">
-    <h2 class="stage-title" id="st06Heading">
-      <i class="ti ti-bulb"></i>
-      Vận dụng – Tổng kết – Kết nối sang DNA/RNA
-    </h2>
+    <div class="split-workspace">
+      <!-- CỘT TRÁI: Lý thuyết & Thị giác -->
+      <div class="visual-card">
+        <div class="visual-card__head">
+          <h2 id="st06Heading">
+            <i class="ti ti-bulb"></i>
+            Vận dụng – Tổng kết – Kết nối sang DNA/RNA
+          </h2>
+          <div class="question">Vì sao protein ở các loài lại khác nhau và thông tin nào quy định trình tự amino acid?</div>
+        </div>
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span>Quan sát hình ảnh so sánh thớ cơ thịt bò và thịt lợn, trả lời câu hỏi vận dụng và tổng kết toàn bộ kiến thức module.</span>
+          </div>
 
-    <p class="lead-text">
-      Bây giờ, chúng ta cùng vận dụng các kiến thức đã học để giải thích một hiện tượng rất quen thuộc trong đời sống: <em>Vì sao cùng là thịt (nguồn protein cơ vân), nhưng thịt bò và thịt lợn lại có màu sắc, kết cấu thớ cơ và hương vị hoàn toàn khác nhau?</em>
-    </p>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-meat"></i> Vận dụng: Thịt bò và thịt lợn</div>
+              <p class="theory-block__content">
+                Cùng là nguồn protein cơ vân nhưng thịt bò và thịt lợn có màu sắc, thớ cơ và hương vị khác biệt. Dưới góc độ phân tử, nguyên nhân cốt lõi là do <strong>số lượng, thành phần và đặc biệt là trình tự amino acid</strong> trong các chuỗi polypeptide cấu tạo nên các sợi cơ (myoglobin, actin, myosin) ở hai loài khác nhau, dẫn đến cách cuộn gấp và tổ chức mô khác nhau.
+              </p>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-checkup-list"></i> Cốt lõi toàn diện về Protein</div>
+              <ul class="theory-block__content">
+                <li><strong>Đơn phân:</strong> Khoảng 20 loại amino acid, nối nhau bằng liên kết peptide (–CO–NH–) tạo chuỗi polypeptide.</li>
+                <li><strong>Bốn bậc cấu trúc:</strong> Bậc 1 (trình tự chuỗi), Bậc 2 (xoắn α, nếp β), Bậc 3 (cuộn 3D của 1 chuỗi), Bậc 4 (từ 2 chuỗi trở lên).</li>
+                <li><strong>Quy luật:</strong> Trình tự amino acid → Cách cuộn gấp → Cấu trúc 3D → Chức năng đặc hiệu.</li>
+                <li><strong>7 chức năng:</strong> Cấu trúc, xúc tác, vận chuyển, bảo vệ, điều hòa, vận động, tiếp nhận thông tin.</li>
+              </ul>
+            </div>
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-dna-2"></i> Cầu nối sang Module M04: Nucleic acid (DNA/RNA)</div>
+              <p class="theory-block__content">
+                Trình tự amino acid quyết định toàn bộ cấu trúc và chức năng của protein. Vậy tế bào dựa vào đâu để sắp xếp các amino acid theo đúng trình tự chuẩn xác? Đó chính là thông tin di truyền được lưu trữ trong <strong>DNA</strong> và truyền đạt qua <strong>RNA</strong> – nội dung trọng tâm của Module M04.
+              </p>
+            </div>
+          </div>
 
-    <!-- Hình ảnh AI A20: Thịt bò và thịt lợn -->
-    <div class="meat-image-wrap">
+          <div class="visual-body">
+            <div class="meat-image-wrap">
       <img src="images/SH10-B05-M03-A20.png" alt="So sánh miếng thịt bò và thịt lợn tươi">
     </div>
 
     <!-- Câu hỏi vận dụng -->
-    <div class="quiz-section" id="st06QuizMeat">
+          </div>
+        </div>
+      </div>
+
+      <!-- CỘT PHẢI: Hoạt động & Bài tập củng cố -->
+      <div class="workspace-card">
+        <div class="workspace-section-label">
+          <i class="ti ti-checkup-list"></i>
+          <span>HOẠT ĐỘNG VÀ BÀI TẬP CỦNG CỐ</span>
+        </div>
+
+        <div class="quiz-section" id="st06QuizMeat">
       <div class="quiz-question-title">
         <i class="ti ti-help-circle"></i>
         <span>Dưới góc độ sinh học phân tử, yếu tố quyết định tạo nên sự khác biệt giữa protein cơ của thịt bò và thịt lợn là gì?</span>
@@ -1911,6 +2372,9 @@ section.stage>.controls-row,section.stage>.stage-actions,section.stage-card>.con
     </div>
 
     <!-- Nút Hoàn thành mở Modal V10 -->
+      </div>
+    </div>
+
     <div class="controls-row">
       <button class="btn btn-secondary" onclick="goToStage(5)">
         <i class="ti ti-arrow-left"></i>
@@ -2551,39 +3015,14 @@ function launchConfetti() {
 
   render();
 }
+
+// Initialize to Stage 0 on load
+document.addEventListener('DOMContentLoaded', () => {
+  goToStage(0);
+});
 </script>
 
-<script>
-/* Nâng cấp tương thích: chuyển cấu trúc cũ sang bố cục hai khối mà không sao chép node tương tác. */
-(() => {
-  document.querySelectorAll('section.stage-card').forEach((stage) => {
-    if (stage.classList.contains('two-block-ready')) return;
-    const nodes = [...stage.children];
-    const heading = nodes.find((node) => node.matches('h2.stage-title'));
-    const controls = nodes.find((node) => node.matches('.controls-row'));
-    const guide = nodes.find((node) => node.matches('.guide-box'));
-    const split = document.createElement('div'); split.className = 'split-workspace';
-    const visual = document.createElement('article'); visual.className = 'visual-card';
-    const visualHead = document.createElement('div'); visualHead.className = 'visual-card__head';
-    const visualBody = document.createElement('div'); visualBody.className = 'visual-body';
-    const workspace = document.createElement('article'); workspace.className = 'workspace-card';
-    if (heading) visualHead.appendChild(heading);
-    const candidates = nodes.filter((node) => node !== heading && node !== controls && node !== guide && !node.matches('.feedback-bar'));
-    let visualNode = candidates.find((node) => node.matches('.membrane-viewer,.protein-gallery,.structure-viewer,.molecule-viewer,.diagram-panel'));
-    if (!visualNode) visualNode = candidates.find((node) => node.querySelector('svg,img,canvas') && !node.querySelector('button,input,select,textarea,[tabindex]'));
-    if (!visualNode) visualNode = candidates.find((node) => node.matches('.lead-text,.panel,.science-note'));
-    if (visualNode) visualBody.appendChild(visualNode);
-    visual.append(visualHead, visualBody); split.append(visual, workspace);
-    stage.appendChild(split);
-    if (guide) { guide.className = 'instruction'; workspace.appendChild(guide); }
-    else { const note=document.createElement('div'); note.className='instruction'; note.innerHTML='<i class="ti ti-bulb"></i><span>Quan sát dữ kiện trực quan và hoàn thành lần lượt các nhiệm vụ của giai đoạn.</span>'; workspace.appendChild(note); }
-    candidates.forEach((node) => { if (node !== visualNode) workspace.appendChild(node); });
-    stage.querySelectorAll('.feedback-bar').forEach((node) => node.classList.add('inline-feedback'));
-    if (controls) stage.appendChild(controls);
-    stage.classList.add('two-block-ready');
-  });
-})();
-</script>
+
 <script>
 /* Loại nhãn tiến trình kỹ thuật khỏi phần chữ hiển thị cho người học. */
 (() => {
@@ -2610,7 +3049,7 @@ function launchConfetti() {
 </script>
 <script>
 /* Hàng điều hướng ba nút thống nhất. */
-(()=>{const stages=[...document.querySelectorAll('section.stage,section.stage-card')];const go=(idx)=>{const stage=stages[idx];if(!stage)return;if(typeof showStage==='function')showStage(idx);else if(typeof goStage==='function')goStage(stage.id);else if(typeof goToStage==='function'){const m=stage.id.match(/stage-(\d+)/);goToStage(m?Number(m[1]):idx)}};const hashMatch=location.hash.match(/^#retry-stage-(\d+)$/);stages.forEach((stage,idx)=>{if(stage.querySelector(':scope > .three-button-nav'))return;const sourceRow=stage.querySelector(':scope > .controls-row,:scope > .stage-actions');const buttons=[...stage.querySelectorAll('button')];const byText=(re)=>buttons.find(b=>re.test(b.textContent));const backSource=byText(/quay lại/i);const resetSource=byText(/làm lại màn|làm lại/i);const nextSource=byText(/tiếp tục/i)||buttons.find(b=>/complete|finish/i.test(b.id));const row=document.createElement('div');row.className='three-button-nav';const back=document.createElement('button');back.type='button';back.className='btn btn-outline nav-back';back.innerHTML='<i class="ti ti-arrow-left"></i> Quay lại';back.disabled=idx===0;back.addEventListener('click',()=>backSource?backSource.click():go(idx-1));const reset=document.createElement('button');reset.type='button';reset.className='btn btn-outline nav-reset';reset.innerHTML='<i class="ti ti-rotate-clockwise"></i> Làm lại màn';reset.addEventListener('click',()=>{if(resetSource)resetSource.click();else{location.hash='#retry-stage-'+idx;location.reload()}});const spacer=document.createElement('span');spacer.className='nav-spacer';const next=document.createElement('button');next.type='button';next.className='btn btn-primary nav-next';next.innerHTML='Tiếp tục <i class="ti ti-arrow-right"></i>';const sync=()=>{next.disabled=!nextSource||nextSource.disabled||nextSource.classList.contains('hidden')};next.addEventListener('click',()=>nextSource?nextSource.click():go(idx+1));sync();if(nextSource)new MutationObserver(sync).observe(nextSource,{attributes:true,attributeFilter:['class','disabled']});row.append(back,reset,spacer,next);stage.appendChild(row)});if(hashMatch){const idx=Number(hashMatch[1]);setTimeout(()=>{go(idx);history.replaceState(null,'',location.pathname+location.search)},80)}})();
+(()=>{const stages=[...document.querySelectorAll('section.stage,section.stage-card')];const go=(idx)=>{const stage=stages[idx];if(!stage)return;if(typeof showStage==='function')showStage(idx);else if(typeof goStage==='function')goStage(stage.id);else if(typeof goToStage==='function'){const m=stage.id.match(/stage-(\d+)/);goToStage(m?Number(m[1]):idx)}};const hashMatch=location.hash.match(/^#retry-stage-(\d+)$/);stages.forEach((stage,idx)=>{if(stage.querySelector(':scope > .three-button-nav'))return;const sourceRow=stage.querySelector(':scope > .controls-row,:scope > .stage-actions');const buttons=[...stage.querySelectorAll('button')];const byText=(re)=>buttons.find(b=>re.test(b.textContent));const backSource=byText(/quay lại/i);const resetSource=byText(/làm lại màn|làm lại/i);const nextSource=byText(/tiếp tục/i)||buttons.find(b=>/complete|finish/i.test(b.id));const row=document.createElement('div');row.className='three-button-nav';const back=document.createElement('button');back.type='button';back.className='btn btn-outline nav-back';back.innerHTML='<i class="ti ti-arrow-left"></i> Quay lại';back.disabled=idx===0;back.addEventListener('click',()=>backSource?backSource.click():go(idx-1));const reset=document.createElement('button');reset.type='button';reset.className='btn btn-outline nav-reset';reset.innerHTML='<i class="ti ti-rotate-clockwise"></i> Làm lại màn';reset.addEventListener('click',()=>{if(resetSource)resetSource.click();else{location.hash='#retry-stage-'+idx;location.reload()}});const spacer=document.createElement('span');spacer.className='nav-spacer';const next=document.createElement('button');next.type='button';next.className='btn btn-primary nav-next';next.innerHTML=idx===stages.length-1?'<i class="ti ti-trophy"></i> Hoàn thành bài học':'Tiếp tục <i class="ti ti-arrow-right"></i>';const sync=()=>{next.disabled=!nextSource||nextSource.disabled||nextSource.classList.contains('hidden')};next.addEventListener('click',()=>nextSource?nextSource.click():go(idx+1));sync();if(nextSource)new MutationObserver(sync).observe(nextSource,{attributes:true,attributeFilter:['class','disabled']});row.append(back,reset,spacer,next);stage.appendChild(row)});if(hashMatch){const idx=Number(hashMatch[1]);setTimeout(()=>{go(idx);history.replaceState(null,'',location.pathname+location.search)},80)}})();
 </script>
 </body>
 </html>

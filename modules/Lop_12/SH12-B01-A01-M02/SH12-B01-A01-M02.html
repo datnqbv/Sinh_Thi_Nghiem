@@ -39,8 +39,11 @@
   </script>
 
   <style>
+    /* ==========================================================================
+       DESIGN SYSTEM TOKENS (TOM HAUGOMAT EDITORIAL FLAT - AIDUCATION V10)
+       ========================================================================== */
     :root {
-      /* Neutrals · giấy & mực (Tom Haugomat Editorial Flat) */
+      /* Neutrals · giấy & mực */
       --cream: #FAF7F0;
       --cream-2: #F0EADD;
       --cream-3: #E7DECC;
@@ -93,30 +96,64 @@
       --radius: 10px;
       --radius-lg: 14px;
       --radius-sm: 6px;
-      --shadow: 0 4px 12px rgba(45, 139, 111, .10);
+      --shadow: 0 4px 14px rgba(45, 139, 111, .10);
       --shadow-sm: 0 2px 6px rgba(26, 26, 26, .05);
       --shadow-hover: 0 8px 20px rgba(45, 139, 111, .16);
 
       --font: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      background: var(--cream);
+      color: var(--ink);
+    }
 
     body {
       font-family: var(--font);
-      background-color: var(--cream);
+      font-size: 17px;
+      line-height: 1.65;
+      background: var(--cream);
       color: var(--ink);
-      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: clip;
+      -webkit-font-smoothing: antialiased;
+      padding: 16px clamp(10px, 2.5vw, 24px) 48px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 16px;
-      padding: 16px clamp(12px, 2.5vw, 24px) 48px;
-      -webkit-font-smoothing: antialiased;
     }
 
-    .app-container {
+    button {
+      font: inherit;
+      cursor: pointer;
+      border: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:focus-visible, [tabindex]:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .modal-backdrop.hidden, #completionModal.hidden {
+      display: none !important;
+    }
+
+    /* CONTAINER CHÍNH CHUẨN V10 */
+    .app {
       width: 100%;
       max-width: 1200px;
       margin: 0 auto;
@@ -125,619 +162,963 @@
       gap: 16px;
     }
 
-    /* 1. Header */
-    .module-header {
-      background: #FFFFFF;
-      border: 1px solid var(--paper-line);
-      border-radius: var(--radius-lg);
-      padding: 20px 24px;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .header-top {
+    /* TIÊU ĐỀ MODULE TINH GỌN TRÊN NỀN KEM (CHUẨN V10 - KHÔNG BANNER CỒNG KỀNH) */
+    .header-minimal {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
       flex-wrap: wrap;
-      margin-bottom: 10px;
+      padding: 8px 4px 4px;
     }
-
-    .module-badge {
+    .header-tag-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .badge-grade {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       background: var(--jade-pale);
       color: var(--jade-text);
       font-size: 0.8rem;
       font-weight: 700;
-      padding: 5px 12px;
+      padding: 4px 10px;
       border-radius: 99px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
       border: 1px solid var(--jade-soft);
+      letter-spacing: 0.4px;
     }
-
-    .duration-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 0.82rem;
+    .badge-track {
+      font-size: 0.84rem;
       color: var(--ink-3);
-      font-weight: 500;
+      font-weight: 600;
     }
 
-    .module-title {
-      font-size: clamp(1.4rem, 2.8vw, 1.85rem);
-      font-weight: 800;
-      color: var(--ink);
-      line-height: 1.35;
-      margin-bottom: 8px;
-      letter-spacing: -0.3px;
+    /* THANH TIẾN ĐỘ TINH GỌN TRÊN NỀN KEM */
+    .progress-bar-wrap {
+      width: 100%;
+      height: 6px;
+      background: var(--paper-line);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--jade), var(--accent));
+      transition: width 0.35s ease;
     }
 
-    .module-outcome {
-      display: inline-flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-size: 0.95rem;
-      color: var(--ink-2);
-      background: var(--cream-2);
-      padding: 8px 14px;
-      border-radius: var(--radius-sm);
-      border-left: 3px solid var(--jade);
-      line-height: 1.5;
+    
+    /* ẨN HEADER VÀ STEP PILLS THEO YÊU CẦU */
+    header,
+    .header-minimal,
+    .header-banner,
+    .step-pills-container,
+    .step-pills-nav {
+      display: none !important;
     }
-
-    /* 2. Step Tabs Navigation (Không sticky, không dính khi cuộn) */
-    .progress-nav-container {
+/* STEP PILLS NAVIGATION */
+    .step-pills-container {
       width: 100%;
       overflow-x: auto;
       scrollbar-width: thin;
       scrollbar-color: var(--paper-line-2) transparent;
-      padding-bottom: 4px;
+      padding-bottom: 2px;
     }
-
-    .progress-nav {
+    .step-pills-nav {
       display: flex;
-      gap: 8px;
-      background: #FFFFFF;
-      border: 1px solid var(--paper-line);
-      border-radius: var(--radius);
-      padding: 8px;
-      box-shadow: var(--shadow-sm);
-      position: relative; /* Không sticky */
+      gap: 6px;
+      padding: 4px 2px;
       min-width: max-content;
     }
-
-    .step-tab-btn {
-      display: flex;
+    .step-pill-btn {
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      background: transparent;
-      border: 1px solid transparent;
-      border-radius: var(--radius-sm);
+      gap: 6px;
+      padding: 6px 12px;
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-radius: 99px;
       color: var(--ink-3);
-      font-family: var(--font);
-      font-size: 0.86rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      cursor: pointer;
       transition: all 0.2s ease;
       white-space: nowrap;
     }
-
-    .step-tab-btn:hover {
+    .step-pill-btn:hover {
       background: var(--cream-2);
       color: var(--ink);
+      border-color: var(--paper-line-2);
     }
-
-    .step-tab-btn.active {
+    .step-pill-btn.active {
       background: var(--jade-deep);
       color: #FFFFFF;
-      box-shadow: 0 2px 8px rgba(45, 139, 111, 0.35);
-      border-color: var(--jade);
+      border-color: var(--jade-dark);
+      box-shadow: 0 2px 6px rgba(45, 139, 111, 0.25);
     }
-
-    .step-tab-btn.completed:not(.active) {
+    .step-pill-btn.completed:not(.active) {
       background: var(--jade-pale);
       color: var(--jade-text);
       border-color: var(--jade-soft);
     }
-
-    .step-num {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.08);
-      font-size: 0.75rem;
-      font-weight: 700;
+    .step-pill-btn.completed::after {
+      content: '✓';
+      font-weight: 800;
+      color: var(--jade);
+      font-size: 0.8rem;
     }
 
-    .step-tab-btn.active .step-num {
-      background: #FFFFFF;
-      color: var(--jade-deep);
+    /* STAGE CARD WRAPPER */
+    .stage-section {
+      display: none;
+      animation: fadeIn 0.28s ease-out;
+    }
+    .stage-section.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: none; }
     }
 
-    .step-tab-btn.completed:not(.active) .step-num {
-      background: var(--jade-deep);
-      color: #FFFFFF;
+    /* BỐ CỤC HAI KHỐI CHUẨN V10 (MUTUAL STICKY) */
+    .split-workspace {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(360px, 1fr);
+      gap: 20px;
+      align-items: start;
+      width: 100%;
+    }
+    @media (max-width: 980px) {
+      .split-workspace {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
     }
 
-    /* 3. Section Container */
-    .section-card {
+    /* KHỐI TRÁI: LÝ THUYẾT & MINH HỌA (VISUAL CARD) */
+    .visual-card {
       background: #FFFFFF;
       border: 1px solid var(--paper-line);
       border-radius: var(--radius-lg);
-      padding: clamp(18px, 3vw, 32px);
-      box-shadow: var(--shadow-sm);
+      padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 22px;
+      gap: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .visual-card__head h2 {
+      font-size: clamp(1.2rem, 2vw, 1.45rem);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.35;
+      letter-spacing: -0.2px;
     }
 
-    .section-card.hidden { display: none !important; }
-
-    /* Pedagogical Banners */
-    .lead-box {
-      background: var(--cream);
-      border: 1px solid var(--paper-line);
-      border-left: 4px solid var(--jade);
-      padding: 14px 18px;
-      border-radius: var(--radius-sm);
-      font-size: 1rem;
-      color: var(--ink-2);
-      line-height: 1.65;
-    }
-
-    .instruction-row {
+    /* ĐƠN ĐIỂM HƯỚNG DẪN (SINGLE POINT OF INSTRUCTION) */
+    .guide-box {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--jade-text);
+      gap: 10px;
+      padding: 11px 14px;
       background: var(--jade-pale);
-      padding: 8px 14px;
-      border-radius: var(--radius-sm);
-      width: fit-content;
+      border: 1px solid var(--jade-soft);
+      border-radius: var(--radius);
+      color: var(--jade-text);
+      font-size: 0.91rem;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+    .guide-box i {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      color: var(--jade-deep);
     }
 
-    /* Interactive Diagram Canvas / Vector Container */
+    /* KHỐI NỘI DUNG DỌC TUẦN TỰ (VERTICAL THEORY BLOCKS) */
+    .theory-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .theory-block {
+      background: var(--cream);
+      border: 1px solid var(--paper-line);
+      border-left: 3.5px solid var(--jade);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+    }
+    .theory-block.amber {
+      border-left-color: var(--accent);
+    }
+    .theory-block.jade {
+      border-left-color: var(--jade-deep);
+    }
+    .theory-block__title {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--ink);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .theory-block__content {
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: var(--ink-2);
+    }
+
+    /* SƠ ĐỒ TRỰC QUAN MASTER / SVG CONTAINER */
     .diagram-container {
       width: 100%;
       background: var(--cream);
-      border: 1.5px solid var(--paper-line);
+      border: 1px solid var(--paper-line);
       border-radius: var(--radius);
-      padding: 16px;
+      padding: 14px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      position: relative;
-      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+      gap: 10px;
     }
-
     .diagram-header-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 8px;
       flex-wrap: wrap;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--paper-line);
     }
-
     .diagram-title {
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       font-weight: 700;
       color: var(--ink);
       display: flex;
       align-items: center;
       gap: 6px;
     }
-
     .diagram-legend {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       color: var(--ink-2);
       font-weight: 600;
     }
-
     .legend-item {
       display: inline-flex;
       align-items: center;
       gap: 5px;
     }
-
     .legend-color {
-      width: 12px;
-      height: 12px;
-      border-radius: 3px;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      display: inline-block;
     }
-
-    .svg-wrapper {
+    .svg-viewport {
       width: 100%;
-      aspect-ratio: 16 / 9;
+      display: flex;
+      justify-content: center;
       background: #FFFFFF;
       border: 1px solid var(--paper-line);
       border-radius: var(--radius-sm);
       overflow: hidden;
-      position: relative;
+      padding: 6px;
     }
-
-    .svg-wrapper svg {
+    .svg-viewport svg {
       width: 100%;
-      height: 100%;
+      height: auto;
+      max-height: min(440px, calc(100vh - 220px));
       display: block;
     }
 
-    /* Action Trigger in Diagram */
-    .diagram-action-bar {
+    /* KHỐI PHẢI: HOẠT ĐỘNG & BÀI TẬP (WORKSPACE CARD - MUTUAL STICKY) */
+    .workspace-card {
+      background: var(--cream);
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-lg);
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 16px;
+      max-height: calc(100vh - 32px);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      min-width: 0;
+    }
+    @media (max-width: 980px) {
+      .workspace-card {
+        position: static;
+        max-height: none;
+        overflow-y: visible;
+        padding: 18px 16px;
+      }
+    }
+    .workspace-card::-webkit-scrollbar { width: 4px; }
+    .workspace-card::-webkit-scrollbar-thumb { background: var(--paper-line-2); border-radius: 4px; }
+
+    .task-header {
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 6px 0;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--paper-line);
+    }
+    .task-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .task-badge {
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--jade-pale);
+      color: var(--jade-text);
+      border: 1px solid var(--jade-soft);
     }
 
+    /* NÚT THAO TÁC QUAN SÁT */
+    .obs-action-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
     .btn-observe {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
       background: var(--jade);
       color: #FFFFFF;
-      border: none;
-      border-radius: var(--radius);
-      padding: 10px 22px;
-      font-family: var(--font);
+      border: 1.5px solid var(--jade-deep);
+      border-radius: var(--radius-sm);
+      padding: 10px 16px;
       font-size: 0.92rem;
       font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       cursor: pointer;
+      box-shadow: var(--shadow-sm);
       transition: all 0.2s ease;
-      box-shadow: 0 2px 6px rgba(45, 139, 111, 0.25);
+      width: 100%;
     }
-
     .btn-observe:hover {
       background: var(--jade-deep);
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(45, 139, 111, 0.35);
+    }
+    .btn-observe.observed {
+      background: var(--jade-pale);
+      color: var(--jade-text);
+      border-color: var(--jade-soft);
+      box-shadow: none;
     }
 
-    /* Post-observation detail card */
-    .post-observe-card {
-      background: var(--jade-pale);
-      border: 1px solid var(--jade-soft);
-      border-radius: var(--radius);
-      padding: 16px 20px;
-      font-size: 0.98rem;
+    /* MODE SELECTOR (STAGE 8) */
+    .mode-buttons-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .btn-tool {
+      background: #FFFFFF;
+      border: 1.5px solid var(--paper-line-2);
       color: var(--ink);
-      line-height: 1.65;
+      padding: 9px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.84rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+    .btn-tool:hover {
+      background: var(--sage-pale);
+      border-color: var(--jade);
+      color: var(--jade-dark);
+    }
+    .btn-tool.active {
+      background: var(--jade-deep);
+      border-color: var(--jade-dark);
+      color: #FFFFFF;
+      box-shadow: 0 2px 6px rgba(45, 139, 111, 0.25);
+    }
+
+    /* GHI NHẬN SAU QUAN SÁT */
+    .post-observe-card {
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-left: 3.5px solid var(--jade-deep);
+      border-radius: var(--radius-sm);
+      padding: 11px 13px;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      animation: fadeIn 0.25s ease-out;
+    }
+    .post-obs-header {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--jade-text);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .post-obs-text {
+      color: var(--ink-2);
+      font-size: 0.88rem;
+      margin: 0;
+    }
+
+    /* CÂU HỎI TRẮC NGHIỆM */
+    .quiz-block {
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      animation: fadeIn 0.25s ease-out;
+    }
+    .quiz-header {
       display: flex;
       flex-direction: column;
       gap: 6px;
-      transition: all 0.3s ease;
     }
-
-    .post-observe-card.hidden { display: none !important; }
-
-    .post-observe-label {
-      font-size: 0.8rem;
-      font-weight: 800;
+    .quiz-question-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--ink-3);
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      color: var(--jade-dark);
       display: flex;
       align-items: center;
       gap: 5px;
     }
-
-    /* Quiz Card */
-    .quiz-card {
-      background: var(--cream);
-      border: 1px solid var(--paper-line);
-      border-radius: var(--radius);
-      padding: 18px 22px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      transition: all 0.3s ease;
-    }
-
-    .quiz-card.hidden { display: none !important; }
-
-    .quiz-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-
-    .quiz-tag {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--jade-text);
-      background: var(--jade-pale);
-      padding: 3px 8px;
-      border-radius: 4px;
-    }
-
-    .quiz-question {
-      font-size: 1.02rem;
+    .quiz-question-text {
+      font-size: 0.94rem;
       font-weight: 700;
       color: var(--ink);
-      line-height: 1.5;
+      line-height: 1.55;
     }
-
-    .quiz-options {
+    .quiz-options-list {
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
-
     .quiz-opt-btn {
+      width: 100%;
       display: flex;
       align-items: flex-start;
-      gap: 12px;
-      padding: 12px 14px;
-      background: #FFFFFF;
+      gap: 10px;
+      padding: 10px 12px;
+      background: var(--cream);
       border: 1.5px solid var(--paper-line);
       border-radius: var(--radius-sm);
-      font-family: var(--font);
-      font-size: 0.94rem;
-      color: var(--ink);
       text-align: left;
-      cursor: pointer;
-      transition: all 0.2s ease;
+      font-size: 0.88rem;
       line-height: 1.5;
+      color: var(--ink);
+      transition: all 0.2s ease;
     }
-
-    .quiz-opt-btn:hover:not(:disabled) {
+    .quiz-opt-btn:hover {
       border-color: var(--jade);
-      background: var(--cream);
+      background: #FFFFFF;
     }
-
     .quiz-opt-btn.correct {
-      border-color: var(--correct);
+      border-color: var(--jade-deep);
       background: var(--correct-bg);
       color: var(--jade-dark);
       font-weight: 600;
     }
-
     .quiz-opt-btn.wrong {
       border-color: var(--wrong);
       background: var(--wrong-bg);
-      color: #6E260E;
+      color: #8C2B10;
     }
-
     .opt-letter {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
-      background: var(--cream-2);
-      border: 1px solid var(--paper-line-2);
-      font-weight: 700;
-      font-size: 0.8rem;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .quiz-feedback {
-      border-radius: var(--radius-sm);
-      padding: 12px 16px;
-      font-size: 0.92rem;
-      line-height: 1.6;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-
-    .quiz-feedback.hidden { display: none !important; }
-
-    .quiz-feedback.correct {
-      background: var(--correct-bg);
-      border-left: 4px solid var(--correct);
-      color: var(--jade-dark);
-    }
-
-    .quiz-feedback.wrong {
-      background: var(--wrong-bg);
-      border-left: 4px solid var(--wrong);
-      color: #6E260E;
-    }
-
-    /* Controls Row */
-    .controls-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      padding-top: 14px;
-      border-top: 1px solid var(--paper-line);
-    }
-
-    .btn-action {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border-radius: var(--radius);
-      font-family: var(--font);
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      border: none;
-    }
-
-    .btn-action.primary {
-      background: var(--jade);
-      color: var(--cream);
-    }
-
-    .btn-action.primary:hover:not(:disabled) {
-      background: var(--jade-deep);
-      box-shadow: 0 4px 12px rgba(45, 139, 111, 0.25);
-    }
-
-    .btn-action.primary:disabled {
-      background: var(--paper-line-2);
-      color: var(--ink-faint);
-      cursor: not-allowed;
-      box-shadow: none;
-    }
-
-    .btn-action.secondary {
-      background: var(--cream-2);
-      color: var(--ink-2);
-      border: 1.5px solid var(--paper-line);
-    }
-
-    .btn-action.secondary:hover {
-      background: var(--cream-3);
-      color: var(--ink);
-    }
-
-    /* ST08 Selector Buttons */
-    .st08-selector-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 6px;
-    }
-
-    .btn-mode-select {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 16px;
-      border-radius: var(--radius-sm);
-      border: 1.5px solid var(--paper-line);
       background: #FFFFFF;
-      font-family: var(--font);
-      font-size: 0.88rem;
+      border: 1.5px solid var(--paper-line-2);
+      font-size: 0.76rem;
       font-weight: 700;
-      color: var(--ink-2);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .btn-mode-select:hover {
-      border-color: var(--jade);
-      background: var(--cream-2);
-    }
-
-    .btn-mode-select.active {
-      background: var(--jade-deep);
-      color: #FFFFFF;
-      border-color: var(--jade);
-    }
-
-    /* Final Recap Box */
-    .recap-box {
-      background: var(--cream);
-      border: 1.5px solid var(--jade-soft);
-      border-radius: var(--radius);
-      padding: 22px 26px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      border-left: 5px solid var(--jade-deep);
-    }
-
-    .recap-item {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .recap-item-title {
-      font-size: 0.92rem;
-      font-weight: 800;
-      color: var(--jade-dark);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .recap-item-content {
-      font-size: 1rem;
-      color: var(--ink);
-      line-height: 1.65;
-    }
-
-    .bridge-card {
-      background: var(--accent-pale);
-      border: 1px solid var(--accent);
-      border-radius: var(--radius);
-      padding: 18px 22px;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-    }
-
-    .bridge-icon {
-      font-size: 1.6rem;
-      color: var(--accent-deep);
       flex-shrink: 0;
       margin-top: 2px;
     }
+    .quiz-opt-btn.correct .opt-letter {
+      background: var(--jade-deep);
+      border-color: var(--jade-dark);
+      color: #FFFFFF;
+    }
+    .quiz-opt-btn.wrong .opt-letter {
+      background: var(--wrong);
+      border-color: var(--wrong);
+      color: #FFFFFF;
+    }
+    .opt-text {
+      flex: 1;
+    }
 
-    /* Modal completed */
+    /* INLINE FEEDBACK CHUẨN V10 */
+    .inline-feedback {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.89rem;
+      line-height: 1.55;
+      animation: fadeIn 0.25s ease-out;
+    }
+    .inline-feedback.ok {
+      background: var(--correct-bg);
+      border: 1px solid var(--jade-soft);
+      color: var(--jade-dark);
+    }
+    .inline-feedback.bad {
+      background: var(--wrong-bg);
+      border: 1px solid var(--wrong);
+      color: #8C2B10;
+    }
+    .feedback-header {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-weight: 800;
+      font-size: 0.94rem;
+    }
+    .correct-answer-box {
+      background: #FFFFFF;
+      border-left: 3.5px solid var(--jade);
+      border-radius: 4px;
+      padding: 8px 10px;
+      font-weight: 700;
+      color: var(--jade-text);
+      font-size: 0.86rem;
+      line-height: 1.5;
+    }
+    .explanation {
+      color: var(--ink-2);
+      font-size: 0.86rem;
+      line-height: 1.55;
+    }
+
+    /* PEDAGOGY META */
+    .pedagogy-meta {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-sm);
+      padding: 8px 10px;
+      margin-top: 4px;
+    }
+    @media (max-width: 600px) {
+      .pedagogy-meta {
+        grid-template-columns: 1fr;
+      }
+    }
+    .pedagogy-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .pedagogy-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--ink-3);
+    }
+    .pedagogy-value {
+      font-size: 0.8rem;
+      color: var(--ink);
+    }
+    .pedagogy-value strong {
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    /* THANH ĐIỀU KHIỂN & NÚT BẤM (CONTROLS ROW) */
+    .controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      width: 100%;
+      margin-top: 4px;
+      padding-top: 12px;
+      border-top: 1px solid var(--paper-line);
+      flex-wrap: wrap;
+    }
+    .btn-group-left, .btn-group-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: nowrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 14px;
+      min-height: 40px;
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1.5px solid transparent;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--jade);
+      color: #FFFFFF;
+      border-color: var(--jade-deep);
+    }
+    .btn-primary:hover:not(:disabled) {
+      background: var(--jade-deep);
+    }
+    .btn-outline {
+      background: #FFFFFF;
+      color: var(--ink-2);
+      border-color: var(--paper-line-2);
+    }
+    .btn-outline:hover:not(:disabled) {
+      background: var(--cream);
+      border-color: var(--ink-3);
+      color: var(--ink);
+    }
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    /* STEP 0 & STEP 9 SPECIFIC */
+    .central-question-box {
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-left: 4px solid var(--jade-deep);
+      border-radius: var(--radius);
+      padding: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+    .cq-icon {
+      font-size: 1.8rem;
+      color: var(--jade-deep);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .cq-text {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .intro-context-box {
+      background: var(--cream);
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      font-size: 0.92rem;
+      color: var(--ink-2);
+      line-height: 1.6;
+    }
+    .dna-hero-wrap {
+      width: 100%;
+      background: var(--cream);
+      border: 1px solid var(--paper-line);
+      border-radius: var(--radius);
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-align: center;
+    }
+    .dna-hero-wrap i {
+      font-size: 3.5rem;
+      color: var(--jade-deep);
+    }
+
+    .bridge-card {
+      background: #FFFFFF;
+      border: 1px solid var(--paper-line);
+      border-left: 4px solid var(--accent-deep);
+      border-radius: var(--radius);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .bridge-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--accent-text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .bridge-content {
+      font-size: 0.88rem;
+      color: var(--ink-2);
+      line-height: 1.55;
+    }
+    .btn-complete {
+      width: 100%;
+      min-height: 46px;
+      font-size: 0.95rem;
+    }
+
+    
+    /* =========================================================
+       CHUYỂN ĐỘNG TRỰC QUAN & ANIMATIONS KHOA HỌC (DEV_ONLY)
+       ========================================================= */
+    .obs-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 12px;
+      background: var(--jade-pale);
+      border: 1px solid var(--jade-soft);
+      border-radius: 99px;
+      color: var(--jade-text);
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-top: 6px;
+      animation: fadeIn 0.3s ease-out;
+    }
+    .obs-status-pill i {
+      font-size: 1rem;
+      color: var(--jade-deep);
+    }
+    .obs-status-pill.amber {
+      background: var(--accent-pale);
+      border-color: var(--accent);
+      color: var(--accent-text);
+    }
+
+    /* ST01: Master Fork Animations */
+    svg text {
+      user-select: none;
+      -webkit-user-select: none;
+      stroke: none !important;
+    }
+    .anim-active #helicaseGroup,
+    #helicaseGroup.anim-pulse {
+      animation: helicaseSpin 1.6s ease-in-out infinite;
+      transform-origin: 475px 270px;
+    }
+    @keyframes helicaseSpin {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+    }
+    .anim-active #leadingDnaPath,
+    #leadingDnaPath.anim-glow {
+      animation: leadingFlow 2s ease-in-out infinite;
+    }
+    @keyframes leadingFlow {
+      0%, 100% { stroke: #2D8B6F; filter: none; }
+      50% { stroke: #3CA57A; filter: drop-shadow(0 0 6px rgba(60,165,122,0.85)); }
+    }
+    .anim-active .okazaki-frag-anim {
+      animation: fragGlow 2.4s ease-in-out infinite;
+    }
+    @keyframes fragGlow {
+      0%, 100% { stroke: #2D8B6F; filter: none; }
+      50% { stroke: #E8A24A; filter: drop-shadow(0 0 6px rgba(232,162,74,0.85)); }
+    }
+    .anim-active #parentDnaDouble path {
+      stroke-dasharray: 8, 4;
+      animation: dnaUnwind 2s linear infinite;
+    }
+    @keyframes dnaUnwind {
+      from { stroke-dashoffset: 24; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    /* ST02: Ori 2 chạc */
+    .anim-active-s2 .ori-center-circle {
+      animation: oriPulseGlow 1.4s ease-in-out infinite;
+      transform-origin: 480px 200px;
+    }
+    @keyframes oriPulseGlow {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px rgba(217,83,79,0.4)); }
+      50% { transform: scale(1.25); filter: drop-shadow(0 0 12px rgba(217,83,79,0.9)); }
+    }
+    .anim-active-s2 .ori-arrow-line {
+      stroke-dasharray: 6, 4;
+      animation: arrowDashFlow 1.2s linear infinite;
+    }
+    @keyframes arrowDashFlow {
+      from { stroke-dashoffset: 20; }
+      to { stroke-dashoffset: 0; }
+    }
+    .anim-active-s2 .chac-left-group {
+      animation: shiftLeft 1.8s ease-in-out infinite alternate;
+    }
+    @keyframes shiftLeft {
+      from { transform: translate(300px, 200px); }
+      to { transform: translate(280px, 200px); }
+    }
+    .anim-active-s2 .chac-right-group {
+      animation: shiftRight 1.8s ease-in-out infinite alternate;
+    }
+    @keyframes shiftRight {
+      from { transform: translate(660px, 200px); }
+      to { transform: translate(680px, 200px); }
+    }
+
+    /* ST03: Mồi RNA & Kéo dài 5'->3' */
+    .anim-primer-highlight {
+      stroke-width: 9px !important;
+      stroke: #E84A4A !important;
+      filter: drop-shadow(0 0 8px rgba(217,83,79,0.95)) !important;
+      transition: all 0.4s ease;
+    }
+    .anim-dna-pol-highlight {
+      animation: polAnchor 1.4s ease-in-out infinite alternate;
+    }
+    @keyframes polAnchor {
+      from { transform: scale(1); filter: drop-shadow(0 0 4px rgba(60,165,122,0.4)); }
+      to { transform: scale(1.15); filter: drop-shadow(0 0 12px rgba(45,139,111,0.9)); }
+    }
+    .anim-elongate-active {
+      stroke-dasharray: 10, 4;
+      animation: strandExtend 1.2s linear infinite;
+    }
+    @keyframes strandExtend {
+      from { stroke-dashoffset: 28; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    /* ST04: Highlight liên tục / gián đoạn */
+    .strand-leading-highlight {
+      stroke-width: 8px !important;
+      stroke: #3CA57A !important;
+      filter: drop-shadow(0 0 10px rgba(60,165,122,0.95)) !important;
+      transition: all 0.4s ease;
+    }
+    .strand-lagging-highlight {
+      stroke-width: 8px !important;
+      stroke: #E8A24A !important;
+      filter: drop-shadow(0 0 10px rgba(232,162,74,0.95)) !important;
+      transition: all 0.4s ease;
+    }
+
+    /* ST05: 3 Trạng thái hoàn thiện mạch */
+    .st5-card-box {
+      transition: all 0.35s ease;
+    }
+    .st5-card-active {
+      stroke: var(--jade-deep) !important;
+      stroke-width: 3px !important;
+      filter: drop-shadow(0 4px 14px rgba(45,139,111,0.35));
+      background: #FFFFFF;
+    }
+    .st5-card-active text:first-of-type {
+      font-weight: 900 !important;
+      fill: var(--jade-dark) !important;
+    }
+    .st5-arrow-active {
+      stroke: var(--jade) !important;
+      stroke-width: 4px !important;
+      filter: drop-shadow(0 0 6px rgba(45,139,111,0.6));
+    }
+    .st5-nick-pulse {
+      animation: nickBlink 1s ease-in-out infinite;
+    }
+    @keyframes nickBlink {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.6); opacity: 1; filter: drop-shadow(0 0 8px #E8A24A); }
+    }
+    .st5-ligase-action {
+      animation: ligaseGlow 1.2s ease-in-out infinite;
+      transform-origin: 112px 110px;
+    }
+    @keyframes ligaseGlow {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 3px rgba(138,99,210,0.5)); }
+      50% { transform: scale(1.22); filter: drop-shadow(0 0 12px rgba(138,99,210,0.95)); }
+    }
+
+    /* ST06: Phối hợp toàn cảnh */
+    .anim-fork-all-enz {
+      animation: forkAllActive 2s ease-in-out infinite;
+    }
+    @keyframes forkAllActive {
+      0%, 100% { filter: drop-shadow(0 0 4px rgba(45,139,111,0.2)); }
+      50% { filter: drop-shadow(0 0 10px rgba(45,139,111,0.5)); }
+    }
+
+    /* ST07: Bán bảo toàn */
+    .daughter-dna-card-active {
+      stroke: var(--jade) !important;
+      stroke-width: 3px !important;
+      filter: drop-shadow(0 4px 16px rgba(45,139,111,0.35));
+    }
+    .strand-old-glow {
+      stroke: #203A43 !important;
+      stroke-width: 8px !important;
+      filter: drop-shadow(0 0 6px rgba(32,58,67,0.7));
+    }
+    .strand-new-glow {
+      stroke: #3CA57A !important;
+      stroke-width: 8px !important;
+      filter: drop-shadow(0 0 8px rgba(60,165,122,0.9));
+    }
+
+    /* MODAL CHÚC MỪNG HOÀN THÀNH */
     .modal-backdrop {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(26, 26, 26, 0.5);
+      inset: 0;
+      background: rgba(20, 67, 47, 0.45);
       backdrop-filter: blur(4px);
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 999;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease;
+      z-index: 9999;
+      padding: 20px;
+      animation: fadeIn 0.25s ease-out;
     }
-    .congrats-overlay.hidden,
-    .modal-backdrop.hidden,
-    #completionModal.hidden,
-    #congratsModal.hidden {
-      display: none !important;
-    }
-
-
-    .modal-backdrop.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
     .completion-modal {
       background: #FFFFFF;
       border: 1px solid var(--paper-line);
       border-radius: var(--radius-lg);
-      padding: 32px 28px;
-      max-width: 500px;
-      width: 90%;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.15);
+      padding: 28px 24px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
-      gap: 16px;
+      gap: 14px;
     }
-
     .completion-icon-wrapper {
       width: 64px;
       height: 64px;
@@ -747,148 +1128,129 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
+      font-size: 2.2rem;
     }
-
-    @media (max-width: 768px) {
-      .section-card {
-        padding: 16px;
-      }
-      .controls-row {
-        flex-direction: column-reverse;
-      }
-      .controls-row .btn-action {
-        width: 100%;
-      }
+    .completion-modal h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--ink);
     }
-  
-    /* Loại bỏ thanh tab điều hướng bước học theo chuẩn tuyến tính SH10_B02_M02 */
-    .progress-nav-container,
-    .progress-nav,
-    .stepper-nav,
-    .stepper-bar,
-    .step-nav-bar {
-      display: none !important;
+    .completion-modal p {
+      font-size: 0.92rem;
+      color: var(--ink-2);
+      line-height: 1.6;
     }
-/* Đồng bộ trực tiếp theo SH10_B01_M02 */
-body{padding:0;font-size:17px}.app,.app-container{max-width:1200px;margin:0 auto;padding:18px clamp(12px,2.4vw,28px) 12px}.section-card.two-block-ready,.stage-section.two-block-ready{padding:0;background:transparent;border:0;box-shadow:none}.split-workspace{display:grid!important;grid-template-columns:minmax(0,58fr) minmax(340px,42fr)!important;gap:20px!important;align-items:start!important}.visual-card,.workspace-card{min-width:0;border:1px solid var(--paper-line,#D6CCB6);border-radius:14px;overflow:hidden;box-shadow:0 2px 6px rgba(26,26,26,.05)}.visual-card{position:sticky;top:0;background:#fff}.visual-card__head{padding:14px 16px 12px;border-bottom:1px solid var(--paper-line,#D6CCB6);background:#fff}.visual-card__head h2{margin:0;font-size:clamp(1.25rem,2.2vw,1.75rem);line-height:1.28}.visual-body{padding:14px;background:#fff}.workspace-card{padding:18px;background:var(--cream-2,#FBF9F4)}.instruction{display:flex;align-items:flex-start;gap:10px;margin:0 0 16px;padding:12px 14px;border-left:4px solid var(--info,#4E7F92);border-radius:6px;background:var(--info-bg,#DCE7EB);font-size:.91rem;line-height:1.55}.inline-feedback{font-size:.92rem;line-height:1.55}.controls-row{display:flex;align-items:center;gap:10px;margin-top:16px;padding:14px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;flex-wrap:nowrap}.btn{min-height:44px;padding:9px 15px;font-size:.92rem}@media(max-width:980px){.split-workspace{grid-template-columns:1fr!important}.visual-card{position:static}.workspace-card{padding:16px}}@media(max-width:700px){body{font-size:16px}.app,.app-container{padding:12px 10px 10px}}@media(max-width:420px){.app,.app-container{padding:10px 8px 8px}.workspace-card{padding:13px}}
-.three-button-nav{display:flex;align-items:center;gap:12px;width:100%;margin-top:16px;padding:16px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;scrollbar-width:none}.three-button-nav::-webkit-scrollbar{display:none}.three-button-nav .nav-spacer{flex:1}.three-button-nav .btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:8px;flex:0 0 auto;padding:9px 15px;border:1.5px solid var(--jade,#3CA57A);border-radius:9px;background:transparent;color:var(--jade-text,#1B5E48);font:inherit;font-weight:700;white-space:nowrap;cursor:pointer}.three-button-nav .btn-primary{border-color:var(--jade,#3CA57A);background:var(--jade,#3CA57A);color:var(--cream,#FAF7F0)}.three-button-nav .nav-back{order:1}.three-button-nav .nav-reset{order:2}.three-button-nav .nav-spacer{order:3}.three-button-nav .nav-next{order:4}.three-button-nav .btn:disabled{opacity:.45;cursor:not-allowed}
-section.section-card .controls-row,section.section-card .stage-actions,section.stage-section .controls-row,section.stage-section .stage-actions{display:none!important}
-</style>
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+      margin-top: 8px;
+    }
+    .modal-actions .btn {
+      flex: 1;
+    }
+  </style>
 </head>
 <body>
 
-  <div class="app-container">
-    
-    
-
-    <!-- 2. Step Tabs Navigation (Không sticky, cuộn tự nhiên) -->
-    <div class="progress-nav-container">
-      <nav class="progress-nav" aria-label="Tiến trình học tập">
-        <button class="step-tab-btn active" id="tabStep0" onclick="goToStep(0)">
-          <span class="step-num">0</span>
-          <span>Khởi động</span>
-        </button>
-        <button class="step-tab-btn" id="tabStep1" onclick="goToStep(1)">
-          <span class="step-num">1</span>
-          <span>Toàn cảnh</span>
-        </button>
-        <button class="step-tab-btn" id="tabStep2" onclick="goToStep(2)">
-          <span class="step-num">2</span>
-          <span>Ori & 2 chạc</span>
-        </button>
-        <button class="step-tab-btn" id="tabStep3" onclick="goToStep(3)">
-          <span class="step-num">3</span>
-          <span>Mồi RNA & 5′→3′</span>
-        </button>
-        <button class="step-tab-btn" id="tabStep4" onclick="goToStep(4)">
-          <span class="step-num">4</span>
-          <span>Hai mạch mới</span>
-        </button>
-        <button class="step-tab-btn" id="tabStep5" onclick="goToStep(5)">
-          <span class="step-num">5</span>
-          <span>Hoàn thiện đoạn Okazaki</span>
-        </button>
-        <button class="step-tab-btn" id="tabStep6" onclick="goToStep(6)">
-          <span class="step-num">6</span>
-          <span>Phối hợp bộ máy</span>
-        </button>
-        <button class="step-tab-btn" id="tabStep7" onclick="goToStep(7)">
-          <span class="step-num">7</span>
-          <span>Bán bảo toàn</span>
-        </button>
-        <button class="step-tab-btn" id="tabStep8" onclick="goToStep(8)">
-          <span class="step-num">8</span>
-          <span>So sánh Ori</span>
-        </button>
-        <button class="step-tab-btn" id="tabStep9" onclick="goToStep(9)">
-          <span class="step-num">9</span>
-          <span>Ghi nhớ & Kết nối</span>
-        </button>
-      </nav>
+  <div class="app">
+    <!-- THANH TIẾN ĐỘ TINH GỌN TRÊN NỀN KEM -->
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progressBarFill" style="width: 0%;"></div>
     </div>
 
     <!-- ========================================================= -->
     <!-- BƯỚC 0: MỞ ĐẦU — VÌ SAO DNA PHẢI ĐƯỢC TÁI BẢN? -->
     <!-- ========================================================= -->
-    <section class="section-card" id="stepCard0">
-      <div class="lead-box">
-        Trước khi một tế bào phân chia, thông tin di truyền trong DNA phải được sao chép để các tế bào con nhận được DNA.
-      </div>
+    <section class="stage-section active" id="stepCard0">
+      <div class="split-workspace">
+        <!-- TRÁI: LÝ THUYẾT & MINH HỌA -->
+        <article class="visual-card">
+          <div class="visual-card__head">
+            <h2>Mở đầu · Vì sao DNA phải được tái bản?</h2>
+          </div>
+          <div class="guide-box">
+            <i class="ti ti-hand-click"></i>
+            <span>HƯỚNG DẪN: Nhấn <strong>KHÁM PHÁ QUÁ TRÌNH TÁI BẢN</strong> để bắt đầu tìm hiểu cơ chế.</span>
+          </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-dna"></i> Bối cảnh phân bào</div>
+              <div class="theory-block__content">Trước khi một tế bào phân chia, thông tin di truyền trong DNA phải được sao chép để các tế bào con nhận được DNA.</div>
+            </div>
+          </div>
+          <div class="dna-hero-wrap">
+            <i class="ti ti-dna-2"></i>
+            <p style="font-weight: 700; color: var(--jade-dark);">Mô hình xoắn kép DNA trước phân bào</p>
+            <p style="font-size: 0.85rem; color: var(--ink-3);">Hai mạch đơn liên kết theo nguyên tắc bổ sung sẵn sàng làm khuôn để tự sao chép.</p>
+          </div>
+        </article>
 
-      <div style="background:var(--cream-2); border:1px solid var(--paper-line); border-radius:var(--radius); padding:20px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:12px;">
-        <i class="ti ti-dna" style="font-size:3.5rem; color:var(--jade-deep);"></i>
-        <h3 style="font-size:1.15rem; font-weight:700; color:var(--ink);">
-          “DNA được tái bản bằng cơ chế nào để thông tin di truyền được truyền gần như nguyên vẹn sang DNA mới?”
-        </h3>
-        <p style="font-size:0.92rem; color:var(--ink-2); max-width:600px;">
-          Quá trình sao chép DNA diễn ra với sự phối hợp nhịp nhàng của nhiều enzyme chuyên trách. Hãy cùng bước vào khám phá từng chi tiết của bộ máy tái bản.
-        </p>
-      </div>
-
-      <div class="instruction-row">
-        <i class="ti ti-hand-finger"></i>
-        <span>HƯỚNG DẪN: Nhấn KHÁM PHÁ QUÁ TRÌNH TÁI BẢN để bắt đầu.</span>
-      </div>
-
-      <div class="controls-row" style="justify-content: flex-end;">
-        <button class="btn-action primary" id="btnStartExplore" onclick="goToStep(1)">
-          <span>KHÁM PHÁ QUÁ TRÌNH TÁI BẢN</span>
-          <i class="ti ti-arrow-right"></i>
-        </button>
+        <!-- PHẢI: NHIỆM VỤ & KHỞI ĐỘNG -->
+        <article class="workspace-card">
+          <div class="task-header">
+            <div class="task-title"><i class="ti ti-sparkles"></i> Khởi động tư duy</div>
+            <span class="task-badge">Khởi động</span>
+          </div>
+          <div class="central-question-box">
+            <div class="cq-icon"><i class="ti ti-help"></i></div>
+            <div class="cq-text">“DNA được tái bản bằng cơ chế nào để thông tin di truyền được truyền gần như nguyên vẹn sang DNA mới?”</div>
+          </div>
+          <div class="intro-context-box">
+            <p>Quá trình sao chép DNA diễn ra với độ chính xác phi thường nhờ sự phối hợp nhịp nhàng của các thành phần trong bộ máy tái bản: helicase mở xoắn, primase tạo mồi, DNA polymerase kéo dài mạch mới 5′→3′ và ligase hoàn thiện các mối nối.</p>
+          </div>
+          <div class="controls-row">
+            <div class="btn-group-right" style="margin-left: auto;">
+              <button type="button" class="btn btn-primary" onclick="goToStep(1)">
+                Khám phá quá trình tái bản <i class="ti ti-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
     <!-- ========================================================= -->
-    <!-- BƯỚC 1: ST01 — NHÌN TOÀN CẢNH BỘ MÁY TÁI BẢN -->
+    <!-- BƯỚC 1: ST01 · NHÌN TOÀN CẢNH BỘ MÁY TÁI BẢN -->
     <!-- ========================================================= -->
-    <section class="section-card hidden" id="stepCard1">
-      <div class="lead-box">
-        Tái bản DNA không phải là chuỗi enzyme lần lượt làm xong rồi rời đi. Nhiều thành phần phối hợp quanh chạc tái bản trong cùng một quá trình.
-      </div>
-
-      <div class="instruction-row">
-        <i class="ti ti-hand-finger"></i>
-        <span>HƯỚNG DẪN: Nhấn QUAN SÁT TOÀN CẢNH. Theo dõi vùng DNA đang mở và các mạch mới hình thành.</span>
-      </div>
-
-      <div class="diagram-container">
-        <div class="diagram-header-bar">
-          <span class="diagram-title"><i class="ti ti-eye"></i> Sơ đồ Master: Chạc tái bản DNA toàn cảnh</span>
-          <div class="diagram-legend">
-            <span class="legend-item"><span class="legend-color" style="background:var(--dna-old);"></span> Mạch mẹ cũ</span>
-            <span class="legend-item"><span class="legend-color" style="background:var(--dna-new);"></span> Mạch mới tổng hợp</span>
-            <span class="legend-item"><span class="legend-color" style="background:var(--rna-primer);"></span> Mồi RNA</span>
-            <span class="legend-item"><span class="legend-color" style="background:var(--enz-heli);"></span> Helicase</span>
+    <section class="stage-section" id="stepCard1">
+      <div class="split-workspace">
+        <!-- TRÁI: LÝ THUYẾT & MINH HỌA -->
+        <article class="visual-card">
+          <div class="visual-card__head">
+            <h2>ST01 · Nhìn toàn cảnh bộ máy tái bản</h2>
           </div>
-        </div>
-
-        <div class="svg-wrapper" id="svgWrapStep1">
-          <!-- Master Replication Fork SVG -->
-          <svg viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg" id="masterForkSvg">
+          <div class="guide-box">
+            <i class="ti ti-hand-click"></i>
+            <span>HƯỚNG DẪN: Nhấn <strong>QUAN SÁT TOÀN CẢNH</strong>. Theo dõi vùng DNA đang mở và các mạch mới hình thành.</span>
+          </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-dna-2"></i> Bối cảnh khoa học</div>
+              <div class="theory-block__content">Tái bản DNA không phải là chuỗi enzyme lần lượt làm xong rồi rời đi. Nhiều thành phần phối hợp quanh chạc tái bản trong cùng một quá trình.</div>
+            </div>
+          </div>
+          <div class="diagram-container">
+            <div class="diagram-header-bar">
+              <span class="diagram-title"><i class="ti ti-eye"></i> Sơ đồ trực quan</span>
+              
+      <div class="diagram-legend">
+        <span class="legend-item"><span class="legend-color" style="background:var(--dna-old);"></span> Mạch mẹ cũ</span>
+        <span class="legend-item"><span class="legend-color" style="background:var(--dna-new);"></span> Mạch mới</span>
+        <span class="legend-item"><span class="legend-color" style="background:var(--rna-primer);"></span> Mồi RNA</span>
+        <span class="legend-item"><span class="legend-color" style="background:var(--enz-heli);"></span> Enzyme</span>
+      </div>
+            <div class="obs-status-pill hidden" id="statusPill1"></div>
+    
+            </div>
+            <div class="svg-viewport">
+              <svg viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg" id="masterForkSvg">
             <defs>
-              <marker id="arrowHead" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
-                <path d="M 0 0 L 8 4 L 0 8 z" fill="#2D8B6F"/>
+              <marker id="arrowHead" markerWidth="9" markerHeight="7" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse">
+                <polygon points="0,0.5 8,3.5 0,6.5" fill="#2D8B6F"/>
+              </marker>
+              <marker id="arrowHeadAmber" markerWidth="9" markerHeight="7" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse">
+                <polygon points="0,0.5 8,3.5 0,6.5" fill="#CE8A33"/>
               </marker>
             </defs>
 
@@ -902,139 +1264,183 @@ section.section-card .controls-row,section.section-card .stage-actions,section.s
               <line x1="730" y1="250" x2="730" y2="290" stroke="#7C756A" stroke-width="2" stroke-dasharray="3,3"/>
               <line x1="830" y1="250" x2="830" y2="290" stroke="#7C756A" stroke-width="2" stroke-dasharray="3,3"/>
               <!-- Đầu mút mẹ bên phải -->
-              <text x="895" y="255" font-family="'Be Vietnam Pro', sans-serif" font-size="14" font-weight="800" fill="#203A43">5′</text>
-              <text x="895" y="295" font-family="'Be Vietnam Pro', sans-serif" font-size="14" font-weight="800" fill="#203A43">3′</text>
-              <text x="680" y="340" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="700" fill="#514C44" text-anchor="middle">DNA mẹ xoắn kép</text>
+              <rect x="895" y="240" width="28" height="24" rx="4" fill="#E1ECE4" stroke="#7CA792" stroke-width="1"/>
+              <text x="909" y="257" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="800" fill="#203A43" text-anchor="middle">5′</text>
+              <rect x="895" y="278" width="28" height="24" rx="4" fill="#E1ECE4" stroke="#7CA792" stroke-width="1"/>
+              <text x="909" y="295" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="800" fill="#203A43" text-anchor="middle">3′</text>
+              
+              <rect x="585" y="328" width="190" height="26" rx="5" fill="#FAF7F0" stroke="#D6CCB6" stroke-width="1"/>
+              <text x="680" y="346" font-family="'Be Vietnam Pro', sans-serif" font-size="12.5" font-weight="700" fill="#514C44" text-anchor="middle">DNA mẹ xoắn kép</text>
             </g>
 
             <!-- Junction chạc chữ Y và Helicase tại tâm (x=480, y=270) -->
             <g id="helicaseGroup">
               <!-- Helicase dạng vòng lục giác/nón vàng cam bọc lấy ngã ba -->
-              <polygon points="460,240 505,255 505,285 460,300 440,270" fill="#F0AD4E" stroke="#CE8A33" stroke-width="2.5"/>
-              <text x="475" y="275" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="800" fill="#1A1A1A" text-anchor="middle">Helicase</text>
+              <polygon points="460,242 505,254 505,286 460,298 440,270" fill="#F0AD4E" stroke="#CE8A33" stroke-width="2.5"/>
+              <text x="475" y="274" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="800" fill="#1A1A1A" text-anchor="middle">Helicase</text>
             </g>
 
             <!-- Mạch khuôn trên: 3' (trái) -> 5' (phải junction) -->
             <g id="templateTop">
-              <path d="M 120 120 Q 300 130 480 270" fill="none" stroke="#203A43" stroke-width="6"/>
-              <text x="95" y="125" font-family="'Be Vietnam Pro', sans-serif" font-size="14" font-weight="800" fill="#203A43">3′</text>
-              <text x="180" y="105" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#514C44">Mạch khuôn (3′ → 5′)</text>
+              <path d="M 80 85 Q 290 108 480 258" fill="none" stroke="#203A43" stroke-width="6"/>
+              <rect x="44" y="73" width="28" height="24" rx="4" fill="#E1ECE4" stroke="#7CA792" stroke-width="1"/>
+              <text x="58" y="90" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="800" fill="#203A43" text-anchor="middle">3′</text>
+              <text x="140" y="60" font-family="'Be Vietnam Pro', sans-serif" font-size="12.5" font-weight="700" fill="#514C44">Mạch khuôn (3′ → 5′)</text>
             </g>
 
             <!-- Mạch mới liên tục (nhánh trên: tổng hợp 5' -> 3' hướng vào chạc) -->
             <g id="leadingStrand">
-              <!-- Mồi RNA ở đầu 5' (x=160 -> 210) -->
-              <path d="M 160 145 L 210 152" fill="none" stroke="#D9534F" stroke-width="5"/>
-              <text x="145" y="150" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#D9534F">5′</text>
-              <!-- Mạch DNA mới kéo dài liên tục từ 210 -> 440 (đầu 3') -->
-              <path d="M 210 152 Q 330 170 440 250" fill="none" stroke="#2D8B6F" stroke-width="5" marker-end="url(#arrowHead)"/>
-              <text x="445" y="240" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="800" fill="#2D8B6F">3′</text>
+              <!-- Mồi RNA ở đầu 5' (x=130 -> 195) -->
+              <path id="leadingPrimerPath" d="M 130 106 L 195 115" fill="none" stroke="#D9534F" stroke-width="5" stroke-linecap="round"/>
+              <rect x="94" y="94" width="28" height="24" rx="4" fill="#FDE8E8" stroke="#D9534F" stroke-width="1"/>
+              <text x="108" y="111" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#D9534F" text-anchor="middle">5′</text>
+
+              <!-- Mạch DNA mới kéo dài liên tục từ 195 -> 435 (đầu 3') -->
+              <path id="leadingDnaPath" d="M 195 115 Q 310 138 435 238" fill="none" stroke="#2D8B6F" stroke-width="5" marker-end="url(#arrowHead)"/>
+              <text x="442" y="224" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="800" fill="#2D8B6F">3′</text>
+
               <!-- DNA Polymerase bám đầu 3' -->
-              <ellipse cx="420" cy="235" rx="22" ry="16" fill="#3CA57A" stroke="#1B5E48" stroke-width="1.5" opacity="0.92"/>
-              <text x="420" y="239" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">DNA pol</text>
-              <text x="280" y="160" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#1B5E48">Mạch liên tục (5′ → 3′)</text>
+              <ellipse cx="395" cy="200" rx="22" ry="16" fill="#3CA57A" stroke="#1B5E48" stroke-width="1.5" opacity="0.95"/>
+              <text x="395" y="204" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">DNA pol</text>
+
+              <!-- Nhãn mạch liên tục trong badge thoáng -->
+              <rect x="175" y="148" width="175" height="26" rx="5" fill="#DCEAE1" stroke="#A9D0BE" stroke-width="1"/>
+              <text x="262" y="165" font-family="'Be Vietnam Pro', sans-serif" font-size="11.5" font-weight="700" fill="#1B5E48" text-anchor="middle">Mạch liên tục (5′ → 3′)</text>
             </g>
 
             <!-- Mạch khuôn dưới: 5' (trái) -> 3' (phải junction) -->
             <g id="templateBottom">
-              <path d="M 120 420 Q 300 410 480 270" fill="none" stroke="#203A43" stroke-width="6"/>
-              <text x="95" y="425" font-family="'Be Vietnam Pro', sans-serif" font-size="14" font-weight="800" fill="#203A43">5′</text>
-              <text x="180" y="445" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#514C44">Mạch khuôn (5′ → 3′)</text>
+              <path d="M 80 455 Q 290 432 480 282" fill="none" stroke="#203A43" stroke-width="6"/>
+              <rect x="44" y="443" width="28" height="24" rx="4" fill="#E1ECE4" stroke="#7CA792" stroke-width="1"/>
+              <text x="58" y="460" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="800" fill="#203A43" text-anchor="middle">5′</text>
+              <text x="140" y="490" font-family="'Be Vietnam Pro', sans-serif" font-size="12.5" font-weight="700" fill="#514C44">Mạch khuôn (5′ → 3′)</text>
             </g>
 
             <!-- Mạch mới gián đoạn (nhánh dưới: gồm 3 đoạn Okazaki tổng hợp 5' -> 3' ra xa chạc) -->
             <g id="laggingStrand">
-              <!-- Đoạn 1 (gần chạc nhất, mới tạo: x=440 -> 340) -->
-              <path d="M 440 290 L 410 305" fill="none" stroke="#D9534F" stroke-width="5"/>
-              <text x="448" y="295" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="800" fill="#D9534F">5′</text>
-              <path d="M 410 305 L 340 338" fill="none" stroke="#2D8B6F" stroke-width="5" marker-end="url(#arrowHead)"/>
-              <text x="330" y="352" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#2D8B6F">3′</text>
+              <!-- Nhãn mạch gián đoạn đặt trong khoảng trống an toàn bên trong chạc -->
+              <rect x="135" y="270" width="250" height="26" rx="5" fill="#F7E7CD" stroke="#CE8A33" stroke-width="1"/>
+              <text x="260" y="287" font-family="'Be Vietnam Pro', sans-serif" font-size="11.5" font-weight="700" fill="#8A551A" text-anchor="middle">Mạch gián đoạn (Okazaki 5′ → 3′)</text>
+
+              <!-- Đoạn 1 (gần chạc nhất, mới tạo: tổng hợp 5' tại 450 -> 3' tại 350) -->
+              <path d="M 450 286 L 420 304" fill="none" stroke="#D9534F" stroke-width="5" stroke-linecap="round"/>
+              <text x="452" y="304" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="800" fill="#D9534F">5′</text>
+              <path d="M 420 304 L 350 348" fill="none" stroke="#2D8B6F" stroke-width="5" marker-end="url(#arrowHead)"/>
+              <text x="350" y="366" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#2D8B6F">3′</text>
               <!-- DNA Polymerase bám đầu 3' đoạn mới -->
-              <ellipse cx="360" cy="335" rx="18" ry="14" fill="#3CA57A" stroke="#1B5E48" stroke-width="1.5" opacity="0.9"/>
-              <text x="360" y="339" font-family="'Be Vietnam Pro', sans-serif" font-size="8.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">DNA pol</text>
+              <ellipse cx="385" cy="326" rx="19" ry="14" fill="#3CA57A" stroke="#1B5E48" stroke-width="1.5" opacity="0.95"/>
+              <text x="385" y="330" font-family="'Be Vietnam Pro', sans-serif" font-size="8.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">DNA pol</text>
 
-              <!-- Đoạn 2 (ở giữa: x=320 -> 230) -->
-              <path d="M 320 348 L 295 360" fill="none" stroke="#D9534F" stroke-width="5"/>
-              <text x="325" y="345" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="800" fill="#D9534F">5′</text>
-              <path d="M 295 360 L 230 385" fill="none" stroke="#2D8B6F" stroke-width="5" marker-end="url(#arrowHead)"/>
-              <text x="220" y="398" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#2D8B6F">3′</text>
+              <!-- Đoạn 2 (ở giữa: tổng hợp 5' tại 325 -> 3' tại 235) -->
+              <path d="M 325 362 L 295 382" fill="none" stroke="#D9534F" stroke-width="5" stroke-linecap="round"/>
+              <text x="315" y="354" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="800" fill="#D9534F">5′</text>
+              <path class="okazaki-frag-anim" d="M 295 382 L 235 412" fill="none" stroke="#2D8B6F" stroke-width="5" marker-end="url(#arrowHead)"/>
+              <text x="250" y="402" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#2D8B6F">3′</text>
 
-              <!-- Đoạn 3 (phía sau chạc: mồi đã thay bằng DNA, Ligase đang nối nick tại x=210) -->
-              <path d="M 210 392 L 140 405" fill="none" stroke="#2D8B6F" stroke-width="5"/>
-              <!-- Ligase enzyme tại khe nối -->
-              <circle cx="218" cy="388" r="14" fill="#8A63D2" stroke="#6842A6" stroke-width="1.5" opacity="0.9"/>
-              <text x="218" y="392" font-family="'Be Vietnam Pro', sans-serif" font-size="8.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">Ligase</text>
+              <!-- Ligase enzyme tại khe nối nick giữa Đoạn 2 và Đoạn 3 -->
+              <circle cx="218" cy="418" r="14" fill="#8A63D2" stroke="#6842A6" stroke-width="1.5" opacity="0.95"/>
+              <text x="218" y="422" font-family="'Be Vietnam Pro', sans-serif" font-size="8.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">Ligase</text>
 
-              <text x="310" y="415" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#D64242">Mạch gián đoạn (các đoạn Okazaki 5′ → 3′)</text>
+              <!-- Đoạn 3 (đoạn cũ phía sau: mồi đã thay bằng DNA, nối bởi Ligase) -->
+              <path d="M 204 424 L 130 442" fill="none" stroke="#2D8B6F" stroke-width="5" stroke-linecap="round"/>
+              <text x="114" y="447" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="800" fill="#2D8B6F">5′</text>
             </g>
           </svg>
-        </div>
+            </div>
+          </div>
+        </article>
 
-        <div class="diagram-action-bar">
-          <button class="btn-observe" id="btnObsStep1" onclick="observeStep(1)">
-            <i class="ti ti-player-play"></i>
-            <span>QUAN SÁT TOÀN CẢNH</span>
-          </button>
-        </div>
-      </div>
+        <!-- PHẢI: HOẠT ĐỘNG & BÀI TẬP (MUTUAL STICKY) -->
+        <article class="workspace-card">
+          <div class="task-header">
+            <div class="task-title"><i class="ti ti-microscope"></i> Hoạt động & Củng cố</div>
+            <span class="task-badge">Bước 1 / 9</span>
+          </div>
 
-      <div class="post-observe-card hidden" id="postObsStep1">
-        <span class="post-observe-label"><i class="ti ti-check"></i> Kết quả quan sát</span>
-        <p>Tại chạc tái bản, DNA mẹ được tách mạch; các mạch mẹ làm khuôn và các mạch mới được hình thành dần.</p>
-      </div>
-
-      <!-- Câu hỏi củng cố ST01 -->
-      <div class="quiz-card hidden" id="quizStep1">
-        <div class="quiz-header">
-          <span class="quiz-question">Điều nào mô tả đúng nhất quá trình vừa quan sát?</span>
-          <span class="quiz-tag">Kiểm tra nhanh</span>
-        </div>
-        <div class="quiz-options" id="optsStep1">
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(1, 'A')">
-            <span class="opt-letter">A</span>
-            <span>Các enzyme lần lượt hoàn thành toàn bộ nhiệm vụ rồi enzyme tiếp theo mới hoạt động.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(1, 'B')">
-            <span class="opt-letter">B</span>
-            <span>Nhiều thành phần của bộ máy tái bản phối hợp trong cùng quá trình.</span>
-          </button>
-        </div>
-        <div class="quiz-feedback hidden" id="fbStep1"></div>
-      </div>
-
-      <div class="controls-row">
-        <button class="btn-action secondary" onclick="goToStep(0)">
-          <i class="ti ti-arrow-left"></i>
-          <span>QUAY LẠI</span>
+          
+      <div class="obs-action-wrap">
+        <button type="button" class="btn-observe" id="btnObsStep1" onclick="observeStep(1)">
+          <i class="ti ti-player-play"></i> <span>QUAN SÁT TOÀN CẢNH</span>
         </button>
-        <button class="btn-action primary" id="btnNextStep1" onclick="goToStep(2)" disabled>
-          <span>TIẾP TỤC</span>
-          <i class="ti ti-arrow-right"></i>
-        </button>
+      </div>
+    
+
+          <!-- Ghi nhận sau quan sát -->
+          <div class="post-observe-card hidden" id="postObsStep1">
+            <div class="post-obs-header"><i class="ti ti-circle-check"></i> Sau quan sát:</div>
+            <p class="post-obs-text">Tại chạc tái bản, DNA mẹ được tách mạch; các mạch mẹ làm khuôn và các mạch mới được hình thành dần.</p>
+          </div>
+
+          <!-- Câu hỏi củng cố -->
+          <div class="quiz-block hidden" id="quizStep1">
+            <div class="quiz-header">
+              <div class="quiz-question-title"><i class="ti ti-help-circle"></i> Câu hỏi củng cố:</div>
+              <p class="quiz-question-text">Điều nào mô tả đúng nhất quá trình vừa quan sát?</p>
+            </div>
+            <div class="quiz-options-list" id="optsStep1">
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(1, 'A')">
+                  <span class="opt-letter">A</span>
+                  <span class="opt-text">Các enzyme lần lượt hoàn thành toàn bộ nhiệm vụ rồi enzyme tiếp theo mới hoạt động.</span>
+                </button>
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(1, 'B')">
+                  <span class="opt-letter">B</span>
+                  <span class="opt-text">Nhiều thành phần của bộ máy tái bản phối hợp trong cùng quá trình.</span>
+                </button>
+              
+            </div>
+            <div class="inline-feedback hidden" id="fbStep1"></div>
+          </div>
+
+          <!-- Điều hướng chân trang -->
+          <div class="controls-row">
+            <div class="btn-group-left">
+              <button type="button" class="btn btn-outline" onclick="goToStep(0)">
+                <i class="ti ti-arrow-left"></i> Quay lại
+              </button>
+              <button type="button" class="btn btn-outline" onclick="resetStep(1)">
+                <i class="ti ti-rotate-clockwise"></i> Làm lại
+              </button>
+            </div>
+            <div class="btn-group-right">
+              <button type="button" class="btn btn-primary" id="btnNextStep1" onclick="goToStep(2)" disabled>
+                Tiếp tục <i class="ti ti-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
     <!-- ========================================================= -->
-    <!-- BƯỚC 2: ST02 — ORI VÀ HAI CHẠC TÁI BẢN -->
+    <!-- BƯỚC 2: ST02 · ORI VÀ HAI CHẠC TÁI BẢN -->
     <!-- ========================================================= -->
-    <section class="section-card hidden" id="stepCard2">
-      <div class="lead-box">
-        Quá trình tái bản bắt đầu tại một vùng xác định trên DNA gọi là điểm khởi đầu tái bản – Ori.
-      </div>
-
-      <div class="instruction-row">
-        <i class="ti ti-hand-finger"></i>
-        <span>HƯỚNG DẪN: Nhấn BẮT ĐẦU TẠI ORI và quan sát DNA mở về hai phía.</span>
-      </div>
-
-      <div class="diagram-container">
-        <div class="diagram-header-bar">
-          <span class="diagram-title"><i class="ti ti-arrows-split-2"></i> Sơ đồ: Một Ori hình thành hai chạc tái bản hai hướng</span>
-        </div>
-
-        <div class="svg-wrapper">
-          <!-- Sơ đồ Ori và 2 chạc đối xứng -->
-          <svg viewBox="0 0 960 400" xmlns="http://www.w3.org/2000/svg">
+    <section class="stage-section" id="stepCard2">
+      <div class="split-workspace">
+        <!-- TRÁI: LÝ THUYẾT & MINH HỌA -->
+        <article class="visual-card">
+          <div class="visual-card__head">
+            <h2>ST02 · Ori và hai chạc tái bản</h2>
+          </div>
+          <div class="guide-box">
+            <i class="ti ti-hand-click"></i>
+            <span>HƯỚNG DẪN: Nhấn <strong>BẮT ĐẦU TẠI ORI</strong> và quan sát DNA mở về hai phía.</span>
+          </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-dna-2"></i> Bối cảnh khoa học</div>
+              <div class="theory-block__content">Quá trình tái bản bắt đầu tại một vùng xác định trên DNA gọi là điểm khởi đầu tái bản – Ori.</div>
+            </div>
+          </div>
+          <div class="diagram-container">
+            <div class="diagram-header-bar">
+              <span class="diagram-title"><i class="ti ti-eye"></i> Sơ đồ trực quan</span>
+              
+            </div>
+            <div class="obs-status-pill hidden" id="statusPill2"></div>
+            <div class="svg-viewport">
+              <svg viewBox="0 0 960 400" xmlns="http://www.w3.org/2000/svg" id="oriSvg">
             <defs>
               <marker id="arrowOriLeft" markerWidth="8" markerHeight="8" refX="2" refY="4" orient="auto">
                 <path d="M 8 0 L 0 4 L 8 8 z" fill="#CE8A33"/>
@@ -1064,101 +1470,132 @@ section.section-card .controls-row,section.section-card .stage-actions,section.s
             <!-- Điểm Ori ở trung tâm x=480 -->
             <g transform="translate(480, 200)">
               <line x1="0" y1="-80" x2="0" y2="80" stroke="#7C756A" stroke-width="2" stroke-dasharray="4,4"/>
-              <circle cx="0" cy="0" r="16" fill="#D9534F"/>
+              <circle class="ori-center-circle" cx="0" cy="0" r="16" fill="#D9534F"/>
               <text x="0" y="5" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#FFFFFF" text-anchor="middle">Ori</text>
             </g>
 
             <!-- Chạc trái tiến sang trái -->
-            <g transform="translate(300, 200)">
+            <g class="chac-left-group" transform="translate(300, 200)">
               <polygon points="10,-25 -25,0 10,25" fill="#F0AD4E" stroke="#CE8A33" stroke-width="2"/>
               <text x="-5" y="40" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#CE8A33" text-anchor="middle">Chạc trái</text>
             </g>
-            <line x1="440" y1="200" x2="340" y2="200" stroke="#CE8A33" stroke-width="3" marker-end="url(#arrowOriLeft)"/>
+            <line class="ori-arrow-line" x1="440" y1="200" x2="340" y2="200" stroke="#CE8A33" stroke-width="3" marker-end="url(#arrowOriLeft)"/>
 
             <!-- Chạc phải tiến sang phải -->
-            <g transform="translate(660, 200)">
+            <g class="chac-right-group" transform="translate(660, 200)">
               <polygon points="-10,-25 25,0 -10,25" fill="#F0AD4E" stroke="#CE8A33" stroke-width="2"/>
               <text x="5" y="40" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#CE8A33" text-anchor="middle">Chạc phải</text>
             </g>
-            <line x1="520" y1="200" x2="620" y2="200" stroke="#CE8A33" stroke-width="3" marker-end="url(#arrowOriRight)"/>
+            <line class="ori-arrow-line" x1="520" y1="200" x2="620" y2="200" stroke="#CE8A33" stroke-width="3" marker-end="url(#arrowOriRight)"/>
 
             <!-- Chú thích -->
             <text x="480" y="360" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="700" fill="#1B5E48" text-anchor="middle">Từ một Ori, hai chạc tái bản tiến theo hai hướng ngược nhau</text>
           </svg>
-        </div>
+            </div>
+          </div>
+        </article>
 
-        <div class="diagram-action-bar">
-          <button class="btn-observe" id="btnObsStep2" onclick="observeStep(2)">
-            <i class="ti ti-player-play"></i>
-            <span>BẮT ĐẦU TẠI ORI</span>
-          </button>
-        </div>
-      </div>
+        <!-- PHẢI: HOẠT ĐỘNG & BÀI TẬP (MUTUAL STICKY) -->
+        <article class="workspace-card">
+          <div class="task-header">
+            <div class="task-title"><i class="ti ti-microscope"></i> Hoạt động & Củng cố</div>
+            <span class="task-badge">Bước 2 / 9</span>
+          </div>
 
-      <div class="post-observe-card hidden" id="postObsStep2">
-        <span class="post-observe-label"><i class="ti ti-check"></i> Kết quả quan sát</span>
-        <p>Helicase làm tách hai mạch DNA tại Ori. Từ một Ori hình thành hai chạc tái bản tiến theo hai hướng.</p>
-      </div>
-
-      <!-- Câu hỏi củng cố ST02 -->
-      <div class="quiz-card hidden" id="quizStep2">
-        <div class="quiz-header">
-          <span class="quiz-question">Sau khi hai mạch DNA mẹ được tách, mỗi mạch có vai trò gì?</span>
-          <span class="quiz-tag">Kiểm tra nhanh</span>
-        </div>
-        <div class="quiz-options" id="optsStep2">
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(2, 'A')">
-            <span class="opt-letter">A</span>
-            <span>Cả hai bị phân giải.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(2, 'B')">
-            <span class="opt-letter">B</span>
-            <span>Mỗi mạch làm khuôn để tổng hợp một mạch mới.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(2, 'C')">
-            <span class="opt-letter">C</span>
-            <span>Chỉ một mạch làm khuôn.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(2, 'D')">
-            <span class="opt-letter">D</span>
-            <span>Hai mạch nối lại ngay.</span>
-          </button>
-        </div>
-        <div class="quiz-feedback hidden" id="fbStep2"></div>
-      </div>
-
-      <div class="controls-row">
-        <button class="btn-action secondary" onclick="goToStep(1)">
-          <i class="ti ti-arrow-left"></i>
-          <span>QUAY LẠI</span>
+          
+      <div class="obs-action-wrap">
+        <button type="button" class="btn-observe" id="btnObsStep2" onclick="observeStep(2)">
+          <i class="ti ti-player-play"></i> <span>BẮT ĐẦU TẠI ORI</span>
         </button>
-        <button class="btn-action primary" id="btnNextStep2" onclick="goToStep(3)" disabled>
-          <span>TIẾP TỤC</span>
-          <i class="ti ti-arrow-right"></i>
-        </button>
+      </div>
+    
+
+          <!-- Ghi nhận sau quan sát -->
+          <div class="post-observe-card hidden" id="postObsStep2">
+            <div class="post-obs-header"><i class="ti ti-circle-check"></i> Sau quan sát:</div>
+            <p class="post-obs-text">Helicase làm tách hai mạch DNA tại Ori. Từ một Ori hình thành hai chạc tái bản tiến theo hai hướng.</p>
+          </div>
+
+          <!-- Câu hỏi củng cố -->
+          <div class="quiz-block hidden" id="quizStep2">
+            <div class="quiz-header">
+              <div class="quiz-question-title"><i class="ti ti-help-circle"></i> Câu hỏi củng cố:</div>
+              <p class="quiz-question-text">Sau khi hai mạch DNA mẹ được tách, mỗi mạch có vai trò gì?</p>
+            </div>
+            <div class="quiz-options-list" id="optsStep2">
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(2, 'A')">
+                  <span class="opt-letter">A</span>
+                  <span class="opt-text">Cả hai bị phân giải.</span>
+                </button>
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(2, 'B')">
+                  <span class="opt-letter">B</span>
+                  <span class="opt-text">Mỗi mạch làm khuôn để tổng hợp một mạch mới.</span>
+                </button>
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(2, 'C')">
+                  <span class="opt-letter">C</span>
+                  <span class="opt-text">Chỉ một mạch làm khuôn.</span>
+                </button>
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(2, 'D')">
+                  <span class="opt-letter">D</span>
+                  <span class="opt-text">Hai mạch nối lại ngay.</span>
+                </button>
+              
+            </div>
+            <div class="inline-feedback hidden" id="fbStep2"></div>
+          </div>
+
+          <!-- Điều hướng chân trang -->
+          <div class="controls-row">
+            <div class="btn-group-left">
+              <button type="button" class="btn btn-outline" onclick="goToStep(1)">
+                <i class="ti ti-arrow-left"></i> Quay lại
+              </button>
+              <button type="button" class="btn btn-outline" onclick="resetStep(2)">
+                <i class="ti ti-rotate-clockwise"></i> Làm lại
+              </button>
+            </div>
+            <div class="btn-group-right">
+              <button type="button" class="btn btn-primary" id="btnNextStep2" onclick="goToStep(3)" disabled>
+                Tiếp tục <i class="ti ti-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
     <!-- ========================================================= -->
-    <!-- BƯỚC 3: ST03 — MỒI RNA VÀ CHIỀU TỔNG HỢP 5′→3′ -->
+    <!-- BƯỚC 3: ST03 · MỒI RNA VÀ CHIỀU TỔNG HỢP 5′→3′ -->
     <!-- ========================================================= -->
-    <section class="section-card hidden" id="stepCard3">
-      <div class="lead-box">
-        DNA polymerase không thể tự bắt đầu tổng hợp một mạch DNA mới trên mạch khuôn trống. Trước hết cần có một đoạn mồi cung cấp đầu 3′ thích hợp.
-      </div>
-
-      <div class="instruction-row">
-        <i class="ti ti-hand-finger"></i>
-        <span>HƯỚNG DẪN: Nhấn TẠO MỒI VÀ KÉO DÀI MẠCH MỚI.</span>
-      </div>
-
-      <div class="diagram-container">
-        <div class="diagram-header-bar">
-          <span class="diagram-title"><i class="ti ti-zoom-in"></i> Cận cảnh: Primase tạo mồi RNA và DNA Polymerase kéo dài 5′→3′</span>
-        </div>
-
-        <div class="svg-wrapper">
-          <svg viewBox="0 0 960 420" xmlns="http://www.w3.org/2000/svg">
+    <section class="stage-section" id="stepCard3">
+      <div class="split-workspace">
+        <!-- TRÁI: LÝ THUYẾT & MINH HỌA -->
+        <article class="visual-card">
+          <div class="visual-card__head">
+            <h2>ST03 · Mồi RNA và chiều tổng hợp 5′→3′</h2>
+          </div>
+          <div class="guide-box">
+            <i class="ti ti-hand-click"></i>
+            <span>HƯỚNG DẪN: Nhấn <strong>TẠO MỒI VÀ KÉO DÀI MẠCH MỚI</strong>.</span>
+          </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-dna-2"></i> Bối cảnh khoa học</div>
+              <div class="theory-block__content">DNA polymerase không thể tự bắt đầu tổng hợp một mạch DNA mới trên mạch khuôn trống. Trước hết cần có một đoạn mồi cung cấp đầu 3′ thích hợp.</div>
+            </div>
+          </div>
+          <div class="diagram-container">
+            <div class="diagram-header-bar">
+              <span class="diagram-title"><i class="ti ti-eye"></i> Sơ đồ trực quan</span>
+              
+            </div>
+            <div class="obs-status-pill hidden" id="statusPill3"></div>
+            <div class="svg-viewport">
+              <svg viewBox="0 0 960 420" xmlns="http://www.w3.org/2000/svg" id="primerSvg">
             <!-- Mạch khuôn 3' -> 5' -->
             <rect width="960" height="420" fill="#FAF7F0"/>
             <g transform="translate(100, 150)">
@@ -1169,104 +1606,141 @@ section.section-card .controls-row,section.section-card .stage-actions,section.s
               <text x="380" y="95" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="700" fill="#514C44" text-anchor="middle">Mạch khuôn mẹ</text>
 
               <!-- Đoạn mồi RNA ngắn (đầu 5' ở x=60, đầu 3' ở x=180) -->
-              <line x1="60" y1="20" x2="180" y2="20" stroke="#D9534F" stroke-width="6"/>
+              <line id="rnaPrimerLine" x1="60" y1="20" x2="180" y2="20" stroke="#D9534F" stroke-width="6"/>
               <text x="40" y="25" font-family="'Be Vietnam Pro', sans-serif" font-size="14" font-weight="800" fill="#D9534F">5′</text>
               <text x="120" y="-5" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#D9534F" text-anchor="middle">Mồi RNA do Primase tạo</text>
-
               <!-- Mạch DNA mới kéo dài từ đầu 3' của mồi (x=180 -> 480) -->
-              <line x1="180" y1="20" x2="480" y2="20" stroke="#2D8B6F" stroke-width="6"/>
-              <text x="495" y="25" font-family="'Be Vietnam Pro', sans-serif" font-size="14" font-weight="800" fill="#2D8B6F">3′-OH</text>
+              <line id="dnaExtendLine" x1="180" y1="20" x2="480" y2="20" stroke="#2D8B6F" stroke-width="6"/>
+              <text x="535" y="25" font-family="'Be Vietnam Pro', sans-serif" font-size="14" font-weight="800" fill="#2D8B6F">3′-OH</text>
 
               <!-- Mũi tên chiều tổng hợp 5' -> 3' -->
               <line x1="200" y1="-20" x2="440" y2="-20" stroke="#2D8B6F" stroke-width="3" marker-end="url(#arrowHead)"/>
               <text x="320" y="-30" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="800" fill="#1B5E48" text-anchor="middle">Chiều tổng hợp mới: 5′ → 3′</text>
 
               <!-- DNA Polymerase bám tại đầu 3' -->
-              <ellipse cx="480" cy="30" rx="36" ry="26" fill="#3CA57A" stroke="#1B5E48" stroke-width="2"/>
+              <ellipse id="dnaPolEllipse" cx="480" cy="30" rx="36" ry="26" fill="#3CA57A" stroke="#1B5E48" stroke-width="2"/>
               <text x="480" y="35" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="800" fill="#FFFFFF" text-anchor="middle">DNA pol</text>
             </g>
           </svg>
-        </div>
+            </div>
+          </div>
+        </article>
 
-        <div class="diagram-action-bar">
-          <button class="btn-observe" id="btnObsStep3" onclick="observeStep(3)">
-            <i class="ti ti-player-play"></i>
-            <span>TẠO MỒI VÀ KÉO DÀI MẠCH MỚI</span>
-          </button>
-        </div>
-      </div>
+        <!-- PHẢI: HOẠT ĐỘNG & BÀI TẬP (MUTUAL STICKY) -->
+        <article class="workspace-card">
+          <div class="task-header">
+            <div class="task-title"><i class="ti ti-microscope"></i> Hoạt động & Củng cố</div>
+            <span class="task-badge">Bước 3 / 9</span>
+          </div>
 
-      <div class="post-observe-card hidden" id="postObsStep3">
-        <span class="post-observe-label"><i class="ti ti-check"></i> Kết quả quan sát</span>
-        <p>Primase tạo đoạn mồi RNA. Từ đầu 3′ của mồi, DNA polymerase gắn các nucleotide mới theo nguyên tắc bổ sung và kéo dài mạch DNA theo chiều 5′→3′.</p>
-      </div>
-
-      <!-- Câu hỏi củng cố ST03 -->
-      <div class="quiz-card hidden" id="quizStep3">
-        <div class="quiz-header">
-          <span class="quiz-question">Vai trò của primase là gì?</span>
-          <span class="quiz-tag">Kiểm tra nhanh</span>
-        </div>
-        <div class="quiz-options" id="optsStep3">
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(3, 'A')">
-            <span class="opt-letter">A</span>
-            <span>Tháo xoắn DNA.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(3, 'B')">
-            <span class="opt-letter">B</span>
-            <span>Tổng hợp đoạn mồi RNA cung cấp đầu 3′ cho DNA polymerase.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(3, 'C')">
-            <span class="opt-letter">C</span>
-            <span>Nối các đoạn Okazaki.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(3, 'D')">
-            <span class="opt-letter">D</span>
-            <span>Phân giải mạch DNA mẹ.</span>
-          </button>
-        </div>
-        <div class="quiz-feedback hidden" id="fbStep3"></div>
-      </div>
-
-      <div class="controls-row">
-        <button class="btn-action secondary" onclick="goToStep(2)">
-          <i class="ti ti-arrow-left"></i>
-          <span>QUAY LẠI</span>
+          
+      <div class="obs-action-wrap">
+        <button type="button" class="btn-observe" id="btnObsStep3" onclick="observeStep(3)">
+          <i class="ti ti-player-play"></i> <span>TẠO MỒI VÀ KÉO DÀI MẠCH MỚI</span>
         </button>
-        <button class="btn-action primary" id="btnNextStep3" onclick="goToStep(4)" disabled>
-          <span>TIẾP TỤC</span>
-          <i class="ti ti-arrow-right"></i>
-        </button>
+      </div>
+    
+
+          <!-- Ghi nhận sau quan sát -->
+          <div class="post-observe-card hidden" id="postObsStep3">
+            <div class="post-obs-header"><i class="ti ti-circle-check"></i> Sau quan sát:</div>
+            <p class="post-obs-text">Primase tạo đoạn mồi RNA. Từ đầu 3′ của mồi, DNA polymerase gắn các nucleotide mới theo nguyên tắc bổ sung và kéo dài mạch DNA theo chiều 5′→3′.</p>
+          </div>
+
+          <!-- Câu hỏi củng cố -->
+          <div class="quiz-block hidden" id="quizStep3">
+            <div class="quiz-header">
+              <div class="quiz-question-title"><i class="ti ti-help-circle"></i> Câu hỏi củng cố:</div>
+              <p class="quiz-question-text">Vai trò của primase là gì?</p>
+            </div>
+            <div class="quiz-options-list" id="optsStep3">
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(3, 'A')">
+                  <span class="opt-letter">A</span>
+                  <span class="opt-text">Tháo xoắn DNA.</span>
+                </button>
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(3, 'B')">
+                  <span class="opt-letter">B</span>
+                  <span class="opt-text">Tổng hợp đoạn mồi RNA cung cấp đầu 3′ cho DNA polymerase.</span>
+                </button>
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(3, 'C')">
+                  <span class="opt-letter">C</span>
+                  <span class="opt-text">Nối các đoạn Okazaki.</span>
+                </button>
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(3, 'D')">
+                  <span class="opt-letter">D</span>
+                  <span class="opt-text">Phân giải mạch DNA mẹ.</span>
+                </button>
+              
+            </div>
+            <div class="inline-feedback hidden" id="fbStep3"></div>
+          </div>
+
+          <!-- Điều hướng chân trang -->
+          <div class="controls-row">
+            <div class="btn-group-left">
+              <button type="button" class="btn btn-outline" onclick="goToStep(2)">
+                <i class="ti ti-arrow-left"></i> Quay lại
+              </button>
+              <button type="button" class="btn btn-outline" onclick="resetStep(3)">
+                <i class="ti ti-rotate-clockwise"></i> Làm lại
+              </button>
+            </div>
+            <div class="btn-group-right">
+              <button type="button" class="btn btn-primary" id="btnNextStep3" onclick="goToStep(4)" disabled>
+                Tiếp tục <i class="ti ti-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
     <!-- ========================================================= -->
-    <!-- BƯỚC 4: ST04 — MẠCH LIÊN TỤC VÀ MẠCH GIÁN ĐOẠN -->
+    <!-- BƯỚC 4: ST04 · MẠCH LIÊN TỤC VÀ MẠCH GIÁN ĐOẠN -->
     <!-- ========================================================= -->
-    <section class="section-card hidden" id="stepCard4">
-      <div class="lead-box">
-        Hai mạch DNA mẹ song song ngược chiều, trong khi DNA polymerase chỉ tổng hợp DNA mới theo một chiều duy nhất: 5′→3′.
+    <section class="stage-section" id="stepCard4">
+      <div class="split-workspace">
+        <!-- TRÁI: LÝ THUYẾT & MINH HỌA -->
+        <article class="visual-card">
+          <div class="visual-card__head">
+            <h2>ST04 · Mạch liên tục và mạch gián đoạn</h2>
+          </div>
+          <div class="guide-box">
+            <i class="ti ti-hand-click"></i>
+            <span>HƯỚNG DẪN: Nhấn <strong>QUAN SÁT MỘT CHẠC TÁI BẢN</strong>. So sánh cách mạch mới được hình thành ở hai mạch khuôn.</span>
+          </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-dna-2"></i> Bối cảnh khoa học</div>
+              <div class="theory-block__content">Hai mạch DNA mẹ song song ngược chiều, trong khi DNA polymerase chỉ tổng hợp DNA mới theo một chiều duy nhất: 5′→3′.</div>
+            </div>
+          </div>
+          <div class="diagram-container">
+            <div class="diagram-header-bar">
+              <span class="diagram-title"><i class="ti ti-eye"></i> Sơ đồ trực quan</span>
+              
+      <div class="diagram-legend">
+        <span class="legend-item"><span class="legend-color" style="background:var(--dna-old);"></span> Mạch mẹ cũ</span>
+        <span class="legend-item"><span class="legend-color" style="background:var(--dna-new);"></span> Mạch mới</span>
+        <span class="legend-item"><span class="legend-color" style="background:var(--rna-primer);"></span> Mồi RNA</span>
+        <span class="legend-item"><span class="legend-color" style="background:var(--enz-heli);"></span> Enzyme</span>
       </div>
-
-      <div class="instruction-row">
-        <i class="ti ti-hand-finger"></i>
-        <span>HƯỚNG DẪN: Nhấn QUAN SÁT MỘT CHẠC TÁI BẢN. So sánh cách mạch mới được hình thành ở hai mạch khuôn.</span>
-      </div>
-
-      <div class="diagram-container">
-        <div class="diagram-header-bar">
-          <span class="diagram-title"><i class="ti ti-arrows-split"></i> So sánh: Mạch liên tục (hướng vào chạc) & Mạch gián đoạn (ra xa chạc)</span>
-        </div>
-
-        <div class="svg-wrapper">
-          <svg viewBox="0 0 960 480" xmlns="http://www.w3.org/2000/svg">
+            <div class="obs-status-pill hidden" id="statusPill4"></div>
+    
+            </div>
+            <div class="svg-viewport">
+              <svg viewBox="0 0 960 480" xmlns="http://www.w3.org/2000/svg" id="strandCompareSvg">
             <rect width="960" height="480" fill="#FAF7F0"/>
             <!-- Hai nhánh tách từ x=520 -->
             <!-- Nhánh trên: khuôn 3'->5' -->
             <path d="M 160 80 Q 340 90 520 240 L 880 240" fill="none" stroke="#203A43" stroke-width="6"/>
             <text x="135" y="85" font-family="'Be Vietnam Pro', sans-serif" font-size="14" font-weight="800" fill="#203A43">3′</text>
             <!-- Mạch mới liên tục -->
-            <path d="M 220 105 L 480 220" fill="none" stroke="#2D8B6F" stroke-width="5" marker-end="url(#arrowHead)"/>
+            <path id="leadingStrandPath" d="M 220 105 L 480 220" fill="none" stroke="#2D8B6F" stroke-width="5" marker-end="url(#arrowHead)"/>
             <text x="200" y="110" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#D9534F">5′ mồi</text>
             <text x="490" y="215" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="800" fill="#2D8B6F">3′ (tiến vào chạc)</text>
             <rect x="250" y="55" width="220" height="26" rx="4" fill="#DCEAE1"/>
@@ -1282,99 +1756,130 @@ section.section-card .controls-row,section.section-card .stage-actions,section.s
 
             <!-- Mạch mới gián đoạn: 2 đoạn Okazaki biểu diễn rõ chiều 5'->3' ra xa chạc -->
             <!-- Đoạn gần chạc -->
-            <path d="M 460 260 L 360 310" fill="none" stroke="#2D8B6F" stroke-width="5" marker-end="url(#arrowHead)"/>
+            <path id="laggingFrag1" d="M 460 260 L 360 310" fill="none" stroke="#2D8B6F" stroke-width="5" marker-end="url(#arrowHead)"/>
             <circle cx="460" cy="260" r="5" fill="#D9534F"/>
             <text x="470" y="265" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="800" fill="#D9534F">5′</text>
-            <text x="350" y="325" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="800" fill="#2D8B6F">3′</text>
+            <text x="362" y="302" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="800" fill="#2D8B6F">3′</text>
 
             <!-- Đoạn xa chạc -->
-            <path d="M 330 325 L 230 375" fill="none" stroke="#2D8B6F" stroke-width="5" marker-end="url(#arrowHead)"/>
+            <path id="laggingFrag2" d="M 330 325 L 230 375" fill="none" stroke="#2D8B6F" stroke-width="5" marker-end="url(#arrowHead)"/>
             <circle cx="330" cy="325" r="5" fill="#D9534F"/>
-            <text x="340" y="330" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="800" fill="#D9534F">5′</text>
+            <text x="330" y="348" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="800" fill="#D9534F">5′</text>
             <text x="220" y="390" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="800" fill="#2D8B6F">3′</text>
 
             <rect x="250" y="420" width="280" height="26" rx="4" fill="#F7E7CD"/>
             <text x="390" y="438" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#8A551A" text-anchor="middle">MẠCH GIÁN ĐOẠN (các đoạn Okazaki ra xa chạc)</text>
           </svg>
-        </div>
+            </div>
+          </div>
+        </article>
 
-        <div class="diagram-action-bar">
-          <button class="btn-observe" id="btnObsStep4" onclick="observeStep(4)">
-            <i class="ti ti-player-play"></i>
-            <span>QUAN SÁT MỘT CHẠC TÁI BẢN</span>
-          </button>
-        </div>
-      </div>
+        <!-- PHẢI: HOẠT ĐỘNG & BÀI TẬP (MUTUAL STICKY) -->
+        <article class="workspace-card">
+          <div class="task-header">
+            <div class="task-title"><i class="ti ti-microscope"></i> Hoạt động & Củng cố</div>
+            <span class="task-badge">Bước 4 / 9</span>
+          </div>
 
-      <div class="post-observe-card hidden" id="postObsStep4">
-        <span class="post-observe-label"><i class="ti ti-check"></i> Kết quả quan sát</span>
-        <p>Ở một chạc tái bản, một mạch mới được tổng hợp liên tục; mạch mới còn lại được tổng hợp gián đoạn thành các đoạn Okazaki. Tuy khác cách tổng hợp, cả hai mạch mới đều được kéo dài theo chiều 5′→3′.</p>
-      </div>
-
-      <!-- Câu hỏi củng cố ST04 -->
-      <div class="quiz-card hidden" id="quizStep4">
-        <div class="quiz-header">
-          <span class="quiz-question">Vì sao tại một chạc có mạch liên tục và mạch gián đoạn?</span>
-          <span class="quiz-tag">Kiểm tra nhanh</span>
-        </div>
-        <div class="quiz-options" id="optsStep4">
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(4, 'A')">
-            <span class="opt-letter">A</span>
-            <span>Vì hai DNA polymerase tổng hợp theo hai chiều khác nhau.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(4, 'B')">
-            <span class="opt-letter">B</span>
-            <span>Vì hai mạch khuôn ngược chiều nhau nhưng DNA polymerase chỉ tổng hợp DNA mới theo chiều 5′→3′.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(4, 'C')">
-            <span class="opt-letter">C</span>
-            <span>Vì mạch gián đoạn không cần mồi RNA.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(4, 'D')">
-            <span class="opt-letter">D</span>
-            <span>Vì ligase cắt mạch mới thành nhiều đoạn.</span>
-          </button>
-        </div>
-        <div class="quiz-feedback hidden" id="fbStep4"></div>
-      </div>
-
-      <div class="controls-row">
-        <button class="btn-action secondary" onclick="goToStep(3)">
-          <i class="ti ti-arrow-left"></i>
-          <span>QUAY LẠI</span>
+          
+      <div class="obs-action-wrap">
+        <button type="button" class="btn-observe" id="btnObsStep4" onclick="observeStep(4)">
+          <i class="ti ti-player-play"></i> <span>QUAN SÁT MỘT CHẠC TÁI BẢN</span>
         </button>
-        <button class="btn-action primary" id="btnNextStep4" onclick="goToStep(5)" disabled>
-          <span>TIẾP TỤC</span>
-          <i class="ti ti-arrow-right"></i>
-        </button>
+      </div>
+    
+
+          <!-- Ghi nhận sau quan sát -->
+          <div class="post-observe-card hidden" id="postObsStep4">
+            <div class="post-obs-header"><i class="ti ti-circle-check"></i> Sau quan sát:</div>
+            <p class="post-obs-text">Ở một chạc tái bản, một mạch mới được tổng hợp liên tục; mạch mới còn lại được tổng hợp gián đoạn thành các đoạn Okazaki. Tuy khác cách tổng hợp, cả hai mạch mới đều được kéo dài theo chiều 5′→3′.</p>
+          </div>
+
+          <!-- Câu hỏi củng cố -->
+          <div class="quiz-block hidden" id="quizStep4">
+            <div class="quiz-header">
+              <div class="quiz-question-title"><i class="ti ti-help-circle"></i> Câu hỏi củng cố:</div>
+              <p class="quiz-question-text">Vì sao tại một chạc có mạch liên tục và mạch gián đoạn?</p>
+            </div>
+            <div class="quiz-options-list" id="optsStep4">
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(4, 'A')">
+                  <span class="opt-letter">A</span>
+                  <span class="opt-text">Vì hai DNA polymerase tổng hợp theo hai chiều khác nhau.</span>
+                </button>
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(4, 'B')">
+                  <span class="opt-letter">B</span>
+                  <span class="opt-text">Vì hai mạch khuôn ngược chiều nhau nhưng DNA polymerase chỉ tổng hợp DNA mới theo chiều 5′→3′.</span>
+                </button>
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(4, 'C')">
+                  <span class="opt-letter">C</span>
+                  <span class="opt-text">Vì mạch gián đoạn không cần mồi RNA.</span>
+                </button>
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(4, 'D')">
+                  <span class="opt-letter">D</span>
+                  <span class="opt-text">Vì ligase cắt mạch mới thành nhiều đoạn.</span>
+                </button>
+              
+            </div>
+            <div class="inline-feedback hidden" id="fbStep4"></div>
+          </div>
+
+          <!-- Điều hướng chân trang -->
+          <div class="controls-row">
+            <div class="btn-group-left">
+              <button type="button" class="btn btn-outline" onclick="goToStep(3)">
+                <i class="ti ti-arrow-left"></i> Quay lại
+              </button>
+              <button type="button" class="btn btn-outline" onclick="resetStep(4)">
+                <i class="ti ti-rotate-clockwise"></i> Làm lại
+              </button>
+            </div>
+            <div class="btn-group-right">
+              <button type="button" class="btn btn-primary" id="btnNextStep4" onclick="goToStep(5)" disabled>
+                Tiếp tục <i class="ti ti-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
     <!-- ========================================================= -->
-    <!-- BƯỚC 5: ST05 — HOÀN THIỆN MẠCH GIÁN ĐOẠN -->
+    <!-- BƯỚC 5: ST05 · HOÀN THIỆN MẠCH GIÁN ĐOẠN -->
     <!-- ========================================================= -->
-    <section class="section-card hidden" id="stepCard5">
-      <div class="lead-box">
-        Các đoạn Okazaki vừa được tổng hợp vẫn còn đoạn mồi RNA và các điểm đứt trên khung đường–phosphate.
-      </div>
-
-      <div class="instruction-row">
-        <i class="ti ti-hand-finger"></i>
-        <span>HƯỚNG DẪN: Nhấn HOÀN THIỆN CÁC ĐOẠN CŨ.</span>
-      </div>
-
-      <div class="diagram-container">
-        <div class="diagram-header-bar">
-          <span class="diagram-title"><i class="ti ti-tool"></i> 3 giai đoạn hoàn thiện: Loại mồi → Thay DNA → Ligase nối nick</span>
-        </div>
-
-        <div class="svg-wrapper">
-          <svg viewBox="0 0 960 400" xmlns="http://www.w3.org/2000/svg">
+    <section class="stage-section" id="stepCard5">
+      <div class="split-workspace">
+        <!-- TRÁI: LÝ THUYẾT & MINH HỌA -->
+        <article class="visual-card">
+          <div class="visual-card__head">
+            <h2>ST05 · Hoàn thiện mạch gián đoạn</h2>
+          </div>
+          <div class="guide-box">
+            <i class="ti ti-hand-click"></i>
+            <span>HƯỚNG DẪN: Nhấn <strong>HOÀN THIỆN CÁC ĐOẠN CŨ</strong>.</span>
+          </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-dna-2"></i> Bối cảnh khoa học</div>
+              <div class="theory-block__content">Các đoạn Okazaki vừa được tổng hợp vẫn còn đoạn mồi RNA và các điểm đứt trên khung đường–phosphate.</div>
+            </div>
+          </div>
+          <div class="diagram-container">
+            <div class="diagram-header-bar">
+              <span class="diagram-title"><i class="ti ti-eye"></i> Sơ đồ trực quan</span>
+              
+            </div>
+            <div class="obs-status-pill hidden" id="statusPill5"></div>
+            <div class="svg-viewport">
+              <svg viewBox="0 0 960 400" xmlns="http://www.w3.org/2000/svg" id="ligaseSvg">
             <rect width="960" height="400" fill="#FAF7F0"/>
             <!-- 3 Khối so sánh 3 trạng thái -->
             <!-- Trạng thái 1 -->
-            <g transform="translate(60, 40)">
-              <rect width="250" height="280" rx="8" fill="#FFFFFF" stroke="#E5DECF" stroke-width="1.5"/>
+            <g id="st5Card1" transform="translate(60, 40)">
+              <rect id="st5CardRect1" class="st5-card-box" width="250" height="280" rx="8" fill="#FFFFFF" stroke="#E5DECF" stroke-width="1.5"/>
               <text x="125" y="30" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#514C44" text-anchor="middle">1. CÒN MỒI & KHE ĐỨT</text>
               <!-- Mạch khuôn -->
               <line x1="25" y1="80" x2="225" y2="80" stroke="#203A43" stroke-width="5"/>
@@ -1389,11 +1894,11 @@ section.section-card .controls-row,section.section-card .stage-actions,section.s
             </g>
 
             <!-- Mũi tên chuyển 1 -> 2 -->
-            <line x1="325" y1="180" x2="365" y2="180" stroke="#CE8A33" stroke-width="2.5" marker-end="url(#arrowHead)"/>
+            <line id="st5Arrow1" x1="325" y1="180" x2="365" y2="180" stroke="#CE8A33" stroke-width="2.5" marker-end="url(#arrowHeadAmber)"/>
 
             <!-- Trạng thái 2 -->
-            <g transform="translate(375, 40)">
-              <rect width="250" height="280" rx="8" fill="#FFFFFF" stroke="#E5DECF" stroke-width="1.5"/>
+            <g id="st5Card2" transform="translate(375, 40)">
+              <rect id="st5CardRect2" class="st5-card-box" width="250" height="280" rx="8" fill="#FFFFFF" stroke="#E5DECF" stroke-width="1.5"/>
               <text x="125" y="30" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#514C44" text-anchor="middle">2. THAY MỒI BẰNG DNA</text>
               <line x1="25" y1="80" x2="225" y2="80" stroke="#203A43" stroke-width="5"/>
               <!-- Đoạn trước -->
@@ -1401,103 +1906,140 @@ section.section-card .controls-row,section.section-card .stage-actions,section.s
               <!-- Vùng vừa thay DNA nhưng còn vết đứt nick ở x=110-115 -->
               <line x1="115" y1="110" x2="225" y2="110" stroke="#2D8B6F" stroke-width="5"/>
               <!-- Chỉ điểm nick -->
-              <circle cx="112" cy="110" r="4" fill="#E8A24A"/>
+              <circle id="st5NickCircle" cx="112" cy="110" r="4" fill="#E8A24A"/>
               <text x="112" y="140" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#E8A24A" text-anchor="middle">Điểm đứt (Nick)</text>
               <text x="125" y="180" font-family="'Be Vietnam Pro', sans-serif" font-size="10.5" font-weight="600" fill="#7C756A" text-anchor="middle">Mồi được thay thế bằng DNA</text>
             </g>
 
             <!-- Mũi tên chuyển 2 -> 3 -->
-            <line x1="640" y1="180" x2="680" y2="180" stroke="#CE8A33" stroke-width="2.5" marker-end="url(#arrowHead)"/>
+            <line id="st5Arrow2" x1="640" y1="180" x2="680" y2="180" stroke="#CE8A33" stroke-width="2.5" marker-end="url(#arrowHeadAmber)"/>
 
             <!-- Trạng thái 3 -->
-            <g transform="translate(690, 40)">
-              <rect width="250" height="280" rx="8" fill="#DCEAE1" stroke="#A9D0BE" stroke-width="1.5"/>
+            <g id="st5Card3" transform="translate(690, 40)">
+              <rect id="st5CardRect3" class="st5-card-box" width="250" height="280" rx="8" fill="#DCEAE1" stroke="#A9D0BE" stroke-width="1.5"/>
               <text x="125" y="30" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#1B5E48" text-anchor="middle">3. LIGASE NỐI LIỀN MẠCH</text>
               <line x1="25" y1="80" x2="225" y2="80" stroke="#203A43" stroke-width="5"/>
               <!-- Mạch mới nối liền không còn nick -->
               <line x1="25" y1="110" x2="225" y2="110" stroke="#2D8B6F" stroke-width="6"/>
               <!-- Ligase trên vết nối -->
-              <ellipse cx="112" cy="110" rx="16" ry="12" fill="#8A63D2" stroke="#6842A6" stroke-width="1.5"/>
+              <ellipse id="st5LigaseEllipse" cx="112" cy="110" rx="16" ry="12" fill="#8A63D2" stroke="#6842A6" stroke-width="1.5"/>
               <text x="112" y="114" font-family="'Be Vietnam Pro', sans-serif" font-size="8.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">Ligase</text>
               <text x="125" y="150" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#1B5E48" text-anchor="middle">Nối khung phosphodiester</text>
               <text x="125" y="180" font-family="'Be Vietnam Pro', sans-serif" font-size="10.5" font-weight="600" fill="#1B5E48" text-anchor="middle">Mạch mới trở nên liền mạch</text>
             </g>
           </svg>
-        </div>
+            </div>
+          </div>
+        </article>
 
-        <div class="diagram-action-bar">
-          <button class="btn-observe" id="btnObsStep5" onclick="observeStep(5)">
-            <i class="ti ti-player-play"></i>
-            <span>HOÀN THIỆN CÁC ĐOẠN CŨ</span>
-          </button>
-        </div>
-      </div>
+        <!-- PHẢI: HOẠT ĐỘNG & BÀI TẬP (MUTUAL STICKY) -->
+        <article class="workspace-card">
+          <div class="task-header">
+            <div class="task-title"><i class="ti ti-microscope"></i> Hoạt động & Củng cố</div>
+            <span class="task-badge">Bước 5 / 9</span>
+          </div>
 
-      <div class="post-observe-card hidden" id="postObsStep5">
-        <span class="post-observe-label"><i class="ti ti-check"></i> Kết quả quan sát</span>
-        <p>Đoạn mồi RNA được loại bỏ, vị trí đó được thay bằng DNA. Sau đó ligase nối các điểm đứt còn lại trên khung đường–phosphate.</p>
-      </div>
-
-      <!-- Câu hỏi củng cố ST05 -->
-      <div class="quiz-card hidden" id="quizStep5">
-        <div class="quiz-header">
-          <span class="quiz-question">Vai trò trực tiếp của ligase là gì?</span>
-          <span class="quiz-tag">Kiểm tra nhanh</span>
-        </div>
-        <div class="quiz-options" id="optsStep5">
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(5, 'A')">
-            <span class="opt-letter">A</span>
-            <span>Tạo đoạn mồi RNA.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(5, 'B')">
-            <span class="opt-letter">B</span>
-            <span>Tháo xoắn DNA.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(5, 'C')">
-            <span class="opt-letter">C</span>
-            <span>Nối các điểm đứt trên khung đường–phosphate giữa các đoạn DNA.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(5, 'D')">
-            <span class="opt-letter">D</span>
-            <span>Tạo các đoạn Okazaki.</span>
-          </button>
-        </div>
-        <div class="quiz-feedback hidden" id="fbStep5"></div>
-      </div>
-
-      <div class="controls-row">
-        <button class="btn-action secondary" onclick="goToStep(4)">
-          <i class="ti ti-arrow-left"></i>
-          <span>QUAY LẠI</span>
+          
+      <div class="obs-action-wrap">
+        <button type="button" class="btn-observe" id="btnObsStep5" onclick="observeStep(5)">
+          <i class="ti ti-player-play"></i> <span>HOÀN THIỆN CÁC ĐOẠN CŨ</span>
         </button>
-        <button class="btn-action primary" id="btnNextStep5" onclick="goToStep(6)" disabled>
-          <span>TIẾP TỤC</span>
-          <i class="ti ti-arrow-right"></i>
-        </button>
+      </div>
+    
+
+          <!-- Ghi nhận sau quan sát -->
+          <div class="post-observe-card hidden" id="postObsStep5">
+            <div class="post-obs-header"><i class="ti ti-circle-check"></i> Sau quan sát:</div>
+            <p class="post-obs-text">Đoạn mồi RNA được loại bỏ, vị trí đó được thay bằng DNA. Sau đó ligase nối các điểm đứt còn lại trên khung đường–phosphate.</p>
+          </div>
+
+          <!-- Câu hỏi củng cố -->
+          <div class="quiz-block hidden" id="quizStep5">
+            <div class="quiz-header">
+              <div class="quiz-question-title"><i class="ti ti-help-circle"></i> Câu hỏi củng cố:</div>
+              <p class="quiz-question-text">Vai trò trực tiếp của ligase là gì?</p>
+            </div>
+            <div class="quiz-options-list" id="optsStep5">
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(5, 'A')">
+                  <span class="opt-letter">A</span>
+                  <span class="opt-text">Tạo đoạn mồi RNA.</span>
+                </button>
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(5, 'B')">
+                  <span class="opt-letter">B</span>
+                  <span class="opt-text">Tháo xoắn DNA.</span>
+                </button>
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(5, 'C')">
+                  <span class="opt-letter">C</span>
+                  <span class="opt-text">Nối các điểm đứt trên khung đường–phosphate giữa các đoạn DNA.</span>
+                </button>
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(5, 'D')">
+                  <span class="opt-letter">D</span>
+                  <span class="opt-text">Tạo các đoạn Okazaki.</span>
+                </button>
+              
+            </div>
+            <div class="inline-feedback hidden" id="fbStep5"></div>
+          </div>
+
+          <!-- Điều hướng chân trang -->
+          <div class="controls-row">
+            <div class="btn-group-left">
+              <button type="button" class="btn btn-outline" onclick="goToStep(4)">
+                <i class="ti ti-arrow-left"></i> Quay lại
+              </button>
+              <button type="button" class="btn btn-outline" onclick="resetStep(5)">
+                <i class="ti ti-rotate-clockwise"></i> Làm lại
+              </button>
+            </div>
+            <div class="btn-group-right">
+              <button type="button" class="btn btn-primary" id="btnNextStep5" onclick="goToStep(6)" disabled>
+                Tiếp tục <i class="ti ti-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
     <!-- ========================================================= -->
-    <!-- BƯỚC 6: ST06 — GHÉP LẠI TOÀN BỘ CHẠC TÁI BẢN -->
+    <!-- BƯỚC 6: ST06 · GHÉP LẠI TOÀN BỘ CHẠC TÁI BẢN -->
     <!-- ========================================================= -->
-    <section class="section-card hidden" id="stepCard6">
-      <div class="lead-box">
-        Các phần vừa rồi đã giúp bạn quan sát riêng từng hoạt động. Bây giờ, hãy ghép chúng lại để thấy toàn bộ cơ chế tái bản đang diễn ra phối hợp quanh một chạc tái bản.
+    <section class="stage-section" id="stepCard6">
+      <div class="split-workspace">
+        <!-- TRÁI: LÝ THUYẾT & MINH HỌA -->
+        <article class="visual-card">
+          <div class="visual-card__head">
+            <h2>ST06 · Ghép lại toàn bộ chạc tái bản</h2>
+          </div>
+          <div class="guide-box">
+            <i class="ti ti-hand-click"></i>
+            <span>HƯỚNG DẪN: Nhấn <strong>XEM CHẠC TÁI BẢN HOẠT ĐỘNG</strong>.</span>
+          </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-dna-2"></i> Bối cảnh khoa học</div>
+              <div class="theory-block__content">Các phần vừa rồi đã giúp bạn quan sát riêng từng hoạt động. Bây giờ, hãy ghép chúng lại để thấy toàn bộ cơ chế tái bản đang diễn ra phối hợp quanh một chạc tái bản.</div>
+            </div>
+          </div>
+          <div class="diagram-container">
+            <div class="diagram-header-bar">
+              <span class="diagram-title"><i class="ti ti-eye"></i> Sơ đồ trực quan</span>
+              
+      <div class="diagram-legend">
+        <span class="legend-item"><span class="legend-color" style="background:var(--dna-old);"></span> Mạch mẹ cũ</span>
+        <span class="legend-item"><span class="legend-color" style="background:var(--dna-new);"></span> Mạch mới</span>
+        <span class="legend-item"><span class="legend-color" style="background:var(--rna-primer);"></span> Mồi RNA</span>
+        <span class="legend-item"><span class="legend-color" style="background:var(--enz-heli);"></span> Enzyme</span>
       </div>
-
-      <div class="instruction-row">
-        <i class="ti ti-hand-finger"></i>
-        <span>HƯỚNG DẪN: Nhấn XEM CHẠC TÁI BẢN HOẠT ĐỘNG.</span>
-      </div>
-
-      <div class="diagram-container">
-        <div class="diagram-header-bar">
-          <span class="diagram-title"><i class="ti ti-refresh"></i> Toàn cảnh bộ máy: Tất cả enzyme phối hợp đồng thời quanh chạc</span>
-        </div>
-
-        <div class="svg-wrapper">
-          <!-- Full-frame master fork -->
-          <svg viewBox="0 0 960 480" xmlns="http://www.w3.org/2000/svg">
+            <div class="obs-status-pill hidden" id="statusPill6"></div>
+    
+            </div>
+            <div class="svg-viewport">
+              <svg viewBox="0 0 960 480" xmlns="http://www.w3.org/2000/svg" id="fullForkSvg">
             <rect width="960" height="480" fill="#FAF7F0"/>
             <!-- Helicase mở phía trước -->
             <polygon points="530,225 575,240 575,260 530,275 515,250" fill="#F0AD4E" stroke="#CE8A33" stroke-width="2"/>
@@ -1525,80 +2067,111 @@ section.section-card .controls-row,section.section-card .stage-actions,section.s
             <circle cx="505" cy="285" r="14" fill="#D9534F"/>
             <text x="505" y="289" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="800" fill="#FFFFFF" text-anchor="middle">Primase</text>
           </svg>
-        </div>
+            </div>
+          </div>
+        </article>
 
-        <div class="diagram-action-bar">
-          <button class="btn-observe" id="btnObsStep6" onclick="observeStep(6)">
-            <i class="ti ti-player-play"></i>
-            <span>XEM CHẠC TÁI BẢN HOẠT ĐỘNG</span>
-          </button>
-        </div>
-      </div>
+        <!-- PHẢI: HOẠT ĐỘNG & BÀI TẬP (MUTUAL STICKY) -->
+        <article class="workspace-card">
+          <div class="task-header">
+            <div class="task-title"><i class="ti ti-microscope"></i> Hoạt động & Củng cố</div>
+            <span class="task-badge">Bước 6 / 9</span>
+          </div>
 
-      <div class="post-observe-card hidden" id="postObsStep6">
-        <span class="post-observe-label"><i class="ti ti-check"></i> Kết quả quan sát</span>
-        <p>Helicase tiếp tục tách hai mạch. Primase tiếp tục tạo các mồi cần thiết. DNA polymerase kéo dài các mạch mới 5′→3′. Ở vùng phía sau, các đoạn cũ được hoàn thiện và nối lại.</p>
-      </div>
-
-      <!-- Câu hỏi củng cố ST06 -->
-      <div class="quiz-card hidden" id="quizStep6">
-        <div class="quiz-header">
-          <span class="quiz-question">Nhận định nào đúng?</span>
-          <span class="quiz-tag">Kiểm tra nhanh</span>
-        </div>
-        <div class="quiz-options" id="optsStep6">
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(6, 'A')">
-            <span class="opt-letter">A</span>
-            <span>Helicase phải mở xong toàn bộ DNA rồi DNA polymerase mới bắt đầu.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(6, 'B')">
-            <span class="opt-letter">B</span>
-            <span>Mạch liên tục phải hoàn tất trước khi các đoạn Okazaki được tổng hợp.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(6, 'C')">
-            <span class="opt-letter">C</span>
-            <span>Các hoạt động tái bản có thể diễn ra phối hợp và chồng lấn trong cùng khoảng thời gian.</span>
-          </button>
-        </div>
-        <div class="quiz-feedback hidden" id="fbStep6"></div>
-      </div>
-
-      <div class="controls-row">
-        <button class="btn-action secondary" onclick="goToStep(5)">
-          <i class="ti ti-arrow-left"></i>
-          <span>QUAY LẠI</span>
+          
+      <div class="obs-action-wrap">
+        <button type="button" class="btn-observe" id="btnObsStep6" onclick="observeStep(6)">
+          <i class="ti ti-player-play"></i> <span>XEM CHẠC TÁI BẢN HOẠT ĐỘNG</span>
         </button>
-        <button class="btn-action primary" id="btnNextStep6" onclick="goToStep(7)" disabled>
-          <span>TIẾP TỤC</span>
-          <i class="ti ti-arrow-right"></i>
-        </button>
+      </div>
+    
+
+          <!-- Ghi nhận sau quan sát -->
+          <div class="post-observe-card hidden" id="postObsStep6">
+            <div class="post-obs-header"><i class="ti ti-circle-check"></i> Sau quan sát:</div>
+            <p class="post-obs-text">Helicase tiếp tục tách hai mạch. Primase tiếp tục tạo các mồi cần thiết. DNA polymerase kéo dài các mạch mới 5′→3′. Ở vùng phía sau, các đoạn cũ được hoàn thiện và nối lại.</p>
+          </div>
+
+          <!-- Câu hỏi củng cố -->
+          <div class="quiz-block hidden" id="quizStep6">
+            <div class="quiz-header">
+              <div class="quiz-question-title"><i class="ti ti-help-circle"></i> Câu hỏi củng cố:</div>
+              <p class="quiz-question-text">Nhận định nào đúng?</p>
+            </div>
+            <div class="quiz-options-list" id="optsStep6">
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(6, 'A')">
+                  <span class="opt-letter">A</span>
+                  <span class="opt-text">Helicase phải mở xong toàn bộ DNA rồi DNA polymerase mới bắt đầu.</span>
+                </button>
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(6, 'B')">
+                  <span class="opt-letter">B</span>
+                  <span class="opt-text">Mạch liên tục phải hoàn tất trước khi các đoạn Okazaki được tổng hợp.</span>
+                </button>
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(6, 'C')">
+                  <span class="opt-letter">C</span>
+                  <span class="opt-text">Các hoạt động tái bản có thể diễn ra phối hợp và chồng lấn trong cùng khoảng thời gian.</span>
+                </button>
+              
+            </div>
+            <div class="inline-feedback hidden" id="fbStep6"></div>
+          </div>
+
+          <!-- Điều hướng chân trang -->
+          <div class="controls-row">
+            <div class="btn-group-left">
+              <button type="button" class="btn btn-outline" onclick="goToStep(5)">
+                <i class="ti ti-arrow-left"></i> Quay lại
+              </button>
+              <button type="button" class="btn btn-outline" onclick="resetStep(6)">
+                <i class="ti ti-rotate-clockwise"></i> Làm lại
+              </button>
+            </div>
+            <div class="btn-group-right">
+              <button type="button" class="btn btn-primary" id="btnNextStep6" onclick="goToStep(7)" disabled>
+                Tiếp tục <i class="ti ti-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
     <!-- ========================================================= -->
-    <!-- BƯỚC 7: ST07 — KẾT QUẢ: NGUYÊN TẮC BÁN BẢO TOÀN -->
+    <!-- BƯỚC 7: ST07 · KẾT QUẢ: NGUYÊN TẮC BÁN BẢO TOÀN -->
     <!-- ========================================================= -->
-    <section class="section-card hidden" id="stepCard7">
-      <div class="lead-box">
-        Khi quá trình tái bản hoàn tất, từ một phân tử DNA mẹ hình thành hai phân tử DNA con.
-      </div>
-
-      <div class="instruction-row">
-        <i class="ti ti-hand-finger"></i>
-        <span>HƯỚNG DẪN: Nhấn XEM KẾT QUẢ TÁI BẢN và theo dõi mạch cũ, mạch mới trong mỗi DNA con.</span>
-      </div>
-
-      <div class="diagram-container">
-        <div class="diagram-header-bar">
-          <span class="diagram-title"><i class="ti ti-copy"></i> Nguyên tắc bán bảo toàn: Mỗi phân tử con có 1 mạch cũ và 1 mạch mới</span>
-          <div class="diagram-legend">
-            <span class="legend-item"><span class="legend-color" style="background:var(--dna-old);"></span> Mạch cũ từ mẹ</span>
-            <span class="legend-item"><span class="legend-color" style="background:var(--dna-new);"></span> Mạch mới tổng hợp</span>
+    <section class="stage-section" id="stepCard7">
+      <div class="split-workspace">
+        <!-- TRÁI: LÝ THUYẾT & MINH HỌA -->
+        <article class="visual-card">
+          <div class="visual-card__head">
+            <h2>ST07 · Kết quả: Nguyên tắc bán bảo toàn</h2>
           </div>
-        </div>
-
-        <div class="svg-wrapper">
-          <svg viewBox="0 0 960 420" xmlns="http://www.w3.org/2000/svg">
+          <div class="guide-box">
+            <i class="ti ti-hand-click"></i>
+            <span>HƯỚNG DẪN: Nhấn <strong>XEM KẾT QUẢ TÁI BẢN</strong> và theo dõi mạch cũ, mạch mới trong mỗi DNA con.</span>
+          </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-dna-2"></i> Bối cảnh khoa học</div>
+              <div class="theory-block__content">Khi quá trình tái bản hoàn tất, từ một phân tử DNA mẹ hình thành hai phân tử DNA con.</div>
+            </div>
+          </div>
+          <div class="diagram-container">
+            <div class="diagram-header-bar">
+              <span class="diagram-title"><i class="ti ti-eye"></i> Sơ đồ trực quan</span>
+              
+      <div class="diagram-legend">
+        <span class="legend-item"><span class="legend-color" style="background:var(--dna-old);"></span> Mạch cũ bảo tồn</span>
+        <span class="legend-item"><span class="legend-color" style="background:var(--dna-new);"></span> Mạch mới tổng hợp</span>
+      </div>
+            <div class="obs-status-pill hidden" id="statusPill7"></div>
+    
+            </div>
+            <div class="svg-viewport">
+              <svg viewBox="0 0 960 420" xmlns="http://www.w3.org/2000/svg" id="semiSvg">
             <rect width="960" height="420" fill="#FAF7F0"/>
             <!-- 1 DNA mẹ bên trái (x=100) -->
             <g transform="translate(80, 150)">
@@ -1610,125 +2183,140 @@ section.section-card .controls-row,section.section-card .stage-actions,section.s
             </g>
 
             <!-- Mũi tên chia tách sang 2 DNA con -->
-            <line x1="320" y1="210" x2="420" y2="130" stroke="#CE8A33" stroke-width="3" marker-end="url(#arrowHead)"/>
-            <line x1="320" y1="210" x2="420" y2="290" stroke="#CE8A33" stroke-width="3" marker-end="url(#arrowHead)"/>
+            <line x1="320" y1="210" x2="420" y2="130" stroke="#CE8A33" stroke-width="3" marker-end="url(#arrowHeadAmber)"/>
+            <line x1="320" y1="210" x2="420" y2="290" stroke="#CE8A33" stroke-width="3" marker-end="url(#arrowHeadAmber)"/>
 
             <!-- DNA con 1 (phía trên x=450, y=60) -->
             <g transform="translate(450, 60)">
-              <rect x="0" y="0" width="380" height="130" rx="8" fill="#FFFFFF" stroke="#A9D0BE" stroke-width="1.5"/>
+              <rect id="daughterRect1" x="0" y="0" width="380" height="130" rx="8" fill="#FFFFFF" stroke="#A9D0BE" stroke-width="1.5"/>
               <text x="190" y="30" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="800" fill="#1B5E48" text-anchor="middle">DNA CON THỨ NHẤT</text>
               <!-- 1 mạch cũ -->
-              <line x1="40" y1="65" x2="340" y2="65" stroke="#203A43" stroke-width="6"/>
+              <line id="strandOld1" x1="40" y1="65" x2="340" y2="65" stroke="#203A43" stroke-width="6"/>
               <text x="25" y="70" font-family="'Be Vietnam Pro', sans-serif" font-size="10.5" font-weight="800" fill="#203A43">Cũ</text>
               <!-- 1 mạch mới -->
-              <line x1="40" y1="90" x2="340" y2="90" stroke="#2D8B6F" stroke-width="6"/>
+              <line id="strandNew1" x1="40" y1="90" x2="340" y2="90" stroke="#2D8B6F" stroke-width="6"/>
               <text x="22" y="95" font-family="'Be Vietnam Pro', sans-serif" font-size="10.5" font-weight="800" fill="#2D8B6F">Mới</text>
               <text x="190" y="118" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="600" fill="#1B5E48" text-anchor="middle">1 mạch cũ (mẹ) + 1 mạch mới tổng hợp</text>
             </g>
 
             <!-- DNA con 2 (phía dưới x=450, y=230) -->
             <g transform="translate(450, 230)">
-              <rect x="0" y="0" width="380" height="130" rx="8" fill="#FFFFFF" stroke="#A9D0BE" stroke-width="1.5"/>
+              <rect id="daughterRect2" x="0" y="0" width="380" height="130" rx="8" fill="#FFFFFF" stroke="#A9D0BE" stroke-width="1.5"/>
               <text x="190" y="30" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="800" fill="#1B5E48" text-anchor="middle">DNA CON THỨ HAI</text>
               <!-- 1 mạch mới -->
-              <line x1="40" y1="65" x2="340" y2="65" stroke="#2D8B6F" stroke-width="6"/>
+              <line id="strandNew2" x1="40" y1="65" x2="340" y2="65" stroke="#2D8B6F" stroke-width="6"/>
               <text x="22" y="70" font-family="'Be Vietnam Pro', sans-serif" font-size="10.5" font-weight="800" fill="#2D8B6F">Mới</text>
               <!-- 1 mạch cũ -->
-              <line x1="40" y1="90" x2="340" y2="90" stroke="#203A43" stroke-width="6"/>
+              <line id="strandOld2" x1="40" y1="90" x2="340" y2="90" stroke="#203A43" stroke-width="6"/>
               <text x="25" y="95" font-family="'Be Vietnam Pro', sans-serif" font-size="10.5" font-weight="800" fill="#203A43">Cũ</text>
               <text x="190" y="118" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="600" fill="#1B5E48" text-anchor="middle">1 mạch mới tổng hợp + 1 mạch cũ (mẹ)</text>
             </g>
           </svg>
-        </div>
+            </div>
+          </div>
+        </article>
 
-        <div class="diagram-action-bar">
-          <button class="btn-observe" id="btnObsStep7" onclick="observeStep(7)">
-            <i class="ti ti-player-play"></i>
-            <span>XEM KẾT QUẢ TÁI BẢN</span>
-          </button>
-        </div>
-      </div>
+        <!-- PHẢI: HOẠT ĐỘNG & BÀI TẬP (MUTUAL STICKY) -->
+        <article class="workspace-card">
+          <div class="task-header">
+            <div class="task-title"><i class="ti ti-microscope"></i> Hoạt động & Củng cố</div>
+            <span class="task-badge">Bước 7 / 9</span>
+          </div>
 
-      <div class="post-observe-card hidden" id="postObsStep7">
-        <span class="post-observe-label"><i class="ti ti-check"></i> Kết quả quan sát</span>
-        <p>Mỗi DNA con gồm một mạch được giữ lại từ DNA mẹ và một mạch mới được tổng hợp.</p>
-      </div>
-
-      <!-- Câu hỏi củng cố ST07 -->
-      <div class="quiz-card hidden" id="quizStep7">
-        <div class="quiz-header">
-          <span class="quiz-question">‘Bán bảo toàn’ có nghĩa là gì?</span>
-          <span class="quiz-tag">Kiểm tra nhanh</span>
-        </div>
-        <div class="quiz-options" id="optsStep7">
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(7, 'A')">
-            <span class="opt-letter">A</span>
-            <span>Hai mạch DNA mẹ cùng nằm trong một DNA con.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(7, 'B')">
-            <span class="opt-letter">B</span>
-            <span>Mỗi DNA con có một mạch cũ và một mạch mới.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(7, 'C')">
-            <span class="opt-letter">C</span>
-            <span>Mỗi mạch gồm một nửa cũ và một nửa mới.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(7, 'D')">
-            <span class="opt-letter">D</span>
-            <span>Cả hai mạch của DNA con đều mới.</span>
-          </button>
-        </div>
-        <div class="quiz-feedback hidden" id="fbStep7"></div>
-      </div>
-
-      <div class="controls-row">
-        <button class="btn-action secondary" onclick="goToStep(6)">
-          <i class="ti ti-arrow-left"></i>
-          <span>QUAY LẠI</span>
+          
+      <div class="obs-action-wrap">
+        <button type="button" class="btn-observe" id="btnObsStep7" onclick="observeStep(7)">
+          <i class="ti ti-player-play"></i> <span>XEM KẾT QUẢ TÁI BẢN</span>
         </button>
-        <button class="btn-action primary" id="btnNextStep7" onclick="goToStep(8)" disabled>
-          <span>TIẾP TỤC</span>
-          <i class="ti ti-arrow-right"></i>
-        </button>
+      </div>
+    
+
+          <!-- Ghi nhận sau quan sát -->
+          <div class="post-observe-card hidden" id="postObsStep7">
+            <div class="post-obs-header"><i class="ti ti-circle-check"></i> Sau quan sát:</div>
+            <p class="post-obs-text">Mỗi DNA con gồm một mạch được giữ lại từ DNA mẹ và một mạch mới được tổng hợp.</p>
+          </div>
+
+          <!-- Câu hỏi củng cố -->
+          <div class="quiz-block hidden" id="quizStep7">
+            <div class="quiz-header">
+              <div class="quiz-question-title"><i class="ti ti-help-circle"></i> Câu hỏi củng cố:</div>
+              <p class="quiz-question-text">‘Bán bảo toàn’ có nghĩa là gì?</p>
+            </div>
+            <div class="quiz-options-list" id="optsStep7">
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(7, 'A')">
+                  <span class="opt-letter">A</span>
+                  <span class="opt-text">Hai mạch DNA mẹ cùng nằm trong một DNA con.</span>
+                </button>
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(7, 'B')">
+                  <span class="opt-letter">B</span>
+                  <span class="opt-text">Mỗi DNA con có một mạch cũ và một mạch mới.</span>
+                </button>
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(7, 'C')">
+                  <span class="opt-letter">C</span>
+                  <span class="opt-text">Mỗi mạch gồm một nửa cũ và một nửa mới.</span>
+                </button>
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(7, 'D')">
+                  <span class="opt-letter">D</span>
+                  <span class="opt-text">Cả hai mạch của DNA con đều mới.</span>
+                </button>
+              
+            </div>
+            <div class="inline-feedback hidden" id="fbStep7"></div>
+          </div>
+
+          <!-- Điều hướng chân trang -->
+          <div class="controls-row">
+            <div class="btn-group-left">
+              <button type="button" class="btn btn-outline" onclick="goToStep(6)">
+                <i class="ti ti-arrow-left"></i> Quay lại
+              </button>
+              <button type="button" class="btn btn-outline" onclick="resetStep(7)">
+                <i class="ti ti-rotate-clockwise"></i> Làm lại
+              </button>
+            </div>
+            <div class="btn-group-right">
+              <button type="button" class="btn btn-primary" id="btnNextStep7" onclick="goToStep(8)" disabled>
+                Tiếp tục <i class="ti ti-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
     <!-- ========================================================= -->
-    <!-- BƯỚC 8: ST08 — MỘT ORI VÀ NHIỀU ORI -->
+    <!-- BƯỚC 8: ST08 · MỘT ORI VÀ NHIỀU ORI -->
     <!-- ========================================================= -->
-    <section class="section-card hidden" id="stepCard8">
-      <div class="lead-box">
-        DNA ở vi khuẩn và sinh vật nhân thực có quy mô và cách tổ chức khác nhau. Vì vậy, số điểm khởi đầu tái bản được tổ chức khác nhau trong mô hình chúng ta đang học.
-      </div>
-
-      <div class="instruction-row">
-        <i class="ti ti-hand-finger"></i>
-        <span>HƯỚNG DẪN: Chọn DNA VÒNG Ở VI KHUẨN, NHIỄM SẮC THỂ TUYẾN TÍNH Ở SINH VẬT NHÂN THỰC hoặc XEM CẢ HAI.</span>
-      </div>
-
-      <!-- Nút lựa chọn chế độ ST08 -->
-      <div class="st08-selector-row">
-        <button class="btn-mode-select active" id="btnModeBoth" onclick="selectOriMode('both')">
-          <i class="ti ti-layout-grid"></i>
-          <span>XEM CẢ HAI</span>
-        </button>
-        <button class="btn-mode-select" id="btnModeBacteria" onclick="selectOriMode('bacteria')">
-          <i class="ti ti-circle-dot"></i>
-          <span>DNA VÒNG Ở VI KHUẨN</span>
-        </button>
-        <button class="btn-mode-select" id="btnModeEukaryote" onclick="selectOriMode('eukaryote')">
-          <i class="ti ti-line"></i>
-          <span>NHIỄM SẮC THỂ TUYẾN TÍNH Ở SINH VẬT NHÂN THỰC</span>
-        </button>
-      </div>
-
-      <div class="diagram-container">
-        <div class="diagram-header-bar">
-          <span class="diagram-title"><i class="ti ti-git-compare"></i> So sánh cách tổ chức điểm khởi đầu tái bản (Ori)</span>
-        </div>
-
-        <div class="svg-wrapper">
-          <svg viewBox="0 0 960 420" xmlns="http://www.w3.org/2000/svg">
+    <section class="stage-section" id="stepCard8">
+      <div class="split-workspace">
+        <!-- TRÁI: LÝ THUYẾT & MINH HỌA -->
+        <article class="visual-card">
+          <div class="visual-card__head">
+            <h2>ST08 · Một Ori và nhiều Ori</h2>
+          </div>
+          <div class="guide-box">
+            <i class="ti ti-hand-click"></i>
+            <span>HƯỚNG DẪN: Chọn <strong>DNA VÒNG Ở VI KHUẨN</strong>, <strong>NHIỄM SẮC THỂ TUYẾN TÍNH Ở SINH VẬT NHÂN THỰC</strong> hoặc <strong>XEM CẢ HAI</strong>.</span>
+          </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-dna-2"></i> Bối cảnh khoa học</div>
+              <div class="theory-block__content">DNA ở vi khuẩn và sinh vật nhân thực có quy mô và cách tổ chức khác nhau. Vì vậy, số điểm khởi đầu tái bản được tổ chức khác nhau trong mô hình chúng ta đang học.</div>
+            </div>
+          </div>
+          <div class="diagram-container">
+            <div class="diagram-header-bar">
+              <span class="diagram-title"><i class="ti ti-eye"></i> Sơ đồ trực quan</span>
+              
+            </div>
+            <div class="obs-status-pill hidden" id="statusPill8"></div>
+            <div class="svg-viewport">
+              <svg viewBox="0 0 960 420" xmlns="http://www.w3.org/2000/svg">
             <rect width="960" height="420" fill="#FAF7F0"/>
             
             <!-- Nửa trái: DNA vòng vi khuẩn (45%) -->
@@ -1741,8 +2329,8 @@ section.section-card .controls-row,section.section-card .stage-actions,section.s
               <circle cx="200" cy="90" r="12" fill="#D9534F"/>
               <text x="200" y="94" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#FFFFFF" text-anchor="middle">Ori</text>
               <!-- 2 Chạc tái bản tiến hai hướng -->
-              <path d="M 220 85 Q 270 120 270 180" fill="none" stroke="#CE8A33" stroke-width="3" marker-end="url(#arrowHead)"/>
-              <path d="M 180 85 Q 130 120 130 180" fill="none" stroke="#CE8A33" stroke-width="3" marker-end="url(#arrowHead)"/>
+              <path d="M 220 85 Q 270 120 270 180" fill="none" stroke="#CE8A33" stroke-width="3" marker-end="url(#arrowHeadAmber)"/>
+              <path d="M 180 85 Q 130 120 130 180" fill="none" stroke="#CE8A33" stroke-width="3" marker-end="url(#arrowHeadAmber)"/>
               <text x="200" y="310" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="700" fill="#1B5E48" text-anchor="middle">1 Ori duy nhất → 2 chạc tái bản</text>
               <text x="200" y="335" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="500" fill="#7C756A" text-anchor="middle">Tái bản 2 hướng quanh phân tử vòng</text>
             </g>
@@ -1777,113 +2365,166 @@ section.section-card .controls-row,section.section-card .stage-actions,section.s
               <text x="250" y="335" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="500" fill="#7C756A" text-anchor="middle">Nhiều vùng tái bản hoạt động đồng thời (mỗi Ori vẫn 2 chạc)</text>
             </g>
           </svg>
-        </div>
-      </div>
+            </div>
+          </div>
+        </article>
 
-      <div class="post-observe-card" id="postObsStep8">
-        <span class="post-observe-label"><i class="ti ti-check"></i> Kết quả quan sát</span>
-        <p>Trong mô hình SGK, DNA vòng của vi khuẩn có một Ori và tái bản theo hai hướng. Mỗi nhiễm sắc thể tuyến tính của sinh vật nhân thực có nhiều Ori, nhờ đó nhiều vùng DNA có thể được tái bản đồng thời.</p>
-      </div>
+        <!-- PHẢI: HOẠT ĐỘNG & BÀI TẬP (MUTUAL STICKY) -->
+        <article class="workspace-card">
+          <div class="task-header">
+            <div class="task-title"><i class="ti ti-microscope"></i> Hoạt động & Củng cố</div>
+            <span class="task-badge">Bước 8 / 9</span>
+          </div>
 
-      <!-- Câu hỏi củng cố ST08 -->
-      <div class="quiz-card" id="quizStep8">
-        <div class="quiz-header">
-          <span class="quiz-question">Ý nghĩa của việc có nhiều Ori trên nhiễm sắc thể tuyến tính ở sinh vật nhân thực là gì?</span>
-          <span class="quiz-tag">Kiểm tra nhanh</span>
-        </div>
-        <div class="quiz-options" id="optsStep8">
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(8, 'A')">
-            <span class="opt-letter">A</span>
-            <span>Làm DNA được tổng hợp theo chiều 3′→5′.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(8, 'B')">
-            <span class="opt-letter">B</span>
-            <span>Làm mỗi Ori chỉ tạo một chạc.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(8, 'C')">
-            <span class="opt-letter">C</span>
-            <span>Cho phép nhiều vùng DNA được tái bản đồng thời.</span>
-          </button>
-          <button class="quiz-opt-btn" onclick="answerStepQuiz(8, 'D')">
-            <span class="opt-letter">D</span>
-            <span>Thay thế vai trò của DNA polymerase.</span>
-          </button>
-        </div>
-        <div class="quiz-feedback hidden" id="fbStep8"></div>
-      </div>
-
-      <div class="controls-row">
-        <button class="btn-action secondary" onclick="goToStep(7)">
-          <i class="ti ti-arrow-left"></i>
-          <span>QUAY LẠI</span>
+          
+      <div class="mode-buttons-row">
+        <button type="button" class="btn-tool active" id="btnModeBoth" onclick="selectOriMode('both')">
+          <i class="ti ti-layout-grid"></i> XEM CẢ HAI
         </button>
-        <button class="btn-action primary" id="btnNextStep8" onclick="goToStep(9)" disabled>
-          <span>TIẾP TỤC: GHI NHỚ & KẾT THÚC</span>
-          <i class="ti ti-arrow-right"></i>
+        <button type="button" class="btn-tool" id="btnModeBacteria" onclick="selectOriMode('bacteria')">
+          <i class="ti ti-circle-dot"></i> DNA VÒNG Ở VI KHUẨN
         </button>
+        <button type="button" class="btn-tool" id="btnModeEukaryote" onclick="selectOriMode('eukaryote')">
+          <i class="ti ti-line"></i> NST TUYẾN TÍNH Ở SINH VẬT NHÂN THỰC
+        </button>
+      </div>
+    
+
+          <!-- Ghi nhận sau quan sát -->
+          <div class="post-observe-card hidden" id="postObsStep8">
+            <div class="post-obs-header"><i class="ti ti-circle-check"></i> Sau quan sát:</div>
+            <p class="post-obs-text">Trong mô hình SGK, DNA vòng của vi khuẩn có một Ori và tái bản theo hai hướng. Mỗi nhiễm sắc thể tuyến tính của sinh vật nhân thực có nhiều Ori, nhờ đó nhiều vùng DNA có thể được tái bản đồng thời.</p>
+          </div>
+
+          <!-- Câu hỏi củng cố -->
+          <div class="quiz-block hidden" id="quizStep8">
+            <div class="quiz-header">
+              <div class="quiz-question-title"><i class="ti ti-help-circle"></i> Câu hỏi củng cố:</div>
+              <p class="quiz-question-text">Ý nghĩa của việc có nhiều Ori trên nhiễm sắc thể tuyến tính ở sinh vật nhân thực là gì?</p>
+            </div>
+            <div class="quiz-options-list" id="optsStep8">
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(8, 'A')">
+                  <span class="opt-letter">A</span>
+                  <span class="opt-text">Làm DNA được tổng hợp theo chiều 3′→5′.</span>
+                </button>
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(8, 'B')">
+                  <span class="opt-letter">B</span>
+                  <span class="opt-text">Làm mỗi Ori chỉ tạo một chạc.</span>
+                </button>
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(8, 'C')">
+                  <span class="opt-letter">C</span>
+                  <span class="opt-text">Cho phép nhiều vùng DNA được tái bản đồng thời.</span>
+                </button>
+              
+                <button type="button" class="quiz-opt-btn" onclick="answerStepQuiz(8, 'D')">
+                  <span class="opt-letter">D</span>
+                  <span class="opt-text">Thay thế vai trò của DNA polymerase.</span>
+                </button>
+              
+            </div>
+            <div class="inline-feedback hidden" id="fbStep8"></div>
+          </div>
+
+          <!-- Điều hướng chân trang -->
+          <div class="controls-row">
+            <div class="btn-group-left">
+              <button type="button" class="btn btn-outline" onclick="goToStep(7)">
+                <i class="ti ti-arrow-left"></i> Quay lại
+              </button>
+              <button type="button" class="btn btn-outline" onclick="resetStep(8)">
+                <i class="ti ti-rotate-clockwise"></i> Làm lại
+              </button>
+            </div>
+            <div class="btn-group-right">
+              <button type="button" class="btn btn-primary" id="btnNextStep8" onclick="goToStep(9)" disabled>
+                Tiếp tục <i class="ti ti-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
     <!-- ========================================================= -->
     <!-- BƯỚC 9: KẾT LUẬN — GHI NHỚ VÀ KẾT NỐI -->
     <!-- ========================================================= -->
-    <section class="section-card hidden" id="stepCard9">
-      <div class="recap-box">
-        <div class="recap-item">
-          <span class="recap-item-title"><i class="ti ti-feather"></i> Lời chốt toàn bài</span>
-          <p class="recap-item-content">
-            Trước khi tế bào phân chia, DNA được mở tại Ori. Hai mạch DNA mẹ làm khuôn; các nucleotide mới được lắp theo nguyên tắc bổ sung và các mạch mới đều được kéo dài theo chiều 5′→3′. Các thành phần của bộ máy tái bản phối hợp quanh chạc tái bản để tạo ra hai DNA con; mỗi phân tử gồm một mạch cũ và một mạch mới.
-          </p>
-        </div>
+    <section class="stage-section" id="stepCard9">
+      <div class="split-workspace">
+        <!-- TRÁI: LÝ THUYẾT & GHI NHỚ DỌC -->
+        <article class="visual-card">
+          <div class="visual-card__head">
+            <h2>Kết luận · Ghi nhớ cốt lõi & Chống hiểu sai</h2>
+          </div>
+          <div class="guide-box">
+            <i class="ti ti-hand-click"></i>
+            <span>HƯỚNG DẪN: Xem lại toàn bộ sơ đồ tóm tắt và ghi nhớ cốt lõi trước khi hoàn thành module.</span>
+          </div>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-feather"></i> Lời chốt toàn bài</div>
+              <div class="theory-block__content">Trước khi tế bào phân chia, DNA được mở tại Ori. Hai mạch DNA mẹ làm khuôn; các nucleotide mới được lắp theo nguyên tắc bổ sung và các mạch mới đều được kéo dài theo chiều 5′→3′. Các thành phần của bộ máy tái bản phối hợp quanh chạc tái bản để tạo ra hai DNA con; mỗi phân tử gồm một mạch cũ và một mạch mới.</div>
+            </div>
+            <div class="theory-block jade">
+              <div class="theory-block__title" style="color:var(--jade-text);"><i class="ti ti-bookmarks"></i> GHI NHỚ CỐT LÕI</div>
+              <div class="theory-block__content" style="font-weight:700; color:var(--jade-dark);">Ori → helicase tách hai mạch → mỗi mạch mẹ làm khuôn → primase tạo mồi RNA → DNA polymerase kéo dài mạch mới 5′→3′ → mạch liên tục và các đoạn Okazaki → xử lí mồi → ligase nối → hai DNA con theo nguyên tắc bán bảo toàn.</div>
+            </div>
+            <div class="theory-block amber">
+              <div class="theory-block__title" style="color:var(--accent-text);"><i class="ti ti-alert-triangle"></i> Câu chống hiểu sai</div>
+              <div class="theory-block__content">Các phần vừa học là những hoạt động được phóng to của cùng một quá trình phối hợp, không phải các enzyme lần lượt làm xong toàn bộ nhiệm vụ.</div>
+            </div>
+          </div>
+        </article>
 
-        <div class="recap-item">
-          <span class="recap-item-title"><i class="ti ti-bookmarks"></i> GHI NHỚ CỐT LÕI</span>
-          <p class="recap-item-content" style="font-weight:700; color:var(--jade-dark);">
-            Ori → helicase tách hai mạch → mỗi mạch mẹ làm khuôn → primase tạo mồi RNA → DNA polymerase kéo dài mạch mới 5′→3′ → mạch liên tục và các đoạn Okazaki → xử lí mồi → ligase nối → hai DNA con theo nguyên tắc bán bảo toàn.
-          </p>
-        </div>
+        <!-- PHẢI: TỔNG KẾT & HOÀN THÀNH -->
+        <article class="workspace-card">
+          <div class="task-header">
+            <div class="task-title"><i class="ti ti-award"></i> Tổng kết & Kết nối</div>
+            <span class="task-badge">Hoàn thành</span>
+          </div>
 
-        <div class="recap-item">
-          <span class="recap-item-title"><i class="ti ti-alert-triangle" style="color:var(--accent-deep);"></i> Câu chống hiểu sai</span>
-          <p class="recap-item-content">
-            Các phần vừa học là những hoạt động được phóng to của cùng một quá trình phối hợp, không phải các enzyme lần lượt làm xong toàn bộ nhiệm vụ.
-          </p>
-        </div>
-      </div>
+          <div class="bridge-card">
+            <div class="bridge-title"><i class="ti ti-arrow-forward-up"></i> Kết nối sang Module 03</div>
+            <div class="bridge-content">Tái bản DNA giúp duy trì và truyền đạt thông tin di truyền. Nguyên lí dùng DNA làm khuôn để tạo các bản sao còn được con người ứng dụng trong thực tiễn như thế nào? Module tiếp theo sẽ giúp bạn tìm hiểu ý nghĩa và ứng dụng của quá trình này.</div>
+          </div>
 
-      <div class="bridge-card">
-        <i class="ti ti-bulb bridge-icon"></i>
-        <div>
-          <h4 style="font-size:0.92rem; font-weight:800; color:var(--accent-text); text-transform:uppercase; margin-bottom:4px;">Kết nối Module 03</h4>
-          <p style="font-size:0.96rem; color:var(--ink); line-height:1.65;">
-            Tái bản DNA giúp duy trì và truyền đạt thông tin di truyền. Nguyên lí dùng DNA làm khuôn để tạo các bản sao còn được con người ứng dụng trong thực tiễn như thế nào? Module tiếp theo sẽ giúp bạn tìm hiểu ý nghĩa và ứng dụng của quá trình này.
-          </p>
-        </div>
-      </div>
+          <div style="background:#FFFFFF; border:1px solid var(--paper-line); border-radius:var(--radius); padding:14px; display:flex; flex-direction:column; gap:8px;">
+            <div style="font-size:0.85rem; font-weight:700; color:var(--jade-dark); display:flex; align-items:center; gap:6px;">
+              <i class="ti ti-checklist"></i> Tiến độ hoàn thành bài học
+            </div>
+            <p style="font-size:0.85rem; color:var(--ink-2); margin:0;">
+              Bạn đã hoàn thành việc khám phá tất cả các giai đoạn từ mở đầu, quan sát chạc Y, Ori, mồi RNA, mạch gián đoạn, nối ligase đến nguyên tắc bán bảo toàn và so sánh Ori.
+            </p>
+          </div>
 
-      <div class="controls-row">
-        <button class="btn-action secondary" onclick="goToStep(8)">
-          <i class="ti ti-arrow-left"></i>
-          <span>QUAY LẠI</span>
-        </button>
-        <button class="btn-action primary" id="btnCompleteModule" onclick="completeModule()">
-          <i class="ti ti-check"></i>
-          <span>HOÀN THÀNH MODULE</span>
-        </button>
+          <button type="button" class="btn btn-primary btn-complete" id="btnCompleteModule" onclick="completeModule()">
+            <i class="ti ti-check"></i> HOÀN THÀNH MODULE
+          </button>
+
+          <div class="controls-row">
+            <button type="button" class="btn btn-outline" onclick="goToStep(8)">
+              <i class="ti ti-arrow-left"></i> Quay lại
+            </button>
+          </div>
+        </article>
       </div>
     </section>
-
   </div>
 
   <!-- Modal hoàn thành -->
   <div class="modal-backdrop hidden" id="completionModal">
     <div class="completion-modal">
       <div class="completion-icon-wrapper">
-        <i class="ti ti-circle-check"></i>
+        <i class="ti ti-trophy"></i>
       </div>
       <h3>Đã hoàn thành module!</h3>
       <p>Chúc mừng bạn đã hoàn thành bài học <strong>SH12-B01-A01-M02: Cơ chế tái bản DNA</strong> và nắm vững toàn bộ hoạt động phối hợp của bộ máy tái bản.</p>
-      <button class="btn-action primary" onclick="closeCompletionModal()">Đóng thông báo</button>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-outline" onclick="goToStep(0); closeCompletionModal();">Xem lại bài</button>
+        <button type="button" class="btn btn-primary" onclick="closeCompletionModal()">Đóng thông báo</button>
+      </div>
     </div>
   </div>
 
@@ -1898,6 +2539,9 @@ section.section-card .controls-row,section.section-card .stage-actions,section.s
     };
     window.lmsState = lmsState;
 
+    // Steps data in JS runtime
+    const stepsData = [{"step":0,"id":"stepCard0","pillTitle":"Mở đầu","title":"Mở đầu · Vì sao DNA phải được tái bản?","guide":"Nhấn <strong>KHÁM PHÁ QUÁ TRÌNH TÁI BẢN</strong> để bắt đầu tìm hiểu cơ chế.","lead":"Trước khi một tế bào phân chia, thông tin di truyền trong DNA phải được sao chép để các tế bào con nhận được DNA.","centralQuestion":"“DNA được tái bản bằng cơ chế nào để thông tin di truyền được truyền gần như nguyên vẹn sang DNA mới?”"},{"step":1,"id":"stepCard1","pillTitle":"1. ST01: Toàn cảnh","title":"ST01 · Nhìn toàn cảnh bộ máy tái bản","guide":"Nhấn <strong>QUAN SÁT TOÀN CẢNH</strong>. Theo dõi vùng DNA đang mở và các mạch mới hình thành.","lead":"Tái bản DNA không phải là chuỗi enzyme lần lượt làm xong rồi rời đi. Nhiều thành phần phối hợp quanh chạc tái bản trong cùng một quá trình.","obsBtnText":"QUAN SÁT TOÀN CẢNH","postObs":"Tại chạc tái bản, DNA mẹ được tách mạch; các mạch mẹ làm khuôn và các mạch mới được hình thành dần.","question":"Điều nào mô tả đúng nhất quá trình vừa quan sát?","options":[{"key":"A","text":"Các enzyme lần lượt hoàn thành toàn bộ nhiệm vụ rồi enzyme tiếp theo mới hoạt động."},{"key":"B","text":"Nhiều thành phần của bộ máy tái bản phối hợp trong cùng quá trình."}],"correctKey":"B","feedbackOk":"Chính xác. Các hoạt động được học ở những phần sau là các phần được phóng to của cùng một quá trình đang diễn ra phối hợp, không phải những công đoạn hoàn toàn tách rời.","feedbackBad":"Hãy quan sát lại chạc tái bản. Khi một vùng phía sau chạc đang được hoàn thiện, vùng gần chạc vẫn tiếp tục mở và tổng hợp DNA mới.","meta":{"topic":"Cơ chế tái bản DNA","taskType":"Nhận diện hoạt động phối hợp quanh chạc chữ Y","level":"Thông hiểu","competency":"Nhận thức sinh học","format":"Trắc nghiệm nhiều lựa chọn"}},{"step":2,"id":"stepCard2","pillTitle":"2. ST02: Ori & 2 chạc","title":"ST02 · Ori và hai chạc tái bản","guide":"Nhấn <strong>BẮT ĐẦU TẠI ORI</strong> và quan sát DNA mở về hai phía.","lead":"Quá trình tái bản bắt đầu tại một vùng xác định trên DNA gọi là điểm khởi đầu tái bản – Ori.","obsBtnText":"BẮT ĐẦU TẠI ORI","postObs":"Helicase làm tách hai mạch DNA tại Ori. Từ một Ori hình thành hai chạc tái bản tiến theo hai hướng.","question":"Sau khi hai mạch DNA mẹ được tách, mỗi mạch có vai trò gì?","options":[{"key":"A","text":"Cả hai bị phân giải."},{"key":"B","text":"Mỗi mạch làm khuôn để tổng hợp một mạch mới."},{"key":"C","text":"Chỉ một mạch làm khuôn."},{"key":"D","text":"Hai mạch nối lại ngay."}],"correctKey":"B","feedbackOk":"Đúng. Cả hai mạch DNA mẹ đều được giữ lại và mỗi mạch làm khuôn để các nucleotide mới được lắp theo nguyên tắc bổ sung. Một Ori tạo hai chạc, không phải một chạc.","feedbackBad":"Hãy nhìn lại hai mạch vừa được helicase tách ra. Cả hai mạch mẹ vẫn còn nguyên và đều tham gia vào quá trình tiếp theo.","meta":{"topic":"Điểm khởi đầu tái bản (Ori)","taskType":"Vai trò của hai mạch khuôn","level":"Biết","competency":"Nhận thức sinh học","format":"Trắc nghiệm nhiều lựa chọn"}},{"step":3,"id":"stepCard3","pillTitle":"3. ST03: Mồi RNA 5′→3′","title":"ST03 · Mồi RNA và chiều tổng hợp 5′→3′","guide":"Nhấn <strong>TẠO MỒI VÀ KÉO DÀI MẠCH MỚI</strong>.","lead":"DNA polymerase không thể tự bắt đầu tổng hợp một mạch DNA mới trên mạch khuôn trống. Trước hết cần có một đoạn mồi cung cấp đầu 3′ thích hợp.","obsBtnText":"TẠO MỒI VÀ KÉO DÀI MẠCH MỚI","postObs":"Primase tạo đoạn mồi RNA. Từ đầu 3′ của mồi, DNA polymerase gắn các nucleotide mới theo nguyên tắc bổ sung và kéo dài mạch DNA theo chiều 5′→3′.","question":"Vai trò của primase là gì?","options":[{"key":"A","text":"Tháo xoắn DNA."},{"key":"B","text":"Tổng hợp đoạn mồi RNA cung cấp đầu 3′ cho DNA polymerase."},{"key":"C","text":"Nối các đoạn Okazaki."},{"key":"D","text":"Phân giải mạch DNA mẹ."}],"correctKey":"B","feedbackOk":"Chính xác. Primase tạo mồi RNA; DNA polymerase chỉ kéo dài mạch mới từ đầu 3′ và mọi mạch DNA mới đều được tổng hợp theo chiều 5′→3′.","feedbackBad":"Hãy xem lại chi tiết xuất hiện trước khi DNA polymerase bắt đầu kéo dài mạch mới. Đoạn mồi RNA cung cấp đầu 3′ cần thiết cho bước đó.","meta":{"topic":"Enzyme primase và đoạn mồi RNA","taskType":"Chức năng enzyme tạo mồi","level":"Biết","competency":"Nhận thức sinh học","format":"Trắc nghiệm nhiều lựa chọn"}},{"step":4,"id":"stepCard4","pillTitle":"4. ST04: Mạch liên tục & gián đoạn","title":"ST04 · Mạch liên tục và mạch gián đoạn","guide":"Nhấn <strong>QUAN SÁT MỘT CHẠC TÁI BẢN</strong>. So sánh cách mạch mới được hình thành ở hai mạch khuôn.","lead":"Hai mạch DNA mẹ song song ngược chiều, trong khi DNA polymerase chỉ tổng hợp DNA mới theo một chiều duy nhất: 5′→3′.","obsBtnText":"QUAN SÁT MỘT CHẠC TÁI BẢN","postObs":"Ở một chạc tái bản, một mạch mới được tổng hợp liên tục; mạch mới còn lại được tổng hợp gián đoạn thành các đoạn Okazaki. Tuy khác cách tổng hợp, cả hai mạch mới đều được kéo dài theo chiều 5′→3′.","question":"Vì sao tại một chạc có mạch liên tục và mạch gián đoạn?","options":[{"key":"A","text":"Vì hai DNA polymerase tổng hợp theo hai chiều khác nhau."},{"key":"B","text":"Vì hai mạch khuôn ngược chiều nhau nhưng DNA polymerase chỉ tổng hợp DNA mới theo chiều 5′→3′."},{"key":"C","text":"Vì mạch gián đoạn không cần mồi RNA."},{"key":"D","text":"Vì ligase cắt mạch mới thành nhiều đoạn."}],"correctKey":"B","feedbackOk":"Chính xác. Hai mạch khuôn ngược chiều nhau nhưng mọi mạch mới đều chỉ được tổng hợp 5′→3′. Vì vậy, một mạch mới được kéo dài liên tục, còn mạch kia phải được tạo thành từng đoạn Okazaki.","feedbackBad":"Hãy chú ý các kí hiệu 5′ và 3′. Không có mạch DNA mới nào được tổng hợp theo chiều 3′→5′.","meta":{"topic":"Mạch liên tục và mạch gián đoạn","taskType":"Giải thích cơ chế ngược chiều và chiều tổng hợp 5'->3'","level":"Vận dụng","competency":"Tìm hiểu thế giới sống","format":"Trắc nghiệm nhiều lựa chọn"}},{"step":5,"id":"stepCard5","pillTitle":"5. ST05: Hoàn thiện mạch","title":"ST05 · Hoàn thiện mạch gián đoạn","guide":"Nhấn <strong>HOÀN THIỆN CÁC ĐOẠN CŨ</strong>.","lead":"Các đoạn Okazaki vừa được tổng hợp vẫn còn đoạn mồi RNA và các điểm đứt trên khung đường–phosphate.","obsBtnText":"HOÀN THIỆN CÁC ĐOẠN CŨ","postObs":"Đoạn mồi RNA được loại bỏ, vị trí đó được thay bằng DNA. Sau đó ligase nối các điểm đứt còn lại trên khung đường–phosphate.","question":"Vai trò trực tiếp của ligase là gì?","options":[{"key":"A","text":"Tạo đoạn mồi RNA."},{"key":"B","text":"Tháo xoắn DNA."},{"key":"C","text":"Nối các điểm đứt trên khung đường–phosphate giữa các đoạn DNA."},{"key":"D","text":"Tạo các đoạn Okazaki."}],"correctKey":"C","feedbackOk":"Đúng. Ligase không tạo đoạn Okazaki và không thay thế đoạn mồi. Enzyme này nối các điểm đứt còn lại sau khi vùng mồi đã được thay bằng DNA.","feedbackBad":"Hãy quan sát lại thứ tự: loại mồi → thay bằng DNA → ligase nối. Ligase chỉ thực hiện bước nối cuối cùng.","meta":{"topic":"Hoàn thiện mạch gián đoạn và enzyme Ligase","taskType":"Chức năng enzyme ligase","level":"Thông hiểu","competency":"Nhận thức sinh học","format":"Trắc nghiệm nhiều lựa chọn"}},{"step":6,"id":"stepCard6","pillTitle":"6. ST06: Phối hợp chạc","title":"ST06 · Ghép lại toàn bộ chạc tái bản","guide":"Nhấn <strong>XEM CHẠC TÁI BẢN HOẠT ĐỘNG</strong>.","lead":"Các phần vừa rồi đã giúp bạn quan sát riêng từng hoạt động. Bây giờ, hãy ghép chúng lại để thấy toàn bộ cơ chế tái bản đang diễn ra phối hợp quanh một chạc tái bản.","obsBtnText":"XEM CHẠC TÁI BẢN HOẠT ĐỘNG","postObs":"Helicase tiếp tục tách hai mạch. Primase tiếp tục tạo các mồi cần thiết. DNA polymerase kéo dài các mạch mới 5′→3′. Ở vùng phía sau, các đoạn cũ được hoàn thiện và nối lại.","question":"Nhận định nào đúng?","options":[{"key":"A","text":"Helicase phải mở xong toàn bộ DNA rồi DNA polymerase mới bắt đầu."},{"key":"B","text":"Mạch liên tục phải hoàn tất trước khi các đoạn Okazaki được tổng hợp."},{"key":"C","text":"Các hoạt động tái bản có thể diễn ra phối hợp và chồng lấn trong cùng khoảng thời gian."}],"correctKey":"C","feedbackOk":"Chính xác. Tái bản DNA là hoạt động phối hợp của một bộ máy tái bản. Việc chia thành nhiều phần chỉ nhằm giúp chúng ta quan sát từng hoạt động rõ hơn.","feedbackBad":"Hãy nhìn cả vùng gần chạc và vùng phía sau chạc cùng lúc. Khi chạc vẫn đang mở và tổng hợp DNA mới, những đoạn hình thành trước đó đã có thể được hoàn thiện.","meta":{"topic":"Hoạt động phối hợp quanh chạc tái bản","taskType":"Đánh giá tính phối hợp đồng thời của bộ máy tái bản","level":"Vận dụng","competency":"Nhận thức sinh học","format":"Trắc nghiệm nhiều lựa chọn"}},{"step":7,"id":"stepCard7","pillTitle":"7. ST07: Bán bảo toàn","title":"ST07 · Kết quả: Nguyên tắc bán bảo toàn","guide":"Nhấn <strong>XEM KẾT QUẢ TÁI BẢN</strong> và theo dõi mạch cũ, mạch mới trong mỗi DNA con.","lead":"Khi quá trình tái bản hoàn tất, từ một phân tử DNA mẹ hình thành hai phân tử DNA con.","obsBtnText":"XEM KẾT QUẢ TÁI BẢN","postObs":"Mỗi DNA con gồm một mạch được giữ lại từ DNA mẹ và một mạch mới được tổng hợp.","question":"‘Bán bảo toàn’ có nghĩa là gì?","options":[{"key":"A","text":"Hai mạch DNA mẹ cùng nằm trong một DNA con."},{"key":"B","text":"Mỗi DNA con có một mạch cũ và một mạch mới."},{"key":"C","text":"Mỗi mạch gồm một nửa cũ và một nửa mới."},{"key":"D","text":"Cả hai mạch của DNA con đều mới."}],"correctKey":"B","feedbackOk":"Chính xác. Mỗi DNA con bảo tồn một mạch của DNA mẹ và có một mạch mới được tổng hợp. Đây là nguyên tắc bán bảo toàn.","feedbackBad":"Hãy quan sát màu của từng mạch trong mỗi DNA con. Mỗi phân tử đều có một mạch cũ và một mạch mới.","meta":{"topic":"Nguyên tắc bán bảo toàn","taskType":"Khái niệm bán bảo toàn","level":"Thông hiểu","competency":"Nhận thức sinh học","format":"Trắc nghiệm nhiều lựa chọn"}},{"step":8,"id":"stepCard8","pillTitle":"8. ST08: So sánh Ori","title":"ST08 · Một Ori và nhiều Ori","guide":"Chọn <strong>DNA VÒNG Ở VI KHUẨN</strong>, <strong>NHIỄM SẮC THỂ TUYẾN TÍNH Ở SINH VẬT NHÂN THỰC</strong> hoặc <strong>XEM CẢ HAI</strong>.","lead":"DNA ở vi khuẩn và sinh vật nhân thực có quy mô và cách tổ chức khác nhau. Vì vậy, số điểm khởi đầu tái bản được tổ chức khác nhau trong mô hình chúng ta đang học.","isModeSelector":true,"postObs":"Trong mô hình SGK, DNA vòng của vi khuẩn có một Ori và tái bản theo hai hướng. Mỗi nhiễm sắc thể tuyến tính của sinh vật nhân thực có nhiều Ori, nhờ đó nhiều vùng DNA có thể được tái bản đồng thời.","question":"Ý nghĩa của việc có nhiều Ori trên nhiễm sắc thể tuyến tính ở sinh vật nhân thực là gì?","options":[{"key":"A","text":"Làm DNA được tổng hợp theo chiều 3′→5′."},{"key":"B","text":"Làm mỗi Ori chỉ tạo một chạc."},{"key":"C","text":"Cho phép nhiều vùng DNA được tái bản đồng thời."},{"key":"D","text":"Thay thế vai trò của DNA polymerase."}],"correctKey":"C","feedbackOk":"Đúng. Nhiều Ori cho phép nhiều đơn vị tái bản hoạt động đồng thời trên một nhiễm sắc thể tuyến tính. Một Ori vẫn tạo hai chạc tái bản.","feedbackBad":"Hãy quan sát số vùng đang mở cùng lúc. Điểm quan trọng là nhiều vị trí có thể được tái bản đồng thời.","meta":{"topic":"Số lượng Ori ở nhân sơ và nhân thực","taskType":"Ý nghĩa sinh học của nhiều Ori","level":"Vận dụng","competency":"Vận dụng kiến thức, kĩ năng","format":"Trắc nghiệm nhiều lựa chọn"}},{"step":9,"id":"stepCard9","pillTitle":"9. Ghi nhớ","title":"Kết luận · Ghi nhớ cốt lõi & Chống hiểu sai","guide":"Xem lại toàn bộ sơ đồ tóm tắt và ghi nhớ cốt lõi trước khi hoàn thành module.","recap":{"closing":"Trước khi tế bào phân chia, DNA được mở tại Ori. Hai mạch DNA mẹ làm khuôn; các nucleotide mới được lắp theo nguyên tắc bổ sung và các mạch mới đều được kéo dài theo chiều 5′→3′. Các thành phần của bộ máy tái bản phối hợp quanh chạc tái bản để tạo ra hai DNA con; mỗi phân tử gồm một mạch cũ và một mạch mới.","core":"Ori → helicase tách hai mạch → mỗi mạch mẹ làm khuôn → primase tạo mồi RNA → DNA polymerase kéo dài mạch mới 5′→3′ → mạch liên tục và các đoạn Okazaki → xử lí mồi → ligase nối → hai DNA con theo nguyên tắc bán bảo toàn.","misconception":"Các phần vừa học là những hoạt động được phóng to của cùng một quá trình phối hợp, không phải các enzyme lần lượt làm xong toàn bộ nhiệm vụ.","bridge":"Tái bản DNA giúp duy trì và truyền đạt thông tin di truyền. Nguyên lí dùng DNA làm khuôn để tạo các bản sao còn được con người ứng dụng trong thực tiễn như thế nào? Module tiếp theo sẽ giúp bạn tìm hiểu ý nghĩa và ứng dụng của quá trình này."}}];
+
     // Auto-resize for parent iframe
     function reportHeight() {
       if (window.parent && window.parent !== window) {
@@ -1906,23 +2550,17 @@ section.section-card .controls-row,section.section-card .stage-actions,section.s
       }
     }
 
-    window.addEventListener('load', reportHeight);
+    window.addEventListener('load', () => {
+      reportHeight();
+      // Unlock step 8 quiz directly if mode selector is visible
+      const quiz8 = document.getElementById('quizStep8');
+      const post8 = document.getElementById('postObsStep8');
+      if (quiz8) quiz8.classList.remove('hidden');
+      if (post8) post8.classList.remove('hidden');
+    });
     window.addEventListener('resize', reportHeight);
 
-    
-    const stageGoals = {
-      0: 'Đặt vấn đề: Vì sao DNA phải được tái bản trước mỗi lần tế bào phân chia.',
-      1: 'Quan sát toàn cảnh bộ máy tái bản và sự phối hợp nhịp nhàng quanh chạc chữ Y.',
-      2: 'Tìm hiểu điểm khởi đầu tái bản Ori và sự hình thành hai chạc tái bản hai hướng.',
-      3: 'Khám phá vai trò của đoạn mồi RNA và chiều kéo dài bắt buộc 5′ → 3′ của DNA polymerase.',
-      4: 'So sánh cơ chế tổng hợp liên tục ở mạch dẫn đầu và gián đoạn (đoạn Okazaki) ở mạch theo sau.',
-      5: 'Tìm hiểu quá trình loại bỏ mồi RNA, thay thế bằng DNA và enzyme Ligase nối các đoạn Okazaki.',
-      6: 'Tổng hợp sự phối hợp đồng thời của các enzyme và thành phần trong bộ máy tái bản.',
-      7: 'Phân tích nguyên tắc bán bảo toàn: Mỗi phân tử DNA con mang một mạch cũ và một mạch mới.',
-      8: 'So sánh đặc điểm điểm khởi đầu Ori ở DNA vòng vi khuẩn và nhiễm sắc thể nhân thực.',
-      9: 'Hệ thống hóa toàn bộ kiến thức cốt lõi và kết nối sang ý nghĩa, ứng dụng ở Module 03.'
-    };
-
+    // Confetti Animation
     function launchConfetti() {
       const canvas = document.createElement('canvas');
       canvas.id = 'confettiCanvas';
@@ -1981,29 +2619,22 @@ section.section-card .controls-row,section.section-card .stage-actions,section.s
 
     // Chuyển bước (Tự do, không khóa cứng)
     function goToStep(stepIndex) {
+      if (stepIndex < 0 || stepIndex > 9) return;
       lmsState.currentStep = stepIndex;
 
-      // Cập nhật mục tiêu động
-      const goalEl = document.getElementById('goalText');
-      if (goalEl && stageGoals[stepIndex]) {
-        goalEl.textContent = stageGoals[stepIndex];
+      // Cập nhật thanh tiến độ
+      const progressFill = document.getElementById('progressBarFill');
+      if (progressFill) {
+        progressFill.style.width = (stepIndex / 9 * 100) + '%';
       }
 
       for (let i = 0; i <= 9; i++) {
-        const tab = document.getElementById('tabStep' + i);
         const card = document.getElementById('stepCard' + i);
-        if (tab) {
-          if (i === stepIndex) {
-            tab.classList.add('active');
-          } else {
-            tab.classList.remove('active');
-          }
-        }
         if (card) {
           if (i === stepIndex) {
-            card.classList.remove('hidden');
+            card.classList.add('active');
           } else {
-            card.classList.add('hidden');
+            card.classList.remove('active');
           }
         }
       }
@@ -2015,90 +2646,316 @@ section.section-card .controls-row,section.section-card .stage-actions,section.s
     // Xử lý quan sát ở từng bước
     function observeStep(stepNum) {
       lmsState.stepObserved[stepNum] = true;
+      const btn = document.getElementById('btnObsStep' + stepNum);
+      if (btn) {
+        btn.classList.add('observed');
+        btn.innerHTML = '<i class="ti ti-rotate-clockwise"></i> <span>QUAN SÁT LẠI</span>';
+      }
       const postCard = document.getElementById('postObsStep' + stepNum);
       const quizCard = document.getElementById('quizStep' + stepNum);
       if (postCard) postCard.classList.remove('hidden');
       if (quizCard) quizCard.classList.remove('hidden');
+
+      // KÍCH HOẠT HIỆU ỨNG TRỰC QUAN SƠ ĐỒ BÊN TRÁI THEO DEV_ONLY
+      triggerSvgAnimation(stepNum);
       setTimeout(reportHeight, 50);
     }
 
-    // Xử lý trả lời trắc nghiệm ở các bước
-    const correctAnswers = {
-      1: 'B',
-      2: 'B',
-      3: 'B',
-      4: 'B',
-      5: 'C',
-      6: 'C',
-      7: 'B',
-      8: 'C'
-    };
+    // Hàm điều phối hoạt ảnh trực quan theo từng giai đoạn
+    function triggerSvgAnimation(stepNum) {
+      const pill = document.getElementById('statusPill' + stepNum);
 
-    const feedbackTexts = {
-      1: {
-        correct: 'Chính xác. Các hoạt động được học ở những phần sau là các phần được phóng to của cùng một quá trình đang diễn ra phối hợp, không phải những công đoạn hoàn toàn tách rời.',
-        wrong: 'Hãy quan sát lại chạc tái bản. Khi một vùng phía sau chạc đang được hoàn thiện, vùng gần chạc vẫn tiếp tục mở và tổng hợp DNA mới.'
-      },
-      2: {
-        correct: 'Đúng. Cả hai mạch DNA mẹ đều được giữ lại và mỗi mạch làm khuôn để các nucleotide mới được lắp theo nguyên tắc bổ sung. Một Ori tạo hai chạc, không phải một chạc.',
-        wrong: 'Hãy nhìn lại hai mạch vừa được helicase tách ra. Cả hai mạch mẹ vẫn còn nguyên và đều tham gia vào quá trình tiếp theo.'
-      },
-      3: {
-        correct: 'Chính xác. Primase tạo mồi RNA; DNA polymerase chỉ kéo dài mạch mới từ đầu 3′ và mọi mạch DNA mới đều được tổng hợp theo chiều 5′→3′.',
-        wrong: 'Hãy xem lại chi tiết xuất hiện trước khi DNA polymerase bắt đầu kéo dài mạch mới. Đoạn mồi RNA cung cấp đầu 3′ cần thiết cho bước đó.'
-      },
-      4: {
-        correct: 'Chính xác. Hai mạch khuôn ngược chiều nhau nhưng mọi mạch mới đều chỉ được tổng hợp 5′→3′. Vì vậy, một mạch mới được kéo dài liên tục, còn mạch kia phải được tạo thành từng đoạn Okazaki.',
-        wrong: 'Hãy chú ý các kí hiệu 5′ và 3′. Không có mạch DNA mới nào được tổng hợp theo chiều 3′→5′.'
-      },
-      5: {
-        correct: 'Đúng. Ligase không tạo đoạn Okazaki và không thay thế đoạn mồi. Enzyme này nối các điểm đứt còn lại sau khi vùng mồi đã được thay bằng DNA.',
-        wrong: 'Hãy quan sát lại thứ tự: loại mồi → thay bằng DNA → ligase nối. Ligase chỉ thực hiện bước nối cuối cùng.'
-      },
-      6: {
-        correct: 'Chính xác. Tái bản DNA là hoạt động phối hợp của một bộ máy tái bản. Việc chia thành nhiều phần chỉ nhằm giúp chúng ta quan sát từng hoạt động rõ hơn.',
-        wrong: 'Hãy nhìn cả vùng gần chạc và vùng phía sau chạc cùng lúc. Khi chạc vẫn đang mở và tổng hợp DNA mới, những đoạn hình thành trước đó đã có thể được hoàn thiện.'
-      },
-      7: {
-        correct: 'Chính xác. Mỗi DNA con bảo tồn một mạch của DNA mẹ và có một mạch mới được tổng hợp. Đây là nguyên tắc bán bảo toàn.',
-        wrong: 'Hãy quan sát màu của từng mạch trong mỗi DNA con. Mỗi phân tử đều có một mạch cũ và một mạch mới.'
-      },
-      8: {
-        correct: 'Đúng. Nhiều Ori cho phép nhiều đơn vị tái bản hoạt động đồng thời trên một nhiễm sắc thể tuyến tính. Một Ori vẫn tạo hai chạc tái bản.',
-        wrong: 'Hãy quan sát số vùng đang mở cùng lúc. Điểm quan trọng là nhiều vị trí có thể được tái bản đồng thời.'
+      if (stepNum === 1) {
+        // ST01: Master fork helicase xoay mở, mạch mới kéo dài phối hợp
+        const svg1 = document.getElementById('masterForkSvg');
+        if (svg1) svg1.classList.add('anim-active');
+        if (pill) {
+          pill.className = 'obs-status-pill';
+          pill.innerHTML = '<i class="ti ti-activity"></i> Đang mô phỏng: Helicase mở xoắn, mạch liên tục & gián đoạn hình thành phối hợp';
+          pill.classList.remove('hidden');
+        }
+      } else if (stepNum === 2) {
+        // ST02: Ori mở tách đối xứng 2 phía
+        const svg2 = document.getElementById('oriSvg');
+        if (svg2) svg2.classList.add('anim-active-s2');
+        if (pill) {
+          pill.className = 'obs-status-pill';
+          pill.innerHTML = '<i class="ti ti-activity"></i> Đang mô phỏng: Từ điểm Ori, hai chạc tái bản tiến sang hai hướng đối nhau';
+          pill.classList.remove('hidden');
+        }
+      } else if (stepNum === 3) {
+        // ST03: 3 bước mồi RNA -> DNA pol gắn đầu 3' -> kéo dài 5'->3'
+        const primer = document.getElementById('rnaPrimerLine');
+        const pol = document.getElementById('dnaPolEllipse');
+        const extend = document.getElementById('dnaExtendLine');
+        if (pill) {
+          pill.className = 'obs-status-pill';
+          pill.innerHTML = '<i class="ti ti-activity"></i> Bước 1: Primase tạo đoạn mồi RNA cung cấp đầu 3′-OH';
+          pill.classList.remove('hidden');
+        }
+        if (primer) primer.classList.add('anim-primer-highlight');
+
+        setTimeout(() => {
+          if (pol) pol.classList.add('anim-dna-pol-highlight');
+          if (pill) pill.innerHTML = '<i class="ti ti-activity"></i> Bước 2: DNA polymerase xuất hiện bám ĐÚNG vào đầu 3′-OH của mồi';
+        }, 1200);
+
+        setTimeout(() => {
+          if (extend) extend.classList.add('anim-elongate-active');
+          if (pill) pill.innerHTML = '<i class="ti ti-check"></i> Bước 3: Kéo dài mạch DNA mới theo chiều 5′ → 3′';
+        }, 2400);
+      } else if (stepNum === 4) {
+        // ST04: Highlight riêng mạch liên tục rồi đến mạch gián đoạn
+        const lead = document.getElementById('leadingStrandPath');
+        const lag1 = document.getElementById('laggingFrag1');
+        const lag2 = document.getElementById('laggingFrag2');
+
+        if (lead) lead.classList.add('strand-leading-highlight');
+        if (lag1) lag1.classList.remove('strand-lagging-highlight');
+        if (lag2) lag2.classList.remove('strand-lagging-highlight');
+        if (pill) {
+          pill.className = 'obs-status-pill';
+          pill.innerHTML = '<i class="ti ti-activity"></i> 1. Mạch liên tục (trên): Tổng hợp liên tục tiến về phía chạc 5′ → 3′';
+          pill.classList.remove('hidden');
+        }
+
+        setTimeout(() => {
+          if (lead) lead.classList.remove('strand-leading-highlight');
+          if (lag1) lag1.classList.add('strand-lagging-highlight');
+          if (lag2) lag2.classList.add('strand-lagging-highlight');
+          if (pill) {
+            pill.className = 'obs-status-pill amber';
+            pill.innerHTML = '<i class="ti ti-activity"></i> 2. Mạch gián đoạn (dưới): Từng đoạn Okazaki tổng hợp 5′ → 3′ ra xa chạc';
+          }
+        }, 2000);
+
+        setTimeout(() => {
+          if (lead) lead.classList.add('strand-leading-highlight');
+          if (pill) {
+            pill.className = 'obs-status-pill';
+            pill.innerHTML = '<i class="ti ti-check"></i> So sánh: Cả hai mạch mới đều được kéo dài theo chiều 5′ → 3′';
+          }
+        }, 4000);
+      } else if (stepNum === 5) {
+        // ST05: 3 Trạng thái hoàn thiện mạch Okazaki
+        const r1 = document.getElementById('st5CardRect1');
+        const r2 = document.getElementById('st5CardRect2');
+        const r3 = document.getElementById('st5CardRect3');
+        const a1 = document.getElementById('st5Arrow1');
+        const a2 = document.getElementById('st5Arrow2');
+        const nick = document.getElementById('st5NickCircle');
+        const lig = document.getElementById('st5LigaseEllipse');
+
+        if (r1) r1.classList.add('st5-card-active');
+        if (r2) r2.classList.remove('st5-card-active');
+        if (r3) r3.classList.remove('st5-card-active');
+        if (pill) {
+          pill.className = 'obs-status-pill';
+          pill.innerHTML = '<i class="ti ti-activity"></i> Trạng thái 1: Đoạn Okazaki còn mồi RNA đỏ và khoảng hở';
+          pill.classList.remove('hidden');
+        }
+
+        setTimeout(() => {
+          if (r1) r1.classList.remove('st5-card-active');
+          if (a1) a1.classList.add('st5-arrow-active');
+          if (r2) r2.classList.add('st5-card-active');
+          if (nick) nick.classList.add('st5-nick-pulse');
+          if (pill) {
+            pill.className = 'obs-status-pill amber';
+            pill.innerHTML = '<i class="ti ti-activity"></i> Trạng thái 2: Mồi RNA được thay bằng DNA, còn lại điểm đứt (nick)';
+          }
+        }, 1500);
+
+        setTimeout(() => {
+          if (r2) r2.classList.remove('st5-card-active');
+          if (a2) a2.classList.add('st5-arrow-active');
+          if (r3) r3.classList.add('st5-card-active');
+          if (lig) lig.classList.add('st5-ligase-action');
+          if (pill) {
+            pill.className = 'obs-status-pill';
+            pill.innerHTML = '<i class="ti ti-check"></i> Trạng thái 3: Ligase nối các điểm đứt nick trên khung phosphodiester';
+          }
+        }, 3000);
+      } else if (stepNum === 6) {
+        // ST06: Phối hợp toàn cảnh
+        const svg6 = document.getElementById('fullForkSvg');
+        if (svg6) svg6.classList.add('anim-fork-all-enz');
+        if (pill) {
+          pill.className = 'obs-status-pill';
+          pill.innerHTML = '<i class="ti ti-activity"></i> Bộ máy tái bản phối hợp đồng thời: Helicase mở xoắn, Pol kéo dài, Ligase nối liền';
+          pill.classList.remove('hidden');
+        }
+      } else if (stepNum === 7) {
+        // ST07: Nguyên tắc bán bảo toàn
+        const d1 = document.getElementById('daughterRect1');
+        const d2 = document.getElementById('daughterRect2');
+        const o1 = document.getElementById('strandOld1');
+        const o2 = document.getElementById('strandOld2');
+        const n1 = document.getElementById('strandNew1');
+        const n2 = document.getElementById('strandNew2');
+
+        if (d1) d1.classList.add('daughter-dna-card-active');
+        if (d2) d2.classList.add('daughter-dna-card-active');
+        if (o1) o1.classList.add('strand-old-glow');
+        if (o2) o2.classList.add('strand-old-glow');
+        if (n1) n1.classList.add('strand-new-glow');
+        if (n2) n2.classList.add('strand-new-glow');
+        if (pill) {
+          pill.className = 'obs-status-pill';
+          pill.innerHTML = '<i class="ti ti-check"></i> Nguyên tắc bán bảo toàn: Mỗi DNA con gồm 1 mạch cũ (mẹ) + 1 mạch mới tổng hợp';
+          pill.classList.remove('hidden');
+        }
       }
-    };
+    }
 
+    // Reset lại hoạt ảnh khi bấm làm lại
+    function resetSvgAnimation(stepNum) {
+      const pill = document.getElementById('statusPill' + stepNum);
+      if (pill) {
+        pill.classList.add('hidden');
+        pill.innerHTML = '';
+      }
+      if (stepNum === 1) {
+        const svg1 = document.getElementById('masterForkSvg');
+        if (svg1) svg1.classList.remove('anim-active');
+      } else if (stepNum === 2) {
+        const svg2 = document.getElementById('oriSvg');
+        if (svg2) svg2.classList.remove('anim-active-s2');
+      } else if (stepNum === 3) {
+        const primer = document.getElementById('rnaPrimerLine');
+        const pol = document.getElementById('dnaPolEllipse');
+        const extend = document.getElementById('dnaExtendLine');
+        if (primer) primer.classList.remove('anim-primer-highlight');
+        if (pol) pol.classList.remove('anim-dna-pol-highlight');
+        if (extend) extend.classList.remove('anim-elongate-active');
+      } else if (stepNum === 4) {
+        const lead = document.getElementById('leadingStrandPath');
+        const lag1 = document.getElementById('laggingFrag1');
+        const lag2 = document.getElementById('laggingFrag2');
+        if (lead) lead.classList.remove('strand-leading-highlight');
+        if (lag1) lag1.classList.remove('strand-lagging-highlight');
+        if (lag2) lag2.classList.remove('strand-lagging-highlight');
+      } else if (stepNum === 5) {
+        const r1 = document.getElementById('st5CardRect1');
+        const r2 = document.getElementById('st5CardRect2');
+        const r3 = document.getElementById('st5CardRect3');
+        const a1 = document.getElementById('st5Arrow1');
+        const a2 = document.getElementById('st5Arrow2');
+        const nick = document.getElementById('st5NickCircle');
+        const lig = document.getElementById('st5LigaseEllipse');
+        if (r1) r1.classList.remove('st5-card-active');
+        if (r2) r2.classList.remove('st5-card-active');
+        if (r3) r3.classList.remove('st5-card-active');
+        if (a1) a1.classList.remove('st5-arrow-active');
+        if (a2) a2.classList.remove('st5-arrow-active');
+        if (nick) nick.classList.remove('st5-nick-pulse');
+        if (lig) lig.classList.remove('st5-ligase-action');
+      } else if (stepNum === 6) {
+        const svg6 = document.getElementById('fullForkSvg');
+        if (svg6) svg6.classList.remove('anim-fork-all-enz');
+      } else if (stepNum === 7) {
+        const d1 = document.getElementById('daughterRect1');
+        const d2 = document.getElementById('daughterRect2');
+        const o1 = document.getElementById('strandOld1');
+        const o2 = document.getElementById('strandOld2');
+        const n1 = document.getElementById('strandNew1');
+        const n2 = document.getElementById('strandNew2');
+        if (d1) d1.classList.remove('daughter-dna-card-active');
+        if (d2) d2.classList.remove('daughter-dna-card-active');
+        if (o1) o1.classList.remove('strand-old-glow');
+        if (o2) o2.classList.remove('strand-old-glow');
+        if (n1) n1.classList.remove('strand-new-glow');
+        if (n2) n2.classList.remove('strand-new-glow');
+      }
+    }
+
+    // Xử lý trả lời trắc nghiệm ở các bước
     function answerStepQuiz(stepNum, choice) {
       const fb = document.getElementById('fbStep' + stepNum);
       const opts = document.getElementById('optsStep' + stepNum);
       const btnNext = document.getElementById('btnNextStep' + stepNum);
-      const tab = document.getElementById('tabStep' + stepNum);
+      
       if (!fb || !opts) return;
+
+      const data = stepsData.find(s => s.step === stepNum);
+      if (!data) return;
 
       const buttons = opts.querySelectorAll('.quiz-opt-btn');
       buttons.forEach(btn => {
-        btn.classList.remove('correct');
-        btn.classList.remove('wrong');
+        btn.classList.remove('correct', 'wrong');
       });
 
-      const isCorrect = (choice === correctAnswers[stepNum]);
-      const choiceIdx = choice.charCodeAt(0) - 65; // A -> 0, B -> 1, C -> 2, D -> 3
+      const isCorrect = (choice === data.correctKey);
+      const choiceIdx = choice.charCodeAt(0) - 65;
       if (buttons[choiceIdx]) {
         buttons[choiceIdx].classList.add(isCorrect ? 'correct' : 'wrong');
       }
 
-      fb.className = 'quiz-feedback ' + (isCorrect ? 'correct' : 'wrong');
-      fb.innerHTML = '<i class="ti ti-' + (isCorrect ? 'check' : 'alert-circle') + '"></i> <div>' + (isCorrect ? feedbackTexts[stepNum].correct : feedbackTexts[stepNum].wrong) + '</div>';
-      fb.classList.remove('hidden');
+      fb.className = 'inline-feedback ' + (isCorrect ? 'ok' : 'bad');
 
       if (isCorrect) {
+        const optObj = data.options.find(o => o.key === data.correctKey);
+        const optText = optObj ? optObj.text : '';
+        fb.innerHTML = `
+          <div class="feedback-header"><i class="ti ti-circle-check"></i> Chính xác!</div>
+          <div class="correct-answer-box">✓ Đáp án đúng: ${data.correctKey}. ${optText}</div>
+          <div class="explanation">${data.feedbackOk}</div>
+          <div class="pedagogy-meta">
+            <div class="pedagogy-item">
+              <span class="pedagogy-label">Chủ đề:</span>
+              <span class="pedagogy-value"><strong>${data.meta.topic}</strong></span>
+            </div>
+            <div class="pedagogy-item">
+              <span class="pedagogy-label">Dạng bài:</span>
+              <span class="pedagogy-value"><strong>${data.meta.taskType}</strong></span>
+            </div>
+            <div class="pedagogy-item">
+              <span class="pedagogy-label">Cấp độ tư duy:</span>
+              <span class="pedagogy-value"><strong>${data.meta.level}</strong></span>
+            </div>
+            <div class="pedagogy-item">
+              <span class="pedagogy-label">Năng lực sinh học:</span>
+              <span class="pedagogy-value"><strong>${data.meta.competency}</strong></span>
+            </div>
+            <div class="pedagogy-item" style="grid-column: 1 / -1;">
+              <span class="pedagogy-label">Định dạng:</span>
+              <span class="pedagogy-value"><strong>${data.meta.format}</strong></span>
+            </div>
+          </div>
+        `;
         lmsState.stepQuizPassed[stepNum] = true;
         if (btnNext) btnNext.disabled = false;
-        if (tab) tab.classList.add('completed');
+        
+      } else {
+        fb.innerHTML = `
+          <div class="feedback-header"><i class="ti ti-alert-triangle"></i> Chưa chính xác!</div>
+          <div class="explanation">${data.feedbackBad}</div>
+        `;
       }
-
+      fb.classList.remove('hidden');
       setTimeout(reportHeight, 50);
+    }
+
+    // Làm lại bước
+    function resetStep(stepNum) {
+      resetSvgAnimation(stepNum);
+      const opts = document.getElementById('optsStep' + stepNum);
+      if (opts) {
+        opts.querySelectorAll('.quiz-opt-btn').forEach(btn => {
+          btn.classList.remove('correct', 'wrong');
+        });
+      }
+      const fb = document.getElementById('fbStep' + stepNum);
+      if (fb) {
+        fb.className = 'inline-feedback hidden';
+        fb.innerHTML = '';
+      }
+      const btnNext = document.getElementById('btnNextStep' + stepNum);
+      if (btnNext) btnNext.disabled = true;
+      delete lmsState.stepQuizPassed[stepNum];
+      
+      
+      reportHeight();
     }
 
     // Chế độ xem ST08
@@ -2131,7 +2988,7 @@ section.section-card .controls-row,section.section-card .stage-actions,section.s
     function completeModule() {
       lmsState.M02_complete = true;
       const tab = document.getElementById('tabStep9');
-      if (tab) tab.classList.add('completed');
+      
 
       if (window.parent && window.parent !== window) {
         window.parent.postMessage({
@@ -2153,13 +3010,5 @@ section.section-card .controls-row,section.section-card .stage-actions,section.s
       if (modal) modal.classList.add('hidden');
     }
   </script>
-<script>
-/* Chuẩn hóa theo SH10_B01_M02: trực quan trái, nhiệm vụ phải, nút dưới. */
-(()=>{document.querySelectorAll('section.section-card,section.stage-section').forEach(stage=>{if(stage.classList.contains('two-block-ready'))return;const nodes=[...stage.children],controls=nodes.find(n=>n.matches('.controls-row,.stage-actions')),lead=nodes.find(n=>n.matches('.lead-box')),title=nodes.find(n=>n.matches('h2,.stage-title,.section-title'));const candidates=nodes.filter(n=>n!==controls&&n!==lead&&n!==title&&!n.matches('.guide-box,.feedback-box,.feedback-bar,.conclude-card'));let visualNode=candidates.find(n=>n.querySelector('img,svg,canvas'))||candidates.find(n=>/viewer|grid|diagram|visual|comparison|summary|figure/.test(n.className))||candidates[0];const split=document.createElement('div');split.className='split-workspace';const visual=document.createElement('article');visual.className='visual-card';const head=document.createElement('div');head.className='visual-card__head';const h=title||document.createElement('h2');if(!title){const q=lead&&lead.querySelector('.lead-question,.lead-text');h.textContent=q?q.textContent.trim().replace(/^“|”$/g,''):'Nội dung bài học'}head.appendChild(h);const body=document.createElement('div');body.className='visual-body';if(visualNode)body.appendChild(visualNode);visual.append(head,body);const work=document.createElement('article');work.className='workspace-card';let guide=nodes.find(n=>n.matches('.guide-box'))||(lead&&lead.querySelector('.guide-box'));if(guide){guide.className='instruction';work.appendChild(guide)}else{const g=document.createElement('div');g.className='instruction';g.innerHTML='<i class="ti ti-bulb"></i><span>Quan sát dữ kiện trực quan và hoàn thành nhiệm vụ.</span>';work.appendChild(g)}if(lead)work.appendChild(lead);candidates.forEach(n=>{if(n!==visualNode)work.appendChild(n)});stage.querySelectorAll(':scope > .feedback-box,:scope > .feedback-bar,:scope > .conclude-card').forEach(n=>work.appendChild(n));split.append(visual,work);stage.prepend(split);stage.querySelectorAll('.feedback-box,.feedback-bar,.feedback-panel').forEach(n=>n.classList.add('inline-feedback'));if(controls){controls.classList.add('controls-row');stage.appendChild(controls)}stage.classList.add('two-block-ready')});const clean=root=>{const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.closest('script,style'))continue;const v=n.nodeValue.replace(/Tiếp tục sang Giai đoạn\s*\d+/gi,'Tiếp tục').replace(/Hoàn thành Giai đoạn\s*\d+!?/gi,'Hoàn thành!').replace(/GIAI ĐOẠN\s*\d+\s*\/\s*\d+\s*[·—-]\s*/gi,'').replace(/Stage\s*\d+/gi,'').replace(/Màn\s*\d+\s*[·:]\s*/gi,'').replace(/Bước\s*\d+\s*\/\s*\d+/gi,'');if(v!==n.nodeValue)n.nodeValue=v}};clean(document.body);new MutationObserver(a=>a.forEach(m=>clean(m.target))).observe(document.body,{childList:true,subtree:true,characterData:true})})();
-</script>
-<script>
-/* Hàng điều hướng ba nút thống nhất, thay thế cụm điều hướng cũ. */
-(()=>{const stages=[...document.querySelectorAll('section.section-card,section.stage-section,section.stage-card')];const go=(idx)=>{const stage=stages[idx];if(!stage)return;if(typeof goToStep==='function')goToStep(idx);else if(typeof showStage==='function')showStage(idx);else if(typeof goToStage==='function'){const m=stage.id.match(/stage-?(\d+)/);goToStage(m?Number(m[1]):idx)}else{stages.forEach((item,itemIdx)=>{item.classList.toggle('hidden',itemIdx!==idx);item.classList.toggle('hidden-stage',itemIdx!==idx);item.classList.toggle('active',itemIdx===idx)});window.scrollTo({top:0,behavior:'smooth'})}};const hashMatch=location.hash.match(/^#retry-stage-(\d+)$/);stages.forEach((stage,idx)=>{if(stage.querySelector(':scope > .three-button-nav'))return;const sourceRow=stage.querySelector(':scope > .controls-row,:scope > .stage-actions');const buttons=sourceRow?[...sourceRow.querySelectorAll('button')]:[];const byText=(re)=>buttons.find(b=>re.test(b.textContent));const backSource=byText(/quay lại|xem lại/i);const resetSource=byText(/làm lại màn|làm lại|đặt lại|nối lại/i);const nextSource=byText(/tiếp tục/i)||buttons.find(b=>/complete|finish|next/i.test(b.id))||buttons.findLast(b=>b!==backSource&&b!==resetSource);const row=document.createElement('div');row.className='three-button-nav';const back=document.createElement('button');back.type='button';back.className='btn btn-outline nav-back';back.innerHTML='<i class="ti ti-arrow-left"></i> Quay lại';back.disabled=idx===0;back.addEventListener('click',()=>backSource?backSource.click():go(idx-1));const reset=document.createElement('button');reset.type='button';reset.className='btn btn-outline nav-reset';reset.innerHTML='<i class="ti ti-rotate-clockwise"></i> Làm lại màn';reset.addEventListener('click',()=>{if(resetSource)resetSource.click();else{location.hash='#retry-stage-'+idx;location.reload()}});const spacer=document.createElement('span');spacer.className='nav-spacer';const next=document.createElement('button');next.type='button';next.className='btn btn-primary nav-next';next.innerHTML='Tiếp tục <i class="ti ti-arrow-right"></i>';const sync=()=>{next.disabled=!nextSource||nextSource.disabled||nextSource.classList.contains('hidden')};next.addEventListener('click',()=>nextSource?nextSource.click():go(idx+1));sync();if(nextSource)new MutationObserver(sync).observe(nextSource,{attributes:true,attributeFilter:['class','disabled']});row.append(back,reset,spacer,next);stage.appendChild(row)});if(hashMatch){const idx=Number(hashMatch[1]);setTimeout(()=>{go(idx);history.replaceState(null,'',location.pathname+location.search)},80)}})();
-</script>
 </body>
 </html>

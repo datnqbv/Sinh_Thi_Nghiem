@@ -222,49 +222,162 @@ header h1{
 .btn-primary:hover:not(:disabled){background:var(--jade-deep)}
 .btn:disabled{opacity:.48;cursor:not-allowed}
 
-/* SPLIT WORKSPACE GRID (2-COLUMN LAYOUT) */
+/* SPLIT WORKSPACE GRID (TWO-BLOCK LAYOUT: LEFT THEORY | RIGHT WORKSPACE) */
 .split-workspace{
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:minmax(0,56fr) minmax(360px,44fr);
   gap:20px;
   align-items:start;
   width:100%;
 }
-@media (max-width:900px){
+@media (max-width:980px){
   .split-workspace{
     grid-template-columns:1fr;
   }
 }
 
-.canvas-card{
+/* KHỐI TRÁI: LÝ THUYẾT, HƯỚNG DẪN & TRỰC QUAN (.visual-card) */
+.visual-card{
   width:100%;
   display:flex;
   flex-direction:column;
-  gap:10px;
   position:sticky;
-  top:64px;
-  z-index:10;
+  top:16px;
   background:#fff;
   border:1px solid var(--paper-line);
   border-radius:var(--radius-lg);
-  padding:14px;
   box-shadow:var(--shadow-sm);
 }
-@media (max-width:900px){
-  .canvas-card{
+@media (max-width:980px){
+  .visual-card{
     position:static;
   }
 }
+.visual-card__head{
+  padding:16px 20px 14px;
+  border-bottom:1px solid var(--paper-line);
+}
+.visual-card__head h2{
+  margin:0;
+  font-size:clamp(1.2rem,2.2vw,1.45rem);
+  line-height:1.32;
+  font-weight:800;
+  color:var(--ink);
+}
+.visual-card__head .question{
+  margin:8px 0 0;
+  color:var(--jade-dark);
+  font-size:0.94rem;
+  font-weight:700;
+  line-height:1.55;
+}
+.visual-card__content{
+  padding:16px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.theory-flow{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.theory-block{
+  padding:12px 14px;
+  border:1px solid var(--paper-line);
+  border-radius:var(--radius-sm);
+  background:var(--cream);
+  font-size:.9rem;
+  line-height:1.55;
+}
+.theory-block__title{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:700;
+  font-size:.92rem;
+  color:var(--jade-text);
+  margin-bottom:6px;
+}
+.theory-block__content{
+  margin:0;
+  color:var(--ink-2);
+}
+.theory-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:8px;
+  font-size:0.84rem;
+}
+.theory-table th,.theory-table td{
+  padding:8px 10px;
+  border:1px solid var(--paper-line);
+  text-align:left;
+  vertical-align:top;
+}
+.theory-table th{
+  background:var(--cream-2);
+  color:var(--jade-text);
+  font-weight:700;
+}
+.theory-table td{
+  background:#fff;
+  color:var(--ink-2);
+}
+.btn-sm{
+  padding:6px 12px;
+  font-size:0.82rem;
+  border-radius:var(--radius-sm);
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  cursor:pointer;
+  margin-top:6px;
+}
+.visual-body{
+  margin-top:4px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* KHỐI PHẢI: HOẠT ĐỘNG TƯƠNG TÁC & BÀI TẬP (.workspace-card) */
 .workspace-card{
   width:100%;
+  min-width:0;
   display:flex;
   flex-direction:column;
   gap:14px;
-  background:#fff;
+  background:var(--cream-2);
   border:1px solid var(--paper-line);
   border-radius:var(--radius-lg);
-  padding:22px 26px;
+  padding:20px 22px;
   box-shadow:var(--shadow-sm);
+  position:sticky;
+  top:16px;
+  max-height:calc(100vh - 32px);
+  overflow-y:auto;
+  scrollbar-width:thin;
+}
+.workspace-card::-webkit-scrollbar{width:4px}
+.workspace-card::-webkit-scrollbar-thumb{background:var(--paper-line-2);border-radius:4px}
+@media (max-width:980px){
+  .workspace-card{
+    position:static;
+    max-height:none;
+    overflow-y:visible;
+  }
+}
+.workspace-section-label{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:0.84rem;
+  text-transform:uppercase;
+  letter-spacing:0.6px;
+  color:var(--jade-text);
+  font-weight:700;
+  margin-bottom:4px;
 }
 .canvas-glow-wrap{
   position:relative;
@@ -335,6 +448,30 @@ header h1{
   color:var(--ink-2);
   font-size:0.94rem;
 }
+/* SINGLE POINT OF INSTRUCTION */
+.instruction{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:0 0 16px;
+  padding:12px 14px;
+  border-left:4px solid var(--info);
+  border-radius:var(--radius-sm);
+  background:var(--info-bg);
+  color:var(--ink-2);
+  font-size:0.91rem;
+  line-height:1.55;
+}
+.instruction i{
+  flex:0 0 auto;
+  margin-top:2px;
+  font-size:1.2rem;
+  color:var(--info);
+}
+.instruction strong{
+  color:var(--ink);
+}
+
 
 /* COMPONENTS & TASK ELEMENTS */
 .section-label{
@@ -504,24 +641,43 @@ header h1{
 
 <div class="app">
   <main class="main">
-    <!-- SPLIT WORKSPACE GRID (LEFT: CANVAS | RIGHT: QUESTIONS) -->
+    <!-- SPLIT WORKSPACE GRID (TWO-BLOCK: LEFT THEORY | RIGHT WORKSPACE) -->
     <div class="split-workspace">
-      <!-- LEFT COLUMN: STICKY CANVAS ILLUSTRATION -->
-      <section class="card canvas-card">
-        <div class="canvas-glow-wrap">
-          <canvas id="labCanvas" width="800" height="600" role="img" aria-label="Mô phỏng thiết bị và mẫu vật minh họa"></canvas>
+      <!-- LEFT COLUMN: LÝ THUYẾT, HƯỚNG DẪN & TRỰC QUAN -->
+      <article class="card visual-card">
+        <div class="visual-card__head">
+          <h2 id="stageTitle">Từ phương pháp nghiên cứu đến thiết bị phù hợp</h2>
+          <p class="question" id="stageQuestion">Ba nhiệm vụ nghiên cứu dưới đây cần những thiết bị nào?</p>
         </div>
-        <div class="visual-info-panel">
-          <div class="visual-info-title"><i class="ti ti-info-circle"></i> <span id="visualKicker">MINH HỌA KHOA HỌC</span></div>
-          <div class="visual-info-desc" id="visualCaption">Kính hiển vi quang học</div>
-        </div>
-      </section>
 
-      <!-- RIGHT COLUMN: QUESTIONS & INTERACTIVE WORKSPACE -->
-      <section class="card workspace-card">
+        <div class="visual-card__content">
+          <!-- Khung Hướng dẫn thao tác duy nhất nằm ở bên trái -->
+          <div class="instruction" id="stageInstruction">
+            <i class="ti ti-hand-click"></i>
+            <span id="stageInstructionText"><strong>HƯỚNG DẪN:</strong> Đọc ba nhiệm vụ nghiên cứu ở bên trái, sau đó ghép nối từng nhiệm vụ với thiết bị bạn dự đoán là phù hợp ở bên phải và bấm <strong>Xác nhận dự đoán</strong>.</span>
+          </div>
+
+          <!-- Nội dung bài học dạng khối dọc tuần tự theo kịch bản -->
+          <div class="theory-flow" id="theoryFlow"></div>
+
+          <!-- Trực quan: Canvas mô phỏng & chú thích -->
+          <div class="visual-body hidden" id="visualBody">
+            <div class="canvas-glow-wrap">
+              <canvas id="labCanvas" width="800" height="600" role="img" aria-label="Mô phỏng thiết bị và mẫu vật minh họa"></canvas>
+            </div>
+            <div class="visual-info-panel">
+              <div class="visual-info-title"><i class="ti ti-info-circle"></i> <span id="visualKicker">MINH HỌA KHOA HỌC</span></div>
+              <div class="visual-info-desc" id="visualCaption">Kính hiển vi quang học</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- RIGHT COLUMN: HOẠT ĐỘNG TƯƠNG TÁC & BÀI TẬP CỦNG CỐ -->
+      <article class="card workspace-card">
         <div class="workspace" id="workspace"></div>
         <div class="feedback-box" id="globalFeedback" aria-live="polite">Hệ thống sẽ phản hồi sau mỗi thao tác có ý nghĩa.</div>
-      </section>
+      </article>
     </div>
 
     <!-- CONTROLS ROW (ABOVE FOOTER) -->
@@ -578,24 +734,28 @@ const deviceNames={
 const deviceAssets={light:'A01',electron:'A02',centrifuge:'A03',pipette:'A10',magnifier:'A11',pcr:'A12',electrophoresis:'A13'};
 const stages={
   1:{
+    title:'Từ phương pháp nghiên cứu đến thiết bị phù hợp',
     goal:'Hiểu rằng thiết bị được lựa chọn dựa trên nhiệm vụ nghiên cứu và loại thông tin cần thu thập.',
     question:'Ba nhiệm vụ nghiên cứu dưới đây cần những thiết bị nào?',
-    guide:'Chọn một nhiệm vụ, sau đó chọn thiết bị bạn dự đoán là phù hợp.'
+    guide:'Đọc ba nhiệm vụ nghiên cứu ở bên trái, sau đó ghép nối từng nhiệm vụ với thiết bị bạn dự đoán là phù hợp ở bên phải và bấm Xác nhận dự đoán.'
   },
   2:{
+    title:'Kính hiển vi quang học và kính hiển vi điện tử',
     goal:'So sánh hai loại kính hiển vi và phân biệt độ phóng đại, độ phân giải, độ tương phản.',
     question:'Hai loại kính hiển vi khác nhau như thế nào và nên dùng trong những nhiệm vụ nào?',
-    guide:'Ghép bốn thẻ dữ kiện vào đúng loại kính hiển vi, rồi bấm Kiểm tra.'
+    guide:'Quan sát đặc điểm so sánh và 3 thông số kính hiển vi ở bên trái, sau đó phân loại 4 dữ kiện và thực hiện nhiệm vụ vận dụng ở bên phải rồi bấm Kiểm tra.'
   },
   3:{
+    title:'Thiết bị xử lí và thao tác với mẫu',
     goal:'Nêu chức năng của máy li tâm, pipet và kính lúp; phân biệt quan sát với xử lí mẫu.',
     question:'Không phải thiết bị nào cũng dùng để quan sát. Từng thiết bị thực hiện nhiệm vụ gì?',
-    guide:'Chọn một nhiệm vụ, chọn thiết bị phù hợp, rồi kiểm tra cả bốn cặp.'
+    guide:'Tìm hiểu chức năng của các thiết bị xử lí mẫu ở bên trái, sau đó ghép 4 nhiệm vụ với thiết bị tương ứng ở bên phải rồi bấm Kiểm tra.'
   },
   4:{
+    title:'Chọn thiết bị theo nhiệm vụ nghiên cứu',
     goal:'Lựa chọn thiết bị theo nhiệm vụ và đối chiếu với dự đoán ban đầu.',
     question:'Thiết bị nào phù hợp nhất với từng nhiệm vụ?',
-    guide:'Chọn thiết bị cho ba nhiệm vụ bắt buộc, sau đó bấm Kiểm tra.'
+    guide:'Đối chiếu kiến thức đã học với dự đoán ban đầu ở S01, lựa chọn thiết bị phù hợp nhất cho từng nhiệm vụ ở bảng bên phải rồi bấm Kiểm tra.'
   }
 };
 
@@ -746,6 +906,12 @@ function syncTabs(){
 }
 function renderShell(){
   const meta=stages[state.stage];
+  const stageTitle=document.getElementById('stageTitle');
+  if(stageTitle)stageTitle.textContent=meta.title||'';
+  const stageQuestion=document.getElementById('stageQuestion');
+  if(stageQuestion)stageQuestion.textContent=meta.question||'';
+  const stageInstructionText=document.getElementById('stageInstructionText');
+  if(stageInstructionText)stageInstructionText.innerHTML=`<strong>HƯỚNG DẪN:</strong> ${meta.guide||''}`;
   const goalText=document.getElementById('goalText');
   if(goalText)goalText.textContent=meta.goal;
   const next=document.getElementById('btnNext');next.disabled=!state.completedStages.has(state.stage);
@@ -773,29 +939,53 @@ const s1Tasks=[
   {id:'t3',index:3,text:'Phân tách các thành phần trong mẫu tế bào.',asset:'A06'}
 ];
 function renderStage1(){
+  const vb=document.getElementById('visualBody');if(vb)vb.classList.add('hidden');
   const s=state.s1,all=Object.keys(s.pairs).length===3;
-  document.getElementById('workspace').innerHTML=`
-    <h2>Mỗi thiết bị giúp thực hiện nhiệm vụ nào?</h2>
-    <p class="workspace-note">Chọn một nhiệm vụ rồi bấm chọn thiết bị bạn dự đoán phù hợp.</p>
-    <div class="s1-match-layout">
-      <section>
-        <div class="section-label"><i class="ti ti-clipboard-list"></i> Ba nhiệm vụ</div>
-        <div class="task-grid" id="s1Tasks">${s1Tasks.map(t=>taskCard(t,s.pairs[t.id],{selected:s.selectedTask===t.id,disabled:s.confirmed})).join('')}</div>
-      </section>
-      <section>
-        <div class="section-label"><i class="ti ti-microscope"></i> Chọn thiết bị tương ứng</div>
-        <div class="device-grid" id="s1Devices">${['light','electron','centrifuge'].map(id=>deviceButton(id,s.selectedTask&&s.pairs[s.selectedTask]===id)).join('')}</div>
-      </section>
+  // Render bên trái: Lý thuyết tuần tự theo kịch bản
+  document.getElementById('theoryFlow').innerHTML=`
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-bookmarks"></i> Vai trò của thiết bị nghiên cứu</div>
+      <div class="theory-block__content">
+        Trong nghiên cứu Sinh học, mỗi phương pháp (quan sát, giải phẫu, thực nghiệm...) đều cần thiết bị hỗ trợ chuyên biệt. Thiết bị giúp mở rộng giác quan hoặc xử lí mẫu vật mà mắt thường không thể thực hiện trực tiếp.
+      </div>
     </div>
-    ${s.confirmed?'<div class="paired-summary"><strong>Lựa chọn ban đầu của bạn đã được lưu</strong><br>Các Stage tiếp theo sẽ cung cấp dữ kiện để bạn kiểm tra lại dự đoán.</div>':''}
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-bulb"></i> Ba tình huống nghiên cứu thực tế</div>
+      <div class="theory-block__content">
+        <ul style="margin:4px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:5px;">
+          <li><strong>Nhiệm vụ 1:</strong> Quan sát hình dạng tế bào biểu bì vảy hành (kích thước hiển vi micro-mét).</li>
+          <li><strong>Nhiệm vụ 2:</strong> Nghiên cứu những cấu trúc siêu nhỏ bên trong tế bào (kích thước siêu hiển vi nano-mét).</li>
+          <li><strong>Nhiệm vụ 3:</strong> Phân tách các thành phần trong mẫu tế bào đã đồng hóa và xử lí.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-microscope"></i> Ba thiết bị dự đoán ban đầu</div>
+      <div class="theory-block__content">
+        Gồm: <strong>Kính hiển vi quang học</strong>, <strong>Kính hiển vi điện tử</strong> và <strong>Máy li tâm</strong>. Không thể lựa chọn thiết bị chỉ dựa vào hình thức hoặc mức độ hiện đại, mà phải dựa trên nhiệm vụ cần giải quyết.
+      </div>
+    </div>`;
+
+  // Render bên phải: Hoạt động tương tác và chọn cặp (KHÔNG lặp lại h2 và instruction)
+  document.getElementById('workspace').innerHTML=`
+    <section>
+      <div class="workspace-section-label"><i class="ti ti-clipboard-list"></i> Bước 1: Chọn một nhiệm vụ nghiên cứu</div>
+      <div class="task-grid" id="s1Tasks">${s1Tasks.map(t=>taskCard(t,s.pairs[t.id],{selected:s.selectedTask===t.id,disabled:s.confirmed})).join('')}</div>
+    </section>
+    <section>
+      <div class="workspace-section-label" style="margin-top:14px;"><i class="ti ti-microscope"></i> Bước 2: Chọn thiết bị bạn dự đoán phù hợp</div>
+      <div class="device-grid" id="s1Devices">${['light','electron','centrifuge'].map(id=>deviceButton(id,s.selectedTask&&s.pairs[s.selectedTask]===id)).join('')}</div>
+    </section>
+    ${s.confirmed?'<div class="paired-summary"><strong>✓ Dự đoán ban đầu của bạn đã được lưu!</strong><br>Các Stage tiếp theo sẽ cung cấp dữ kiện khoa học để bạn kiểm tra lại dự đoán.</div>':''}
     <div class="actions"><button class="btn btn-primary" id="s1Confirm" ${!all||s.confirmed?'disabled':''}><i class="ti ti-device-floppy"></i> Xác nhận dự đoán</button></div>`;
+
   document.querySelectorAll('#s1Tasks [data-task]').forEach(btn=>btn.onclick=()=>{
     s.selectedTask=btn.dataset.task;const task=s1Tasks.find(t=>t.id===s.selectedTask);
     setVisual(task.asset,task.text,'Nhiệm vụ nghiên cứu');persist(`Chọn nhiệm vụ S01 ${task.id}`);renderStage1();
   });
   document.querySelectorAll('#s1Devices [data-device]').forEach(btn=>btn.onclick=()=>{
     if(s.confirmed)return;
-    if(!s.selectedTask){feedback('Hãy chọn một nhiệm vụ trước khi chọn thiết bị.','bad');return}
+    if(!s.selectedTask){feedback('Hãy chọn một nhiệm vụ ở bước 1 trước khi chọn thiết bị.','bad');return}
     selectTaskAndDevice(s.selectedTask,btn.dataset.device,s.pairs);s.selectedTask=null;
     persist('Ghi nhận dự đoán S01');renderStage1();
   });
@@ -823,40 +1013,81 @@ const s2FactFeedback={
   f4:'Kính hiển vi điện tử có độ phân giải cao, phù hợp nghiên cứu cấu trúc siêu hiển vi.'
 };
 function renderStage2(){
+  const vb=document.getElementById('visualBody');if(vb)vb.classList.remove('hidden');
   const s=state.s2;
-  const factsAssigned=Object.keys(s.facts).length===4,conceptsReady=s.factsComplete,conceptsDone=s.conceptsViewed.size===3,tasksReady=conceptsDone;
-  document.getElementById('workspace').innerHTML=`
-    <h2>Kính hiển vi quang học và kính hiển vi điện tử</h2>
-    <p class="workspace-note">Phân loại dữ kiện vào đúng loại kính hiển vi.</p>
-    <div class="compare-grid">
-      <section class="micro-panel">
-        <div class="micro-head"><img src="${assetFiles.A01}" alt="Kính hiển vi quang học"><div><h3>Kính hiển vi quang học</h3><p>Sử dụng ánh sáng để tạo ảnh phóng đại.</p></div></div>
-        <div id="lightFacts" class="facts-grid"></div>
-      </section>
-      <section class="micro-panel">
-        <div class="micro-head"><img src="${assetFiles.A02}" alt="Kính hiển vi điện tử"><div><h3>Kính hiển vi điện tử</h3><p>Sử dụng chùm electron để tạo ảnh có độ phân giải rất cao.</p></div></div>
-        <div id="electronFacts" class="facts-grid"></div>
-      </section>
-    </div>
-    <div class="section-label"><i class="ti ti-cards"></i> Thẻ dữ kiện chưa xếp</div>
-    <div class="facts-grid" id="s2FactPool">${s2Facts.filter(f=>!s.facts[f.id]).map(f=>`<button class="fact-card ${s.selectedFact===f.id?'selected':''}" data-fact="${f.id}"><strong>${f.label}.</strong> ${f.text}</button>`).join('')||'<div class="workspace-note">Tất cả dữ kiện đã được ghép.</div>'}</div>
-    <div class="actions"><button class="btn btn-primary" id="s2CheckFacts" ${!factsAssigned||s.factsComplete?'disabled':''}><i class="ti ti-check"></i> Kiểm tra dữ kiện</button></div>
-    
-    <section id="s2ConceptSection" class="${conceptsReady?'':'hidden'}">
-      <div class="section-label"><i class="ti ti-book-2"></i> Mở xem ba thông số kính hiển vi</div>
-      <div class="concept-grid">
-        <details class="concept-card" data-concept="mag" ${s.conceptsViewed.has('mag')?'open':''}><summary>Độ phóng đại</summary><p>Ảnh lớn hơn vật bao nhiêu lần.</p></details>
-        <details class="concept-card" data-concept="res" ${s.conceptsViewed.has('res')?'open':''}><summary>Độ phân giải</summary><p>Khả năng phân biệt hai điểm rất gần nhau.</p></details>
-        <details class="concept-card" data-concept="contrast" ${s.conceptsViewed.has('contrast')?'open':''}><summary>Độ tương phản</summary><p>Mức độ phân biệt giữa đối tượng và nền.</p></details>
+  const factsAssigned=Object.keys(s.facts).length===4,tasksReady=s.factsComplete;
+
+  // Render bên trái: Lý thuyết tuần tự & 3 thông số cốt lõi có tương tác
+  document.getElementById('theoryFlow').innerHTML=`
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-layers-difference"></i> So sánh hai loại kính hiển vi</div>
+      <div class="theory-block__content">
+        <p style="margin:0 0 6px;"><strong>1. Kính hiển vi quang học:</strong> Sử dụng nguồn sáng khả kiến và hệ thấu kính thuỷ tinh để tạo ảnh phóng đại (độ phóng đại tới ~1.500 lần, độ phân giải ~200 nm). Dùng quan sát tế bào, mô, vi sinh vật sống hoặc tiêu bản cố định.</p>
+        <p style="margin:0;"><strong>2. Kính hiển vi điện tử:</strong> Sử dụng chùm electron và thấu kính từ trường trong điều kiện chân không, cho độ phân giải cực cao (đạt dưới 1 nm). Chuyên dùng nghiên cứu cấu trúc siêu hiển vi của tế bào và đại phân tử. Không quan sát được mẫu sống thông thường.</p>
       </div>
+    </div>
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-adjustments-horizontal"></i> Ba thông số cốt lõi của kính hiển vi</div>
+      <div class="theory-block__content">
+        <p style="margin:0 0 8px;font-size:.85rem;color:var(--ink-3);">Bấm mở từng thông số để xem giải thích và hình ảnh minh họa trên màn hình trực quan:</p>
+        <div class="concept-grid">
+          <details class="concept-card" data-concept="mag" ${s.conceptsViewed.has('mag')?'open':''}>
+            <summary><i class="ti ti-zoom-in"></i> Độ phóng đại (Magnification)</summary>
+            <p>Cho biết kích thước hình ảnh thu được lớn hơn bao nhiêu lần so với kích thước thật của vật thể quan sát.</p>
+          </details>
+          <details class="concept-card" data-concept="res" ${s.conceptsViewed.has('res')?'open':''}>
+            <summary><i class="ti ti-focus-2"></i> Độ phân giải (Resolution)</summary>
+            <p>Khả năng phân biệt hai điểm nằm rất gần nhau là hai thực thể riêng biệt. Độ phân giải càng cao, chi tiết hình ảnh càng rõ nét.</p>
+          </details>
+          <details class="concept-card" data-concept="contrast" ${s.conceptsViewed.has('contrast')?'open':''}>
+            <summary><i class="ti ti-sun-high"></i> Độ tương phản (Contrast)</summary>
+            <p>Mức độ khác biệt về độ sáng hoặc màu sắc giữa chi tiết đối tượng quan sát và môi trường nền (thường tăng cường nhờ kỹ thuật nhuộm màu).</p>
+          </details>
+        </div>
+      </div>
+    </div>
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-shield-check"></i> Nguyên tắc lựa chọn thiết bị</div>
+      <div class="theory-block__content">
+        Thiết bị phải được lựa chọn theo mẫu vật và mục đích nghiên cứu. Độ phân giải cao hơn không có nghĩa luôn phù hợp hơn cho mọi nhiệm vụ (khi cần quan sát mẫu tươi hoặc thao tác nhanh, kính hiển vi quang học luôn là lựa chọn tiện lợi và tối ưu).
+      </div>
+    </div>`;
+
+  // Gắn sự kiện mở xem 3 khái niệm ở bên trái
+  document.querySelectorAll('#theoryFlow [data-concept]').forEach(detail=>detail.addEventListener('toggle',()=>{
+    if(!detail.open)return;const id=detail.dataset.concept;if(s.conceptsViewed.has(id))return;s.conceptsViewed.add(id);
+    const visual={mag:['A01','Độ phóng đại: ảnh lớn hơn vật bao nhiêu lần'],res:['A07','Độ phân giải: phân biệt hai điểm rất gần nhau'],contrast:['A08','Độ tương phản: phân biệt đối tượng và nền']}[id];
+    setVisual(visual[0],visual[1],'Khái niệm quan sát');persist(`Mở khái niệm ${id}`);
+    if(s.conceptsViewed.size===3){renderStage2()}
+  }));
+
+  // Render bên phải: KHÔNG LẶP LẠI h2, KHÔNG instruction
+  document.getElementById('workspace').innerHTML=`
+    <section>
+      <div class="workspace-section-label"><i class="ti ti-cards"></i> Nhiệm vụ 1: Phân loại 4 dữ kiện vào 2 loại kính</div>
+      <div class="compare-grid">
+        <section class="micro-panel">
+          <div class="micro-head"><img src="${assetFiles.A01}" alt="Kính hiển vi quang học"><div><h3>Kính hiển vi quang học</h3><p>Dùng ánh sáng và hệ thấu kính thuỷ tinh.</p></div></div>
+          <div id="lightFacts" class="facts-grid"></div>
+        </section>
+        <section class="micro-panel">
+          <div class="micro-head"><img src="${assetFiles.A02}" alt="Kính hiển vi điện tử"><div><h3>Kính hiển vi điện tử</h3><p>Dùng chùm electron, độ phân giải rất cao.</p></div></div>
+          <div id="electronFacts" class="facts-grid"></div>
+        </section>
+      </div>
+      <div class="workspace-section-label" style="margin-top:10px;"><i class="ti ti-box"></i> Thẻ dữ kiện chưa xếp</div>
+      <div class="facts-grid" id="s2FactPool">${s2Facts.filter(f=>!s.facts[f.id]).map(f=>`<button class="fact-card ${s.selectedFact===f.id?'selected':''}" data-fact="${f.id}"><strong>${f.label}.</strong> ${f.text}</button>`).join('')||'<div class="workspace-note">Tất cả dữ kiện đã được xếp vào các bảng trên.</div>'}</div>
+      <div class="actions"><button class="btn btn-primary" id="s2CheckFacts" ${!factsAssigned||s.factsComplete?'disabled':''}><i class="ti ti-check"></i> Kiểm tra dữ kiện</button></div>
     </section>
-    <section id="s2TasksSection" class="${tasksReady?'':'hidden'}">
-      <div class="section-label"><i class="ti ti-target"></i> Vận dụng chọn kính hiển vi</div>
+
+    <section id="s2TasksSection" class="${tasksReady?'':'hidden'}" style="margin-top:18px;border-top:1px solid var(--paper-line);padding-top:16px;">
+      <div class="workspace-section-label"><i class="ti ti-target"></i> Nhiệm vụ 2: Vận dụng chọn kính hiển vi</div>
       <div class="task-grid" id="s2Tasks">${s2Tasks.map(t=>taskCard(t,s.tasks[t.id],{selected:s.selectedTask===t.id,correct:s.lockedTasks.has(t.id),disabled:s.lockedTasks.has(t.id),bad:!!s.feedbacks[t.id],feedback:s.feedbacks[t.id]})).join('')}</div>
+      <div class="workspace-section-label" style="margin-top:10px;"><i class="ti ti-microscope"></i> Chọn kính cho nhiệm vụ đang chọn</div>
       <div class="device-grid" id="s2TaskDevices">${['light','electron'].map(id=>deviceButton(id)).join('')}</div>
       <div class="actions"><button class="btn btn-primary" id="s2CheckTasks" ${Object.keys(s.tasks).length<2||s.tasksComplete?'disabled':''}><i class="ti ti-check"></i> Kiểm tra nhiệm vụ</button></div>
     </section>
-    ${s.tasksComplete?'<div class="paired-summary"><strong>Câu chốt Stage 2</strong><br>Thiết bị phải được lựa chọn theo mẫu vật và mục đích nghiên cứu. Độ phân giải cao hơn không có nghĩa luôn phù hợp hơn.</div>':''}`;
+    ${s.tasksComplete?'<div class="paired-summary"><strong>✓ Câu chốt Stage 2</strong><br>Thiết bị phải được lựa chọn theo mẫu vật và mục đích nghiên cứu. Độ phân giải cao hơn không có nghĩa luôn phù hợp hơn.</div>':''}`;
 
   ['light','electron'].forEach(device=>{
     const host=document.getElementById(`${device}Facts`);
@@ -924,62 +1155,40 @@ const deviceInfo={
 function renderStage3(){
   const s=state.s3,all=Object.keys(s.pairs).length===4;
   const preview=s.lastDevice||'centrifuge';
-  document.getElementById('workspace').innerHTML=`
-    <h2>Không phải thiết bị nào cũng dùng để quan sát</h2>
-    <p class="workspace-note">Ghép từng nhiệm vụ với thiết bị tương ứng dựa trên chức năng.</p>
-    <div class="s3-match-layout">
-      <section>
-        <div class="section-label"><i class="ti ti-clipboard-list"></i> Bốn nhiệm vụ</div>
-        <div class="task-grid" id="s3Tasks">${s3Tasks.map(t=>taskCard(t,s.pairs[t.id],{selected:s.selectedTask===t.id,correct:s.locked.has(t.id),disabled:s.locked.has(t.id),bad:!!s.feedbacks[t.id],feedback:s.feedbacks[t.id]})).join('')}</div>
-      </section>
-      <section>
-        <div class="section-label"><i class="ti ti-tool"></i> Bốn thiết bị</div>
-        <div class="device-grid" id="s3Devices">${['centrifuge','pipette','magnifier','light'].map(id=>deviceButton(id,s.lastDevice===id)).join('')}</div>
-      </section>
-      <div class="device-info-panel">
-        <img src="${assetFiles[deviceAssets[preview]]}" alt="${deviceNames[preview]}">
-        <h3>${deviceNames[preview]}</h3><p>${deviceInfo[preview]}</p>
+
+  // Render bên trái: Lý thuyết tuần tự & Các nút bấm xem trạng thái khoa học
+  document.getElementById('theoryFlow').innerHTML=`
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-rotate-clockwise"></i> Máy li tâm (Centrifuge)</div>
+      <div class="theory-block__content">
+        <p style="margin:0 0 6px;">Tạo lực li tâm lớn để phân tách các thành phần trong mẫu tế bào dựa trên kích thước và khối lượng riêng. Sau khi mẫu được xử lí phù hợp, các ống nghiệm bắt buộc phải được đặt cân bằng và đối xứng trong rotor.</p>
+        <button class="btn btn-sm" data-story="centrifuge"><i class="ti ti-player-play"></i> Xem 3 trạng thái li tâm</button>
       </div>
     </div>
-    <div class="actions"><button class="btn btn-primary" id="s3Check" ${!all||s.matchComplete?'disabled':''}><i class="ti ti-check"></i> Kiểm tra</button></div>
-    
-    <section class="${s.matchComplete?'':'hidden'}">
-      <div class="section-label"><i class="ti ti-book-2"></i> Ba thẻ kiến thức chính</div>
-      <div class="knowledge-grid">
-        <details class="knowledge-card" data-knowledge="centrifuge" ${s.cardsViewed.has('centrifuge')?'open':''}><summary>Máy li tâm</summary><div class="knowledge-body"><p>Sau khi mẫu được xử lí phù hợp, các ống phải được đặt cân bằng trong máy để phân tách thành các phần.</p><button class="btn" data-story="centrifuge"><i class="ti ti-player-play"></i> Xem trạng thái li tâm</button></div></details>
-        <details class="knowledge-card" data-knowledge="pipette" ${s.cardsViewed.has('pipette')?'open':''}><summary>Pipet</summary><div class="knowledge-body"><p>Pipet được dùng để lấy, chuyển hoặc phân phối thể tích chính xác chất lỏng.</p><button class="btn" data-story="pipette"><i class="ti ti-player-play"></i> Xem thao tác pipet</button></div></details>
-        <details class="knowledge-card" data-knowledge="magnifier" ${s.cardsViewed.has('magnifier')?'open':''}><summary>Kính lúp</summary><div class="knowledge-body"><p>Kính lúp giúp quan sát chi tiết của những mẫu có kích thước phù hợp.</p><button class="btn" data-story="magnifier"><i class="ti ti-eye"></i> Xem vùng kính lúp</button></div></details>
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-droplet"></i> Pipet (Pipette) định lượng</div>
+      <div class="theory-block__content">
+        <p style="margin:0 0 6px;">Dùng để lấy, chuyển hoặc phân phối một thể tích nhỏ dung dịch với độ chính xác cao. Một số loại pipet tự động cho phép điều chỉnh thể tích linh hoạt theo yêu cầu thí nghiệm.</p>
+        <button class="btn btn-sm" data-story="pipette"><i class="ti ti-player-play"></i> Xem thao tác pipet</button>
       </div>
-    </section>
-    ${s.cardsViewed.size===3?'<div class="paired-summary"><strong>Câu chốt Stage 3</strong><br>Thiết bị nghiên cứu có thể giúp quan sát, phân tách hoặc chuyển mẫu.</div>':''}`;
+    </div>
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-zoom"></i> Kính lúp (Magnifier)</div>
+      <div class="theory-block__content">
+        <p style="margin:0 0 6px;">Hỗ trợ quan sát rõ hơn những chi tiết bên ngoài của mẫu vật có kích thước tương đối lớn (như gân lá, mô hoa, mắt côn trùng), nhưng không thay thế kính hiển vi khi nghiên cứu tế bào.</p>
+        <button class="btn btn-sm" data-story="magnifier"><i class="ti ti-eye"></i> Xem vùng kính lúp</button>
+      </div>
+    </div>
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-dna"></i> Mở rộng: PCR & Điện di gel (Tùy chọn)</div>
+      <div class="theory-block__content">
+        <p style="margin:0 0 4px;">• <strong>Máy PCR:</strong> Thực hiện các chu kì nhiệt để tạo nhiều bản sao của một đoạn DNA xác định (không nhìn trực tiếp gene, không giải trình tự).</p>
+        <p style="margin:0;">• <strong>Hệ thống điện di:</strong> Tạo điện trường để các phân tử di chuyển trong môi trường gel phân tách theo kích thước thành các băng vạch để so sánh.</p>
+      </div>
+    </div>`;
 
-  document.querySelectorAll('#s3Tasks [data-task]').forEach(btn=>btn.onclick=()=>{
-    s.selectedTask=btn.dataset.task;const task=s3Tasks.find(t=>t.id===s.selectedTask);setVisual(task.asset,task.text,'Nhiệm vụ nghiên cứu');persist('Chọn nhiệm vụ S03');renderStage3();
-  });
-  document.querySelectorAll('#s3Devices [data-device]').forEach(btn=>btn.onclick=()=>{
-    if(!s.selectedTask){feedback('Hãy chọn một nhiệm vụ trước khi chọn thiết bị.','bad');return}
-    s.pairs[s.selectedTask]=btn.dataset.device;s.lastDevice=btn.dataset.device;delete s.feedbacks[s.selectedTask];s.selectedTask=null;
-    setVisual(deviceAssets[btn.dataset.device],deviceNames[btn.dataset.device],'Thiết bị đã chọn');persist('Ghép thiết bị S03');renderStage3();
-  });
-  document.getElementById('s3Check').onclick=()=>{
-    const wrong=s3Tasks.filter(t=>s.pairs[t.id]!==t.correct);
-    s3Tasks.filter(t=>s.pairs[t.id]===t.correct).forEach(t=>{s.locked.add(t.id);delete s.feedbacks[t.id]});
-    wrong.forEach(t=>{s.feedbacks[t.id]=`Nhiệm vụ ${t.text} cần thiết bị khác.`});
-    wrong.forEach(t=>delete s.pairs[t.id]);
-    if(wrong.length){feedback('Có một số cặp chưa chính xác, hãy thử lại.','bad')}
-    else{s.matchComplete=true;feedback('Đã ghép đúng bốn nhiệm vụ. Hãy mở ba thẻ kiến thức chính.','ok')}
-    persist('Kiểm tra ghép S03');renderStage3();
-  };
-  document.querySelectorAll('[data-knowledge]').forEach(detail=>{
-    detail.addEventListener('toggle',()=>{
-      if(!detail.open||s.cardsViewed.has(detail.dataset.knowledge))return;
-      s.cardsViewed.add(detail.dataset.knowledge);persist(`Mở thẻ ${detail.dataset.knowledge} S03`);
-      if(s.cardsViewed.size===3&&!state.completedStages.has(3)){
-        markStageComplete('Thiết bị nghiên cứu có thể giúp quan sát, phân tách hoặc chuyển mẫu.');renderStage3();
-      }
-    });
-  });
-  document.querySelectorAll('[data-story]').forEach(btn=>btn.onclick=e=>{
+  // Gắn sự kiện nút xem chuyển động trực quan ở bên trái
+  document.querySelectorAll('#theoryFlow [data-story]').forEach(btn=>btn.onclick=e=>{
     e.preventDefault();e.stopPropagation();const story=btn.dataset.story;
     if(story==='centrifuge')runVisualSequence([
       {code:'A06',caption:'Trạng thái 1 · Mẫu trước li tâm',kicker:'Trước li tâm',hold:850},
@@ -992,6 +1201,47 @@ function renderStage3(){
     ]);
     if(story==='magnifier')setVisual('A11','Chỉ vùng dưới kính lúp được phóng đại','Quan sát bề mặt mẫu');
   });
+
+  // Render bên phải: Hoạt động ghép 4 cặp nhiệm vụ (KHÔNG LẶP LẠI h2, instruction)
+  document.getElementById('workspace').innerHTML=`
+    <div class="s3-match-layout">
+      <section>
+        <div class="workspace-section-label"><i class="ti ti-clipboard-list"></i> Bước 1: Chọn một nhiệm vụ nghiên cứu</div>
+        <div class="task-grid" id="s3Tasks">${s3Tasks.map(t=>taskCard(t,s.pairs[t.id],{selected:s.selectedTask===t.id,correct:s.locked.has(t.id),disabled:s.locked.has(t.id),bad:!!s.feedbacks[t.id],feedback:s.feedbacks[t.id]})).join('')}</div>
+      </section>
+      <section>
+        <div class="workspace-section-label" style="margin-top:12px;"><i class="ti ti-tool"></i> Bước 2: Chọn thiết bị phù hợp</div>
+        <div class="device-grid" id="s3Devices">${['centrifuge','pipette','magnifier','light'].map(id=>deviceButton(id,s.lastDevice===id)).join('')}</div>
+      </section>
+      <div class="device-info-panel" style="margin-top:8px;">
+        <img src="${assetFiles[deviceAssets[preview]]}" alt="${deviceNames[preview]}">
+        <h3>${deviceNames[preview]}</h3><p>${deviceInfo[preview]}</p>
+      </div>
+    </div>
+    ${s.matchComplete?'<div class="paired-summary"><strong>✓ Hoàn thành xuất sắc Stage 3!</strong><br>Thiết bị nghiên cứu có thể giúp quan sát, phân tách hoặc chuyển mẫu. Chức năng của thiết bị quyết định nhiệm vụ mà nó có thể thực hiện.</div>':''}
+    <div class="actions"><button class="btn btn-primary" id="s3Check" ${!all||s.matchComplete?'disabled':''}><i class="ti ti-check"></i> Kiểm tra</button></div>`;
+
+  document.querySelectorAll('#s3Tasks [data-task]').forEach(btn=>btn.onclick=()=>{
+    s.selectedTask=btn.dataset.task;const task=s3Tasks.find(t=>t.id===s.selectedTask);setVisual(task.asset,task.text,'Nhiệm vụ nghiên cứu');persist('Chọn nhiệm vụ S03');renderStage3();
+  });
+  document.querySelectorAll('#s3Devices [data-device]').forEach(btn=>btn.onclick=()=>{
+    if(!s.selectedTask){feedback('Hãy chọn một nhiệm vụ ở bước 1 trước khi chọn thiết bị.','bad');return}
+    s.pairs[s.selectedTask]=btn.dataset.device;s.lastDevice=btn.dataset.device;delete s.feedbacks[s.selectedTask];s.selectedTask=null;
+    setVisual(deviceAssets[btn.dataset.device],deviceNames[btn.dataset.device],'Thiết bị đã chọn');persist('Ghép thiết bị S03');renderStage3();
+  });
+  document.getElementById('s3Check').onclick=()=>{
+    const wrong=s3Tasks.filter(t=>s.pairs[t.id]!==t.correct);
+    s3Tasks.filter(t=>s.pairs[t.id]===t.correct).forEach(t=>{s.locked.add(t.id);delete s.feedbacks[t.id]});
+    wrong.forEach(t=>{s.feedbacks[t.id]=`Nhiệm vụ "${t.text}" cần thiết bị khác.`});
+    wrong.forEach(t=>delete s.pairs[t.id]);
+    if(wrong.length){
+      feedback('Có một số cặp ghép chưa chính xác, hãy thử lại.','bad');
+    }else{
+      s.matchComplete=true;
+      markStageComplete('Thiết bị nghiên cứu có thể giúp quan sát, phân tách hoặc chuyển mẫu.');
+    }
+    persist('Kiểm tra ghép S03');renderStage3();
+  };
 }
 
 const s4Tasks=[
@@ -1006,24 +1256,65 @@ function s4PreChoice(taskId){
 function renderStage4(){
   const s=state.s4,all=s4Tasks.every(t=>s.answers[t.id]);
   const optionIds=['','light','electron','centrifuge','pipette','magnifier'];
+
+  // Render bên trái: Lý thuyết tuần tự, Bảng tra cứu thiết bị & Nguyên tắc chọn
+  document.getElementById('theoryFlow').innerHTML=`
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-compass"></i> Nguyên tắc lựa chọn thiết bị nghiên cứu</div>
+      <div class="theory-block__content">
+        <ul style="margin:4px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:5px;">
+          <li>Lựa chọn thiết bị phải căn cứ vào <strong>đặc điểm mẫu vật</strong> và <strong>nhiệm vụ nghiên cứu</strong> cần thực hiện.</li>
+          <li>Thiết bị có thông số lớn hơn (như độ phóng đại hay độ phân giải) không phải lúc nào cũng phù hợp hơn.</li>
+          <li>Phân biệt rõ 3 nhóm: <strong>Quan sát tạo ảnh</strong> (kính hiển vi, kính lúp), <strong>Phân tách mẫu</strong> (máy li tâm), <strong>Chuyển và đo mẫu</strong> (pipet).</li>
+        </ul>
+      </div>
+    </div>
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-table"></i> Bảng tra cứu nhanh chức năng thiết bị</div>
+      <div class="theory-block__content">
+        <table class="theory-table">
+          <thead>
+            <tr><th>Thiết bị</th><th>Chức năng chính</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Kính hiển vi quang học</strong></td><td>Quan sát tế bào, mô, vi sinh vật sống hoặc tiêu bản cố định</td></tr>
+            <tr><td><strong>Kính hiển vi điện tử</strong></td><td>Nghiên cứu cấu trúc siêu hiển vi (bào quan, virus, đại phân tử)</td></tr>
+            <tr><td><strong>Máy li tâm</strong></td><td>Phân tách phần lắng và phần dịch trong mẫu tế bào đồng hóa</td></tr>
+            <tr><td><strong>Pipet định lượng</strong></td><td>Lấy, chuyển và phân phối chính xác thể tích nhỏ dung dịch</td></tr>
+            <tr><td><strong>Kính lúp</strong></td><td>Quan sát chi tiết bên ngoài của mẫu vật có kích thước tương đối lớn</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-alert-triangle"></i> Lưu ý hiểu sai cần tránh</div>
+      <div class="theory-block__content">
+        Kính hiển vi điện tử không dùng để quan sát tế bào sống thông thường; Máy li tâm không dùng để quan sát mẫu; Ống hút thường không thể thay thế pipet định lượng chính xác trong thí nghiệm sinh học.
+      </div>
+    </div>`;
+
+  // Render bên phải: Bảng đối chiếu dự đoán S01 và chọn thiết bị (KHÔNG LẶP LẠI h2, instruction)
   document.getElementById('workspace').innerHTML=`
-    <h2>Chọn thiết bị theo nhiệm vụ nghiên cứu</h2>
-    <p class="workspace-note">Đối chiếu lựa chọn ban đầu với lựa chọn sau khi học.</p>
+    <div class="workspace-section-label"><i class="ti ti-checks"></i> Vận dụng & Đối chiếu dự đoán ban đầu ở S01</div>
     <div class="final-list">
       ${s4Tasks.map((t,i)=>{const pre=s4PreChoice(t.id);return`<div class="final-row">
         <div class="final-task"><span class="task-index">${i+1}</span> ${t.text}</div>
-        <div class="pre-choice"><strong>Dự đoán ban đầu S01</strong>${pre?deviceNames[pre]:'Không có ở S01'}</div>
-        <div><select class="select-device" data-final="${t.id}" ${s.locked.has(t.id)?'disabled':''}>${optionIds.map(id=>`<option value="${id}" ${s.answers[t.id]===id?'selected':''}>${id?deviceNames[id]:'Chọn thiết bị'}</option>`).join('')}</select>
-        ${s.requiredComplete?`<span class="compare-label"><i class="ti ${!pre?'ti-plus':pre===t.correct?'ti-equal':'ti-arrows-exchange'}"></i> ${!pre?'Lựa chọn mới':pre===t.correct?'Giữ nguyên':'Đã điều chỉnh'}</span>`:''}</div>
-        <div class="final-feedback">${s.locked.has(t.id)?'<span class="inline-feedback ok">Đã xác nhận lựa chọn đúng.</span>':''}</div>
+        <div class="pre-choice"><strong>Dự đoán ban đầu ở S01:</strong> ${pre?deviceNames[pre]:'Chưa có dữ liệu từ S01'}</div>
+        <div>
+          <select class="select-device" data-final="${t.id}" ${s.locked.has(t.id)?'disabled':''}>
+            ${optionIds.map(id=>`<option value="${id}" ${s.answers[t.id]===id?'selected':''}>${id?deviceNames[id]:'-- Chọn thiết bị phù hợp --'}</option>`).join('')}
+          </select>
+          ${s.requiredComplete?`<span class="compare-label"><i class="ti ${!pre?'ti-plus':pre===t.correct?'ti-equal':'ti-arrows-exchange'}"></i> ${!pre?'Lựa chọn mới':pre===t.correct?'Giữ nguyên':'Đã điều chỉnh'}</span>`:''}
+        </div>
+        <div class="final-feedback">${s.locked.has(t.id)?'<span class="inline-feedback ok"><i class="ti ti-check"></i> Đã xác nhận lựa chọn đúng.</span>':''}</div>
       </div>`}).join('')}
     </div>
     <div class="actions"><button class="btn btn-primary" id="s4Check" ${!all||s.requiredComplete?'disabled':''}><i class="ti ti-check"></i> Kiểm tra</button></div>
     
     <section class="${s.requiredComplete?'':'hidden'}">
       <div class="paired-summary">
-        <strong>Tổng kết Module</strong><br>
-        Thiết bị nghiên cứu được lựa chọn theo nhiệm vụ cần thực hiện. Có thiết bị giúp quan sát, có thiết bị giúp phân tách hoặc chuyển mẫu.
+        <strong>✓ Tổng kết Module: Thiết bị nghiên cứu và học tập môn Sinh học</strong><br>
+        Thiết bị nghiên cứu được lựa chọn theo nhiệm vụ cần thực hiện. Có thiết bị giúp quan sát, có thiết bị giúp phân tách hoặc chuyển mẫu. Chúc mừng bạn đã hoàn thành trọn vẹn module!
       </div>
     </section>`;
 
@@ -1035,8 +1326,9 @@ function renderStage4(){
     const wrong=s4Tasks.filter(t=>s.answers[t.id]!==t.correct);
     s4Tasks.filter(t=>s.answers[t.id]===t.correct).forEach(t=>s.locked.add(t.id));
     wrong.forEach(t=>delete s.answers[t.id]);
-    if(wrong.length){feedback('Có nhiệm vụ chọn chưa chính xác, hãy chọn lại.','bad')}
-    else{
+    if(wrong.length){
+      feedback('Có nhiệm vụ chọn chưa chính xác, hãy đối chiếu lại bảng tra cứu ở bên trái và chọn lại.','bad');
+    }else{
       s.requiredComplete=true;s.compareViewed=true;s.finalMessageViewed=true;
       markStageComplete('Thiết bị nghiên cứu được lựa chọn theo nhiệm vụ cần thực hiện.');
     }
@@ -1047,6 +1339,7 @@ function renderStage4(){
 function gotoStage(n){
   if(n<1||n>4||n>state.unlocked)return;
   state.stage=n;renderShell();feedback('Hệ thống sẽ phản hồi sau mỗi thao tác có ý nghĩa.','info');
+  const vb=document.getElementById('visualBody');if(vb){if(n===1)vb.classList.add('hidden');else vb.classList.remove('hidden');}
   if(n===1)setVisual('A04','Tế bào biểu bì hành','Nhiệm vụ nghiên cứu');
   if(n===2)setVisual('A01','Kính hiển vi quang học','Thiết bị quan sát');
   if(n===3){const id=state.s3.lastDevice||'centrifuge';setVisual(deviceAssets[id],deviceNames[id],'Thiết bị xử lí và thao tác mẫu')}

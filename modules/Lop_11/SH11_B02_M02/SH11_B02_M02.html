@@ -9,25 +9,28 @@
   "title": "Cơ chế hấp thụ nước và khoáng ở rễ",
   "subject": "Sinh học",
   "grade": "11",
-  "track": "SH11_B02_M02",
+  "track": "Bài 2 · Trao đổi nước và khoáng ở thực vật",
+  "moduleCode": "SH11-B02-M02",
   "objectives": [
     "Trình bày được cơ chế hấp thụ nước và ion khoáng ở rễ",
     "Phân biệt được hấp thụ nước bằng thẩm thấu với hấp thụ ion khoáng theo cơ chế thụ động và chủ động",
     "Trình bày được hai con đường vận chuyển nước và ion khoáng từ vùng lông hút vào mạch gỗ và vai trò của đai Caspary"
   ],
   "structure": [
-    {"id": "st00", "title": "Rễ hấp thụ nước và ion khoáng như thế nào?"},
-    {"id": "st01", "title": "Nước và ion khoáng đi vào tế bào lông hút bằng cách nào?"},
-    {"id": "st02", "title": "Nước và ion khoáng đi từ lông hút vào mạch gỗ bằng những con đường nào?"},
-    {"id": "st03", "title": "Ghi nhớ và kết nối"}
+    {"id": "st00", "title": "ST00 — Rễ hấp thụ nước và ion khoáng như thế nào?"},
+    {"id": "st01", "title": "ST01 — Nước và ion khoáng đi vào tế bào lông hút bằng cách nào?"},
+    {"id": "st02", "title": "ST02 — Nước và ion khoáng đi từ lông hút vào mạch gỗ bằng những con đường nào?"},
+    {"id": "st03", "title": "ST03 — Ghi nhớ và kết nối"}
   ],
-  "athenaGuidance": "Module lý thuyết tương tác độc lập V10 gồm 4 stage: 1) ST00: Quan sát vùng lông hút của rễ trên ảnh sinh học A01, nhận diện lông hút là phần kéo dài của tế bào biểu bì giúp tăng diện tích tiếp xúc. 2) ST01: Khám phá sơ đồ SVG cơ chế qua màng (nước theo thẩm thấu do thế nước; ion khoáng thụ động xuôi gradient hoặc chủ động ngược gradient cần ATP) và phân loại 4 thẻ cơ chế vào 2 nhóm đích. 3) ST02: Khám phá sơ đồ SVG mặt cắt lát ngang rễ với 2 con đường (gian bào và tế bào chất), vai trò đai Caspary kiểm soát dòng chất tại nội bì và câu hỏi củng cố A/B. 4) ST03: Tổng hợp 4 ý ghi nhớ cốt lõi, kết nối bài học M03 và kích hoạt modal hoàn thành kèm Canvas Confetti."
+  "athenaGuidance": "Module lý thuyết tương tác độc lập V10 gồm 4 stage: 1) ST00: Quan sát vùng lông hút của rễ trên ảnh sinh học A01, nhận diện lông hút là phần kéo dài của tế bào biểu bì giúp tăng diện tích tiếp xúc. 2) ST01: Khám phá sơ đồ SVG cơ chế qua màng (nước theo thẩm thấu do thế nước; ion khoáng thụ động xuôi gradient hoặc chủ động ngược gradient cần ATP) và phân loại 4 thẻ cơ chế vào 2 nhóm đích. 3) ST02: Khám phá sơ đồ SVG mặt cắt lát ngang rễ với 2 con đường (gian bào và tế bào chất), vai trò đai Caspary kiểm soát dòng chất tại nội bì và câu hỏi củng cố A/B có phản hồi sư phạm chuẩn. 4) ST03: Tổng hợp 4 ý ghi nhớ cốt lõi, kết nối bài học M03 và kích hoạt modal hoàn thành kèm Canvas Confetti."
 }
 </script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+
 <style>
 :root {
   --cream: #FAF7F0;
@@ -61,15 +64,14 @@
   --warning-bg: #F5E7CB;
   --info: #4E7F92;
   --info-bg: #DCE7EB;
-  --radius: 12px;
-  --radius-lg: 16px;
-  --radius-sm: 8px;
-  --shadow: 0 4px 12px rgba(45, 139, 111, 0.10);
-  --shadow-sm: 0 2px 6px rgba(26, 26, 26, 0.05);
-  --lesson-width: 1060px;
+  --radius: 10px;
+  --radius-lg: 14px;
+  --radius-sm: 6px;
+  --shadow: 0 4px 14px rgba(45, 139, 111, .10);
+  --shadow-sm: 0 2px 6px rgba(26, 26, 26, .05);
 }
 
-* {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -79,12 +81,9 @@ body {
   font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
   background: var(--cream);
   color: var(--ink);
+  font-size: 17px;
   line-height: 1.65;
-  padding: 24px clamp(14px, 3vw, 32px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 button {
@@ -99,216 +98,350 @@ button:focus-visible, [tabindex]:focus-visible {
   outline-offset: 2px;
 }
 
-/* Modal visibility rules with high specificity */
 .hidden {
   display: none !important;
 }
+
 .congrats-overlay.hidden,
 .modal-backdrop.hidden,
 #completionModal.hidden {
   display: none !important;
 }
 
-/* App layout */
-.app-container {
+/* App container */
+.app {
   width: 100%;
-  max-width: var(--lesson-width);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px clamp(12px, 2.5vw, 24px) 32px;
 }
 
-/* TUYỆT ĐỐI KHÔNG DÙNG KHỐI HEADER BANNER & SIDEBAR THEO CHUẨN V10 */
-header,
-.module-header-bar,
-.progress-nav-container,
-.progress-nav,
-.stepper-container,
-.stepper-bar,
-.step-nav-bar {
-  display: none !important;
-}
-
-/* Main card container */
-.stage-card {
-  background: #FFF;
-  border: 1px solid var(--paper-line);
-  border-radius: var(--radius-lg);
-  padding: clamp(20px, 3.5vw, 32px);
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  20%, 60% { transform: translateX(-6px); }
-  40%, 80% { transform: translateX(6px); }
-}
-.shake {
-  animation: shake 0.4s ease;
-}
-
-/* Typography styles */
-.stage-title {
-  font-size: clamp(1.2rem, 2.5vw, 1.45rem);
-  font-weight: 800;
-  color: var(--ink);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.stage-title i {
-  color: var(--jade);
-}
-
-.lead-text {
-  font-size: 1.05rem;
-  color: var(--ink-2);
-  line-height: 1.7;
-}
-
-/* Single Point of Instruction Guide Box */
-.guide-box {
-  background: var(--jade-pale);
-  border-left: 4px solid var(--jade);
-  border-radius: var(--radius-sm);
-  padding: 12px 16px;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  color: var(--jade-text);
-  font-size: 0.95rem;
-  font-weight: 600;
-  line-height: 1.5;
-}
-.guide-box i {
-  font-size: 1.25rem;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-/* Callouts & Feedback */
-.summary-box {
-  background: var(--cream-2);
-  border-left: 4px solid var(--accent);
-  border-radius: var(--radius-sm);
-  padding: 16px 20px;
-  color: var(--ink);
-  font-size: 0.98rem;
-  line-height: 1.7;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  animation: slideUp 0.3s ease;
-}
-.summary-title {
-  font-weight: 700;
-  color: var(--accent-text);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  letter-spacing: 0.5px;
-}
-
-.feedback-bar {
-  padding: 12px 16px;
-  border-radius: var(--radius-sm);
-  font-size: 0.92rem;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.feedback-bar.ok {
-  background: var(--correct-bg);
-  border-left: 4px solid var(--correct);
-  color: var(--jade-text);
-}
-.feedback-bar.bad {
-  background: var(--wrong-bg);
-  border-left: 4px solid var(--wrong);
-  color: var(--wrong);
-}
-.feedback-bar.info {
-  background: var(--info-bg);
-  border-left: 4px solid var(--info);
-  color: var(--info);
-}
-
-/* ==========================================================================
-   STAGE 00: ROOT HAIR OBSERVATION (2-Column Desktop Layout)
-   ========================================================================== */
-.root-viewer-layout {
+/* Two-block Layout */
+.split-workspace {
   display: grid;
-  grid-template-columns: 1.25fr 1fr;
-  gap: 24px;
+  grid-template-columns: minmax(0, 1.18fr) minmax(320px, 0.82fr);
+  gap: 20px;
   align-items: start;
 }
-@media (max-width: 820px) {
-  .root-viewer-layout {
+
+@media (max-width: 980px) {
+  .split-workspace {
     grid-template-columns: 1fr;
   }
 }
 
+/* Left Card: Theory & Visuals */
+.visual-card {
+  position: sticky;
+  top: 16px;
+  min-width: 0;
+  background: #fff;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 980px) {
+  .visual-card {
+    position: static;
+  }
+}
+
+.visual-card__head {
+  padding: 16px 20px 14px;
+  border-bottom: 1px solid var(--paper-line);
+  background: #fff;
+}
+
+.visual-card__head h2 {
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.visual-card__head .question {
+  margin-top: 6px;
+  color: var(--ink-2);
+  font-size: 0.95rem;
+}
+
+.visual-card__content {
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Single point of instruction */
+.instruction {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--info-bg);
+  border-left: 4px solid var(--info);
+  border-radius: var(--radius-sm);
+  color: var(--ink-2);
+  font-size: 0.91rem;
+  line-height: 1.55;
+}
+
+.instruction i {
+  font-size: 1.25rem;
+  color: var(--info);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Theory Flow Blocks */
+.theory-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.theory-block {
+  background: var(--cream);
+  border: 1px solid var(--paper-line);
+  border-left: 4px solid var(--jade-deep);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+
+.theory-block__title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--jade-deep);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.theory-block__content {
+  font-size: 0.92rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+/* Visual Caption Box */
+.visual-caption-box {
+  background: var(--cream-2);
+  border: 1px solid var(--paper-line-2);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 0.92rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+  min-height: 52px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  transition: all 0.25s ease;
+}
+
+.visual-caption-box i {
+  font-size: 1.3rem;
+  color: var(--jade-deep);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Right Card: Tasks & Exercises */
+.workspace-card {
+  position: sticky;
+  top: 16px;
+  min-width: 0;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  background: var(--cream-2);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (max-width: 980px) {
+  .workspace-card {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+    padding: 16px;
+  }
+}
+
+.workspace-card h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.workspace-lead {
+  font-size: 0.93rem;
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+
+/* Controls Row */
+.controls-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--paper-line);
+}
+
+.controls-row .spacer {
+  flex: 1;
+}
+
+.btn {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 1.5px solid var(--paper-line-2);
+  background: #fff;
+  color: var(--ink);
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--cream);
+  border-color: var(--jade);
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--jade);
+  border-color: var(--jade);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--jade-deep);
+  border-color: var(--jade-deep);
+}
+
+/* Inline Feedback */
+.inline-feedback {
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.inline-feedback.info {
+  background: var(--info-bg);
+  border-left: 4px solid var(--info);
+  color: var(--ink);
+}
+
+.inline-feedback.ok {
+  background: var(--correct-bg);
+  border-left: 4px solid var(--correct);
+  color: var(--jade-dark);
+}
+
+.inline-feedback.bad {
+  background: var(--wrong-bg);
+  border-left: 4px solid var(--wrong);
+  color: var(--ink);
+}
+
+.inline-feedback i {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Conclude Box */
+.conclude-box {
+  background: #fff;
+  border: 1.5px solid var(--jade-deep);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+  animation: fadeIn 0.3s ease;
+}
+
+.conclude-box strong {
+  color: var(--jade-dark);
+}
+
+/* ===================================================
+   STAGE 00 SPECIFIC: ROOT HAIR OBSERVATION (A01)
+   =================================================== */
 .root-image-wrap {
   position: relative;
   width: 100%;
-  display: block;
-  line-height: 0;
-  background: #FAF7F0;
   border-radius: var(--radius);
   overflow: hidden;
+  background: var(--cream);
   border: 1px solid var(--paper-line);
+  box-shadow: var(--shadow-sm);
 }
+
 .root-image-wrap img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: var(--radius);
 }
 
-/* Hotspot for Root Hair Zone */
 .root-hotspot-btn {
   position: absolute;
   width: 44px;
   height: 44px;
   border-radius: 50%;
   background: var(--jade);
-  color: #FFF;
-  font-weight: 800;
-  font-size: 1.05rem;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-  border: 3px solid #FFF;
+  font-size: 1.25rem;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.28);
+  border: 3px solid #fff;
   transform: translate(-50%, -50%);
   cursor: pointer;
   transition: transform 0.2s, background 0.2s;
   z-index: 10;
 }
+
 .root-hotspot-btn:hover {
   transform: translate(-50%, -50%) scale(1.15);
   background: var(--jade-deep);
 }
+
 .root-hotspot-btn.viewed {
   background: var(--correct);
 }
+
 .pulse-ring {
   position: absolute;
   width: 100%;
@@ -317,195 +450,185 @@ header,
   border: 2.5px solid var(--jade);
   animation: pulseAnim 2s infinite ease-out;
 }
+
 .root-hotspot-btn.viewed .pulse-ring {
   display: none;
 }
+
 @keyframes pulseAnim {
   0% { transform: scale(1); opacity: 0.95; }
   100% { transform: scale(2.2); opacity: 0; }
 }
 
-.root-explanation-col {
+.obs-card {
+  background: #fff;
+  border: 1.5px solid var(--paper-line-2);
+  border-radius: var(--radius);
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-}
-
-.interactive-caption-box {
-  background: var(--cream-2);
-  border: 1px solid var(--paper-line-2);
-  border-radius: var(--radius);
-  padding: 16px 20px;
-  min-height: 60px;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  color: var(--ink);
-  font-size: 0.98rem;
-  line-height: 1.65;
-}
-.interactive-caption-box i {
-  font-size: 1.45rem;
-  color: var(--jade);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.root-info-card {
-  background: #FFF;
-  border: 1.5px solid var(--jade-soft);
-  border-radius: var(--radius);
-  padding: 18px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  animation: fadeIn 0.3s ease;
+  gap: 10px;
   box-shadow: var(--shadow-sm);
+  animation: fadeIn 0.3s ease;
 }
-.root-info-title {
-  font-size: 1rem;
+
+.obs-card__title {
+  font-size: 0.98rem;
   font-weight: 700;
   color: var(--jade-deep);
   display: flex;
   align-items: center;
   gap: 8px;
 }
-.root-info-text {
-  font-size: 0.98rem;
+
+.obs-card__text {
+  font-size: 0.93rem;
   color: var(--ink-2);
-  line-height: 1.7;
+  line-height: 1.65;
 }
 
-/* ==========================================================================
-   STAGE 01: CELL MEMBRANE TRANSPORT SVG & DND CLASSIFICATION
-   ========================================================================== */
-.membrane-svg-wrap {
-  width: 100%;
-  background: #FFF;
-  border: 1px solid var(--paper-line);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-}
-.membrane-svg-wrap svg {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Interactive SVG Hotspot Triggers */
-.svg-hotspot-controls {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-.hotspot-toggle-btn {
-  flex: 1;
-  min-width: 220px;
-  padding: 12px 18px;
-  border-radius: var(--radius);
-  background: var(--cream-2);
-  border: 1.5px solid var(--paper-line-2);
-  color: var(--ink);
-  font-size: 0.95rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-.hotspot-toggle-btn:hover {
-  background: var(--cream-3);
-  border-color: var(--sage-deep);
-}
-.hotspot-toggle-btn.active {
-  background: var(--jade-pale);
-  border-color: var(--jade);
-  color: var(--jade-text);
-  box-shadow: 0 0 0 2px var(--jade-soft);
-}
-.hotspot-toggle-btn.viewed {
-  border-color: var(--jade-deep);
-}
-
-.hotspot-status-badge {
-  font-size: 0.78rem;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: 12px;
-  background: rgba(0,0,0,0.08);
-  color: var(--ink-2);
-}
-.hotspot-toggle-btn.viewed .hotspot-status-badge {
-  background: var(--jade);
-  color: #FFF;
-}
-
-/* SVG Text Styles */
-.svg-zone-title {
-  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  fill: var(--ink-2);
-  letter-spacing: 0.5px;
-}
-.svg-sub-title {
-  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  fill: var(--sage-text);
-}
-
-/* Classification DND Section */
-.classification-section {
+.question-card {
+  background: var(--cream);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  padding-top: 14px;
-  border-top: 1px dashed var(--paper-line-2);
-  animation: slideUp 0.3s ease;
+  gap: 6px;
+  animation: fadeIn 0.3s ease;
 }
 
-.cards-tray-wrap {
-  background: var(--cream-2);
-  border: 1px solid var(--paper-line-2);
-  border-radius: var(--radius);
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.cards-tray-title {
-  font-size: 0.88rem;
+.question-card__title {
+  font-size: 0.85rem;
   font-weight: 700;
-  color: var(--ink-2);
   text-transform: uppercase;
+  color: var(--accent-text);
   letter-spacing: 0.5px;
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-.cards-tray {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  min-height: 70px;
+.question-card__text {
+  font-size: 0.93rem;
+  color: var(--ink);
+  line-height: 1.6;
 }
-@media (max-width: 680px) {
-  .cards-tray {
+
+/* ===================================================
+   STAGE 01 SPECIFIC: CELL MEMBRANE TRANSPORT SVG & DND
+   =================================================== */
+.membrane-svg-wrap {
+  width: 100%;
+  background: #fff;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.membrane-svg-wrap svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.svg-toggle-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .svg-toggle-grid {
     grid-template-columns: 1fr;
   }
 }
 
+.svg-toggle-btn {
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--cream-2);
+  border: 1.5px solid var(--paper-line-2);
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-align: left;
+}
+
+.svg-toggle-btn:hover {
+  background: var(--cream-3);
+  border-color: var(--sage-deep);
+}
+
+.svg-toggle-btn.active {
+  background: var(--jade-pale);
+  border-color: var(--jade);
+  color: var(--jade-text);
+  box-shadow: 0 0 0 2px var(--jade-soft);
+}
+
+.status-pill {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.08);
+  color: var(--ink-2);
+}
+
+.svg-toggle-btn.viewed .status-pill {
+  background: var(--jade);
+  color: #fff;
+}
+
+/* DND Cards Tray & Drop Zones */
+.dnd-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cards-tray-wrap {
+  background: #fff;
+  border: 1.5px dashed var(--paper-line-2);
+  border-radius: var(--radius);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tray-header {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.5px;
+}
+
+.cards-tray {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 50px;
+}
+
 .draggable-card {
-  background: #FFF;
+  background: var(--cream);
   border: 1.5px solid var(--paper-line-2);
   border-radius: var(--radius-sm);
-  padding: 12px 16px;
-  font-size: 0.92rem;
+  padding: 11px 13px;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--ink);
   line-height: 1.5;
@@ -517,106 +640,115 @@ header,
   gap: 10px;
   box-shadow: var(--shadow-sm);
 }
+
 .draggable-card:hover {
   border-color: var(--jade);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  background: #fff;
+  transform: translateY(-1px);
 }
+
 .draggable-card.selected {
   border: 2px dashed var(--jade-deep);
   background: var(--jade-pale);
-  box-shadow: 0 0 0 3px var(--jade-soft);
+  color: var(--jade-text);
+  box-shadow: 0 0 0 2px var(--jade-soft);
 }
+
 .draggable-card:active {
   cursor: grabbing;
 }
+
 .draggable-card.in-dropzone {
   width: 100%;
   cursor: pointer;
   background: var(--correct-bg);
-  border-color: var(--jade-soft);
+  border-color: var(--correct);
   color: var(--jade-text);
 }
+
 .draggable-card.in-dropzone:hover {
-  background: #d0e4d7;
+  background: var(--wrong-bg);
+  border-color: var(--wrong);
+  color: var(--wrong);
 }
 
 .tray-empty-msg {
-  grid-column: 1 / -1;
   text-align: center;
   color: var(--jade-deep);
   font-weight: 600;
-  font-size: 0.95rem;
-  padding: 14px;
+  font-size: 0.92rem;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
 .drop-zones-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-@media (max-width: 720px) {
-  .drop-zones-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.drop-group-box {
-  background: #FFF;
-  border: 2px dashed var(--paper-line-2);
-  border-radius: var(--radius);
-  padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  min-height: 160px;
-  transition: all 0.2s ease;
 }
+
+.drop-group-box {
+  background: #fff;
+  border: 2px dashed var(--paper-line-2);
+  border-radius: var(--radius);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 90px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
 .drop-group-box.target-ready, .drop-group-box.drag-over {
   border-color: var(--jade);
   background: var(--jade-pale);
 }
+
 .drop-group-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--paper-line);
-  padding-bottom: 8px;
 }
+
 .drop-group-title {
-  font-size: 0.95rem;
+  font-size: 0.93rem;
   font-weight: 700;
   color: var(--jade-deep);
   display: flex;
   align-items: center;
   gap: 6px;
 }
+
 .drop-items-container {
   display: flex;
   flex-direction: column;
   gap: 8px;
   flex: 1;
 }
+
 .drop-placeholder {
   font-size: 0.85rem;
   color: var(--ink-faint);
   font-style: italic;
-  margin: auto;
-  text-align: center;
-  padding: 12px 0;
+  margin: auto 0;
 }
 
-/* ==========================================================================
-   STAGE 02: ROOT CROSS-SECTION SVG & CASPARIAN STRIP
-   ========================================================================== */
+/* ===================================================
+   STAGE 02 SPECIFIC: ROOT CROSS-SECTION & QUIZ
+   =================================================== */
 .root-cross-section-svg-wrap {
   width: 100%;
-  background: #FFF;
+  background: #fff;
   border: 1px solid var(--paper-line);
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
 }
+
 .root-cross-section-svg-wrap svg {
   width: 100%;
   height: auto;
@@ -626,83 +758,97 @@ header,
 .st02-controls-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 10px;
 }
-@media (max-width: 768px) {
+
+@media (max-width: 650px) {
   .st02-controls-grid {
     grid-template-columns: 1fr;
   }
 }
 
 .st02-toggle-btn {
-  padding: 12px 16px;
-  border-radius: var(--radius);
+  padding: 11px 12px;
+  border-radius: var(--radius-sm);
   background: var(--cream-2);
   border: 1.5px solid var(--paper-line-2);
   color: var(--ink);
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 6px;
   transition: all 0.2s ease;
   cursor: pointer;
   text-align: left;
 }
+
 .st02-toggle-btn:disabled {
   opacity: 0.45;
   cursor: not-allowed;
   border-style: dashed;
 }
+
 .st02-toggle-btn:hover:not(:disabled) {
   background: var(--cream-3);
   border-color: var(--sage-deep);
 }
+
 .st02-toggle-btn.active {
   background: var(--jade-pale);
   border-color: var(--jade);
   color: var(--jade-text);
   box-shadow: 0 0 0 2px var(--jade-soft);
 }
-.st02-toggle-btn.viewed {
-  border-color: var(--jade-deep);
+
+.st02-toggle-btn.viewed .status-pill {
+  background: var(--jade);
+  color: #fff;
 }
 
-/* Quiz Section ST02 */
-.quiz-section {
-  background: var(--cream-2);
-  border: 1px solid var(--paper-line-2);
+/* ST02 Quiz */
+.quiz-box {
+  background: #fff;
+  border: 1.5px solid var(--paper-line-2);
   border-radius: var(--radius);
-  padding: 18px 22px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  animation: slideUp 0.3s ease;
+  gap: 14px;
+  box-shadow: var(--shadow-sm);
+  animation: fadeIn 0.3s ease;
 }
-.quiz-question-title {
-  font-size: 1.05rem;
+
+.question-index-label {
+  font-size: 0.88rem;
   font-weight: 700;
-  color: var(--ink);
+  color: var(--jade-deep);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
-.quiz-question-title i {
-  color: var(--accent);
+
+.quiz-question-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.55;
 }
+
 .quiz-options-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+
 .quiz-option-btn {
-  background: #FFF;
+  background: var(--cream);
   border: 1.5px solid var(--paper-line-2);
   border-radius: var(--radius-sm);
-  padding: 14px 18px;
+  padding: 12px 14px;
   text-align: left;
-  font-size: 0.96rem;
+  font-size: 0.92rem;
   color: var(--ink);
   font-weight: 500;
   display: flex;
@@ -711,28 +857,38 @@ header,
   transition: all 0.2s ease;
   cursor: pointer;
 }
+
 .quiz-option-btn:hover:not(:disabled) {
   border-color: var(--jade);
-  background: #FAFCFA;
-  transform: translateX(4px);
+  background: #fff;
+  transform: translateX(3px);
 }
+
+.quiz-option-btn.selected {
+  border-color: var(--jade-deep);
+  background: var(--jade-pale);
+  color: var(--jade-text);
+}
+
 .quiz-option-btn.selected-correct {
   border-color: var(--correct);
   background: var(--correct-bg);
   color: var(--jade-text);
   font-weight: 600;
 }
+
 .quiz-option-btn.selected-wrong {
   border-color: var(--wrong);
   background: var(--wrong-bg);
   color: var(--wrong);
   font-weight: 600;
 }
+
 .quiz-option-letter {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: var(--cream-2);
+  background: #fff;
   border: 1px solid var(--paper-line-2);
   display: flex;
   align-items: center;
@@ -741,65 +897,248 @@ header,
   font-size: 0.88rem;
   flex-shrink: 0;
 }
-.quiz-option-btn.selected-correct .quiz-option-letter {
+
+.quiz-option-btn.selected .quiz-option-letter {
   background: var(--jade);
-  color: #FFF;
+  color: #fff;
   border-color: var(--jade-deep);
 }
+
+.quiz-option-btn.selected-correct .quiz-option-letter {
+  background: var(--correct);
+  color: #fff;
+  border-color: var(--correct);
+}
+
 .quiz-option-btn.selected-wrong .quiz-option-letter {
   background: var(--wrong);
-  color: #FFF;
+  color: #fff;
   border-color: var(--wrong);
 }
 
-/* ==========================================================================
-   STAGE 03: MEMORY & CONNECTION
-   ========================================================================== */
-.memory-grid {
+.quiz-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.correct-answer-box {
+  background: var(--correct-bg);
+  border-left: 4px solid var(--correct);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  color: var(--jade-text);
+  font-size: 0.92rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: fadeIn 0.25s ease;
+}
+
+.explanation {
+  background: var(--cream);
+  border: 1px solid var(--paper-line);
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.91rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+.pedagogy-meta {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-}
-.memory-card {
+  padding: 12px 16px;
   background: var(--cream);
-  border-left: 4px solid var(--jade);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--paper-line-2);
+  box-shadow: var(--shadow-sm);
+  animation: fadeIn 0.3s ease;
+}
+
+.pedagogy-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--jade-deep);
+  padding-bottom: 8px;
+  border-bottom: 1.5px solid var(--paper-line-2);
+  margin-bottom: 4px;
+}
+
+.pedagogy-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px dashed var(--paper-line);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.pedagogy-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.pedagogy-label {
+  flex: 0 0 142px;
+  color: var(--ink-2);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.pedagogy-label i {
+  color: var(--jade-deep);
+  font-size: 0.95rem;
+}
+
+.pedagogy-val {
+  flex: 1;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+@media (max-width: 520px) {
+  .pedagogy-row {
+    flex-direction: column;
+    gap: 2px;
+    padding: 7px 0;
+  }
+  .pedagogy-label {
+    flex: none;
+  }
+}
+
+.pedagogy-meta > div:not(.pedagogy-title):not(.pedagogy-row) {
+  padding: 5px 0;
+  border-bottom: 1px dashed var(--paper-line);
+  font-size: 0.86rem;
+  color: var(--ink-2);
+}
+
+.pedagogy-meta > div:not(.pedagogy-title):not(.pedagogy-row):last-child {
+  border-bottom: none;
+}
+
+.pedagogy-meta strong {
+  color: var(--ink);
+}
+
+/* ===================================================
+   STAGE 03 SPECIFIC: SINGLE-BLOCK SUMMARY & BRIDGE
+   =================================================== */
+.single-block-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.summary-card {
+  background: #fff;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.summary-card__head {
+  border-bottom: 1px solid var(--paper-line);
+  padding-bottom: 14px;
+}
+
+.summary-card__head h2 {
+  font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.summary-card__head p {
+  color: var(--ink-2);
+  font-size: 0.95rem;
+  margin-top: 4px;
+}
+
+.takeaway-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 780px) {
+  .takeaway-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.takeaway-card {
+  background: var(--cream);
+  border-left: 4px solid var(--jade-deep);
   border-radius: var(--radius-sm);
-  padding: 16px 20px;
+  padding: 16px;
   display: flex;
   align-items: flex-start;
   gap: 14px;
   box-shadow: var(--shadow-sm);
 }
-.memory-icon {
-  width: 38px;
-  height: 38px;
+
+.takeaway-card__icon {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: var(--jade-pale);
   color: var(--jade-deep);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   flex-shrink: 0;
   margin-top: 2px;
 }
-.memory-text {
-  font-size: 1.02rem;
+
+.takeaway-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.takeaway-card__num {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--jade-deep);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.takeaway-card__text {
+  font-size: 0.94rem;
   color: var(--ink);
-  line-height: 1.65;
+  line-height: 1.6;
 }
 
 .connection-card {
-  background: #FFF;
+  background: #fff;
   border: 1.5px solid var(--paper-line-2);
   border-radius: var(--radius);
-  padding: 18px 22px;
+  padding: 18px 20px;
   display: flex;
   align-items: flex-start;
   gap: 14px;
   box-shadow: var(--shadow-sm);
 }
-.connection-icon {
+
+.connection-card__icon {
   width: 42px;
   height: 42px;
   border-radius: 50%;
@@ -811,65 +1150,19 @@ header,
   font-size: 1.5rem;
   flex-shrink: 0;
 }
-.connection-text {
-  font-size: 1.02rem;
+
+.connection-card__text {
+  font-size: 0.98rem;
   color: var(--ink-2);
-  line-height: 1.7;
+  line-height: 1.65;
 }
 
-/* Bottom Controls Row */
-.controls-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 10px;
-  padding-top: 16px;
-  border-top: 1px solid var(--paper-line);
-}
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  border-radius: var(--radius-sm);
-  font-size: 0.95rem;
-  font-weight: 700;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-.btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-.btn-primary {
-  background: var(--jade);
-  color: #FFF;
-  box-shadow: 0 2px 8px rgba(60, 165, 122, 0.28);
-}
-.btn-primary:hover:not(:disabled) {
-  background: var(--jade-deep);
-  box-shadow: 0 4px 12px rgba(45, 139, 111, 0.35);
-  transform: translateY(-1px);
-}
-.btn-secondary {
-  border: 1.5px solid var(--paper-line-2);
-  color: var(--ink-2);
-  background: var(--cream);
-}
-.btn-secondary:hover:not(:disabled) {
-  border-color: var(--sage);
-  background: var(--cream-2);
-}
-
-/* Completion Modal V10 */
+/* ===================================================
+   COMPLETION MODAL & CONFETTI
+   =================================================== */
 .congrats-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
   background: rgba(20, 40, 30, 0.65);
   backdrop-filter: blur(5px);
   display: flex;
@@ -879,8 +1172,9 @@ header,
   z-index: 9999;
   animation: fadeIn 0.25s ease;
 }
+
 .congrats-card {
-  background: #FFF;
+  background: #fff;
   border: 2px solid var(--jade-soft);
   border-radius: var(--radius-lg);
   max-width: 480px;
@@ -894,6 +1188,7 @@ header,
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
   animation: slideUp 0.3s ease;
 }
+
 .congrats-icon-box {
   width: 72px;
   height: 72px;
@@ -906,774 +1201,804 @@ header,
   font-size: 2.6rem;
   box-shadow: 0 4px 14px rgba(232, 162, 74, 0.25);
 }
+
 .congrats-title {
   font-size: 1.45rem;
   font-weight: 800;
   color: var(--ink);
 }
+
 .congrats-message {
   font-size: 0.98rem;
   color: var(--ink-2);
   line-height: 1.65;
 }
+
 .congrats-actions {
   display: flex;
   gap: 12px;
   width: 100%;
   margin-top: 8px;
 }
+
 .congrats-actions button {
   flex: 1;
 }
 
 #confettiCanvas {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
   pointer-events: none;
   z-index: 10000;
 }
-/* Đồng bộ trực tiếp theo SH10_B01_M02 */
-body{padding:0;font-size:17px}.app,.app-container{max-width:1200px;margin:0 auto;padding:18px clamp(12px,2.4vw,28px) 12px}.stage-section.two-block-ready,.stage-card.two-block-ready{padding:0;background:transparent;border:0;box-shadow:none}.split-workspace{display:grid!important;grid-template-columns:minmax(0,58fr) minmax(340px,42fr)!important;gap:20px!important;align-items:start!important}.visual-card,.workspace-card{min-width:0;border:1px solid var(--paper-line,#D6CCB6);border-radius:14px;overflow:hidden;box-shadow:0 2px 6px rgba(26,26,26,.05)}.visual-card{position:sticky;top:0;background:#fff}.visual-card__head{padding:14px 16px 12px;border-bottom:1px solid var(--paper-line,#D6CCB6);background:#fff}.visual-card__head h2{margin:0;font-size:clamp(1.25rem,2.2vw,1.75rem);line-height:1.28}.visual-body{padding:14px;background:#fff}.workspace-card{padding:18px;background:var(--cream-2,#FBF9F4)}.instruction{display:flex;align-items:flex-start;gap:10px;margin:0 0 16px;padding:12px 14px;border-left:4px solid var(--info,#4E7F92);border-radius:6px;background:var(--info-bg,#DCE7EB);font-size:.91rem;line-height:1.55}.inline-feedback{font-size:.92rem;line-height:1.55}.controls-row{display:flex;align-items:center;gap:10px;margin-top:16px;padding:14px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;flex-wrap:nowrap}.btn{min-height:44px;padding:9px 15px;font-size:.92rem}@media(max-width:980px){.split-workspace{grid-template-columns:1fr!important}.visual-card{position:static}.workspace-card{padding:16px}}@media(max-width:700px){body{font-size:16px}.app,.app-container{padding:12px 10px 10px}}@media(max-width:420px){.app,.app-container{padding:10px 8px 8px}.workspace-card{padding:13px}}
-.three-button-nav{display:flex;align-items:center;gap:12px;width:100%;margin-top:16px;padding:16px 0 2px;border-top:1px solid var(--paper-line,#D6CCB6);overflow-x:auto;scrollbar-width:none}.three-button-nav::-webkit-scrollbar{display:none}.three-button-nav .nav-spacer{flex:1}.three-button-nav .btn{flex:0 0 auto;white-space:nowrap}.three-button-nav .nav-back{order:1}.three-button-nav .nav-reset{order:2}.three-button-nav .nav-spacer{order:3}.three-button-nav .nav-next{order:4}.three-button-nav .btn:disabled{opacity:.45;cursor:not-allowed}
-section.stage .controls-row,section.stage .stage-actions,section.stage-section .controls-row,section.stage-section .stage-actions,section.stage-card .controls-row,section.stage-card .stage-actions{display:none!important}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+.shake {
+  animation: shake 0.35s ease;
+}
 </style>
 </head>
 <body>
 
 <canvas id="confettiCanvas" class="hidden"></canvas>
 
-<div class="app-container">
+<div class="app">
 
-  <!-- ==================== STAGE 00 ==================== -->
-  <section class="stage-card" id="stage00" role="region" aria-labelledby="st00Heading">
-    <h2 class="stage-title" id="st00Heading">
-      <i class="ti ti-seeding"></i>
-      Rễ hấp thụ nước và ion khoáng như thế nào?
-    </h2>
-
-    <p class="lead-text">
-      Sau khi tưới nước và bón phân, nước và các ion khoáng trong đất được cây hấp thụ qua rễ. Vậy bộ phận nào của rễ trực tiếp tiếp xúc và hấp thụ chúng?
-    </p>
-
-    <!-- Single point of instruction -->
-    <div class="guide-box">
-      <i class="ti ti-info-circle"></i>
-      <span>Nhấn vào hình rễ để quan sát vùng có nhiều lông hút. Vùng đã xem sẽ được làm nổi bật.</span>
-    </div>
-
-    <!-- 2-Column Desktop Layout -->
-    <div class="root-viewer-layout">
-      <!-- Left Column: Scientific Raster Image with Hotspot -->
-      <div class="root-image-wrap" id="rootImageWrap">
-        <img src="https://lh3.googleusercontent.com/d/1QUvqTMki8wanmrr1xAaihqoD0EoSovM4" alt="Đoạn rễ non với lớp biểu bì ngoài và vùng lông hút mọc dày đặc tiếp xúc với đất ẩm">
-        
-        <!-- Hotspot centered at the dense root hair region -->
-        <button class="root-hotspot-btn" id="btnHotspotRootHair" style="left: 50%; top: 40%;" onclick="exploreRootHair()" aria-label="Khám phá vùng lông hút của rễ">
-          <span class="pulse-ring"></span>
-          <i class="ti ti-focus-2"></i>
-        </button>
-      </div>
-
-      <!-- Right Column: Explanatory Card -->
-      <div class="root-explanation-col">
-        <div class="interactive-caption-box" id="st00CaptionBox">
-          <i class="ti ti-notes"></i>
-          <span id="st00CaptionText">Nhấn vào vùng lông hút trên rễ để quan sát.</span>
+  <!-- ==========================================
+       STAGE ST00: RỄ HẤP THỤ NƯỚC VÀ KHOÁNG
+       ========================================== -->
+  <section class="stage" id="stage-0">
+    <div class="split-workspace">
+      <!-- TRÁI: ẢNH SINH HỌC VÙNG LÔNG HÚT (A01) VỚI HOTSPOT -->
+      <article class="visual-card">
+        <div class="visual-card__head">
+          <h2>Rễ hấp thụ nước và ion khoáng như thế nào?</h2>
+          <p class="question">Sau khi tưới nước và bón phân, nước và các ion khoáng trong đất được cây hấp thụ qua rễ. Vậy bộ phận nào của rễ trực tiếp tiếp xúc và hấp thụ chúng?</p>
         </div>
-
-        <div class="root-info-card hidden" id="st00InfoCard">
-          <div class="root-info-title">
-            <i class="ti ti-plant-2"></i>
-            <span>Bản chất sinh học của lông hút</span>
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span><strong>HƯỚNG DẪN:</strong> Nhấn vào vùng lông hút trên rễ để quan sát. Vùng đã xem sẽ được làm nổi bật.</span>
           </div>
-          <p class="root-info-text">
-            Lông hút là phần kéo dài của tế bào biểu bì rễ, làm tăng diện tích tiếp xúc giữa rễ và đất. Qua bề mặt này, cây hấp thụ nước và các ion khoáng từ dung dịch đất.
-          </p>
-          <div class="summary-box" style="margin-top: 6px;">
-            <div class="summary-title">
-              <i class="ti ti-help"></i> Câu hỏi gợi mở
+
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-seeding"></i> Cấu tạo hấp thụ của rễ</div>
+              <p class="theory-block__content">Rễ là cơ quan hấp thụ nước và ion khoáng chính của cây trên cạn. Bề mặt hấp thụ của rễ được phát triển đặc biệt nhờ hệ thống lông hút dày đặc ở vùng trưởng thành.</p>
             </div>
-            <p>
-              Nước và ion khoáng đều đi qua tế bào lông hút, nhưng chúng có được hấp thụ theo cùng một cơ chế không?
-            </p>
           </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Controls -->
-    <div class="controls-row">
-      <div></div>
-      <button class="btn btn-primary" id="btnNextST00" onclick="goToStage(1)" disabled>
-        <span>TIẾP TỤC</span>
-        <i class="ti ti-arrow-right"></i>
-      </button>
-    </div>
-  </section>
-
-  <!-- ==================== STAGE 01 ==================== -->
-  <section class="stage-card hidden" id="stage01" role="region" aria-labelledby="st01Heading">
-    <h2 class="stage-title" id="st01Heading">
-      <i class="ti ti-droplet-half-2"></i>
-      Nước và ion khoáng đi vào tế bào lông hút bằng cách nào?
-    </h2>
-
-    <p class="lead-text">
-      Quan sát sơ đồ tế bào lông hút và dung dịch đất ở phía ngoài.
-    </p>
-
-    <!-- Guide 1 -->
-    <div class="guide-box" id="st01Guide1">
-      <i class="ti ti-info-circle"></i>
-      <span>Nhấn lần lượt vào vùng NƯỚC và ION KHOÁNG để xem cơ chế hấp thụ. Vùng đã xem sẽ đổi trạng thái.</span>
-    </div>
-
-    <!-- SVG Mechanism Diagram -->
-    <div class="membrane-svg-wrap">
-      <svg viewBox="0 0 960 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sơ đồ cơ chế hấp thụ nước và ion khoáng qua màng tế bào lông hút">
-        <defs>
-          <!-- Markers -->
-          <marker id="arrowWater" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563EB"/>
-          </marker>
-          <marker id="arrowPassive" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M 0 1 L 10 5 L 0 9 z" fill="#D97706"/>
-          </marker>
-          <marker id="arrowActive" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M 0 1 L 10 5 L 0 9 z" fill="#7C3AED"/>
-          </marker>
-          <marker id="arrowATP" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M 0 1 L 10 5 L 0 9 z" fill="#D97706"/>
-          </marker>
-
-          <!-- Gradients -->
-          <linearGradient id="soilGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#FBF7EE"/>
-            <stop offset="100%" stop-color="#F3ECE0"/>
-          </linearGradient>
-          <linearGradient id="cellGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#EFF7F2"/>
-            <stop offset="100%" stop-color="#E2EFE7"/>
-          </linearGradient>
-          <linearGradient id="membraneGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#A8D5BA"/>
-            <stop offset="50%" stop-color="#5B9E78"/>
-            <stop offset="100%" stop-color="#347551"/>
-          </linearGradient>
-          <filter id="shadowFilter" x="-10%" y="-10%" width="120%" height="120%">
-            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.12"/>
-          </filter>
-        </defs>
-
-        <!-- ==================== 3 CỘT KHÔNG GIAN ==================== -->
-        <!-- Cột 1: Dung dịch đất (x: 10 to 330) -->
-        <rect x="10" y="10" width="320" height="480" rx="8" fill="url(#soilGrad)" stroke="#E5DECF" stroke-width="1.5"/>
-        <!-- Header Cột 1 -->
-        <rect x="10" y="10" width="320" height="52" rx="8" fill="#F4EDE0" stroke="#E5DECF"/>
-        <text x="25" y="32" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="800" fill="#2D3748" letter-spacing="0.5px">DUNG DỊCH ĐẤT (NGOÀI TẾ BÀO)</text>
-        <text x="25" y="49" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="500" fill="#718096">Môi trường đất ẩm, tiếp xúc trực tiếp lông hút</text>
-
-        <!-- Cột 2: Ranh giới Thành tế bào & Màng sinh chất (x: 335 to 425) -->
-        <!-- Thành tế bào (Cellulose, x: 335 to 365, w=30) -->
-        <rect x="335" y="65" width="30" height="425" fill="#EFE8D8" stroke="#D8CEBC" stroke-width="1"/>
-        <!-- Màng sinh chất (Phospholipid kép, x: 365 to 425, w=60) -->
-        <rect x="365" y="65" width="60" height="425" fill="url(#membraneGrad)" stroke="#2D8B6F" stroke-width="1.5"/>
-        
-        <!-- Header Cột 2 (Ranh giới màng) - Đặt gọn ở đỉnh để KHÔNG CHE BẤT KỲ MŨI TÊN NÀO -->
-        <rect x="335" y="10" width="90" height="52" rx="8" fill="#14432F" stroke="#0D2E20"/>
-        <text x="380" y="30" font-family="'Be Vietnam Pro', sans-serif" font-size="10.5" font-weight="800" fill="#FFF" text-anchor="middle" letter-spacing="0.5px">RANH GIỚI</text>
-        <text x="380" y="46" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="700" fill="#A9D0BE" text-anchor="middle">THÀNH &amp; MÀNG</text>
-
-        <!-- Nhãn định danh nhỏ ở đầu cột ranh giới (y: 68-88) - Tuyệt đối không để chữ chạy dọc giữa thân màng -->
-        <rect x="337" y="68" width="26" height="18" rx="3" fill="#D6CCB6"/>
-        <text x="350" y="81" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="800" fill="#514C44" text-anchor="middle">THÀNH</text>
-        
-        <rect x="370" y="68" width="50" height="18" rx="3" fill="#1B5E48"/>
-        <text x="395" y="81" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="800" fill="#FFF" text-anchor="middle">MÀNG SC</text>
-
-        <!-- Kênh ion xuyên màng cho I1 (x: 365 to 425, y: 225 to 285) -->
-        <rect x="367" y="230" width="56" height="55" rx="6" fill="#FDE68A" stroke="#D97706" stroke-width="2"/>
-        <rect x="388" y="238" width="14" height="39" rx="2" fill="#FFFBEB"/>
-        <text x="395" y="298" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="800" fill="#B45309" text-anchor="middle">KÊNH ION</text>
-
-        <!-- Bơm/Protein vận chuyển xuyên màng cho I2 (x: 363 to 427, y: 350 to 415) -->
-        <rect x="363" y="355" width="64" height="60" rx="8" fill="#DDD6FE" stroke="#7C3AED" stroke-width="2"/>
-        <rect x="382" y="367" width="26" height="36" rx="4" fill="#F5F3FF"/>
-        <!-- Nhãn Protein vận chuyển được tách 2 dòng tinh tế, không tràn lề -->
-        <text x="395" y="430" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="800" fill="#6D28D9" text-anchor="middle">PROTEIN</text>
-        <text x="395" y="443" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="700" fill="#6D28D9" text-anchor="middle">VẬN CHUYỂN</text>
-
-        <!-- Cột 3: Tế bào chất lông hút (x: 430 to 950) -->
-        <rect x="430" y="10" width="520" height="480" rx="8" fill="url(#cellGrad)" stroke="#CBDCD0" stroke-width="1.5"/>
-        <!-- Header Cột 3 -->
-        <rect x="430" y="10" width="520" height="52" rx="8" fill="#E4F1E9" stroke="#CBDCD0"/>
-        <text x="450" y="32" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="800" fill="#1B5E48" letter-spacing="0.5px">TẾ BÀO CHẤT LÔNG HÚT</text>
-        <text x="450" y="49" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="500" fill="#46685A">Dịch tế bào có nồng độ chất tan cao hơn dung dịch đất</text>
-
-        <!-- Không bào trung tâm (x: 710 to 935) -->
-        <rect x="710" y="75" width="225" height="400" rx="14" fill="#D2E8DC" stroke="#A9D0BE" stroke-width="2" stroke-dasharray="5,5"/>
-        <text x="822" y="110" font-family="'Be Vietnam Pro', sans-serif" font-size="12.5" font-weight="800" fill="#1B5E48" text-anchor="middle">KHÔNG BÀO TRUNG TÂM</text>
-        <text x="822" y="128" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="500" fill="#46685A" text-anchor="middle">Chứa dịch tế bào &amp; chất dự trữ</text>
-
-
-        <!-- ==================== TUYẾN 1: NƯỚC (W1) ==================== -->
-        <g id="svgGroupWater" opacity="0.6" transition="all 0.3s">
-          <!-- Phía Đất (Trái) -->
-          <rect x="25" y="95" width="240" height="26" rx="6" fill="#DBEAFE" stroke="#93C5FD"/>
-          <text x="35" y="112" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#1E40AF">
-            Thế nước cao (Ít chất tan)
-          </text>
-          
-          <!-- Thẻ tên cơ chế W1 đặt gọn gàng trong vùng đất, hoàn toàn không đè lên màng -->
-          <rect x="25" y="130" width="220" height="28" rx="14" fill="#2563EB" filter="url(#shadowFilter)"/>
-          <text x="135" y="148" font-family="'Be Vietnam Pro', sans-serif" font-size="11.5" font-weight="800" fill="#FFF" text-anchor="middle">
-            Thẩm thấu theo thế nước (W1)
-          </text>
-
-          <!-- Phân tử nước H2O trong đất -->
-          <circle cx="65" cy="182" r="13" fill="#BFDBFE" stroke="#60A5FA"/>
-          <text x="65" y="186" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="800" fill="#1E40AF" text-anchor="middle">H₂O</text>
-
-          <circle cx="125" cy="182" r="13" fill="#BFDBFE" stroke="#60A5FA"/>
-          <text x="125" y="186" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="800" fill="#1E40AF" text-anchor="middle">H₂O</text>
-
-          <circle cx="185" cy="182" r="13" fill="#BFDBFE" stroke="#60A5FA"/>
-          <text x="185" y="186" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="800" fill="#1E40AF" text-anchor="middle">H₂O</text>
-
-          <!-- Mũi tên W1 xuyên màng sang tế bào chất: Bắt đầu từ x=255 sang x=585, thoáng đãng không bị đè chữ -->
-          <path id="pathW1" d="M 255 144 L 585 144" stroke="#2563EB" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowWater)"/>
-
-          <!-- Phía Tế bào chất (Phải) -->
-          <rect x="445" y="95" width="180" height="26" rx="6" fill="#DBEAFE" stroke="#93C5FD"/>
-          <text x="455" y="112" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#1E40AF">
-            Thế nước thấp hơn
-          </text>
-          
-          <rect x="445" y="130" width="165" height="26" rx="6" fill="#EFF6FF" stroke="#BFDBFE"/>
-          <text x="455" y="147" font-family="'Be Vietnam Pro', sans-serif" font-size="10.5" font-weight="600" fill="#1D4ED8">
-            Nước đi vào dịch tế bào
-          </text>
-
-          <circle cx="615" cy="144" r="14" fill="#93C5FD" stroke="#3B82F6"/>
-          <text x="615" y="148" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#1E3A8A" text-anchor="middle">H₂O</text>
-        </g>
-
-
-        <!-- ==================== TUYẾN 2: ION THỤ ĐỘNG (I1) ==================== -->
-        <g id="svgGroupPassive" opacity="0.6" transition="all 0.3s">
-          <!-- Phía Đất (Trái) -->
-          <rect x="25" y="215" width="180" height="26" rx="6" fill="#FEF3C7" stroke="#FCD34D"/>
-          <text x="35" y="232" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#92400E">
-            Nồng độ ion cao hơn
-          </text>
-
-          <!-- Thẻ tên cơ chế I1 đặt gọn gàng trong vùng đất -->
-          <rect x="25" y="248" width="220" height="28" rx="14" fill="#D97706" filter="url(#shadowFilter)"/>
-          <text x="135" y="266" font-family="'Be Vietnam Pro', sans-serif" font-size="11.5" font-weight="800" fill="#FFF" text-anchor="middle">
-            Thụ động: Xuôi gradien (I1)
-          </text>
-
-          <!-- Các ion khoáng trong đất -->
-          <circle cx="70" cy="298" r="13" fill="#F59E0B"/>
-          <text x="70" y="302" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#FFF" text-anchor="middle">K⁺</text>
-
-          <circle cx="130" cy="298" r="13" fill="#F59E0B"/>
-          <text x="130" y="302" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="800" fill="#FFF" text-anchor="middle">NO₃⁻</text>
-
-          <circle cx="190" cy="298" r="13" fill="#F59E0B"/>
-          <text x="190" y="302" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="800" fill="#FFF" text-anchor="middle">Mg²⁺</text>
-
-          <!-- Mũi tên I1 xuyên qua kênh ion sang tế bào chất -->
-          <path id="pathI1" d="M 255 262 L 585 262" stroke="#D97706" stroke-width="4.5" stroke-dasharray="6,4" stroke-linecap="round" marker-end="url(#arrowPassive)"/>
-
-          <!-- Phía Tế bào chất (Phải) -->
-          <rect x="445" y="215" width="180" height="26" rx="6" fill="#FEF3C7" stroke="#FCD34D"/>
-          <text x="455" y="232" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#92400E">
-            Nồng độ ion thấp hơn
-          </text>
-
-          <circle cx="615" cy="262" r="13" fill="#FDE68A" stroke="#D97706" stroke-width="1.5"/>
-          <text x="615" y="266" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#92400E" text-anchor="middle">K⁺</text>
-        </g>
-
-
-        <!-- ==================== TUYẾN 3: ION CHỦ ĐỘNG (I2 + E1) ==================== -->
-        <g id="svgGroupActive" opacity="0.6" transition="all 0.3s">
-          <!-- Phía Đất (Trái) -->
-          <rect x="25" y="335" width="180" height="26" rx="6" fill="#EDE9FE" stroke="#DDD6FE"/>
-          <text x="35" y="352" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#5B21B6">
-            Nồng độ ion thấp hơn
-          </text>
-
-          <!-- Thẻ tên cơ chế I2 đặt gọn gàng trong vùng đất -->
-          <rect x="25" y="368" width="220" height="28" rx="14" fill="#7C3AED" filter="url(#shadowFilter)"/>
-          <text x="135" y="386" font-family="'Be Vietnam Pro', sans-serif" font-size="11.5" font-weight="800" fill="#FFF" text-anchor="middle">
-            Chủ động: Ngược gradien (I2)
-          </text>
-
-          <!-- Ion trong đất -->
-          <circle cx="100" cy="415" r="13" fill="#8B5CF6"/>
-          <text x="100" y="419" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#FFF" text-anchor="middle">K⁺</text>
-
-          <!-- Mũi tên I2 xuyên qua Protein vận chuyển -->
-          <path id="pathI2" d="M 255 382 L 585 382" stroke="#7C3AED" stroke-width="4.5" stroke-linecap="round" marker-end="url(#arrowActive)"/>
-
-          <!-- Phía Tế bào chất (Phải) -->
-          <rect x="445" y="335" width="180" height="26" rx="6" fill="#EDE9FE" stroke="#DDD6FE"/>
-          <text x="455" y="352" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#5B21B6">
-            Nồng độ ion cao hơn
-          </text>
-
-          <circle cx="615" cy="382" r="13" fill="#DDD6FE" stroke="#7C3AED" stroke-width="1.5"/>
-          <text x="615" y="386" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#5B21B6" text-anchor="middle">K⁺</text>
-
-          <!-- KHỐI NĂNG LƯỢNG ATP (E1): Thiết kế thoáng, tách biệt với Protein, có nhãn rõ ràng -->
-          <g id="svgATP">
-            <!-- Hộp thẻ ATP năng lượng đặt gọn tại x: 450-620, y: 415-461 -->
-            <rect x="450" y="415" width="170" height="46" rx="8" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.5" filter="url(#shadowFilter)"/>
+          <!-- Ảnh sinh học A01 kèm hotspot -->
+          <div class="root-image-wrap" id="rootImageWrap">
+            <img src="images/SH11-B02-M02-A01.png" onerror="this.onerror=null;this.src='https://lh3.googleusercontent.com/d/1QUvqTMki8wanmrr1xAaihqoD0EoSovM4'" alt="Đoạn rễ non với lớp biểu bì ngoài và vùng lông hút mọc dày đặc tiếp xúc với đất ẩm">
             
-            <!-- Biểu tượng ATP đa giác vàng -->
-            <polygon points="468,438 480,424 494,424 502,438 494,452 480,452" fill="#F59E0B"/>
-            <text x="486" y="442" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="900" fill="#FFF" text-anchor="middle">ATP</text>
-            
-            <!-- Nhãn năng lượng rõ nét -->
-            <text x="512" y="434" font-family="'Be Vietnam Pro', sans-serif" font-size="10.5" font-weight="800" fill="#92400E">NĂNG LƯỢNG (E1)</text>
-            <text x="512" y="450" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="600" fill="#B45309">Cung cấp cho protein</text>
-
-            <!-- Mũi tên năng lượng E1 uốn cong chỉ thẳng vào protein vận chuyển -->
-            <path d="M 450 438 Q 436 430 428 405" fill="none" stroke="#D97706" stroke-width="2.5" stroke-dasharray="3,3" marker-end="url(#arrowATP)"/>
-          </g>
-        </g>
-      </svg>
-    </div>
-
-    <!-- Hotspot Buttons -->
-    <div class="svg-hotspot-controls">
-      <button class="hotspot-toggle-btn" id="btnHotspotWater" onclick="triggerST01Hotspot('water')">
-        <span style="display:flex;align-items:center;gap:8px;">
-          <i class="ti ti-droplet" style="color:#2563EB;font-size:1.2rem;"></i>
-          <span>VÙNG NƯỚC (Thẩm thấu)</span>
-        </span>
-        <span class="hotspot-status-badge" id="badgeWater">Chưa xem</span>
-      </button>
-
-      <button class="hotspot-toggle-btn" id="btnHotspotIon" onclick="triggerST01Hotspot('ion')">
-        <span style="display:flex;align-items:center;gap:8px;">
-          <i class="ti ti-atom" style="color:#7C3AED;font-size:1.2rem;"></i>
-          <span>VÙNG ION KHOÁNG (Thụ động & Chủ động)</span>
-        </span>
-        <span class="hotspot-status-badge" id="badgeIon">Chưa xem</span>
-      </button>
-    </div>
-
-    <!-- Feedback Caption Box for Hotspots -->
-    <div class="interactive-caption-box" id="st01CaptionBox">
-      <i class="ti ti-info-circle"></i>
-      <span id="st01CaptionText">Nhấn vào một trong hai vùng trên để xem giải thích chi tiết cơ chế qua màng.</span>
-    </div>
-
-    <!-- Summary Transition Box (revealed when both hotspots viewed) -->
-    <div class="summary-box hidden" id="st01TransitionBox">
-      <div class="summary-title">
-        <i class="ti ti-bulb"></i> Kết luận ban đầu
-      </div>
-      <p id="st01TransitionText">
-        Như vậy, nước được hấp thụ chủ yếu bằng thẩm thấu, còn ion khoáng có thể được hấp thụ thụ động hoặc chủ động.
-      </p>
-    </div>
-
-    <!-- Part 2: 4 Cards Classification Section (revealed when both viewed) -->
-    <div class="classification-section hidden" id="st01ClassifySection">
-      <!-- Guide 2 -->
-      <div class="guide-box">
-        <i class="ti ti-arrows-move"></i>
-        <span>Kéo từng thẻ vào nhóm cơ chế phù hợp. Thẻ đặt sai sẽ trở lại vị trí ban đầu.</span>
-      </div>
-
-      <!-- Feedback bar -->
-      <div class="feedback-bar hidden" id="dndFeedback"></div>
-
-      <!-- Cards Tray -->
-      <div class="cards-tray-wrap">
-        <div class="cards-tray-title">
-          <i class="ti ti-cards"></i>
-          <span>Khay 4 thẻ đặc điểm cơ chế</span>
-        </div>
-        <div class="cards-tray" id="cardsTray">
-          <div class="draggable-card" id="dragCard1" draggable="true" ondragstart="handleCardDragStart(event, 1)" onclick="handleCardTouchClick(1)">
-            <i class="ti ti-grip-vertical" style="color:var(--ink-faint);"></i>
-            <span>Nước từ dung dịch đất đi vào tế bào lông hút theo thẩm thấu.</span>
+            <button class="root-hotspot-btn" id="btnHotspotRootHair" style="left: 50%; top: 40%;" onclick="exploreRootHair()" aria-label="Khám phá vùng lông hút của rễ">
+              <span class="pulse-ring"></span>
+              <i class="ti ti-focus-2"></i>
+            </button>
           </div>
-          <div class="draggable-card" id="dragCard2" draggable="true" ondragstart="handleCardDragStart(event, 2)" onclick="handleCardTouchClick(2)">
-            <i class="ti ti-grip-vertical" style="color:var(--ink-faint);"></i>
-            <span>Ion khoáng đi từ nơi có nồng độ cao đến nơi có nồng độ thấp.</span>
-          </div>
-          <div class="draggable-card" id="dragCard3" draggable="true" ondragstart="handleCardDragStart(event, 3)" onclick="handleCardTouchClick(3)">
-            <i class="ti ti-grip-vertical" style="color:var(--ink-faint);"></i>
-            <span>Ion khoáng được vận chuyển vào tế bào ngược chiều gradien nồng độ.</span>
-          </div>
-          <div class="draggable-card" id="dragCard4" draggable="true" ondragstart="handleCardDragStart(event, 4)" onclick="handleCardTouchClick(4)">
-            <i class="ti ti-grip-vertical" style="color:var(--ink-faint);"></i>
-            <span>Quá trình vận chuyển chủ động cần năng lượng.</span>
+
+          <div class="visual-caption-box" id="st00CaptionBox">
+            <i class="ti ti-notes"></i>
+            <span id="st00CaptionText">Nhấn vào vùng lông hút trên rễ để quan sát.</span>
           </div>
         </div>
-      </div>
+      </article>
 
-      <!-- 2 Target Groups -->
-      <div class="drop-zones-grid">
-        <!-- Zone 1: Hấp thụ nước -->
-        <div class="drop-group-box" id="dropZoneWater" ondragover="handleGroupDragOver(event)" ondragleave="handleGroupDragLeave(event)" ondrop="handleGroupDrop(event, 'water')" onclick="handleGroupTouchClick('water')">
-          <div class="drop-group-header">
-            <span class="drop-group-title">
-              <i class="ti ti-droplet" style="color:#2563EB;"></i>
-              Nhóm 1 – Hấp thụ nước
-            </span>
+      <!-- PHẢI: GHI NHẬN QUAN SÁT & CÂU HỎI CHUYỂN TIẾP -->
+      <article class="workspace-card">
+        <h3>Bản chất sinh học của lông hút</h3>
+        <p class="workspace-lead">Quan sát tương tác giữa lông hút và dung dịch đất để nhận diện cấu trúc chuyên hóa cho sự hấp thụ.</p>
+
+        <div class="obs-card" id="st00ObsCard">
+          <div class="obs-card__title">
+            <i class="ti ti-plant-2"></i>
+            <span>Đặc điểm cấu tạo lông hút</span>
           </div>
-          <div class="drop-items-container" id="zoneItemsWater">
-            <span class="drop-placeholder">Thả thẻ cơ chế hấp thụ nước vào đây</span>
-          </div>
+          <p class="obs-card__text" id="st00ObsText">
+            Chưa kích hoạt quan sát. Hãy nhấn vào điểm nổi bật trên rễ ở khối bên trái để ghi nhận đặc điểm giải phẫu của tế bào lông hút.
+          </p>
         </div>
 
-        <!-- Zone 2: Hấp thụ ion khoáng -->
-        <div class="drop-group-box" id="dropZoneIon" ondragover="handleGroupDragOver(event)" ondragleave="handleGroupDragLeave(event)" ondrop="handleGroupDrop(event, 'ion')" onclick="handleGroupTouchClick('ion')">
-          <div class="drop-group-header">
-            <span class="drop-group-title">
-              <i class="ti ti-atom" style="color:#7C3AED;"></i>
-              Nhóm 2 – Hấp thụ ion khoáng
-            </span>
+        <div class="question-card hidden" id="st00QuestionCard">
+          <div class="question-card__title">
+            <i class="ti ti-help"></i>
+            <span>Câu hỏi gợi mở</span>
           </div>
-          <div class="drop-items-container" id="zoneItemsIon">
-            <span class="drop-placeholder">Thả thẻ cơ chế hấp thụ ion khoáng vào đây</span>
-          </div>
+          <p class="question-card__text">
+            Nước và ion khoáng đều đi qua tế bào lông hút, nhưng chúng có được hấp thụ theo cùng một cơ chế không?
+          </p>
         </div>
-      </div>
 
-      <!-- Chốt kiến thức sau khi hoàn thành kéo thả -->
-      <div class="summary-box hidden" id="st01FinalSummary">
-        <div class="summary-title">
-          <i class="ti ti-circle-check"></i> Hoàn thành phân loại
+        <div class="conclude-box hidden" id="st00ConcludeBox">
+          <strong>Chốt nhận biết:</strong> Lông hút là phần kéo dài của tế bào biểu bì rễ, làm tăng diện tích tiếp xúc giữa rễ và đất. Qua bề mặt này, cây hấp thụ nước và các ion khoáng từ dung dịch đất.
         </div>
-        <p>
-          Nước được hấp thụ chủ yếu theo cơ chế thẩm thấu; ion khoáng được hấp thụ bằng cả cơ chế thụ động và chủ động.
-        </p>
-      </div>
+      </article>
     </div>
 
-    <!-- Controls -->
+    <!-- Thanh tác vụ điều hướng -->
     <div class="controls-row">
-      <button class="btn btn-secondary" onclick="goToStage(0)">
-        <i class="ti ti-arrow-left"></i>
-        <span>QUAY LẠI</span>
-      </button>
-      <button class="btn btn-primary" id="btnNextST01" onclick="goToStage(2)" disabled>
-        <span>TIẾP TỤC</span>
-        <i class="ti ti-arrow-right"></i>
-      </button>
+      <button class="btn" type="button" disabled><i class="ti ti-arrow-left"></i> Quay lại</button>
+      <button class="btn" type="button" onclick="resetStage(0)"><i class="ti ti-refresh"></i> Làm lại màn</button>
+      <span class="spacer"></span>
+      <button class="btn btn-primary" type="button" id="btnNextST00" disabled onclick="gotoStage(1)"><span>Tiếp tục</span> <i class="ti ti-arrow-right"></i></button>
     </div>
   </section>
 
-  <!-- ==================== STAGE 02 ==================== -->
-  <section class="stage-card hidden" id="stage02" role="region" aria-labelledby="st02Heading">
-    <h2 class="stage-title" id="st02Heading">
-      <i class="ti ti-git-merge"></i>
-      Nước và ion khoáng đi từ lông hút vào mạch gỗ bằng những con đường nào?
-    </h2>
+  <!-- ==========================================
+       STAGE ST01: CƠ CHẾ QUA MÀNG TẾ BÀO LÔNG HÚT
+       ========================================== -->
+  <section class="stage hidden" id="stage-1">
+    <div class="split-workspace">
+      <!-- TRÁI: SƠ ĐỒ SVG CƠ CHẾ QUA MÀNG -->
+      <article class="visual-card">
+        <div class="visual-card__head">
+          <h2>Nước và ion khoáng đi vào tế bào lông hút bằng cách nào?</h2>
+          <p class="question">Quan sát sơ đồ tế bào lông hút và dung dịch đất ở phía ngoài.</p>
+        </div>
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span><strong>HƯỚNG DẪN:</strong> Nhấn lần lượt vào vùng NƯỚC và ION KHOÁNG để xem cơ chế hấp thụ. Sau đó phân loại 4 thẻ đặc điểm ở khối bên phải.</span>
+          </div>
 
-    <p class="lead-text">
-      Sau khi đi vào vùng rễ, nước và ion khoáng tiếp tục di chuyển qua các lớp tế bào để đến mạch gỗ.
-    </p>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-droplet-half-2"></i> Hai cơ chế qua màng sinh chất</div>
+              <p class="theory-block__content">Nước và các ion khoáng đi vào tế bào biểu bì lông hút theo các cơ chế khác nhau: nước đi theo cơ chế thẩm thấu thụ động do chênh lệch thế nước, còn ion khoáng có thể đi thụ động xuôi gradien hoặc chủ động ngược gradien cần ATP.</p>
+            </div>
+          </div>
 
-    <!-- Guide 1 -->
-    <div class="guide-box" id="st02Guide">
-      <i class="ti ti-info-circle"></i>
-      <span id="st02GuideText">Nhấn lần lượt vào CON ĐƯỜNG GIAN BÀO và CON ĐƯỜNG TẾ BÀO CHẤT trên sơ đồ. Con đường đã xem sẽ được làm nổi bật.</span>
+          <!-- Sơ đồ SVG cơ chế qua màng -->
+          <div class="membrane-svg-wrap">
+            <svg viewBox="0 0 960 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sơ đồ cơ chế hấp thụ nước và ion khoáng qua màng tế bào lông hút">
+              <defs>
+                <marker id="arrowWater" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563EB"/>
+                </marker>
+                <marker id="arrowPassive" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="#D97706"/>
+                </marker>
+                <marker id="arrowActive" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="#7C3AED"/>
+                </marker>
+                <marker id="arrowATP" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="#D97706"/>
+                </marker>
+
+                <linearGradient id="soilGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#FBF7EE"/>
+                  <stop offset="100%" stop-color="#F3ECE0"/>
+                </linearGradient>
+                <linearGradient id="cellGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#EFF7F2"/>
+                  <stop offset="100%" stop-color="#E2EFE7"/>
+                </linearGradient>
+                <linearGradient id="membraneGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#A8D5BA"/>
+                  <stop offset="50%" stop-color="#5B9E78"/>
+                  <stop offset="100%" stop-color="#347551"/>
+                </linearGradient>
+                <filter id="shadowFilter" x="-10%" y="-10%" width="120%" height="120%">
+                  <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.12"/>
+                </filter>
+              </defs>
+
+              <!-- Cột 1: Dung dịch đất -->
+              <rect x="10" y="10" width="320" height="480" rx="8" fill="url(#soilGrad)" stroke="#E5DECF" stroke-width="1.5"/>
+              <rect x="10" y="10" width="320" height="52" rx="8" fill="#F4EDE0" stroke="#E5DECF"/>
+              <text x="25" y="32" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="800" fill="#2D3748" letter-spacing="0.5px">DUNG DỊCH ĐẤT (NGOÀI TẾ BÀO)</text>
+              <text x="25" y="49" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="500" fill="#718096">Môi trường đất ẩm tiếp xúc trực tiếp lông hút</text>
+
+              <!-- Cột 2: Thành & Màng tế bào -->
+              <rect x="335" y="65" width="30" height="425" fill="#EFE8D8" stroke="#D8CEBC" stroke-width="1"/>
+              <rect x="365" y="65" width="60" height="425" fill="url(#membraneGrad)" stroke="#2D8B6F" stroke-width="1.5"/>
+              
+              <rect x="335" y="10" width="90" height="52" rx="8" fill="#14432F" stroke="#0D2E20"/>
+              <text x="380" y="30" font-family="'Be Vietnam Pro', sans-serif" font-size="10.5" font-weight="800" fill="#FFF" text-anchor="middle" letter-spacing="0.5px">RANH GIỚI</text>
+              <text x="380" y="46" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="700" fill="#A9D0BE" text-anchor="middle">THÀNH &amp; MÀNG</text>
+
+              <rect x="337" y="68" width="26" height="18" rx="3" fill="#D6CCB6"/>
+              <text x="350" y="81" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="800" fill="#514C44" text-anchor="middle">THÀNH</text>
+              
+              <rect x="370" y="68" width="50" height="18" rx="3" fill="#1B5E48"/>
+              <text x="395" y="81" font-family="'Be Vietnam Pro', sans-serif" font-size="8" font-weight="800" fill="#FFF" text-anchor="middle">MÀNG SC</text>
+
+              <!-- Kênh ion xuyên màng -->
+              <rect x="367" y="230" width="56" height="55" rx="6" fill="#FDE68A" stroke="#D97706" stroke-width="2"/>
+              <rect x="388" y="238" width="14" height="39" rx="2" fill="#FFFBEB"/>
+              <text x="395" y="298" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="800" fill="#B45309" text-anchor="middle">KÊNH ION</text>
+
+              <!-- Protein vận chuyển chủ động -->
+              <rect x="363" y="355" width="64" height="60" rx="8" fill="#DDD6FE" stroke="#7C3AED" stroke-width="2"/>
+              <rect x="382" y="367" width="26" height="36" rx="4" fill="#F5F3FF"/>
+              <text x="395" y="430" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="800" fill="#6D28D9" text-anchor="middle">PROTEIN</text>
+              <text x="395" y="443" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="700" fill="#6D28D9" text-anchor="middle">VẬN CHUYỂN</text>
+
+              <!-- Cột 3: Tế bào chất lông hút -->
+              <rect x="430" y="10" width="520" height="480" rx="8" fill="url(#cellGrad)" stroke="#CBDCD0" stroke-width="1.5"/>
+              <rect x="430" y="10" width="520" height="52" rx="8" fill="#E4F1E9" stroke="#CBDCD0"/>
+              <text x="450" y="32" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="800" fill="#1B5E48" letter-spacing="0.5px">TẾ BÀO CHẤT LÔNG HÚT</text>
+              <text x="450" y="49" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="500" fill="#46685A">Dịch tế bào có nồng độ chất tan cao hơn dung dịch đất</text>
+
+              <!-- Không bào trung tâm -->
+              <rect x="710" y="75" width="225" height="400" rx="14" fill="#D2E8DC" stroke="#A9D0BE" stroke-width="2" stroke-dasharray="5,5"/>
+              <text x="822" y="110" font-family="'Be Vietnam Pro', sans-serif" font-size="12.5" font-weight="800" fill="#1B5E48" text-anchor="middle">KHÔNG BÀO TRUNG TÂM</text>
+              <text x="822" y="128" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="500" fill="#46685A" text-anchor="middle">Chứa dịch tế bào &amp; chất dự trữ</text>
+
+              <!-- TUYẾN 1: NƯỚC (W1) -->
+              <g id="svgGroupWater" opacity="0.6" style="transition: all 0.3s ease;">
+                <rect x="25" y="95" width="240" height="26" rx="6" fill="#DBEAFE" stroke="#93C5FD"/>
+                <text x="35" y="112" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#1E40AF">
+                  Thế nước cao (Ít chất tan)
+                </text>
+                
+                <rect x="25" y="130" width="220" height="28" rx="14" fill="#2563EB" filter="url(#shadowFilter)"/>
+                <text x="135" y="148" font-family="'Be Vietnam Pro', sans-serif" font-size="11.5" font-weight="800" fill="#FFF" text-anchor="middle">
+                  Thẩm thấu theo thế nước (W1)
+                </text>
+
+                <circle cx="65" cy="182" r="13" fill="#BFDBFE" stroke="#60A5FA"/>
+                <text x="65" y="186" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="800" fill="#1E40AF" text-anchor="middle">H₂O</text>
+
+                <circle cx="125" cy="182" r="13" fill="#BFDBFE" stroke="#60A5FA"/>
+                <text x="125" y="186" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="800" fill="#1E40AF" text-anchor="middle">H₂O</text>
+
+                <circle cx="185" cy="182" r="13" fill="#BFDBFE" stroke="#60A5FA"/>
+                <text x="185" y="186" font-family="'Be Vietnam Pro', sans-serif" font-size="9.5" font-weight="800" fill="#1E40AF" text-anchor="middle">H₂O</text>
+
+                <path id="pathW1" d="M 255 144 L 585 144" stroke="#2563EB" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowWater)"/>
+
+                <rect x="445" y="95" width="180" height="26" rx="6" fill="#DBEAFE" stroke="#93C5FD"/>
+                <text x="455" y="112" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#1E40AF">
+                  Thế nước thấp hơn
+                </text>
+                
+                <rect x="445" y="130" width="165" height="26" rx="6" fill="#EFF6FF" stroke="#BFDBFE"/>
+                <text x="455" y="147" font-family="'Be Vietnam Pro', sans-serif" font-size="10.5" font-weight="600" fill="#1D4ED8">
+                  Nước đi vào dịch tế bào
+                </text>
+
+                <circle cx="615" cy="144" r="14" fill="#93C5FD" stroke="#3B82F6"/>
+                <text x="615" y="148" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#1E3A8A" text-anchor="middle">H₂O</text>
+              </g>
+
+              <!-- TUYẾN 2: ION THỤ ĐỘNG (I1) -->
+              <g id="svgGroupPassive" opacity="0.6" style="transition: all 0.3s ease;">
+                <rect x="25" y="215" width="180" height="26" rx="6" fill="#FEF3C7" stroke="#FCD34D"/>
+                <text x="35" y="232" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#92400E">
+                  Nồng độ ion cao hơn
+                </text>
+
+                <rect x="25" y="248" width="220" height="28" rx="14" fill="#D97706" filter="url(#shadowFilter)"/>
+                <text x="135" y="266" font-family="'Be Vietnam Pro', sans-serif" font-size="11.5" font-weight="800" fill="#FFF" text-anchor="middle">
+                  Thụ động: Xuôi gradien (I1)
+                </text>
+
+                <circle cx="70" cy="298" r="13" fill="#F59E0B"/>
+                <text x="70" y="302" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#FFF" text-anchor="middle">K⁺</text>
+
+                <circle cx="130" cy="298" r="13" fill="#F59E0B"/>
+                <text x="130" y="302" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="800" fill="#FFF" text-anchor="middle">NO₃⁻</text>
+
+                <circle cx="190" cy="298" r="13" fill="#F59E0B"/>
+                <text x="190" y="302" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="800" fill="#FFF" text-anchor="middle">Mg²⁺</text>
+
+                <path id="pathI1" d="M 255 262 L 585 262" stroke="#D97706" stroke-width="4.5" stroke-dasharray="6,4" stroke-linecap="round" marker-end="url(#arrowPassive)"/>
+
+                <rect x="445" y="215" width="180" height="26" rx="6" fill="#FEF3C7" stroke="#FCD34D"/>
+                <text x="455" y="232" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#92400E">
+                  Nồng độ ion thấp hơn
+                </text>
+
+                <circle cx="615" cy="262" r="13" fill="#FDE68A" stroke="#D97706" stroke-width="1.5"/>
+                <text x="615" y="266" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#92400E" text-anchor="middle">K⁺</text>
+              </g>
+
+              <!-- TUYẾN 3: ION CHỦ ĐỘNG (I2 + E1) -->
+              <g id="svgGroupActive" opacity="0.6" style="transition: all 0.3s ease;">
+                <rect x="25" y="335" width="180" height="26" rx="6" fill="#EDE9FE" stroke="#DDD6FE"/>
+                <text x="35" y="352" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#5B21B6">
+                  Nồng độ ion thấp hơn
+                </text>
+
+                <rect x="25" y="368" width="220" height="28" rx="14" fill="#7C3AED" filter="url(#shadowFilter)"/>
+                <text x="135" y="386" font-family="'Be Vietnam Pro', sans-serif" font-size="11.5" font-weight="800" fill="#FFF" text-anchor="middle">
+                  Chủ động: Ngược gradien (I2)
+                </text>
+
+                <circle cx="100" cy="415" r="13" fill="#8B5CF6"/>
+                <text x="100" y="419" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#FFF" text-anchor="middle">K⁺</text>
+
+                <path id="pathI2" d="M 255 382 L 585 382" stroke="#7C3AED" stroke-width="4.5" stroke-linecap="round" marker-end="url(#arrowActive)"/>
+
+                <rect x="445" y="335" width="180" height="26" rx="6" fill="#EDE9FE" stroke="#DDD6FE"/>
+                <text x="455" y="352" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#5B21B6">
+                  Nồng độ ion cao hơn
+                </text>
+
+                <circle cx="615" cy="382" r="13" fill="#DDD6FE" stroke="#7C3AED" stroke-width="1.5"/>
+                <text x="615" y="386" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#5B21B6" text-anchor="middle">K⁺</text>
+
+                <g id="svgATP">
+                  <rect x="450" y="415" width="170" height="46" rx="8" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.5" filter="url(#shadowFilter)"/>
+                  <polygon points="468,438 480,424 494,424 502,438 494,452 480,452" fill="#F59E0B"/>
+                  <text x="486" y="442" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="900" fill="#FFF" text-anchor="middle">ATP</text>
+                  <text x="512" y="434" font-family="'Be Vietnam Pro', sans-serif" font-size="10.5" font-weight="800" fill="#92400E">NĂNG LƯỢNG (E1)</text>
+                  <text x="512" y="450" font-family="'Be Vietnam Pro', sans-serif" font-size="9" font-weight="600" fill="#B45309">Cung cấp cho protein</text>
+                  <path d="M 450 438 Q 436 430 428 405" fill="none" stroke="#D97706" stroke-width="2.5" stroke-dasharray="3,3" marker-end="url(#arrowATP)"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Nút kích hoạt 2 vùng -->
+          <div class="svg-toggle-grid">
+            <button class="svg-toggle-btn" id="btnHotspotWater" onclick="triggerST01Hotspot('water')">
+              <span style="display:flex;align-items:center;gap:8px;">
+                <i class="ti ti-droplet" style="color:#2563EB;font-size:1.2rem;"></i>
+                <span>VÙNG NƯỚC (Thẩm thấu)</span>
+              </span>
+              <span class="status-pill" id="badgeWater">Chưa xem</span>
+            </button>
+
+            <button class="svg-toggle-btn" id="btnHotspotIon" onclick="triggerST01Hotspot('ion')">
+              <span style="display:flex;align-items:center;gap:8px;">
+                <i class="ti ti-atom" style="color:#7C3AED;font-size:1.2rem;"></i>
+                <span>VÙNG ION KHOÁNG</span>
+              </span>
+              <span class="status-pill" id="badgeIon">Chưa xem</span>
+            </button>
+          </div>
+
+          <div class="visual-caption-box" id="st01CaptionBox">
+            <i class="ti ti-info-circle"></i>
+            <span id="st01CaptionText">Nhấn vào một trong hai vùng trên để xem giải thích chi tiết cơ chế qua màng.</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- PHẢI: HOẠT ĐỘNG PHÂN LOẠI 4 THẺ CƠ CHẾ -->
+      <article class="workspace-card">
+        <h3>Phân loại cơ chế hấp thụ</h3>
+        <p class="workspace-lead">Kéo từng thẻ (hoặc chạm chọn thẻ rồi chạm nhóm đích) vào đúng nhóm cơ chế hấp thụ tương ứng.</p>
+
+        <div class="dnd-section">
+          <!-- Khay 4 thẻ -->
+          <div class="cards-tray-wrap">
+            <div class="tray-header">
+              <i class="ti ti-cards"></i>
+              <span>Khay 4 thẻ đặc điểm cơ chế</span>
+            </div>
+            <div class="cards-tray" id="cardsTray">
+              <div class="draggable-card" id="dragCard1" draggable="true" ondragstart="handleCardDragStart(event, 1)" onclick="handleCardTouchClick(1)">
+                <i class="ti ti-grip-vertical" style="color:var(--ink-faint);"></i>
+                <span>Nước từ dung dịch đất đi vào tế bào lông hút theo thẩm thấu.</span>
+              </div>
+              <div class="draggable-card" id="dragCard2" draggable="true" ondragstart="handleCardDragStart(event, 2)" onclick="handleCardTouchClick(2)">
+                <i class="ti ti-grip-vertical" style="color:var(--ink-faint);"></i>
+                <span>Ion khoáng đi từ nơi có nồng độ cao đến nơi có nồng độ thấp.</span>
+              </div>
+              <div class="draggable-card" id="dragCard3" draggable="true" ondragstart="handleCardDragStart(event, 3)" onclick="handleCardTouchClick(3)">
+                <i class="ti ti-grip-vertical" style="color:var(--ink-faint);"></i>
+                <span>Ion khoáng được vận chuyển vào tế bào ngược chiều gradien nồng độ.</span>
+              </div>
+              <div class="draggable-card" id="dragCard4" draggable="true" ondragstart="handleCardDragStart(event, 4)" onclick="handleCardTouchClick(4)">
+                <i class="ti ti-grip-vertical" style="color:var(--ink-faint);"></i>
+                <span>Quá trình vận chuyển chủ động cần năng lượng.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2 Nhóm đích -->
+          <div class="drop-zones-grid">
+            <!-- Nhóm 1: Nước -->
+            <div class="drop-group-box" id="dropZoneWater" ondragover="handleGroupDragOver(event)" ondragleave="handleGroupDragLeave(event)" ondrop="handleGroupDrop(event, 'water')" onclick="handleGroupTouchClick('water')">
+              <div class="drop-group-header">
+                <span class="drop-group-title">
+                  <i class="ti ti-droplet" style="color:#2563EB;"></i>
+                  Nhóm 1 – Hấp thụ nước
+                </span>
+              </div>
+              <div class="drop-items-container" id="zoneItemsWater">
+                <span class="drop-placeholder">Thả thẻ cơ chế hấp thụ nước vào đây</span>
+              </div>
+            </div>
+
+            <!-- Nhóm 2: Ion khoáng -->
+            <div class="drop-group-box" id="dropZoneIon" ondragover="handleGroupDragOver(event)" ondragleave="handleGroupDragLeave(event)" ondrop="handleGroupDrop(event, 'ion')" onclick="handleGroupTouchClick('ion')">
+              <div class="drop-group-header">
+                <span class="drop-group-title">
+                  <i class="ti ti-atom" style="color:#7C3AED;"></i>
+                  Nhóm 2 – Hấp thụ ion khoáng
+                </span>
+              </div>
+              <div class="drop-items-container" id="zoneItemsIon">
+                <span class="drop-placeholder">Thả thẻ cơ chế hấp thụ ion khoáng vào đây</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="inline-feedback info hidden" id="dndFeedback"></div>
+
+          <!-- Chốt kiến thức sau khi hoàn thành -->
+          <div class="conclude-box hidden" id="st01FinalSummary">
+            <strong>Hoàn thành phân loại:</strong> Nước được hấp thụ chủ yếu theo cơ chế thẩm thấu; ion khoáng được hấp thụ bằng cả cơ chế thụ động và chủ động.
+          </div>
+        </div>
+      </article>
     </div>
 
-    <!-- Root Cross-Section SVG Diagram -->
-    <div class="root-cross-section-svg-wrap">
-      <svg viewBox="0 0 960 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sơ đồ hai con đường vận chuyển nước và khoáng vào mạch gỗ của rễ và vai trò đai Caspary">
-        <defs>
-          <marker id="arrowApoplast" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M 0 1 L 10 5 L 0 9 z" fill="#EA580C"/>
-          </marker>
-          <marker id="arrowSymplast" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M 0 1 L 10 5 L 0 9 z" fill="#16A34A"/>
-          </marker>
-          <marker id="arrowBlocked" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-            <circle cx="5" cy="5" r="4" fill="#DC2626"/>
-          </marker>
-        </defs>
-
-        <!-- Layers Background -->
-        <!-- Layer 1: Soil (x: 0-110) -->
-        <rect x="10" y="10" width="100" height="460" fill="#FDFBF7" stroke="#E5DECF"/>
-        <text x="60" y="40" class="svg-zone-title" text-anchor="middle">ĐẤT</text>
-
-        <!-- Layer 2: Epidermis with Root Hair (x: 110-230) -->
-        <rect x="110" y="10" width="120" height="460" fill="#F0F7F3" stroke="#CBDCD0"/>
-        <text x="170" y="40" class="svg-zone-title" text-anchor="middle">BIỂU BÌ</text>
-
-        <!-- Root Hair extension into soil -->
-        <path d="M 170 180 L 170 210 L 30 210 Q 15 240 30 270 L 170 270 L 170 300" fill="#E2F0EA" stroke="#2D8B6F" stroke-width="2"/>
-        <text x="75" y="244" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#1B5E48" text-anchor="middle">Lông hút</text>
-
-        <!-- Layer 3: Cortex (x: 230-540) -->
-        <rect x="230" y="10" width="310" height="460" fill="#FBF9F4" stroke="#E5DECF"/>
-        <text x="385" y="40" class="svg-zone-title" text-anchor="middle">NHU MÔ VỎ (LỚP VỎ)</text>
-
-        <!-- Cortex Cells (rounded cells with visible intercellular spaces) -->
-        <!-- Row 1 -->
-        <rect x="250" y="90" width="120" height="150" rx="20" fill="#E8F2EC" stroke="#93B8A4" stroke-width="2.5"/>
-        <text x="310" y="170" class="svg-sub-title" text-anchor="middle">Tế bào vỏ 1</text>
-
-        <rect x="390" y="90" width="125" height="150" rx="20" fill="#E8F2EC" stroke="#93B8A4" stroke-width="2.5"/>
-        <text x="452" y="170" class="svg-sub-title" text-anchor="middle">Tế bào vỏ 2</text>
-
-        <!-- Row 2 -->
-        <rect x="250" y="270" width="120" height="150" rx="20" fill="#E8F2EC" stroke="#93B8A4" stroke-width="2.5"/>
-        <text x="310" y="350" class="svg-sub-title" text-anchor="middle">Tế bào vỏ 3</text>
-
-        <rect x="390" y="270" width="125" height="150" rx="20" fill="#E8F2EC" stroke="#93B8A4" stroke-width="2.5"/>
-        <text x="452" y="350" class="svg-sub-title" text-anchor="middle">Tế bào vỏ 4</text>
-
-        <!-- Plasmodesmata indicators between cortex cells -->
-        <rect x="368" y="160" width="24" height="12" fill="#86EFAC" rx="2"/>
-        <rect x="368" y="340" width="24" height="12" fill="#86EFAC" rx="2"/>
-        <rect x="304" y="238" width="12" height="34" fill="#86EFAC" rx="2"/>
-        <rect x="446" y="238" width="12" height="34" fill="#86EFAC" rx="2"/>
-        <text x="385" y="260" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="700" fill="#15803D" text-anchor="middle">Khoảng gian bào</text>
-
-        <!-- Layer 4: Endodermis (x: 540-660) -->
-        <rect x="540" y="10" width="120" height="460" fill="#FEF3C7" stroke="#FCD34D"/>
-        <text x="600" y="40" class="svg-zone-title" text-anchor="middle" fill="#92400E">NỘI BÌ</text>
-
-        <!-- Endodermal Cells -->
-        <rect x="545" y="80" width="110" height="160" rx="6" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
-        <text x="600" y="165" class="svg-sub-title" text-anchor="middle" fill="#B45309">Tế bào nội bì 1</text>
-
-        <rect x="545" y="260" width="110" height="160" rx="6" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
-        <text x="600" y="345" class="svg-sub-title" text-anchor="middle" fill="#B45309">Tế bào nội bì 2</text>
-
-        <!-- CASPARIAN STRIP on radial/transverse walls -->
-        <g id="svgCasparianStrip" opacity="0.65" transition="all 0.3s">
-          <!-- Transverse strip between cells -->
-          <rect id="casparyRect1" x="540" y="240" width="120" height="20" rx="3" fill="#78350F" stroke="#92400E"/>
-          <!-- Outer radial border strips -->
-          <rect id="casparyRect2" x="540" y="70" width="120" height="12" rx="2" fill="#78350F"/>
-          <rect id="casparyRect3" x="540" y="420" width="120" height="12" rx="2" fill="#78350F"/>
-          <text x="600" y="254" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#FEF3C7" text-anchor="middle">ĐAI CASPARY</text>
-        </g>
-
-        <!-- Layer 5: Stele & Xylem (x: 660-950) -->
-        <rect x="660" y="10" width="290" height="460" fill="#EFF6FF" stroke="#BFDBFE"/>
-        <text x="805" y="40" class="svg-zone-title" text-anchor="middle" fill="#1E40AF">TRUNG TRỤ (MẠCH GỖ)</text>
-
-        <!-- Pericycle (Trụ bì) -->
-        <rect x="665" y="70" width="40" height="370" rx="4" fill="#DBEAFE" stroke="#93C5FD"/>
-        <text x="685" y="260" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="700" fill="#1D4ED8" text-anchor="middle" transform="rotate(-90 685 260)">TRỤ BÌ</text>
-
-        <!-- Xylem Vessels -->
-        <circle cx="790" cy="180" r="50" fill="#FEF9C3" stroke="#CA8A04" stroke-width="4"/>
-        <circle cx="790" cy="180" r="42" fill="#FFF" stroke="#CA8A04" stroke-dasharray="4,2"/>
-        <text x="790" y="184" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#854D0E" text-anchor="middle">MẠCH GỖ 1</text>
-
-        <circle cx="790" cy="330" r="50" fill="#FEF9C3" stroke="#CA8A04" stroke-width="4"/>
-        <circle cx="790" cy="330" r="42" fill="#FFF" stroke="#CA8A04" stroke-dasharray="4,2"/>
-        <text x="790" y="334" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#854D0E" text-anchor="middle">MẠCH GỖ 2</text>
-
-        <!-- ==================== APOPLAST PATHWAY (A1 -> A4) ==================== -->
-        <g id="svgGroupApoplast" opacity="0.35" transition="all 0.3s">
-          <!-- A1: Từ đất vào thành tế bào biểu bì -->
-          <path id="arrowA1" d="M 60 210 Q 140 210 170 170" fill="none" stroke="#EA580C" stroke-width="4.5" stroke-linecap="round"/>
-          <!-- A2: Qua thành tế bào và khoảng gian bào vỏ đến trước đai Caspary -->
-          <path id="arrowA2" d="M 170 170 Q 240 85 375 95 T 520 240" fill="none" stroke="#EA580C" stroke-width="4.5" stroke-linecap="round"/>
-          
-          <!-- Barrier indicator at Casparian Strip -->
-          <circle cx="538" cy="245" r="7" fill="#DC2626"/>
-          <line x1="533" y1="240" x2="543" y2="250" stroke="#FFF" stroke-width="2"/>
-          <line x1="543" y1="240" x2="533" y2="250" stroke="#FFF" stroke-width="2"/>
-          
-          <rect x="420" y="260" width="105" height="20" rx="4" fill="#FEE2E2" stroke="#EF4444"/>
-          <text x="472" y="274" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#DC2626" text-anchor="middle">Bị chặn tại đai</text>
-
-          <!-- A3: Buộc chuyển hướng xuyên qua màng vào tế bào chất nội bì -->
-          <path id="arrowA3" d="M 525 240 Q 535 180 575 160" fill="none" stroke="#EA580C" stroke-width="4" stroke-dasharray="4,3" marker-end="url(#arrowApoplast)"/>
-          
-          <rect x="525" y="132" width="70" height="20" rx="4" fill="#FFEDD5" stroke="#F97316"/>
-          <text x="560" y="146" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#C2410C" text-anchor="middle">Qua màng</text>
-
-          <!-- A4: Từ tế bào chất nội bì vào mạch gỗ -->
-          <path id="arrowA4" d="M 620 160 L 740 180" fill="none" stroke="#EA580C" stroke-width="4.5" stroke-linecap="round" marker-end="url(#arrowApoplast)"/>
-          
-          <rect x="250" y="60" width="310" height="26" rx="13" fill="#EA580C"/>
-          <text x="405" y="77" font-family="'Be Vietnam Pro', sans-serif" font-size="11.5" font-weight="800" fill="#FFF" text-anchor="middle">
-            CON ĐƯỜNG GIAN BÀO (Apoplast: A1 → A4)
-          </text>
-        </g>
-
-        <!-- ==================== SYMPLAST PATHWAY (S1 -> S3) ==================== -->
-        <g id="svgGroupSymplast" opacity="0.35" transition="all 0.3s">
-          <!-- S1: Vào tế bào chất lông hút qua màng, qua cầu sinh chất sang tế bào vỏ -->
-          <path id="arrowS1" d="M 60 240 L 170 240 L 250 340" fill="none" stroke="#16A34A" stroke-width="4.5" stroke-linecap="round"/>
-          
-          <!-- S2: Qua tế bào chất các tế bào vỏ qua cầu sinh chất vào tế bào chất nội bì -->
-          <path id="arrowS2" d="M 250 340 L 375 340 L 550 340" fill="none" stroke="#16A34A" stroke-width="4.5" stroke-linecap="round"/>
-
-          <!-- S3: Từ tế bào chất nội bì vào mạch gỗ (không bị đai Caspary chặn) -->
-          <path id="arrowS3" d="M 610 340 L 740 330" fill="none" stroke="#16A34A" stroke-width="4.5" stroke-linecap="round" marker-end="url(#arrowSymplast)"/>
-          
-          <rect x="240" y="440" width="340" height="26" rx="13" fill="#16A34A"/>
-          <text x="410" y="457" font-family="'Be Vietnam Pro', sans-serif" font-size="11.5" font-weight="800" fill="#FFF" text-anchor="middle">
-            CON ĐƯỜNG TẾ BÀO CHẤT (Symplast: S1 → S3)
-          </text>
-        </g>
-      </svg>
-    </div>
-
-    <!-- Controls for 3 Hotspots -->
-    <div class="st02-controls-grid">
-      <!-- Hotspot 1: Gian bào -->
-      <button class="st02-toggle-btn" id="btnApoplast" onclick="triggerST02Hotspot('apoplast')">
-        <span style="display:flex;align-items:center;gap:8px;">
-          <i class="ti ti-route" style="color:#EA580C;font-size:1.2rem;"></i>
-          <span>CON ĐƯỜNG GIAN BÀO</span>
-        </span>
-        <span class="hotspot-status-badge" id="badgeApoplast">Chưa xem</span>
-      </button>
-
-      <!-- Hotspot 2: Tế bào chất -->
-      <button class="st02-toggle-btn" id="btnSymplast" onclick="triggerST02Hotspot('symplast')">
-        <span style="display:flex;align-items:center;gap:8px;">
-          <i class="ti ti-vector-bezier" style="color:#16A34A;font-size:1.2rem;"></i>
-          <span>CON ĐƯỜNG TẾ BÀO CHẤT</span>
-        </span>
-        <span class="hotspot-status-badge" id="badgeSymplast">Chưa xem</span>
-      </button>
-
-      <!-- Hotspot 3: Đai Caspary -->
-      <button class="st02-toggle-btn" id="btnCaspary" onclick="triggerST02Hotspot('caspary')" disabled>
-        <span style="display:flex;align-items:center;gap:8px;">
-          <i class="ti ti-shield-half" style="color:#78350F;font-size:1.2rem;"></i>
-          <span>ĐAI CASPARY</span>
-        </span>
-        <span class="hotspot-status-badge" id="badgeCaspary">Khóa</span>
-      </button>
-    </div>
-
-    <!-- Explanatory Caption Box ST02 -->
-    <div class="interactive-caption-box" id="st02CaptionBox">
-      <i class="ti ti-info-circle"></i>
-      <span id="st02CaptionText">Nhấn lần lượt vào hai con đường trên sơ đồ để xem lộ trình di chuyển của dòng chất.</span>
-    </div>
-
-    <!-- Part 2: Quiz A/B (revealed after Casparian strip explored) -->
-    <div class="quiz-section hidden" id="st02QuizSection">
-      <div class="quiz-question-title">
-        <i class="ti ti-help-circle"></i>
-        <span>Câu hỏi củng cố: Tại nội bì, điều gì xảy ra với nước và ion khoáng đang đi theo con đường gian bào?</span>
-      </div>
-
-      <div class="quiz-options-list">
-        <button class="quiz-option-btn" id="quizOptionA" onclick="answerST02Quiz('A')">
-          <span class="quiz-option-letter">A</span>
-          <span>Tiếp tục đi tự do qua thành tế bào đến mạch gỗ.</span>
-        </button>
-
-        <button class="quiz-option-btn" id="quizOptionB" onclick="answerST02Quiz('B')">
-          <span class="quiz-option-letter">B</span>
-          <span>Bị đai Caspary ngăn lại và phải đi qua màng tế bào nội bì.</span>
-        </button>
-      </div>
-
-      <!-- Feedback for Quiz -->
-      <div class="feedback-bar hidden" id="quizFeedback"></div>
-    </div>
-
-    <!-- Controls -->
+    <!-- Thanh tác vụ điều hướng -->
     <div class="controls-row">
-      <button class="btn btn-secondary" onclick="goToStage(1)">
-        <i class="ti ti-arrow-left"></i>
-        <span>QUAY LẠI</span>
-      </button>
-      <button class="btn btn-primary" id="btnNextST02" onclick="goToStage(3)" disabled>
-        <span>TIẾP TỤC</span>
-        <i class="ti ti-arrow-right"></i>
-      </button>
+      <button class="btn" type="button" onclick="gotoStage(0)"><i class="ti ti-arrow-left"></i> Quay lại</button>
+      <button class="btn" type="button" onclick="resetStage(1)"><i class="ti ti-refresh"></i> Làm lại màn</button>
+      <span class="spacer"></span>
+      <button class="btn btn-primary" type="button" id="btnNextST01" disabled onclick="gotoStage(2)"><span>Tiếp tục</span> <i class="ti ti-arrow-right"></i></button>
     </div>
   </section>
 
-  <!-- ==================== STAGE 03 ==================== -->
-  <section class="stage-card hidden" id="stage03" role="region" aria-labelledby="st03Heading">
-    <h2 class="stage-title" id="st03Heading">
-      <i class="ti ti-book-2"></i>
-      Ghi nhớ và kết nối
-    </h2>
+  <!-- ==========================================
+       STAGE ST02: HAI CON ĐƯỜNG VÀO MẠCH GỖ & ĐAI CASPARY
+       ========================================== -->
+  <section class="stage hidden" id="stage-2">
+    <div class="split-workspace">
+      <!-- TRÁI: MẶT CẮT LÁT NGANG RỄ & ĐAI CASPARY -->
+      <article class="visual-card">
+        <div class="visual-card__head">
+          <h2>Con đường vận chuyển vào mạch gỗ</h2>
+          <p class="question">Sau khi đi vào vùng rễ, nước và ion khoáng tiếp tục di chuyển qua các lớp tế bào để đến mạch gỗ.</p>
+        </div>
+        <div class="visual-card__content">
+          <div class="instruction">
+            <i class="ti ti-hand-click"></i>
+            <span><strong>HƯỚNG DẪN:</strong> Nhấn lần lượt vào CON ĐƯỜNG GIAN BÀO và CON ĐƯỜNG TẾ BÀO CHẤT, sau đó mở khóa ĐAI CASPARY để quan sát.</span>
+          </div>
 
-    <p class="lead-text">
-      Tổng kết các kiến thức trọng tâm về cơ chế hấp thụ nước và khoáng ở rễ thực vật.
-    </p>
+          <div class="theory-flow">
+            <div class="theory-block">
+              <div class="theory-block__title"><i class="ti ti-git-merge"></i> Hai tuyến vận chuyển trong vỏ rễ</div>
+              <p class="theory-block__content">Từ lông hút vào trung trụ có hai con đường song song: con đường gian bào (qua thành tế bào và khoảng gian bào) và con đường tế bào chất (qua tế bào chất và cầu sinh chất). Đai Caspary tại nội bì đóng vai trò kiểm soát dòng chất.</p>
+            </div>
+          </div>
 
-    <!-- 4 Memory Cards -->
-    <div class="memory-grid">
-      <div class="memory-card">
-        <div class="memory-icon">
-          <i class="ti ti-droplet"></i>
-        </div>
-        <div class="memory-text">
-          Nước được rễ hấp thụ chủ yếu theo cơ chế thẩm thấu.
-        </div>
-      </div>
+          <!-- Sơ đồ SVG mặt cắt lát ngang rễ -->
+          <div class="root-cross-section-svg-wrap">
+            <svg viewBox="0 0 960 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sơ đồ hai con đường vận chuyển nước và khoáng vào mạch gỗ của rễ và vai trò đai Caspary">
+              <defs>
+                <marker id="arrowApoplast" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="#EA580C"/>
+                </marker>
+                <marker id="arrowSymplast" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="#16A34A"/>
+                </marker>
+              </defs>
 
-      <div class="memory-card">
-        <div class="memory-icon">
-          <i class="ti ti-atom"></i>
-        </div>
-        <div class="memory-text">
-          Ion khoáng có thể được hấp thụ theo cơ chế thụ động hoặc chủ động.
-        </div>
-      </div>
+              <!-- Vùng 1: Đất -->
+              <rect x="10" y="10" width="100" height="460" fill="#FDFBF7" stroke="#E5DECF"/>
+              <text x="60" y="40" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="700" fill="#514C44" text-anchor="middle">ĐẤT</text>
 
-      <div class="memory-card">
-        <div class="memory-icon">
-          <i class="ti ti-git-fork"></i>
-        </div>
-        <div class="memory-text">
-          Từ vùng lông hút đến mạch gỗ, nước và ion khoáng di chuyển theo con đường gian bào hoặc con đường tế bào chất.
-        </div>
-      </div>
+              <!-- Vùng 2: Biểu bì & Lông hút -->
+              <rect x="110" y="10" width="120" height="460" fill="#F0F7F3" stroke="#CBDCD0"/>
+              <text x="170" y="40" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="700" fill="#514C44" text-anchor="middle">BIỂU BÌ</text>
 
-      <div class="memory-card">
-        <div class="memory-icon">
-          <i class="ti ti-shield-check"></i>
+              <path d="M 170 180 L 170 210 L 30 210 Q 15 240 30 270 L 170 270 L 170 300" fill="#E2F0EA" stroke="#2D8B6F" stroke-width="2"/>
+              <text x="75" y="244" font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="700" fill="#1B5E48" text-anchor="middle">Lông hút</text>
+
+              <!-- Vùng 3: Nhu mô vỏ -->
+              <rect x="230" y="10" width="310" height="460" fill="#FBF9F4" stroke="#E5DECF"/>
+              <text x="385" y="40" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="700" fill="#514C44" text-anchor="middle">NHU MÔ VỎ (LỚP VỎ)</text>
+
+              <!-- Tế bào vỏ -->
+              <rect x="250" y="90" width="120" height="150" rx="20" fill="#E8F2EC" stroke="#93B8A4" stroke-width="2.5"/>
+              <text x="310" y="170" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#46685A" text-anchor="middle">Tế bào vỏ 1</text>
+
+              <rect x="390" y="90" width="125" height="150" rx="20" fill="#E8F2EC" stroke="#93B8A4" stroke-width="2.5"/>
+              <text x="452" y="170" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#46685A" text-anchor="middle">Tế bào vỏ 2</text>
+
+              <rect x="250" y="270" width="120" height="150" rx="20" fill="#E8F2EC" stroke="#93B8A4" stroke-width="2.5"/>
+              <text x="310" y="350" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#46685A" text-anchor="middle">Tế bào vỏ 3</text>
+
+              <rect x="390" y="270" width="125" height="150" rx="20" fill="#E8F2EC" stroke="#93B8A4" stroke-width="2.5"/>
+              <text x="452" y="350" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#46685A" text-anchor="middle">Tế bào vỏ 4</text>
+
+              <!-- Cầu sinh chất -->
+              <rect x="368" y="160" width="24" height="12" fill="#86EFAC" rx="2"/>
+              <rect x="368" y="340" width="24" height="12" fill="#86EFAC" rx="2"/>
+              <rect x="304" y="238" width="12" height="34" fill="#86EFAC" rx="2"/>
+              <rect x="446" y="238" width="12" height="34" fill="#86EFAC" rx="2"/>
+              <text x="385" y="260" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="700" fill="#15803D" text-anchor="middle">Khoảng gian bào</text>
+
+              <!-- Vùng 4: Nội bì -->
+              <rect x="540" y="10" width="120" height="460" fill="#FEF3C7" stroke="#FCD34D"/>
+              <text x="600" y="40" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="700" fill="#92400E" text-anchor="middle">NỘI BÌ</text>
+
+              <rect x="545" y="80" width="110" height="160" rx="6" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+              <text x="600" y="165" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#B45309" text-anchor="middle">Tế bào nội bì 1</text>
+
+              <rect x="545" y="260" width="110" height="160" rx="6" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+              <text x="600" y="345" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#B45309" text-anchor="middle">Tế bào nội bì 2</text>
+
+              <!-- ĐAI CASPARY -->
+              <g id="svgCasparianStrip" opacity="0.65" style="transition: all 0.3s ease;">
+                <rect id="casparyRect1" x="540" y="240" width="120" height="20" rx="3" fill="#78350F" stroke="#92400E"/>
+                <rect id="casparyRect2" x="540" y="70" width="120" height="12" rx="2" fill="#78350F"/>
+                <rect id="casparyRect3" x="540" y="420" width="120" height="12" rx="2" fill="#78350F"/>
+                <text x="600" y="254" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#FEF3C7" text-anchor="middle">ĐAI CASPARY</text>
+              </g>
+
+              <!-- Vùng 5: Trung trụ & Mạch gỗ -->
+              <rect x="660" y="10" width="290" height="460" fill="#EFF6FF" stroke="#BFDBFE"/>
+              <text x="805" y="40" font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="700" fill="#1E40AF" text-anchor="middle">TRUNG TRỤ (MẠCH GỖ)</text>
+
+              <!-- Trụ bì -->
+              <rect x="665" y="70" width="40" height="370" rx="4" fill="#DBEAFE" stroke="#93C5FD"/>
+              <text x="685" y="260" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="700" fill="#1D4ED8" text-anchor="middle" transform="rotate(-90 685 260)">TRỤ BÌ</text>
+
+              <!-- Mạch gỗ -->
+              <circle cx="790" cy="180" r="50" fill="#FEF9C3" stroke="#CA8A04" stroke-width="4"/>
+              <circle cx="790" cy="180" r="42" fill="#FFF" stroke="#CA8A04" stroke-dasharray="4,2"/>
+              <text x="790" y="184" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#854D0E" text-anchor="middle">MẠCH GỖ 1</text>
+
+              <circle cx="790" cy="330" r="50" fill="#FEF9C3" stroke="#CA8A04" stroke-width="4"/>
+              <circle cx="790" cy="330" r="42" fill="#FFF" stroke="#CA8A04" stroke-dasharray="4,2"/>
+              <text x="790" y="334" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#854D0E" text-anchor="middle">MẠCH GỖ 2</text>
+
+              <!-- TUYẾN GIAN BÀO (A1 -> A4) -->
+              <g id="svgGroupApoplast" opacity="0.35" style="transition: all 0.3s ease;">
+                <path id="arrowA1" d="M 60 210 Q 140 210 170 170" fill="none" stroke="#EA580C" stroke-width="4.5" stroke-linecap="round"/>
+                <path id="arrowA2" d="M 170 170 Q 240 85 375 95 T 520 240" fill="none" stroke="#EA580C" stroke-width="4.5" stroke-linecap="round"/>
+                
+                <!-- Điểm dừng tại đai -->
+                <circle cx="538" cy="245" r="7" fill="#DC2626"/>
+                <line x1="533" y1="240" x2="543" y2="250" stroke="#FFF" stroke-width="2"/>
+                <line x1="543" y1="240" x2="533" y2="250" stroke="#FFF" stroke-width="2"/>
+                
+                <rect x="420" y="260" width="105" height="20" rx="4" fill="#FEE2E2" stroke="#EF4444"/>
+                <text x="472" y="274" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#DC2626" text-anchor="middle">Bị chặn tại đai</text>
+
+                <!-- Rẽ hướng xuyên màng -->
+                <path id="arrowA3" d="M 525 240 Q 535 180 575 160" fill="none" stroke="#EA580C" stroke-width="4" stroke-dasharray="4,3" marker-end="url(#arrowApoplast)"/>
+                
+                <rect x="525" y="132" width="70" height="20" rx="4" fill="#FFEDD5" stroke="#F97316"/>
+                <text x="560" y="146" font-family="'Be Vietnam Pro', sans-serif" font-size="10" font-weight="800" fill="#C2410C" text-anchor="middle">Qua màng</text>
+
+                <!-- Vào mạch gỗ -->
+                <path id="arrowA4" d="M 620 160 L 740 180" fill="none" stroke="#EA580C" stroke-width="4.5" stroke-linecap="round" marker-end="url(#arrowApoplast)"/>
+                
+                <rect x="250" y="60" width="310" height="26" rx="13" fill="#EA580C"/>
+                <text x="405" y="77" font-family="'Be Vietnam Pro', sans-serif" font-size="11.5" font-weight="800" fill="#FFF" text-anchor="middle">
+                  CON ĐƯỜNG GIAN BÀO (Apoplast: A1 → A4)
+                </text>
+              </g>
+
+              <!-- TUYẾN TẾ BÀO CHẤT (S1 -> S3) -->
+              <g id="svgGroupSymplast" opacity="0.35" style="transition: all 0.3s ease;">
+                <path id="arrowS1" d="M 60 240 L 170 240 L 250 340" fill="none" stroke="#16A34A" stroke-width="4.5" stroke-linecap="round"/>
+                <path id="arrowS2" d="M 250 340 L 375 340 L 550 340" fill="none" stroke="#16A34A" stroke-width="4.5" stroke-linecap="round"/>
+                <path id="arrowS3" d="M 610 340 L 740 330" fill="none" stroke="#16A34A" stroke-width="4.5" stroke-linecap="round" marker-end="url(#arrowSymplast)"/>
+                
+                <rect x="240" y="440" width="340" height="26" rx="13" fill="#16A34A"/>
+                <text x="410" y="457" font-family="'Be Vietnam Pro', sans-serif" font-size="11.5" font-weight="800" fill="#FFF" text-anchor="middle">
+                  CON ĐƯỜNG TẾ BÀO CHẤT (Symplast: S1 → S3)
+                </text>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Nút điều khiển 3 điểm chốt -->
+          <div class="st02-controls-grid">
+            <button class="st02-toggle-btn" id="btnApoplast" onclick="triggerST02Hotspot('apoplast')">
+              <span style="display:flex;align-items:center;gap:6px;">
+                <i class="ti ti-route" style="color:#EA580C;font-size:1.15rem;"></i>
+                <span>CON ĐƯỜNG GIAN BÀO</span>
+              </span>
+              <span class="status-pill" id="badgeApoplast">Chưa xem</span>
+            </button>
+
+            <button class="st02-toggle-btn" id="btnSymplast" onclick="triggerST02Hotspot('symplast')">
+              <span style="display:flex;align-items:center;gap:6px;">
+                <i class="ti ti-vector-bezier" style="color:#16A34A;font-size:1.15rem;"></i>
+                <span>CON ĐƯỜNG TẾ BÀO CHẤT</span>
+              </span>
+              <span class="status-pill" id="badgeSymplast">Chưa xem</span>
+            </button>
+
+            <button class="st02-toggle-btn" id="btnCaspary" onclick="triggerST02Hotspot('caspary')" disabled>
+              <span style="display:flex;align-items:center;gap:6px;">
+                <i class="ti ti-shield-half" style="color:#78350F;font-size:1.15rem;"></i>
+                <span>ĐAI CASPARY</span>
+              </span>
+              <span class="status-pill" id="badgeCaspary">Khóa</span>
+            </button>
+          </div>
+
+          <div class="visual-caption-box" id="st02CaptionBox">
+            <i class="ti ti-info-circle"></i>
+            <span id="st02CaptionText">Nhấn lần lượt vào hai con đường trên sơ đồ để xem lộ trình di chuyển của dòng chất.</span>
+          </div>
         </div>
-        <div class="memory-text">
-          Tại nội bì, đai Caspary ngăn con đường gian bào, buộc dòng vật chất phải đi qua màng tế bào trước khi vào trung trụ.
+      </article>
+
+      <!-- PHẢI: BÀI TẬP CỦNG CỐ KIẾN THỨC -->
+      <article class="workspace-card">
+        <h3>Bài tập củng cố kiến thức</h3>
+        <p class="workspace-lead">Quan sát vị trí đai Caspary ở lớp nội bì và trả lời câu hỏi dưới đây:</p>
+
+        <div class="quiz-box">
+          <div class="question-index-label">
+            <i class="ti ti-help-circle"></i>
+            <span>Câu 1 / 1</span>
+          </div>
+
+          <p class="quiz-question-title">
+            Tại nội bì, điều gì xảy ra với nước và ion khoáng đang đi theo con đường gian bào?
+          </p>
+
+          <div class="quiz-options-list">
+            <button class="quiz-option-btn" id="quizOptionA" onclick="selectST02Option('A')">
+              <span class="quiz-option-letter">A</span>
+              <span>Tiếp tục đi tự do qua thành tế bào đến mạch gỗ.</span>
+            </button>
+
+            <button class="quiz-option-btn" id="quizOptionB" onclick="selectST02Option('B')">
+              <span class="quiz-option-letter">B</span>
+              <span>Bị đai Caspary ngăn lại và phải đi qua màng tế bào nội bì.</span>
+            </button>
+          </div>
+
+          <div class="quiz-actions">
+            <button class="btn btn-primary" id="btnCheckST02" disabled onclick="checkST02Answer()">
+              <i class="ti ti-check"></i>
+              <span>Kiểm tra</span>
+            </button>
+          </div>
+
+          <!-- Phản hồi khi làm sai -->
+          <div class="inline-feedback bad hidden" id="quizStatusFeedback"></div>
+
+          <div class="correct-answer-box hidden" id="quizCorrectBox">
+            <i class="ti ti-circle-check"></i>
+            <span>Đáp án đúng: B. Bị đai Caspary ngăn lại và phải đi qua màng tế bào nội bì.</span>
+          </div>
+
+          <div class="explanation hidden" id="quizExplanation">
+            <strong>Lời giải chi tiết:</strong> Đai Caspary có bản chất là suberin không thấm nước nằm trên thành tế bào nội bì. Nó chặn đứng con đường gian bào, buộc dòng nước và ion khoáng phải đi xuyên qua màng sinh chất vào tế bào chất của tế bào nội bì. Nhờ đó, tế bào nội bì có thể kiểm soát lượng và loại chất đi vào trung trụ và mạch gỗ.
+          </div>
+
+          <div class="pedagogy-meta hidden" id="quizPedagogyMeta">
+            <div class="pedagogy-title">
+              <i class="ti ti-info-circle"></i>
+              <span>Thông tin sư phạm</span>
+            </div>
+            <div class="pedagogy-row">
+              <span class="pedagogy-label"><i class="ti ti-bookmark"></i> Chủ đề:</span>
+              <strong class="pedagogy-val">Trao đổi nước và khoáng ở thực vật</strong>
+            </div>
+            <div class="pedagogy-row">
+              <span class="pedagogy-label"><i class="ti ti-file-text"></i> Dạng bài:</span>
+              <strong class="pedagogy-val">Cơ chế vận chuyển qua các lớp tế bào rễ</strong>
+            </div>
+            <div class="pedagogy-row">
+              <span class="pedagogy-label"><i class="ti ti-brain"></i> Cấp độ tư duy:</span>
+              <strong class="pedagogy-val">Thông hiểu</strong>
+            </div>
+            <div class="pedagogy-row">
+              <span class="pedagogy-label"><i class="ti ti-sparkles"></i> Năng lực sinh học:</span>
+              <strong class="pedagogy-val">Nhận thức sinh học</strong>
+            </div>
+            <div class="pedagogy-row">
+              <span class="pedagogy-label"><i class="ti ti-list-check"></i> Định dạng:</span>
+              <strong class="pedagogy-val">Trắc nghiệm một lựa chọn</strong>
+            </div>
+          </div>
         </div>
-      </div>
+      </article>
     </div>
 
-    <!-- Connection to Next Lesson -->
-    <div class="connection-card">
-      <div class="connection-icon">
-        <i class="ti ti-arrow-guide"></i>
-      </div>
-      <div class="connection-text">
-        <strong>Kết nối bài học tiếp theo:</strong> Nước và ion khoáng đã vào được mạch gỗ của rễ. Vậy chúng được vận chuyển từ rễ lên thân và lá bằng cách nào? Đây là nội dung của module tiếp theo.
-      </div>
-    </div>
-
-    <!-- Controls -->
+    <!-- Thanh tác vụ điều hướng -->
     <div class="controls-row">
-      <button class="btn btn-secondary" onclick="goToStage(2)">
-        <i class="ti ti-arrow-left"></i>
-        <span>QUAY LẠI</span>
-      </button>
-      <button class="btn btn-primary" id="btnCompleteModule" onclick="completeModule()">
+      <button class="btn" type="button" onclick="gotoStage(1)"><i class="ti ti-arrow-left"></i> Quay lại</button>
+      <button class="btn" type="button" onclick="resetStage(2)"><i class="ti ti-refresh"></i> Làm lại màn</button>
+      <span class="spacer"></span>
+      <button class="btn btn-primary" type="button" id="btnNextST02" disabled onclick="gotoStage(3)"><span>Tiếp tục</span> <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       STAGE ST03: GHI NHỚ VÀ KẾT NỐI (SINGLE-BLOCK)
+       ========================================== -->
+  <section class="stage hidden" id="stage-3">
+    <div class="single-block-container">
+      <div class="summary-card">
+        <div class="summary-card__head">
+          <h2>Ghi nhớ và kết nối</h2>
+          <p>Tổng kết các kiến thức cốt lõi về cơ chế hấp thụ nước và khoáng ở rễ thực vật.</p>
+        </div>
+
+        <div class="instruction">
+          <i class="ti ti-bulb"></i>
+          <span><strong>TỔNG KẾT BÀI HỌC:</strong> Đọc kỹ 4 điểm cốt lõi dưới đây và nhấn nút hoàn thành để kết thúc module học tập.</span>
+        </div>
+
+        <!-- Lưới 4 thẻ ghi nhớ -->
+        <div class="takeaway-grid">
+          <div class="takeaway-card">
+            <div class="takeaway-card__icon">
+              <i class="ti ti-droplet"></i>
+            </div>
+            <div class="takeaway-card__content">
+              <span class="takeaway-card__num">Điểm 1</span>
+              <p class="takeaway-card__text">Nước được rễ hấp thụ chủ yếu theo cơ chế thẩm thấu do dịch tế bào lông hút có thế nước thấp hơn dung dịch đất.</p>
+            </div>
+          </div>
+
+          <div class="takeaway-card">
+            <div class="takeaway-card__icon">
+              <i class="ti ti-atom"></i>
+            </div>
+            <div class="takeaway-card__content">
+              <span class="takeaway-card__num">Điểm 2</span>
+              <p class="takeaway-card__text">Ion khoáng có thể được hấp thụ theo cơ chế thụ động (xuôi gradien nồng độ) hoặc chủ động (ngược gradien nồng độ và tiêu tốn ATP).</p>
+            </div>
+          </div>
+
+          <div class="takeaway-card">
+            <div class="takeaway-card__icon">
+              <i class="ti ti-git-fork"></i>
+            </div>
+            <div class="takeaway-card__content">
+              <span class="takeaway-card__num">Điểm 3</span>
+              <p class="takeaway-card__text">Từ vùng lông hút đến mạch gỗ, nước và ion khoáng di chuyển theo con đường gian bào hoặc con đường tế bào chất.</p>
+            </div>
+          </div>
+
+          <div class="takeaway-card">
+            <div class="takeaway-card__icon">
+              <i class="ti ti-shield-check"></i>
+            </div>
+            <div class="takeaway-card__content">
+              <span class="takeaway-card__num">Điểm 4</span>
+              <p class="takeaway-card__text">Tại nội bì, đai Caspary ngăn con đường gian bào, buộc dòng vật chất phải đi qua màng tế bào trước khi vào trung trụ.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Thẻ kết nối sang M03 -->
+        <div class="connection-card">
+          <div class="connection-card__icon">
+            <i class="ti ti-arrow-guide"></i>
+          </div>
+          <div class="connection-card__text">
+            <strong>Kết nối bài học tiếp theo (M03):</strong> Nước và ion khoáng đã vào được mạch gỗ của rễ. Vậy chúng được vận chuyển từ rễ lên thân và lá bằng cách nào? Đây là nội dung của module tiếp theo.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thanh tác vụ hoàn thành -->
+    <div class="controls-row">
+      <button class="btn" type="button" onclick="gotoStage(2)"><i class="ti ti-arrow-left"></i> Quay lại</button>
+      <button class="btn" type="button" onclick="resetStage(3)"><i class="ti ti-refresh"></i> Làm lại màn</button>
+      <span class="spacer"></span>
+      <button class="btn btn-primary" type="button" id="btnCompleteModule" onclick="completeModule()">
         <i class="ti ti-circle-check"></i>
-        <span>HOÀN THÀNH MODULE</span>
+        <span>Hoàn thành module</span>
       </button>
     </div>
   </section>
@@ -1691,7 +2016,7 @@ section.stage .controls-row,section.stage .stage-actions,section.stage-section .
       Bạn đã nắm vững cơ chế hấp thụ nước và ion khoáng qua màng tế bào lông hút, cũng như hai con đường di chuyển vào mạch gỗ và vai trò kiểm soát của đai Caspary.
     </p>
     <div class="congrats-actions">
-      <button class="btn btn-secondary" onclick="restartModule()">
+      <button class="btn" onclick="restartModule()">
         <i class="ti ti-rotate-clockwise"></i>
         <span>Xem lại bài</span>
       </button>
@@ -1712,10 +2037,11 @@ window.lmsState = {
   st00RootHairViewed: false,
   st01WaterViewed: false,
   st01IonViewed: false,
-  st01DndMatches: {}, // cardId: 'water' | 'ion'
+  st01DndMatches: {},
   st02ApoplastViewed: false,
   st02SymplastViewed: false,
   st02CasparyViewed: false,
+  st02SelectedOption: null,
   st02QuizPassed: false,
   completed: false
 };
@@ -1736,11 +2062,11 @@ window.addEventListener('load', () => {
   setTimeout(reportHeight, 300);
 });
 
-function goToStage(stageIndex) {
+function gotoStage(stageIndex) {
   window.lmsState.currentStage = stageIndex;
 
   for (let i = 0; i <= 3; i++) {
-    const stageEl = document.getElementById(`stage0${i}`);
+    const stageEl = document.getElementById(`stage-${i}`);
     if (stageEl) {
       if (i === stageIndex) {
         stageEl.classList.remove('hidden');
@@ -1754,6 +2080,117 @@ function goToStage(stageIndex) {
   reportHeight();
 }
 
+function resetStage(stageIndex) {
+  if (stageIndex === 0) {
+    window.lmsState.st00RootHairViewed = false;
+    const btn = document.getElementById('btnHotspotRootHair');
+    if (btn) btn.classList.remove('viewed');
+    
+    const obsText = document.getElementById('st00ObsText');
+    if (obsText) {
+      obsText.innerHTML = 'Chưa kích hoạt quan sát. Hãy nhấn vào điểm nổi bật trên rễ ở khối bên trái để ghi nhận đặc điểm giải phẫu của tế bào lông hút.';
+    }
+    
+    document.getElementById('st00QuestionCard').classList.add('hidden');
+    document.getElementById('st00ConcludeBox').classList.add('hidden');
+    
+    const captionBox = document.getElementById('st00CaptionBox');
+    const captionText = document.getElementById('st00CaptionText');
+    captionBox.style.background = '';
+    captionBox.style.borderColor = '';
+    captionText.innerHTML = 'Nhấn vào vùng lông hút trên rễ để quan sát.';
+    
+    document.getElementById('btnNextST00').disabled = true;
+  } else if (stageIndex === 1) {
+    window.lmsState.st01WaterViewed = false;
+    window.lmsState.st01IonViewed = false;
+    window.lmsState.st01DndMatches = {};
+
+    document.getElementById('svgGroupWater').setAttribute('opacity', '0.6');
+    document.getElementById('svgGroupPassive').setAttribute('opacity', '0.6');
+    document.getElementById('svgGroupActive').setAttribute('opacity', '0.6');
+
+    document.getElementById('btnHotspotWater').className = 'svg-toggle-btn';
+    document.getElementById('btnHotspotIon').className = 'svg-toggle-btn';
+    document.getElementById('badgeWater').textContent = 'Chưa xem';
+    document.getElementById('badgeIon').textContent = 'Chưa xem';
+
+    document.getElementById('st01CaptionText').innerHTML = 'Nhấn vào một trong hai vùng trên để xem giải thích chi tiết cơ chế qua màng.';
+
+    // Reset Tray
+    const tray = document.getElementById('cardsTray');
+    tray.innerHTML = `
+      <div class="draggable-card" id="dragCard1" draggable="true" ondragstart="handleCardDragStart(event, 1)" onclick="handleCardTouchClick(1)">
+        <i class="ti ti-grip-vertical" style="color:var(--ink-faint);"></i>
+        <span>Nước từ dung dịch đất đi vào tế bào lông hút theo thẩm thấu.</span>
+      </div>
+      <div class="draggable-card" id="dragCard2" draggable="true" ondragstart="handleCardDragStart(event, 2)" onclick="handleCardTouchClick(2)">
+        <i class="ti ti-grip-vertical" style="color:var(--ink-faint);"></i>
+        <span>Ion khoáng đi từ nơi có nồng độ cao đến nơi có nồng độ thấp.</span>
+      </div>
+      <div class="draggable-card" id="dragCard3" draggable="true" ondragstart="handleCardDragStart(event, 3)" onclick="handleCardTouchClick(3)">
+        <i class="ti ti-grip-vertical" style="color:var(--ink-faint);"></i>
+        <span>Ion khoáng được vận chuyển vào tế bào ngược chiều gradien nồng độ.</span>
+      </div>
+      <div class="draggable-card" id="dragCard4" draggable="true" ondragstart="handleCardDragStart(event, 4)" onclick="handleCardTouchClick(4)">
+        <i class="ti ti-grip-vertical" style="color:var(--ink-faint);"></i>
+        <span>Quá trình vận chuyển chủ động cần năng lượng.</span>
+      </div>
+    `;
+
+    document.getElementById('zoneItemsWater').innerHTML = '<span class="drop-placeholder">Thả thẻ cơ chế hấp thụ nước vào đây</span>';
+    document.getElementById('zoneItemsIon').innerHTML = '<span class="drop-placeholder">Thả thẻ cơ chế hấp thụ ion khoáng vào đây</span>';
+
+    const fb = document.getElementById('dndFeedback');
+    fb.className = 'inline-feedback info hidden';
+    fb.innerHTML = '';
+
+    document.getElementById('st01FinalSummary').classList.add('hidden');
+    document.getElementById('btnNextST01').disabled = true;
+  } else if (stageIndex === 2) {
+    window.lmsState.st02ApoplastViewed = false;
+    window.lmsState.st02SymplastViewed = false;
+    window.lmsState.st02CasparyViewed = false;
+    window.lmsState.st02SelectedOption = null;
+    window.lmsState.st02QuizPassed = false;
+
+    document.getElementById('svgGroupApoplast').setAttribute('opacity', '0.35');
+    document.getElementById('svgGroupSymplast').setAttribute('opacity', '0.35');
+    document.getElementById('svgCasparianStrip').setAttribute('opacity', '0.65');
+
+    document.getElementById('btnApoplast').className = 'st02-toggle-btn';
+    document.getElementById('btnSymplast').className = 'st02-toggle-btn';
+    document.getElementById('btnCaspary').className = 'st02-toggle-btn';
+    document.getElementById('btnCaspary').disabled = true;
+
+    document.getElementById('badgeApoplast').textContent = 'Chưa xem';
+    document.getElementById('badgeSymplast').textContent = 'Chưa xem';
+    document.getElementById('badgeCaspary').textContent = 'Khóa';
+
+    document.getElementById('st02CaptionText').innerHTML = 'Nhấn lần lượt vào hai con đường trên sơ đồ để xem lộ trình di chuyển của dòng chất.';
+
+    // Reset Quiz
+    const optA = document.getElementById('quizOptionA');
+    const optB = document.getElementById('quizOptionB');
+    optA.className = 'quiz-option-btn';
+    optB.className = 'quiz-option-btn';
+    optA.disabled = false;
+    optB.disabled = false;
+
+    document.getElementById('btnCheckST02').disabled = true;
+    document.getElementById('quizStatusFeedback').className = 'inline-feedback bad hidden';
+    document.getElementById('quizCorrectBox').classList.add('hidden');
+    document.getElementById('quizExplanation').classList.add('hidden');
+    document.getElementById('quizPedagogyMeta').classList.add('hidden');
+
+    document.getElementById('btnNextST02').disabled = true;
+  } else if (stageIndex === 3) {
+    closeModal();
+  }
+
+  reportHeight();
+}
+
 /* ==========================================================================
    STAGE 00: ROOT HAIR OBSERVATION
    ========================================================================== */
@@ -1763,16 +2200,20 @@ function exploreRootHair() {
   const btn = document.getElementById('btnHotspotRootHair');
   btn.classList.add('viewed');
 
-  // Reveal explanation card
-  const infoCard = document.getElementById('st00InfoCard');
-  infoCard.classList.remove('hidden');
+  // Update observation text
+  const obsText = document.getElementById('st00ObsText');
+  obsText.innerHTML = '<strong>Đã quan sát:</strong> Lông hút là phần kéo dài của tế bào biểu bì rễ, làm tăng diện tích tiếp xúc giữa rễ và đất. Qua bề mặt này, cây hấp thụ nước và các ion khoáng từ dung dịch đất.';
+
+  // Show transition question & conclude box
+  document.getElementById('st00QuestionCard').classList.remove('hidden');
+  document.getElementById('st00ConcludeBox').classList.remove('hidden');
 
   // Update caption
   const captionBox = document.getElementById('st00CaptionBox');
   const captionText = document.getElementById('st00CaptionText');
   captionBox.style.background = 'var(--jade-pale)';
   captionBox.style.borderColor = 'var(--jade-soft)';
-  captionText.innerHTML = '<strong>Đã quan sát vùng lông hút:</strong> Lông hút là phần kéo dài của tế bào biểu bì, làm tăng diện tích tiếp xúc giữa rễ và đất.';
+  captionText.innerHTML = '<strong>Đã làm nổi bật vùng lông hút:</strong> Vùng lông hút nằm sau đỉnh sinh trưởng của rễ, phát triển dày đặc giúp tối đa hoá diện tích hấp thu.';
 
   // Enable Next button
   document.getElementById('btnNextST00').disabled = false;
@@ -1816,12 +2257,6 @@ function triggerST01Hotspot(type) {
     captionText.innerHTML = '<strong>Cơ chế hấp thụ ion khoáng:</strong> Ion khoáng có thể được hấp thụ theo hai cơ chế: <em>Thụ động</em> (ion đi theo chiều gradien nồng độ) và <em>Chủ động</em> (ion được vận chuyển ngược chiều gradien nồng độ và cần năng lượng ATP).';
   }
 
-  // Check if both viewed
-  if (window.lmsState.st01WaterViewed && window.lmsState.st01IonViewed) {
-    document.getElementById('st01TransitionBox').classList.remove('hidden');
-    document.getElementById('st01ClassifySection').classList.remove('hidden');
-  }
-
   reportHeight();
 }
 
@@ -1830,10 +2265,10 @@ let selectedDragCardId = null;
 let currentDraggedCardId = null;
 
 const DND_CORRECT_MAP = {
-  1: 'water', // Thẻ 1 -> Nước (Thẩm thấu)
-  2: 'ion',   // Thẻ 2 -> Ion khoáng (Xuôi gradient)
-  3: 'ion',   // Thẻ 3 -> Ion khoáng (Ngược gradient)
-  4: 'ion'    // Thẻ 4 -> Ion khoáng (Cần năng lượng)
+  1: 'water',
+  2: 'ion',
+  3: 'ion',
+  4: 'ion'
 };
 
 const CARD_TEXTS = {
@@ -1865,7 +2300,6 @@ function handleGroupDrop(ev, groupKey) {
   processCardPlacement(cardId, groupKey);
 }
 
-// Touch fallback: Click card to select, then click target group
 function handleCardTouchClick(cardId) {
   const cardEl = document.getElementById(`dragCard${cardId}`);
   if (!cardEl) return;
@@ -1907,17 +2341,14 @@ function processCardPlacement(cardId, targetGroup) {
   const cardEl = document.getElementById(`dragCard${cardId}`);
 
   if (DND_CORRECT_MAP[cardId] === targetGroup) {
-    // Correct!
     window.lmsState.st01DndMatches[cardId] = targetGroup;
 
     const targetContainerId = targetGroup === 'water' ? 'zoneItemsWater' : 'zoneItemsIon';
     const container = document.getElementById(targetContainerId);
 
-    // Remove placeholder if present
     const placeholder = container.querySelector('.drop-placeholder');
     if (placeholder) placeholder.remove();
 
-    // Append card into drop group
     const placedItem = document.createElement('div');
     placedItem.className = 'draggable-card in-dropzone';
     placedItem.id = `placedCard${cardId}`;
@@ -1929,25 +2360,21 @@ function processCardPlacement(cardId, targetGroup) {
     `;
     container.appendChild(placedItem);
 
-    // Remove from tray
     if (cardEl) cardEl.remove();
     selectedDragCardId = null;
 
     showDndFeedback('ok', 'Chính xác! Thẻ đã được xếp đúng nhóm cơ chế.');
 
-    // Check tray empty
     const tray = document.getElementById('cardsTray');
     if (tray.children.length === 0) {
       tray.innerHTML = '<span class="tray-empty-msg"><i class="ti ti-circle-check"></i> Đã phân loại thành công tất cả 4 thẻ!</span>';
     }
 
-    // Check all 4 placed
     if (Object.keys(window.lmsState.st01DndMatches).length === 4) {
       document.getElementById('st01FinalSummary').classList.remove('hidden');
       document.getElementById('btnNextST01').disabled = false;
     }
   } else {
-    // Wrong
     if (cardEl) {
       cardEl.classList.add('shake');
       setTimeout(() => {
@@ -1964,11 +2391,9 @@ function processCardPlacement(cardId, targetGroup) {
 function undoCardPlacement(cardId, groupKey) {
   delete window.lmsState.st01DndMatches[cardId];
 
-  // Remove placed element
   const placedEl = document.getElementById(`placedCard${cardId}`);
   if (placedEl) placedEl.remove();
 
-  // Restore placeholder if group empty
   const targetContainerId = groupKey === 'water' ? 'zoneItemsWater' : 'zoneItemsIon';
   const container = document.getElementById(targetContainerId);
   if (container.children.length === 0) {
@@ -1976,7 +2401,6 @@ function undoCardPlacement(cardId, groupKey) {
     container.innerHTML = `<span class="drop-placeholder">${defaultText}</span>`;
   }
 
-  // Restore into tray
   const tray = document.getElementById('cardsTray');
   const emptyMsg = tray.querySelector('.tray-empty-msg');
   if (emptyMsg) emptyMsg.remove();
@@ -2002,7 +2426,7 @@ function undoCardPlacement(cardId, groupKey) {
 
 function showDndFeedback(type, msg) {
   const fb = document.getElementById('dndFeedback');
-  fb.className = `feedback-bar ${type}`;
+  fb.className = `inline-feedback ${type}`;
   let icon = 'ti-info-circle';
   if (type === 'ok') icon = 'ti-circle-check';
   if (type === 'bad') icon = 'ti-alert-circle';
@@ -2061,54 +2485,74 @@ function triggerST02Hotspot(route) {
     gSymplast.setAttribute('opacity', '0.5');
 
     captionText.innerHTML = '<strong>Vai trò của đai Caspary:</strong> Đai Caspary ngăn nước và ion khoáng tiếp tục đi qua thành tế bào tại nội bì. Vì vậy, các chất theo con đường gian bào phải đi qua màng tế bào nội bì trước khi vào trung trụ và mạch gỗ. Nhờ đó, sự đưa các ion khoáng vào mạch gỗ được kiểm soát.';
-
-    // Reveal quiz
-    document.getElementById('st02QuizSection').classList.remove('hidden');
   }
 
-  // If both Apoplast and Symplast viewed, unlock Casparian Strip button
+  // Mở khóa nút Đai Caspary khi xem cả 2 con đường
   if (window.lmsState.st02ApoplastViewed && window.lmsState.st02SymplastViewed) {
     if (btnCaspary.disabled) {
       btnCaspary.disabled = false;
       badgeCaspary.textContent = 'Mở khóa';
-      const guideText = document.getElementById('st02GuideText');
-      guideText.textContent = 'Nhấn vào ĐAI CASPARY để xem điều gì xảy ra tại nội bì.';
     }
   }
 
   reportHeight();
 }
 
-function answerST02Quiz(choice) {
+function selectST02Option(choice) {
+  if (window.lmsState.st02QuizPassed) return;
+
+  window.lmsState.st02SelectedOption = choice;
   const optA = document.getElementById('quizOptionA');
   const optB = document.getElementById('quizOptionB');
-  const feedback = document.getElementById('quizFeedback');
+
+  optA.className = 'quiz-option-btn';
+  optB.className = 'quiz-option-btn';
+
+  if (choice === 'A') {
+    optA.classList.add('selected');
+  } else if (choice === 'B') {
+    optB.classList.add('selected');
+  }
+
+  document.getElementById('btnCheckST02').disabled = false;
+  reportHeight();
+}
+
+function checkST02Answer() {
+  const choice = window.lmsState.st02SelectedOption;
+  if (!choice) return;
+
+  const optA = document.getElementById('quizOptionA');
+  const optB = document.getElementById('quizOptionB');
+  const statusFb = document.getElementById('quizStatusFeedback');
 
   if (choice === 'B') {
-    // Correct!
     window.lmsState.st02QuizPassed = true;
     optB.className = 'quiz-option-btn selected-correct';
     optA.className = 'quiz-option-btn';
     optA.disabled = true;
     optB.disabled = true;
+    document.getElementById('btnCheckST02').disabled = true;
 
-    feedback.className = 'feedback-bar ok';
-    feedback.innerHTML = '<i class="ti ti-circle-check"></i> <span>Chính xác. Đai Caspary chặn con đường gian bào tại nội bì, khiến nước và ion khoáng phải đi qua màng tế bào trước khi tiếp tục vào mạch gỗ.</span>';
-    feedback.classList.remove('hidden');
+    // Ẩn thông báo cảnh báo, chỉ hiện 1 thông báo đáp án đúng duy nhất
+    statusFb.classList.add('hidden');
+
+    document.getElementById('quizCorrectBox').classList.remove('hidden');
+    document.getElementById('quizExplanation').classList.remove('hidden');
+    document.getElementById('quizPedagogyMeta').classList.remove('hidden');
 
     document.getElementById('btnNextST02').disabled = false;
   } else {
-    // Wrong!
     optA.className = 'quiz-option-btn selected-wrong shake';
     optB.className = 'quiz-option-btn';
 
-    feedback.className = 'feedback-bar bad';
-    feedback.innerHTML = '<i class="ti ti-alert-circle"></i> <span>Hãy quan sát lại vị trí đai Caspary ở lớp nội bì. Đường gian bào không thể tiếp tục đi xuyên qua thành tế bào tại vị trí này. Hãy chọn lại!</span>';
-    feedback.classList.remove('hidden');
+    statusFb.className = 'inline-feedback bad';
+    statusFb.innerHTML = '<i class="ti ti-alert-circle"></i> <span>⚠ Chưa chính xác. Hãy quan sát lại vị trí đai Caspary ở lớp nội bì. Dòng gian bào không thể tiếp tục đi xuyên qua thành tế bào tại vị trí này. Hãy chọn lại!</span>';
+    statusFb.classList.remove('hidden');
 
     setTimeout(() => {
       optA.classList.remove('shake');
-    }, 500);
+    }, 400);
   }
 
   reportHeight();
@@ -2132,10 +2576,9 @@ function closeModal() {
 
 function restartModule() {
   closeModal();
-  goToStage(0);
+  gotoStage(0);
 }
 
-// Lightweight Confetti Canvas
 function launchConfetti() {
   const canvas = document.getElementById('confettiCanvas');
   canvas.classList.remove('hidden');
@@ -2193,15 +2636,6 @@ function launchConfetti() {
 
   render();
 }
-</script>
-
-<script>
-/* Chuẩn hóa theo SH10_B01_M02: trực quan trái, nhiệm vụ phải, nút dưới. */
-(()=>{document.querySelectorAll('section.stage-section,section.stage-card').forEach(stage=>{if(stage.classList.contains('two-block-ready'))return;const nodes=[...stage.children],controls=nodes.find(n=>n.matches('.controls-row,.stage-actions')),lead=nodes.find(n=>n.matches('.lead-box')),title=nodes.find(n=>n.matches('.stage-title'));const candidates=nodes.filter(n=>n!==controls&&n!==lead&&n!==title&&!n.matches('.guide-box,.feedback-box,.feedback-bar,.conclude-card'));let visualNode=candidates.find(n=>n.querySelector('img,svg,canvas'))||candidates.find(n=>/viewer|grid|diagram|visual|comparison|summary/.test(n.className))||candidates[0];const split=document.createElement('div');split.className='split-workspace';const visual=document.createElement('article');visual.className='visual-card';const head=document.createElement('div');head.className='visual-card__head';const h=title||document.createElement('h2');if(!title){const q=lead&&lead.querySelector('.lead-question,.lead-text');h.textContent=q?q.textContent.trim().replace(/^“|”$/g,''):'Nội dung bài học'}head.appendChild(h);const body=document.createElement('div');body.className='visual-body';if(visualNode)body.appendChild(visualNode);visual.append(head,body);const work=document.createElement('article');work.className='workspace-card';let guide=nodes.find(n=>n.matches('.guide-box'))||(lead&&lead.querySelector('.guide-box'));if(guide){guide.className='instruction';work.appendChild(guide)}else{const g=document.createElement('div');g.className='instruction';g.innerHTML='<i class="ti ti-bulb"></i><span>Quan sát dữ kiện trực quan và hoàn thành nhiệm vụ.</span>';work.appendChild(g)}if(lead)work.appendChild(lead);candidates.forEach(n=>{if(n!==visualNode)work.appendChild(n)});stage.querySelectorAll(':scope > .feedback-box,:scope > .feedback-bar,:scope > .conclude-card').forEach(n=>work.appendChild(n));split.append(visual,work);stage.prepend(split);stage.querySelectorAll('.feedback-box,.feedback-bar,.feedback-panel').forEach(n=>n.classList.add('inline-feedback'));if(controls){controls.classList.add('controls-row');stage.appendChild(controls)}stage.classList.add('two-block-ready')});const clean=root=>{const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.closest('script,style'))continue;const v=n.nodeValue.replace(/Tiếp tục sang Giai đoạn\s*\d+/gi,'Tiếp tục').replace(/Hoàn thành Giai đoạn\s*\d+!?/gi,'Hoàn thành!').replace(/GIAI ĐOẠN\s*\d+\s*\/\s*\d+\s*[·—-]\s*/gi,'').replace(/Stage\s*\d+/gi,'').replace(/Màn\s*\d+\s*[·:]\s*/gi,'').replace(/Bước\s*\d+\s*\/\s*\d+/gi,'');if(v!==n.nodeValue)n.nodeValue=v}};clean(document.body);new MutationObserver(a=>a.forEach(m=>clean(m.target))).observe(document.body,{childList:true,subtree:true,characterData:true})})();
-</script>
-<script>
-/* Hàng điều hướng ba nút thống nhất, thay thế cụm điều hướng cũ. */
-(()=>{const stages=[...document.querySelectorAll('section.stage,section.stage-section,section.stage-card')];const go=(idx)=>{const stage=stages[idx];if(!stage)return;if(typeof showStage==='function')showStage(idx);else if(typeof goStage==='function')goStage(stage.id);else if(typeof goToStage==='function'){const m=stage.id.match(/(?:stage-?|stage)(\d+)/);goToStage(m?Number(m[1]):idx)}else{stages.forEach((item,itemIdx)=>{item.classList.toggle('hidden',itemIdx!==idx);item.classList.toggle('hidden-stage',itemIdx!==idx);item.classList.toggle('active',itemIdx===idx)});window.scrollTo({top:0,behavior:'smooth'})}};const hashMatch=location.hash.match(/^#retry-stage-(\d+)$/);stages.forEach((stage,idx)=>{if(stage.querySelector(':scope > .three-button-nav'))return;const sourceRow=stage.querySelector(':scope > .controls-row,:scope > .stage-actions')||stage.querySelector('.btn-row');const buttons=sourceRow?[...sourceRow.querySelectorAll('button')]:[];const byText=(re)=>buttons.find(b=>re.test(b.textContent));const backSource=byText(/quay lại|xem lại/i);const resetSource=byText(/làm lại màn|làm lại|đặt lại|nối lại/i);const nextSource=byText(/tiếp tục/i)||buttons.find(b=>/complete|finish|next/i.test(b.id));if(sourceRow&&sourceRow.classList.contains('btn-row'))[backSource,resetSource,nextSource].forEach(b=>{if(b)b.style.display='none'});const row=document.createElement('div');row.className='three-button-nav';const back=document.createElement('button');back.type='button';back.className='btn btn-outline nav-back';back.innerHTML='<i class="ti ti-arrow-left"></i> Quay lại';back.disabled=idx===0;back.addEventListener('click',()=>backSource?backSource.click():go(idx-1));const reset=document.createElement('button');reset.type='button';reset.className='btn btn-outline nav-reset';reset.innerHTML='<i class="ti ti-rotate-clockwise"></i> Làm lại màn';reset.addEventListener('click',()=>{if(resetSource)resetSource.click();else{location.hash='#retry-stage-'+idx;location.reload()}});const spacer=document.createElement('span');spacer.className='nav-spacer';const next=document.createElement('button');next.type='button';next.className='btn btn-primary nav-next';next.innerHTML='Tiếp tục <i class="ti ti-arrow-right"></i>';const sync=()=>{next.disabled=!nextSource||nextSource.disabled||nextSource.classList.contains('hidden')};next.addEventListener('click',()=>nextSource?nextSource.click():go(idx+1));sync();if(nextSource)new MutationObserver(sync).observe(nextSource,{attributes:true,attributeFilter:['class','disabled']});row.append(back,reset,spacer,next);stage.appendChild(row)});if(hashMatch){const idx=Number(hashMatch[1]);setTimeout(()=>{go(idx);history.replaceState(null,'',location.pathname+location.search)},80)}})();
 </script>
 </body>
 </html>

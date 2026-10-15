@@ -222,49 +222,153 @@ header h1{
 .btn-primary:hover:not(:disabled){background:var(--jade-deep)}
 .btn:disabled{opacity:.48;cursor:not-allowed}
 
-/* SPLIT WORKSPACE GRID (2-COLUMN LAYOUT) */
+/* SPLIT WORKSPACE GRID (TWO-BLOCK LAYOUT: LEFT THEORY | RIGHT WORKSPACE) */
 .split-workspace{
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:minmax(0,56fr) minmax(360px,44fr);
   gap:20px;
   align-items:start;
   width:100%;
 }
-@media (max-width:900px){
+@media (max-width:980px){
   .split-workspace{
     grid-template-columns:1fr;
   }
 }
 
-.canvas-card{
+/* KHỐI TRÁI: LÝ THUYẾT, HƯỚNG DẪN & TRỰC QUAN (.visual-card) */
+.visual-card{
   width:100%;
   display:flex;
   flex-direction:column;
-  gap:10px;
   position:sticky;
-  top:64px;
-  z-index:10;
+  top:16px;
   background:#fff;
   border:1px solid var(--paper-line);
   border-radius:var(--radius-lg);
-  padding:14px;
   box-shadow:var(--shadow-sm);
 }
-@media (max-width:900px){
-  .canvas-card{
+@media (max-width:980px){
+  .visual-card{
     position:static;
   }
 }
+.visual-card__head{
+  padding:16px 20px 14px;
+  border-bottom:1px solid var(--paper-line);
+}
+.visual-card__head h2{
+  margin:0;
+  font-size:clamp(1.2rem,2.2vw,1.45rem);
+  line-height:1.32;
+  font-weight:800;
+  color:var(--ink);
+}
+.visual-card__head .question{
+  margin:8px 0 0;
+  color:var(--jade-dark);
+  font-size:0.94rem;
+  font-weight:700;
+  line-height:1.55;
+}
+.visual-card__content{
+  padding:16px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.instruction{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:0;
+  padding:12px 14px;
+  border-left:4px solid var(--info);
+  border-radius:var(--radius-sm);
+  background:var(--info-bg);
+  color:var(--ink-2);
+  font-size:0.91rem;
+  line-height:1.55;
+}
+.instruction i{
+  flex:0 0 auto;
+  margin-top:2px;
+  font-size:1.2rem;
+  color:var(--info);
+}
+.instruction strong{
+  color:var(--ink);
+}
+.theory-flow{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.theory-block{
+  padding:12px 14px;
+  border:1px solid var(--paper-line);
+  border-radius:var(--radius-sm);
+  background:var(--cream);
+  font-size:0.92rem;
+  line-height:1.58;
+}
+.theory-block__title{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  font-weight:700;
+  font-size:0.93rem;
+  color:var(--jade-text);
+  margin-bottom:6px;
+}
+.theory-block__content{
+  margin:0;
+  color:var(--ink-2);
+}
+.visual-body{
+  margin-top:4px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* KHỐI PHẢI: HOẠT ĐỘNG TƯƠNG TÁC & BÀI TẬP (.workspace-card) */
 .workspace-card{
   width:100%;
+  min-width:0;
   display:flex;
   flex-direction:column;
   gap:14px;
-  background:#fff;
+  background:var(--cream-2);
   border:1px solid var(--paper-line);
   border-radius:var(--radius-lg);
-  padding:22px 26px;
+  padding:20px 22px;
   box-shadow:var(--shadow-sm);
+  position:sticky;
+  top:16px;
+  max-height:calc(100vh - 32px);
+  overflow-y:auto;
+  scrollbar-width:thin;
+}
+.workspace-card::-webkit-scrollbar{width:4px}
+.workspace-card::-webkit-scrollbar-thumb{background:var(--paper-line-2);border-radius:4px}
+@media (max-width:980px){
+  .workspace-card{
+    position:static;
+    max-height:none;
+    overflow-y:visible;
+  }
+}
+.workspace-section-label{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:0.84rem;
+  text-transform:uppercase;
+  letter-spacing:0.6px;
+  color:var(--jade-text);
+  font-weight:700;
+  margin-bottom:4px;
 }
 .canvas-glow-wrap{
   position:relative;
@@ -502,24 +606,43 @@ header h1{
 
 <div class="app">
   <main class="main">
-    <!-- SPLIT WORKSPACE GRID (LEFT: CANVAS | RIGHT: QUESTIONS) -->
+    <!-- SPLIT WORKSPACE GRID (TWO-BLOCK: LEFT THEORY | RIGHT WORKSPACE) -->
     <div class="split-workspace">
-      <!-- LEFT COLUMN: STICKY CANVAS ILLUSTRATION -->
-      <section class="card canvas-card">
-        <div class="canvas-glow-wrap">
-          <canvas id="labCanvas" width="800" height="600" role="img" aria-label="Mô phỏng quy trình và dữ liệu thí nghiệm"></canvas>
+      <!-- LEFT COLUMN: LÝ THUYẾT, HƯỚNG DẪN & DỮ KIỆN TRỰC QUAN -->
+      <article class="card visual-card">
+        <div class="visual-card__head">
+          <h2 id="stageTitle">Từ quan sát đến câu hỏi nghiên cứu</h2>
+          <p class="question" id="stageQuestion">Từ sự khác nhau giữa hai nhóm cây, điều gì được quan sát trực tiếp và câu hỏi nào phù hợp để tiếp tục nghiên cứu?</p>
         </div>
-        <div class="visual-info-panel">
-          <div class="visual-info-title"><i class="ti ti-info-circle"></i> <span id="visualKicker">DỮ KIỆN QUAN SÁT</span></div>
-          <div class="visual-info-desc" id="visualCaption">Hai nhóm cây sau cùng thời gian nghiên cứu</div>
-        </div>
-      </section>
 
-      <!-- RIGHT COLUMN: QUESTIONS & INTERACTIVE WORKSPACE -->
-      <section class="card workspace-card">
+        <div class="visual-card__content">
+          <!-- Khung Hướng dẫn thao tác duy nhất nằm ở bên trái -->
+          <div class="instruction" id="stageInstruction">
+            <i class="ti ti-hand-click"></i>
+            <span id="stageInstructionText"><strong>HƯỚNG DẪN:</strong> Quan sát tình huống hai nhóm cây và các dữ kiện kiểm soát ở bên trái, sau đó trả lời lần lượt câu hỏi 1 và câu hỏi 2 ở bên phải rồi bấm Kiểm tra.</span>
+          </div>
+
+          <!-- Nội dung bài học dạng khối dọc tuần tự theo kịch bản -->
+          <div class="theory-flow" id="theoryFlow"></div>
+
+          <!-- Trực quan: Canvas mô phỏng & chú thích -->
+          <div class="visual-body">
+            <div class="canvas-glow-wrap">
+              <canvas id="labCanvas" width="800" height="600" role="img" aria-label="Mô phỏng quy trình và dữ liệu thí nghiệm"></canvas>
+            </div>
+            <div class="visual-info-panel">
+              <div class="visual-info-title"><i class="ti ti-info-circle"></i> <span id="visualKicker">DỮ KIỆN QUAN SÁT</span></div>
+              <div class="visual-info-desc" id="visualCaption">Hai nhóm cây sau cùng thời gian nghiên cứu</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- RIGHT COLUMN: HOẠT ĐỘNG TƯƠNG TÁC & BÀI TẬP CỦNG CỐ -->
+      <article class="card workspace-card">
         <div class="workspace" id="workspace"></div>
         <div class="feedback-box" id="globalFeedback" aria-live="polite">Hệ thống sẽ phản hồi sau khi bạn bấm Kiểm tra.</div>
-      </section>
+      </article>
     </div>
 
     <!-- CONTROLS ROW (ABOVE FOOTER) -->
@@ -567,10 +690,10 @@ Object.entries(assetFiles).forEach(([code,url])=>{
 });
 
 const stages={
-  1:{goal:'Phân biệt quan sát trực tiếp với giải thích; lựa chọn câu hỏi nghiên cứu cụ thể, có thể kiểm tra.',question:'Điều gì được quan sát trực tiếp và câu hỏi nào phù hợp để tiếp tục nghiên cứu?',guide:'Quan sát hai nhóm cây, sau đó hoàn thành lần lượt hai câu hỏi.',tts:'Ở module trước, bạn đã biết cần lựa chọn phương pháp và thiết bị phù hợp. Nhưng một nghiên cứu khoa học phải bắt đầu từ đâu? Hãy phân biệt điều được quan sát trực tiếp với cách giải thích cần kiểm chứng.',chips:[['ti-plant-2','Hai nhóm cây'],['ti-sun','Thời gian chiếu sáng'],['ti-palette','Thang màu chuẩn']],methods:['Quan sát dữ kiện','Phân biệt quan sát','Chọn câu hỏi nghiên cứu','Đọc câu chốt'],note:'Quan sát là dữ kiện trực tiếp; giải thích nguyên nhân cần được kiểm chứng.'},
-  2:{goal:'Lựa chọn giả thuyết có thể kiểm chứng và xác định đúng các thành phần của thiết kế nghiên cứu.',question:'Giả thuyết và thiết kế nào kiểm tra được ảnh hưởng của thời gian chiếu sáng?',guide:'Hoàn thành tuần tự năm nhiệm vụ để xây dựng sơ đồ nghiên cứu.',tts:'Sau khi có câu hỏi nghiên cứu, bước tiếp theo là đưa ra một cách giải thích có thể kiểm chứng và xây dựng kế hoạch thu thập bằng chứng.',chips:[['ti-bulb','Giả thuyết'],['ti-adjustments','Yếu tố thay đổi'],['ti-ruler-2','Kết quả đo'],['ti-checklist','Điều kiện kiểm soát']],methods:['Chọn giả thuyết','Xác định yếu tố','Chọn điều kiện kiểm soát','Hoàn thiện thiết kế'],note:'Cấu trúc “nếu… thì…” giúp làm rõ dự đoán trong module này, không phải khuôn duy nhất.'},
-  3:{goal:'Biểu diễn dữ liệu, mô tả xu hướng và kết luận trong đúng phạm vi bằng chứng.',question:'Dữ liệu cần được biểu diễn, mô tả và kết luận như thế nào?',guide:'Chọn đúng trục biểu đồ, rồi mô tả xu hướng và kết luận.',tts:'Sau khi thực hiện nghiên cứu, dữ liệu cần được ghi chép và xử lí trước khi đưa ra kết luận. Hãy chọn cách biểu diễn phù hợp và chỉ kết luận trong phạm vi dữ liệu.',chips:[['ti-table','Bảng dữ liệu'],['ti-chart-line','Biểu đồ đường'],['ti-axis-x','Trục hoành'],['ti-axis-y','Trục tung']],methods:['Chọn trục hoành','Chọn trục tung','Mô tả xu hướng','Chọn kết luận'],note:'Bộ số liệu cố định chỉ dùng cho hoạt động học tập, không phải số liệu phổ quát.'},
-  4:{goal:'Giải thích vai trò lô đối chứng, chọn kết luận phù hợp và sắp xếp quy trình nghiên cứu.',question:'Lô đối chứng loại trừ cách giải thích nào và kết luận nào phù hợp?',guide:'So sánh hai lô, trả lời hai câu hỏi rồi sắp xếp sáu bước nghiên cứu.',tts:'Hãy dùng kết quả của lô thí nghiệm và lô đối chứng để phân biệt tác động của thao tác với tác động của việc loại bỏ nhân.',chips:[['ti-microscope','Trùng giày'],['ti-circle-dot','Nhân tế bào'],['ti-git-compare','Lô đối chứng'],['ti-route','Quy trình']],methods:['Xác định vai trò đối chứng','Chọn kết luận','Sắp xếp sáu bước','Hoàn thành module'],note:'Lô đối chứng trải qua thao tác tương tự nhưng vẫn giữ nhân.'}
+  1:{title:'Từ quan sát đến câu hỏi nghiên cứu',goal:'Phân biệt quan sát trực tiếp với giải thích; lựa chọn câu hỏi nghiên cứu cụ thể, có thể kiểm tra.',question:'Từ sự khác nhau giữa hai nhóm cây, điều gì được quan sát trực tiếp và câu hỏi nào phù hợp để tiếp tục nghiên cứu?',guide:'Quan sát tình huống hai nhóm cây và các dữ kiện kiểm soát ở bên trái, sau đó trả lời lần lượt câu hỏi 1 và câu hỏi 2 ở bên phải rồi bấm Kiểm tra.',tts:'Ở module trước, bạn đã biết cần lựa chọn phương pháp và thiết bị phù hợp. Nhưng một nghiên cứu khoa học phải bắt đầu từ đâu? Hãy phân biệt điều được quan sát trực tiếp với cách giải thích cần kiểm chứng.',chips:[['ti-plant-2','Hai nhóm cây'],['ti-sun','Thời gian chiếu sáng'],['ti-palette','Thang màu chuẩn']],methods:['Quan sát dữ kiện','Phân biệt quan sát','Chọn câu hỏi nghiên cứu','Đọc câu chốt'],note:'Quan sát là dữ kiện trực tiếp; giải thích nguyên nhân cần được kiểm chứng.'},
+  2:{title:'Xây dựng giả thuyết và thiết kế kiểm chứng',goal:'Lựa chọn giả thuyết có thể kiểm chứng và xác định đúng các thành phần của thiết kế nghiên cứu.',question:'Giả thuyết và thiết kế nào giúp kiểm tra ảnh hưởng của thời gian chiếu sáng đến mức độ xanh của lá?',guide:'Theo dõi câu hỏi nghiên cứu và sơ đồ thiết kế ở bên trái. Hoàn thành lần lượt 5 nhiệm vụ ở bên phải để hoàn chỉnh phương án kiểm chứng.',tts:'Sau khi có câu hỏi nghiên cứu, bước tiếp theo là đưa ra một cách giải thích có thể kiểm chứng và xây dựng kế hoạch thu thập bằng chứng.',chips:[['ti-bulb','Giả thuyết'],['ti-adjustments','Yếu tố thay đổi'],['ti-ruler-2','Kết quả đo'],['ti-checklist','Điều kiện kiểm soát']],methods:['Chọn giả thuyết','Xác định yếu tố','Chọn điều kiện kiểm soát','Hoàn thiện thiết kế'],note:'Cấu trúc “nếu… thì…” giúp làm rõ dự đoán trong module này, không phải khuôn duy nhất.'},
+  3:{title:'Thu thập, xử lí và phân tích dữ liệu',goal:'Biểu diễn dữ liệu, mô tả xu hướng và kết luận trong đúng phạm vi bằng chứng.',question:'Dữ liệu thu được cần được biểu diễn, mô tả và kết luận như thế nào?',guide:'Quan sát bảng dữ liệu mẫu và biểu đồ ở bên trái. Trả lời lần lượt các câu hỏi xác định trục tọa độ, nhận xét xu hướng và rút ra kết luận ở bên phải.',tts:'Sau khi thực hiện nghiên cứu, dữ liệu cần được ghi chép và xử lí trước khi đưa ra kết luận. Hãy chọn cách biểu diễn phù hợp và chỉ kết luận trong phạm vi dữ liệu.',chips:[['ti-table','Bảng dữ liệu'],['ti-chart-line','Biểu đồ đường'],['ti-axis-x','Trục hoành'],['ti-axis-y','Trục tung']],methods:['Chọn trục hoành','Chọn trục tung','Mô tả xu hướng','Chọn kết luận'],note:'Bộ số liệu cố định chỉ dùng cho hoạt động học tập, không phải số liệu phổ quát.'},
+  4:{title:'Vai trò của nhóm đối chứng và kết luận khoa học',goal:'Giải thích vai trò lô đối chứng, chọn kết luận phù hợp và sắp xếp quy trình nghiên cứu.',question:'Nhóm đối chứng giúp loại trừ cách giải thích nào và kết luận nào phù hợp nhất với dữ liệu?',guide:'Quan sát tình huống thí nghiệm trên trùng giày ở bên trái, sau đó trả lời 2 câu hỏi và sắp xếp 6 bước của quy trình nghiên cứu khoa học ở bên phải.',tts:'Hãy dùng kết quả của lô thí nghiệm và lô đối chứng để phân biệt tác động của thao tác với tác động của việc loại bỏ nhân.',chips:[['ti-microscope','Trùng giày'],['ti-circle-dot','Nhân tế bào'],['ti-git-compare','Lô đối chứng'],['ti-route','Quy trình']],methods:['Xác định vai trò đối chứng','Chọn kết luận','Sắp xếp sáu bước','Hoàn thành module'],note:'Lô đối chứng trải qua thao tác tương tự nhưng vẫn giữ nhân.'}
 };
 
 const state={
@@ -726,6 +849,14 @@ function renderShell(){
   const m=stages[state.stage];
   const goalText=document.getElementById('goalText');
   if(goalText)goalText.textContent=m.goal;
+  
+  const titleEl=document.getElementById('stageTitle');
+  if(titleEl)titleEl.textContent=m.title;
+  const questionEl=document.getElementById('stageQuestion');
+  if(questionEl)questionEl.textContent=m.question;
+  const instrText=document.getElementById('stageInstructionText');
+  if(instrText)instrText.innerHTML=`<strong>HƯỚNG DẪN:</strong> ${m.guide}`;
+  
   setGuide(m.guide,m.question);currentTtsText=m.tts;
   const next=document.getElementById('btnNext');next.disabled=!state.completedStages.has(state.stage);
   next.querySelector('span').textContent=state.stage===4?(state.moduleComplete?'Đã hoàn thành':'Hoàn thành module'):'Tiếp tục';
@@ -737,15 +868,29 @@ const s1Q2=['Vì sao cây này không đẹp bằng cây kia?','Ánh sáng có t
 function renderStage1(){
   const s=state.s1;
   currentQuestionText=!s.q1Correct?'Điều nào dưới đây được quan sát trực tiếp?':!s.q2Correct?'Câu hỏi nào phù hợp nhất để tiếp tục nghiên cứu?':'';
-  document.getElementById('workspace').innerHTML=`
-    <h2>Từ quan sát đến câu hỏi nghiên cứu</h2>
-    <p class="workspace-note">Hai nhóm cây cùng loài được trồng trong những điều kiện chiếu sáng khác nhau. Sau một thời gian, lá của hai nhóm có mức độ xanh khác nhau.</p>
-    <div class="concept-labels">
-      <span class="concept-label"><i class="ti ti-eye"></i> Quan sát được</span>
-      <span class="concept-label"><i class="ti ti-bulb"></i> Cách giải thích cần kiểm chứng</span>
+
+  // Khối Trái: Tình huống, dữ kiện kiểm soát và khái niệm cốt lõi
+  document.getElementById('theoryFlow').innerHTML=`
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-plant-2"></i> Tình huống quan sát ban đầu</div>
+      <p class="theory-block__content">Hai nhóm cây cùng loài được trồng trong những điều kiện chiếu sáng khác nhau. Sau một thời gian, lá của hai nhóm có mức độ xanh khác nhau.</p>
     </div>
-    <div class="scenario-box"><strong>Dữ kiện kiểm soát:</strong> cùng loài; tuổi và kích thước ban đầu tương đồng; cùng đất, lượng nước và thời gian nghiên cứu; chỉ khác thời gian chiếu sáng; cùng thang màu chuẩn.</div>
-    <div class="fact-row">${['Cùng loài cây','Tuổi và kích thước tương đồng','Cùng đất và lượng nước','Khác thời gian chiếu sáng','Cùng cách đo màu lá'].map((x,i)=>`<span class="fact-pill" style="animation-delay:${i*90}ms">${x}</span>`).join('')}</div>
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-adjustments-horizontal"></i> Dữ kiện kiểm soát tương đồng</div>
+      <p class="theory-block__content" style="margin-bottom:8px;">Các điều kiện được giữ đồng nhất giữa hai nhóm để bảo đảm việc so sánh khoa học:</p>
+      <div class="fact-row">${['Cùng loài cây','Tuổi và kích thước tương đồng','Cùng đất và lượng nước','Khác thời gian chiếu sáng','Cùng cách đo màu lá'].map((x,i)=>`<span class="fact-pill" style="animation-delay:${i*90}ms">${x}</span>`).join('')}</div>
+    </div>
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-bookmark"></i> Phân biệt khái niệm cốt lõi</div>
+      <div class="concept-labels" style="margin:4px 0 0;">
+        <span class="concept-label"><i class="ti ti-eye"></i> Quan sát được: ghi nhận trực tiếp bằng giác quan hoặc công cụ</span>
+        <span class="concept-label"><i class="ti ti-bulb"></i> Giải thích cần kiểm chứng: suy đoán nguyên nhân hoặc giả thuyết</span>
+      </div>
+    </div>`;
+
+  // Khối Phải: Câu hỏi củng cố & Phản hồi
+  document.getElementById('workspace').innerHTML=`
+    <div class="workspace-section-label"><i class="ti ti-help-circle"></i> Câu hỏi củng cố nhận thức</div>
     ${questionCard(1,'Điều nào dưới đây được quan sát trực tiếp?',s1Q1,s.q1Choice,s.q1Correct,'s1q1',s.feedback1)}
     ${s.q1Correct?questionCard(2,'Câu hỏi nào phù hợp nhất để tiếp tục nghiên cứu?',s1Q2,s.q2Choice,s.q2Correct,'s1q2',s.feedback2):''}
     ${s.q1Correct&&s.q2Correct?'<div class="stage-summary"><strong>Câu chốt Stage 1</strong><br>Nghiên cứu khoa học bắt đầu từ quan sát, nhưng quan sát chưa phải là kết luận. Từ điều quan sát được, nhà nghiên cứu hình thành một câu hỏi có thể kiểm tra.</div>':''}`;
@@ -790,6 +935,22 @@ function renderStage2(){
   const s=state.s2,i=Math.max(0,s.correct.findIndex(v=>!v)),done=s.correct.filter(Boolean).length,def=s2Defs[i],all=s.correct.every(Boolean);
   currentQuestionText=all?'':def.title;
   const nodes=[['Giả thuyết',s.correct[0]?'Nếu tăng thời gian chiếu sáng… mức độ xanh sẽ tăng.':'Chưa xác định'],['Yếu tố được thay đổi',s.correct[1]?'Thời gian chiếu sáng mỗi ngày':'Chưa xác định'],['Kết quả cần đo',s.correct[2]?'Mức độ xanh của lá':'Chưa xác định'],['Yếu tố cần giữ ổn định',s.correct[3]?'7 điều kiện chính đã xác định':'Chưa hoàn thành'],['Thiết kế kiểm chứng',s.correct[4]?'Hai nhóm tương đồng, chỉ khác thời gian chiếu sáng':'Chưa hoàn thành']];
+
+  // Khối Trái: Câu hỏi nghiên cứu, bản chất giả thuyết và sơ đồ thiết kế
+  document.getElementById('theoryFlow').innerHTML=`
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-help-circle"></i> Câu hỏi nghiên cứu (từ S01)</div>
+      <p class="theory-block__content"><strong>Thời gian chiếu sáng mỗi ngày có ảnh hưởng đến mức độ xanh của lá ở các cây cùng loài không?</strong></p>
+    </div>
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-bulb"></i> Bản chất của giả thuyết khoa học</div>
+      <p class="theory-block__content">Giả thuyết khoa học là cách giải thích hoặc dự đoán có thể được kiểm tra bằng bằng chứng. Cấu trúc <em>“nếu… thì…”</em> giúp làm rõ điều chủ động thay đổi và kết quả dự đoán.</p>
+    </div>
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-sitemap"></i> Sơ đồ thiết kế kiểm chứng</div>
+      <div class="research-schema">${nodes.map(([label,text],n)=>`<div class="schema-node ${s.correct[n]?'done':''}"><strong>${label}</strong>${text}</div>`).join('')}</div>
+    </div>`;
+
   let task;
   if(!all&&def.multi){
     task=`<section class="question-card"><div class="question-head"><span class="question-index">4</span><div class="question-title">${def.title}</div></div><div class="control-grid">${controlDefs.map(([id,label])=>`<button class="control-chip ${s.controls.has(id)?'selected':''} ${s.correct[3]&&controlCorrect.includes(id)?'correct':''}" data-control="${id}" ${s.correct[3]?'disabled':''}>${label}</button>`).join('')}</div><div class="question-actions"><button class="btn btn-primary" id="s2CheckMulti" ${!s.controls.size?'disabled':''}><i class="ti ti-check"></i> Kiểm tra</button></div></section>`;
@@ -797,16 +958,11 @@ function renderStage2(){
     task=questionCard(i+1,def.title,def.options,s.choices[i],s.correct[i],'s2current',s.feedbacks[i]);
   }else task='<div class="stage-summary"><strong>Câu chốt Stage 2</strong><br>Một thiết kế kiểm chứng tốt phải nêu rõ giả thuyết, yếu tố thay đổi, kết quả cần đo, nhóm so sánh và các điều kiện cần giữ ổn định.</div>';
 
+  // Khối Phải: Tiến trình và nhiệm vụ tương tác hiện tại
   document.getElementById('workspace').innerHTML=`
-    <h2>Xây dựng giả thuyết và thiết kế kiểm chứng</h2>
-    <p class="workspace-note">Câu hỏi nghiên cứu: Thời gian chiếu sáng mỗi ngày có ảnh hưởng đến mức độ xanh của lá ở các cây cùng loài không?</p>
-    <div class="explain-panel">Giả thuyết khoa học là cách giải thích hoặc dự đoán có thể được kiểm tra bằng bằng chứng. Cấu trúc ‘nếu… thì…’ giúp làm rõ điều thay đổi và kết quả dự đoán.</div>
-    <div class="task-progress-label"><span>Tiến trình nhiệm vụ</span><strong>${all?5:done+1}/5</strong></div>
+    <div class="task-progress-label"><span>Tiến trình nhiệm vụ kiểm chứng</span><strong>${all?5:done+1}/5</strong></div>
     <div class="task-progress"><span style="width:${(all?5:done+1)/5*100}%"></span></div>
-    <div class="two-column">
-      <section><div class="research-schema">${nodes.map(([label,text],n)=>`<div class="schema-node ${s.correct[n]?'done':''}"><strong>${label}</strong>${text}</div>`).join('')}</div></section>
-      <section>${task}</section>
-    </div>`;
+    ${task}`;
 
   document.querySelectorAll('[data-group="s2current"]').forEach(btn=>btn.onclick=()=>{
     s.choices[i]=btn.dataset.choice;s.feedbacks[i]='';currentFeedbackText='';persist(`Chọn S02 nhiệm vụ ${i+1}`);renderStage2();
@@ -858,25 +1014,39 @@ function s3Feedback(i,choice,ok){
 function renderStage3(){
   const s=state.s3,i=Math.max(0,s.correct.findIndex(v=>!v)),def=s3Defs[i],all=s.correct.every(Boolean);
   currentQuestionText=all?'':def.title;
-  document.getElementById('workspace').innerHTML=`
-    <h2>Thu thập, xử lí và phân tích dữ liệu</h2>
-    <p class="workspace-note">Dữ liệu mẫu dùng cho hoạt động học tập. Mỗi giá trị là trung bình của nhiều cây trong cùng một nhóm.</p>
-    <div class="data-layout">
-      <section>
-        <table class="data-table">
-          <caption>Mức độ xanh trung bình của lá sau thời gian nghiên cứu</caption>
-          <thead><tr><th>Thời gian chiếu sáng mỗi ngày</th><th>Mức độ xanh trung bình (1–7)</th></tr></thead>
-          <tbody>${dataPoints.map(p=>`<tr><td>${p.h} giờ</td><td>${String(p.v).replace('.',',')}</td></tr>`).join('')}</tbody>
-        </table>
-        <p class="data-note">Không có dữ liệu độ lệch chuẩn nên biểu đồ không thêm thanh sai số.</p>
-      </section>
-      <section class="chart-panel">
+
+  // Khối Trái: Bảng số liệu thu thập và Biểu đồ đường xu hướng
+  document.getElementById('theoryFlow').innerHTML=`
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-table"></i> Bảng dữ liệu mẫu thu thập</div>
+      <p class="theory-block__content" style="margin-bottom:8px;">Mỗi giá trị là mức độ xanh trung bình (1–7) của nhiều cây trong cùng một nhóm sau thời gian nghiên cứu:</p>
+      <table class="data-table">
+        <caption>Mức độ xanh trung bình của lá theo thời gian chiếu sáng</caption>
+        <thead><tr><th>Thời gian chiếu sáng / ngày</th><th>Mức độ xanh trung bình (1–7)</th></tr></thead>
+        <tbody>${dataPoints.map(p=>`<tr><td>${p.h} giờ</td><td>${String(p.v).replace('.',',')}</td></tr>`).join('')}</tbody>
+      </table>
+      <p class="data-note" style="margin-top:6px;">Không có dữ liệu độ lệch chuẩn nên biểu đồ không thêm thanh sai số.</p>
+    </div>
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-chart-line"></i> Biểu đồ đường xu hướng dữ liệu</div>
+      <div class="chart-panel">
         ${chartSvg(s.correct[0],s.correct[1])}
         <div class="point-buttons">${dataPoints.map((p,n)=>`<button class="point-btn" data-point-btn="${n}" ${!s.correct[1]?'disabled':''}>${p.h} giờ</button>`).join('')}</div>
         <div class="point-readout">${s.pointViewed===null?'Chọn một điểm để xem giá trị.':`${dataPoints[s.pointViewed].h} giờ/ngày → mức xanh trung bình ${String(dataPoints[s.pointViewed].v).replace('.',',')}`}</div>
-      </section>
-    </div>
+      </div>
+    </div>`;
+
+  // Khối Phải: Câu hỏi phân tích dữ liệu & Kết luận
+  document.getElementById('workspace').innerHTML=`
+    <div class="workspace-section-label"><i class="ti ti-help-circle"></i> Câu hỏi phân tích dữ liệu</div>
     ${all?'<div class="explain-panel">Kết quả nghiên cứu có thể ủng hộ giả thuyết, không ủng hộ giả thuyết hoặc chưa đủ bằng chứng để kết luận. Khi bằng chứng chưa rõ, nhà nghiên cứu cần xem lại giả thuyết, thiết kế hoặc cách thu thập dữ liệu.</div><div class="stage-summary"><strong>Câu chốt Stage 3</strong><br>Dữ liệu chỉ trở thành bằng chứng khi được thu thập có hệ thống, xử lí phù hợp và được diễn giải trong đúng phạm vi nghiên cứu.</div>':questionCard(i+1,def.title,def.options,s.choices[i],s.correct[i],'s3current',s.feedbacks[i])}`;
+
+  // Gắn sự kiện chọn điểm dữ liệu trên biểu đồ (khối trái)
+  document.querySelectorAll('[data-point],[data-point-btn]').forEach(el=>{
+    el.onclick=()=>{
+      s.pointViewed=+(el.dataset.point??el.dataset.pointBtn);persist('Xem điểm dữ liệu');renderStage3();
+    };
+  });
 
   document.querySelectorAll('[data-group="s3current"]').forEach(btn=>btn.onclick=()=>{
     s.choices[i]=btn.dataset.choice;s.feedbacks[i]='';currentFeedbackText='';persist(`Chọn S03 nhiệm vụ ${i+1}`);renderStage3();
@@ -890,9 +1060,6 @@ function renderStage3(){
     if(ok&&s.correct.every(Boolean))markStageComplete('Đã biểu diễn và diễn giải dữ liệu trong đúng phạm vi nghiên cứu.');
     persist(`Kiểm tra S03 nhiệm vụ ${i+1}`);renderShell();renderStage3();
   };
-  document.querySelectorAll('[data-point],[data-point-btn]').forEach(el=>el.onclick=()=>{
-    s.pointViewed=+(el.dataset.point??el.dataset.pointBtn);persist('Xem điểm dữ liệu');renderStage3();
-  });
 }
 
 const s4Q1=['Để chứng minh mọi trùng giày đều giống nhau.','Để phân biệt tác động của thao tác với tác động của việc loại bỏ nhân.','Để làm số lượng mẫu nhiều hơn.','Để bảo đảm kết quả thí nghiệm luôn đúng.'];
@@ -906,15 +1073,24 @@ function renderSequence(s){
 function renderStage4(){
   const s=state.s4;
   currentQuestionText=!s.q1Correct?'Vì sao cần có lô đối chứng?':!s.q2Correct?'Kết luận nào phù hợp nhất?':!s.sequenceCorrect?'Hãy sắp xếp các hoạt động sau theo trình tự hợp lí của một nghiên cứu khoa học.':'';
-  document.getElementById('workspace').innerHTML=`
-    <h2>Vai trò của nhóm đối chứng và kết luận khoa học</h2>
-    <p class="workspace-note">Một nhóm nghiên cứu muốn tìm hiểu vai trò của nhân đối với sự sống của trùng giày.</p>
-    <div class="explain-panel">Đây là mô hình hóa khái quát làm rõ vai trò của lô đối chứng, không mô phỏng kỹ thuật vi thao tác.</div>
-    <div class="sample-grid">
-      <article class="sample-card"><img src="${assetFiles.A10}" alt="Trùng giày sau thao tác loại bỏ nhân"><h3>Lô thí nghiệm</h3><span class="section-label">Kết quả</span><p class="sample-result">Nhân được loại bỏ. Sau một thời gian, tế bào chết.</p></article>
-      <article class="sample-card"><img src="${assetFiles.A11}" alt="Trùng giày đối chứng vẫn giữ nhân"><h3>Lô đối chứng</h3><span class="section-label">Kết quả</span><p class="sample-result">Trải qua thao tác tương tự nhưng nhân không bị loại bỏ. Tế bào vẫn sống.</p></article>
+
+  // Khối Trái: Tình huống thí nghiệm và đối chiếu hai lô
+  document.getElementById('theoryFlow').innerHTML=`
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-flask"></i> Tình huống nghiên cứu vai trò của nhân</div>
+      <p class="theory-block__content">Một nhóm nghiên cứu muốn tìm hiểu vai trò của nhân đối với sự sống của trùng giày (mô hình hóa khái quát làm rõ vai trò lô đối chứng, không mô phỏng kỹ thuật vi thao tác).</p>
     </div>
-    <div class="section-label">Kết luận phù hợp</div>
+    <div class="theory-block">
+      <div class="theory-block__title"><i class="ti ti-columns"></i> Đối chiếu lô thí nghiệm và lô đối chứng</div>
+      <div class="sample-grid">
+        <article class="sample-card"><img src="${assetFiles.A10}" alt="Trùng giày sau thao tác loại bỏ nhân"><h3>Lô thí nghiệm</h3><span class="section-label">Kết quả</span><p class="sample-result">Nhân được loại bỏ. Sau một thời gian, tế bào chết.</p></article>
+        <article class="sample-card"><img src="${assetFiles.A11}" alt="Trùng giày đối chứng vẫn giữ nhân"><h3>Lô đối chứng</h3><span class="section-label">Kết quả</span><p class="sample-result">Trải qua thao tác tương tự nhưng nhân không bị loại bỏ. Tế bào vẫn sống.</p></article>
+      </div>
+    </div>`;
+
+  // Khối Phải: Câu hỏi đánh giá và sắp xếp quy trình
+  document.getElementById('workspace').innerHTML=`
+    <div class="workspace-section-label"><i class="ti ti-help-circle"></i> Đánh giá vai trò của nhóm đối chứng</div>
     ${questionCard(1,'Vì sao cần có lô đối chứng?',s4Q1,s.q1Choice,s.q1Correct,'s4q1',s.feedback1)}
     ${s.q1Correct?questionCard(2,'Kết luận nào phù hợp nhất?',s4Q2,s.q2Choice,s.q2Correct,'s4q2',s.feedback2):''}
     ${s.q2Correct?renderSequence(s):''}
